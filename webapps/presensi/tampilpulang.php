@@ -121,7 +121,7 @@
                                 <td valign='Top'>$baris[7]</td>         
                                 <td valign='Top'>$baris[8]</td>        
                                 <td valign='Top'>$baris[9]<br/>
-                                    <a href=?page=GantiKeterangan&pageion=UBAH&id=".str_replace(" ","_",$baris[0]).">[Ubah]</a>
+                                    <a href=?page=GantiKeterangan&pageion=UBAH&id=".str_replace(" ","_",$baris[0])."&jam_datang=".str_replace(" ","_",$baris[4]).">[Ubah]</a>
                                 </td>       
                                 <td valign='Top' align='center'>$gb</a></td>                          
                              </tr>";$i++;

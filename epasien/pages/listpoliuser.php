@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div class="block-header">
     <h2><center>POLI/UNIT YANG KAMI LAYANI</center></h2>
 </div>

@@ -296,9 +296,9 @@ public final class InformasiTarifRadiologi extends javax.swing.JDialog {
         try{
             ps=koneksi.prepareStatement(
                         "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,penjab.png_jawab "+
-                        "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
-                        " jns_perawatan_radiologi.kd_jenis_prw like ? or  jns_perawatan_radiologi.nm_perawatan like ? or "+
-                        " penjab.png_jawab like ? or jns_perawatan_radiologi.total_byr like ?  "+
+                        "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where jns_perawatan_radiologi.status='1' and "+
+                        " (jns_perawatan_radiologi.kd_jenis_prw like ? or  jns_perawatan_radiologi.nm_perawatan like ? or "+
+                        " penjab.png_jawab like ? or jns_perawatan_radiologi.total_byr like ?)  "+
                         "order by jns_perawatan_radiologi.kd_jenis_prw");
             try {                            
                 ps.setString(1,"%"+TCari.getText().trim()+"%");

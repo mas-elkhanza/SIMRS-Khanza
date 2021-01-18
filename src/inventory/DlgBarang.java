@@ -56,7 +56,7 @@ public class DlgBarang extends javax.swing.JDialog {
     private ResultSet rs, rs2, rs3;
     private int i = 0;
     public String aktifkanbatch="no",pengaturanharga=Sequel.cariIsi("select setharga from set_harga_obat");;
-    private String kdlokasi = "", nmlokasi = "", tanggal = "0000-00-00";
+    private String kdlokasi = "", nmlokasi = "", tanggal = "0000-00-00",qrystok="";
 
 
     public DlgBarang(java.awt.Frame parent, boolean modal) {
@@ -2667,6 +2667,11 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void tampil2() {
         Valid.tabelKosong(tabMode);
         try {
+            if(aktifkanbatch.equals("yes")){
+                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch<>'' and no_faktur<>''";
+            }else{
+                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch='' and no_faktur=''";
+            }
             if(TCari.getText().trim().equals("")){
                 ps = koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,databarang.kode_satbesar,satuanbesar.satuan as satuanbesar, "
@@ -2771,7 +2776,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         totalstok = 0;
                         while (rs2.next()) {
                             stokgudang = 0;
-                            ps3 = koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=?");
+                            ps3 = koneksi.prepareStatement(qrystok);
                             try {
                                 ps3.setString(1, rs.getString(1));
                                 ps3.setString(2, rs2.getString(1));
@@ -2825,6 +2830,11 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     public void tampil3() {
         Valid.tabelKosong(tabMode);
         try {
+            if(aktifkanbatch.equals("yes")){
+                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch<>'' and no_faktur<>''";
+            }else{
+                qrystok="select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch='' and no_faktur=''";
+            }
             if(TCari.getText().trim().equals("")){
                 ps = koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,databarang.kode_satbesar,satuanbesar.satuan as satuanbesar, "
@@ -2923,7 +2933,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         rs.getString("golongan")
                     });
                     stokgudang = 0;
-                    ps3 = koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=?");
+                    ps3 = koneksi.prepareStatement(qrystok);
                     try {
                         ps3.setString(1, rs.getString(1));
                         ps3.setString(2, kdlokasi);

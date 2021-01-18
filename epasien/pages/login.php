@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <head>
    <link rel="stylesheet" type="text/css" href="capca.css">
 </head>

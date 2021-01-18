@@ -29,7 +29,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode</td><td width="">:</td>
-                    <td width="67%"><input name="kode_resiko" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_resiko;?>" size="10" maxlength="3">
+                    <td width="67%"><input name="kode_resiko" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_resiko;?>" size="10" maxlength="3" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -52,8 +52,8 @@
                 if (isset($BtnSimpan)) {
                     $kode_resiko    = validTeks(trim($_POST['kode_resiko']));
                     $nama_resiko    = validTeks(trim($_POST['nama_resiko']));
-                    $indek          = validTeks(trim($_POST['indek']));
-                    if ((!empty($kode_resiko))&&(!empty($nama_resiko))&&(!empty($indek))) {
+                    $indek          = validangka(trim($_POST['indek']));
+                    if ((isset($kode_resiko))&&(isset($nama_resiko))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" resiko_kerja "," '$kode_resiko','$nama_resiko','$indek' ", " kelompok jabatan " );
@@ -64,7 +64,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListResikoKerja'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($kode_resiko))||(empty($nama_resiko))||(empty($indek))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

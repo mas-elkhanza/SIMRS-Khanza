@@ -335,9 +335,9 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	   headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	   headers.add("X-Signature",api.getHmac());
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
             requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/poli/"+poli;	
             //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());

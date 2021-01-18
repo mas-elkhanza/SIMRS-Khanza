@@ -15,14 +15,14 @@
 								jasa, tanggal, status  FROM peminjaman_koperasi where id='$id' and tanggal='$tanggal'";
                 $hasil2 	=bukaquery($_sql2);
                 $baris2 	= mysqli_fetch_row($hasil2);
-                $id         = $baris2[0];
-                $banyak_angsur = $baris2[1];
-                $pinjaman   = $baris2[2];
-                $pokok      = $baris2[3];
-                $jasa       = $baris2[4];
-                $setoran    = $baris2[4]+$baris2[3];
-                $tanggal 	= $baris2[5];
-                $status     = $baris2[6];                
+                @$id         = $baris2[0];
+                @$banyak_angsur = $baris2[1];
+                @$pinjaman   = $baris2[2];
+                @$pokok      = $baris2[3];
+                @$jasa       = $baris2[4];
+                @$setoran    = $baris2[4]+$baris2[3];
+                @$tanggal 	= $baris2[5];
+                @$status     = $baris2[6];                
                 
 		        $_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil = bukaquery($_sql);
@@ -32,21 +32,21 @@
                         from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal'  group by id";
                 $hasilj=bukaquery($_sqlj);
                 $barisj = mysqli_fetch_array($hasilj);
-                $jml_sdh_angsur =$barisj[0];
-                $sdh_setor      =$barisj[1];
-                $sisa_pinjam    =$pinjaman-($jml_sdh_angsur*$pokok);
+                @$jml_sdh_angsur =$barisj[0];
+                @$sdh_setor      =$barisj[1];
+                @$sisa_pinjam    =$pinjaman-($jml_sdh_angsur*$pokok);
             ?>
             <table width="100%" align="center">
                 <caption><h1 class=title><font color='999999'>Laporan Bayar Peminjaman</font></h1></caption>
                 <tr class="head">
                     <td width="31%" >NIP</td><td width="">:</td>
                     <td width="67%">
-                     <?php echo $baris[0];?>
+                     <?php echo @$baris[0];?>
                     </td>
                 </tr>
 		<tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[1];?></td>
+                    <td width="67%"><?php echo @$baris[1];?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Tanggal Pinjam</td><td width="">:</td>
@@ -143,7 +143,17 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data Bayar Peminjaman masih kosong !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='5%'><div align='center'>No.</div></td>
+                                <td width='15%'><div align='center'>Tgl.Angsur</div></td>
+                                <td width='23%'><div align='center'>Pokok</div></td>
+                                <td width='23%'><div align='center'>Jasa</div></td>
+                                <td width='24%'><div align='center'>Angsuran</div></td>
+                            </tr>
+                            </table>";
+            }
         ?>
         
    

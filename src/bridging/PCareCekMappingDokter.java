@@ -41,7 +41,6 @@ public final class PCareCekMappingDokter extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private PCareMapingPoli poli=new PCareMapingPoli(null,false);
 
     /** Creates new form DlgKamar
      * @param parent
@@ -265,11 +264,12 @@ public final class PCareCekMappingDokter extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        poli.isCek();
-        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        poli.setLocationRelativeTo(internalFrame1);
-        poli.setAlwaysOnTop(false);
-        poli.setVisible(true);
+        PCareMapingDokter dokter=new PCareMapingDokter(null,false);
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahActionPerformed
 
@@ -344,6 +344,6 @@ public final class PCareCekMappingDokter extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(akses.getpcare_mapping_poli());
+        BtnTambah.setEnabled(akses.getpcare_mapping_dokter());
     }
 }

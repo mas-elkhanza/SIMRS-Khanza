@@ -1,5 +1,10 @@
 <?php
-    $norawat=isset($_GET['token'])?encrypt_decrypt($_GET['token'],"d"):NULL;
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+    $norawat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+    $norawat = json_decode(encrypt_decrypt($norawat,"d"),true); 
+    $norawat = $norawat["norawat"];
     if (isset($norawat)) {
         $querybilling = bukaquery("select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,
                         if(tambahan<>0,tambahan,null) as tiga, if(totalbiaya<>0,totalbiaya,null) as empat,pemisah,status 
@@ -47,7 +52,7 @@
                                           </tr>
                                     </table>
                                 </div>
-                                <center><a href='index.php?act=RiwayatPeriksa' class='btn btn-danger'>Kembali</a></center>
+                                <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>
@@ -60,12 +65,13 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='body'>
-                                <center>Maaf billing perawatan dengan No.Rawat $norawat belum keluar, masih menunggu dikeluarkan oleh kasir.</center>
+                                <center>Maaf billing perawatan dengan No.Rawat $norawat belum keluar, masih menunggu dikeluarkan oleh kasir.</center><br/>
+                                <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>
                 </div>";
-            JSRedirect2("index.php?act=RiwayatPeriksa",7);
+            JSRedirect2("index.php?act=RiwayatPeriksa",9);
         }
     }else{
         echo "<div class='block-header'>
@@ -75,11 +81,12 @@
                  <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                     <div class='card'>
                         <div class='body'>
-                            <center>Maaf billing perawatan tidak ditemukan</center>
+                            <center>Maaf billing perawatan tidak ditemukan</center><br/>
+                            <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                         </div>
                     </div>
                  </div>
               </div>";
-        JSRedirect2("index.php?act=RiwayatPeriksa",4);
+        JSRedirect2("index.php?act=RiwayatPeriksa",7);
     }
 ?>

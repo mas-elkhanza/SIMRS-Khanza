@@ -41,8 +41,7 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private PCareMapingPoli poli=new PCareMapingPoli(null,false);
-
+    
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -265,6 +264,7 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareMapingPoli poli=new PCareMapingPoli(null,false);
         poli.isCek();
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);

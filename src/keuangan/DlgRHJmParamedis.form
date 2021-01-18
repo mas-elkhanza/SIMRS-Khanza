@@ -45,7 +45,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,74,0,0,3,-89"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,74,0,0,3,112"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -80,9 +80,6 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="scrollPane1">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="scrollPane1" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -100,9 +97,6 @@
                   <Table columnCount="0" rowCount="4"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="name" type="java.lang.String" value="tbDokter" noResource="true"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -115,7 +109,7 @@
           <Properties>
             <Property name="name" type="java.lang.String" value="panelisi1" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 56]"/>
+              <Dimension value="[100, 44]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -137,7 +131,7 @@
                 <Property name="name" type="java.lang.String" value="chkRalan" noResource="true"/>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[85, 30]"/>
+                  <Dimension value="[85, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -152,7 +146,7 @@
                 <Property name="name" type="java.lang.String" value="chkRanap" noResource="true"/>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[85, 30]"/>
+                  <Dimension value="[85, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -167,7 +161,7 @@
                 <Property name="name" type="java.lang.String" value="chkOperasi" noResource="true"/>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[85, 30]"/>
+                  <Dimension value="[85, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -182,7 +176,7 @@
                 <Property name="name" type="java.lang.String" value="chkLaborat" noResource="true"/>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[95, 30]"/>
+                  <Dimension value="[95, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -197,7 +191,7 @@
                 <Property name="name" type="java.lang.String" value="chkRadiologi" noResource="true"/>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[85, 30]"/>
+                  <Dimension value="[85, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -216,15 +210,17 @@
             <Component class="widget.ComboBox" name="cmbStatus">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
+                  <StringArray count="5">
                     <StringItem index="0" value="Semua"/>
-                    <StringItem index="1" value="Belum Lunas"/>
-                    <StringItem index="2" value="Sudah Lunas"/>
+                    <StringItem index="1" value="Piutang Belum Lunas"/>
+                    <StringItem index="2" value="Piutang Sudah Lunas"/>
+                    <StringItem index="3" value="Sudah Bayar Non Piutang"/>
+                    <StringItem index="4" value="Belum Terclosing Kasir"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbStatus" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[115, 23]"/>
+                  <Dimension value="[175, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -268,11 +264,10 @@
                   <Image iconType="3" name="/picture/b_print.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="84"/>
-                <Property name="text" type="java.lang.String" value="Cetak"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+T"/>
                 <Property name="name" type="java.lang.String" value="BtnPrint" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[100, 30]"/>
+                  <Dimension value="[28, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -286,11 +281,10 @@
                   <Image iconType="3" name="/picture/exit.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="75"/>
-                <Property name="text" type="java.lang.String" value="Keluar"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+K"/>
                 <Property name="name" type="java.lang.String" value="BtnKeluar" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[100, 30]"/>
+                  <Dimension value="[28, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -402,7 +396,7 @@
                     <Property name="text" type="java.lang.String" value="s.d."/>
                     <Property name="name" type="java.lang.String" value="label18" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[30, 23]"/>
+                      <Dimension value="[25, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -432,7 +426,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="nmptg" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[220, 23]"/>
+                      <Dimension value="[170, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -467,7 +461,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="NmCaraBayar" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[150, 23]"/>
+                      <Dimension value="[125, 23]"/>
                     </Property>
                   </Properties>
                 </Component>

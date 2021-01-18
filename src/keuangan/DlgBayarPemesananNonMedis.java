@@ -20,7 +20,6 @@ import fungsi.akses;
 import ipsrs.IPSRSSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -52,7 +51,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private IPSRSSuplier suplier=new IPSRSSuplier(null,false);
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+    private boolean sukses=false;
     private double total=0,hutang=0,sisahutang=0;
     private String koderekening="";
     private PreparedStatement ps;
@@ -733,10 +732,11 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         }else if(no_bukti.getText().trim().equals("")){
             Valid.textKosong(no_bukti,"No.Bukti");
         }else{            
-            try {
-                    
+            try {   
                 if(sisahutang>0){
                     koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
+                    Sequel.AutoComitFalse();
+                    sukses=true;
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun"),"HUTANG USAHA",besar_bayar.getText(),"0"
@@ -744,17 +744,34 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         koderekening,nama_bayar.getSelectedItem().toString(),"0",besar_bayar.getText()
                     });    
-                    jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
-                    if((sisahutang<=Double.parseDouble(besar_bayar.getText()))||(sisahutang<=-Double.parseDouble(besar_bayar.getText()))){
-                        Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
-                    }else{
-                        Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
+                    sukses=jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
+                    
+                    if(sukses==true){
+                        if((sisahutang<=Double.parseDouble(besar_bayar.getText()))||(sisahutang<=-Double.parseDouble(besar_bayar.getText()))){
+                            Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
+                        }else{
+                            Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
+                        }
+                        if(Sequel.menyimpantf2("bayar_pemesanan_non_medis","?,?,?,?,?,?,?","data", 7,new String[]{
+                            Valid.SetTgl(tgl_bayar.getSelectedItem()+""),no_faktur.getText(),nip.getText(),
+                            besar_bayar.getText(),keterangan.getText(),nama_bayar.getSelectedItem().toString(),
+                            no_bukti.getText()
+                        })==false){
+                            sukses=false;
+                        }
                     }
-                    Sequel.menyimpan("bayar_pemesanan_non_medis","?,?,?,?,?,?,?", 7,new String[]{
-                        Valid.SetTgl(tgl_bayar.getSelectedItem()+""),no_faktur.getText(),nip.getText(),
-                        besar_bayar.getText(),keterangan.getText(),nama_bayar.getSelectedItem().toString(),
-                        no_bukti.getText()
-                    });
+                    
+                    if(sukses==true){
+                        Sequel.Commit();
+                        BtnCariActionPerformed(evt);
+                        emptTeks();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }
+
+                    Sequel.AutoComitTrue();
+                        
                 }else{
                     //Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
                     JOptionPane.showMessageDialog(rootPane,"Maaf sudah dilakukan pembayaran..!!!");
@@ -763,9 +780,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
                 
            }catch (Exception ex) {
                System.out.println(ex);
-           }                     
-           BtnCariActionPerformed(evt);
-           emptTeks();
+           }             
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -779,8 +794,9 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         try {
-              
-            Sequel.queryu2("delete from bayar_pemesanan_non_medis where tgl_bayar=? and no_faktur=? and "+
+            Sequel.AutoComitFalse();
+            sukses=true;   
+            if(Sequel.queryu2tf("delete from bayar_pemesanan_non_medis where tgl_bayar=? and no_faktur=? and "+
                     "nip=? and besar_bayar=? and keterangan=? and nama_bayar=? and no_bukti=?",7,new String[]{
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),       
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString(),       
@@ -789,27 +805,38 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),       
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),       
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()
-            });
-            koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
-            Sequel.queryu("delete from tampjurnal");
-            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                koderekening,nama_bayar.getSelectedItem().toString(),besar_bayar.getText(),"0"
-            });    
-            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun"),"HUTANG USAHA","0",besar_bayar.getText()
-            }); 
-            jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());            
-            if(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString())==Double.parseDouble(besar_bayar.getText())){
-                Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
+            })==true){
+                if(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString())==Double.parseDouble(besar_bayar.getText())){
+                    Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
+                }else{
+                    Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
+                }
+                
+                koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
+                Sequel.queryu("delete from tampjurnal");
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    koderekening,nama_bayar.getSelectedItem().toString(),besar_bayar.getText(),"0"
+                });    
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun"),"HUTANG USAHA","0",besar_bayar.getText()
+                }); 
+                sukses=jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode()); 
             }else{
-                Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
+                sukses=false;
             }
-            
+                           
+            if(sukses==true){
+                Sequel.Commit();
+                BtnCariActionPerformed(evt);
+                emptTeks();
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }
+            Sequel.AutoComitTrue();
         }catch (Exception ex) {
             System.out.println(ex);
-        }              
-        BtnCariActionPerformed(evt);
-        emptTeks();
+        }          
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

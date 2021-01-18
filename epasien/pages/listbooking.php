@@ -1,4 +1,8 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+
     $btnCekBooking=isset($_POST['btnCekBooking'])?$_POST['btnCekBooking']:NULL;
     if (isset($btnCekBooking)) {
         $nohp               = trim(isset($_POST['nohp']))?trim($_POST['nohp']):NULL;

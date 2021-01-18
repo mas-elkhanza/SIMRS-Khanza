@@ -1,14 +1,13 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"conf")){
+        exit(header("Location:../index.php"));
+    }
+    
     $db_hostname            = "localhost";
     $db_username            = "root";
     $db_password            = "";
     $db_name                = "sik";
-    define('HARIDAFTAR', '03'); // Batasi hari pendaftaran 3 hari kedepan
-    define('LIMITJAM', '21:00:00'); // Batasi jam pendaftaran
-    define('SIGNUP', 'DISABLE'); // ENABLE atau DISABLE pendaftaran pasien baru
-    define('KODE_BERKAS', '002'); // Kode katergori berkas digital. Sesuaikan dengan kode yang ada di SIMRS.
-    define('UKURAN_BERKAS', '5000000'); // Ukuran berkas digital dalam byte
-    define('URUTNOREG', 'DOKTER'); // DOKTER or POLI.
+    define('URUTNOREG', 'dokter'); // dokter / poli / dokter + poli
     $month          = date('Y-m');
     $date           = date('Y-m-d');
     $time           = date('H:i:s');
@@ -228,6 +227,11 @@
         $command = bukaquery("UPDATE ".$tabelname." SET ".$attrib." ");
         return $command;
     }
+    
+    function Ubah3($tabelname,$attrib) {
+        $command = bukaquery2("UPDATE ".$tabelname." SET ".$attrib." ");
+        return $command;
+    }
 
     function Hapus($tabelname,$param,$hal) {
         $sql ="DELETE FROM ".$tabelname." WHERE ".$param." ";
@@ -310,7 +314,7 @@
         switch($hari) {
             case "Sunday"       : $namahari="Akhad"; break;
             case "Monday"       : $namahari="Senin"; break;
-            case "Tuesday"      : $namahari="Salasa"; break;
+            case "Tuesday"      : $namahari="Selasa"; break;
             case "Wednesday"    : $namahari="Rabu"; break;
             case "Thursday"     : $namahari="Kamis"; break;
             case "Friday"       : $namahari="Jumat"; break;
@@ -355,6 +359,13 @@
     function getOne2($sql) {
         $hasil = bukaquery2($sql);
         list($result) = mysqli_fetch_array($hasil);
+        return $result;
+    }
+    
+    function getOne3($sql,$string) {
+        $hasil=bukaquery($sql);
+        list($result) =mysqli_fetch_array($hasil);
+        if(empty($result)) $result=$string;
         return $result;
     }
 

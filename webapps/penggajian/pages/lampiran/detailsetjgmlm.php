@@ -15,7 +15,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Besar tunjangan</td><td width="">:</td>
-                    <td width="67%">Rp <input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $tnj;?>" size="20" maxlength="15">
+                    <td width="67%">Rp <input name="tnj" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $tnj;?>" size="20" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -25,14 +25,14 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $tnj                = validangka(trim($_POST['tnj']));
-                    if (!empty($tnj)) {
+                    if (isset($tnj)) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" set_jgmlm ","'$tnj'", " Set Jaga Malam " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputSetJagaMalam&action=TAMBAH&tnj='$tnj'>";
                                 break;
                         }
-                    }else if (empty($tnj)){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -43,7 +43,6 @@
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
 
-                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Proses</div></td>
@@ -61,8 +60,6 @@
                            </tr>";
                     }
                 echo "</table>";
-
-            } else {echo "Data set jaga malam masih kosong !";}
         ?>
         </div>
         </form>

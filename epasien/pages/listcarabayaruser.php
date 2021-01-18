@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div class="block-header">
     <h2><center>ASURANSI YANG BEKERJA SAMA</center></h2>
 </div>

@@ -3,13 +3,13 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
+   $bln_leng     = strlen(empty($baris[1])?date("m"):$baris[1]);
    if ($bln_leng==1){
-    	$bulan="0".$baris[1];
+    	$bulan = "0".$bulan;
    }else{
-		$bulan=$baris[1];
+		$bulan = $bulan;
    }
 ?>
 

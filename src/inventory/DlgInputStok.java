@@ -657,6 +657,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     }                                                                          
                                 }else{
                                     sukses=false;
+                                    JOptionPane.showMessageDialog(null,tbDokter.getValueAt(i,1).toString()+" "+tbDokter.getValueAt(i,2).toString()+" gagal disimpan...!");
                                 }
                             }
                         } catch (Exception e) {

@@ -8,12 +8,12 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,6 +29,9 @@ public class DlgJurnal extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private Jurnal jurnal=new Jurnal();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -593,7 +596,7 @@ public class DlgJurnal extends javax.swing.JDialog {
             kredit.setText("0");
             kredit.requestFocus();
         }else{
-            Sequel.menyimpan("tampjurnal","'"+kdrek.getText()+"','"+nmrek.getText()+"','"+debet.getText()+"','"+kredit.getText()+"'",
+            Sequel.menyimpan("tampjurnal2","'"+kdrek.getText()+"','"+nmrek.getText()+"','"+debet.getText()+"','"+kredit.getText()+"'",
                              "nm_rek='"+nmrek.getText()+"',debet='"+debet.getText()+"',kredit='"+kredit.getText()+"'","kd_rek='"+kdrek.getText()+"'"); 
             tampil();
             emptTeks();
@@ -613,7 +616,7 @@ public class DlgJurnal extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,kdrek,"tampjurnal","kd_rek");
+            Valid.hapusTable(tabMode,kdrek,"tampjurnal2","kd_rek");
             tampil();
             emptTeks();
         }
@@ -683,12 +686,45 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                try {                    
-                    jurnal.simpanJurnal(NoBukti.getText(),Valid.SetTgl(TglJurnal.getSelectedItem()+""), Jenis.getSelectedItem().toString().substring(0,1),Ktg.getText()+", OLEH "+akses.getkode());                                    
-                    tampil();
+                Sequel.AutoComitFalse();
+                sukses=true;
+                try {   
+                    ps=koneksi.prepareStatement("select kd_rek, nm_rek, debet, kredit from tampjurnal2 ");
+                    try {
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            if(Sequel.menyimpantf("tampjurnal","?,?,?,?","Kode Rekening",4,new String[]{
+                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
+                            })==false){
+                                sukses=false;
+                            }
+                        } 
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                        sukses=false;
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    } 
+                    if(sukses==true){
+                        sukses=jurnal.simpanJurnal(NoBukti.getText(),Valid.SetTgl(TglJurnal.getSelectedItem()+""), Jenis.getSelectedItem().toString().substring(0,1),Ktg.getText()+", OLEH "+akses.getkode());                                    
+                    }
                 } catch (Exception ex) {
                     System.out.print("Notifikasi : "+ex);
                 }
+                if(sukses==true){
+                    Sequel.Commit();
+                    BtnBatalActionPerformed(null);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+
+                Sequel.AutoComitTrue();
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -702,7 +738,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        Sequel.queryu("delete from tampjurnal");
+        Sequel.queryu("delete from tampjurnal2");
         tampil();
         Valid.autoNomer("jurnal","JR",10,NoJur);
     }//GEN-LAST:event_BtnBatalActionPerformed
@@ -855,35 +891,36 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
-        String sql="select kd_rek, nm_rek, debet, kredit "+
-                   "from tampjurnal ";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
-       Valid.tabelKosong(tabMode);
+        Valid.tabelKosong(tabMode);
         try{
-            java.sql.Statement stat=koneksi.createStatement();
-            ResultSet rs=stat.executeQuery(sql);
             ttldebet=0;ttlkredit=0;
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               df2.format(rs.getDouble(3)),
-                               df2.format(rs.getDouble(4))};
-                ttldebet=ttldebet+rs.getDouble(3);
-                ttlkredit=ttlkredit+rs.getDouble(4);
-                tabMode.addRow(data);
-            }       
+            ps=koneksi.prepareStatement("select kd_rek, nm_rek, debet, kredit from tampjurnal2 ");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    ttldebet=ttldebet+rs.getDouble(3);
+                    ttlkredit=ttlkredit+rs.getDouble(4);
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),df2.format(rs.getDouble(3)),df2.format(rs.getDouble(4))
+                    });
+                } 
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }         
             
             if(tabMode.getRowCount()>0){
-                String[] data={"","<>> Total : ",df2.format(ttldebet),df2.format(ttlkredit)};
-                tabMode.addRow(data);
+                tabMode.addRow(new String[]{"","<>> Total : ",df2.format(ttldebet),df2.format(ttlkredit)});
             }   
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
 
     public void emptTeks() {
@@ -902,18 +939,29 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         if(row!= -1){
             try {
                 kdrek.setText(tabMode.getValueAt(row,0).toString());
-                    Statement stat=koneksi.createStatement();
-                    ResultSet rs=stat.executeQuery("select nm_rek, tipe, balance from rekening where kd_rek='"+kdrek.getText()+"'");
-                    while(rs.next()){
+                ps=koneksi.prepareStatement("select nm_rek, tipe, balance from rekening where kd_rek=?");
+                try {
+                    ps.setString(1,kdrek.getText());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
                         nmrek.setText(rs.getString(1));
                         tipe.setText(rs.getString(2));
                         balance.setText(rs.getString(3));
+                    } 
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
                     }
-                    Sequel.cariIsi("select saldo_awal from rekeningtahun where kd_rek='"+kdrek.getText()+
-                                   "' order by thn desc limit 1",saldoawal);
+                    if(ps!=null){
+                        ps.close();
+                    }
+                } 
+                Sequel.cariIsi("select saldo_awal from rekeningtahun where kd_rek=? order by thn desc limit 1",saldoawal,kdrek.getText());
                 debet.setText(tabMode.getValueAt(row,2).toString());
                 kredit.setText(tabMode.getValueAt(row,3).toString());
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
             }
         }

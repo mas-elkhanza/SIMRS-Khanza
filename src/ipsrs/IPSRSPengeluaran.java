@@ -839,6 +839,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     tbDokter.setValueAt("",row,0);
                     tbDokter.setValueAt(0,row,6);
                 }
+                if(Double.parseDouble(tbDokter.getValueAt(row,0).toString())>Double.parseDouble(tbDokter.getValueAt(row,4).toString())){
+                    JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
+                    tbDokter.setValueAt("",row,0);
+                }
             }else{
                 tbDokter.setValueAt(0,row,6);   
             }   

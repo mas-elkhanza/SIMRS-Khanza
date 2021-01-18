@@ -125,96 +125,6 @@
         <Property name="name" type="java.lang.String" value="TNoRw" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="widget.TextBox" name="TSuhu">
-      <Properties>
-        <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-        <Property name="name" type="java.lang.String" value="TSuhu" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="widget.TextBox" name="TTensi">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="TTensi" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="widget.TextBox" name="TKeluhan">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="TKeluhan" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="widget.TextBox" name="TPemeriksaan">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="TPemeriksaan" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="widget.TextBox" name="TBerat">
-      <Properties>
-        <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-        <Property name="name" type="java.lang.String" value="TBerat" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TBeratKeyPressed"/>
-      </Events>
-    </Component>
-    <Component class="widget.TextBox" name="TTinggi">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="TTinggi" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TTinggiKeyPressed"/>
-      </Events>
-    </Component>
-    <Component class="widget.TextBox" name="TRespirasi">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="TRespirasi" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TRespirasiKeyPressed"/>
-      </Events>
-    </Component>
-    <Component class="widget.TextBox" name="TNadi">
-      <Properties>
-        <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-        <Property name="name" type="java.lang.String" value="TNadi" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TNadiKeyPressed"/>
-      </Events>
-    </Component>
-    <Component class="widget.TextBox" name="TGCS">
-      <Properties>
-        <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-        <Property name="name" type="java.lang.String" value="TGCS" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TGCSKeyPressed"/>
-      </Events>
-    </Component>
-    <Component class="widget.TextBox" name="TAlergi">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="TAlergi" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TAlergiKeyPressed"/>
-      </Events>
-    </Component>
     <Component class="widget.TextBox" name="TPasien">
       <Properties>
         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
@@ -534,7 +444,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="19-05-2019"/>
+                    <StringItem index="0" value="04-10-2020"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

@@ -8,8 +8,8 @@
 	$_sql         = "SELECT * FROM set_tahun";
     $hasil        = bukaquery($_sql);
     $baris        = mysqli_fetch_row($hasil);
-    $tahun        = $baris[0];
-    $bulan        = $baris[1];
+    $tahun        = empty($baris[0])?date("Y"):$baris[0];
+    $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 <html>
     <head>
@@ -42,7 +42,16 @@
                              </tr>";$no++;
                     }
             echo "</table>";
-        } 
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='10%'><div align='center'>No.</strong></div></td>
+                        <td width='34%'><div align='center'>Pendapatan</div></td>
+                        <td width='20%'><div align='center'>Prosentase</div></td>
+						<td width='34%'><div align='center'>Total Insentif</div></td>
+                    </tr>
+                   </table>";
+        }
     ?>
     <br>&nbsp;&nbsp;Insentif :
     <?php
@@ -79,7 +88,16 @@
                         <td><div align='left'>Data : $jumlah, Ttl Prosen : ".$prosen."%, Ttl Insentif : ".formatDuit($ttl)." </div></td>                        
                     </tr>     
                  </table>";
-        } 
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='10%'><div align='center'>No.</strong></div></td>
+                        <td width='20%'><div align='center'>Kode Index</div></td>
+                        <td width='30%'><div align='center'>Porsi Insentif</div></td>
+						<td width='38%'><div align='center'>Total Insentif</div></td>
+                    </tr>
+                   </table>";  
+        }
     ?>
     </body>
 </html>

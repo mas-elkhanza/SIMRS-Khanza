@@ -47,6 +47,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private Date date = new Date();
+    private String norawatibu="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -1399,7 +1400,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         isPsien();              
         ChkInput.setSelected(true);
         isForm();
-        Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",Kamar,TNoRw.getText());
+        norawatibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",TNoRw.getText());
+        if(!norawatibu.equals("")){
+            Kamar.setText(Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",norawatibu));
+        }else{
+            Kamar.setText(Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",TNoRw.getText()));
+        }
     }
     
     private void isForm(){

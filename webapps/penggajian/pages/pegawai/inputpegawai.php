@@ -5,7 +5,7 @@
                 $action      =isset($_GET['action'])?$_GET['action']:NULL;
                 $id          =isset($_GET['id'])?$_GET['id']:NULL;
                 $nik2        =isset($_GET['nik'])?$_GET['nik']:NULL;
-                
+
                 if($action == "TAMBAH"){
                     $id    	= isset($_GET['id'])?$_GET['id']:NULL;
                     $nik        ='';
@@ -13,7 +13,7 @@
                 }else if($action == "UBAH"){
                     $_sql           = "SELECT `id`, `nik`, `nama`, `jk`, `jbtn`, `jnj_jabatan`, `departemen`, `bidang`, `stts_wp`, `stts_kerja`, `npwp`, `pendidikan`, `gapok`, `tmp_lahir`, `tgl_lahir`, `alamat`, `kota`, `mulai_kerja`, `ms_kerja`, `indexins`, `bpd`, `rekening`, `stts_aktif`, `wajibmasuk`, `pengurang`, `indek`, `mulai_kontrak`, `cuti_diambil`,`photo`,no_ktp,`kode_kelompok`, `kode_resiko`, `kode_emergency` FROM pegawai WHERE id='$id'";
                     $hasil          = bukaquery($_sql);
-                    $baris          = mysqli_fetch_row($hasil);                    
+                    $baris          = mysqli_fetch_row($hasil);
 
                     $id             = $baris[0];
                     $nik            = $baris[1];
@@ -29,7 +29,7 @@
                     $npwp           = $baris[10];
                     $pendidikan     = $baris[11];
                     $gapok          = $baris[12];
-                    $tmp_lahir      = $baris[13];                    
+                    $tmp_lahir      = $baris[13];
 
                     $Thnlahir       =substr($baris[14],0,4);
                     $Blnlahir       =substr($baris[14],5,2);
@@ -38,7 +38,7 @@
                     $tgl_lahir      = $Thnlahir."-".$Blnlahir."-".$Tgllahir;
 
                     $alamat         = $baris[15];
-                    $kota           = $baris[16];                    
+                    $kota           = $baris[16];
 
                     $ThnMulai       =substr($baris[17],0,4);
                     $BlnMulai       =substr($baris[17],5,2);
@@ -55,33 +55,39 @@
 
                     $ThnKontrak     =substr($baris[26],0,4);
                     $BlnKontrak     =substr($baris[26],5,2);
-                    $TglKontrak     =substr($baris[26],8,2);                    
-                    $no_ktp         = $baris[29]; 
+                    $TglKontrak     =substr($baris[26],8,2);
+                    $no_ktp         = $baris[29];
 
                     $mulai_kontrak  = $ThnKontrak."-".$BlnKontrak."-".$TglKontrak;
-                    $photo          = $baris[28];  
+                    $photo          = $baris[28];
                     $kode_kelompok  = $baris[30];
                     $kode_resiko    = $baris[31];
                     $kode_emergency = $baris[32];
                 }
-                
+
                 echo"<input type=hidden name=id value=$id><input type=hidden name=nik2 value=$nik2><input type=hidden name=action value=$action>";
-                
+
                     $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    $next               = 0;
+                    if(mysqli_num_rows($hasilnext)>0){
+                        $next           = $barisnext[0];
+                    }
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
-                    
-                    if(empty($prev)){
+                    $prev               = 0;
+                    if(mysqli_num_rows($hasilprev)>0){
+                        $prev            = $barisprev[0];
+                    }
+
+                    if($prev==0){
                         $prev=$next;
                     }
-                    
-                    if(empty($next)){
+
+                    if($next==0){
                         $next=$prev;
                     }
 
@@ -94,11 +100,11 @@
                           <a href=?act=InputPegawai&action=UBAH&id=$next>-->></a>
                           </div>";
             ?>
-            <div style="width: 100%; height: 88%; overflow: auto;">  
+            <div style="width: 100%; height: 88%; overflow: auto;">
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >NIP</td><td width="">:</td>
-                    <td width="75%"><input name="nik" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo isset($nik)?$nik:NULL;?>" size="20" maxlength="20">
+                    <td width="75%"><input name="nik" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo isset($nik)?$nik:NULL;?>" size="20" maxlength="20" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -116,7 +122,7 @@
                             <?php
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi3' value=$jk>$jk</option>";
-                                }                                 
+                                }
                             ?>
 
                             <option id='TxtIsi3' value='Pria'>Pria</option>
@@ -124,8 +130,8 @@
                         </select>
                         <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
-                </tr>		
-		<tr class="head">
+                </tr>
+		        <tr class="head">
                     <td width="25%" >Jabatan</td><td width="">:</td>
                     <td width="75%"><input name="jbtn" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="<?php echo isset($jbtn)?$jbtn:NULL;?>" size="30" maxlength="25">
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
@@ -376,7 +382,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi16' value=$Tgllahir>$Tgllahir</option>";
                                 }
-                                loadTgl();
+                                loadTgl2();
                              ?>
                         </select>
 			<select name="Blnlahir" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" id="TxtIsi16">
@@ -384,21 +390,21 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi16' value=$Blnlahir>$Blnlahir</option>";
                                 }
-                                loadBln();
+                                loadBln2();
                              ?>
                         </select>
 			<select name="Thnlahir" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" id="TxtIsi16">
-                             <?php                               
+                             <?php
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi16' value=$Thnlahir>$Thnlahir</option>";
                                 }
 
-                                loadThn();
+                                loadThn4();
                              ?>
                         </select>
                         <span id="MsgIsi16" style="color:#CC0000; font-size:10px;"></span>
                     </td>
-                </tr>						
+                </tr>
 		<tr class="head">
                     <td width="25%" >Alamat</td><td width="">:</td>
                     <td width="75%"><input name="alamat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi17'));" type=text id="TxtIsi17" class="inputbox" value="<?php echo isset($alamat)?$alamat:NULL;?>" size="50" maxlength="50">
@@ -410,7 +416,7 @@
                     <td width="75%"><input name="kota" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi18'));" type=text id="TxtIsi18" class="inputbox" value="<?php echo isset($kota)?$kota:NULL;?>" size="30" maxlength="20">
                     <span id="MsgIsi18" style="color:#CC0000; font-size:10px;"></span>
                     </td>
-                </tr>		
+                </tr>
 		<tr class="head">
                     <td width="25%" >Mulai Kerja</td><td width="">:</td>
                     <td width="75%">
@@ -419,7 +425,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi19' value=$TglMulai>$TglMulai</option>";
                                 }
-                                loadTgl();
+                                loadTgl2();
                              ?>
                         </select>
 			<select name="BlnMulai" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" id="TxtIsi19">
@@ -427,7 +433,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi19' value=$BlnMulai>$BlnMulai</option>";
                                 }
-                                loadBln();
+                                loadBln2();
                              ?>
                         </select>
 			<select name="ThnMulai" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" id="TxtIsi19">
@@ -435,7 +441,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi19' value=$ThnMulai>$ThnMulai</option>";
                                 }
-                                loadThn();
+                                loadThn4();
                              ?>
                         </select>
                         <span id="MsgIsi19" style="color:#CC0000; font-size:10px;"></span>
@@ -450,7 +456,7 @@
                                 if($action == "UBAH"){
                              ?>
                                     <option id='TxtIsi20' value='<?php echo $ms_kerja; ?>'><?php echo $ms_kerja; ?></option>
-                            <?php    
+                            <?php
                                 }
                             ?>
                             <option id='TxtIsi20' value='<1'><1</option>
@@ -515,7 +521,7 @@
                     <td width="75%"><input name="rekening" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi23'));" type=text id="TxtIsi23" class="inputbox" value="<?php echo isset($rekening)?$rekening:NULL;?>" size="30" maxlength="25">
                     <span id="MsgIsi23" style="color:#CC0000; font-size:10px;"></span>
                     </td>
-                </tr> 
+                </tr>
                 <tr class="head">
                     <td width="25%" >Status Aktif</td><td width="">:</td>
                     <td width="75%">
@@ -524,7 +530,7 @@
                             <?php
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi24' value=$stts_aktif>$stts_aktif</option>";
-                                }                                 
+                                }
                             ?>
 
                             <option id='TxtIsi24' value='AKTIF'>AKTIF</option>
@@ -533,7 +539,7 @@
                         </select>
                         <span id="MsgIsi24" style="color:#CC0000; font-size:10px;"></span>
                     </td>
-                </tr>	
+                </tr>
                 <tr class="head">
                     <td width="25%" valign="top">Wajib Masuk</td><td width="">:</td>
                     <td width="75%"><input name="wajibmasuk" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi25'));" type=text id="TxtIsi25" class="inputbox" value="<?php echo isset($wajibmasuk)?$wajibmasuk:NULL;?>" size="5" maxlength="2">
@@ -554,7 +560,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi26' value=$TglKontrak>$TglKontrak</option>";
                                 }
-                                loadTgl();
+                                loadTgl2();
                              ?>
                         </select>
 			<select name="BlnKontrak" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi26'));" id="TxtIsi26">
@@ -562,7 +568,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi26' value=$BlnKontrak>$BlnKontrak</option>";
                                 }
-                                loadBln();
+                                loadBln2();
                              ?>
                         </select>
 			<select name="ThnKontrak" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi26'));" id="TxtIsi26">
@@ -570,7 +576,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi26' value=$ThnKontrak>$ThnKontrak</option>";
                                 }
-                                loadThn();
+                                loadThn4();
                              ?>
                         </select>
                         <span id="MsgIsi26" style="color:#CC0000; font-size:10px;"></span>
@@ -579,7 +585,7 @@
                 <tr class="head">
                     <td width="25%" >Photo</td><td width="">:</td>
                     <td width="75%">
-                        <input name="photo" class="text2"  type=file  value="<?php echo $photo;?>" size="15" maxlength="250" />                                          
+                        <input name="photo" class="text2"  type=file  value="<?php echo $photo;?>" size="15" maxlength="250" />
                     </td>
                 </tr>
                 <tr class="head">
@@ -608,15 +614,15 @@
                     $stts_kerja     = trim($_POST['stts_kerja']);
                     $npwp           = trim($_POST['npwp']);
                     $pendidikan     = str_replace("'","`",trim($_POST['pendidikan']));
-                    $tmp_lahir      = str_replace("'","`",trim($_POST['tmp_lahir']));                     
+                    $tmp_lahir      = str_replace("'","`",trim($_POST['tmp_lahir']));
                     $tgl_lahir      = trim($_POST['Thnlahir'])."-".trim($_POST['Blnlahir'])."-".trim($_POST['Tgllahir']);
                     $alamat         = str_replace("'","`",trim($_POST['alamat']));
-                    $kota           = str_replace("'","`",trim($_POST['kota']));                 
+                    $kota           = str_replace("'","`",trim($_POST['kota']));
                     $mulai_kerja    = trim($_POST['ThnMulai'])."-".trim($_POST['BlnMulai'])."-".trim($_POST['TglMulai']);
                     $ms_kerja       = str_replace("'","`",trim($_POST['ms_kerja']));
                     $indexins       = trim($_POST['indexins']);
                     $bpd            = str_replace("'","`",trim($_POST['bpd']));
-                    $rekening       = str_replace("'","`",trim($_POST['rekening']));					
+                    $rekening       = str_replace("'","`",trim($_POST['rekening']));
                     $stts_aktif     = trim($_POST['stts_aktif']);
                     $wajibmasuk     = trim($_POST['wajibmasuk']);
                     $kode_kelompok  = trim($_POST['kode_kelompok']);
@@ -624,16 +630,20 @@
                     $kode_emergency = trim($_POST['kode_emergency']);
 
                     $mulai_kontrak  = trim($_POST['ThnKontrak'])."-".trim($_POST['BlnKontrak'])."-".trim($_POST['TglKontrak']);
-                    $photo          = "pages/pegawai/photo/".$_FILES['photo']['name'];
+                    $photo          = "pages/pegawai/photo/".validTeks($_FILES['photo']['name']);
                     $no_ktp         = trim($_POST['no_ktp']);
                     move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
-                    
+
                     if ((!empty($nik))&&(!empty($jnj_jabatan))&&(!empty($departemen))&&(!empty($bidang))&&(!empty($stts_wp))&&(!empty($stts_kerja))&&
 			(!empty($pendidikan))&&(!empty($tgl_lahir))&&(!empty($mulai_kerja))&&(!empty($indexins))&&(!empty($bpd))&&(!empty($kode_kelompok))&&
                          (!empty($kode_resiko))&&(!empty($kode_emergency))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" pegawai ","'','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
+                                echo "'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
+                                '$departemen','$bidang','$stts_wp','$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
+                                '$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif','$wajibmasuk','0','0',
+                                '$mulai_kontrak','0','0','$photo','$no_ktp'";
+                                Tambah(" pegawai ","'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
                                        '$departemen','$bidang','$stts_wp','$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
                                        '$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif','$wajibmasuk','0','0',
                                        '$mulai_kontrak','0','0','$photo','$no_ktp'", " pegawai " );
@@ -645,7 +655,7 @@
                                 }else if($photo<>"pages/pegawai/photo/"){
                                     $ph=",photo='$photo'";
                                 }
-                                
+
                                 Ubah2(" dokter ","nm_dokter='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
                                         tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',almt_tgl='$alamat' where kd_dokter='$nik2'");
                                 Ubah2(" petugas ","nama='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
@@ -673,5 +683,5 @@
                 }
             ?>
         </form>
-    </div>   
+    </div>
 </div>

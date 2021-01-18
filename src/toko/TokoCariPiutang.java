@@ -1058,7 +1058,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       }
                   }
 
-                  if(sukses=true){
+                  if(sukses==true){
                         ttlpiutang=rs.getDouble("sisapiutang");
                         Sequel.queryu("delete from tampjurnal");
                         Sequel.menyimpan("tampjurnal","'"+Piutang_Toko+"','PIUTANG','0','"+ttlpiutang+"'","Rekening");    
