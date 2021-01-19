@@ -39,6 +39,7 @@ public class TokoPiutang extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     private boolean sukses=true;
     private TokoCariPiutang caripiutang=new TokoCariPiutang(null,false);
+    private String hpptoko="";
     
     
 
@@ -215,6 +216,11 @@ public class TokoPiutang extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        try {
+            hpptoko=koneksiDB.HPPTOKO();
+        } catch (Exception e) {
+            hpptoko="dasar";
+        }
     }
     
 
@@ -1207,7 +1213,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         try{
             ps=koneksi.prepareStatement(
                 "select tokobarang.kode_brng,tokobarang.nama_brng,tokojenisbarang.nm_jenis,tokobarang.stok, "+
-                "tokobarang.kode_sat,tokobarang.distributor,tokobarang.grosir,tokobarang.retail,tokobarang.dasar "+
+                "tokobarang.kode_sat,tokobarang.distributor,tokobarang.grosir,tokobarang.retail,tokobarang."+hpptoko+" as dasar "+
                 "from tokobarang inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
                 "where tokobarang.stok>0 and tokobarang.status='1' and "+
                 "(tokobarang.kode_brng like ? or tokobarang.nama_brng like ? or tokojenisbarang.nm_jenis like ?) order by tokobarang.nama_brng");

@@ -290,7 +290,6 @@ public class DlgReturBeli extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
     }
 
     /** This method is called from within the constructor to

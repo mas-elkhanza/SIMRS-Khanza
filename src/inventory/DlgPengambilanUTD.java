@@ -39,7 +39,7 @@ public class DlgPengambilanUTD extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     private riwayatobat Trackobat=new riwayatobat();
     private boolean sukses=true;
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",hppfarmasi="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -155,6 +155,12 @@ public class DlgPengambilanUTD extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+        }
+        
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
         }
     }
 
@@ -900,7 +906,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         try{
             if(aktifkanbatch.equals("yes")){
                 ps=koneksi.prepareStatement(
-                    "select data_batch.kode_brng, databarang.nama_brng,data_batch.dasar,databarang.kode_sat,data_batch.no_batch,data_batch.no_faktur, "+
+                    "select data_batch.kode_brng, databarang.nama_brng,data_batch."+hppfarmasi+" as dasar,databarang.kode_sat,data_batch.no_batch,data_batch.no_faktur, "+
                     " gudangbarang.stok from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                     " inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
                     " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and data_batch.kode_brng like ? or "+
@@ -926,7 +932,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }  
             }else{
                 ps=koneksi.prepareStatement(
-                    "select databarang.kode_brng, databarang.nama_brng,databarang.dasar,databarang.kode_sat,gudangbarang.stok "+
+                    "select databarang.kode_brng, databarang.nama_brng,databarang."+hppfarmasi+" as dasar,databarang.kode_sat,gudangbarang.stok "+
                     " from databarang inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                     " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
                     " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? order by databarang.nama_brng");

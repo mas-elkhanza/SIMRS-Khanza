@@ -44,6 +44,7 @@ public class TokoInputStok extends javax.swing.JDialog {
     private double[] hargabeli,stok,selisih,nomihilang;
     private WarnaTable2 warna=new WarnaTable2();
     private boolean sukses=true;    
+    private String hpptoko="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -128,6 +129,12 @@ public class TokoInputStok extends javax.swing.JDialog {
             });
         }        
         TCari.requestFocus();
+        
+        try {
+            hpptoko=koneksiDB.HPPTOKO();
+        } catch (Exception e) {
+            hpptoko="dasar";
+        }
     }
     
 
@@ -694,7 +701,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 });
             }
             pstampil=koneksi.prepareStatement("select tokobarang.kode_brng, tokobarang.nama_brng,tokojenisbarang.nm_jenis, tokobarang.kode_sat, "+
-                "tokobarang.dasar,tokobarang.stok from tokobarang inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
+                "tokobarang."+hpptoko+" as dasar,tokobarang.stok from tokobarang inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
                 " where tokobarang.status='1' and tokobarang.kode_brng like ? or "+
                 " tokobarang.status='1' and tokobarang.nama_brng like ? or "+
                 " tokobarang.status='1' and tokobarang.kode_sat like ? or "+

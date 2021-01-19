@@ -41,6 +41,7 @@ public class DlgCekStok extends javax.swing.JDialog {
     private int i=0;
     private double stokbarang=0;
     private WarnaTable warna=new WarnaTable();
+    private String hppfarmasi="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -141,6 +142,12 @@ public class DlgCekStok extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
+        
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
+        }
             
     }
     
@@ -399,7 +406,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         try{  
             Valid.tabelKosong(tabMode);
             pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
-                "databarang.dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                "databarang."+hppfarmasi+" as dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                 " where databarang.status='1' and databarang.kode_brng like ? or "+
                 " databarang.status='1' and databarang.nama_brng like ? or "+
                 " databarang.status='1' and databarang.kode_sat like ? or "+
