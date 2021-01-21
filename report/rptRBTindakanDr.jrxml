@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c75c40e-a44f-44a8-a5f9-fab58a317646">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -248,7 +248,7 @@
 	</columnHeader>
 	<detail>
 		<band height="11">
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="10" uuid="034db7ea-9f65-4a59-9b18-69a703623340"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -256,7 +256,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="192" y="0" width="20" height="10" uuid="f10cb865-0a9d-48c9-9c13-deb1b610c16a"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -264,7 +264,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="25" y="0" width="167" height="10" uuid="597d5f93-70d4-457c-b7cf-c30271b0b744"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -272,7 +272,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="212" y="0" width="52" height="10" uuid="4af1f450-1939-44f6-9628-681cdd7380b9"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -280,7 +280,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="304" y="0" width="40" height="10" uuid="6d484ad2-e61d-4e79-993c-32e6cb6922d5"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -288,7 +288,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="344" y="0" width="40" height="10" uuid="c23ffd05-7df2-404a-b963-27d6194e2632"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -296,7 +296,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="504" y="0" width="50" height="10" uuid="61a04962-c2be-4497-9613-4b621c4451ff"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -304,7 +304,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp11}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="384" y="0" width="40" height="10" uuid="096be1d5-2615-4fe7-88e2-1c4ad52da9f4"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -312,7 +312,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="424" y="0" width="40" height="10" uuid="f8f5c85d-270b-4df2-9f8f-ec6535445400"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -320,7 +320,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp8}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="464" y="0" width="40" height="10" uuid="36e77dd0-2c29-47c3-846b-4d836ea9f778"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -328,7 +328,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="264" y="0" width="40" height="10" uuid="b6148775-7662-4531-87c0-7140184181a6"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -394,48 +394,48 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="73">
+		<band height="84">
 			<staticText>
-				<reportElement x="137" y="10" width="38" height="16" uuid="9c5f5cad-a4e6-4a4c-84ed-b7fd48606248"/>
+				<reportElement x="127" y="19" width="70" height="16" uuid="9c5f5cad-a4e6-4a4c-84ed-b7fd48606248"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[Penerima]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="227" y="10" width="50" height="16" uuid="1eda5ad1-359e-45a3-a013-0420a6c0584f"/>
+				<reportElement x="230" y="19" width="65" height="16" uuid="1eda5ad1-359e-45a3-a013-0420a6c0584f"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[Pengesahan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="341" y="10" width="50" height="16" uuid="314f16be-9f74-4cf0-9925-e2e02131d335"/>
+				<reportElement x="337" y="19" width="70" height="16" uuid="314f16be-9f74-4cf0-9925-e2e02131d335"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[Penyetor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="127" y="57" width="70" height="16" uuid="b0583881-b721-4ec2-b69e-39f009a6fc8c"/>
+				<reportElement x="127" y="66" width="70" height="16" uuid="b0583881-b721-4ec2-b69e-39f009a6fc8c"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[Said Basalamah, SH]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="222" y="56" width="65" height="16" uuid="1ebefd8c-3203-40df-bab8-81c6b42dcdb4"/>
+				<reportElement x="230" y="65" width="65" height="16" uuid="1ebefd8c-3203-40df-bab8-81c6b42dcdb4"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[Dian Nurhayati, SE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="337" y="56" width="70" height="16" uuid="4d0eda49-a9cc-4d83-a497-65af984a326f"/>
+				<reportElement x="337" y="65" width="70" height="16" uuid="4d0eda49-a9cc-4d83-a497-65af984a326f"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
-				<text><![CDATA[Umi Ghonifah, Amd]]></text>
+				<text><![CDATA[Millati azka]]></text>
 			</staticText>
 		</band>
 	</summary>
