@@ -580,6 +580,7 @@ import laporan.LaporanRekapKunjunganRuangPerTahun;
 import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
+import permintaan.DlgCariPermintaanLabPA;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
 import perpustakaan.PerpustakaanCariEbook;
@@ -1587,7 +1588,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/01/2021" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/01/2021" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5553,7 +5554,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPermintaanLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
-        btnPermintaanLab.setText("Permintaan Lab");
+        btnPermintaanLab.setText("Permintaan Lab PK");
         btnPermintaanLab.setIconTextGap(0);
         btnPermintaanLab.setName("btnPermintaanLab"); // NOI18N
         btnPermintaanLab.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -7773,6 +7774,7 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolBcdRalan.setEnabled(true);
                     btnToolBcdRanap.setEnabled(true);
                     btnPermintaanLab.setEnabled(true);
+                    btnPermintaanLabPA.setEnabled(true);
                     btnLaboratorium.setEnabled(true);
                     btnPermintaanRadiologi.setEnabled(true);
                     btnPeriksaRadiologi.setEnabled(true);
@@ -7822,8 +7824,10 @@ public class frmUtama extends javax.swing.JFrame {
                     
                     if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
                         btnPermintaanLab.setEnabled(true);
+                        btnPermintaanLabPA.setEnabled(true);
                     }else{
                         btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
+                        btnPermintaanLabPA.setEnabled(akses.getpermintaan_lab());
                     }
                         
                     btnToolIGD.setEnabled(akses.getigd());                    
@@ -7850,6 +7854,7 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolBcdRalan.setEnabled(false);
                     btnToolBcdRanap.setEnabled(false); 
                     btnPermintaanLab.setEnabled(false);
+                    btnPermintaanLabPA.setEnabled(false);
                     btnLaboratorium.setEnabled(false);
                     btnPermintaanRadiologi.setEnabled(false);
                     btnPeriksaRadiologi.setEnabled(false);    
@@ -9281,11 +9286,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         FlayMenu.removeAll();        
         FlayMenu.add(btnPermintaanLab);
+        FlayMenu.add(btnPermintaanLabPA);
         FlayMenu.add(btnLaboratorium);
         if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
             btnPermintaanLab.setEnabled(true);
+            btnPermintaanLabPA.setEnabled(true);
         }else{
             btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
+            btnPermintaanLabPA.setEnabled(akses.getpermintaan_lab());
         }
         btnLaboratorium.setEnabled(akses.getperiksa_lab());
         FlayMenu.setVisible(true); 
@@ -16572,6 +16580,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPermintaanLabPAActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgCariPermintaanLabPA form=new DlgCariPermintaanLabPA(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }   
+    
     /**
     * @param args the command line arguments
     */
@@ -17182,7 +17202,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
             btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVPPiutangBPJS,
-            btnVerifikasiPenerimaanFarmasi,btnVerifikasiPenerimaanLogistik;
+            btnVerifikasiPenerimaanFarmasi,btnVerifikasiPenerimaanLogistik,btnPermintaanLabPA;
     
     public void isWall(){
         try{            
@@ -17343,6 +17363,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
                 Panelmenu.add(btnPermintaanLab);
+                jmlmenu++;
+                Panelmenu.add(btnPermintaanLabPA);
                 jmlmenu++;
             }
             
@@ -20747,6 +20769,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
             Panelmenu.add(btnPermintaanLab);
             jmlmenu++;
+            Panelmenu.add(btnPermintaanLabPA);
+            jmlmenu++;
         }
         
         if((akses.getpermintaan_radiologi()==true)||(akses.getperiksa_radiologi()==true)){
@@ -24146,7 +24170,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(btnPermintaanLab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanLab);
                 jmlmenu++;
-            }                
+            } 
+            
+            if(btnPermintaanLabPA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPermintaanLabPA);
+                jmlmenu++;
+            } 
         }
         
         if((akses.getpermintaan_radiologi()==true)||(akses.getperiksa_radiologi()==true)){
@@ -30572,6 +30601,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnVerifikasiPenerimaanLogistik.setName("btnVerifikasiPenerimaanLogistik"); 
         btnVerifikasiPenerimaanLogistik.setPreferredSize(new java.awt.Dimension(200, 90));
         btnVerifikasiPenerimaanLogistik.addActionListener(this::btnVerifikasiPenerimaanLogistikActionPerformed);
+        
+        btnPermintaanLabPA = new widget.ButtonBig();
+        btnPermintaanLabPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
+        btnPermintaanLabPA.setText("Permintaan Lab PA");
+        btnPermintaanLabPA.setIconTextGap(0);
+        btnPermintaanLabPA.setName("btnPermintaanLabPA"); // NOI18N
+        btnPermintaanLabPA.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanLabPA.addActionListener(this::btnPermintaanLabPAActionPerformed);
     }
 
     

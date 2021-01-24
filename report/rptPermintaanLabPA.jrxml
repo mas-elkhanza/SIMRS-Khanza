@@ -661,7 +661,9 @@
 	<detail>
 		<band height="14" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="20" y="1" width="492" height="13" uuid="6dd73117-7440-4d8d-9650-68352c0675c3"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="17" y="1" width="492" height="13" uuid="6dd73117-7440-4d8d-9650-68352c0675c3">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
