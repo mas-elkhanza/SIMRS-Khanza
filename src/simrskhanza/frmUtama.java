@@ -1587,7 +1587,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/12/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/01/2021" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -2242,7 +2242,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
-        btnLaboratorium.setText("Periksa Lab");
+        btnLaboratorium.setText("Periksa Lab PK");
         btnLaboratorium.setIconTextGap(0);
         btnLaboratorium.setName("btnLaboratorium"); // NOI18N
         btnLaboratorium.setPreferredSize(new java.awt.Dimension(200, 90));

@@ -320,7 +320,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="22-01-2021"/>
+                            <StringItem index="0" value="24-01-2021"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -328,6 +328,7 @@
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TanggalItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TanggalKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1020,12 +1021,12 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel13">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Diagnosa PA :"/>
+                            <Property name="text" type="java.lang.String" value="Dengan Diagnosa PA :"/>
                             <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="304" y="100" width="85" height="23"/>
+                              <AbsoluteConstraints x="309" y="100" width="120" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1137,22 +1138,22 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="widget.Tanggal" name="Tanggal1">
+                        <Component class="widget.Tanggal" name="TanggalPA">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="32" green="46" red="32" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="22-01-2021"/>
+                                <StringItem index="0" value="24-01-2021"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
-                            <Property name="name" type="java.lang.String" value="Tanggal1" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="TanggalPA" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Tanggal1KeyPressed"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TanggalPAKeyPressed"/>
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1210,26 +1211,26 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="392" y="100" width="380" height="23"/>
+                              <AbsoluteConstraints x="432" y="100" width="340" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="widget.Tanggal" name="Tanggal2">
+                        <Component class="widget.Tanggal" name="TanggalBahan">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="32" green="46" red="32" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="22-01-2021"/>
+                                <StringItem index="0" value="24-01-2021"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
-                            <Property name="name" type="java.lang.String" value="Tanggal2" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="TanggalBahan" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Tanggal2KeyPressed"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TanggalBahanKeyPressed"/>
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1266,12 +1267,12 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel21">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nomor PA :"/>
+                            <Property name="text" type="java.lang.String" value="Dengan Nomor PA :"/>
                             <Property name="name" type="java.lang.String" value="jLabel21" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="67" y="100" width="98" height="23"/>
+                              <AbsoluteConstraints x="25" y="100" width="140" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
