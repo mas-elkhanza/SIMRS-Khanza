@@ -37,7 +37,7 @@ public class PanelDetailRawat extends widget.panelisi {
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rs5;
     private PreparedStatement ps,ps2;
-    private String tanggal="",jam="",dpjp="",kddpjp="",tanggal1="",tanggal2="",norm="",keputusan="",dokterrujukan="",polirujukan="";
+    private String tanggal="",jam="",dpjp="",kddpjp="",tanggal1="",tanggal2="",norm="",keputusan="",dokterrujukan="",polirujukan="",drvisit="";
     private StringBuilder htmlContent;
     private boolean caritanggal=false;
     private int i=0,y=0,w=0,urut;
@@ -412,6 +412,27 @@ public class PanelDetailRawat extends widget.panelisi {
                                 }
                             }   
                             
+                            //TODO Get Dokter Visit Pertama
+                            try {
+                                drvisit="";
+                                rs3=koneksi.prepareStatement(
+                                    "select jns_perawatan_inap.`kd_jenis_prw`,dokter.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat " +
+"                               from reg_periksa inner join rawat_inap_drpr on reg_periksa.no_rawat = rawat_inap_drpr.no_rawat " +
+"                               inner join dokter on dokter.kd_dokter = rawat_inap_drpr.kd_dokter " +
+"                               inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw= rawat_inap_drpr.kd_jenis_prw " +
+"                               where stts<>'Batal' and reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"' and jns_perawatan_inap.nm_perawatan like '%visit%' " +
+"                               order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat limit 1").executeQuery();
+                                while(rs3.next()){
+                                    drvisit = rs3.getString("nm_dokter");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
                             htmlContent.append(
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>No.Rawat</td>"+
@@ -437,6 +458,11 @@ public class PanelDetailRawat extends widget.panelisi {
                                 "<td valign='top' width='20%'>Dokter</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
                                 "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+dokterrujukan+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>Dokter Pertama Visit</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+drvisit+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>Cara Bayar</td>"+
@@ -2578,6 +2604,26 @@ public class PanelDetailRawat extends widget.panelisi {
                                     rs3.close();
                                 }
                             }   
+                            //TODO Get Dokter Visit Pertama
+                            try {
+                                drvisit="";
+                                rs3=koneksi.prepareStatement(
+                                    "select jns_perawatan_inap.`kd_jenis_prw`,dokter.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat " +
+"                               from reg_periksa inner join rawat_inap_drpr on reg_periksa.no_rawat = rawat_inap_drpr.no_rawat " +
+"                               inner join dokter on dokter.kd_dokter = rawat_inap_drpr.kd_dokter " +
+"                               inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw= rawat_inap_drpr.kd_jenis_prw " +
+"                               where stts<>'Batal' and reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"' and jns_perawatan_inap.nm_perawatan like '%visit%' " +
+"                               order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat limit 1").executeQuery();
+                                while(rs3.next()){
+                                    drvisit = rs3.getString("nm_dokter");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
                             
                             htmlContent.append(
                               "<tr class='isi'>"+ 
@@ -2604,6 +2650,11 @@ public class PanelDetailRawat extends widget.panelisi {
                                 "<td valign='top' width='20%'>Dokter</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
                                 "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+dokterrujukan+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>Dokter Pertama Visit</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+drvisit+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>Cara Bayar</td>"+
@@ -2856,6 +2907,26 @@ public class PanelDetailRawat extends widget.panelisi {
                                     rs3.close();
                                 }
                             }   
+                            //TODO Get Dokter Visit Pertama
+                            try {
+                                drvisit="";
+                                rs3=koneksi.prepareStatement(
+                                    "select jns_perawatan_inap.`kd_jenis_prw`,dokter.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat " +
+"                               from reg_periksa inner join rawat_inap_drpr on reg_periksa.no_rawat = rawat_inap_drpr.no_rawat " +
+"                               inner join dokter on dokter.kd_dokter = rawat_inap_drpr.kd_dokter " +
+"                               inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw= rawat_inap_drpr.kd_jenis_prw " +
+"                               where stts<>'Batal' and reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"' and jns_perawatan_inap.nm_perawatan like '%visit%' " +
+"                               order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat limit 1").executeQuery();
+                                while(rs3.next()){
+                                    drvisit = rs3.getString("nm_dokter");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
                             
                             htmlContent.append(
                               "<tr class='isi'>"+ 
@@ -2882,6 +2953,11 @@ public class PanelDetailRawat extends widget.panelisi {
                                 "<td valign='top' width='20%'>Dokter</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
                                 "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+dokterrujukan+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>Dokter Pertama Visit</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+drvisit+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>Cara Bayar</td>"+
@@ -3142,6 +3218,26 @@ public class PanelDetailRawat extends widget.panelisi {
                                     rs3.close();
                                 }
                             }   
+                            //TODO Get Dokter Visit Pertama
+                            try {
+                                drvisit="";
+                                rs3=koneksi.prepareStatement(
+                                    "select jns_perawatan_inap.`kd_jenis_prw`,dokter.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat " +
+"                               from reg_periksa inner join rawat_inap_drpr on reg_periksa.no_rawat = rawat_inap_drpr.no_rawat " +
+"                               inner join dokter on dokter.kd_dokter = rawat_inap_drpr.kd_dokter " +
+"                               inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw= rawat_inap_drpr.kd_jenis_prw " +
+"                               where stts<>'Batal' and reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"' and jns_perawatan_inap.nm_perawatan like '%visit%' " +
+"                               order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat limit 1").executeQuery();
+                                while(rs3.next()){
+                                    drvisit = rs3.getString("nm_dokter");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
                             
                             htmlContent.append(
                               "<tr class='isi'>"+ 
@@ -3168,6 +3264,11 @@ public class PanelDetailRawat extends widget.panelisi {
                                 "<td valign='top' width='20%'>Dokter</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
                                 "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+dokterrujukan+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>Dokter Pertama Visit</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+drvisit+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>Cara Bayar</td>"+
@@ -3480,6 +3581,26 @@ public class PanelDetailRawat extends widget.panelisi {
                                     rs3.close();
                                 }
                             }   
+                            //TODO Get Dokter Visit Pertama
+                            try {
+                                drvisit="";
+                                rs3=koneksi.prepareStatement(
+                                    "select jns_perawatan_inap.`kd_jenis_prw`,dokter.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat " +
+"                               from reg_periksa inner join rawat_inap_drpr on reg_periksa.no_rawat = rawat_inap_drpr.no_rawat " +
+"                               inner join dokter on dokter.kd_dokter = rawat_inap_drpr.kd_dokter " +
+"                               inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw= rawat_inap_drpr.kd_jenis_prw " +
+"                               where stts<>'Batal' and reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"' and jns_perawatan_inap.nm_perawatan like '%visit%' " +
+"                               order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat limit 1").executeQuery();
+                                while(rs3.next()){
+                                    drvisit = rs3.getString("nm_dokter");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
                             
                             htmlContent.append(
                               "<tr class='isi'>"+ 
@@ -3506,6 +3627,11 @@ public class PanelDetailRawat extends widget.panelisi {
                                 "<td valign='top' width='20%'>Dokter</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
                                 "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+dokterrujukan+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>Dokter Pertama Visit</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+drvisit+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>Cara Bayar</td>"+
