@@ -5443,7 +5443,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         rsranapdrpr.getDouble("tarif_tindakandr"), rsranapdrpr.getDouble("jml"), tamkur, (rsranapdrpr.getDouble("totaltarif_tindakandr") + tamkur), "Ranap Dokter Paramedis"});
                                     subttl = subttl + rsranapdrpr.getDouble("totaltarif_tindakandr") + tamkur;
                                 } else {
-                                    String namaTindakan = rsranapdrpr.getString("nm_perawatan").contains("Visit")
+                                    String namaTindakan = rsranapdrpr.getString("nm_perawatan").toLowerCase().contains("visit")
                                             ? rsranapdrpr.getString("nm_perawatan") + " (" + rsranapdrpr.getString("nm_dokter") + ")" : rsranapdrpr.getString("nm_perawatan");
 
                                     tabModeRwJlDr.addRow(new Object[]{true, "                           ", namaTindakan, ":",
