@@ -50,7 +50,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
     private PreparedStatement ps, ps2, ps3;
     private ResultSet rs, rs2, rs3;
     private String tgl = "", sql = "";
-    private DlgCariJenis jenis = new DlgCariJenis(null, false);
+    private DlgCariJenis jenis = new DlgCariJenis(null, true);
     private DlgCariKategori kategori = new DlgCariKategori(null, false);
     private DlgCariGolongan golongan = new DlgCariGolongan(null, false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
@@ -128,7 +128,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Object[] row2 = {"Kode Barang", "Nama Barang", "Kode Satuan", "Dari", "Bangsal Tujuan", "Jumlah", "Harga"};
+        Object[] row2 = {"Kode Barang", "Nama Barang", "Kode Satuan", "Dari", "Bangsal Tujuan","Jenis", "Jumlah", "Harga"};
         tabMode2 = new DefaultTableModel(null, row2) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -136,7 +136,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             }
             Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-                java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class,java.lang.String.class, java.lang.Double.class, java.lang.Double.class
             };
 
             @Override
@@ -149,7 +149,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         tbKamar1.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbKamar1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 8; i++) {
             TableColumn column = tbKamar1.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(80);
@@ -164,6 +164,8 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             } else if (i == 5) {
                 column.setPreferredWidth(80);
             } else if (i == 6) {
+                column.setPreferredWidth(80);
+            } else if (i == 7) {
                 column.setPreferredWidth(65);
             }
         }
@@ -185,31 +187,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
                 return types[columnIndex];
             }
         };
-        tbKamar2.setModel(tabMode3);
-        //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
-        tbKamar2.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbKamar2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        for (int i = 0; i < 7; i++) {
-            TableColumn column = tbKamar2.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(80);
-            } else if (i == 1) {
-                column.setPreferredWidth(125);
-            } else if (i == 2) {
-                column.setPreferredWidth(180);
-            } else if (i == 3) {
-                column.setPreferredWidth(155);
-            } else if (i == 4) {
-                column.setPreferredWidth(155);
-            } else if (i == 5) {
-                column.setPreferredWidth(80);
-            } else if (i == 6) {
-                column.setPreferredWidth(65);
-            }
-        }
-        tbKamar2.setDefaultRenderer(Object.class, new WarnaTable());
-
+        
         kddari.setDocument(new batasInput((byte) 10).getKata(kddari));
         kdke.setDocument(new batasInput((byte) 10).getKata(kddari));
         jumlah.setDocument(new batasInput((byte) 10).getKata(jumlah));
@@ -264,11 +242,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
                             kdBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 0).toString());
                             nmBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 1).toString());
                             kddari.requestFocus();
-                        } else if (pilihan == 4) {
-                            kdBangsal1.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 0).toString());
-                            nmBangsal1.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 1).toString());
-                            kddari.requestFocus();
-                        }
+                        } 
                     }
                 }
             }
@@ -302,8 +276,15 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (jenis.getTable().getSelectedRow() != -1) {
-                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
-                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                    switch (tabPane1.getSelectedIndex()) {
+                        case 0:
+                            kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                            nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                            break;
+                        case 1:
+                            kdJns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                            nmJns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                    }
                 }
                 TCari.requestFocus();
             }
@@ -479,16 +460,12 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         kdBangsal = new widget.TextBox();
         nmBangsal = new widget.TextBox();
         BtnJenis1 = new widget.Button();
+        label25 = new widget.Label();
+        kdJns = new widget.TextBox();
+        nmJns = new widget.TextBox();
+        BtnJns = new widget.Button();
         Scroll1 = new widget.ScrollPane();
         tbKamar1 = new widget.Table();
-        panelGlass3 = new widget.panelGlass();
-        panelBiasa3 = new widget.PanelBiasa();
-        label24 = new widget.Label();
-        kdBangsal1 = new widget.TextBox();
-        nmBangsal1 = new widget.TextBox();
-        BtnJenis2 = new widget.Button();
-        Scroll2 = new widget.ScrollPane();
-        tbKamar2 = new widget.Table();
 
         panelisi4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         panelisi4.setName("panelisi4"); // NOI18N
@@ -711,7 +688,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelisi3.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-01-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -725,7 +702,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelisi3.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-01-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-01-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -998,6 +975,33 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         });
         panelBiasa2.add(BtnJenis1);
 
+        label25.setText("Jenis ");
+        label25.setName("label25"); // NOI18N
+        label25.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelBiasa2.add(label25);
+
+        kdJns.setEditable(false);
+        kdJns.setName("kdJns"); // NOI18N
+        kdJns.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelBiasa2.add(kdJns);
+
+        nmJns.setEditable(false);
+        nmJns.setName("nmJns"); // NOI18N
+        nmJns.setPreferredSize(new java.awt.Dimension(192, 23));
+        panelBiasa2.add(nmJns);
+
+        BtnJns.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnJns.setMnemonic('2');
+        BtnJns.setToolTipText("Alt+2");
+        BtnJns.setName("BtnJns"); // NOI18N
+        BtnJns.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnJns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJnsActionPerformed(evt);
+            }
+        });
+        panelBiasa2.add(BtnJns);
+
         panelGlass2.add(panelBiasa2, java.awt.BorderLayout.PAGE_START);
 
         Scroll1.setName("Scroll1"); // NOI18N
@@ -1019,62 +1023,6 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelGlass2.add(Scroll1, java.awt.BorderLayout.CENTER);
 
         tabPane1.addTab("Mutasi Per Item", panelGlass2);
-
-        panelGlass3.setName("panelGlass3"); // NOI18N
-        panelGlass3.setLayout(new java.awt.BorderLayout());
-
-        panelBiasa3.setName("panelBiasa3"); // NOI18N
-        panelBiasa3.setPreferredSize(new java.awt.Dimension(1023, 47));
-        panelBiasa3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 10));
-
-        label24.setText("Bangsal Asal");
-        label24.setName("label24"); // NOI18N
-        label24.setPreferredSize(new java.awt.Dimension(80, 23));
-        panelBiasa3.add(label24);
-
-        kdBangsal1.setEditable(false);
-        kdBangsal1.setName("kdBangsal1"); // NOI18N
-        kdBangsal1.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelBiasa3.add(kdBangsal1);
-
-        nmBangsal1.setEditable(false);
-        nmBangsal1.setName("nmBangsal1"); // NOI18N
-        nmBangsal1.setPreferredSize(new java.awt.Dimension(192, 23));
-        panelBiasa3.add(nmBangsal1);
-
-        BtnJenis2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnJenis2.setMnemonic('2');
-        BtnJenis2.setToolTipText("Alt+2");
-        BtnJenis2.setName("BtnJenis2"); // NOI18N
-        BtnJenis2.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnJenis2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnJenis2ActionPerformed(evt);
-            }
-        });
-        panelBiasa3.add(BtnJenis2);
-
-        panelGlass3.add(panelBiasa3, java.awt.BorderLayout.PAGE_START);
-
-        Scroll2.setName("Scroll2"); // NOI18N
-        Scroll2.setOpaque(true);
-
-        tbKamar2.setName("tbKamar2"); // NOI18N
-        tbKamar2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbKamar2MouseClicked(evt);
-            }
-        });
-        tbKamar2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbKamar2KeyPressed(evt);
-            }
-        });
-        Scroll2.setViewportView(tbKamar2);
-
-        panelGlass3.add(Scroll2, java.awt.BorderLayout.CENTER);
-
-        tabPane1.addTab("Penerimaan Per Item", panelGlass3);
 
         internalFrame1.add(tabPane1, java.awt.BorderLayout.CENTER);
 
@@ -1196,9 +1144,6 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             break;
         case 1:
             CetakMutasiPerItem();
-            break;
-        case 2:
-            CetakPenerimaanPerItem();
             break;
         default:
             break;
@@ -1391,25 +1336,14 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         // TODO add your handling code here:
     }//GEN-LAST:event_tbKamar1KeyPressed
 
-    private void BtnJenis2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenis2ActionPerformed
+    private void BtnJnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJnsActionPerformed
         // TODO add your handling code here:
-        akses.setform("DlgPindahGudang");
-        pilihan = 4;
-        bangsal.emptTeks();
-        bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-        bangsal.setLocationRelativeTo(internalFrame1);
-        bangsal.setAlwaysOnTop(false);
-        bangsal.setVisible(true);
-    }//GEN-LAST:event_BtnJenis2ActionPerformed
-
-    private void tbKamar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamar2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbKamar2MouseClicked
-
-    private void tbKamar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamar2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbKamar2KeyPressed
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
+    }//GEN-LAST:event_BtnJnsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1435,7 +1369,7 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnHapus;
     private widget.Button BtnJenis;
     private widget.Button BtnJenis1;
-    private widget.Button BtnJenis2;
+    private widget.Button BtnJns;
     private widget.Button BtnKategori;
     private widget.Button BtnKeluar;
     private widget.Tanggal DTPCari1;
@@ -1445,7 +1379,6 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label LTotalMutasi;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
-    private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
     private widget.Button btnDari;
@@ -1457,7 +1390,7 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private javax.swing.JPanel jPanel1;
     private widget.TextBox jumlah;
     private widget.TextBox kdBangsal;
-    private widget.TextBox kdBangsal1;
+    private widget.TextBox kdJns;
     private widget.TextBox kdbarang;
     private widget.TextBox kddari;
     private widget.TextBox kdgolongan;
@@ -1473,13 +1406,13 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label21;
     private widget.Label label22;
     private widget.Label label23;
-    private widget.Label label24;
+    private widget.Label label25;
     private widget.Label label32;
     private widget.Label label37;
     private widget.Label label39;
     private widget.Label label9;
     private widget.TextBox nmBangsal;
-    private widget.TextBox nmBangsal1;
+    private widget.TextBox nmJns;
     private widget.TextBox nmbarang;
     private widget.TextBox nmdari;
     private widget.TextBox nmgolongan;
@@ -1490,17 +1423,14 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox nofaktur;
     private widget.PanelBiasa panelBiasa1;
     private widget.PanelBiasa panelBiasa2;
-    private widget.PanelBiasa panelBiasa3;
     private widget.panelGlass panelGlass1;
     private widget.panelGlass panelGlass2;
-    private widget.panelGlass panelGlass3;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.TabPane tabPane1;
     private widget.Table tbKamar;
     private widget.Table tbKamar1;
-    private widget.Table tbKamar2;
     private widget.TextBox total;
     // End of variables declaration//GEN-END:variables
 
@@ -1582,23 +1512,23 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         Valid.tabelKosong(tabMode2);
         try {
             nilaitotal = 0;
-            if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("")) {
+            if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("") && kdJns.getText().trim().equals("")) {
                 ps2 = koneksi.prepareStatement(
-                        "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga "
-                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal "
+                        "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga, jenis.nama "
+                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal join jenis on databarang.kdjns=jenis.kdjns "
                         + "where mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' "
                         + "GROUP by mutasibarang.kode_brng, asal.kd_bangsal, tujuan.kd_bangsal ORDER by databarang.nama_brng"
                 );
             } else {
 //                tgl = " mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%" + kdjenis.getText() + nmjns.getText().trim() + "%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%" + kdkategori.getText() + nmkategori.getText().trim() + "%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%" + kdgolongan.getText() + nmgolongan.getText().trim() + "%' ";
                 ps2 = koneksi.prepareStatement(
-                        "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga "
-                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal "
-                        + "where asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and mutasibarang.kode_brng like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.kode_sat like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and asal.nm_bangsal like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and tujuan.nm_bangsal like '%" + TCari.getText() + "%' "
+                        "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga, jenis.nama "
+                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal join jenis on databarang.kdjns=jenis.kdjns "
+                        + "where asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and  databarang.kdjns like '%" + kdJns.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.kdjns like '%" + kdJns.getText() + "%' and mutasibarang.kode_brng like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and  databarang.kdjns like '%" + kdJns.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.kdjns like '%" + kdJns.getText() + "%' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and  databarang.kdjns like '%" + kdJns.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.kdjns like '%" + kdJns.getText() + "%' and databarang.kode_sat like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and  databarang.kdjns like '%" + kdJns.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.kdjns like '%" + kdJns.getText() + "%' and asal.nm_bangsal like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and  databarang.kdjns like '%" + kdJns.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.kdjns like '%" + kdJns.getText() + "%' and tujuan.nm_bangsal like '%" + TCari.getText() + "%' "
                         + "GROUP by mutasibarang.kode_brng, asal.kd_bangsal, tujuan.kd_bangsal ORDER by databarang.nama_brng"
                 );
             }
@@ -1609,7 +1539,7 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     nilaitotal = nilaitotal + rs2.getDouble(7);
                     tabMode2.addRow(new Object[]{
                         rs2.getString(1), rs2.getString(2), rs2.getString(3), rs2.getString(4),
-                        rs2.getString(5), rs2.getDouble(6), rs2.getDouble(7)
+                        rs2.getString(5),rs2.getString(8), rs2.getDouble(6), rs2.getDouble(7)
                     });
                 }
             } catch (Exception e) {
@@ -1626,56 +1556,6 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             System.out.println("Notifikasi : " + e);
         }
         LCount.setText("" + tabMode2.getRowCount());
-        LTotalMutasi.setText(df2.format(nilaitotal));
-    }
-
-    public void tampil3() {
-        Valid.tabelKosong(tabMode3);
-        try {
-            nilaitotal = 0;
-            if (TCari.getText().trim().equals("") && kdBangsal1.getText().trim().equals("")) {
-                ps3 = koneksi.prepareStatement(
-                        "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng "
-                        + "where pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' group by detailpesan.kode_brng"
-                );
-            } else {
-//                tgl = " mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%" + kdjenis.getText() + nmjns.getText().trim() + "%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%" + kdkategori.getText() + nmkategori.getText().trim() + "%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%" + kdgolongan.getText() + nmgolongan.getText().trim() + "%' ";
-                ps3 = koneksi.prepareStatement(
-                        "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng "
-                        + "where bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and pemesanan.no_faktur like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and detailpesan.kode_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and detailpesan.kode_sat like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and bangsal.nm_bangsal like '%" + TCari.getText() + "%' "
-                        + "group by detailpesan.kode_brng"
-                );
-            }
-
-            try {
-                rs3 = ps3.executeQuery();
-                while (rs3.next()) {
-                    nilaitotal = nilaitotal + rs3.getDouble(7);
-                    tabMode3.addRow(new Object[]{
-                        rs3.getString(1), rs3.getString(2), rs3.getString(3), rs3.getString(4),
-                        rs3.getString(5), rs3.getDouble(6), rs3.getDouble(7)
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : " + e);
-            } finally {
-                if (rs3 != null) {
-                    rs3.close();
-                }
-                if (ps3 != null) {
-                    ps3.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
-        }
-        LCount.setText("" + tabMode3.getRowCount());
         LTotalMutasi.setText(df2.format(nilaitotal));
     }
 
@@ -1706,9 +1586,6 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             case 1:
                 tampil2();
                 break;
-            case 2:
-                tampil3();
-                break;
             default:
                 break;
         }
@@ -1729,20 +1606,20 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             param.put("emailrs", akses.getemailrs());
             param.put("periode", sdf.format(DTPCari1.getDate()) + " s/d " + sdf.format(DTPCari2.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
-            if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("")) {
-                sql = "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga "
-                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal "
+            if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("") && kdJns.getText().trim().equals("")) {
+                sql = "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga,jenis.nama "
+                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal join jenis on databarang.kdjns=jenis.kdjns "
                         + "where mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' "
                         + "GROUP by mutasibarang.kode_brng, asal.kd_bangsal, tujuan.kd_bangsal ORDER by databarang.nama_brng";
             } else {
 //                tgl = " mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%" + kdjenis.getText() + nmjns.getText().trim() + "%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%" + kdkategori.getText() + nmkategori.getText().trim() + "%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%" + kdgolongan.getText() + nmgolongan.getText().trim() + "%' ";
-                sql = "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga "
-                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal "
-                        + "where asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and mutasibarang.kode_brng like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.kode_sat like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and asal.nm_bangsal like '%" + TCari.getText() + "%' or "
-                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and tujuan.nm_bangsal like '%" + TCari.getText() + "%' "
+                sql = "SELECT mutasibarang.kode_brng, databarang.nama_brng, databarang.kode_sat, asal.nm_bangsal as bangsal_asal, tujuan.nm_bangsal as bangsal_tujuan, sum(mutasibarang.jml) as jumlah, mutasibarang.harga,jenis.nama "
+                        + "FROM `mutasibarang` join databarang on databarang.kode_brng = mutasibarang.kode_brng join bangsal as asal on mutasibarang.kd_bangsaldari = asal.kd_bangsal join bangsal as tujuan on mutasibarang.kd_bangsalke = tujuan.kd_bangsal join jenis on databarang.kdjns=jenis.kdjns "
+                        + "where asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdJns.getText() + "%' and mutasibarang.kode_brng like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdJns.getText() + "%' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdJns.getText() + "%' and databarang.kode_sat like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdJns.getText() + "%' and asal.nm_bangsal like '%" + TCari.getText() + "%' or "
+                        + " asal.nm_bangsal like '%" + nmBangsal.getText() + "%' and mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdJns.getText() + "%' and tujuan.nm_bangsal like '%" + TCari.getText() + "%' "
                         + "GROUP by mutasibarang.kode_brng, asal.kd_bangsal, tujuan.kd_bangsal ORDER by databarang.nama_brng";
             }
 
@@ -1750,42 +1627,5 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
         }
         this.setCursor(Cursor.getDefaultCursor()); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void CetakPenerimaanPerItem() {
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (tabMode3.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
-            BtnKeluar.requestFocus();
-        } else {
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars", akses.getnamars());
-            param.put("alamatrs", akses.getalamatrs());
-            param.put("kotars", akses.getkabupatenrs());
-            param.put("propinsirs", akses.getpropinsirs());
-            param.put("kontakrs", akses.getkontakrs());
-            param.put("emailrs", akses.getemailrs());
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
-            param.put("periode", sdf.format(DTPCari1.getDate()) + " s/d " + sdf.format(DTPCari2.getDate()));
-            if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("")) {
-                sql = "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng "
-                        + "where pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' group by detailpesan.kode_brng";
-            } else {
-//                tgl = " mutasibarang.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%" + kdjenis.getText() + nmjns.getText().trim() + "%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%" + kdkategori.getText() + nmkategori.getText().trim() + "%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%" + kdgolongan.getText() + nmgolongan.getText().trim() + "%' ";
-                sql = "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng "
-                        + "where bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and pemesanan.no_faktur like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and detailpesan.kode_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and detailpesan.kode_sat like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59' and bangsal.nm_bangsal like '%" + TCari.getText() + "%' "
-                        + "group by detailpesan.kode_brng";
-            }
-
-            Valid.MyReportqry("rptPenerimaanPerItem.jasper", "report", "::[ Transaksi Mutasi Obat/Alkes/BHP ]::", sql, param);
-
-        }
-        this.setCursor(Cursor.getDefaultCursor());
     }
 }
