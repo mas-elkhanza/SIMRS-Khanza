@@ -61,7 +61,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
             "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam","Sampel","Jam","Hasil","Jam",
             "Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis",
             "Kode Bayar","Jenis Bayar","Tgl.Bahan","Diperoleh Dengan","Lokasi Jaringan","Diawetkan Dengan",
-            "Pernah Dilakukan PA Di","Pada Taggal","Dengan Nomor PA","Dengan Diagnosa PA","Permintaan Pemeriksaan"
+            "Pernah Dilakukan PA Di","Pada Tanggal","Dengan Nomor PA","Dengan Diagnosa PA","Permintaan Pemeriksaan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -117,7 +117,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
             }else if(i==20){
                 column.setPreferredWidth(150);
             }else if(i==21){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             }else if(i==22){
                 column.setPreferredWidth(95);
             }else if(i==23){
@@ -132,7 +132,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
                 "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan","Jam","Sampel","Jam","Hasil",
                 "Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar",
                 "Tgl.Bahan","Diperoleh Dengan","Lokasi Jaringan","Diawetkan Dengan",
-            "Pernah Dilakukan PA Di","Pada Taggal","Dengan Nomor PA","Dengan Diagnosa PA"
+            "Pernah Dilakukan PA Di","Pada Tanggal","Dengan Nomor PA","Dengan Diagnosa PA"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -190,7 +190,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
             }else if(i==21){
                 column.setPreferredWidth(150);
             }else if(i==22){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             }else if(i==23){
                 column.setPreferredWidth(95);
             }else if(i==24){
@@ -202,7 +202,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
         tabMode3=new DefaultTableModel(null,new Object[]{
             "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter",
             "Dokter Perujuk","Kamar Terakhir","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar",
-            "Tgl.Bahan","Diperoleh Dengan","Lokasi Jaringan","Diawetkan Dengan","Pernah Dilakukan PA Di","Pada Taggal",
+            "Tgl.Bahan","Diperoleh Dengan","Lokasi Jaringan","Diawetkan Dengan","Pernah Dilakukan PA Di","Pada Tanggal",
             "Dengan Nomor PA","Dengan Diagnosa PA","Permintaan Pemeriksaan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -259,7 +259,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
             }else if(i==20){
                 column.setPreferredWidth(150);
             }else if(i==21){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             }else if(i==22){
                 column.setPreferredWidth(95);
             }else if(i==23){
@@ -273,7 +273,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
         tabMode4=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan","Jam","Sampel","Jam","Hasil","Jam","Kode Dokter",
                 "Dokter Perujuk","Kamar Terakhir","Informasi Tambahan","Diagnosis Klinis","Kode Bayar","Jenis Bayar","Tgl.Bahan",
-                "Diperoleh Dengan","Lokasi Jaringan","Diawetkan Dengan","Pernah Dilakukan PA Di","Pada Taggal",
+                "Diperoleh Dengan","Lokasi Jaringan","Diawetkan Dengan","Pernah Dilakukan PA Di","Pada Tanggal",
                 "Dengan Nomor PA","Dengan Diagnosa PA"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -332,7 +332,7 @@ public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
             }else if(i==21){
                 column.setPreferredWidth(150);
             }else if(i==22){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             }else if(i==23){
                 column.setPreferredWidth(95);
             }else if(i==24){
@@ -1201,7 +1201,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode.getValueAt(i,12).toString()+"','"+
                             tabMode.getValueAt(i,13).toString()+"','"+
                             tabMode.getValueAt(i,14).toString()+"','"+
-                            tabMode.getValueAt(i,15).toString()+"','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                            tabMode.getValueAt(i,15).toString()+"','"+
+                            tabMode.getValueAt(i,16).toString()+"','"+
+                            tabMode.getValueAt(i,17).toString()+"','"+
+                            tabMode.getValueAt(i,18).toString()+"','"+
+                            tabMode.getValueAt(i,19).toString()+"','"+
+                            tabMode.getValueAt(i,20).toString()+"','"+
+                            tabMode.getValueAt(i,21).toString()+"','"+
+                            tabMode.getValueAt(i,22).toString()+"','"+
+                            tabMode.getValueAt(i,23).toString()+"','"+
+                            tabMode.getValueAt(i,24).toString()+"','','','','','','','','','','','',''","Periksa Lab"); 
                     }
                     
                     Map<String, Object> param = new HashMap<>();
@@ -1212,7 +1221,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab.jasper","report","::[ Data Permintaan Laboratorium ]::",param);
+                    Valid.MyReport("rptLapPermintaanLabPA.jasper","report","::[ Data Permintaan Laboratorium PA ]::",param);
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
                 if(tabMode2.getRowCount()==0){
@@ -1225,13 +1234,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     for(i=0;i<row;i++){  
                         tglsampel="";
                         try {
-                            tglsampel=tabMode2.getValueAt(i,9).toString();
+                            tglsampel=tabMode2.getValueAt(i,6).toString();
                         } catch (Exception e) {
                             tglsampel="";
                         }
                         tglhasil="";
                         try {
-                            tglhasil=tabMode2.getValueAt(i,11).toString();
+                            tglhasil=tabMode2.getValueAt(i,8).toString();
                         } catch (Exception e) {
                             tglhasil="";
                         }
@@ -1242,12 +1251,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode2.getValueAt(i,3).toString()+"','"+
                             tabMode2.getValueAt(i,4).toString()+"','"+
                             tabMode2.getValueAt(i,5).toString()+"','"+
-                            tabMode2.getValueAt(i,6).toString()+"','"+
-                            tabMode2.getValueAt(i,7).toString()+"','"+
-                            tabMode2.getValueAt(i,8).toString()+"','"+
                             tglsampel+"','"+
-                            tabMode2.getValueAt(i,10).toString()+"','"+
+                            tabMode2.getValueAt(i,7).toString()+"','"+
                             tglhasil+"','"+
+                            tabMode2.getValueAt(i,9).toString()+"','"+
+                            tabMode2.getValueAt(i,10).toString()+"','"+
+                            tabMode2.getValueAt(i,11).toString()+"','"+
                             tabMode2.getValueAt(i,12).toString()+"','"+
                             tabMode2.getValueAt(i,13).toString()+"','"+
                             tabMode2.getValueAt(i,14).toString()+"','"+
@@ -1255,7 +1264,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode2.getValueAt(i,16).toString()+"','"+
                             tabMode2.getValueAt(i,17).toString()+"','"+
                             tabMode2.getValueAt(i,18).toString()+"','"+
-                            tabMode2.getValueAt(i,19).toString()+"','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                            tabMode2.getValueAt(i,19).toString()+"','"+
+                            tabMode2.getValueAt(i,20).toString()+"','"+
+                            tabMode2.getValueAt(i,21).toString()+"','"+
+                            tabMode2.getValueAt(i,22).toString()+"','"+
+                            tabMode2.getValueAt(i,23).toString()+"','"+
+                            tabMode2.getValueAt(i,24).toString()+"','','','','','','','','','','','',''","Periksa Lab"); 
                     }
                     
                     Map<String, Object> param = new HashMap<>();
@@ -1266,7 +1280,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab2.jasper","report","::[ Data Detail Permintaan Laboratorium ]::",param);
+                    Valid.MyReport("rptLapPermintaanLabPA2.jasper","report","::[ Data Detail Permintaan Laboratorium PA ]::",param);
                 }
             } 
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1307,7 +1321,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode3.getValueAt(i,12).toString()+"','"+
                             tabMode3.getValueAt(i,13).toString()+"','"+
                             tabMode3.getValueAt(i,14).toString()+"','"+
-                            tabMode3.getValueAt(i,15).toString()+"','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                            tabMode3.getValueAt(i,15).toString()+"','"+
+                            tabMode3.getValueAt(i,16).toString()+"','"+
+                            tabMode3.getValueAt(i,17).toString()+"','"+
+                            tabMode3.getValueAt(i,18).toString()+"','"+
+                            tabMode3.getValueAt(i,19).toString()+"','"+
+                            tabMode3.getValueAt(i,20).toString()+"','"+
+                            tabMode3.getValueAt(i,21).toString()+"','"+
+                            tabMode3.getValueAt(i,22).toString()+"','"+
+                            tabMode3.getValueAt(i,23).toString()+"','"+
+                            tabMode3.getValueAt(i,24).toString()+"','','','','','','','','','','','',''","Periksa Lab"); 
                     }
                     
                     Map<String, Object> param = new HashMap<>();
@@ -1318,7 +1341,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab3.jasper","report","::[ Data Permintaan Laboratorium ]::",param);
+                    Valid.MyReport("rptLapPermintaanLabPA3.jasper","report","::[ Data Permintaan Laboratorium PA ]::",param);
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
                 if(tabMode4.getRowCount()==0){
@@ -1331,13 +1354,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     for(i=0;i<row;i++){  
                         tglsampel="";
                         try {
-                            tglsampel=tabMode4.getValueAt(i,9).toString();
+                            tglsampel=tabMode4.getValueAt(i,6).toString();
                         } catch (Exception e) {
                             tglsampel="";
                         }
                         tglhasil="";
                         try {
-                            tglhasil=tabMode4.getValueAt(i,11).toString();
+                            tglhasil=tabMode4.getValueAt(i,8).toString();
                         } catch (Exception e) {
                             tglhasil="";
                         }
@@ -1348,12 +1371,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         tabMode4.getValueAt(i,3).toString()+"','"+
                                         tabMode4.getValueAt(i,4).toString()+"','"+
                                         tabMode4.getValueAt(i,5).toString()+"','"+
-                                        tabMode4.getValueAt(i,6).toString()+"','"+
-                                        tabMode4.getValueAt(i,7).toString()+"','"+
-                                        tabMode4.getValueAt(i,8).toString()+"','"+
                                         tglsampel+"','"+
-                                        tabMode4.getValueAt(i,10).toString()+"','"+
+                                        tabMode4.getValueAt(i,7).toString()+"','"+
                                         tglhasil+"','"+
+                                        tabMode4.getValueAt(i,9).toString()+"','"+
+                                        tabMode4.getValueAt(i,10).toString()+"','"+
+                                        tabMode4.getValueAt(i,11).toString()+"','"+
                                         tabMode4.getValueAt(i,12).toString()+"','"+
                                         tabMode4.getValueAt(i,13).toString()+"','"+
                                         tabMode4.getValueAt(i,14).toString()+"','"+
@@ -1361,7 +1384,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         tabMode4.getValueAt(i,16).toString()+"','"+
                                         tabMode4.getValueAt(i,17).toString()+"','"+
                                         tabMode4.getValueAt(i,18).toString()+"','"+
-                                        tabMode4.getValueAt(i,19).toString()+"','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                                        tabMode4.getValueAt(i,19).toString()+"','"+
+                                        tabMode4.getValueAt(i,20).toString()+"','"+
+                                        tabMode4.getValueAt(i,21).toString()+"','"+
+                                        tabMode4.getValueAt(i,22).toString()+"','"+
+                                        tabMode4.getValueAt(i,23).toString()+"','"+
+                                        tabMode4.getValueAt(i,24).toString()+"','','','','','','','','','','','',''","Periksa Lab"); 
                     }
                     
                     Map<String, Object> param = new HashMap<>();
@@ -1372,7 +1400,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab4.jasper","report","::[ Data Detail Permintaan Laboratorium ]::",param);
+                    Valid.MyReport("rptLapPermintaanLabPA4.jasper","report","::[ Data Detail Permintaan Laboratorium PA ]::",param);
                 }
             }
         }                       
@@ -2533,7 +2561,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "(permintaan_labpa.noorder like ? or permintaan_labpa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or "+
                     "permintaan_labpa.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    "order by permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan desc");
+                    "group by permintaan_labpa.noorder,permintaan_pemeriksaan_labpa.kd_jenis_prw order by permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
