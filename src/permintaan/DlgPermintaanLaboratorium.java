@@ -1686,7 +1686,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println("Error Detail : "+e);
         }
-        
     }
     
     public void emptTeks() {
