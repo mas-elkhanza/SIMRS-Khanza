@@ -2,12 +2,13 @@ package keuangan;
 
 import fungsi.WarnaTable;
 import fungsi.WarnaTable2;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import inventory.DlgCariObat;
+import inventory.DlgPemberianObat;
 import inventory.DlgPenjualan;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -22,14 +23,13 @@ import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgCariPoli;
-import inventory.DlgPemberianObat;
-import javax.swing.event.DocumentEvent;
 import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaRadiologi;
@@ -2410,19 +2410,19 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         } else if (i == 2) {
                             if (piutang > 0) {
                                 Valid.panggilUrl("billing/LaporanBilling7.php?petugas=" + akses.getkode().replaceAll(" ", "_") + "&nonota=" + Sequel.cariIsi("select count(reg_periksa.no_rawat) from reg_periksa "
-                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(5, 7) + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 4));
+                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7) + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4));
                             } else if (piutang <= 0) {
                                 Valid.panggilUrl("billing/LaporanBilling5.php?petugas=" + akses.getkode().replaceAll(" ", "_") + "&nonota=" + Sequel.cariIsi("select count(reg_periksa.no_rawat) from reg_periksa "
-                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(5, 7) + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 4));
+                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7) + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4));
                             }
                         } else if (i == 3) {
                             Valid.panggilUrl("billing/LaporanBilling.php?petugas=" + akses.getkode().replaceAll(" ", "_") + "&tanggal=" + DTPTgl.getSelectedItem().toString().replaceAll(" ", "_"));
                             if (piutang > 0) {
                                 Valid.panggilUrl("billing/LaporanBilling7.php?petugas=" + akses.getkode().replaceAll(" ", "_") + "&nonota=" + Sequel.cariIsi("select count(reg_periksa.no_rawat) from reg_periksa "
-                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(5, 7) + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 4));
+                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7) + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4));
                             } else if (piutang <= 0) {
                                 Valid.panggilUrl("billing/LaporanBilling5.php?petugas=" + akses.getkode().replaceAll(" ", "_") + "&nonota=" + Sequel.cariIsi("select count(reg_periksa.no_rawat) from reg_periksa "
-                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(5, 7) + "/" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 4));
+                                        + "where reg_periksa.kd_pj='" + kd_pj + "' and reg_periksa.tgl_registrasi like '%" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7) + "%'") + "/RJ/" + kd_pj + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7) + "/" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4));
                             }
                         }
                         this.setCursor(Cursor.getDefaultCursor());
@@ -2965,9 +2965,9 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             }
 
             if (piutang > 0) {
-                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBATALAN PIUTANG PASIEN RAWAT JALAN, DIBATALKAN OLEH " + akses.getkode());
+                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBATALAN PIUTANG PASIEN RAWAT JALAN, DIBATALKAN OLEH " + akses.getkode());
             } else if (piutang <= 0) {
-                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBATALAN PEMBAYARAN PASIEN RAWAT JALAN, DIBATALKAN OLEH " + akses.getkode());
+                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBATALAN PEMBAYARAN PASIEN RAWAT JALAN, DIBATALKAN OLEH " + akses.getkode());
             }
 
             Sequel.queryu2("delete from piutang_pasien where no_rawat='" + TNoRw.getText() + "'");
@@ -3352,7 +3352,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
             }
         }
-
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -4118,7 +4117,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 psreg.setString(1, TNoRw.getText());
                 rsreg = psreg.executeQuery();
                 if (rsreg.next()) {
-                    tabModeRwJlDr.addRow(new Object[]{true, "No.Nota", ": " + Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7) + "' ", Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7).replaceAll("-", "/") + "/RJ/", 6), "", null, null, null, null, "-"});
+                    tabModeRwJlDr.addRow(new Object[]{true, "No.Nota", ": " + Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7) + "' ", Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7).replaceAll("-", "/") + "/RJ/", 6), "", null, null, null, null, "-"});
                     pscaripoli = koneksi.prepareStatement(sqlpscaripoli);
                     try {
                         pscaripoli.setString(1, rsreg.getString("kd_poli"));
@@ -5298,8 +5297,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 psnota = koneksi.prepareStatement(sqlpsnota);
                 try {
                     psnota.setString(1, TNoRw.getText());
-                    psnota.setString(2, Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7) + "' ", Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7).replaceAll("-", "/") + "/RJ/", 6));
-                    psnota.setString(3, Valid.SetTgl(DTPTgl.getSelectedItem() + ""));
+                    psnota.setString(2, Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7) + "' ", Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7).replaceAll("-", "/") + "/RJ/", 6));
+                    psnota.setString(3, Valid.SetDateToString(DTPTgl.getDate()));
                     psnota.setString(4, DTPTgl.getSelectedItem().toString().substring(11, 19));
                     psnota.setDouble(5, Jasa_Medik_Dokter_Tindakan_Ralan);
                     psnota.setDouble(6, Jasa_Medik_Paramedis_Tindakan_Ralan);
@@ -5318,12 +5317,12 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     psnota.setDouble(19, Obat_Operasi_Ralan);
                     psnota.executeUpdate();
                 } catch (Exception e) {
-                    nota_jalan = Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7) + "' ", Valid.SetTgl(DTPTgl.getSelectedItem() + "").substring(0, 7).replaceAll("-", "/") + "/RJ/", 6);
+                    nota_jalan = Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='" + Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7) + "' ", Valid.SetDateToString(DTPTgl.getDate()).substring(0, 7).replaceAll("-", "/") + "/RJ/", 6);
                     Sequel.meghapus("nota_jalan", "no_rawat", TNoRw.getText());
                     tbBilling.setValueAt(": " + nota_jalan, 0, 2);
                     psnota.setString(1, TNoRw.getText());
                     psnota.setString(2, nota_jalan);
-                    psnota.setString(3, Valid.SetTgl(DTPTgl.getSelectedItem() + ""));
+                    psnota.setString(3, Valid.SetDateToString(DTPTgl.getDate()));
                     psnota.setString(4, DTPTgl.getSelectedItem().toString().substring(11, 19));
                     psnota.setDouble(5, Jasa_Medik_Dokter_Tindakan_Ralan);
                     psnota.setDouble(6, Jasa_Medik_Paramedis_Tindakan_Ralan);
@@ -5354,7 +5353,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     try {
                         psbiling.setInt(1, i);
                         psbiling.setString(2, TNoRw.getText());
-                        psbiling.setString(3, Valid.SetTgl(DTPTgl.getSelectedItem() + ""));
+                        psbiling.setString(3, Valid.SetDateToString(DTPTgl.getDate()));
                         psbiling.setString(4, tbBilling.getValueAt(i, 1).toString());
                         psbiling.setString(5, tbBilling.getValueAt(i, 2).toString().replaceAll("'", "`"));
                         psbiling.setString(6, tbBilling.getValueAt(i, 3).toString());
@@ -5584,16 +5583,16 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
 
                 if (piutang > 0) {
-                    jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PIUTANG PASIEN RAWAT JALAN, DIPOSTING OLEH " + akses.getkode());
+                    jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PIUTANG PASIEN RAWAT JALAN, DIPOSTING OLEH " + akses.getkode());
                     if (bayar > 0) {
-                        Sequel.menyimpan2("tagihan_sadewa", "'" + TNoRw.getText() + "','" + TNoRM.getText() + "','" + TPasien.getText() + "','" + alamat + "',concat('" + Valid.SetTgl(DTPTgl.getSelectedItem() + "")
+                        Sequel.menyimpan2("tagihan_sadewa", "'" + TNoRw.getText() + "','" + TNoRM.getText() + "','" + TPasien.getText() + "','" + alamat + "',concat('" + Valid.SetDateToString(DTPTgl.getDate())
                                 + "',' ',CURTIME()),'Uang Muka','" + total + "','" + bayar + "','Belum','" + akses.getkode() + "'", "No.Rawat");
                     }
-                    Sequel.queryu2("insert into piutang_pasien values ('" + TNoRw.getText() + "','" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
-                            + TNoRM.getText() + "','Belum Lunas','" + total + "','" + bayar + "','" + piutang + "','" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "')");
+                    Sequel.queryu2("insert into piutang_pasien values ('" + TNoRw.getText() + "','" + Valid.SetDateToString(DTPTgl.getDate()) + "','"
+                            + TNoRM.getText() + "','Belum Lunas','" + total + "','" + bayar + "','" + piutang + "','" + Valid.SetDateToString(DTPTgl.getDate()) + "')");
                 } else if (piutang <= 0) {
-                    jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH " + akses.getkode());
-                    Sequel.menyimpan2("tagihan_sadewa", "'" + TNoRw.getText() + "','" + TNoRM.getText() + "','" + TPasien.getText() + "','" + alamat + "',concat('" + Valid.SetTgl(DTPTgl.getSelectedItem() + "")
+                    jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH " + akses.getkode());
+                    Sequel.menyimpan2("tagihan_sadewa", "'" + TNoRw.getText() + "','" + TNoRM.getText() + "','" + TPasien.getText() + "','" + alamat + "',concat('" + Valid.SetDateToString(DTPTgl.getDate())
                             + "',' ',CURTIME()),'Pelunasan','" + total + "','" + total + "','Sudah','" + akses.getkode() + "'", "No.Rawat");
                 }
 
