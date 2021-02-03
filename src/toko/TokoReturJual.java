@@ -41,7 +41,7 @@ public class TokoReturJual extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampikan=true;
     private boolean sukses=true;
-    private String Retur_Jual_Toko=Sequel.cariIsi("select Retur_Jual_Toko from set_akun"),Kontra_Retur_Jual_Toko=Sequel.cariIsi("select Kontra_Retur_Jual_Toko from set_akun");
+    private String hpptoko="",Retur_Jual_Toko=Sequel.cariIsi("select Retur_Jual_Toko from set_akun"),Kontra_Retur_Jual_Toko=Sequel.cariIsi("select Kontra_Retur_Jual_Toko from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -211,7 +211,12 @@ public class TokoReturJual extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         }); 
-           
+          
+        try {
+            hpptoko=koneksiDB.HPPTOKO();
+        } catch (Exception e) {
+            hpptoko="dasar";
+        }
     }
 
     /** This method is called from within the constructor to
@@ -924,7 +929,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
         try{
             ps=koneksi.prepareStatement(
-                    "select tokobarang.kode_brng,tokobarang.nama_brng,tokobarang.kode_sat,tokobarang.dasar,tokobarang.stok "+
+                    "select tokobarang.kode_brng,tokobarang.nama_brng,tokobarang.kode_sat,tokobarang."+hpptoko+" as dasar,tokobarang.stok "+
                     " from tokobarang where tokobarang.status='1' "+(TCari.getText().trim().equals("")?"":" and (tokobarang.kode_brng like ? or "+
                     " tokobarang.nama_brng like ? or tokobarang.jenis like ?)")+" order by tokobarang.nama_brng");
             try{   

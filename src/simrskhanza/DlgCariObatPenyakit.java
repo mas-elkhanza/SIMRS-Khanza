@@ -55,7 +55,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
     private ResultSet rs;
     private double jumlah,x,i,kenaikan=0;
     private int z=0,row;
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",hppfarmasi="";
     private boolean sukses=true;
     /** Creates new form DlgPenyakit
      * @param parent
@@ -170,6 +170,12 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+        }
+        
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
         }
 
         jam();
@@ -739,7 +745,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ps=koneksi.prepareStatement(
                            "select obat_penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,obat_penyakit.kode_brng,databarang.nama_brng,"+
-                           "jenis.nama,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,obat_penyakit.referensi,databarang.dasar,gudangbarang.stok,gudangbarang.no_batch,gudangbarang.no_faktur "+
+                           "jenis.nama,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,obat_penyakit.referensi,databarang."+hppfarmasi+" as dasar,gudangbarang.stok,gudangbarang.no_batch,gudangbarang.no_faktur "+
                            "from obat_penyakit inner join penyakit on obat_penyakit.kd_penyakit=penyakit.kd_penyakit "+
                            "inner join kategori_penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg "+
                            "inner join databarang on obat_penyakit.kode_brng=databarang.kode_brng "+
@@ -751,7 +757,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ps=koneksi.prepareStatement(
                            "select obat_penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,obat_penyakit.kode_brng,databarang.nama_brng,"+
-                           "jenis.nama,databarang.ralan,obat_penyakit.referensi,databarang.dasar,gudangbarang.stok,gudangbarang.no_batch,gudangbarang.no_faktur "+
+                           "jenis.nama,databarang.ralan,obat_penyakit.referensi,databarang."+hppfarmasi+" as dasar,gudangbarang.stok,gudangbarang.no_batch,gudangbarang.no_faktur "+
                            "from obat_penyakit inner join penyakit on obat_penyakit.kd_penyakit=penyakit.kd_penyakit "+
                            "inner join kategori_penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg "+
                            "inner join databarang on obat_penyakit.kode_brng=databarang.kode_brng "+
@@ -821,7 +827,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ps=koneksi.prepareStatement(
                            "select obat_penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,obat_penyakit.kode_brng,databarang.nama_brng,"+
-                           "jenis.nama,(databarang.h_beli+(databarang.h_beli*?)) as harga,obat_penyakit.referensi,databarang.dasar,gudangbarang.stok "+
+                           "jenis.nama,(databarang.h_beli+(databarang.h_beli*?)) as harga,obat_penyakit.referensi,databarang."+hppfarmasi+" as dasar,gudangbarang.stok "+
                            "from obat_penyakit inner join penyakit on obat_penyakit.kd_penyakit=penyakit.kd_penyakit "+
                            "inner join kategori_penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg "+
                            "inner join databarang on obat_penyakit.kode_brng=databarang.kode_brng "+
@@ -832,7 +838,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ps=koneksi.prepareStatement(
                            "select obat_penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,obat_penyakit.kode_brng,databarang.nama_brng,"+
-                           "jenis.nama,databarang.ralan,obat_penyakit.referensi,databarang.dasar,gudangbarang.stok "+
+                           "jenis.nama,databarang.ralan,obat_penyakit.referensi,databarang."+hppfarmasi+" as dasar,gudangbarang.stok "+
                            "from obat_penyakit inner join penyakit on obat_penyakit.kd_penyakit=penyakit.kd_penyakit "+
                            "inner join kategori_penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg "+
                            "inner join databarang on obat_penyakit.kode_brng=databarang.kode_brng "+

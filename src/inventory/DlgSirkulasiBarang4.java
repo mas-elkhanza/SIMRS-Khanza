@@ -50,7 +50,7 @@ public class DlgSirkulasiBarang4 extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private String lokasi="",tglopname="";
-    private String qrystok="",aktifkanbatch="no";
+    private String qrystok="",aktifkanbatch="no",hppfarmasi="";
 
     /** 
      * @param parent
@@ -185,6 +185,11 @@ public class DlgSirkulasiBarang4 extends javax.swing.JDialog {
             aktifkanbatch = "no";
         }
         
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
+        }
     }    
     /** This method is called from within the constructor to
      * initialize the form.
@@ -858,11 +863,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();    
                 
                 if(aktifkanbatch.equals("yes")){
-                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                    qrystok="select sum(stok),(sum(stok)*"+hppfarmasi+") as aset "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
                 }else{
-                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                    qrystok="select sum(stok),(sum(stok)*"+hppfarmasi+") as aset "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
                 }
@@ -1354,11 +1359,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();         
                 
                 if(aktifkanbatch.equals("yes")){
-                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                    qrystok="select sum(stok),(sum(stok)*"+hppfarmasi+") as aset "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
                 }else{
-                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                    qrystok="select sum(stok),(sum(stok)*"+hppfarmasi+") as aset "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
                 }

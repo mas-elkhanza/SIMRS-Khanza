@@ -26,7 +26,7 @@ public class DlgSisaStok extends javax.swing.JDialog {
     private String[] posisigudang;
     private int i=0,kolom=0,no=0;
     private double total=0,stok=0;
-    private String qrystok="",aktifkanbatch="no";
+    private String qrystok="",aktifkanbatch="no",hppfarmasi="";
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -53,6 +53,12 @@ public class DlgSisaStok extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
+        }
     }
 
     /** This method is called from within the constructor to
@@ -380,7 +386,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
             
             ps= koneksi.prepareStatement(
-                    "select kode_brng,nama_brng,kode_sat,dasar from databarang where "+
+                    "select kode_brng,nama_brng,kode_sat,"+hppfarmasi+" as dasar from databarang where "+
                     "kode_brng like ? or nama_brng like ? order by kode_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");

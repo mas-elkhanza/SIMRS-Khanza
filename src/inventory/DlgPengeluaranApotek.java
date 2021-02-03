@@ -38,7 +38,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     public boolean tampilkanpermintaan=false;
     private double stok_asal=0;
     private boolean sukses=true;
-    private String aktifkanbatch="no",DEPOAKTIFOBAT="";
+    private String aktifkanbatch="no",DEPOAKTIFOBAT="",hppfarmasi="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -210,6 +210,11 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
             DEPOAKTIFOBAT = "";
         }
         
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
+        }
     }
     
 
@@ -1059,7 +1064,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         try{
             if(aktifkanbatch.equals("yes")){
                 ps=koneksi.prepareStatement(
-                    "select data_batch.kode_brng, databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch.dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur "+
+                    "select data_batch.kode_brng, databarang.nama_brng,jenis.nama,databarang.kode_sat,data_batch."+hppfarmasi+" as dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur "+
                     " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                     " inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " inner join gudangbarang on data_batch.kode_brng=gudangbarang.kode_brng and data_batch.no_batch=gudangbarang.no_batch and data_batch.no_faktur=gudangbarang.no_faktur "+
@@ -1093,7 +1098,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 } 
             }else{
                 ps=koneksi.prepareStatement(
-                    "select databarang.kode_brng, databarang.nama_brng,jenis.nama,databarang.kode_sat, databarang.dasar,gudangbarang.stok  "+
+                    "select databarang.kode_brng, databarang.nama_brng,jenis.nama,databarang.kode_sat, databarang."+hppfarmasi+" as dasar,gudangbarang.stok  "+
                     " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                     " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
@@ -1288,7 +1293,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             
             ps=koneksi.prepareStatement(
                 "select databarang.kode_brng, databarang.nama_brng,"+
-                "detail_permintaan_medis.kode_sat,jenis.nama,databarang.dasar, "+
+                "detail_permintaan_medis.kode_sat,jenis.nama,databarang."+hppfarmasi+" as dasar, "+
                 "detail_permintaan_medis.jumlah from databarang inner join detail_permintaan_medis "+
                 "inner join jenis on databarang.kdjns=jenis.kdjns and detail_permintaan_medis.kode_brng=databarang.kode_brng "+
                 "where detail_permintaan_medis.no_permintaan=? order by databarang.nama_brng");
@@ -1318,7 +1323,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
                     if(aktifkanbatch.equals("yes")){
                         psstok=koneksi.prepareStatement(
-                                "select ifnull(gudangbarang.stok,'0'),data_batch.dasar,gudangbarang.no_batch,gudangbarang.no_faktur "+
+                                "select ifnull(gudangbarang.stok,'0'),data_batch."+hppfarmasi+" as dasar,gudangbarang.no_batch,gudangbarang.no_faktur "+
                                 "from gudangbarang inner join data_batch on gudangbarang.kode_brng=data_batch.kode_brng "+
                                 "where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and "+
                                 "gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' "+

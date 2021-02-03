@@ -33,6 +33,7 @@ public class TokoSirkulasi extends javax.swing.JDialog {
     private TokoBarang barang=new TokoBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
+    private String hpptoko="";
 
     /** 
      * @param parent
@@ -158,8 +159,12 @@ public class TokoSirkulasi extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
      
+        try {
+            hpptoko=koneksiDB.HPPTOKO();
+        } catch (Exception e) {
+            hpptoko="dasar";
+        }
     }    
     /** This method is called from within the constructor to
      * initialize the form.
@@ -557,7 +562,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
        Valid.tabelKosong(tabMode);      
        try{   
             ps=koneksi.prepareStatement("select tokobarang.kode_brng,tokobarang.nama_brng, "+
-                        "kodesatuan.satuan,tokobarang.stok,(tokobarang.stok*tokobarang.dasar) as aset "+
+                        "kodesatuan.satuan,tokobarang.stok,(tokobarang.stok*tokobarang."+hpptoko+") as aset "+
                         "from tokobarang inner join kodesatuan on tokobarang.kode_sat=kodesatuan.kode_sat "+
                         "where tokobarang.nama_brng like ? and tokobarang.kode_brng like ? or "+
                         "tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+

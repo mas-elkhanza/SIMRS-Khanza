@@ -47,7 +47,7 @@ public class DlgInputStok extends javax.swing.JDialog {
     private double[] hargabeli,stok,selisih,lebih,nomihilang,nomilebih;
     private WarnaTable2 warna=new WarnaTable2();
     private boolean aktif=false,sukses=true;
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",hppfarmasi="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -171,6 +171,12 @@ public class DlgInputStok extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+        }
+        
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
         }
             
     }
@@ -872,7 +878,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             try{  
                 Valid.tabelKosong(tabMode);
                 pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
-                        "databarang.dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "databarang."+hppfarmasi+" as dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         " where databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_brng like ? or "+
                         " databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.nama_brng like ? or "+
                         " databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_sat like ? or "+
@@ -918,7 +924,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         try{  
             Valid.tabelKosong(tabMode);
             pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
-                    "databarang.dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    "databarang."+hppfarmasi+" as dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " where databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_brng like ? or "+
                     " databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.nama_brng like ? or "+
                     " databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_sat like ? or "+
@@ -1075,11 +1081,11 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             
             if(TCari.getText().trim().equals("")){
                 pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
-                    "databarang.dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    "databarang."+hppfarmasi+" as dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " where databarang.status='1' order by databarang.nama_brng");
             }else{
                 pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
-                    "databarang.dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    "databarang."+hppfarmasi+" as dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " where databarang.status='1' and databarang.kode_brng like ? or "+
                     " databarang.status='1' and databarang.nama_brng like ? or "+
                     " databarang.status='1' and databarang.kode_sat like ? or "+
@@ -1173,7 +1179,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             
                         tbDokter.setValueAt(stokbarang,i,6);
 
-                        harga=Sequel.cariIsiAngka("select dasar from data_batch where kode_brng='"+tbDokter.getValueAt(i,1).toString()+"' and no_batch='"+tbDokter.getValueAt(i,11).toString()+"' and no_faktur='"+tbDokter.getValueAt(i,12).toString()+"'");
+                        harga=Sequel.cariIsiAngka("select "+hppfarmasi+" as dasar from data_batch where kode_brng='"+tbDokter.getValueAt(i,1).toString()+"' and no_batch='"+tbDokter.getValueAt(i,11).toString()+"' and no_faktur='"+tbDokter.getValueAt(i,12).toString()+"'");
                         if(harga>0){
                             tbDokter.setValueAt(harga,i,5);
                         }
