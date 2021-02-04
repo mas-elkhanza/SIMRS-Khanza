@@ -378,6 +378,13 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
         Umur = new widget.TextBox();
         buttonGroup1 = new javax.swing.ButtonGroup();
         Alamat = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        Tinggi150 = new javax.swing.JMenuItem();
+        Tinggi200 = new javax.swing.JMenuItem();
+        Tinggi250 = new javax.swing.JMenuItem();
+        Tinggi300 = new javax.swing.JMenuItem();
+        Tinggi350 = new javax.swing.JMenuItem();
+        Tinggi400 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -444,6 +451,104 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
         Alamat.setEditable(false);
         Alamat.setHighlighter(null);
         Alamat.setName("Alamat"); // NOI18N
+
+        Popup.setName("Popup"); // NOI18N
+
+        Tinggi150.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi150.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi150.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi150.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi150.setText("Tinggi Baris 150");
+        Tinggi150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi150.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi150.setName("Tinggi150"); // NOI18N
+        Tinggi150.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi150.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi150ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi150);
+
+        Tinggi200.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi200.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi200.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi200.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi200.setText("Tinggi Baris 200");
+        Tinggi200.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi200.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi200.setName("Tinggi200"); // NOI18N
+        Tinggi200.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi200.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi200ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi200);
+
+        Tinggi250.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi250.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi250.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi250.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi250.setText("Tinggi Baris 250");
+        Tinggi250.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi250.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi250.setName("Tinggi250"); // NOI18N
+        Tinggi250.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi250.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi250ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi250);
+
+        Tinggi300.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi300.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi300.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi300.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi300.setText("Tinggi Baris 300");
+        Tinggi300.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi300.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi300.setName("Tinggi300"); // NOI18N
+        Tinggi300.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi300.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi300ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi300);
+
+        Tinggi350.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi350.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi350.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi350.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi350.setText("Tinggi Baris 350");
+        Tinggi350.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi350.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi350.setName("Tinggi350"); // NOI18N
+        Tinggi350.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi350.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi350ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi350);
+
+        Tinggi400.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi400.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi400.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi400.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi400.setText("Tinggi Baris 400");
+        Tinggi400.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi400.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi400.setName("Tinggi400"); // NOI18N
+        Tinggi400.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi400.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi400ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi400);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -705,7 +810,7 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-02-2021" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2021" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -859,8 +964,9 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        tbPemeriksaan.setComponentPopupMenu(Popup);
         tbPemeriksaan.setName("tbPemeriksaan"); // NOI18N
-        tbPemeriksaan.setRowHeight(240);
+        tbPemeriksaan.setRowHeight(150);
         Scroll.setViewportView(tbPemeriksaan);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
@@ -1186,6 +1292,30 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         dokter.setVisible(true);
     }//GEN-LAST:event_btnDokterPjActionPerformed
 
+    private void Tinggi200ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi200ActionPerformed
+        tbPemeriksaan.setRowHeight(200);
+    }//GEN-LAST:event_Tinggi200ActionPerformed
+
+    private void Tinggi250ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi250ActionPerformed
+        tbPemeriksaan.setRowHeight(250);
+    }//GEN-LAST:event_Tinggi250ActionPerformed
+
+    private void Tinggi300ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi300ActionPerformed
+        tbPemeriksaan.setRowHeight(300);
+    }//GEN-LAST:event_Tinggi300ActionPerformed
+
+    private void Tinggi350ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi350ActionPerformed
+        tbPemeriksaan.setRowHeight(350);
+    }//GEN-LAST:event_Tinggi350ActionPerformed
+
+    private void Tinggi150ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi150ActionPerformed
+        tbPemeriksaan.setRowHeight(150);
+    }//GEN-LAST:event_Tinggi150ActionPerformed
+
+    private void Tinggi400ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi400ActionPerformed
+        tbPemeriksaan.setRowHeight(400);
+    }//GEN-LAST:event_Tinggi400ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1228,6 +1358,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa PanelInput;
     private widget.TextBox Pemeriksaan;
     private widget.TextBox Penjab;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.TextBox TNoRM;
@@ -1235,6 +1366,12 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox TPasien;
     private widget.TextBox TUmur;
     private widget.Tanggal Tanggal;
+    private javax.swing.JMenuItem Tinggi150;
+    private javax.swing.JMenuItem Tinggi200;
+    private javax.swing.JMenuItem Tinggi250;
+    private javax.swing.JMenuItem Tinggi300;
+    private javax.swing.JMenuItem Tinggi350;
+    private javax.swing.JMenuItem Tinggi400;
     private widget.TextBox Umur;
     private widget.Button btnDokter;
     private widget.Button btnDokterPj;
