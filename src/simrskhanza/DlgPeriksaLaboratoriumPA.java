@@ -928,18 +928,11 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         jml=0;
-        for(i=0;i<tbTarif.getRowCount();i++){
-            if(tbTarif.getValueAt(i,0).toString().equals("true")){
+        for(i=0;i<tbPemeriksaan.getRowCount();i++){
+            if(!tbPemeriksaan.getValueAt(i,2).toString().equals("")){
                 jml++;
             }
         }
-        
-        for(i=0;i<tbPemeriksaan.getRowCount();i++){
-            if(!tbPemeriksaan.getValueAt(i,2).toString().equals("")){
-                tbPemeriksaan.setValueAt(true,i,0);
-            }
-        }
-        
         if(TNoRw.getText().equals("")||TNoRM.getText().equals("")||TPasien.getText().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
         }else if(KdPtg.getText().equals("")||NmPtg.getText().equals("")){
@@ -955,15 +948,11 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
         }else{
             Sequel.queryu("truncate table temporary_lab");
             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
-                if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                    Sequel.menyimpan("temporary_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                        "0",tbPemeriksaan.getValueAt(i,1).toString(),
-                        tbPemeriksaan.getValueAt(i,2).toString().replaceAll("'","`"),
-                        tbPemeriksaan.getValueAt(i,3).toString(),
-                        tbPemeriksaan.getValueAt(i,4).toString(),
-                        tbPemeriksaan.getValueAt(i,5).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
-                    });
-                }                
+                Sequel.menyimpan("temporary_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                    "0",tbPemeriksaan.getValueAt(i,0).toString(),tbPemeriksaan.getValueAt(i,1).toString(),tbPemeriksaan.getValueAt(i,2).toString(),
+                    tbPemeriksaan.getValueAt(i,3).toString(),tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,5).toString(),
+                    "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                });          
             }
             
             Map<String, Object> param = new HashMap<>();
@@ -994,82 +983,12 @@ public final class DlgPeriksaLaboratoriumPA extends javax.swing.JDialog {
             param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KodePj.getText()));  
             param.put("finger2",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdPtg.getText()));  
             if(noorder.equals("")){
-                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih hasil pemeriksaan..!","Hasil Pemeriksaan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Model 1","Model 2", "Model 3", "Model 4", "Model 5", "Model 6", "Model 7", "Model 8", "Model 9", "Model 10", "Model 11"},"Model 1");
-                switch (pilihan) {
-                    case "Model 1":
-                          Valid.MyReport("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 2":
-                          Valid.MyReport("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 3":
-                          Valid.MyReport("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 4":
-                          Valid.MyReport("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 5":
-                          Valid.MyReport("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 6":
-                          Valid.MyReport("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 7":
-                          Valid.MyReport("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 8":
-                          Valid.MyReport("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 9":
-                          Valid.MyReport("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 10":
-                          Valid.MyReport("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 11":
-                          Valid.MyReport("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                }  
+                Valid.MyReport("rptPeriksaLabPA.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);     
             }else{
                 param.put("nopermintaan",noorder);   
-                param.put("tanggalpermintaan",Sequel.cariIsi("select DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') from permintaan_lab where noorder=?",noorder));  
-                param.put("jampermintaan",Sequel.cariIsi("select jam_permintaan from permintaan_lab where noorder=?",noorder)); 
-                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih hasil pemeriksaan..!","Hasil Pemeriksaan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Model 1","Model 2", "Model 3", "Model 4", "Model 5", "Model 6", "Model 7", "Model 8", "Model 9", "Model 10", "Model 11"},"Model 1");
-                switch (pilihan) {
-                    case "Model 1":
-                          Valid.MyReport("rptPeriksaLabPermintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 2":
-                          Valid.MyReport("rptPeriksaLab2Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 3":
-                          Valid.MyReport("rptPeriksaLab3Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 4":
-                          Valid.MyReport("rptPeriksaLab4Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 5":
-                          Valid.MyReport("rptPeriksaLab5Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 6":
-                          Valid.MyReport("rptPeriksaLab6Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 7":
-                          Valid.MyReport("rptPeriksaLab7Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 8":
-                          Valid.MyReport("rptPeriksaLab8Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 9":
-                          Valid.MyReport("rptPeriksaLab9Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 10":
-                          Valid.MyReport("rptPeriksaLab10Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                    case "Model 11":
-                          Valid.MyReport("rptPeriksaLab11Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
-                          break;
-                }
+                param.put("tanggalpermintaan",Sequel.cariIsi("select DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') from permintaan_labpa where noorder=?",noorder));  
+                param.put("jampermintaan",Sequel.cariIsi("select jam_permintaan from permintaan_labpa where noorder=?",noorder)); 
+                Valid.MyReport("rptPeriksaLabPermintaanPA.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);  
             }
                        
         }
