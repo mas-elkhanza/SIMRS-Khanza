@@ -2,13 +2,13 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>KhanzaHMS</comment> 
-    <entry key="HOST">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="HOST">eEVvxeruJvL71QyQBstsUw==</entry>
     <entry key="DATABASE">vSxiU3Y+QWpA/2MMqHK94A==</entry>
     <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
-    <entry key="PAS"></entry>
+    <entry key="PAS">xx03mwKKUU0XhnUZxTSFeA==</entry>
     <entry key="CARICEPAT">nonaktif</entry>
-    <entry key="HOSTHYBRIDWEB">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="HOSTHYBRIDWEB">eEVvxeruJvL71QyQBstsUw==</entry>
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="PORTWEB">80</entry>
     <entry key="ANTRIAN">player</entry>
@@ -51,8 +51,8 @@
     <entry key="URUTNOREG">dokter</entry>
     <entry key="JADWALDOKTERDIREGISTRASI">aktif</entry>    
     <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>
-    <entry key="URLAPIINHEALTH">http://development.inhealth.co.id/pelkesws2</entry>
-    <entry key="TOKENINHEALTH">inh_93c771ce074496aa463f7da4d2b1bb74</entry>
+    <entry key="URLAPIINHEALTH">http://dummy.inhealth.co.id/pelkesws2</entry>
+    <entry key="TOKENINHEALTH">WhTCrcPRDrv5d1JZAFEBrw==</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
     <entry key="AKTIFKANBATCHOBAT">no</entry>
     <entry key="CETAKRINCIANOBAT">no</entry>
