@@ -25,6 +25,8 @@ public class Spri {
     private String nama;
     private String keluhan;
     private String status;
+    private String rujukan;
+    private String terapi;
     
     private Pasien pasien;
     private Dokter dokter;
