@@ -55,9 +55,12 @@ public class SpriDao implements SpriInterface<Spri> {
                 + domain.getDokter().getKd_dokter() + "','"
                 + domain.getNama() + "','"
                 + domain.getKeluhan() + "','"
-                + domain.getStatus() + "'", "spri");
+                + domain.getStatus() + "','"
+                + domain.getRujukan() + "','"
+                + domain.getTerapi() + "'", "spri");
 
     }
+
     /**
      *
      * @param a
@@ -66,8 +69,8 @@ public class SpriDao implements SpriInterface<Spri> {
      */
     @Override
     public void delete(String tgl_awal, JTextField text, String tgl_ahir) {
-        System.out.println("DELETE FROM temp_spri WHERE id = "+text.getText()+" AND tanggal between '"+tgl_awal+"' AND '"+tgl_ahir+"'");
-        Sequel.queryu("DELETE FROM temp_spri WHERE id = "+text.getText()+" AND tanggal between '"+tgl_awal+"' AND '"+tgl_ahir+"'");
+        System.out.println("DELETE FROM temp_spri WHERE id = " + text.getText() + " AND tanggal between '" + tgl_awal + "' AND '" + tgl_ahir + "'");
+        Sequel.queryu("DELETE FROM temp_spri WHERE id = " + text.getText() + " AND tanggal between '" + tgl_awal + "' AND '" + tgl_ahir + "'");
     }
 
     /**
@@ -81,7 +84,7 @@ public class SpriDao implements SpriInterface<Spri> {
         try {
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
                     + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
+                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan,temp_spri.rujukan,temp_spri.terapi "
                     + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                     + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter where"
                     + " temp_spri.norm like ? or temp_spri.kd_dokter like ? or temp_spri.nama like ?"
@@ -116,7 +119,9 @@ public class SpriDao implements SpriInterface<Spri> {
                 + "upf='" + domain.getUpf() + "',"
                 + "kd_dokter='" + domain.getDokter().getKd_dokter() + "',"
                 + "nama='" + domain.getNama() + "',"
-                + "keluhan='" + domain.getKeluhan() + "'");
+                + "keluhan='" + domain.getKeluhan() + "',"
+                + "rujukan='" + domain.getRujukan() + "',"
+                + "terapi='" + domain.getTerapi() + "'");
     }
 
     /**
@@ -132,7 +137,7 @@ public class SpriDao implements SpriInterface<Spri> {
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
                     + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                     + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
-                    + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
+                    + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan,temp_spri.rujukan,temp_spri.terapi "
                     + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                     + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                     + " where temp_spri.tanggal between ? and ? "
@@ -181,6 +186,8 @@ public class SpriDao implements SpriInterface<Spri> {
         spri.setNama(rs.getString("nama"));
         spri.setKeluhan(rs.getString("keluhan"));
         spri.setDiagnosa(rs.getString("diagnosa"));
+        spri.setRujukan(rs.getString("rujukan"));
+        spri.setTerapi(rs.getString("terapi"));
         spri.setId(rs.getInt("temp_spri.id"));
         kis.add(spri);
     }

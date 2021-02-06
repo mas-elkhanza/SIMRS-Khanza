@@ -1112,6 +1112,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
+            param.put("periode", Tgl1.getSelectedItem()+" s/d "+Tgl2.getSelectedItem());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReport("rptStokKeluarMedis.jasper", "report", "::[ Data Stok Keluar Obat, Alkes & BHP ]::", param);
 
