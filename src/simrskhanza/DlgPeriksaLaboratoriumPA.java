@@ -1180,9 +1180,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
    try{
        for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
-          if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-              tabMode.removeRow(i);
-          }
+          tbPemeriksaan.setValueAt("",i,1);
+          tbPemeriksaan.setValueAt("",i,2);
+          tbPemeriksaan.setValueAt("",i,3);
+          tbPemeriksaan.setValueAt("",i,4);
+          tbPemeriksaan.setValueAt("",i,5);
        } 
    }catch(Exception ex){
    }
