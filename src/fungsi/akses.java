@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import setting.DlgUpdateUser;
 
 /**
  *
@@ -2046,7 +2045,7 @@ public final class akses {
                     akses.booking_periksa = false;
                 }
             } catch (Exception e) {
-            Logger.getLogger(akses.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(akses.class.getName()).log(Level.SEVERE, null, e);
                 System.out.println("Notifikasi : " + e);
             } finally {
                 if (rs != null) {
