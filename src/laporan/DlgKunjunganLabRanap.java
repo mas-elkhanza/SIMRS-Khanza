@@ -1247,6 +1247,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         }
                     }    
                     
+                    ps2=koneksi.prepareStatement(
+                        "select trim(jns_perawatan_lab.nm_perawatan) from detail_periksa_labpa inner join jns_perawatan_lab "+
+                        "on jns_perawatan_lab.kd_jenis_prw=detail_periksa_labpa.kd_jenis_prw where "+
+                        "detail_periksa_labpa.no_rawat=? and detail_periksa_labpa.tgl_periksa=? and detail_periksa_labpa.jam=? ");
+                    try {
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        ps2.setString(2,rs.getString("tgl_periksa"));
+                        ps2.setString(3,rs.getString("jam"));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            tindakan=rs2.getString(1)+","+tindakan;
+                        }                        
+                    } catch (Exception e) {
+                        System.out.println("Notif :"+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    } 
+                    
                     if(tindakan.endsWith(",")){
                         tindakan = tindakan.substring(0,tindakan.length() - 1);
                     }

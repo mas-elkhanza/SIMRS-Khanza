@@ -43,7 +43,7 @@ public class PanelRiwayat extends widget.panelisi {
     private ResultSet rs,rs2,rs3,rs4,rs5;
     private PreparedStatement ps,ps2;
     private String tanggal="",jam="",dpjp="",kddpjp="",tanggal1="",tanggal2="",norm="",keputusan="",dokterrujukan="",polirujukan="",
-            ke1="",ke2="",ke3="",ke4="",ke5="",ke6="";
+            ke1="",ke2="",ke3="",ke4="",ke5="",ke6="",file="";
     private StringBuilder htmlContent;
     private boolean caritanggal=false;
     private int i=0,y=0,w=0,urut;
@@ -4535,13 +4535,13 @@ public class PanelRiwayat extends widget.panelisi {
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                                      "inner join petugas on periksa_lab.nip=petugas.nip inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
+                                     "where periksa_lab.kategori='PK' and periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
                                 if(rs3.next()){
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
@@ -4633,6 +4633,110 @@ public class PanelRiwayat extends widget.panelisi {
                                         if(rs4!=null){
                                             rs4.close();
                                         }
+                                    }
+                                    
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi Lab : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //tindakan pemeriksaan laborat
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw, "+
+                                     "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
+                                     "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                                     "inner join petugas on periksa_lab.nip=petugas.nip inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
+                                     "where periksa_lab.kategori='PA' and periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
+                                if(rs3.next()){
+                                    tanggal=rs3.getString("tgl_periksa");
+                                    jam=rs3.getString("jam");
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PA</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nama")+"</td>"+
+                                                "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya"))+"</td>"+
+                                             "</tr>"
+                                        ); 
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select diagnosa_klinik,makroskopik,mikroskopik,kesimpulan,kesan from detail_periksa_labpa "+
+                                                "where no_rawat='"+rs2.getString("no_rawat")+"' and kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and "+
+                                                "tgl_periksa='"+rs3.getString("tgl_periksa")+"' and jam='"+rs3.getString("jam")+"'").executeQuery();
+                                            if(rs4.next()){ 
+                                                file=Sequel.cariIsi("select photo from detail_periksa_labpa_gambar where no_rawat='"+rs2.getString("no_rawat")+"' and kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and tgl_periksa='"+rs3.getString("tgl_periksa")+"' and jam='"+rs3.getString("jam")+"'");
+                                                htmlContent.append(
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Diagnosa Klinis</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("diagnosa_klinik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Makroskopik</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("makroskopik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Mikroskopik</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("mikroskopik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesimpulan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesimpulan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>File/Gambar PA</td>"+
+                                                       "<td valign='top' colspan='4'>: <a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'>"+file.replaceAll("pages/upload/","")+"</a></td>"+
+                                                    "</tr>"
+                                                );                                           
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notifikasi : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        w++;
                                     }
                                     
                                     htmlContent.append(
@@ -6930,13 +7034,13 @@ public class PanelRiwayat extends widget.panelisi {
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                                      "inner join petugas on periksa_lab.nip=petugas.nip inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
+                                     "where periksa_lab.kategori='PK' and periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
                                 if(rs3.next()){ 
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
@@ -7035,6 +7139,110 @@ public class PanelRiwayat extends widget.panelisi {
                                 }                                
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //tindakan pemeriksaan laborat
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw, "+
+                                     "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
+                                     "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                                     "inner join petugas on periksa_lab.nip=petugas.nip inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
+                                     "where periksa_lab.kategori='PA' and periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
+                                if(rs3.next()){
+                                    tanggal=rs3.getString("tgl_periksa");
+                                    jam=rs3.getString("jam");
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PA</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nama")+"</td>"+
+                                                "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya"))+"</td>"+
+                                             "</tr>"
+                                        ); 
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select diagnosa_klinik,makroskopik,mikroskopik,kesimpulan,kesan from detail_periksa_labpa "+
+                                                "where no_rawat='"+rs2.getString("no_rawat")+"' and kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and "+
+                                                "tgl_periksa='"+rs3.getString("tgl_periksa")+"' and jam='"+rs3.getString("jam")+"'").executeQuery();
+                                            if(rs4.next()){ 
+                                                file=Sequel.cariIsi("select photo from detail_periksa_labpa_gambar where no_rawat='"+rs2.getString("no_rawat")+"' and kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and tgl_periksa='"+rs3.getString("tgl_periksa")+"' and jam='"+rs3.getString("jam")+"'");
+                                                htmlContent.append(
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Diagnosa Klinis</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("diagnosa_klinik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Makroskopik</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("makroskopik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Mikroskopik</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("mikroskopik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesimpulan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesimpulan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>File/Gambar PA</td>"+
+                                                       "<td valign='top' colspan='4'>: <a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'>"+file.replaceAll("pages/upload/","")+"</a></td>"+
+                                                    "</tr>"
+                                                );                                           
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notifikasi : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        w++;
+                                    }
+                                    
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi Lab : "+e);
                             } finally{
                                 if(rs3!=null){
                                     rs3.close();
@@ -12046,13 +12254,13 @@ public class PanelRiwayat extends widget.panelisi {
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                                      "inner join petugas on periksa_lab.nip=petugas.nip inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
+                                     "where periksa_lab.kategori='PK' and periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
                                 if(rs3.next()){
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
@@ -12144,6 +12352,109 @@ public class PanelRiwayat extends widget.panelisi {
                                         if(rs4!=null){
                                             rs4.close();
                                         }
+                                    }
+                                    
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi Lab : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //tindakan pemeriksaan laborat
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw, "+
+                                     "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
+                                     "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                                     "inner join petugas on periksa_lab.nip=petugas.nip inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
+                                     "where periksa_lab.kategori='PA' and periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
+                                if(rs3.next()){
+                                    tanggal=rs3.getString("tgl_periksa");
+                                    jam=rs3.getString("jam");
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium PA</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nama")+"</td>"+
+                                                "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya"))+"</td>"+
+                                             "</tr>"
+                                        ); 
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select diagnosa_klinik,makroskopik,mikroskopik,kesimpulan,kesan from detail_periksa_labpa "+
+                                                "where no_rawat='"+rs2.getString("no_rawat")+"' and kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and "+
+                                                "tgl_periksa='"+rs3.getString("tgl_periksa")+"' and jam='"+rs3.getString("jam")+"'").executeQuery();
+                                            if(rs4.next()){ 
+                                                file=Sequel.cariIsi("select photo from detail_periksa_labpa_gambar where no_rawat='"+rs2.getString("no_rawat")+"' and kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and tgl_periksa='"+rs3.getString("tgl_periksa")+"' and jam='"+rs3.getString("jam")+"'");
+                                                htmlContent.append(
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Diagnosa Klinis</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("diagnosa_klinik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Makroskopik</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("makroskopik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Mikroskopik</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("mikroskopik")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesimpulan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesimpulan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top' colspan='5' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'><img alt='Gambar PA' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"' width='450' height='450'/></a></td>"+
+                                                    "</tr>"
+                                                );                                           
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notifikasi : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        w++;
                                     }
                                     
                                     htmlContent.append(
