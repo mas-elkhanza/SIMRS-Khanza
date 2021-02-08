@@ -237,6 +237,7 @@ import inventory.DlgObatPenyakit;
 import inventory.DlgObatPerTanggal;
 import inventory.DlgObatPeresep;
 import inventory.DlgPembelian;
+import inventory.DlgPemberianObat;
 import inventory.DlgPemesanan;
 import inventory.DlgPengajuanBarangMedis;
 import inventory.DlgPengambilanUTD;
@@ -625,7 +626,7 @@ import viabarcode.DlgBarcodeRanap;
  * @author perpustakaan
  */
 public class frmUtama extends javax.swing.JFrame {
-
+ 
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
@@ -8051,8 +8052,8 @@ public class frmUtama extends javax.swing.JFrame {
                     System.out.println("Notifikasi : " + e);
                 }
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "ASTAGHFIRULLAH\nSIMRSKhanza Anda Belum Update, mohon Restart Komputer Dahulu, Terima Kasih.","PERINGATAN",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "ASTAGHFIRULLAH\nSIMRSKhanza Anda Belum Update, mohon Restart Komputer Dahulu, Terima Kasih.", "PERINGATAN", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -15970,6 +15971,18 @@ public class frmUtama extends javax.swing.JFrame {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    private void btnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPemberianObat form = new DlgPemberianObat(this, false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
     private void btnStokOpnameTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -16717,7 +16730,7 @@ public class frmUtama extends javax.swing.JFrame {
             btnDiagnosaPasienCorona, btnPerawatanPasienCorona, btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi, btnBayarPiutangToko, btnPiutangHarianToko, btnPenjualanHarianToko,
             btnDeteksiDiniCorona, btnPenilaianAwalKeperawatanKebidanan, btnPengumumanEPasien, btnSuratHamil,
-            btnSetTarifOnline, btnBookingPeriksa;
+            btnSetTarifOnline, btnBookingPeriksa, btnDataPemberianObat;
 
     /**
      *
@@ -16731,7 +16744,7 @@ public class frmUtama extends javax.swing.JFrame {
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     jLabel8.setText(rs.getString(1));
-                    this.setTitle("SIM " + rs.getString("nama_instansi")+" Versi "+versi);
+                    this.setTitle("SIM " + rs.getString("nama_instansi") + " Versi " + versi);
                     jLabel11.setText(rs.getString(2) + ", " + rs.getString(3) + ", " + rs.getString(4) + " ");
                     akses.setnamars(rs.getString("nama_instansi"));
                     akses.setalamatrs(rs.getString("alamat_instansi"));
@@ -17032,6 +17045,9 @@ public class frmUtama extends javax.swing.JFrame {
                 Panelmenu.add(btnTemporaryPresensi);
                 jmlmenu++;
             }
+
+            Panelmenu.add(btnDataPemberianObat);
+            jmlmenu++;
 
             Panelmenu.add(btnRekapPresensi);
             Panelmenu.add(btnRekapPresensi2);
@@ -20071,6 +20087,9 @@ public class frmUtama extends javax.swing.JFrame {
             Panelmenu.add(btnTemporaryPresensi);
             jmlmenu++;
         }
+
+        Panelmenu.add(btnDataPemberianObat);
+        jmlmenu++;
 
         Panelmenu.add(btnRekapPresensi);
         Panelmenu.add(btnRekapPresensi2);
@@ -27424,6 +27443,11 @@ public class frmUtama extends javax.swing.JFrame {
                 jmlmenu++;
             }
         }
+
+        if (btnDataPemberianObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
+            Panelmenu.add(btnDataPemberianObat);
+            jmlmenu++;
+        }
     }
 
     private void initKhanza() {
@@ -29407,6 +29431,17 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
+        btnDataPemberianObat = new widget.ButtonBig();
+        btnDataPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_addressbook_32380.png")));
+        btnDataPemberianObat.setText("Data Pemberian Obat");
+        btnDataPemberianObat.setIconTextGap(0);
+        btnDataPemberianObat.setName("btnDataPemberianObat");
+        btnDataPemberianObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataPemberianObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataPemberianObatActionPerformed(evt);
+            }
+        });
     }
 
     private void hargaiAku() {
