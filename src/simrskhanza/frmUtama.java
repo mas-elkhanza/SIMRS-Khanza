@@ -626,7 +626,7 @@ import viabarcode.DlgBarcodeRanap;
  * @author perpustakaan
  */
 public class frmUtama extends javax.swing.JFrame {
-
+ 
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
