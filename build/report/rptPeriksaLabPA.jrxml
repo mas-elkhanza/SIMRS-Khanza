@@ -395,7 +395,7 @@
 					<font fontName="Tahoma" size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Makroskopis :]]></text>
+				<text><![CDATA[Makroskopik :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="1" y="255" width="521" height="14" uuid="93f58ce3-8c91-4274-9bd6-c8bae30744af"/>
@@ -411,7 +411,7 @@
 					<font fontName="Tahoma" size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Mikroskopis :]]></text>
+				<text><![CDATA[Mikroskopik :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="1" y="290" width="521" height="14" uuid="c9b6a869-8f08-4606-ae83-d077d1284d88"/>

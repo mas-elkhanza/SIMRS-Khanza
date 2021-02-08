@@ -4720,14 +4720,18 @@ public class PanelRiwayat extends widget.panelisi {
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'>Kesan</td>"+
                                                        "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
-                                                    "</tr>"+
-                                                    "<tr>"+
-                                                       "<td valign='top' align='center'></td>"+
-                                                       "<td valign='top'></td>"+
-                                                       "<td valign='top'>File/Gambar PA</td>"+
-                                                       "<td valign='top' colspan='4'>: <a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'>"+file.replaceAll("pages/upload/","")+"</a></td>"+
                                                     "</tr>"
-                                                );                                           
+                                                );     
+                                                if(!file.equals("")){
+                                                    htmlContent.append(
+                                                        "<tr>"+
+                                                           "<td valign='top' align='center'></td>"+
+                                                           "<td valign='top'></td>"+
+                                                           "<td valign='top'>File/Gambar PA</td>"+
+                                                           "<td valign='top' colspan='4'>: <a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'>"+file.replaceAll("pages/upload/","")+"</a></td>"+
+                                                        "</tr>"
+                                                    );
+                                                }   
                                             }
                                         } catch (Exception e) {
                                             System.out.println("Notifikasi : "+e);
@@ -7219,14 +7223,18 @@ public class PanelRiwayat extends widget.panelisi {
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'>Kesan</td>"+
                                                        "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
-                                                    "</tr>"+
-                                                    "<tr>"+
-                                                       "<td valign='top' align='center'></td>"+
-                                                       "<td valign='top'></td>"+
-                                                       "<td valign='top'>File/Gambar PA</td>"+
-                                                       "<td valign='top' colspan='4'>: <a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'>"+file.replaceAll("pages/upload/","")+"</a></td>"+
                                                     "</tr>"
-                                                );                                           
+                                                );    
+                                                if(!file.equals("")){
+                                                    htmlContent.append(
+                                                        "<tr>"+
+                                                           "<td valign='top' align='center'></td>"+
+                                                           "<td valign='top'></td>"+
+                                                           "<td valign='top'>File/Gambar PA</td>"+
+                                                           "<td valign='top' colspan='4'>: <a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'>"+file.replaceAll("pages/upload/","")+"</a></td>"+
+                                                        "</tr>"
+                                                    );
+                                                }
                                             }
                                         } catch (Exception e) {
                                             System.out.println("Notifikasi : "+e);
@@ -12439,13 +12447,17 @@ public class PanelRiwayat extends widget.panelisi {
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'>Kesan</td>"+
                                                        "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
-                                                    "</tr>"+
-                                                    "<tr>"+
-                                                       "<td valign='top' align='center'></td>"+
-                                                       "<td valign='top'></td>"+
-                                                       "<td valign='top' colspan='5' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'><img alt='Gambar PA' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"' width='450' height='450'/></a></td>"+
                                                     "</tr>"
-                                                );                                           
+                                                );  
+                                                if(!file.equals("")){
+                                                    htmlContent.append(
+                                                        "<tr>"+
+                                                            "<td valign='top' align='center'></td>"+
+                                                            "<td valign='top'></td>"+
+                                                            "<td valign='top' colspan='5' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"'><img alt='Gambar PA' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+file+"' width='450' height='450'/></a></td>"+
+                                                        "</tr>"
+                                                    );
+                                                }
                                             }
                                         } catch (Exception e) {
                                             System.out.println("Notifikasi : "+e);

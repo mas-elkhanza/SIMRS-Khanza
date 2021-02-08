@@ -17,6 +17,9 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -57,6 +60,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             bagian_rs=0,biaya_omloop=0,biaya_omloop2=0,biaya_omloop3=0,
             biaya_omloop4=0,biaya_omloop5=0,biayasarpras=0,biaya_dokter_pjanak=0,
             biaya_dokter_umum=0;
+    private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -1180,6 +1184,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         isForm9();
         ChkInput10.setSelected(false);
         isForm10();
+        
+        Valid.SetTgl2(Tgl1,format.format(new Date())+" 00:00:00");
+        Valid.SetTgl2(Tgl2,format.format(new Date())+" 23:59:59");
     }
     
 
