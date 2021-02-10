@@ -698,10 +698,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     kdjenis.getText().trim().equals("")&&nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptRingkasanPengajuanObat.jasper","report","::[ Laporan Ringkasan Pengajuan Obat/Alkes/BHP Medis ]::",
                     "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as namajenis,"+
-                    "sum(detail_pengajuan_barang_medis.jumlah) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,detail_pengajuan_barang_medis.kode_sat "+
+                    "sum(detail_pengajuan_barang_medis.jumlah2) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,databarang.kode_sat "+
                     "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
                     "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                    " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
+                    " and databarang.kode_sat=kodesatuan.kode_sat "+
                     " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
                     " and pengajuan_barang_medis.nip=pegawai.nik "+
                     " and databarang.kdjns=jenis.kdjns "+
@@ -709,10 +709,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }else{
                 Valid.MyReportqry("rptRingkasanPengajuanObat.jasper","report","::[ Laporan Ringkasan Pengajuan Obat/Alkes/BHP Medis ]::",
                     "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as namajenis,"+
-                    "sum(detail_pengajuan_barang_medis.jumlah) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,detail_pengajuan_barang_medis.kode_sat "+
+                    "sum(detail_pengajuan_barang_medis.jumlah2) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,databarang.kode_sat "+
                     "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
                     "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                    " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
+                    " and databarang.kode_sat=kodesatuan.kode_sat "+
                     " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
                     " and pengajuan_barang_medis.nip=pegawai.nik "+
                     " and databarang.kdjns=jenis.kdjns "+
@@ -721,7 +721,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     " and pegawai.nama like '%"+NmPeg.getText()+"%'  and jenis.nama like '%"+kdjenis.getText()+"%' and databarang.nama_brng like '%"+nmbar.getText()+"%' and "+
                     " (pengajuan_barang_medis.no_pengajuan like '%"+TCari.getText()+"%' or pengajuan_barang_medis.nip like '%"+TCari.getText()+"%' or pegawai.nama like '%"+TCari.getText()+"%' "+
                     " or jenis.nama like '%"+TCari.getText()+"%' or detail_pengajuan_barang_medis.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' "+
-                    " or detail_pengajuan_barang_medis.kode_sat like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%') "+
+                    " or databarang.kode_sat like '%"+TCari.getText()+"%' or kodesatuan.satuan like '%"+TCari.getText()+"%') "+
                     " group by detail_pengajuan_barang_medis.kode_brng order by databarang.nama_brng ",param); 
             }
             
@@ -821,10 +821,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     kdjenis.getText().trim().equals("")&&nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                         "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as namajenis,"+
-                        "sum(detail_pengajuan_barang_medis.jumlah) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,detail_pengajuan_barang_medis.kode_sat "+
+                        "sum(detail_pengajuan_barang_medis.jumlah2) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,databarang.kode_sat "+
                         "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
                         "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                        " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
+                        " and databarang.kode_sat=kodesatuan.kode_sat "+
                         " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
                         " and pengajuan_barang_medis.nip=pegawai.nik "+
                         " and databarang.kdjns=jenis.kdjns "+
@@ -832,15 +832,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }else{
                 ps=koneksi.prepareStatement(
                         "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as namajenis,"+
-                        "sum(detail_pengajuan_barang_medis.jumlah) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,detail_pengajuan_barang_medis.kode_sat "+
+                        "sum(detail_pengajuan_barang_medis.jumlah2) as jumlah,sum(detail_pengajuan_barang_medis.total) as total,databarang.kode_sat "+
                         "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
                         "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                        " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
+                        " and databarang.kode_sat=kodesatuan.kode_sat "+
                         " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
                         " and pengajuan_barang_medis.nip=pegawai.nik "+
                         " and databarang.kdjns=jenis.kdjns "+
                         " where pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and "+
-                        " (pengajuan_barang_medis.no_pengajuan like ? or pengajuan_barang_medis.nip like ? or pegawai.nama like ? or jenis.nama like ? or detail_pengajuan_barang_medis.kode_brng like ? or databarang.nama_brng like ? or detail_pengajuan_barang_medis.kode_sat like ? or kodesatuan.satuan like ?) "+
+                        " (pengajuan_barang_medis.no_pengajuan like ? or pengajuan_barang_medis.nip like ? or pegawai.nama like ? or jenis.nama like ? or detail_pengajuan_barang_medis.kode_brng like ? or databarang.nama_brng like ? or databarang.kode_sat like ? or kodesatuan.satuan like ?) "+
                         " group by detail_pengajuan_barang_medis.kode_brng order by databarang.nama_brng ");
             }
                 
