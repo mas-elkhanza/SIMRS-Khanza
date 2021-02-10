@@ -148,7 +148,7 @@ public final class akses {
             permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
             harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
             skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false,jam_diet_pasien=false,
-            rvu_bpjs=false,verifikasi_penerimaan_farmasi=false,verifikasi_penerimaan_logistik=false,pemeriksaan_lab_pa=false;
+            rvu_bpjs=false,verifikasi_penerimaan_farmasi=false,verifikasi_penerimaan_logistik=false,pemeriksaan_lab_pa=false,ringkasan_pengajuan_obat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -850,6 +850,7 @@ public final class akses {
                         akses.verifikasi_penerimaan_farmasi=true;
                         akses.verifikasi_penerimaan_logistik=true;
                         akses.pemeriksaan_lab_pa=true;
+                        akses.ringkasan_pengajuan_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1535,6 +1536,7 @@ public final class akses {
                         akses.verifikasi_penerimaan_farmasi=rs2.getBoolean("verifikasi_penerimaan_farmasi");
                         akses.verifikasi_penerimaan_logistik=rs2.getBoolean("verifikasi_penerimaan_logistik");
                         akses.pemeriksaan_lab_pa=rs2.getBoolean("pemeriksaan_lab_pa");
+                        akses.ringkasan_pengajuan_obat=rs2.getBoolean("ringkasan_pengajuan_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2218,6 +2220,7 @@ public final class akses {
                         akses.verifikasi_penerimaan_farmasi=false;
                         akses.verifikasi_penerimaan_logistik=false;
                         akses.pemeriksaan_lab_pa=false;
+                        akses.ringkasan_pengajuan_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2956,4 +2959,5 @@ public final class akses {
     public static boolean getverifikasi_penerimaan_farmasi(){return akses.verifikasi_penerimaan_farmasi;}
     public static boolean getverifikasi_penerimaan_logistik(){return akses.verifikasi_penerimaan_logistik;}
     public static boolean getpemeriksaan_lab_pa(){return akses.pemeriksaan_lab_pa;}
+    public static boolean getringkasan_pengajuan_obat(){return akses.ringkasan_pengajuan_obat;}
 }   
