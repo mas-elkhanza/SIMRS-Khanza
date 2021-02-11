@@ -308,6 +308,8 @@ public class DlgRingkasanPembelianBarangMedis extends javax.swing.JDialog {
         MnSatuanAsc = new javax.swing.JMenuItem();
         MnTotalAsc = new javax.swing.JMenuItem();
         MnTotalDesc = new javax.swing.JMenuItem();
+        MnJumlahAsc = new javax.swing.JMenuItem();
+        MnJumlahDesc = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -512,6 +514,38 @@ public class DlgRingkasanPembelianBarangMedis extends javax.swing.JDialog {
         });
         Popup1.add(MnTotalDesc);
 
+        MnJumlahAsc.setBackground(new java.awt.Color(255, 255, 254));
+        MnJumlahAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnJumlahAsc.setForeground(new java.awt.Color(50, 50, 50));
+        MnJumlahAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnJumlahAsc.setText("Urutkan Berdasar Jumlah Ascending");
+        MnJumlahAsc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnJumlahAsc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnJumlahAsc.setName("MnJumlahAsc"); // NOI18N
+        MnJumlahAsc.setPreferredSize(new java.awt.Dimension(280, 26));
+        MnJumlahAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnJumlahAscActionPerformed(evt);
+            }
+        });
+        Popup1.add(MnJumlahAsc);
+
+        MnJumlahDesc.setBackground(new java.awt.Color(255, 255, 254));
+        MnJumlahDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnJumlahDesc.setForeground(new java.awt.Color(50, 50, 50));
+        MnJumlahDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnJumlahDesc.setText("Urutkan Berdasar Jumlah Descending");
+        MnJumlahDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnJumlahDesc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnJumlahDesc.setName("MnJumlahDesc"); // NOI18N
+        MnJumlahDesc.setPreferredSize(new java.awt.Dimension(280, 26));
+        MnJumlahDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnJumlahDescActionPerformed(evt);
+            }
+        });
+        Popup1.add(MnJumlahDesc);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -540,7 +574,6 @@ public class DlgRingkasanPembelianBarangMedis extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(Popup1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -1202,6 +1235,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         tampil();
     }//GEN-LAST:event_MnTotalDescActionPerformed
 
+    private void MnJumlahAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJumlahAscActionPerformed
+        order="order by sum(detailbeli.jumlah2) asc";
+        tampil();
+    }//GEN-LAST:event_MnJumlahAscActionPerformed
+
+    private void MnJumlahDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJumlahDescActionPerformed
+        order="order by sum(detailbeli.jumlah2) desc";
+        tampil();
+    }//GEN-LAST:event_MnJumlahDescActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1225,6 +1268,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnPrint;
     private widget.TextBox KdIF;
     private widget.Label LTotal;
+    private javax.swing.JMenuItem MnJumlahAsc;
+    private javax.swing.JMenuItem MnJumlahDesc;
     private javax.swing.JMenuItem MnKategoriAsc;
     private javax.swing.JMenuItem MnKategoriDesc;
     private javax.swing.JMenuItem MnKodeBarangAsc;
@@ -1286,7 +1331,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     " and pembelian.no_faktur=detailbeli.no_faktur "+
                     " and pembelian.kode_suplier=datasuplier.kode_suplier "+
                     " and databarang.kode_industri=industrifarmasi.kode_industri "+
-                    " and pembelian.nip=petugas.nip and databarang.kdjns=jenis.kdjns"+
+                    " and pembelian.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
                     " where pembelian.tgl_beli between ? and ? and pembelian.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and "+
                     " (pembelian.no_faktur like ? or pembelian.kode_suplier like ? or datasuplier.nama_suplier like ? or pembelian.nip like ? or petugas.nama like ? or bangsal.nm_bangsal like ? or detailbeli.kode_brng like ? or "+
                     " databarang.nama_brng like ? or databarang.kode_sat like ? or detailbeli.no_batch like ? or industrifarmasi.nama_industri like ? or jenis.nama like ?) "+
