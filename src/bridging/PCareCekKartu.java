@@ -5170,7 +5170,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             }
             requestJson ="{" +
                             "\"kdProviderPeserta\": \""+KdPPK.getText()+"\"," +
-                            "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
+                            "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem().toString().substring(0,10)+"\"," +
                             "\"noKartu\": \""+NoKartu.getText()+"\"," +
                             "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
                             "\"keluhan\": \""+Keluhan.getText()+"\"," +
