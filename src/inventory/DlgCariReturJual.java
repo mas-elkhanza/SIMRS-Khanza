@@ -1,10 +1,10 @@
 package inventory;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -22,8 +22,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
+import keuangan.Jurnal;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -1131,9 +1131,15 @@ public class DlgCariReturJual extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getretur_dari_pembeli());
         if(akses.getkode().equals("Admin Utama")){
             notaRetur.setEnabled(true);
-        }else{
-            notaRetur.setEnabled(false);
-        }  
+        }else if (akses.getretur_dari_pembeli()){
+            notaRetur.setEnabled(true);
+        } else if (akses.getretur_ke_suplier()){
+            notaRetur.setEnabled(true);
+        } else if (akses.getretur_obat_ranap()){
+            notaRetur.setEnabled(true);
+        }  else if (akses.getretur_piutang_pasien()){
+            notaRetur.setEnabled(true);
+        } 
     }
 
  
