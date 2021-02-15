@@ -54,5 +54,5 @@ public interface SpriInterface<T> {
      * @return
      * @throws SQLException
      */
-    List<T> search(String domain)throws SQLException;
+    List<T> search(String domain,String tgl_awal, String tgl_ahir)throws SQLException;
 }

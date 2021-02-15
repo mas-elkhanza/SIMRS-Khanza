@@ -1714,25 +1714,25 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         // TODO add your handling code here:
     }//GEN-LAST:event_tbSpriMouseEntered
 
-    private void txtRujukanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRujukanFocusGained
+    private void txtRencanaPerawatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRencanaPerawatanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRujukanFocusGained
+    }//GEN-LAST:event_txtRencanaPerawatanActionPerformed
 
     private void txtRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRujukanKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRujukanKeyPressed
 
-    private void txtTerapiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTerapiFocusGained
+    private void txtRujukanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRujukanFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTerapiFocusGained
+    }//GEN-LAST:event_txtRujukanFocusGained
 
     private void txtTerapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTerapiKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTerapiKeyPressed
 
-    private void txtRencanaPerawatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRencanaPerawatanActionPerformed
+    private void txtTerapiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTerapiFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRencanaPerawatanActionPerformed
+    }//GEN-LAST:event_txtTerapiFocusGained
 
     /**
      * @param args the command line arguments
@@ -1880,13 +1880,13 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
             spris = spriDao.findByDate(Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
         } else {
             if (!TNoRM.getText().equals("No. RM")) {
-                spris = spriDao.search(TNoRM.getText());
+                spris = spriDao.search(TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             } else if (!txtKdDokter.getText().equals("Kode Dokter") || !txtKdDokter.getText().equals("")) {
-                spris = spriDao.search(txtKdDokter.getText());
+                spris = spriDao.search(txtKdDokter.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             } else if (!txtKdPenyakit.getText().equals("Kode Penyakit") || txtKdPenyakit.getText().equals("")) {
-                spris = spriDao.search(txtKdPenyakit.getText());
+                spris = spriDao.search(txtKdPenyakit.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             } else if (!TCari.getText().trim().equals("")) {
-                spris = spriDao.search(TCari.getText());
+                spris = spriDao.search(TCari.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             }
         }
         for (Spri s : spris) {
