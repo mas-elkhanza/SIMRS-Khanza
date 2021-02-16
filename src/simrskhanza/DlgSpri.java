@@ -1379,7 +1379,7 @@ public class DlgSpri extends javax.swing.JDialog {
             param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + txtKdDokter.getText() + "'"));
-            System.out.println("ttd = " + Sequel.cariGambar("select logo from setting"));
+//            System.out.println("ttd = " + Sequel.cariGambar("select logo from setting"));
             //param.put("ttd", "./setting/" + Sequel.cariIsi("select ttd from ttd_dokter where kd_dokter='" + txtKdDokter.getText() + "'"));
             Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
                     "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
@@ -1878,15 +1878,17 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         Valid.tabelKosong(tabMode);
         if (TCari.getText().equals("")) {
             spris = spriDao.findByDate(Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
+        } else if (!TCari.getText().equals("")) {
+            spris = spriDao.search(TCari.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
         } else {
             if (!TNoRM.getText().equals("No. RM")) {
-                spris = spriDao.search(TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
+                spris = spriDao.search(TNoRM.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             } else if (!txtKdDokter.getText().equals("Kode Dokter") || !txtKdDokter.getText().equals("")) {
-                spris = spriDao.search(txtKdDokter.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
+                spris = spriDao.search(txtKdDokter.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             } else if (!txtKdPenyakit.getText().equals("Kode Penyakit") || txtKdPenyakit.getText().equals("")) {
-                spris = spriDao.search(txtKdPenyakit.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
+                spris = spriDao.search(txtKdPenyakit.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             } else if (!TCari.getText().trim().equals("")) {
-                spris = spriDao.search(TCari.getText(),Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
+                spris = spriDao.search(TCari.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
             }
         }
         for (Spri s : spris) {
