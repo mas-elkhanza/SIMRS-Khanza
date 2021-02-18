@@ -457,6 +457,37 @@ public final class validasi {
 
         return auto;
     }
+   
+    
+    public void newAutoNomerPM(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
+        try {
+            int s;
+            ps = connect.prepareStatement(sql);
+            try {
+                rs = ps.executeQuery();
+                s = 1;
+                while (rs.next()) {
+                    s = rs.getInt(1) + 1;
+                }
+                String no = String.format("%05d", s);
+                teks.setText(strAwal + no);
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+                JOptionPane.showMessageDialog(null, "Maaf, Query tidak bisa dijalankan...!!!!");
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+
 
     /**
      *
