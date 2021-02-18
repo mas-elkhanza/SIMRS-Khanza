@@ -866,9 +866,9 @@ public class DlgPenjualan extends javax.swing.JDialog {
         jLabel10.setBounds(256, 10, 80, 23);
 
         CmbAkun.setName("CmbAkun"); // NOI18N
-        CmbAkun.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CmbAkunKeyPressed(evt);
+        CmbAkun.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CmbAkunItemStateChanged(evt);
             }
         });
         panelisi5.add(CmbAkun);
@@ -1994,14 +1994,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }            
     }//GEN-LAST:event_ppStokActionPerformed
 
-    private void CmbAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbAkunKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            PPN.setText(Sequel.cariIsi("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()));
-            isKembali();
-            Bayar.requestFocus();
-        }
-    }//GEN-LAST:event_CmbAkunKeyPressed
-
     private void PPNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PPNKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isKembali();
@@ -2243,6 +2235,15 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } catch (Exception e) {
         }
     }//GEN-LAST:event_TglItemStateChanged
+
+    private void CmbAkunItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbAkunItemStateChanged
+        try {
+            PPN.setText(Sequel.cariIsi("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()));
+            isKembali();
+            Bayar.requestFocus();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_CmbAkunItemStateChanged
 
     /**
     * @param args the command line arguments
