@@ -1500,12 +1500,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 Valid.textKosong(TCari,"No.Nota");
         }else{
             try {
-               kdrek=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString());
-               ttljual=Sequel.cariIsiAngka("select sum(total) from detailjual where nota_jual=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-               besarppn=(Sequel.cariIsiAngka("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())/100)*ttljual;
-               Sequel.mengedit("penjualan","nota_jual=?","kd_rek=?,nama_bayar=?,ongkir=?",4,new String[]{
-                   kdrek,CmbAkun.getSelectedItem().toString(),besarppn+"",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()
-               });
                pscarijual=koneksi.prepareStatement(
                        "select nota_jual, kd_bangsal,status,no_rkm_medis,nm_pasien,tgl_jual from penjualan where nota_jual=?");
                try {
@@ -1515,6 +1509,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       if(rs.getString("status").equals("Sudah Dibayar")){
                           JOptionPane.showMessageDialog(rootPane,"Maaf transaksi penjualan sudah diverifikasi..!!");
                       }else{
+                         kdrek=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString());
+                         ttljual=Sequel.cariIsiAngka("select sum(total) from detailjual where nota_jual=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                         besarppn=(Sequel.cariIsiAngka("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())/100)*ttljual;
+                         Sequel.mengedit("penjualan","nota_jual=?","kd_rek=?,nama_bayar=?,ongkir=?",4,new String[]{
+                             kdrek,CmbAkun.getSelectedItem().toString(),besarppn+"",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()
+                         });
+                         
                          Sequel.AutoComitFalse();
                          sukses=true;
 
