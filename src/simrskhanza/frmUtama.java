@@ -527,6 +527,7 @@ import inventory.HibahObatBHP;
 import inventory.InventoryRingkasanBeriObat;
 import inventory.InventoryRingkasanHibahBarangMedis;
 import inventory.InventoryRingkasanPenjualanBarangMedis;
+import inventory.InventoryRingkasanPiutangBarangMedis;
 import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.DlgPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
@@ -16716,6 +16717,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnRingkasanPiutangObatActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryRingkasanPiutangBarangMedis aplikasi=new InventoryRingkasanPiutangBarangMedis(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     } 
     
     /**
@@ -17331,7 +17343,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVPPiutangBPJS,
             btnVerifikasiPenerimaanFarmasi,btnVerifikasiPenerimaanLogistik,btnPermintaanLabPA,btnLamaPelayananLabPA,btnRingkasanPengajuanMedis,
             btnRingkasanPemesananMedis,btnRingkasanPembelianMedis,btnRingkasanPenerimaanMedis,btnRingkasanHibahMedis,btnRingkasanPenjualanMedis,
-            btnRingkasanBeriObat;
+            btnRingkasanBeriObat,btnRingkasanPiutangObat;
     
     public void isWall(){
         try{            
@@ -17929,6 +17941,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getpiutang_obat()==true){
                  Panelmenu.add(btnPiutang);  
+                 jmlmenu++;
+            }
+            
+            if(akses.getringkasan_piutang_obat()==true){
+                 Panelmenu.add(btnRingkasanPiutangObat);  
                  jmlmenu++;
             }
             
@@ -21379,6 +21396,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpiutang_obat()==true){
              Panelmenu.add(btnPiutang);  
+             jmlmenu++;
+        }
+        
+        if(akses.getringkasan_piutang_obat()==true){
+             Panelmenu.add(btnRingkasanPiutangObat);  
              jmlmenu++;
         }
         
@@ -25004,6 +25026,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpiutang_obat()==true){
             if(btnPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutang);  
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_piutang_obat()==true){
+            if(btnRingkasanPiutangObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanPiutangObat);  
                 jmlmenu++;
             }                
         }
@@ -30946,6 +30975,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanBeriObat.setName("btnRingkasanBeriObat");
         btnRingkasanBeriObat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanBeriObat.addActionListener(this::btnRingkasanBeriObatActionPerformed);
+        
+        btnRingkasanPiutangObat = new widget.ButtonBig();
+        btnRingkasanPiutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPiutangObat.setText("Ringkasan Piutang Obat & BHP");
+        btnRingkasanPiutangObat.setIconTextGap(0);
+        btnRingkasanPiutangObat.setName("btnRingkasanPiutangObat");
+        btnRingkasanPiutangObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanPiutangObat.addActionListener(this::btnRingkasanPiutangObatActionPerformed);
     }
 
     

@@ -1409,6 +1409,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppGrafikjkbayi = new javax.swing.JMenuItem();
         ppGrafikDemografi = new javax.swing.JMenuItem();
         ppRegistrasi = new javax.swing.JMenuItem();
+        ppRegistrasi1 = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
         ppCatatanPasien = new javax.swing.JMenuItem();
         ppGabungRM = new javax.swing.JMenuItem();
@@ -2390,6 +2391,23 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppRegistrasi);
 
+        ppRegistrasi1.setBackground(new java.awt.Color(255, 255, 254));
+        ppRegistrasi1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRegistrasi1.setForeground(new java.awt.Color(50, 50, 50));
+        ppRegistrasi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppRegistrasi1.setText("Tampilkan Tidak Aktif > 5 Tahun");
+        ppRegistrasi1.setActionCommand("Tampilkan Tidak Aktif > 5 Tahun");
+        ppRegistrasi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRegistrasi1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRegistrasi1.setName("ppRegistrasi1"); // NOI18N
+        ppRegistrasi1.setPreferredSize(new java.awt.Dimension(220, 26));
+        ppRegistrasi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRegistrasi1BtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppRegistrasi1);
+
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(50, 50, 50));
@@ -3116,7 +3134,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2021" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2021" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3248,7 +3266,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(743, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2021" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2021" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -8044,6 +8062,55 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         panggilPhoto();
     }//GEN-LAST:event_BtnRefreshPhotoActionPerformed
 
+    private void ppRegistrasi1BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRegistrasi1BtnPrintActionPerformed
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+               "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+               "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+               "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
+               "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"+
+               "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
+               "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
+               "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+               "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
+               "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+               "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "+
+               "inner join penjab on pasien.kd_pj=penjab.kd_pj "+
+               "where no_rkm_medis not in(select no_rkm_medis from reg_periksa where tgl_registrasi between DATE_SUB(current_date(), INTERVAL 10 YEAR) and current_date()) "+
+               "order by pasien.no_rkm_medis desc");  
+            try{
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),
+                        rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),
+                        rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18),rs.getString(19),
+                        rs.getString(20),"Klik Kanan, Tampilkan Banyak Daftar",rs.getString(21),rs.getString(22),
+                        rs.getString("suku_bangsa"),rs.getString("nama_suku_bangsa"),rs.getString("bahasa_pasien"),
+                        rs.getString("nama_bahasa"),rs.getString("kode_perusahaan"),rs.getString("nama_perusahaan"),
+                        rs.getString("nip"),rs.getString("email"),rs.getString("cacat_fisik"),rs.getString("nama_cacat")
+                    });
+                }          
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+            
+        LCount.setText(""+tabMode.getRowCount());
+    }//GEN-LAST:event_ppRegistrasi1BtnPrintActionPerformed
+
     /**
      * @data args the command line arguments
      */
@@ -8355,6 +8422,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private javax.swing.JMenuItem ppKelahiranBayi;
     private javax.swing.JMenuItem ppPasienCorona;
     private javax.swing.JMenuItem ppRegistrasi;
+    private javax.swing.JMenuItem ppRegistrasi1;
     private javax.swing.JMenuItem ppRiwayat;
     private widget.Table tbPasien;
     private widget.Table tbPasien2;
