@@ -101,12 +101,12 @@ public class DlgSpri extends javax.swing.JDialog {
             "Tanggal", //1
             "Jam", //2
             "No.R.Medik",//3 
-            "Nama Pasien", //4
-            "Rencana Perawatan",//5 
+            "", //4
+            "",//5 
             "Ruangan",//6
             "kd_dokter", //7
             "Dokter", //8
-            "Kode Penyakit", //9
+            "", //9
             "Diagnosa Penyakit", //10 
             "id"}; //11
 
@@ -386,14 +386,14 @@ public class DlgSpri extends javax.swing.JDialog {
 
         jam();
 //        
-        Valid.setPlaceHolder(TPasien, "Nama Pasien");
-        Valid.setPlaceHolder(TNoRM, "No. RM");
-//        Valid.setPlaceHolder(txtKdKamar, "Kode Kamar");
-        Valid.setPlaceHolder(txtRencanaPerawatan, "Rencana Perawatan");
-        Valid.setPlaceHolder(txtKdDokter, "Kode Dokter");
-        Valid.setPlaceHolder(txtNmDokter, "Nama Dokter");
-        Valid.setPlaceHolder(txtKdPenyakit, "Kode Penyakit");
-        Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
+//        Valid.setPlaceHolder(TPasien, "");
+//        Valid.setPlaceHolder(TNoRM, "");
+////        Valid.setPlaceHolder(txtKdKamar, "");
+//        Valid.setPlaceHolder(txtRencanaPerawatan, "");
+//        Valid.setPlaceHolder(txtKdDokter, "");
+//        Valid.setPlaceHolder(txtNmDokter, "");
+//        Valid.setPlaceHolder(txtKdPenyakit, "");
+//        Valid.setPlaceHolder(txtNmPenyakit, "");
         DTPTgl.setDate(new Date());
     }
 
@@ -1228,21 +1228,21 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_cmbDtkKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if (TPasien.getText().equals("Nama Pasien")) {
-            Valid.textKosong(TPasien, "Nama Pasien");
-        } else if (txtNmPenyakit.getText().equals("Nama Penyakit")) {
-            Valid.textKosong(txtNmPenyakit, "Nama Penyakit");
-        } else if (txtKdDokter.getText().equals("Kode Dokter")) {
-            Valid.textKosong(txtKdDokter, "Kode Dokter");
-        } else if (txtNmDokter.getText().equals("Nama Dokter")) {
-            Valid.textKosong(txtNmDokter, "Nama Dokter");
-        } else if (txtRencanaPerawatan.getText().equals("Rencana Perawatan")) {
-            Valid.textKosong(txtRencanaPerawatan, "Rencana Perawatan");
+        if (TPasien.getText().equals("")) {
+            Valid.textKosong(TPasien, "");
+        } else if (txtNmPenyakit.getText().equals("")) {
+            Valid.textKosong(txtNmPenyakit, "");
+        } else if (txtKdDokter.getText().equals("")) {
+            Valid.textKosong(txtKdDokter, "");
+        } else if (txtNmDokter.getText().equals("")) {
+            Valid.textKosong(txtNmDokter, "");
+        } else if (txtRencanaPerawatan.getText().equals("")) {
+            Valid.textKosong(txtRencanaPerawatan, "");
         } else {
-            if (TNoRM.getText().equals("No. RM")) {
+            if (TNoRM.getText().equals("")) {
                 TNoRM.setText("");
             }
-            if (txtKdPenyakit.getText().equals("Kode Penyakit")) {
+            if (txtKdPenyakit.getText().equals("")) {
                 txtKdPenyakit.setText("");
             }
             d = new Dokter();
@@ -1290,7 +1290,7 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if (!TNoRM.getText().trim().equals("No. RM")) {
+        if (!TNoRM.getText().trim().equals("")) {
             int a = JOptionPane.showConfirmDialog(rootPane, "Yakin ingin menghapus data?", "Hapus", JOptionPane.OK_CANCEL_OPTION);
             if (a == 0) {
                 spriDao.delete(Valid.SetDateToString(DTPCari1.getDate()), txtId, Valid.SetDateToString(DTPCari2.getDate()));
@@ -1335,7 +1335,7 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void cetakSpri() {
-        if (!TNoRM.getText().equals("No. RM")) {
+        if (!TNoRM.getText().equals("")) {
             Map<String, Object> param = new HashMap<>();
             param.put("namars", akses.getnamars());
             param.put("alamatrs", akses.getalamatrs());
@@ -1357,7 +1357,7 @@ public class DlgSpri extends javax.swing.JDialog {
                     + " WHERE temp_spri.norm = '" + TNoRM.getText().trim() + "' "
                     + "and temp_spri.tanggal between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' "
                     + " order by temp_spri.tanggal ", param);
-        } else if (TNoRM.getText().equals("No. RM")) {
+        } else if (TNoRM.getText().equals("")) {
             Map<String, Object> param = new HashMap<>();
             param.put("namars", akses.getnamars());
             param.put("alamatrs", akses.getalamatrs());
@@ -1662,7 +1662,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
 
     private void MnCetakSpriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSpriActionPerformed
         // TODO add your handling code here:
-        if (TNoRM.getText().equals("No. RM")) {
+        if (TNoRM.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Pilih data yang akan dicetak dahulu.");
             BtnCariActionPerformed(evt);
         } else {
@@ -1847,13 +1847,13 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
             spris = spriDao.findByDate(Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
         } else if (!TCari.getText().equals("")) {
             spris = spriDao.search(TCari.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
-        } 
+        }
 //        else {
-//            if (!TNoRM.getText().equals("No. RM")) {
+//            if (!TNoRM.getText().equals("")) {
 //                spris = spriDao.search(TNoRM.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
-//            } else if (!txtKdDokter.getText().equals("Kode Dokter") || !txtKdDokter.getText().equals("")) {
+//            } else if (!txtKdDokter.getText().equals("") || !txtKdDokter.getText().equals("")) {
 //                spris = spriDao.search(txtKdDokter.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
-//            } else if (!txtKdPenyakit.getText().equals("Kode Penyakit") || txtKdPenyakit.getText().equals("")) {
+//            } else if (!txtKdPenyakit.getText().equals("") || txtKdPenyakit.getText().equals("")) {
 //                spris = spriDao.search(txtKdPenyakit.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
 //            } else if (!TCari.getText().trim().equals("")) {
 //                spris = spriDao.search(TCari.getText(), Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
@@ -1899,14 +1899,13 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
      *
      */
     public void emptTeks() {
-        Valid.setPlaceHolder(TPasien, "Nama Pasien");
-        Valid.setPlaceHolder(TNoRM, "No. RM");
-//        Valid.setPlaceHolder(txtKdKamar, "Kode Kamar");
-        Valid.setPlaceHolder(txtRencanaPerawatan, "Rencana Perawatan");
-        Valid.setPlaceHolder(txtKdDokter, "Kode Dokter");
-        Valid.setPlaceHolder(txtNmDokter, "Nama Dokter");
-        Valid.setPlaceHolder(txtKdPenyakit, "Kode Penyakit");
-        Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
+        TPasien.setText("");
+        TNoRM.setText("");
+        txtRencanaPerawatan.setText("");
+        txtKdDokter.setText("");
+        txtNmDokter.setText("");
+        txtKdPenyakit.setText("");
+        txtNmPenyakit.setText("");
         TCari.setText("");
         txtRujukan.setText("");
         txtTerapi.setText("");
