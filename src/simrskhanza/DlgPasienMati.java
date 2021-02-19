@@ -34,6 +34,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import org.joda.time.LocalDate;
 
 /**
  *
@@ -783,6 +784,25 @@ public class DlgPasienMati extends javax.swing.JDialog {
         } else if (TKtg.getText().trim().equals("")) {
             Valid.textKosong(TKtg, "keterangan");
         } else {
+            String dayOfWeek = new LocalDate(DTPTgl.getDate()).dayOfWeek().getAsText(java.util.Locale.ENGLISH);
+            String hari = "";
+            if (dayOfWeek.equals("Sunday")) {
+                hari = "Minggu";
+            } else if (dayOfWeek.equals("Monday")) {
+                hari = "Senin";
+            } else if (dayOfWeek.equals("Tuesday")) {
+                hari = "Selasa";
+            } else if (dayOfWeek.equals("Wednesday")) {
+                hari = "Rabu";
+            } else if (dayOfWeek.equals("Thursday")) {
+                hari = "Kamis";
+            } else if (dayOfWeek.equals("Friday")) {
+                hari = "Jumat";
+            } else if (dayOfWeek.equals("Saturday")) {
+                hari = "Sabtu";
+            }
+            System.out.println("Hari "+hari+" "+dayOfWeek);
+
             Sequel.menyimpan("pasien_mati", "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
                     + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "','"
                     + TNoRM.getText() + "','"
@@ -792,7 +812,8 @@ public class DlgPasienMati extends javax.swing.JDialog {
                     + icd2.getText() + "','"
                     + icd3.getText() + "','"
                     + icd4.getText() + "','"
-                    + TNoSurat.getText() + "'", "pasien");
+                    + TNoSurat.getText() + "','"
+                    + hari + "'", "pasien");
             tampil();
             emptTeks();
         }
@@ -935,8 +956,8 @@ public class DlgPasienMati extends javax.swing.JDialog {
 private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratMatiActionPerformed
     String bln = Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7);
     String thn = Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4);
-    String nomor = TNoSurat.getText() + "/RSU/SK/" + Valid.RomanNumerals(Integer.parseInt(bln)) + "/" + thn;
-    System.out.println("nomor = "+nomor);
+    String nomor = TNoSurat.getText() + "/RSUIHA/SK/" + Valid.RomanNumerals(Integer.parseInt(bln)) + "/" + thn;
+    System.out.println("nomor = " + nomor);
     if (TPasien.getText().trim().equals("")) {
         JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
     } else {
@@ -951,7 +972,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         param.put("logo", Sequel.cariGambar("select logo from setting"));
         Valid.MyReportqry("rptSuratKematian.jasper", "report", "::[ Surat Kematian ]::",
                 "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "
-                + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
+                + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,hari,gol_darah,stts_nikah, "
                 + "agama,keterangan from pasien_mati,pasien "
                 + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
                 + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
