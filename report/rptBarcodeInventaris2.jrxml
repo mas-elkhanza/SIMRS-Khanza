@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="162" pageHeight="60" columnWidth="158" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="c37ee618-fbb0-4eea-9c8f-bfd73892db43">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="nama" class="java.lang.String"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -14,14 +16,16 @@
 	<parameter name="ruang" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, 
-                   inventaris_barang.nama_barang, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn, 
+                   inventaris_barang.nama_barang,inventaris_barang.id_merk, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn, 
                    inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis,inventaris.asal_barang,inventaris.tgl_pengadaan, 
-                   inventaris.harga,inventaris.status_barang,inventaris_ruang.nama_ruang,inventaris.no_rak,inventaris.no_box 
+                   inventaris.harga,inventaris.status_barang,inventaris_ruang.nama_ruang,inventaris.no_rak,inventaris.no_box,inventaris_produsen.nama_produsen  
                    from inventaris inner join inventaris_barang inner join inventaris_ruang 
                    inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk 
+                   inner join inventaris_produsen 
                    on inventaris_barang.kode_barang=inventaris_barang.kode_barang and inventaris_barang.id_merk=inventaris_merk.id_merk 
                    and inventaris_barang.id_kategori=inventaris_kategori.id_kategori and inventaris_barang.id_jenis=inventaris_jenis.id_jenis 
                    and inventaris_barang.kode_barang=inventaris.kode_barang and inventaris.id_ruang=inventaris_ruang.id_ruang 
+                   and inventaris_produsen.kode_produsen=inventaris_barang.kode_produsen 
                    where inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.kode_barang like $P{parameter} 
                     or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_barang.nama_barang like $P{parameter} 
                     or inventaris_ruang.nama_ruang like $P{ruang} and inventaris.no_inventaris like $P{parameter} 
@@ -38,22 +42,74 @@
                     or inventaris_ruang.nama_ruang like $P{ruang} and inventaris_jenis.nama_jenis like $P{parameter} order by inventaris_barang.kode_barang,inventaris.no_inventaris]]>
 	</queryString>
 	<field name="no_inventaris" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_inventaris"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="kode_barang" class="java.lang.String"/>
-	<field name="nama_barang" class="java.lang.String"/>
-	<field name="nama_merk" class="java.lang.String"/>
-	<field name="thn_produksi" class="java.lang.String"/>
-	<field name="isbn" class="java.lang.String"/>
-	<field name="nama_kategori" class="java.lang.String"/>
-	<field name="nama_jenis" class="java.lang.String"/>
-	<field name="asal_barang" class="java.lang.String"/>
-	<field name="tgl_pengadaan" class="java.sql.Date"/>
-	<field name="harga" class="java.lang.Double"/>
-	<field name="status_barang" class="java.lang.String"/>
-	<field name="nama_ruang" class="java.lang.String"/>
-	<field name="no_rak" class="java.lang.String"/>
-	<field name="no_box" class="java.lang.String"/>
+	<field name="kode_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+	</field>
+	<field name="nama_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+	</field>
+	<field name="id_merk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="id_merk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+	</field>
+	<field name="thn_produksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="thn_produksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+	</field>
+	<field name="nama_merk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_merk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_merk"/>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_barang"/>
+	</field>
+	<field name="nama_kategori" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_kategori"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_kategori"/>
+	</field>
+	<field name="nama_jenis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_jenis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_jenis"/>
+	</field>
+	<field name="asal_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="asal_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+	</field>
+	<field name="tgl_pengadaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_pengadaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+	</field>
+	<field name="harga" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="harga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+	</field>
+	<field name="status_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+	</field>
+	<field name="nama_ruang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_ruang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_ruang"/>
+	</field>
+	<field name="no_rak" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+	</field>
+	<field name="no_box" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_box"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris"/>
+	</field>
+	<field name="nama_produsen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_produsen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inventaris_produsen"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -86,28 +142,24 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="78" y="16" width="72" height="10" uuid="8974f718-4064-49b2-905f-e51e0e710543">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="60" y="16" width="90" height="12" uuid="8974f718-4064-49b2-905f-e51e0e710543"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{thn_produksi}.substring($F{thn_produksi}.length()-10,4)]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{thn_produksi}.toString().substring($F{thn_produksi}.length()-10,4)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="78" y="43" width="63" height="10" uuid="2ecaf1e5-6dce-45bc-8755-70a8618310f1">
+				<reportElement x="60" y="36" width="90" height="9" uuid="2ecaf1e5-6dce-45bc-8755-70a8618310f1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_jenis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{no_inventaris}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="43" width="66" height="10" uuid="87e9a1cd-c5ec-43c6-aefd-486747156ca8">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="60" y="44" width="90" height="9" uuid="87e9a1cd-c5ec-43c6-aefd-486747156ca8"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -115,21 +167,13 @@
 				<textFieldExpression><![CDATA[$F{nama_ruang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="78" y="30" width="72" height="10" uuid="e762600f-d919-4088-8d01-d424a6886af3">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="60" y="28" width="90" height="9" uuid="e762600f-d919-4088-8d01-d424a6886af3"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement x="6" y="16" width="66" height="23" uuid="274f7b5e-5250-4905-be0e-44fe5fc72f6d"/>
-				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barWidth="1" barHeight="0">
-					<jr:codeExpression><![CDATA[$F{no_inventaris}]]></jr:codeExpression>
-				</jr:barbecue>
-			</componentElement>
 			<textField>
 				<reportElement x="10" y="2" width="138" height="11" uuid="b31a401b-0b7e-4411-a34d-4066def26997"/>
 				<textElement textAlignment="Center">
@@ -145,6 +189,14 @@
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<componentElement>
+				<reportElement x="10" y="15" width="42" height="40" uuid="cd68f37b-4fc4-4ad2-8550-f29e488aadaa">
+					<property name="com.jaspersoft.studio.unit.margin" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" margin="1">
+					<jr:codeExpression><![CDATA[$F{no_inventaris}+"-"+$F{nama_barang}+"-"+$F{nama_merk}+"-"+$F{tgl_pengadaan}.substring($F{tgl_pengadaan}.length()-10,4)+"-"+$F{nama_produsen}+"-"+$F{isbn}+"-"+$F{nama_ruang}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
 		</band>
 	</detail>
 </jasperReport>

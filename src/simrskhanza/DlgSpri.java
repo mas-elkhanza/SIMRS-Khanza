@@ -1472,20 +1472,26 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     if (TPasien.getText().trim().equals("")) {
         JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
     } else {
-        Map<String, Object> param = new HashMap<>();
-        param.put("namars", akses.getnamars());
-        param.put("alamatrs", akses.getalamatrs());
-        param.put("kotars", akses.getkabupatenrs());
-        param.put("propinsirs", akses.getpropinsirs());
-        param.put("kontakrs", akses.getkontakrs());
-        param.put("emailrs", akses.getemailrs());
-        param.put("logo", Sequel.cariGambar("select logo from setting"));
-        Valid.MyReportqry("rptSuratKematian.jasper", "report", "::[ Surat Kematian ]::",
-                "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "
-                + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
-                + "agama,keterangan from pasien_mati,pasien "
-                + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
-                + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
+        String a = Sequel.cariIsi("select no_surat_kematian from temp_spri a inner join pasien_mati b on a.norm=b.no_rkm_medis where a.norm='" + TNoRM.getText() + "'");
+        System.out.println("no surat kematian " + a);
+        if (!a.equals("")) {
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptSuratKematian.jasper", "report", "::[ Surat Kematian ]::",
+                    "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "
+                    + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
+                    + "agama,keterangan from pasien_mati,pasien "
+                    + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
+                    + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Data Pasien tidak ditemukan pada data pasien meninggal.");
+        }
     }
 }//GEN-LAST:event_MnCetakSuratMatiActionPerformed
 
@@ -1671,7 +1677,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                 JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 BtnBatal.requestFocus();
             } else if (tabMode.getRowCount() != 0) {
+
                 cetakSpri();
+
             }
             this.setCursor(Cursor.getDefaultCursor());
         }
