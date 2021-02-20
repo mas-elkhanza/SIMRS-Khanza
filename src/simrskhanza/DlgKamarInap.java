@@ -11508,7 +11508,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         Sequel.cariIsi("select keluhan from temp_spri where norm=? ", diagnosaawal, TNoRM.getText());
     }// GEN-LAST:event_norawatFocusGained
 
-    private void MnSpriActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnSpriActionPerformed
+    private void MnSpriActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (!TCari.getText().trim().equals("") || TNoRM.getText().trim().equals("")) {
@@ -11518,7 +11518,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
-            String id = Sequel.cariIsi("select id from temp_spri where norm='" + TNoRM.getText() + "' and tanggal='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 11) + "'");
+            String tgl_masuk = tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString().substring(0,10).replace("/", "-");
+            System.out.println("tanggal masuk "+tgl_masuk);
+            String id = Sequel.cariIsi("select id from temp_spri where norm='" + TNoRM.getText() + "' and tanggal='" + tgl_masuk + "'");
             if (!id.isEmpty()) {
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars", akses.getnamars());
@@ -11539,17 +11541,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
                         + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
                         + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit WHERE"
-                        // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
-                        // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
-                        // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                        // + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
-                        // + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                        // + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
-                        // + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                        // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                        // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
                         + " temp_spri.norm = '" + TNoRM1.getText().trim() + "' "
-                        // + " and temp_spri.tanggal between " + TIn.getText() + " and " + TIn.getText() + " "
                         + " order by temp_spri.tanggal ",
                         param);
             } else {
@@ -11557,7 +11549,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
-    }// GEN-LAST:event_MnSpriActionPerformed
+    }
 
     private void LabelCatatanMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_LabelCatatanMouseClicked
         DlgCatatan.dispose();
