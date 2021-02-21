@@ -1527,13 +1527,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(aktifkanbatch.equals("yes")){
                     qrystokkosong="";
                     if(STOKKOSONGRESEP.equals("no")){
-                        qrystokkosong=" and sum(gudangbarang.stok)>0 ";
+                        qrystokkosong=" and gudangbarang.stok>0 ";
                     }
                     psresepasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
-                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
                         " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
@@ -1543,9 +1543,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     }
                     psresepasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
-                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
                         " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");
                 }
@@ -1579,16 +1579,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(aktifkanbatch.equals("yes")){
                     qrystokkosong="";
                     if(STOKKOSONGRESEP.equals("no")){
-                        qrystokkosong=" and sum(gudangbarang.stok)>0 ";
+                        qrystokkosong=" and gudangbarang.stok>0 ";
                     }
                     psresep=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
                         " databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
                         " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
                         " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
-                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         " where  databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
                         " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
@@ -1601,9 +1601,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         " databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
                         " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
                         " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
-                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                        " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         " where  databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
                         " (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");
                 }

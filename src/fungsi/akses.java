@@ -150,7 +150,8 @@ public final class akses {
             skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false,jam_diet_pasien=false,
             rvu_bpjs=false,verifikasi_penerimaan_farmasi=false,verifikasi_penerimaan_logistik=false,pemeriksaan_lab_pa=false,ringkasan_pengajuan_obat=false,
             ringkasan_pemesanan_obat=false,ringkasan_pengadaan_obat=false,ringkasan_penerimaan_obat=false,ringkasan_hibah_obat=false,
-            ringkasan_penjualan_obat=false,ringkasan_beri_obat=false,ringkasan_piutang_obat=false,ringkasan_stok_keluar_obat=false;
+            ringkasan_penjualan_obat=false,ringkasan_beri_obat=false,ringkasan_piutang_obat=false,ringkasan_stok_keluar_obat=false,
+            ringkasan_retur_suplier_obat=false,ringkasan_retur_pembeli_obat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -861,6 +862,8 @@ public final class akses {
                         akses.ringkasan_beri_obat=true;
                         akses.ringkasan_piutang_obat=true;
                         akses.ringkasan_stok_keluar_obat=true;
+                        akses.ringkasan_retur_suplier_obat=true;
+                        akses.ringkasan_retur_pembeli_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1555,6 +1558,8 @@ public final class akses {
                         akses.ringkasan_beri_obat=rs2.getBoolean("ringkasan_beri_obat");
                         akses.ringkasan_piutang_obat=rs2.getBoolean("ringkasan_piutang_obat");
                         akses.ringkasan_stok_keluar_obat=rs2.getBoolean("ringkasan_stok_keluar_obat");
+                        akses.ringkasan_retur_suplier_obat=rs2.getBoolean("ringkasan_retur_suplier_obat");
+                        akses.ringkasan_retur_pembeli_obat=rs2.getBoolean("ringkasan_retur_pembeli_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2247,6 +2252,8 @@ public final class akses {
                         akses.ringkasan_beri_obat=false;
                         akses.ringkasan_piutang_obat=false;
                         akses.ringkasan_stok_keluar_obat=false;
+                        akses.ringkasan_retur_suplier_obat=false;
+                        akses.ringkasan_retur_pembeli_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2994,4 +3001,6 @@ public final class akses {
     public static boolean getringkasan_beri_obat(){return akses.ringkasan_beri_obat;}
     public static boolean getringkasan_piutang_obat(){return akses.ringkasan_piutang_obat;}
     public static boolean getringkasan_stok_keluar_obat(){return akses.ringkasan_stok_keluar_obat;}
+    public static boolean getringkasan_retur_suplier_obat(){return akses.ringkasan_retur_suplier_obat;}
+    public static boolean getringkasan_retur_pembeli_obat(){return akses.ringkasan_retur_pembeli_obat;}
 }   
