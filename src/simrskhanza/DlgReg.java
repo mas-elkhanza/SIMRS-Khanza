@@ -11153,7 +11153,7 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }
 
-    private void cetakStruk(String title, FileWriter writer, char[]... mode) throws IOException {
+    private void cetakStruk(String title, FileWriter writer, char[]   ... mode) throws IOException {
         sendCommand(RESET, writer);
         for (int i = 0; i < mode.length; i++) {
             char[] cmd = mode[i];
