@@ -5134,8 +5134,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptSuratKematian.jasper", "report", "::[ Surat Kematian ]::",
                         "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "
-                        + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
-                        + "agama,keterangan from pasien_mati,pasien "
+                        + "pasien.umur,pasien.alamat,jk,tmp_lahir,hari,tgl_lahir,gol_darah,stts_nikah, "
+                        + "agama,keterangan,nomor from pasien_mati,pasien "
                         + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
                         + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
             } else {

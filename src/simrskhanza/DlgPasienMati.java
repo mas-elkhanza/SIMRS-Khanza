@@ -779,6 +779,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
 }//GEN-LAST:event_cmbDtkKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+    String bln = Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7);
+    String thn = Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4);
+    String nomor = TNoSurat.getText() + "/RSUIHA/SK/" + Valid.RomanNumerals(Integer.parseInt(bln)) + "/" + thn;
+    System.out.println("nomor = " + nomor);
         if (TNoRM.getText().trim().equals("") || TPasien.getText().trim().equals("")) {
             Valid.textKosong(TNoRM, "pasien");
         } else if (TKtg.getText().trim().equals("")) {
@@ -812,8 +816,9 @@ public class DlgPasienMati extends javax.swing.JDialog {
                     + icd2.getText() + "','"
                     + icd3.getText() + "','"
                     + icd4.getText() + "','"
-                    + TNoSurat.getText() + "','"
-                    + hari + "'", "pasien");
+                    + TNoSurat.getText() +"','"
+                    + hari + "','"
+                    + nomor + "'", "pasien");
             tampil();
             emptTeks();
         }
@@ -954,10 +959,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 }//GEN-LAST:event_tbMatiMouseClicked
 
 private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratMatiActionPerformed
-    String bln = Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7);
-    String thn = Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4);
-    String nomor = TNoSurat.getText() + "/RSUIHA/SK/" + Valid.RomanNumerals(Integer.parseInt(bln)) + "/" + thn;
-    System.out.println("nomor = " + nomor);
+
     if (TPasien.getText().trim().equals("")) {
         JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
     } else {
@@ -968,12 +970,11 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         param.put("propinsirs", akses.getpropinsirs());
         param.put("kontakrs", akses.getkontakrs());
         param.put("emailrs", akses.getemailrs());
-        param.put("nomor", nomor);
         param.put("logo", Sequel.cariGambar("select logo from setting"));
         Valid.MyReportqry("rptSuratKematian.jasper", "report", "::[ Surat Kematian ]::",
                 "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "
                 + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,hari,gol_darah,stts_nikah, "
-                + "agama,keterangan from pasien_mati,pasien "
+                + "agama,keterangan,nomor from pasien_mati,pasien "
                 + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
                 + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
     }
