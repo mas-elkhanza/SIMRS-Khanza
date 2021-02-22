@@ -130,7 +130,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Object[] row3 = {"No.Faktur", "Kode Barang", "Nama Barang", "Kode Satuan", "Bangsal", "Jenis", "Jumlah", "Harga"};
+        Object[] row3 = {"No.Faktur", "Kode Barang", "Nama Barang", "Kode Satuan", "Bangsal", "Jenis", "Jumlah", "Harga", "Suplier"};
         tabMode3 = new DefaultTableModel(null, row3) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -138,7 +138,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
             Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-                java.lang.String.class,java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class
             };
 
             @Override
@@ -151,7 +151,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         tbKamar2.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbKamar2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             TableColumn column = tbKamar2.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(80);
@@ -169,6 +169,8 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             } else if (i == 7) {
                 column.setPreferredWidth(65);
+            } else if (i == 8) {
+                column.setPreferredWidth(180);
             }
         }
         tbKamar2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1232,6 +1234,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         kdptg.setText("");
         nmptg.setText("");
         tampil();
+        tampil2();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1308,18 +1311,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             param.put("periode", sdf.format(TglBeli1.getDate()) + " s/d " + sdf.format(TglBeli2.getDate()));
             if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("") && kdjenis.getText().trim().equals("")) {
-                sql = "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns "
+                sql = "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama,datasuplier.nama_suplier "
+                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng "
+                        + "inner join jenis on databarang.kdjns=jenis.kdjns inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "
                         + "where pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' group by detailpesan.kode_brng";
             } else {
 //                tgl = " mutasibarang.tanggal between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%" + kdjenis.getText() + nmjns.getText().trim() + "%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%" + kdkategori.getText() + nmkategori.getText().trim() + "%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%" + kdgolongan.getText() + nmgolongan.getText().trim() + "%' ";
-                sql = "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns "
-                        + "where bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.no_faktur like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and detailpesan.kode_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and detailpesan.kode_sat like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and bangsal.nm_bangsal like '%" + TCari.getText() + "%' "
+                sql = "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama,datasuplier.nama_suplier "
+                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "
+                        + "where bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and pemesanan.no_faktur like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and detailpesan.kode_brng like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and detailpesan.kode_sat like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and bangsal.nm_bangsal like '%" + TCari.getText() + "%' "
                         + "group by detailpesan.kode_brng";
             }
 
@@ -1851,22 +1855,23 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         Valid.tabelKosong(tabMode3);
         try {
 //            nilaitotal = 0;
-            if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("") && kdjenis.getText().trim().equals("")) {
+            if (TCari.getText().trim().equals("") && kdBangsal.getText().trim().equals("") && kdjenis.getText().trim().equals("") && kdsup.getText().trim().equals("")) {
                 ps3 = koneksi.prepareStatement(
-                        "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns "
+                        "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama,datasuplier.nama_suplier "
+                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng "
+                        + "inner join jenis on databarang.kdjns=jenis.kdjns inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "
                         + "where pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' group by detailpesan.kode_brng"
                 );
             } else {
 //                tgl = " mutasibarang.tanggal between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%" + kdjenis.getText() + nmjns.getText().trim() + "%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%" + kdkategori.getText() + nmkategori.getText().trim() + "%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%" + kdgolongan.getText() + nmgolongan.getText().trim() + "%' ";
                 ps3 = koneksi.prepareStatement(
-                        "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama "
-                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns "
-                        + "where bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.no_faktur like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and detailpesan.kode_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and detailpesan.kode_sat like '%" + TCari.getText() + "%' or "
-                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and bangsal.nm_bangsal like '%" + TCari.getText() + "%' "
+                        "SELECT pemesanan.no_faktur, detailpesan.kode_brng, databarang.nama_brng, detailpesan.kode_sat, bangsal.nm_bangsal, sum(detailpesan.jumlah) as jumlah,detailpesan.h_pesan,jenis.nama,datasuplier.nama_suplier "
+                        + "FROM `pemesanan` join detailpesan on detailpesan.no_faktur=pemesanan.no_faktur join bangsal on bangsal.kd_bangsal = pemesanan.kd_bangsal join databarang on databarang.kode_brng = detailpesan.kode_brng inner join jenis on databarang.kdjns=jenis.kdjns inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "
+                        + "where bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and pemesanan.no_faktur like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and detailpesan.kode_brng like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and databarang.nama_brng like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and detailpesan.kode_sat like '%" + TCari.getText() + "%' or "
+                        + " bangsal.nm_bangsal  like '%" + nmBangsal1.getText() + "%' and pemesanan.tgl_faktur between '" + Valid.SetTgl(TglBeli1.getSelectedItem() + "") + " 00:00:00' and '" + Valid.SetTgl(TglBeli2.getSelectedItem() + "") + " 23:59:59' and jenis.kdjns like '%" + kdjenis.getText() + "%' and pemesanan.kode_suplier like '%" + kdsup.getText() + "%' and bangsal.nm_bangsal like '%" + TCari.getText() + "%' "
                         + "group by detailpesan.kode_brng"
                 );
             }
@@ -1877,7 +1882,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 //                    nilaitotal = nilaitotal + rs3.getDouble(7);
                     tabMode3.addRow(new Object[]{
                         rs3.getString(1), rs3.getString(2), rs3.getString(3), rs3.getString(4),
-                        rs3.getString(5),rs3.getString(8), rs3.getDouble(6), rs3.getDouble(7)
+                        rs3.getString(5), rs3.getString(8), rs3.getDouble(6), rs3.getDouble(7), rs3.getString("nama_suplier")
                     });
                 }
             } catch (Exception e) {

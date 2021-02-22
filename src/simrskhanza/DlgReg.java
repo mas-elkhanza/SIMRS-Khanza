@@ -12,9 +12,10 @@
 package simrskhanza;
 
 import bridging.BPJSDataSEP;
-import bridging.DlgDataTB;
 import bridging.CoronaPasien;
+import bridging.DlgDataTB;
 import bridging.DlgSKDPBPJS;
+import bridging.INACBGPerawatanCorona;
 import bridging.InhealthDataSJP;
 import bridging.PCareDataPendaftaran;
 import bridging.SisruteRujukanKeluar;
@@ -39,12 +40,15 @@ import inventory.DlgResepObat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
@@ -83,12 +87,6 @@ import laporan.DlgBerkasRawat;
 import laporan.DlgDataInsidenKeselamatan;
 import laporan.DlgDiagnosaPenyakit;
 import laporan.DlgFrekuensiPenyakitRalan;
-import bridging.DlgDataTB;
-import bridging.INACBGPerawatanCorona;
-import java.awt.Toolkit;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -102,7 +100,6 @@ import rekammedis.RMDataResumePasien;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
-import rekammedis.RMTriaseIGD;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
 import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMTriaseIGD;
@@ -5923,7 +5920,7 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp "
                         + "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where "
-                        + "poliklinik.kd_poli<>'IGDK' and tgl_registrasi between '"
+                        + "poliklinik.kd_poli<>'U0076' and tgl_registrasi between '"
                         + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
                         + Valid.SetDateToString(DTPCari2.getDate()) + "' order by " + order,
                         param);
@@ -5934,67 +5931,67 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp "
                         + "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.no_reg like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.no_rawat like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.tgl_registrasi like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.kd_dokter like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and dokter.nm_dokter like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.no_rkm_medis like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.stts_daftar like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and poliklinik.nm_poli like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.p_jawab like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.almt_pj like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and penjab.png_jawab like '%" + TCari.getText().trim() + "%' or "
-                        + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
+                        + "poliklinik.kd_poli<>'U0076' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
                         + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
                         + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
@@ -9999,16 +9996,16 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             String kd_dokter = Sequel.cariIsi(
-                    "select dokter.kd_dokter from temp_spri inner join dokter on dokter.kd_dokter=temp_spri.kd_dokter where norm =?",
+                    "select dokter.kd_dokter from temp_spri inner join dokter on dokter.kd_dokter=kd_dokter where norm =?",
                     TNoRM.getText());
             param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
             Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
-                    "SELECT temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
+                    "SELECT tanggal,jam,norm,if(norm='',nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
                     + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.keluhan "
-                    + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
-                    + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit " + " WHERE"
+                    + "pasien.agama,rencana_perawatan,upf,dokter.nm_dokter,penyakit.nm_penyakit,kd_dokter,keluhan "
+                    + " FROM temp_spri left join pasien on norm=pasien.no_rkm_medis "
+                    + "left join dokter on kd_dokter=dokter.kd_dokter "
+                    + "left join penyakit on diagnosa=penyakit.kd_penyakit " + " WHERE"
                     // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
                     // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
                     // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
@@ -10018,8 +10015,8 @@ public final class DlgReg extends javax.swing.JDialog {
                     // + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
                     // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
                     // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                    + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' and temp_spri.tanggal='"
-                    + Valid.SetDateToString(DTPReg.getDate()) + "'" + " order by temp_spri.tanggal ",
+                    + " norm like '%" + TNoRM.getText().trim() + "%' and tanggal='"
+                    + Valid.SetDateToString(DTPReg.getDate()) + "'" + " order by tanggal ",
                     param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -10377,7 +10374,7 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,reg_periksa.status_poli, "
                         + "reg_periksa.kd_poli,reg_periksa.kd_pj from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "
-                        + " poliklinik.kd_poli<>'IGDK' and tgl_registrasi between ? and ? order by " + order);
+                        + " poliklinik.kd_poli<>'U0076' and tgl_registrasi between ? and ? order by " + order);
             } else {
                 ps = koneksi.prepareStatement(
                         "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"
@@ -10385,19 +10382,19 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,reg_periksa.status_poli, "
                         + "reg_periksa.kd_poli,reg_periksa.kd_pj from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_reg like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_rawat like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.tgl_registrasi like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.kd_dokter like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  dokter.nm_dokter like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_rkm_medis like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.stts_daftar like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  pasien.nm_pasien like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  poliklinik.nm_poli like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.p_jawab like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.almt_pj like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.hubunganpj like ? or "
-                        + " poliklinik.kd_poli<>'IGDK' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  penjab.png_jawab like ? order by "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_reg like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_rawat like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.tgl_registrasi like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.kd_dokter like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  dokter.nm_dokter like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_rkm_medis like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.stts_daftar like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  pasien.nm_pasien like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  poliklinik.nm_poli like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.p_jawab like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.almt_pj like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.hubunganpj like ? or "
+                        + " poliklinik.kd_poli<>'U0076' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and tgl_registrasi between ? and ? and  penjab.png_jawab like ? order by "
                         + order);
             }
 
@@ -10640,24 +10637,24 @@ public final class DlgReg extends javax.swing.JDialog {
         try {
             if (!TCari.getText().equals("")) {
                 ps2 = koneksi.prepareStatement(
-                        "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
-                        + "temp_spri.rencana_perawatan,temp_spri.upf,"
-                        + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                        + " FROM temp_spri left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                        + " where temp_spri.status='Belum' and temp_spri.norm like ? and temp_spri.tanggal between ? and ? or"
-                        + " temp_spri.status='Belum' and temp_spri.nama like ? and temp_spri.tanggal between ? and ?  or"
-                        + " temp_spri.status='Belum' and dokter.nm_dokter like ? and temp_spri.tanggal between ? and ? "
-                        + " order by temp_spri.tanggal desc");
+                        "SELECT id,tanggal,jam,norm,nama,status,"
+                        + "rencana_perawatan,upf,"
+                        + "nm_dokter,kd_dokter,diagnosa,keluhan "
+                        + " FROM temp_spri "
+                        + " where status='Belum' and norm like ? and tanggal between ? and ? or"
+                        + " status='Belum' and nama like ? and tanggal between ? and ?  or"
+                        + " status='Belum' and nm_dokter like ? and tanggal between ? and ? "
+                        + " order by tanggal desc");
             } else {
                 ps2 = koneksi.prepareStatement(
-                        "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
-                        + "temp_spri.rencana_perawatan,temp_spri.upf,"
-                        + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                        + " FROM temp_spri left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                        + " where temp_spri.status='Belum' and temp_spri.tanggal between ? and ? or"
-                        + " temp_spri.status='Belum' and temp_spri.tanggal between ? and ?  or"
-                        + " temp_spri.status='Belum' and temp_spri.tanggal between ? and ? "
-                        + " order by temp_spri.tanggal desc");
+                        "SELECT id,tanggal,jam,norm,nama,status,"
+                        + "rencana_perawatan,upf,"
+                        + "nm_dokter,kd_dokter,diagnosa,keluhan "
+                        + " FROM temp_spri "
+                        + " where status='Belum' and tanggal between ? and ? or"
+                        + " status='Belum' and tanggal between ? and ?  or"
+                        + " status='Belum' and tanggal between ? and ? "
+                        + " order by tanggal desc");
             }
             try {
                 if (!TCari.getText().equals("")) {
@@ -10682,10 +10679,10 @@ public final class DlgReg extends javax.swing.JDialog {
                 while (rs3.next()) {
                     tabMode3.addRow(
                             new Object[]{rs3.getString("tanggal"), rs3.getString("jam"), rs3.getString("norm"),
-                                rs3.getString("temp_spri.nama"), rs3.getString("temp_spri.rencana_perawatan"),
-                                rs3.getString("temp_spri.upf"), rs3.getString("dokter.nm_dokter"),
-                                rs3.getString("keluhan"), rs3.getString("temp_spri.kd_dokter"),
-                                rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("temp_spri.id")});
+                                rs3.getString("nama"), rs3.getString("rencana_perawatan"),
+                                rs3.getString("upf"), rs3.getString("nm_dokter"),
+                                rs3.getString("keluhan"), rs3.getString("kd_dokter"),
+                                rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("id")});
                 }
             } catch (Exception e) {
                 Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
