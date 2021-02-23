@@ -973,10 +973,13 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         param.put("logo", Sequel.cariGambar("select logo from setting"));
         Valid.MyReportqry("rptSuratKematian.jasper", "report", "::[ Surat Kematian ]::",
                 "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "
-                + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,hari,gol_darah,stts_nikah, "
-                + "agama,keterangan,nomor from pasien_mati,pasien "
+                + "pasien.umur,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,jk,tmp_lahir,tgl_lahir,hari,gol_darah,stts_nikah, "
+                + "agama,keterangan,nomor from pasien_mati,pasien,kelurahan,kecamatan,kabupaten "
                 + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
-                + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
+                + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' "
+                        + "and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec "
+                        + "and pasien.kd_kab=kabupaten.kd_kab ", param);
     }
 }//GEN-LAST:event_MnCetakSuratMatiActionPerformed
 

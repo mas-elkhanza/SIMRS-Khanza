@@ -11536,12 +11536,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
                 Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
                         "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
-                        + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                        + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.keluhan "
-                        + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
-                        + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                        + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit WHERE"
-                        + " temp_spri.norm = '" + TNoRM1.getText().trim() + "' "
+                        + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tgl_lahir,"
+                        + "temp_spri.rencana_perawatan,temp_spri.upf,temp_spri.nm_dokter,temp_spri.kd_dokter,temp_spri.keluhan "
+                        + " FROM temp_spri inner join pasien on temp_spri.norm=pasien.no_rkm_medis "
+//                        + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
+//                        + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit WHERE"
+                        + " WHERE temp_spri.norm = '" + TNoRM1.getText().trim() + "' "
                         + " order by temp_spri.tanggal ",
                         param);
             } else {
