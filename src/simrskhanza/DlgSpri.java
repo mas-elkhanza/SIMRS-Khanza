@@ -1335,7 +1335,7 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void cetakSpri() {
-        if (!TNoRM.getText().equals("")) {
+        if (!tabMode.getValueAt(tbSpri.getSelectedRow(), 2).equals("")) {
             Map<String, Object> param = new HashMap<>();
             param.put("namars", akses.getnamars());
             param.put("alamatrs", akses.getalamatrs());
@@ -1348,16 +1348,18 @@ public class DlgSpri extends javax.swing.JDialog {
 //            System.out.println("ttd = " + Sequel.cariGambar("select logo from setting"));
             //param.put("ttd", "./setting/" + Sequel.cariIsi("select ttd from ttd_dokter where kd_dokter='" + txtKdDokter.getText() + "'"));
             Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
-                    "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
-                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.keluhan "
-                    + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
-                    + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit "
+                    "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,"
+                    + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, "
+                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tgl_lahir,"
+                    + "temp_spri.rencana_perawatan,temp_spri.upf,temp_spri.nm_dokter,temp_spri.kd_dokter,temp_spri.keluhan "
+                    + " FROM temp_spri inner join pasien on temp_spri.norm=pasien.no_rkm_medis "
+                    + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                    + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                    + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
                     + " WHERE temp_spri.norm = '" + TNoRM.getText().trim() + "' "
                     + "and temp_spri.tanggal between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' "
                     + " order by temp_spri.tanggal ", param);
-        } else if (TNoRM.getText().equals("")) {
+        } else if (tabMode.getValueAt(tbSpri.getSelectedRow(), 2).equals("")) {
             Map<String, Object> param = new HashMap<>();
             param.put("namars", akses.getnamars());
             param.put("alamatrs", akses.getalamatrs());
@@ -1371,11 +1373,11 @@ public class DlgSpri extends javax.swing.JDialog {
 //                param.put("ttd", "./setting/" + Sequel.cariIsi("select ttd from ttd_dokter where kd_dokter='" + txtKdDokter.getText() + "'"));
             Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
                     "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
-                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.keluhan "
-                    + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
-                    + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit "
+                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tgl_lahir,"
+                    + "temp_spri.rencana_perawatan,temp_spri.upf,temp_spri.nm_dokter,temp_spri.kd_dokter,temp_spri.keluhan "
+                    + " FROM temp_spri inner join pasien on temp_spri.norm=pasien.no_rkm_medis "
+//                    + "inner join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
+//                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit "
                     + " WHERE temp_spri.id = '" + id + "' "
                     + " order by temp_spri.tanggal ", param);
         }
@@ -1395,11 +1397,11 @@ public class DlgSpri extends javax.swing.JDialog {
         //param.put("ttd", "./setting/" + Sequel.cariIsi("select ttd from ttd_dokter where kd_dokter='" + txtKdDokter.getText() + "'"));
         Valid.MyReportqry("rptDaftarKunjunganPasien.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
                 "SELECT temp_spri.id, temp_spri.tanggal,temp_spri.norm,temp_spri.keluhan,temp_spri.rencana_perawatan,"
-                + "temp_spri.nama,temp_spri.rujukan,temp_spri.terapi,dokter.nm_dokter,"
+                + "temp_spri.nama,temp_spri.rujukan,temp_spri.terapi,temp_spri.nm_dokter,"
                 + "pasien.alamat,pasien.umur,pasien.jk as jk_pasien,temp_spri.upf "
                 + "FROM temp_spri"
-                + " inner join dokter ON "
-                + " temp_spri.kd_dokter = dokter.kd_dokter "
+//                + " inner join dokter ON "
+//                + " temp_spri.kd_dokter = dokter.kd_dokter "
                 + " inner join pasien ON "
                 + " pasien.no_rkm_medis = temp_spri.norm "
                 + " WHERE temp_spri.tanggal between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' "

@@ -9987,6 +9987,10 @@ public final class DlgReg extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
+            String tgl_masuk = tabMode.getValueAt(tbPetugas.getSelectedRow(), 2).toString().substring(0,10).replace("/", "-");
+            System.out.println("tanggal masuk "+tgl_masuk);
+            String id = Sequel.cariIsi("select id from temp_spri where norm='" + TNoRM.getText() + "' and tanggal='" + tgl_masuk + "'");
+            if(!id.isEmpty()){
             Map<String, Object> param = new HashMap<>();
             param.put("namars", akses.getnamars());
             param.put("alamatrs", akses.getalamatrs());
@@ -9996,16 +10000,19 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             String kd_dokter = Sequel.cariIsi(
-                    "select dokter.kd_dokter from temp_spri inner join dokter on dokter.kd_dokter=kd_dokter where norm =?",
+                    "select kd_dokter from temp_spri where norm =?",
                     TNoRM.getText());
             param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
             Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
-                    "SELECT id,tanggal,jam,norm,if(norm='',nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
-                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                    + "pasien.agama,rencana_perawatan,upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,keluhan "
+                    "SELECT id,tanggal,jam,norm,if(norm='',nama,pasien.nm_pasien) as nm_pasien,"
+                    + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, "
+                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tgl_lahir,"
+                    + "rencana_perawatan,upf,temp_spri.nm_dokter,temp_spri.kd_dokter,keluhan "
                     + " FROM temp_spri inner join pasien on norm=pasien.no_rkm_medis "
-                    + "inner join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit " + " WHERE"
+                    + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                    + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                    + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                    + " WHERE"
                     // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
                     // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
                     // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
@@ -10018,6 +10025,9 @@ public final class DlgReg extends javax.swing.JDialog {
                     + " norm like '%" + TNoRM.getText().trim() + "%' and tanggal='"
                     + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 3).toString() + "'" + " order by tanggal ",
                     param);
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Data Pasien belum terdaftar di SPRI, \nMohon tambahkan Data Pasien pada Menu SPRI.", "Informasi", JOptionPane.OK_OPTION);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }// GEN-LAST:event_MnSpriActionPerformed
