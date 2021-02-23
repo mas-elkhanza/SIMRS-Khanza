@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="162" pageHeight="60" columnWidth="158" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="c37ee618-fbb0-4eea-9c8f-bfd73892db43">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="nama" class="java.lang.String"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -15,10 +17,22 @@
 	<parameter name="no_rawat" class="java.lang.String"/>
 	<parameter name="tgl" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select no_rawat from reg_periksa where no_rawat= $P{no_rawat}]]>
+		<![CDATA[select no_rawat,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat 
+from reg_periksa,pasien,kelurahan,kecamatan,kabupaten 
+where 
+pasien.kd_kel=kelurahan.kd_kel and
+pasien.kd_kec=kecamatan.kd_kec and
+pasien.kd_kab=kabupaten.kd_kab and 
+pasien.no_rkm_medis=reg_periksa.no_rkm_medis and 
+reg_periksa.no_rawat= $P{no_rawat}]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -26,7 +40,7 @@
 	<detail>
 		<band height="56" splitType="Stretch">
 			<componentElement>
-				<reportElement x="1" y="32" width="143" height="18" uuid="5bcf1a0c-1a2d-4954-bb45-b90a986f035e"/>
+				<reportElement x="1" y="31" width="143" height="18" uuid="5bcf1a0c-1a2d-4954-bb45-b90a986f035e"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="1" barHeight="25">
 					<jr:codeExpression><![CDATA[$F{no_rawat}]]></jr:codeExpression>
 				</jr:barbecue>
@@ -44,7 +58,7 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="31" y="11" width="113" height="9" uuid="22ad8275-02fc-4377-9fa2-3240b20e2876"/>
+				<reportElement x="31" y="12" width="113" height="9" uuid="22ad8275-02fc-4377-9fa2-3240b20e2876"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -76,7 +90,7 @@
 				<textFieldExpression><![CDATA[$F{no_rawat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="7" y="11" width="21" height="9" uuid="0f2ba730-ac30-4024-abd5-3b55d8c05060"/>
+				<reportElement x="7" y="12" width="21" height="9" uuid="0f2ba730-ac30-4024-abd5-3b55d8c05060"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -100,7 +114,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="28" y="11" width="3" height="9" uuid="4218cb5a-39c0-4338-b988-b5cdc40ebb81"/>
+				<reportElement x="28" y="12" width="3" height="9" uuid="4218cb5a-39c0-4338-b988-b5cdc40ebb81"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -122,12 +136,14 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="7" y="20" width="137" height="12" uuid="e6eaa524-1269-451a-a130-e29391453b4e"/>
+				<reportElement x="7" y="22" width="137" height="10" uuid="e6eaa524-1269-451a-a130-e29391453b4e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="6"/>
+					<font fontName="Tahoma" size="5"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{alamat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[PROPER($F{alamat} )]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
