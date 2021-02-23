@@ -5154,7 +5154,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnSJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSJPActionPerformed
         // TODO add your handling code here: ini nanti setelah rawat jalan
-        
+
     }//GEN-LAST:event_MnSJPActionPerformed
 
     private void getDataCoder() {
@@ -11518,8 +11518,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
-            String tgl_masuk = tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString().substring(0,10).replace("/", "-");
-            System.out.println("tanggal masuk "+tgl_masuk);
+            String tgl_masuk = tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString().substring(0, 10).replace("/", "-");
+            System.out.println("tanggal masuk " + tgl_masuk);
             String id = Sequel.cariIsi("select id from temp_spri where norm='" + TNoRM.getText() + "' and tanggal='" + tgl_masuk + "'");
             if (!id.isEmpty()) {
                 Map<String, Object> param = new HashMap<>();
@@ -11535,12 +11535,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         TNoRM.getText());
                 param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
                 Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
-                        "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
+                        "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,"
+                        + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, "
                         + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tgl_lahir,"
                         + "temp_spri.rencana_perawatan,temp_spri.upf,temp_spri.nm_dokter,temp_spri.kd_dokter,temp_spri.keluhan "
                         + " FROM temp_spri inner join pasien on temp_spri.norm=pasien.no_rkm_medis "
-//                        + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-//                        + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit WHERE"
+                        + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                        + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                        + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
                         + " WHERE temp_spri.norm = '" + TNoRM1.getText().trim() + "' "
                         + " order by temp_spri.tanggal ",
                         param);

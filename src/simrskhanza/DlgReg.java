@@ -7187,7 +7187,13 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
             Valid.MyReportqry("rptBarcodeRawat.jasper", "report", "::[ Barcode No.Rawat ]::",
-                    "select reg_periksa.no_rawat from reg_periksa where no_rawat='" + TNoRw.getText() + "'", param);
+                    "select reg_periksa.no_rawat,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "
+                    + " from reg_periksa,pasien,kelurahan,kecamatan,kabupaten "
+                    + " where "
+                    + "pasien.kd_kel=kelurahan.kd_kel and "
+                    + "pasien.kd_kec=kecamatan.kd_kec and "
+                    + "pasien.kd_kab=kabupaten.kd_kab and "
+                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and no_rawat='" + TNoRw.getText() + "'", param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }// GEN-LAST:event_MnBarcodeActionPerformed
@@ -9987,37 +9993,47 @@ public final class DlgReg extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars", akses.getnamars());
-            param.put("alamatrs", akses.getalamatrs());
-            param.put("kotars", akses.getkabupatenrs());
-            param.put("propinsirs", akses.getpropinsirs());
-            param.put("kontakrs", akses.getkontakrs());
-            param.put("emailrs", akses.getemailrs());
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
-            String kd_dokter = Sequel.cariIsi(
-                    "select dokter.kd_dokter from temp_spri inner join dokter on dokter.kd_dokter=kd_dokter where norm =?",
-                    TNoRM.getText());
-            param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
-            Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
-                    "SELECT id,tanggal,jam,norm,if(norm='',nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
-                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                    + "pasien.agama,rencana_perawatan,upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,keluhan "
-                    + " FROM temp_spri inner join pasien on norm=pasien.no_rkm_medis "
-                    + "inner join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit " + " WHERE"
-                    // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
-                    // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
-                    // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                    // + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
-                    // + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                    // + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
-                    // + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                    // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                    // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                    + " norm like '%" + TNoRM.getText().trim() + "%' and tanggal='"
-                    + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 3).toString() + "'" + " order by tanggal ",
-                    param);
+            String tgl_masuk = tabMode.getValueAt(tbPetugas.getSelectedRow(), 2).toString().substring(0, 10).replace("/", "-");
+            System.out.println("tanggal masuk " + tgl_masuk);
+            String id = Sequel.cariIsi("select id from temp_spri where norm='" + TNoRM.getText() + "' and tanggal='" + tgl_masuk + "'");
+            if (!id.isEmpty()) {
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars", akses.getnamars());
+                param.put("alamatrs", akses.getalamatrs());
+                param.put("kotars", akses.getkabupatenrs());
+                param.put("propinsirs", akses.getpropinsirs());
+                param.put("kontakrs", akses.getkontakrs());
+                param.put("emailrs", akses.getemailrs());
+                param.put("logo", Sequel.cariGambar("select logo from setting"));
+                String kd_dokter = Sequel.cariIsi(
+                        "select kd_dokter from temp_spri where norm =?",
+                        TNoRM.getText());
+                param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
+                Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
+                        "SELECT id,tanggal,jam,norm,if(norm='',nama,pasien.nm_pasien) as nm_pasien,"
+                        + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, "
+                        + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tgl_lahir,"
+                        + "rencana_perawatan,upf,temp_spri.nm_dokter,temp_spri.kd_dokter,keluhan "
+                        + " FROM temp_spri inner join pasien on norm=pasien.no_rkm_medis "
+                        + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                        + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                        + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                        + " WHERE"
+                        // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
+                        // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
+                        // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
+                        // + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
+                        // + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
+                        // + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
+                        // + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
+                        // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
+                        // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
+                        + " norm like '%" + TNoRM.getText().trim() + "%' and tanggal='"
+                        + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 3).toString() + "'" + " order by tanggal ",
+                        param);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Data Pasien belum terdaftar di SPRI, \nMohon tambahkan Data Pasien pada Menu SPRI.", "Informasi", JOptionPane.OK_OPTION);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }// GEN-LAST:event_MnSpriActionPerformed
@@ -10374,8 +10390,8 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,reg_periksa.status_poli, "
                         + "reg_periksa.kd_poli,reg_periksa.kd_pj from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "
-//                        + " "
-                                + "tgl_registrasi between ? and ? order by " + order);
+                        //                        + " "
+                        + "tgl_registrasi between ? and ? order by " + order);
             } else {
                 ps = koneksi.prepareStatement(
                         "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"
