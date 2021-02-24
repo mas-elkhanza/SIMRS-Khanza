@@ -1091,6 +1091,16 @@ public final class validasi {
         }
     }
     
+    public String SetTgl4(String original){
+        original=original.replaceAll("'","");
+        s = "";
+        try {
+            s=original.substring(6,10)+original.substring(3,5)+original.substring(0,2);
+        }catch (Exception e) {
+        }   
+        return s;
+    }
+    
     public void textKosong(JTextField teks,String pesan){
         JOptionPane.showMessageDialog(null,"Maaf, "+pesan+" tidak boleh kosong...!!!");
         teks.requestFocus();

@@ -1948,65 +1948,32 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 headers.add("Content-Type","application/json");
                 requestJson ="{" +
                     "\"id_tb_03\":\"\"," +
-                    "\"id_periode_laporan\":"+PeriodeLaporan.getSelectedItem().toString().substring(0,1)+"," +
-                    "\"tanggal_buat_laporan\":\""+Valid.SetTgl(TanggalLaporan.getSelectedItem()+"")+"T"+TanggalLaporan.getSelectedItem().toString().substring(11,19)+".000Z\"," +
-                    "\"tahun_buat_laporan\":"+Valid.SetTgl(TanggalLaporan.getSelectedItem()+"").substring(0,4)+"," +
-                    "\"kd_wasor\":\""+kdwasor+"\"," +
-                    "\"noregkab\":0," +
                     "\"kd_pasien\":\""+TNmPasien.getText().toUpperCase()+"\"," +
-                    "\"nik\":"+NIK.getText()+"," +
+                    "\"nik\":\""+NIK.getText()+"\"," +
                     "\"jenis_kelamin\":\""+JK.getText().substring(0,1)+"\"," +
                     "\"alamat_lengkap\":\""+Alamat.getText()+"\"," +
-                    "\"id_propinsi\":\""+KdProp.getText()+"\"," +
-                    "\"kd_kabupaten\":\""+KdKab.getText()+"\"," +
-                    "\"id_kecamatan\":\""+KdKec.getText()+"\"," +
-                    "\"id_kelurahan\":\""+KdKel.getText()+"\"," +
+                    "\"id_propinsi_faskes\":\""+KdProp.getText()+"\"," +
+                    "\"kd_kabupaten_faskes\":\""+KdKab.getText()+"\"," +
+                    "\"id_propinsi_pasien\":\""+KdProp.getText()+"\"," +
+                    "\"kd_kabupaten_pasien\":\""+KdKab.getText()+"\"," +
                     "\"kd_fasyankes\":\""+idrs+"\"," +
-                    "\"nama_rujukan\":\""+Rujukan.getSelectedItem()+"\"," +
-                    "\"sebutkan1\":\""+KeteranganRujukan.getText()+"\"," +
-                    "\"tipe_diagnosis\":\""+TipeDiagnosis.getSelectedItem()+"\"," +
-                    "\"klasifikasi_lokasi_anatomi\":\""+Lokasi.getSelectedItem()+"\"," +
-                    "\"klasifikasi_riwayat_pengobatan\":\""+Riwayat.getSelectedItem()+"\"," +
-                    "\"klasifikasi_status_hiv\":\""+StatusHIV.getSelectedItem()+"\"," +
-                    "\"total_skoring_anak\":\""+SkoringAnak.getSelectedItem()+"\"," +
-                    "\"konfirmasiSkoring5\":\""+Skoring5.getSelectedItem()+"\"," +
-                    "\"konfirmasiSkoring6\":\""+Skoring6.getSelectedItem()+"\"," +
-                    "\"tanggal_mulai_pengobatan\":\""+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"")+"\"," +
+                    "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                    "\"tipe_diagnosis\":\""+TipeDiagnosis.getSelectedItem().toString().replaceAll("Terkonfirmasi bakteriologis","1").toString().replaceAll("Terdiagnosis klinis","2")+"\"," +
+                    "\"klasifikasi_lokasi_anatomi\":\""+Lokasi.getSelectedItem().toString().replaceAll("Paru","1").toString().replaceAll("Ekstraparu","2")+"\"," +
+                    "\"klasifikasi_riwayat_pengobatan\":\""+Riwayat.getSelectedItem().toString().replaceAll("Baru","1").toString().replaceAll("Kambuh","2").toString().replaceAll("Diobati setelah gagal","3").toString().replaceAll("Diobati Setelah Putus Berobat","4").toString().replaceAll("Lain-lain","5").toString().replaceAll("Riwayat Pengobatan Sebelumnya Tidak Diketahui","6").toString().replaceAll("Pindahan","7")+"\"," +
+                    "\"tanggal_mulai_pengobatan\":\""+Valid.SetTgl4(MulaiBerobat.getSelectedItem()+"")+"\"," +
                     "\"paduan_oat\":\""+PaduanOAT.getText()+"\"," +
-                    "\"sumber_obat\":\""+SumberObat.getSelectedItem()+"\"," +
-                    "\"sebutkan\":\""+KeteranganSO.getText()+"\"," +
                     "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                     "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                     "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                    "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                     "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
-                    "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
+                    "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl4(AkhirBerobat.getSelectedItem()+"")+"\"," +
                     "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
-                    "\"tanggal_dianjurkan_tes\":\""+Valid.SetTgl(DianjurkanTesHIV.getSelectedItem().toString()+"")+"\"," +
-                    "\"tanggal_tes_hiv\":\""+Valid.SetTgl(TanggalTesHIV.getSelectedItem()+"")+"\"," +
-                    "\"hasil_tes_hiv\":\""+HasilTesHIV.getSelectedItem()+"\"," +
-                    "\"ppk\":\""+PPK.getSelectedItem()+"\"," +
-                    "\"art\":\""+ART.getSelectedItem()+"\"," +
-                    "\"tb_dm\":\""+TBDM.getSelectedItem()+"\"," +
-                    "\"terapi_dm\":\""+TerapiDM.getSelectedItem()+"\"," +
-                    "\"pindah_ro\":\""+PindahRO.getSelectedItem()+"\"," +
-                    "\"umur\":"+Umur.getText()+"," +
-                    "\"status_pengobatan\":\""+Status.getSelectedItem()+"\"," +
-                    "\"foto_toraks\":\""+FotoToraks.getSelectedItem()+"\"," +
-                    "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
-                    "\"keterangan\":\""+Keterangan.getText()+"\"," +
-                    "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                    "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
-                    "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
-                    "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                    "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
-                    "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
+                    "\"tgl_lahir\":\""+Tanggal.getText().replaceAll("-","")+"\"," +
+                    "\"foto_toraks\":\""+FotoToraks.getSelectedItem()+"\"" +
                 "}";
                 System.out.println(requestJson);
                 requestEntity = new HttpEntity(requestJson,headers);
@@ -2017,7 +1984,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
             } catch (Exception ex) {
                 System.out.println("Notifikasi Bridging : "+ex);
                 if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server SITT terputus...!");
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server SITB terputus...!");
                 }else if(ex.toString().contains("502")){
                     JOptionPane.showMessageDialog(null,"Connection timed out. Hayati lelah bang...!");
                 }
@@ -2025,7 +1992,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
             if(Sequel.menyimpantf("data_tb","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",50,new String[]{
                     TNoRw.getText(),id_tb_03,PeriodeLaporan.getSelectedItem().toString(),Valid.SetTgl(TanggalLaporan.getSelectedItem()+"")+" "+TanggalLaporan.getSelectedItem().toString().substring(11,19), 
                     Valid.SetTgl(TanggalLaporan.getSelectedItem()+"").substring(0,4),kdwasor,"0",KdProp.getText(),KdKab.getText(),KdKec.getText(),KdKel.getText(),Rujukan.getSelectedItem().toString(),
-                    KeteranganRujukan.getText(),TipeDiagnosis.getSelectedItem().toString(),Lokasi.getSelectedItem().toString(),Riwayat.getSelectedItem().toString(),StatusHIV.getSelectedItem().toString(),
+                    KeteranganRujukan.getText(),TipeDiagnosis.getSelectedItem().toString().replaceAll("1. Terkonfirmasi bakteriologis","Terkonfirmasi bakteriologis").toString().replaceAll("2. Terdiagnosis klinis","Terdiagnosis klinis"),Lokasi.getSelectedItem().toString().replaceAll("1. Paru","Paru").toString().replaceAll("2. Ekstraparu","Ekstraparu"),Riwayat.getSelectedItem().toString().replaceAll("1. Baru","Baru").toString().replaceAll("2. Kambuh","Kambuh").toString().replaceAll("3. Diobati setelah gagal","Diobati setelah gagal").toString().replaceAll("4. Diobati Setelah Putus Berobat","Diobati Setelah Putus Berobat").toString().replaceAll("5. Lain-lain","Lain-lain").toString().replaceAll("6. Riwayat Pengobatan Sebelumnya Tidak Diketahui","Riwayat Pengobatan Sebelumnya Tidak Diketahui").toString().replaceAll("7. Pindahan","Pindahan"),StatusHIV.getSelectedItem().toString(),
                     SkoringAnak.getSelectedItem().toString(),Skoring5.getSelectedItem().toString(),Skoring6.getSelectedItem().toString(),Valid.SetTgl(MulaiBerobat.getSelectedItem()+""), 
                     PaduanOAT.getText(),SumberObat.getSelectedItem().toString(),KeteranganSO.getText(),SebelumPengobatanMikroskopis.getSelectedItem().toString(),SebelumPengobatanTesCepat.getSelectedItem().toString(),
                     SebelumPengobatanBiakan.getSelectedItem().toString(),PemeriksaanLaboratBulan2NoReg.getText(),PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem().toString(), 
@@ -2117,65 +2084,32 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     if(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),59).toString().equals("")){
                         requestJson ="{" +
                             "\"id_tb_03\":\"\"," +
-                            "\"id_periode_laporan\":"+PeriodeLaporan.getSelectedItem().toString().substring(0,1)+"," +
-                            "\"tanggal_buat_laporan\":\""+Valid.SetTgl(TanggalLaporan.getSelectedItem()+"")+"T"+TanggalLaporan.getSelectedItem().toString().substring(11,19)+".000Z\"," +
-                            "\"tahun_buat_laporan\":"+Valid.SetTgl(TanggalLaporan.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"kd_wasor\":\""+kdwasor+"\"," +
-                            "\"noregkab\":0," +
                             "\"kd_pasien\":\""+TNmPasien.getText().toUpperCase()+"\"," +
-                            "\"nik\":"+NIK.getText()+"," +
+                            "\"nik\":\""+NIK.getText()+"\"," +
                             "\"jenis_kelamin\":\""+JK.getText().substring(0,1)+"\"," +
                             "\"alamat_lengkap\":\""+Alamat.getText()+"\"," +
-                            "\"id_propinsi\":\""+KdProp.getText()+"\"," +
-                            "\"kd_kabupaten\":\""+KdKab.getText()+"\"," +
-                            "\"id_kecamatan\":\""+KdKec.getText()+"\"," +
-                            "\"id_kelurahan\":\""+KdKel.getText()+"\"," +
+                            "\"id_propinsi_faskes\":\""+KdProp.getText()+"\"," +
+                            "\"kd_kabupaten_faskes\":\""+KdKab.getText()+"\"," +
+                            "\"id_propinsi_pasien\":\""+KdProp.getText()+"\"," +
+                            "\"kd_kabupaten_pasien\":\""+KdKab.getText()+"\"," +
                             "\"kd_fasyankes\":\""+idrs+"\"," +
-                            "\"nama_rujukan\":\""+Rujukan.getSelectedItem()+"\"," +
-                            "\"sebutkan1\":\""+KeteranganRujukan.getText()+"\"," +
-                            "\"tipe_diagnosis\":\""+TipeDiagnosis.getSelectedItem()+"\"," +
-                            "\"klasifikasi_lokasi_anatomi\":\""+Lokasi.getSelectedItem()+"\"," +
-                            "\"klasifikasi_riwayat_pengobatan\":\""+Riwayat.getSelectedItem()+"\"," +
-                            "\"klasifikasi_status_hiv\":\""+StatusHIV.getSelectedItem()+"\"," +
-                            "\"total_skoring_anak\":\""+SkoringAnak.getSelectedItem()+"\"," +
-                            "\"konfirmasiSkoring5\":\""+Skoring5.getSelectedItem()+"\"," +
-                            "\"konfirmasiSkoring6\":\""+Skoring6.getSelectedItem()+"\"," +
-                            "\"tanggal_mulai_pengobatan\":\""+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"")+"\"," +
+                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                            "\"tipe_diagnosis\":\""+TipeDiagnosis.getSelectedItem().toString().replaceAll("Terkonfirmasi bakteriologis","1").toString().replaceAll("Terdiagnosis klinis","2")+"\"," +
+                            "\"klasifikasi_lokasi_anatomi\":\""+Lokasi.getSelectedItem().toString().replaceAll("Paru","1").toString().replaceAll("Ekstraparu","2")+"\"," +
+                            "\"klasifikasi_riwayat_pengobatan\":\""+Riwayat.getSelectedItem().toString().replaceAll("Baru","1").toString().replaceAll("Kambuh","2").toString().replaceAll("Diobati setelah gagal","3").toString().replaceAll("Diobati Setelah Putus Berobat","4").toString().replaceAll("Lain-lain","5").toString().replaceAll("Riwayat Pengobatan Sebelumnya Tidak Diketahui","6").toString().replaceAll("Pindahan","7")+"\"," +
+                            "\"tanggal_mulai_pengobatan\":\""+Valid.SetTgl4(MulaiBerobat.getSelectedItem()+"")+"\"," +
                             "\"paduan_oat\":\""+PaduanOAT.getText()+"\"," +
-                            "\"sumber_obat\":\""+SumberObat.getSelectedItem()+"\"," +
-                            "\"sebutkan\":\""+KeteranganSO.getText()+"\"," +
                             "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                            "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                             "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
-                            "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
+                            "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl4(AkhirBerobat.getSelectedItem()+"")+"\"," +
                             "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
-                            "\"tanggal_dianjurkan_tes\":\""+Valid.SetTgl(DianjurkanTesHIV.getSelectedItem().toString()+"")+"\"," +
-                            "\"tanggal_tes_hiv\":\""+Valid.SetTgl(TanggalTesHIV.getSelectedItem()+"")+"\"," +
-                            "\"hasil_tes_hiv\":\""+HasilTesHIV.getSelectedItem()+"\"," +
-                            "\"ppk\":\""+PPK.getSelectedItem()+"\"," +
-                            "\"art\":\""+ART.getSelectedItem()+"\"," +
-                            "\"tb_dm\":\""+TBDM.getSelectedItem()+"\"," +
-                            "\"terapi_dm\":\""+TerapiDM.getSelectedItem()+"\"," +
-                            "\"pindah_ro\":\""+PindahRO.getSelectedItem()+"\"," +
-                            "\"umur\":"+Umur.getText()+"," +
-                            "\"status_pengobatan\":\""+Status.getSelectedItem()+"\"," +
-                            "\"foto_toraks\":\""+FotoToraks.getSelectedItem()+"\"," +
-                            "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
-                            "\"keterangan\":\""+Keterangan.getText()+"\"," +
-                            "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
-                            "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
-                            "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
-                            "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
+                            "\"tgl_lahir\":\""+Tanggal.getText().replaceAll("-","")+"\"," +
+                            "\"foto_toraks\":\""+FotoToraks.getSelectedItem()+"\"" +
                         "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);
@@ -2186,65 +2120,32 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     }else{
                         requestJson ="{" +
                             "\"id_tb_03\":\""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),59).toString()+"\"," +
-                            "\"id_periode_laporan\":"+PeriodeLaporan.getSelectedItem().toString().substring(0,1)+"," +
-                            "\"tanggal_buat_laporan\":\""+Valid.SetTgl(TanggalLaporan.getSelectedItem()+"")+"T"+TanggalLaporan.getSelectedItem().toString().substring(11,19)+".000Z\"," +
-                            "\"tahun_buat_laporan\":"+Valid.SetTgl(TanggalLaporan.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"kd_wasor\":\""+kdwasor+"\"," +
-                            "\"noregkab\":0," +
                             "\"kd_pasien\":\""+TNmPasien.getText().toUpperCase()+"\"," +
-                            "\"nik\":"+NIK.getText()+"," +
+                            "\"nik\":\""+NIK.getText()+"\"," +
                             "\"jenis_kelamin\":\""+JK.getText().substring(0,1)+"\"," +
                             "\"alamat_lengkap\":\""+Alamat.getText()+"\"," +
-                            "\"id_propinsi\":\""+KdProp.getText()+"\"," +
-                            "\"kd_kabupaten\":\""+KdKab.getText()+"\"," +
-                            "\"id_kecamatan\":\""+KdKec.getText()+"\"," +
-                            "\"id_kelurahan\":\""+KdKel.getText()+"\"," +
+                            "\"id_propinsi_faskes\":\""+KdProp.getText()+"\"," +
+                            "\"kd_kabupaten_faskes\":\""+KdKab.getText()+"\"," +
+                            "\"id_propinsi_pasien\":\""+KdProp.getText()+"\"," +
+                            "\"kd_kabupaten_pasien\":\""+KdKab.getText()+"\"," +
                             "\"kd_fasyankes\":\""+idrs+"\"," +
-                            "\"nama_rujukan\":\""+Rujukan.getSelectedItem()+"\"," +
-                            "\"sebutkan1\":\""+KeteranganRujukan.getText()+"\"," +
-                            "\"tipe_diagnosis\":\""+TipeDiagnosis.getSelectedItem()+"\"," +
-                            "\"klasifikasi_lokasi_anatomi\":\""+Lokasi.getSelectedItem()+"\"," +
-                            "\"klasifikasi_riwayat_pengobatan\":\""+Riwayat.getSelectedItem()+"\"," +
-                            "\"klasifikasi_status_hiv\":\""+StatusHIV.getSelectedItem()+"\"," +
-                            "\"total_skoring_anak\":\""+SkoringAnak.getSelectedItem()+"\"," +
-                            "\"konfirmasiSkoring5\":\""+Skoring5.getSelectedItem()+"\"," +
-                            "\"konfirmasiSkoring6\":\""+Skoring6.getSelectedItem()+"\"," +
-                            "\"tanggal_mulai_pengobatan\":\""+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"")+"\"," +
+                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                            "\"tipe_diagnosis\":\""+TipeDiagnosis.getSelectedItem().toString().replaceAll("Terkonfirmasi bakteriologis","1").toString().replaceAll("Terdiagnosis klinis","2")+"\"," +
+                            "\"klasifikasi_lokasi_anatomi\":\""+Lokasi.getSelectedItem().toString().replaceAll("Paru","1").toString().replaceAll("Ekstraparu","2")+"\"," +
+                            "\"klasifikasi_riwayat_pengobatan\":\""+Riwayat.getSelectedItem().toString().replaceAll("Baru","1").toString().replaceAll("Kambuh","2").toString().replaceAll("Diobati setelah gagal","3").toString().replaceAll("Diobati Setelah Putus Berobat","4").toString().replaceAll("Lain-lain","5").toString().replaceAll("Riwayat Pengobatan Sebelumnya Tidak Diketahui","6").toString().replaceAll("Pindahan","7")+"\"," +
+                            "\"tanggal_mulai_pengobatan\":\""+Valid.SetTgl4(MulaiBerobat.getSelectedItem()+"")+"\"," +
                             "\"paduan_oat\":\""+PaduanOAT.getText()+"\"," +
-                            "\"sumber_obat\":\""+SumberObat.getSelectedItem()+"\"," +
-                            "\"sebutkan\":\""+KeteranganSO.getText()+"\"," +
                             "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                            "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                             "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
-                            "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
+                            "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl4(AkhirBerobat.getSelectedItem()+"")+"\"," +
                             "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
-                            "\"tanggal_dianjurkan_tes\":\""+Valid.SetTgl(DianjurkanTesHIV.getSelectedItem().toString()+"")+"\"," +
-                            "\"tanggal_tes_hiv\":\""+Valid.SetTgl(TanggalTesHIV.getSelectedItem()+"")+"\"," +
-                            "\"hasil_tes_hiv\":\""+HasilTesHIV.getSelectedItem()+"\"," +
-                            "\"ppk\":\""+PPK.getSelectedItem()+"\"," +
-                            "\"art\":\""+ART.getSelectedItem()+"\"," +
-                            "\"tb_dm\":\""+TBDM.getSelectedItem()+"\"," +
-                            "\"terapi_dm\":\""+TerapiDM.getSelectedItem()+"\"," +
-                            "\"pindah_ro\":\""+PindahRO.getSelectedItem()+"\"," +
-                            "\"umur\":"+Umur.getText()+"," +
-                            "\"status_pengobatan\":\""+Status.getSelectedItem()+"\"," +
-                            "\"foto_toraks\":\""+FotoToraks.getSelectedItem()+"\"," +
-                            "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
-                            "\"keterangan\":\""+Keterangan.getText()+"\"," +
-                            "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
-                            "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
-                            "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
-                            "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
+                            "\"tgl_lahir\":\""+Tanggal.getText().replaceAll("-","")+"\"," +
+                            "\"foto_toraks\":\""+FotoToraks.getSelectedItem()+"\"" +
                         "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);
@@ -2264,7 +2165,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 if(Sequel.mengedittf("data_tb","no_rawat=?","no_rawat=?,id_tb_03=?,id_periode_laporan=?,tanggal_buat_laporan=?,tahun_buat_laporan=?,kd_wasor=?,noregkab=?,id_propinsi=?,kd_kabupaten=?,id_kecamatan=?,id_kelurahan=?,nama_rujukan=?,sebutkan1=?,tipe_diagnosis=?,klasifikasi_lokasi_anatomi=?,klasifikasi_riwayat_pengobatan=?,klasifikasi_status_hiv=?,total_skoring_anak=?,konfirmasiSkoring5=?,konfirmasiSkoring6=?,tanggal_mulai_pengobatan=?,paduan_oat=?,sumber_obat=?,sebutkan=?,sebelum_pengobatan_hasil_mikroskopis=?,sebelum_pengobatan_hasil_tes_cepat=?,sebelum_pengobatan_hasil_biakan=?,noreglab_bulan_2=?,hasil_mikroskopis_bulan_2=?,noreglab_bulan_3=?,hasil_mikroskopis_bulan_3=?,noreglab_bulan_5=?,hasil_mikroskopis_bulan_5=?,akhir_pengobatan_noreglab=?,akhir_pengobatan_hasil_mikroskopis=?,tanggal_hasil_akhir_pengobatan=?,hasil_akhir_pengobatan=?,tanggal_dianjurkan_tes=?,tanggal_tes_hiv=?,hasil_tes_hiv=?,ppk=?,art=?,tb_dm=?,terapi_dm=?,pindah_ro=?,status_pengobatan=?,foto_toraks=?,toraks_tdk_dilakukan=?,keterangan=?,kode_icd_x=?",51,new String[]{
                         TNoRw.getText(),id_tb_03,PeriodeLaporan.getSelectedItem().toString(),Valid.SetTgl(TanggalLaporan.getSelectedItem()+"")+" "+TanggalLaporan.getSelectedItem().toString().substring(11,19), 
                         Valid.SetTgl(TanggalLaporan.getSelectedItem()+"").substring(0,4),kdwasor,"0",KdProp.getText(),KdKab.getText(),KdKec.getText(),KdKel.getText(),Rujukan.getSelectedItem().toString(),
-                        KeteranganRujukan.getText(),TipeDiagnosis.getSelectedItem().toString(),Lokasi.getSelectedItem().toString(),Riwayat.getSelectedItem().toString(),StatusHIV.getSelectedItem().toString(),
+                        KeteranganRujukan.getText(),TipeDiagnosis.getSelectedItem().toString().replaceAll("1. Terkonfirmasi bakteriologis","Terkonfirmasi bakteriologis").toString().replaceAll("2. Terdiagnosis klinis","Terdiagnosis klinis"),Lokasi.getSelectedItem().toString().replaceAll("1. Paru","Paru").toString().replaceAll("2. Ekstraparu","Ekstraparu"),Riwayat.getSelectedItem().toString().replaceAll("1. Baru","Baru").toString().replaceAll("2. Kambuh","Kambuh").toString().replaceAll("3. Diobati setelah gagal","Diobati setelah gagal").toString().replaceAll("4. Diobati Setelah Putus Berobat","Diobati Setelah Putus Berobat").toString().replaceAll("5. Lain-lain","Lain-lain").toString().replaceAll("6. Riwayat Pengobatan Sebelumnya Tidak Diketahui","Riwayat Pengobatan Sebelumnya Tidak Diketahui").toString().replaceAll("7. Pindahan","Pindahan"),StatusHIV.getSelectedItem().toString(),
                         SkoringAnak.getSelectedItem().toString(),Skoring5.getSelectedItem().toString(),Skoring6.getSelectedItem().toString(),Valid.SetTgl(MulaiBerobat.getSelectedItem()+""), 
                         PaduanOAT.getText(),SumberObat.getSelectedItem().toString(),KeteranganSO.getText(),SebelumPengobatanMikroskopis.getSelectedItem().toString(),SebelumPengobatanTesCepat.getSelectedItem().toString(),
                         SebelumPengobatanBiakan.getSelectedItem().toString(),PemeriksaanLaboratBulan2NoReg.getText(),PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem().toString(), 
