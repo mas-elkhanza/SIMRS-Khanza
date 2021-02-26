@@ -24,7 +24,7 @@ import javax.swing.table.TableColumn;
 import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
@@ -40,9 +40,7 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
-    private String json;
-    private File myObj;
-    private Scanner myReader;
+    private FileReader myObj;
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -270,14 +268,8 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            myObj = new File("./cache/propinsi.json");
-            myReader = new Scanner(myObj);
-            json="";
-            while (myReader.hasNextLine()) {
-              json =json+myReader.nextLine();
-            }
-            myReader.close();
-            root = mapper.readTree(json);
+            myObj = new FileReader("./cache/propinsi.json");
+            root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("propinsi");
             if(response.isArray()){

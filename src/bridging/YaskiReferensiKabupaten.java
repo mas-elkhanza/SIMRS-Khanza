@@ -26,8 +26,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
-import java.util.Scanner;
+import java.io.FileReader;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 
@@ -43,9 +42,7 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
-    private String json;
-    private File myObj;
-    private Scanner myReader;
+    private FileReader myObj;
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -357,14 +354,8 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            myObj = new File("./cache/kabupaten.json");
-            myReader = new Scanner(myObj);
-            json="";
-            while (myReader.hasNextLine()) {
-              json =json+myReader.nextLine();
-            }
-            myReader.close();
-            root = mapper.readTree(json);
+            myObj = new FileReader("./cache/kabupaten.json");
+            root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("kabupaten");
             if(response.isArray()){
@@ -393,5 +384,6 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     public void setPropinsi(String KdProp,String NmProp){
         this.KdProp.setText(KdProp);
         this.NmProp.setText(NmProp);
+        tampil("");
     }
 }

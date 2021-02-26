@@ -44,13 +44,13 @@
     <entry key="URLAPISIRS">http://sirs.kemkes.go.id/sirsservice</entry>
     <entry key="IDSIRS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSSIRS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLAPISITT">http://sirs.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
-    <entry key="IDSITT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="PASSSITT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPISITT">http://sirs.yankes.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
+    <entry key="IDSITT">Jj7OZml1we/2a/yR8nW7gg==</entry>
+    <entry key="PASSSITT">gILNCSeqFSr4Hvjwkpqrow==</entry>
+    <entry key="KABUPATENSITT">12345</entry>
     <entry key="URLAPICORONA">http://sirs.kemkes.go.id/fo/index.php</entry>
     <entry key="IDCORONA">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSCORONA">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="KABUPATENSITT">12345</entry>
     <entry key="KAMARAKTIFRANAP"></entry>
     <entry key="DOKTERAKTIFKASIRRALAN"></entry>
     <entry key="POLIAKTIFKASIRRALAN"></entry>

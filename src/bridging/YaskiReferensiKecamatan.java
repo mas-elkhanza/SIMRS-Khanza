@@ -27,15 +27,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
-import java.util.Scanner;
+import java.io.FileReader;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -49,9 +43,7 @@ public final class YaskiReferensiKecamatan extends javax.swing.JDialog {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
-    private String json;
-    private File myObj;
-    private Scanner myReader;
+    private FileReader myObj;
     
     /** Creates new form DlgKamar
      * @param parent
@@ -364,14 +356,8 @@ public final class YaskiReferensiKecamatan extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            myObj = new File("./cache/kecamatan.json");
-            myReader = new Scanner(myObj);
-            json="";
-            while (myReader.hasNextLine()) {
-              json =json+myReader.nextLine();
-            }
-            myReader.close();
-            root = mapper.readTree(json);
+            myObj = new FileReader("./cache/kecamatan.json");
+            root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("kecamatan");
             if(response.isArray()){
@@ -400,5 +386,6 @@ public final class YaskiReferensiKecamatan extends javax.swing.JDialog {
     public void setPropinsi(String KdKab,String NmKab){
         this.KdKab.setText(KdKab);
         this.NmKab.setText(NmKab);
+        tampil("");
     }
 }
