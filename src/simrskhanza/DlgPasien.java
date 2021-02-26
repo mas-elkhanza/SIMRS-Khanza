@@ -2396,7 +2396,6 @@ public class DlgPasien extends javax.swing.JDialog {
         ppRegistrasi1.setForeground(new java.awt.Color(50, 50, 50));
         ppRegistrasi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRegistrasi1.setText("Tampilkan Tidak Aktif > 5 Tahun");
-        ppRegistrasi1.setActionCommand("Tampilkan Tidak Aktif > 5 Tahun");
         ppRegistrasi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppRegistrasi1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppRegistrasi1.setName("ppRegistrasi1"); // NOI18N

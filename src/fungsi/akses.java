@@ -152,7 +152,7 @@ public final class akses {
             ringkasan_pemesanan_obat=false,ringkasan_pengadaan_obat=false,ringkasan_penerimaan_obat=false,ringkasan_hibah_obat=false,
             ringkasan_penjualan_obat=false,ringkasan_beri_obat=false,ringkasan_piutang_obat=false,ringkasan_stok_keluar_obat=false,
             ringkasan_retur_suplier_obat=false,ringkasan_retur_pembeli_obat=false,penilaian_awal_keperawatan_ranapkebidanan=false,
-            ringkasan_pengajuan_nonmedis=false;
+            ringkasan_pengajuan_nonmedis=false,ringkasan_pemesanan_nonmedis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -867,6 +867,7 @@ public final class akses {
                         akses.ringkasan_retur_pembeli_obat=true;
                         akses.penilaian_awal_keperawatan_ranapkebidanan=true;
                         akses.ringkasan_pengajuan_nonmedis=true;
+                        akses.ringkasan_pemesanan_nonmedis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1565,6 +1566,7 @@ public final class akses {
                         akses.ringkasan_retur_pembeli_obat=rs2.getBoolean("ringkasan_retur_pembeli_obat");
                         akses.penilaian_awal_keperawatan_ranapkebidanan=rs2.getBoolean("penilaian_awal_keperawatan_ranapkebidanan");
                         akses.ringkasan_pengajuan_nonmedis=rs2.getBoolean("ringkasan_pengajuan_nonmedis");
+                        akses.ringkasan_pemesanan_nonmedis=rs2.getBoolean("ringkasan_pemesanan_nonmedis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2261,6 +2263,7 @@ public final class akses {
                         akses.ringkasan_retur_pembeli_obat=false;
                         akses.penilaian_awal_keperawatan_ranapkebidanan=false;
                         akses.ringkasan_pengajuan_nonmedis=false;
+                        akses.ringkasan_pemesanan_nonmedis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3012,4 +3015,5 @@ public final class akses {
     public static boolean getringkasan_retur_pembeli_obat(){return akses.ringkasan_retur_pembeli_obat;}
     public static boolean getpenilaian_awal_keperawatan_ranapkebidanan(){return akses.penilaian_awal_keperawatan_ranapkebidanan;}
     public static boolean getringkasan_pengajuan_nonmedis(){return akses.ringkasan_pengajuan_nonmedis;}
+    public static boolean getringkasan_pemesanan_nonmedis(){return akses.ringkasan_pemesanan_nonmedis;}
 }   
