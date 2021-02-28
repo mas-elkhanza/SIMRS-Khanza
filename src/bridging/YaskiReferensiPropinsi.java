@@ -25,7 +25,6 @@ import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.io.FileReader;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 
@@ -285,9 +284,6 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
             }
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
-            if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke Cache terputus...!");
-            }
         }
     }    
 

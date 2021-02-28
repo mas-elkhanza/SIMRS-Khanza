@@ -373,9 +373,6 @@ public final class YaskiReferensiKecamatan extends javax.swing.JDialog {
             }
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
-            if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke Cache terputus...!");
-            }
         }
     }    
 
