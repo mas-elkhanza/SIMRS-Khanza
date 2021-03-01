@@ -32,7 +32,7 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -44,7 +44,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private final validasi Valid=new validasi();
     private PreparedStatement pstanggal,pspoli,psreg,pspenyakit;
     private DlgCariPoli poli=new DlgCariPoli(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private ResultSet rstanggal,rspoli,rsreg,rspenyakit;
     private int i=0,jmllama=0,jmlbaru=0,jmllaki=0,jmlper=0;
     private String lama="",baru="",rujukandari="",alamatrujukandari="",dirujukke="",status="";

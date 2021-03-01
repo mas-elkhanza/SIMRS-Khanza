@@ -22,7 +22,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgDetailJMDokter extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -30,7 +30,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private int i=0,a=0,c=0;
     private double ttljml=0,ttlbhp=0,ttlbiaya=0,ttljm=0,ttluangrs=0,detailjm=0,detailbhp=0,detailrs=0,detailtotal=0,biayaitem=0;
     private PreparedStatement ps,pspasienranap,pskamar,pstindakanranap,pspasienradiologi,pspasienralan,pstindakanralan,pstindakanradiologi,

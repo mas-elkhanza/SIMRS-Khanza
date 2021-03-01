@@ -22,7 +22,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class InventoryRingkasanBeriObat extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -33,7 +33,7 @@ public class InventoryRingkasanBeriObat extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private int i=0;
     private double total=0;
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariBangsal asalstok=new DlgCariBangsal(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private String status="",carabayar="",depo="",jenis="",bar="",tanggal="",order="order by databarang.nama_brng";

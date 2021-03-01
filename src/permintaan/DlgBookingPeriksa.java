@@ -42,7 +42,7 @@ import kepegawaian.DlgCariDokter2;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 import simrskhanza.DlgPropinsi;
 
 /**
@@ -70,7 +70,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private DlgKelurahan kel=new DlgKelurahan(this,false);
     private DlgCariDokter dokter=new DlgCariDokter(this,false);
     private DlgCariDokter2 dokter2=new DlgCariDokter2(this,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(this,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(this,false);
     private boolean sukses=true; 
     
     /**

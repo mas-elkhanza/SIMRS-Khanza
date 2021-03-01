@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgRBPaketBHP extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -106,7 +106,7 @@ public class DlgRBPaketBHP extends javax.swing.JDialog {
         });   
      
     }
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0,a=0;
     private double jm=0,totaljm=0,detaillab=0;
 

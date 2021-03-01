@@ -45,7 +45,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String json;
+    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -395,10 +395,10 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
-            file=new File("./cache/dokter.json");
+            file=new File("./cache/dokter.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            json="";
+            iyem="";
             ps=koneksi.prepareStatement("select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                 "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
                 "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
@@ -414,7 +414,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                         rs.getString(10),rs.getString(11),rs.getString(12),
                         rs.getString(13)
                     });
-                    json=json+"{\"KodeDokter\":\""+rs.getString(1)+"\",\"NamaDokter\":\""+rs.getString(2)+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4)+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"AlamatTinggal\":\""+rs.getString(8)+"\",\"NoTelp\":\""+rs.getString(9)+"\",\"SttsNikah\":\""+rs.getString(10)+"\",\"Spesialis\":\""+rs.getString(11)+"\",\"Alumni\":\""+rs.getString(12)+"\",\"NoIjinPraktek\":\""+rs.getString(13)+"\"},";
+                    iyem=iyem+"{\"KodeDokter\":\""+rs.getString(1)+"\",\"NamaDokter\":\""+rs.getString(2)+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4)+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"AlamatTinggal\":\""+rs.getString(8)+"\",\"NoTelp\":\""+rs.getString(9)+"\",\"SttsNikah\":\""+rs.getString(10)+"\",\"Spesialis\":\""+rs.getString(11)+"\",\"Alumni\":\""+rs.getString(12)+"\",\"NoIjinPraktek\":\""+rs.getString(13)+"\"},";
                 }
             }catch(SQLException e){
                 System.out.println("Notifikasi : "+e);
@@ -427,15 +427,14 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"dokter\":["+json.substring(0,json.length()-1)+"]}");
+            fileWriter.write("{\"dokter\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
-            json=null;
+            iyem=null;
         } catch (Exception e) {
             System.out.println(e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() { 
@@ -452,7 +451,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     
     public void tampil2() {
         try {
-            myObj = new FileReader("./cache/dokter.json");
+            myObj = new FileReader("./cache/dokter.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("dokter");
@@ -465,6 +464,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                     }
                 }
             }
+            myObj.close();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

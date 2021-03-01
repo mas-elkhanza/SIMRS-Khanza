@@ -38,7 +38,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import keuangan.DlgCariPerawatanRalan;
 import keuangan.DlgJnsPerawatanRalan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -52,7 +52,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgJnsPerawatanRalan datatindakan=new DlgJnsPerawatanRalan(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** Creates new form DlgObatPenyakit
      * @param parent

@@ -22,7 +22,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgRHJmParamedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -40,7 +40,7 @@ public class DlgRHJmParamedis extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int i=0,a=0;
     private double total=0,totaljm=0,detaillab=0;
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent

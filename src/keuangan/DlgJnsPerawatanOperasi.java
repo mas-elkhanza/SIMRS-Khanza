@@ -36,7 +36,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import restore.DlgRestoreTarifOperasi;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -56,7 +56,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
     private PreparedStatement pstampil;
     private ResultSet rs;
     private int i=0;
-    public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** Creates new form DlgJnsPerawatan
      * @param parent

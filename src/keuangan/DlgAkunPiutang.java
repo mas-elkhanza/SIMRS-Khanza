@@ -32,7 +32,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -46,7 +46,7 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** Creates new form DlgJadwal
      * @param parent

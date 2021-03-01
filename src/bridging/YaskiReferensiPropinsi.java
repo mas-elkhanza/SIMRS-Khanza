@@ -25,7 +25,6 @@ import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.io.FileReader;
-import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 
 /**
@@ -267,7 +266,7 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            myObj = new FileReader("./cache/propinsi.json");
+            myObj = new FileReader("./cache/propinsi.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("propinsi");
@@ -282,6 +281,7 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
                     }
                 }
             }
+            myObj.close();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

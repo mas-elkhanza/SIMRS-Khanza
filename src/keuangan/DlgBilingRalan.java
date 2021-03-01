@@ -31,7 +31,7 @@ import simrskhanza.DlgCariPoli;
 import inventory.DlgPemberianObat;
 import javax.swing.event.DocumentEvent;
 import simrskhanza.DlgCariPeriksaLabPA;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaLaboratoriumPA;
 import simrskhanza.DlgPeriksaRadiologi;
@@ -52,7 +52,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb(); 
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     public DlgCariPoli poli=new DlgCariPoli(null,false);   
-    public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private double ttl=0,y=0,subttl=0,ralanparamedis=0,piutang=0,itembayar=0,itempiutang=0, 
                    bayar=0,total=0,tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,
                    ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,

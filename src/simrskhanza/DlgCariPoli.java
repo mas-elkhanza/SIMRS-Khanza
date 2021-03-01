@@ -44,7 +44,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String json;
+    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -372,16 +372,16 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
-            file=new File("./cache/poli.json");
+            file=new File("./cache/poli.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            json="";
+            iyem="";
             ps=koneksi.prepareStatement("select * from poliklinik where status='1'");
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),Valid.SetAngka(rs.getDouble(4))});
-                    json=json+"{\"KodeUnit\":\""+rs.getString(1)+"\",\"NamaUnit\":\""+rs.getString(2)+"\",\"RegistrasiBaru\":\""+rs.getString(3)+"\",\"RegistrasiLama\":\""+rs.getString(4)+"\"},";
+                    iyem=iyem+"{\"KodeUnit\":\""+rs.getString(1)+"\",\"NamaUnit\":\""+rs.getString(2)+"\",\"RegistrasiBaru\":\""+rs.getString(3)+"\",\"RegistrasiLama\":\""+rs.getString(4)+"\"},";
                 }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
@@ -395,10 +395,10 @@ public final class DlgCariPoli extends javax.swing.JDialog {
                 }
             }
 
-            fileWriter.write("{\"poli\":["+json.substring(0,json.length()-1)+"]}");
+            fileWriter.write("{\"poli\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
-            json=null;
+            iyem=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -419,7 +419,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     
     public void tampil2() {
         try {
-            myObj = new FileReader("./cache/poli.json");
+            myObj = new FileReader("./cache/poli.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("poli");
@@ -432,6 +432,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
                     }
                 }
             }
+            myObj.close();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

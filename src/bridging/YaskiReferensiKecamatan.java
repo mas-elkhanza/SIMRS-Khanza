@@ -356,7 +356,7 @@ public final class YaskiReferensiKecamatan extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            myObj = new FileReader("./cache/kecamatan.json");
+            myObj = new FileReader("./cache/kecamatan.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("kecamatan");
@@ -371,6 +371,7 @@ public final class YaskiReferensiKecamatan extends javax.swing.JDialog {
                     }
                 }
             }
+            myObj.close();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

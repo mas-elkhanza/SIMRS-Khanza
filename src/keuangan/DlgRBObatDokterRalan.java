@@ -21,7 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgRBObatDokterRalan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -35,7 +35,7 @@ public class DlgRBObatDokterRalan extends javax.swing.JDialog {
     private double subtotal=0,ttlbiaya=0,embalase=0,ttlembalase=0,tuslah=0,
             ttltuslah=0,ttlpasienobat=0,ttlpasienembalase=0,ttlpasientuslah=0;
     private String pilihancarabayar="",jumlah,total,emb,tsl;
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
 
     /** Creates new form 
      * @param parent

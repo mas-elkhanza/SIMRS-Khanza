@@ -354,7 +354,7 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            myObj = new FileReader("./cache/kabupaten.json");
+            myObj = new FileReader("./cache/kabupaten.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
             response = root.path("kabupaten");
@@ -369,6 +369,7 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
                     }
                 }
             }
+            myObj.close();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
