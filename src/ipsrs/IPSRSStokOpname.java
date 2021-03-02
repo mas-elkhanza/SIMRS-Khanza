@@ -21,6 +21,8 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,6 +49,7 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement pstampil;
     private ResultSet rstampil;
+    private IPSRSCariJenis jenis = new IPSRSCariJenis(null, false);
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -57,7 +60,7 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         setSize(628,674);
 
         Object[] row={"Kode Barang","Nama Barang","Harga Beli","Satuan","Tanggal","Stok","Real",
-                      "Selisih","Total Real","Nominal Hilang(Rp)","Keterangan"};
+                      "Selisih","Lebih","Total Real","Nominal Hilang(Rp)","Nominal Lebih(Rp)","Keterangan"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -66,7 +69,7 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 13; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -85,10 +88,14 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(40);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(40);
             }else if(i==9){
                 column.setPreferredWidth(100);
             }else if(i==10){
+                column.setPreferredWidth(110);
+            }else if(i==11){
+                column.setPreferredWidth(110);
+            }else if(i==12){
                 column.setPreferredWidth(120);
             }
         }
@@ -122,9 +129,44 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
                 }
             });
         }
+        
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
     } 
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
-    double total=0,totalreal=0;
+    double total=0,totalreal=0,totallebih=0;
 
 
     /** This method is called from within the constructor to
@@ -155,6 +197,7 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         Keterangan = new widget.TextBox();
         label18 = new widget.Label();
         label39 = new widget.Label();
+        kdjenis = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -164,19 +207,24 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         Tgl1 = new widget.Tanggal();
         label19 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        label20 = new widget.Label();
+        nmjns = new widget.TextBox();
+        BtnJenis = new widget.Button();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnAll = new widget.Button();
         BtnCari = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnHapus = new widget.Button();
-        BtnPrint = new widget.Button();
         label10 = new widget.Label();
         LCount = new widget.Label();
         label13 = new widget.Label();
         LTotalBeli = new widget.Label();
         label12 = new widget.Label();
         LTotal = new widget.Label();
+        label14 = new widget.Label();
+        LTotal2 = new widget.Label();
+        BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -328,6 +376,15 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         panelisi4.add(label39);
         label39.setBounds(474, 70, 100, 23);
 
+        kdjenis.setEditable(false);
+        kdjenis.setName("kdjenis"); // NOI18N
+        kdjenis.setPreferredSize(new java.awt.Dimension(75, 23));
+        kdjenis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdjenisKeyPressed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -377,27 +434,49 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
 
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
-        Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi3.add(Tgl1);
 
         label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label19.setText("s.d.");
         label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(30, 23));
+        label19.setPreferredSize(new java.awt.Dimension(27, 23));
         panelisi3.add(label19);
 
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi3.add(Tgl2);
+
+        label20.setText("Jenis :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(42, 23));
+        panelisi3.add(label20);
+
+        nmjns.setEditable(false);
+        nmjns.setName("nmjns"); // NOI18N
+        nmjns.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelisi3.add(nmjns);
+
+        BtnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnJenis.setMnemonic('2');
+        BtnJenis.setToolTipText("Alt+2");
+        BtnJenis.setName("BtnJenis"); // NOI18N
+        BtnJenis.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJenisActionPerformed(evt);
+            }
+        });
+        panelisi3.add(BtnJenis);
 
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(100, 23));
+        label9.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(190, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -464,6 +543,50 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
         });
         panelisi1.add(BtnHapus);
 
+        label10.setText("Record :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(47, 30));
+        panelisi1.add(label10);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(40, 30));
+        panelisi1.add(LCount);
+
+        label13.setText("Real :");
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(45, 30));
+        panelisi1.add(label13);
+
+        LTotalBeli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotalBeli.setText("0");
+        LTotalBeli.setName("LTotalBeli"); // NOI18N
+        LTotalBeli.setPreferredSize(new java.awt.Dimension(100, 30));
+        panelisi1.add(LTotalBeli);
+
+        label12.setText("Hilang :");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(50, 30));
+        panelisi1.add(label12);
+
+        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal.setText("0");
+        LTotal.setName("LTotal"); // NOI18N
+        LTotal.setPreferredSize(new java.awt.Dimension(85, 30));
+        panelisi1.add(LTotal);
+
+        label14.setText("Lebih :");
+        label14.setName("label14"); // NOI18N
+        label14.setPreferredSize(new java.awt.Dimension(50, 30));
+        panelisi1.add(label14);
+
+        LTotal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal2.setText("0");
+        LTotal2.setName("LTotal2"); // NOI18N
+        LTotal2.setPreferredSize(new java.awt.Dimension(85, 30));
+        panelisi1.add(LTotal2);
+
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
         BtnPrint.setText("Cetak");
@@ -481,39 +604,6 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnPrint);
-
-        label10.setText("Record :");
-        label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(55, 30));
-        panelisi1.add(label10);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(30, 30));
-        panelisi1.add(LCount);
-
-        label13.setText("Total Real :");
-        label13.setName("label13"); // NOI18N
-        label13.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label13);
-
-        LTotalBeli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotalBeli.setText("0");
-        LTotalBeli.setName("LTotalBeli"); // NOI18N
-        LTotalBeli.setPreferredSize(new java.awt.Dimension(150, 30));
-        panelisi1.add(LTotalBeli);
-
-        label12.setText("Hilang :");
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(45, 30));
-        panelisi1.add(label12);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(105, 30));
-        panelisi1.add(LTotal);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -582,13 +672,13 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReportqry("rptOpnameIPSRS.jasper","report","::[ Stok Opname Non Medis, Penunjang Lab & Radiologi ]::","select ipsrsopname.kode_brng, ipsrsbarang.nama_brng,ipsrsopname.h_beli, ipsrsbarang.kode_sat, ipsrsopname.tanggal, ipsrsopname.stok, "+
-                  "ipsrsopname.real, ipsrsopname.selisih, ipsrsopname.nomihilang, ipsrsopname.keterangan, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal "+
-                  "from ipsrsopname inner join ipsrsbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng "+
-                  "where ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.kode_sat like '%"+TCari.getText().trim()+"%' or "+ 
-                  "ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.keterangan like '%"+TCari.getText().trim()+"%' order by ipsrsopname.tanggal",param);
+                  "ipsrsopname.real, ipsrsopname.selisih,ipsrsopname.lebih, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal,ipsrsopname.nomihilang,ipsrsopname.nomilebih,ipsrsopname.keterangan "+
+                  "from ipsrsopname inner join ipsrsbarang inner join ipsrsjenisbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng and ipsrsjenisbarang.kd_jenis=ipsrsbarang.jenis "+
+                  "where concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
+                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.kode_sat like '%"+TCari.getText().trim()+"%' or "+ 
+                  "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.keterangan like '%"+TCari.getText().trim()+"%' order by ipsrsopname.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -659,6 +749,8 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        kdjenis.setText("");
+        nmjns.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -682,6 +774,18 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
        tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
+    }//GEN-LAST:event_BtnJenisActionPerformed
+
+    private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdjenisKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -702,6 +806,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
+    private widget.Button BtnJenis;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.TextBox Harga;
@@ -710,6 +815,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.Label LTotal;
+    private widget.Label LTotal2;
     private widget.Label LTotalBeli;
     private widget.TextBox Nmbar;
     private widget.TextBox Nominal;
@@ -723,13 +829,16 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
+    private widget.TextBox kdjenis;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label13;
+    private widget.Label label14;
     private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;
+    private widget.Label label20;
     private widget.Label label32;
     private widget.Label label34;
     private widget.Label label36;
@@ -737,6 +846,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.Label label38;
     private widget.Label label39;
     private widget.Label label9;
+    private widget.TextBox nmjns;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
@@ -747,41 +857,49 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         Valid.tabelKosong(tabMode);
         total=0;
         totalreal=0;
+        totallebih=0;
         try{     
             pstampil=koneksi.prepareStatement("select ipsrsopname.kode_brng, ipsrsbarang.nama_brng,ipsrsopname.h_beli, ipsrsbarang.kode_sat, ipsrsopname.tanggal, ipsrsopname.stok, "+
-                     "ipsrsopname.real, ipsrsopname.selisih, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal,ipsrsopname.nomihilang, ipsrsopname.keterangan "+
-                     "from ipsrsopname inner join ipsrsbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng "+
-                     "where ipsrsopname.tanggal between ? and ? and ipsrsopname.kode_brng like ? or "+
-                     "ipsrsopname.tanggal between ? and ? and ipsrsbarang.nama_brng like ? or "+
-                     "ipsrsopname.tanggal between ? and ? and ipsrsopname.kode_brng like ? or "+
-                     "ipsrsopname.tanggal between ? and ? and ipsrsbarang.kode_sat like ? or "+ 
-                     "ipsrsopname.tanggal between ? and ? and ipsrsopname.keterangan like ? order by ipsrsopname.tanggal");
+                     "ipsrsopname.real, ipsrsopname.selisih,ipsrsopname.lebih, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal,ipsrsopname.nomihilang,ipsrsopname.nomilebih,ipsrsopname.keterangan "+
+                     "from ipsrsopname inner join ipsrsbarang inner join ipsrsjenisbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng and ipsrsjenisbarang.kd_jenis=ipsrsbarang.jenis "+
+                     "where concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsopname.kode_brng like ? or "+
+                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsbarang.nama_brng like ? or "+
+                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsopname.kode_brng like ? or "+
+                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsbarang.kode_sat like ? or "+ 
+                     "concat(ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis) like ? and ipsrsopname.tanggal between ? and ? and ipsrsopname.keterangan like ? order by ipsrsopname.tanggal");
             try {                
-                pstampil.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(6,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(9,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(1,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                pstampil.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(4,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(5,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                pstampil.setString(6,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(7,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(8,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(9,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
                 pstampil.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 pstampil.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 pstampil.setString(12,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(15,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(13,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                pstampil.setString(14,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(15,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(16,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(17,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                pstampil.setString(18,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(19,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(20,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
                 total=0;
                 while(rstampil.next()){                
-                    totalreal=totalreal+rstampil.getDouble(9); 
-                    total=total+rstampil.getDouble(10);
+                    totalreal=totalreal+rstampil.getDouble(10); 
+                    total=total+rstampil.getDouble(11);
+                    totallebih=totallebih+rstampil.getDouble(12);
                     tabMode.addRow(new Object[]{rstampil.getString(1),
                        rstampil.getString(2),df2.format(rstampil.getDouble(3)),
                        rstampil.getString(4),rstampil.getString(5),rstampil.getString(6),
-                       rstampil.getString(7),rstampil.getString(8),df2.format(rstampil.getDouble(9)),
-                       df2.format(rstampil.getDouble(10)),rstampil.getString(11)
+                       rstampil.getString(7),rstampil.getString(8),rstampil.getString(9),
+                       df2.format(rstampil.getDouble(10)),df2.format(rstampil.getDouble(11)),
+                       df2.format(rstampil.getDouble(12)),rstampil.getString(13)
                     });
                 }
             } catch (Exception e) {
@@ -800,6 +918,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         LCount.setText(""+tabMode.getRowCount());
         LTotalBeli.setText(df2.format(totalreal));
         LTotal.setText(df2.format(total));
+        LTotal2.setText(df2.format(totallebih));
     }
 
     public void emptTeks() {
