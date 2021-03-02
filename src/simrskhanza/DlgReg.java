@@ -10029,7 +10029,7 @@ public final class DlgReg extends javax.swing.JDialog {
                         // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
                         // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
                         + " norm like '%" + TNoRM.getText().trim() + "%' and tanggal='"
-                        + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 3).toString() + "'" + " order by tanggal ",
+                        + tabMode.getValueAt(tbPetugas.getSelectedRow(), 3).toString() + "'" + " order by tanggal ",
                         param);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Data Pasien belum terdaftar di SPRI, \nMohon tambahkan Data Pasien pada Menu SPRI.", "Informasi", JOptionPane.OK_OPTION);
