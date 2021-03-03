@@ -34,6 +34,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.DlgKamar;
 import org.joda.time.LocalDate;
 
 /**
@@ -50,6 +51,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private String sql = " pasien_mati.no_rkm_medis=pasien.no_rkm_medis  ";
+    public DlgKamar kamar = new DlgKamar(null, false);
 
     /**
      * Creates new form DlgPasienMati
@@ -66,7 +68,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 
         Object[] row = {"Tanggal", "Jam", "No.R.Medik", "Nama Pasien", "J.K.", "Tmp.Lahir",
             "Tgl.Lahir", "G.D.", "Stts.Nikah", "Agama", "Keterangan", "Tempat Meninggal",
-            "ICD-X", "Antara 1", "Antara 2", "Langsung"};
+            "ICD-X", "Antara 1", "Antara 2", "Langsung","Hari","No Surat","Kamar"};
 
         tabMode = new DefaultTableModel(null, row) {
             @Override
@@ -80,7 +82,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         tbMati.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbMati.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 19; i++) {
             TableColumn column = tbMati.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);
@@ -113,6 +115,12 @@ public class DlgPasienMati extends javax.swing.JDialog {
             } else if (i == 14) {
                 column.setPreferredWidth(65);
             } else if (i == 15) {
+                column.setPreferredWidth(65);
+            }else if (i == 16) {
+                column.setPreferredWidth(65);
+            }else if (i == 17) {
+                column.setPreferredWidth(65);
+            }else if (i == 18) {
                 column.setPreferredWidth(65);
             }
         }
@@ -246,6 +254,43 @@ public class DlgPasienMati extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {
             }
         });
+
+        kamar.bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (kamar.bangsal.getTable().getSelectedRow() != -1) {
+                    kdKamar.setText(kamar.bangsal.getTable()
+                            .getValueAt(kamar.bangsal.getTable().getSelectedRow(), 0).toString());
+                    nmKamar.setText(kamar.bangsal.getTable()
+                            .getValueAt(kamar.bangsal.getTable().getSelectedRow(), 1).toString());
+                }
+                TNoRM.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
     }
 
     /**
@@ -273,6 +318,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
+        jLabel18 = new widget.Label();
+        DTPTgl1 = new widget.Tanggal();
+        jLabel19 = new widget.Label();
+        DTPTgl2 = new widget.Tanggal();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -303,6 +352,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
         tmptmeninggal = new widget.ComboBox();
         jLabel16 = new widget.Label();
         TNoSurat = new widget.TextBox();
+        jLabel17 = new widget.Label();
+        kdKamar = new widget.TextBox();
+        nmKamar = new widget.TextBox();
+        BtnKamar = new widget.Button();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -484,13 +537,47 @@ public class DlgPasienMati extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        jLabel18.setText("Tanggal : ");
+        jLabel18.setName("jLabel18"); // NOI18N
+        panelGlass9.add(jLabel18);
+
+        DTPTgl1.setEditable(false);
+        DTPTgl1.setForeground(new java.awt.Color(50, 70, 50));
+        DTPTgl1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2021" }));
+        DTPTgl1.setDisplayFormat("dd-MM-yyyy");
+        DTPTgl1.setName("DTPTgl1"); // NOI18N
+        DTPTgl1.setOpaque(false);
+        DTPTgl1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPTgl1KeyPressed(evt);
+            }
+        });
+        panelGlass9.add(DTPTgl1);
+
+        jLabel19.setText("s/d");
+        jLabel19.setName("jLabel19"); // NOI18N
+        panelGlass9.add(jLabel19);
+
+        DTPTgl2.setEditable(false);
+        DTPTgl2.setForeground(new java.awt.Color(50, 70, 50));
+        DTPTgl2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2021" }));
+        DTPTgl2.setDisplayFormat("dd-MM-yyyy");
+        DTPTgl2.setName("DTPTgl2"); // NOI18N
+        DTPTgl2.setOpaque(false);
+        DTPTgl2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPTgl2KeyPressed(evt);
+            }
+        });
+        panelGlass9.add(DTPTgl2);
+
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(500, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(250, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -573,7 +660,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -640,12 +727,12 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(cmbDtk);
-        cmbDtk.setBounds(390, 40, 62, 23);
+        cmbDtk.setBounds(400, 40, 62, 23);
 
-        jLabel10.setText("No. Surat :");
+        jLabel10.setText("Kamar :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelBiasa1.add(jLabel10);
-        jLabel10.setBounds(10, 10, 115, 23);
+        jLabel10.setBounds(270, 10, 60, 23);
 
         jLabel5.setText("Di :");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -742,6 +829,48 @@ public class DlgPasienMati extends javax.swing.JDialog {
         panelBiasa1.add(TNoSurat);
         TNoSurat.setBounds(130, 10, 110, 23);
 
+        jLabel17.setText("No. Surat :");
+        jLabel17.setName("jLabel17"); // NOI18N
+        panelBiasa1.add(jLabel17);
+        jLabel17.setBounds(10, 10, 115, 23);
+
+        kdKamar.setHighlighter(null);
+        kdKamar.setName("kdKamar"); // NOI18N
+        kdKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdKamarKeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(kdKamar);
+        kdKamar.setBounds(340, 10, 90, 23);
+
+        nmKamar.setHighlighter(null);
+        nmKamar.setName("nmKamar"); // NOI18N
+        nmKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nmKamarKeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(nmKamar);
+        nmKamar.setBounds(430, 10, 210, 23);
+
+        BtnKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnKamar.setMnemonic('1');
+        BtnKamar.setToolTipText("Alt+1");
+        BtnKamar.setName("BtnKamar"); // NOI18N
+        BtnKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKamarActionPerformed(evt);
+            }
+        });
+        BtnKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKamarKeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(BtnKamar);
+        BtnKamar.setBounds(640, 10, 30, 23);
+
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -779,10 +908,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
 }//GEN-LAST:event_cmbDtkKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-    String bln = Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7);
-    String thn = Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4);
-    String nomor = TNoSurat.getText() + "/RSUIHA/SK/" + Valid.RomanNumerals(Integer.parseInt(bln)) + "/" + thn;
-    System.out.println("nomor = " + nomor);
+        String bln = Valid.SetDateToString(DTPTgl.getDate()).substring(5, 7);
+        String thn = Valid.SetDateToString(DTPTgl.getDate()).substring(0, 4);
+        String nomor = TNoSurat.getText() + "/RSUIHA/SK/" + Valid.RomanNumerals(Integer.parseInt(bln)) + "/" + thn;
+        System.out.println("nomor = " + nomor);
         if (TNoRM.getText().trim().equals("") || TPasien.getText().trim().equals("")) {
             Valid.textKosong(TNoRM, "pasien");
         } else if (TKtg.getText().trim().equals("")) {
@@ -805,7 +934,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             } else if (dayOfWeek.equals("Saturday")) {
                 hari = "Sabtu";
             }
-            System.out.println("Hari "+hari+" "+dayOfWeek);
+            System.out.println("Hari " + hari + " " + dayOfWeek);
 
             Sequel.menyimpan("pasien_mati", "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
                     + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "','"
@@ -816,9 +945,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
                     + icd2.getText() + "','"
                     + icd3.getText() + "','"
                     + icd4.getText() + "','"
-                    + TNoSurat.getText() +"','"
+                    + TNoSurat.getText() + "','"
                     + hari + "','"
-                    + nomor + "'", "pasien");
+                    + nomor + "','"
+                    + kdKamar.getText() + "'", "pasien");
             tampil();
             emptTeks();
         }
@@ -977,9 +1107,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                 + "agama,keterangan,nomor from pasien_mati,pasien,kelurahan,kecamatan,kabupaten "
                 + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
                 + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' "
-                        + "and pasien.kd_kel=kelurahan.kd_kel "
-                        + "and pasien.kd_kec=kecamatan.kd_kec "
-                        + "and pasien.kd_kab=kabupaten.kd_kab ", param);
+                + "and pasien.kd_kel=kelurahan.kd_kel "
+                + "and pasien.kd_kec=kecamatan.kd_kec "
+                + "and pasien.kd_kab=kabupaten.kd_kab ", param);
     }
 }//GEN-LAST:event_MnCetakSuratMatiActionPerformed
 
@@ -1058,6 +1188,35 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         // TODO add your handling code here:
     }//GEN-LAST:event_TNoSuratKeyPressed
 
+    private void kdKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdKamarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdKamarKeyPressed
+
+    private void nmKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmKamarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nmKamarKeyPressed
+
+    private void BtnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKamarActionPerformed
+        // TODO add your handling code here:
+        kamar.bangsal.isCek();
+        kamar.bangsal.emptTeks();
+        kamar.bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        kamar.bangsal.setLocationRelativeTo(internalFrame1);
+        kamar.bangsal.setVisible(true);
+    }//GEN-LAST:event_BtnKamarActionPerformed
+
+    private void BtnKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKamarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnKamarKeyPressed
+
+    private void DTPTgl1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTgl1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPTgl1KeyPressed
+
+    private void DTPTgl2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTgl2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPTgl2KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1079,11 +1238,14 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
+    private widget.Button BtnKamar;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSeek;
     private widget.Button BtnSimpan;
     private widget.Tanggal DTPTgl;
+    private widget.Tanggal DTPTgl1;
+    private widget.Tanggal DTPTgl2;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnAngkutJenazah;
     private javax.swing.JMenuItem MnCetakSuratMati;
@@ -1108,6 +1270,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
+    private widget.Label jLabel17;
+    private widget.Label jLabel18;
+    private widget.Label jLabel19;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1116,6 +1281,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.TextBox kdKamar;
+    private widget.TextBox nmKamar;
     private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1128,20 +1295,25 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
      */
     public void tampil() {
         Valid.tabelKosong(tabMode);
+        String tgl = " and pasien_mati.tanggal between '" + Valid.SetDateToString(DTPTgl1.getDate()) + "' and '" + Valid.SetDateToString(DTPTgl2.getDate()) + "' ";
         try {
             ps = koneksi.prepareStatement("select tanggal,jam,pasien_mati.no_rkm_medis,nm_pasien, "
                     + "jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
-                    + "agama,keterangan,temp_meninggal,icd1,icd2,icd3,icd4 from pasien_mati,pasien where "
-                    + sql + "and tanggal like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and pasien_mati.no_rkm_medis like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and jk like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and gol_darah like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and agama like '%" + TCari.getText().trim() + "%' or "
-                    + sql + "and keterangan like '%" + TCari.getText().trim() + "%' "
-                    + " order by tanggal ");
+                    + "agama,keterangan,temp_meninggal,icd1,icd2,icd3,icd4,hari,no_surat_kematian,nm_bangsal from pasien_mati,pasien,bangsal where "
+                    + " pasien_mati.no_rkm_medis = pasien.no_rkm_medis and pasien_mati.ruang = bangsal.kd_bangsal and ("
+                    + sql + tgl + "and tanggal like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and pasien_mati.no_rkm_medis like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and nm_pasien like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and jk like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and tmp_lahir like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and gol_darah like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and stts_nikah like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and agama like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and keterangan like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and no_surat_kematian like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and bangsal.kd_bangsal like '%" + TCari.getText().trim() + "%' or "
+                    + sql + tgl + "and bangsal.nm_bangsal like '%" + TCari.getText().trim() + "%' )"
+                    + " group by  pasien_mati.no_rkm_medis order by tanggal ");
             try {
                 rs = ps.executeQuery();
                 while (rs.next()) {
@@ -1149,7 +1321,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                         rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
                         rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
-                        rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)
+                        rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16),
+                        rs.getString(17), rs.getString(18), rs.getString("nm_bangsal")
                     });
                 }
             } catch (Exception e) {
