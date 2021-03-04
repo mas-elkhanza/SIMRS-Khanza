@@ -385,27 +385,8 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             ps=koneksi.prepareStatement("select nip,nama,jk,tmp_lahir,tgl_lahir, "+
                     "gol_darah,agama,stts_nikah,alamat,nm_jbtn,no_telp "+
                     "from petugas inner join jabatan on jabatan.kd_jbtn=petugas.kd_jbtn "+
-                    "where petugas.status='1' and nip like ? or "+
-                    "petugas.status='1' and nama like ? or "+
-                    "petugas.status='1' and jk like ? or "+
-                    "petugas.status='1' and tmp_lahir like ? or "+
-                    "petugas.status='1' and tgl_lahir like ? or "+
-                    "petugas.status='1' and gol_darah like ? or "+
-                    "petugas.status='1' and agama like ? or "+
-                    "petugas.status='1' and alamat like ? or "+
-                    "petugas.status='1' and no_telp like ? or "+
-                    "petugas.status='1' and nm_jbtn like ? order by nip");
+                    "where petugas.status='1' order by nip");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+TCari.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
