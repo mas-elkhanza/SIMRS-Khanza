@@ -72,7 +72,7 @@ public class DlgPasien extends javax.swing.JDialog {
     public  DlgKecamatan kec=new DlgKecamatan(null,false);
     public  DlgKelurahan kel=new DlgKelurahan(null,false);
     public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
-    public  DlgBahasa bahasa=new DlgBahasa(null,false);
+    public  DlgCariBahasa bahasa=new DlgCariBahasa(null,false);
     public  DlgCacatFisik cacat=new DlgCacatFisik(null,false);
     public  DlgCariSuku suku=new DlgCariSuku(null,false);
     public  DlgGolonganTNI golongantni=new DlgGolonganTNI(null,false);

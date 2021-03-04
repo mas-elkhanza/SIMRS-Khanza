@@ -49,7 +49,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgBahasa;
+import simrskhanza.DlgCariBahasa;
 import simrskhanza.DlgCacatFisik;
 import simrskhanza.DlgCariCaraBayar;
 import simrskhanza.DlgGolonganPolri;
@@ -92,7 +92,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     private ApiBPJS api=new ApiBPJS();
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
     public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
-    public  DlgBahasa bahasa=new DlgBahasa(null,false);
+    public  DlgCariBahasa bahasa=new DlgCariBahasa(null,false);
     public  DlgCacatFisik cacat=new DlgCacatFisik(null,false);
     public  DlgCariSuku suku=new DlgCariSuku(null,false);
     public  DlgGolonganTNI golongantni=new DlgGolonganTNI(null,false);

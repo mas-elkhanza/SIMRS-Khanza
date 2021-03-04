@@ -48,7 +48,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgBahasa;
+import simrskhanza.DlgCariBahasa;
 import simrskhanza.DlgCacatFisik;
 import laporan.DlgCariPenyakit;
 import simrskhanza.DlgCariCaraBayar;
@@ -91,7 +91,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
     public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
-    public  DlgBahasa bahasa=new DlgBahasa(null,false);
+    public  DlgCariBahasa bahasa=new DlgCariBahasa(null,false);
     public  DlgCacatFisik cacat=new DlgCacatFisik(null,false);
     public  DlgCariSuku suku=new DlgCariSuku(null,false);
     public  DlgGolonganTNI golongantni=new DlgGolonganTNI(null,false);

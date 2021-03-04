@@ -411,7 +411,7 @@ public final class DlgCariSuku extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(akses.getadmin());
+        BtnTambah.setEnabled(akses.getsuku_bangsa());
     }
     
     private void tampil2() {
