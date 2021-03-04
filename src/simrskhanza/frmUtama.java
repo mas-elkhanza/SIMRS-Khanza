@@ -536,6 +536,7 @@ import ipsrs.DlgPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRingkasanPemesananBarangNonMedis;
+import ipsrs.IPSRSRingkasanPenerimaanBarangNonMedis;
 import ipsrs.IPSRSRingkasanPengadaanBarangNonMedis;
 import ipsrs.IPSRSRingkasanPengajuanBarangNonMedis;
 import ipsrs.IPSRSRiwayatBarang;
@@ -16817,6 +16818,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRingkasanPenerimaanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSRingkasanPenerimaanBarangNonMedis aplikasi=new IPSRSRingkasanPenerimaanBarangNonMedis(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17431,7 +17443,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnVerifikasiPenerimaanFarmasi,btnVerifikasiPenerimaanLogistik,btnPermintaanLabPA,btnLamaPelayananLabPA,btnRingkasanPengajuanMedis,
             btnRingkasanPemesananMedis,btnRingkasanPembelianMedis,btnRingkasanPenerimaanMedis,btnRingkasanHibahMedis,btnRingkasanPenjualanMedis,
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
-            btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis;
+            btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
+            btnRingkasanPenerimaanNonMedis;
     
     public void isWall(){
         try{            
@@ -18270,6 +18283,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenerimaan_non_medis()==true){
                 Panelmenu.add(btnPenerimaanNonMedis);  
+                jmlmenu++;
+            }
+            
+            if(akses.getringkasan_penerimaan_nonmedis()==true){
+                Panelmenu.add(btnRingkasanPenerimaanNonMedis);  
                 jmlmenu++;
             }
 
@@ -21759,6 +21777,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpenerimaan_non_medis()==true){
             Panelmenu.add(btnPenerimaanNonMedis);  
+            jmlmenu++;
+        }
+        
+        if(akses.getringkasan_penerimaan_nonmedis()==true){
+            Panelmenu.add(btnRingkasanPenerimaanNonMedis);  
             jmlmenu++;
         }
 
@@ -25520,6 +25543,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenerimaan_non_medis()==true){
             if(btnPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenerimaanNonMedis);  
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_penerimaan_nonmedis()==true){
+            if(btnRingkasanPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanPenerimaanNonMedis);  
                 jmlmenu++;
             }                
         }
@@ -31246,6 +31276,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPengadaanNonMedis.setName("btnRingkasanPengadaanNonMedis");
         btnRingkasanPengadaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanPengadaanNonMedis.addActionListener(this::btnRingkasanPengadaanNonMedisActionPerformed);
+        
+        btnRingkasanPenerimaanNonMedis = new widget.ButtonBig();
+        btnRingkasanPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPenerimaanNonMedis.setText("Ringkasan Penerimaan Non Medis");
+        btnRingkasanPenerimaanNonMedis.setIconTextGap(0);
+        btnRingkasanPenerimaanNonMedis.setName("btnRingkasanPenerimaanNonMedis");
+        btnRingkasanPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanPenerimaanNonMedis.addActionListener(this::btnRingkasanPenerimaanNonMedisActionPerformed);
     }
 
     

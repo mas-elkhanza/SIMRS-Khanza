@@ -426,7 +426,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
         BtnTambah.setEnabled(akses.getadmin());
     }
     
-    public void tampil2() {
+    private void tampil2() {
         try {
             myObj = new FileReader("./cache/penjab.iyem");
             root = mapper.readTree(myObj);

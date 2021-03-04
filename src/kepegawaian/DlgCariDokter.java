@@ -416,7 +416,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                     });
                     iyem=iyem+"{\"KodeDokter\":\""+rs.getString(1)+"\",\"NamaDokter\":\""+rs.getString(2)+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4)+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"AlamatTinggal\":\""+rs.getString(8)+"\",\"NoTelp\":\""+rs.getString(9)+"\",\"SttsNikah\":\""+rs.getString(10)+"\",\"Spesialis\":\""+rs.getString(11)+"\",\"Alumni\":\""+rs.getString(12)+"\",\"NoIjinPraktek\":\""+rs.getString(13)+"\"},";
                 }
-            }catch(SQLException e){
+            }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }finally{
                 if( rs != null ){
@@ -449,7 +449,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         BtnTambah.setEnabled(akses.getdokter());
     }
     
-    public void tampil2() {
+    private void tampil2() {
         try {
             myObj = new FileReader("./cache/dokter.iyem");
             root = mapper.readTree(myObj);

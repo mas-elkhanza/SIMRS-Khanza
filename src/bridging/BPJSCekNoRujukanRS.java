@@ -66,7 +66,7 @@ import simrskhanza.DlgPilihanCetakDokumen;
 import simrskhanza.DlgPropinsi;
 import simrskhanza.DlgSatuanPolri;
 import simrskhanza.DlgSatuanTNI;
-import simrskhanza.DlgSuku;
+import simrskhanza.DlgCariSuku;
 
 /**
  *
@@ -94,7 +94,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
     public  DlgBahasa bahasa=new DlgBahasa(null,false);
     public  DlgCacatFisik cacat=new DlgCacatFisik(null,false);
-    public  DlgSuku suku=new DlgSuku(null,false);
+    public  DlgCariSuku suku=new DlgCariSuku(null,false);
     public  DlgGolonganTNI golongantni=new DlgGolonganTNI(null,false);
     public  DlgSatuanTNI satuantni=new DlgSatuanTNI(null,false);
     public  DlgPangkatTNI pangkattni=new DlgPangkatTNI(null,false);

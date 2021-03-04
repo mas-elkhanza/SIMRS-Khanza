@@ -1193,7 +1193,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void tampil() {
        Valid.tabelKosong(tabMode);
-        try{            
+        try{   
+            tagihan=0;         
             ps=koneksi.prepareStatement("select ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis as namajenis, "+
                     "ipsrsdetailbeli.kode_sat,kodesatuan.satuan,sum(ipsrsdetailbeli.jumlah) as jumlah,sum(ipsrsdetailbeli.total) as total "+
                     "from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
@@ -1296,14 +1297,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(79,"%"+nmbar.getText()+"%");
                 ps.setString(80,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
-                tagihan=0;
                 while(rs.next()){
                     tagihan=tagihan+rs.getDouble("total");
                     tabMode.addRow(new Object[]{
                         rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("namajenis"),rs.getDouble("jumlah"),rs.getDouble("total"),rs.getString("kode_sat")
                     });   
                 }                
-                LTotal.setText(Valid.SetAngka(tagihan));
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -1314,6 +1313,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }   
+            LTotal.setText(Valid.SetAngka(tagihan));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        

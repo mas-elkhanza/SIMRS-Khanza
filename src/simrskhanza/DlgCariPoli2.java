@@ -450,7 +450,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         day=cal.get(Calendar.DAY_OF_WEEK);
     }
     
-    public void tampil2() {
+    private void tampil2() {
         try {
             myObj = new FileReader("./cache/poli2.iyem");
             root = mapper.readTree(myObj);
