@@ -4856,15 +4856,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     private void ppPasienCoronaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPasienCoronaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ppPasienCoronaActionPerformed
-
     private void ppPerawatanCoronaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPerawatanCoronaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ppPerawatanCoronaActionPerformed
-
     private void MnDiagnosaMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDiagnosaMasukActionPerformed
         // TODO add your handling code here:
         if (tabMode.getRowCount() == 0) {
@@ -10039,7 +10036,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_MnLabelTracker3ActionPerformed
 
-    private void MnBarcodeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnBarcodeActionPerformed
+    private void MnBarcodeActionPerformed(java.awt.event.ActionEvent evt) {
+// GEN-FIRST:event_MnBarcodeActionPerformed
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -10075,7 +10073,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         param.put("kontakrs", akses.getkontakrs());
                         param.put("emailrs", akses.getemailrs());
                         Valid.MyReportqry("rptBarcodeRawat.jasper", "report", "::[ Barcode No.Rawat ]::",
-                                "select reg_periksa.no_rawat from reg_periksa where no_rawat='"
+                                "select reg_periksa.no_rawat,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "
+                                + " from reg_periksa,pasien,kelurahan,kecamatan,kabupaten "
+                                + " where "
+                                + "pasien.kd_kel=kelurahan.kd_kel and "
+                                + "pasien.kd_kec=kecamatan.kd_kec and "
+                                + "pasien.kd_kab=kabupaten.kd_kab and "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and no_rawat='"
                                 + rs2.getString("no_rawat2") + "'",
                                 param);
                         this.setCursor(Cursor.getDefaultCursor());
@@ -10115,7 +10119,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
             Valid.MyReportqry("rptBarcodeRawat.jasper", "report", "::[ Barcode No.Rawat ]::",
-                    "select reg_periksa.no_rawat from reg_periksa where no_rawat='" + norawat.getText() + "'", param);
+                    "select reg_periksa.no_rawat,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "
+                    + " from reg_periksa,pasien,kelurahan,kecamatan,kabupaten "
+                    + " where "
+                    + "pasien.kd_kel=kelurahan.kd_kel and "
+                    + "pasien.kd_kec=kecamatan.kd_kec and "
+                    + "pasien.kd_kab=kabupaten.kd_kab and "
+                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and no_rawat='" + norawat.getText() + "'", param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }// GEN-LAST:event_MnBarcodeActionPerformed
@@ -10140,7 +10150,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 Map<String, Object> param = new HashMap<>();
                                 param.put("nama", TPasien.getText());
-                                param.put("alamat", Sequel.cariIsi(
+                                param.put("tgl", Sequel.cariIsi(
                                         "select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",
                                         TNoRM.getText()));
                                 param.put("norm", TNoRM.getText());
@@ -10151,8 +10161,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 param.put("propinsirs", akses.getpropinsirs());
                                 param.put("kontakrs", akses.getkontakrs());
                                 param.put("emailrs", akses.getemailrs());
-                                Valid.MyReportqry("rptBarcodeRawat2.jasper", "report", "::[ Barcode No.Rawat ]::",
-                                        "select reg_periksa.no_rawat from reg_periksa where no_rawat='"
+                                Valid.MyReportqry("rptBarcodeRawatRanap.jasper", "report", "::[ Barcode No.Rawat ]::",
+                                        "select reg_periksa.no_rawat,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "
+                    + " from reg_periksa,pasien,kelurahan,kecamatan,kabupaten "
+                    + " where "
+                    + "pasien.kd_kel=kelurahan.kd_kel and "
+                    + "pasien.kd_kec=kecamatan.kd_kec and "
+                    + "pasien.kd_kab=kabupaten.kd_kab and "
+                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and no_rawat='"
                                         + rs2.getString("no_rawat2") + "'",
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
@@ -10177,7 +10193,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     Map<String, Object> param = new HashMap<>();
                     param.put("nama", TPasien.getText());
-                    param.put("alamat",
+                    param.put("tgl",
                             Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",
                                     TNoRM.getText()));
                     param.put("norm", TNoRM.getText());
@@ -10188,8 +10204,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     param.put("propinsirs", akses.getpropinsirs());
                     param.put("kontakrs", akses.getkontakrs());
                     param.put("emailrs", akses.getemailrs());
-                    Valid.MyReportqry("rptBarcodeRawat2.jasper", "report", "::[ Barcode No.Rawat ]::",
-                            "select reg_periksa.no_rawat from reg_periksa where no_rawat='" + norawat.getText() + "'",
+                    Valid.MyReportqry("rptBarcodeRawatRanap.jasper", "report", "::[ Barcode No.Rawat ]::",
+                            "select reg_periksa.no_rawat,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "
+                    + " from reg_periksa,pasien,kelurahan,kecamatan,kabupaten "
+                    + " where "
+                    + "pasien.kd_kel=kelurahan.kd_kel and "
+                    + "pasien.kd_kec=kecamatan.kd_kec and "
+                    + "pasien.kd_kab=kabupaten.kd_kab and "
+                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and no_rawat='" + norawat.getText() + "'",
                             param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
