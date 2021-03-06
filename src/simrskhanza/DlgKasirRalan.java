@@ -7250,7 +7250,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("nama", TPasien.getText());
-            param.put("alamat", Sequel.cariIsi(
+            param.put("tgl", Sequel.cariIsi(
                     "select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?", TNoRM.getText()));
             param.put("norm", TNoRM.getText());
             param.put("parameter", "%" + TCari.getText().trim() + "%");
@@ -7261,7 +7261,13 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
             Valid.MyReportqry("rptBarcodeRawat.jasper", "report", "::[ Barcode No.Rawat ]::",
-                    "select reg_periksa.no_rawat from reg_periksa where no_rawat='" + TNoRw.getText() + "'", param);
+                    "select reg_periksa.no_rawat,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "
+                    + " from reg_periksa,pasien,kelurahan,kecamatan,kabupaten "
+                    + " where "
+                    + "pasien.kd_kel=kelurahan.kd_kel and "
+                    + "pasien.kd_kec=kecamatan.kd_kec and "
+                    + "pasien.kd_kab=kabupaten.kd_kab and "
+                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and no_rawat='" + TNoRw.getText() + "'", param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }// GEN-LAST:event_MnBarcodeActionPerformed
