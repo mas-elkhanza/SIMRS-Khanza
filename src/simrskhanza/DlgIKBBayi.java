@@ -2326,7 +2326,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
                     + "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur, "
                     + "pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu, "
                     + "pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,"
-                    + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, "
+                    + "concat(pasien.alamat,', ',kelurahan.nm_kel) as alamat,concat(kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat1, "
                     + "pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala, "
                     + "pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan, "
                     + "pasien_bayi.diagnosa,pasien_bayi.penyulit_kehamilan,pasien_bayi.ketuban,"
@@ -2668,7 +2668,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 + LingkarDada.getText() + "','"
                 + KdPenolong.getText() + "','"
                 + NoSKL.getText() + "','"
-                + Valid.SetTgl(Daftar.getSelectedItem().toString()) + "'", "No.RM/No.SKL") == true) {
+                + Valid.SetTgl(Daftar.getSelectedItem().toString()) + "','"
+                + Nmibu.getText() + "','"
+                + NmBayi.getText() + "','"
+                + AlamatIbu.getText() + "',CURDATE()", "No.RM/No.SKL") == true) {
 //            Sequel.queryu2("delete from set_no_rkm_medis");
 //            Sequel.queryu2("insert into set_no_rkm_medis values(?)", 1, new String[]{NoRm.getText()});
         }
@@ -2724,7 +2727,11 @@ private void BtnEditActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 + "',penolong='" + KdPenolong.getText()
                 + "',no_skl='" + NoSKL.getText()
                 + "',jam_lahir='" + jam.getSelectedItem() + ":" + menit.getSelectedItem() + ":" + detik.getSelectedItem()
-                + "',keterangan='" + keterangan.getText() + "'");
+                + "',keterangan='" + keterangan.getText() 
+                + "',date_update=CURDATE()" 
+                + ",nama_ibu='" + Nmibu.getText() 
+                + "',nama_bayi='" + NmBayi.getText()
+                + "',alamat='" + AlamatIbu.getText() + "'");
         if (tabMode.getRowCount() != 0) {
             tampil();
         }
@@ -3437,7 +3444,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     + "pasien.no_ktp, pasien.pekerjaanpj, pasien.no_tlp,"
                     + "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur,"
                     + "pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu,"
-                    + "pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,CONCAT(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) AS alamat,"
+                    + "pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,pasien_bayi.alamat,"
                     + "pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala,"
                     + "pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan,"
                     + "pasien_bayi.diagnosa,pasien_bayi.penyulit_kehamilan,pasien_bayi.ketuban,"
@@ -3724,11 +3731,11 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         
         Valid.tabelKosong(tabMode);
         try {
-            ps = koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, "
+            ps = koneksi.prepareStatement("select pasien.no_rkm_medis, pasien_bayi.nama_bayi, pasien.jk, "
                     + "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur, "
-                    + "pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu, "
+                    + "pasien.tgl_daftar,pasien_bayi.nama_ibu,pasien_bayi.umur_ibu, "
                     + "pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,"
-                    + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, "
+                    + "pasien_bayi.alamat, "
                     + "pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala, "
                     + "pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan, "
                     + "pasien_bayi.diagnosa,pasien_bayi.penyulit_kehamilan,pasien_bayi.ketuban,"
@@ -3738,13 +3745,13 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     + "on pasien.no_rkm_medis=pasien_bayi.no_rkm_medis and pasien_bayi.penolong=pegawai.nik "
                     + "and pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "
                     + "where " + jkelcari + tglcari + " pasien.no_rkm_medis like '%" + TCari.getText().trim() + "%' "
-                    + "or " + jkelcari + tglcari + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' "
+                    + "or " + jkelcari + tglcari + " pasien_bayi.nama_bayi like '%" + TCari.getText().trim() + "%' "
                     + "or " + jkelcari + tglcari + " pasien.tgl_lahir like '%" + TCari.getText().trim() + "%' "
                     + "or " + jkelcari + tglcari + " pasien.namakeluarga like '%" + TCari.getText().trim() + "%' "
-                    + "or " + jkelcari + tglcari + " pasien.alamat like '%" + TCari.getText().trim() + "%' "
+                    + "or " + jkelcari + tglcari + " pasien_bayi.alamat like '%" + TCari.getText().trim() + "%' "
                     + "or " + jkelcari + tglcari + " pegawai.nama like '%" + TCari.getText().trim() + "%' "
                     + "or " + jkelcari + tglcari + " pasien_bayi.diagnosa like '%" + TCari.getText().trim() + "%' "
-                    + "or " + jkelcari + tglcari + " pasien.nm_ibu like '%" + TCari.getText().trim() + "%' "
+                    + "or " + jkelcari + tglcari + " pasien_bayi.nama_ibu like '%" + TCari.getText().trim() + "%' "
                     + "or " + jkelcari + tglcari + " pasien_bayi.proses_lahir like '%" + TCari.getText().trim() + "%' "
                     + "or " + jkelcari + tglcari + " pasien_bayi.penyulit_kehamilan like '%" + TCari.getText().trim() + "%' "
                     + "or " + jkelcari + tglcari + " pasien_bayi.ketuban like '%" + TCari.getText().trim() + "%'  order by pasien.no_rkm_medis desc");
