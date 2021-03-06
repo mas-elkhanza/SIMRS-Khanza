@@ -57,7 +57,7 @@ import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
 import simrskhanza.DlgPangkatPolri;
 import simrskhanza.DlgPangkatTNI;
-import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgCariPerusahaan;
 import simrskhanza.DlgPilihanCetakDokumen;
 import simrskhanza.DlgPropinsi;
 import simrskhanza.DlgSatuanPolri;
@@ -84,7 +84,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     private DlgKamar kamar=new DlgKamar(null,false);
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
-    public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
+    public  DlgCariPerusahaan perusahaan=new DlgCariPerusahaan(null,false);
     public  DlgCariBahasa bahasa=new DlgCariBahasa(null,false);
     public  DlgCariCacatFisik cacat=new DlgCariCacatFisik(null,false);
     public  DlgCariSuku suku=new DlgCariSuku(null,false);

@@ -71,7 +71,7 @@ public class DlgPasien extends javax.swing.JDialog {
     public  DlgPropinsi prop=new DlgPropinsi(null,false);
     public  DlgKecamatan kec=new DlgKecamatan(null,false);
     public  DlgKelurahan kel=new DlgKelurahan(null,false);
-    public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
+    public  DlgCariPerusahaan perusahaan=new DlgCariPerusahaan(null,false);
     public  DlgCariBahasa bahasa=new DlgCariBahasa(null,false);
     public  DlgCariCacatFisik cacat=new DlgCariCacatFisik(null,false);
     public  DlgCariSuku suku=new DlgCariSuku(null,false);

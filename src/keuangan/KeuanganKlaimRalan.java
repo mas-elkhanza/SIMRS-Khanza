@@ -34,7 +34,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgCariCaraBayar;
-import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgCariPerusahaan;
 
 /**
  *
@@ -50,7 +50,7 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
+    public  DlgCariPerusahaan perusahaan=new DlgCariPerusahaan(null,false);
     private double totalpiutang=0;
     private boolean semua;
     private int i=0;
