@@ -58,7 +58,7 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"ID","Suku/Bangsa Pasien"};
+        Object[] row={"ID","Cacat Fisik"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -305,13 +305,13 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSuku suku=new DlgSuku(null,false);
-        suku.emptTeks();
-        suku.isCek();
-        suku.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        suku.setLocationRelativeTo(internalFrame1);
-        suku.setAlwaysOnTop(false);
-        suku.setVisible(true);
+        DlgCacatFisik cacatfisik=new DlgCacatFisik(null,false);
+        cacatfisik.emptTeks();
+        cacatfisik.isCek();
+        cacatfisik.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        cacatfisik.setLocationRelativeTo(internalFrame1);
+        cacatfisik.setAlwaysOnTop(false);
+        cacatfisik.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
         
     }//GEN-LAST:event_BtnTambahActionPerformed
@@ -369,16 +369,16 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
-            file=new File("./cache/suku.iyem");
+            file=new File("./cache/cacatfisik.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select * from suku_bangsa ");
+            ps=koneksi.prepareStatement("select * from cacat_fisik ");
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"ID\":\""+rs.getString(1)+"\",\"Suku\":\""+rs.getString(2)+"\"},";
+                    iyem=iyem+"{\"ID\":\""+rs.getString(1)+"\",\"Cacat\":\""+rs.getString(2)+"\"},";
                 }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
@@ -392,7 +392,7 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
                 }
             }
 
-            fileWriter.write("{\"suku\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.write("{\"cacatfisik\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
             iyem=null;
@@ -411,20 +411,20 @@ public final class DlgCariCacatFisik extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(akses.getsuku_bangsa());
+        BtnTambah.setEnabled(akses.getcacat_fisik());
     }
     
     private void tampil2() {
         try {
-            myObj = new FileReader("./cache/suku.iyem");
+            myObj = new FileReader("./cache/cacatfisik.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
-            response = root.path("suku");
+            response = root.path("cacatfisik");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("Suku").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                    if(list.path("Cacat").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
-                            list.path("ID").asText(),list.path("Suku").asText()
+                            list.path("ID").asText(),list.path("Cacat").asText()
                         });
                     }
                 }
