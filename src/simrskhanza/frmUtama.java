@@ -540,6 +540,7 @@ import ipsrs.IPSRSRingkasanPenerimaanBarangNonMedis;
 import ipsrs.IPSRSRingkasanPengadaanBarangNonMedis;
 import ipsrs.IPSRSRingkasanPengajuanBarangNonMedis;
 import ipsrs.IPSRSRingkasanPengeluaranBarangNonMedis;
+import ipsrs.IPSRSRingkasanReturBeliBarangNonMedis;
 import ipsrs.IPSRSRiwayatBarang;
 import ipsrs.IPSRSVerifikasiPenerimaan;
 import java.awt.event.ActionEvent;
@@ -16841,6 +16842,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRingkasanReturSuplierNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSRingkasanReturBeliBarangNonMedis aplikasi=new IPSRSRingkasanReturBeliBarangNonMedis(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17456,7 +17468,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPemesananMedis,btnRingkasanPembelianMedis,btnRingkasanPenerimaanMedis,btnRingkasanHibahMedis,btnRingkasanPenjualanMedis,
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
-            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis;
+            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis;
     
     public void isWall(){
         try{            
@@ -18315,6 +18327,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getipsrs_returbeli()==true){
                 Panelmenu.add(btnReturBarangNonMedis); 
+                jmlmenu++;
+            }
+            
+            if(akses.getringkasan_returbeli_nonmedis()==true){
+                Panelmenu.add(btnRingkasanReturSuplierNonMedis); 
                 jmlmenu++;
             }
             
@@ -21814,6 +21831,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getipsrs_returbeli()==true){
             Panelmenu.add(btnReturBarangNonMedis); 
+            jmlmenu++;
+        }
+        
+        if(akses.getringkasan_returbeli_nonmedis()==true){
+            Panelmenu.add(btnRingkasanReturSuplierNonMedis); 
             jmlmenu++;
         }
 
@@ -25593,6 +25615,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getipsrs_returbeli()==true){
             if(btnReturBarangNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturBarangNonMedis); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_returbeli_nonmedis()==true){
+            if(btnRingkasanReturSuplierNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanReturSuplierNonMedis); 
                 jmlmenu++;
             }                
         }
@@ -31321,6 +31350,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanStokKeluarNonMedis.setName("btnRingkasanStokKeluarNonMedis");
         btnRingkasanStokKeluarNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanStokKeluarNonMedis.addActionListener(this::btnRingkasanStokKeluarNonMedisActionPerformed);
+        
+        btnRingkasanReturSuplierNonMedis = new widget.ButtonBig();
+        btnRingkasanReturSuplierNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanReturSuplierNonMedis.setText("Ringkasan Retur Suplier Non Medis");
+        btnRingkasanReturSuplierNonMedis.setIconTextGap(0);
+        btnRingkasanReturSuplierNonMedis.setName("btnRingkasanReturSuplierNonMedis");
+        btnRingkasanReturSuplierNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanReturSuplierNonMedis.addActionListener(this::btnRingkasanReturSuplierNonMedisActionPerformed);
     }
 
     
