@@ -22,21 +22,19 @@
 	<parameter name="tanggal2" class="java.lang.String"/>
 	<parameter name="barang" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select ipsrsdetailpesan.kode_brng,ipsrsbarang.nama_brng,ipsrsjenisbarang.nm_jenis as namajenis,
-ipsrsdetailpesan.kode_sat,kodesatuan.satuan,sum(ipsrsdetailpesan.jumlah) as jumlah,sum(ipsrsdetailpesan.total) as total 
- from ipsrspemesanan inner join ipsrssuplier inner join petugas 
-inner join ipsrsdetailpesan inner join ipsrsbarang inner join kodesatuan 
- inner join ipsrsjenisbarang 
-on ipsrsdetailpesan.kode_brng=ipsrsbarang.kode_brng 
-and ipsrsdetailpesan.kode_sat=kodesatuan.kode_sat 
-and ipsrspemesanan.no_faktur=ipsrsdetailpesan.no_faktur 
- and ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier
-and ipsrspemesanan.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis]]>
+		<![CDATA[select detail_pengajuan_barang_nonmedis.kode_brng,ipsrsbarang.nama_brng,detail_pengajuan_barang_nonmedis.kode_sat,kodesatuan.satuan,ipsrsjenisbarang.nm_jenis as namajenis,
+sum(detail_pengajuan_barang_nonmedis.jumlah) as jumlah,sum(detail_pengajuan_barang_nonmedis.total) as total 
+from pengajuan_barang_nonmedis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_nonmedis 
+inner join ipsrsjenisbarang inner join ipsrsbarang on detail_pengajuan_barang_nonmedis.kode_brng=ipsrsbarang.kode_brng
+ and ipsrsbarang.kode_sat=kodesatuan.kode_sat 
+ and pengajuan_barang_nonmedis.no_pengajuan=detail_pengajuan_barang_nonmedis.no_pengajuan 
+ and pengajuan_barang_nonmedis.nip=pegawai.nik 
+ and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis]]>
 	</queryString>
 	<field name="kode_brng" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="kode_brng"/>
 		<property name="com.jaspersoft.studio.field.label" value="kode_brng"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ipsrsdetailpesan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_pengajuan_barang_nonmedis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
@@ -45,15 +43,10 @@ and ipsrspemesanan.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jen
 		<property name="com.jaspersoft.studio.field.tree.path" value="ipsrsbarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="namajenis" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nm_jenis"/>
-		<property name="com.jaspersoft.studio.field.label" value="namajenis"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ipsrsjenisbarang"/>
-	</field>
 	<field name="kode_sat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="kode_sat"/>
 		<property name="com.jaspersoft.studio.field.label" value="kode_sat"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="ipsrsdetailpesan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_pengajuan_barang_nonmedis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="satuan" class="java.lang.String">
@@ -61,6 +54,11 @@ and ipsrspemesanan.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jen
 		<property name="com.jaspersoft.studio.field.label" value="satuan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kodesatuan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="namajenis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_jenis"/>
+		<property name="com.jaspersoft.studio.field.label" value="namajenis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ipsrsjenisbarang"/>
 	</field>
 	<field name="jumlah" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="jumlah"/>

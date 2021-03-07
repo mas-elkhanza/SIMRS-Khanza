@@ -539,6 +539,7 @@ import ipsrs.IPSRSRingkasanPemesananBarangNonMedis;
 import ipsrs.IPSRSRingkasanPenerimaanBarangNonMedis;
 import ipsrs.IPSRSRingkasanPengadaanBarangNonMedis;
 import ipsrs.IPSRSRingkasanPengajuanBarangNonMedis;
+import ipsrs.IPSRSRingkasanPengeluaranBarangNonMedis;
 import ipsrs.IPSRSRiwayatBarang;
 import ipsrs.IPSRSVerifikasiPenerimaan;
 import java.awt.event.ActionEvent;
@@ -16829,6 +16830,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRingkasanStokKeluarNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSRingkasanPengeluaranBarangNonMedis aplikasi=new IPSRSRingkasanPengeluaranBarangNonMedis(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17444,7 +17456,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPemesananMedis,btnRingkasanPembelianMedis,btnRingkasanPenerimaanMedis,btnRingkasanHibahMedis,btnRingkasanPenjualanMedis,
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
-            btnRingkasanPenerimaanNonMedis;
+            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis;
     
     public void isWall(){
         try{            
@@ -18293,6 +18305,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getipsrs_stok_keluar()==true){
                 Panelmenu.add(btnPengeluaranIpsrs); 
+                jmlmenu++;
+            }
+            
+            if(akses.getringkasan_stokkeluar_nonmedis()==true){
+                Panelmenu.add(btnRingkasanStokKeluarNonMedis); 
                 jmlmenu++;
             }
             
@@ -21787,6 +21804,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getipsrs_stok_keluar()==true){
             Panelmenu.add(btnPengeluaranIpsrs); 
+            jmlmenu++;
+        }
+        
+        if(akses.getringkasan_stokkeluar_nonmedis()==true){
+            Panelmenu.add(btnRingkasanStokKeluarNonMedis); 
             jmlmenu++;
         }
         
@@ -25557,6 +25579,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getipsrs_stok_keluar()==true){
             if(btnPengeluaranIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengeluaranIpsrs); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_stokkeluar_nonmedis()==true){
+            if(btnRingkasanStokKeluarNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanStokKeluarNonMedis); 
                 jmlmenu++;
             }                
         }
@@ -31284,6 +31313,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPenerimaanNonMedis.setName("btnRingkasanPenerimaanNonMedis");
         btnRingkasanPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanPenerimaanNonMedis.addActionListener(this::btnRingkasanPenerimaanNonMedisActionPerformed);
+        
+        btnRingkasanStokKeluarNonMedis = new widget.ButtonBig();
+        btnRingkasanStokKeluarNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanStokKeluarNonMedis.setText("Ringkasan Stok Keluar Non Medis");
+        btnRingkasanStokKeluarNonMedis.setIconTextGap(0);
+        btnRingkasanStokKeluarNonMedis.setName("btnRingkasanStokKeluarNonMedis");
+        btnRingkasanStokKeluarNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanStokKeluarNonMedis.addActionListener(this::btnRingkasanStokKeluarNonMedisActionPerformed);
     }
 
     
