@@ -18,6 +18,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -220,7 +221,6 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
             @Override
             public void windowClosed(WindowEvent e) {
-                if (akses.getform().equals("DlgKBBayi")) {
                     if (pasien.getTable().getSelectedRow() != -1) {
                         NoRm.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 1).toString());
                         NmBayi.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 2).toString());
@@ -231,8 +231,9 @@ public class DlgIKBBayi extends javax.swing.JDialog {
                         Valid.SetTgl(Lahir, pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 6).toString());
                     }
                     UmurIbu.requestFocus();
-                }
             }
+
+           
 
             @Override
             public void windowIconified(WindowEvent e) {
@@ -250,7 +251,26 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {
             }
         });
+        
+        pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+//                if (akses.getform().equals("DlgReg")) {
+                    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                        pasien.dispose();
+                    }
+//                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        
         pegawai.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -2640,8 +2660,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
     if (NoRm.getText().trim().equals("")) {
         Valid.textKosong(NoRm, "No.Rekam Medis");
-    } else if (NmBayi.getText().trim().equals("")) {
-        Valid.textKosong(NmBayi, "nama bayi");
     } else if (KdPenolong.getText().trim().equals("") || NmPenolong.getText().trim().equals("")) {
         Valid.textKosong(KdPenolong, "penolong");
     } else if (NoSKL.getText().trim().equals("")) {
@@ -2915,7 +2933,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_BtnPenjabActionPerformed
 
     private void BtnKelurahan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahan1ActionPerformed
-        akses.setform("DlgKBBayi");
+        
         pasien.emptTeks();
         pasien.isCek();
         pasien.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
