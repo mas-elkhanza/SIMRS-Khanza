@@ -48,9 +48,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgBahasa;
-import simrskhanza.DlgCacatFisik;
+import simrskhanza.DlgCariBahasa;
+import simrskhanza.DlgCariCacatFisik;
 import laporan.DlgCariPenyakit;
+import simrskhanza.DlgCariCaraBayar;
 import simrskhanza.DlgGolonganPolri;
 import simrskhanza.DlgGolonganTNI;
 import simrskhanza.DlgJabatanPolri;
@@ -61,13 +62,12 @@ import simrskhanza.DlgKelurahan;
 import simrskhanza.DlgPangkatPolri;
 import simrskhanza.DlgPangkatTNI;
 import simrskhanza.DlgPasien;
-import simrskhanza.DlgPenanggungJawab;
-import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgCariPerusahaan;
 import simrskhanza.DlgPilihanCetakDokumen;
 import simrskhanza.DlgPropinsi;
 import simrskhanza.DlgSatuanPolri;
 import simrskhanza.DlgSatuanTNI;
-import simrskhanza.DlgSuku;
+import simrskhanza.DlgCariSuku;
 
 /**
  *
@@ -88,12 +88,12 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private DlgKelurahan kel=new DlgKelurahan(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private InhealthCariReferensiJenpelRuang kamar=new InhealthCariReferensiJenpelRuang(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
-    public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
-    public  DlgBahasa bahasa=new DlgBahasa(null,false);
-    public  DlgCacatFisik cacat=new DlgCacatFisik(null,false);
-    public  DlgSuku suku=new DlgSuku(null,false);
+    public  DlgCariPerusahaan perusahaan=new DlgCariPerusahaan(null,false);
+    public  DlgCariBahasa bahasa=new DlgCariBahasa(null,false);
+    public  DlgCariCacatFisik cacat=new DlgCariCacatFisik(null,false);
+    public  DlgCariSuku suku=new DlgCariSuku(null,false);
     public  DlgGolonganTNI golongantni=new DlgGolonganTNI(null,false);
     public  DlgSatuanTNI satuantni=new DlgSatuanTNI(null,false);
     public  DlgPangkatTNI pangkattni=new DlgPangkatTNI(null,false);

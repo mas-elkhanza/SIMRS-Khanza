@@ -30,7 +30,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -104,7 +104,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
         
     }
     
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.

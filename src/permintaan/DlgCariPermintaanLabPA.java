@@ -29,7 +29,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgPeriksaLaboratorium;
+import simrskhanza.DlgPeriksaLaboratoriumPA;
 
 public class DlgCariPermintaanLabPA extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4;
@@ -1703,7 +1703,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
                         }else{
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                            DlgPeriksaLaboratoriumPA dlgro=new DlgPeriksaLaboratoriumPA(null,false);
                             dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             dlgro.setLocationRelativeTo(internalFrame1);
                             dlgro.emptTeks();
@@ -1734,7 +1734,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
                         }else{
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                            DlgPeriksaLaboratoriumPA dlgro=new DlgPeriksaLaboratoriumPA(null,false);
                             dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             dlgro.setLocationRelativeTo(internalFrame1);
                             dlgro.emptTeks();
@@ -2405,8 +2405,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     
     public void isCek(){
         MnCetakHasilLab.setEnabled(akses.getpermintaan_lab());
-        BtnHasil.setEnabled(akses.getperiksa_lab());
-        BtnSampel.setEnabled(akses.getperiksa_lab());
+        BtnHasil.setEnabled(akses.getpemeriksaan_lab_pa());
+        BtnSampel.setEnabled(akses.getpemeriksaan_lab_pa());
         BtnHapus.setEnabled(akses.getpermintaan_lab());
         BtnPrint.setEnabled(akses.getpermintaan_lab());
     }

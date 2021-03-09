@@ -38,7 +38,7 @@ import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -55,7 +55,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
     private String setbaru="",setlama="",umurlk="",umurpr="",kddiagnosa="",diagnosa="",dokterdpjp="",status="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariBangsal kamar=new DlgCariBangsal(null,false);
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);

@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
@@ -32,7 +32,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private final Jurnal jur=new Jurnal();
     private final Connection koneksi=koneksiDB.condb();
     private final Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private int i=0,c=0;
     private String pilihancarabayar="",tglkeluar="",namaruangan="",dpjp="";    
     private PreparedStatement psreg,pskamar,pstindakan;

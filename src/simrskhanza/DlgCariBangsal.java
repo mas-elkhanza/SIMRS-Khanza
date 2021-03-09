@@ -11,6 +11,8 @@
 
 package simrskhanza;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -19,10 +21,12 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +42,13 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -70,19 +81,19 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -255,7 +266,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        tampil2();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -358,15 +369,16 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{   
-            ps=koneksi.prepareStatement("select kd_bangsal, nm_bangsal "+
-                " from bangsal where status='1' and kd_bangsal like ? or "+
-                " status='1' and nm_bangsal like ?  order by nm_bangsal");
+            file=new File("./cache/bangsal.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
+            ps=koneksi.prepareStatement("select * from bangsal where status='1' order by nm_bangsal");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2) });
+                    iyem=iyem+"{\"KodeKamar\":\""+rs.getString(1)+"\",\"NamaKamar\":\""+rs.getString(2)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -377,8 +389,12 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }                
-        }catch(SQLException e){
+            }    
+            fileWriter.write("{\"bangsal\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -394,5 +410,26 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
     
     public void isCek(){        
        BtnTambah.setEnabled(akses.getkamar());
+    }
+    
+    private void tampil2() {
+        try {
+            myObj = new FileReader("./cache/bangsal.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("bangsal");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaKamar").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            list.path("KodeKamar").asText(),list.path("NamaKamar").asText()
+                        });
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
     }
 }

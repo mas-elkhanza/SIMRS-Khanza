@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1090" pageHeight="612" orientation="Landscape" columnWidth="1050" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b762938-3a47-40bc-bd6b-fcc556636ad4">
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1290" pageHeight="612" orientation="Landscape" columnWidth="1250" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b762938-3a47-40bc-bd6b-fcc556636ad4">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="456"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -17,97 +26,137 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[select pemeriksaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
-pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi, 
-pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi, 
-pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan,
-pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl from pasien inner join reg_periksa inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis]]>
+pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi,
+pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi,
+pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan, 
+pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl,
+pemeriksaan_ranap.instruksi,pemeriksaan_ranap.nip,pegawai.nama 
+from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis
+inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat 
+inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl_perawatan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_perawatan"/>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_perawatan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam_rawat" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam_rawat"/>
 		<property name="com.jaspersoft.studio.field.label" value="jam_rawat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="suhu_tubuh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="suhu_tubuh"/>
 		<property name="com.jaspersoft.studio.field.label" value="suhu_tubuh"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tensi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tensi"/>
 		<property name="com.jaspersoft.studio.field.label" value="tensi"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nadi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nadi"/>
 		<property name="com.jaspersoft.studio.field.label" value="nadi"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="respirasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="respirasi"/>
 		<property name="com.jaspersoft.studio.field.label" value="respirasi"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tinggi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tinggi"/>
 		<property name="com.jaspersoft.studio.field.label" value="tinggi"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="berat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="berat"/>
 		<property name="com.jaspersoft.studio.field.label" value="berat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="gcs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gcs"/>
 		<property name="com.jaspersoft.studio.field.label" value="gcs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kesadaran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kesadaran"/>
 		<property name="com.jaspersoft.studio.field.label" value="kesadaran"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 	</field>
 	<field name="keluhan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keluhan"/>
 		<property name="com.jaspersoft.studio.field.label" value="keluhan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="pemeriksaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pemeriksaan"/>
 		<property name="com.jaspersoft.studio.field.label" value="pemeriksaan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="alergi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alergi"/>
 		<property name="com.jaspersoft.studio.field.label" value="alergi"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="penilaian" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="penilaian"/>
 		<property name="com.jaspersoft.studio.field.label" value="penilaian"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 	</field>
 	<field name="rtl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rtl"/>
 		<property name="com.jaspersoft.studio.field.label" value="rtl"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
+	</field>
+	<field name="instruksi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="instruksi"/>
+		<property name="com.jaspersoft.studio.field.label" value="instruksi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nip" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nip"/>
+		<property name="com.jaspersoft.studio.field.label" value="nip"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pegawai"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -115,7 +164,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 	<title>
 		<band height="84" splitType="Stretch">
 			<textField>
-				<reportElement x="3" y="25" width="1047" height="14" uuid="c9933623-a721-4ec3-acb5-36fb1cc70b00">
+				<reportElement x="3" y="25" width="1247" height="14" uuid="c9933623-a721-4ec3-acb5-36fb1cc70b00">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -129,7 +178,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="3" y="35" width="1047" height="14" uuid="eac544d0-9584-4284-913d-6ff7e1be0458">
+				<reportElement x="3" y="35" width="1247" height="14" uuid="eac544d0-9584-4284-913d-6ff7e1be0458">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -139,7 +188,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="3" y="14" width="1047" height="14" uuid="9eb1693f-1886-4261-9867-067ea465717f">
+				<reportElement x="3" y="14" width="1247" height="14" uuid="9eb1693f-1886-4261-9867-067ea465717f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -149,7 +198,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="55" width="1050" height="23" uuid="a5b47caf-65ee-4f07-a389-6e306167b617"/>
+				<reportElement x="0" y="55" width="1250" height="23" uuid="a5b47caf-65ee-4f07-a389-6e306167b617"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -157,7 +206,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<text><![CDATA[DATA PEMERIKSAAN PASIEN]]></text>
 			</staticText>
 			<line>
-				<reportElement x="1" y="48" width="1050" height="1" uuid="7e9d9a0e-d69d-40a6-93a7-82749d0c81d5">
+				<reportElement x="1" y="48" width="1250" height="1" uuid="7e9d9a0e-d69d-40a6-93a7-82749d0c81d5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -165,7 +214,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="3" y="0" width="1047" height="17" uuid="140923bf-02f0-4e2b-9e7d-39eb2fad6315">
+				<reportElement x="3" y="0" width="1247" height="17" uuid="140923bf-02f0-4e2b-9e7d-39eb2fad6315">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -181,6 +230,22 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 	</pageHeader>
 	<columnHeader>
 		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="990" y="1" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f3c6bc37-bb7d-457c-9ac6-1c3f03cdcb34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Instruksi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1150" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0c5a43a0-30a3-424f-a47d-23c7c4d23d86"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Dokter/Paramedis]]></text>
+			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="519" y="0" width="71" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="7473de0b-18d7-4b9b-823e-fbc0e151ba05"/>
 				<textElement verticalAlignment="Middle">
@@ -206,7 +271,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<text><![CDATA[Asesmen]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="990" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0c27cb13-bf7e-417e-ac65-41cedd85d0a8"/>
+				<reportElement mode="Opaque" x="1090" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0c27cb13-bf7e-417e-ac65-41cedd85d0a8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -328,7 +393,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<text><![CDATA[Jam]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="1050" height="1" uuid="c201c681-5e93-4ab5-820b-5bbbe606d34c">
+				<reportElement x="0" y="0" width="1250" height="1" uuid="c201c681-5e93-4ab5-820b-5bbbe606d34c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -336,7 +401,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="1050" height="1" uuid="f86054c3-cb51-4a10-83bd-3cf2cb1b16c3"/>
+				<reportElement x="0" y="16" width="1250" height="1" uuid="f86054c3-cb51-4a10-83bd-3cf2cb1b16c3"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -459,7 +524,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<textFieldExpression><![CDATA[$F{pemeriksaan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="990" y="0" width="60" height="10" uuid="bfa0cdc3-2ec3-4fe9-95cd-7b3256be33a9"/>
+				<reportElement positionType="Float" x="1090" y="0" width="60" height="10" uuid="bfa0cdc3-2ec3-4fe9-95cd-7b3256be33a9"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -483,7 +548,7 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<textFieldExpression><![CDATA[$F{rtl}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="1050" height="1" uuid="38944650-7a86-4126-a503-71493ff902a4">
+				<reportElement positionType="Float" x="0" y="11" width="1250" height="1" uuid="38944650-7a86-4126-a503-71493ff902a4">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -497,6 +562,22 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kesadaran}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="1150" y="0" width="100" height="10" uuid="0ecfb629-ea0d-48e5-a2e8-4b15f096fbea"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="990" y="0" width="100" height="10" uuid="b7187df1-0baa-4212-a4fe-89bab02b4006"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{instruksi}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -548,13 +629,13 @@ pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilai
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="1050" height="1" uuid="eb558734-b943-4f59-97d9-77aeef7df956"/>
+				<reportElement x="0" y="0" width="1250" height="1" uuid="eb558734-b943-4f59-97d9-77aeef7df956"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="23" width="1050" height="1" uuid="081f55f0-e428-45e6-8ef7-a16cfbed5b20"/>
+				<reportElement x="0" y="23" width="1250" height="1" uuid="081f55f0-e428-45e6-8ef7-a16cfbed5b20"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

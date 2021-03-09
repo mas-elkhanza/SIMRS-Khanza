@@ -21,7 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -32,7 +32,7 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
     private ResultSet rsdokter,rsresep; 
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private int i=0,a=0;
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private double subtotal=0,ttlbiaya=0,embalase=0,ttlembalase=0,tuslah=0,ttltuslah=0;
     private String pilihancarabayar="",jumlah,total,emb,tsl;
 

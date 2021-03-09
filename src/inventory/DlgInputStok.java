@@ -25,6 +25,8 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -47,7 +49,7 @@ public class DlgInputStok extends javax.swing.JDialog {
     private double[] hargabeli,stok,selisih,lebih,nomihilang,nomilebih;
     private WarnaTable2 warna=new WarnaTable2();
     private boolean aktif=false,sukses=true;
-    private String aktifkanbatch="no",hppfarmasi="";
+    private String aktifkanbatch="no",hppfarmasi="",order="order by databarang.nama_brng";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -153,6 +155,7 @@ public class DlgInputStok extends javax.swing.JDialog {
                     kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                     nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
                     tampil();
+                    ppStokActionPerformed(null);
                 }  
                 kdgudang.requestFocus();
             }
@@ -197,6 +200,15 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppStok = new javax.swing.JMenuItem();
         ppBelumOpname = new javax.swing.JMenuItem();
         ppSudahOpname = new javax.swing.JMenuItem();
+        MnUrut = new javax.swing.JMenu();
+        MnKodeBarangDesc = new javax.swing.JMenuItem();
+        MnKodeBarangAsc = new javax.swing.JMenuItem();
+        MnNamaBarangDesc = new javax.swing.JMenuItem();
+        MnNamaBarangAsc = new javax.swing.JMenuItem();
+        MnKategoriAsc = new javax.swing.JMenuItem();
+        MnKategoriDesc = new javax.swing.JMenuItem();
+        MnSatuanDesc = new javax.swing.JMenuItem();
+        MnSatuanAsc = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -214,6 +226,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
         BtnTambah = new widget.Button();
+        BtnPrint = new widget.Button();
         panelisi3 = new widget.panelisi();
         label18 = new widget.Label();
         catatan = new widget.TextBox();
@@ -238,7 +251,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
-        ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 26));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBersihkanActionPerformed(evt);
@@ -254,7 +267,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppStok.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppStok.setName("ppStok"); // NOI18N
-        ppStok.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppStok.setPreferredSize(new java.awt.Dimension(200, 26));
         ppStok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppStokActionPerformed(evt);
@@ -270,7 +283,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppBelumOpname.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBelumOpname.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBelumOpname.setName("ppBelumOpname"); // NOI18N
-        ppBelumOpname.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppBelumOpname.setPreferredSize(new java.awt.Dimension(200, 26));
         ppBelumOpname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBelumOpnameActionPerformed(evt);
@@ -286,13 +299,153 @@ public class DlgInputStok extends javax.swing.JDialog {
         ppSudahOpname.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSudahOpname.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppSudahOpname.setName("ppSudahOpname"); // NOI18N
-        ppSudahOpname.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppSudahOpname.setPreferredSize(new java.awt.Dimension(200, 26));
         ppSudahOpname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppSudahOpnameActionPerformed(evt);
             }
         });
         Popup.add(ppSudahOpname);
+
+        MnUrut.setBackground(new java.awt.Color(250, 255, 245));
+        MnUrut.setForeground(new java.awt.Color(50, 50, 50));
+        MnUrut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnUrut.setText("Urutkan Data Berdasar");
+        MnUrut.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnUrut.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnUrut.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnUrut.setName("MnUrut"); // NOI18N
+        MnUrut.setPreferredSize(new java.awt.Dimension(200, 26));
+
+        MnKodeBarangDesc.setBackground(new java.awt.Color(255, 255, 254));
+        MnKodeBarangDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKodeBarangDesc.setForeground(new java.awt.Color(50, 50, 50));
+        MnKodeBarangDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKodeBarangDesc.setText("Kode Barang Descending");
+        MnKodeBarangDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnKodeBarangDesc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnKodeBarangDesc.setName("MnKodeBarangDesc"); // NOI18N
+        MnKodeBarangDesc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnKodeBarangDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKodeBarangDescActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnKodeBarangDesc);
+
+        MnKodeBarangAsc.setBackground(new java.awt.Color(255, 255, 254));
+        MnKodeBarangAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKodeBarangAsc.setForeground(new java.awt.Color(50, 50, 50));
+        MnKodeBarangAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKodeBarangAsc.setText("Kode Barang Ascending");
+        MnKodeBarangAsc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnKodeBarangAsc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnKodeBarangAsc.setName("MnKodeBarangAsc"); // NOI18N
+        MnKodeBarangAsc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnKodeBarangAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKodeBarangAscActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnKodeBarangAsc);
+
+        MnNamaBarangDesc.setBackground(new java.awt.Color(255, 255, 254));
+        MnNamaBarangDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnNamaBarangDesc.setForeground(new java.awt.Color(50, 50, 50));
+        MnNamaBarangDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnNamaBarangDesc.setText("Nama Barang Descending");
+        MnNamaBarangDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnNamaBarangDesc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnNamaBarangDesc.setName("MnNamaBarangDesc"); // NOI18N
+        MnNamaBarangDesc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnNamaBarangDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnNamaBarangDescActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnNamaBarangDesc);
+
+        MnNamaBarangAsc.setBackground(new java.awt.Color(255, 255, 254));
+        MnNamaBarangAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnNamaBarangAsc.setForeground(new java.awt.Color(50, 50, 50));
+        MnNamaBarangAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnNamaBarangAsc.setText("Nama Barang Ascending");
+        MnNamaBarangAsc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnNamaBarangAsc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnNamaBarangAsc.setName("MnNamaBarangAsc"); // NOI18N
+        MnNamaBarangAsc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnNamaBarangAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnNamaBarangAscActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnNamaBarangAsc);
+
+        MnKategoriAsc.setBackground(new java.awt.Color(255, 255, 254));
+        MnKategoriAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKategoriAsc.setForeground(new java.awt.Color(50, 50, 50));
+        MnKategoriAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKategoriAsc.setText("Kategori Ascending");
+        MnKategoriAsc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnKategoriAsc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnKategoriAsc.setName("MnKategoriAsc"); // NOI18N
+        MnKategoriAsc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnKategoriAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKategoriAscActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnKategoriAsc);
+
+        MnKategoriDesc.setBackground(new java.awt.Color(255, 255, 254));
+        MnKategoriDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKategoriDesc.setForeground(new java.awt.Color(50, 50, 50));
+        MnKategoriDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKategoriDesc.setText("Kategori Descending");
+        MnKategoriDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnKategoriDesc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnKategoriDesc.setName("MnKategoriDesc"); // NOI18N
+        MnKategoriDesc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnKategoriDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKategoriDescActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnKategoriDesc);
+
+        MnSatuanDesc.setBackground(new java.awt.Color(255, 255, 254));
+        MnSatuanDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSatuanDesc.setForeground(new java.awt.Color(50, 50, 50));
+        MnSatuanDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSatuanDesc.setText("Satuan Descending");
+        MnSatuanDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSatuanDesc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSatuanDesc.setName("MnSatuanDesc"); // NOI18N
+        MnSatuanDesc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnSatuanDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSatuanDescActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnSatuanDesc);
+
+        MnSatuanAsc.setBackground(new java.awt.Color(255, 255, 254));
+        MnSatuanAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSatuanAsc.setForeground(new java.awt.Color(50, 50, 50));
+        MnSatuanAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSatuanAsc.setText("Satuan Ascending");
+        MnSatuanAsc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSatuanAsc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSatuanAsc.setName("MnSatuanAsc"); // NOI18N
+        MnSatuanAsc.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnSatuanAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSatuanAscActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnSatuanAsc);
+
+        Popup.add(MnUrut);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -449,7 +602,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         panelisi5.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(480, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(455, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -485,6 +638,23 @@ public class DlgInputStok extends javax.swing.JDialog {
             }
         });
         panelisi5.add(BtnTambah);
+
+        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        BtnPrint.setMnemonic('T');
+        BtnPrint.setToolTipText("Alt+T");
+        BtnPrint.setName("BtnPrint"); // NOI18N
+        BtnPrint.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrintActionPerformed(evt);
+            }
+        });
+        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPrintKeyPressed(evt);
+            }
+        });
+        panelisi5.add(BtnPrint);
 
         jPanel1.add(panelisi5, java.awt.BorderLayout.CENTER);
 
@@ -882,7 +1052,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         " where databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_brng like ? or "+
                         " databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.nama_brng like ? or "+
                         " databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_sat like ? or "+
-                        " databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+                        " databarang.kode_brng not in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and jenis.nama like ? "+order);
                 try {
                     pstampil.setString(1,Valid.SetTgl(Tgl.getSelectedItem()+""));
                     pstampil.setString(2,kdgudang.getText());
@@ -928,7 +1098,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     " where databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_brng like ? or "+
                     " databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.nama_brng like ? or "+
                     " databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and databarang.kode_sat like ? or "+
-                    " databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+                    " databarang.kode_brng in (select kode_brng from opname where tanggal=? and kd_bangsal=?) and databarang.status='1' and jenis.nama like ? "+order);
             try {
                 pstampil.setString(1,Valid.SetTgl(Tgl.getSelectedItem()+""));
                 pstampil.setString(2,kdgudang.getText());
@@ -977,6 +1147,94 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahActionPerformed
 
+    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        if(nmgudang.getText().trim().equals("")||kdgudang.getText().trim().equals("")){
+            Valid.textKosong(kdgudang,"Lokasi");
+        }else if(tbDokter.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data kosong..!!!!");
+            tbDokter.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+
+                Sequel.queryu("truncate table temporary");
+                int row=tabMode.getRowCount();
+                for(int i=0;i<row;i++){  
+                    Sequel.menyimpan("temporary","'0','"+
+                                    tabMode.getValueAt(i,1).toString()+"','"+
+                                    tabMode.getValueAt(i,2).toString()+"','"+
+                                    tabMode.getValueAt(i,3).toString()+"','"+
+                                    tabMode.getValueAt(i,4).toString()+"','"+
+                                    tabMode.getValueAt(i,5).toString()+"','"+
+                                    tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penerimaan"); 
+                }
+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+                param.put("bangsal",nmgudang.getText());    
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptInputStokOpname.jasper","report","::[ Data Persediaan Stok Ruangan ]::",param);
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPrintActionPerformed
+
+    private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnPrintActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCari, BtnKeluar);
+        }
+    }//GEN-LAST:event_BtnPrintKeyPressed
+
+    private void MnKodeBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangDescActionPerformed
+        order="order by databarang.kode_brng desc";
+        tampil();
+    }//GEN-LAST:event_MnKodeBarangDescActionPerformed
+
+    private void MnKodeBarangAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangAscActionPerformed
+        order="order by databarang.kode_brng asc";
+        tampil();
+    }//GEN-LAST:event_MnKodeBarangAscActionPerformed
+
+    private void MnNamaBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaBarangDescActionPerformed
+        order="order by databarang.nama_brng desc";
+        tampil();
+    }//GEN-LAST:event_MnNamaBarangDescActionPerformed
+
+    private void MnNamaBarangAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNamaBarangAscActionPerformed
+        order="order by databarang.nama_brng asc";
+        tampil();
+    }//GEN-LAST:event_MnNamaBarangAscActionPerformed
+
+    private void MnKategoriAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKategoriAscActionPerformed
+        order="order by jenis.nama desc";
+        tampil();
+    }//GEN-LAST:event_MnKategoriAscActionPerformed
+
+    private void MnKategoriDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKategoriDescActionPerformed
+        order="order by jenis.nama asc";
+        tampil();
+    }//GEN-LAST:event_MnKategoriDescActionPerformed
+
+    private void MnSatuanDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSatuanDescActionPerformed
+        order="order by databarang.kode_sat desc";
+        tampil();
+    }//GEN-LAST:event_MnSatuanDescActionPerformed
+
+    private void MnSatuanAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSatuanAscActionPerformed
+        order="order by databarang.kode_sat asc";
+        tampil();
+    }//GEN-LAST:event_MnSatuanAscActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -998,11 +1256,21 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Button BtnCari1;
     private widget.Button BtnGudang;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Button BtnTambah;
     private widget.TextBox Kd2;
     private widget.Label LTotal;
     private widget.Label LTotal1;
+    private javax.swing.JMenuItem MnKategoriAsc;
+    private javax.swing.JMenuItem MnKategoriDesc;
+    private javax.swing.JMenuItem MnKodeBarangAsc;
+    private javax.swing.JMenuItem MnKodeBarangDesc;
+    private javax.swing.JMenuItem MnNamaBarangAsc;
+    private javax.swing.JMenuItem MnNamaBarangDesc;
+    private javax.swing.JMenuItem MnSatuanAsc;
+    private javax.swing.JMenuItem MnSatuanDesc;
+    private javax.swing.JMenu MnUrut;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl;
@@ -1082,14 +1350,14 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             if(TCari.getText().trim().equals("")){
                 pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
                     "databarang."+hppfarmasi+" as dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                    " where databarang.status='1' order by databarang.nama_brng");
+                    " where databarang.status='1' "+order);
             }else{
                 pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
                     "databarang."+hppfarmasi+" as dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " where databarang.status='1' and databarang.kode_brng like ? or "+
                     " databarang.status='1' and databarang.nama_brng like ? or "+
                     " databarang.status='1' and databarang.kode_sat like ? or "+
-                    " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+                    " databarang.status='1' and jenis.nama like ? "+order);
             }
                 
             try {

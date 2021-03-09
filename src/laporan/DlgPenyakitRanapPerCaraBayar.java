@@ -33,7 +33,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -46,7 +46,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0,ttljmlpasien=0;
     /** Creates new form DlgLhtBiaya
      * @param parent

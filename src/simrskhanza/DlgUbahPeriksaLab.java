@@ -779,28 +779,28 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                     sukses=true;
                     status="";
                     ttljmdokter=0;ttljmpetugas=0;ttlkso=0;ttlpendapatan=0;ttlbhp=0;ttljasasarana=0;ttljmperujuk=0;ttlmenejemen=0;
-                    ttljmdokter=Sequel.cariIsiAngka("select sum(tarif_tindakan_dokter) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttljmdokter=Sequel.cariIsiAngka("select sum(tarif_tindakan_dokter) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
-                    ttljmpetugas=Sequel.cariIsiAngka("select sum(tarif_tindakan_petugas) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttljmpetugas=Sequel.cariIsiAngka("select sum(tarif_tindakan_petugas) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
-                    ttlkso=Sequel.cariIsiAngka("select sum(kso) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttlkso=Sequel.cariIsiAngka("select sum(kso) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
-                    ttlbhp=Sequel.cariIsiAngka("select sum(bhp) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttlbhp=Sequel.cariIsiAngka("select sum(bhp) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
-                    ttlpendapatan=Sequel.cariIsiAngka("select sum(biaya) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttlpendapatan=Sequel.cariIsiAngka("select sum(biaya) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
-                    ttljasasarana=Sequel.cariIsiAngka("select sum(bagian_rs) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttljasasarana=Sequel.cariIsiAngka("select sum(bagian_rs) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
-                    ttljmperujuk=Sequel.cariIsiAngka("select sum(tarif_perujuk) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttljmperujuk=Sequel.cariIsiAngka("select sum(tarif_perujuk) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
-                    ttlmenejemen=Sequel.cariIsiAngka("select sum(menejemen) from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    ttlmenejemen=Sequel.cariIsiAngka("select sum(menejemen) from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
                     
@@ -829,11 +829,11 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                               "' and tgl_periksa='"+Tanggal.getText() +
                               "' and jam='"+Jam.getText() +"'");
                     
-                    status=Sequel.cariIsi("select status from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    status=Sequel.cariIsi("select status from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                                   "' and tgl_periksa='"+Tanggal.getText() +
                                   "' and jam='"+Jam.getText() +"'");
 
-                    if(Sequel.queryutf("delete from periksa_lab where no_rawat='"+TNoRw.getText() +
+                    if(Sequel.queryutf("delete from periksa_lab where periksa_lab.kategori='PK' and no_rawat='"+TNoRw.getText() +
                                   "' and tgl_periksa='"+Tanggal.getText() +
                                   "' and jam='"+Jam.getText() +"'")==true){                    
                         if(Sequel.queryutf("delete from detail_periksa_lab where no_rawat='"+TNoRw.getText() +
@@ -922,7 +922,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                     if(sukses==true){
                         for(i=0;i<tbTarif.getRowCount();i++){ 
                             if(tbTarif.getValueAt(i,0).toString().equals("true")){
-                                if(Sequel.menyimpantf2("periksa_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Kode Pemeriksaan",16,new String[]{
+                                if(Sequel.menyimpantf2("periksa_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'PK'","Kode Pemeriksaan",16,new String[]{
                                         TNoRw.getText(),KdPtg.getText(),tbTarif.getValueAt(i,1).toString(),Tanggal.getText(),Jam.getText(),KodePerujuk.getText(),
                                         tbTarif.getValueAt(i,4).toString(),tbTarif.getValueAt(i,5).toString(),tbTarif.getValueAt(i,6).toString(),
                                         tbTarif.getValueAt(i,7).toString(),tbTarif.getValueAt(i,8).toString(),tbTarif.getValueAt(i,9).toString(),
@@ -1538,7 +1538,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "periksa_lab.bagian_rs,periksa_lab.bhp,periksa_lab.tarif_perujuk,"+
                     "periksa_lab.tarif_tindakan_dokter,periksa_lab.tarif_tindakan_petugas, "+
                     "periksa_lab.kso,periksa_lab.menejemen from periksa_lab inner join jns_perawatan_lab "+
-                    "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? "+
+                    "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where periksa_lab.kategori='PK' and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? "+
                     "and periksa_lab.jam=?");
             try {
                 pscariperiksa.setString(1,TNoRw.getText());

@@ -17,6 +17,9 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -26,7 +29,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -46,7 +49,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private double material=0,bhp=0,jmdokter=0,jmpetugas=0,jmperujuk=0,kso=0,
             menejemen=0,total=0,biayaoperator1=0,biayaoperator2=0, 
             biayaoperator3=0,biayaasisten_operator1=0,biayaasisten_operator2=0,
@@ -57,6 +60,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             bagian_rs=0,biaya_omloop=0,biaya_omloop2=0,biaya_omloop3=0,
             biaya_omloop4=0,biaya_omloop5=0,biayasarpras=0,biaya_dokter_pjanak=0,
             biaya_dokter_umum=0;
+    private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -1180,6 +1184,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         isForm9();
         ChkInput10.setSelected(false);
         isForm10();
+        
+        Valid.SetTgl2(Tgl1,format.format(new Date())+" 00:00:00");
+        Valid.SetTgl2(Tgl2,format.format(new Date())+" 23:59:59");
     }
     
 

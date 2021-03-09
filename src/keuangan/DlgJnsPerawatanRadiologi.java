@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -36,7 +36,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;    
-    public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0;
 
     /** Creates new form DlgJnsPerawatanRalan

@@ -405,7 +405,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 rs=ps.executeQuery();
                 while(rs.next()){
                     if((!rs.getString("nm_bangsal").toLowerCase().contains("apotek"))&&(!rs.getString("nm_bangsal").toLowerCase().contains("gudang"))&&(!rs.getString("nm_bangsal").toLowerCase().contains("depo"))&&(!rs.getString("nm_bangsal").toLowerCase().contains("farmasi"))){
-                        pasien=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=? group by data_HAIs.no_rawat",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        pasien=Sequel.cariInteger("select count(DISTINCT data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlpasien=jmlpasien+pasien;
                         ETT=Sequel.cariInteger("select sum(data_HAIs.ETT) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlETT=jmlETT+ETT;

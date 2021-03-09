@@ -41,7 +41,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private int i;
-    private String kddpjp="",dpjp="";
+    private String kddpjp="",dpjp="",kdpenyakit="",namapenyakit="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -91,7 +91,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeRegistrasi=new DefaultTableModel(null,new Object[]{
-                "No.","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Dituju/DPJP","Umur","Poliklinik/Kamar","Jenis Bayar"
+                "No.","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Dituju/DPJP","Umur","Poliklinik/Kamar","Jenis Bayar","Diagnosa Utama"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -100,12 +100,12 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         tbRegistrasi.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbRegistrasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbRegistrasi.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(25);
             }else if(i==1){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(105);
             }else if(i==2){
                 column.setPreferredWidth(70);
             }else if(i==3){
@@ -113,13 +113,15 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(70);
             }else if(i==5){
-                column.setPreferredWidth(250);   
+                column.setPreferredWidth(190);   
             }else if(i==6){
                 column.setPreferredWidth(40);
             }else if(i==7){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(190);
             }else if(i==8){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
+            }else if(i==9){
+                column.setPreferredWidth(200);
             }
         }
         tbRegistrasi.setDefaultRenderer(Object.class, new WarnaTable());
@@ -211,13 +213,14 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Telusur Kunjungan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Telusur Kunjungan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "Data Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "Data Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
+        Scroll.setPreferredSize(new java.awt.Dimension(360, 421));
 
         tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
@@ -313,7 +316,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "Data Kunjungan Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "Data Kunjungan Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -571,6 +574,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
     private void tampil2(){
         if(tbKamar.getSelectedRow()!= -1){
             Valid.tabelKosong(tabModeRegistrasi);
+            i=0;
             try{ 
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.status_lanjut,"+
@@ -601,10 +605,13 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                     rs=ps.executeQuery();
                     while(rs.next()){
                         i++;
+                        kdpenyakit=Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where no_rawat=? and status='Ralan' and prioritas='1'",rs.getString("no_rawat"));
+                        namapenyakit=Sequel.cariIsi("select nm_penyakit from penyakit where kd_penyakit=?",kdpenyakit);
+                        
                         tabModeRegistrasi.addRow(new String[]{
                             i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),rs.getString("jam_reg"),
                             rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                            rs.getString("kd_poli")+" "+rs.getString("nm_poli"),rs.getString("png_jawab")
+                            rs.getString("kd_poli")+" "+rs.getString("nm_poli"),rs.getString("png_jawab"),kdpenyakit+" "+namapenyakit
                         });
                         ps2=koneksi.prepareStatement(
                                 "select rujukan_internal_poli.kd_dokter,dokter.nm_dokter,"+
@@ -619,7 +626,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                                 tabModeRegistrasi.addRow(new String[]{
                                     i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),"",
                                     rs2.getString("kd_dokter"),rs2.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                                    rs2.getString("kd_poli")+" "+rs2.getString("nm_poli"),rs.getString("png_jawab")
+                                    rs2.getString("kd_poli")+" "+rs2.getString("nm_poli"),rs.getString("png_jawab"),kdpenyakit+" "+namapenyakit
                                 });
                             }
                         } catch (Exception e) {
@@ -631,7 +638,8 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }  
+                        }
+                        
                         kddpjp="";
                         dpjp="";
                         if(rs.getString("status_lanjut").equals("Ranap")){
@@ -642,7 +650,11 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                                 kddpjp=rs.getString("kd_dokter");
                                 dpjp=rs.getString("nm_dokter");
                             }
-                        }                        
+                            kdpenyakit=Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where no_rawat=? and status='Ranap' and prioritas='1'",rs.getString("no_rawat"));
+                            namapenyakit=Sequel.cariIsi("select nm_penyakit from penyakit where kd_penyakit=?",kdpenyakit);
+                                
+                        }    
+                        
                         ps2=koneksi.prepareStatement(
                                 "select kamar_inap.tgl_masuk,kamar_inap.jam_masuk,kamar_inap.kd_kamar,bangsal.nm_bangsal "+
                                 "from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
@@ -651,11 +663,11 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
                             while(rs2.next()){                            
-                                i++;                            
+                                i++;       
                                 tabModeRegistrasi.addRow(new String[]{
                                     i+"",rs.getString("no_rawat"),rs2.getString("tgl_masuk"),rs2.getString("jam_masuk"),
                                     kddpjp,dpjp,rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                                    rs2.getString("kd_kamar")+" "+rs2.getString("nm_bangsal"),rs.getString("png_jawab")
+                                    rs2.getString("kd_kamar")+" "+rs2.getString("nm_bangsal"),rs.getString("png_jawab"),kdpenyakit+" "+namapenyakit
                                 });
                             }
                         } catch (Exception e) {

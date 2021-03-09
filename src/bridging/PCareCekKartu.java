@@ -1152,6 +1152,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         kdjabatanpolri = new widget.TextBox();
         kdperusahaan = new widget.TextBox();
         kdcacat = new widget.TextBox();
+        ProviderPeserta = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -1332,7 +1333,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2020" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2021" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1463,6 +1464,11 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 kdcacatKeyPressed(evt);
             }
         });
+
+        ProviderPeserta.setEditable(false);
+        ProviderPeserta.setBackground(new java.awt.Color(245, 250, 240));
+        ProviderPeserta.setHighlighter(null);
+        ProviderPeserta.setName("ProviderPeserta"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -1653,7 +1659,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 160, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2020" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2021" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2525,7 +2531,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         jLabel23.setBounds(3, 85, 100, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2020 11:06:48" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2021 16:50:57" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -4190,6 +4196,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private widget.ComboBox Perawatan;
     private widget.TextBox Propinsi;
     private widget.TextBox PropinsiPj;
+    private widget.TextBox ProviderPeserta;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
@@ -4413,6 +4420,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 nmpnj.setText("BPJS");
                 Pekerjaan.setText(response.path("jnsPeserta").path("nama").asText());
                 Valid.SetTgl(DTPLahir,Valid.SetTgl(response.path("tglLahir").asText()));
+                ProviderPeserta.setText(response.path("kdProviderPst").path("kdProvider").asText());
                 TUmur.setText("0 Tahun");
                 ps=koneksi.prepareStatement(
                    "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
@@ -5169,8 +5177,8 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 kunjungansakit="false";
             }
             requestJson ="{" +
-                            "\"kdProviderPeserta\": \""+KdPPK.getText()+"\"," +
-                            "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
+                            "\"kdProviderPeserta\": \""+ProviderPeserta.getText()+"\"," +
+                            "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem().toString().substring(0,10)+"\"," +
                             "\"noKartu\": \""+NoKartu.getText()+"\"," +
                             "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
                             "\"keluhan\": \""+Keluhan.getText()+"\"," +
@@ -5195,7 +5203,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 response = root.path("response").path("message");
                 System.out.println("noUrut : "+response.asText());
                 if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",19,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),KdPPK.getText(),
+                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
                     Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                     Perawatan.getSelectedItem().toString(),response.asText()
@@ -5225,7 +5233,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")||ex.toString().contains("unreachable")){
                 if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",19,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),KdPPK.getText(),
+                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
                     Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                     Perawatan.getSelectedItem().toString(),""
@@ -5253,7 +5261,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!");
             }else if(ex.toString().contains("500")){
                 if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",19,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),KdPPK.getText(),
+                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
                     Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                     Perawatan.getSelectedItem().toString(),""
@@ -5283,7 +5291,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
             }else if(ex.toString().contains("408")){
                 if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",19,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),KdPPK.getText(),
+                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
                     Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                     Perawatan.getSelectedItem().toString(),""

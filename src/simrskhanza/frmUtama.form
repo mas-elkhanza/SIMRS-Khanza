@@ -481,7 +481,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="24/01/2021"/>
+            <StringItem index="0" value="08/03/2021"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -5001,20 +5001,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPermintaanMedisActionPerformed"/>
       </Events>
     </Component>
-    <Component class="widget.ButtonBig" name="btnRekapPermintaanMedis">
+    <Component class="widget.ButtonBig" name="btnRingkasanPermintaanMedis">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/48x48/if_binary-tree_49580.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Rekap Permintaan Obat &amp; BHP"/>
+        <Property name="text" type="java.lang.String" value="Ringkasan Permintaan Obat &amp; BHP"/>
         <Property name="iconTextGap" type="int" value="0"/>
-        <Property name="name" type="java.lang.String" value="btnRekapPermintaanMedis" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="btnRingkasanPermintaanMedis" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[200, 90]"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRekapPermintaanMedisActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRingkasanPermintaanMedisActionPerformed"/>
       </Events>
     </Component>
     <Component class="widget.ButtonBig" name="btnSuratPemesananMedis">
@@ -5054,7 +5054,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/48x48/if_binary-tree_49580.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Rekap Permintaan Barang Non Medis"/>
+        <Property name="text" type="java.lang.String" value="Ringkasan Permintaan Barang Non Medis"/>
         <Property name="iconTextGap" type="int" value="0"/>
         <Property name="name" type="java.lang.String" value="btnRekapPermintaanNonMedis" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -6894,7 +6894,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/48x48/Gnome-X-Office-Address-Book-48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Lama Pelayanan Lab"/>
+        <Property name="text" type="java.lang.String" value="Lama Pelayanan Lab PK"/>
         <Property name="iconTextGap" type="int" value="0"/>
         <Property name="name" type="java.lang.String" value="btnLamaPelayananLab" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -7799,6 +7799,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikLimbahDomestikPerTanggalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="widget.ButtonBig" name="btnLaboratoriumPA">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/48x48/laboratory.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Periksa Lab PA"/>
+        <Property name="iconTextGap" type="int" value="0"/>
+        <Property name="name" type="java.lang.String" value="btnLaboratoriumPA" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[200, 90]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaboratoriumPAActionPerformed"/>
       </Events>
     </Component>
     <Menu class="widget.MenuBar" name="MenuBar">

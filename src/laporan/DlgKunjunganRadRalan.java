@@ -38,7 +38,7 @@ import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -56,7 +56,7 @@ public final class DlgKunjunganRadRalan extends javax.swing.JDialog {
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0,laki=0,per=0,jmldiagnosa=0,jmlnolab=0;   
     private String umurlk="",umurpr="",kddiangnosa="",diagnosa="",no_lab="",tindakan="";
     /** Creates new form DlgLhtBiaya

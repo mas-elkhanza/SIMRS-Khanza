@@ -26,7 +26,7 @@ import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgDemografiUmurKunjungan extends javax.swing.JDialog {
     private final validasi Valid=new validasi();
@@ -36,7 +36,7 @@ public class DlgDemografiUmurKunjungan extends javax.swing.JDialog {
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private sekuel Sequel = new sekuel();
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2;
