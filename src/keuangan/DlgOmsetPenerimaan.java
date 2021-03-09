@@ -24,7 +24,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -440,21 +439,21 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
 
         LCountRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountRawatJalan.setForeground(new java.awt.Color(50, 50, 50));
-        LCountRawatJalan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LCountRawatJalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountRawatJalan.setText("0");
         LCountRawatJalan.setName("LCountRawatJalan"); // NOI18N
         LCountRawatJalan.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountRawatJalan);
-        LCountRawatJalan.setBounds(123, 10, 150, 23);
+        LCountRawatJalan.setBounds(127, 10, 150, 23);
 
         LCountRawatInap.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountRawatInap.setForeground(new java.awt.Color(50, 50, 50));
-        LCountRawatInap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LCountRawatInap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountRawatInap.setText("0");
         LCountRawatInap.setName("LCountRawatInap"); // NOI18N
         LCountRawatInap.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountRawatInap);
-        LCountRawatInap.setBounds(377, 10, 150, 23);
+        LCountRawatInap.setBounds(381, 10, 150, 23);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(50, 50, 50));
@@ -476,12 +475,12 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
 
         LCountJualBebas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountJualBebas.setForeground(new java.awt.Color(50, 50, 50));
-        LCountJualBebas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LCountJualBebas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountJualBebas.setText("0");
         LCountJualBebas.setName("LCountJualBebas"); // NOI18N
         LCountJualBebas.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountJualBebas);
-        LCountJualBebas.setBounds(653, 10, 150, 23);
+        LCountJualBebas.setBounds(657, 10, 150, 23);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(50, 50, 50));
@@ -494,12 +493,12 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
 
         LCountPemasukanLain.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountPemasukanLain.setForeground(new java.awt.Color(50, 50, 50));
-        LCountPemasukanLain.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LCountPemasukanLain.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountPemasukanLain.setText("0");
         LCountPemasukanLain.setName("LCountPemasukanLain"); // NOI18N
         LCountPemasukanLain.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountPemasukanLain);
-        LCountPemasukanLain.setBounds(123, 40, 150, 23);
+        LCountPemasukanLain.setBounds(127, 40, 150, 23);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(50, 50, 50));
@@ -512,12 +511,12 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
 
         LCountDeposit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountDeposit.setForeground(new java.awt.Color(50, 50, 50));
-        LCountDeposit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LCountDeposit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountDeposit.setText("0");
         LCountDeposit.setName("LCountDeposit"); // NOI18N
         LCountDeposit.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountDeposit);
-        LCountDeposit.setBounds(377, 40, 150, 23);
+        LCountDeposit.setBounds(381, 40, 150, 23);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(50, 50, 50));
@@ -530,12 +529,12 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
 
         LCountPiutangDibayar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountPiutangDibayar.setForeground(new java.awt.Color(50, 50, 50));
-        LCountPiutangDibayar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LCountPiutangDibayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountPiutangDibayar.setText("0");
         LCountPiutangDibayar.setName("LCountPiutangDibayar"); // NOI18N
         LCountPiutangDibayar.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountPiutangDibayar);
-        LCountPiutangDibayar.setBounds(653, 40, 150, 23);
+        LCountPiutangDibayar.setBounds(657, 40, 150, 23);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -645,32 +644,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            BtnPrint.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
-            for(int i=0;i<tabMode.getRowCount();i++){
-                Sequel.menyimpan("temporary","'0','"+
-                    tabMode.getValueAt(i,1).toString()+"','"+
-                    tabMode.getValueAt(i,2).toString()+"','"+
-                    tabMode.getValueAt(i,3).toString()+"','"+
-                    tabMode.getValueAt(i,6).toString()+"','"+
-                    tabMode.getValueAt(i,7).toString()+"','"+
-                    tabMode.getValueAt(i,8).toString()+"','"+
-                    tabMode.getValueAt(i,9).toString()+"','"+
-                    tabMode.getValueAt(i,10).toString()+"','"+
-                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()))+"','"+
-                    tabMode.getValueAt(i,12).toString()+"','"+
-                    tabMode.getValueAt(i,13).toString()+"','"+
-                    tabMode.getValueAt(i,14).toString()+"','"+
-                    tabMode.getValueAt(i,15).toString()+"','"+
-                    tabMode.getValueAt(i,16).toString()+"','"+
-                    tabMode.getValueAt(i,17).toString()+"','"+
-                    tabMode.getValueAt(i,18).toString()+"','"+
-                    tabMode.getValueAt(i,19).toString()+"','','','','','','','','','','','','','','','','','','','',''","Rujukan Masuk");
-            }
+        if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -679,8 +653,97 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReportqry("rptRujukMasuk.jasper","report","::[ Data Rujukan Yang Masuk ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReportqry("rptOmsetRalan.jasper","report","::[ Penerimaan Pembayaran Pasien Rawat Jalan ]::",
+                "select DATE_FORMAT(nota_jalan.tanggal,'%d-%m-%Y') as tanggal,nota_jalan.no_nota,nota_jalan.no_rawat,reg_periksa.no_rkm_medis,"+
+                "pasien.nm_pasien,detail_nota_jalan.nama_bayar,detail_nota_jalan.besar_bayar "+
+                "from nota_jalan inner join reg_periksa on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                "inner join detail_nota_jalan on detail_nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                "where nota_jalan.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by nota_jalan.tanggal,nota_jalan.jam ",param);
+        }
+        
+        if(tabMode2.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptOmsetRanap.jasper","report","::[ Penerimaan Pembayaran Pasien Rawat Inap ]::",
+                "select DATE_FORMAT(nota_inap.tanggal,'%d-%m-%Y') as tanggal,nota_inap.no_nota,nota_inap.no_rawat,reg_periksa.no_rkm_medis,"+
+                "pasien.nm_pasien,detail_nota_inap.nama_bayar,detail_nota_inap.besar_bayar "+
+                "from nota_inap inner join reg_periksa on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                "inner join detail_nota_inap on detail_nota_inap.no_rawat=reg_periksa.no_rawat "+
+                "where nota_inap.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by nota_inap.tanggal,nota_inap.jam ",param);
+        }
+        
+        if(tabMode3.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptOmsetPenjualanObat.jasper","report","::[ Penerimaan Penjualan Bebas ]::",
+                "select DATE_FORMAT(penjualan.tgl_jual,'%d-%m-%Y') as tanggal,penjualan.nota_jual,penjualan.jns_jual,penjualan.no_rkm_medis,"+
+                "penjualan.nm_pasien,penjualan.nama_bayar,(penjualan.ongkir+sum(detailjual.total)) as total "+
+                "from penjualan inner join detailjual on detailjual.nota_jual=penjualan.nota_jual "+
+                "where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' "+
+                "group by penjualan.nota_jual order by penjualan.tgl_jual,penjualan.nota_jual ",param);
+        }
+        
+        if(tabMode4.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptOmsetPemasukanLain.jasper","report","::[ Penerimaan Pemasukan Lain-lain ]::",
+                "select DATE_FORMAT(pemasukan_lain.tanggal,'%d-%m-%Y') as tanggal,pemasukan_lain.no_masuk,pemasukan_lain.keterangan,"+
+                "pemasukan_lain.keperluan,kategori_pemasukan_lain.nama_kategori,pemasukan_lain.besar "+
+                "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
+                "where pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59"+"' order by pemasukan_lain.tanggal ",param);
+        }
+        
+        if(tabMode5.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptOmsetDeposit.jasper","report","::[ Penerimaan Deposit Pasien ]::",
+                "select DATE_FORMAT(deposit.tgl_deposit,'%d-%m-%Y') as tanggal,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.besar_deposit "+
+                "from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59"+"' order by deposit.tgl_deposit ",param);
+        }
+        
+        if(tabMode6.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptOmsetPiutangDibayar.jasper","report","::[ Penerimaan Pembayaran Piutang ]::",
+                "select DATE_FORMAT(bayar_piutang.tgl_bayar,'%d-%m-%Y') as tanggal,bayar_piutang.no_rawat,bayar_piutang.no_rkm_medis,pasien.nm_pasien,"+
+                "rekening.nm_rek,rekening2.nm_rek,bayar_piutang.besar_cicilan "+
+                "from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join rekening on rekening.kd_rek=bayar_piutang.kd_rek "+
+                "inner join rekening as rekening2 on rekening2.kd_rek=bayar_piutang.kd_rek_kontra "+
+                "where bayar_piutang.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by bayar_piutang.tgl_bayar ",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

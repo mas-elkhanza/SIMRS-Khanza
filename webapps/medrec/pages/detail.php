@@ -41,7 +41,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi1' value=$TglTerakhir>$TglTerakhir</option>";
                                 }
-                                loadTgl();
+                                loadTgl2();
                              ?>
                         </select>
 			<select name="BlnTerakhir" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
@@ -49,7 +49,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi1' value=$BlnTerakhir>$BlnTerakhir</option>";
                                 }
-                                loadBln();
+                                loadBln2();
                              ?>
                         </select>
 			<select name="ThnTerakhir" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
@@ -57,7 +57,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi1' value=$ThnTerakhir>$ThnTerakhir</option>";
                                 }
-                                loadThn();
+                                loadThn4();
                              ?>
                         </select>
                         <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
@@ -94,7 +94,7 @@
                     </td>
                 </tr>                
                 <tr class="head">
-                    <td width="31%" >File PDF Retensi</td><td width="">:</td>
+                    <td width="31%" >File Retensi</td><td width="">:</td>
                     <td width="67%"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=file id="TxtIsi3" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
