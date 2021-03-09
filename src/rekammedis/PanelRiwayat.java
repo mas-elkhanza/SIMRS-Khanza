@@ -110,6 +110,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML21.setEditorKit(kit);
         LoadHTML22.setEditorKit(kit);
         LoadHTML23.setEditorKit(kit);
+        LoadHTML24.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;border: white;}");
@@ -137,6 +138,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML21.setDocument(doc);
         LoadHTML22.setDocument(doc);
         LoadHTML23.setDocument(doc);
+        LoadHTML24.setDocument(doc);
         
         LoadHTML.setEditable(false);
         LoadHTML2.setEditable(false);
@@ -161,6 +163,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML21.setEditable(false);
         LoadHTML22.setEditable(false);
         LoadHTML23.setEditable(false);
+        LoadHTML24.setEditable(false);
         
         LoadHTML.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -393,6 +396,16 @@ public class PanelRiwayat extends widget.panelisi {
               }
             }
         });
+        LoadHTML24.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
     }
 
     /**
@@ -477,6 +490,9 @@ public class PanelRiwayat extends widget.panelisi {
         internalFrame25 = new widget.InternalFrame();
         Scroll23 = new widget.ScrollPane();
         LoadHTML23 = new widget.editorpane();
+        internalFrame26 = new widget.InternalFrame();
+        Scroll24 = new widget.ScrollPane();
+        LoadHTML24 = new widget.editorpane();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -825,6 +841,20 @@ public class PanelRiwayat extends widget.panelisi {
 
         TabRawat.addTab("Keperawatan Anak", internalFrame25);
 
+        internalFrame26.setBackground(new java.awt.Color(255, 255, 255));
+        internalFrame26.setBorder(null);
+        internalFrame26.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll24.setOpaque(true);
+
+        LoadHTML24.setBorder(null);
+        Scroll24.setViewportView(LoadHTML24);
+
+        internalFrame26.add(Scroll24, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Retensi Berkas", internalFrame26);
+
         add(TabRawat, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -850,6 +880,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.editorpane LoadHTML21;
     private widget.editorpane LoadHTML22;
     private widget.editorpane LoadHTML23;
+    private widget.editorpane LoadHTML24;
     private widget.editorpane LoadHTML3;
     private widget.editorpane LoadHTML4;
     private widget.editorpane LoadHTML5;
@@ -874,6 +905,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.ScrollPane Scroll21;
     private widget.ScrollPane Scroll22;
     private widget.ScrollPane Scroll23;
+    private widget.ScrollPane Scroll24;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane Scroll5;
@@ -899,6 +931,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.InternalFrame internalFrame23;
     private widget.InternalFrame internalFrame24;
     private widget.InternalFrame internalFrame25;
+    private widget.InternalFrame internalFrame26;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
@@ -16162,6 +16195,136 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    public void tampil25(){   
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try{
+            htmlContent = new StringBuilder();
+            try {
+                rs=koneksi.prepareStatement(
+                   "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
+                   "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                   "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+norm+"' order by pasien.no_rkm_medis desc ").executeQuery();
+                y=1;
+                while(rs.next()){   
+                    htmlContent.append(
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>No.RM</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("no_rkm_medis")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Nama Pasien</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_pasien")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Alamat</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("alamat")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Umur</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("umur")+" ("+rs.getString("jk").replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")+")</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Tempat & Tanggal Lahir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tmp_lahir")+" "+rs.getString("tgl_lahir")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Ibu Kandung</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_ibu")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Golongan Darah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("gol_darah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Status Nikah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("stts_nikah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Agama</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("agama")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pendidikan Terakhir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("pnd")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pertama Daftar</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tgl_daftar")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Data Retensi</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>");
+                        //file retensi
+                        try{
+                            rs3=koneksi.prepareStatement(
+                                 "select * from retensi_pasien where no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by tgl_retensi").executeQuery();
+                            if(rs3.next()){                                    
+                                htmlContent.append(  
+                                  "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr align='center'>"+
+                                      "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                      "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tgl.Retensi</td>"+
+                                      "<td valign='top' width='85%' bgcolor='#FFFAF8'>File Retensi</td>"+
+                                    "</tr>");
+                                rs3.beforeFirst();
+                                w=1;
+                                while(rs3.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs3.getString("tgl_retensi")+"</td>"+
+                                            "<td valign='top' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/medrec/"+rs3.getString("lokasi_pdf")+"'><img alt='Gambar Retensi' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/medrec/"+rs3.getString("lokasi_pdf")+"' width='"+(TabRawat.getWidth()-550)+"' height='"+(TabRawat.getWidth()-550)+"'/></a></td>"+
+                                         "</tr>"); 
+                                    w++;
+                                }
+                                htmlContent.append(
+                                  "</table>");
+                            }                                
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs3!=null){
+                                rs3.close();
+                            }
+                        }
+                    htmlContent.append(
+                          "</td>"+
+                        "</tr>"
+                    );
+                    htmlContent.append("<tr class='isi'><td colspan='3'>&nbsp;</td></tr>");
+                }
+                LoadHTML24.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
         this.norm=norm;
         this.tanggal1=tanggal1;
@@ -16242,6 +16405,9 @@ public class PanelRiwayat extends widget.panelisi {
                 break;
            case 23:
                 tampil24();
+                break;
+           case 24:
+                tampil25();
                 break;
            default:
                 break;
@@ -16348,6 +16514,9 @@ public class PanelRiwayat extends widget.panelisi {
                 break;
             case 23:
                 panggilLaporan(LoadHTML23.getText());
+                break;
+            case 24:
+                panggilLaporan(LoadHTML24.getText());
                 break;
             default:
                 break;
