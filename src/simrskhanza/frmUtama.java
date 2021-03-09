@@ -567,6 +567,7 @@ import kepegawaian.PengajuanCutiPegawai;
 import keuangan.DlgAkunPenagihanPiutang;
 import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
+import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganKlaimRalan;
@@ -16853,6 +16854,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnOmsetPenerimaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgOmsetPenerimaan aplikasi=new DlgOmsetPenerimaan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17468,7 +17480,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPemesananMedis,btnRingkasanPembelianMedis,btnRingkasanPenerimaanMedis,btnRingkasanHibahMedis,btnRingkasanPenjualanMedis,
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
-            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis;
+            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan;
     
     public void isWall(){
         try{            
@@ -19266,6 +19278,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getbayar_piutang()==true){
                Panelmenu.add(btnBayarPiutang); 
+               jmlmenu++;
+            }
+            
+            if(akses.getomset_penerimaan()==true){
+               Panelmenu.add(btnOmsetPenerimaan); 
                jmlmenu++;
             }
 
@@ -22760,6 +22777,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbayar_piutang()==true){
            Panelmenu.add(btnBayarPiutang); 
+           jmlmenu++;
+        }
+        
+        if(akses.getomset_penerimaan()==true){
+           Panelmenu.add(btnOmsetPenerimaan); 
            jmlmenu++;
         }
 
@@ -26916,6 +26938,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbayar_piutang()==true){
             if(btnBayarPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPiutang); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getomset_penerimaan()==true){
+            if(btnOmsetPenerimaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnOmsetPenerimaan); 
                 jmlmenu++;
             }                
         }
@@ -31358,6 +31387,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanReturSuplierNonMedis.setName("btnRingkasanReturSuplierNonMedis");
         btnRingkasanReturSuplierNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanReturSuplierNonMedis.addActionListener(this::btnRingkasanReturSuplierNonMedisActionPerformed);
+        
+        btnOmsetPenerimaan = new widget.ButtonBig();
+        btnOmsetPenerimaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Finance_saving_1889200.png"))); // NOI18N
+        btnOmsetPenerimaan.setText("Penerimaan/Omset/Kas Masuk");
+        btnOmsetPenerimaan.setIconTextGap(0);
+        btnOmsetPenerimaan.setName("btnOmsetPenerimaan");
+        btnOmsetPenerimaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnOmsetPenerimaan.addActionListener(this::btnOmsetPenerimaanActionPerformed);
     }
 
     
