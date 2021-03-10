@@ -957,7 +957,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         NmPetugas.setName("NmPetugas"); // NOI18N
         NmPetugas.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmPetugas);
-        NmPetugas.setBounds(176, 40, 180, 23);
+        NmPetugas.setBounds(176, 40, 210, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -975,7 +975,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(BtnDokter);
-        BtnDokter.setBounds(358, 40, 28, 23);
+        BtnDokter.setBounds(388, 40, 28, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -1003,7 +1003,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
-        label11.setBounds(490, 70, 57, 23);
+        label11.setBounds(640, 70, 70, 23);
 
         jLabel11.setText("J.K. :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -1023,10 +1023,10 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(Informasi);
-        Informasi.setBounds(80, 100, 128, 23);
+        Informasi.setBounds(74, 100, 150, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2021 08:16:54" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2021 16:03:55" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1036,7 +1036,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(TglAsuhan);
-        TglAsuhan.setBounds(550, 70, 130, 23);
+        TglAsuhan.setBounds(714, 70, 140, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1049,7 +1049,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         NmPetugas1.setName("NmPetugas1"); // NOI18N
         NmPetugas1.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmPetugas1);
-        NmPetugas1.setBounds(640, 40, 180, 23);
+        NmPetugas1.setBounds(614, 40, 210, 23);
 
         BtnDokter1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter1.setMnemonic('2');
@@ -1067,7 +1067,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(BtnDokter1);
-        BtnDokter1.setBounds(820, 40, 28, 23);
+        BtnDokter1.setBounds(826, 40, 28, 23);
 
         KdPetugas1.setEditable(false);
         KdPetugas1.setName("KdPetugas1"); // NOI18N
@@ -1078,13 +1078,13 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(KdPetugas1);
-        KdPetugas1.setBounds(540, 40, 100, 23);
+        KdPetugas1.setBounds(512, 40, 100, 23);
 
         label15.setText("Pengkaji 2 :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label15);
-        label15.setBounds(470, 40, 70, 23);
+        label15.setBounds(438, 40, 70, 23);
 
         label16.setText("DPJP :");
         label16.setName("label16"); // NOI18N
@@ -1101,13 +1101,13 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(KdPetugas2);
-        KdPetugas2.setBounds(74, 70, 100, 23);
+        KdPetugas2.setBounds(74, 70, 130, 23);
 
         NmPetugas2.setEditable(false);
         NmPetugas2.setName("NmPetugas2"); // NOI18N
         NmPetugas2.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(NmPetugas2);
-        NmPetugas2.setBounds(176, 70, 180, 23);
+        NmPetugas2.setBounds(206, 70, 360, 23);
 
         BtnDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter2.setMnemonic('2');
@@ -1125,9 +1125,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(BtnDokter2);
-        BtnDokter2.setBounds(358, 70, 28, 23);
+        BtnDokter2.setBounds(568, 70, 28, 23);
 
-        Informasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jalan tanpa bantuan", "Kursi Roda", "Brankar" }));
+        Informasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jalan Tanpa Bantuan", "Kursi Roda", "Brankar" }));
         Informasi1.setName("Informasi1"); // NOI18N
         Informasi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1135,9 +1135,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(Informasi1);
-        Informasi1.setBounds(350, 100, 170, 23);
+        Informasi1.setBounds(370, 100, 220, 23);
 
-        jLabel37.setText("Tiba di ruang rawat :");
+        jLabel37.setText("Tiba di Ruang Rawat :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
         jLabel37.setBounds(220, 100, 130, 23);
@@ -1150,12 +1150,12 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(Informasi2);
-        Informasi2.setBounds(680, 100, 110, 23);
+        Informasi2.setBounds(743, 100, 110, 23);
 
-        jLabel38.setText("Cara masuk :");
+        jLabel38.setText("Cara Masuk :");
         jLabel38.setName("jLabel38"); // NOI18N
         FormInput.add(jLabel38);
-        jLabel38.setBounds(550, 100, 130, 23);
+        jLabel38.setBounds(650, 100, 90, 23);
 
         scrollInput.setViewportView(FormInput);
 
