@@ -62,8 +62,12 @@ public final class DlgPiutangRanap extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] rowRwJlDr={"Tgl.Pulang","No.Nota","Nama Pasien","Jenis Bayar","Perujuk","Registrasi","Tindakan","Obt+Emb+Tsl","Retur Obat","Resep Pulang",
-                            "Laborat","Radiologi","Potongan","Tambahan","Kamar+Service","Operasi","Harian","Total","Ekses","Sudah Dibayar","Sisa","Nama Kamar"};
+        Object[] rowRwJlDr={
+            "Tgl.Pulang", "No.Nota", "NO SEP", "No RM", "Nama Pasien", 
+            "Jenis Bayar", "Perujuk", "Registrasi", "Tindakan", "Obt+Emb+Tsl", 
+            "Retur Obat", "Resep Pulang", "Laborat", "Radiologi", "Potongan", 
+            "Tambahan", "Kamar+Service", "Operasi", "Harian", "Total", 
+            "Ekses", "Sudah Dibayar", "Sisa", "Nama Kamar"};
         tabMode=new DefaultTableModel(null,rowRwJlDr){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,21 +76,25 @@ public final class DlgPiutangRanap extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 22; i++) {
+        for (int i = 0; i < 24; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
             }else if(i==1){
                 column.setPreferredWidth(110);
             }else if(i==2){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(110);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(50);
             }else if(i==4){
+                column.setPreferredWidth(120);
+            }else if(i==5){
                 column.setPreferredWidth(100);
-            }else if(i==17){
+            }else if(i==6){
                 column.setPreferredWidth(100);
-            }else if(i==21){
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==23){
                 column.setPreferredWidth(170);
             }else{
                 column.setPreferredWidth(75);
@@ -468,8 +476,7 @@ public final class DlgPiutangRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_tbBangsalKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        
-        tampil();
+    tampil();
 }//GEN-LAST:event_BtnCari1ActionPerformed
 
 private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
@@ -589,15 +596,19 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         Valid.tabelKosong(tabMode);
         try{      
             ps= koneksi.prepareStatement(
-                "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,kamar_inap.tgl_keluar, "+
-                "penjab.png_jawab,kamar_inap.stts_pulang,kamar.kd_kamar, bangsal.nm_bangsal,piutang_pasien.uangmuka,piutang_pasien.totalpiutang "+
-                "from kamar_inap inner join reg_periksa inner join pasien inner join penjab "+
-                "inner join kamar inner join bangsal inner join piutang_pasien "+
-                "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj "+
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                "and piutang_pasien.no_rawat=reg_periksa.no_rawat where kamar_inap.tgl_keluar between ? and ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? "+
-                "order by kamar_inap.tgl_keluar,kamar_inap.jam_keluar");
+                "select kamar_inap.no_rawat, reg_periksa.no_rkm_medis, pasien.nm_pasien, kamar_inap.tgl_keluar, "
+                + "penjab.png_jawab, kamar_inap.stts_pulang, kamar.kd_kamar, bangsal.nm_bangsal, piutang_pasien.uangmuka, "
+                + "piutang_pasien.totalpiutang, "
+                + "if(reg_periksa.kd_pj='BPJ', "
+                      + "(select no_sep from bridging_sep where bridging_sep.no_rawat=kamar_inap.no_rawat limit 1), '-') as no_sep "
+                + "from kamar_inap inner join reg_periksa inner join pasien inner join penjab "
+                + "inner join kamar inner join bangsal inner join piutang_pasien "
+                + "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj "
+                + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                + "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                + "and piutang_pasien.no_rawat=reg_periksa.no_rawat "
+                + "where kamar_inap.tgl_keluar between ? and ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? "
+                + "order by kamar_inap.tgl_keluar,kamar_inap.jam_keluar");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -996,11 +1007,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             ttldibayar=ttldibayar+dibayar;
                             sisa=rs.getDouble("totalpiutang")-ekses-dibayar;
                             ttlsisa=ttlsisa+sisa;
+                            String noNota = Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_rawat"));
+                            String perujuk = Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat"));
 
                             tabMode.addRow(new Object[]{
-                                rs.getString("tgl_keluar"),Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_rawat")),
-                                rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),rs.getString("png_jawab"),
-                                Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),Valid.SetAngka(Registrasi),
+                                rs.getString("tgl_keluar"), noNota, rs.getString("no_sep"), rs.getString("no_rkm_medis"),
+                                rs.getString("nm_pasien"), rs.getString("png_jawab"), perujuk, Valid.SetAngka(Registrasi),
                                 Valid.SetAngka(Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis),
                                 Valid.SetAngka(Obat),Valid.SetAngka(Retur_Obat),Valid.SetAngka(Resep_Pulang),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Potongan),
                                 Valid.SetAngka(Tambahan),Valid.SetAngka(Kamar+Service),Valid.SetAngka(Operasi),Valid.SetAngka(Harian),Valid.SetAngka(Laborat+Radiologi+Operasi+Obat+Ranap_Dokter+
@@ -1013,7 +1025,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
                 if(tabMode.getRowCount()>0){
                     tabMode.addRow(new Object[]{
-                            ">> Total ",":","","","",Valid.SetAngka(ttlRegistrasi),Valid.SetAngka(ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+ttlRalan_Paramedis),
+                            ">> Total ",":", "", "", "", "", "",Valid.SetAngka(ttlRegistrasi),Valid.SetAngka(ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+ttlRalan_Paramedis),
                             Valid.SetAngka(ttlObat),Valid.SetAngka(ttlRetur_Obat),Valid.SetAngka(ttlResep_Pulang),Valid.SetAngka(ttlLaborat),Valid.SetAngka(ttlRadiologi),Valid.SetAngka(ttlPotongan),
                             Valid.SetAngka(ttlTambahan),Valid.SetAngka(ttlKamar+ttlService),Valid.SetAngka(ttlOperasi),Valid.SetAngka(ttlHarian),Valid.SetAngka(all),
                             Valid.SetAngka(ttlekses),Valid.SetAngka(ttldibayar),Valid.SetAngka(ttlsisa),""
