@@ -24,7 +24,7 @@
 		<![CDATA[SELECT pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,
 pasien.no_ktp, pasien.pekerjaanpj, pasien.no_tlp,
 pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur,
-pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu,
+pasien.tgl_daftar,pasien_bayi.nama_ibu,pasien_bayi.umur_ibu,
 pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,pasien.alamat,
 pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala,
 pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan,
@@ -83,10 +83,9 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nm_ibu" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nm_ibu"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
+	<field name="nama_ibu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_ibu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_bayi"/>
 	</field>
 	<field name="umur_ibu" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="umur_ibu"/>
@@ -390,11 +389,11 @@ TEGAL 52131]]></text>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="156" y="58" width="283" height="16" uuid="1cf6490a-8c57-41c9-9db3-49f62e81e07d"/>
-				<textElement>
+				<reportElement x="156" y="58" width="408" height="16" uuid="1cf6490a-8c57-41c9-9db3-49f62e81e07d"/>
+				<textElement markup="html">
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_ibu}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nama_ibu}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="156" y="72" width="283" height="16" uuid="8b00540e-522b-49a5-88e9-81e38036cefb"/>
@@ -404,13 +403,13 @@ TEGAL 52131]]></text>
 				<textFieldExpression><![CDATA[$F{nama_ayah}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="ContainerHeight" x="156" y="86" width="409" height="31" uuid="9b3c56bc-faef-497b-87b9-4014e73209d1">
+				<reportElement stretchType="ContainerHeight" x="156" y="86" width="408" height="16" uuid="9b3c56bc-faef-497b-87b9-4014e73209d1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement>
+				<textElement textAlignment="Left">
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{alamat}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{alamat}.toString().split(",")[0]]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="156" y="118" width="283" height="16" uuid="ffa05b1b-2a91-4aa0-852d-96c5eaed737d"/>
@@ -484,6 +483,15 @@ TEGAL 52131]]></text>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Nomor : "+$P{nomor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="ContainerHeight" x="156" y="102" width="408" height="16" uuid="c71c6f03-62fb-4df5-8be4-3ea491092692">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alamat}.toString().split(",")[1].trim()+" - "+$F{alamat}.toString().split(",")[2]+" - "+$F{alamat}.toString().split(",")[3]]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
