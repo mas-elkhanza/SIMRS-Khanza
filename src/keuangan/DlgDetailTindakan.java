@@ -931,7 +931,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         tabModelRincian = new DefaultTableModel(null, new Object[]{
             "No.", "No.Rawat", "No.R.M.", "Nama Pasien", "Kd.Tnd", "Perawatan/Tindakan",
             "Dokter Yg Menangani", "Dokter Pertama", "Tanggal Pulang", "Tanggal Tindakan", "Jam", "Cara Bayar", "Ruangan",
-            "Tarif Visit", "Visit Dokter", "Tindakan"}) {
+            "Tarif Visit", "Visit Dokter", "Tindakan VK"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -8382,13 +8382,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
                 rs = ps.executeQuery();
                 i = 1;
-                material = 0;
-                bhp = 0;
                 jmdokter = 0;
-                jmpetugas = 0;
-                kso = 0;
-                menejemen = 0;
                 total = 0;
+                double vk=0;
                 while (rs.next()) {
                     String kamar_sementara = "-";
 //                    String kamar_rawat = rs.getString("nm_bangsal") == null ? "-" : rs.getString("nm_bangsal");
@@ -8399,19 +8395,18 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     } else {
                         kamar_sementara = rs.getString("nm_bangsal") + " (" + rs.getString("kelas") + ")";
                     }
-                    //kamar_sementara = rs.getString("nm_bangsal")+" (" + rs.getString("kelas") + ")";
-                    material = material + rs.getDouble("material");
-                    bhp = bhp + rs.getDouble("bhp");
-                    jmdokter = jmdokter + rs.getDouble("tarif_tindakandr");
-                    jmpetugas = jmpetugas + rs.getDouble("tarif_tindakanpr");
-                    kso = kso + rs.getDouble("kso");
-                    menejemen = menejemen + rs.getDouble("menejemen");
-                    total = total + rs.getDouble("biaya_rawat");
+                    
+                    double bulat = Math.floor(rs.getDouble("total_byrdrpr") / 3);
+                    double sepertiga = cekVisitDanDokterPertama(bulat);
+                    
+                    jmdokter = jmdokter + sepertiga;
+                    total = total + rs.getDouble("total_byrdrpr");
+                    vk = vk + rs.getDouble("biayaoperator1");
                     tabModelRincian.addRow(new Object[]{
                         i, rs.getString("no_rawat"), rs.getString("no_rkm_medis"), rs.getString("nm_pasien"), rs.getString("kd_jenis_prw"),
                         rs.getString("nm_perawatan"), rs.getString("drvisit"), rs.getString("dokter_pertama"), rs.getString("tgl_keluar"),
                         rs.getString("tgl_perawatan"), rs.getString("jam_rawat"), rs.getString("png_jawab"),
-                        kamar_sementara, rs.getDouble("total_byrdrpr"), Math.round(rs.getDouble("total_byrdrpr") / 3),
+                        kamar_sementara, rs.getDouble("total_byrdrpr"), sepertiga,
                         rs.getDouble("biayaoperator1")
                     });
                     i++;
@@ -8420,10 +8415,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 //            "Dokter Yg Menangani", "Dokter Pertama", "Tanggal Pulang", "Tanggal Tindakan", "Jam", "Cara Bayar", "Ruangan",
 //            "Tarif Visit", "Visit Dokter"
 ////                if (total > 0) {
-////                    tabModelRincian.addRow(new Object[]{
-////                        "", "", "", "", "", "", "", "", "", "", "", "", "", "Jumlah Total :", material,
-////                        bhp, jmdokter, jmpetugas, kso, menejemen, total,""
-////                    });
+                    tabModelRincian.addRow(new Object[]{
+                        "", "", "", "", "", "", "", "", "", "","","", "Jumlah Total :",
+                        total, jmdokter, vk
+                    });
 ////                }
             } catch (SQLException ex) {
                 System.out.println("Notifikasi : " + ex);
@@ -8432,6 +8427,16 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         } catch (SQLException ex) {
             System.out.println("Notifikasi : " + ex);
         }
+    }
+
+    private double cekVisitDanDokterPertama(double bulat) throws SQLException {
+        double sepertiga;
+        if (!rs.getString("drvisit").equals(rs.getString("dokter_pertama"))) {
+            sepertiga = bulat - (bulat % 100);
+        } else {
+            sepertiga = 0;
+        }
+        return sepertiga;
     }
 
     private void isForm() {
