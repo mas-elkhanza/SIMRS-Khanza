@@ -7193,7 +7193,7 @@ public final class DlgReg extends javax.swing.JDialog {
                     + "pasien.kd_kel=kelurahan.kd_kel and "
                     + "pasien.kd_kec=kecamatan.kd_kec and "
                     + "pasien.kd_kab=kabupaten.kd_kab and "
-                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and no_rawat='" + TNoRw.getText() + "'", param);
+                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat='" + TNoRw.getText() + "'", param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }// GEN-LAST:event_MnBarcodeActionPerformed
