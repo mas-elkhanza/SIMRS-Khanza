@@ -435,7 +435,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
                         + tabMode.getValueAt(r, 1).toString().replaceAll("'", "`") + "','"
                         //+ tabMode.getValueAt(r, 2).toString().replaceAll("'", "`") + "','"
                         //+ tabMode.getValueAt(r, 3).toString().replaceAll("'", "`") + "','"
-                        + tabMode.getValueAt(r, 3).toString().replaceAll("'", "`") +" "+tabMode.getValueAt(r, 4).toString().replaceAll("'", "`") + "','"
+                        + tabMode.getValueAt(r, 3).toString().replaceAll("'", "`") + " " + tabMode.getValueAt(r, 4).toString().replaceAll("'", "`") + "','"
                         + tabMode.getValueAt(r, 5).toString().replaceAll("'", "`") + "','"
                         + tabMode.getValueAt(r, 6).toString().replaceAll("'", "`") + "','"
                         + tabMode.getValueAt(r, 7).toString().replaceAll("'", "`") + "','"
