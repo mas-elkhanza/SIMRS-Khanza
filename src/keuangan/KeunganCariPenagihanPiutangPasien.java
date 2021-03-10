@@ -224,6 +224,7 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
         ppHapus = new javax.swing.JMenuItem();
         ppDisetujui = new javax.swing.JMenuItem();
         ppTidakDisetujui = new javax.swing.JMenuItem();
+        ppVerifikasi = new javax.swing.JMenuItem();
         Perusahaan = new widget.TextBox();
         AlamatAsuransi = new widget.TextBox();
         NoTelp = new widget.TextBox();
@@ -314,6 +315,22 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppTidakDisetujui);
+
+        ppVerifikasi.setBackground(new java.awt.Color(255, 255, 254));
+        ppVerifikasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppVerifikasi.setForeground(new java.awt.Color(50, 50, 50));
+        ppVerifikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppVerifikasi.setText("Verifikasi Tagihan");
+        ppVerifikasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppVerifikasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppVerifikasi.setName("ppVerifikasi"); // NOI18N
+        ppVerifikasi.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppVerifikasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppVerifikasiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppVerifikasi);
 
         Perusahaan.setHighlighter(null);
         Perusahaan.setName("Perusahaan"); // NOI18N
@@ -833,14 +850,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 Valid.textKosong(TCari,"pilihan data");
             }else{
                 Sequel.queryu("update penagihan_piutang set status='Sudah Dibayar' where no_tagihan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
-                /*this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                aplikasi.tampilkanpermintaan=false;
-                aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-                aplikasi.isCek();
-                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                aplikasi.setLocationRelativeTo(internalFrame1);
-                aplikasi.setVisible(true);*/
-                this.setCursor(Cursor.getDefaultCursor());
                 tampil();
             }
         }
@@ -865,6 +874,23 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void KdAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdAkunKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_KdAkunKeyPressed
+
+    private void ppVerifikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppVerifikasiActionPerformed
+        if(tbDokter.getSelectedRow()> -1){
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"pilihan data");
+            }else{
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                DlgPiutangBelumLunas form=new DlgPiutangBelumLunas(null,false);
+                form.isCek();
+                form.tampiltagihan(tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppVerifikasiActionPerformed
 
     /**
     * @param args the command line arguments
@@ -925,6 +951,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JMenuItem ppDisetujui;
     private javax.swing.JMenuItem ppHapus;
     private javax.swing.JMenuItem ppTidakDisetujui;
+    private javax.swing.JMenuItem ppVerifikasi;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -1063,7 +1090,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             ppHapus.setEnabled(false);
         }    
-        ppDisetujui.setEnabled(akses.getmutasi_barang());
+        ppVerifikasi.setEnabled(akses.getbayar_piutang());
     }
     
     private void isForm(){
