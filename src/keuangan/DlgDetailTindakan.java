@@ -1416,7 +1416,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         ChkInput8.setSelected(false);
         isForm8();
         ChkInput9.setSelected(false);
-        isForm9();
+        isForm9(); 
         ChkInput10.setSelected(false);
         isForm10();
     }
