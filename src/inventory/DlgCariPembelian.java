@@ -7,7 +7,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -31,7 +30,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  InventarisSuplier suplier=new InventarisSuplier(null,false);
+    public  InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2,pscaribeli,psdetailbeli;

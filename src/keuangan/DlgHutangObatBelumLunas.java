@@ -8,7 +8,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.InventarisSuplier;
+import inventory.InventoryCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -41,7 +41,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private InventarisSuplier suplier=new InventarisSuplier(null,false);
+    private InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
     private String koderekening="",tanggaldatang="",tanggaltempo="",akunbayar=Sequel.cariIsi("select Bayar_Pemesanan_Obat from set_akun");

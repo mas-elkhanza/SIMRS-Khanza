@@ -116,7 +116,7 @@ import setting.DlgSetHarga;
 import setting.DlgBiayaSekaliMasuk;
 import setting.DlgAdmin;
 import setting.DlgBiayaHarian;
-import inventory.InventarisSuplier;
+import inventory.InventorySuplier;
 import kepegawaian.DlgBarcode;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -8300,7 +8300,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        InventarisSuplier suplier=new InventarisSuplier(this,false);
+        InventorySuplier suplier=new InventorySuplier(this,false);
         suplier.isCek();
         suplier.emptTeks();
         suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());

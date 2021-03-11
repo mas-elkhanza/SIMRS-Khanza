@@ -35,7 +35,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
-    public  InventarisSuplier suplier=new InventarisSuplier(null,false);
+    public  InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2,pscaripesan,psdetailpesan;
