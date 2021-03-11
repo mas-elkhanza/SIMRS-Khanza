@@ -1208,7 +1208,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         break; 
                 }                 
             } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
             }     
             this.setCursor(Cursor.getDefaultCursor());
         }
