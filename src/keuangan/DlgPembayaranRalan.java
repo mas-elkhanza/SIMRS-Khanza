@@ -89,13 +89,13 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(103);
             }else if(i==2){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(70);
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(110);
             }else if(i==5){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(110);
             }else if(i==15){
                 column.setPreferredWidth(120);
             }else{

@@ -817,7 +817,7 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{    
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                DlgHome.setOpacity(0.66f);
+                DlgHome.setOpacity(0.69f);
                 DlgLogin.setOpacity(0.77f);
             }     
         }catch(Exception e){            
@@ -1519,15 +1519,20 @@ public class frmUtama extends javax.swing.JFrame {
         DlgHome.setUndecorated(true);
         DlgHome.setResizable(false);
 
+        panelMenu.setBackground(new java.awt.Color(255, 254, 254));
         panelMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 235, 215)), "::[ Menu Utama ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         panelMenu.setName("panelMenu"); // NOI18N
         panelMenu.setPreferredSize(new java.awt.Dimension(2412, 3653));
+        panelMenu.setWarnaAtas(new java.awt.Color(255, 254, 254));
+        panelMenu.setWarnaBawah(new java.awt.Color(255, 254, 254));
         panelMenu.setLayout(new java.awt.BorderLayout(1, 1));
 
+        panelisi2.setBackground(new java.awt.Color(255, 254, 254));
         panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
-        panelisi2.setWarnaBawah(new java.awt.Color(255, 255, 254));
+        panelisi2.setWarnaAtas(new java.awt.Color(255, 254, 254));
+        panelisi2.setWarnaBawah(new java.awt.Color(255, 254, 254));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
 
         label36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -1593,10 +1598,12 @@ public class frmUtama extends javax.swing.JFrame {
 
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
+        scrollPane2.setBackground(new java.awt.Color(255, 254, 254));
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
+        Panelmenu.setBackground(new java.awt.Color(255, 254, 254));
         Panelmenu.setBorder(null);
         Panelmenu.setMinimumSize(new java.awt.Dimension(1975, 2826));
         Panelmenu.setName("Panelmenu"); // NOI18N
@@ -1609,7 +1616,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/02/2021" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/03/2021" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
