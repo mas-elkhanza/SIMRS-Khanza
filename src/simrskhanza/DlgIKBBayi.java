@@ -18,6 +18,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -2657,12 +2658,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
     if (NoRm.getText().trim().equals("")) {
         Valid.textKosong(NoRm, "No.Rekam Medis");
-    } else if (NmBayi.getText().trim().equals("")) {
-        Valid.textKosong(NmBayi, "nama bayi");
     } else if (KdPenolong.getText().trim().equals("") || NmPenolong.getText().trim().equals("")) {
         Valid.textKosong(KdPenolong, "penolong");
     } else if (NoSKL.getText().trim().equals("")) {
         Valid.textKosong(NoSKL, "No.SKL");
+    } else if (Anakke.getText().trim().equals("")) {
+        Valid.textKosong(Anakke, "Anakke");
     } else {
 //        autoNomor();
         autoSKL();
@@ -2722,8 +2723,6 @@ private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void BtnEditActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed1
     if (NoRm.getText().trim().equals("")) {
         Valid.textKosong(NoRm, "No.Rekam Medis");
-    } else if (NmBayi.getText().trim().equals("")) {
-        Valid.textKosong(NmBayi, "nama bayi");
     } else if (KdPenolong.getText().trim().equals("") || NmPenolong.getText().trim().equals("")) {
         Valid.textKosong(KdPenolong, "penolong");
     } else {
@@ -3456,10 +3455,10 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             param.put("logo2", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptSKL2.jasper", "report", "::[ Surat Kelahiran Bayi ]::",
-                    "select  pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,"
+                    "select pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,"
                     + "pasien.no_ktp, pasien.pekerjaanpj, pasien.no_tlp,"
                     + "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur,"
-                    + "pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu,"
+                    + "pasien.tgl_daftar,pasien_bayi.nama_ibu,pasien_bayi.umur_ibu,"
                     + "pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,pasien_bayi.alamat,"
                     + "pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala,"
                     + "pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan,"
