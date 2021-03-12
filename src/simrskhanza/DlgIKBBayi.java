@@ -2658,8 +2658,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
     if (NoRm.getText().trim().equals("")) {
         Valid.textKosong(NoRm, "No.Rekam Medis");
-    } else if (NmBayi.getText().trim().equals("")) {
-        Valid.textKosong(NmBayi, "nama bayi");
     } else if (KdPenolong.getText().trim().equals("") || NmPenolong.getText().trim().equals("")) {
         Valid.textKosong(KdPenolong, "penolong");
     } else if (NoSKL.getText().trim().equals("")) {
@@ -3457,7 +3455,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             param.put("logo2", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptSKL2.jasper", "report", "::[ Surat Kelahiran Bayi ]::",
-                    "select  pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,"
+                    "select pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,"
                     + "pasien.no_ktp, pasien.pekerjaanpj, pasien.no_tlp,"
                     + "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur,"
                     + "pasien.tgl_daftar,pasien_bayi.nama_ibu,pasien_bayi.umur_ibu,"
