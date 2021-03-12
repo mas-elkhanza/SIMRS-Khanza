@@ -26,7 +26,7 @@ public class InventoryVerifikasiPenerimaan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  InventarisSuplier suplier=new InventarisSuplier(null,false);
+    public  InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private PreparedStatement ps,pssub,pspenerimaan,pssubpenerimaan,pssisipan;
     private ResultSet rs,rssub,rspenerimaan,rssubpenerimaan,rssisipan;

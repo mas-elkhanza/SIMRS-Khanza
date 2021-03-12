@@ -30,7 +30,7 @@ public class InventoryRingkasanPenerimaanBarangMedis extends javax.swing.JDialog
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  InventarisSuplier suplier=new InventarisSuplier(null,false);
+    public  InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps;

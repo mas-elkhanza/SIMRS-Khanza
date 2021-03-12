@@ -54,6 +54,7 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
     private double totalpiutang=0;
     private boolean semua;
     private int i=0;
+    private String pilihan="";
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -65,7 +66,7 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
         setSize(885,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.","Tanggal","No.Rawat","No.RM","Nama Pasien","J.K.","Pemeriksaan/Tindakan","Tagihan","Status"
+                "No.","Tanggal","No.Rawat","No.RM","Nama Pasien","J.K.","Pemeriksaan/Tindakan","Ekses","Tagihan","Status"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -73,7 +74,7 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(30);
@@ -90,8 +91,10 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(220);
             }else if(i==7){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==8){
+                column.setPreferredWidth(100);
+            }else if(i==9){
                 column.setPreferredWidth(70);
             }
         }
@@ -600,7 +603,6 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
@@ -613,25 +615,55 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptKlaimRawatJalan.jasper","report","::[ Laporan Klaim Rawat Jalan ]::",
-                        "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.tgl_registrasi, "+
-                        "jns_perawatan.nm_perawatan,piutang_pasien.totalpiutang,piutang_pasien.status "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                        "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                        "inner join piutang_pasien on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
-                        "inner join rawat_jl_dr on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
-                        "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                        "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
-                        "and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%' "+
-                        "and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoli.getText()+NmPoli.getText()+"%' "+
-                        "and concat(reg_periksa.kd_dokter,dokter.nm_dokter) like '%"+KdDokter.getText()+NmDokter.getText()+"%' "+
-                        "and concat(perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan) like '%"+KdPerusahaan.getText()+NmPerusahaan.getText()+"%' "+
-                        "group by reg_periksa.no_rawat order by reg_periksa.tgl_registrasi,rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat",param);
+            try {
+                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih format cetakan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Model 1","Model 2"},"Model 1");
+                switch (pilihan) {
+                    case "Model 1":
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        Valid.MyReportqry("rptKlaimRawatJalan2.jasper","report","::[ Laporan Klaim Rawat Jalan ]::",
+                            "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.tgl_registrasi, "+
+                            "jns_perawatan.nm_perawatan,piutang_pasien.uangmuka,piutang_pasien.totalpiutang,piutang_pasien.status "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                            "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                            "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                            "inner join piutang_pasien on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
+                            "inner join rawat_jl_dr on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                            "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                            "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
+                            "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                            "and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%' "+
+                            "and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoli.getText()+NmPoli.getText()+"%' "+
+                            "and concat(reg_periksa.kd_dokter,dokter.nm_dokter) like '%"+KdDokter.getText()+NmDokter.getText()+"%' "+
+                            "and concat(perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan) like '%"+KdPerusahaan.getText()+NmPerusahaan.getText()+"%' "+
+                            "group by reg_periksa.no_rawat order by reg_periksa.tgl_registrasi,rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat",param);
+                        this.setCursor(Cursor.getDefaultCursor());
+                        break;
+                    case "Model 2":
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        Valid.MyReportqry("rptKlaimRawatJalan.jasper","report","::[ Laporan Klaim Rawat Jalan ]::",
+                            "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.tgl_registrasi, "+
+                            "jns_perawatan.nm_perawatan,piutang_pasien.uangmuka,piutang_pasien.totalpiutang,piutang_pasien.status "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                            "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                            "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                            "inner join piutang_pasien on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
+                            "inner join rawat_jl_dr on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                            "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                            "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
+                            "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                            "and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%' "+
+                            "and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoli.getText()+NmPoli.getText()+"%' "+
+                            "and concat(reg_periksa.kd_dokter,dokter.nm_dokter) like '%"+KdDokter.getText()+NmDokter.getText()+"%' "+
+                            "and concat(perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan) like '%"+KdPerusahaan.getText()+NmPerusahaan.getText()+"%' "+
+                            "group by reg_periksa.no_rawat order by reg_periksa.tgl_registrasi,rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat",param);
+                        this.setCursor(Cursor.getDefaultCursor());
+                        break;
+                }  
+            } catch (Exception e) {
+            }       
         }
-        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -802,7 +834,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             semua=NmCaraBayar.getText().trim().equals("")&&NmPoli.getText().trim().equals("")&&NmDokter.getText().trim().equals("")&&NmPerusahaan.getText().trim().equals("");
             ps= koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.tgl_registrasi, "+
-                        "jns_perawatan.nm_perawatan,piutang_pasien.totalpiutang,piutang_pasien.status "+
+                        "jns_perawatan.nm_perawatan,piutang_pasien.totalpiutang,piutang_pasien.uangmuka,piutang_pasien.status "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
@@ -832,7 +864,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while(rs.next()){
                     tabMode.addRow(new Object[] {
                         i,rs.getString("tgl_registrasi"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("nm_perawatan"),
-                        Valid.SetAngka(rs.getDouble("totalpiutang")),rs.getString("status")
+                        Valid.SetAngka(rs.getDouble("uangmuka")),Valid.SetAngka(rs.getDouble("totalpiutang")),rs.getString("status")
                     });
                     totalpiutang=totalpiutang+rs.getDouble("totalpiutang");
                     i++;
