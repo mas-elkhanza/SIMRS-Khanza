@@ -177,6 +177,8 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         panelGlass5 = new widget.panelisi();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
+        jLabel11 = new javax.swing.JLabel();
+        LRecord = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         LCount = new javax.swing.JLabel();
         BtnKeluar = new widget.Button();
@@ -189,7 +191,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         kdpenjab = new widget.TextBox();
         nmpenjab = new widget.TextBox();
         BtnSeek2 = new widget.Button();
-        jLabel6 = new widget.Label();
+        label19 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
 
@@ -286,12 +288,28 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         });
         panelGlass5.add(BtnPrint);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Record :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(125, 23));
+        panelGlass5.add(jLabel11);
+
+        LRecord.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        LRecord.setForeground(new java.awt.Color(50, 50, 50));
+        LRecord.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LRecord.setText("0");
+        LRecord.setName("LRecord"); // NOI18N
+        LRecord.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass5.add(LRecord);
+
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(50, 50, 50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total Piutang :");
         jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(125, 23));
+        jLabel10.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
@@ -299,7 +317,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(300, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(190, 23));
         panelGlass5.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -383,18 +401,13 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         });
         panelisi4.add(BtnSeek2);
 
-        jLabel6.setText("Key Word :");
-        jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(80, 23));
-        panelisi4.add(jLabel6);
+        label19.setText("Keyword :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelisi4.add(label19);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(250, 23));
-        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TCariKeyPressed(evt);
-            }
-        });
+        TCari.setPreferredSize(new java.awt.Dimension(203, 23));
         panelisi4.add(TCari);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
@@ -609,6 +622,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
     private javax.swing.JLabel LCount;
+    private javax.swing.JLabel LRecord;
     private javax.swing.JMenuItem MnBilling;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -617,12 +631,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
-    private widget.Label jLabel6;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
+    private widget.Label label19;
     private widget.TextBox nmpenjab;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
@@ -635,7 +650,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Valid.tabelKosong(tabMode);
-        try { 
+        int record = 0;
+        try {
             ps = koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab, "
                     + "piutang_pasien.uangmuka,piutang_pasien.totalpiutang, pasien.no_peserta,bridging_sep.no_sep "
@@ -762,6 +778,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ttldibayar = ttldibayar + dibayar;
                     sisa = rs.getDouble("totalpiutang") - ekses - dibayar;
                     ttlsisa = ttlsisa + sisa;
+                    record += 1;
 
                     tabMode.addRow(new Object[]{
                         rs.getString("tgl_registrasi"), Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?", rs.getString("no_rawat")), rs.getString("no_sep"),
@@ -794,6 +811,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
             }
             LCount.setText(Valid.SetAngka(all));
+            LRecord.setText("" + record);
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
         }
