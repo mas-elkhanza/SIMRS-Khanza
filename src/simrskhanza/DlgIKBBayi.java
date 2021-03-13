@@ -236,16 +236,16 @@ public class DlgIKBBayi extends javax.swing.JDialog {
                     NmAyah.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 18).toString());
                     String alamat = pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 8).toString();
                     String[] parts = alamat.split(",");
-                    String part1 = parts[0]; //JL 
-                    String part2 = parts[1]; // KEL
-                    String part3 = parts[2]; // KEC
-                    String part4 = parts[3]; // KAB/KOTA
+                    String jlnString = parts[0]; //JL 
+                    String kelString = parts[1]; // KEL
+                    String kecString = parts[2]; // KEC
+                    String kabString = parts[3]; // KAB/KOTA
                     //PENAMBAHAN KAB JIKA TIDAK ADA KOTANYA
-                    if(!part4.contains("KOTA")){
-                        part4 = "KAB."+part4;
+                    if(!kabString.contains("KOTA")){
+                        kabString = "KAB."+kabString;
                     }
-                    System.out.println("part1 "+part1+" part2 "+part2+" part3 "+part3+" part4 "+part4);
-                    AlamatIbu.setText(part1+", KEL."+part2+", KEC."+part3+", "+part4);
+                    System.out.println("part1 "+jlnString+" part2 "+kelString+" part3 "+kecString+" part4 "+kabString);
+                    AlamatIbu.setText(jlnString+", KEL."+kelString+", KEC."+kecString+", "+kabString);
 //                            Lahir.setDate(sdf.parse(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 6).toString()));
                     Valid.SetTgl(Lahir, pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 6).toString());
                 }
