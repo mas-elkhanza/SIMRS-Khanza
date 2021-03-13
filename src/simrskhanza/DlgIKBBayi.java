@@ -3474,7 +3474,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             param.put("logo2", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptSKL2.jasper", "report", "::[ Surat Kelahiran Bayi ]::",
-                    "select pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,"
+                    "select pasien.no_rkm_medis,pasien.nm_pasien, CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,"
                     + "pasien.no_ktp, pasien.pekerjaanpj, pasien.no_tlp,"
                     + "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur,"
                     + "pasien.tgl_daftar,pasien_bayi.nama_ibu,pasien_bayi.umur_ibu,"

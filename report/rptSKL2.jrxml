@@ -416,7 +416,7 @@ TEGAL 52131]]></text>
 				<textElement>
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{jk}=="L","LAKI-LAKI","PEREMPUAN")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jk}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="156" y="132" width="283" height="16" uuid="e2fa1636-0308-4359-848f-b60238fadb27"/>
