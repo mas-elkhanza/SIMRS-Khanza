@@ -139,13 +139,21 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             } else if (i == 16) {
                 column.setPreferredWidth(70);
             } else if (i == 17) {
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(0);
+                column.setMaxWidth(0);
+                column.setMinWidth(0);
             } else if (i == 18) {
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(0);
+                column.setMaxWidth(0);
+                column.setMinWidth(0);
             } else if (i == 19) {
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(0);
+                column.setMaxWidth(0);
+                column.setMinWidth(0);
             } else if (i == 20) {
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(0);
+                column.setMaxWidth(0);
+                column.setMinWidth(0);
             } else if (i == 21) {
                 column.setPreferredWidth(60);
             } else if (i == 22) {
@@ -226,7 +234,18 @@ public class DlgIKBBayi extends javax.swing.JDialog {
                     NmBayi.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 2).toString());
                     Nmibu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 7).toString());
                     NmAyah.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 18).toString());
-                    AlamatIbu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 8).toString());
+                    String alamat = pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 8).toString();
+                    String[] parts = alamat.split(",");
+                    String part1 = parts[0]; //JL 
+                    String part2 = parts[1]; // KEL
+                    String part3 = parts[2]; // KEC
+                    String part4 = parts[3]; // KAB/KOTA
+                    //PENAMBAHAN KAB JIKA TIDAK ADA KOTANYA
+                    if(!part4.contains("KOTA")){
+                        part4 = "KAB."+part4;
+                    }
+                    System.out.println("part1 "+part1+" part2 "+part2+" part3 "+part3+" part4 "+part4);
+                    AlamatIbu.setText(part1+", KEL."+part2+", KEC."+part3+", "+part4);
 //                            Lahir.setDate(sdf.parse(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 6).toString()));
                     Valid.SetTgl(Lahir, pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(), 6).toString());
                 }
