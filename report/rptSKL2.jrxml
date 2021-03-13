@@ -444,7 +444,7 @@ TEGAL 52131]]></text>
 				<textElement>
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jam_lahir}+" WIB"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jam_lahir}.toString().substring( 0, 5 )+" WIB"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="155" y="210" width="283" height="16" uuid="64fb3a7b-f2b7-4d3c-b48a-ba41f0129635"/>

@@ -213,7 +213,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("hh:ss", new java.util.Locale("id")).format($F{tgl_lahir}).toUpperCase()+" WIB"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jam_lahir}.toString().substring( 0, 5 )+" WIB"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="304" y="66" width="30" height="17" uuid="338c5385-5604-4188-b842-a05c5c2973ce"/>
@@ -338,11 +338,11 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="188" y="156" width="361" height="43" uuid="3a68e57a-65c1-4764-8cf9-aa4c4cbf07df"/>
+				<reportElement x="188" y="156" width="361" height="17" uuid="3a68e57a-65c1-4764-8cf9-aa4c4cbf07df"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{alamat}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{alamat}.toString().split(",")[0]]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd MMMM yyyy">
 				<reportElement x="214" y="235" width="334" height="16" uuid="20b97502-d860-4300-8956-f9aad5c138ab"/>
@@ -395,6 +395,13 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[PROPER($F{penolong})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="173" width="361" height="17" uuid="8dbf6876-92cf-42c5-9a4f-b4e0070e8a21"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alamat}.toString().split(",")[1].trim()+" - "+$F{alamat}.toString().split(",")[2]+" - "+$F{alamat}.toString().split(",")[3]]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
