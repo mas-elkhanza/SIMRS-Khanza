@@ -598,11 +598,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             htmlContent.append(                             
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='90px'>Kode Barang</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='200px'>Nama Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='70px'>Kode Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='150px'>Nama Barang</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='50px'>Satuan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='80px'>Harga Satuan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(i+1)+"'>Sisa Stok</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2' width='75px'>Harga Satuan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='"+(i+2)+"'>Sisa Stok</td>"+
                 "</tr>"
             );
             
@@ -615,7 +615,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 while(rs.next()){
                     posisigudang[kolom]=rs.getString("kd_bangsal");
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>"+rs.getString("nm_bangsal")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>"+rs.getString("nm_bangsal")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -628,7 +628,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }         
             htmlContent.append(
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>Total</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'>Nilai Aset</td>"+
                 "</tr>"
             );  
             
@@ -668,7 +669,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         total=total+stok;
                     }
                     htmlContent.append( 
-                            "<td valign='middle' align='right' width='90px'>"+Valid.SetAngka(total)+"</td>"+
+                            "<td valign='middle' align='right'>"+Valid.SetAngka(total)+"</td>"+
+                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("dasar")*total)+"</td>"+
                         "</tr>"
                     );     
                     no++;  
@@ -693,7 +695,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }else if(kolom>0){
                 LoadHTML.setText(
                         "<html>"+
-                          "<table width='"+Integer.toString(450+(kolom*80))+"px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='"+Integer.toString(480+(kolom*75))+"px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");

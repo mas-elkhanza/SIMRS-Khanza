@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1158" pageHeight="612" orientation="Landscape" columnWidth="1118" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13d80e17-c221-4d95-a940-93cf9c2c0124">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="228"/>
@@ -192,6 +192,16 @@
 		<band height="17">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
+				<reportElement mode="Opaque" x="105" y="0" width="35" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="a123d0c4-d525-4f4e-86d0-a1035d35e726">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.RM]]></text>
+			</staticText>
+			<staticText>
 				<reportElement mode="Opaque" x="860" y="0" width="40" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="87045afe-da27-46c3-b1af-834b14602c4a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
@@ -224,7 +234,7 @@
 				<text><![CDATA[  Kamar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="263" y="0" width="75" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0f6660bd-311e-4184-9415-dcbfdaf3d5c4"/>
+				<reportElement mode="Opaque" x="280" y="0" width="58" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0f6660bd-311e-4184-9415-dcbfdaf3d5c4"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -250,7 +260,7 @@
 				<text><![CDATA[No.Nota]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="105" y="0" width="121" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="89cd22e6-c449-4623-9db0-35e290095274">
+				<reportElement mode="Opaque" x="140" y="0" width="86" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="89cd22e6-c449-4623-9db0-35e290095274">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -364,7 +374,7 @@
 				<text><![CDATA[Total ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="226" y="0" width="37" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="d057e4c0-9c4b-4f3f-bfde-a03ea7e3b791">
+				<reportElement mode="Opaque" x="226" y="0" width="55" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="d057e4c0-9c4b-4f3f-bfde-a03ea7e3b791">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -395,7 +405,7 @@
 		<band height="12">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="39" height="10" uuid="0968a57c-288d-4e6f-8f52-f992f4bc16f4"/>
+				<reportElement positionType="Float" x="0" y="0" width="39" height="10" uuid="0968a57c-288d-4e6f-8f52-f992f4bc16f4"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -403,7 +413,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="40" y="0" width="65" height="10" uuid="3f70c19a-871d-475d-ac1f-f96521a03212"/>
+				<reportElement positionType="Float" x="40" y="0" width="65" height="10" uuid="3f70c19a-871d-475d-ac1f-f96521a03212"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -411,31 +421,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="372" y="0" width="42" height="10" uuid="5a65ace1-666e-4ad0-9cb7-54428bcebd27"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="465" y="0" width="30" height="10" uuid="07a13717-7877-44c4-8494-97abe416f906"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp9}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="496" y="0" width="44" height="10" uuid="c7ef9114-659a-4671-9087-c71ef37efc29"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp10}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="419" y="0" width="45" height="10" uuid="6d8302b0-d691-441e-9906-698a13a4ddc8"/>
+				<reportElement positionType="Float" x="372" y="0" width="42" height="10" uuid="5a65ace1-666e-4ad0-9cb7-54428bcebd27"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -443,89 +429,39 @@
 				<textFieldExpression><![CDATA[$F{temp8}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="338" y="0" width="33" height="10" uuid="04b05175-d302-4436-a596-aeca6a8b6192"/>
+				<reportElement positionType="Float" x="465" y="0" width="30" height="10" uuid="07a13717-7877-44c4-8494-97abe416f906"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="105" y="0" width="121" height="10" uuid="5b7bfd32-6e58-4641-920c-c3ac9ae9f6e2">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp10}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="541" y="0" width="34" height="10" uuid="618bd1ce-9d48-408a-9c00-0dc9b2b30094"/>
+				<reportElement positionType="Float" x="496" y="0" width="44" height="10" uuid="c7ef9114-659a-4671-9087-c71ef37efc29"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp11}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="576" y="0" width="33" height="10" uuid="85f621f2-5c8d-4f00-aa60-e74cb85e7373"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="419" y="0" width="45" height="10" uuid="6d8302b0-d691-441e-9906-698a13a4ddc8"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{temp12}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="610" y="0" width="39" height="10" uuid="e2f29aef-64f6-4f8f-b94d-5f39f51922ee"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp13}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="650" y="0" width="39" height="10" uuid="0dbca72e-e8be-4df3-a7a2-5cf1e47c385e"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp14}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="690" y="0" width="39" height="10" uuid="9558b41d-d57f-4bc1-90ac-98a301911f82"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp15}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="730" y="0" width="44" height="10" uuid="f8df6811-5693-45d3-b8a0-9ac97e4abcf2"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp16}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="775" y="0" width="39" height="10" uuid="b45daf29-619d-44d8-b588-cee7a0120797"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp17}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="815" y="0" width="44" height="10" uuid="43711934-ade4-4205-81f5-b213e7665db9"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp18}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="226" y="0" width="37" height="10" uuid="bd00a819-ace8-4ac9-83a8-b093f7cbcc1e">
+				<reportElement positionType="Float" x="338" y="0" width="33" height="10" uuid="04b05175-d302-4436-a596-aeca6a8b6192"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="140" y="0" width="86" height="10" uuid="5b7bfd32-6e58-4641-920c-c3ac9ae9f6e2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -534,16 +470,90 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="541" y="0" width="34" height="10" uuid="618bd1ce-9d48-408a-9c00-0dc9b2b30094"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp12}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="576" y="0" width="33" height="10" uuid="85f621f2-5c8d-4f00-aa60-e74cb85e7373"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp13}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="610" y="0" width="39" height="10" uuid="e2f29aef-64f6-4f8f-b94d-5f39f51922ee"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp14}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="650" y="0" width="39" height="10" uuid="0dbca72e-e8be-4df3-a7a2-5cf1e47c385e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp15}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="690" y="0" width="39" height="10" uuid="9558b41d-d57f-4bc1-90ac-98a301911f82"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp16}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="730" y="0" width="44" height="10" uuid="f8df6811-5693-45d3-b8a0-9ac97e4abcf2"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp17}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="775" y="0" width="39" height="10" uuid="b45daf29-619d-44d8-b588-cee7a0120797"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp18}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="815" y="0" width="44" height="10" uuid="43711934-ade4-4205-81f5-b213e7665db9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp19}]]></textFieldExpression>
+			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="264" y="0" width="73" height="10" uuid="b9c273be-c981-4dfe-a2a3-12a4f14b1b59"/>
+				<reportElement positionType="Float" x="226" y="0" width="55" height="10" uuid="bd00a819-ace8-4ac9-83a8-b093f7cbcc1e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="281" y="0" width="56" height="10" uuid="b9c273be-c981-4dfe-a2a3-12a4f14b1b59"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
+			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="994" y="0" width="121" height="10" uuid="dd4267ab-0c02-4eba-95fd-b6ea79586fe4">
+				<reportElement positionType="Float" x="994" y="0" width="121" height="10" uuid="dd4267ab-0c02-4eba-95fd-b6ea79586fe4">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -551,18 +561,10 @@
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{temp22}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp23}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="860" y="0" width="40" height="10" uuid="86a9d0d7-d29b-49e6-8bb8-428cd10a7f52"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{temp19}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="901" y="0" width="44" height="10" uuid="29064791-fdb6-4bac-8538-2e43df7f798e"/>
+				<reportElement positionType="Float" x="860" y="0" width="40" height="10" uuid="86a9d0d7-d29b-49e6-8bb8-428cd10a7f52"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -570,12 +572,20 @@
 				<textFieldExpression><![CDATA[$F{temp20}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="946" y="0" width="44" height="10" uuid="bed6fabb-63b5-446b-af93-918808b0bae1"/>
+				<reportElement positionType="Float" x="901" y="0" width="44" height="10" uuid="29064791-fdb6-4bac-8538-2e43df7f798e"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp21}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="946" y="0" width="44" height="10" uuid="bed6fabb-63b5-446b-af93-918808b0bae1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp22}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement positionType="Float" x="0" y="11" width="1116" height="1" uuid="22e2b5d7-30ff-4f7a-8572-ca7c9efa0b98">
@@ -586,6 +596,14 @@
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="105" y="0" width="35" height="10" uuid="c0f132f8-9de2-44f9-814c-c6425405a504"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

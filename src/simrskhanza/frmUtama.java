@@ -574,6 +574,7 @@ import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganRVPBPJS;
 import keuangan.KeuanganSetTarifOnline;
+import keuangan.KeuanganValidasiPenagihanPiutang;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
@@ -16872,6 +16873,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnValidasiPenagihanPiutangActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganValidasiPenagihanPiutang aplikasi=new KeuanganValidasiPenagihanPiutang(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17487,7 +17499,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPemesananMedis,btnRingkasanPembelianMedis,btnRingkasanPenerimaanMedis,btnRingkasanHibahMedis,btnRingkasanPenjualanMedis,
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
-            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan;
+            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang;
     
     public void isWall(){
         try{            
@@ -19270,6 +19282,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenagihan_piutang_pasien()==true){
                Panelmenu.add(btnPenagihanPiutangPasien); 
+               jmlmenu++;
+            }
+            
+            if(akses.getvalidasi_penagihan_piutang()==true){
+               Panelmenu.add(btnValidasiPenagihanPiutang); 
                jmlmenu++;
             }
             
@@ -22769,6 +22786,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenagihan_piutang_pasien()==true){
            Panelmenu.add(btnPenagihanPiutangPasien); 
+           jmlmenu++;
+        }
+        
+        if(akses.getvalidasi_penagihan_piutang()==true){
+           Panelmenu.add(btnValidasiPenagihanPiutang); 
            jmlmenu++;
         }
         
@@ -26924,6 +26946,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenagihan_piutang_pasien()==true){
             if(btnPenagihanPiutangPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                Panelmenu.add(btnPenagihanPiutangPasien); 
+               jmlmenu++; 
+            }               
+        }
+        
+        if(akses.getvalidasi_penagihan_piutang()==true){
+            if(btnValidasiPenagihanPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+               Panelmenu.add(btnValidasiPenagihanPiutang); 
                jmlmenu++; 
             }               
         }
@@ -31402,6 +31431,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnOmsetPenerimaan.setName("btnOmsetPenerimaan");
         btnOmsetPenerimaan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnOmsetPenerimaan.addActionListener(this::btnOmsetPenerimaanActionPerformed);
+        
+        btnValidasiPenagihanPiutang = new widget.ButtonBig();
+        btnValidasiPenagihanPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_50_3319638.png"))); // NOI18N
+        btnValidasiPenagihanPiutang.setText("Validasi Penagihan Piutang");
+        btnValidasiPenagihanPiutang.setIconTextGap(0);
+        btnValidasiPenagihanPiutang.setName("btnValidasiPenagihanPiutang");
+        btnValidasiPenagihanPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnValidasiPenagihanPiutang.addActionListener(this::btnValidasiPenagihanPiutangActionPerformed);
     }
 
     
