@@ -54,7 +54,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         setSize(885,674);
 
         Object[] rowRwJlDr={
-            "P","No.Rawat/No.tagihan","Tgl.Piutang","Pasien","Status","Total Piutang",
+            "P","No.Rawat/No.Tagihan","Tgl.Piutang","Pasien","Status","Total Piutang",
             "Uang Muka","Cicilan","Sisa Piutang","Jatuh Tempo","Cara Bayar","Bayar"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
@@ -940,13 +940,17 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         this.notagihan=notagihan;
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select akun_piutang.kd_rek,akun_piutang.nama_bayar from penagihan_piutang inner join akun_piutang on penagihan_piutang.kd_pj=akun_piutang.kd_pj where penagihan_piutang.no_tagihan=?");
+            ps=koneksi.prepareStatement("select akun_piutang.kd_rek,akun_piutang.nama_bayar,akun_bayar.nama_bayar "+
+                    "from penagihan_piutang inner join akun_piutang on penagihan_piutang.kd_pj=akun_piutang.kd_pj "+
+                    "inner join akun_bayar on penagihan_piutang.kd_rek=akun_bayar.kd_rek "+
+                    "where penagihan_piutang.no_tagihan=?");
             try {
                 ps.setString(1,notagihan);
                 rs=ps.executeQuery();
                 if(rs.next()){
                     kdpenjab.setText(rs.getString(1));
                     nmpenjab.setText(rs.getString(2));
+                    nama_bayar.setSelectedItem(rs.getString(3));
                 }
             } catch (Exception e) {
                 System.out.println(e);
