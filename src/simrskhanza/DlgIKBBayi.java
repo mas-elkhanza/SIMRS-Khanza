@@ -3554,7 +3554,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "select  pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,"
                     + "pasien.no_ktp, pasien.pekerjaanpj, pasien.no_tlp,"
                     + "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur,"
-                    + "pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu,"
+                    + "pasien.tgl_daftar,pasien_bayi.nama_ibu,pasien_bayi.umur_ibu,"
                     + "pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,pasien_bayi.alamat,"
                     + "pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala,"
                     + "pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan,"

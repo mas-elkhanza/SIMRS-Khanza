@@ -15,7 +15,7 @@
 		<![CDATA[SELECT pasien.no_rkm_medis,pasien.nm_pasien, pasien.jk,
 pasien.no_ktp, pasien.pekerjaanpj, pasien.no_tlp,
 pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur,
-pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu,
+pasien.tgl_daftar,pasien_bayi.nama_ibu,pasien_bayi.umur_ibu,
 pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,pasien.alamat,
 pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala,
 pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan,
@@ -67,9 +67,9 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_daftar"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
-	<field name="nm_ibu" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nm_ibu"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	<field name="nama_ibu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_ibu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_bayi"/>
 	</field>
 	<field name="umur_ibu" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="umur_ibu"/>
@@ -266,7 +266,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Ny. "+$F{nm_ibu}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Ny. "+$F{nama_ibu}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="88" y="102" width="90" height="17" uuid="73877768-ffcd-4e84-81a4-66aca990b0a1">
@@ -275,7 +275,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{jk}=="L","Putra dari Ibu","Putri dari Ibu")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{jk}.equals("L"),"Putra dari Ibu","Putri dari Ibu")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="180" y="120" width="9" height="17" uuid="21088f5a-4303-465c-bafa-9c40e69775b5"/>
