@@ -72,7 +72,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                    Persediaan_Obat_Rawat_Inap="",hppfarmasi="";
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
-    public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
+    public DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
     private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();

@@ -36,7 +36,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private double ttl=0,ttlhpp=0,y=0,z=0,stokbarang=0,embalasen=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
         tuslahn=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase"),bayar=0,total=0,ppn=0,besarppn=0,tagihanppn=0;;
     private int jml=0,i=0,row,kolom=0,reply,index;
-    public DlgAturanPakai aturan_pakai=new DlgAturanPakai(null,false);
+    public DlgCariAturanPakai aturan_pakai=new DlgCariAturanPakai(null,false);
     private String verifikasi_penjualan_di_kasir=Sequel.cariIsi(
             "select verifikasi_penjualan_di_kasir from set_nota"),
             Penjualan_Obat=Sequel.cariIsi("select Penjualan_Obat from set_akun"),

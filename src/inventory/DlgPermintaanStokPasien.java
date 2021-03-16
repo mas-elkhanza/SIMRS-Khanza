@@ -47,7 +47,7 @@ public class DlgPermintaanStokPasien extends javax.swing.JDialog {
     private ResultSet rstampil;
     private WarnaTable2 warna=new WarnaTable2();
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
-    public DlgAturanPakai aturanpakaiobat=new DlgAturanPakai(null,false);
+    public DlgCariAturanPakai aturanpakaiobat=new DlgCariAturanPakai(null,false);
     private double ttl=0,y=0,ppnobat=0,stokobat,kenaikan=0;
     private int jml=0,i=0,index=0;
     private String norawatibu,tampilkan_ppnobat_ranap="",aktifkanbatch="no",kelas="",bangsal="",kamar="",hppfarmasi="";
