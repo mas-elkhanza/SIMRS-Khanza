@@ -51,7 +51,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private String notapenjualan="No",aktifkanbatch="no";
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
-    private DlgMetodeRacik metoderacik=new DlgMetodeRacik(null,false);
+    private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
     private boolean sukses=true;
     
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="89322d48-37d1-43d1-81bb-d51a63d79b29">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -168,7 +168,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="71" y="73" width="140" height="13" forecolor="#000000" backcolor="#F0F0DC" uuid="1b2b75a2-bf45-4f06-9bdf-021c5347da83"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="71" y="73" width="484" height="13" forecolor="#000000" backcolor="#F0F0DC" uuid="1b2b75a2-bf45-4f06-9bdf-021c5347da83"/>
 				<textElement verticalAlignment="Middle" markup="none">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>

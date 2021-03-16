@@ -797,7 +797,47 @@ public final class validasi {
         }
     }
     
+    public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JTextArea kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JTextField kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JButton kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JComboBox kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JTextField kanan){
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){

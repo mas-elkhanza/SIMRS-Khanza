@@ -72,7 +72,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
                    Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="",hppfarmasi="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
-    private DlgMetodeRacik metoderacik=new DlgMetodeRacik(null,false);
+    private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
