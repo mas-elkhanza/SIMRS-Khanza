@@ -16,7 +16,6 @@ import fungsi.WarnaTable;
 import fungsi.validasi;
 import fungsi.sekuel;
 import fungsi.koneksiDB;
-import fungsi.*;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -157,7 +156,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -825,8 +824,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             kdPPK1.setText(tabMode.getValueAt(row,10).toString());
             kdPPK2.setText(tabMode.getValueAt(row,11).toString());
             try {
-                ResultSet hasil = koneksi.createStatement().executeQuery(
-                        "select wallpaper,logo from setting");
+                ResultSet hasil = koneksi.prepareStatement("select wallpaper,logo from setting").executeQuery();
                 for (int I = 0; hasil.next(); I++) {
                     ((Painter) PhotoGambar).setImage(gambar(tabMode.getValueAt(row,0).toString()));
                     Blob blob = hasil.getBlob(1);
@@ -840,6 +838,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
                         blob2.getBytes(1, (int) (blob2.length()))));
                     blob2.free();
                 }
+                hasil.close();
             } catch (Exception ex) {
                 cetak(ex.toString());
             }

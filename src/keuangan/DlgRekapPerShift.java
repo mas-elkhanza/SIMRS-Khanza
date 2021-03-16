@@ -15,7 +15,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -226,7 +226,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -317,7 +317,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -469,7 +469,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModeRalan.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModeRalan.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModeRalan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -489,15 +489,14 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 }
                 
                 Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPendapatanRalan.jrxml","report","::[ Rekap Pendapatan Ralan ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14,temp15 from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPendapatanRalan.jasper","report","::[ Rekap Pendapatan Ralan ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }else if(TabRawat.getSelectedIndex()==1){
@@ -506,7 +505,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModeRanap.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModeRanap.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModeRanap.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -530,15 +529,14 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 }
                 
                 Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPendapatanRanap.jrxml","report","::[ Rekap Pendapatan Ranap ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPendapatanRanap.jasper","report","::[ Rekap Pendapatan Ranap ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }else if(TabRawat.getSelectedIndex()==2){
@@ -547,7 +545,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModePemasukan.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModePemasukan.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModePemasukan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -557,15 +555,14 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 }
                 
                 Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPemasukanLain.jrxml","report","::[ Rekap Pemasukan Lain ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPemasukanLain.jasper","report","::[ Rekap Pemasukan Lain ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }else if(TabRawat.getSelectedIndex()==3){
@@ -574,7 +571,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModePengeluaran.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModePengeluaran.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModePengeluaran.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -584,15 +581,14 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 }
                 
                 Map<String, Object> param = new HashMap<>();                 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPengeluaranHarian.jrxml","report","::[ Rekap Pengeluaran Harian ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPengeluaranHarian.jasper","report","::[ Rekap Pengeluaran Harian ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }            

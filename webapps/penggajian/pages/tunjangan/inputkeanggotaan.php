@@ -74,9 +74,9 @@
             <?php
                 $BtnSimpan=$_POST['BtnSimpan'];
                 if (isset($BtnSimpan)) {
-                    $id        = trim($_POST['id']);
-                    $koperasi  = trim($_POST['koperasi']);
-                    $jamsostek = trim($_POST['jamsostek']);
+                    $id        = validTeks(trim($_POST['id']));
+                    $koperasi  = validTeks(trim($_POST['koperasi']));
+                    $jamsostek = validTeks(trim($_POST['jamsostek']));
                     if ((!empty($id))&&(!empty($koperasi))&&(!empty($jamsostek))) {
                         switch($action) {
                             case "TAMBAH":

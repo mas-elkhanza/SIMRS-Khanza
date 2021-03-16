@@ -2,7 +2,7 @@ package laporan;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -25,7 +25,7 @@ public class DlgHAIsPerBangsal extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private StringBuilder htmlContent;
-    private int i=0,deku=0,urine=0,sputum=0,darah=0,antibiotik=0,pasien=0,jmlpasien=0,ETT=0,CVL=0,IVL=0,UC=0,VAP=0,IAD=0,PLEB=0,
+    private int i=0,deku=0,urine=0,sputum=0,darah=0,pasien=0,jmlpasien=0,ETT=0,CVL=0,IVL=0,UC=0,VAP=0,IAD=0,PLEB=0,
                 ISK=0,ILO=0,ANTIBIOTIK=0,jmlHAP,jmlTinea,jmlScabies,jmlETT,jmlCVL,jmlIVL,jmlUC,jmlVAP,jmlIAD,jmlPLEB,jmlISK,
                 HAP,Tinea,Scabies,jmlILO,jmldeku,jmlsputum,jmldarah,jmlurine,jmlANTIBIOTIK;
     
@@ -44,10 +44,10 @@ public class DlgHAIsPerBangsal extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -93,7 +93,7 @@ public class DlgHAIsPerBangsal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan HAIs Per Kamar/Bangsal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan HAIs Per Kamar/Bangsal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -239,23 +239,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
             File f = new File("HarianHAIs.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll(
-                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+       
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+       
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -368,31 +367,31 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%' rowspan='2'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='15%' rowspan='2'>Kamar/Bangsal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='2'>Jml.Pasien</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='19%' colspan='4'>Hari Pemasangan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='37%' colspan='8'>Infeksi</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='4%' rowspan='2'>Deku</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='15%' colspan='3'>Hasil Kultur</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='4%' rowspan='2'>Antibiotik</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%' rowspan='2'>Kamar/Bangsal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='2'>Jml.Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='19%' colspan='4'>Hari Pemasangan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='37%' colspan='8'>Infeksi</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%' rowspan='2'>Deku</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%' colspan='3'>Hasil Kultur</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%' rowspan='2'>Antibiotik</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>ETT</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>CVL</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>IVL</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>UC</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>VAP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>IAD</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>PLEB</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>ISK</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>ILO</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>HAP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Tinea</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Scabies</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Sputum</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Darah</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Urine</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>ETT</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>CVL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>IVL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>UC</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>VAP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>IAD</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pleb</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>ISK</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>ILO</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>HAP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tinea</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Scabies</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sputum</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Darah</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Urine</td>"+
                 "</tr>"
             );     
             ps=koneksi.prepareStatement(
@@ -406,41 +405,41 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 rs=ps.executeQuery();
                 while(rs.next()){
                     if((!rs.getString("nm_bangsal").toLowerCase().contains("apotek"))&&(!rs.getString("nm_bangsal").toLowerCase().contains("gudang"))&&(!rs.getString("nm_bangsal").toLowerCase().contains("depo"))&&(!rs.getString("nm_bangsal").toLowerCase().contains("farmasi"))){
-                        pasien=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        pasien=Sequel.cariInteger("select count(DISTINCT data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlpasien=jmlpasien+pasien;
-                        ETT=Sequel.cariInteger("select sum(data_HAIs.ETT) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        ETT=Sequel.cariInteger("select sum(data_HAIs.ETT) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlETT=jmlETT+ETT;
-                        CVL=Sequel.cariInteger("select sum(data_HAIs.CVL) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        CVL=Sequel.cariInteger("select sum(data_HAIs.CVL) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlCVL=jmlCVL+CVL;
-                        IVL=Sequel.cariInteger("select sum(data_HAIs.IVL) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        IVL=Sequel.cariInteger("select sum(data_HAIs.IVL) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlIVL=jmlIVL+IVL;
-                        UC=Sequel.cariInteger("select sum(data_HAIs.UC) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        UC=Sequel.cariInteger("select sum(data_HAIs.UC) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlUC=jmlUC+UC;
-                        VAP=Sequel.cariInteger("select sum(data_HAIs.VAP) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        VAP=Sequel.cariInteger("select sum(data_HAIs.VAP) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlVAP=jmlVAP+VAP;
-                        IAD=Sequel.cariInteger("select sum(data_HAIs.IAD) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        IAD=Sequel.cariInteger("select sum(data_HAIs.IAD) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlIAD=jmlIAD+IAD;
-                        PLEB=Sequel.cariInteger("select sum(data_HAIs.PLEB) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        PLEB=Sequel.cariInteger("select sum(data_HAIs.PLEB) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlPLEB=jmlPLEB+PLEB;
-                        ISK=Sequel.cariInteger("select sum(data_HAIs.ISK) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        ISK=Sequel.cariInteger("select sum(data_HAIs.ISK) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlISK=jmlISK+ISK;
-                        ILO=Sequel.cariInteger("select sum(data_HAIs.ILO) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        ILO=Sequel.cariInteger("select sum(data_HAIs.ILO) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlILO=jmlILO+ILO;
-                        HAP=Sequel.cariInteger("select sum(data_HAIs.HAP) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        HAP=Sequel.cariInteger("select sum(data_HAIs.HAP) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlHAP=jmlHAP+HAP;
-                        Tinea=Sequel.cariInteger("select sum(data_HAIs.Tinea) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        Tinea=Sequel.cariInteger("select sum(data_HAIs.Tinea) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlTinea=jmlTinea+Tinea;
-                        Scabies=Sequel.cariInteger("select sum(data_HAIs.Scabies) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        Scabies=Sequel.cariInteger("select sum(data_HAIs.Scabies) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlScabies=jmlScabies+Scabies;
-                        deku=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.DEKU='IYA' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        deku=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.DEKU='IYA' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmldeku=jmldeku+deku;
-                        sputum=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.SPUTUM<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        sputum=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.SPUTUM<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlsputum=jmlsputum+sputum;
-                        darah=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.DARAH<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        darah=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.DARAH<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmldarah=jmldarah+darah;
-                        urine=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.URINE<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        urine=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.URINE<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlurine=jmlurine+urine;
-                        ANTIBIOTIK=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat where data_HAIs.ANTIBIOTIK<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
+                        ANTIBIOTIK=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.ANTIBIOTIK<>'' and data_HAIs.tanggal between ? and ? and kamar.kd_bangsal=?",Valid.SetTgl(Tgl1.getSelectedItem()+""),Valid.SetTgl(Tgl2.getSelectedItem()+""),rs.getString("kd_bangsal"));
                         jmlANTIBIOTIK=jmlANTIBIOTIK+ANTIBIOTIK;
                         htmlContent.append(                             
                             "<tr class='isi'>"+
@@ -517,7 +516,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.gethais_perbangsal());
+        BtnPrint.setEnabled(akses.gethais_perbangsal());
     }
     
 }

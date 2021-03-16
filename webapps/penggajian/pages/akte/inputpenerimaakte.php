@@ -1,11 +1,9 @@
-
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baristh        = mysqli_fetch_row($hasil);
-   $tahun         = $baristh[0];
-   $bulan          = $baristh[1];
+   $baristh      = mysqli_fetch_row($hasil);
+   $tahun        = empty($baristh[0])?date("Y"):$baristh[0];
+   $bulan        = empty($baristh[1])?date("m"):$baristh[1];
 ?>
 
 <div id="post">
@@ -35,7 +33,7 @@
                 <tr class="head">
                     <td width="31%" >Pegawai</td><td width="">:</td>
                     <td width="67%">
-                         <select name="id" class="text1" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                         <select name="id" class="text1" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                             <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php                            
                                 if($action == "UBAH"){
@@ -47,7 +45,7 @@
                                 }
                                 if($action == "TAMBAH"){
                                     $_sql = "SELECT id,nik,nama FROM pegawai ORDER BY nama";
-                                $hasildep=bukaquery($_sql);
+                                    $hasildep=bukaquery($_sql);
                                     while($barisdep = mysqli_fetch_array($hasildep)) {
                                         echo "<option id='TxtIsi1' value='$barisdep[0]'>$barisdep[2] $barisdep[1]</option>";
                                     }
@@ -66,18 +64,18 @@
             </table>
             <div align="center"><input name=BtnSimpan type=submit class="button" value="SIMPAN">&nbsp<input name=BtnKosong type=reset class="button" value="KOSONG"></div>
             <?php
-                $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
-
-		$_sql         = "SELECT * FROM set_tahun";
-		$hasil        = bukaquery($_sql);
-		$baris        = mysqli_fetch_row($hasil);
-		$tahun        = $baris[0];
-		$bulan        = $baris[1];
+                $BtnSimpan= isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
+		        $_sql     = "SELECT * FROM set_tahun";
+		        $hasil    = bukaquery($_sql);
+		        $baris    = mysqli_fetch_row($hasil);
+                $tahun    = empty($baris[0])?date("Y"):$baris[0];
+                $bulan    = empty($baris[1])?date("m"):$baris[1];
 
                 if (isset($BtnSimpan)) {
                     $id          = trim($_POST['id']);
                     $persen      = trim($_POST['persen']);
-                    if ((!empty($id))&&(!empty($persen))) {
+                    $persen      = validangka($persen);
+                    if ((isset($id))&&(isset($persen))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" pembagian_akte ","'$id','$persen' ", " Porsi Akte " );
@@ -88,7 +86,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListAkte'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($persen))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

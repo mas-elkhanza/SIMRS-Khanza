@@ -4,7 +4,7 @@
         <a href=?act=InputDansos&action=TAMBAH>| Set Dana Sosial |</a>
         <a href=?act=ListPotongan>| List Potongan |</a>
         <a href=?act=HomeAdmin>| Menu Utama |</a>
-    </div>   
+    </div>
     <div class="entry">
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
@@ -17,7 +17,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Dana Sosial</td><td width="">:</td>
-                    <td width="67%">Rp <input name="dana" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $dana;?>" size="20" maxlength="15">
+                    <td width="67%">Rp <input name="dana" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $dana;?>" size="20" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -26,15 +26,15 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $dana                =trim($_POST['dana']);
-                    if (!empty($dana)) {
+                    $dana = validangka(trim($_POST['dana']));
+                    if (isset($dana)) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" dansos "," '$dana '", " Set/Pengaturan dana sosial " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputDansos&action=TAMBAH&dana='$dana'>";
                                 break;
                         }
-                    }else if (empty($dana)){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -64,7 +64,14 @@
                     }
                 echo "</table>";
 
-            } else {echo "Set/pengaturan dana sosial !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='12%'><div align='center'>Proses</div></td>
+                                <td width='88%'><div align='center'>Besarnya Dana Sosial</div></td>
+                            </tr>
+                      </table>";
+            }
         ?>
         </div>
         </form>

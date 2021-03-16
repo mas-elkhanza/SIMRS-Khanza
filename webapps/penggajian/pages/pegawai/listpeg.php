@@ -44,7 +44,7 @@
     <?php
         $awal=$_GET['awal'];
         $keyword=trim($_POST['keyword']);
-
+        $keyword= validTeks($keyword);
         if (empty($awal)) $awal=0;
         $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
@@ -79,30 +79,30 @@
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='2600px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>NIP</strong></font></div></td>
-                                 <td width='200px'><div align='center'><font size='2' face='Tahoma'><strong>Nama</strong></font></div></td>
-                                 <td width='50px'><div align='center'><font size='2' face='Tahoma'><strong>J.K.</strong></font></div></td>
-                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Jabatan</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Kode Jenjang</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Departemen</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Bagian</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Status</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Status Karyawan</strong></font></div></td>
-                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>NPWP</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Pendidikan</strong></font></div></td>
-                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Tmp.Lahir</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Tgl.Lahir</strong></font></div></td>
-                                 <td width='250px'><div align='center'><font size='2' face='Tahoma'><strong>Alamat</strong></font></div></td>
-                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Kota </strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Mulai Kerja</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Kode Ms Kerja</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Kode Index</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>BPD</strong></font></div></td>
-                                 <td width='70px'><div align='center'><font size='2' face='Tahoma'><strong>Rekening</strong></font></div></td>
-                                 <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Stts Aktif</strong></font></div></td>
-                                 <td width='70px'><div align='center'><font size='2' face='Tahoma'><strong>Wajib Masuk</strong></font></div></td>
-                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Mulai Kontrak</strong></font></div></td>
-                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Photo</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>NIP</strong></font></div></td>
+                         <td width='200px'><div align='center'><font size='2' face='Tahoma'><strong>Nama</strong></font></div></td>
+                         <td width='50px'><div align='center'><font size='2' face='Tahoma'><strong>J.K.</strong></font></div></td>
+                         <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Jabatan</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Kode Jenjang</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Departemen</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Bagian</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Status</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Status Karyawan</strong></font></div></td>
+                         <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>NPWP</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Pendidikan</strong></font></div></td>
+                         <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Tmp.Lahir</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Tgl.Lahir</strong></font></div></td>
+                         <td width='250px'><div align='center'><font size='2' face='Tahoma'><strong>Alamat</strong></font></div></td>
+                         <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Kota </strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Mulai Kerja</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Kode Ms Kerja</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Kode Index</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>BPD</strong></font></div></td>
+                         <td width='70px'><div align='center'><font size='2' face='Tahoma'><strong>Rekening</strong></font></div></td>
+                         <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Stts Aktif</strong></font></div></td>
+                         <td width='70px'><div align='center'><font size='2' face='Tahoma'><strong>Wajib Masuk</strong></font></div></td>
+                         <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Mulai Kontrak</strong></font></div></td>
+                         <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Photo</strong></font></div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                          $_sql2         = "SELECT normal-$jumlahlibur,jmlhr FROM set_tahun";
@@ -139,7 +139,7 @@
                                   <td>$baris[13]</td>
                                   <td>$baris[14]</td>
                                   <td>$baris[15]</td>
-								  <td>$baris[16]</td>
+				 <td>$baris[16]</td>
                                   <td>$baris[17]</td>
                                   <td>$baris[18]</td>
                                   <td>$baris[19]</td>

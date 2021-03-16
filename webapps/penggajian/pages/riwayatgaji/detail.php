@@ -136,14 +136,14 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $id                 =trim($_POST['id']);
-                $jabatan            =trim($_POST['jabatan']);                    
-                $gapok              =trim($_POST['gapok']);
+                $jabatan            = validTeks(trim($_POST['jabatan']));                    
+                $gapok              = validTeks(trim($_POST['gapok']));
                 $tmt_berkala        =trim($_POST['ThnBerkala'])."-".trim($_POST['BlnBerkala'])."-".trim($_POST['TglBerkala']);
                 $tmt_berkala_yad    =trim($_POST['ThnBerkalaYad'])."-".trim($_POST['BlnBerkalaYad'])."-".trim($_POST['TglBerkalaYad']);
-                $no_sk           =trim($_POST['no_sk']);
+                $no_sk              =validTeks(trim($_POST['no_sk']));
                 $tgl_sk             =trim($_POST['ThnSK'])."-".trim($_POST['BlnSK'])."-".trim($_POST['TglSK']);
-                $masa_kerja         =trim($_POST['masa_kerja']);
-                $bulan_kerja          =trim($_POST['bulan_kerja']);
+                $masa_kerja         =validTeks(trim($_POST['masa_kerja']));
+                $bulan_kerja          =validTeks(trim($_POST['bulan_kerja']));
                 $dokumen            = str_replace(" ","_","pages/riwayatgaji/berkas/".$_FILES['dokumen']['name']);
                 if ((!empty($id))&&(!empty($gapok))) {
                     switch($action) {

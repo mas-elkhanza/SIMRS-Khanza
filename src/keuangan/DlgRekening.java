@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -88,7 +88,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         KdSubInduk.setDocument(new batasInput((byte)15).getKata(KdSubInduk));
         NmSub.setDocument(new batasInput((byte)100).getKata(NmSub));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -191,7 +191,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         WindowSubRekening.setUndecorated(true);
         WindowSubRekening.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Sub Akun Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Sub Akun Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setLayout(null);
 
@@ -293,12 +293,11 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         MnSubAkun.setBackground(new java.awt.Color(255, 255, 254));
         MnSubAkun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSubAkun.setForeground(new java.awt.Color(70, 70, 70));
+        MnSubAkun.setForeground(new java.awt.Color(50,50,50));
         MnSubAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSubAkun.setText("Buat Sub Akun Rekening");
         MnSubAkun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnSubAkun.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnSubAkun.setIconTextGap(5);
         MnSubAkun.setName("MnSubAkun"); // NOI18N
         MnSubAkun.setPreferredSize(new java.awt.Dimension(250, 28));
         MnSubAkun.addActionListener(new java.awt.event.ActionListener() {
@@ -310,12 +309,11 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         MnJadikanSub.setBackground(new java.awt.Color(255, 255, 254));
         MnJadikanSub.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnJadikanSub.setForeground(new java.awt.Color(70, 70, 70));
+        MnJadikanSub.setForeground(new java.awt.Color(50,50,50));
         MnJadikanSub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnJadikanSub.setText("Jadikan Sub Akun Rekening");
         MnJadikanSub.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnJadikanSub.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnJadikanSub.setIconTextGap(5);
         MnJadikanSub.setName("MnJadikanSub"); // NOI18N
         MnJadikanSub.setPreferredSize(new java.awt.Dimension(250, 28));
         MnJadikanSub.addActionListener(new java.awt.event.ActionListener() {
@@ -327,12 +325,11 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         MnJadikanUtama.setBackground(new java.awt.Color(255, 255, 254));
         MnJadikanUtama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnJadikanUtama.setForeground(new java.awt.Color(70, 70, 70));
+        MnJadikanUtama.setForeground(new java.awt.Color(50,50,50));
         MnJadikanUtama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnJadikanUtama.setText("Jadikan Akun Utama");
         MnJadikanUtama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnJadikanUtama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnJadikanUtama.setIconTextGap(5);
         MnJadikanUtama.setName("MnJadikanUtama"); // NOI18N
         MnJadikanUtama.setPreferredSize(new java.awt.Dimension(250, 28));
         MnJadikanUtama.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +345,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         WindowJadikanSub.setUndecorated(true);
         WindowJadikanSub.setResizable(false);
 
-        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Jadikan Sub Akun ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Jadikan Sub Akun ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame8.setName("internalFrame8"); // NOI18N
         internalFrame8.setLayout(null);
 
@@ -425,7 +422,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -801,16 +798,16 @@ public final class DlgRekening extends javax.swing.JDialog {
         }else if(tbKamar.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(TCari.getText().trim().equals("")){
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 int row=tabMode.getRowCount();
                 for(int i=0;i<row;i++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -820,10 +817,9 @@ public final class DlgRekening extends javax.swing.JDialog {
                                     tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
                 }
                   
-                Valid.MyReport("rptRekening2.jrxml","report","::[ Data Rekening ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekening2.jasper","report","::[ Data Rekening ]::",param);
             }else{
-                Valid.MyReport("rptRekening.jrxml","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
+                Valid.MyReportqry("rptRekening.jasper","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
                     " from rekening where kd_rek like '%"+TCari.getText().trim()+"%' or "+
                     " nm_rek like '%"+TCari.getText().trim()+"%' or "+
                     " tipe like '%"+TCari.getText().trim()+"%' or "+
@@ -1617,11 +1613,11 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getakun_rekening());
-        BtnBatal.setEnabled(var.getakun_rekening());
-        BtnEdit.setEnabled(var.getakun_rekening());
-        BtnHapus.setEnabled(var.getakun_rekening());
-        BtnPrint.setEnabled(var.getakun_rekening());
+        BtnSimpan.setEnabled(akses.getakun_rekening());
+        BtnBatal.setEnabled(akses.getakun_rekening());
+        BtnEdit.setEnabled(akses.getakun_rekening());
+        BtnHapus.setEnabled(akses.getakun_rekening());
+        BtnPrint.setEnabled(akses.getakun_rekening());
     }
         
 }

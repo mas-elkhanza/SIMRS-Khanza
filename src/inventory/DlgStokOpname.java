@@ -17,14 +17,15 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,6 +49,9 @@ public final class DlgStokOpname extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement pstampil;
     private ResultSet rstampil;
+    private DlgCariJenis jenis = new DlgCariJenis(null, false);
+    private DlgCariKategori kategori = new DlgCariKategori(null, false);
+    private DlgCariGolongan golongan = new DlgCariGolongan(null, false);
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -57,8 +61,9 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"Kode Barang","Nama Barang","Harga Beli","Satuan","Tanggal","Stok","Real",
-                      "Selisih","Total Real","Nominal Hilang(Rp)","Keterangan","Kode Lokasi","Nama Lokasi"};
+        Object[] row={
+            "Kode Barang","Nama Barang","Harga Beli","Satuan","Tanggal","Stok","Real","Selisih","Lebih","Total Real",
+            "Nominal Hilang(Rp)","Nominal Lebih(Rp)","Keterangan","Kode Lokasi","Nama Lokasi","No.Batch","No.Faktur"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -67,7 +72,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 17; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -86,15 +91,23 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(40);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(40);
             }else if(i==9){
                 column.setPreferredWidth(100);
             }else if(i==10){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }else if(i==11){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(100);
             }else if(i==12){
+                column.setPreferredWidth(120);
+            }else if(i==13){
+                column.setPreferredWidth(90);
+            }else if(i==14){
                 column.setPreferredWidth(130);
+            }else if(i==15){
+                column.setPreferredWidth(70);
+            }else if(i==16){
+                column.setPreferredWidth(100);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -105,7 +118,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Keterangan.setDocument(new batasInput((byte)60).getKata(Keterangan));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -127,9 +140,117 @@ public final class DlgStokOpname extends javax.swing.JDialog {
                 }
             });
         }
+        
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+        
+        golongan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (golongan.getTable().getSelectedRow() != -1) {
+                    kdgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 0).toString());
+                    nmgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 1).toString());
+                }
+                
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                golongan.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+        
+        kategori.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (kategori.getTable().getSelectedRow() != -1) {
+                    kdkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 0).toString());
+                    nmkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 1).toString());
+                }
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                kategori.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
     } 
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
-    double total=0,totalreal=0;
+    double total=0,totalreal=0,totallebih=0;
 
 
     /** This method is called from within the constructor to
@@ -141,9 +262,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppHapus = new javax.swing.JMenuItem();
-        ppCetak = new javax.swing.JMenuItem();
         Kd2 = new widget.TextBox();
         panelisi4 = new widget.panelisi();
         label34 = new widget.Label();
@@ -165,6 +283,14 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         kdgudang = new widget.TextBox();
         nmgudang = new widget.TextBox();
         label39 = new widget.Label();
+        Lebih = new widget.TextBox();
+        NomiLebih = new widget.TextBox();
+        TotalReal = new widget.TextBox();
+        kdjenis = new widget.TextBox();
+        kdkategori = new widget.TextBox();
+        kdgolongan = new widget.TextBox();
+        nobatch = new widget.TextBox();
+        nofaktur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -176,54 +302,30 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Tgl2 = new widget.Tanggal();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
-        BtnAll = new widget.Button();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnHapus = new widget.Button();
-        BtnPrint = new widget.Button();
         label10 = new widget.Label();
         LCount = new widget.Label();
         label13 = new widget.Label();
         LTotalBeli = new widget.Label();
         label12 = new widget.Label();
         LTotal = new widget.Label();
+        label14 = new widget.Label();
+        LTotal2 = new widget.Label();
+        BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-
-        Popup.setName("Popup"); // NOI18N
-
-        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
-        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
-        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        ppHapus.setText("Hapus");
-        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
-        ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        Popup.add(ppHapus);
-
-        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
-        ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
-        ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        ppCetak.setText("Cetak");
-        ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
-        ppCetak.setName("ppCetak"); // NOI18N
-        ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppCetak);
+        panelBiasa1 = new widget.PanelBiasa();
+        label20 = new widget.Label();
+        nmjns = new widget.TextBox();
+        BtnJenis = new widget.Button();
+        label22 = new widget.Label();
+        nmkategori = new widget.TextBox();
+        BtnKategori = new widget.Button();
+        label23 = new widget.Label();
+        nmgolongan = new widget.TextBox();
+        BtnGolongan = new widget.Button();
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Kd2.setHighlighter(null);
@@ -387,6 +489,82 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         panelisi4.add(label39);
         label39.setBounds(474, 70, 100, 23);
 
+        Lebih.setEditable(false);
+        Lebih.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Lebih.setHighlighter(null);
+        Lebih.setName("Lebih"); // NOI18N
+        panelisi4.add(Lebih);
+        Lebih.setBounds(284, 40, 55, 23);
+
+        NomiLebih.setEditable(false);
+        NomiLebih.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        NomiLebih.setHighlighter(null);
+        NomiLebih.setName("NomiLebih"); // NOI18N
+        NomiLebih.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NomiLebihKeyPressed(evt);
+            }
+        });
+        panelisi4.add(NomiLebih);
+        NomiLebih.setBounds(578, 40, 130, 23);
+
+        TotalReal.setEditable(false);
+        TotalReal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        TotalReal.setHighlighter(null);
+        TotalReal.setName("TotalReal"); // NOI18N
+        TotalReal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TotalRealKeyPressed(evt);
+            }
+        });
+        panelisi4.add(TotalReal);
+        TotalReal.setBounds(578, 40, 130, 23);
+
+        kdjenis.setEditable(false);
+        kdjenis.setName("kdjenis"); // NOI18N
+        kdjenis.setPreferredSize(new java.awt.Dimension(75, 23));
+        kdjenis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdjenisKeyPressed(evt);
+            }
+        });
+
+        kdkategori.setEditable(false);
+        kdkategori.setName("kdkategori"); // NOI18N
+        kdkategori.setPreferredSize(new java.awt.Dimension(75, 23));
+        kdkategori.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdkategoriKeyPressed(evt);
+            }
+        });
+
+        kdgolongan.setEditable(false);
+        kdgolongan.setName("kdgolongan"); // NOI18N
+        kdgolongan.setPreferredSize(new java.awt.Dimension(75, 23));
+        kdgolongan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdgolonganKeyPressed(evt);
+            }
+        });
+
+        nobatch.setEditable(false);
+        nobatch.setName("nobatch"); // NOI18N
+        nobatch.setPreferredSize(new java.awt.Dimension(75, 23));
+        nobatch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nobatchKeyPressed(evt);
+            }
+        });
+
+        nofaktur.setEditable(false);
+        nofaktur.setName("nofaktur"); // NOI18N
+        nofaktur.setPreferredSize(new java.awt.Dimension(75, 23));
+        nofaktur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nofakturKeyPressed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -396,17 +574,14 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -458,31 +633,13 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         panelisi3.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(380, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
             }
         });
         panelisi3.add(TCari);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('3');
-        BtnAll.setToolTipText("Alt+3");
-        BtnAll.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelisi3.add(BtnAll);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
@@ -501,6 +658,24 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             }
         });
         panelisi3.add(BtnCari);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('3');
+        BtnAll.setToolTipText("Alt+3");
+        BtnAll.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi3.add(BtnAll);
 
         jPanel1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -525,6 +700,50 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         });
         panelisi1.add(BtnHapus);
 
+        label10.setText("Record :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(47, 30));
+        panelisi1.add(label10);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(40, 30));
+        panelisi1.add(LCount);
+
+        label13.setText("Real :");
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(45, 30));
+        panelisi1.add(label13);
+
+        LTotalBeli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotalBeli.setText("0");
+        LTotalBeli.setName("LTotalBeli"); // NOI18N
+        LTotalBeli.setPreferredSize(new java.awt.Dimension(100, 30));
+        panelisi1.add(LTotalBeli);
+
+        label12.setText("Hilang :");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(50, 30));
+        panelisi1.add(label12);
+
+        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal.setText("0");
+        LTotal.setName("LTotal"); // NOI18N
+        LTotal.setPreferredSize(new java.awt.Dimension(85, 30));
+        panelisi1.add(LTotal);
+
+        label14.setText("Lebih :");
+        label14.setName("label14"); // NOI18N
+        label14.setPreferredSize(new java.awt.Dimension(50, 30));
+        panelisi1.add(label14);
+
+        LTotal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal2.setText("0");
+        LTotal2.setName("LTotal2"); // NOI18N
+        LTotal2.setPreferredSize(new java.awt.Dimension(85, 30));
+        panelisi1.add(LTotal2);
+
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
         BtnPrint.setText("Cetak");
@@ -542,39 +761,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnPrint);
-
-        label10.setText("Record :");
-        label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(55, 30));
-        panelisi1.add(label10);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(30, 30));
-        panelisi1.add(LCount);
-
-        label13.setText("Total Real :");
-        label13.setName("label13"); // NOI18N
-        label13.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label13);
-
-        LTotalBeli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotalBeli.setText("0");
-        LTotalBeli.setName("LTotalBeli"); // NOI18N
-        LTotalBeli.setPreferredSize(new java.awt.Dimension(150, 30));
-        panelisi1.add(LTotalBeli);
-
-        label12.setText("Hilang :");
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(45, 30));
-        panelisi1.add(label12);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(105, 30));
-        panelisi1.add(LTotal);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -598,13 +784,85 @@ public final class DlgStokOpname extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
+        panelBiasa1.setName("panelBiasa1"); // NOI18N
+        panelBiasa1.setPreferredSize(new java.awt.Dimension(1023, 47));
+        panelBiasa1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 10));
+
+        label20.setText("Jenis :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelBiasa1.add(label20);
+
+        nmjns.setEditable(false);
+        nmjns.setName("nmjns"); // NOI18N
+        nmjns.setPreferredSize(new java.awt.Dimension(192, 23));
+        panelBiasa1.add(nmjns);
+
+        BtnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnJenis.setMnemonic('2');
+        BtnJenis.setToolTipText("Alt+2");
+        BtnJenis.setName("BtnJenis"); // NOI18N
+        BtnJenis.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJenisActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnJenis);
+
+        label22.setText("Kategori :");
+        label22.setName("label22"); // NOI18N
+        label22.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelBiasa1.add(label22);
+
+        nmkategori.setEditable(false);
+        nmkategori.setName("nmkategori"); // NOI18N
+        nmkategori.setPreferredSize(new java.awt.Dimension(192, 23));
+        panelBiasa1.add(nmkategori);
+
+        BtnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnKategori.setMnemonic('2');
+        BtnKategori.setToolTipText("Alt+2");
+        BtnKategori.setName("BtnKategori"); // NOI18N
+        BtnKategori.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnKategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKategoriActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnKategori);
+
+        label23.setText("Golongan :");
+        label23.setName("label23"); // NOI18N
+        label23.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelBiasa1.add(label23);
+
+        nmgolongan.setEditable(false);
+        nmgolongan.setName("nmgolongan"); // NOI18N
+        nmgolongan.setPreferredSize(new java.awt.Dimension(192, 23));
+        panelBiasa1.add(nmgolongan);
+
+        BtnGolongan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnGolongan.setMnemonic('2');
+        BtnGolongan.setToolTipText("Alt+2");
+        BtnGolongan.setName("BtnGolongan"); // NOI18N
+        BtnGolongan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnGolongan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGolonganActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnGolongan);
+
+        internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Kdbar,"opname","kd_bangsal='"+kdgudang.getText()+"' and tanggal='"+Tanggal.getSelectedItem()+"' and kode_brng");
+        Valid.hapusTable(tabMode,Kdbar,"opname","kd_bangsal='"+kdgudang.getText()+"' and tanggal='"+Tanggal.getSelectedItem()+"' and no_batch='"+nobatch.getText()+"' and no_faktur='"+nofaktur.getText()+"' and kode_brng");
         BtnCariActionPerformed(evt);
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -635,24 +893,41 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tbKamar.getRowCount()!=0){   
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptOpname.jrxml","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
-                  "opname.real, opname.selisih, opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, (opname.real*opname.h_beli) as totalreal "+
-                  "from opname inner join databarang inner join bangsal "+
-                  "on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal "+
-                  "where opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and opname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and opname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                  "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and bangsal.kd_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                  "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                  "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.kode_sat like '%"+TCari.getText().trim()+"%' or "+ 
-                  "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and opname.keterangan like '%"+TCari.getText().trim()+"%' order by opname.tanggal",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            if(nmjns.getText().equals("")&&nmkategori.getText().equals("")&&nmgolongan.getText().equals("")&&TCari.getText().equals("")){
+                Valid.MyReportqry("rptOpname.jasper","report","::[ Stok Opname ]::",
+                        "select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
+                         "opname.real, opname.selisih, opname.lebih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang,opname.nomilebih, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, "+
+                         "opname.no_batch,opname.no_faktur from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
+                         "inner join bangsal on opname.kd_bangsal=bangsal.kd_bangsal "+
+                         "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                         "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                         "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by opname.tanggal",param);
+            }else{
+                Valid.MyReportqry("rptOpname.jasper","report","::[ Stok Opname ]::",
+                        "select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
+                         "opname.real, opname.selisih, opname.lebih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang,opname.nomilebih, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, "+
+                         "opname.no_batch,opname.no_faktur from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
+                         "inner join bangsal on opname.kd_bangsal=bangsal.kd_bangsal "+
+                         "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                         "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                         "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' and opname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' and opname.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' and bangsal.kd_bangsal like '%"+TCari.getText().trim()+"%' or "+
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' and databarang.kode_sat like '%"+TCari.getText().trim()+"%' or "+ 
+                         "opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' and opname.keterangan like '%"+TCari.getText().trim()+"%' order by opname.tanggal",param);
+            }
+                
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -723,6 +998,12 @@ public final class DlgStokOpname extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        nmgolongan.setText("");
+        nmjns.setText("");
+        nmkategori.setText("");
+        kdgolongan.setText("");
+        kdjenis.setText("");
+        kdkategori.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -746,6 +1027,58 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
        tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
+    }//GEN-LAST:event_BtnJenisActionPerformed
+
+    private void BtnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKategoriActionPerformed
+        kategori.isCek();
+        kategori.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
+        kategori.setLocationRelativeTo(internalFrame1);
+        kategori.setAlwaysOnTop(false);
+        kategori.setVisible(true);
+    }//GEN-LAST:event_BtnKategoriActionPerformed
+
+    private void BtnGolonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganActionPerformed
+        golongan.isCek();
+        golongan.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
+        golongan.setLocationRelativeTo(internalFrame1);
+        golongan.setAlwaysOnTop(false);
+        golongan.setVisible(true);
+    }//GEN-LAST:event_BtnGolonganActionPerformed
+
+    private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdjenisKeyPressed
+
+    private void kdkategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkategoriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdkategoriKeyPressed
+
+    private void kdgolonganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgolonganKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdgolonganKeyPressed
+
+    private void nobatchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nobatchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nobatchKeyPressed
+
+    private void nofakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nofakturKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nofakturKeyPressed
+
+    private void NomiLebihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NomiLebihKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomiLebihKeyPressed
+
+    private void TotalRealKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalRealKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TotalRealKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -765,7 +1098,10 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnGolongan;
     private widget.Button BtnHapus;
+    private widget.Button BtnJenis;
+    private widget.Button BtnKategori;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.TextBox Harga;
@@ -774,10 +1110,12 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.Label LTotal;
+    private widget.Label LTotal2;
     private widget.Label LTotalBeli;
+    private widget.TextBox Lebih;
     private widget.TextBox Nmbar;
+    private widget.TextBox NomiLebih;
     private widget.TextBox Nominal;
-    private javax.swing.JPopupMenu Popup;
     private widget.TextBox Real;
     private widget.ScrollPane Scroll;
     private widget.TextBox Selisih;
@@ -786,16 +1124,24 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.Tanggal Tanggal;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private widget.TextBox TotalReal;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
+    private widget.TextBox kdgolongan;
     private widget.TextBox kdgudang;
+    private widget.TextBox kdjenis;
+    private widget.TextBox kdkategori;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label13;
+    private widget.Label label14;
     private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;
+    private widget.Label label20;
+    private widget.Label label22;
+    private widget.Label label23;
     private widget.Label label32;
     private widget.Label label34;
     private widget.Label label36;
@@ -803,12 +1149,16 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.Label label38;
     private widget.Label label39;
     private widget.Label label9;
+    private widget.TextBox nmgolongan;
     private widget.TextBox nmgudang;
+    private widget.TextBox nmjns;
+    private widget.TextBox nmkategori;
+    private widget.TextBox nobatch;
+    private widget.TextBox nofaktur;
+    private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppCetak;
-    private javax.swing.JMenuItem ppHapus;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
@@ -816,58 +1166,95 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         Valid.tabelKosong(tabMode);
         total=0;
         totalreal=0;
+        totallebih=0;
         try{     
-            pstampil=koneksi.prepareStatement("select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
-                     "opname.real, opname.selisih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal "+
-                     "from opname inner join databarang inner join bangsal "+
-                     "on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal "+
-                     "where opname.tanggal between ? and ? and opname.kode_brng like ? or "+
-                     "opname.tanggal between ? and ? and databarang.nama_brng like ? or "+
-                     "opname.tanggal between ? and ? and opname.kode_brng like ? or "+
-                     "opname.tanggal between ? and ? and bangsal.kd_bangsal like ? or "+
-                     "opname.tanggal between ? and ? and bangsal.nm_bangsal like ? or "+
-                     "opname.tanggal between ? and ? and databarang.kode_sat like ? or "+ 
-                     "opname.tanggal between ? and ? and opname.keterangan like ? order by opname.tanggal");
-            try {                
-                pstampil.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(6,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(9,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(12,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(15,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(18,"%"+TCari.getText().trim()+"%");
-                pstampil.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                pstampil.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                pstampil.setString(21,"%"+TCari.getText().trim()+"%");
+            if(nmjns.getText().equals("")&&nmkategori.getText().equals("")&&nmgolongan.getText().equals("")&&TCari.getText().equals("")){
+                pstampil=koneksi.prepareStatement("select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
+                     "opname.real, opname.selisih, opname.lebih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang,opname.nomilebih, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, "+
+                     "opname.no_batch,opname.no_faktur from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
+                     "inner join bangsal on opname.kd_bangsal=bangsal.kd_bangsal "+
+                     "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                     "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                     "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                     "opname.tanggal between ? and ? order by opname.tanggal");
+            }else{
+                pstampil=koneksi.prepareStatement("select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
+                     "opname.real, opname.selisih, opname.lebih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang,opname.nomilebih, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, "+
+                     "opname.no_batch,opname.no_faktur from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
+                     "inner join bangsal on opname.kd_bangsal=bangsal.kd_bangsal "+
+                     "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                     "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                     "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                     "opname.tanggal between ? and ? and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and opname.kode_brng like ? or "+
+                     "opname.tanggal between ? and ? and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and databarang.nama_brng like ? or "+
+                     "opname.tanggal between ? and ? and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and opname.kode_brng like ? or "+
+                     "opname.tanggal between ? and ? and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and bangsal.kd_bangsal like ? or "+
+                     "opname.tanggal between ? and ? and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and bangsal.nm_bangsal like ? or "+
+                     "opname.tanggal between ? and ? and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and databarang.kode_sat like ? or "+ 
+                     "opname.tanggal between ? and ? and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and opname.keterangan like ? order by opname.tanggal");
+            }
+                
+            try {     
+                if(nmjns.getText().equals("")&&nmkategori.getText().equals("")&&nmgolongan.getText().equals("")&&TCari.getText().equals("")){
+                    pstampil.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    pstampil.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstampil.setString(3,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                    pstampil.setString(4,"%"+kdkategori.getText()+nmkategori.getText().trim()+"%");
+                    pstampil.setString(5,"%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%");
+                    pstampil.setString(6,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstampil.setString(9,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                    pstampil.setString(10,"%"+kdkategori.getText()+nmkategori.getText().trim()+"%");
+                    pstampil.setString(11,"%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%");
+                    pstampil.setString(12,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstampil.setString(15,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                    pstampil.setString(16,"%"+kdkategori.getText()+nmkategori.getText().trim()+"%");
+                    pstampil.setString(17,"%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%");
+                    pstampil.setString(18,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstampil.setString(21,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                    pstampil.setString(22,"%"+kdkategori.getText()+nmkategori.getText().trim()+"%");
+                    pstampil.setString(23,"%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%");
+                    pstampil.setString(24,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstampil.setString(27,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                    pstampil.setString(28,"%"+kdkategori.getText()+nmkategori.getText().trim()+"%");
+                    pstampil.setString(29,"%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%");
+                    pstampil.setString(30,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstampil.setString(33,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                    pstampil.setString(34,"%"+kdkategori.getText()+nmkategori.getText().trim()+"%");
+                    pstampil.setString(35,"%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%");
+                    pstampil.setString(36,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    pstampil.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    pstampil.setString(39,"%"+kdjenis.getText()+nmjns.getText().trim()+"%");
+                    pstampil.setString(40,"%"+kdkategori.getText()+nmkategori.getText().trim()+"%");
+                    pstampil.setString(41,"%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%");
+                    pstampil.setString(42,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rstampil=pstampil.executeQuery();
-                total=0;
                 while(rstampil.next()){                
-                    totalreal=totalreal+rstampil.getDouble(9); 
-                    total=total+rstampil.getDouble(10);
-                    tabMode.addRow(new Object[]{rstampil.getString(1),
-                                   rstampil.getString(2),
-                                   df2.format(rstampil.getDouble(3)),
-                                   rstampil.getString(4),
-                                   rstampil.getString(5),
-                                   rstampil.getString(6),
-                                   rstampil.getString(7),                              
-                                   rstampil.getString(8),
-                                   df2.format(rstampil.getDouble(9)),
-                                   df2.format(rstampil.getDouble(10)),
-                                   rstampil.getString(11),
-                                   rstampil.getString(12),
-                                   rstampil.getString(13)});
+                    totalreal=totalreal+rstampil.getDouble(10); 
+                    total=total+rstampil.getDouble(11);
+                    totallebih=totallebih+rstampil.getDouble(12);
+                    tabMode.addRow(new Object[]{
+                        rstampil.getString(1),rstampil.getString(2),df2.format(rstampil.getDouble(3)),
+                        rstampil.getString(4),rstampil.getString(5),rstampil.getString(6),rstampil.getString(7),                              
+                        rstampil.getString(8),rstampil.getString(9),df2.format(rstampil.getDouble(10)),df2.format(rstampil.getDouble(11)),
+                        df2.format(rstampil.getDouble(12)),rstampil.getString(13),rstampil.getString(14),rstampil.getString(15),
+                        rstampil.getString(16),rstampil.getString(17)
+                    });
                 }
             } catch (Exception e) {
                System.out.println("Notif Opname : "+e);
@@ -885,6 +1272,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         LCount.setText(""+tabMode.getRowCount());
         LTotalBeli.setText(df2.format(totalreal));
         LTotal.setText(df2.format(total));
+        LTotal2.setText(df2.format(totallebih));
     }
 
     public void emptTeks() {
@@ -893,10 +1281,15 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         Stok.setText("0");
         Harga.setText("0");
         Real.setText("0");
-        Selisih.setText("0");        
-        Keterangan.setText("");
+        Selisih.setText("0");
+        Lebih.setText("0");      
+        TotalReal.setText("0");
+        Keterangan.setText("");   
+        nobatch.setText("");   
+        nofaktur.setText("");
         Tanggal.setDate(new Date());
         Nominal.setText("0");
+        NomiLebih.setText("0");
         Stok.requestFocus();
     }
 
@@ -909,10 +1302,15 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
             Stok.setText(tbKamar.getValueAt(row,5).toString());
             Real.setText(tbKamar.getValueAt(row,6).toString());            
             Selisih.setText(tbKamar.getValueAt(row,7).toString());        
-            Nominal.setText(tbKamar.getValueAt(row,8).toString());      
-            Keterangan.setText(tbKamar.getValueAt(row,9).toString());   
-            kdgudang.setText(tbKamar.getValueAt(row,11).toString());   
-            nmgudang.setText(tbKamar.getValueAt(row,12).toString());       
+            Lebih.setText(tbKamar.getValueAt(row,8).toString());      
+            TotalReal.setText(tbKamar.getValueAt(row,9).toString());          
+            Nominal.setText(tbKamar.getValueAt(row,10).toString());   
+            NomiLebih.setText(tbKamar.getValueAt(row,11).toString());            
+            Keterangan.setText(tbKamar.getValueAt(row,12).toString());   
+            kdgudang.setText(tbKamar.getValueAt(row,13).toString());   
+            nmgudang.setText(tbKamar.getValueAt(row,14).toString());   
+            nobatch.setText(tbKamar.getValueAt(row,15).toString());  
+            nofaktur.setText(tbKamar.getValueAt(row,16).toString());      
             Valid.SetTgl(Tanggal,tbKamar.getValueAt(row,4).toString());
         }
     }
@@ -927,9 +1325,7 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     
         
     public void isCek(){
-        BtnHapus.setEnabled(var.getstok_opname_obat());
-        BtnPrint.setEnabled(var.getstok_opname_obat());    
-        ppHapus.setEnabled(var.getstok_opname_obat());
-        ppCetak.setEnabled(var.getstok_opname_obat());
+        BtnHapus.setEnabled(akses.getstok_opname_obat());
+        BtnPrint.setEnabled(akses.getstok_opname_obat());    
     }
 }

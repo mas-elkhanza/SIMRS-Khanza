@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -34,7 +34,7 @@ import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
@@ -47,7 +47,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
     private String diagnosa="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariBangsal kamar=new DlgCariBangsal(null,false);
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);
@@ -120,7 +120,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         tbDokter2.setDefaultRenderer(Object.class, new WarnaTable());    
         
         TCari.setDocument(new batasInput((int)90).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -425,14 +425,13 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(50,50,50));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakBatang.setText("Grafik Batang 10 Penyakit Terbanyak");
         ppGrafikTerbanyakBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerbanyakBatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerbanyakBatang.setIconTextGap(8);
         ppGrafikTerbanyakBatang.setName("ppGrafikTerbanyakBatang"); // NOI18N
-        ppGrafikTerbanyakBatang.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerbanyakBatang.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerbanyakBatang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerbanyakBatangActionPerformed(evt);
@@ -442,14 +441,13 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerbanyakPie.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(50,50,50));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakPie.setText("Grafik Pie 10 Penyakit Terbanyak");
         ppGrafikTerbanyakPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerbanyakPie.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerbanyakPie.setIconTextGap(8);
         ppGrafikTerbanyakPie.setName("ppGrafikTerbanyakPie"); // NOI18N
-        ppGrafikTerbanyakPie.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerbanyakPie.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerbanyakPie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerbanyakPieActionPerformed(evt);
@@ -459,14 +457,13 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerkecilBatang.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(50,50,50));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilBatang.setText("Grafik Batang 10 Penyakit Tersedikit");
         ppGrafikTerkecilBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerkecilBatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerkecilBatang.setIconTextGap(8);
         ppGrafikTerkecilBatang.setName("ppGrafikTerkecilBatang"); // NOI18N
-        ppGrafikTerkecilBatang.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerkecilBatang.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerkecilBatang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerkecilBatangActionPerformed(evt);
@@ -476,14 +473,13 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerkecilPie.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilPie.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikTerkecilPie.setForeground(new java.awt.Color(50,50,50));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilPie.setText("Grafik Pie 10 Penyakit Tersedikit");
         ppGrafikTerkecilPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerkecilPie.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerkecilPie.setIconTextGap(8);
         ppGrafikTerkecilPie.setName("ppGrafikTerkecilPie"); // NOI18N
-        ppGrafikTerkecilPie.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerkecilPie.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerkecilPie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerkecilPieActionPerformed(evt);
@@ -500,7 +496,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -623,7 +619,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -649,7 +645,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -673,7 +668,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter2.setComponentPopupMenu(jPopupMenu1);
         tbDokter2.setName("tbDokter2"); // NOI18N
         scrollPane2.setViewportView(tbDokter2);
@@ -945,7 +939,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tbDokter.getRowCount()!=0){
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 int row=tbDokter.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -965,7 +959,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tbDokter2.getRowCount()!=0){
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 int row=tbDokter2.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -3261,7 +3255,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getpenyakit_ranap());
+        BtnPrint.setEnabled(akses.getpenyakit_ranap());
     }
     
     private void isForm(){

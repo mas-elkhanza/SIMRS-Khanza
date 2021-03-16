@@ -29,24 +29,24 @@
                     <table width='100%' bgcolor='#ffffff' align='left' border='1' padding='0' class='tbl_form' cellspacing='0' cellpadding='0'>
                         <tr padding='0' width='100%' > 
                             <td padding='0'>
-								   <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
-										<tr>
-											<td  width='20%'>
-																				<img width='45' height='45' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
-																			</td>
-																			<td>
-																				<center>
-																					<font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
-																					<font color='000000' size='1'  face='Tahoma'>
-																						".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
-																						".$setting["kontak"].", E-mail : ".$setting["email"]."
-																					</font> 
-																				</center>
-																			</td>
-																			<td  width='20%'><font color='000000' size='2'  face='Tahoma' align='right'>&nbsp;</font></td>
-										</tr>
-								  </table>
-							</td>
+                               <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
+                                  <tr>
+                                      <td  width='20%'>
+                                         <img width='45' height='45' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+                                      </td>
+                                      <td>
+                                         <center>
+                                            <font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+                                            <font color='000000' size='1'  face='Tahoma'>
+                                                    ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
+                                                    ".$setting["kontak"].", E-mail : ".$setting["email"]."
+                                            </font> 
+                                         </center>
+                                      </td>
+                                      <td  width='20%'><font color='000000' size='2'  face='Tahoma' align='right'>&nbsp;</font></td>
+                                  </tr>
+                              </table>
+                            </td>
                         </tr>
                         <tr class='isi12' padding='0' width='100%' height='350px' >                            
                             <td padding='0'  width='90%' valign='top'>

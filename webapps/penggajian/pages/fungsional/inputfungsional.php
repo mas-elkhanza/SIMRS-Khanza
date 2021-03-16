@@ -42,7 +42,9 @@
                 $BtnSimpan=$_POST['BtnSimpan'];
                 if (isset($BtnSimpan)) {
                     $TxtKode   = trim($_POST['TxtKode']);
-                    $TxtNama = trim($_POST['TxtNama']);
+                    $TxtKode   = validTeks($TxtKode);
+                    $TxtNama   = trim($_POST['TxtNama']);
+                    $TxtNama   = validTeks($TxtNama);
                     if ((!empty($TxtKode))&&(!empty($TxtNama))) {
                         switch($action) {
                             case "TAMBAH":

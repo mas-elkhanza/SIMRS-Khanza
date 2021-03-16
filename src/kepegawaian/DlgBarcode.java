@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -77,7 +77,7 @@ public final class DlgBarcode extends javax.swing.JDialog {
         Bcd.setDocument(new batasInput((int)25).getKata(Bcd));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -145,7 +145,7 @@ public final class DlgBarcode extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barcode Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barcode Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -523,35 +523,25 @@ public final class DlgBarcode extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){                
                 Map<String, Object> param = new HashMap<>();
                 param.put("parameter","%"+TCari.getText().trim()+"%");     
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptBarcode.jrxml","report","::[ Kartu Barcode ]::","select pegawai.id, "+
-                                "pegawai.nik,"+
-                                "pegawai.nama,"+
-                                "pegawai.jk,"+
-                                "pegawai.jbtn,"+
-                                "pegawai.jnj_jabatan,"+
-                                "pegawai.departemen,"+
-                                "pegawai.bidang,"+
-                                "barcode.barcode "+
-                                "from pegawai inner join jnj_jabatan on pegawai.jnj_jabatan=jnj_jabatan.kode "+
-                                "inner join barcode ON pegawai.id = barcode.id",param);
+                Valid.MyReport("rptBarcode.jasper","report","::[ Kartu Barcode ]::",param);
             }else if(! TCari.getText().trim().equals("")){                
                 Map<String, Object> param = new HashMap<>();
                 param.put("parameter","%"+TCari.getText().trim()+"%");     
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptBarcode.jrxml","report","::[ Kartu Barcode ]::","select pegawai.id, "+
+                Valid.MyReportqry("rptBarcode.jasper","report","::[ Kartu Barcode ]::","select pegawai.id, "+
                                 "pegawai.nik,"+
                                 "pegawai.nama,"+
                                 "pegawai.jk,"+
@@ -759,10 +749,10 @@ public final class DlgBarcode extends javax.swing.JDialog {
     }
        
      public void isCek(){
-        BtnSimpan.setEnabled(var.getbarcode());
-        BtnHapus.setEnabled(var.getbarcode());
-        BtnEdit.setEnabled(var.getbarcode());
-        BtnPrint.setEnabled(var.getbarcode());
+        BtnSimpan.setEnabled(akses.getbarcode());
+        BtnHapus.setEnabled(akses.getbarcode());
+        BtnEdit.setEnabled(akses.getbarcode());
+        BtnPrint.setEnabled(akses.getbarcode());
      }
 
 }

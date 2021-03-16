@@ -1,16 +1,17 @@
 
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-		$bulan=$baris[1];
-   }
+    $_sql         = "SELECT * FROM set_tahun";
+    $hasil        = bukaquery($_sql);
+    $baris        = mysqli_fetch_row($hasil);
+    $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
+    $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
+    $bln_leng  = strlen($blnini);
+    $bulan     = "0";
+    if ($bln_leng==1){
+        $bulan="0".$blnini;
+    }else{
+        $bulan=$blnini;
+    }
 ?>
 <div id="post">
     <div class="entry">
@@ -30,19 +31,19 @@
                       <input type=hidden name=tgl value=$tgl>
                       <input type=hidden name=tgl value=$tnd>
                       <input type=hidden name=action value=$action>";
-		        $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
-                $hasil=bukaquery($_sql);
-                $baris = mysqli_fetch_row($hasil);
+		        $_sql       = "SELECT nik,nama FROM pegawai where id='$id'";
+                $hasil      = bukaquery($_sql);
+                $baris      = mysqli_fetch_row($hasil);
 
-                $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' and pegawai.jbtn like '%dokter spesialis%' order by id asc limit 1";
+                $_sqlnext                   = "SELECT id FROM pegawai WHERE id>'$id' and pegawai.jbtn like '%dokter spesialis%' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    @$next              = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' and pegawai.jbtn like '%dokter spesialis%' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
+                    @$prev              = $barisprev[0];
                     
                     if(empty($next)){
                         $next=$prev;
@@ -62,16 +63,16 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >NIP</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[0];?></td>
+                    <td width="67%"><?php echo @$baris[0];?></td>
                 </tr>
-				<tr class="head">
+                <tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[1];?></td>
+                    <td width="67%"><?php echo @$baris[1];?></td>
                 </tr>                
-		<tr class="head">
+		        <tr class="head">
                     <td width="25%" >Tindakan</td><td width="">:</td>
                     <td width="75%">
-                        <select name="tnd" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="tnd" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                             <?php
                                 $_sql = "SELECT id,nama FROM master_tindakan where jns='dr Spesialis' ORDER BY nama";
                                 $hasil=bukaquery($_sql);
@@ -104,19 +105,23 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim(isset($_POST['id']))?trim($_POST['id']):NULL;
-                    $tgl                =$tahun."-".$bulan."-01 00:00:00";
-                    $tnd                =trim(isset($_POST['tnd']))?trim($_POST['tnd']):NULL;
-                    $_sql = "SELECT jm FROM master_tindakan where id='$tnd'";
-                    $hasil=bukaquery($_sql);
-                    $baris = mysqli_fetch_array($hasil);
-                    $jm                 =$baris[0];
-                    $nm_pasien          =trim(isset($_POST['nm_pasien']))?trim($_POST['nm_pasien']):NULL;
-                    $kamar              =trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
-                    $diagnosa           =trim(isset($_POST['diagnosa']))?trim($_POST['diagnosa']):NULL;
-                    $jmlh               =trim(isset($_POST['jmlh']))?trim($_POST['jmlh']):NULL;
-                    $ttljm              =$jm*$jmlh;
-                    if ((!empty($id))&&(!empty($tgl))&&(!empty($tnd))) {
+                    $id                 = trim(isset($_POST['id']))?trim($_POST['id']):NULL;
+                    $tgl                = $tahun."-".$bulan."-01 00:00:00";
+                    $tnd                = trim(isset($_POST['tnd']))?trim($_POST['tnd']):NULL;
+                    $_sql               = "SELECT jm FROM master_tindakan where id='$tnd'";
+                    $hasil              = bukaquery($_sql);
+                    $baris              = mysqli_fetch_array($hasil);
+                    $jm                 = $baris[0];
+                    $nm_pasien          = trim(isset($_POST['nm_pasien']))?trim($_POST['nm_pasien']):NULL;
+                    $nm_pasien          = validTeks($nm_pasien);
+                    $kamar              = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
+                    $kamar              = validTeks($kamar);
+                    $diagnosa           = trim(isset($_POST['diagnosa']))?trim($_POST['diagnosa']):NULL;
+                    $diagnosa           = validTeks($diagnosa);
+                    $jmlh               = trim(isset($_POST['jmlh']))?trim($_POST['jmlh']):NULL;
+                    $jmlh               = validangka($jmlh);
+                    $ttljm              = $jm*$jmlh;
+                    if ((isset($id))&&(isset($tgl))&&(isset($tnd))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" rawatjalan  "," '$tgl','$id','$tnd','$ttljm','-',
@@ -128,7 +133,7 @@
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputRj&action=TAMBAH&id=$id'>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($tgl))||(empty($tnd))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -147,7 +152,7 @@
                         rawatjalan.jmlh
                         from rawatjalan inner join master_tindakan
                         where rawatjalan.tnd=master_tindakan.id and rawatjalan.id='$id'
-			and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC";
+			            and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttljm=0;
@@ -177,7 +182,16 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data Detail masih kosong !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                        <tr class='head'>
+                            <td width='12%'><div align='center'>Proses</div></td>
+                            <td width='40%'><div align='center'>Nama Tindakan</div></td>
+                            <td width='24%'><div align='center'>JM Tindakan</div></td>
+                            <td width='24%'><div align='center'>Jml.Tindakan</div></td>
+                        </tr>
+                    </table>";
+            }
         ?>
         </div>
         </form>

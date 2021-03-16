@@ -15,12 +15,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php title();?></title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/webcam.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style type="text/css">
+        #results { padding: 0px; background:#EEFFEE; width: 490; height: 390 }
+    </style>
     <link href="css/default.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="library/tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript" src="conf/validator.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.dropdown.js"></script>
-    <script type="text/javascript" src="cam/webcam.js"></script>
 </head>
 <!--This template was created by www.flash-templates-today.com
 Flash-Templates-Today.com - Gives a possibility to obtain a ready free flash template, free css template and other kind of website template!-->

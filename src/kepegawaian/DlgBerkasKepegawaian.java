@@ -12,11 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Properties;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -58,7 +56,6 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private final JTextField txtURL = new JTextField();
     private final JProgressBar progressBar = new JProgressBar();
     private final JLabel lblStatus = new JLabel();
-    private final Properties prop = new Properties(); 
     private WebEngine engine;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -78,16 +75,12 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         setSize(885,674);
         
         initComponents2();
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));                                
-        } catch (Exception e) {
-        }
         
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         TNm.setDocument(new batasInput((byte)50).getKata(TNm));
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -128,7 +121,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                     JenjangJabatan.setText(Sequel.cariIsi("select nama from jnj_jabatan where kode=?",pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),4).toString()));
  
                     try {
-                        loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
+                        loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
                     }
@@ -158,12 +151,12 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         LoadHTML5.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                 ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML1.setDocument(doc);
@@ -242,7 +235,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame2.add(PanelContent);        
     }
     
-     private void createScene() {        
+    private void createScene() {        
         Platform.runLater(new Runnable() {
 
             public void run() {
@@ -305,12 +298,12 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
                         if (newState == Worker.State.SUCCEEDED) {
                             try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
+                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/",""));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("Keluar")){
                                     dispose();    
                                 }
                             } catch (Exception ex) {
@@ -424,7 +417,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Berkas Kepegawaian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Berkas Kepegawaian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -508,7 +501,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setOpaque(true);
@@ -811,7 +804,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             case 0:
                 if(!TKd.getText().equals("")){
                     try {
-                        loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=DetailBerkasPegawai&action=TAMBAH&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));
+                        loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"penggajian/index.php?act=DetailBerkasPegawai&action=TAMBAH&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
                     }
@@ -909,7 +902,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private void CmbKategoriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbKategoriItemStateChanged
         if(!TKd.getText().equals("")){
             try {
-                loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
+                loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
             }
@@ -1010,16 +1003,16 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jenjang Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Departemen</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Bidang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Status Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Pendidikan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%'>Mulai Kerja</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>NIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pegawai</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jenjang Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Departemen</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Bidang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status Karyawan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Pendidikan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Mulai Kerja</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
                  "select pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.jnj_jabatan,"+
@@ -1085,7 +1078,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1133,16 +1126,16 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jenjang Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Departemen</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Bidang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Status Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Pendidikan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%'>Mulai Kerja</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>NIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pegawai</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jenjang Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Departemen</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Bidang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status Karyawan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Pendidikan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Mulai Kerja</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
                  "select pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.jnj_jabatan,"+
@@ -1208,7 +1201,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1256,16 +1249,16 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jenjang Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Departemen</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Bidang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Status Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Pendidikan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%'>Mulai Kerja</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>NIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pegawai</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jenjang Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Departemen</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Bidang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status Karyawan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Pendidikan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Mulai Kerja</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
                  "select pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.jnj_jabatan,"+
@@ -1331,7 +1324,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1379,16 +1372,16 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jenjang Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Departemen</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Bidang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Status Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Pendidikan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%'>Mulai Kerja</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>NIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pegawai</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jenjang Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Departemen</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Bidang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status Karyawan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Pendidikan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Mulai Kerja</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
                  "select pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.jnj_jabatan,"+
@@ -1454,7 +1447,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1502,16 +1495,16 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Jenjang Jabatan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Departemen</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Bidang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'>Status Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='11%'>Pendidikan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%'>Mulai Kerja</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>NIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pegawai</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Jenjang Jabatan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Departemen</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Bidang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Status Karyawan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Pendidikan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Mulai Kerja</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
                  "select pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.jnj_jabatan,"+
@@ -1577,7 +1570,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }

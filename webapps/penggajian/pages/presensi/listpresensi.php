@@ -3,13 +3,13 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
+   $bln_leng     = strlen(empty($baris[1])?date("m"):$baris[1]);
    if ($bln_leng==1){
-    	$bulan="0".$baris[1];
+    	$bulan = "0".$bulan;
    }else{
-		$bulan=$baris[1];
+		$bulan = $bulan;
    }
 ?>
 
@@ -20,25 +20,23 @@
     <div class="entry">
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $action  = isset($_GET['action'])?$_GET['action']:NULL;
+                $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+                $keyword = validTeks($keyword);
+
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
-            <table width="100%" align="center">
+        <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" />
+                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
-            </table> <br>
+        </table> <br>
             
     <div style="width: 100%; height: 78%; overflow: auto;">	
     <?php
-        $awal=isset($_GET['awal'])?$_GET['awal']:NULL;
-	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-        if (empty($awal)) $awal=0;
-
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama
                 FROM pegawai where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%'
                 ORDER BY pegawai.id ASC ";
@@ -46,7 +44,6 @@
         $jumlah=mysqli_num_rows($hasil);
 
         if(mysqli_num_rows($hasil)!=0) {
-
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='7%'><div align='center'>Proses</div></td>
@@ -63,15 +60,15 @@
                                 where presensi.id='$baris[0]' and presensi.tgl like '%".$tahun."-".$bulan."%'
                                 and presensi.jns='HB'
                                 group by presensi.id";
-			$hasil2=bukaquery($_sql2);
-			$baris2 = mysqli_fetch_array($hasil2);
+			            $hasil2=bukaquery($_sql2);
+			            $baris2 = mysqli_fetch_array($hasil2);
                         $_sql3="select count(presensi.id),sum(presensi.lembur)
                                 from presensi
                                 where presensi.id='$baris[0]' and presensi.tgl like '%".$tahun."-".$bulan."%'
                                 and presensi.jns='HR'
                                 group by presensi.id";
-			$hasil3=bukaquery($_sql3);
-			$baris3=mysqli_fetch_array($hasil3);
+			            $hasil3=bukaquery($_sql3);
+			            $baris3=mysqli_fetch_array($hasil3);
                         
                         echo "<tr class='isi'>
                                 <td>
@@ -79,17 +76,29 @@
                                         <a href=?act=DetailPresensi&action=TAMBAH&id=$baris[0]>[Detail]</a>&nbsp;
                                     </center>
                                </td>
-                                <td>$baris[1] &nbsp;</td>
-                                <td>$baris[2] &nbsp;</td>
-                                <td>$baris2[0] &nbsp;</td>
-                                <td>$baris2[1] &nbsp;</td>
-                                <td>$baris3[0] &nbsp;</td>
-                                <td>$baris3[1] &nbsp;</td>
+                                <td>".@$baris[1]."&nbsp;</td>
+                                <td>".@$baris[2]."&nbsp;</td>
+                                <td>".@$baris2[0]."&nbsp;</td>
+                                <td>".@$baris2[1]."&nbsp;</td>
+                                <td>".@$baris3[0]."&nbsp;</td>
+                                <td>".@$baris3[1]."&nbsp;</td>
                              </tr>";
                     }
             echo "</table>";
 
-        } else {echo "Data Presensi masih kosong !";}
+        } else {
+            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='7%'><div align='center'>Proses</div></td>
+                        <td width='10%'><div align='center'>NIP</div></td>
+                        <td width='33%x'><div align='center'>Nama</div></td>
+                        <td width='10%'><div align='center'>Hadir HB</div></td>
+                        <td width='15%'><div align='center'>Index Lembur HB</div></td>
+                        <td width='10%'><div align='center'>Hadir HR</div></td>
+                        <td width='15%'><div align='center'>Index Lembur HR</div></td>
+                    </tr>
+                  </table>";
+        }
 
     ?>
     </div>

@@ -7,11 +7,10 @@ package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.FileInputStream;
+import fungsi.koneksiDB;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -30,10 +29,9 @@ public class BPJSCekNoKartu {
             provUmumkdProvider="",provUmumnmProvider="",sex="",statusPesertaketerangan="",
             statusPesertakode="",tglCetakKartu="",tglLahir="",tglTAT="",
             tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="";
-    private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="";
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -45,8 +43,7 @@ public class BPJSCekNoKartu {
     public BPJSCekNoKartu(){
         super();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/";	
+            URL =koneksiDB.URLAPIBPJS()+"/Peserta/nokartu/";	
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -56,7 +53,7 @@ public class BPJSCekNoKartu {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
 	    headers.add("X-Signature",api.getHmac());
 	    requestEntity = new HttpEntity(headers);

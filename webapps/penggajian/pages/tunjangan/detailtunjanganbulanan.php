@@ -12,15 +12,15 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-		$id                 =isset($_GET['id'])?$_GET['id']:NULL;
-		$nama               =str_replace("_"," ",isset($_GET['nama']))?str_replace("_"," ",$_GET['nama']):NULL;
+		        $id                 =isset($_GET['id'])?$_GET['id']:NULL;
+		        $nama               =str_replace("_"," ",isset($_GET['nama']))?str_replace("_"," ",$_GET['nama']):NULL;
                 $tnj                =isset($_GET['tnj'])?$_GET['tnj']:NULL;
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Nama Tunjangan</td><td width="">:</td>
-                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $nama;?>" size="50" maxlength="40">
+                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $nama;?>" size="50" maxlength="40" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -35,13 +35,15 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-		    $id                 =trim(isset($_POST['id']))?trim($_POST['id']):NULL;
-                    $nama               =trim(isset($_POST['nama']))?trim($_POST['nama']):NULL;
-                    $tnj                =trim(isset($_POST['tnj']))?trim($_POST['tnj']):NULL;
-                    if ((!empty($nama))&&(!empty($tnj))) {
+		            $id                 = trim(isset($_POST['id']))?trim($_POST['id']):NULL;
+                    $nama               = trim(isset($_POST['nama']))?trim($_POST['nama']):NULL;
+                    $nama               = validTeks($nama);
+                    $tnj                = trim(isset($_POST['tnj']))?trim($_POST['tnj']):NULL;
+                    $tnj                = validangka($tnj);
+                    if ((isset($nama))&&(isset($tnj))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" master_tunjangan_bulanan ","'','$nama','$tnj'", " Master Tunjangan bulanan " );
+                                Tambah(" master_tunjangan_bulanan ","'0','$nama','$tnj'", " Master Tunjangan bulanan " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailTunjanganBulanan&action=TAMBAH&nama='$nama'>";
                                 break;
 							case "UBAH":
@@ -49,7 +51,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailTunjanganBulanan&action=TAMBAH&nama='$nama'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($nama))||(empty($tnj))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -71,7 +73,7 @@
                       echo "<tr class='isi'>
                                 <td>
                                     <center>
-				    <a href=?act=DetailTunjanganBulanan&action=UBAH&id=".$baris[0]."&nama=".str_replace(" ","_",$baris[1])."&tnj=".$baris[2].">[edit]</a>";?>
+				                    <a href=?act=DetailTunjanganBulanan&action=UBAH&id=".$baris[0]."&nama=".str_replace(" ","_",$baris[1])."&tnj=".$baris[2].">[edit]</a>";?>
                                     <a href="?act=DetailTunjanganBulanan&action=HAPUS&id=<?php print $baris[0] ?>&nama=<?php print str_replace(" ","_",$baris[1]) ?>" >[hapus]</a>
                             <?php
                             echo "</center>
@@ -82,7 +84,15 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data Master Tunjangan Bulanan !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='12%'><div align='center'>Proses</div></td>
+                                <td width='55%'><div align='center'>Nama Tunjangan</div></td>
+                                <td width='33%'><div align='center'>Besar Tunjangan</div></td>
+                            </tr>
+                        </table>";
+            }
         ?>
         </div>
         </form>

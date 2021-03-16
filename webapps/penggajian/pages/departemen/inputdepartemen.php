@@ -10,24 +10,24 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:null;
-                $dep_id     =str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
+                $action     = isset($_GET['action'])?$_GET['action']:null;
+                $dep_id     = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
                 if($action == "TAMBAH"){
-                    $dep_id      = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
+                    $dep_id    = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
                     $nama      = "";
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT * FROM departemen WHERE dep_id='$dep_id'";
                     $hasil        = bukaquery($_sql);
                     $baris        = mysqli_fetch_row($hasil);
-                    $dep_id         = $baris[0];
-                    $nama          = $baris[1];
+                    $dep_id       = $baris[0];
+                    $nama         = $baris[1];
                 }
                 echo"<input type=hidden name=dep_id value=$dep_id><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Dep ID</td><td width="">:</td>
-                    <td width="67%"><input name="dep_id" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $dep_id;?>" size="10" maxlength="4">
+                    <td width="67%"><input name="dep_id" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $dep_id;?>" size="10" maxlength="4" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -42,9 +42,11 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $dep_id    = trim($_POST['dep_id']);
+                    $dep_id  = trim($_POST['dep_id']);
+                    $dep_id  = validTeks($dep_id);
                     $nama    = trim($_POST['nama']);
-                    if ((!empty($dep_id))&&(!empty($nama))) {
+                    $nama    = validTeks($nama);
+                    if ((isset($dep_id))&&(isset($nama))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" departemen "," '$dep_id','$nama' ", " Departemen " );
@@ -55,7 +57,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListDepartemen'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($dep_id))||(empty($nama))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

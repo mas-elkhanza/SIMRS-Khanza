@@ -149,7 +149,7 @@ public class batasInput {
             }
         };return filter;
     }
-    
+   
     public PlainDocument getKata(final JTextArea inputan){
         filter=new PlainDocument(){
             @Override

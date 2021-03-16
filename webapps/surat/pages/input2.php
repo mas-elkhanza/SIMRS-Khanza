@@ -3,7 +3,7 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 $action =isset($_GET['action'])?$_GET['action']:NULL;
-                $max    = getOne("select ifnull(MAX(CONVERT(RIGHT(no_surat,3),signed)),0)+1 from surat_keluar where tgl_kirim=current_date()");
+                $max    = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim=current_date()");
                 $no_urut= "SK".str_replace("-","",getOne("select current_date()")).sprintf("%03s", $max);
                 echo "<input type=hidden name=action value=$action>";
             ?>

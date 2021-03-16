@@ -6,12 +6,12 @@
 package fungsi;
 
 
+import java.awt.Desktop;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -25,7 +25,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JButton;
@@ -42,22 +41,21 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
+import widget.Button;
+import widget.TextArea;
 /**
  *
  * @author Owner
  */
 public final class validasi {
     private int a,j,i,result=0;
-    private String s,s1,auto,PEMBULATANHARGAOBAT="";
+    private String s,s1,auto,PEMBULATANHARGAOBAT=koneksiDB.PEMBULATANHARGAOBAT();
     private final Connection connect=koneksiDB.condb();
     private final sekuel sek=new sekuel();
     private final java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
@@ -71,16 +69,11 @@ public final class validasi {
     private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
     private final int year=(now.get(Calendar.YEAR));
-    private static final Properties prop = new Properties();  
+    private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
+                         "tujuh","delapan","sembilan","sepuluh","sebelas"};
     
     public validasi(){
         super();
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            PEMBULATANHARGAOBAT=prop.getProperty("PEMBULATANHARGAOBAT");
-        }catch(Exception e){
-            PEMBULATANHARGAOBAT="no"; 
-        }
     };
 
     public void autoNomer(DefaultTableModel tabMode,String strAwal,Integer pnj,javax.swing.JTextField teks){        
@@ -479,6 +472,33 @@ public final class validasi {
             System.out.println("Notifikasi : "+e);
         }
     }
+    
+    public void loadCombo(JComboBox cmb,String query){
+        cmb.removeAllItems();
+        try {
+            ps=connect.prepareStatement(query);
+            try{
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    String item=rs.getString(1);
+                    cmb.addItem(item);
+                    a++;
+                }          
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
 
     public void LoadTahun(JComboBox cmb){        
         cmb.removeAllItems();
@@ -498,7 +518,7 @@ public final class validasi {
     }
 
     @SuppressWarnings("empty-statement")
-    public void MyReport(String reportName,String reportDirName,String judul,String qry){
+    public void MyReport(String reportName,String reportDirName,String judul,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -512,34 +532,19 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
         try {
             try (Statement stm = connect.createStatement()) {
-                Map<String, Object> parameters = new HashMap<>();
-                
                 try {
                     
                     String namafile="./"+reportDirName+"/"+reportName;
-                    File reportfile=new File(namafile);
-                    
-                    JRDesignQuery newQuery = new JRDesignQuery();
-                    newQuery.setText(qry);
-                    JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                    jasperDesign.setQuery(newQuery);
-                    
-                    JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
                     
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -559,7 +564,7 @@ public final class validasi {
     }
     
     @SuppressWarnings("empty-statement")
-    public void MyReport2(String reportName,String reportDirName,String judul,String qry){
+    public void MyReportPDF(String reportName,String reportDirName,String judul,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -573,34 +578,59 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
+        try {
+            try (Statement stm = connect.createStatement()) {
+                try {
+                    File f = new File("./"+reportDirName+"/"+reportName.replaceAll("jasper","pdf")); 
+                    String namafile="./"+reportDirName+"/"+reportName;
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
+                    JasperExportManager.exportReportToPdfFile(jasperPrint,"./"+reportDirName+"/"+reportName.replaceAll("jasper","pdf"));
+                    Desktop.getDesktop().open(f);
+                } catch (Exception rptexcpt) {
+                    System.out.println("Report Can't view because : " + rptexcpt);
+                    JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    @SuppressWarnings("empty-statement")
+    public void MyReport2(String reportName,String reportDirName,String judul,Map parameters){
+        Properties systemProp = System.getProperties();
 
+        // Ambil current dir
+        String currentDir = systemProp.getProperty("user.dir");
+
+        File dir = new File(currentDir);
+
+        File fileRpt;
+        String fullPath = "";
+        if (dir.isDirectory()) {
+            String[] isiDir = dir.list();
+            for (String iDir : isiDir) {
+                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
+                    fullPath = fileRpt.toString();
+                    System.out.println("Found Report File at : " + fullPath);
+                } // end if
+            } // end for i
+        } // end if
 
         try {
             try (Statement stm = connect.createStatement()) {
-                Map<String, Object> parameters = new HashMap<>();
-                
                 try {
                     
                     String namafile="./"+reportDirName+"/"+reportName;
-                    File reportfile=new File(namafile);
-                    
-                    JRDesignQuery newQuery = new JRDesignQuery();
-                    newQuery.setText(qry);
-                    JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                    jasperDesign.setQuery(newQuery);
-                    
-                    JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
                     
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -619,7 +649,7 @@ public final class validasi {
         }
     }
     
-    public void MyReport(String reportName,String reportDirName,String judul,String qry,Map parameters){
+    public void MyReportqry(String reportName,String reportDirName,String judul,String qry,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -640,23 +670,14 @@ public final class validasi {
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
         try {
+            ps=connect.prepareStatement(qry);
             try {
                 String namafile="./"+reportDirName+"/"+reportName;
-                File reportfile=new File(namafile);
-
-                JRDesignQuery newQuery = new JRDesignQuery();
-                newQuery.setText(qry);
-                JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                jasperDesign.setQuery(newQuery);
-
-                JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                rs=ps.executeQuery();
+                JRResultSetDataSource rsdt = new JRResultSetDataSource(rs);
+                
+                JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters,rsdt);
 
                 JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                 jasperViewer.setTitle(judul);
@@ -668,13 +689,20 @@ public final class validasi {
             } catch (Exception rptexcpt) {
                 System.out.println("Report Can't view because : " + rptexcpt);
                 JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
     
-    public void MyReport2(String reportName,String reportDirName,String judul,String qry,Map parameters){
+    public void MyReportqrypdf(String reportName,String reportDirName,String judul,String qry,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -691,47 +719,40 @@ public final class validasi {
                 if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
-                } 
-            } 
-        } 
-
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
+                } // end if
+            } // end for i
+        } // end if
 
         try {
+            ps=connect.prepareStatement(qry);
             try {
                 String namafile="./"+reportDirName+"/"+reportName;
-                File reportfile=new File(namafile);
-
-                JRDesignQuery newQuery = new JRDesignQuery();
-                newQuery.setText(qry);
-                JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                jasperDesign.setQuery(newQuery);
-
-                JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
-
-                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                jasperViewer.setTitle(judul);
-                Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-                jasperViewer.setSize(screen.width-50,screen.height-50);
-                jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-                jasperViewer.setLocationRelativeTo(null);
-                jasperViewer.setVisible(true);
+                File f = new File("./"+reportDirName+"/"+reportName.replaceAll("jasper","pdf")); 
+                rs=ps.executeQuery();
+                JRResultSetDataSource rsdt = new JRResultSetDataSource(rs);
+                JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters,rsdt);
+                JasperExportManager.exportReportToPdfFile(jasperPrint,"./"+reportDirName+"/"+reportName.replaceAll("jasper","pdf"));
+                Desktop.getDesktop().open(f);
             } catch (Exception rptexcpt) {
                 System.out.println("Report Can't view because : " + rptexcpt);
                 JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+
     
     public void MyReport(String reportName,Map parameters,String title){
         try {
-                JasperViewer jasperViewer =new JasperViewer(JasperFillManager.fillReport(JasperCompileManager.compileReport("./report/"+reportName),parameters,connect), false);
+                JasperViewer jasperViewer =new JasperViewer(JasperFillManager.fillReport("./report/"+reportName,parameters,connect), false);
                 jasperViewer.setTitle(title);
                 jasperViewer.setLocationRelativeTo(null);
                 jasperViewer.setVisible(true);
@@ -785,6 +806,14 @@ public final class validasi {
     }
 
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah(java.awt.event.KeyEvent evt,JTextArea kiri,JTextArea kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -881,6 +910,14 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
+    
+    public void pindah(KeyEvent evt, Button kiri, TextArea kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
 
     public void pindah(java.awt.event.KeyEvent evt,JDateTimePicker kiri,JTextField kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -934,17 +971,15 @@ public final class validasi {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();                                
         try{ 
-            Properties prop = new Properties();
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(os.contains("win")) {
-                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
             }else if (os.contains("mac")) {
-                rt.exec( "open " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "open " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+url);
             }else if (os.contains("nix") || os.contains("nux")) {
                 String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
-                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");
+                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/").append(url).append( "\" ");
                 rt.exec(new String[] { "sh", "-c", cmd.toString() });
             } 
         }catch (Exception e){
@@ -956,8 +991,6 @@ public final class validasi {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();                                
         try{ 
-            Properties prop = new Properties();
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(os.contains("win")) {
                 rt.exec( "rundll32 url.dll,FileProtocolHandler "+url);
             }else if (os.contains("mac")) {
@@ -976,9 +1009,7 @@ public final class validasi {
     
     public void printUrl(String url) throws URISyntaxException{
         try{
-           Properties prop = new Properties();
-           prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
+           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+url)));  
         }catch (Exception e) {
            System.out.println(e);
         }
@@ -987,7 +1018,7 @@ public final class validasi {
     public void SetTgl(DefaultTableModel tabMode,JTable table,JDateTimePicker dtp,int i){
         j=table.getSelectedRow();
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString());
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString().replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -995,6 +1026,7 @@ public final class validasi {
     }
     
     public String SetTgl(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2);
@@ -1003,7 +1035,18 @@ public final class validasi {
         return s;
     }
     
+    public String SetTglJam(String original){
+        original=original.replaceAll("'","");
+        s = "";
+        try {
+            s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2)+" "+original.substring(11,19);
+        }catch (Exception e) {
+        }   
+        return s;
+    }
+    
     public String SetTgl3(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(8,10)+"-"+original.substring(5,7)+"-"+original.substring(0,4);
@@ -1023,7 +1066,7 @@ public final class validasi {
     
     public void SetTgl(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1032,7 +1075,7 @@ public final class validasi {
     
     public void SetTgl2(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1041,11 +1084,21 @@ public final class validasi {
     
     public Date SetTgl2(String tgl){
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            return dtpa;
         } catch (ParseException ex) {
            return new Date();
         }
+    }
+    
+    public String SetTgl4(String original){
+        original=original.replaceAll("'","");
+        s = "";
+        try {
+            s=original.substring(6,10)+original.substring(3,5)+original.substring(0,2);
+        }catch (Exception e) {
+        }   
+        return s;
     }
     
     public void textKosong(JTextField teks,String pesan){
@@ -1138,6 +1191,51 @@ public final class validasi {
             return Math.round(number);
         }
     }
+    
+    public String terbilang(double angka){
+        if(angka<12)
+        {
+          return nomina[(int)angka];
+        }
+        
+        if(angka>=12 && angka <=19)
+        {
+            return nomina[(int)angka%10] +" belas ";
+        }
+        
+        if(angka>=20 && angka <=99)
+        {
+            return nomina[(int)angka/10] +" puluh "+nomina[(int)angka%10];
+        }
+        
+        if(angka>=100 && angka <=199)
+        {
+            return "seratus "+ terbilang(angka%100);
+        }
+        
+        if(angka>=200 && angka <=999)
+        {
+            return nomina[(int)angka/100]+" ratus "+terbilang(angka%100);
+        }
+        
+        if(angka>=1000 && angka <=1999)
+        {
+            return "seribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 2000 && angka <=999999)
+        {
+            return terbilang((int)angka/1000)+" ribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 1000000 && angka <=999999999)
+        {
+            return terbilang((int)angka/1000000)+" juta "+ terbilang(angka%1000000);
+        }
+        
+        return "";
+    }
 
+    
        
 }

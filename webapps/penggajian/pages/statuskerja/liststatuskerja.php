@@ -10,14 +10,16 @@
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $action  = isset($_GET['action'])?$_GET['action']:NULL;
+                $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+                $keyword = validTeks($keyword);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" />
+                    <td width="82%">
+                        <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
@@ -25,7 +27,6 @@
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
         $_sql = "SELECT stts,ktg,indek FROM stts_kerja where stts like '%".$keyword."%' or ktg like '%".$keyword."%' ORDER BY indek desc ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
@@ -54,7 +55,16 @@
                     }
             echo "</table>";
             
-        } else {echo "Data Status Kerja masih kosong !";}
+        } else {
+            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>					   
+                        <td width='12%'><div align='center'>Proses</div></td>
+                        <td width='28%'><div align='center'>Status</div></td>
+                        <td width='40%'><div align='center'>Keterangan</div></td>
+                        <td width='20%'><div align='center'>Index Status</div></td>
+                    </tr>
+                  </table>";
+        }
 
     ?>
     
