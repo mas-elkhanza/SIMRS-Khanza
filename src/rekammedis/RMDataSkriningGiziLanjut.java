@@ -175,6 +175,35 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         }); 
         
+        BB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
+        });
+        
+        TB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
+        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -258,6 +287,9 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         TotalSkor = new widget.TextBox();
         ParameterSkor = new widget.TextBox();
         jLabel28 = new widget.Label();
+        jLabel29 = new widget.Label();
+        IMT = new widget.TextBox();
+        jLabel30 = new widget.Label();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -446,7 +478,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -460,7 +492,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -556,7 +588,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2020" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2021" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -665,7 +697,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         jLabel24.setText("Alergi :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(341, 70, 75, 23);
+        jLabel24.setBounds(430, 70, 75, 23);
 
         Alergi.setHighlighter(null);
         Alergi.setName("Alergi"); // NOI18N
@@ -675,7 +707,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
             }
         });
         FormInput.add(Alergi);
-        Alergi.setBounds(420, 70, 369, 23);
+        Alergi.setBounds(509, 70, 280, 23);
 
         jLabel8.setText("Tgl.Lahir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -711,7 +743,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         jLabel15.setText("TB :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(178, 70, 40, 23);
+        jLabel15.setBounds(158, 70, 40, 23);
 
         TB.setFocusTraversalPolicyProvider(true);
         TB.setName("TB"); // NOI18N
@@ -721,13 +753,13 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
             }
         });
         FormInput.add(TB);
-        TB.setBounds(222, 70, 60, 23);
+        TB.setBounds(202, 70, 60, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("Cm");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(285, 70, 30, 23);
+        jLabel25.setBounds(265, 70, 30, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("1.  Skor IMT /z Score");
@@ -850,6 +882,23 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(0, 100, 75, 23);
+
+        jLabel29.setText("IMT :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(290, 70, 42, 23);
+
+        IMT.setEditable(false);
+        IMT.setFocusTraversalPolicyProvider(true);
+        IMT.setName("IMT"); // NOI18N
+        FormInput.add(IMT);
+        IMT.setBounds(336, 70, 60, 23);
+
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText("Kg/Cm");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(399, 70, 50, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1278,6 +1327,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox IMT;
     private widget.ComboBox Jam;
     private widget.Label LCount;
     private widget.ComboBox Menit;
@@ -1318,6 +1368,8 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
     private widget.Label jLabel26;
     private widget.Label jLabel27;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1588,6 +1640,12 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         };
         // Timer
         new Timer(1000, taskPerformer).start();
+    }
+    
+    private void isBMI(){
+        if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
+            IMT.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+        }
     }
     
 }

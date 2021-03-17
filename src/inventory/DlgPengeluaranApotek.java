@@ -1135,6 +1135,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
         
     }
+    
+    
       
     private void getData(){
         row=tbDokter.getSelectedRow();

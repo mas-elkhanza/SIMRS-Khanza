@@ -1234,7 +1234,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 param.put("atasnama",AtasNama.getText()); 
                 param.put("norek",NoRek.getText()); 
                 param.put("tagihan",LCountDipilih2.getText()); 
-                param.put("terbilang",Valid.terbilang(total)); 
+                param.put("terbilang",Valid.terbilang(total)+" rupiah"); 
                 param.put("bagianpenagihan",nmptg.getText()); 
                 param.put("catatan",Catatan.getText()); 
                 param.put("menyetujui",nmmenyetujui.getText()); 
@@ -1285,7 +1285,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 param.put("atasnama",AtasNama.getText()); 
                 param.put("norek",NoRek.getText()); 
                 param.put("tagihan",LCountDipilih2.getText()); 
-                param.put("terbilang",Valid.terbilang(total)); 
+                param.put("terbilang",Valid.terbilang(total)+" rupiah"); 
                 param.put("bagianpenagihan",nmptg.getText()); 
                 param.put("menyetujui",nmmenyetujui.getText()); 
                 param.put("catatan",Catatan.getText()); 
