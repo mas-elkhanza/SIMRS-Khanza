@@ -232,6 +232,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        tbBangsal.setAutoCreateRowSorter(true);
         tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
