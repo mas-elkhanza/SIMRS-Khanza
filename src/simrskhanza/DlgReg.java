@@ -6434,6 +6434,7 @@ public final class DlgReg extends javax.swing.JDialog {
                         dlgki.emptTeks();
                         dlgki.isCek();
                         dlgki.setNoRm(TNoRw.getText(), TNoRM.getText(), TPasien.getText());
+                        dlgki.setDiagnosaMasuk(Sequel.cariString("Select keluhan from temp_spri where norm='" + TNoRM.getText() + "' and tanggal='" + Valid.SetDateToString(DTPReg.getDate()) + "'"));
                         dlgki.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
