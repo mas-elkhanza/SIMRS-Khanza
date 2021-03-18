@@ -168,7 +168,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{nama_bayi}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="0" width="551" height="16" uuid="18882777-63fc-4ebd-a4f0-6fb44a5e3131">
+				<reportElement x="2" y="7" width="551" height="16" uuid="18882777-63fc-4ebd-a4f0-6fb44a5e3131">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -360,41 +360,41 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<text><![CDATA[RUMAH SAKIT UMUM ISLAM<BR><font face = "Souvenir Light BT"><B>"HARAPAN ANDA"</B></font> KOTA TEGAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="214" y="297" width="146" height="17" uuid="ccd4b2f5-ef80-4b2e-9227-deedb1431199"/>
+				<reportElement x="200" y="297" width="160" height="17" uuid="ccd4b2f5-ef80-4b2e-9227-deedb1431199"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Mengetahui]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="214" y="316" width="146" height="17" uuid="3174656e-51ff-4096-a6c8-787f68bfe697"/>
+				<reportElement x="200" y="316" width="160" height="17" uuid="3174656e-51ff-4096-a6c8-787f68bfe697"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Direktur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="392" y="316" width="158" height="17" uuid="1907b194-291e-4d6e-9e25-bb1bb98a45e6"/>
+				<reportElement x="370" y="316" width="183" height="17" uuid="1907b194-291e-4d6e-9e25-bb1bb98a45e6"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Dokter]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="214" y="404" width="146" height="17" uuid="4eebe813-f6e7-4b91-a418-69b500a68194"/>
+				<reportElement x="200" y="404" width="160" height="17" uuid="4eebe813-f6e7-4b91-a418-69b500a68194"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Dr. Hj. Shahabiyah, MMR]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="392" y="404" width="159" height="17" uuid="d92ee8e2-bdee-43f9-9ca6-58e6183cd483">
+				<reportElement x="370" y="404" width="183" height="17" uuid="d92ee8e2-bdee-43f9-9ca6-58e6183cd483">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[PROPER($F{penolong})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{penolong}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="188" y="173" width="361" height="17" uuid="8dbf6876-92cf-42c5-9a4f-b4e0070e8a21"/>

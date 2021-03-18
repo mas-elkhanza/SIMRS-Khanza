@@ -913,7 +913,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         tabModelRincian = new DefaultTableModel(null,
                 new Object[]{"No.", "No.Rawat", "No.R.M.", "Nama Pasien", "Kd.Tnd", "Perawatan/Tindakan",
                     "Dokter Yg Menangani", "Dokter Pertama", "Tanggal Pulang", "Tanggal Tindakan", "Jam",
-                    "Cara Bayar", "Ruangan", "jml visit", "Tarif Visit", "Visit Dokter"
+                    "Cara Bayar", "Ruangan", "jml visit", "Tarif Visit", "Visit Dokter", "Total Jumlah"
 //                        , "Tindakan", "Dokter Anestesi", "Ast. Anestesi", "Staff OK", "Staff KB", "Total Jumlah"
                 }) {
             @Override
@@ -925,7 +925,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class
 //                    , java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
 //                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
             };
@@ -939,7 +939,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         tbRincianRanap.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbRincianRanap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbRincianRanap.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(30);
@@ -11825,7 +11825,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 double subDokterAnas = 0;
                 double subAsisAnas = 0;
                 double subAsisOp = 0;
-                double subBidan = 0;
+                double subVisit = 0;
                 double subTotal = 0;
 
                 while (rs.next()) {
@@ -11855,7 +11855,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     subDokterAnas += rs.getDouble("biayadokter_anestesi");
                     subAsisAnas += rs.getDouble("biayaasisten_anestesi");
                     subAsisOp += rs.getDouble("biayaasisten_operator1");
-                    subBidan += rs.getDouble("biayabidan");
+                    subVisit += jmlvisit;
                     subTotal += totaljml;
 
                     tabModelRincian.addRow(new Object[]{i, rs.getString("no_rawat"), rs.getString("no_rkm_medis"),
@@ -11863,7 +11863,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         rs.getString("drvisit"), rs.getString("dokter_pertama"), rs.getString("tgl_keluar"),
                         rs.getString("tgl_perawatan"), rs.getString("jam_rawat"), rs.getString("png_jawab"),
                         kamar_sementara, jmlvisit, tarifVisit,
-                        sepertiga
+                        sepertiga, totaljml
 //                            , rs.getDouble("biayaoperator1"),
 //                        rs.getDouble("biayadokter_anestesi"), rs.getDouble("biayaasisten_anestesi"), rs.getDouble("biayaasisten_operator1"), rs.getDouble("biayabidan"), totaljml
                     });
@@ -11875,8 +11875,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 // "Tarif Visit", "Visit Dokter"
                 if (subTotal > 0) {
                     tabModelRincian.addRow(new Object[]{
-                        "", "", "", "", "", "", "", "", "", "", "", "", "Jumlah Total :", 0,
-                        subTarifVisit, subSepertiga
+                        "", "", "", "", "", "", "", "", "", "", "", "", "Jumlah Total :", subVisit,
+                        subTarifVisit, subSepertiga, subTotal
 //                            , subTindakan, subDokterAnas, subAsisAnas, subAsisOp, subBidan, subTotal
                     });
                 }
