@@ -435,6 +435,7 @@ import keuangan.DlgSaldoAkunPerBulan;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganHutangToko;
 import keuangan.KeuanganPenagihanPiutangPasien;
+import keuangan.KeuanganRVPBPJS;
 import keuangan.KeuanganSetTarifOnline;
 import laporan.DlgAnggotaMiliterDirawat;
 import laporan.DlgBerkasRawat;
@@ -626,7 +627,7 @@ import viabarcode.DlgBarcodeRanap;
  * @author perpustakaan
  */
 public class frmUtama extends javax.swing.JFrame {
- 
+
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
@@ -16116,6 +16117,18 @@ public class frmUtama extends javax.swing.JFrame {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    private void btnRVPPiutangBPJSActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganRVPBPJS rbpaketbhp = new KeuanganRVPBPJS(this, false);
+        rbpaketbhp.isCek();
+        rbpaketbhp.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        rbpaketbhp.setLocationRelativeTo(PanelUtama);
+        rbpaketbhp.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -16730,7 +16743,7 @@ public class frmUtama extends javax.swing.JFrame {
             btnDiagnosaPasienCorona, btnPerawatanPasienCorona, btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi, btnBayarPiutangToko, btnPiutangHarianToko, btnPenjualanHarianToko,
             btnDeteksiDiniCorona, btnPenilaianAwalKeperawatanKebidanan, btnPengumumanEPasien, btnSuratHamil,
-            btnSetTarifOnline, btnBookingPeriksa, btnDataPemberianObat;
+            btnSetTarifOnline, btnBookingPeriksa, btnDataPemberianObat, btnRVPPiutangBPJS;
 
     /**
      *
@@ -18393,6 +18406,11 @@ public class frmUtama extends javax.swing.JFrame {
 
             if (akses.getkeuangan() == true) {
                 Panelmenu.add(btnLabaRugi);
+                jmlmenu++;
+            }
+
+            if (akses.getrvu_bpjs() == true) {
+                Panelmenu.add(btnRVPPiutangBPJS);
                 jmlmenu++;
             }
 
@@ -22957,6 +22975,11 @@ public class frmUtama extends javax.swing.JFrame {
             jmlmenu++;
         }
 
+        if (akses.getrvu_bpjs() == true) {
+            Panelmenu.add(btnRVPPiutangBPJS);
+            jmlmenu++;
+        }
+        
         Panelmenu.add(btnPenelitianPerpustakaan);
         jmlmenu++;
 
@@ -27448,6 +27471,13 @@ public class frmUtama extends javax.swing.JFrame {
             Panelmenu.add(btnDataPemberianObat);
             jmlmenu++;
         }
+        
+        if(akses.getrvu_bpjs()==true){
+            if(btnRVPPiutangBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+               Panelmenu.add(btnRVPPiutangBPJS); 
+               jmlmenu++; 
+            }               
+        }
     }
 
     private void initKhanza() {
@@ -29442,6 +29472,14 @@ public class frmUtama extends javax.swing.JFrame {
                 btnDataPemberianObatActionPerformed(evt);
             }
         });
+                
+        btnRVPPiutangBPJS = new widget.ButtonBig();
+        btnRVPPiutangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png"))); 
+        btnRVPPiutangBPJS.setText("RVP Piutang BPJS");
+        btnRVPPiutangBPJS.setIconTextGap(0);
+        btnRVPPiutangBPJS.setName("btnRVPPiutangBPJS"); 
+        btnRVPPiutangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRVPPiutangBPJS.addActionListener(this::btnRVPPiutangBPJSActionPerformed);
     }
 
     private void hargaiAku() {
