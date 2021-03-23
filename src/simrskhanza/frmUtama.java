@@ -601,6 +601,7 @@ import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabPA;
+import permintaan.DlgPermintaanRanap;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
 import perpustakaan.PerpustakaanCariEbook;
@@ -16882,6 +16883,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPermintaanRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPermintaanRanap aplikasi=new DlgPermintaanRanap(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17497,7 +17509,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPemesananMedis,btnRingkasanPembelianMedis,btnRingkasanPenerimaanMedis,btnRingkasanHibahMedis,btnRingkasanPenjualanMedis,
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
-            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang;
+            btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
+            btnPermintaanRanap;
     
     public void isWall(){
         try{            
@@ -17643,6 +17656,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.gettindakan_ralan()==true){
                 Panelmenu.add(btnRalan); 
+                jmlmenu++;
+            }
+            
+            if(akses.getpermintaan_ranap()==true){
+                Panelmenu.add(btnPermintaanRanap); 
                 jmlmenu++;
             }
 
@@ -21158,6 +21176,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
 
+        if(akses.getpermintaan_ranap()==true){
+            Panelmenu.add(btnPermintaanRanap); 
+            jmlmenu++;
+        }
+
         if((akses.getkamar_inap()==true)||(akses.getbilling_ranap()==true)||(akses.gettindakan_ranap()==true)){
             Panelmenu.add(btnKamarInap);
             jmlmenu++;
@@ -24657,6 +24680,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettindakan_ralan()==true){
             if(btnRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRalan); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpermintaan_ranap()==true){
+            if(btnPermintaanRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPermintaanRanap); 
                 jmlmenu++;
             }                
         }
@@ -31437,6 +31467,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnValidasiPenagihanPiutang.setName("btnValidasiPenagihanPiutang");
         btnValidasiPenagihanPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
         btnValidasiPenagihanPiutang.addActionListener(this::btnValidasiPenagihanPiutangActionPerformed);
+        
+        btnPermintaanRanap = new widget.ButtonBig();
+        btnPermintaanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Register_6083883.png"))); // NOI18N
+        btnPermintaanRanap.setText("Permintaan Rawat Inap");
+        btnPermintaanRanap.setIconTextGap(0);
+        btnPermintaanRanap.setName("btnPermintaanRanap");
+        btnPermintaanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanRanap.addActionListener(this::btnPermintaanRanapActionPerformed);
     }
 
     

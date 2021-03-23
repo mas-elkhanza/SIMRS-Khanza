@@ -1944,7 +1944,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 headers = new HttpHeaders();
                 headers.add("X-rs-id",idrs);
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-                headers.add("X-pass",api.getHmac()); 
+                headers.add("X-pass",koneksiDB.PASSSITT()); 
                 headers.add("Content-Type","application/json");
                 requestJson ="{" +
                     "\"id_tb_03\":\"\"," +
@@ -2080,7 +2080,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     headers = new HttpHeaders();
                     headers.add("X-rs-id",idrs);
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-                    headers.add("X-pass",api.getHmac()); 
+                    headers.add("X-pass",koneksiDB.PASSSITT()); 
                     headers.add("Content-Type","application/json");
                     if(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),59).toString().equals("")){
                         requestJson ="{" +
