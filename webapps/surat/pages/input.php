@@ -261,11 +261,10 @@
                     $keterangan =trim($_POST['keterangan']);
                     $kd_status  =trim($_POST['kd_status']);
                     $kd_klasifikasi=trim($_POST['kd_klasifikasi']);
-                    $max        =getOne("select ifnull(MAX(CONVERT(RIGHT(no_surat,3),signed)),0)+1 from surat_masuk where tgl_terima='$tgl_terima'");
+                    $max        =getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_masuk where tgl_terima='$tgl_terima'");
                     $no_urut    ="SM".str_replace("-","",$tgl_terima).sprintf("%03s", $max);
                     $dokumen    =str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']);
                     move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                    
                     if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($asal))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_terima))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
                         switch($action) {
                             case "TAMBAH":

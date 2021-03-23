@@ -113,15 +113,13 @@ public class DlgCacatFisik extends javax.swing.JDialog {
         panelGlass7 = new widget.panelisi();
         jLabel4 = new widget.Label();
         Nama = new widget.TextBox();
-        jPanel3 = new javax.swing.JPanel();
-        panelGlass8 = new widget.panelisi();
+        panelisi3 = new widget.panelisi();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
-        panelGlass10 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
         BtnHapus = new widget.Button();
@@ -178,23 +176,18 @@ public class DlgCacatFisik extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(Nama);
-        Nama.setBounds(85, 12, 325, 23);
+        Nama.setBounds(85, 12, 450, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
-        jPanel3.setName("jPanel3"); // NOI18N
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(44, 100));
-        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
-
-        panelGlass8.setName("panelGlass8"); // NOI18N
-        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelisi3.setName("panelisi3"); // NOI18N
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 43));
+        panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelGlass8.add(jLabel6);
+        panelisi3.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(190, 23));
@@ -203,7 +196,7 @@ public class DlgCacatFisik extends javax.swing.JDialog {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass8.add(TCari);
+        panelisi3.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('1');
@@ -220,7 +213,7 @@ public class DlgCacatFisik extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass8.add(BtnCari);
+        panelisi3.add(BtnCari);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('2');
@@ -237,31 +230,24 @@ public class DlgCacatFisik extends javax.swing.JDialog {
                 BtnAllKeyPressed(evt);
             }
         });
-        panelGlass8.add(BtnAll);
+        panelisi3.add(BtnAll);
 
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass8.add(jLabel7);
+        panelisi3.add(jLabel7);
 
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
         LCount.setPreferredSize(new java.awt.Dimension(40, 23));
-        panelGlass8.add(LCount);
-
-        jPanel3.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
-
-        panelGlass10.setName("panelGlass10"); // NOI18N
-        panelGlass10.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelisi3.add(LCount);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
-        BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
-        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -272,14 +258,13 @@ public class DlgCacatFisik extends javax.swing.JDialog {
                 BtnSimpanKeyPressed(evt);
             }
         });
-        panelGlass10.add(BtnSimpan);
+        panelisi3.add(BtnSimpan);
 
         BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
         BtnBatal.setMnemonic('B');
-        BtnBatal.setText("Baru");
         BtnBatal.setToolTipText("Alt+B");
         BtnBatal.setName("BtnBatal"); // NOI18N
-        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBatalActionPerformed(evt);
@@ -290,14 +275,13 @@ public class DlgCacatFisik extends javax.swing.JDialog {
                 BtnBatalKeyPressed(evt);
             }
         });
-        panelGlass10.add(BtnBatal);
+        panelisi3.add(BtnBatal);
 
         BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnHapus.setMnemonic('H');
-        BtnHapus.setText("Hapus");
         BtnHapus.setToolTipText("Alt+H");
         BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapusActionPerformed(evt);
@@ -308,14 +292,13 @@ public class DlgCacatFisik extends javax.swing.JDialog {
                 BtnHapusKeyPressed(evt);
             }
         });
-        panelGlass10.add(BtnHapus);
+        panelisi3.add(BtnHapus);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -326,11 +309,9 @@ public class DlgCacatFisik extends javax.swing.JDialog {
                 BtnKeluarKeyPressed(evt);
             }
         });
-        panelGlass10.add(BtnKeluar);
+        panelisi3.add(BtnKeluar);
 
-        jPanel3.add(panelGlass10, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
+        internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -500,10 +481,8 @@ public class DlgCacatFisik extends javax.swing.JDialog {
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private javax.swing.JPanel jPanel3;
-    private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass7;
-    private widget.panelisi panelGlass8;
+    private widget.panelisi panelisi3;
     private widget.Table tbkecamatan;
     // End of variables declaration//GEN-END:variables
 

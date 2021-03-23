@@ -59,11 +59,11 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private double[] jumlah,harga,beli,stok,kapasitas,p1,p2;
     private String[] no,kodebarang,namabarang,kodesatuan,kandungan,letakbarang,namajenis,aturan,industri;
     public DlgBarang barang=new DlgBarang(null,false);
-    public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
+    public DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
-    private DlgMetodeRacik metoderacik=new DlgMetodeRacik(null,false);
+    private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",kamar="",norawatibu="",kelas,bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
     /** Creates new form DlgPenyakit

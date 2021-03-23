@@ -3955,11 +3955,11 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_KeteranganKedatanganKeyPressed
 
     private void SekunderAnamnesaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderAnamnesaKeyPressed
-        Valid.pindah(evt,KeteranganKedatangan,SekunderSuhu);
+        Valid.pindah2(evt,KeteranganKedatangan,SekunderSuhu);
     }//GEN-LAST:event_SekunderAnamnesaKeyPressed
 
     private void PrimerKeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerKeluhanUtamaKeyPressed
-       Valid.pindah(evt,KeteranganKedatangan,PrimerSuhu);
+       Valid.pindah2(evt,KeteranganKedatangan,PrimerSuhu);
     }//GEN-LAST:event_PrimerKeluhanUtamaKeyPressed
 
     private void PrimerKubutuhanKususKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerKubutuhanKususKeyPressed

@@ -1,6 +1,8 @@
 package inventory;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -13,6 +15,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,6 +53,13 @@ public class DlgPemesanan extends javax.swing.JDialog {
     private boolean sukses=true;
     private String aktifkanbatch="no",pengaturanharga=Sequel.cariIsi("select setharga from set_harga_obat"),
             hargadasar=Sequel.cariIsi("select hargadasar from set_harga_obat");
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -142,19 +154,19 @@ public class DlgPemesanan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -337,6 +349,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
         BtnTambah = new widget.Button();
         label24 = new widget.Label();
         Meterai = new widget.TextBox();
+        BtnAll = new widget.Button();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
@@ -484,7 +497,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(TCari);
-        TCari.setBounds(190, 65, 280, 23);
+        TCari.setBounds(190, 65, 250, 23);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('1');
@@ -502,7 +515,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnCari1);
-        BtnCari1.setBounds(472, 65, 28, 23);
+        BtnCari1.setBounds(442, 65, 28, 23);
 
         label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label9.setText("Potongan :");
@@ -667,6 +680,25 @@ public class DlgPemesanan extends javax.swing.JDialog {
         });
         panelisi1.add(Meterai);
         Meterai.setBounds(520, 26, 100, 23);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('2');
+        BtnAll.setToolTipText("2Alt+2");
+        BtnAll.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnAll);
+        BtnAll.setBounds(472, 65, 28, 23);
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
@@ -1045,7 +1077,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil();
+            tampil2();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -1056,12 +1088,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        tampil();
+        tampil2();
 }//GEN-LAST:event_BtnCari1ActionPerformed
 
 private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            tampil2();
         }else{
             Valid.pindah(evt, BtnSimpan, BtnKeluar);
         }
@@ -1358,6 +1390,19 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppStok1ActionPerformed
 
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        TCari.setText("");
+        tampil();
+    }//GEN-LAST:event_BtnAllActionPerformed
+
+    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCari, TCari);
+        }
+    }//GEN-LAST:event_BtnAllKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1375,6 +1420,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
@@ -1430,129 +1476,17 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        row=tbDokter.getRowCount();
-        jml=0;
-        for(i=0;i<row;i++){
-            try {
-                if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>0){
-                    jml++;
-                }
-            } catch (Exception e) {
-                jml=jml+0;
-            }            
-        }
-        
-        kodebarang=null;
-        namabarang=null;
-        satuan=null;
-        satuanbeli=null;
-        kadaluwarsa=null;
-        nobatch=null;
-        harga=null;
-        jumlah=null;
-        subtotal=null;
-        diskon=null;
-        besardiskon=null;
-        jmltotal=null;
-        jmlstok=null;
-        hpp=null;
-        ralan=null;
-        kelas1=null;
-        kelas2=null;
-        kelas3=null;
-        utama=null;
-        vip=null;
-        vvip=null;
-        beliluar=null;
-        jualbebas=null;
-        karyawan=null;
-        ganti=null;
-        kodebarang=new String[jml];
-        namabarang=new String[jml];
-        satuan=new String[jml];
-        satuanbeli=new String[jml];
-        kadaluwarsa=new String[jml];
-        nobatch=new String[jml];
-        harga=new double[jml];
-        jumlah=new double[jml];
-        subtotal=new double[jml];
-        diskon=new double[jml];
-        besardiskon=new double[jml];
-        jmltotal=new double[jml];
-        jmlstok=new double[jml];
-        hpp=new double[jml];
-        ralan=new double[jml];
-        kelas1=new double[jml];
-        kelas2=new double[jml];
-        kelas3=new double[jml];
-        utama=new double[jml];
-        vip=new double[jml];
-        vvip=new double[jml];
-        beliluar=new double[jml];
-        jualbebas=new double[jml];
-        karyawan=new double[jml]; 
-        isi=new double[jml]; 
-        jmlbesar=new double[jml];
-        dasar=new double[jml];  
-        ganti=new boolean[jml];        
-        
-        index=0;        
-        for(i=0;i<row;i++){
-            try {
-                if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                    jumlah[index]=Double.parseDouble(tbDokter.getValueAt(i,0).toString());
-                    satuanbeli[index]=tbDokter.getValueAt(i,1).toString();
-                    kodebarang[index]=tbDokter.getValueAt(i,2).toString();
-                    namabarang[index]=tbDokter.getValueAt(i,3).toString();
-                    satuan[index]=tbDokter.getValueAt(i,4).toString();
-                    ganti[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,5).toString());
-                    kadaluwarsa[index]=tbDokter.getValueAt(i,6).toString();
-                    harga[index]=Double.parseDouble(tbDokter.getValueAt(i,7).toString());
-                    subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
-                    diskon[index]=Double.parseDouble(tbDokter.getValueAt(i,9).toString());
-                    besardiskon[index]=Double.parseDouble(tbDokter.getValueAt(i,10).toString());
-                    jmltotal[index]=Double.parseDouble(tbDokter.getValueAt(i,11).toString());
-                    jmlstok[index]=Double.parseDouble(tbDokter.getValueAt(i,12).toString());
-                    nobatch[index]=tbDokter.getValueAt(i,13).toString();
-                    ralan[index]=Double.parseDouble(tbDokter.getValueAt(i,14).toString());
-                    kelas1[index]=Double.parseDouble(tbDokter.getValueAt(i,15).toString());
-                    kelas2[index]=Double.parseDouble(tbDokter.getValueAt(i,16).toString());
-                    kelas3[index]=Double.parseDouble(tbDokter.getValueAt(i,17).toString());
-                    utama[index]=Double.parseDouble(tbDokter.getValueAt(i,18).toString());
-                    vip[index]=Double.parseDouble(tbDokter.getValueAt(i,19).toString());
-                    vvip[index]=Double.parseDouble(tbDokter.getValueAt(i,20).toString());
-                    beliluar[index]=Double.parseDouble(tbDokter.getValueAt(i,21).toString());
-                    jualbebas[index]=Double.parseDouble(tbDokter.getValueAt(i,22).toString());
-                    karyawan[index]=Double.parseDouble(tbDokter.getValueAt(i,23).toString());
-                    hpp[index]=Double.parseDouble(tbDokter.getValueAt(i,24).toString());
-                    isi[index]=Double.parseDouble(tbDokter.getValueAt(i,25).toString());
-                    jmlbesar[index]=Double.parseDouble(tbDokter.getValueAt(i,26).toString());
-                    dasar[index]=Double.parseDouble(tbDokter.getValueAt(i,27).toString());
-                    index++;
-                }
-            } catch (Exception e) {
-                System.out.println("e "+e);
-            }
-        }
-        Valid.tabelKosong(tabMode);
-        for(i=0;i<jml;i++){
-            tabMode.addRow(new Object[]{
-                jumlah[i],satuanbeli[i],kodebarang[i],namabarang[i],satuan[i],ganti[i],kadaluwarsa[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i],
-                jmlstok[i],nobatch[i],ralan[i],kelas1[i],kelas2[i],kelas3[i],utama[i],vip[i],vvip[i],beliluar[i],jualbebas[i],karyawan[i],hpp[i],isi[i],jmlbesar[i],dasar[i]
-            });
-        }
-        
         try{
+            Valid.tabelKosong(tabMode);
+            file=new File("./cache/penerimaanobat.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
             ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,databarang.kode_sat, databarang.h_beli, "+
                 " ifnull(date_format(databarang.expire,'%d-%m-%Y'),'00-00-0000'),databarang.kode_satbesar,databarang.isi, "+
                 " (databarang.h_beli*databarang.isi) as hargabesar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                " where databarang.status='1' and databarang.kode_brng like ? or "+
-                " databarang.status='1' and databarang.nama_brng like ? or "+
-                " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+                " where databarang.status='1' order by databarang.nama_brng");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 if(aktifkanbatch.equals("yes")){
                     while(rs.next()){
@@ -1562,6 +1496,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             rs.getString(5),rs.getDouble(8),0,0,0,0,0,"",
                             0,0,0,0,0,0,0,0,0,0,0,rs.getDouble(7),1,0
                         });
+                        iyem=iyem+"{\"SatuanBeli\":\""+rs.getString(6)+"\",\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Kadaluwarsa\":\""+rs.getString(5)+"\",\"Harga\":\""+rs.getString(8)+"\",\"Isi\":\""+rs.getString(7)+"\"},";
                     } 
                 }else{
                     while(rs.next()){
@@ -1571,6 +1506,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             rs.getString(5),rs.getDouble(8),0,0,0,0,0,"",
                             0,0,0,0,0,0,0,0,0,0,0,rs.getDouble(7),1,0
                         });
+                        iyem=iyem+"{\"SatuanBeli\":\""+rs.getString(6)+"\",\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Kadaluwarsa\":\""+rs.getString(5)+"\",\"Harga\":\""+rs.getString(8)+"\",\"Isi\":\""+rs.getString(7)+"\"},";
                     } 
                 }                                               
             } catch (Exception e) {
@@ -1582,7 +1518,153 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if(ps!=null){
                     ps.close();
                 }
-            }         
+            }   
+            fileWriter.write("{\"penerimaanobat\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;          
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }        
+    }
+    
+    private void tampil2() {
+        try{
+            row=tbDokter.getRowCount();
+            jml=0;
+            for(i=0;i<row;i++){
+                try {
+                    if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>0){
+                        jml++;
+                    }
+                } catch (Exception e) {
+                    jml=jml+0;
+                }            
+            }
+
+            kodebarang=null;
+            namabarang=null;
+            satuan=null;
+            satuanbeli=null;
+            kadaluwarsa=null;
+            nobatch=null;
+            harga=null;
+            jumlah=null;
+            subtotal=null;
+            diskon=null;
+            besardiskon=null;
+            jmltotal=null;
+            jmlstok=null;
+            hpp=null;
+            ralan=null;
+            kelas1=null;
+            kelas2=null;
+            kelas3=null;
+            utama=null;
+            vip=null;
+            vvip=null;
+            beliluar=null;
+            jualbebas=null;
+            karyawan=null;
+            ganti=null;
+            kodebarang=new String[jml];
+            namabarang=new String[jml];
+            satuan=new String[jml];
+            satuanbeli=new String[jml];
+            kadaluwarsa=new String[jml];
+            nobatch=new String[jml];
+            harga=new double[jml];
+            jumlah=new double[jml];
+            subtotal=new double[jml];
+            diskon=new double[jml];
+            besardiskon=new double[jml];
+            jmltotal=new double[jml];
+            jmlstok=new double[jml];
+            hpp=new double[jml];
+            ralan=new double[jml];
+            kelas1=new double[jml];
+            kelas2=new double[jml];
+            kelas3=new double[jml];
+            utama=new double[jml];
+            vip=new double[jml];
+            vvip=new double[jml];
+            beliluar=new double[jml];
+            jualbebas=new double[jml];
+            karyawan=new double[jml]; 
+            isi=new double[jml]; 
+            jmlbesar=new double[jml];
+            dasar=new double[jml];  
+            ganti=new boolean[jml];        
+
+            index=0;        
+            for(i=0;i<row;i++){
+                try {
+                    if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                        jumlah[index]=Double.parseDouble(tbDokter.getValueAt(i,0).toString());
+                        satuanbeli[index]=tbDokter.getValueAt(i,1).toString();
+                        kodebarang[index]=tbDokter.getValueAt(i,2).toString();
+                        namabarang[index]=tbDokter.getValueAt(i,3).toString();
+                        satuan[index]=tbDokter.getValueAt(i,4).toString();
+                        ganti[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,5).toString());
+                        kadaluwarsa[index]=tbDokter.getValueAt(i,6).toString();
+                        harga[index]=Double.parseDouble(tbDokter.getValueAt(i,7).toString());
+                        subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
+                        diskon[index]=Double.parseDouble(tbDokter.getValueAt(i,9).toString());
+                        besardiskon[index]=Double.parseDouble(tbDokter.getValueAt(i,10).toString());
+                        jmltotal[index]=Double.parseDouble(tbDokter.getValueAt(i,11).toString());
+                        jmlstok[index]=Double.parseDouble(tbDokter.getValueAt(i,12).toString());
+                        nobatch[index]=tbDokter.getValueAt(i,13).toString();
+                        ralan[index]=Double.parseDouble(tbDokter.getValueAt(i,14).toString());
+                        kelas1[index]=Double.parseDouble(tbDokter.getValueAt(i,15).toString());
+                        kelas2[index]=Double.parseDouble(tbDokter.getValueAt(i,16).toString());
+                        kelas3[index]=Double.parseDouble(tbDokter.getValueAt(i,17).toString());
+                        utama[index]=Double.parseDouble(tbDokter.getValueAt(i,18).toString());
+                        vip[index]=Double.parseDouble(tbDokter.getValueAt(i,19).toString());
+                        vvip[index]=Double.parseDouble(tbDokter.getValueAt(i,20).toString());
+                        beliluar[index]=Double.parseDouble(tbDokter.getValueAt(i,21).toString());
+                        jualbebas[index]=Double.parseDouble(tbDokter.getValueAt(i,22).toString());
+                        karyawan[index]=Double.parseDouble(tbDokter.getValueAt(i,23).toString());
+                        hpp[index]=Double.parseDouble(tbDokter.getValueAt(i,24).toString());
+                        isi[index]=Double.parseDouble(tbDokter.getValueAt(i,25).toString());
+                        jmlbesar[index]=Double.parseDouble(tbDokter.getValueAt(i,26).toString());
+                        dasar[index]=Double.parseDouble(tbDokter.getValueAt(i,27).toString());
+                        index++;
+                    }
+                } catch (Exception e) {
+                    System.out.println("e "+e);
+                }
+            }
+            Valid.tabelKosong(tabMode);
+            for(i=0;i<jml;i++){
+                tabMode.addRow(new Object[]{
+                    jumlah[i],satuanbeli[i],kodebarang[i],namabarang[i],satuan[i],ganti[i],kadaluwarsa[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i],
+                    jmlstok[i],nobatch[i],ralan[i],kelas1[i],kelas2[i],kelas3[i],utama[i],vip[i],vvip[i],beliluar[i],jualbebas[i],karyawan[i],hpp[i],isi[i],jmlbesar[i],dasar[i]
+                });
+            }
+            
+            myObj = new FileReader("./cache/penerimaanobat.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("penerimaanobat");
+            if(response.isArray()){
+                if(aktifkanbatch.equals("yes")){
+                    for(JsonNode list:response){
+                        if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                "",list.path("SatuanBeli").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),true,list.path("Kadaluwarsa").asText(),list.path("Harga").asDouble(),0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,list.path("Isi").asDouble(),1,0
+                            });
+                        }
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                "",list.path("SatuanBeli").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),false,list.path("Kadaluwarsa").asText(),list.path("Harga").asDouble(),0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,list.path("Isi").asDouble(),1,0
+                            });
+                        }
+                    }
+                }
+            }
+            myObj.close();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        

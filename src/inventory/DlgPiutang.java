@@ -38,7 +38,7 @@ public class DlgPiutang extends javax.swing.JDialog {
     private ResultSet rs;
     private String aktifkanbatch="no",pilihanetiket;
     private boolean sukses=true;
-    private DlgAturanPakai aturan_pakai=new DlgAturanPakai(null,false);
+    private DlgCariAturanPakai aturan_pakai=new DlgCariAturanPakai(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent

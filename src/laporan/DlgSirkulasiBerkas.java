@@ -1471,8 +1471,6 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     ps.setString(21,"%"+TCari.getText().trim()+"%");
                 }
                 
-                System.out.println("laporan.DlgSirkulasiBerkas.tampil() : "+ChkTanggal.isSelected());
-                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
