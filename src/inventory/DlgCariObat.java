@@ -71,8 +71,8 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private String signa1="1",signa2="1",nokunjungan="",kdObatSK="",requestJson="",URL="",otorisasi,sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="",
                    Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="",hppfarmasi="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
-    public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
-    private DlgMetodeRacik metoderacik=new DlgMetodeRacik(null,false);
+    public DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
+    private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();

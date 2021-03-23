@@ -587,15 +587,10 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
             all=0;
             ps= koneksi.prepareStatement(
                     "select no_nota,tgl_bayar,nama_pasien,jumlah_bayar,petugas from tagihan_sadewa "+
-                    "where tgl_bayar between ? and ? and nama_pasien like ? or "+
-                    "tgl_bayar between ? and ? and no_nota like ? order by tgl_bayar,no_nota");
+                    "where tgl_bayar between ? and ? order by tgl_bayar,no_nota");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
@@ -625,7 +620,7 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                             }                                            
                         }
                     }
-                    if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
+                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
                             "<tr class='isi'>"+

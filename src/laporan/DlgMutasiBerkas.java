@@ -69,7 +69,6 @@ public class DlgMutasiBerkas extends javax.swing.JDialog {
     private String halaman="";
     private PreparedStatement ps;
     private ResultSet rs;
-    private final validasi validasi=new validasi();
     private final Connection koneksi=koneksiDB.condb();
     private final DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     

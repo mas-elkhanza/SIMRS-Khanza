@@ -58,7 +58,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
     private String now=dateFormat.format(date),lembarobat="",status="";
     private double total=0,jumlahtotal=0;
     private Properties prop = new Properties();
-    private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
+    private DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
     private int i=0,pilihan=0,getno=0;
     private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 

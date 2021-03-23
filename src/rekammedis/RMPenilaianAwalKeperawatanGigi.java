@@ -2841,7 +2841,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
     }//GEN-LAST:event_InformasiKeyPressed
 
     private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
-        Valid.pindah(evt,BMI,RiwayatPenyakit);
+        Valid.pindah2(evt,BMI,RiwayatPenyakit);
     }//GEN-LAST:event_KeluhanUtamaKeyPressed
 
     private void AlatBantuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlatBantuKeyPressed
@@ -2949,7 +2949,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
     }//GEN-LAST:event_KetDokterKeyPressed
 
     private void RencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,TCariMasalah,BtnSimpan);
     }//GEN-LAST:event_RencanaKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed

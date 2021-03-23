@@ -3672,15 +3672,19 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             (!TTensi.getText().trim().equals(""))||(!TAlergi.getText().trim().equals(""))||(!TTinggi.getText().trim().equals(""))||
                             (!TBerat.getText().trim().equals(""))||(!TRespirasi.getText().trim().equals(""))||(!TNadi.getText().trim().equals(""))||
                             (!TGCS.getText().trim().equals(""))||(!TindakLanjut.getText().trim().equals(""))||(!TPenilaian.getText().trim().equals(""))||
-                            (!KdPeg.getText().trim().equals(""))||(!TPegawai.getText().trim().equals(""))||(!TInstruksi.getText().trim().equals(""))){
-                        Sequel.menyimpan("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",18,new String[]{
-                            TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),                      
-                            TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),TBerat.getText(),TGCS.getText(),
-                            cmbKesadaran.getSelectedItem().toString(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
-                            TPenilaian.getText(),TindakLanjut.getText(),TInstruksi.getText(),KdPeg.getText()
-                        });
-                        tampilPemeriksaan();
-                        BtnBatalActionPerformed(evt);
+                            (!TInstruksi.getText().trim().equals(""))){
+                        if(KdPeg.getText().trim().equals("")||TPegawai.getText().trim().equals("")){
+                            Valid.textKosong(KdPeg,"Dokter/Paramedis masih kosong...!!");
+                        }else{
+                            Sequel.menyimpan("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",18,new String[]{
+                                TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),                      
+                                TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),TBerat.getText(),TGCS.getText(),
+                                cmbKesadaran.getSelectedItem().toString(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
+                                TPenilaian.getText(),TindakLanjut.getText(),TInstruksi.getText(),KdPeg.getText()
+                            });
+                            tampilPemeriksaan();
+                            BtnBatalActionPerformed(evt);
+                        }
                     }   break;
                 case 4:
                     if((!TTinggi_uteri.getText().trim().equals(""))||(!TLetak.getText().trim().equals(""))||
@@ -5375,11 +5379,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_TUkuranKeyPressed
 
     private void TKeluhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKeluhanKeyPressed
-        Valid.pindah(evt,KdPeg,TPemeriksaan);
+        Valid.pindah2(evt,KdPeg,TPemeriksaan);
     }//GEN-LAST:event_TKeluhanKeyPressed
 
     private void TPemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPemeriksaanKeyPressed
-        Valid.pindah(evt,TKeluhan,TSuhu);
+        Valid.pindah2(evt,TKeluhan,TSuhu);
     }//GEN-LAST:event_TPemeriksaanKeyPressed
 
     private void tbRawatDrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRawatDrKeyReleased
@@ -5676,11 +5680,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnRiwayatActionPerformed
 
     private void TPenilaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPenilaianKeyPressed
-        Valid.pindah(evt,TAlergi,TindakLanjut);
+        Valid.pindah2(evt,TAlergi,TindakLanjut);
     }//GEN-LAST:event_TPenilaianKeyPressed
 
     private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
-        Valid.pindah(evt,TPenilaian,TInstruksi);
+        Valid.pindah2(evt,TPenilaian,TInstruksi);
     }//GEN-LAST:event_TindakLanjutKeyPressed
 
     private void BtnResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResumeActionPerformed
@@ -5839,7 +5843,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnSeekPegawaiActionPerformed
 
     private void TInstruksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TInstruksiKeyPressed
-        Valid.pindah(evt,TindakLanjut,BtnSimpan);
+        Valid.pindah2(evt,TindakLanjut,BtnSimpan);
     }//GEN-LAST:event_TInstruksiKeyPressed
 
     /**
