@@ -1597,6 +1597,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         MnOperasi.setEnabled(akses.getoperasi());
         BtnEdit.setEnabled(akses.getbooking_operasi());   
         MnPermintaanResep.setVisible(akses.getresep_dokter());
+        MnPermintaanLab.setVisible(akses.getpermintaan_lab());
     }
 
     
