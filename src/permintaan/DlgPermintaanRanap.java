@@ -6,10 +6,10 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.DlgPeresepanDokter;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -23,11 +23,9 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariDokter;
-import keuangan.DlgCariDaftarOperasi;
+import keuangan.DlgKamar;
 import simrskhanza.DlgKamarInap;
 import rekammedis.RMRiwayatPerawatan;
-import simrskhanza.DlgTagihanOperasi;
 
 /**
  *
@@ -41,7 +39,8 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String status="",bangsal="",lokasistok="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",norm="";
+    private String norm="";
+    private DlgKamar kamar=new DlgKamar(null,false);
     
     
 
@@ -109,6 +108,8 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
 
         NoRw.setDocument(new batasInput((byte)17).getKata(NoRw));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        Catatan.setDocument(new batasInput((byte)50).getKata(Catatan));
+        Diagnosa.setDocument(new batasInput((byte)50).getKata(Diagnosa));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -132,10 +133,45 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
             });
         } 
         
+        kamar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kamar.getTable().getSelectedRow()!= -1){   
+                    KdKamar.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),1).toString());
+                    KdBangsal.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),2).toString());
+                    NmBangsal.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),3).toString()+" ( "+kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),4).toString()+")");
+                    HargaKamar.setText(Valid.SetAngka(Valid.SetAngka(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),5).toString())));
+                }  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kamar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kamar.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
         ChkInput.setSelected(false);
         isForm();
-        
-        
     }
  
     /** This method is called from within the constructor to
@@ -167,10 +203,11 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        panelCari = new widget.panelisi();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+        panelCari = new widget.panelisi();
         R1 = new widget.RadioButton();
+        jLabel15 = new widget.Label();
         R3 = new widget.RadioButton();
         DTPCari3 = new widget.Tanggal();
         jLabel25 = new widget.Label();
@@ -194,7 +231,7 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         Diagnosa = new widget.TextBox();
         CaraBayar = new widget.TextBox();
         jLabel13 = new widget.Label();
-        btnKamar2 = new widget.Button();
+        btnKamar = new widget.Button();
         NmBangsal = new widget.TextBox();
         KdBangsal = new widget.TextBox();
         KdKamar = new widget.TextBox();
@@ -400,7 +437,7 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         panelGlass10.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(474, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(370, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -441,41 +478,45 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         });
         panelGlass10.add(BtnAll);
 
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelGlass10.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass10.add(LCount);
+
         jPanel3.add(panelGlass10, java.awt.BorderLayout.CENTER);
 
         panelCari.setName("panelCari"); // NOI18N
         panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
 
-        jLabel7.setText("Record :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelCari.add(jLabel7);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(80, 23));
-        panelCari.add(LCount);
-
         buttonGroup1.add(R1);
         R1.setSelected(true);
-        R1.setText("Menunggu");
+        R1.setText("Menunggu Masuk Rawat Inap");
         R1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         R1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         R1.setName("R1"); // NOI18N
-        R1.setPreferredSize(new java.awt.Dimension(95, 23));
+        R1.setPreferredSize(new java.awt.Dimension(195, 23));
         panelCari.add(R1);
+
+        jLabel15.setName("jLabel15"); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelCari.add(jLabel15);
 
         buttonGroup1.add(R3);
         R3.setText("Sudah Masuk Rawat Inap :");
         R3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         R3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         R3.setName("R3"); // NOI18N
-        R3.setPreferredSize(new java.awt.Dimension(160, 23));
+        R3.setPreferredSize(new java.awt.Dimension(165, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-03-2021" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2021" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -498,7 +539,7 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-03-2021" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2021" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -566,7 +607,7 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         NmPasien.setBounds(288, 10, 330, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-03-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -634,6 +675,11 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
 
         Diagnosa.setHighlighter(null);
         Diagnosa.setName("Diagnosa"); // NOI18N
+        Diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DiagnosaKeyPressed(evt);
+            }
+        });
         FormInput.add(Diagnosa);
         Diagnosa.setBounds(73, 130, 213, 23);
 
@@ -648,39 +694,34 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(192, 40, 75, 23);
 
-        btnKamar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnKamar2.setMnemonic('2');
-        btnKamar2.setToolTipText("Alt+2");
-        btnKamar2.setName("btnKamar2"); // NOI18N
-        btnKamar2.addActionListener(new java.awt.event.ActionListener() {
+        btnKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnKamar.setMnemonic('2');
+        btnKamar.setToolTipText("Alt+2");
+        btnKamar.setName("btnKamar"); // NOI18N
+        btnKamar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKamar2ActionPerformed(evt);
+                btnKamarActionPerformed(evt);
             }
         });
-        FormInput.add(btnKamar2);
-        btnKamar2.setBounds(590, 100, 28, 23);
+        FormInput.add(btnKamar);
+        btnKamar.setBounds(590, 100, 28, 23);
 
         NmBangsal.setEditable(false);
         NmBangsal.setHighlighter(null);
         NmBangsal.setName("NmBangsal"); // NOI18N
-        NmBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmBangsalKeyPressed(evt);
-            }
-        });
         FormInput.add(NmBangsal);
-        NmBangsal.setBounds(252, 100, 230, 23);
+        NmBangsal.setBounds(222, 100, 260, 23);
 
         KdBangsal.setEditable(false);
         KdBangsal.setName("KdBangsal"); // NOI18N
         FormInput.add(KdBangsal);
-        KdBangsal.setBounds(185, 100, 65, 23);
+        KdBangsal.setBounds(155, 100, 65, 23);
 
         KdKamar.setEditable(false);
         KdKamar.setHighlighter(null);
         KdKamar.setName("KdKamar"); // NOI18N
         FormInput.add(KdKamar);
-        KdKamar.setBounds(73, 100, 110, 23);
+        KdKamar.setBounds(73, 100, 80, 23);
 
         jLabel20.setText("Kamar :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -690,16 +731,16 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         HargaKamar.setEditable(false);
         HargaKamar.setHighlighter(null);
         HargaKamar.setName("HargaKamar"); // NOI18N
-        HargaKamar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HargaKamarKeyPressed(evt);
-            }
-        });
         FormInput.add(HargaKamar);
         HargaKamar.setBounds(484, 100, 103, 23);
 
         Catatan.setHighlighter(null);
         Catatan.setName("Catatan"); // NOI18N
+        Catatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CatatanKeyPressed(evt);
+            }
+        });
         FormInput.add(Catatan);
         Catatan.setBounds(390, 130, 228, 23);
 
@@ -723,18 +764,30 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_NoRwKeyPressed
 
     private void DTPTglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTglKeyPressed
-        //Valid.pindah(evt,TCari,JamMulai);
+        Valid.pindah(evt,TCari,Diagnosa);
 }//GEN-LAST:event_DTPTglKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        
+        if(NoRw.getText().trim().equals("")||NoRM.getText().trim().equals("")||NmPasien.getText().trim().equals("")){
+            Valid.textKosong(TCari,"Pasien");
+        }else if(KdBangsal.getText().trim().equals("")||KdKamar.getText().trim().equals("")||NmBangsal.getText().trim().equals("")){
+            Valid.textKosong(btnKamar,"Kamar/Bangsal");
+        }else if(Diagnosa.getText().trim().equals("")){
+            Valid.textKosong(Diagnosa,"Diagnosa");
+        }else{
+            Sequel.menyimpan("permintaan_ranap","?,?,?","Pasien",3,new String[]{
+                NoRw.getText(),Diagnosa.getText(),Catatan.getText()
+            });
+            tampil();
+            emptTeks();
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-           // Valid.pindah(evt,BtnOperasi,BtnBatal);
+           Valid.pindah(evt,Catatan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -751,7 +804,9 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        
+        Valid.hapusTable(tabMode,NoRw,"permintaan_ranap","no_rawat");
+        tampil();
+        emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -953,17 +1008,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_ppRiwayatBtnPrintActionPerformed
 
-    private void btnKamar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamar2ActionPerformed
-        
-    }//GEN-LAST:event_btnKamar2ActionPerformed
+    private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarActionPerformed
+        kamar.load();
+        kamar.isCek();
+        kamar.emptTeks();
+        kamar.tampil();
+        kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kamar.setLocationRelativeTo(internalFrame1);
+        kamar.setVisible(true);        
+    }//GEN-LAST:event_btnKamarActionPerformed
 
-    private void NmBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmBangsalKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NmBangsalKeyPressed
+    private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
+        Valid.pindah(evt,DTPTgl,Catatan);
+    }//GEN-LAST:event_DiagnosaKeyPressed
 
-    private void HargaKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HargaKamarKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HargaKamarKeyPressed
+    private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
+        Valid.pindah(evt,Diagnosa,BtnSimpan);
+    }//GEN-LAST:event_CatatanKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1015,7 +1076,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.RadioButton R3;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.Button btnKamar2;
+    private widget.Button btnKamar;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
@@ -1023,6 +1084,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
+    private widget.Label jLabel15;
     private widget.Label jLabel20;
     private widget.Label jLabel25;
     private widget.Label jLabel5;
@@ -1045,9 +1107,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 
     public void emptTeks() {
-        
+        NoRw.setText("");
+        NoRM.setText("");
+        NmPasien.setText("");
+        NoTelp.setText("");
+        CaraBayar.setText("");
+        Poli.setText("");
+        Dokter.setText("");
+        KdKamar.setText("");
+        KdBangsal.setText("");
+        NmBangsal.setText("");
+        HargaKamar.setText("");
+        Diagnosa.setText("");
+        Catatan.setText("");
         DTPTgl.setDate(new Date());
-        DTPTgl.requestFocus();
+        Diagnosa.requestFocus();
     }
 
     private void getData() {
