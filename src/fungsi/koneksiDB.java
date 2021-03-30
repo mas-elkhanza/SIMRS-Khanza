@@ -242,6 +242,16 @@ public class koneksiDB {
         return var;
     }
     
+    public static String ALARMPERMINTAANRANAP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMPERMINTAANRANAP");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String ALARMPENGADUANPASIEN(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

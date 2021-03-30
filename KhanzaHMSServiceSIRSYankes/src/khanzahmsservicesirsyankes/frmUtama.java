@@ -47,7 +47,7 @@ public class frmUtama extends javax.swing.JFrame {
         initComponents();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPISIRS");	
+            URL = koneksiDB.URLAPISIRS();	
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
