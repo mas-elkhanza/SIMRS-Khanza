@@ -379,7 +379,8 @@ public class frmUtama extends javax.swing.JFrame {
                             "pcare_pendaftaran.kdPoli,pcare_pendaftaran.nmPoli,pcare_pendaftaran.keluhan,pcare_pendaftaran.kunjSakit,"+
                             "pcare_pendaftaran.sistole,pcare_pendaftaran.diastole,pcare_pendaftaran.beratBadan,pcare_pendaftaran.tinggiBadan,"+
                             "pcare_pendaftaran.respRate,pcare_pendaftaran.heartRate,pcare_pendaftaran.rujukBalik,pcare_pendaftaran.kdTkp,"+
-                            "pcare_pendaftaran.noUrut,pcare_pendaftaran.status from pcare_pendaftaran where pcare_pendaftaran.status='Gagal' ");
+                            "pcare_pendaftaran.noUrut,pcare_pendaftaran.status,reg_periksa.kd_dokter from pcare_pendaftaran "+
+                            "inner join reg_periksa on reg_periksa.no_rawat=pcare_pendaftaran.no_rawat where pcare_pendaftaran.status='Gagal' ");
                         try {
                             rs=ps.executeQuery();
                             while(rs.next()){
@@ -416,10 +417,11 @@ public class frmUtama extends javax.swing.JFrame {
                                     if(nameNode.path("code").asText().equals("201")){
                                         response = root.path("response").path("message");   
                                         if(Sequel.cariInteger("select count(no_rawat) from pemeriksaan_ralan where no_rawat=?",rs.getString("no_rawat"))<=0){
-                                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
+                                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
                                                 rs.getString("no_rawat"),rs.getString("tglDaftar"),Sequel.cariIsi("select current_time()"),
                                                 "",rs.getString("sistole")+"/"+rs.getString("diastole"),rs.getString("heartRate"),rs.getString("respRate"),
-                                                rs.getString("tinggiBadan"),rs.getString("beratBadan"),"","Compos Mentis", rs.getString("keluhan"),"","","-","",""
+                                                rs.getString("tinggiBadan"),rs.getString("beratBadan"),"","Compos Mentis", rs.getString("keluhan"),"","","-",
+                                                "","","",rs.getString("kd_dokter")
                                             });
                                         }
                                             

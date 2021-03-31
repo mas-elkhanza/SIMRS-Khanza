@@ -817,8 +817,8 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{    
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                DlgHome.setOpacity(0.70f);
-                DlgLogin.setOpacity(0.75f);
+                DlgHome.setOpacity(0.69f);
+                DlgLogin.setOpacity(0.74f);
             }     
         }catch(Exception e){            
         } 

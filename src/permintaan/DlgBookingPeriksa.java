@@ -355,7 +355,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             alarm=koneksiDB.ALARMBOOKINGPERIKSA();
         } catch (Exception e) {
             alarm="no";
-            System.out.println("E : "+e);
         }
         
         try {
