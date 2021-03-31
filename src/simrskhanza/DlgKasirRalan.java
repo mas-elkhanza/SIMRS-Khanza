@@ -8556,11 +8556,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     DlgPermintaanRanap form=new DlgPermintaanRanap(null,false);
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    form.setLocationRelativeTo(internalFrame1);         
-                    //"Kd.Dokter","Dokter Dituju","No.RM","Pasien",
-                    //"Poliklinik","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
-                    //"Biaya Reg","Jenis Bayar","Status","No.Rawat","Tanggal",
-                    //"Jam","No.Reg","Status Bayar","Stts Poli","Kd PJ","Kd Poli","No.Telp Pasien"        
+                    form.setLocationRelativeTo(internalFrame1);               
                     form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),9).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),4).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),19).toString()); 
                     form.setVisible(true);
                 } 

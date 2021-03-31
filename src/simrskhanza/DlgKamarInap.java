@@ -10985,6 +10985,10 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }       
     }
     
+    public void setDiagnosaAwal(String diagnosa) {
+        DiagnosaAwalSementara.setText(diagnosa);
+    }
+    
     public void isCek(){
         try {
             namakamar=koneksiDB.KAMARAKTIFRANAP();

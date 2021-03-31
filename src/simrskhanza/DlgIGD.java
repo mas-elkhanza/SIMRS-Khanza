@@ -79,6 +79,7 @@ import rekammedis.RMDataResumePasien;
 import laporan.DlgDiagnosaPenyakit;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
+import permintaan.DlgPermintaanRanap;
 import rekammedis.RMHemodialisa;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMTriaseIGD;
@@ -582,6 +583,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnSKDPBPJS = new javax.swing.JMenuItem();
         MnPermintaanLab = new javax.swing.JMenuItem();
         MnPermintaanRadiologi = new javax.swing.JMenuItem();
+        MnPermintaanRanap = new javax.swing.JMenuItem();
         MnKamarInap = new javax.swing.JMenuItem();
         MnTindakan = new javax.swing.JMenu();
         MnRawatJalan = new javax.swing.JMenuItem();
@@ -963,6 +965,22 @@ public final class DlgIGD extends javax.swing.JDialog {
             }
         });
         MnPermintaan.add(MnPermintaanRadiologi);
+
+        MnPermintaanRanap.setBackground(new java.awt.Color(255, 255, 254));
+        MnPermintaanRanap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPermintaanRanap.setForeground(new java.awt.Color(50, 50, 50));
+        MnPermintaanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPermintaanRanap.setText("Rawat Inap");
+        MnPermintaanRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPermintaanRanap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPermintaanRanap.setName("MnPermintaanRanap"); // NOI18N
+        MnPermintaanRanap.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnPermintaanRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPermintaanRanapActionPerformed(evt);
+            }
+        });
+        MnPermintaan.add(MnPermintaanRanap);
 
         jPopupMenu1.add(MnPermintaan);
 
@@ -3145,7 +3163,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-10-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3159,7 +3177,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-10-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3251,7 +3269,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-10-2020" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2021" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -6369,6 +6387,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPeriksaLabPAActionPerformed
 
+    private void MnPermintaanRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPermintaanRanapActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TNoReg.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                DlgPermintaanRanap form=new DlgPermintaanRanap(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TDokter.getText(),TPngJwb.getText(),"UGD/IGD",tbPetugas.getValueAt(tbPetugas.getSelectedRow(),16).toString());
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPermintaanRanapActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -6497,6 +6538,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenu MnPermintaan;
     private javax.swing.JMenuItem MnPermintaanLab;
     private javax.swing.JMenuItem MnPermintaanRadiologi;
+    private javax.swing.JMenuItem MnPermintaanRanap;
     private javax.swing.JMenuItem MnPersetujuanMedis;
     private javax.swing.JMenu MnPilihBilling;
     private javax.swing.JMenuItem MnPoliInternal;
@@ -6945,6 +6987,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnCetakSuratCovid.setEnabled(akses.getsurat_keterangan_covid());
         MnRujukSisrute.setEnabled(akses.getsisrute_rujukan_keluar());
         MnTeridentifikasiTB.setEnabled(akses.getkemenkes_sitt());
+        MnPermintaanRanap.setEnabled(akses.getpermintaan_ranap());
         
         /*if((MnDataTriaseIGD.isVisible()==false)){
             MnRMIGD.setVisible(false);
