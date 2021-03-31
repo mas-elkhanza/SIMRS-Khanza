@@ -1367,6 +1367,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NoTelp.setText(notelp);
         TCari.setText(norwt);
         ChkInput.setSelected(true);
+        aktif=false;
         isForm();
     }
     
