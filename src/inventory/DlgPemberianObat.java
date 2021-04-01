@@ -1224,7 +1224,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     + tgl + "and detail_pemberian_obat.kode_brng like '%" + TCari.getText().trim() + "%' or "
                     + tgl + "and detail_pemberian_obat.no_batch like '%" + TCari.getText().trim() + "%' or "
                     + tgl + "and databarang.nama_brng like '%" + TCari.getText().trim() + "%' "
-                    + "order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam ", param);
+                    + "order by detail_pemberian_obat.tgl_perawatan", param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1537,7 +1537,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 + tgl + "and databarang.nama_brng like ? or "
                 + tgl + "and detail_pemberian_obat.no_faktur like ? or "
                 + tgl + "and detail_pemberian_obat.no_batch like ? "
-                + "order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam ";
+                + "order by detail_pemberian_obat.tgl_perawatan";
 
         Valid.tabelKosong(tabModePO);
         try {

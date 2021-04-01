@@ -19,6 +19,7 @@ import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -233,7 +234,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Hak Akses User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Hak Akses User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -780,7 +781,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     + "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"
                     + "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"
                     + "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"
-                    + "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa,rvu_bpjs from user where id_user=AES_ENCRYPT(?,'nur')");
+                    + "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1, user);
                 rs = ps.executeQuery();
@@ -2032,10 +2033,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false, "[J]Saldo Akun Per Bulan", rs.getBoolean("saldo_akun_perbulan")});
                     }
 
-                    if ("[J]RVP Piutang BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]RVP Piutang BPJS", rs.getBoolean("rvu_bpjs")});
-                    }
-                    
                     if ("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())) {
                         tabMode.addRow(new Object[]{false, "[K]Cek NIK", rs.getBoolean("bpjs_cek_nik")});
                     }
@@ -7177,11 +7174,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             if ("[J]Saldo Akun Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
                 Sequel.mengedit("user", "id_user=AES_ENCRYPT('" + TKd.getText() + "','nur')",
                         "saldo_akun_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
-            }
-            
-            if ("[J]RVP Piutang BPJS".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user", "id_user=AES_ENCRYPT('" + TKd.getText() + "','nur')",
-                        "rvu_bpjs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
         }
     }

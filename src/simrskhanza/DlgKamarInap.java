@@ -12356,10 +12356,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
      * @param norm
      * @param nmpasien
      */
-    public void setDiagnosaMasuk(String diagnosa){
-        diagnosaawal.setText(diagnosa);
-    }
-    
     public void setNoRm(String norwt, String norm, String nmpasien) {
         norawat.setText(norwt);
         TNoRM.setText(norm);
