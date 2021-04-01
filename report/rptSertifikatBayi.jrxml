@@ -338,7 +338,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="188" y="156" width="361" height="17" uuid="3a68e57a-65c1-4764-8cf9-aa4c4cbf07df"/>
+				<reportElement x="188" y="156" width="365" height="17" uuid="3a68e57a-65c1-4764-8cf9-aa4c4cbf07df"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -397,7 +397,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{penolong}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="188" y="173" width="361" height="17" uuid="8dbf6876-92cf-42c5-9a4f-b4e0070e8a21"/>
+				<reportElement x="188" y="173" width="365" height="37" uuid="8dbf6876-92cf-42c5-9a4f-b4e0070e8a21"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
