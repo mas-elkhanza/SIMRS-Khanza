@@ -49,6 +49,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
+import simrskhanza.DlgCariBangsal;
 import widget.Button;
 
 /**
@@ -69,6 +70,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private boolean[] pilih;
     private double[] jumlah, harga, beli, stok, kapasitas, p1, p2;
     private String[] no, kodebarang, namabarang, kodesatuan, kandungan, letakbarang, namajenis, aturan, industri;
+    private DlgCariBangsal caribangsal = new DlgCariBangsal(null, false);
 
     //TODO: Inhealth Import
     private final Properties prop = new Properties();
@@ -93,7 +95,9 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
      *
      */
     public DlgCariDokter dokter = new DlgCariDokter(null, false);
-    private String noracik = "", aktifkanbatch = "no", tampilkan_ppnobat_ralan = "", status = "", bangsal = "", kamar = "", norawatibu = "", kelas, bangsaldefault = Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+    private String noracik = "", aktifkanbatch = "no", tampilkan_ppnobat_ralan = "", status = "", 
+            bangsal = "", kamar = "", norawatibu = "", kelas, 
+            bangsaldefault = Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
 
     /**
      * Creates new form DlgPenyakit
@@ -517,6 +521,42 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             System.out.println("E : " + e);
             aktifkanbatch = "no";
         }
+        
+        caribangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (caribangsal.getTable().getSelectedRow() != -1) {
+                    kddepo.setText(caribangsal.getTable().getValueAt(caribangsal.getTable().getSelectedRow(), 0).toString());
+                    nmdepo.setText(caribangsal.getTable().getValueAt(caribangsal.getTable().getSelectedRow(), 1).toString());
+                    tampilobat();
+                }
+                kddepo.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
     }
 
     /**
@@ -536,6 +576,10 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         kdKamar = new javax.swing.JTextField();
         internalFrame1 = new widget.InternalFrame();
         panelisi3 = new widget.panelisi();
+        label21 = new widget.Label();
+        kddepo = new widget.TextBox();
+        nmdepo = new widget.TextBox();
+        BtnGudang = new widget.Button();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -625,7 +669,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -634,6 +678,38 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
+        label21.setText("Depo :");
+        label21.setName("label21"); // NOI18N
+        label21.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi3.add(label21);
+
+        kddepo.setEditable(false);
+        kddepo.setName("kddepo"); // NOI18N
+        kddepo.setPreferredSize(new java.awt.Dimension(60, 23));
+        kddepo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kddepoKeyPressed(evt);
+            }
+        });
+        panelisi3.add(kddepo);
+
+        nmdepo.setEditable(false);
+        nmdepo.setName("nmdepo"); // NOI18N
+        nmdepo.setPreferredSize(new java.awt.Dimension(130, 23));
+        panelisi3.add(nmdepo);
+
+        BtnGudang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnGudang.setMnemonic('2');
+        BtnGudang.setToolTipText("Alt+2");
+        BtnGudang.setName("BtnGudang"); // NOI18N
+        BtnGudang.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnGudang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGudangActionPerformed(evt);
+            }
+        });
+        panelisi3.add(BtnGudang);
+
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
@@ -641,7 +717,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
         TCari.setToolTipText("Alt+C");
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(245, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -954,7 +1030,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
         DTPBeri.setName("DTPBeri"); // NOI18N
         FormInput.add(DTPBeri);
-        DTPBeri.setBounds(80, 40, 90, 28);
+        DTPBeri.setBounds(80, 40, 90, 26);
 
         TKamar.setHighlighter(null);
         TKamar.setName("TKamar"); // NOI18N
@@ -1518,6 +1594,36 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         // TODO add your handling code here:
     }//GEN-LAST:event_TKamarKeyPressed
 
+    private void kddepoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddepoKeyPressed
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_PAGE_DOWN:
+            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?", nmdepo, kddepo.getText());
+            break;
+            case KeyEvent.VK_PAGE_UP:
+            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?", nmdepo, kddepo.getText());
+            TCari.requestFocus();
+            break;
+            case KeyEvent.VK_ENTER:
+            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?", nmdepo, kddepo.getText());
+            BtnSimpan.requestFocus();
+            break;
+            case KeyEvent.VK_UP:
+            BtnGudangActionPerformed(null);
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_kddepoKeyPressed
+
+    private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
+        caribangsal.isCek();
+        caribangsal.emptTeks();
+        caribangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        caribangsal.setLocationRelativeTo(internalFrame1);
+        caribangsal.setAlwaysOnTop(false);
+        caribangsal.setVisible(true);
+    }//GEN-LAST:event_BtnGudangActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1537,6 +1643,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnGudang;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnSeek5;
@@ -1578,8 +1685,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField kdKamar;
+    private widget.TextBox kddepo;
     private widget.Label label12;
+    private widget.Label label21;
     private widget.Label label9;
+    private widget.TextBox nmdepo;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBersihkan;
     private widget.Table tbDetailResepObatRacikan;
@@ -1597,6 +1707,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 z++;
             }
         }
+        
+        //get depo pilihan
+        if(!kddepo.getText().equals("")){
+            bangsal = kddepo.getText();
+        } else kddepo.setText(bangsal);
 
         pilih = null;
         pilih = new boolean[z];
@@ -2025,6 +2140,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 z++;
             }
         }
+        
+        //get depo pilihan
+        if(!kddepo.getText().equals("")){
+            bangsal = kddepo.getText();
+        } else kddepo.setText(bangsal);
 
         pilih = null;
         pilih = new boolean[z];
