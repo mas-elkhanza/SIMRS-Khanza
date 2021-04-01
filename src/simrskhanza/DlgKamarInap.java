@@ -11540,7 +11540,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
-            String tgl_masuk = tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString().substring(0, 10).replace("/", "-");
+            String tgl_masuk = TNoRw1.getText().substring(0, 10).replace("/", "-");
             System.out.println("tanggal masuk " + tgl_masuk);
             String id = Sequel.cariIsi("select id from temp_spri where norm='" + TNoRM.getText() + "' and tanggal='" + tgl_masuk + "'");
             if (!id.isEmpty()) {
@@ -11566,6 +11566,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
                         + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
                         + " WHERE temp_spri.norm = '" + TNoRM1.getText().trim() + "' "
+                        + "and temp_spri.tanggal='"+tgl_masuk+"'"
                         + " order by temp_spri.tanggal ",
                         param);
             } else {
