@@ -619,20 +619,25 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 TCari.requestFocus();
             }else{
                 i=tbResep.getSelectedRow();
+                String kdBangsal = Sequel.cariIsi("select kd_bangsal from resep_pulang "
+                        + "where no_rawat='"+ tbResep.getValueAt(i,0).toString() +"' and kode_brng='"+ KdBarang.getText() + "' "
+                        + "and no_batch='"+ tbResep.getValueAt(i,9).toString() +"' and no_faktur='"+ tbResep.getValueAt(i,10).toString() +"' "
+                        + "and tanggal='"+ tbResep.getValueAt(i,1).toString() +"' and jam='"+ tbResep.getValueAt(i,2).toString() +"'");
+                
                 if(Sequel.queryu2tf("delete from resep_pulang where no_rawat=? and kode_brng=? and no_batch=? and no_faktur=? and tanggal=? and jam=?",6,new String[]{
-                    tbResep.getValueAt(i,0).toString(),KdBarang.getText(),tbResep.getValueAt(i,9).toString(),tbResep.getValueAt(i,10).toString(),tbResep.getValueAt(i,1).toString(),tbResep.getValueAt(i,2).toString()
+                    tbResep.getValueAt(i,0).toString(), KdBarang.getText(), tbResep.getValueAt(i,9).toString(), tbResep.getValueAt(i,10).toString(), tbResep.getValueAt(i,1).toString(), tbResep.getValueAt(i,2).toString()
                 })==true){
                     if(aktifkanbatch.equals("yes")){
                         Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
                             ""+tbResep.getValueAt(i,5).toString(),tabMode.getValueAt(i,9).toString(),KdBarang.getText(),tabMode.getValueAt(i,10).toString()
                         });
-                        Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(tbResep.getValueAt(i,5).toString()),0,"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Hapus",tbResep.getValueAt(i,9).toString(),tbResep.getValueAt(i,10).toString());
-                        Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','"+tbResep.getValueAt(i,5).toString()+"','"+tbResep.getValueAt(i,9).toString()+"','"+tbResep.getValueAt(i,10).toString()+"'", 
-                                     "stok=stok+'"+tbResep.getValueAt(i,5).toString()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='"+tbResep.getValueAt(i,9).toString()+"' and no_faktur='"+tbResep.getValueAt(i,10).toString()+"'");    
+                        Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(tbResep.getValueAt(i,5).toString()),0,"Resep Pulang",akses.getkode(),kdBangsal,"Hapus",tbResep.getValueAt(i,9).toString(),tbResep.getValueAt(i,10).toString());
+                        Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+kdBangsal+"','"+tbResep.getValueAt(i,5).toString()+"','"+tbResep.getValueAt(i,9).toString()+"','"+tbResep.getValueAt(i,10).toString()+"'", 
+                                     "stok=stok+'"+tbResep.getValueAt(i,5).toString()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+kdBangsal+"' and no_batch='"+tbResep.getValueAt(i,9).toString()+"' and no_faktur='"+tbResep.getValueAt(i,10).toString()+"'");    
                     }else{
-                        Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(tbResep.getValueAt(i,5).toString()),0,"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Hapus","","");
-                        Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','"+tbResep.getValueAt(i,5).toString()+"','',''", 
-                                     "stok=stok+'"+tbResep.getValueAt(i,5).toString()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='' and no_faktur=''");    
+                        Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(tbResep.getValueAt(i,5).toString()),0,"Resep Pulang",akses.getkode(),kdBangsal,"Hapus","","");
+                        Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+kdBangsal+"','"+tbResep.getValueAt(i,5).toString()+"','',''", 
+                                     "stok=stok+'"+tbResep.getValueAt(i,5).toString()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+kdBangsal+"' and no_batch='' and no_faktur=''");    
                     }
                     tampil();
                 }
@@ -774,6 +779,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 TCari.requestFocus();
         }else{
             inputresep.setNoRm(TNoRw.getText(),"-",Valid.SetDateToString(DTPCari1.getDate()),Sequel.cariIsi("select current_time()"));
+            inputresep.emptDepo();
             inputresep.tampil();
             inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             inputresep.setLocationRelativeTo(internalFrame1);
@@ -897,19 +903,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 rs=ps.executeQuery();
                 jumlahtotal=0;
                 
-                String no_rawat = "";
                 while(rs.next()){
-                    if(!no_rawat.isEmpty() && no_rawat.equals(rs.getString(1))){
-                        tabMode.addRow(new Object[]{
-                            "","","","",rs.getString(5),Valid.SetAngka(rs.getDouble(6)),Valid.SetAngka(rs.getDouble(7)),Valid.SetAngka(rs.getDouble(8)),rs.getString(9),rs.getString(10),rs.getString(11)
-                        });
-                    } else{
-                        tabMode.addRow(new Object[]{
-                            rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),Valid.SetAngka(rs.getDouble(6)),Valid.SetAngka(rs.getDouble(7)),Valid.SetAngka(rs.getDouble(8)),rs.getString(9),rs.getString(10),rs.getString(11)
-                        });
-                        jumlahresep += 1;
-                    }
-                    no_rawat = rs.getString(1);
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),Valid.SetAngka(rs.getDouble(6)),Valid.SetAngka(rs.getDouble(7)),Valid.SetAngka(rs.getDouble(8)),rs.getString(9),rs.getString(10),rs.getString(11)
+                    });
+                    jumlahresep += 1;
                     
                     jumlahtotal=jumlahtotal+rs.getDouble("total");
                 }
