@@ -58,8 +58,9 @@ public final class DlgResepObat extends javax.swing.JDialog {
     private String now=dateFormat.format(date),lembarobat="",status="";
     private double total=0,jumlahtotal=0;
     private Properties prop = new Properties();
-    private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
+    private DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
     private int i=0,pilihan=0,getno=0;
+    private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -255,6 +256,9 @@ public final class DlgResepObat extends javax.swing.JDialog {
         } catch (Exception ex) {
             lembarobat="";
         }
+        
+        Valid.SetTgl2(DTPCari1,format.format(new Date())+" 00:00:00");
+        Valid.SetTgl2(DTPCari2,format.format(new Date())+" 23:59:59"); 
     }
 
     /** This method is called from within the constructor to
@@ -795,17 +799,17 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel19.setText("Tgl.Rawat :");
+        jLabel19.setText("Tanggal :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
+        jLabel19.setPreferredSize(new java.awt.Dimension(53, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2020" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020 00:11:20" }));
+        DTPCari1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        DTPCari1.setPreferredSize(new java.awt.Dimension(132, 23));
         panelGlass9.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -815,11 +819,11 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2020" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020 00:11:20" }));
+        DTPCari2.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        DTPCari2.setPreferredSize(new java.awt.Dimension(132, 23));
         panelGlass9.add(DTPCari2);
 
         jLabel6.setText("Key Word :");
@@ -828,7 +832,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(240, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -945,7 +949,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         jLabel8.setBounds(0, 42, 95, 23);
 
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2020" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -1100,7 +1104,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
            Sequel.meghapus("resep_obat","no_resep",NoResep.getText());
            Sequel.meghapus("resep_dokter","no_resep",NoResep.getText());
            tampil();
-           emptTeks();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1305,7 +1308,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
-                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan "+
+                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
                     "aturan_pakai inner join databarang inner join detail_pemberian_obat "+
                     "inner join kodesatuan on resep_obat.no_rawat=reg_periksa.no_rawat  "+
@@ -1328,7 +1331,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep2.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
-                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
+                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur " +
                     "from resep_obat inner join reg_periksa inner join pasien inner join " +
                     "obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -1518,7 +1521,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep3.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
-                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,jenis.nama as jenis "+
+                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,jenis.nama as jenis,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
                     "aturan_pakai inner join databarang inner join detail_pemberian_obat "+
                     "inner join kodesatuan inner join jenis on resep_obat.no_rawat=reg_periksa.no_rawat  "+
@@ -1541,7 +1544,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep2.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
-                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
+                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur " +
                     "from resep_obat inner join reg_periksa inner join pasien inner join " +
                     "obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -1579,7 +1582,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep5.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
-                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan "+
+                    "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
                     "aturan_pakai inner join databarang inner join detail_pemberian_obat "+
                     "inner join kodesatuan on resep_obat.no_rawat=reg_periksa.no_rawat  "+
@@ -1602,7 +1605,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Valid.MyReportqry("rptItemResep6.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
-                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
+                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik,pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur " +
                     "from resep_obat inner join reg_periksa inner join pasien inner join " +
                     "obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -1657,7 +1660,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         });
                     }
                 } catch (Exception e) {
-                    System.out.println("Notif 2 : "+e);
+                    System.out.println("Notif 1 : "+e);
                 } finally{
                     if(rs!=null){
                         rs.close();
@@ -1685,7 +1688,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             "0",rs.getString("nama_racik"),rs.getString("aturan_pakai"),rs.getString("jml_dr"),rs.getString("nm_racik"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    System.out.println("Data "+rs.getString("nama_racik"));
                 } catch (Exception e) {
                     System.out.println("Notif 2 : "+e);
                 } finally{
@@ -1888,27 +1890,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter "+
                     " from resep_obat inner join reg_periksa inner join pasien inner join dokter on resep_obat.no_rawat=reg_periksa.no_rawat  "+
                     " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " resep_obat.tgl_perawatan between ? and ? and resep_obat.no_resep like ? or "+
-                    " resep_obat.tgl_perawatan between ? and ? and resep_obat.no_rawat like ? or "+
-                    " resep_obat.tgl_perawatan between ? and ? and pasien.no_rkm_medis like ? or "+
-                    " resep_obat.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
-                    " resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? order by resep_obat.tgl_perawatan,resep_obat.jam");
+                    " resep_obat.tgl_perawatan between ? and ? and resep_obat.jam >= ? and resep_obat.jam <= ? and "+
+                    " (resep_obat.no_resep like ? or resep_obat.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ?) "+
+                    " order by resep_obat.tgl_perawatan,resep_obat.jam");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(3,DTPCari1.getSelectedItem().toString().substring(11,19));
+                ps.setString(4,DTPCari2.getSelectedItem().toString().substring(11,19));
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(7,"%"+TCari.getText().trim()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
                 ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 jumlahtotal=0;
                 while(rs.next()){
@@ -2081,10 +2075,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
-        TCari.setText(norwt);        
+        TCari.setText(norwt); 
         DTPBeri.setDate(tgl1);
-        DTPCari1.setDate(tgl1);
-        DTPCari2.setDate(tgl2);   
+        Valid.SetTgl2(DTPCari1,format.format(tgl1)+" 00:00:00");
+        Valid.SetTgl2(DTPCari2,format.format(tgl2)+" 23:59:59"); 
         cmbJam.setSelectedItem(jam);
         cmbMnt.setSelectedItem(menit);
         cmbDtk.setSelectedItem(detik);
@@ -2099,8 +2093,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
         TCari.setText(norwt);        
         DTPBeri.setDate(tgl1);
-        DTPCari1.setDate(tgl1);
-        DTPCari2.setDate(tgl2);   
+        Valid.SetTgl2(DTPCari1,format.format(tgl1)+" 00:00:00");
+        Valid.SetTgl2(DTPCari2,format.format(tgl2)+" 23:59:59"); 
         cmbJam.setSelectedItem(jam);
         cmbMnt.setSelectedItem(menit);
         cmbDtk.setSelectedItem(detik);

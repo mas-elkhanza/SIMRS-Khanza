@@ -4,12 +4,12 @@
     header("Pragma: no-cache");
     header("Expires: 0");
     print isset($header)?$header:NULL;
- include '../../../conf/conf.php';
- $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun        = $baris[0];
-   $bulan        = $baris[1];
+    include '../../../conf/conf.php';
+    $_sql         = "SELECT * FROM set_tahun";
+    $hasil        = bukaquery($_sql);
+    $baris        = mysqli_fetch_row($hasil);
+    $tahun        = empty($baris[0])?date("Y"):$baris[0];
+    $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 <html>
     <head>
@@ -17,13 +17,13 @@
     </head>
     <body>
 	<center><h1><font color='999999'>Laporan Data Pendapatan Tuslah</font></h1></center>
-	&nbsp;&nbsp;Pendapatan Tuslah :
+	&nbsp;Pendapatan Tuslah :
     <?php
         $_sql 		= "SELECT pendapatan_tuslah, persen_rs, bagian_rs, persen_kry,bagian_kry
                       FROM set_tuslah WHERE tahun='$tahun' and bulan='$bulan' ORDER BY bagian_kry";
         $hasil		= bukaquery($_sql);
         $jumlah		= mysqli_num_rows($hasil);
-        $pendapatan_tuslah="0";
+        $pendapatan_tuslah= "0";
         $no			= 1;
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='1' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -47,12 +47,23 @@
                              </tr>";$no++;
                     }
             echo "</table>";
+        }else{
+            echo "<table width='100%' border='1' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='10%'><div align='center'>No.</strong></div></td>                    
+                        <td width='25%'><div align='center'>Pendapatan Tuslah</div></td>
+                        <td width='6%'><div align='center'>% RS</div></td>
+						<td width='25%'><div align='center'>Bagian RS</div></td>
+                        <td width='7%'><div align='center'>% Kry</div></td>
+                        <td width='25%'><div align='center'>Bagian Kry</div></td>
+                    </tr>
+                  </table>";
         } 
     ?>
-    <br>&nbsp;&nbsp;Pembagian Tuslah :
+    <br>&nbsp;Pembagian Tuslah :
     <?php
 		$keyword 	= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-                $keyword= validTeks($keyword);
+        $keyword    = validTeks($keyword);
         $_sql 		= "SELECT pembagian_tuslah.id,pegawai.nama,pembagian_tuslah.persen FROM pembagian_tuslah inner join pegawai
 					  on pembagian_tuslah.id=pegawai.id where pegawai.nama like '%".$keyword."%' ORDER BY persen desc";
         $hasil		= bukaquery($_sql);
@@ -86,6 +97,15 @@
                         <td><div align='left'>Data : $jumlah, Ttl Prosen : ".$prosen."%, Ttl Bagian : ".formatDuit($ttl)." </div></td>                        
                     </tr>     
                  </table>";
+        }else{
+            echo "<table width='100%' border='1' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='10%'><div align='center'>No.</strong></div></td>
+                        <td width='38%'><div align='center'>Nama Karyawan</div></td>
+                        <td width='25%'><div align='center'>Porsi Bagian</div></td>
+						<td width='25%'><div align='center'>Bagian Karyawan</div></td>
+                    </tr>
+                  </table>";
         } 
     ?>
     </body>

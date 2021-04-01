@@ -33,7 +33,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -45,7 +45,7 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
     private final validasi Valid=new validasi();
     private PreparedStatement pstanggal,psdokter,psreg,pstindakandokter;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private ResultSet rstanggal,rsdokter,rsreg,rstindakandokter;
     private int i=0,jmlh0s6l=0,jmlh0s6p=0,jmlh7s28l=0,jmlh7s28p=0,jmlh29st1l=0,
             jmlh29st1p=0,jmlt1s4l=0,jmlt1s4p=0,jmlt5s14l=0,jmlt5s14p=0,

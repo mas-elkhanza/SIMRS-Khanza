@@ -30,7 +30,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
-    private DlgSuplier suplier=new DlgSuplier(null,false);
+    private InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     private DlgCariReturBeli form=new DlgCariReturBeli(null,false);  
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private PreparedStatement ps;
@@ -290,7 +290,6 @@ public class DlgReturBeli extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
     }
 
     /** This method is called from within the constructor to

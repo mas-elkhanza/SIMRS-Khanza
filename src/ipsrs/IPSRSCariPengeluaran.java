@@ -38,6 +38,7 @@ public class IPSRSCariPengeluaran extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0,ttltagihan=0,total=0;
     private int i=0;
+    private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -885,9 +886,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
   }else{
      try {
-         
          psdetailpengeluaran=koneksi.prepareStatement("select kode_brng,jumlah,total from ipsrsdetailpengeluaran where no_keluar=? ");
          try {
+            Sequel.AutoComitFalse();
+            sukses=true;
             psdetailpengeluaran.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
             rs2=psdetailpengeluaran.executeQuery();
             total=0;
@@ -901,10 +903,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Sequel.queryu("delete from tampjurnal");
             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Ipsrs from set_akun"),"PERSEDIAAN BARANG","0",""+total});
             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Ipsrs from set_akun"),"KAS DI TANGAN",""+total,"0"}); 
-            jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGGUNAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
-            Sequel.queryu2("delete from ipsrspengeluaran where no_keluar=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
+            sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGGUNAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
             
-            tampil();
+            if(sukses==true){
+                Sequel.queryu2("delete from ipsrspengeluaran where no_keluar=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
+                Sequel.Commit();
+                tampil();
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }
+
+            Sequel.AutoComitTrue();
          } catch (Exception e) {
              System.out.println("Notif : "+e);
          } finally{

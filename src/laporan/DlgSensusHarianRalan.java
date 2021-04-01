@@ -35,7 +35,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgKabupaten;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -50,7 +50,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private ResultSet rs;
     private int i=0,jkl=0,jkp=0,rujukan=0,pengunjungbaru=0,pengunjunglama=0,statuspolibaru=0,statuspolilama=0;
     private String diagnosautama="",diagnosasekunder="",perujuk="",status="";

@@ -1556,6 +1556,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            param.put("logo",Sequel.cariGambar("select inhealth from gambar")); 
             if(JenisPelayanan.getSelectedIndex()==0){
                 Valid.MyReport("rptBridgingSJP.jasper","report","::[ Cetak SJP ]::",param);
             }else{

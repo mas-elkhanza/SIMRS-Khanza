@@ -351,12 +351,12 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         TCariSkala1.setDocument(new batasInput((int)100).getKata(TCariSkala1));
         TCariSkala3.setDocument(new batasInput((int)100).getKata(TCariSkala3));
         KeteranganKedatangan.setDocument(new batasInput((int)100).getKata(KeteranganKedatangan));
-        PrimerSuhu.setDocument(new batasInput((byte)3).getKata(PrimerSuhu));
-        SekunderSuhu.setDocument(new batasInput((byte)3).getKata(SekunderSuhu));
+        PrimerSuhu.setDocument(new batasInput((byte)5).getKata(PrimerSuhu));
+        SekunderSuhu.setDocument(new batasInput((byte)5).getKata(SekunderSuhu));
         PrimerNyeri.setDocument(new batasInput((byte)5).getKata(PrimerNyeri));
         SekunderNyeri.setDocument(new batasInput((byte)5).getKata(SekunderNyeri));
-        PrimerTensi.setDocument(new batasInput((byte)7).getKata(PrimerTensi));
-        SekunderTensi.setDocument(new batasInput((byte)7).getKata(SekunderTensi));
+        PrimerTensi.setDocument(new batasInput((byte)8).getKata(PrimerTensi));
+        SekunderTensi.setDocument(new batasInput((byte)8).getKata(SekunderTensi));
         PrimerNadi.setDocument(new batasInput((byte)3).getKata(PrimerNadi));
         SekunderNadi.setDocument(new batasInput((byte)3).getKata(SekunderNadi));
         PrimerSaturasi.setDocument(new batasInput((byte)3).getKata(PrimerSaturasi));
@@ -3955,11 +3955,11 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_KeteranganKedatanganKeyPressed
 
     private void SekunderAnamnesaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderAnamnesaKeyPressed
-        Valid.pindah(evt,KeteranganKedatangan,SekunderSuhu);
+        Valid.pindah2(evt,KeteranganKedatangan,SekunderSuhu);
     }//GEN-LAST:event_SekunderAnamnesaKeyPressed
 
     private void PrimerKeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerKeluhanUtamaKeyPressed
-       Valid.pindah(evt,KeteranganKedatangan,PrimerSuhu);
+       Valid.pindah2(evt,KeteranganKedatangan,PrimerSuhu);
     }//GEN-LAST:event_PrimerKeluhanUtamaKeyPressed
 
     private void PrimerKubutuhanKususKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerKubutuhanKususKeyPressed

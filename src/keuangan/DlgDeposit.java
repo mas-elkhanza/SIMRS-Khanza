@@ -64,8 +64,6 @@ public class DlgDeposit extends javax.swing.JDialog {
     public DlgDeposit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(10,2);
-        setSize(628,674);
 
         Object[] row={"No.Rawat","Pasien","Tanggal","Besar Deposit","Petugas"};
         tabMode=new DefaultTableModel(null,row){

@@ -75,7 +75,7 @@
                   </div>";
         }else{
             echo "<div class='block-header'>
-                    <h2><center>SURAT KETERANGAN SAKIT</center></h2>
+                    <h2><center>SURAT KETERANGAN</center></h2>
                 </div>
                 <div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -90,7 +90,7 @@
         }
     }else{
         echo "<div class='block-header'>
-                    <h2><center>SURAT KETERANGAN SAKIT</center></h2>
+                    <h2><center>SURAT KETERANGAN</center></h2>
               </div>
               <div class='row clearfix'>
                  <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>

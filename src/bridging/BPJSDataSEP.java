@@ -2526,9 +2526,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 Valid.textKosong(btnKecamatan,"Kecamatan");
             }else if (KdDPJP.getText().trim().equals("")||NmDPJP.getText().trim().equals("")) {
                 Valid.textKosong(KdDPJP, "DPJP");
-            }else if (NoSKDP.getText().trim().equals("")) {
+            }/*else if (NoSKDP.getText().trim().equals("")) {
                 Valid.textKosong(NoSKDP, "No.SKDP");
-            }else{
+            }*/else{
                 try {
                     jasaraharja="";BPJS="";Taspen="";Asabri="";
                     penjamin="";

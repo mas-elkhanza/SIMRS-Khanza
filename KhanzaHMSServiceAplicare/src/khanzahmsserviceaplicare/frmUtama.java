@@ -171,13 +171,13 @@ public class frmUtama extends javax.swing.JFrame {
                 String jam = nol_jam + Integer.toString(nilai_jam);
                 String menit = nol_menit + Integer.toString(nilai_menit);
                 String detik = nol_detik + Integer.toString(nilai_detik);
-                TeksArea.append(jam+":"+menit+":"+detik+"\n");
                 if(menit.equals("01")&&detik.equals("01")){
                     if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
                         TeksArea.setText("");
                     }
                         
                     try {
+                        koneksi=koneksiDB.condb();
                         TeksArea.append("Memulai update aplicare\n");
                         ps=koneksi.prepareStatement(
                                 "select aplicare_ketersediaan_kamar.kode_kelas_aplicare,aplicare_ketersediaan_kamar.kd_bangsal," +

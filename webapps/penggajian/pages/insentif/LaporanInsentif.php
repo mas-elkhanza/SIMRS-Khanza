@@ -1,10 +1,10 @@
 <?php
- include '../../../conf/conf.php';
- $_sql         = "SELECT * FROM set_tahun";
+   include '../../../conf/conf.php';
+   $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
-   $tahun        = $baris[0];
-   $bulan        = $baris[1];
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 <html>
     <head>
@@ -12,7 +12,7 @@
     </head>
     <body>
 	<center><h1><font color='999999'>Laporan Data Insentif</font></h1></center>
-	&nbsp;&nbsp;Pendapatan :
+	&nbsp;Pendapatan :
     <?php
         $_sql 		= "SELECT pendapatan,persen,total_insentif FROM set_insentif WHERE tahun='$tahun' and bulan='$bulan' ORDER BY pendapatan";
         $hasil		= bukaquery($_sql);
@@ -37,9 +37,18 @@
                              </tr>";$no++;
                     }
             echo "</table>";
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='10%'><div align='center'>No.</strong></div></td>
+                        <td width='34%'><div align='center'>Pendapatan</div></td>
+                        <td width='20%'><div align='center'>Prosentase</div></td>
+						<td width='34%'><div align='center'>Total Insentif</div></td>
+                    </tr>
+                   </table>";
         } 
     ?>
-    <br>&nbsp;&nbsp;Insentif :
+    <br>&nbsp;Insentif :
     <?php
 		$keyword 	= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
         $_sql 		= "SELECT dep_id,persen FROM indexins where dep_id like '%".$keyword."%'ORDER BY persen desc";
@@ -74,7 +83,16 @@
                         <td><div align='left'>Data : $jumlah, Ttl Prosen : ".$prosen."%, Ttl Insentif : ".formatDuit($ttl)." </div></td>                        
                     </tr>     
                  </table>";
-        } 
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='10%'><div align='center'>No.</strong></div></td>
+                        <td width='20%'><div align='center'>Kode Index</div></td>
+                        <td width='30%'><div align='center'>Porsi Insentif</div></td>
+						<td width='38%'><div align='center'>Total Insentif</div></td>
+                    </tr>
+                   </table>";  
+        }
     ?>
     </body>
 </html>

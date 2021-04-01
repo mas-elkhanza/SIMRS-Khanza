@@ -37,7 +37,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgKtgPerawatan;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -254,7 +254,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
     
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
     public DlgCariPoli poli=new DlgCariPoli(null,false);
-    public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.

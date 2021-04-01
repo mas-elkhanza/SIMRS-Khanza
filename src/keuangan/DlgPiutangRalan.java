@@ -18,11 +18,15 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +36,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
+import simrskhanza.DlgCariPoli;
 
 /**
  *
@@ -45,10 +50,14 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
+    private DlgCariPoli poli=new DlgCariPoli(null,false);
     private double all=0,Laborat=0,Radiologi=0,Obat=0,Ralan_Dokter=0,Ralan_Dokter_paramedis=0,Ralan_Paramedis=0,Tambahan=0,Potongan=0,Registrasi=0,
                     ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlRegistrasi=0,
                    Operasi=0,ttlOperasi=0,ekses=0,ttlekses=0,dibayar=0,ttldibayar=0,sisa=0,ttlsisa=0;
+    private String pilihan="";
+    private StringBuilder htmlContent;
+    private int i=0;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -59,7 +68,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] rowRwJlDr={"Tanggal","No.Nota","Nama Pasien","Jenis Bayar","Perujuk",
+        Object[] rowRwJlDr={"Tanggal","No.Nota","No.RM","Nama Pasien","Jenis Bayar","Perujuk",
                             "Registrasi","Obat+Emb+Tsl","Paket Tindakan","Operasi",
                             "Laborat","Radiologi","Tambahan","Potongan",
                             "Total","Ekses","Sudah Dibayar","Sisa","Dokter"};
@@ -71,20 +80,22 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 18; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(65);
             }else if(i==1){
                 column.setPreferredWidth(103);
             }else if(i==2){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(70);
             }else if(i==3){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(150);
             }else if(i==4){
+                column.setPreferredWidth(85);
+            }else if(i==5){
                 column.setPreferredWidth(90);
-            }else if(i==17){
-                column.setPreferredWidth(170);
+            }else if(i==18){
+                column.setPreferredWidth(150);
             }else{
                 column.setPreferredWidth(85);
             }
@@ -130,7 +141,41 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(poli.getTable().getSelectedRow()!= -1){
+                    KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                }      
+                BtnPoli.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {poli.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        poli.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    poli.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
     }    
     
      
@@ -151,21 +196,25 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
         panelGlass5 = new widget.panelisi();
-        BtnAll = new widget.Button();
-        BtnPrint = new widget.Button();
-        jLabel10 = new javax.swing.JLabel();
-        LCount = new javax.swing.JLabel();
-        BtnKeluar = new widget.Button();
-        panelisi4 = new widget.panelisi();
         label11 = new widget.Label();
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        BtnCari1 = new widget.Button();
+        BtnAll = new widget.Button();
+        jLabel10 = new javax.swing.JLabel();
+        LCount = new javax.swing.JLabel();
+        BtnPrint = new widget.Button();
+        BtnKeluar = new widget.Button();
+        panelisi4 = new widget.panelisi();
         label17 = new widget.Label();
         kdpenjab = new widget.TextBox();
         nmpenjab = new widget.TextBox();
         BtnSeek2 = new widget.Button();
-        BtnCari1 = new widget.Button();
+        label20 = new widget.Label();
+        KdPoli = new widget.TextBox();
+        NmPoli = new widget.TextBox();
+        BtnPoli = new widget.Button();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
@@ -224,12 +273,49 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        label11.setText("Tgl.Reg :");
+        label11.setName("label11"); // NOI18N
+        label11.setPreferredSize(new java.awt.Dimension(53, 23));
+        panelGlass5.add(label11);
+
+        Tgl1.setDisplayFormat("dd-MM-yyyy");
+        Tgl1.setName("Tgl1"); // NOI18N
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelGlass5.add(Tgl1);
+
+        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label18.setText("s.d.");
+        label18.setName("label18"); // NOI18N
+        label18.setPreferredSize(new java.awt.Dimension(25, 23));
+        panelGlass5.add(label18);
+
+        Tgl2.setDisplayFormat("dd-MM-yyyy");
+        Tgl2.setName("Tgl2"); // NOI18N
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelGlass5.add(Tgl2);
+
+        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari1.setMnemonic('2');
+        BtnCari1.setToolTipText("Alt+2");
+        BtnCari1.setName("BtnCari1"); // NOI18N
+        BtnCari1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCari1ActionPerformed(evt);
+            }
+        });
+        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCari1KeyPressed(evt);
+            }
+        });
+        panelGlass5.add(BtnCari1);
+
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
         BtnAll.setToolTipText("Alt+M");
         BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAllActionPerformed(evt);
@@ -241,6 +327,22 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(BtnAll);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Total Piutang :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelGlass5.add(jLabel10);
+
+        LCount.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LCount.setForeground(new java.awt.Color(50, 50, 50));
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelGlass5.add(LCount);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -259,22 +361,6 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(BtnPrint);
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Total Piutang :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(125, 23));
-        panelGlass5.add(jLabel10);
-
-        LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(50, 50, 50));
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(300, 23));
-        panelGlass5.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -300,34 +386,13 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tgl.Regist :");
-        label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi4.add(label11);
-
-        Tgl1.setDisplayFormat("dd-MM-yyyy");
-        Tgl1.setName("Tgl1"); // NOI18N
-        Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(Tgl1);
-
-        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label18.setText("s.d.");
-        label18.setName("label18"); // NOI18N
-        label18.setPreferredSize(new java.awt.Dimension(27, 23));
-        panelisi4.add(label18);
-
-        Tgl2.setDisplayFormat("dd-MM-yyyy");
-        Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(Tgl2);
-
         label17.setText("Jenis Bayar :");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi4.add(label17);
 
         kdpenjab.setName("kdpenjab"); // NOI18N
-        kdpenjab.setPreferredSize(new java.awt.Dimension(70, 23));
+        kdpenjab.setPreferredSize(new java.awt.Dimension(60, 23));
         kdpenjab.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kdpenjabKeyPressed(evt);
@@ -337,7 +402,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
 
         nmpenjab.setEditable(false);
         nmpenjab.setName("nmpenjab"); // NOI18N
-        nmpenjab.setPreferredSize(new java.awt.Dimension(203, 23));
+        nmpenjab.setPreferredSize(new java.awt.Dimension(200, 23));
         panelisi4.add(nmpenjab);
 
         BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -357,22 +422,32 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         });
         panelisi4.add(BtnSeek2);
 
-        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCari1.setMnemonic('2');
-        BtnCari1.setToolTipText("Alt+2");
-        BtnCari1.setName("BtnCari1"); // NOI18N
-        BtnCari1.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
+        label20.setText("Unit/Poli :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(105, 23));
+        panelisi4.add(label20);
+
+        KdPoli.setEditable(false);
+        KdPoli.setName("KdPoli"); // NOI18N
+        KdPoli.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi4.add(KdPoli);
+
+        NmPoli.setEditable(false);
+        NmPoli.setName("NmPoli"); // NOI18N
+        NmPoli.setPreferredSize(new java.awt.Dimension(200, 23));
+        panelisi4.add(NmPoli);
+
+        BtnPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPoli.setMnemonic('3');
+        BtnPoli.setToolTipText("Alt+3");
+        BtnPoli.setName("BtnPoli"); // NOI18N
+        BtnPoli.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCari1ActionPerformed(evt);
+                BtnPoliActionPerformed(evt);
             }
         });
-        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCari1KeyPressed(evt);
-            }
-        });
-        panelisi4.add(BtnCari1);
+        panelisi4.add(BtnPoli);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
@@ -382,46 +457,237 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
+            BtnPrint.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
-            for(int r=0;r<tabMode.getRowCount();r++){  
-                    Sequel.menyimpan("temporary","'0','"+
-                                    tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                    tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','',''","data");
-            }
-            
-            Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRPiutangRalan.jasper","report","::[ Rekap Piutang Ralan Masuk ]::",param);
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {            
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                );
+                bg.close();
+
+                File f;            
+                BufferedWriter bw; 
+
+                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)","Laporan 4 (Jasper)"},"Laporan 1 (HTML)");
+                switch (pilihan) {
+                    case "Laporan 1 (HTML)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.Nota</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Jenis Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Perujuk</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Obat+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Paket Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Total</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Ekses</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Sudah Dibayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Sisa</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Dokter</td>"+
+                                "</tr>"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                    "</tr>"
+                                ); 
+                            }            
+
+                            f = new File("PiutangRalan.html");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write("<html>"+
+                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                        "<body>"+
+                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>REKAP PEMBAYARAN RAWAT JALAN PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>"+
+                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                htmlContent.toString()+
+                                            "</table>"+
+                                        "</body>"+                   
+                                     "</html>"
+                            );
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 2 (WPS)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tanggal</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No.Nota</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Jenis Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Perujuk</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Registrasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Obat+Emb+Tsl</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Paket Tindakan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Operasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Laborat</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Radiologi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Tambahan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Potongan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Total</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>Ekses</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Sudah Dibayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Sisa</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Dokter</td>"+
+                                "</tr>"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,0)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                    "</tr>"
+                                ); 
+                            }           
+
+                            f = new File("PiutangRalan.wps");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write("<html>"+
+                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                        "<body>"+
+                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>DETAIL JM DOKTER PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>"+
+                                            "<table width='1900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                htmlContent.toString()+
+                                            "</table>"+
+                                        "</body>"+                   
+                                     "</html>"
+                            );
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 3 (CSV)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "\"Tanggal\";\"No.Nota\";\"No.RM\";\"Nama Pasien\";\"Jenis Bayar\";\"Perujuk\";\"Registrasi\";\"Obat+Emb+Tsl\";\"Paket Tindakan\";\"Operasi\";\"Laborat\";\"Radiologi\";\"Tambahan\";\"Potongan\";\"Total\";\"Ekses\";\"Sudah Dibayar\";\"Sisa\";\"Dokter\"\n"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "\""+tabMode.getValueAt(i,0)+"\";\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\";\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,11)+"\";\""+tabMode.getValueAt(i,12)+"\";\""+tabMode.getValueAt(i,13)+"\";\""+tabMode.getValueAt(i,14)+"\";\""+tabMode.getValueAt(i,15)+"\";\""+tabMode.getValueAt(i,16)+"\";\""+tabMode.getValueAt(i,17)+"\";\""+tabMode.getValueAt(i,18)+"\"\n"
+                                ); 
+                            }            
+
+                            f = new File("PiutangRalan.csv");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(htmlContent.toString());
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break; 
+                    case "Laporan 4 (Jasper)":
+                            Sequel.queryu("truncate table temporary");
+                            for(int r=0;r<tabMode.getRowCount();r++){  
+                                    Sequel.menyimpan("temporary","'0','"+
+                                                    tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
+                                                    tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
+                                                    tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','',''","data");
+                            }
+
+                            Map<String, Object> param = new HashMap<>();                 
+                            param.put("namars",akses.getnamars());
+                            param.put("alamatrs",akses.getalamatrs());
+                            param.put("kotars",akses.getkabupatenrs());
+                            param.put("propinsirs",akses.getpropinsirs());
+                            param.put("kontakrs",akses.getkontakrs());
+                            param.put("emailrs",akses.getemailrs());   
+                            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                            Valid.MyReport("rptRPiutangRalan.jasper","report","::[ Rekap Piutang Ralan Masuk ]::",param);
+                        break; 
+                }                 
+            } catch (Exception e) {
+            }     
+            this.setCursor(Cursor.getDefaultCursor());
         }
-        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -510,6 +776,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         kdpenjab.setText("");
         nmpenjab.setText("");
+        KdPoli.setText("");
+        NmPoli.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -538,6 +806,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }//GEN-LAST:event_MnBillingActionPerformed
 
+    private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
+        poli.isCek();
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setLocationRelativeTo(internalFrame1);
+        poli.setAlwaysOnTop(false);
+        poli.setVisible(true);
+    }//GEN-LAST:event_BtnPoliActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -558,10 +834,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnAll;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPoli;
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
+    private widget.TextBox KdPoli;
     private javax.swing.JLabel LCount;
     private javax.swing.JMenuItem MnBilling;
+    private widget.TextBox NmPoli;
     private widget.ScrollPane Scroll;
     private widget.TextBox TKd;
     private widget.Tanggal Tgl1;
@@ -573,6 +852,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
+    private widget.Label label20;
     private widget.TextBox nmpenjab;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
@@ -585,14 +865,20 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         try{            
             ps= koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab, "+
-                        "piutang_pasien.uangmuka,piutang_pasien.totalpiutang from reg_periksa inner join pasien inner join penjab inner join dokter inner join piutang_pasien "+
-                        "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
-                        "reg_periksa.kd_dokter=dokter.kd_dokter and piutang_pasien.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and "+
-                        "reg_periksa.tgl_registrasi between ? and ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? order by reg_periksa.kd_dokter,reg_periksa.tgl_registrasi");
+                        "piutang_pasien.uangmuka,piutang_pasien.totalpiutang "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                        "inner join piutang_pasien on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
+                        "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? "+
+                        "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? "+
+                        "order by reg_periksa.tgl_registrasi");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                ps.setString(4,"%"+KdPoli.getText()+NmPoli.getText()+"%");
                 rs=ps.executeQuery();
                 all=0;
                 ttlLaborat=0;ttlRadiologi=0;ttlOperasi=0;ttlObat=0;ttlRalan_Dokter=0;ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;ttlekses=0;ttldibayar=0;ttlsisa=0;
@@ -668,7 +954,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     tabMode.addRow(new Object[] {
                         rs.getString("tgl_registrasi"),
                         Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
-                        rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),rs.getString("png_jawab"),
+                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("png_jawab"),
                         Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
                         Valid.SetAngka(Registrasi),Valid.SetAngka(Obat),Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
                         Valid.SetAngka(Operasi),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Tambahan),Valid.SetAngka(Potongan),
@@ -678,7 +964,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
                 if(tabMode.getRowCount()>0){
                     tabMode.addRow(new Object[] {
-                            ">> Total",":","","","",Valid.SetAngka(ttlRegistrasi),Valid.SetAngka(ttlObat),Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),
+                            ">> Total",":","","","","",Valid.SetAngka(ttlRegistrasi),Valid.SetAngka(ttlObat),Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),
                             Valid.SetAngka(ttlOperasi),Valid.SetAngka(ttlLaborat),Valid.SetAngka(ttlRadiologi),Valid.SetAngka(ttlTambahan),Valid.SetAngka(ttlPotongan),
                             Valid.SetAngka(ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Paramedis+ttlTambahan+ttlPotongan+ttlRegistrasi+ttlOperasi),
                             Valid.SetAngka(ttlekses),Valid.SetAngka(ttldibayar),Valid.SetAngka(ttlsisa),""

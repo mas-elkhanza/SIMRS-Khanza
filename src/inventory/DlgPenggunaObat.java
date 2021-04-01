@@ -22,7 +22,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgPenggunaObat extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -34,7 +34,7 @@ public class DlgPenggunaObat extends javax.swing.JDialog {
     private int i=0,a=0;
     private double jmlobat=0;
     private String noresep="",dokter="",sqlsub="";
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariJenis jenis = new DlgCariJenis(null, false);
     private DlgCariKategori kategori = new DlgCariKategori(null, false);
     private DlgCariGolongan golongan = new DlgCariGolongan(null, false);

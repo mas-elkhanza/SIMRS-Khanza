@@ -59,7 +59,7 @@ public class koneksiDB {
                 try {
                     if(connection.isClosed()){
                         prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
+                        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;cachePrepStmts=true");
                         dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
                         dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                         connection=dataSource.getConnection();  
@@ -236,6 +236,16 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=prop.getProperty("ALARMBOOKINGPERIKSA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMPERMINTAANRANAP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMPERMINTAANRANAP");
         }catch(Exception e){
             var=""; 
         }
@@ -782,4 +792,51 @@ public class koneksiDB {
         return var;
     }
     
+    public static String DEPOAKTIFOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("DEPOAKTIFOBAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String STOKKOSONGRESEP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("STOKKOSONGRESEP");
+        }catch(Exception e){
+            var="no"; 
+        }
+        return var;
+    }
+    
+    public static String HPPFARMASI(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            if(prop.getProperty("HPPFARMASI").equals("h_beli")){
+                var="h_beli";
+            }else{
+                var="dasar";
+            }
+        }catch(Exception e){
+            var="dasar"; 
+        }
+        return var;
+    }
+    
+    public static String HPPTOKO(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            if(prop.getProperty("HPPTOKO").equals("h_beli")){
+                var="h_beli";
+            }else{
+                var="dasar";
+            }
+        }catch(Exception e){
+            var="dasar"; 
+        }
+        return var;
+    }
 }

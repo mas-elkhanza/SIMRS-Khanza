@@ -1,6 +1,8 @@
 package inventory;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -13,6 +15,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,6 +46,13 @@ public class DlgPermintaan extends javax.swing.JDialog {
     private DlgCariPermintaan form=new DlgCariPermintaan(null,false);
     private DlgBarang barang=new DlgBarang(null,false);
     private boolean sukses=true;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -95,19 +107,19 @@ public class DlgPermintaan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -199,8 +211,8 @@ public class DlgPermintaan extends javax.swing.JDialog {
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
+        BtnAll = new widget.Button();
         BtnTambah = new widget.Button();
-        label12 = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi3 = new widget.panelisi();
@@ -327,7 +339,7 @@ public class DlgPermintaan extends javax.swing.JDialog {
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(275, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(265, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -352,6 +364,24 @@ public class DlgPermintaan extends javax.swing.JDialog {
         });
         panelisi1.add(BtnCari1);
 
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('2');
+        BtnAll.setToolTipText("2Alt+2");
+        BtnAll.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnAll);
+
         BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambah.setMnemonic('3');
         BtnTambah.setToolTipText("Alt+3");
@@ -363,10 +393,6 @@ public class DlgPermintaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnTambah);
-
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(25, 23));
-        panelisi1.add(label12);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -671,7 +697,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil();
+            tampil2();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -682,12 +708,12 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        tampil();
+        tampil2();
 }//GEN-LAST:event_BtnCari1ActionPerformed
 
 private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            tampil2();
         }else{
             Valid.pindah(evt, BtnSimpan, BtnKeluar);
         }
@@ -824,6 +850,19 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         // TODO add your handling code here:
     }//GEN-LAST:event_kdgudangasalKeyPressed
 
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        TCari.setText("");
+        tampil();
+    }//GEN-LAST:event_BtnAllActionPerformed
+
+    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCari, TCari);
+        }
+    }//GEN-LAST:event_BtnAllKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -841,6 +880,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
@@ -859,7 +899,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox kdptg;
     private widget.Label label10;
     private widget.Label label11;
-    private widget.Label label12;
     private widget.Label label13;
     private widget.Label label14;
     private widget.Label label15;
@@ -876,6 +915,53 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
+        try{
+            Valid.tabelKosong(tabMode);
+            file=new File("./cache/permintaanobat.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
+            ps=koneksi.prepareStatement(
+                "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
+                "kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
+                " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
+                " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                " where databarang.status='1' order by databarang.nama_brng");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        "",rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),rs.getString(6),""
+                    });
+                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"JenisObat\":\""+rs.getString(4)+"\",\"Kategori\":\""+rs.getString(5)+"\",\"Golongan\":\""+rs.getString(6)+"\"},";
+                } 
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }       
+            fileWriter.write("{\"permintaanobat\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null; 
+        }catch(Exception e){
+            if(e.toString().contains("begin")){
+                System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            }else{
+                System.out.println("Notifikasi : "+e);
+            }
+        }
+        
+    }
+    
+    private void tampil2() {
         try{
             row=tbDokter.getRowCount();
             jml=0;
@@ -920,56 +1006,24 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],kategori[i],golongan[i],keterangan[i]});
             }
             
-            if(TCari.getText().equals("")){
-                ps=koneksi.prepareStatement(
-                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
-                    "kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
-                    " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                    " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
-                    " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
-                    " where databarang.status='1' order by databarang.nama_brng");
-            }else{
-                ps=koneksi.prepareStatement(
-                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
-                    "kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
-                    " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                    " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
-                    " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
-                    " where databarang.status='1' and databarang.kode_brng like ? or "+
-                    " databarang.status='1' and databarang.nama_brng like ? or "+
-                    " databarang.status='1' and kategori_barang.nama like ? or "+
-                    " databarang.status='1' and golongan_barang.nama like ? or "+
-                    " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+            myObj = new FileReader("./cache/permintaanobat.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("permintaanobat");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("JenisObat").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Golongan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            "",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("JenisObat").asText(),list.path("Kategori").asText(),list.path("Golongan").asText(),""
+                        });
+                    }
+                }
             }
-                
-            try {
-                if(TCari.getText().equals("")){}else{
-                    ps.setString(1,"%"+TCari.getText().trim()+"%");
-                    ps.setString(2,"%"+TCari.getText().trim()+"%");
-                    ps.setString(3,"%"+TCari.getText().trim()+"%");
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,"%"+TCari.getText().trim()+"%");
-                }
-                
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        "",rs.getString(1),rs.getString(2),rs.getString(3),
-                        rs.getString(4),rs.getString(5),rs.getString(6),""
-                    });
-                } 
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }                
         }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            if(e.toString().contains("begin")){
+                System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            }else{
+                System.out.println("Notifikasi : "+e);
+            }
         }
         
     }

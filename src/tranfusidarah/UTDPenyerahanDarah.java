@@ -1,7 +1,5 @@
 package tranfusidarah;
-import inventory.DlgCariPenjualan;
 import fungsi.WarnaTable;
-import inventory.*;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -12,7 +10,6 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -47,6 +44,7 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private WarnaTable2 warna=new WarnaTable2();
     private UTDCariPenyerahanDarah carijual=new UTDCariPenyerahanDarah(null,false);
+    private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -1197,6 +1195,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }else{
                     status="Belum Dibayar";
                 }
+                Sequel.AutoComitFalse();
+                sukses=true; 
                 if(Sequel.menyimpantf("utd_penyerahan_darah","?,?,?,?,?,?,?,?,?,?,?","No.Penyerahan", 11,new String[]{
                     nopenyerahan.getText(),Valid.SetTgl(tanggal.getSelectedItem()+""),dinas.getSelectedItem().toString(),
                     kdptgcross.getText(),keterangan.getText(),status,Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),
@@ -1233,6 +1233,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     }                                        
                                     tbMedis.setValueAt("",i,0);        
                                     tbMedis.setValueAt(0,i,4);
+                                }else{
+                                    sukses=false;
                                 }   
                             }                                
                         } catch (Exception e) {
@@ -1252,26 +1254,43 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     }                                    
                                     tbNonMedis.setValueAt("",i,0);        
                                     tbNonMedis.setValueAt(0,i,4);
+                                }else{
+                                    sukses=false;
                                 }   
                             }                                
                         } catch (Exception e) {
                         }                    
                     }
 
-                    if(verifikasi_penyerahan_darah_di_kasir.equals("No")){
-                        Sequel.queryu("delete from tampjurnal");                    
-                        Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Penyerahan_Darah from set_akun")+"','PENJUALAN DARAH UTD','0','"+ttl+"'","Rekening");    
-                        Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())+"','CARA BAYAR','"+ttl+"','0'","Rekening"); 
-                        jur.simpanJurnal(nopenyerahan.getText(),Valid.SetTgl(tanggal.getSelectedItem()+""),"U","PENJUALAN DARAH DI UTD"+", OLEH "+akses.getkode());                                                
-                        Sequel.menyimpan("tagihan_sadewa","'"+nopenyerahan.getText()+"','-','"+nmpengambil.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(tanggal.getSelectedItem()+"")+
-                                "',' ',CURTIME()),'Pelunasan','"+ttl+"','"+ttl+"','Sudah','"+akses.getkode()+"'","No.Nota");
+                    if(sukses==true){
+                        if(verifikasi_penyerahan_darah_di_kasir.equals("No")){
+                            Sequel.queryu("delete from tampjurnal");                    
+                            Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Penyerahan_Darah from set_akun")+"','PENJUALAN DARAH UTD','0','"+ttl+"'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())+"','CARA BAYAR','"+ttl+"','0'","Rekening"); 
+                            sukses=jur.simpanJurnal(nopenyerahan.getText(),Valid.SetTgl(tanggal.getSelectedItem()+""),"U","PENJUALAN DARAH DI UTD"+", OLEH "+akses.getkode());                                                
+                            if(sukses==true){
+                                Sequel.menyimpan("tagihan_sadewa","'"+nopenyerahan.getText()+"','-','"+nmpengambil.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(tanggal.getSelectedItem()+"")+
+                                        "',' ',CURTIME()),'Pelunasan','"+ttl+"','"+ttl+"','Sudah','"+akses.getkode()+"'","No.Nota");
+                            }
+                        }
                     }
-                    
+                        
+                }else{
+                    sukses=false;
+                }
+                
+                if(sukses==true){
+                    Sequel.Commit();
                     tampil();
                     tampilMedis();
                     tampilNonMedis();
                     emptTeks();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
                 }
+
+                Sequel.AutoComitTrue();
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed

@@ -1,16 +1,17 @@
 
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-		$bulan=$baris[1];
-   }
+    $_sql         = "SELECT * FROM set_tahun";
+    $hasil        = bukaquery($_sql);
+    $baris        = mysqli_fetch_row($hasil);
+    $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
+    $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
+    $bln_leng  = strlen($blnini);
+    $bulan     = "0";
+    if ($bln_leng==1){
+        $bulan="0".$blnini;
+    }else{
+        $bulan=$blnini;
+    }
 ?>
 
 <div id="post">
@@ -26,22 +27,21 @@
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $action     = isset($_GET['action'])?$_GET['action']:NULL;
+                $keyword    = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
+                $keyword    = validTeks($keyword);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" />
+                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
             </table><br>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php        
-	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
-        $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
 		        pegawai.departemen,sum(tindakan.jmlh),sum(tindakan.jm)
                 FROM tindakan right OUTER JOIN pegawai
@@ -70,28 +70,39 @@
                                     <center>
                                         <a href=?act=InputTindakan&action=TAMBAH&id=$baris[0]>[Detail]</a>
                                     </center>
-                               </td>
+                                </td>
                                 <td><a href=?act=InputTindakan&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
                                 <td><a href=?act=InputTindakan&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
                                 <td><a href=?act=InputTindakan&action=TAMBAH&id=$baris[0]>$baris[3]</a></td>
                                 <td><a href=?act=InputTindakan&action=TAMBAH&id=$baris[0]>";
-                                    $_sql2="select master_tindakan.nama,sum(tindakan.jmlh)
-                                              from master_tindakan,tindakan
-                                              where tindakan.tnd=master_tindakan.id and
-                                              tindakan.id='$baris[0]' 
-                                              and tgl like '%".$tahun."-".$bulan."%'
-                                              group by tindakan.tnd ";
-				      $hasil2=bukaquery($_sql2);
-				     while($baris2 = mysqli_fetch_array($hasil2)) {
-					  echo "<table width='300px'><tr class='isi3'><td width='200px'>$baris2[0]</td><td>: $baris2[1]</td></tr></table>";
-				     }
-				    echo"&nbsp;</a>
-				</td>
-                                <td><a href=?act=InputTindakan&action=TAMBAH&id=$baris[0]>".formatDuit($baris[5])."</a></td>
-                             </tr>";
+                        $_sql2="select master_tindakan.nama,sum(tindakan.jmlh)
+                                from master_tindakan,tindakan
+                                where tindakan.tnd=master_tindakan.id and
+                                tindakan.id='$baris[0]' 
+                                and tgl like '%".$tahun."-".$bulan."%'
+                                group by tindakan.tnd ";
+                        $hasil2=bukaquery($_sql2);
+                        while($baris2 = mysqli_fetch_array($hasil2)) {
+                            echo "<table width='300px'><tr class='isi3'><td width='200px'>$baris2[0]</td><td>: $baris2[1]</td></tr></table>";
+                        }
+                        echo"&nbsp;</a>
+                                    </td>
+                                    <td><a href=?act=InputTindakan&action=TAMBAH&id=$baris[0]>".formatDuit($baris[5])."</a></td>
+                                </tr>";
                     }
             echo "</table>";           
-        } else {echo "Data keanggotaan masih kosong !";}
+        } else {
+            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='8%'><div align='center'>Proses</div></td>
+                        <td width='10%'><div align='center'>NIP</div></td>
+                        <td width='32%'><div align='center'>Nama</div></td>
+                        <td width='20%'><div align='center'>Departemen</div></td>
+                        <td width='15%'><div align='center'>Jumlah Tindakan</div></td>
+                        <td width='15%'><div align='center'>Ttl.JM Tindakan</div></td>
+                    </tr>
+                  </table>";
+        }
 
     ?>
     </div>

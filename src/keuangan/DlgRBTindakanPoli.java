@@ -23,7 +23,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgRBTindakanPoli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -39,7 +39,7 @@ public class DlgRBTindakanPoli extends javax.swing.JDialog {
             rsdetailitemlaborat,rsradiologi,rsdetailradiologi; 
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariPoli poli=new DlgCariPoli(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0,a=0;
     private double obat=0,obatlangsung=0,laborat=0,radiologi=0,jm=0,jm2=0,ttlbiaya=0,detailobat=0,detailobatlangsung=0,ttlobat=0,ttlobatlangsung=0,ttllaborat=0,ttljm=0,
             detailtindakan=0,detailtindakan2=0,detaillaborat=0,tambahan,potongan,detailtambahan,detailpotongan,registrasi=0,detailregistrasi,ttlpotongan=0,ttltambahan=0,

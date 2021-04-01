@@ -35,7 +35,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -49,7 +49,7 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
     private ResultSet rspoli,rsobat,rspenjab;
     private int i=0,a=0,c;   
     private DlgCariPoli poli=new DlgCariPoli(null,false);
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariJenis jenis = new DlgCariJenis(null, false);
     private DlgCariKategori kategori = new DlgCariKategori(null, false);

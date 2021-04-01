@@ -47,9 +47,9 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;    
+    private int i=0,umur=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private String alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, alergi_ikan, alergi_hazelnut;
+    private String alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, alergi_ikan, alergi_hazelnut,sttsumur="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -209,6 +209,36 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        BB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
+        });
+        
+        TB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
         });
         
         ChkInput.setSelected(false);
@@ -536,7 +566,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-01-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -550,7 +580,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-01-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2097,6 +2127,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
         Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norwt+"'", DTPCari1);
+        umur=Sequel.cariInteger("select umurdaftar from reg_periksa where no_rawat=?",norwt);
+        sttsumur=Sequel.cariIsi("select sttsumur from reg_periksa where no_rawat=?",norwt);
         DTPCari2.setDate(tgl2);    
         isRawat();
         isPsien();              
@@ -2133,6 +2165,16 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
         }            
+    }
+    
+    private void isBMI(){
+        if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
+            IMT.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            if(sttsumur.equals("Bl")){
+                BBPerU.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/umur)+"");
+                TBPerU.setText(Valid.SetAngka7(Valid.SetAngka(TB.getText())/umur)+"");
+            }
+        }
     }
 
     

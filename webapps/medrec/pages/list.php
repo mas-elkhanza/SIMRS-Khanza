@@ -64,7 +64,7 @@
                                                     <td width='5%'><div align='center'>NO.</div></td>
                                                     <td width='20%'><div align='center'>Terakhir Daftar</div></td>
                                                     <td width='20%'><div align='center'>Tanggal Retensi</div></td>
-                                                    <td width='55%'><div align='center'>File PDF</div></td>
+                                                    <td width='55%'><div align='center'>File Retensi</div></td>
                                                   </tr>";
                                         }
                                         $no=1;

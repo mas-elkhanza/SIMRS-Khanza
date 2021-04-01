@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 public class DlgPiutangPercaraBayar extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -31,7 +31,7 @@ public class DlgPiutangPercaraBayar extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private PreparedStatement pspenjab,pspiutang;
     private ResultSet rspenjab,rspiutang; 
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private int i=0,a=0;
     private double ttlpiutang=0,ttlsisapiutang,subttlpiutang,subttlsisapiutang;
     private String carabayar="",stringpiutang="",stringsisapiutang="";

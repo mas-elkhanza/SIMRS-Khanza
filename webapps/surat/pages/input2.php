@@ -255,7 +255,7 @@
                     $keterangan =trim($_POST['keterangan']);
                     $kd_status  =trim($_POST['kd_status']);
                     $kd_klasifikasi=trim($_POST['kd_klasifikasi']);
-                    $max        =getOne("select ifnull(MAX(CONVERT(RIGHT(no_surat,3),signed)),0)+1 from surat_keluar where tgl_kirim='$tgl_kirim'");
+                    $max        =getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim='$tgl_kirim'");
                     $no_urut    ="SK".str_replace("-","",$tgl_kirim).sprintf("%03s", $max);
                     $dokumen    =str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']);
                     move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
