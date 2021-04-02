@@ -39,11 +39,13 @@ import bridging.BPJSCekRiwayatRujukanPCare;
 import bridging.BPJSCekNoRujukanPCare;
 import bridging.BPJSCekNoRujukanRS;
 import bridging.BPJSCekReferensiCaraKeluar;
+import bridging.BPJSCekReferensiDiagnosaPRB;
 import bridging.BPJSCekReferensiDokter;
 import bridging.BPJSCekReferensiDokterDPJP;
 import bridging.BPJSCekReferensiKabupaten;
 import bridging.BPJSCekReferensiKecamatan;
 import bridging.BPJSCekReferensiKelasRawat;
+import bridging.BPJSCekReferensiObatPRB;
 import bridging.BPJSCekReferensiPascaPulang;
 import bridging.BPJSCekReferensiPropinsi;
 import bridging.BPJSCekReferensiProsedur;
@@ -1617,7 +1619,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/03/2021" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02/04/2021" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5494,8 +5496,8 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnSKDPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png"))); // NOI18N
-        btnSKDPBPJS.setText("SKDP BPJS");
+        btnSKDPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_vector_66_15_473627.png"))); // NOI18N
+        btnSKDPBPJS.setText("Surat Kontrol");
         btnSKDPBPJS.setIconTextGap(0);
         btnSKDPBPJS.setName("btnSKDPBPJS"); // NOI18N
         btnSKDPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -16894,6 +16896,28 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSReferensiDiagnosaPRBActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekReferensiDiagnosaPRB form=new BPJSCekReferensiDiagnosaPRB(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnBPJSReferensiObatPRBActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekReferensiObatPRB form=new BPJSCekReferensiObatPRB(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17510,7 +17534,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
             btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
-            btnPermintaanRanap;
+            btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB;
     
     public void isWall(){
         try{            
@@ -19503,6 +19527,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getbpjs_diagnosa_prb()==true){
+                Panelmenu.add(btnBPJSReferensiDiagnosaPRB);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_obat_prb()==true){
+                Panelmenu.add(btnBPJSReferensiObatPRB);
+                jmlmenu++;
+            }
+            
             if(akses.getbpjs_mapping_dokterdpjp()==true){
                 Panelmenu.add(btnMappingDokterDPJPVClaim);
                 jmlmenu++;
@@ -19525,11 +19559,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getbpjs_monitoring_klaim()==true){
                 Panelmenu.add(btnMonitoringKlaim);
-                jmlmenu++;
-            }
-
-            if(akses.getskdp_bpjs()==true){
-                Panelmenu.add(btnSKDPBPJS);
                 jmlmenu++;
             }
             
@@ -20701,6 +20730,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_cuti_hamil()==true){
                 Panelmenu.add(btnSuratCutiHamil);
+                jmlmenu++;
+            }
+            
+            if(akses.getskdp_bpjs()==true){
+                Panelmenu.add(btnSKDPBPJS);
                 jmlmenu++;
             }
             
@@ -23011,6 +23045,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getbpjs_diagnosa_prb()==true){
+            Panelmenu.add(btnBPJSReferensiDiagnosaPRB);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_obat_prb()==true){
+            Panelmenu.add(btnBPJSReferensiObatPRB);
+            jmlmenu++;
+        }
+        
         if(akses.getbpjs_mapping_dokterdpjp()==true){
             Panelmenu.add(btnMappingDokterDPJPVClaim);
             jmlmenu++;
@@ -23033,11 +23077,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_monitoring_klaim()==true){
             Panelmenu.add(btnMonitoringKlaim);
-            jmlmenu++;
-        }
-        
-        if(akses.getskdp_bpjs()==true){
-            Panelmenu.add(btnSKDPBPJS);
             jmlmenu++;
         }
 
@@ -24205,6 +24244,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_cuti_hamil()==true){
             Panelmenu.add(btnSuratCutiHamil);
+            jmlmenu++;
+        }
+        
+        if(akses.getskdp_bpjs()==true){
+            Panelmenu.add(btnSKDPBPJS);
             jmlmenu++;
         }
         
@@ -27258,6 +27302,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getbpjs_diagnosa_prb()==true){
+            if(btnBPJSReferensiDiagnosaPRB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSReferensiDiagnosaPRB);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_obat_prb()==true){
+            if(btnBPJSReferensiObatPRB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSReferensiObatPRB);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getbpjs_mapping_dokterdpjp()==true){
             if(btnMappingDokterDPJPVClaim.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMappingDokterDPJPVClaim);
@@ -27289,13 +27347,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_monitoring_klaim()==true){
             if(btnMonitoringKlaim.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMonitoringKlaim);
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.getskdp_bpjs()==true){
-            if(btnSKDPBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnSKDPBPJS);
                 jmlmenu++;
             }                
         }
@@ -28929,6 +28980,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsurat_cuti_hamil()==true){
             if(btnSuratCutiHamil.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratCutiHamil);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getskdp_bpjs()==true){
+            if(btnSKDPBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSKDPBPJS);
                 jmlmenu++;
             }                
         }
@@ -31475,6 +31533,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPermintaanRanap.setName("btnPermintaanRanap");
         btnPermintaanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPermintaanRanap.addActionListener(this::btnPermintaanRanapActionPerformed);
+        
+        btnBPJSReferensiDiagnosaPRB = new widget.ButtonBig();
+        btnBPJSReferensiDiagnosaPRB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSReferensiDiagnosaPRB.setText("Referensi Diagnosa PRB VClaim");
+        btnBPJSReferensiDiagnosaPRB.setIconTextGap(0);
+        btnBPJSReferensiDiagnosaPRB.setName("btnBPJSReferensiDiagnosaPRB"); 
+        btnBPJSReferensiDiagnosaPRB.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSReferensiDiagnosaPRB.addActionListener(this::btnBPJSReferensiDiagnosaPRBActionPerformed);
+        
+        btnBPJSReferensiObatPRB = new widget.ButtonBig();
+        btnBPJSReferensiObatPRB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSReferensiObatPRB.setText("Referensi Obat PRB VClaim");
+        btnBPJSReferensiObatPRB.setIconTextGap(0);
+        btnBPJSReferensiObatPRB.setName("btnBPJSReferensiObatPRB"); 
+        btnBPJSReferensiObatPRB.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSReferensiObatPRB.addActionListener(this::btnBPJSReferensiObatPRBActionPerformed);
     }
 
     

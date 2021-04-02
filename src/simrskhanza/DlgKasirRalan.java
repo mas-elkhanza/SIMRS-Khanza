@@ -8083,14 +8083,17 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             tbKasirRalan.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            akses.setform("DlgKasirRalan");
-            BPJSDataSEP dlgki=new BPJSDataSEP(null,false);
-            dlgki.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            dlgki.setLocationRelativeTo(internalFrame1);
-            dlgki.isCek();
-            dlgki.setNoRm(TNoRw.getText(),Valid.SetTgl2(Tanggal.getText()),"2. Ralan","IGDK","Unit IGD/UGD");
-            dlgki.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                akses.setform("DlgKasirRalan");
+                BPJSDataSEP dlgki=new BPJSDataSEP(null,false);
+                dlgki.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                dlgki.setLocationRelativeTo(internalFrame1);
+                dlgki.isCek();
+                dlgki.setNoRm2(TNoRw.getText(),Valid.SetTgl2(Tanggal.getText()),"2. Ralan","IGDK","Unit IGD/UGD",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                dlgki.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+                
         }
     }//GEN-LAST:event_MnSEPActionPerformed
 
