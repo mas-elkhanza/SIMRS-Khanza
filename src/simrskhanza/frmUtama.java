@@ -20,7 +20,7 @@ import laporan.DlgSirkulasiBerkas;
 import permintaan.DlgCariPermintaanLab;
 import permintaan.DlgBookingRegistrasi;
 import permintaan.DlgBookingOperasi;
-import bridging.DlgSKDPBPJS;
+import surat.SuratKontrol;
 import kepegawaian.DlgPenggajian;
 import laporan.DlgMutasiBerkas;
 import laporan.DlgBerkasRawat;
@@ -12736,7 +12736,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnSKDPBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSKDPBPJSActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSKDPBPJS form=new DlgSKDPBPJS(this,false);
+        SuratKontrol form=new SuratKontrol(this,false);
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -16918,6 +16918,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSSuratKontrolActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17534,7 +17537,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
             btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
-            btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB;
+            btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol;
     
     public void isWall(){
         try{            
@@ -19559,6 +19562,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getbpjs_monitoring_klaim()==true){
                 Panelmenu.add(btnMonitoringKlaim);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_surat_kontrol()==true){
+                Panelmenu.add(btnBPJSSuratKontrol);
                 jmlmenu++;
             }
             
@@ -23077,6 +23085,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_monitoring_klaim()==true){
             Panelmenu.add(btnMonitoringKlaim);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_surat_kontrol()==true){
+            Panelmenu.add(btnBPJSSuratKontrol);
             jmlmenu++;
         }
 
@@ -27350,6 +27363,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getbpjs_surat_kontrol()==true){
+            if(btnBPJSSuratKontrol.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSSuratKontrol);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getreklasifikasi_ralan()==true){
             if(btnReklasifikasiRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -31549,6 +31569,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiObatPRB.setName("btnBPJSReferensiObatPRB"); 
         btnBPJSReferensiObatPRB.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSReferensiObatPRB.addActionListener(this::btnBPJSReferensiObatPRBActionPerformed);
+        
+        btnBPJSSuratKontrol = new widget.ButtonBig();
+        btnBPJSSuratKontrol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSSuratKontrol.setText("Surat Kontrol VClaim");
+        btnBPJSSuratKontrol.setIconTextGap(0);
+        btnBPJSSuratKontrol.setName("btnBPJSSuratKontrol"); 
+        btnBPJSSuratKontrol.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSSuratKontrol.addActionListener(this::btnBPJSSuratKontrolActionPerformed);
     }
 
     

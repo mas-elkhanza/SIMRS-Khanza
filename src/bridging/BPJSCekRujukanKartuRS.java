@@ -12,6 +12,7 @@
 
 package bridging;
 
+import surat.SuratKontrol;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
@@ -73,7 +74,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     private DlgKamar kamar=new DlgKamar(null,false);
     private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     private BPJSCekReferensiDokterDPJP dpjp=new BPJSCekReferensiDokterDPJP(null,false);
-    private DlgSKDPBPJS skdp=new DlgSKDPBPJS(null,false);
+    private SuratKontrol skdp=new SuratKontrol(null,false);
     private BPJSCekReferensiPropinsi propinsikll=new BPJSCekReferensiPropinsi(null,false);
     private BPJSCekReferensiKabupaten kabupatenkll=new BPJSCekReferensiKabupaten(null,false);
     private BPJSCekReferensiKecamatan kecamatankll=new BPJSCekReferensiKecamatan(null,false);
