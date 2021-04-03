@@ -934,7 +934,6 @@ public class DlgPasienMati extends javax.swing.JDialog {
             } else if (dayOfWeek.equals("Saturday")) {
                 hari = "Sabtu";
             }
-            System.out.println("Hari " + hari + " " + dayOfWeek);
 
             Sequel.menyimpan("pasien_mati", "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
                     + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "','"
@@ -948,7 +947,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
                     + TNoSurat.getText() + "','"
                     + hari + "','"
                     + nomor + "','"
-                    + kdKamar.getText() + "'", "pasien");
+                    + kdKamar.getText() + "'", "pasien meninggal");
             tampil();
             emptTeks();
         }
