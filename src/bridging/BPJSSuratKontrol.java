@@ -1,5 +1,7 @@
 package bridging;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -22,7 +24,10 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariDokter;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 
 /**
  *
@@ -38,8 +43,14 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
     private int i=0;
     private BPJSCekReferensiDokterKontrol dokter=new BPJSCekReferensiDokterKontrol(null,false);
     private BPJSCekReferensiSpesialistikKontrol poli=new BPJSCekReferensiSpesialistikKontrol(null,false);
-    
-    
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
+    private String link="",requestJson="",URL="",user="";
+    private ApiBPJS api=new ApiBPJS();
 
     /** Creates new form DlgPemberianInfus
      * @param parent
@@ -181,7 +192,17 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        try {
+            user=akses.getkode().replace(" ","").substring(0,9);
+        } catch (Exception e) {
+            user=akses.getkode();
+        }
         
+        try {
+            link=koneksiDB.URLAPIBPJS();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
  
     /** This method is called from within the constructor to
@@ -872,12 +893,41 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
             Valid.textKosong(KdDokter,"Dokter");
         }else if(NmPoli.getText().trim().equals("")||NmPoli.getText().trim().equals("")){
             Valid.textKosong(KdPoli,"Poli");
-        }else if(NoSurat.getText().trim().equals("")){
-            Valid.textKosong(NoSurat,"No.Surat");
-        }else if(Diagnosa.getText().trim().equals("")){
-            Valid.textKosong(Diagnosa,"Diagnosa");
         }else{
-                       
+            try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers.add("X-Signature",api.getHmac());
+                URL = link+"/RencanaKontrol/insert";            
+                requestJson ="{" +
+                                "\"request\": {" +
+                                    "\"noSEP\":\""+NoSEP.getText()+"\"," +
+                                    "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
+                                    "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
+                                    "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
+                                    "\"user\":\""+user+"\"" +
+                                "}" +
+                             "}";
+                //System.out.println("JSON : "+requestJson);
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                response = root.path("response").path("noSuratKontrol");
+                if(nameNode.path("code").asText().equals("200")){
+
+                }else{
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                }   
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
