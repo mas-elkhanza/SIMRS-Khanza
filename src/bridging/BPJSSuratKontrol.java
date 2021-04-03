@@ -278,7 +278,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         jLabel17 = new widget.Label();
         Diagnosa = new widget.TextBox();
         jLabel18 = new widget.Label();
-        RencanaKontrol = new widget.ComboBox();
+        JenisKontrol = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -862,16 +862,16 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(302, 100, 76, 23);
 
-        RencanaKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1: Rencana Kontrol", "2: SPRI" }));
-        RencanaKontrol.setName("RencanaKontrol"); // NOI18N
-        RencanaKontrol.setPreferredSize(new java.awt.Dimension(145, 23));
-        RencanaKontrol.addKeyListener(new java.awt.event.KeyAdapter() {
+        JenisKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1: Rencana Kontrol", "2: SPRI" }));
+        JenisKontrol.setName("JenisKontrol"); // NOI18N
+        JenisKontrol.setPreferredSize(new java.awt.Dimension(145, 23));
+        JenisKontrol.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RencanaKontrolKeyPressed(evt);
+                JenisKontrolKeyPressed(evt);
             }
         });
-        FormInput.add(RencanaKontrol);
-        RencanaKontrol.setBounds(382, 100, 145, 23);
+        FormInput.add(JenisKontrol);
+        JenisKontrol.setBounds(382, 100, 145, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -883,7 +883,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TanggalSuratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalSuratKeyPressed
-        Valid.pindah(evt,TCari,RencanaKontrol);
+        Valid.pindah(evt,TCari,JenisKontrol);
 }//GEN-LAST:event_TanggalSuratKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -910,7 +910,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                                     "\"user\":\""+user+"\"" +
                                 "}" +
                              "}";
-                //System.out.println("JSON : "+requestJson);
+                System.out.println("JSON : "+requestJson);
                 requestEntity = new HttpEntity(requestJson,headers);
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
@@ -918,7 +918,12 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                 System.out.println("message : "+nameNode.path("message").asText());
                 response = root.path("response").path("noSuratKontrol");
                 if(nameNode.path("code").asText().equals("200")){
-
+                    if(Sequel.menyimpantf("bridging_surat_kontrol_bpjs","?,?,?,?,?,?,?,?","No.Surat",8,new String[]{
+                            NoSEP.getText(),response.asText(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""),KdDokter.getText(),NmDokter.getText(),KdPoli.getText(),NmPoli.getText(),JenisKontrol.getSelectedItem().toString()
+                        })==true){
+                        emptTeks();
+                        tampil();
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                 }   
@@ -1092,7 +1097,7 @@ private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     if(KdPoli.getText().equals("")||NmPoli.getText().equals("")){
         Valid.textKosong(BtnPoli,"Unit/Poli");
     }else{
-        dokter.SetKontrol(KdPoli.getText(),RencanaKontrol.getSelectedItem().toString(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
+        dokter.SetKontrol(KdPoli.getText(),JenisKontrol.getSelectedItem().toString(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
@@ -1175,7 +1180,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_DTPCari4ItemStateChanged
 
     private void TanggalKontrolKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKontrolKeyPressed
-        Valid.pindah(evt,RencanaKontrol,BtnDokter);
+        Valid.pindah(evt,JenisKontrol,BtnDokter);
     }//GEN-LAST:event_TanggalKontrolKeyPressed
 
     private void NoSuratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSuratKeyPressed
@@ -1191,7 +1196,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnPoliKeyPressed
 
     private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
-        poli.SetKontrol(NoKartu.getText(),NoSEP.getText(),RencanaKontrol.getSelectedItem().toString(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
+        poli.SetKontrol(NoKartu.getText(),NoSEP.getText(),JenisKontrol.getSelectedItem().toString(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setVisible(true);
@@ -1266,9 +1271,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         R1.setSelected(true);
     }//GEN-LAST:event_DTPCari2KeyPressed
 
-    private void RencanaKontrolKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaKontrolKeyPressed
+    private void JenisKontrolKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisKontrolKeyPressed
         Valid.pindah(evt,TanggalSurat,TanggalKontrol);
-    }//GEN-LAST:event_RencanaKontrolKeyPressed
+    }//GEN-LAST:event_JenisKontrolKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1305,6 +1310,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Diagnosa;
     private widget.PanelBiasa FormInput;
     private widget.TextBox JK;
+    private widget.ComboBox JenisKontrol;
     private widget.TextBox KdDokter;
     private widget.TextBox KdPoli;
     private widget.Label LCount;
@@ -1321,7 +1327,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel PanelInput;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
-    private widget.ComboBox RencanaKontrol;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal TanggalKontrol;
