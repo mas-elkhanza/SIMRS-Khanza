@@ -268,7 +268,7 @@
                 <TitledBorder title="::[ Menu Utama ]::">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="d7" green="eb" red="e1" type="rgb"/>
+                      <Color PropertyName="color" blue="d5" green="e9" red="df" type="rgb"/>
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -281,10 +281,10 @@
               <Dimension value="[2412, 3653]"/>
             </Property>
             <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fd" green="fd" red="ff" type="rgb"/>
+              <Color blue="fc" green="fc" red="ff" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fd" green="fd" red="ff" type="rgb"/>
+              <Color blue="fc" green="fc" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -306,7 +306,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="e4" green="fa" red="e8" type="rgb"/>
+                      <Color PropertyName="color" blue="e1" green="f7" red="e5" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -315,10 +315,10 @@
                   <Dimension value="[100, 40]"/>
                 </Property>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fd" green="fd" red="ff" type="rgb"/>
+                  <Color blue="fc" green="fc" red="ff" type="rgb"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fd" green="fd" red="ff" type="rgb"/>
+                  <Color blue="fc" green="fc" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -452,12 +452,12 @@
             <Container class="widget.ScrollPane" name="scrollPane2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fd" green="fd" red="ff" type="rgb"/>
+                  <Color blue="fc" green="fc" red="ff" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="e4" green="fa" red="e8" type="rgb"/>
+                      <Color PropertyName="color" blue="e1" green="f7" red="e5" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -475,7 +475,7 @@
                 <Container class="widget.panelGlass" name="Panelmenu">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="fd" green="fd" red="ff" type="rgb"/>
+                      <Color blue="fc" green="fc" red="ff" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -505,7 +505,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="02/04/2021"/>
+            <StringItem index="0" value="04/04/2021"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

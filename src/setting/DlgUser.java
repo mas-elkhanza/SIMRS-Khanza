@@ -179,7 +179,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[D]Ringkasan Stok Keluar Obat & BHP","[D]Ringkasan Retur Suplier Obat & BHP","[D]Ringkasan Retur Pembeli Obat & BHP","[L]Penilaian Awal Ranap Kebidanan",
                 "[E]Ringkasan Pengajuan Non Medis","[E]Ringkasan Pemesanan Non Medis","[E]Ringkasan Pengadaan Non Medis","[E]Ringkasan Penerimaan Non Medis",
                 "[E]Ringkasan Stok Keluar Non Medis","[E]Ringkasan Retur Suplier Non Medis","[J]Penerimaan/Omset/Kas Masuk","[J]Validasi Penagihan Piutang",
-                "[A]Permintaan Rawat Inap","[K]Referensi Diagnosa PRB VClaim","[K]Referensi Obat PRB VClaim","[K]Surat Kontrol VClaim"
+                "[A]Permintaan Rawat Inap","[K]Referensi Diagnosa PRB VClaim","[K]Referensi Obat PRB VClaim","[K]Surat Kontrol/SPRI VClaim"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -1954,7 +1954,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(155);
                     break;
                 case 705:
-                    column.setPreferredWidth(123);
+                    column.setPreferredWidth(150);
                     break;
                 default:
                     column.setPreferredWidth(130);
