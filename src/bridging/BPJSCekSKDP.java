@@ -3467,7 +3467,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         NoSKDP.setHighlighter(null);
         NoSKDP.setName("NoSKDP"); // NOI18N
-        NoSKDP.setPreferredSize(new java.awt.Dimension(220, 23));
+        NoSKDP.setPreferredSize(new java.awt.Dimension(210, 23));
         NoSKDP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoSKDPKeyPressed(evt);

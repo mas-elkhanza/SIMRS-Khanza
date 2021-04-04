@@ -2020,7 +2020,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="05-04-2021 02:15:22"/>
+                                    <StringItem index="0" value="05-04-2021 02:48:53"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -3238,7 +3238,7 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="NoSKDP" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[220, 23]"/>
+                      <Dimension value="[210, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
