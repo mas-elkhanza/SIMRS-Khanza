@@ -246,6 +246,7 @@ import inventory.DlgPenggunaObat;
 import inventory.DlgPenjualan;
 import inventory.DlgPenjualanPerTanggal;
 import inventory.DlgPermintaan;
+import inventory.DlgPinjamObat;
 import inventory.DlgPiutang;
 import inventory.DlgProyeksiBeriObat;
 import inventory.DlgProyeksiBeriObat2;
@@ -626,7 +627,7 @@ import viabarcode.DlgBarcodeRanap;
  * @author perpustakaan
  */
 public class frmUtama extends javax.swing.JFrame {
- 
+
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
@@ -15983,6 +15984,18 @@ public class frmUtama extends javax.swing.JFrame {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    private void btnPinjamObatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPinjamObat form = new DlgPinjamObat(this, false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
     private void btnStokOpnameTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -16730,7 +16743,7 @@ public class frmUtama extends javax.swing.JFrame {
             btnDiagnosaPasienCorona, btnPerawatanPasienCorona, btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi, btnBayarPiutangToko, btnPiutangHarianToko, btnPenjualanHarianToko,
             btnDeteksiDiniCorona, btnPenilaianAwalKeperawatanKebidanan, btnPengumumanEPasien, btnSuratHamil,
-            btnSetTarifOnline, btnBookingPeriksa, btnDataPemberianObat;
+            btnSetTarifOnline, btnBookingPeriksa, btnDataPemberianObat, btnPinjamObat;
 
     /**
      *
@@ -17271,6 +17284,8 @@ public class frmUtama extends javax.swing.JFrame {
             if ((akses.getpemesanan_obat() == true) || (akses.getbayar_pemesanan_obat() == true)) {
                 Panelmenu.add(btnPemesanan);
                 jmlmenu++;
+            Panelmenu.add(btnPinjamObat);
+            jmlmenu++;
             }
 
             if (akses.gethibah_obat_bhp() == true) {
@@ -20312,6 +20327,10 @@ public class frmUtama extends javax.swing.JFrame {
         if ((akses.getpemesanan_obat() == true) || (akses.getbayar_pemesanan_obat() == true)) {
             Panelmenu.add(btnPemesanan);
             jmlmenu++;
+
+            Panelmenu.add(btnPinjamObat);
+            jmlmenu++;
+
         }
 
         if (akses.gethibah_obat_bhp() == true) {
@@ -23567,6 +23586,11 @@ public class frmUtama extends javax.swing.JFrame {
         if ((akses.getpemesanan_obat() == true) || (akses.getbayar_pemesanan_obat() == true)) {
             if (btnPemesanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
                 Panelmenu.add(btnPemesanan);
+                jmlmenu++;
+            }
+
+            if (btnPinjamObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
+                Panelmenu.add(btnPinjamObat);
                 jmlmenu++;
             }
         }
@@ -29440,6 +29464,29 @@ public class frmUtama extends javax.swing.JFrame {
         btnDataPemberianObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDataPemberianObatActionPerformed(evt);
+            }
+        });
+
+        btnPinjamObat = new widget.ButtonBig();
+        btnPinjamObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_addressbook_32380.png")));
+        btnPinjamObat.setText("Pinjam Obat");
+        btnPinjamObat.setIconTextGap(0);
+        btnPinjamObat.setName("btnPinjamObat");
+        btnPinjamObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPinjamObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPinjamObatActionPerformed(evt);
+            }
+        });
+
+        btnSKDPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_vector_66_15_473627.png"))); // NOI18N
+        btnSKDPBPJS.setText("Surat Kontrol");
+        btnSKDPBPJS.setIconTextGap(0);
+        btnSKDPBPJS.setName("btnSKDPBPJS"); // NOI18N
+        btnSKDPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSKDPBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSKDPBPJSActionPerformed(evt);
             }
         });
     }
