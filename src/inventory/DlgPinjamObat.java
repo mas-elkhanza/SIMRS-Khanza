@@ -141,7 +141,7 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class,warna);
 
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
-        NoOrder.setDocument(new batasInput((byte)20).getKata(NoOrder));
+//        NoOrder.setDocument(new batasInput((byte)20).getKata(NoOrder));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         tppn.setDocument(new batasInput((byte)5).getKata(tppn));
@@ -363,12 +363,6 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         kdgudang = new widget.TextBox();
         nmgudang = new widget.TextBox();
         btnGudang = new widget.Button();
-        TglTempo = new widget.Tanggal();
-        label18 = new widget.Label();
-        label22 = new widget.Label();
-        TglFaktur = new widget.Tanggal();
-        NoOrder = new widget.TextBox();
-        label23 = new widget.Label();
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Kd2.setName("Kd2"); // NOI18N
@@ -672,7 +666,7 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 75, 23);
+        label15.setBounds(0, 10, 80, 23);
 
         NoFaktur.setName("NoFaktur"); // NOI18N
         NoFaktur.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -682,13 +676,13 @@ public class DlgPinjamObat extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoFaktur);
-        NoFaktur.setBounds(78, 10, 230, 23);
+        NoFaktur.setBounds(80, 10, 230, 23);
 
-        label11.setText("Tgl.Datang :");
+        label11.setText("Tgl.Pinjam :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(0, 40, 75, 23);
+        label11.setBounds(0, 40, 80, 23);
 
         TglPesan.setDisplayFormat("dd-MM-yyyy");
         TglPesan.setName("TglPesan"); // NOI18N
@@ -698,7 +692,7 @@ public class DlgPinjamObat extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglPesan);
-        TglPesan.setBounds(78, 40, 95, 23);
+        TglPesan.setBounds(80, 40, 95, 23);
 
         label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N
@@ -776,7 +770,7 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label20);
-        label20.setBounds(337, 70, 70, 23);
+        label20.setBounds(0, 70, 80, 23);
 
         kdgudang.setEditable(false);
         kdgudang.setEnabled(false);
@@ -788,14 +782,14 @@ public class DlgPinjamObat extends javax.swing.JDialog {
             }
         });
         panelisi3.add(kdgudang);
-        kdgudang.setBounds(409, 70, 80, 23);
+        kdgudang.setBounds(80, 70, 80, 23);
 
         nmgudang.setEditable(false);
         nmgudang.setEnabled(false);
         nmgudang.setName("nmgudang"); // NOI18N
         nmgudang.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmgudang);
-        nmgudang.setBounds(491, 70, 240, 23);
+        nmgudang.setBounds(160, 70, 240, 23);
 
         btnGudang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnGudang.setMnemonic('2');
@@ -809,56 +803,7 @@ public class DlgPinjamObat extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnGudang);
-        btnGudang.setBounds(734, 70, 28, 23);
-
-        TglTempo.setDisplayFormat("dd-MM-yyyy");
-        TglTempo.setName("TglTempo"); // NOI18N
-        TglTempo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglTempoKeyPressed(evt);
-            }
-        });
-        panelisi3.add(TglTempo);
-        TglTempo.setBounds(243, 70, 95, 23);
-
-        label18.setText("Jth.Tempo :");
-        label18.setName("label18"); // NOI18N
-        label18.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi3.add(label18);
-        label18.setBounds(180, 70, 60, 23);
-
-        label22.setText("Tgl.Faktur :");
-        label22.setName("label22"); // NOI18N
-        label22.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi3.add(label22);
-        label22.setBounds(180, 40, 60, 23);
-
-        TglFaktur.setDisplayFormat("dd-MM-yyyy");
-        TglFaktur.setName("TglFaktur"); // NOI18N
-        TglFaktur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglFakturKeyPressed(evt);
-            }
-        });
-        panelisi3.add(TglFaktur);
-        TglFaktur.setBounds(243, 40, 95, 23);
-
-        NoOrder.setText("-");
-        NoOrder.setName("NoOrder"); // NOI18N
-        NoOrder.setPreferredSize(new java.awt.Dimension(207, 23));
-        NoOrder.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoOrderKeyPressed(evt);
-            }
-        });
-        panelisi3.add(NoOrder);
-        NoOrder.setBounds(78, 70, 95, 23);
-
-        label23.setText("SP/Order :");
-        label23.setName("label23"); // NOI18N
-        label23.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelisi3.add(label23);
-        label23.setBounds(0, 70, 75, 23);
+        btnGudang.setBounds(400, 70, 28, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -916,8 +861,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(kdptg,"Petugas");
         }else if(nmgudang.getText().trim().equals("")){
             Valid.textKosong(kdgudang,"Lokasi");
-        }else if(NoOrder.getText().trim().equals("")){
-            Valid.textKosong(NoOrder,"No.Order");
         }else if(Meterai.getText().trim().equals("")){
             Valid.textKosong(Meterai,"Meterai");
         }else if(aktifkanbatch.equals("yes")&&(row>0)){
@@ -933,9 +876,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("pinjam_obat","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",15,new String[]{
-                    NoFaktur.getText(),NoOrder.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),
-                    Valid.SetTgl(TglFaktur.getSelectedItem()+""),Valid.SetTgl(TglTempo.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
+                if(Sequel.menyimpantf2("pinjam_obat","?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",12,new String[]{
+                    NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),
+                    ""+sbttl,""+ttldisk,""+ttl,
                     ""+ppn,""+meterai,""+(ttl+ppn+meterai),kdgudang.getText(),"Dipinjam"
                 })==true){
                     jml=tbDokter.getRowCount();
@@ -1278,18 +1221,6 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }//GEN-LAST:event_tppnKeyPressed
 
-    private void TglTempoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTempoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglTempoKeyPressed
-
-    private void TglFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglFakturKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglFakturKeyPressed
-
-    private void NoOrderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoOrderKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoOrderKeyPressed
-
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgBarang barang=new DlgBarang(null,false);
@@ -1376,12 +1307,9 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Label LTotal2;
     private widget.TextBox Meterai;
     private widget.TextBox NoFaktur;
-    private widget.TextBox NoOrder;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
-    private widget.Tanggal TglFaktur;
     private widget.Tanggal TglPesan;
-    private widget.Tanggal TglTempo;
     private widget.Button btnGudang;
     private widget.Button btnPetugas;
     private widget.Button btnSuplier;
@@ -1397,12 +1325,9 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Label label15;
     private widget.Label label16;
     private widget.Label label17;
-    private widget.Label label18;
     private widget.Label label19;
     private widget.Label label20;
     private widget.Label label21;
-    private widget.Label label22;
-    private widget.Label label23;
     private widget.Label label24;
     private widget.Label label9;
     private widget.TextBox nmgudang;
@@ -1657,19 +1582,19 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     private void autoNomor(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from pinjam_obat where tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PB"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from pinjam_obat where tgl_pinjam='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PB"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
     /**
      *
-     * @param noorder
+     * @param nofaktur
      */
-    public void tampil(String noorder) {
-        NoOrder.setText(noorder);
-        kdsup.setText(Sequel.cariIsi("select kode_suplier from surat_pemesanan_medis where no_pemesanan=?",noorder));
+    public void tampil(String nofaktur) {
+        NoFaktur.setText(nofaktur);
+        kdsup.setText(Sequel.cariIsi("select kode_suplier from surat_pemesanan_medis where no_pemesanan=?",nofaktur));
         nmsup.setText(Sequel.cariIsi("select nama_suplier from datasuplier where kode_suplier=?",kdsup.getText()));
-        meterai=Sequel.cariIsiAngka("select meterai from surat_pemesanan_medis where no_pemesanan=?",noorder);
-        ppn=Sequel.cariIsiAngka("select ppn from surat_pemesanan_medis where no_pemesanan=?",noorder);
+        meterai=Sequel.cariIsiAngka("select meterai from surat_pemesanan_medis where no_pemesanan=?",nofaktur);
+        ppn=Sequel.cariIsiAngka("select ppn from surat_pemesanan_medis where no_pemesanan=?",nofaktur);
         Meterai.setText(Valid.SetAngka2(meterai));
         try{
             Valid.tabelKosong(tabMode);
@@ -1684,7 +1609,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 "on databarang.kdjns=jenis.kdjns and detail_surat_pemesanan_medis.kode_brng=databarang.kode_brng "+
                 " where detail_surat_pemesanan_medis.no_pemesanan=? order by databarang.nama_brng");
             try {
-                ps.setString(1,noorder);
+                ps.setString(1,nofaktur);
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
