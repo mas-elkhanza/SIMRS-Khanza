@@ -88,8 +88,7 @@ public class DlgCariPinjamObat extends javax.swing.JDialog {
         }
 
         Object[] row = {"No.Faktur", "Suplier", "Petugas", "Barang",
-            "Satuan", "Jml.Beli", "Harga Beli(Rp)", "SubTotal(Rp)",
-            "Disk(%)", "Bsr.Disk(Rp)", "Total(Rp)"};
+            "Satuan", "Jml.Pinjam"};
         tabMode = new DefaultTableModel(null, row) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -101,7 +100,7 @@ public class DlgCariPinjamObat extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 6; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(120);
@@ -113,17 +112,7 @@ public class DlgCariPinjamObat extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             } else if (i == 4) {
                 column.setPreferredWidth(100);
-            } else if (i == 5) {
-                column.setPreferredWidth(50);
-            } else if (i == 6) {
-                column.setPreferredWidth(100);
-            } else if (i == 7) {
-                column.setPreferredWidth(100);
-            } else if (i == 8) {
-                column.setPreferredWidth(50);
-            } else if (i == 9) {
-                column.setPreferredWidth(100);
-            } else if (i == 10) {
+            }  else {
                 column.setPreferredWidth(100);
             }
         }
@@ -987,6 +976,11 @@ public class DlgCariPinjamObat extends javax.swing.JDialog {
         tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
+        tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDokterMouseClicked(evt);
+            }
+        });
         scrollPane1.setViewportView(tbDokter);
 
         panelGlass1.add(scrollPane1, java.awt.BorderLayout.CENTER);
@@ -1435,7 +1429,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_formWindowOpened
 
     private void ppBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBayarActionPerformed
-        if (!tbDokter.getValueAt(tbDokter.getSelectedRow(), 10).toString().trim().equals("")) {
+        if (tbDokter.getValueAt(tbDokter.getSelectedRow(), 0).toString().trim().equals("")) {
             Valid.textKosong(TCari, "No.Faktur");
         } else {
             if (Sequel.cariIsi("select status from pinjam_obat where no_faktur='"
@@ -1457,7 +1451,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_ppBayarActionPerformed
 
     private void ppUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUbahActionPerformed
-        if (!tbDokter.getValueAt(tbDokter.getSelectedRow(), 10).toString().trim().equals("")) {
+        if (tbDokter.getValueAt(tbDokter.getSelectedRow(), 0).toString().trim().equals("")) {
             Valid.textKosong(TCari, "No.Faktur");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1512,6 +1506,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tbKamar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamar2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbKamar2KeyPressed
+
+    private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
+       NoFaktur.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(), 0).toString());       // TODO add your handling code here:
+    }//GEN-LAST:event_tbDokterMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1590,11 +1588,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
-            ps = koneksi.prepareStatement("select pinjam_obat.tgl_pesan,pinjam_obat.no_faktur, "
-                    + "pinjam_obat.kode_suplier,datasuplier.nama_suplier, "
-                    + "pinjam_obat.nip,petugas.nama,bangsal.nm_bangsal,pinjam_obat.tgl_faktur, "
-                    + "pinjam_obat.tgl_tempo,pinjam_obat.status,pinjam_obat.total2,pinjam_obat.ppn,"
-                    + "pinjam_obat.meterai,pinjam_obat.tagihan,pinjam_obat.no_order "
+            ps = koneksi.prepareStatement("select pinjam_obat.tgl_pinjam,pinjam_obat.no_faktur,"
+                    + "pinjam_obat.kode_suplier,datasuplier.nama_suplier,"
+                    + "pinjam_obat.nip,petugas.nama,bangsal.nm_bangsal,"
+                    + "pinjam_obat.status,pinjam_obat.total2,pinjam_obat.ppn,"
+                    + "pinjam_obat.meterai,pinjam_obat.tagihan "
                     + " from pinjam_obat inner join datasuplier inner join petugas inner join bangsal  "
                     + " inner join detailpinjamobat inner join databarang inner join kodesatuan "
                     + " inner join jenis inner join industrifarmasi "
@@ -1605,20 +1603,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     + " and pinjam_obat.kode_suplier=datasuplier.kode_suplier "
                     + " and databarang.kode_industri=industrifarmasi.kode_industri "
                     + " and pinjam_obat.nip=petugas.nip and databarang.kdjns=jenis.kdjns"
-                    + " where pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.no_faktur like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.kode_suplier like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and datasuplier.nama_suplier like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.nip like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and petugas.nama like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and bangsal.nm_bangsal like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpinjamobat.kode_brng like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and databarang.nama_brng like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpinjamobat.kode_sat like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpinjamobat.no_batch like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and industrifarmasi.nama_industri like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.no_order like ? or "
-                    + " pinjam_obat.tgl_pesan between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and jenis.nama like ? "
-                    + " group by pinjam_obat.no_faktur order by pinjam_obat.tgl_pesan,pinjam_obat.no_faktur ");
+                    + " where pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.no_faktur like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.kode_suplier like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and datasuplier.nama_suplier like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.nip like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and petugas.nama like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and bangsal.nm_bangsal like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpinjamobat.kode_brng like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and databarang.nama_brng like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpinjamobat.kode_sat like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpinjamobat.no_batch like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and industrifarmasi.nama_industri like ? or "
+//                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pinjam_obat.no_order like ? or "
+                    + " pinjam_obat.tgl_pinjam between ? and ? and pinjam_obat.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and jenis.nama like ? "
+                    + " group by pinjam_obat.no_faktur order by pinjam_obat.tgl_pinjam,pinjam_obat.no_faktur ");
             try {
                 ps.setString(1, Valid.SetTgl(TglBeli1.getSelectedItem() + ""));
                 ps.setString(2, Valid.SetTgl(TglBeli2.getSelectedItem() + ""));
@@ -1728,20 +1726,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(106, "%" + nmbar.getText() + "%");
                 ps.setString(107, "%" + NmIF.getText() + "%");
                 ps.setString(108, "%" + TCari.getText() + "%");
-                ps.setString(109, Valid.SetTgl(TglBeli1.getSelectedItem() + ""));
-                ps.setString(110, Valid.SetTgl(TglBeli2.getSelectedItem() + ""));
-                ps.setString(111, "%" + NoFaktur.getText() + "%");
-                ps.setString(112, "%" + nmsup.getText() + "%");
-                ps.setString(113, "%" + nmptg.getText() + "%");
-                ps.setString(114, "%" + nmjenis.getText() + "%");
-                ps.setString(115, "%" + nmbar.getText() + "%");
-                ps.setString(116, "%" + NmIF.getText() + "%");
-                ps.setString(117, "%" + TCari.getText() + "%");
+//                ps.setString(109, Valid.SetTgl(TglBeli1.getSelectedItem() + ""));
+//                ps.setString(110, Valid.SetTgl(TglBeli2.getSelectedItem() + ""));
+//                ps.setString(111, "%" + NoFaktur.getText() + "%");
+//                ps.setString(112, "%" + nmsup.getText() + "%");
+//                ps.setString(113, "%" + nmptg.getText() + "%");
+//                ps.setString(114, "%" + nmjenis.getText() + "%");
+//                ps.setString(115, "%" + nmbar.getText() + "%");
+//                ps.setString(116, "%" + NmIF.getText() + "%");
+//                ps.setString(117, "%" + TCari.getText() + "%");
                 rs = ps.executeQuery();
                 tagihan = 0;
                 while (rs.next()) {
                     tabMode.addRow(new Object[]{rs.getString(2), rs.getString(3) + ", " + rs.getString(4),
-                        rs.getString(5) + ", " + rs.getString(6), "Pengadaan di " + rs.getString(7) + " :", "", "", "", "", "", "", ""
+                        rs.getString(5) + ", " + rs.getString(6), "Pengadaan di " + rs.getString(7) + " :", ""
                     });
 
                     ps2 = koneksi.prepareStatement("select detailpinjamobat.kode_brng,databarang.nama_brng, "
@@ -1794,8 +1792,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         while (rs2.next()) {
                             tabMode.addRow(new Object[]{no + ". Batch " + rs2.getString("no_batch"), "Exp : " + rs2.getString("kadaluarsa"), "I.F. : " + rs2.getString("nama_industri"), rs2.getString(1) + ", " + rs2.getString(2),
                                 rs2.getString(3) + ", " + rs2.getString(4),
-                                rs2.getString(5), Valid.SetAngka(rs2.getDouble(6)), Valid.SetAngka(rs2.getDouble(7)),
-                                Valid.SetAngka(rs2.getDouble(8)), Valid.SetAngka(rs2.getDouble(9)), Valid.SetAngka(rs2.getDouble(10))});
+                                rs2.getString(5)});
                             no++;
                         }
                     } catch (Exception e) {
@@ -1808,10 +1805,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ps2.close();
                         }
                     }
-                    tabMode.addRow(new Object[]{rs.getString("no_order"), "Tgl.Faktur", ": " + rs.getString("tgl_faktur"), "", "", "", "", "", "Total", ":", Valid.SetAngka(rs.getDouble("total2"))});
-                    tabMode.addRow(new Object[]{"", "Tgl.Datang", ": " + rs.getString("tgl_pesan"), "", "", "", "", "", "Meterai", ":", Valid.SetAngka(rs.getDouble("meterai"))});
-                    tabMode.addRow(new Object[]{"", "Jth.Tempo", ": " + rs.getString("tgl_tempo"), "", "", "", "", "", "PPN", ":", Valid.SetAngka(rs.getDouble("ppn"))});
-                    tabMode.addRow(new Object[]{"", "Status Bayar", ": " + rs.getString("status"), "", "", "", "", "", "Tagihan", ":", Valid.SetAngka(rs.getDouble("tagihan"))});
+                    tabMode.addRow(new Object[]{"", "Tgl.Pinjam", ": " + rs.getString("tgl_pinjam"), "", ""});
+//                    tabMode.addRow(new Object[]{"", "", "", "", "", "", "", "", "", "", ""});
+//                    tabMode.addRow(new Object[]{"", "Jth.Tempo", ": " + rs.getString("tgl_tempo"), "", "", "", "", "", "PPN", ":", Valid.SetAngka(rs.getDouble("ppn"))});
+                    tabMode.addRow(new Object[]{"", "Status Pinjam", ": " + rs.getString("status"), "", ""});
                     tagihan = tagihan + rs.getDouble("tagihan");
                 }
             } catch (Exception e) {
@@ -1851,6 +1848,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ppHapus.setEnabled(false);
         }
         ppBayar.setEnabled(akses.getpemesanan_obat());
+        kdptg.setText(akses.getkode());
+        Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
     }
 
     public void tampil2() {

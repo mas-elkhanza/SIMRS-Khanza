@@ -926,7 +926,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     Sequel.RollBack();
                 }
                 Sequel.AutoComitTrue();
-                autoNomor();
+//                autoNomor();
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1512,7 +1512,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
      *
      */
     public void isCek() {
-        autoNomor();
+//        autoNomor();
         TCari.requestFocus();
 //        tppn.setText("10");
 //        Meterai.setText("0");
@@ -1527,12 +1527,13 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
 
     public void isCek(String Faktur) {
+        NoFaktur.setText(Faktur);
         try {
             try {
-                rs = koneksi.prepareStatement("select pinjam_obat.tgl_pesan,pinjam_obat.no_faktur, "
-                        + "pinjam_obat.kode_suplier,datasuplier.nama_suplier,pinjam_obat.no_order, "
-                        + "pinjam_obat.nip,petugas.nama,pinjam_obat.kd_bangsal,bangsal.nm_bangsal,pinjam_obat.tgl_faktur, "
-                        + "pinjam_obat.tgl_tempo,pinjam_obat.status,pinjam_obat.total1,pinjam_obat.potongan,pinjam_obat.total2,"
+                rs = koneksi.prepareStatement("select pinjam_obat.tgl_pinjam,pinjam_obat.no_faktur, "
+                        + "pinjam_obat.kode_suplier,datasuplier.nama_suplier, "
+                        + "pinjam_obat.nip,petugas.nama,pinjam_obat.kd_bangsal,bangsal.nm_bangsal, "
+                        + "pinjam_obat.status,pinjam_obat.total1,pinjam_obat.potongan,pinjam_obat.total2,"
                         + "pinjam_obat.ppn,pinjam_obat.tagihan,pinjam_obat.meterai "
                         + " from pinjam_obat inner join datasuplier inner join petugas inner join bangsal  "
                         + " on  pinjam_obat.kd_bangsal=bangsal.kd_bangsal "
@@ -1540,8 +1541,8 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         + " and pinjam_obat.nip=petugas.nip"
                         + " where no_faktur='" + Faktur + "'").executeQuery();
                 if (rs.next()) {
-                    NoFaktur.setText(Faktur);
-                    TglPesan.setDate(rs.getDate("tgl_pesan"));
+//                    NoFaktur.setText(Faktur);
+                    TglPesan.setDate(rs.getDate("tgl_pinjam"));
                     kdptg.setText(rs.getString("nip"));
                     nmptg.setText(rs.getString("nama"));
                     kdgudang.setText(rs.getString("kd_bangsal"));
@@ -1601,9 +1602,9 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
 
-    private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from pinjam_obat where tgl_pesan='" + Valid.SetTgl(TglPesan.getSelectedItem() + "") + "'", "PB" + TglPesan.getSelectedItem().toString().substring(6, 10) + TglPesan.getSelectedItem().toString().substring(3, 5) + TglPesan.getSelectedItem().toString().substring(0, 2), 3, NoFaktur);
-    }
+//    private void autoNomor() {
+//        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from pinjam_obat where tgl_pinjam='" + Valid.SetTgl(TglPesan.getSelectedItem() + "") + "'", "PB" + TglPesan.getSelectedItem().toString().substring(6, 10) + TglPesan.getSelectedItem().toString().substring(3, 5) + TglPesan.getSelectedItem().toString().substring(0, 2), 3, NoFaktur);
+//    }
 
     /**
      *
