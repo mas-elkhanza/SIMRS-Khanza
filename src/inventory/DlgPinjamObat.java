@@ -12,9 +12,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -67,6 +70,13 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
+        TglPesan.setDate(new Date());
+
+        TglPesan.addPropertyChangeListener("date", new PropertyChangeListener() {
+            public void propertyChange(PropertyChangeEvent e) {
+                autoNomor();
+            }
+        });
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
         } catch (Exception e) {
@@ -379,7 +389,6 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
         label11 = new widget.Label();
-        TglPesan = new widget.Tanggal();
         label13 = new widget.Label();
         kdsup = new widget.TextBox();
         label16 = new widget.Label();
@@ -392,6 +401,7 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         kdgudang = new widget.TextBox();
         nmgudang = new widget.TextBox();
         btnGudang = new widget.Button();
+        TglPesan = new widget.Tanggal1();
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Kd2.setName("Kd2"); // NOI18N
@@ -584,6 +594,7 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         panelisi3.add(label15);
         label15.setBounds(0, 10, 80, 23);
 
+        NoFaktur.setEnabled(false);
         NoFaktur.setName("NoFaktur"); // NOI18N
         NoFaktur.setPreferredSize(new java.awt.Dimension(207, 23));
         NoFaktur.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -599,16 +610,6 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
         label11.setBounds(0, 40, 80, 23);
-
-        TglPesan.setDisplayFormat("dd-MM-yyyy");
-        TglPesan.setName("TglPesan"); // NOI18N
-        TglPesan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglPesanActionPerformed(evt);
-            }
-        });
-        panelisi3.add(TglPesan);
-        TglPesan.setBounds(80, 40, 95, 23);
 
         label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N
@@ -721,6 +722,10 @@ public class DlgPinjamObat extends javax.swing.JDialog {
         panelisi3.add(btnGudang);
         btnGudang.setBounds(400, 70, 28, 23);
 
+        TglPesan.setName("TglPesan"); // NOI18N
+        panelisi3.add(TglPesan);
+        TglPesan.setBounds(80, 40, 117, 28);
+
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -790,7 +795,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 Sequel.AutoComitFalse();
                 sukses = true;
                 if (Sequel.menyimpantf2("pinjam_obat", "?,?,?,?,?,?,?", "No.Faktur", 7, new String[]{
-                    NoFaktur.getText(), kdsup.getText(), kdptg.getText(), Valid.SetTgl(TglPesan.getSelectedItem() + ""),
+                    NoFaktur.getText(), kdsup.getText(), kdptg.getText(), Valid.SetDateToString(TglPesan.getDate()),
                     "" + sbttl, kdgudang.getText(), "Dipinjam"
                 }) == true) {
                     jml = tbDokter.getRowCount();
@@ -828,7 +833,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         Sequel.queryu("delete from tampjurnal");
                         Sequel.menyimpan2("tampjurnal", "?,?,?,?", 4, new String[]{Sequel.cariIsi("select Pemesanan_Obat from set_akun"), "PERSEDIAAN BARANG", "" + (ttl + ppn + meterai), "0"});
                         Sequel.menyimpan2("tampjurnal", "?,?,?,?", 4, new String[]{Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"), "HUTANG USAHA", "0", "" + (ttl + ppn + meterai)});
-                        sukses = jur.simpanJurnal(NoFaktur.getText(), Valid.SetTgl(TglPesan.getSelectedItem() + ""), "U", "PENERIMAAN BARANG DI " + nmgudang.getText().toUpperCase() + ", OLEH " + akses.getkode());
+                        sukses = jur.simpanJurnal(NoFaktur.getText(), Valid.SetDateToString(TglPesan.getDate()), "U", "PENERIMAAN BARANG DI " + nmgudang.getText().toUpperCase() + ", OLEH " + akses.getkode());
                     }
                 } else {
                     sukses = false;
@@ -1063,10 +1068,6 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }//GEN-LAST:event_tbDokterPropertyChange
 
-    private void TglPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglPesanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglPesanActionPerformed
-
     private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
 
     }//GEN-LAST:event_tbDokterMouseClicked
@@ -1097,7 +1098,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox NoFaktur;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
-    private widget.Tanggal TglPesan;
+    private widget.Tanggal1 TglPesan;
     private widget.Button btnGudang;
     private widget.Button btnPetugas;
     private widget.Button btnSuplier;
@@ -1280,7 +1281,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
 
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from pinjam_obat where tgl_pinjam='" + Valid.SetTgl(TglPesan.getSelectedItem() + "") + "'", "PB" + TglPesan.getSelectedItem().toString().substring(6, 10) + TglPesan.getSelectedItem().toString().substring(3, 5) + TglPesan.getSelectedItem().toString().substring(0, 2), 3, NoFaktur);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from pinjam_obat where tgl_pinjam='" + Valid.SetDateToString(TglPesan.getDate()) + "'", "PB" + Valid.SetDateToString(TglPesan.getDate()).substring(0, 4) + Valid.SetDateToString(TglPesan.getDate()).substring(5, 7) + Valid.SetDateToString(TglPesan.getDate()).substring(8, 10), 3, NoFaktur);
     }
 
     /**
