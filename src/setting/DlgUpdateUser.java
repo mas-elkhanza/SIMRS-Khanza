@@ -666,7 +666,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "ringkasan_beri_obat,ringkasan_piutang_obat,ringkasan_stok_keluar_obat,ringkasan_retur_suplier_obat,ringkasan_retur_pembeli_obat,"+
                         "penilaian_awal_keperawatan_ranapkebidanan,ringkasan_pengajuan_nonmedis,ringkasan_pemesanan_nonmedis,ringkasan_pengadaan_nonmedis,"+
                         "ringkasan_penerimaan_nonmedis,ringkasan_stokkeluar_nonmedis,ringkasan_returbeli_nonmedis,omset_penerimaan,validasi_penagihan_piutang,"+
-                        "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol,penggunaan_bhp_ok from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1229,6 +1229,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[D]Ringkasan Retur Pembeli Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[D]Ringkasan Retur Pembeli Obat & BHP",rs.getBoolean("ringkasan_retur_pembeli_obat")});
+                    }
+                    
+                    if("[D]Penggunaan BHP OK/VK".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[D]Penggunaan BHP OK/VK",rs.getBoolean("penggunaan_bhp_ok")});
                     }
                     
                     if("[E]Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4064,6 +4068,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[D]Ringkasan Retur Pembeli Obat & BHP".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_retur_pembeli_obat='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[D]Penggunaan BHP OK/VK".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penggunaan_bhp_ok='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[E]Barang Non Medis".equals(tbUser.getValueAt(i,1).toString())){

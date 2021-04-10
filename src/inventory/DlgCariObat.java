@@ -512,8 +512,8 @@ public final class DlgCariObat extends javax.swing.JDialog {
         jLabel10 = new widget.Label();
         jLabel11 = new widget.Label();
         jLabel12 = new widget.Label();
-        LblNamaPasien = new widget.TextBox();
-        LblNoRM = new widget.TextBox();
+        TPasien = new widget.TextBox();
+        TNoRM = new widget.TextBox();
         LblNoRawat = new widget.TextBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
@@ -835,7 +835,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
         jLabel8.setBounds(4, 40, 65, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2019" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -950,17 +950,17 @@ public final class DlgCariObat extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(365, 10, 80, 23);
 
-        LblNamaPasien.setEditable(false);
-        LblNamaPasien.setName("LblNamaPasien"); // NOI18N
-        LblNamaPasien.setPreferredSize(new java.awt.Dimension(207, 23));
-        FormInput.add(LblNamaPasien);
-        LblNamaPasien.setBounds(448, 10, 237, 23);
+        TPasien.setEditable(false);
+        TPasien.setName("TPasien"); // NOI18N
+        TPasien.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(TPasien);
+        TPasien.setBounds(448, 10, 237, 23);
 
-        LblNoRM.setEditable(false);
-        LblNoRM.setName("LblNoRM"); // NOI18N
-        LblNoRM.setPreferredSize(new java.awt.Dimension(207, 23));
-        FormInput.add(LblNoRM);
-        LblNoRM.setBounds(256, 10, 90, 23);
+        TNoRM.setEditable(false);
+        TNoRM.setName("TNoRM"); // NOI18N
+        TNoRM.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(TNoRM);
+        TNoRM.setBounds(256, 10, 90, 23);
 
         LblNoRawat.setEditable(false);
         LblNoRawat.setName("LblNoRawat"); // NOI18N
@@ -1566,7 +1566,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Persediaan Obat Rawat Jalan','0','"+ttlhpp+"'","Rekening");                              
                         }
                         if((ttljual>0)||(ttlhpp>0)){
-                            sukses=jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT JALAN PASIEN, DIPOSTING OLEH "+akses.getkode());     
+                            sukses=jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT JALAN PASIEN "+TNoRM.getText()+" "+TPasien.getText()+", DIPOSTING OLEH "+akses.getkode());     
                         }
                     }
                     
@@ -2017,15 +2017,15 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Label LPpn;
     private widget.Label LTotal;
     private widget.Label LTotalTagihan;
-    private widget.TextBox LblNamaPasien;
-    private widget.TextBox LblNoRM;
     private widget.TextBox LblNoRawat;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
+    private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
+    private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
     private widget.TextBox Tanggal;
     private widget.ComboBox cmbDtk;
@@ -3481,8 +3481,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         aktifpcare="no";
         TNoRw.setText(norwt);
         LblNoRawat.setText(norwt);
-        LblNoRM.setText(norm);
-        LblNamaPasien.setText(nama);
+        TNoRM.setText(norm);
+        TPasien.setText(nama);
         noresep="";
         Tanggal.setText(tanggal);
         Jam.setText(jam);  

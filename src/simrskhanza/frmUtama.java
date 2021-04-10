@@ -527,6 +527,7 @@ import inventory.DlgSirkulasiBarang4;
 import inventory.DlgSirkulasiBarang5;
 import inventory.DlgSisaStok;
 import inventory.HibahObatBHP;
+import inventory.InventoryPenggunaanBHPOK;
 import inventory.InventoryRingkasanBeriObat;
 import inventory.InventoryRingkasanHibahBarangMedis;
 import inventory.InventoryRingkasanPenjualanBarangMedis;
@@ -16930,6 +16931,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenggunaanBHPOKActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryPenggunaanBHPOK form=new InventoryPenggunaanBHPOK(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17546,7 +17558,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
             btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
-            btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol;
+            btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK;
     
     public void isWall(){
         try{            
@@ -18324,6 +18336,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getverifikasi_penerimaan_farmasi()==true){
                 Panelmenu.add(btnVerifikasiPenerimaanFarmasi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenggunaan_bhp_ok()==true){
+                Panelmenu.add(btnPenggunaanBHPOK);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -21859,6 +21876,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getverifikasi_penerimaan_farmasi()==true){
             Panelmenu.add(btnVerifikasiPenerimaanFarmasi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenggunaan_bhp_ok()==true){
+            Panelmenu.add(btnPenggunaanBHPOK);
             jmlmenu++;
         }
 
@@ -25641,6 +25663,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getverifikasi_penerimaan_farmasi()==true){
             if(btnVerifikasiPenerimaanFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnVerifikasiPenerimaanFarmasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenggunaan_bhp_ok()==true){
+            if(btnPenggunaanBHPOK.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenggunaanBHPOK);
                 jmlmenu++;
             }                
         }
@@ -31586,6 +31615,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSSuratKontrol.setName("btnBPJSSuratKontrol"); 
         btnBPJSSuratKontrol.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSSuratKontrol.addActionListener(this::btnBPJSSuratKontrolActionPerformed);
+        
+        btnPenggunaanBHPOK = new widget.ButtonBig();
+        btnPenggunaanBHPOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ecommerce-14_4707170.png")));
+        btnPenggunaanBHPOK.setText("Penggunaan BHP OK/VK");
+        btnPenggunaanBHPOK.setIconTextGap(0);
+        btnPenggunaanBHPOK.setName("btnPenggunaanBHPOK"); 
+        btnPenggunaanBHPOK.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenggunaanBHPOK.addActionListener(this::btnPenggunaanBHPOKActionPerformed);
     }
 
     

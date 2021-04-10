@@ -758,7 +758,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel58.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel58);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-04-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -771,7 +771,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel59.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel59);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-04-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -972,7 +972,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(270, 160, 54, 23);
 
-        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021 11:31:27" }));
+        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-04-2021 07:41:50" }));
         TanggalLaporan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalLaporan.setName("TanggalLaporan"); // NOI18N
         TanggalLaporan.setOpaque(false);
@@ -1363,7 +1363,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(532, 250, 80, 23);
 
-        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021" }));
+        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-04-2021" }));
         MulaiBerobat.setDisplayFormat("dd-MM-yyyy");
         MulaiBerobat.setName("MulaiBerobat"); // NOI18N
         MulaiBerobat.setOpaque(false);
@@ -1615,7 +1615,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel31);
         jLabel31.setBounds(0, 440, 100, 23);
 
-        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021" }));
+        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-04-2021" }));
         AkhirBerobat.setDisplayFormat("dd-MM-yyyy");
         AkhirBerobat.setName("AkhirBerobat"); // NOI18N
         AkhirBerobat.setOpaque(false);
@@ -1647,7 +1647,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel32);
         jLabel32.setBounds(512, 440, 100, 23);
 
-        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021" }));
+        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-04-2021" }));
         DianjurkanTesHIV.setDisplayFormat("dd-MM-yyyy");
         DianjurkanTesHIV.setName("DianjurkanTesHIV"); // NOI18N
         DianjurkanTesHIV.setOpaque(false);
@@ -1659,7 +1659,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(DianjurkanTesHIV);
         DianjurkanTesHIV.setBounds(615, 440, 90, 23);
 
-        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2021" }));
+        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-04-2021" }));
         TanggalTesHIV.setDisplayFormat("dd-MM-yyyy");
         TanggalTesHIV.setName("TanggalTesHIV"); // NOI18N
         TanggalTesHIV.setOpaque(false);
