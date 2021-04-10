@@ -159,7 +159,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<text><![CDATA[Telah Lahir]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="41" width="308" height="18" uuid="10231513-66df-4464-acd5-d0c54a467837">
+				<reportElement x="189" y="41" width="364" height="18" uuid="10231513-66df-4464-acd5-d0c54a467837">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -207,7 +207,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="348" y="66" width="201" height="17" uuid="ccbeae5c-9ce8-456c-8f8b-c5a5d561ea54">
+				<reportElement x="348" y="66" width="205" height="17" uuid="ccbeae5c-9ce8-456c-8f8b-c5a5d561ea54">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -237,7 +237,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="84" width="238" height="17" uuid="8d351e2f-4058-4e5e-afa5-55cedaefe145">
+				<reportElement x="189" y="84" width="364" height="17" uuid="8d351e2f-4058-4e5e-afa5-55cedaefe145">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -308,7 +308,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="138" width="238" height="17" uuid="24e9fd4b-74ae-4b84-826f-b7da3d7aa53f">
+				<reportElement x="189" y="138" width="364" height="17" uuid="24e9fd4b-74ae-4b84-826f-b7da3d7aa53f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
