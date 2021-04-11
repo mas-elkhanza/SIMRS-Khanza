@@ -658,6 +658,7 @@ import surat.SuratCutiHamil;
 import surat.SuratIndeks;
 import surat.SuratKeluar;
 import surat.SuratKeteranganCovid;
+import surat.SuratKeteranganRawatInap;
 import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratMasuk;
@@ -16942,6 +16943,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratKeteranganRawatInapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratKeteranganRawatInap form=new SuratKeteranganRawatInap(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17558,7 +17570,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanBeriObat,btnRingkasanPiutangObat,btnRingkasanStokKeluarObat,btnRingkasanReturSuplierObat,btnRingkasanReturJualObat,
             btnRingkasanPengajuanNonMedis,btnRingkasanPemesananNonMedis,btnPenilaianAwalKeperawatanKebidananRanap,btnRingkasanPengadaanNonMedis,
             btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
-            btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK;
+            btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK,btnSuratKeteranganRawatInap;
     
     public void isWall(){
         try{            
@@ -20779,6 +20791,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_keterangan_covid()==true){
                 Panelmenu.add(btnSuratKeteranganCovid);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_keterangan_rawat_inap()==true){
+                Panelmenu.add(btnSuratKeteranganRawatInap);
                 jmlmenu++;
             }
             
@@ -24303,6 +24320,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_keterangan_covid()==true){
             Panelmenu.add(btnSuratKeteranganCovid);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_keterangan_rawat_inap()==true){
+            Panelmenu.add(btnSuratKeteranganRawatInap);
             jmlmenu++;
         }
         
@@ -29063,6 +29085,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_keterangan_rawat_inap()==true){
+            if(btnSuratKeteranganRawatInap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratKeteranganRawatInap);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengumuman_epasien()==true){
             if(btnPengumumanEPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengumumanEPasien);
@@ -31623,6 +31652,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenggunaanBHPOK.setName("btnPenggunaanBHPOK"); 
         btnPenggunaanBHPOK.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenggunaanBHPOK.addActionListener(this::btnPenggunaanBHPOKActionPerformed);
+        
+        btnSuratKeteranganRawatInap = new widget.ButtonBig();
+        btnSuratKeteranganRawatInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_File_Files_Folder_Document_Check_Confirm_3909334.png")));
+        btnSuratKeteranganRawatInap.setText("Surat Keterangan Rawat Inap");
+        btnSuratKeteranganRawatInap.setIconTextGap(0);
+        btnSuratKeteranganRawatInap.setName("btnSuratKeteranganRawatInap"); 
+        btnSuratKeteranganRawatInap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratKeteranganRawatInap.addActionListener(this::btnSuratKeteranganRawatInapActionPerformed);
     }
 
     

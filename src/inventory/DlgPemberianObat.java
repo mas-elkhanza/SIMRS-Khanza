@@ -1538,7 +1538,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void isRawat() {
          Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
-         TCariPasien.setText(TNoRM.getText());
     }
 
     private void isPsien() {
