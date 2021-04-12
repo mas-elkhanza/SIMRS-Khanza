@@ -855,7 +855,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
 //                    getData();
-                    JOptionPane.showMessageDialog(rootPane, "Notifikasi, Berhasil Menyimpan Data.");
+                    JOptionPane.showMessageDialog(rootPane, "Berhasil Menyimpan Data.");
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
