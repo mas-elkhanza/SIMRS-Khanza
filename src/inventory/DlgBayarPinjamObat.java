@@ -741,7 +741,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     Sequel.menyimpan2("tampjurnal", "?,?,?,?", 4, new String[]{Sequel.cariIsi("select Pemesanan_Obat from set_akun"), "PERSEDIAAN BARANG", "" + (ttl + ppn + meterai), "0"});
                     Sequel.menyimpan2("tampjurnal", "?,?,?,?", 4, new String[]{Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"), "HUTANG USAHA", "0", "" + (ttl + ppn + meterai)});
                     sukses = jur.simpanJurnal(NoFaktur.getText(), Valid.SetTgl(TglPesan.getSelectedItem() + ""), "U", "PENERIMAAN BARANG DI " + nmgudang.getText().toUpperCase() + ", OLEH " + akses.getkode());
-                    Sequel.queryu("update pinjam_obat set status='Dikembalikan' where no_faktur='"+NoFaktur.getText()+"'");
+                    Sequel.queryu("update pinjam_obat set status='Dikembalikan' where no_faktur='" + NoFaktur.getText() + "'");
                 }
                 if (sukses == false) {
                     sukses = false;
@@ -775,6 +775,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
 //                    getData();
+                    JOptionPane.showMessageDialog(rootPane, "Notifikasi, Berhasil Menyimpan Data.");
                 } else {
                     JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
@@ -986,7 +987,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if ((tbDokter.getSelectedColumn() == 2) || (tbDokter.getSelectedColumn() == 5)) {
 //                    setKonversi(tbDokter.getSelectedRow());
 //                    getData();
-                } 
+                }
             } catch (java.lang.NullPointerException e) {
             }
         }
@@ -1275,7 +1276,6 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 //    private void autoNomor() {
 //        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from pinjam_obat where tgl_pinjam='" + Valid.SetTgl(TglPesan.getSelectedItem() + "") + "'", "PB" + TglPesan.getSelectedItem().toString().substring(6, 10) + TglPesan.getSelectedItem().toString().substring(3, 5) + TglPesan.getSelectedItem().toString().substring(0, 2), 3, NoFaktur);
 //    }
-
     /**
      *
      * @param noorder
