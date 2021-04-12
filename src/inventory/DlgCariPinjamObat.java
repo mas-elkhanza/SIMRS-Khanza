@@ -1072,6 +1072,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 }
                             }
                             sukses = true;
+                            if(sukses){
+                                NoFaktur.setText("");
+                            }
                         } catch (Exception e) {
                             sukses = false;
                             System.out.println("Notif 2 : " + e);
@@ -1144,6 +1147,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 bayarpesan.setLocationRelativeTo(internalFrame1);
                 bayarpesan.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
+                NoFaktur.setText("");
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Barang Sudah dikembalikan.");
             }
@@ -1463,6 +1467,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         ppHapus.setEnabled(akses.getpemesanan_obat());
         kdptg.setText(akses.getkode());
         Sequel.cariIsi("select nama from petugas where nip=?", nmptg, kdptg.getText());
+        NoFaktur.setText("");
+        tampil();
     }
 //
 //    public void tampil2() {
