@@ -154,7 +154,8 @@ public final class akses {
             ringkasan_retur_suplier_obat=false,ringkasan_retur_pembeli_obat=false,penilaian_awal_keperawatan_ranapkebidanan=false,
             ringkasan_pengajuan_nonmedis=false,ringkasan_pemesanan_nonmedis=false,ringkasan_pengadaan_nonmedis=false,ringkasan_penerimaan_nonmedis=false,
             ringkasan_stokkeluar_nonmedis=false,ringkasan_returbeli_nonmedis=false,omset_penerimaan=false,validasi_penagihan_piutang=false,
-            permintaan_ranap=false,bpjs_diagnosa_prb=false,bpjs_obat_prb=false,bpjs_surat_kontrol=false,penggunaan_bhp_ok=false,surat_keterangan_rawat_inap=false;
+            permintaan_ranap=false,bpjs_diagnosa_prb=false,bpjs_obat_prb=false,bpjs_surat_kontrol=false,penggunaan_bhp_ok=false,surat_keterangan_rawat_inap=false,
+            surat_keterangan_sehat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -882,6 +883,7 @@ public final class akses {
                         akses.bpjs_surat_kontrol=true;
                         akses.penggunaan_bhp_ok=true;
                         akses.surat_keterangan_rawat_inap=true;
+                        akses.surat_keterangan_sehat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1593,6 +1595,7 @@ public final class akses {
                         akses.bpjs_surat_kontrol=rs2.getBoolean("bpjs_surat_kontrol");
                         akses.penggunaan_bhp_ok=rs2.getBoolean("penggunaan_bhp_ok");
                         akses.surat_keterangan_rawat_inap=rs2.getBoolean("surat_keterangan_rawat_inap");
+                        akses.surat_keterangan_sehat=rs2.getBoolean("surat_keterangan_sehat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2302,6 +2305,7 @@ public final class akses {
                         akses.bpjs_surat_kontrol=false;
                         akses.penggunaan_bhp_ok=false;
                         akses.surat_keterangan_rawat_inap=false;
+                        akses.surat_keterangan_sehat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3066,4 +3070,5 @@ public final class akses {
     public static boolean getbpjs_surat_kontrol(){return akses.bpjs_surat_kontrol;}
     public static boolean getpenggunaan_bhp_ok(){return akses.penggunaan_bhp_ok;}
     public static boolean getsurat_keterangan_rawat_inap(){return akses.surat_keterangan_rawat_inap;}
+    public static boolean getsurat_keterangan_sehat(){return akses.surat_keterangan_sehat;}
 }   

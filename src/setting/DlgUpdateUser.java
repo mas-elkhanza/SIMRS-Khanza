@@ -666,7 +666,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "ringkasan_beri_obat,ringkasan_piutang_obat,ringkasan_stok_keluar_obat,ringkasan_retur_suplier_obat,ringkasan_retur_pembeli_obat,"+
                         "penilaian_awal_keperawatan_ranapkebidanan,ringkasan_pengajuan_nonmedis,ringkasan_pemesanan_nonmedis,ringkasan_pengadaan_nonmedis,"+
                         "ringkasan_penerimaan_nonmedis,ringkasan_stokkeluar_nonmedis,ringkasan_returbeli_nonmedis,omset_penerimaan,validasi_penagihan_piutang,"+
-                        "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol,penggunaan_bhp_ok,surat_keterangan_rawat_inap from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol,penggunaan_bhp_ok,surat_keterangan_rawat_inap,"+
+                        "surat_keterangan_sehat from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3181,6 +3182,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[O]Surat Keterangan Rawat Inap".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[O]Surat Keterangan Rawat Inap",rs.getBoolean("surat_keterangan_rawat_inap")});
+                    }
+                    
+                    if("[O]Surat Keterangan Sehat".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[O]Surat Keterangan Sehat",rs.getBoolean("surat_keterangan_sehat")});
                     }
                     
                     if("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6028,6 +6033,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[O]Surat Keterangan Rawat Inap".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_keterangan_rawat_inap='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[O]Surat Keterangan Sehat".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_keterangan_sehat='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[P]Ruang Perpustakaan".equals(tbUser.getValueAt(i,1).toString())){

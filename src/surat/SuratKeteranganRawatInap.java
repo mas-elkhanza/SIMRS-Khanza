@@ -356,7 +356,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-04-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -370,7 +370,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-04-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -465,16 +465,11 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
-        TPasien.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TPasienKeyPressed(evt);
-            }
-        });
         FormInput.add(TPasien);
         TPasien.setBounds(330, 10, 390, 23);
 
         TanggalAkhir.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalAkhir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2021" }));
+        TanggalAkhir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-04-2021" }));
         TanggalAkhir.setDisplayFormat("dd-MM-yyyy");
         TanggalAkhir.setName("TanggalAkhir"); // NOI18N
         TanggalAkhir.setOpaque(false);
@@ -494,11 +489,6 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
-        TNoRM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRMKeyPressed(evt);
-            }
-        });
         FormInput.add(TNoRM);
         TNoRM.setBounds(217, 10, 111, 23);
 
@@ -508,7 +498,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         jLabel16.setBounds(536, 40, 90, 23);
 
         TanggalAwal.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalAwal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-04-2021" }));
+        TanggalAwal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-04-2021" }));
         TanggalAwal.setDisplayFormat("dd-MM-yyyy");
         TanggalAwal.setName("TanggalAwal"); // NOI18N
         TanggalAwal.setOpaque(false);
@@ -574,10 +564,6 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_TNoRwKeyPressed
 
-    private void TPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPasienKeyPressed
-        Valid.pindah(evt,TCari,BtnSimpan);
-}//GEN-LAST:event_TPasienKeyPressed
-
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoSurat.getText().trim().equals("")){
             Valid.textKosong(NoSurat,"No.Surat");
@@ -597,7 +583,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,NoSurat,BtnBatal);
+            Valid.pindah(evt,TanggalAkhir,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -750,12 +736,8 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
    
                                   
     private void TanggalAkhirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalAkhirKeyPressed
-        Valid.pindah(evt,TanggalAwal,NoSurat);
+        Valid.pindah(evt,TanggalAwal,BtnSimpan);
 }//GEN-LAST:event_TanggalAkhirKeyPressed
-
-    private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
-       
-}//GEN-LAST:event_TNoRMKeyPressed
 
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
         if(tabMode.getRowCount()!=0){
