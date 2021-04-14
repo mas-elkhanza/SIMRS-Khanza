@@ -11673,50 +11673,139 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         try {
             String visit = " jns_perawatan_inap.nm_perawatan like '%Dr. Spesialis%' and ";
             Valid.tabelKosong(tabModelRincian);
-            ps = koneksi.prepareStatement("select rawat_inap_drpr.no_rawat, reg_periksa.no_rkm_medis, "
-                    + "pasien.nm_pasien, rawat_inap_drpr.kd_jenis_prw, jns_perawatan_inap.nm_perawatan, "
-                    + "rawat_inap_drpr.kd_dokter, (SELECT nm_dokter FROM dokter WHERE kd_dokter=rawat_inap_drpr.kd_dokter)AS drvisit, "
-                    + "rawat_inap_drpr.nip, petugas.nama, min(rawat_inap_drpr.tgl_perawatan) as tgl_perawatan, "
-                    + "min(rawat_inap_drpr.jam_rawat) as jam_rawat,  penjab.png_jawab, rawat_inap_drpr.kd_kamar, kamar.kelas, "
-                    + "rawat_inap_drpr.material, rawat_inap_drpr.bhp, rawat_inap_drpr.tarif_tindakandr, rawat_inap_drpr.tarif_tindakanpr, "
-                    + "rawat_inap_drpr.kso, rawat_inap_drpr.menejemen, rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama, kamar_inap.tgl_keluar, "
-                    + "kamar.kd_kamar,kamar.kd_bangsal,bangsal.kd_bangsal, bangsal.nm_bangsal,total_byrdrpr,"
-                    + "operasi.biayaoperator1,operasi.biayadokter_anestesi,operasi.biayaasisten_anestesi,operasi.biayaasisten_operator1,operasi.biayabidan,reg_periksa.kd_poli "
-                    + "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                    + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
-                    + "inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
-                    + "inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "
-                    + "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
-                    + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
-                    + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
-                    + "inner join petugas on rawat_inap_drpr.nip=petugas.nip "
-                    + "inner join dokter as dokter_pertama on dokter_pertama.kd_dokter = reg_periksa.kd_dokter "
-                    + "left join kamar on rawat_inap_drpr.kd_kamar = kamar.kd_kamar "
-                    + "left join bangsal on bangsal.kd_bangsal = kamar.kd_bangsal "
-                    + "left join operasi on operasi.no_rawat = kamar_inap.no_rawat " + "where " + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.no_rawat like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan_inap.nm_perawatan like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.kd_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.nip like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
-                    + visit
-                    + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bangsal.nm_bangsal like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' "
-                    + " GROUP BY kamar_inap.no_rawat "
-                    + " order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat asc"
-            );
-
+            if (cmbStatus.getSelectedItem().toString().equalsIgnoreCase("Sudah Lunas")) {
+                ps = koneksi.prepareStatement("select rawat_inap_drpr.no_rawat, reg_periksa.no_rkm_medis, "
+                        + "pasien.nm_pasien, rawat_inap_drpr.kd_jenis_prw, jns_perawatan_inap.nm_perawatan, "
+                        + "rawat_inap_drpr.kd_dokter, (SELECT nm_dokter FROM dokter WHERE kd_dokter=rawat_inap_drpr.kd_dokter)AS drvisit, "
+                        + "rawat_inap_drpr.nip, petugas.nama, min(rawat_inap_drpr.tgl_perawatan) as tgl_perawatan, "
+                        + "min(rawat_inap_drpr.jam_rawat) as jam_rawat,  penjab.png_jawab, rawat_inap_drpr.kd_kamar, kamar.kelas, "
+                        + "rawat_inap_drpr.material, rawat_inap_drpr.bhp, rawat_inap_drpr.tarif_tindakandr, rawat_inap_drpr.tarif_tindakanpr, "
+                        + "rawat_inap_drpr.kso, rawat_inap_drpr.menejemen, rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama, kamar_inap.tgl_keluar, "
+                        + "kamar.kd_kamar,kamar.kd_bangsal,bangsal.kd_bangsal, bangsal.nm_bangsal,total_byrdrpr,"
+                        + "operasi.biayaoperator1,operasi.biayadokter_anestesi,operasi.biayaasisten_anestesi,operasi.biayaasisten_operator1,operasi.biayabidan,reg_periksa.kd_poli "
+                        + "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                        + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
+                        + "inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
+                        + "inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "
+                        + "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
+                        + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
+                        + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
+                        + "inner join petugas on rawat_inap_drpr.nip=petugas.nip "
+                        + "inner join dokter as dokter_pertama on dokter_pertama.kd_dokter = reg_periksa.kd_dokter "
+                        + "left join kamar on rawat_inap_drpr.kd_kamar = kamar.kd_kamar "
+                        + "left join bangsal on bangsal.kd_bangsal = kamar.kd_bangsal "
+                        + "left join operasi on operasi.no_rawat = kamar_inap.no_rawat " + "where " + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.no_rawat like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan_inap.nm_perawatan like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.kd_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.nip like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bangsal.nm_bangsal like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' "
+                        + " GROUP BY kamar_inap.no_rawat "
+                        + " order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat asc"
+                );
+            } else if (cmbStatus.getSelectedItem().toString().equalsIgnoreCase("Belum Lunas")) {
+                ps = koneksi.prepareStatement("select rawat_inap_drpr.no_rawat, reg_periksa.no_rkm_medis, "
+                        + "pasien.nm_pasien, rawat_inap_drpr.kd_jenis_prw, jns_perawatan_inap.nm_perawatan, "
+                        + "rawat_inap_drpr.kd_dokter, (SELECT nm_dokter FROM dokter WHERE kd_dokter=rawat_inap_drpr.kd_dokter)AS drvisit, "
+                        + "rawat_inap_drpr.nip, petugas.nama, min(rawat_inap_drpr.tgl_perawatan) as tgl_perawatan, "
+                        + "min(rawat_inap_drpr.jam_rawat) as jam_rawat,  penjab.png_jawab, rawat_inap_drpr.kd_kamar, kamar.kelas, "
+                        + "rawat_inap_drpr.material, rawat_inap_drpr.bhp, rawat_inap_drpr.tarif_tindakandr, rawat_inap_drpr.tarif_tindakanpr, "
+                        + "rawat_inap_drpr.kso, rawat_inap_drpr.menejemen, rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama, kamar_inap.tgl_keluar, "
+                        + "kamar.kd_kamar,kamar.kd_bangsal,bangsal.kd_bangsal, bangsal.nm_bangsal,total_byrdrpr,"
+                        + "operasi.biayaoperator1,operasi.biayadokter_anestesi,operasi.biayaasisten_anestesi,operasi.biayaasisten_operator1,operasi.biayabidan,reg_periksa.kd_poli "
+                        + "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                        + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
+                        + "inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
+                        + "inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "
+                        + "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
+                        + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
+                        + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
+                        + "inner join petugas on rawat_inap_drpr.nip=petugas.nip "
+                        + "inner join dokter as dokter_pertama on dokter_pertama.kd_dokter = reg_periksa.kd_dokter "
+                        + "left join kamar on rawat_inap_drpr.kd_kamar = kamar.kd_kamar "
+                        + "left join bangsal on bangsal.kd_bangsal = kamar.kd_bangsal "
+                        + "left join operasi on operasi.no_rawat = kamar_inap.no_rawat " + "where " + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.no_rawat like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan_inap.nm_perawatan like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.kd_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.nip like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + "reg_periksa.status_bayar='Belum Bayar' and kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bangsal.nm_bangsal like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' "
+                        + " GROUP BY kamar_inap.no_rawat "
+                        + " order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat asc"
+                );
+            }else if(cmbStatus.getSelectedItem().toString().equalsIgnoreCase("Semua")){
+                ps = koneksi.prepareStatement("select rawat_inap_drpr.no_rawat, reg_periksa.no_rkm_medis, "
+                        + "pasien.nm_pasien, rawat_inap_drpr.kd_jenis_prw, jns_perawatan_inap.nm_perawatan, "
+                        + "rawat_inap_drpr.kd_dokter, (SELECT nm_dokter FROM dokter WHERE kd_dokter=rawat_inap_drpr.kd_dokter)AS drvisit, "
+                        + "rawat_inap_drpr.nip, petugas.nama, min(rawat_inap_drpr.tgl_perawatan) as tgl_perawatan, "
+                        + "min(rawat_inap_drpr.jam_rawat) as jam_rawat,  penjab.png_jawab, rawat_inap_drpr.kd_kamar, kamar.kelas, "
+                        + "rawat_inap_drpr.material, rawat_inap_drpr.bhp, rawat_inap_drpr.tarif_tindakandr, rawat_inap_drpr.tarif_tindakanpr, "
+                        + "rawat_inap_drpr.kso, rawat_inap_drpr.menejemen, rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama, kamar_inap.tgl_keluar, "
+                        + "kamar.kd_kamar,kamar.kd_bangsal,bangsal.kd_bangsal, bangsal.nm_bangsal,total_byrdrpr,"
+                        + "operasi.biayaoperator1,operasi.biayadokter_anestesi,operasi.biayaasisten_anestesi,operasi.biayaasisten_operator1,operasi.biayabidan,reg_periksa.kd_poli "
+                        + "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                        + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
+                        + "inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
+                        + "inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "
+                        + "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
+                        + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
+                        + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
+                        + "inner join petugas on rawat_inap_drpr.nip=petugas.nip "
+                        + "inner join dokter as dokter_pertama on dokter_pertama.kd_dokter = reg_periksa.kd_dokter "
+                        + "left join kamar on rawat_inap_drpr.kd_kamar = kamar.kd_kamar "
+                        + "left join bangsal on bangsal.kd_bangsal = kamar.kd_bangsal "
+                        + "left join operasi on operasi.no_rawat = kamar_inap.no_rawat " + "where " + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.no_rawat like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan_inap.nm_perawatan like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.kd_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.nip like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' or "
+                        + visit
+                        + " kamar_inap.tgl_keluar between ? and ? and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(rawat_inap_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bangsal.nm_bangsal like ? and kamar_inap.stts_pulang not like '%Pindah Kamar%' "
+                        + " GROUP BY kamar_inap.no_rawat "
+                        + " order by rawat_inap_drpr.tgl_perawatan, rawat_inap_drpr.jam_rawat asc"
+                );
+            }
             try {
                 ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
                 ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
