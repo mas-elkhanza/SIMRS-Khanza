@@ -1,11 +1,11 @@
 package inventory;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -23,9 +23,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPasien;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
+import simrskhanza.DlgPasien;
 
 /**
  *
@@ -225,6 +225,8 @@ public class DlgReturJual extends javax.swing.JDialog {
                             Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(), 18).toString());
                         } else if (Jenisjual.getSelectedItem().equals("Harga Beli")) {
                             Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(), 11).toString());
+                        }else if (Jenisjual.getSelectedItem().equals("Harga Jual")) {
+                            Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(), 18).toString());
                         }
 
                         if (aktifkanbatch.equals("yes")) {
@@ -478,7 +480,6 @@ public class DlgReturJual extends javax.swing.JDialog {
         panelisi4 = new widget.panelisi();
         label25 = new widget.Label();
         Subtotal = new widget.TextBox();
-        label27 = new widget.Label();
         Hargaretur = new widget.TextBox();
         label17 = new widget.Label();
         Kdbar = new widget.TextBox();
@@ -491,6 +492,7 @@ public class DlgReturJual extends javax.swing.JDialog {
         NoBatch = new widget.TextBox();
         NoFaktur = new widget.TextBox();
         label23 = new widget.Label();
+        label28 = new widget.Label();
         panelisiBeli = new widget.panelisi();
         label15 = new widget.Label();
         NoRetur = new widget.TextBox();
@@ -544,7 +546,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Obat, Alkes & BHP Medis Dari Pasien/Pembeli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Obat, Alkes & BHP Medis Dari Pasien/Pembeli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -717,19 +719,13 @@ public class DlgReturJual extends javax.swing.JDialog {
         label25.setName("label25"); // NOI18N
         label25.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi4.add(label25);
-        label25.setBounds(592, 40, 80, 23);
+        label25.setBounds(580, 40, 80, 23);
 
         Subtotal.setEditable(false);
         Subtotal.setName("Subtotal"); // NOI18N
         Subtotal.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi4.add(Subtotal);
-        Subtotal.setBounds(676, 40, 100, 23);
-
-        label27.setText("Hrga.Retur :");
-        label27.setName("label27"); // NOI18N
-        label27.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi4.add(label27);
-        label27.setBounds(592, 10, 80, 23);
+        Subtotal.setBounds(660, 40, 100, 23);
 
         Hargaretur.setName("Hargaretur"); // NOI18N
         Hargaretur.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -739,7 +735,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Hargaretur);
-        Hargaretur.setBounds(676, 10, 100, 23);
+        Hargaretur.setBounds(660, 10, 100, 23);
 
         label17.setText("Barang :");
         label17.setName("label17"); // NOI18N
@@ -830,6 +826,12 @@ public class DlgReturJual extends javax.swing.JDialog {
         panelisi4.add(label23);
         label23.setBounds(170, 40, 70, 23);
 
+        label28.setText("Hrga.Retur :");
+        label28.setName("label28"); // NOI18N
+        label28.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi4.add(label28);
+        label28.setBounds(580, 10, 80, 23);
+
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -880,7 +882,7 @@ public class DlgReturJual extends javax.swing.JDialog {
         panelisiBeli.add(Kdptg);
         Kdptg.setBounds(409, 40, 100, 23);
 
-        Jenisjual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rawat Jalan", "Kelas 1", "Kelas 2", "Kelas 3", "Utama/BPJS", "VIP", "VVIP", "Beli Luar", "Jual Bebas", "Karyawan", "Harga Beli" }));
+        Jenisjual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Harga Beli", "Harga Jual", "Rawat Jalan", "Kelas 1", "Kelas 2", "Kelas 3", "Utama/BPJS", "VIP", "VVIP", "Beli Luar", "Jual Bebas", "Karyawan" }));
         Jenisjual.setName("Jenisjual"); // NOI18N
         Jenisjual.setPreferredSize(new java.awt.Dimension(45, 23));
         Jenisjual.addItemListener(new java.awt.event.ItemListener() {
@@ -1004,7 +1006,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             }
         });
         panelisiBeli.add(TglRetur);
-        TglRetur.setBounds(250, 70, 88, 20);
+        TglRetur.setBounds(250, 70, 117, 28);
 
         internalFrame1.add(panelisiBeli, java.awt.BorderLayout.PAGE_START);
 
@@ -1483,7 +1485,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Label label23;
     private widget.Label label25;
     private widget.Label label26;
-    private widget.Label label27;
+    private widget.Label label28;
     private widget.Label label32;
     private widget.Label label9;
     private widget.TextBox nmbar;
