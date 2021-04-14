@@ -599,7 +599,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2020" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2021" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -614,7 +614,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1037,7 +1037,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             }
         });
         FormInput.add(DTPBeri);
-        DTPBeri.setBounds(80, 40, 100, 20);
+        DTPBeri.setBounds(80, 40, 100, 26);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1224,7 +1224,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     + tgl + "and detail_pemberian_obat.kode_brng like '%" + TCari.getText().trim() + "%' or "
                     + tgl + "and detail_pemberian_obat.no_batch like '%" + TCari.getText().trim() + "%' or "
                     + tgl + "and databarang.nama_brng like '%" + TCari.getText().trim() + "%' "
-                    + "order by detail_pemberian_obat.tgl_perawatan", param);
+                    + "order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam", param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
