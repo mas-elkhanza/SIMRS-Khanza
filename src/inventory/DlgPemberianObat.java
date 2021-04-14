@@ -1537,7 +1537,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 + tgl + "and databarang.nama_brng like ? or "
                 + tgl + "and detail_pemberian_obat.no_faktur like ? or "
                 + tgl + "and detail_pemberian_obat.no_batch like ? "
-                + "order by detail_pemberian_obat.tgl_perawatan";
+                + "order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam";
 
         Valid.tabelKosong(tabModePO);
         try {
@@ -1607,7 +1607,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 + tgl + "and detail_pemberian_obat.no_faktur like ? or "
                 + tgl + "and detail_pemberian_obat.no_batch like ? or "
                 + tgl + "and databarang.nama_brng like ? "
-                + "order by detail_pemberian_obat.tgl_perawatan";
+                + "order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam";
 
         Valid.tabelKosong(tabModePO);
         try {

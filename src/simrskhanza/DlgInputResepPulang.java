@@ -548,6 +548,14 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 embalase = Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
                 tuslah = Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
                 
+                double cek_barang = Sequel.cariIsiAngka("select jml_barang from resep_pulang "
+                        + "where no_rawat='"+ TNoRw.getText() +"' and kode_brng='"+ tbKamar.getValueAt(i,1).toString() +"'");
+                if(cek_barang > 0){
+                    sukses = false;
+                    JOptionPane.showMessageDialog(rootPane, "Astaghfirullah, obat ini sudah pernah dimasukan sebelumnya. "
+                            + "Silahkan cek data resep pulang.");
+                }
+                
                 if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?,?,?,?,?","data",13,new String[]{
                         TNoRw.getText(), tbKamar.getValueAt(i,1).toString(), tbKamar.getValueAt(i,0).toString(),
                         tbKamar.getValueAt(i,6).toString(), String.valueOf(embalase), String.valueOf(tuslah), ""+ (Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()) + tuslah + embalase),
@@ -578,7 +586,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             JOptionPane.showMessageDialog(rootPane,"Alhamdulillah, berhasil disimpan ^_^");
         }else{
             sukses=false;
-            JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+            JOptionPane.showMessageDialog(rootPane,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
             Sequel.RollBack();
         }
         Sequel.AutoComitTrue();
