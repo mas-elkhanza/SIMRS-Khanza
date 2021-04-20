@@ -16,7 +16,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -393,7 +392,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)
                     });
-                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"NamaPetugas\":\""+rs.getString(2)+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4)+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"SttsNikah\":\""+rs.getString(8)+"\",\"Alamat\":\""+rs.getString(9)+"\",\"Jabatan\":\""+rs.getString(10)+"\",\"NoTelp\":\""+rs.getString(11)+"\"},";
+                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"NamaPetugas\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4).replaceAll("\"","")+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"SttsNikah\":\""+rs.getString(8)+"\",\"Alamat\":\""+rs.getString(9).replaceAll("\"","")+"\",\"Jabatan\":\""+rs.getString(10)+"\",\"NoTelp\":\""+rs.getString(11)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println(e);

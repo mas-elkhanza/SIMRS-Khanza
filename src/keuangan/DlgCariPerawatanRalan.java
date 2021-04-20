@@ -1249,7 +1249,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
                                     rstindakan.getDouble("menejemen")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rstindakan.getString(1)+"\",\"NamaPerawatan\":\""+rstindakan.getString(2)+"\",\"KategoriPerawatan\":\""+rstindakan.getString(3)+"\",\"Tarif\":\""+rstindakan.getString("total_byrdr")+"\",\"BagianRS\":\""+rstindakan.getString("material")+"\",\"BHP\":\""+rstindakan.getString("bhp")+"\",\"JMDokter\":\""+rstindakan.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rstindakan.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rstindakan.getString("kso")+"\",\"Menejemen\":\""+rstindakan.getString("menejemen")+"\"},";
+                                iyem=iyem+"{\"Kode\":\""+rstindakan.getString(1)+"\",\"NamaPerawatan\":\""+rstindakan.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rstindakan.getString(3)+"\",\"Tarif\":\""+rstindakan.getString("total_byrdr")+"\",\"BagianRS\":\""+rstindakan.getString("material")+"\",\"BHP\":\""+rstindakan.getString("bhp")+"\",\"JMDokter\":\""+rstindakan.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rstindakan.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rstindakan.getString("kso")+"\",\"Menejemen\":\""+rstindakan.getString("menejemen")+"\"},";
                             }                        
                         }   
                         break;
@@ -1263,7 +1263,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
                                     rstindakan.getDouble("menejemen")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rstindakan.getString(1)+"\",\"NamaPerawatan\":\""+rstindakan.getString(2)+"\",\"KategoriPerawatan\":\""+rstindakan.getString(3)+"\",\"Tarif\":\""+rstindakan.getString("total_byrpr")+"\",\"BagianRS\":\""+rstindakan.getString("material")+"\",\"BHP\":\""+rstindakan.getString("bhp")+"\",\"JMDokter\":\""+rstindakan.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rstindakan.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rstindakan.getString("kso")+"\",\"Menejemen\":\""+rstindakan.getString("menejemen")+"\"},";
+                                iyem=iyem+"{\"Kode\":\""+rstindakan.getString(1)+"\",\"NamaPerawatan\":\""+rstindakan.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rstindakan.getString(3)+"\",\"Tarif\":\""+rstindakan.getString("total_byrpr")+"\",\"BagianRS\":\""+rstindakan.getString("material")+"\",\"BHP\":\""+rstindakan.getString("bhp")+"\",\"JMDokter\":\""+rstindakan.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rstindakan.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rstindakan.getString("kso")+"\",\"Menejemen\":\""+rstindakan.getString("menejemen")+"\"},";
                             }                            
                         }   
                         break;
@@ -1277,7 +1277,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
                                     rstindakan.getDouble("menejemen")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rstindakan.getString(1)+"\",\"NamaPerawatan\":\""+rstindakan.getString(2)+"\",\"KategoriPerawatan\":\""+rstindakan.getString(3)+"\",\"Tarif\":\""+rstindakan.getString("total_byrdrpr")+"\",\"BagianRS\":\""+rstindakan.getString("material")+"\",\"BHP\":\""+rstindakan.getString("bhp")+"\",\"JMDokter\":\""+rstindakan.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rstindakan.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rstindakan.getString("kso")+"\",\"Menejemen\":\""+rstindakan.getString("menejemen")+"\"},";
+                                iyem=iyem+"{\"Kode\":\""+rstindakan.getString(1)+"\",\"NamaPerawatan\":\""+rstindakan.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rstindakan.getString(3)+"\",\"Tarif\":\""+rstindakan.getString("total_byrdrpr")+"\",\"BagianRS\":\""+rstindakan.getString("material")+"\",\"BHP\":\""+rstindakan.getString("bhp")+"\",\"JMDokter\":\""+rstindakan.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rstindakan.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rstindakan.getString("kso")+"\",\"Menejemen\":\""+rstindakan.getString("menejemen")+"\"},";
                             }                        
                         }   
                         break;
