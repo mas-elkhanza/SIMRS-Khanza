@@ -490,6 +490,7 @@
                     <StringItem index="23" value="23"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="23"/>
                 <Property name="name" type="java.lang.String" value="CmbJam2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>
@@ -565,6 +566,7 @@
                     <StringItem index="59" value="59"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="59"/>
                 <Property name="name" type="java.lang.String" value="CmbMenit2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>
@@ -640,6 +642,7 @@
                     <StringItem index="59" value="59"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="59"/>
                 <Property name="name" type="java.lang.String" value="CmbDetik2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>

@@ -1531,6 +1531,20 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         tampil();
     }
     
+    public void setNoRm(String norawat,String nokartu,String norm,String namapasien,String tanggallahir,String jk,String diagnosa) {
+        NoRawat.setText(norawat);
+        NoKartu.setText(nokartu);
+        NoRM.setText(norm);
+        NmPasien.setText(namapasien);
+        TglLahir.setText(tanggallahir);
+        JK.setText(jk.replaceAll("L","LAKI-LAKI").replaceAll("P","PEREMPUAN"));
+        TCari.setText(nokartu);
+        ChkInput.setSelected(true);
+        Diagnosa.setText(diagnosa);
+        isForm();
+        tampil();
+    }
+    
     public void setNoRm(String norm) {
         TCari.setText(norm);
         ChkInput.setSelected(false);

@@ -1,5 +1,6 @@
 package permintaan;
 
+import bridging.BPJSSPRI;
 import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -204,6 +205,7 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
         MnKamarInap = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
         ppSuratPermintaan = new javax.swing.JMenuItem();
+        ppSuratPRI = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         KdDokter = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -308,6 +310,22 @@ public class DlgPermintaanRanap extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppSuratPermintaan);
+
+        ppSuratPRI.setBackground(new java.awt.Color(255, 255, 254));
+        ppSuratPRI.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSuratPRI.setForeground(new java.awt.Color(50, 50, 50));
+        ppSuratPRI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppSuratPRI.setText("Perintah Rawat Inap BPJS");
+        ppSuratPRI.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppSuratPRI.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppSuratPRI.setName("ppSuratPRI"); // NOI18N
+        ppSuratPRI.setPreferredSize(new java.awt.Dimension(230, 26));
+        ppSuratPRI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppSuratPRIBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppSuratPRI);
 
         KdDokter.setEditable(false);
         KdDokter.setHighlighter(null);
@@ -1139,6 +1157,47 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_ppSuratPermintaanBtnPrintActionPerformed
 
+    private void ppSuratPRIBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSuratPRIBtnPrintActionPerformed
+        if(NoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbObat.getSelectedRow()!= -1){
+                try {
+                    ps=koneksi.prepareStatement("select no_peserta,nm_pasien,tgl_lahir,jk from pasien where no_rkm_medis=?");
+                    try {
+                        ps.setString(1,NoRM.getText());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            if(rs.getString("no_peserta").length()<13){
+                                JOptionPane.showMessageDialog(null,"Kartu BPJS Pasien tidak valid, silahkan hubungi bagian terkait..!!");
+                            }else{
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                BPJSSPRI form=new BPJSSPRI(null,false);
+                                form.setNoRm(NoRw.getText(),rs.getString("no_peserta"),NoRM.getText(),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),Diagnosa.getText());
+                                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                }
+            }
+        }
+    }//GEN-LAST:event_ppSuratPRIBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1212,6 +1271,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass8;
     private javax.swing.JMenuItem ppRiwayat;
+    private javax.swing.JMenuItem ppSuratPRI;
     private javax.swing.JMenuItem ppSuratPermintaan;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables

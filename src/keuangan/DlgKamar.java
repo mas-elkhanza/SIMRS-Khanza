@@ -1177,9 +1177,13 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
             MnRestore.setEnabled(true);
             BtnEdit.setEnabled(true);
         }else{
-            if(ubah_status_kamar.equals("No")){
-                BtnEdit.setEnabled(false);
-            }
+            if(akses.getkamar()==false){
+                if(ubah_status_kamar.equals("No")){
+                    BtnEdit.setEnabled(false);
+                }else{
+                    BtnEdit.setEnabled(true);
+                }
+            }   
             MnRestore.setEnabled(false);
         }
      }

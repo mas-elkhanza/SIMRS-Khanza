@@ -84,7 +84,7 @@
                     <Property name="opaqueImage" type="boolean" value="false"/>
                     <Property name="round" type="boolean" value="false"/>
                     <Property name="warna" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c8" green="ff" red="ff" type="rgb"/>
+                      <Color blue="be" green="ff" red="ff" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>

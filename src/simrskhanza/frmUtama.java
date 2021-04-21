@@ -1438,7 +1438,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 205, 115)));
         panelGlass1.setOpaqueImage(false);
         panelGlass1.setRound(false);
-        panelGlass1.setWarna(new java.awt.Color(255, 255, 200));
+        panelGlass1.setWarna(new java.awt.Color(255, 255, 190));
         panelGlass1.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N

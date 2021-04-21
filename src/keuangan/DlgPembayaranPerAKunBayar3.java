@@ -337,6 +337,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
         panelGlass6.add(jLabel10);
 
         CmbJam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        CmbJam2.setSelectedIndex(23);
         CmbJam2.setName("CmbJam2"); // NOI18N
         CmbJam2.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbJam2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -347,6 +348,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
         panelGlass6.add(CmbJam2);
 
         CmbMenit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        CmbMenit2.setSelectedIndex(59);
         CmbMenit2.setName("CmbMenit2"); // NOI18N
         CmbMenit2.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbMenit2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -357,6 +359,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
         panelGlass6.add(CmbMenit2);
 
         CmbDetik2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        CmbDetik2.setSelectedIndex(59);
         CmbDetik2.setName("CmbDetik2"); // NOI18N
         CmbDetik2.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbDetik2.addKeyListener(new java.awt.event.KeyAdapter() {

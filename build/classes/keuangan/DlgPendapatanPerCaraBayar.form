@@ -10,6 +10,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
@@ -29,7 +32,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Pendapatan Per Cara Bayar ]::">
+            <TitledBorder title="::[ Pendapatan Per Cara Bayar (Berdasarkan Closing Billing) ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -471,6 +474,7 @@
                     <StringItem index="23" value="23"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="23"/>
                 <Property name="name" type="java.lang.String" value="CmbJam2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>
@@ -546,6 +550,7 @@
                     <StringItem index="59" value="59"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="59"/>
                 <Property name="name" type="java.lang.String" value="CmbMenit2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>
@@ -621,6 +626,7 @@
                     <StringItem index="59" value="59"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="59"/>
                 <Property name="name" type="java.lang.String" value="CmbDetik2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>

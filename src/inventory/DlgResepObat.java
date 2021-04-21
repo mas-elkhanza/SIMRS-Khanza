@@ -1890,19 +1890,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter "+
                     " from resep_obat inner join reg_periksa inner join pasien inner join dokter on resep_obat.no_rawat=reg_periksa.no_rawat  "+
                     " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " resep_obat.tgl_perawatan between ? and ? and resep_obat.jam >= ? and resep_obat.jam <= ? and "+
+                    " concat(resep_obat.tgl_perawatan,' ',resep_obat.jam) between ? and ? and "+
                     " (resep_obat.no_resep like ? or resep_obat.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ?) "+
                     " order by resep_obat.tgl_perawatan,resep_obat.jam");
             try{
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,DTPCari1.getSelectedItem().toString().substring(11,19));
-                ps.setString(4,DTPCari2.getSelectedItem().toString().substring(11,19));
+                ps.setString(1,Valid.SetTglJam(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTglJam(DTPCari2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
                 ps.setString(5,"%"+TCari.getText().trim()+"%");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
                 ps.setString(7,"%"+TCari.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 jumlahtotal=0;
                 while(rs.next()){
