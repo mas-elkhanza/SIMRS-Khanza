@@ -318,7 +318,7 @@ public final class BPJSCekReferensiSpesialistikKontrol extends javax.swing.JDial
 	    System.out.println("X-Signature:"+api.getHmac());
             System.out.println("Content-Type: Application/x-www-form-urlencoded");*/
 	    requestEntity = new HttpEntity(headers);
-            System.out.println(URL+"/"+JenisKontrol.getText().substring(0,1)+"/nomor/"+Nomor.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText());
+            //System.out.println(URL+"/"+JenisKontrol.getText().substring(0,1)+"/nomor/"+Nomor.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText());
             root = mapper.readTree(api.getRest().exchange(URL+"/"+JenisKontrol.getText().substring(0,1)+"/nomor/"+Nomor.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
@@ -351,13 +351,9 @@ public final class BPJSCekReferensiSpesialistikKontrol extends javax.swing.JDial
         return tbKamar;
     }
     
-    public void SetKontrol(String nokartu,String nosep,String jeniskontrol,String tanggalkontrol){
+    public void SetKontrol(String nomor,String jeniskontrol,String tanggalkontrol){
         TanggalKontrol.setText(tanggalkontrol);
         JenisKontrol.setText(jeniskontrol);
-        if(jeniskontrol.equals("1: Rencana Kontrol")){
-            Nomor.setText(nokartu);
-        }else if(jeniskontrol.equals("2: SPRI")){
-            Nomor.setText(nosep);
-        }
+        Nomor.setText(nomor);
     }
 }

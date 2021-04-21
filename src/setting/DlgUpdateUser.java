@@ -667,7 +667,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "penilaian_awal_keperawatan_ranapkebidanan,ringkasan_pengajuan_nonmedis,ringkasan_pemesanan_nonmedis,ringkasan_pengadaan_nonmedis,"+
                         "ringkasan_penerimaan_nonmedis,ringkasan_stokkeluar_nonmedis,ringkasan_returbeli_nonmedis,omset_penerimaan,validasi_penagihan_piutang,"+
                         "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol,penggunaan_bhp_ok,surat_keterangan_rawat_inap,"+
-                        "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng,bpjs_surat_pri from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2476,8 +2476,12 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[K]Referensi Obat PRB VClaim",rs.getBoolean("bpjs_obat_prb")});
                     }
                     
-                    if("[K]Surat Kontrol/SPRI VClaim".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[K]Surat Kontrol/SPRI VClaim",rs.getBoolean("bpjs_surat_kontrol")});
+                    if("[K]Surat Kontrol VClaim".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Surat Kontrol VClaim",rs.getBoolean("bpjs_surat_kontrol")});
+                    }
+                    
+                    if("[K]Surat PRI VClaim".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Surat PRI VClaim",rs.getBoolean("bpjs_surat_pri")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5339,8 +5343,12 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_obat_prb='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[K]Surat Kontrol/SPRI VClaim".equals(tbUser.getValueAt(i,1).toString())){
+            if("[K]Surat Kontrol VClaim".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_surat_kontrol='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Surat PRI VClaim".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_surat_pri='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){

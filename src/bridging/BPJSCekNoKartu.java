@@ -59,8 +59,8 @@ public class BPJSCekNoKartu {
 	    requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL+nokartu+"/tglSEP/"+dateFormat.format(date), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
-            //System.out.println("code : "+nameNode.path("code").asText());
-            //System.out.println("message : "+nameNode.path("message").asText());
+            System.out.println("code : "+nameNode.path("code").asText());
+            System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
             if(nameNode.path("code").asText().equals("200")){
                 response = root.path("response");

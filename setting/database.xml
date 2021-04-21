@@ -28,7 +28,7 @@
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
     <entry key="SECRETKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CONSIDAPIBPJS">6l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CONSIDAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>

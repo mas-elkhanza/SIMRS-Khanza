@@ -155,7 +155,8 @@ public final class akses {
             ringkasan_pengajuan_nonmedis=false,ringkasan_pemesanan_nonmedis=false,ringkasan_pengadaan_nonmedis=false,ringkasan_penerimaan_nonmedis=false,
             ringkasan_stokkeluar_nonmedis=false,ringkasan_returbeli_nonmedis=false,omset_penerimaan=false,validasi_penagihan_piutang=false,
             permintaan_ranap=false,bpjs_diagnosa_prb=false,bpjs_obat_prb=false,bpjs_surat_kontrol=false,penggunaan_bhp_ok=false,surat_keterangan_rawat_inap=false,
-            surat_keterangan_sehat=false,pendapatan_per_carabayar=false,akun_host_to_host_bank_jateng=false,pembayaran_bank_jateng=false;
+            surat_keterangan_sehat=false,pendapatan_per_carabayar=false,akun_host_to_host_bank_jateng=false,pembayaran_bank_jateng=false,
+            bpjs_surat_pri=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -887,6 +888,7 @@ public final class akses {
                         akses.pendapatan_per_carabayar=true;
                         akses.akun_host_to_host_bank_jateng=true;
                         akses.pembayaran_bank_jateng=true;
+                        akses.bpjs_surat_pri=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1602,6 +1604,7 @@ public final class akses {
                         akses.pendapatan_per_carabayar=rs2.getBoolean("pendapatan_per_carabayar");
                         akses.akun_host_to_host_bank_jateng=rs2.getBoolean("akun_host_to_host_bank_jateng");
                         akses.pembayaran_bank_jateng=rs2.getBoolean("pembayaran_bank_jateng");
+                        akses.bpjs_surat_pri=rs2.getBoolean("bpjs_surat_pri");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2315,6 +2318,7 @@ public final class akses {
                         akses.pendapatan_per_carabayar=false;
                         akses.akun_host_to_host_bank_jateng=false;
                         akses.pembayaran_bank_jateng=false;
+                        akses.bpjs_surat_pri=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3083,4 +3087,5 @@ public final class akses {
     public static boolean getpendapatan_per_carabayar(){return akses.pendapatan_per_carabayar;}
     public static boolean getakun_host_to_host_bank_jateng(){return akses.akun_host_to_host_bank_jateng;}
     public static boolean getpembayaran_bank_jateng(){return akses.pembayaran_bank_jateng;}
+    public static boolean getbpjs_surat_pri(){return akses.bpjs_surat_pri;}
 }   

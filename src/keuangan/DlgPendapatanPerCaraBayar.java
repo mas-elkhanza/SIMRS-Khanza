@@ -532,7 +532,38 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
                 "</tr>"
             );   
             
-                         
+            ps=koneksi.prepareStatement("select penjab.kd_pj,penjab.png_jawab from penjab order by penjab.png_jawab");
+            try {
+                rs=ps.executeQuery();
+                i=1;
+                while(rs.next()){
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td>"+i+"</td>"+
+                            "<td>"+rs.getString("png_jawab")+"</td>"+
+                            "<td></td>"+
+                            "<td></td>"+
+                            "<td></td>"+
+                            "<td></td>"+
+                            "<td></td>"+
+                            "<td></td>"+
+                            "<td></td>"+
+                            "<td></td>"+
+                        "</tr>"
+                    );   
+                    i++;
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+             
             LoadHTML.setText(
                     "<html>"+
                       "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+

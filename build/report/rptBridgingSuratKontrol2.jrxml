@@ -372,14 +372,14 @@ on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep]]>
 					<jr:codeExpression><![CDATA[$F{no_surat}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
-			<textField>
-				<reportElement x="145" y="36" width="222" height="18" uuid="17091a8c-ead2-4095-933e-c7f466204d45"/>
+			<staticText>
+				<reportElement x="145" y="36" width="222" height="18" uuid="7107d67a-5c6a-4a6a-af1a-b2ed02c83ac0"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="13" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{jenis}.equals("1: Rencana Kontrol")?"SURAT RENCANA KONTROL":"SURAT RENCANA INAP")]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[SURAT RENCANA KONTROL]]></text>
+			</staticText>
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="0" y="36" width="141" height="38" uuid="110138bc-0ca5-4222-89f7-26ca7a972277"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
