@@ -667,7 +667,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "penilaian_awal_keperawatan_ranapkebidanan,ringkasan_pengajuan_nonmedis,ringkasan_pemesanan_nonmedis,ringkasan_pengadaan_nonmedis,"+
                         "ringkasan_penerimaan_nonmedis,ringkasan_stokkeluar_nonmedis,ringkasan_returbeli_nonmedis,omset_penerimaan,validasi_penagihan_piutang,"+
                         "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol,penggunaan_bhp_ok,surat_keterangan_rawat_inap,"+
-                        "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng,bpjs_surat_pri from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng,bpjs_surat_pri,"+
+                        "ringkasan_tindakan,lama_pelayanan_pasien from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1660,6 +1661,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[H]Pembayaran Per Akun Bayar 3",rs.getBoolean("pembayaran_akun_bayar3")});
                     }
                     
+                    if("[H]Ringkasan Tindakan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[H]Ringkasan Tindakan",rs.getBoolean("ringkasan_tindakan")});
+                    }
+                    
                     if("[I]ICD 10".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[I]ICD 10",rs.getBoolean("penyakit")});
                     }
@@ -1950,6 +1955,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[I]Demografi Umur Kunjungan".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[I]Demografi Umur Kunjungan",rs.getBoolean("demografi_umur_kunjungan")});
+                    }
+                    
+                    if("[I]Lama Pelayanan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Lama Pelayanan Pasien",rs.getBoolean("lama_pelayanan_pasien")});
                     }
                     
                     if("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4522,6 +4531,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             if("[H]Pembayaran Per Akun Bayar 3".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pembayaran_akun_bayar3='"+tbUser.getValueAt(i,2).toString()+"'");
             }
+            
+            if("[H]Ringkasan Tindakan".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_tindakan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
 
             if("[I]ICD 10".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penyakit='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -4813,6 +4826,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[I]Demografi Umur Kunjungan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","demografi_umur_kunjungan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[I]Lama Pelayanan Pasien".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","lama_pelayanan_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[J]Deposit Pasien".equals(tbUser.getValueAt(i,1).toString())){

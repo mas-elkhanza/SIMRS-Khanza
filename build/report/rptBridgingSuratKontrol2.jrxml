@@ -31,7 +31,7 @@
 	<queryString>
 		<![CDATA[select bridging_sep.no_rawat,bridging_sep.no_sep,bridging_sep.no_kartu,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tanggal_lahir,
 bridging_sep.jkel,bridging_sep.diagawal,bridging_sep.nmdiagnosaawal,bridging_surat_kontrol_bpjs.tgl_surat,bridging_surat_kontrol_bpjs.no_surat,
-bridging_surat_kontrol_bpjs.jenis,bridging_surat_kontrol_bpjs.tgl_rencana,bridging_surat_kontrol_bpjs.kd_dokter_bpjs,bridging_surat_kontrol_bpjs.nm_dokter_bpjs,
+bridging_surat_kontrol_bpjs.tgl_rencana,bridging_surat_kontrol_bpjs.kd_dokter_bpjs,bridging_surat_kontrol_bpjs.nm_dokter_bpjs,
 bridging_surat_kontrol_bpjs.kd_poli_bpjs,bridging_surat_kontrol_bpjs.nm_poli_bpjs from bridging_sep inner join bridging_surat_kontrol_bpjs 
 on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep]]>
 	</queryString>
@@ -98,12 +98,6 @@ on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep]]>
 	<field name="no_surat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="no_surat"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_surat"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_surat_kontrol_bpjs"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="jenis" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="jenis"/>
-		<property name="com.jaspersoft.studio.field.label" value="jenis"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_surat_kontrol_bpjs"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -375,17 +369,17 @@ on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep]]>
 			<staticText>
 				<reportElement x="145" y="36" width="222" height="18" uuid="7107d67a-5c6a-4a6a-af1a-b2ed02c83ac0"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="13" isBold="false"/>
+					<font fontName="Tahoma" size="12" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[SURAT RENCANA KONTROL]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" onErrorType="Blank">
-				<reportElement x="0" y="36" width="141" height="38" uuid="110138bc-0ca5-4222-89f7-26ca7a972277"/>
+				<reportElement x="0" y="33" width="141" height="38" uuid="110138bc-0ca5-4222-89f7-26ca7a972277"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="145" y="57" width="222" height="17" uuid="8d520bb6-fd89-41cc-8ced-283b7239d23e"/>
+				<reportElement x="145" y="52" width="222" height="17" uuid="8d520bb6-fd89-41cc-8ced-283b7239d23e"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="11"/>
 					<paragraph lineSpacing="Single"/>
@@ -401,7 +395,7 @@ on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep]]>
 				<textFieldExpression><![CDATA["No. "+$F{no_surat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="380" y="57" width="21" height="17" uuid="f4fe3a89-b93d-4ca9-9de7-e7e6bcb5ac4b"/>
+				<reportElement x="380" y="52" width="21" height="17" uuid="f4fe3a89-b93d-4ca9-9de7-e7e6bcb5ac4b"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="11"/>
 					<paragraph lineSpacing="Single"/>
@@ -409,7 +403,7 @@ on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep]]>
 				<text><![CDATA[Tgl.]]></text>
 			</staticText>
 			<textField pattern="d MMMM yyyy">
-				<reportElement x="401" y="57" width="128" height="17" uuid="dd13847f-b05d-4309-bcd9-0963ba69de4d"/>
+				<reportElement x="401" y="52" width="128" height="17" uuid="dd13847f-b05d-4309-bcd9-0963ba69de4d"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="11"/>
 					<paragraph lineSpacing="Single"/>

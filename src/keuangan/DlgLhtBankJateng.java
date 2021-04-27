@@ -45,8 +45,8 @@ public final class DlgLhtBankJateng extends javax.swing.JDialog {
         setSize(885,674);
 
         Object[] rowRwJlDr={
-            "No.RM","Nama Pasien","Alamat","J.K.","Umur","Registrasi","No.Nota/Tagihan","Besar Bayar",
-            "Keterangan","No.Rawat","Status Keperluan","Closing","Status Bayar","Kasir/User","Diverif Bank"
+            "No.RM","Nama Pasien","Alamat","J.K.","Umur","Registrasi","No.Nota/Tagihan","Besar Bayar","Keterangan",
+            "No.Rawat","Status Keperluan","Closing","Status Bayar","Kasir/User","Diverif Bank","Referensi"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -56,7 +56,7 @@ public final class DlgLhtBankJateng extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 16; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -88,6 +88,8 @@ public final class DlgLhtBankJateng extends javax.swing.JDialog {
                 column.setPreferredWidth(100);
             }else if(i==14){
                 column.setPreferredWidth(120);
+            }else if(i==15){
+                column.setPreferredWidth(200);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -307,7 +309,7 @@ public final class DlgLhtBankJateng extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReportqry("rptHtHBankJateng.jasper","report","::[ Data Pembayaran Bank Jateng ]::",
                "select * from tagihan_bpd_jateng where tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
-               (TCari.getText().equals("")?"":"and (no_rkm_medis like '%"+TCari.getText().trim()+"%' or nm_pasien like '%"+TCari.getText().trim()+"%' or no_nota like '%"+TCari.getText().trim()+"%' "+
+               (TCari.getText().equals("")?"":"and (no_rkm_medis like '%"+TCari.getText().trim()+"%' or nm_pasien like '%"+TCari.getText().trim()+"%' or no_nota like '%"+TCari.getText().trim()+"%' or referensi like '%"+TCari.getText().trim()+"%' "+
                "or no_rawat like '%"+TCari.getText().trim()+"%' or status_lanjut like '%"+TCari.getText().trim()+"%' or status_bayar like '%"+TCari.getText().trim()+"%' or kasir like '%"+TCari.getText().trim()+"%' or keterangan like '%"+TCari.getText().trim()+"%') ")+
                "order by tgl_closing",param);
         }
@@ -411,7 +413,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select * from tagihan_bpd_jateng where tgl_closing between ? and ? "+
-                   (TCari.getText().equals("")?"":"and (no_rkm_medis like ? or nm_pasien like ? or no_nota like ? "+
+                   (TCari.getText().equals("")?"":"and (no_rkm_medis like ? or nm_pasien like ? or no_nota like ? or referensi like ? "+
                    "or no_rawat like ? or status_lanjut like ? or status_bayar like ? or kasir like ? or keterangan like ?) ")+
                    "order by tgl_closing");
             try {
@@ -426,6 +428,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(8,"%"+TCari.getText().trim()+"%");
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
                     ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -433,12 +436,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while(rs.next()){
                     total=total+rs.getDouble("besar_bayar");
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("alamat"),rs.getString("jk"),rs.getString("umurdaftar"),rs.getString("tgl_registrasi"),rs.getString("no_nota"),rs.getString("besar_bayar"),rs.getString("keterangan"),rs.getString("no_rawat"),rs.getString("status_lanjut"),rs.getString("tgl_closing"),rs.getString("status_bayar"),rs.getString("kasir"),rs.getString("diupdatebank")
+                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("alamat"),rs.getString("jk"),rs.getString("umurdaftar"),rs.getString("tgl_registrasi"),rs.getString("no_nota"),rs.getString("besar_bayar"),rs.getString("keterangan"),rs.getString("no_rawat"),rs.getString("status_lanjut"),rs.getString("tgl_closing"),rs.getString("status_bayar"),rs.getString("kasir"),rs.getString("diupdatebank"),rs.getString("referensi")
                     });
                 }
                 if(total>0){
                     tabMode.addRow(new Object[]{
-                        "Total :","","","","","","",Valid.SetAngka(total),"","","","","","",""
+                        "Total :","","","","","","",Valid.SetAngka(total),"","","","","","","",""
                     });
                 }
             } catch (Exception e) {
