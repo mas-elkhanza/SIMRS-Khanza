@@ -99,7 +99,29 @@ public final class sekuel {
         }
 
     }
+    public void menyimpanx(String colom, String table, String value, String sama) {
+        try {
+            ps = connect.prepareStatement("insert into ("+colom +") "+ table + " values(" + value + ")");
+            try {
+                ps.executeUpdate();
+            } catch (Exception e) {
 
+                System.out.println(sekuel.class.getName() + ", " + e);
+                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+            } finally {
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+            SimpanTrack("insert into " + table + " values(" + value + ")");
+
+        } catch (SQLException ex) {
+
+            System.out.println(sekuel.class.getName() + ", " + ex);
+        }
+
+    }
+    
     /**
      *
      * @param table
