@@ -28,20 +28,20 @@
 	<parameter name="tanggal2" class="java.lang.String"/>
 	<parameter name="cari" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,
-sum(rawat_jl_dr.material) as material,sum(rawat_jl_dr.bhp) as bhp,sum(rawat_jl_dr.tarif_tindakandr) as tarif_tindakandr,
-sum(rawat_jl_dr.kso) as kso,sum(rawat_jl_dr.menejemen) as menejemen,sum(rawat_jl_dr.biaya_rawat) as biaya_rawat,count(rawat_jl_dr.kd_jenis_prw) as jumlah 
+		<![CDATA[select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,
+                           sum(rawat_jl_pr.material) as material,sum(rawat_jl_pr.bhp) as bhp,sum(rawat_jl_pr.tarif_tindakanpr) as tarif_tindakanpr,
+sum(rawat_jl_pr.kso) as kso,sum(rawat_jl_pr.menejemen) as menejemen,sum(rawat_jl_pr.biaya_rawat) biaya_rawat,count(rawat_jl_pr.kd_jenis_prw) as jumlah 
 from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat 
-inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter 
-inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw
+inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat 
+inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw 
+inner join petugas on rawat_jl_pr.nip=petugas.nip
 inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli 
 inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 	</queryString>
 	<field name="kd_jenis_prw" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="kd_jenis_prw"/>
 		<property name="com.jaspersoft.studio.field.label" value="kd_jenis_prw"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="rawat_jl_dr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rawat_jl_pr"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_perawatan" class="java.lang.String">
@@ -53,32 +53,26 @@ inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 	<field name="material" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="material"/>
 		<property name="com.jaspersoft.studio.field.label" value="material"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="bhp" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="bhp"/>
 		<property name="com.jaspersoft.studio.field.label" value="bhp"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="tarif_tindakandr" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="tarif_tindakandr"/>
-		<property name="com.jaspersoft.studio.field.label" value="tarif_tindakandr"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
+	<field name="tarif_tindakanpr" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="tarif_tindakanpr"/>
+		<property name="com.jaspersoft.studio.field.label" value="tarif_tindakanpr"/>
 	</field>
 	<field name="kso" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="kso"/>
 		<property name="com.jaspersoft.studio.field.label" value="kso"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="menejemen" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="menejemen"/>
 		<property name="com.jaspersoft.studio.field.label" value="menejemen"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="biaya_rawat" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="biaya_rawat"/>
 		<property name="com.jaspersoft.studio.field.label" value="biaya_rawat"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jumlah" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="jumlah"/>
@@ -94,7 +88,7 @@ inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 		<variableExpression><![CDATA[$F{bhp}]]></variableExpression>
 	</variable>
 	<variable name="totaljmdokter" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{tarif_tindakandr}]]></variableExpression>
+		<variableExpression><![CDATA[$F{tarif_tindakanpr}]]></variableExpression>
 	</variable>
 	<variable name="totalkso" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{kso}]]></variableExpression>
@@ -116,7 +110,7 @@ inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Ringkasan Tindakan Ralan Dokter]]></text>
+				<text><![CDATA[Ringkasan Tindakan Ralan Paramedis]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="3" y="14" width="796" height="14" uuid="8e7be777-818b-4151-b2b1-c7d54cf23d16"/>
@@ -189,7 +183,7 @@ inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[JM Dokter]]></text>
+				<text><![CDATA[JM Paramedis]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="538" y="0" width="79" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="1c130bf8-f115-4ca8-9c1c-0d04d61f2b00"/>
@@ -301,7 +295,7 @@ inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tarif_tindakandr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tarif_tindakanpr}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="538" y="0" width="79" height="10" uuid="71a36ce1-f169-4f4e-98b2-7a6a7782177f"/>
