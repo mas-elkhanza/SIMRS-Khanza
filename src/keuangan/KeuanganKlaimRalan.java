@@ -726,12 +726,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingActionPerformed
         if(tbBangsal.getSelectedRow()!= -1){
             DlgBilingRalan billing=new DlgBilingRalan(null,false);
-           // billing.TNoRw.setText(Sequel.cariIsi("select no_rawat from nota_jalan where no_nota=?",TKd.getText()));
-            billing.isCek();
-            billing.isRawat();
+            billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),2).toString());
             if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
                 billing.setPiutang();
             }
+            billing.isCek();
+            billing.isRawat();
             billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             billing.setLocationRelativeTo(internalFrame1);
             billing.setVisible(true);         
