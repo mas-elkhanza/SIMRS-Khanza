@@ -2615,163 +2615,10 @@ public final class DlgRingkasanTindakan extends javax.swing.JDialog {
                 CetakLaborat();
                 break;
             case 9:
-                if(tabModeDetailLaborat.getRowCount()==0){
-                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                    TCari.requestFocus();
-                }else if(tabModeDetailLaborat.getRowCount()!=0){
-                    Map<String, Object> param = new HashMap<>();
-                    param.put("namars",akses.getnamars());
-                    param.put("alamatrs",akses.getalamatrs());
-                    param.put("kotars",akses.getkabupatenrs());
-                    param.put("propinsirs",akses.getpropinsirs());
-                    param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());
-                    param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
-                    param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
-                    param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    if(KdDokterPerujukDetailLab.getText().equals("")&&NmDokterPerujukDetailLab.getText().equals("")&&KdPetugasDetailLab.getText().equals("")&&NmPetugasDetailLab.getText().equals("")&&KdCaraBayarDetailLab.getText().equals("")&&NmCaraBayarDetailLab.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
-                        Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
-                                "select detail_periksa_lab.no_rawat,reg_periksa.no_rkm_medis,"+
-                                "pasien.nm_pasien,detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
-                                "periksa_lab.kd_dokter,dokter.nm_dokter,periksa_lab.nip,"+
-                                "petugas.nama,periksa_lab.dokter_perujuk,penjab.png_jawab,perujuk.nm_dokter as perujuk,"+
-                                "detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,"+
-                                "if(periksa_lab.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
-                                "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                                "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=periksa_lab.no_rawat limit 1 )) as ruangan,"+
-                                "detail_periksa_lab.bagian_rs,detail_periksa_lab.bhp,detail_periksa_lab.bagian_perujuk,"+
-                                "detail_periksa_lab.bagian_dokter,detail_periksa_lab.bagian_laborat,"+
-                                "detail_periksa_lab.kso,detail_periksa_lab.menejemen,"+
-                                "detail_periksa_lab.biaya_item from detail_periksa_lab "+
-                                "inner join reg_periksa inner join pasien inner join template_laboratorium "+
-                                "inner join jns_perawatan_lab inner join periksa_lab "+
-                                "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
-                                "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
-                                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
-                                "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
-                                "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                                "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
-                                "where concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);   
-                    }else{
-                        if(cmbStatus.getSelectedItem().equals("Semua")){
-                            Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
-                                    "select detail_periksa_lab.no_rawat,reg_periksa.no_rkm_medis,"+
-                                    "pasien.nm_pasien,detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
-                                    "periksa_lab.kd_dokter,dokter.nm_dokter,periksa_lab.nip,"+
-                                    "petugas.nama,periksa_lab.dokter_perujuk,penjab.png_jawab,perujuk.nm_dokter as perujuk,"+
-                                    "detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,"+
-                                    "if(periksa_lab.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
-                                    "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                                    "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=periksa_lab.no_rawat limit 1 )) as ruangan,"+
-                                    "detail_periksa_lab.bagian_rs,detail_periksa_lab.bhp,detail_periksa_lab.bagian_perujuk,"+
-                                    "detail_periksa_lab.bagian_dokter,detail_periksa_lab.bagian_laborat,"+
-                                    "detail_periksa_lab.kso,detail_periksa_lab.menejemen,"+
-                                    "detail_periksa_lab.biaya_item from detail_periksa_lab "+
-                                    "inner join reg_periksa inner join pasien inner join template_laboratorium "+
-                                    "inner join jns_perawatan_lab inner join periksa_lab "+
-                                    "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
-                                    "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
-                                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                    "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
-                                    "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                    "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
-                                    "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                                    "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
-                                    "where concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and detail_periksa_lab.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and detail_periksa_lab.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and jns_perawatan_lab.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.nip like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and perujuk.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' "+
-                                    " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);   
-                        }else if(cmbStatus.getSelectedItem().equals("Piutang Belum Lunas")){
-                            Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
-                                    "select detail_periksa_lab.no_rawat,reg_periksa.no_rkm_medis,"+
-                                    "pasien.nm_pasien,detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
-                                    "periksa_lab.kd_dokter,dokter.nm_dokter,periksa_lab.nip,"+
-                                    "petugas.nama,periksa_lab.dokter_perujuk,penjab.png_jawab,perujuk.nm_dokter as perujuk,"+
-                                    "detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,"+
-                                    "if(periksa_lab.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
-                                    "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                                    "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=periksa_lab.no_rawat limit 1 )) as ruangan,"+
-                                    "detail_periksa_lab.bagian_rs,detail_periksa_lab.bhp,detail_periksa_lab.bagian_perujuk,"+
-                                    "detail_periksa_lab.bagian_dokter,detail_periksa_lab.bagian_laborat,"+
-                                    "detail_periksa_lab.kso,detail_periksa_lab.menejemen,"+
-                                    "detail_periksa_lab.biaya_item from detail_periksa_lab "+
-                                    "inner join reg_periksa inner join pasien inner join template_laboratorium "+
-                                    "inner join jns_perawatan_lab inner join periksa_lab inner join piutang_pasien "+
-                                    "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
-                                    "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
-                                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                    "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
-                                    "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                    "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
-                                    "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                                    "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                                    "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and detail_periksa_lab.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and detail_periksa_lab.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and jns_perawatan_lab.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.nip like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and perujuk.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' "+
-                                    " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);   
-                        }else if(cmbStatus.getSelectedItem().equals("Sudah Bayar Non Piutang")){
-                            Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
-                                    "select detail_periksa_lab.no_rawat,reg_periksa.no_rkm_medis,"+
-                                    "pasien.nm_pasien,detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
-                                    "periksa_lab.kd_dokter,dokter.nm_dokter,periksa_lab.nip,"+
-                                    "petugas.nama,periksa_lab.dokter_perujuk,penjab.png_jawab,perujuk.nm_dokter as perujuk,"+
-                                    "detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,"+
-                                    "if(periksa_lab.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
-                                    "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                                    "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=periksa_lab.no_rawat limit 1 )) as ruangan,"+
-                                    "detail_periksa_lab.bagian_rs,detail_periksa_lab.bhp,detail_periksa_lab.bagian_perujuk,"+
-                                    "detail_periksa_lab.bagian_dokter,detail_periksa_lab.bagian_laborat,"+
-                                    "detail_periksa_lab.kso,detail_periksa_lab.menejemen,"+
-                                    "detail_periksa_lab.biaya_item from detail_periksa_lab "+
-                                    "inner join reg_periksa inner join pasien inner join template_laboratorium "+
-                                    "inner join jns_perawatan_lab inner join periksa_lab "+
-                                    "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
-                                    "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
-                                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                    "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
-                                    "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                    "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
-                                    "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                                    "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
-                                    "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and detail_periksa_lab.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and detail_periksa_lab.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and jns_perawatan_lab.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.nip like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and periksa_lab.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and perujuk.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                                    "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' "+
-                                    " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);   
-                        }   
-                    }
-                }   break;
+                CetakDetailLaborat();
+                break;
             default:
-                    break;
+                break;
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -6025,6 +5872,141 @@ public final class DlgRingkasanTindakan extends javax.swing.JDialog {
                            "inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                            "where reg_periksa.status_bayar='Belum Bayar' and concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and (periksa_lab.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or jns_perawatan_lab.nm_perawatan like '%"+TCari.getText().trim()+"%') "+
                            " group by periksa_lab.kd_jenis_prw order by periksa_lab.kd_jenis_prw",param);
+                }    
+            }
+        }   
+    }
+
+    private void CetakDetailLaborat() {
+        if(tabModeDetailLaborat.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            TCari.requestFocus();
+        }else if(tabModeDetailLaborat.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
+            param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
+            param.put("cari","%"+TCari.getText().trim()+"%");                    
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            if(KdDokterPerujukDetailLab.getText().equals("")&&NmDokterPerujukDetailLab.getText().equals("")&&KdPetugasDetailLab.getText().equals("")&&NmPetugasDetailLab.getText().equals("")&&KdCaraBayarDetailLab.getText().equals("")&&NmCaraBayarDetailLab.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
+                        "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                        "sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                        "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,"+
+                        "sum(detail_periksa_lab.kso) as kso,sum(detail_periksa_lab.menejemen) as menejemen,"+
+                        "sum(detail_periksa_lab.biaya_item) as biaya_item,count(detail_periksa_lab.id_template) as jumlah from detail_periksa_lab "+
+                        "inner join reg_periksa inner join pasien inner join template_laboratorium "+
+                        "inner join jns_perawatan_lab inner join periksa_lab "+
+                        "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
+                        "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                        "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
+                        "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
+                        "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                        "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
+                        "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                        "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                        "where concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);
+            }else{
+                if(cmbStatus.getSelectedItem().equals("Semua")){
+                    Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
+                            "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                            "sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,"+
+                            "sum(detail_periksa_lab.kso) as kso,sum(detail_periksa_lab.menejemen) as menejemen,"+
+                            "sum(detail_periksa_lab.biaya_item) as biaya_item,count(detail_periksa_lab.id_template) as jumlah from detail_periksa_lab "+
+                            "inner join reg_periksa inner join pasien inner join template_laboratorium "+
+                            "inner join jns_perawatan_lab inner join periksa_lab "+
+                            "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
+                            "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
+                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
+                            "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                            "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
+                            "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                            "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                            "where concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and (detail_periksa_lab.id_template like '%"+TCari.getText().trim()+"%' or template_laboratorium.Pemeriksaan like '%"+TCari.getText().trim()+"%' ) "+
+                            " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);
+                }else if(cmbStatus.getSelectedItem().equals("Piutang Belum Lunas")){
+                    Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
+                            "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                            "sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,"+
+                            "sum(detail_periksa_lab.kso) as kso,sum(detail_periksa_lab.menejemen) as menejemen,"+
+                            "sum(detail_periksa_lab.biaya_item) as biaya_item,count(detail_periksa_lab.id_template) as jumlah from detail_periksa_lab "+
+                            "inner join reg_periksa inner join pasien inner join template_laboratorium "+
+                            "inner join jns_perawatan_lab inner join periksa_lab inner join piutang_pasien "+
+                            "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
+                            "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
+                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
+                            "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                            "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
+                            "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                            "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                            "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and (detail_periksa_lab.id_template like '%"+TCari.getText().trim()+"%' or template_laboratorium.Pemeriksaan like '%"+TCari.getText().trim()+"%' ) "+
+                            " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);
+                }else if(cmbStatus.getSelectedItem().equals("Piutang Sudah Lunas")){
+                    Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
+                            "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                            "sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,"+
+                            "sum(detail_periksa_lab.kso) as kso,sum(detail_periksa_lab.menejemen) as menejemen,"+
+                            "sum(detail_periksa_lab.biaya_item) as biaya_item,count(detail_periksa_lab.id_template) as jumlah from detail_periksa_lab "+
+                            "inner join reg_periksa inner join pasien inner join template_laboratorium "+
+                            "inner join jns_perawatan_lab inner join periksa_lab inner join piutang_pasien "+
+                            "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
+                            "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
+                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
+                            "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                            "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
+                            "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                            "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                            "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and (detail_periksa_lab.id_template like '%"+TCari.getText().trim()+"%' or template_laboratorium.Pemeriksaan like '%"+TCari.getText().trim()+"%' ) "+
+                            " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);
+                }else if(cmbStatus.getSelectedItem().equals("Sudah Bayar Non Piutang")){
+                    Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
+                            "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                            "sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,"+
+                            "sum(detail_periksa_lab.kso) as kso,sum(detail_periksa_lab.menejemen) as menejemen,"+
+                            "sum(detail_periksa_lab.biaya_item) as biaya_item,count(detail_periksa_lab.id_template) as jumlah from detail_periksa_lab "+
+                            "inner join reg_periksa inner join pasien inner join template_laboratorium "+
+                            "inner join jns_perawatan_lab inner join periksa_lab "+
+                            "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
+                            "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
+                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
+                            "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                            "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
+                            "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                            "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                            "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and (detail_periksa_lab.id_template like '%"+TCari.getText().trim()+"%' or template_laboratorium.Pemeriksaan like '%"+TCari.getText().trim()+"%' ) "+
+                            " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);
+                }else if(cmbStatus.getSelectedItem().equals("Belum Terclosing Kasir")){
+                    Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
+                            "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                            "sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,"+
+                            "sum(detail_periksa_lab.kso) as kso,sum(detail_periksa_lab.menejemen) as menejemen,"+
+                            "sum(detail_periksa_lab.biaya_item) as biaya_item,count(detail_periksa_lab.id_template) as jumlah from detail_periksa_lab "+
+                            "inner join reg_periksa inner join pasien inner join template_laboratorium "+
+                            "inner join jns_perawatan_lab inner join periksa_lab "+
+                            "inner join dokter inner join petugas inner join penjab inner join dokter as perujuk "+
+                            "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
+                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and perujuk.kd_dokter=periksa_lab.dokter_perujuk "+
+                            "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                            "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
+                            "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                            "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                            "where reg_periksa.status_bayar='Belum Bayar' and concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) between '"+Valid.SetTglJam(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTglJam(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukDetailLab.getText()+NmDokterPerujukDetailLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasDetailLab.getText()+NmPetugasDetailLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarDetailLab.getText()+NmCaraBayarDetailLab.getText()+"%' and (detail_periksa_lab.id_template like '%"+TCari.getText().trim()+"%' or template_laboratorium.Pemeriksaan like '%"+TCari.getText().trim()+"%' ) "+
+                            " group by detail_periksa_lab.id_template order by detail_periksa_lab.id_template",param);
                 }    
             }
         }   
