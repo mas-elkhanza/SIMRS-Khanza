@@ -137,15 +137,15 @@
                              $hasil2        = bukaquery($_sql2);
                              $baris2        = mysqli_fetch_row($hasil2);
                              $jmlmsk         = empty($baris2[0])?date("d"):$baris2[0];
-                             if($baris[23]==-1){
+                             if($baris["wajibmasuk"]==-1){
                                  $jmlmsk=0;
-                             }else if($baris[23]==-2){
+                             }else if($baris["wajibmasuk"]==-2){
                                  $jmlmsk=$baris2[1]-4;
-                             }else if($baris[23]==-3){
+                             }else if($baris["wajibmasuk"]==-3){
                                  $jmlmsk=$baris2[1]-2-$jumlahlibur;
-                             }else if($baris[23]==-4){
+                             }else if($baris["wajibmasuk"]==-4){
                                  $jmlmsk=$baris2[2];
-                             }else if($baris[23]==-5){
+                             }else if($baris["wajibmasuk"]==-5){
                                  $jmlmsk=getOne("select (if(h1='',0,1)+if(h2='',0,1)+if(h3='',0,1)+if(h4='',0,1)+if(h5='',0,1)+"
                                                ."if(h6='',0,1)+if(h7='',0,1)+if(h8='',0,1)+if(h9='',0,1)+if(h10='',0,1)+"
                                                ."if(h11='',0,1)+if(h12='',0,1)+if(h13='',0,1)+if(h14='',0,1)+if(h15='',0,1)+"
@@ -153,9 +153,9 @@
                                                ."if(h21='',0,1)+if(h22='',0,1)+if(h23='',0,1)+if(h24='',0,1)+if(h25='',0,1)+"
                                                ."if(h26='',0,1)+if(h27='',0,1)+if(h28='',0,1)+if(h29='',0,1)+if(h30='',0,1)+"
                                                ."if(h31='',0,1)) from jadwal_pegawai where id='$baris[0]' and tahun='$tahun' and bulan='$bulan'");
-                             }else if($baris[23]!=0){
-                                 $jmlmsk=$baris[23];
-                             }else if(!($baris[23]==0)){
+                             }else if($baris["wajibmasuk"]!=0){
+                                 $jmlmsk=$baris["wajibmasuk"];
+                             }else if(!($baris["wajibmasuk"]==0)){
                                  $jmlmsk=$baris2[0];
                              }
                              $gb="-";

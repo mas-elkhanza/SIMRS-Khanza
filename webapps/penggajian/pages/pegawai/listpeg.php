@@ -109,15 +109,16 @@
 			 $hasil2        = bukaquery($_sql2);
 			 $baris2        = mysqli_fetch_row($hasil2);
 			 $jmlmsk         = $baris2[0];
-			 if($baris[23]==-1){
+			 if($baris["wajibmasuk"]==-1){
 			     $jmlmsk=0;
-			 }else if($baris[23]==-2){
+			 }else if($baris["wajibmasuk"]==-2){
 			     $jmlmsk=$baris2[1]-4;
-			 }else if($baris[23]!=0){
-			     $jmlmsk=$baris[23];
-			 }else if(!($baris[23]==0)){
+			 }else if($baris["wajibmasuk"]!=0){
+			     $jmlmsk=$baris["wajibmasuk"];
+			 }else if(!($baris["wajibmasuk"]==0)){
 			     $jmlmsk=$baris2[0];
 			 }
+                         
                          $gb="-";
                          if($baris["photo"]=="pages/pegawai/photo/"){
                             $gb="-";                            
