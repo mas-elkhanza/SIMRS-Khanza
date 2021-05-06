@@ -672,6 +672,7 @@ import surat.SuratMasuk;
 import surat.SuratRak;
 import surat.SuratRuang;
 import surat.SuratSakit;
+import surat.SuratSakitPihak2;
 import surat.SuratSifat;
 import surat.SuratStatus;
 import surat.SuratTidakHamil;
@@ -15482,6 +15483,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratSakitPihak2ActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratSakitPihak2 aplikasi=new SuratSakitPihak2(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPenilaianAwalKeperawatanRalanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
@@ -17656,7 +17669,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
             btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK,btnSuratKeteranganRawatInap,
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
-            btnLamaPelayananPasien;
+            btnLamaPelayananPasien,btnSuratSakitPihak2;
     
     public void isWall(){
         try{            
@@ -20882,6 +20895,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_sakit()==true){
                 Panelmenu.add(btnSuratSakit);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_sakit_pihak_2()==true){
+                Panelmenu.add(btnSuratSakitPihak2);
                 jmlmenu++;
             }
             
@@ -24446,6 +24464,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_sakit()==true){
             Panelmenu.add(btnSuratSakit);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_sakit_pihak_2()==true){
+            Panelmenu.add(btnSuratSakitPihak2);
             jmlmenu++;
         }
         
@@ -29248,6 +29271,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_sakit_pihak_2()==true){
+            if(btnSuratSakitPihak2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratSakitPihak2);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_hamil()==true){
             if(btnSuratHamil.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratHamil);
@@ -31921,6 +31951,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLamaPelayananPasien.setName("btnLamaPelayananPasien");
         btnLamaPelayananPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLamaPelayananPasien.addActionListener(this::btnLamaPelayananPasienActionPerformed);
+        
+        btnSuratSakitPihak2= new widget.ButtonBig();
+        btnSuratSakitPihak2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_order-history_49596.png"))); 
+        btnSuratSakitPihak2.setText("Surat Keterangan Sakit Pihak 2");
+        btnSuratSakitPihak2.setIconTextGap(0);
+        btnSuratSakitPihak2.setName("btnSuratSakitPihak2"); 
+        btnSuratSakitPihak2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratSakitPihak2.addActionListener(this::btnSuratSakitPihak2ActionPerformed);
     }
 
     

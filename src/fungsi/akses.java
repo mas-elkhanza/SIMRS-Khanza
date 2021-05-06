@@ -156,7 +156,7 @@ public final class akses {
             ringkasan_stokkeluar_nonmedis=false,ringkasan_returbeli_nonmedis=false,omset_penerimaan=false,validasi_penagihan_piutang=false,
             permintaan_ranap=false,bpjs_diagnosa_prb=false,bpjs_obat_prb=false,bpjs_surat_kontrol=false,penggunaan_bhp_ok=false,surat_keterangan_rawat_inap=false,
             surat_keterangan_sehat=false,pendapatan_per_carabayar=false,akun_host_to_host_bank_jateng=false,pembayaran_bank_jateng=false,
-            bpjs_surat_pri=false,ringkasan_tindakan=false,lama_pelayanan_pasien=false;
+            bpjs_surat_pri=false,ringkasan_tindakan=false,lama_pelayanan_pasien=false,surat_sakit_pihak_2=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -891,6 +891,7 @@ public final class akses {
                         akses.bpjs_surat_pri=true;
                         akses.ringkasan_tindakan=true;
                         akses.lama_pelayanan_pasien=true;
+                        akses.surat_sakit_pihak_2=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1609,6 +1610,7 @@ public final class akses {
                         akses.bpjs_surat_pri=rs2.getBoolean("bpjs_surat_pri");
                         akses.ringkasan_tindakan=rs2.getBoolean("ringkasan_tindakan");
                         akses.lama_pelayanan_pasien=rs2.getBoolean("lama_pelayanan_pasien");
+                        akses.surat_sakit_pihak_2=rs2.getBoolean("surat_sakit_pihak_2");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2325,6 +2327,7 @@ public final class akses {
                         akses.bpjs_surat_pri=false;
                         akses.ringkasan_tindakan=false;
                         akses.lama_pelayanan_pasien=false;
+                        akses.surat_sakit_pihak_2=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3096,4 +3099,5 @@ public final class akses {
     public static boolean getbpjs_surat_pri(){return akses.bpjs_surat_pri;}
     public static boolean getringkasan_tindakan(){return akses.ringkasan_tindakan;}
     public static boolean getlama_pelayanan_pasien(){return akses.lama_pelayanan_pasien;}
+    public static boolean getsurat_sakit_pihak_2(){return akses.surat_sakit_pihak_2;}
 }   

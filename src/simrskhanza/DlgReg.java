@@ -103,6 +103,7 @@ import surat.SuratCutiHamil;
 import surat.SuratKeteranganCovid;
 import surat.SuratKeteranganSehat;
 import surat.SuratSakit;
+import surat.SuratSakitPihak2;
 import surat.SuratTidakHamil;
 /**
  *
@@ -890,6 +891,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnCetakSuratSehat2 = new javax.swing.JMenuItem();
         MnCetakBebasNarkoba = new javax.swing.JMenuItem();
         MnCetakSuratSakit = new javax.swing.JMenuItem();
+        MnCetakSuratSakitPihak2 = new javax.swing.JMenuItem();
         MnCetakSuratKeteranganRanap = new javax.swing.JMenuItem();
         MnCetakSuratHamil = new javax.swing.JMenuItem();
         MnCetakSuratCutiHamil = new javax.swing.JMenuItem();
@@ -2093,6 +2095,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         jMenu4.add(MnCetakSuratSakit);
+
+        MnCetakSuratSakitPihak2.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratSakitPihak2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratSakitPihak2.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakSuratSakitPihak2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratSakitPihak2.setText("Surat Cuti Sakit Pihak Ke 2");
+        MnCetakSuratSakitPihak2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCetakSuratSakitPihak2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCetakSuratSakitPihak2.setName("MnCetakSuratSakitPihak2"); // NOI18N
+        MnCetakSuratSakitPihak2.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnCetakSuratSakitPihak2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakSuratSakitPihak2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnCetakSuratSakitPihak2);
 
         MnCetakSuratKeteranganRanap.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakSuratKeteranganRanap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -4597,7 +4615,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-04-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4610,7 +4628,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-04-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4750,7 +4768,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-04-2021" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2021" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -5397,8 +5415,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
-            TCari.setText("");
+            BtnAllActionPerformed(null);
         }else{
             Valid.pindah(evt, BtnPrint, BtnKeluar);
         }
@@ -9320,6 +9337,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_ppSuratPRIBtnPrintActionPerformed
 
+    private void MnCetakSuratSakitPihak2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratSakitPihak2ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratSakitPihak2 resume=new SuratSakitPihak2(null,false);
+                resume.isCek();
+                resume.emptTeks();
+                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resume.setLocationRelativeTo(internalFrame1);
+                resume.setNoRm(TNoRw.getText(),TAlmt.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                resume.tampil();
+                resume.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnCetakSuratSakitPihak2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9402,6 +9442,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnCetakSuratHamil;
     private javax.swing.JMenuItem MnCetakSuratKeteranganRanap;
     private javax.swing.JMenuItem MnCetakSuratSakit;
+    private javax.swing.JMenuItem MnCetakSuratSakitPihak2;
     private javax.swing.JMenuItem MnCetakSuratSehat;
     private javax.swing.JMenuItem MnCetakSuratSehat1;
     private javax.swing.JMenuItem MnCetakSuratSehat2;
@@ -10084,6 +10125,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         ppSuratKontrol.setEnabled(akses.getbpjs_surat_kontrol()); 
         ppSuratPRI.setEnabled(akses.getbpjs_surat_pri());  
         MnCetakSuratSehat2.setEnabled(akses.getsurat_keterangan_sehat());   
+        MnCetakSuratSakitPihak2.setEnabled(akses.getsurat_sakit_pihak_2());  
         
         /*if(MnDataTriaseIGD.isVisible()==false){
             MnRMIGD.setVisible(false);
