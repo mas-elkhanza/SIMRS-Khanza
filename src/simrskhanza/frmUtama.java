@@ -434,6 +434,7 @@ import bridging.InhealthTindakanRalan;
 import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
 import bridging.INACBGPerawatanCorona;
+import bridging.MobileJKNPembatalanPendaftaran;
 import bridging.MobileJKNReferensiPendaftaran;
 import bridging.PCareCekKartu;
 import grafikanalisa.GrafikHemodialisaPerBulan;
@@ -17064,7 +17065,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnBatalPendaftaranMobileJKNActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MobileJKNPembatalanPendaftaran form=new MobileJKNPembatalanPendaftaran(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
