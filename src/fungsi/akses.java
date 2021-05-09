@@ -156,7 +156,8 @@ public final class akses {
             ringkasan_stokkeluar_nonmedis=false,ringkasan_returbeli_nonmedis=false,omset_penerimaan=false,validasi_penagihan_piutang=false,
             permintaan_ranap=false,bpjs_diagnosa_prb=false,bpjs_obat_prb=false,bpjs_surat_kontrol=false,penggunaan_bhp_ok=false,surat_keterangan_rawat_inap=false,
             surat_keterangan_sehat=false,pendapatan_per_carabayar=false,akun_host_to_host_bank_jateng=false,pembayaran_bank_jateng=false,
-            bpjs_surat_pri=false,ringkasan_tindakan=false,lama_pelayanan_pasien=false,surat_sakit_pihak_2=false;
+            bpjs_surat_pri=false,ringkasan_tindakan=false,lama_pelayanan_pasien=false,surat_sakit_pihak_2=false,tagihan_hutang_obat=false,
+            referensi_mobilejkn_bpjs=false,batal_pendaftaran_mobilejkn_bpjs=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -892,6 +893,9 @@ public final class akses {
                         akses.ringkasan_tindakan=true;
                         akses.lama_pelayanan_pasien=true;
                         akses.surat_sakit_pihak_2=true;
+                        akses.tagihan_hutang_obat=true;
+                        akses.referensi_mobilejkn_bpjs=true;
+                        akses.batal_pendaftaran_mobilejkn_bpjs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1611,6 +1615,9 @@ public final class akses {
                         akses.ringkasan_tindakan=rs2.getBoolean("ringkasan_tindakan");
                         akses.lama_pelayanan_pasien=rs2.getBoolean("lama_pelayanan_pasien");
                         akses.surat_sakit_pihak_2=rs2.getBoolean("surat_sakit_pihak_2");
+                        akses.tagihan_hutang_obat=rs2.getBoolean("tagihan_hutang_obat");
+                        akses.referensi_mobilejkn_bpjs=rs2.getBoolean("referensi_mobilejkn_bpjs");
+                        akses.batal_pendaftaran_mobilejkn_bpjs=rs2.getBoolean("batal_pendaftaran_mobilejkn_bpjs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2328,6 +2335,9 @@ public final class akses {
                         akses.ringkasan_tindakan=false;
                         akses.lama_pelayanan_pasien=false;
                         akses.surat_sakit_pihak_2=false;
+                        akses.tagihan_hutang_obat=false;
+                        akses.referensi_mobilejkn_bpjs=false;
+                        akses.batal_pendaftaran_mobilejkn_bpjs=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3100,4 +3110,7 @@ public final class akses {
     public static boolean getringkasan_tindakan(){return akses.ringkasan_tindakan;}
     public static boolean getlama_pelayanan_pasien(){return akses.lama_pelayanan_pasien;}
     public static boolean getsurat_sakit_pihak_2(){return akses.surat_sakit_pihak_2;}
+    public static boolean gettagihan_hutang_obat(){return akses.tagihan_hutang_obat;}
+    public static boolean getreferensi_mobilejkn_bpjs(){return akses.referensi_mobilejkn_bpjs;}
+    public static boolean getbatal_pendaftaran_mobilejkn_bpjs(){return akses.batal_pendaftaran_mobilejkn_bpjs;}
 }   

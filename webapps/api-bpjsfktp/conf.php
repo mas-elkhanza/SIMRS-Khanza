@@ -4,8 +4,10 @@
     define('DB_USER', 'root');
     define('DB_PASS', '');
     define('DB_NAME', 'sik');
-    define('USERNAME', 'bpjs');
-    define('PASSWORD', 'bpjs');
+    $akunbpjs=fetch_array(bukaquery("select kd_pj,aes_decrypt(usere,'nur') as user,aes_decrypt(passworde,'windi') as pass FROM password_asuransi"));
+    @define('USERNAME', $akunbpjs['user']);
+    @define('PASSWORD', $akunbpjs['pass']);
+    @define('CARABAYAR', $akunbpjs['kd_pj']);
     define('TABLEREG', 'reg_periksa'); // tabel posting antrian reg_periksa | booking_periksa
 
     function bukakoneksi() {
@@ -272,7 +274,7 @@
     
     function cekuser($username,$password){   
         $cek=false;
-        if(USERNAME==$username && PASSWORD==$password){
+        if((!empty($username)) && (!empty($password)) &&(USERNAME==$username) && (PASSWORD==$password)){
             $cek=true;
         }else{
             $cek=false;

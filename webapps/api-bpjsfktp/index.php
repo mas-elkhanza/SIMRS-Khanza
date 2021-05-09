@@ -9,7 +9,7 @@
     $header = apache_request_headers();
     $method = $_SERVER['REQUEST_METHOD'];
     
-    if ($method == 'GET' && !empty($header['x-username'])) {
+    if (($method == 'GET') && (!empty($header['x-username'])) && (!empty($header['x-password']))) {
         $hash_user = hash_pass($header['x-username'], 12);
         $hash_pass = hash_pass($header['x-password'], 12);
         switch ($url[0]) {
@@ -18,11 +18,10 @@
                 break;
             case "antrean":
                     if (!empty($url[1]) and $url[1] == "status") {
-                        if(cektoken($header['x-token'])=='true'){
+                        if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
                             $kodepolipcare=isset($url[2])?$url[2]:null;
                             $tanggaldaftar=isset($url[3])?$url[3]:null;
-                            
-                            if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='$kodepolipcare'")==""){
+                            if(strpos($kodepolipcare,"'")||strpos($kodepolipcare,"\\")){
                                 $response = array(
                                     'metadata' => array(
                                         'message' => 'Poli Tidak Ditemukan',
@@ -47,50 +46,66 @@
                                 );  
                                 http_response_code(201);
                             }else{
-                                $data = fetch_array(bukaquery("SELECT maping_poliklinik_pcare.nm_poli_pcare,COUNT(reg_periksa.kd_poli) as total_antrean,
-                                    CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,SUM(CASE WHEN reg_periksa.stts!='Sudah' THEN 1 ELSE 0 END) as sisa_antrean,
-                                    ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
-                                    FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
-                                    INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
-                                    WHERE reg_periksa.tgl_registrasi='$tanggaldaftar' AND maping_poliklinik_pcare.kd_poli_pcare='$kodepolipcare'"));
+                                if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='$kodepolipcare'")==""){
+                                    $response = array(
+                                        'metadata' => array(
+                                            'message' => 'Poli Tidak Ditemukan',
+                                            'code' => 201
+                                        )
+                                    );
+                                    http_response_code(201);
+                                }else{
+                                    $data = fetch_array(bukaquery("SELECT maping_poliklinik_pcare.nm_poli_pcare,COUNT(reg_periksa.kd_poli) as total_antrean,
+                                        CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,SUM(CASE WHEN reg_periksa.stts!='Sudah' THEN 1 ELSE 0 END) as sisa_antrean,
+                                        ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
+                                        FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
+                                        INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
+                                        WHERE reg_periksa.tgl_registrasi='$tanggaldaftar' AND maping_poliklinik_pcare.kd_poli_pcare='$kodepolipcare'"));
 
-                                if ($data['nm_poli_pcare'] != '') {
-                                    $response = array(
-                                        'response' => array(
-                                            'namapoli' => $data['nm_poli_pcare'],
-                                            'totalantrean' => $data['total_antrean'],
-                                            'sisaantrean' => $data['sisa_antrean'],
-                                            'antreanpanggil' => $data['antrean_panggil'],
-                                            'keterangan' => $data['keterangan']
-                                        ),
-                                        'metadata' => array(
-                                            'message' => 'Ok',
-                                            'code' => 200
-                                        )
-                                    );
-                                    http_response_code(200);
-                                } else {
-                                    $response = array(
-                                        'metadata' => array(
-                                            'message' => 'Maaf belum Ada Antrian ditanggal ' . FormatTgl(("d-m-Y"),$tanggaldaftar),
-                                             'code' => 200
-                                        )
-                                    );
-                                    http_response_code(200);
+                                    if ($data['nm_poli_pcare'] != '') {
+                                        $response = array(
+                                            'response' => array(
+                                                'namapoli' => $data['nm_poli_pcare'],
+                                                'totalantrean' => $data['total_antrean'],
+                                                'sisaantrean' => $data['sisa_antrean'],
+                                                'antreanpanggil' => $data['antrean_panggil'],
+                                                'keterangan' => $data['keterangan']
+                                            ),
+                                            'metadata' => array(
+                                                'message' => 'Ok',
+                                                'code' => 200
+                                            )
+                                        );
+                                        http_response_code(200);
+                                    } else {
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Maaf belum Ada Antrian ditanggal ' . FormatTgl(("d-m-Y"),$tanggaldaftar),
+                                                 'code' => 200
+                                            )
+                                        );
+                                        http_response_code(200);
+                                    }
                                 }
                             } 
                         }else{
-                            $response=cektoken($header['x-token']);
+                            $response = array(
+                                'metadata' => array(
+                                    'message' => 'Nama User / Password / Token ada yang salah ..!!',
+                                    'code' => 201
+                                )
+                            );
+                            http_response_code(201);
                         }
                     }
 
                     if (!empty($url[1]) and $url[1] == "sisapeserta") {
-                        if(cektoken($header['x-token'])=='true'){
+                        if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
                             $no_peserta=isset($url[2])?$url[2]:null;
                             $kodepolipcare=isset($url[3])?$url[3]:null;
                             $tanggaldaftar=isset($url[4])?$url[4]:null;
                             
-                            if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='$kodepolipcare'")==""){
+                            if(strpos($kodepolipcare,"'")||strpos($kodepolipcare,"\\")){
                                 $response = array(
                                     'metadata' => array(
                                         'message' => 'Poli Tidak Ditemukan',
@@ -139,64 +154,75 @@
                                 );
                                 http_response_code(201);
                             }else{
-                                $data = fetch_array(bukaquery("SELECT poliklinik.nm_poli,
-                                    reg_periksa.no_reg,COUNT(reg_periksa.kd_poli) as total_antrean,
-                                    CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,
-                                    SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END) as sisa_antrean,
-                                    SUM(CASE WHEN reg_periksa.stts ='Sudah' THEN 1 ELSE 0 END) as sudah_selesai,
-                                    ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
-                                    FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
-                                    INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
-                                    INNER JOIN pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis
-                                    WHERE pasien.no_peserta='$no_peserta' and reg_periksa.tgl_registrasi='$tanggaldaftar' AND maping_poliklinik_pcare.kd_poli_pcare='$kodepolipcare'"));
-
-                                if ($data['nm_poli'] != '') {
-                                    $response = array(
-                                        'response' => array(
-                                            'nomorantrean' => $data['no_reg'],
-                                            'namapoli' => $data['nm_poli'],
-                                            'sisaantrean' => $data['sisa_antrean'],
-                                            'antreanpanggil' => $data['no_reg'],
-                                            'keterangan' => $data['keterangan']
-                                        ),
-                                        'metadata' => array(
-                                            'message' => 'Ok',
-                                            'code' => 200
-                                        )
-                                    );
-                                    http_response_code(200);
-                                } else {
+                                if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='$kodepolipcare'")==""){
                                     $response = array(
                                         'metadata' => array(
-                                            'message' => 'Antrean Tidak Ditemukan !',
+                                            'message' => 'Poli Tidak Ditemukan',
                                             'code' => 201
                                         )
                                     );
                                     http_response_code(201);
-                                } 
+                                }else{
+                                    $data = fetch_array(bukaquery("SELECT poliklinik.nm_poli,
+                                        reg_periksa.no_reg,COUNT(reg_periksa.kd_poli) as total_antrean,
+                                        CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,
+                                        SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END) as sisa_antrean,
+                                        SUM(CASE WHEN reg_periksa.stts ='Sudah' THEN 1 ELSE 0 END) as sudah_selesai,
+                                        ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
+                                        FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
+                                        INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
+                                        INNER JOIN pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis
+                                        WHERE pasien.no_peserta='$no_peserta' and reg_periksa.tgl_registrasi='$tanggaldaftar' AND maping_poliklinik_pcare.kd_poli_pcare='$kodepolipcare'"));
+
+                                    if ($data['nm_poli'] != '') {
+                                        $response = array(
+                                            'response' => array(
+                                                'nomorantrean' => $data['no_reg'],
+                                                'namapoli' => $data['nm_poli'],
+                                                'sisaantrean' => $data['sisa_antrean'],
+                                                'antreanpanggil' => $data['no_reg'],
+                                                'keterangan' => $data['keterangan']
+                                            ),
+                                            'metadata' => array(
+                                                'message' => 'Ok',
+                                                'code' => 200
+                                            )
+                                        );
+                                        http_response_code(200);
+                                    } else {
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Antrean Tidak Ditemukan !',
+                                                'code' => 201
+                                            )
+                                        );
+                                        http_response_code(201);
+                                    } 
+                                }
                             }
                         }else{
-                            $response=cektoken($header['x-token']);
+                            $response = array(
+                                'metadata' => array(
+                                    'message' => 'Nama User / Password / Token ada yang salah ..!!',
+                                    'code' => 201
+                                )
+                            );
+                            http_response_code(201);
                         }
                     }
                 break;
         }
     }
   
-    if ($method == 'POST' && !empty($header['x-username']) && !empty($header['x-token'])) {
+    if (($method == 'POST') && (!empty($header['x-username'])) && (!empty($header['x-password']))) {
         $hash_user = hash_pass($header['x-username'], 12);
         switch ($url[0]) {
             case "antrean":
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                $h1     = strtotime('+1 days' , strtotime($date)) ;
-                $h1     = date('Y-m-d', $h1);
-                $_h1    = date('d-m-Y', strtotime($h1));
-                $h7     = strtotime('+1 days', strtotime($date)) ;
-                $poli   = bukaquery("SELECT kd_poli_pcare, kd_poli_rs FROM maping_poliklinik_pcare WHERE kd_poli_pcare='$decode[kodepoli]'");
                 
-                if(cektoken($header['x-token'])=='true'){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
                     if (empty($decode['nomorkartu'])){ 
                         $response = array(
                             'metadata' => array(
@@ -221,7 +247,7 @@
                             )
                         );
                         http_response_code(201);
-                    }elseif (empty($decode['nik'])) { 
+                    }else if (empty($decode['nik'])) { 
                         $response = array(
                             'metadata' => array(
                                 'message' => 'NIK Tidak Boleh Kosong ',
@@ -229,7 +255,7 @@
                             )
                         ); 
                         http_response_code(201);
-                    }elseif (strlen($decode['nik']) <> 16) { 
+                    }else if (strlen($decode['nik']) <> 16) { 
                         $response = array(
                             'metadata' => array(
                                 'message' => 'NIK harus 16 digit ',
@@ -245,7 +271,7 @@
                             )
                         );
                         http_response_code(201);
-                    }elseif(empty($decode['kodepoli'])) { 
+                    }else if(empty($decode['kodepoli'])) { 
                         $response = array(
                             'metadata' => array(
                                 'message' => 'Kode Poli Tidak Boleh Kosong',
@@ -253,7 +279,15 @@
                             )
                         );
                         http_response_code(201);
-                    }elseif(empty($decode['tanggalperiksa'])) { 
+                    }else if(strpos($decode['kodepoli'],"'")||strpos($decode['kodepoli'],"\\")){
+                        $response = array(
+                            'metadata' => array(
+                                'message' => 'Poli Tidak Ditemukan',
+                                'code' => 201
+                            )
+                        );
+                        http_response_code(201);
+                   }else if(empty($decode['tanggalperiksa'])) { 
                         $response = array(
                             'metadata' => array(
                                 'message' => 'Tanggal Tidak Boleh Kosong',
@@ -295,8 +329,6 @@
                         );  
                         http_response_code(201);
                     }else {
-                        $dateNow=date('Y-m-d', strtotime('+1 days', strtotime(date("Y-m-d"))));
-                        $dateEnd=date('Y-m-d', strtotime('+2 days', strtotime(date("Y-m-d"))));
                         if(empty(cekpasien($decode['nik'],$decode['nomorkartu']))){ 
                             $response = array(
                                 'metadata' => array(
@@ -358,7 +390,7 @@
                                                 $sttsumur   = "Hr";
                                             }
                                         }
-                                        $query = bukaquery("insert into reg_periksa values('$noReg', '$no_rawat', '$decode[tanggalperiksa]',current_time(), '$cek_kouta[kd_dokter]', '$datapeserta[no_rkm_medis]', '$cek_kouta[kd_poli]', '$datapeserta[namakeluarga]', '$datapeserta[alamatpj], $datapeserta[kelurahanpj], $datapeserta[kecamatanpj], $datapeserta[kabupatenpj], $datapeserta[propinsipj]', '$datapeserta[keluarga]', '".getOne("select registrasilama from poliklinik where kd_poli='$cek_kouta[kd_poli]'")."', 'Belum','Lama','Ralan', 'BPJ', '$umur','$sttsumur','Belum Bayar', '$statuspoli')");
+                                        $query = bukaquery("insert into reg_periksa values('$noReg', '$no_rawat', '$decode[tanggalperiksa]',current_time(), '$cek_kouta[kd_dokter]', '$datapeserta[no_rkm_medis]', '$cek_kouta[kd_poli]', '$datapeserta[namakeluarga]', '$datapeserta[alamatpj], $datapeserta[kelurahanpj], $datapeserta[kecamatanpj], $datapeserta[kabupatenpj], $datapeserta[propinsipj]', '$datapeserta[keluarga]', '".getOne("select registrasilama from poliklinik where kd_poli='$cek_kouta[kd_poli]'")."', 'Belum','Lama','Ralan', '".CARABAYAR."', '$umur','$sttsumur','Belum Bayar', '$statuspoli')");
 
                                         if ($query) {
                                             $response = array(
@@ -399,7 +431,13 @@
                         }
                     }
                 }else {
-                    $response=cektoken($header['x-token']);
+                    $response = array(
+                        'metadata' => array(
+                            'message' => 'Nama User / Password / Token ada yang salah ..!!',
+                            'code' => 201
+                        )
+                    );
+                    http_response_code(201);
                 }
                 break;
             case "peserta":
@@ -414,7 +452,7 @@
         }
     }
     
-    if ($method == 'PUT' && !empty($header['x-username']) && !empty($header['x-token'])) {
+    if (($method == 'PUT') && (!empty($header['x-username'])) && (!empty($header['x-password']))) {
         $hash_user = hash_pass($header['x-username'], 12);
         switch ($url[0]) {
             case "antrean":
@@ -423,7 +461,7 @@
                     $konten = trim(file_get_contents("php://input"));
                     $decode = json_decode($konten, true);
 
-                    if(cektoken($header['x-token'])=='true'){
+                    if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
                         if (empty($decode['nomorkartu'])){ 
                             $response = array(
                                 'metadata' => array(
@@ -456,7 +494,15 @@
                                 )
                             );
                             http_response_code(201);
-                        }else if(empty($decode['tanggalperiksa'])) { 
+                        }else if(strpos($decode['kodepoli'],"'")||strpos($decode['kodepoli'],"\\")){
+                            $response = array(
+                                'metadata' => array(
+                                    'message' => 'Poli Tidak Ditemukan',
+                                    'code' => 201
+                                )
+                            );
+                            http_response_code(201);
+                       }else if(empty($decode['tanggalperiksa'])) { 
                             $response = array(
                                 'metadata' => array(
                                     'message' => 'Tanggal Tidak Boleh Kosong',
@@ -522,7 +568,13 @@
                             }
                         }
                     }else{
-                        $response=cektoken($header['x-token']);
+                        $response = array(
+                            'metadata' => array(
+                                'message' => 'Nama User / Password / Token ada yang salah ..!!',
+                                'code' => 201
+                            )
+                        );
+                        http_response_code(201);
                     }
                 }
                 break;
@@ -611,7 +663,7 @@
         echo '          "code": 200'."\n";
         echo '      }'."\n";
         echo '   }'."\n\n";
-        echo "4. Membatalkan antrian, methode PUT\n";
+        echo "5. Membatalkan antrian, methode PUT\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktp/antrean/batal \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, TanggalRegistrasi gunakan format yyyy-mm-dd\n";
         echo "   x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
