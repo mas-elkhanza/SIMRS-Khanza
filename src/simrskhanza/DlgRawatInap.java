@@ -6314,7 +6314,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TNmPrw2.setText(tbRawatDrPr.getValueAt(tbRawatDrPr.getSelectedRow(), 4).toString());
             TKdPrw2.setText(tbRawatDrPr.getValueAt(tbRawatDrPr.getSelectedRow(), 13).toString());
             Valid.SetTgl(DTPTgl, tbRawatDrPr.getValueAt(tbRawatDrPr.getSelectedRow(), 10).toString());
-            TNamaKamar.setText(tbRawatDrPr.getValueAt(tbRawatDrPr.getSelectedRow(), 5).toString());
+//            TNamaKamar.setText(tbRawatDrPr.getValueAt(tbRawatDrPr.getSelectedRow(), 5).toString());
             isJns();
         }
     }
