@@ -795,6 +795,18 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         Inspekulo24 = new widget.ComboBox();
         jLabel158 = new widget.Label();
         KeteranganCTG7 = new widget.TextBox();
+        jLabel159 = new widget.Label();
+        Inspekulo25 = new widget.ComboBox();
+        KeteranganCTG8 = new widget.TextBox();
+        jLabel160 = new widget.Label();
+        KeteranganCTG9 = new widget.TextBox();
+        jLabel161 = new widget.Label();
+        KeteranganCTG10 = new widget.TextBox();
+        jLabel162 = new widget.Label();
+        Inspekulo26 = new widget.ComboBox();
+        KeteranganCTG11 = new widget.TextBox();
+        jLabel163 = new widget.Label();
+        KeteranganCTG12 = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -839,7 +851,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2021" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2021" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1283,7 +1295,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         Informasi.setBounds(74, 100, 150, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2021 10:39:48" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2021 09:56:57" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1923,7 +1935,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel92.setBounds(0, 610, 110, 23);
 
         HPHT.setForeground(new java.awt.Color(50, 70, 50));
-        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2021" }));
+        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2021" }));
         HPHT.setDisplayFormat("dd-MM-yyyy");
         HPHT.setName("HPHT"); // NOI18N
         HPHT.setOpaque(false);
@@ -1962,7 +1974,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel96.setBounds(452, 610, 40, 23);
 
         TP.setForeground(new java.awt.Color(50, 70, 50));
-        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2021" }));
+        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2021" }));
         TP.setDisplayFormat("dd-MM-yyyy");
         TP.setName("TP"); // NOI18N
         TP.setOpaque(false);
@@ -3298,7 +3310,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel157.setText("d. Hubungan Pasien dengan Anggota Keluarga :");
         jLabel157.setName("jLabel157"); // NOI18N
         FormInput.add(jLabel157);
-        jLabel157.setBounds(287, 1310, 240, 23);
+        jLabel157.setBounds(286, 1310, 240, 23);
 
         Inspekulo24.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Harmonis", "Kurang Harmonis", "Tidak Harmonis", "Konflik Besar" }));
         Inspekulo24.setName("Inspekulo24"); // NOI18N
@@ -3308,13 +3320,14 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(Inspekulo24);
-        Inspekulo24.setBounds(531, 1310, 133, 23);
+        Inspekulo24.setBounds(530, 1310, 133, 23);
 
-        jLabel158.setText("e. Agama :");
+        jLabel158.setText("j. Bahasa Sehari-hari :");
         jLabel158.setName("jLabel158"); // NOI18N
         FormInput.add(jLabel158);
-        jLabel158.setBounds(670, 1310, 60, 23);
+        jLabel158.setBounds(610, 1370, 120, 23);
 
+        KeteranganCTG7.setEditable(false);
         KeteranganCTG7.setFocusTraversalPolicyProvider(true);
         KeteranganCTG7.setName("KeteranganCTG7"); // NOI18N
         KeteranganCTG7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3323,7 +3336,105 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }
         });
         FormInput.add(KeteranganCTG7);
-        KeteranganCTG7.setBounds(734, 1310, 120, 23);
+        KeteranganCTG7.setBounds(734, 1370, 120, 23);
+
+        jLabel159.setText("f. Tinggal Dengan :");
+        jLabel159.setName("jLabel159"); // NOI18N
+        FormInput.add(jLabel159);
+        jLabel159.setBounds(0, 1340, 137, 23);
+
+        Inspekulo25.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sendiri", "Orang Tua", "Suami/Istri", "Keluarga", "Lain-lain" }));
+        Inspekulo25.setName("Inspekulo25"); // NOI18N
+        Inspekulo25.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Inspekulo25KeyPressed(evt);
+            }
+        });
+        FormInput.add(Inspekulo25);
+        Inspekulo25.setBounds(141, 1340, 105, 23);
+
+        KeteranganCTG8.setFocusTraversalPolicyProvider(true);
+        KeteranganCTG8.setName("KeteranganCTG8"); // NOI18N
+        KeteranganCTG8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganCTG8KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganCTG8);
+        KeteranganCTG8.setBounds(249, 1340, 137, 23);
+
+        jLabel160.setText("g. Pekerjaan :");
+        jLabel160.setName("jLabel160"); // NOI18N
+        FormInput.add(jLabel160);
+        jLabel160.setBounds(387, 1340, 83, 23);
+
+        KeteranganCTG9.setEditable(false);
+        KeteranganCTG9.setFocusTraversalPolicyProvider(true);
+        KeteranganCTG9.setName("KeteranganCTG9"); // NOI18N
+        KeteranganCTG9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganCTG9KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganCTG9);
+        KeteranganCTG9.setBounds(474, 1340, 140, 23);
+
+        jLabel161.setText("h. Pembayaran :");
+        jLabel161.setName("jLabel161"); // NOI18N
+        FormInput.add(jLabel161);
+        jLabel161.setBounds(620, 1340, 90, 23);
+
+        KeteranganCTG10.setEditable(false);
+        KeteranganCTG10.setFocusTraversalPolicyProvider(true);
+        KeteranganCTG10.setName("KeteranganCTG10"); // NOI18N
+        KeteranganCTG10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganCTG10KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganCTG10);
+        KeteranganCTG10.setBounds(714, 1340, 140, 23);
+
+        jLabel162.setText("i. Nilai-nilai Kepercayaan/Budaya Yang Perlu Diperhatikan :");
+        jLabel162.setName("jLabel162"); // NOI18N
+        FormInput.add(jLabel162);
+        jLabel162.setBounds(0, 1370, 331, 23);
+
+        Inspekulo26.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        Inspekulo26.setName("Inspekulo26"); // NOI18N
+        Inspekulo26.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Inspekulo26KeyPressed(evt);
+            }
+        });
+        FormInput.add(Inspekulo26);
+        Inspekulo26.setBounds(336, 1370, 105, 23);
+
+        KeteranganCTG11.setFocusTraversalPolicyProvider(true);
+        KeteranganCTG11.setName("KeteranganCTG11"); // NOI18N
+        KeteranganCTG11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganCTG11KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganCTG11);
+        KeteranganCTG11.setBounds(450, 1370, 137, 23);
+
+        jLabel163.setText("e. Agama :");
+        jLabel163.setName("jLabel163"); // NOI18N
+        FormInput.add(jLabel163);
+        jLabel163.setBounds(670, 1310, 60, 23);
+
+        KeteranganCTG12.setEditable(false);
+        KeteranganCTG12.setFocusTraversalPolicyProvider(true);
+        KeteranganCTG12.setName("KeteranganCTG12"); // NOI18N
+        KeteranganCTG12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganCTG12KeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganCTG12);
+        KeteranganCTG12.setBounds(734, 1310, 120, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3366,7 +3477,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3380,7 +3491,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4884,6 +4995,34 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         // TODO add your handling code here:
     }//GEN-LAST:event_KeteranganCTG7KeyPressed
 
+    private void Inspekulo25KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inspekulo25KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inspekulo25KeyPressed
+
+    private void KeteranganCTG8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganCTG8KeyPressed
+
+    private void KeteranganCTG9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganCTG9KeyPressed
+
+    private void KeteranganCTG10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG10KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganCTG10KeyPressed
+
+    private void Inspekulo26KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inspekulo26KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inspekulo26KeyPressed
+
+    private void KeteranganCTG11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG11KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganCTG11KeyPressed
+
+    private void KeteranganCTG12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG12KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganCTG12KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -4963,6 +5102,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.ComboBox Inspekulo22;
     private widget.ComboBox Inspekulo23;
     private widget.ComboBox Inspekulo24;
+    private widget.ComboBox Inspekulo25;
+    private widget.ComboBox Inspekulo26;
     private widget.ComboBox Inspekulo3;
     private widget.ComboBox Inspekulo4;
     private widget.ComboBox Inspekulo5;
@@ -4994,12 +5135,17 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.ComboBox KeteranganBJJ;
     private widget.TextBox KeteranganCTG;
     private widget.TextBox KeteranganCTG1;
+    private widget.TextBox KeteranganCTG10;
+    private widget.TextBox KeteranganCTG11;
+    private widget.TextBox KeteranganCTG12;
     private widget.TextBox KeteranganCTG2;
     private widget.TextBox KeteranganCTG3;
     private widget.TextBox KeteranganCTG4;
     private widget.TextBox KeteranganCTG5;
     private widget.TextBox KeteranganCTG6;
     private widget.TextBox KeteranganCTG7;
+    private widget.TextBox KeteranganCTG8;
+    private widget.TextBox KeteranganCTG9;
     private widget.TextBox KeteranganInspekulo;
     private widget.TextBox KeteranganKomplikasiKB;
     private widget.TextBox KeteranganLakmus;
@@ -5140,7 +5286,12 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.Label jLabel156;
     private widget.Label jLabel157;
     private widget.Label jLabel158;
+    private widget.Label jLabel159;
     private widget.Label jLabel16;
+    private widget.Label jLabel160;
+    private widget.Label jLabel161;
+    private widget.Label jLabel162;
+    private widget.Label jLabel163;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;

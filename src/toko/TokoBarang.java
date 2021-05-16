@@ -32,7 +32,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import restore.DlgRestoreIPSRSBarang;
+import restore.DlgRestoreTokoBarang;
 
 /**
  *
@@ -1036,7 +1036,7 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_btnJenisActionPerformed
 
     private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
-        DlgRestoreIPSRSBarang restore=new DlgRestoreIPSRSBarang(null,true);
+        DlgRestoreTokoBarang restore=new DlgRestoreTokoBarang(null,true);
         restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
