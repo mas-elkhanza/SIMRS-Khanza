@@ -1666,7 +1666,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }
             myObj.close();
         }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            System.out.println("Notifikasi : Data tidak ditemukan..!!");
         }        
     }
 
