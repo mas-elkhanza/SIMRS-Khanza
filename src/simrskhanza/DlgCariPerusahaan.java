@@ -439,6 +439,7 @@ public final class DlgCariPerusahaan extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
+        LCount.setText(""+tabMode.getRowCount());
     } 
     
     public void onCari(){        

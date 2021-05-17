@@ -435,6 +435,7 @@ public final class DlgCariMetodeRacik extends javax.swing.JDialog {
                 System.out.println("Notifikasi : "+ex);
             }
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {

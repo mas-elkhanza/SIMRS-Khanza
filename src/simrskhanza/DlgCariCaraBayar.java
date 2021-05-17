@@ -27,7 +27,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -451,6 +450,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : Data tidak ditemukan..!!");
         }
+        LCount.setText(""+tabMode.getRowCount());
     } 
     
     public void onCari(){        
