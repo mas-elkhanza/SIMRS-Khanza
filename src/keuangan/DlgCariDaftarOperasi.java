@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
@@ -28,7 +27,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -340,6 +338,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         tampil();
+        tampil2();
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -424,7 +423,6 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {  
-        Valid.tabelKosong(tabMode);
         try{
             file=new File("./cache/paketoperasi.iyem");
             file.createNewFile();
@@ -441,16 +439,6 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             try {
                 rs=pstindakan.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("kode_paket"),rs.getString("nm_perawatan"),rs.getString("kategori"),rs.getDouble("operator1"), 
-                        rs.getDouble("operator2"),rs.getDouble("operator3"),rs.getDouble("asisten_operator1"),rs.getDouble("asisten_operator2"), 
-                        rs.getDouble("asisten_operator3"),rs.getDouble("instrumen"),rs.getDouble("dokter_anak"),rs.getDouble("perawaat_resusitas"), 
-                        rs.getDouble("dokter_anestesi"),rs.getDouble("asisten_anestesi"),rs.getDouble("asisten_anestesi2"),rs.getDouble("bidan"), 
-                        rs.getDouble("bidan2"),rs.getDouble("bidan3"),rs.getDouble("perawat_luar"),rs.getDouble("alat"),rs.getDouble("sewa_ok"), 
-                        rs.getDouble("akomodasi"),rs.getDouble("bagian_rs"),rs.getDouble("omloop"),rs.getDouble("omloop2"),rs.getDouble("omloop3"), 
-                        rs.getDouble("omloop4"),rs.getDouble("omloop5"),rs.getDouble("sarpras"),rs.getDouble("dokter_pjanak"),rs.getDouble("dokter_umum"), 
-                        rs.getDouble("jumlah")
-                    });
                     iyem=iyem+"{\"KodePaket\":\""+rs.getString("kode_paket")+"\",\"NamaOperasi\":\""+rs.getString("nm_perawatan")+"\",\"Kategori\":\""+rs.getString("kategori")+"\",\"Operator1\":\""+rs.getString("operator1")+
                             "\",\"Operator2\":\""+rs.getString("operator2")+"\",\"Operator3\":\""+rs.getString("operator3")+"\",\"AsistenOp1\":\""+rs.getString("asisten_operator1")+"\",\"AsistenOp2\":\""+rs.getString("asisten_operator2")+
                             "\",\"AsistenOp3\":\""+rs.getString("asisten_operator3")+"\",\"Instrumen\":\""+rs.getString("instrumen")+"\",\"drAnak\":\""+rs.getString("dokter_anak")+"\",\"PerawatResus\":\""+rs.getString("perawaat_resusitas")+
@@ -477,7 +465,6 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
     }
     
     public void tampil2() {  
