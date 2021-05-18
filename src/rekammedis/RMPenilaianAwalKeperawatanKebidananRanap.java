@@ -794,20 +794,20 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         jLabel157 = new widget.Label();
         Inspekulo24 = new widget.ComboBox();
         jLabel158 = new widget.Label();
-        KeteranganCTG7 = new widget.TextBox();
+        Bahasa = new widget.TextBox();
         jLabel159 = new widget.Label();
         Inspekulo25 = new widget.ComboBox();
         KeteranganCTG8 = new widget.TextBox();
         jLabel160 = new widget.Label();
-        KeteranganCTG9 = new widget.TextBox();
+        PekerjaanPasien = new widget.TextBox();
         jLabel161 = new widget.Label();
-        KeteranganCTG10 = new widget.TextBox();
+        CaraBayar = new widget.TextBox();
         jLabel162 = new widget.Label();
         Inspekulo26 = new widget.ComboBox();
         KeteranganCTG11 = new widget.TextBox();
         jLabel163 = new widget.Label();
-        KeteranganCTG12 = new widget.TextBox();
-        KeteranganCTG13 = new widget.TextBox();
+        Agama = new widget.TextBox();
+        PendidikanPasien = new widget.TextBox();
         jLabel164 = new widget.Label();
         jLabel165 = new widget.Label();
         Inspekulo27 = new widget.ComboBox();
@@ -3424,16 +3424,16 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(jLabel158);
         jLabel158.setBounds(610, 1370, 120, 23);
 
-        KeteranganCTG7.setEditable(false);
-        KeteranganCTG7.setFocusTraversalPolicyProvider(true);
-        KeteranganCTG7.setName("KeteranganCTG7"); // NOI18N
-        KeteranganCTG7.addKeyListener(new java.awt.event.KeyAdapter() {
+        Bahasa.setEditable(false);
+        Bahasa.setFocusTraversalPolicyProvider(true);
+        Bahasa.setName("Bahasa"); // NOI18N
+        Bahasa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganCTG7KeyPressed(evt);
+                BahasaKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganCTG7);
-        KeteranganCTG7.setBounds(734, 1370, 120, 23);
+        FormInput.add(Bahasa);
+        Bahasa.setBounds(734, 1370, 120, 23);
 
         jLabel159.setText("f. Tinggal Dengan :");
         jLabel159.setName("jLabel159"); // NOI18N
@@ -3465,32 +3465,32 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(jLabel160);
         jLabel160.setBounds(387, 1340, 83, 23);
 
-        KeteranganCTG9.setEditable(false);
-        KeteranganCTG9.setFocusTraversalPolicyProvider(true);
-        KeteranganCTG9.setName("KeteranganCTG9"); // NOI18N
-        KeteranganCTG9.addKeyListener(new java.awt.event.KeyAdapter() {
+        PekerjaanPasien.setEditable(false);
+        PekerjaanPasien.setFocusTraversalPolicyProvider(true);
+        PekerjaanPasien.setName("PekerjaanPasien"); // NOI18N
+        PekerjaanPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganCTG9KeyPressed(evt);
+                PekerjaanPasienKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganCTG9);
-        KeteranganCTG9.setBounds(474, 1340, 140, 23);
+        FormInput.add(PekerjaanPasien);
+        PekerjaanPasien.setBounds(474, 1340, 140, 23);
 
         jLabel161.setText("h. Pembayaran :");
         jLabel161.setName("jLabel161"); // NOI18N
         FormInput.add(jLabel161);
         jLabel161.setBounds(620, 1340, 90, 23);
 
-        KeteranganCTG10.setEditable(false);
-        KeteranganCTG10.setFocusTraversalPolicyProvider(true);
-        KeteranganCTG10.setName("KeteranganCTG10"); // NOI18N
-        KeteranganCTG10.addKeyListener(new java.awt.event.KeyAdapter() {
+        CaraBayar.setEditable(false);
+        CaraBayar.setFocusTraversalPolicyProvider(true);
+        CaraBayar.setName("CaraBayar"); // NOI18N
+        CaraBayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganCTG10KeyPressed(evt);
+                CaraBayarKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganCTG10);
-        KeteranganCTG10.setBounds(714, 1340, 140, 23);
+        FormInput.add(CaraBayar);
+        CaraBayar.setBounds(714, 1340, 140, 23);
 
         jLabel162.setText("i. Nilai-nilai Kepercayaan/Budaya Yang Perlu Diperhatikan :");
         jLabel162.setName("jLabel162"); // NOI18N
@@ -3522,27 +3522,27 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         FormInput.add(jLabel163);
         jLabel163.setBounds(670, 1310, 60, 23);
 
-        KeteranganCTG12.setEditable(false);
-        KeteranganCTG12.setFocusTraversalPolicyProvider(true);
-        KeteranganCTG12.setName("KeteranganCTG12"); // NOI18N
-        KeteranganCTG12.addKeyListener(new java.awt.event.KeyAdapter() {
+        Agama.setEditable(false);
+        Agama.setFocusTraversalPolicyProvider(true);
+        Agama.setName("Agama"); // NOI18N
+        Agama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganCTG12KeyPressed(evt);
+                AgamaKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganCTG12);
-        KeteranganCTG12.setBounds(734, 1310, 120, 23);
+        FormInput.add(Agama);
+        Agama.setBounds(734, 1310, 120, 23);
 
-        KeteranganCTG13.setEditable(false);
-        KeteranganCTG13.setFocusTraversalPolicyProvider(true);
-        KeteranganCTG13.setName("KeteranganCTG13"); // NOI18N
-        KeteranganCTG13.addKeyListener(new java.awt.event.KeyAdapter() {
+        PendidikanPasien.setEditable(false);
+        PendidikanPasien.setFocusTraversalPolicyProvider(true);
+        PendidikanPasien.setName("PendidikanPasien"); // NOI18N
+        PendidikanPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganCTG13KeyPressed(evt);
+                PendidikanPasienKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganCTG13);
-        KeteranganCTG13.setBounds(154, 1400, 100, 23);
+        FormInput.add(PendidikanPasien);
+        PendidikanPasien.setBounds(154, 1400, 100, 23);
 
         jLabel164.setText("k. Pendidikan Pasien :");
         jLabel164.setName("jLabel164"); // NOI18N
@@ -5855,9 +5855,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         // TODO add your handling code here:
     }//GEN-LAST:event_Inspekulo24KeyPressed
 
-    private void KeteranganCTG7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG7KeyPressed
+    private void BahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganCTG7KeyPressed
+    }//GEN-LAST:event_BahasaKeyPressed
 
     private void Inspekulo25KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inspekulo25KeyPressed
         // TODO add your handling code here:
@@ -5867,13 +5867,13 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         // TODO add your handling code here:
     }//GEN-LAST:event_KeteranganCTG8KeyPressed
 
-    private void KeteranganCTG9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG9KeyPressed
+    private void PekerjaanPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PekerjaanPasienKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganCTG9KeyPressed
+    }//GEN-LAST:event_PekerjaanPasienKeyPressed
 
-    private void KeteranganCTG10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG10KeyPressed
+    private void CaraBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraBayarKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganCTG10KeyPressed
+    }//GEN-LAST:event_CaraBayarKeyPressed
 
     private void Inspekulo26KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inspekulo26KeyPressed
         // TODO add your handling code here:
@@ -5883,13 +5883,13 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         // TODO add your handling code here:
     }//GEN-LAST:event_KeteranganCTG11KeyPressed
 
-    private void KeteranganCTG12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG12KeyPressed
+    private void AgamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AgamaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganCTG12KeyPressed
+    }//GEN-LAST:event_AgamaKeyPressed
 
-    private void KeteranganCTG13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganCTG13KeyPressed
+    private void PendidikanPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanPasienKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganCTG13KeyPressed
+    }//GEN-LAST:event_PendidikanPasienKeyPressed
 
     private void Inspekulo27KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Inspekulo27KeyPressed
         // TODO add your handling code here:
@@ -6104,12 +6104,14 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.TextBox A;
     private widget.TextBox ANC;
     private widget.TextBox ANC1;
+    private widget.TextBox Agama;
     private widget.TextBox AlasanBerhentiKB;
     private widget.TextBox Alergi;
     private widget.TextBox Alergi1;
     private widget.TextBox BB;
     private widget.TextBox BBPB;
     private widget.TextBox BJJ;
+    private widget.TextBox Bahasa;
     private widget.TextBox Banyaknya;
     private widget.TextBox BerhentiKB;
     private widget.Button BtnAll;
@@ -6129,6 +6131,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.Button BtnSimpanRiwayatKehamilan;
     private widget.Button BtnTambahMasalah;
     private widget.ComboBox CTG;
+    private widget.TextBox CaraBayar;
     private widget.CekBox ChkAccor;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
@@ -6215,19 +6218,14 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.ComboBox KeteranganBJJ;
     private widget.TextBox KeteranganCTG;
     private widget.TextBox KeteranganCTG1;
-    private widget.TextBox KeteranganCTG10;
     private widget.TextBox KeteranganCTG11;
-    private widget.TextBox KeteranganCTG12;
-    private widget.TextBox KeteranganCTG13;
     private widget.TextBox KeteranganCTG14;
     private widget.TextBox KeteranganCTG2;
     private widget.TextBox KeteranganCTG3;
     private widget.TextBox KeteranganCTG4;
     private widget.TextBox KeteranganCTG5;
     private widget.TextBox KeteranganCTG6;
-    private widget.TextBox KeteranganCTG7;
     private widget.TextBox KeteranganCTG8;
-    private widget.TextBox KeteranganCTG9;
     private widget.TextBox KeteranganInspekulo;
     private widget.TextBox KeteranganKomplikasiKB;
     private widget.TextBox KeteranganLakmus;
@@ -6259,8 +6257,10 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private widget.ComboBox PadaDokter2;
     private widget.PanelBiasa PanelAccor;
     private usu.widget.glass.PanelGlass PanelWall;
+    private widget.TextBox PekerjaanPasien;
     private widget.TextBox PembukaanServiks;
     private widget.ComboBox PemeriksaanPanggul;
+    private widget.TextBox PendidikanPasien;
     private widget.TextBox Penolong;
     private widget.TextBox Penurunan;
     private widget.TextBox Penyulit;
@@ -6667,13 +6667,12 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     }
 
     private void isRawat() {
-        Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
         try {
             ps=koneksi.prepareStatement(
-                    "select nm_pasien, if(jk='L','Laki-Laki','Perempuan') as jk,tgl_lahir,agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat "+
+                    "select pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,"+
+                    "bahasa_pasien.nama_bahasa,pasien.pnd,pasien.pekerjaan "+
                     "from pasien inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                    "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik "+
-                    "where no_rkm_medis=?");
+                    "where pasien.no_rkm_medis=?");
             try {
                 ps.setString(1,TNoRM.getText());
                 rs=ps.executeQuery();
@@ -6681,6 +6680,10 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
+                    Agama.setText(rs.getString("agama"));
+                    Bahasa.setText(rs.getString("nama_bahasa"));
+                    PendidikanPasien.setText(rs.getString("pnd"));
+                    PekerjaanPasien.setText(rs.getString("pekerjaan"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -6697,10 +6700,12 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         }
     }
     
-    public void setNoRm(String norwt, Date tgl2) {
+    public void setNoRm(String norwt, Date tgl2,String carabayar,String norm) {
         TNoRw.setText(norwt);
+        TNoRM.setText(norm);
         TCari.setText(norwt);
         Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norwt+"'", DTPCari1);
+        CaraBayar.setText(carabayar);
         DTPCari2.setDate(tgl2);    
         isRawat(); 
         tampilPersalinan();
