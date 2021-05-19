@@ -378,7 +378,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2) });
-                    iyem=iyem+"{\"KodeKamar\":\""+rs.getString(1)+"\",\"NamaKamar\":\""+rs.getString(2)+"\"},";
+                    iyem=iyem+"{\"KodeKamar\":\""+rs.getString(1)+"\",\"NamaKamar\":\""+rs.getString(2).replaceAll("\"","")+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println(e);

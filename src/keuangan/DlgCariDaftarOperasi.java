@@ -439,7 +439,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             try {
                 rs=pstindakan.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodePaket\":\""+rs.getString("kode_paket")+"\",\"NamaOperasi\":\""+rs.getString("nm_perawatan")+"\",\"Kategori\":\""+rs.getString("kategori")+"\",\"Operator1\":\""+rs.getString("operator1")+
+                    iyem=iyem+"{\"KodePaket\":\""+rs.getString("kode_paket")+"\",\"NamaOperasi\":\""+rs.getString("nm_perawatan").replaceAll("\"","")+"\",\"Kategori\":\""+rs.getString("kategori")+"\",\"Operator1\":\""+rs.getString("operator1")+
                             "\",\"Operator2\":\""+rs.getString("operator2")+"\",\"Operator3\":\""+rs.getString("operator3")+"\",\"AsistenOp1\":\""+rs.getString("asisten_operator1")+"\",\"AsistenOp2\":\""+rs.getString("asisten_operator2")+
                             "\",\"AsistenOp3\":\""+rs.getString("asisten_operator3")+"\",\"Instrumen\":\""+rs.getString("instrumen")+"\",\"drAnak\":\""+rs.getString("dokter_anak")+"\",\"PerawatResus\":\""+rs.getString("perawaat_resusitas")+
                             "\",\"drAnastesi\":\""+rs.getString("dokter_anestesi")+"\",\"AsistenAnast1\":\""+rs.getString("asisten_anestesi")+"\",\"AsistenAnast2\":\""+rs.getString("asisten_anestesi2")+"\",\"Bidan1\":\""+rs.getString("bidan")+
