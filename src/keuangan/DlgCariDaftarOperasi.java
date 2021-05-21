@@ -40,7 +40,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,psset_tarif;
+    private PreparedStatement pstindakan,psset_tarif;
     private ResultSet rs,rsset_tarif;
     private int i=0,jml=0;
     private String kelas_operasi="Yes",kelas="",cara_bayar_operasi="Yes",kd_pj="";

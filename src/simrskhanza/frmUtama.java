@@ -600,6 +600,7 @@ import laporan.DlgKIPPasienRanap;
 import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgLamaPelayananPasien;
 import laporan.DlgPelayananLabPA;
+import laporan.DlgPelayananOperasi;
 import laporan.DlgPelayananPoli;
 import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
@@ -17075,6 +17076,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLamaOperasiActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPelayananOperasi aplikasi=new DlgPelayananOperasi(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }  
+    
     private void btnTagihanHutangObatActionPerformed(java.awt.event.ActionEvent evt) {
         
     }
@@ -17697,7 +17709,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
             btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK,btnSuratKeteranganRawatInap,
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
-            btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat;
+            btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi;
     
     public void isWall(){
         try{            
@@ -19217,6 +19229,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlama_pelayanan_pasien()==true){  
                 Panelmenu.add(btnLamaPelayananPasien);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlama_operasi()==true){  
+                Panelmenu.add(btnLamaOperasi);                 
                 jmlmenu++;
             }
             
@@ -22807,6 +22824,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlama_pelayanan_pasien()==true){  
             Panelmenu.add(btnLamaPelayananPasien);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlama_operasi()==true){  
+            Panelmenu.add(btnLamaOperasi);                 
             jmlmenu++;
         }
         
@@ -26948,6 +26970,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getlama_pelayanan_pasien()==true){  
             if(btnLamaPelayananPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananPasien);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlama_operasi()==true){  
+            if(btnLamaOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaOperasi);                 
                 jmlmenu++;
             }                
         }
@@ -32062,6 +32091,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnTagihanHutangObat.setName("btnTagihanHutangObat"); 
         btnTagihanHutangObat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnTagihanHutangObat.addActionListener(this::btnTagihanHutangObatActionPerformed);
+        
+        btnLamaOperasi = new widget.ButtonBig();
+        btnLamaOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaOperasi.setText("Lama Operasi");
+        btnLamaOperasi.setIconTextGap(0);
+        btnLamaOperasi.setName("btnLamaOperasi"); 
+        btnLamaOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaOperasi.addActionListener(this::btnLamaOperasiActionPerformed);
     }
 
     
