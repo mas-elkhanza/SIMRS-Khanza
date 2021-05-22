@@ -20,6 +20,17 @@
         $konektor = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die("" . json_encode($response, true) . "");
         return $konektor;
     }
+    
+    function cleankar($dirty){
+        $konektor=bukakoneksi();
+	if (get_magic_quotes_gpc()) {
+            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
+	}else{
+            $clean = mysqli_real_escape_string($konektor,$dirty);	
+	} 
+        mysqli_close($konektor);
+	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
+    }
 
     function fetch_array($sql){
         $while = mysqli_fetch_array($sql);
