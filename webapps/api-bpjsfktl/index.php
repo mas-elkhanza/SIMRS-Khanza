@@ -26,14 +26,14 @@
         }
     }
   
-    if (($method == 'POST') && (!empty($header['x-username'])) && (!empty($header['x-password']))) {
+    if (($method == 'POST') && (!empty($header['x-username'])) && (!empty($header['x-token']))) {
         $hash_user = hash_pass($header['x-username'], 12);
         switch ($url[0]) {
             case "statusantrean":
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if(empty($decode['kodepoli'])) { 
                         $response = array(
                             'metadata' => array(
@@ -186,7 +186,7 @@
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
                 
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if (empty($decode['nomorkartu'])){ 
                         $response = array(
                             'metadata' => array(
@@ -564,7 +564,7 @@
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     @$tanggal=date("Y-m-d", ($decode['waktu']/1000));
                     
                     if(empty($decode['kodebooking'])) { 
@@ -674,7 +674,7 @@
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if(empty($decode['kodebooking'])) { 
                         $response = array(
                             'metadata' => array(
@@ -772,7 +772,7 @@
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if(empty($decode['kodebooking'])) { 
                         $response = array(
                             'metadata' => array(
@@ -862,7 +862,7 @@
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if(empty($decode['tanggalawal'])) { 
                         $response = array(
                             'metadata' => array(
@@ -978,7 +978,7 @@
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if (empty($decode['nopeserta'])){ 
                         $response = array(
                             'metadata' => array(
@@ -1060,7 +1060,7 @@
                 $header = apache_request_headers();
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if (empty($decode['nomorkartu'])){ 
                         $response = array(
                             'metadata' => array(
@@ -1504,7 +1504,7 @@
         echo '   }'."\n\n";
         echo "2. Menampilkan status atrean poli, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/statusantrean \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
 	echo '      "kodepoli":"XXX",'."\n";
@@ -1533,7 +1533,7 @@
         echo '   }'."\n\n";
         echo "3. Mengambil atrean poli, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/ambilantrean \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
         echo '      "nomorkartu": "XXXXXXXXXXXXXX",'."\n";
@@ -1571,7 +1571,7 @@
         echo '   }'."\n\n";
         echo "4. Melakukan checkin poli, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/checkinantrean \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
         echo '      "kodebooking": "XXXXXXXXXXXXXX",'."\n";
@@ -1586,7 +1586,7 @@
         echo '   }'."\n\n";
         echo "5. Membatalkan antrean poli dan hanya bisa dilakukan sebelum pasien checkin, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/batalantrean \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
         echo '      "kodebooking": "XXXXXXXXXXXXXX",'."\n";
@@ -1601,7 +1601,7 @@
         echo '   }'."\n\n";
         echo "6. Melihat sisa antrean poli dan hanya bisa dilakukan setelah pasien checkin, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/sisaantrean \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
         echo '      "kodebooking": "XXXXXXXXXXXXXX"'."\n";
@@ -1624,7 +1624,7 @@
         echo '   }'."\n\n";
         echo "7. Melihat Jadwal Operasi RS, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/jadwaloperasirs \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
         echo '      "tanggalawal": "XXXX-XX-XX"'."\n";
@@ -1653,7 +1653,7 @@
         echo '   }'."\n\n";
         echo "8. Melihat Jadwal Operasi Pasien, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/jadwaloperasipasien \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
         echo '      "nopeserta": "XXXXXXXXXX"'."\n";
@@ -1679,7 +1679,7 @@
         echo '   }'."\n\n";
         echo "9. Pasien Baru, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktl/pasienbaru \n";
-        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
         echo '      "nomorkartu": "XXXXXXXXXXXXX",'."\n";
