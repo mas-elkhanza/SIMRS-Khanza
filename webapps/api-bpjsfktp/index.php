@@ -180,7 +180,7 @@
                                                 'nomorantrean' => $data['no_reg'],
                                                 'namapoli' => $data['nm_poli'],
                                                 'sisaantrean' => $data['sisa_antrean'],
-                                                'antreanpanggil' => $data['no_reg'],
+                                                'antreanpanggil' => $data['antrean_panggil'],
                                                 'keterangan' => $data['keterangan']
                                             ),
                                             'metadata' => array(
@@ -359,16 +359,15 @@
                                     http_response_code(201);
                                 }else{
                                     $hari      = hariindo($decode['tanggalperiksa']);
-                                    $cek_kouta = fetch_array(bukaquery("SELECT jadwal.kuota - COALESCE((select COUNT(reg_periksa.tgl_registrasi) FROM reg_periksa 
-                                            WHERE reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' AND reg_periksa.kd_dokter=jadwal.kd_dokter )) as sisa_kouta, jadwal.kd_dokter, jadwal.kd_poli, 
-                                            jadwal.jam_mulai + INTERVAL '10' MINUTE as jam_waktu, poliklinik.nm_poli,dokter.nm_dokter,
+                                    $cek_kouta = fetch_array(bukaquery("SELECT sum(jadwal.kuota) - COALESCE((select COUNT(reg_periksa.tgl_registrasi) FROM reg_periksa 
+                                            WHERE reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' AND reg_periksa.kd_poli=jadwal.kd_poli )) as sisa_kouta,jadwal.kd_poli, 
+                                            jadwal.jam_mulai + INTERVAL '10' MINUTE as jam_waktu, poliklinik.nm_poli,jadwal.kd_dokter,
                                             ('Datang 30 Menit sebelum pelayanan, Konfirmasi kehadiran dibagian pendaftaran dengan menunjukan bukti pendaftaran melalui Mobile JKN, Terima Kasih..') as keterangan
                                             FROM jadwal
                                             INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=jadwal.kd_poli
                                             INNER JOIN poliklinik ON poliklinik.kd_poli=jadwal.kd_poli
-                                            INNER JOIN dokter ON dokter.kd_dokter=jadwal.kd_dokter
                                             WHERE jadwal.hari_kerja='$hari' AND  maping_poliklinik_pcare.kd_poli_pcare='$decode[kodepoli]'
-                                            GROUP BY jadwal.kd_dokter
+                                            GROUP BY jadwal.kd_poli
                                             HAVING sisa_kouta > 0
                                             ORDER BY sisa_kouta DESC LIMIT 1"));
                                     if (!empty($cek_kouta['sisa_kouta']) and $cek_kouta['sisa_kouta'] > 0) {

@@ -133,7 +133,7 @@
                                 http_response_code(201);
                             }else{
                                 $data = fetch_array(bukaquery2("SELECT poliklinik.nm_poli,COUNT(reg_periksa.kd_poli) as total_antrean,dokter.nm_dokter,
-                                    CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,SUM(CASE WHEN reg_periksa.stts!='Sudah' THEN 1 ELSE 0 END) as sisa_antrean,
+                                    SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END) as sisa_antrean,
                                     ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
                                     FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter
                                     WHERE reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' AND reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' 
@@ -146,7 +146,7 @@
                                             'namadokter' => $data['nm_dokter'],
                                             'totalantrean' => $data['total_antrean'],
                                             'sisaantrean' => $data['sisa_antrean'],
-                                            'antreanpanggil' =>$kdpoli."-".$data['antrean_panggil'],
+                                            'antreanpanggil' =>$kdpoli."-".getOne2("select reg_periksa.no_reg from reg_periksa where reg_periksa.stts='Belum' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.kd_poli='$kdpoli' and reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' order by CONVERT(RIGHT(reg_periksa.no_reg,3),signed) limit 1 "),
                                             'sisakuotajkn' => ($kuota-$data['total_antrean'])."",
                                             'kuotajkn' => $kuota,
                                             'sisakuotanonjkn' => ($kuota-$data['total_antrean'])."",
@@ -790,7 +790,7 @@
                         );
                         http_response_code(201);
                     }else{
-                        $booking = fetch_array(bukaquery2("select no_rawat,tanggalperiksa,status,validasi,nomorreferensi from referensi_mobilejkn_bpjs where no_rawat='$decode[kodebooking]'"));
+                        $booking = fetch_array(bukaquery2("select no_rawat,tanggalperiksa,status,validasi,nomorreferensi,kodedokter,kodepoli,jampraktek from referensi_mobilejkn_bpjs where no_rawat='$decode[kodebooking]'"));
                         if(empty($booking['status'])) {
                             $response = array(
                                 'metadata' => array(
@@ -809,26 +809,27 @@
                                 );
                                 http_response_code(201);
                             }else if($booking['status']=='Checkin'){
+                                $kodedokter = getOne2("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs='$booking[kodedokter]'");
+                                $kodepoli   = getOne2("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs='$booking[kodepoli]'");
+                                $noreg      = getOne2("select no_reg from reg_periksa where no_rawat='$decode[kodebooking]'");
                                 $data = fetch_array(bukaquery("SELECT reg_periksa.kd_poli,poliklinik.nm_poli,dokter.nm_dokter,
                                     reg_periksa.no_reg,COUNT(reg_periksa.no_rawat) as total_antrean,
-                                    CONCAT(00,COUNT(reg_periksa.no_rawat)) as antrean_panggil,
-                                    SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END) as sisa_antrean,
-                                    SUM(CASE WHEN reg_periksa.stts ='Sudah' THEN 1 ELSE 0 END) as sudah_selesai,
-                                    ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
+                                    SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END) as sisa_antrean
                                     FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
                                     INNER JOIN dokter ON dokter.kd_dokter=reg_periksa.kd_dokter
-                                    WHERE reg_periksa.no_rawat='$decode[kodebooking]'"));
+                                    WHERE reg_periksa.kd_dokter='$kodedokter' and reg_periksa.kd_poli='$kodepoli'and reg_periksa.tgl_registrasi='$booking[tanggalperiksa]' 
+                                    and CONVERT(RIGHT(reg_periksa.no_reg,3),signed)<CONVERT(RIGHT($noreg,3),signed)"));
 
                                 if ($data['nm_poli'] != '') {
                                     $response = array(
                                         'response' => array(
-                                            'nomorantrean' => $data['kd_poli']."-".$data['no_reg'],
+                                            'nomorantrean' => $data['kd_poli']."-".$noreg,
                                             'namapoli' => $data['nm_poli'],
                                             'namadokter' => $data['nm_dokter'],
                                             'sisaantrean' => $data['sisa_antrean'],
-                                            'antreanpanggil' => $data['kd_poli']."-".$data['no_reg'],
+                                            'antreanpanggil' => $data['kd_poli']."-".getOne2("select reg_periksa.no_reg from reg_periksa where reg_periksa.stts='Belum' and reg_periksa.kd_dokter='$kodedokter' and reg_periksa.kd_poli='$kodepoli' and reg_periksa.tgl_registrasi='$booking[tanggalperiksa]' and CONVERT(RIGHT(reg_periksa.no_reg,3),signed)<=CONVERT(RIGHT($noreg,3),signed) order by CONVERT(RIGHT(reg_periksa.no_reg,3),signed) limit 1 "),
                                             'waktutunggu' => (($data['sisa_antrean']*$waktutunggu)*1000),
-                                            'keterangan' => $data['keterangan']
+                                            'keterangan' => "Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih .."
                                         ),
                                         'metadata' => array(
                                             'message' => 'Ok',
