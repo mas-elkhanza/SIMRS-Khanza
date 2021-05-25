@@ -353,9 +353,22 @@ public final class InventarisCariPermintaanPerbaikan extends javax.swing.JDialog
                 "inner join inventaris_jenis on inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
                 "inner join inventaris_ruang on inventaris.id_ruang=inventaris_ruang.id_ruang "+
                 "inner join pegawai on permintaan_perbaikan_inventaris.nik=pegawai.nik where "+
-                "permintaan_perbaikan_inventaris.no_permintaan not in (select no_permintaan from perbaikan_inventaris) order by permintaan_perbaikan_inventaris.no_permintaan"
+                "permintaan_perbaikan_inventaris.no_permintaan not in (select no_permintaan from perbaikan_inventaris) "+
+                (TCari.getText().trim().equals("")?"":"and (permintaan_perbaikan_inventaris.no_permintaan like ? or "+
+                "permintaan_perbaikan_inventaris.no_inventaris like ? or inventaris.kode_barang like ? or inventaris_barang.nama_barang like ? or "+
+                "inventaris_ruang.nama_ruang like ? or pegawai.nama like ? or permintaan_perbaikan_inventaris.deskripsi_kerusakan like ? )")+
+                "order by permintaan_perbaikan_inventaris.no_permintaan"
             );
             try {
+                if(!TCari.getText().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{

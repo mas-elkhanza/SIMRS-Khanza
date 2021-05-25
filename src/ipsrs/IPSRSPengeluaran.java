@@ -848,18 +848,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }   
         }
         
-        ttl=0;
-        jml=tbDokter.getRowCount();
-        for(i=0;i<jml;i++){    
-            keluar=0;
-            try {
-                keluar=Double.parseDouble(tbDokter.getValueAt(i,6).toString());
-            }catch (Exception e) {
-                keluar=0;                 
-            }
-            ttl=ttl+keluar;
-        }
-        LTotal.setText(Valid.SetAngka(ttl));
+        isHitung();
     }
 
     private void autoNomor() {
@@ -868,7 +857,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     public void tampil(String nopermintaan) {
-        
         Valid.tabelKosong(tabMode);        
         try{
             ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),"+
@@ -895,9 +883,36 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 if(ps!=null){
                     ps.close();
                 }
-            }                                
-        }catch(SQLException e){
+            }  
+            isHitung();
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
+    }
+    
+    private void isHitung(){
+        ttl=0;
+        jml=tbDokter.getRowCount();
+        for(i=0;i<jml;i++){    
+            keluar=0;
+            try {
+                keluar=Double.parseDouble(tbDokter.getValueAt(i,6).toString());
+            }catch (Exception e) {
+                keluar=0;                 
+            }
+            ttl=ttl+keluar;
+        }
+        LTotal.setText(Valid.SetAngka(ttl));ttl=0;
+        jml=tbDokter.getRowCount();
+        for(i=0;i<jml;i++){    
+            keluar=0;
+            try {
+                keluar=Double.parseDouble(tbDokter.getValueAt(i,6).toString());
+            }catch (Exception e) {
+                keluar=0;                 
+            }
+            ttl=ttl+keluar;
+        }
+        LTotal.setText(Valid.SetAngka(ttl));
     }
 }
