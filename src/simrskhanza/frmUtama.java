@@ -440,6 +440,7 @@ import bridging.PCareCekKartu;
 import grafikanalisa.GrafikHemodialisaPerBulan;
 import grafikanalisa.GrafikHemodialisaPerTanggal;
 import grafikanalisa.GrafikInventarisPerJenis;
+import grafikanalisa.GrafikInventarisPerKategori;
 import grafikanalisa.GrafikInventarisPerRuang;
 import grafikanalisa.GrafikItemApotekPerGolongan;
 import grafikanalisa.GrafikItemApotekPerIndustriFarmasi;
@@ -17087,6 +17088,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnGrafikInventarisKategoriActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikInventarisPerKategori aplikasi=new GrafikInventarisPerKategori(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     private void btnTagihanHutangObatActionPerformed(java.awt.event.ActionEvent evt) {
         
     }
@@ -17709,7 +17721,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPenerimaanNonMedis,btnRingkasanStokKeluarNonMedis,btnRingkasanReturSuplierNonMedis,btnOmsetPenerimaan,btnValidasiPenagihanPiutang,
             btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK,btnSuratKeteranganRawatInap,
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
-            btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi;
+            btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
+            btnGrafikInventarisKategori;
     
     public void isWall(){
         try{            
@@ -20894,6 +20907,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_bulanan_meninggal()==true){
                 Panelmenu.add(btnGrafikMeninggalPerBulan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_inventaris_kategori()==true){
+                Panelmenu.add(btnGrafikInventarisKategori);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -24484,6 +24502,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_bulanan_meninggal()==true){
             Panelmenu.add(btnGrafikMeninggalPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_inventaris_kategori()==true){
+            Panelmenu.add(btnGrafikInventarisKategori);
             jmlmenu++;
         }
 
@@ -29295,6 +29318,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_inventaris_kategori()==true){
+            if(btnGrafikInventarisKategori.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikInventarisKategori);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -30741,7 +30771,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnGrafikInventarisRuang = new widget.ButtonBig();
         btnGrafikInventarisRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
-        btnGrafikInventarisRuang.setText("Jumlah Inventaris Ruang");
+        btnGrafikInventarisRuang.setText("Jumlah Inventaris Per Ruang");
         btnGrafikInventarisRuang.setIconTextGap(0);
         btnGrafikInventarisRuang.setName("btnGrafikInventarisRuang"); 
         btnGrafikInventarisRuang.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -30757,7 +30787,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnGrafikInventarisJenis = new widget.ButtonBig();
         btnGrafikInventarisJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
-        btnGrafikInventarisJenis.setText("Jumlah Inventaris Jenis");
+        btnGrafikInventarisJenis.setText("Jumlah Inventaris Per Jenis");
         btnGrafikInventarisJenis.setIconTextGap(0);
         btnGrafikInventarisJenis.setName("btnGrafikInventarisJenis"); 
         btnGrafikInventarisJenis.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -32099,6 +32129,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLamaOperasi.setName("btnLamaOperasi"); 
         btnLamaOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLamaOperasi.addActionListener(this::btnLamaOperasiActionPerformed);
+        
+        btnGrafikInventarisKategori = new widget.ButtonBig();
+        btnGrafikInventarisKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikInventarisKategori.setText("Jumlah Inventaris Per Kategori");
+        btnGrafikInventarisKategori.setIconTextGap(0);
+        btnGrafikInventarisKategori.setName("btnGrafikInventarisKategori"); 
+        btnGrafikInventarisKategori.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikInventarisKategori.addActionListener(this::btnGrafikInventarisKategoriActionPerformed);
     }
 
     

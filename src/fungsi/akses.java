@@ -157,7 +157,7 @@ public final class akses {
             permintaan_ranap=false,bpjs_diagnosa_prb=false,bpjs_obat_prb=false,bpjs_surat_kontrol=false,penggunaan_bhp_ok=false,surat_keterangan_rawat_inap=false,
             surat_keterangan_sehat=false,pendapatan_per_carabayar=false,akun_host_to_host_bank_jateng=false,pembayaran_bank_jateng=false,
             bpjs_surat_pri=false,ringkasan_tindakan=false,lama_pelayanan_pasien=false,surat_sakit_pihak_2=false,tagihan_hutang_obat=false,
-            referensi_mobilejkn_bpjs=false,batal_pendaftaran_mobilejkn_bpjs=false,lama_operasi=false;
+            referensi_mobilejkn_bpjs=false,batal_pendaftaran_mobilejkn_bpjs=false,lama_operasi=false,grafik_inventaris_kategori=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -897,6 +897,7 @@ public final class akses {
                         akses.referensi_mobilejkn_bpjs=true;
                         akses.batal_pendaftaran_mobilejkn_bpjs=true;
                         akses.lama_operasi=true;
+                        akses.grafik_inventaris_kategori=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1620,6 +1621,7 @@ public final class akses {
                         akses.referensi_mobilejkn_bpjs=rs2.getBoolean("referensi_mobilejkn_bpjs");
                         akses.batal_pendaftaran_mobilejkn_bpjs=rs2.getBoolean("batal_pendaftaran_mobilejkn_bpjs");
                         akses.lama_operasi=rs2.getBoolean("lama_operasi");
+                        akses.grafik_inventaris_kategori=rs2.getBoolean("grafik_inventaris_kategori");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2341,6 +2343,7 @@ public final class akses {
                         akses.referensi_mobilejkn_bpjs=false;
                         akses.batal_pendaftaran_mobilejkn_bpjs=false;
                         akses.lama_operasi=false;
+                        akses.grafik_inventaris_kategori=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3117,4 +3120,5 @@ public final class akses {
     public static boolean getreferensi_mobilejkn_bpjs(){return akses.referensi_mobilejkn_bpjs;}
     public static boolean getbatal_pendaftaran_mobilejkn_bpjs(){return akses.batal_pendaftaran_mobilejkn_bpjs;}
     public static boolean getlama_operasi(){return akses.lama_operasi;}
+    public static boolean getgrafik_inventaris_kategori(){return akses.grafik_inventaris_kategori;}
 }   
