@@ -9,16 +9,26 @@
     $header = apache_request_headers();
     $method = $_SERVER['REQUEST_METHOD'];
     
-    if (($method == 'GET') && (!empty($header['x-username'])) && (!empty($header['x-password']))) {
+    if ($method == 'GET') {
         $hash_user = hash_pass($header['x-username'], 12);
         $hash_pass = hash_pass($header['x-password'], 12);
         switch ($url[0]) {
             case "auth":
+                if((!empty($header['x-username'])) && (!empty($header['x-password']))){
                     $response=createtoken($header['x-username'],$header['x-password']);
+                }else{
+                    $response = array(
+                        'metadata' => array(
+                            'message' => 'Nama User / Password / Token ada yang salah ..!!',
+                            'code' => 201
+                        )
+                    );
+                    http_response_code(201);
+                }
                 break;
             case "antrean":
                     if (!empty($url[1]) and $url[1] == "status") {
-                        if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                        if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                             $kodepolipcare=isset($url[2])?$url[2]:null;
                             $tanggaldaftar=isset($url[3])?$url[3]:null;
                             if(strpos($kodepolipcare,"'")||strpos($kodepolipcare,"\\")){
@@ -100,7 +110,7 @@
                     }
 
                     if (!empty($url[1]) and $url[1] == "sisapeserta") {
-                        if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                        if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                             $no_peserta=isset($url[2])?$url[2]:null;
                             $kodepolipcare=isset($url[3])?$url[3]:null;
                             $tanggaldaftar=isset($url[4])?$url[4]:null;
@@ -214,7 +224,7 @@
         }
     }
   
-    if (($method == 'POST') && (!empty($header['x-username'])) && (!empty($header['x-password']))) {
+    if (($method == 'POST') && (!empty($header['x-username'])) && (!empty($header['x-token']))) {
         $hash_user = hash_pass($header['x-username'], 12);
         switch ($url[0]) {
             case "antrean":
@@ -222,7 +232,7 @@
                 $konten = trim(file_get_contents("php://input"));
                 $decode = json_decode($konten, true);
                 
-                if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     if (empty($decode['nomorkartu'])){ 
                         $response = array(
                             'metadata' => array(
@@ -451,7 +461,7 @@
         }
     }
     
-    if (($method == 'PUT') && (!empty($header['x-username'])) && (!empty($header['x-password']))) {
+    if (($method == 'PUT') && (!empty($header['x-username'])) && (!empty($header['x-token']))) {
         $hash_user = hash_pass($header['x-username'], 12);
         switch ($url[0]) {
             case "antrean":
@@ -460,7 +470,7 @@
                     $konten = trim(file_get_contents("php://input"));
                     $decode = json_decode($konten, true);
 
-                    if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (PASSWORD==$header['x-password']) && (cektoken($header['x-token'])=='true')){
+                    if((!empty($header['x-token'])) && (!empty($header['x-username'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                         if (empty($decode['nomorkartu'])){ 
                             $response = array(
                                 'metadata' => array(

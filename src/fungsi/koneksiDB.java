@@ -36,13 +36,7 @@ public class koneksiDB {
                         "  Puskesmas yang  gratis dan boleh digunakan siapa saja tanpa dikenai \n" +
                         "  biaya apapun. Dilarang keras memperjualbelikan/mengambil \n" +
                         "  keuntungan dari Software ini dalam bentuk apapun tanpa seijin pembuat \n" +
-                        "  software (Khanza.Soft Media). Bagi yang sengaja memperjualbelikan/\n" +
-                        "  mengambil keuntangan dari softaware ini tanpa ijin, kami sumpahi sial \n" +
-                        "  1000 turunan, miskin sampai 500 turunan. Selalu mendapat kecelakaan \n" +
-                        "  sampai 400 turunan. Anak pertamanya cacat tidak punya kaki sampai 300 \n" +
-                        "  turunan. Susah cari jodoh sampai umur 50 tahun sampai 200 turunan.\n" +
-                        "  Ya Alloh maafkan kami karena telah berdoa buruk, semua ini kami lakukan\n" +
-                        "  karena kami tidak pernah rela karya kami dibajak tanpa ijin.\n\n"+
+                        "  software (Khanza.Soft Media).\n"+
                         "                                                                           \n"+
                         "  #    ____  ___  __  __  ____   ____    _  __ _                              \n" +
                         "  #   / ___||_ _||  \\/  ||  _ \\ / ___|  | |/ /| |__    __ _  _ __   ____ __ _ \n" +
@@ -53,6 +47,7 @@ public class koneksiDB {
                         "                                                                           \n"+
                         "  Licensi yang dianut di software ini https://en.wikipedia.org/wiki/Aladdin_Free_Public_License \n"+
                         "  Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki \n"+
+                        "  Bagi yang ingin berdonasi untuk pengembangan aplikasi ini bisa ke BSI 1015369872 atas nama Windiarto\n"+
                         "                                                                           ");
             }catch(Exception e){
                 System.out.println("Notif : "+e);
