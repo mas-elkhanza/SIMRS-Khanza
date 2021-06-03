@@ -53,7 +53,7 @@ public class IPSRSPemesanan extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,judul){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==4)||(colIndex==5)||(colIndex==7)||(colIndex==78)) {
+                if ((colIndex==0)||(colIndex==4)||(colIndex==5)||(colIndex==7)||(colIndex==8)) {
                     a=true;
                 }
                 return a;

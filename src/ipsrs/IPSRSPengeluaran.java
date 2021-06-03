@@ -856,9 +856,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 "SKNM"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
     }
 
-    public void tampil(String nopermintaan) {
+    public void tampil(String nopermintaan,String keterangan) {
         Valid.tabelKosong(tabMode);        
         try{
+            Keterangan.setText(keterangan);
             ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),"+
                     " ipsrsbarang.kode_sat,stok, ipsrsbarang.harga,detail_permintaan_non_medis.jumlah "+
                     " from ipsrsbarang inner join detail_permintaan_non_medis "+
