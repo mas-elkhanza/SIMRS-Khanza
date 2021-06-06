@@ -895,6 +895,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         tbBilling = new widget.Table();
+        scrollPane9 = new widget.ScrollPane();
         panelBayar = new widget.panelisi();
         TtlSemua = new widget.TextBox();
         TKembali = new widget.TextBox();
@@ -2023,7 +2024,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2021 20:00:08" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2021 04:03:54" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2164,10 +2165,14 @@ public class DlgBilingRanap extends javax.swing.JDialog {
 
         TabRawat.addTab("Data Tagihan", Scroll);
 
+        scrollPane9.setBorder(null);
+        scrollPane9.setName("scrollPane9"); // NOI18N
+        scrollPane9.setOpaque(true);
+
         panelBayar.setBorder(null);
         panelBayar.setForeground(new java.awt.Color(50, 50, 50));
         panelBayar.setName("panelBayar"); // NOI18N
-        panelBayar.setPreferredSize(new java.awt.Dimension(100, 137));
+        panelBayar.setPreferredSize(new java.awt.Dimension(100, 415));
         panelBayar.setLayout(null);
 
         TtlSemua.setEditable(false);
@@ -2449,7 +2454,9 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         panelBayar.add(BtnAll1);
         BtnAll1.setBounds(875, 210, 25, 23);
 
-        TabRawat.addTab("Pembayaran", panelBayar);
+        scrollPane9.setViewportView(panelBayar);
+
+        TabRawat.addTab("Pembayaran", scrollPane9);
 
         panelPermintaan.setBorder(null);
         panelPermintaan.setName("panelPermintaan"); // NOI18N
@@ -4487,6 +4494,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.ScrollPane scrollPane6;
     private widget.ScrollPane scrollPane7;
     private widget.ScrollPane scrollPane8;
+    private widget.ScrollPane scrollPane9;
     private widget.Table tbAkunBayar;
     private widget.Table tbAkunPiutang;
     private widget.Table tbApotek;
