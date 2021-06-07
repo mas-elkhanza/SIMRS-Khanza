@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="561" leftMargin="17" rightMargin="17" topMargin="17" bottomMargin="17" uuid="eeb60c86-7702-4e97-933f-bc659d1bee0c">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
@@ -38,6 +38,8 @@ MTk2MzFhNTU7]]>
 	<parameter name="norm" class="java.lang.String"/>
 	<parameter name="peresep" class="java.lang.String"/>
 	<parameter name="noresep" class="java.lang.String"/>
+	<parameter name="alamat" class="java.lang.String"/>
+	<parameter name="no_ijin" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select databarang.kode_brng,databarang.nama_brng,detail_pemberian_obat.jml,detail_pemberian_obat.jam,
 detail_pemberian_obat.biaya_obat,detail_pemberian_obat.embalase,databarang.kode_sat,
@@ -85,7 +87,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="139" splitType="Stretch">
+		<band height="178" splitType="Stretch">
 			<textField>
 				<reportElement x="48" y="14" width="242" height="14" uuid="21999308-a9b7-4a06-a44d-232077eca403"/>
 				<textElement textAlignment="Center">
@@ -136,7 +138,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="83" width="90" height="12" uuid="eec00af4-473d-41af-b416-74411e3a85c4">
+				<reportElement mode="Transparent" x="1" y="83" width="72" height="12" uuid="eec00af4-473d-41af-b416-74411e3a85c4">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement markup="none">
@@ -146,7 +148,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<text><![CDATA[Nama Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="95" width="90" height="12" uuid="1f51fa58-a42e-4976-ac9e-f19434d4ea22"/>
+				<reportElement mode="Transparent" x="1" y="95" width="72" height="12" uuid="1f51fa58-a42e-4976-ac9e-f19434d4ea22"/>
 				<textElement markup="none">
 					<font fontName="Times New Roman" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -154,15 +156,15 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<text><![CDATA[No. R.M.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="107" width="90" height="12" uuid="ab0c0620-812e-4e7b-8fbc-00e96a95dfc4"/>
+				<reportElement mode="Transparent" x="1" y="134" width="72" height="12" uuid="ab0c0620-812e-4e7b-8fbc-00e96a95dfc4"/>
 				<textElement markup="none">
 					<font fontName="Times New Roman" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Penanggung]]></text>
+				<text><![CDATA[Jenis Bayar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="119" width="90" height="12" uuid="e69eee08-1d5d-42d1-b650-186dacc1d224"/>
+				<reportElement mode="Transparent" x="1" y="146" width="72" height="12" uuid="e69eee08-1d5d-42d1-b650-186dacc1d224"/>
 				<textElement markup="none">
 					<font fontName="Times New Roman" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -170,7 +172,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<text><![CDATA[Pemberi Resep]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="91" y="95" width="5" height="12" uuid="437e2834-ec68-43f1-8f66-3a89d0999eef"/>
+				<reportElement mode="Transparent" x="75" y="95" width="5" height="12" uuid="437e2834-ec68-43f1-8f66-3a89d0999eef"/>
 				<textElement markup="none">
 					<font fontName="Times New Roman" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -178,7 +180,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="91" y="83" width="5" height="12" uuid="1d2cf0ed-89fa-4393-b555-71866e418054">
+				<reportElement mode="Transparent" x="75" y="83" width="5" height="12" uuid="1d2cf0ed-89fa-4393-b555-71866e418054">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement markup="none">
@@ -188,7 +190,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="91" y="119" width="5" height="12" uuid="2cb45e20-ff89-4911-8193-a0466d5693a7"/>
+				<reportElement mode="Transparent" x="75" y="146" width="5" height="12" uuid="2cb45e20-ff89-4911-8193-a0466d5693a7"/>
 				<textElement markup="none">
 					<font fontName="Times New Roman" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -196,7 +198,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="91" y="108" width="5" height="12" uuid="d3fe4fb9-c75e-4b90-bb7e-0fe878f0c45c"/>
+				<reportElement mode="Transparent" x="75" y="135" width="5" height="12" uuid="d3fe4fb9-c75e-4b90-bb7e-0fe878f0c45c"/>
 				<textElement markup="none">
 					<font fontName="Times New Roman" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -204,7 +206,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="96" y="83" width="194" height="12" uuid="4ff74457-9947-4ff8-915f-b0102264f08d">
+				<reportElement mode="Transparent" x="80" y="83" width="210" height="12" uuid="4ff74457-9947-4ff8-915f-b0102264f08d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -215,7 +217,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<textFieldExpression><![CDATA[$P{pasien}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="96" y="95" width="194" height="12" uuid="978be72d-f2f5-4227-aafb-0f995660e0b9">
+				<reportElement mode="Transparent" x="80" y="95" width="210" height="12" uuid="978be72d-f2f5-4227-aafb-0f995660e0b9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement markup="none">
@@ -225,7 +227,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<textFieldExpression><![CDATA[$P{norm}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="96" y="107" width="194" height="12" uuid="948089cb-d920-422b-86e0-c40204c1d6ab">
+				<reportElement mode="Transparent" x="80" y="134" width="210" height="12" uuid="948089cb-d920-422b-86e0-c40204c1d6ab">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement markup="none">
@@ -235,7 +237,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				<textFieldExpression><![CDATA[$P{penanggung}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="96" y="119" width="194" height="12" uuid="490f770c-cdfa-484f-8d42-3ab17c238d0a">
+				<reportElement mode="Transparent" x="80" y="146" width="210" height="12" uuid="490f770c-cdfa-484f-8d42-3ab17c238d0a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement markup="none">
@@ -253,6 +255,58 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kotars}+", "+$P{tanggal}+" "+$F{jam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="80" y="158" width="210" height="12" uuid="7232272e-4049-4c74-8398-92571af1b132">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{no_ijin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="158" width="72" height="12" uuid="272bf4a1-c6f6-4a16-a4a5-63de04e81acf"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No. Ijin Praktek]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="75" y="158" width="5" height="12" uuid="13fae6d8-3b6e-4d63-b307-71901bc4ead2"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="108" width="72" height="12" uuid="b83ae209-8a61-4de5-b935-3909addfead0"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="75" y="108" width="5" height="12" uuid="20e58e12-a072-4467-81b0-b3a6e4c018e7"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="80" y="108" width="210" height="26" uuid="21cda41e-be51-4499-b795-f057e3f722e9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[PROPER($P{alamat})]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

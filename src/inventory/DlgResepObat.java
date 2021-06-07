@@ -11,11 +11,11 @@
 
 package inventory;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -61,7 +61,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
-    private String now=dateFormat.format(date),lembarobat="",status="";
+    private String now=dateFormat.format(date),lembarobat="",status="",alamat="",no_ijin="";
     private double total=0,jumlahtotal=0;
     private Properties prop = new Properties();
     private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -1338,6 +1338,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
              JOptionPane.showMessageDialog(null,"Maaf, Klik No Resep untuk mencetak aturan pakai...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            String alamat = Sequel.cariIsi("select concat(alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab)as alamat from pasien "
+                    + "left join kelurahan on kelurahan.kd_kel = pasien.kd_kel "
+                    + "left join kecamatan on kecamatan.kd_kec = pasien.kd_kec "
+                    + "left join kabupaten on kabupaten.kd_kab = pasien.kd_kab "
+                    + "where no_rkm_medis='"+TNoRm.getText().toString()+"'");
             Map<String, Object> param = new HashMap<>();  
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -1353,6 +1358,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("norm",TNoRm.getText());
             param.put("peresep",NmDokter.getText());
             param.put("noresep",NoResep.getText());
+            param.put("alamat",alamat);
+            param.put("no_ijin",Sequel.cariIsi("select no_ijn_praktek from dokter where kd_dokter='"+KdDokter.getText().toString()+"'"));
             param.put("jam",cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
@@ -1704,6 +1711,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("norm",TNoRm.getText());
             param.put("peresep",NmDokter.getText());
             param.put("noresep",NoResep.getText());
+            param.put("alamat",alamat);
+            param.put("no_ijin",alamat);
             param.put("jam",cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
