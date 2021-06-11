@@ -522,7 +522,7 @@ import inventory.DlgDaftarPermintaanStokPasien;
 import inventory.DlgJenis;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
-import inventory.DlgPengajuanBarangMedis;
+import inventory.InventoryPengajuanBarangMedis;
 import inventory.DlgRekapObatPasien;
 import inventory.DlgRekapObatPoli;
 import inventory.InventoryRingkasanPembelianBarangMedis;
@@ -14616,7 +14616,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPengajuanBarangMedisActionPerformed(java.awt.event.ActionEvent evt) { 
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPengajuanBarangMedis form=new DlgPengajuanBarangMedis(this,false);
+        InventoryPengajuanBarangMedis form=new InventoryPengajuanBarangMedis(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);

@@ -834,4 +834,34 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String URLAPIMEDQLAB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPIMEDQLAB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String SECRETKEYAPIMEDQLAB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("SECRETKEYAPIMEDQLAB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String CONSIDAPIMEDQLAB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("CONSIDAPIMEDQLAB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }
