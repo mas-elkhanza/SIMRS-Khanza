@@ -158,6 +158,8 @@ public class DlgDeposit extends javax.swing.JDialog {
             System.out.println(e);
         }
         
+        Valid.loadCombo(AkunBayar,"nama_bayar","akun_bayar");
+        
         jam();
     }
 
@@ -214,7 +216,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         jLabel12 = new widget.Label();
         Nomor = new widget.TextBox();
         jLabel11 = new widget.Label();
-        nama_bayar = new widget.ComboBox();
+        AkunBayar = new widget.ComboBox();
         jLabel16 = new widget.Label();
         BesarDeposit1 = new widget.TextBox();
         BesarDeposit2 = new widget.TextBox();
@@ -411,7 +413,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -425,7 +427,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -518,7 +520,7 @@ public class DlgDeposit extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -645,15 +647,15 @@ public class DlgDeposit extends javax.swing.JDialog {
         FormInput.add(jLabel11);
         jLabel11.setBounds(0, 100, 75, 23);
 
-        nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setPreferredSize(new java.awt.Dimension(420, 23));
-        nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
+        AkunBayar.setName("AkunBayar"); // NOI18N
+        AkunBayar.setPreferredSize(new java.awt.Dimension(420, 23));
+        AkunBayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nama_bayarKeyPressed(evt);
+                AkunBayarKeyPressed(evt);
             }
         });
-        FormInput.add(nama_bayar);
-        nama_bayar.setBounds(78, 100, 340, 23);
+        FormInput.add(AkunBayar);
+        AkunBayar.setBounds(78, 100, 340, 23);
 
         jLabel16.setText("Biaya PPN/Admin : %");
         jLabel16.setName("jLabel16"); // NOI18N
@@ -957,9 +959,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         // TODO add your handling code here:
     }//GEN-LAST:event_NomorKeyPressed
 
-    private void nama_bayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nama_bayarKeyPressed
+    private void AkunBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkunBayarKeyPressed
         Valid.pindah(evt,BtnSeekPetugas,TCari);
-    }//GEN-LAST:event_nama_bayarKeyPressed
+    }//GEN-LAST:event_AkunBayarKeyPressed
 
     private void BesarDeposit1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BesarDeposit1KeyPressed
         // TODO add your handling code here:
@@ -990,6 +992,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox AkunBayar;
     private widget.TextBox BesarDeposit;
     private widget.TextBox BesarDeposit1;
     private widget.TextBox BesarDeposit2;
@@ -1036,7 +1039,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdptg;
-    private widget.ComboBox nama_bayar;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;
