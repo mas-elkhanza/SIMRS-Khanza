@@ -161,7 +161,7 @@ public class ApiMEDQLAB {
                     }
                     
                     requestJson="{" +
-                                    "\"no_pendaftaran\": \""+rs.getString("noorder")+"\"," +
+                                    "\"no_pendaftaran\": \""+rs.getString("noorder").substring(4,14)+"\"," +
                                     "\"no_rm\": \""+rs.getString("no_rkm_medis")+"\"," +
                                     "\"nama_pasien\": \""+rs.getString("nm_pasien")+"\"," +
                                     "\"tempat_lahir\": \""+rs.getString("tmp_lahir")+"\"," +
@@ -177,11 +177,8 @@ public class ApiMEDQLAB {
                                     "\"id_penjamin\": \""+rs.getString("kd_pj")+"\"," +
                                     "\"penjamin\": \""+rs.getString("png_jawab")+"\"," +
                                     "\"cito\": \""+(rs.getString("informasi_tambahan").toLowerCase().contains("cito")?"true":"false")+"\"," +
-                                    "\"diagnose\": \""+rs.getString("diagnosa_klinis")+"\"," +
-                                    "\"icd10\": {" +
-                                        "\"code\": \""+kodeicd+"\"," +
-                                        "\"text\": \""+namaicd+"\"" +
-                                    "}," +
+                                    "\"diagnose\": \"\"," +
+                                    "\"icd10\": []," +
                                     "\"order\": ["+
                                         requestJson2+
                                     "]" +
@@ -200,6 +197,8 @@ public class ApiMEDQLAB {
                  System.out.println("Notif : "+e);
                  if(e.toString().contains("UnknownHostException")||e.toString().contains("404")){
                     JOptionPane.showMessageDialog(null,"Koneksi ke server MEDQLAB terputus...!");
+                 }else{
+                    JOptionPane.showMessageDialog(null,"Pengiriman gagal, silahkan hubungi Administrator...!"); 
                  }
              } finally{
                  if(rs!=null){

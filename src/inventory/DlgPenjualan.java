@@ -2237,11 +2237,13 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_TglItemStateChanged
 
     private void CmbAkunItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbAkunItemStateChanged
-        try {
-            PPN.setText(Sequel.cariIsi("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()));
-            isKembali();
-            Bayar.requestFocus();
-        } catch (Exception e) {
+        if(this.isVisible()==true){
+            try {
+                PPN.setText(Sequel.cariIsi("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()));
+                isKembali();
+                Bayar.requestFocus();
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_CmbAkunItemStateChanged
 

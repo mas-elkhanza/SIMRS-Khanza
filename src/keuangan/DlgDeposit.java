@@ -57,6 +57,7 @@ public class DlgDeposit extends javax.swing.JDialog {
     private int i=0;
     private PreparedStatement ps;
     private ResultSet rs;
+    private double ppn=0,nilaippn=0;
 
     /** Creates new form DlgPemberianInfus
      * @param parent
@@ -117,6 +118,22 @@ public class DlgDeposit extends javax.swing.JDialog {
                 }
             });
         } 
+        
+        BesarDeposit.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cekPPN();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cekPPN();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cekPPN();
+            }
+        });
+        
         ChkInput.setSelected(false);
         isForm();
         
@@ -142,6 +159,7 @@ public class DlgDeposit extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
+        
         try {
             ps=koneksi.prepareStatement("select deposit.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien), " +
                 "deposit.tgl_deposit,deposit.besar_deposit,concat(deposit.nip,' ',petugas.nama) " +
@@ -159,6 +177,11 @@ public class DlgDeposit extends javax.swing.JDialog {
         }
         
         Valid.loadCombo(AkunBayar,"nama_bayar","akun_bayar");
+        try {
+            Persenppn.setText(""+Sequel.cariIsiAngka("select ppn from akun_bayar where nama_bayar=?",AkunBayar.getSelectedItem().toString()));
+        } catch (Exception e) {
+            Persenppn.setText("0");
+        }
         
         jam();
     }
@@ -218,10 +241,10 @@ public class DlgDeposit extends javax.swing.JDialog {
         jLabel11 = new widget.Label();
         AkunBayar = new widget.ComboBox();
         jLabel16 = new widget.Label();
-        BesarDeposit1 = new widget.TextBox();
-        BesarDeposit2 = new widget.TextBox();
+        Persenppn = new widget.TextBox();
+        BesarPPN = new widget.TextBox();
         jLabel17 = new widget.Label();
-        BesarDeposit3 = new widget.TextBox();
+        DibayarPasien = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -413,7 +436,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -427,7 +450,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -520,7 +543,7 @@ public class DlgDeposit extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -649,6 +672,11 @@ public class DlgDeposit extends javax.swing.JDialog {
 
         AkunBayar.setName("AkunBayar"); // NOI18N
         AkunBayar.setPreferredSize(new java.awt.Dimension(420, 23));
+        AkunBayar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AkunBayarItemStateChanged(evt);
+            }
+        });
         AkunBayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AkunBayarKeyPressed(evt);
@@ -662,44 +690,46 @@ public class DlgDeposit extends javax.swing.JDialog {
         FormInput.add(jLabel16);
         jLabel16.setBounds(430, 70, 172, 23);
 
-        BesarDeposit1.setText("0");
-        BesarDeposit1.setFocusTraversalPolicyProvider(true);
-        BesarDeposit1.setName("BesarDeposit1"); // NOI18N
-        BesarDeposit1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Persenppn.setEditable(false);
+        Persenppn.setText("0");
+        Persenppn.setFocusTraversalPolicyProvider(true);
+        Persenppn.setName("Persenppn"); // NOI18N
+        Persenppn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BesarDeposit1KeyPressed(evt);
+                PersenppnKeyPressed(evt);
             }
         });
-        FormInput.add(BesarDeposit1);
-        BesarDeposit1.setBounds(610, 70, 37, 23);
+        FormInput.add(Persenppn);
+        Persenppn.setBounds(610, 70, 37, 23);
 
-        BesarDeposit2.setText("0");
-        BesarDeposit2.setFocusTraversalPolicyProvider(true);
-        BesarDeposit2.setName("BesarDeposit2"); // NOI18N
-        BesarDeposit2.setVerifyInputWhenFocusTarget(false);
-        BesarDeposit2.addKeyListener(new java.awt.event.KeyAdapter() {
+        BesarPPN.setEditable(false);
+        BesarPPN.setText("0");
+        BesarPPN.setFocusTraversalPolicyProvider(true);
+        BesarPPN.setName("BesarPPN"); // NOI18N
+        BesarPPN.setVerifyInputWhenFocusTarget(false);
+        BesarPPN.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BesarDeposit2KeyPressed(evt);
+                BesarPPNKeyPressed(evt);
             }
         });
-        FormInput.add(BesarDeposit2);
-        BesarDeposit2.setBounds(649, 70, 106, 23);
+        FormInput.add(BesarPPN);
+        BesarPPN.setBounds(649, 70, 106, 23);
 
         jLabel17.setText("Dibayar Pasien : Rp.");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
         jLabel17.setBounds(430, 100, 177, 23);
 
-        BesarDeposit3.setText("0");
-        BesarDeposit3.setFocusTraversalPolicyProvider(true);
-        BesarDeposit3.setName("BesarDeposit3"); // NOI18N
-        BesarDeposit3.addKeyListener(new java.awt.event.KeyAdapter() {
+        DibayarPasien.setText("0");
+        DibayarPasien.setFocusTraversalPolicyProvider(true);
+        DibayarPasien.setName("DibayarPasien"); // NOI18N
+        DibayarPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BesarDeposit3KeyPressed(evt);
+                DibayarPasienKeyPressed(evt);
             }
         });
-        FormInput.add(BesarDeposit3);
-        BesarDeposit3.setBounds(610, 100, 145, 23);
+        FormInput.add(DibayarPasien);
+        DibayarPasien.setBounds(610, 100, 145, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -763,6 +793,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         cmbDtk.setSelectedItem(now.substring(17,19));
         DTPTgl.setDate(new Date());
         DTPTgl.requestFocus();
+        autoNomor();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -945,6 +976,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
+        autoNomor();
     }//GEN-LAST:event_formWindowOpened
 
     private void MnKwitansiDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKwitansiDepositActionPerformed
@@ -963,17 +995,29 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.pindah(evt,BtnSeekPetugas,TCari);
     }//GEN-LAST:event_AkunBayarKeyPressed
 
-    private void BesarDeposit1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BesarDeposit1KeyPressed
+    private void PersenppnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PersenppnKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BesarDeposit1KeyPressed
+    }//GEN-LAST:event_PersenppnKeyPressed
 
-    private void BesarDeposit2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BesarDeposit2KeyPressed
+    private void BesarPPNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BesarPPNKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BesarDeposit2KeyPressed
+    }//GEN-LAST:event_BesarPPNKeyPressed
 
-    private void BesarDeposit3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BesarDeposit3KeyPressed
+    private void DibayarPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DibayarPasienKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BesarDeposit3KeyPressed
+    }//GEN-LAST:event_DibayarPasienKeyPressed
+
+    private void AkunBayarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AkunBayarItemStateChanged
+        if(this.isVisible()==true){
+            try {
+                ppn=Sequel.cariIsiAngka("select ppn from akun_bayar where nama_bayar=?",AkunBayar.getSelectedItem().toString());
+                Persenppn.setText(""+ppn);
+                cekPPN();
+            } catch (Exception e) {
+                Persenppn.setText("0");
+            }
+        }
+    }//GEN-LAST:event_AkunBayarItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -994,9 +1038,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AkunBayar;
     private widget.TextBox BesarDeposit;
-    private widget.TextBox BesarDeposit1;
-    private widget.TextBox BesarDeposit2;
-    private widget.TextBox BesarDeposit3;
+    private widget.TextBox BesarPPN;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1010,11 +1052,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Tanggal DTPTgl;
+    private widget.TextBox DibayarPasien;
     private widget.PanelBiasa FormInput;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnKwitansiDeposit;
     private widget.TextBox Nomor;
     private javax.swing.JPanel PanelInput;
+    private widget.TextBox Persenppn;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRw;
@@ -1178,7 +1222,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_deposit,3),signed)),0) from pengeluaran_harian where tanggal like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"%' ",
-                "PH"+DTPTgl.getSelectedItem().toString().substring(6,10)+DTPTgl.getSelectedItem().toString().substring(3,5)+DTPTgl.getSelectedItem().toString().substring(0,2),3,Nomor); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_deposit,4),signed)),0) from deposit where tgl_deposit like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"%' ",
+                "DP"+DTPTgl.getSelectedItem().toString().substring(6,10)+DTPTgl.getSelectedItem().toString().substring(3,5)+DTPTgl.getSelectedItem().toString().substring(0,2),4,Nomor); 
+    }
+
+    private void cekPPN() {
+        try {
+            if(Valid.SetAngka(BesarDeposit.getText())>0){
+                ppn=Valid.SetAngka(Persenppn.getText());
+                nilaippn=(ppn*Valid.SetAngka(BesarDeposit.getText()))/100;
+                System.out.println(""+ppn);
+                System.out.println(""+nilaippn);
+                BesarPPN.setText(Valid.SetAngka(nilaippn));
+                DibayarPasien.setText(Valid.SetAngka(Valid.SetAngka(BesarDeposit.getText())+nilaippn));
+            }
+        } catch (Exception e) {
+        }
     }
 }

@@ -6866,7 +6866,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 itempiutang=0;
                 row2=tabModeAkunPiutang.getRowCount();
                 for(r=0;r<row2;r++){ 
-                    if(!tabModeAkunPiutang.getValueAt(r,3).toString().equals("")){
+                    if(Valid.SetAngka(tabModeAkunPiutang.getValueAt(r,3).toString())>0){
                         try {
                             itempiutang=Double.parseDouble(tabModeAkunPiutang.getValueAt(r,3).toString()); 
                         } catch (Exception e) {

@@ -848,7 +848,7 @@ public class koneksiDB {
     public static String SECRETKEYAPIMEDQLAB(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("SECRETKEYAPIMEDQLAB");
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIMEDQLAB"));
         }catch(Exception e){
             var=""; 
         }
@@ -858,7 +858,7 @@ public class koneksiDB {
     public static String CONSIDAPIMEDQLAB(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("CONSIDAPIMEDQLAB");
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIMEDQLAB"));
         }catch(Exception e){
             var=""; 
         }
