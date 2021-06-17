@@ -866,17 +866,18 @@ public class DlgDeposit extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptDeposit.jasper","report","::[ Data Deposit/Titipan Pasien ]::","select deposit.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien) as pasien, " +
-                "deposit.tgl_deposit,deposit.besar_deposit,concat(deposit.nip,' ',petugas.nama) as petugas " +
-                "from deposit inner join reg_periksa inner join pasien inner join petugas " +
-                "on deposit.no_rawat=reg_periksa.no_rawat " +
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "and deposit.nip=petugas.nip " +
-                "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or " +
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.nip like '%"+TCari.getText().trim()+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and petugas.nama like '%"+TCari.getText().trim()+"%' order by deposit.tgl_deposit desc",param);
+            Valid.MyReportqry("rptDeposit.jasper","report","::[ Data Deposit/Titipan Pasien ]::",
+                "select deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
+                "deposit.tgl_deposit,deposit.nama_bayar,deposit.besar_deposit,akun_bayar.ppn,deposit.besarppn,"+
+                "(deposit.besar_deposit+deposit.besarppn),deposit.nip,petugas.nama,akun_bayar.kd_rek " +
+                "from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join petugas on deposit.nip=petugas.nip "+
+                "inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar "+
+                "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' "+(TCari.getText().equals("")?"":
+                "and (deposit.no_deposit like '%"+TCari.getText().trim()+"%' or deposit.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or deposit.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or deposit.nama_bayar like '%"+TCari.getText().trim()+"%')")+
+                " order by deposit.tgl_deposit desc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
