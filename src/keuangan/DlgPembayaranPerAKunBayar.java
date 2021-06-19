@@ -41,7 +41,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     private ResultSet rs,rsjamshift,rsakunbayar;
     private double all=0,bayar=0;
     private int i,kolom=0,no=0;
-    private String shift="",tanggal2="",nopemasukanlain="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="";
+    private String shift="",tanggal2="",nopemasukanlain="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="",nodeposit="";
     private StringBuilder htmlContent;
     private String[] akunbayar;
     private double[] totalbayar;
@@ -500,6 +500,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                 norawatjalan="";
                                 notajual="";
                                 nopemasukanlain="";
+                                nodeposit="";
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     norawatinap=rs.getString("no_nota");
@@ -512,11 +513,16 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         if(!nonota.equals("")){
                                             notajual=rs.getString("no_nota");
                                         }else if(nonota.equals("")){
-                                            nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                            nonota=Sequel.cariIsi("select no_deposit from deposit where no_deposit=?",rs.getString("no_nota"));
                                             if(!nonota.equals("")){
-                                                nopemasukanlain=rs.getString("no_nota");
+                                                nodeposit=rs.getString("no_nota");
                                             }else{
-                                                nopemasukanlain="";
+                                                nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                                if(!nonota.equals("")){
+                                                    nopemasukanlain=rs.getString("no_nota");
+                                                }else{
+                                                    nopemasukanlain="";
+                                                }
                                             }
                                         }                                            
                                     }
@@ -543,6 +549,9 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(total) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+notajual+"' and penjualan.nama_bayar='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
+                                        }else if(!nodeposit.equals("")){
+                                            bayar=Sequel.cariIsiAngka("select sum(besar_deposit) from deposit where no_deposit='"+nodeposit+"' and nama_bayar='"+akunbayar[i]+"'");
+                                            htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else if(!nopemasukanlain.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(besar) from pemasukan_lain inner join kategori_pemasukan_lain inner join akun_bayar on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori and kategori_pemasukan_lain.kd_rek2=akun_bayar.kd_rek  where pemasukan_lain.no_masuk='"+nopemasukanlain+"' and akun_bayar.nama_bayar='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
@@ -561,6 +570,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                 norawatjalan="";
                                 notajual="";
                                 nopemasukanlain="";
+                                nodeposit="";
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     norawatinap=rs.getString("no_nota");
@@ -573,13 +583,18 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         if(!nonota.equals("")){
                                             notajual=rs.getString("no_nota");
                                         }else if(nonota.equals("")){
-                                            nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                            nonota=Sequel.cariIsi("select no_deposit from deposit where no_deposit=?",rs.getString("no_nota"));
                                             if(!nonota.equals("")){
-                                                nopemasukanlain=rs.getString("no_nota");
+                                                nodeposit=rs.getString("no_nota");
                                             }else{
-                                                nopemasukanlain="";
+                                                nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                                if(!nonota.equals("")){
+                                                    nopemasukanlain=rs.getString("no_nota");
+                                                }else{
+                                                    nopemasukanlain="";
+                                                }
                                             }
-                                        }                                             
+                                        }                                                  
                                     }
                                 }
                                 if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
@@ -603,6 +618,9 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(total) from detailjual inner join penjualan on penjualan.no_nota=detailjual.no_nota where penjualan.no_nota='"+notajual+"' and penjualan.nama_bayar='"+akunbayar[i]+"'");
+                                            htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
+                                        }else if(!nodeposit.equals("")){
+                                            bayar=Sequel.cariIsiAngka("select sum(besar_deposit) from deposit where no_deposit='"+nodeposit+"' and nama_bayar='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else if(!nopemasukanlain.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(besar) from pemasukan_lain inner join kategori_pemasukan_lain inner join akun_bayar on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori and kategori_pemasukan_lain.kd_rek2=akun_bayar.kd_rek  where pemasukan_lain.no_masuk='"+nopemasukanlain+"' and akun_bayar.nama_bayar='"+akunbayar[i]+"'");
@@ -656,7 +674,8 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
             }
             htmlContent.append( 
                 "</tr>"
-            );            
+            );  
+                          
             if(kolom==0){
                 LoadHTML.setText(
                         "<html>"+

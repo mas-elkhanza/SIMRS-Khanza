@@ -191,11 +191,11 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         }
         tbPemasukanLain.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabMode5=new DefaultTableModel(null,new Object[]{"Tanggal","No.Rawat","No.RM","Nama Pasien","Deposit"}){
+        tabMode5=new DefaultTableModel(null,new Object[]{"Tanggal","No.Deposit","No.Rawat","No.RM","Nama Pasien","Akun Bayar","Deposit"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
               Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Double.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -206,17 +206,21 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
         tbDeposit.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDeposit.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 7; i++) {
             TableColumn column = tbDeposit.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(65);
             }else if(i==1){
                 column.setPreferredWidth(103);
             }else if(i==2){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(103);
             }else if(i==3){
-                column.setPreferredWidth(473);
+                column.setPreferredWidth(80);
             }else if(i==4){
+                column.setPreferredWidth(176);
+            }else if(i==5){
+                column.setPreferredWidth(204);
+            }else if(i==6){
                 column.setPreferredWidth(100);
             }
         }
@@ -723,8 +727,8 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptOmsetDeposit.jasper","report","::[ Penerimaan Deposit Pasien ]::",
-                "select DATE_FORMAT(deposit.tgl_deposit,'%d-%m-%Y') as tanggal,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.besar_deposit "+
-                "from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "select DATE_FORMAT(deposit.tgl_deposit,'%d-%m-%Y') as tanggal,deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.nama_bayar, "+
+                "deposit.besar_deposit from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59"+"' order by deposit.tgl_deposit ",param);
         }
         
@@ -940,8 +944,8 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode5);
             deposit=0;
             ps=koneksi.prepareStatement(
-                    "select DATE_FORMAT(deposit.tgl_deposit,'%d-%m-%Y'),deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.besar_deposit "+
-                    "from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "select DATE_FORMAT(deposit.tgl_deposit,'%d-%m-%Y'),deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.nama_bayar, "+
+                    "deposit.besar_deposit from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where deposit.tgl_deposit between ? and ? order by deposit.tgl_deposit ");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00");
@@ -949,9 +953,9 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode5.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5)
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7)
                     });
-                    deposit=deposit+rs.getDouble(5);
+                    deposit=deposit+rs.getDouble(7);
                 }
             } catch (Exception e) {
                 System.out.println("Notif Deposit : "+e);
