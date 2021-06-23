@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
-import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.KeyManagementException;
@@ -15,7 +14,6 @@ import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Properties;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
@@ -34,8 +32,8 @@ import org.springframework.web.client.RestTemplate;
 public class ApiMEDQLAB2 {        
     private Connection koneksi=koneksiDB.condb();
     private String Consid,Secretkey;
-    private PreparedStatement ps,ps2;
-    private ResultSet rs,rs2;
+    private PreparedStatement ps,ps2,ps3;
+    private ResultSet rs,rs2,rs3;
     private String URL="",requestJson="",requestJson2="",kodeicd="",namaicd="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -107,21 +105,48 @@ public class ApiMEDQLAB2 {
                     headers.add("X-key",Secretkey);
                     headers.add("X-Time",String.valueOf(GetUTCdatetimeAsString()));
                     headers.add("X-Sign",getSignature());
+                    
                     ps2=koneksi.prepareStatement(
-                            "select permintaan_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,"+
-                            "template_laboratorium.urut from permintaan_detail_permintaan_lab "+
-                            "inner join template_laboratorium on permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
-                            "where permintaan_detail_permintaan_lab.noorder=? order by template_laboratorium.kd_jenis_prw,template_laboratorium.urut desc");
+                            "select permintaan_pemeriksaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan "+
+                            "from permintaan_pemeriksaan_lab inner join jns_perawatan_lab on permintaan_pemeriksaan_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                            "where permintaan_pemeriksaan_lab.noorder=? order by permintaan_pemeriksaan_lab.kd_jenis_prw desc");
                     try {
                         ps2.setString(1,rs.getString("noorder"));
                         rs2=ps2.executeQuery();
                         requestJson2="";
                         while(rs2.next()){
-                            requestJson2=
+                            requestJson2=requestJson2+
                                 "{" +
-                                    "\"id_test\": \""+rs2.getString("id_template")+"\"," +
-                                    "\"nama_test\": \""+rs2.getString("Pemeriksaan")+"\"" +
-                                "},"+requestJson2;
+                                    "\"id_test\": \""+rs2.getString("kd_jenis_prw")+"\"," +
+                                    "\"nama_test\": \""+rs2.getString("nm_perawatan")+"\"" +
+                                "},";
+                            ps3=koneksi.prepareStatement(
+                                    "select permintaan_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                                    "template_laboratorium.urut from permintaan_detail_permintaan_lab "+
+                                    "inner join template_laboratorium on permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
+                                    "where permintaan_detail_permintaan_lab.noorder=? and permintaan_detail_permintaan_lab.kd_jenis_prw=? "+
+                                    "order by template_laboratorium.urut desc");
+                            try {
+                                ps3.setString(1,rs.getString("noorder"));
+                                ps3.setString(2,rs2.getString("kd_jenis_prw"));
+                                rs3=ps3.executeQuery();
+                                while(rs3.next()){
+                                    requestJson2=requestJson2+
+                                        "{" +
+                                            "\"id_test\": \""+rs3.getString("id_template")+"\"," +
+                                            "\"nama_test\": \""+rs3.getString("Pemeriksaan")+"\"" +
+                                        "},";
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif 3 : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                                if(ps3!=null){
+                                    ps3.close();
+                                }
+                            }
                         }
                         if(requestJson2.endsWith(",")){
                             requestJson2 = requestJson2.substring(0,requestJson2.length() - 1);

@@ -11,6 +11,8 @@
 
 package keuangan;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -23,6 +25,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,6 +59,13 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
     private ResultSet rs;
     private String koderekening="",kontraakun="",status="";
     private boolean sukses=true;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -261,7 +273,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        Valid.loadCombo(AkunBayar,"nama_bayar","akun_bayar");
         ChkInput.setSelected(false);
         isForm();
     }
@@ -353,6 +364,11 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -787,7 +803,22 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                          +Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.nota_piutang=?",NoRawat.getText())
                          -Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",NoRawat.getText())
                          -Double.parseDouble(Cicilan.getText()));
-            koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",AkunBayar.getSelectedItem().toString());
+            koderekening="";
+            try {
+                myObj = new FileReader("./cache/akunbayar.iyem");
+                root = mapper.readTree(myObj);
+                response = root.path("akunbayar");
+                if(response.isArray()){
+                   for(JsonNode list:response){
+                       if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
+                            koderekening=list.path("KodeRek").asText();  
+                       }
+                   }
+                }
+                myObj.close();
+            } catch (Exception e) {
+                sukses=false;
+            }
             Sequel.AutoComitFalse();
             sukses=true;
             if(Sequel.menyimpantf("bayar_piutang","?,?,?,?,?,?,?","Pembayaran",7,new String[]{
@@ -1155,6 +1186,10 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_AkunPiutangItemStateChanged
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tampilAkunBayar();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
     * @param args the command line arguments
     */
@@ -1311,6 +1346,8 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void getData() {
         int row=tbKamar.getSelectedRow();
         if(row!= -1){
+            kontraakun="";
+            AkunPiutang.removeAllItems();
             Kdmem.setText(tbKamar.getValueAt(row,1).toString());
             Nmmem.setText(tbKamar.getValueAt(row,2).toString());
             Cicilan.setText(tbKamar.getValueAt(row,3).toString());
@@ -1345,6 +1382,44 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
             FormInput.setVisible(false);      
             ChkInput.setVisible(true);
+        }
+    }
+    
+    private void tampilAkunBayar() {         
+         try{      
+             file=new File("./cache/akunbayar.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             iyem="";
+             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             try{
+                 rs=ps.executeQuery();
+                 AkunBayar.removeAllItems();
+                 while(rs.next()){    
+                     AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
+                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                 }
+             }catch (Exception e) {
+                 System.out.println("Notifikasi : "+e);
+             } finally{
+                 if(rs != null){
+                     rs.close();
+                 } 
+                 if(ps != null){
+                     ps.close();
+                 } 
+             }
+
+             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
+             fileWriter.flush();
+             fileWriter.close();
+             iyem=null;
+        } catch (Exception e) {
+            if(e.toString().contains("begin")){
+                System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            }else{
+                System.out.println("Notifikasi : "+e);
+            }
         }
     }
 }

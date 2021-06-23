@@ -1,6 +1,8 @@
 package ipsrs;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -13,6 +15,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,6 +46,14 @@ public class IPSRSPembelian extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     private boolean sukses=true;
     private String akunbayar,akunpembelian=Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun");
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
+    
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -210,9 +223,6 @@ public class IPSRSPembelian extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
-        Valid.loadCombo(CmbAkun,"nama_bayar","akun_bayar");        
-           
     }
 
     /** This method is called from within the constructor to
@@ -264,7 +274,7 @@ public class IPSRSPembelian extends javax.swing.JDialog {
         nmptg = new widget.TextBox();
         btnSuplier = new widget.Button();
         btnPetugas = new widget.Button();
-        CmbAkun = new widget.ComboBox();
+        AkunBayar = new widget.ComboBox();
         jLabel10 = new widget.Label();
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -660,9 +670,9 @@ public class IPSRSPembelian extends javax.swing.JDialog {
         panelisi3.add(btnPetugas);
         btnPetugas.setBounds(734, 40, 28, 23);
 
-        CmbAkun.setName("CmbAkun"); // NOI18N
-        panelisi3.add(CmbAkun);
-        CmbAkun.setBounds(79, 40, 257, 23);
+        AkunBayar.setName("AkunBayar"); // NOI18N
+        panelisi3.add(AkunBayar);
+        AkunBayar.setBounds(79, 40, 257, 23);
 
         jLabel10.setText("Akun Bayar :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -722,7 +732,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                akunbayar=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString());
+                akunbayar="";
+                try {
+                    myObj = new FileReader("./cache/akunbayar.iyem");
+                    root = mapper.readTree(myObj);
+                    response = root.path("akunbayar");
+                    if(response.isArray()){
+                       for(JsonNode list:response){
+                           if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
+                                akunbayar=list.path("KodeRek").asText();  
+                           }
+                       }
+                    }
+                    myObj.close();
+                } catch (Exception e) {
+                    sukses=false;
+                } 
+
                 if(Sequel.menyimpantf2("ipsrspembelian","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                         NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),
                         ""+sbttl,""+ttldisk,""+ttl,""+ppn,""+meterai,""+(ttl+ppn+meterai),akunbayar
@@ -946,6 +972,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
+        tampilAkunBayar();
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
@@ -996,12 +1023,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox AkunBayar;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
     private widget.Button BtnTambah;
-    private widget.ComboBox CmbAkun;
     private widget.TextBox Kd2;
     private widget.Label LPotongan;
     private widget.Label LPpn;
@@ -1196,5 +1223,42 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 "PI"+TglBeli.getSelectedItem().toString().substring(6,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
+    private void tampilAkunBayar() {         
+         try{      
+             file=new File("./cache/akunbayar.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             iyem="";
+             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             try{
+                 rs=ps.executeQuery();
+                 AkunBayar.removeAllItems();
+                 while(rs.next()){    
+                     AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
+                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                 }
+             }catch (Exception e) {
+                 System.out.println("Notifikasi : "+e);
+             } finally{
+                 if(rs != null){
+                     rs.close();
+                 } 
+                 if(ps != null){
+                     ps.close();
+                 } 
+             }
+
+             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
+             fileWriter.flush();
+             fileWriter.close();
+             iyem=null;
+        } catch (Exception e) {
+            if(e.toString().contains("begin")){
+                System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            }else{
+                System.out.println("Notifikasi : "+e);
+            }
+        }
+    }
  
 }

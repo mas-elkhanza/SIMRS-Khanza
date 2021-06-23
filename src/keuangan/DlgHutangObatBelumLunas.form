@@ -472,9 +472,6 @@
                       <Dimension value="[93, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ChkTanggalDatangItemStateChanged"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Tanggal" name="TglDatang1">
                   <Properties>
@@ -520,18 +517,15 @@
                 </Component>
                 <Component class="widget.CekBox" name="ChkTanggalTempo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tgl.Tempo"/>
+                    <Property name="text" type="java.lang.String" value="Tgl.Tempo :"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="ChkTanggalTempo" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[85, 23]"/>
+                      <Dimension value="[89, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ChkTanggalTempoItemStateChanged"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Tanggal" name="TglTempo1">
                   <Properties>
@@ -541,9 +535,6 @@
                       <Dimension value="[97, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TglTempo1KeyPressed"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Label" name="label20">
                   <Properties>
@@ -563,9 +554,6 @@
                       <Dimension value="[97, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TglTempo2KeyPressed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -719,15 +707,15 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.ComboBox" name="nama_bayar">
+            <Component class="widget.ComboBox" name="AkunBayar">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="nama_bayar" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="AkunBayar" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nama_bayarKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AkunBayarKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
