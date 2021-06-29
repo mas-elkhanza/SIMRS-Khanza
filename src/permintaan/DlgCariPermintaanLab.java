@@ -3098,7 +3098,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                        medqlab.ambil(NoPermintaan);
+                        medqlab.ambil(NoPermintaan.substring(4,14));
                         DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
                         dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
@@ -3126,7 +3126,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                        medqlab.ambil(NoPermintaan);
+                        medqlab.ambil(NoPermintaan.substring(4,14));
                         DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
                         dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
