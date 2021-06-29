@@ -74,7 +74,7 @@
             )
         );
         http_response_code(201);
-        $result = mysqli_query($konektor, $sql) or die(mysqli_error($konektor)."".json_encode($response)."");
+        $result = mysqli_query($konektor, $sql) or die(/*mysqli_error($konektor)."".*/json_encode($response)."");
         mysqli_close($konektor);
         return $result;
     }

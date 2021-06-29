@@ -241,6 +241,43 @@ public class ApiMEDQLAB {
         }
     }
     
+    public void ambil(String nopermintaan) {
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("X-cons",Consid);
+            headers.add("X-key",Secretkey);
+            headers.add("X-Time",String.valueOf(GetUTCdatetimeAsString()));
+            headers.add("X-Sign",getSignature());
+            requestJson="{" +
+                            "\"no_laboratorium\": \""+nopermintaan+"\""+
+                        "}";
+            System.out.println("URL : "+URL+"/api/v1/getResult/json");
+            System.out.println("JSON : "+requestJson);
+            requestEntity = new HttpEntity(requestJson,headers);
+            root = mapper.readTree(getRest().exchange(URL+"/api/v1/getResult/json", HttpMethod.GET, requestEntity, String.class).getBody());
+            if(root.path("metaData").path("code").asText().equals("200")){
+                Sequel.queryu("truncate table temporary_permintaan_lab");
+                response = root.path("response").path("data").path("pemeriksaan"); 
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        Sequel.menyimpan(
+                            "temporary_permintaan_lab","'0','"+list.path("id").asText()+"','"+list.path("name").asText()+"',"+
+                            "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                        ); 
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Gagal mengambil data. Silahkan hubungi administrator");  
+            }
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("UnknownHostException")||ex.toString().contains("404")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server MEDQLAB terputus...!");
+            }
+        }
+    }
+    
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {

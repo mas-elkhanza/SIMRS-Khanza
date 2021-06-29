@@ -1460,6 +1460,8 @@
                                 )
                             );
                             http_response_code(200);
+                            bukaquery2("delete from set_no_rkm_medis");
+                            bukaquery2("insert into set_no_rkm_medis values('$norm')");
                         }else{
                             $response = array(
                                 'metadata' => array(
@@ -1628,7 +1630,7 @@
         echo "   Header gunakan x-token:token yang diambil sebelumnya, x-username:user yang diberikan RS";
         echo "   Body berisi : \n";
         echo '   {'."\n";
-        echo '      "tanggalawal": "XXXX-XX-XX"'."\n";
+        echo '      "tanggalawal": "XXXX-XX-XX",'."\n";
         echo '      "tanggalakhir": "XXXX-XX-XX"'."\n";
         echo '   }'."\n\n";
         echo "   Hasilnya : \n";

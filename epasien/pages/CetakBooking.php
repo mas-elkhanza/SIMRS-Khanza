@@ -8,8 +8,8 @@
     <body bgcolor='#ffffff'>
     <?php
         $nobooking = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
-        if(isset($nobooking)){
-            $nobooking = json_decode(encrypt_decrypt($nobooking,"d"),true); 
+        $nobooking = json_decode(encrypt_decrypt($nobooking,"d"),true); 
+        if(isset($nobooking["nobooking"])){
             $nobooking = cleankar($nobooking["nobooking"]);
             $querybooking=bukaquery("select booking_periksa.no_booking,DATE_FORMAT(booking_periksa.tanggal,'%d-%m-%Y')as tanggal,booking_periksa.nama,booking_periksa.alamat,booking_periksa.no_telp,booking_periksa.email,poliklinik.nm_poli,booking_periksa.tambahan_pesan,DATE_FORMAT(booking_periksa.tanggal_booking,'%d-%m-%Y %H:%i:%s')as tanggal_booking from booking_periksa inner join poliklinik on booking_periksa.kd_poli=poliklinik.kd_poli where booking_periksa.no_booking='$nobooking'");
             if(mysqli_num_rows($querybooking)!=0) { 

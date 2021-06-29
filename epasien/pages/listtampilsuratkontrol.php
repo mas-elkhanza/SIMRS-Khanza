@@ -5,9 +5,9 @@
     
     $token      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $token      = json_decode(encrypt_decrypt($token,"d"),true); 
-    $noantrian  = $token["noantrian"];
-    if (isset($noantrian)) {
-        $tahun  = $token["tahun"];
+    if (isset($token["noantrian"])) {
+        $noantrian  = $token["noantrian"];
+        $tahun      = $token["tahun"];
         $querysuratkontrol = bukaquery("select skdp_bpjs.tahun,skdp_bpjs.no_rkm_medis,pasien.nm_pasien,skdp_bpjs.diagnosa,skdp_bpjs.terapi,skdp_bpjs.alasan1,skdp_bpjs.alasan2,skdp_bpjs.rtl1,skdp_bpjs.rtl2,skdp_bpjs.tanggal_datang,skdp_bpjs.tanggal_rujukan,skdp_bpjs.no_antrian,skdp_bpjs.kd_dokter,dokter.nm_dokter,skdp_bpjs.status from skdp_bpjs inner join pasien inner join dokter on skdp_bpjs.no_rkm_medis=pasien.no_rkm_medis and skdp_bpjs.kd_dokter=dokter.kd_dokter where skdp_bpjs.no_antrian='$noantrian' and skdp_bpjs.tahun='$tahun'");
         if($rsquerysuratkontrol = mysqli_fetch_array($querysuratkontrol)) {
             $PNG_TEMP_DIR           = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;

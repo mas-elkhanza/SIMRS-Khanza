@@ -4,8 +4,8 @@
     }
     $norawat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $norawat = json_decode(encrypt_decrypt($norawat,"d"),true); 
-    $norawat = $norawat["norawat"];
-    if (isset($norawat)) {
+    if (isset($norawat["norawat"])) {
+        $norawat      = $norawat["norawat"];
         $querybilling = bukaquery("select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,
                         if(tambahan<>0,tambahan,null) as tiga, if(totalbiaya<>0,totalbiaya,null) as empat,pemisah,status 
                         from billing where no_rawat='$norawat' order by noindex");
