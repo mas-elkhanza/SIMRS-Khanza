@@ -231,7 +231,9 @@ public class ApiMEDQLAB {
             System.out.println("URL : "+URL+"/api/v1/getResult/json");
             System.out.println("JSON : "+requestJson);
             requestEntity = new HttpEntity(requestJson,headers);
-            root = mapper.readTree(getRest().exchange(URL+"/api/v1/getResult/json", HttpMethod.GET, requestEntity, String.class).getBody());
+            requestJson=getRest().exchange(URL+"/api/v1/getResult/json", HttpMethod.GET, requestEntity, String.class).getBody();
+            System.err.println("Result : "+requestJson);
+            root = mapper.readTree(requestJson);
             if(root.path("metaData").path("code").asText().equals("200")){
                 Sequel.queryu("truncate table temporary_permintaan_lab");
                 response = root.path("response").path("data").path("pemeriksaan"); 
