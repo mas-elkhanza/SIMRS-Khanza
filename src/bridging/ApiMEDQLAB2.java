@@ -34,12 +34,12 @@ public class ApiMEDQLAB2 {
     private String Consid,Secretkey;
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2,rs3;
-    private String URL="",requestJson="",requestJson2="",kodeicd="",namaicd="";
+    private String URL="",requestJson="",requestJson2="",hasil="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private JsonNode root;
     private sekuel Sequel=new sekuel();
-    private JsonNode response;
+    private JsonNode response,response2;
     private ObjectMapper mapper = new ObjectMapper();
     
     public ApiMEDQLAB2(){
@@ -162,30 +162,6 @@ public class ApiMEDQLAB2 {
                         }
                     }
                     
-                    ps2=koneksi.prepareStatement(
-                            "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from diagnosa_pasien "+
-                            "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
-                            "where diagnosa_pasien.no_rawat=? and diagnosa_pasien.prioritas='1' ");
-                    try {
-                        ps2.setString(1,rs.getString("no_rawat"));
-                        rs2=ps2.executeQuery();
-                        kodeicd="";
-                        namaicd="";
-                        if(rs2.next()){
-                            kodeicd=rs2.getString("kd_penyakit");
-                            namaicd=rs2.getString("nm_penyakit");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif 4 : "+e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
-                        }
-                        if(ps2!=null){
-                            ps2.close();
-                        }
-                    }
-                    
                     requestJson="{" +
                                     "\"no_pendaftaran\": \""+rs.getString("noorder").substring(4,14)+"\"," +
                                     "\"no_rm\": \""+rs.getString("no_rkm_medis")+"\"," +
@@ -234,6 +210,72 @@ public class ApiMEDQLAB2 {
                      ps.close();
                  }
              }
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("UnknownHostException")||ex.toString().contains("404")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server MEDQLAB terputus...!");
+            }
+        }
+    }
+    
+    public void ambil(String nopermintaan) {
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("X-cons",Consid);
+            headers.add("X-key",Secretkey);
+            headers.add("X-Time",String.valueOf(GetUTCdatetimeAsString()));
+            headers.add("X-Sign",getSignature());
+            requestJson="{" +
+                            "\"no_laboratorium\": \""+nopermintaan+"\""+
+                        "}";
+            System.out.println("URL : "+URL+"/api/v1/getResult/json");
+            System.out.println("JSON : "+requestJson);
+            requestEntity = new HttpEntity(requestJson,headers);
+            root = mapper.readTree(getRest().exchange(URL+"/api/v1/getResult/json", HttpMethod.GET, requestEntity, String.class).getBody());
+            if(root.path("metaData").path("code").asText().equals("200")){
+                Sequel.queryu("truncate table temporary_permintaan_lab");
+                response = root.path("response").path("data").path("pemeriksaan"); 
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        hasil="";
+                        if(!list.path("value").asText().equals("")){
+                            hasil=list.path("value").asText();
+                        }
+                        if(!list.path("value_string").asText().equals("")){
+                            hasil=list.path("value_string").asText();
+                        }
+                        if(!list.path("value_memo").asText().equals("")){
+                            hasil=list.path("value_memo").asText();
+                        }
+                        
+                        Sequel.menyimpan(
+                            "temporary_permintaan_lab","'0','"+list.path("id").asText()+"','"+hasil+"','"+list.path("keterangan_alpha").asText()+"','"+list.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                        ); 
+                        
+                        response2 = list.path("childs");
+                        if(response2.isArray()){
+                            for(JsonNode list2:response2){
+                                hasil="";
+                                if(!list2.path("value").asText().equals("")){
+                                    hasil=list2.path("value").asText();
+                                }
+                                if(!list2.path("value_string").asText().equals("")){
+                                    hasil=list2.path("value_string").asText();
+                                }
+                                if(!list2.path("value_memo").asText().equals("")){
+                                    hasil=list2.path("value_memo").asText();
+                                }
+                                Sequel.menyimpan(
+                                    "temporary_permintaan_lab","'0','"+list2.path("id").asText()+"','"+hasil+"','"+list2.path("keterangan_alpha").asText()+"','"+list2.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                                );
+                            }
+                        }
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Gagal mengambil data. Silahkan hubungi administrator");  
+            }
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")||ex.toString().contains("404")){

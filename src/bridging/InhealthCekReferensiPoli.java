@@ -29,13 +29,11 @@ import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -44,7 +42,6 @@ import org.springframework.web.client.RestTemplate;
  */
 public final class InhealthCekReferensiPoli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
@@ -325,11 +322,10 @@ public final class InhealthCekReferensiPoli extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/Poli";	
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/Poli";	
 	    HttpHeaders headers = new HttpHeaders();            
             headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                             "\"kodeprovider\": \""+kodeppk+"\"," +
                             "\"keyword\": \""+poli+"\"" +
                          "}";

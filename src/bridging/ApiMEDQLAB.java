@@ -34,12 +34,12 @@ public class ApiMEDQLAB {
     private String Consid,Secretkey;
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2,rs3;
-    private String URL="",requestJson="",requestJson2="",kodeicd="",namaicd="";
+    private String URL="",requestJson="",requestJson2="",hasil="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private JsonNode root;
     private sekuel Sequel=new sekuel();
-    private JsonNode response;
+    private JsonNode response,response2;
     private ObjectMapper mapper = new ObjectMapper();
     
     public ApiMEDQLAB(){
@@ -161,30 +161,6 @@ public class ApiMEDQLAB {
                         }
                     }
                     
-                    ps2=koneksi.prepareStatement(
-                            "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from diagnosa_pasien "+
-                            "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
-                            "where diagnosa_pasien.no_rawat=? and diagnosa_pasien.prioritas='1' ");
-                    try {
-                        ps2.setString(1,rs.getString("no_rawat"));
-                        rs2=ps2.executeQuery();
-                        kodeicd="";
-                        namaicd="";
-                        if(rs2.next()){
-                            kodeicd=rs2.getString("kd_penyakit");
-                            namaicd=rs2.getString("nm_penyakit");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif 4 : "+e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
-                        }
-                        if(ps2!=null){
-                            ps2.close();
-                        }
-                    }
-                    
                     requestJson="{" +
                                     "\"no_pendaftaran\": \""+rs.getString("noorder").substring(4,14)+"\"," +
                                     "\"no_rm\": \""+rs.getString("no_rkm_medis")+"\"," +
@@ -261,10 +237,39 @@ public class ApiMEDQLAB {
                 response = root.path("response").path("data").path("pemeriksaan"); 
                 if(response.isArray()){
                     for(JsonNode list:response){
+                        hasil="";
+                        if(!list.path("value").asText().equals("")){
+                            hasil=list.path("value").asText();
+                        }
+                        if(!list.path("value_string").asText().equals("")){
+                            hasil=list.path("value_string").asText();
+                        }
+                        if(!list.path("value_memo").asText().equals("")){
+                            hasil=list.path("value_memo").asText();
+                        }
+                        
                         Sequel.menyimpan(
-                            "temporary_permintaan_lab","'0','"+list.path("id").asText()+"','"+list.path("name").asText()+"',"+
-                            "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                            "temporary_permintaan_lab","'0','"+list.path("id").asText()+"','"+hasil+"','"+list.path("keterangan_alpha").asText()+"','"+list.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
                         ); 
+                        
+                        response2 = list.path("childs");
+                        if(response2.isArray()){
+                            for(JsonNode list2:response2){
+                                hasil="";
+                                if(!list2.path("value").asText().equals("")){
+                                    hasil=list2.path("value").asText();
+                                }
+                                if(!list2.path("value_string").asText().equals("")){
+                                    hasil=list2.path("value_string").asText();
+                                }
+                                if(!list2.path("value_memo").asText().equals("")){
+                                    hasil=list2.path("value_memo").asText();
+                                }
+                                Sequel.menyimpan(
+                                    "temporary_permintaan_lab","'0','"+list2.path("id").asText()+"','"+hasil+"','"+list2.path("keterangan_alpha").asText()+"','"+list2.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                                );
+                            }
+                        }
                     }
                 }
             }else{

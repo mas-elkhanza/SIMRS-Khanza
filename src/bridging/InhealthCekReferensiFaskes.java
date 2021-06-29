@@ -44,7 +44,6 @@ import org.springframework.web.client.RestTemplate;
  */
 public final class InhealthCekReferensiFaskes extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
@@ -326,11 +325,10 @@ public final class InhealthCekReferensiFaskes extends javax.swing.JDialog {
 
     public void tampil(String faskes) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/ProviderRujukan";	
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/ProviderRujukan";	
 	    HttpHeaders headers = new HttpHeaders();            
             headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                             "\"kodeprovider\": \""+kodeppk+"\"," +
                             "\"keyword\": \""+faskes+"\"" +
                          "}";
