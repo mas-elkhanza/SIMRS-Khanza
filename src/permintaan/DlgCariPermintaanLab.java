@@ -1,8 +1,6 @@
 package permintaan;
 import bridging.ApiLICA;
-import bridging.ApiLICA2;
 import bridging.ApiMEDQLAB;
-import bridging.ApiMEDQLAB2;
 import bridging.koneksiDBELIMS;
 import bridging.koneksiDBSysmex;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -69,9 +67,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private boolean aktif=false,semua;
     private ApiLICA lica=new ApiLICA();
     private ObjectMapper mapper = new ObjectMapper();
-    private ApiLICA2 lica2=new ApiLICA2(); 
     private ApiMEDQLAB medqlab=new ApiMEDQLAB();
-    private ApiMEDQLAB2 medqlab2=new ApiMEDQLAB2();
     private WebEngine engine;
     private JsonNode root;
     private JsonNode response;
@@ -2333,7 +2329,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    lica.kirim(NoPermintaan);
+                    lica.kirimRalan(NoPermintaan);
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
@@ -2347,7 +2343,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    lica2.kirim(NoPermintaan);
+                    lica.kirimRanap(NoPermintaan);
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
@@ -3065,7 +3061,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    medqlab.kirim(NoPermintaan);
+                    medqlab.kirimRalan(NoPermintaan);
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
@@ -3079,7 +3075,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    medqlab2.kirim(NoPermintaan);
+                    medqlab.kirimRanap(NoPermintaan);
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
