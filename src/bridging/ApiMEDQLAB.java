@@ -365,10 +365,8 @@ public class ApiMEDQLAB {
             headers.add("X-Sign",getSignature());
             System.out.println("URL : "+URL+"/api/v1/getResult/json?no_laboratorium="+nopermintaan);
             requestEntity = new HttpEntity(headers);
-            //Map<String, String> params = new HashMap<String, String>();
-            //params.put("no_laboratorium",nopermintaan);
             requestJson=getRest().exchange(URL+"/api/v1/getResult/json?no_laboratorium="+nopermintaan, HttpMethod.GET, requestEntity, String.class).getBody();
-            System.err.println("Result : "+requestJson);
+            System.out.println("Result : "+requestJson);
             root = mapper.readTree(requestJson);
             if(root.path("metaData").path("code").asText().equals("200")){
                 Sequel.queryu("truncate table temporary_permintaan_lab");
@@ -386,6 +384,7 @@ public class ApiMEDQLAB {
                             hasil=list.path("value_memo").asText();
                         }
                         
+                        System.out.println(" id : "+list.path("id").asText()+", value : "+list.path("value").asText()+", value_string : "+list.path("value_string").asText()+", value_memo : "+list.path("value_memo").asText()+", keterangan : "+list.path("keterangan_alpha").asText()+", nilai_normal : "+list.path("nilai_normal").asText());
                         Sequel.menyimpan(
                             "temporary_permintaan_lab","'0','"+list.path("id").asText()+"','"+hasil+"','"+list.path("keterangan_alpha").asText()+"','"+list.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
                         ); 
@@ -403,6 +402,8 @@ public class ApiMEDQLAB {
                                 if(!list2.path("value_memo").asText().equals("")){
                                     hasil=list2.path("value_memo").asText();
                                 }
+                                
+                                System.out.println(" id : "+list2.path("id").asText()+", value : "+list2.path("value").asText()+", value_string : "+list2.path("value_string").asText()+", value_memo : "+list2.path("value_memo").asText()+", keterangan : "+list2.path("keterangan_alpha").asText()+", nilai_normal : "+list2.path("nilai_normal").asText());
                                 Sequel.menyimpan(
                                     "temporary_permintaan_lab","'0','"+list2.path("id").asText()+"','"+hasil+"','"+list2.path("keterangan_alpha").asText()+"','"+list2.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
                                 );
