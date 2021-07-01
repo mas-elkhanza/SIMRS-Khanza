@@ -2229,9 +2229,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         rstampil=pstampil4.executeQuery();
                         while(rstampil.next()){
                             hasil="";keterangan="";nn="";
-                            pslica=koneksi.prepareStatement("select temp1,temp2,temp3,temp4 from temporary_permintaan_lab where temp1=?");
+                            pslica=koneksi.prepareStatement("select temp1,temp2,temp3,temp4 from temporary_permintaan_lab where temp1 like ?");
                             try {
-                                pslica.setString(1,rstampil.getString("id_template"));
+                                pslica.setString(1,"%"+rstampil.getString("Pemeriksaan").toLowerCase().trim()+"%");
                                 rslica=pslica.executeQuery();
                                 if(rslica.next()){
                                     hasil=rslica.getString("temp2");
