@@ -581,6 +581,7 @@ import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgLhtBankJateng;
 import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPendapatanPerCaraBayar;
+import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.DlgRingkasanTindakan;
 import keuangan.KeuanganBayarPesanToko;
@@ -17127,6 +17128,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
     }
     
+    private void btnPengembalianDepositPasienActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPengembalianDepositPasien aplikasi=new DlgPengembalianDepositPasien(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17746,7 +17759,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK,btnSuratKeteranganRawatInap,
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
-            btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen;
+            btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien;
     
     public void isWall(){
         try{            
@@ -19584,6 +19597,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getomset_penerimaan()==true){
                Panelmenu.add(btnOmsetPenerimaan); 
+               jmlmenu++;
+            }
+            
+            if(akses.getpengembalian_deposit_pasien()==true){
+               Panelmenu.add(btnPengembalianDepositPasien); 
                jmlmenu++;
             }
             
@@ -23193,6 +23211,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getomset_penerimaan()==true){
            Panelmenu.add(btnOmsetPenerimaan); 
+           jmlmenu++;
+        }
+        
+        if(akses.getpengembalian_deposit_pasien()==true){
+           Panelmenu.add(btnPengembalianDepositPasien); 
            jmlmenu++;
         }
         
@@ -27480,6 +27503,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getomset_penerimaan()==true){
             if(btnOmsetPenerimaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOmsetPenerimaan); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpengembalian_deposit_pasien()==true){
+            if(btnPengembalianDepositPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengembalianDepositPasien); 
                 jmlmenu++;
             }                
         }
@@ -32211,6 +32241,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikInventarisProdusen.setName("btnGrafikInventarisProdusen"); 
         btnGrafikInventarisProdusen.setPreferredSize(new java.awt.Dimension(200, 90));
         btnGrafikInventarisProdusen.addActionListener(this::btnGrafikInventarisProdusenActionPerformed);
+        
+        btnPengembalianDepositPasien = new widget.ButtonBig();
+        btnPengembalianDepositPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_11006_coin_money_purse_icon_48px.png"))); 
+        btnPengembalianDepositPasien.setText("Pengembalian Deposit Pasien");
+        btnPengembalianDepositPasien.setIconTextGap(0);
+        btnPengembalianDepositPasien.setName("btnPengembalianDepositPasien"); 
+        btnPengembalianDepositPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengembalianDepositPasien.addActionListener(this::btnPengembalianDepositPasienActionPerformed);
     }
 
     

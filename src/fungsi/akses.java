@@ -158,7 +158,7 @@ public final class akses {
             surat_keterangan_sehat=false,pendapatan_per_carabayar=false,akun_host_to_host_bank_jateng=false,pembayaran_bank_jateng=false,
             bpjs_surat_pri=false,ringkasan_tindakan=false,lama_pelayanan_pasien=false,surat_sakit_pihak_2=false,tagihan_hutang_obat=false,
             referensi_mobilejkn_bpjs=false,batal_pendaftaran_mobilejkn_bpjs=false,lama_operasi=false,grafik_inventaris_kategori=false,grafik_inventaris_merk=false,
-            grafik_inventaris_produsen=false;
+            grafik_inventaris_produsen=false,pengembalian_deposit_pasien=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -901,6 +901,7 @@ public final class akses {
                         akses.grafik_inventaris_kategori=true;
                         akses.grafik_inventaris_merk=true;
                         akses.grafik_inventaris_produsen=true;
+                        akses.pengembalian_deposit_pasien=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1627,6 +1628,7 @@ public final class akses {
                         akses.grafik_inventaris_kategori=rs2.getBoolean("grafik_inventaris_kategori");
                         akses.grafik_inventaris_merk=rs2.getBoolean("grafik_inventaris_merk");
                         akses.grafik_inventaris_produsen=rs2.getBoolean("grafik_inventaris_produsen");
+                        akses.pengembalian_deposit_pasien=rs2.getBoolean("pengembalian_deposit_pasien");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2351,6 +2353,7 @@ public final class akses {
                         akses.grafik_inventaris_kategori=false;
                         akses.grafik_inventaris_merk=false;
                         akses.grafik_inventaris_produsen=false;
+                        akses.pengembalian_deposit_pasien=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3130,4 +3133,5 @@ public final class akses {
     public static boolean getgrafik_inventaris_kategori(){return akses.grafik_inventaris_kategori;}
     public static boolean getgrafik_inventaris_merk(){return akses.grafik_inventaris_merk;}
     public static boolean getgrafik_inventaris_produsen(){return akses.grafik_inventaris_produsen;}
+    public static boolean getpengembalian_deposit_pasien(){return akses.pengembalian_deposit_pasien;}
 }   
