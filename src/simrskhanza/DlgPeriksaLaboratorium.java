@@ -2208,47 +2208,28 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         
     }
     
-    private void tampilMEDQLAB(String order) { 
+    private void tampilMEDQLAB() { 
         try {
             Valid.tabelKosong(tabMode);
-            for(i2=0;i2<tbTarif.getRowCount();i2++){ 
-                if(tbTarif.getValueAt(i2,0).toString().equals("true")){
-                    tabMode.addRow(new Object[]{true,tbTarif.getValueAt(i2,2).toString(),"","","","","",0,0,0,0,0,0,0,0});
+            pslica=koneksi.prepareStatement("select temp1,temp2,temp3,temp4,temp5 from temporary_permintaan_lab");
+            try {
+                rslica=pslica.executeQuery();
+                while(rslica.next()){
+                    hasil=rslica.getString("temp3");
+                    keterangan=rslica.getString("temp4");
+                    nn=rslica.getString("temp5");
+                    
                     pstampil4=koneksi.prepareStatement(
                             "select template_laboratorium.id_template, template_laboratorium.Pemeriksaan,"+
                             "template_laboratorium.biaya_item,template_laboratorium.bagian_rs,"+
                             "template_laboratorium.bhp,template_laboratorium.bagian_perujuk,"+
                             "template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,"+
                             "template_laboratorium.kso,template_laboratorium.menejemen,template_laboratorium.satuan "+
-                            "from template_laboratorium inner join permintaan_detail_permintaan_lab on "+
-                            "permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template where "+
-                            "template_laboratorium.kd_jenis_prw=? and permintaan_detail_permintaan_lab.noorder=? order by urut");
+                            "from template_laboratorium where template_laboratorium.id_template=?");
                     try{
-                        pstampil4.setString(1,tbTarif.getValueAt(i2,1).toString());
-                        pstampil4.setString(2,order);
+                        pstampil4.setString(1,rslica.getString("temp1"));
                         rstampil=pstampil4.executeQuery();
-                        while(rstampil.next()){
-                            hasil="";keterangan="";nn="";
-                            pslica=koneksi.prepareStatement("select temp1,temp2,temp3,temp4 from temporary_permintaan_lab where temp1 like ?");
-                            try {
-                                pslica.setString(1,"%"+rstampil.getString("Pemeriksaan").toLowerCase().trim()+"%");
-                                rslica=pslica.executeQuery();
-                                if(rslica.next()){
-                                    hasil=rslica.getString("temp2");
-                                    keterangan=rslica.getString("temp3");
-                                    nn=rslica.getString("temp4");
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif : "+e);
-                            } finally{
-                                if(rslica!=null){
-                                    rslica.close();
-                                }
-                                if(pslica!=null){
-                                    pslica.close();
-                                }
-                            }
-                                    
+                        if(rstampil.next()){
                             tabMode.addRow(new Object[]{
                                 true,"   "+rstampil.getString("Pemeriksaan"),
                                      hasil,rstampil.getString("satuan"),nn,keterangan,
@@ -2262,6 +2243,8 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                      rstampil.getDouble("kso"),
                                      rstampil.getDouble("menejemen")
                             });
+                        }else{
+                            tabMode.addRow(new Object[]{false,rslica.getString("temp2"),"","","","","",0,0,0,0,0,0,0,0});
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -2272,11 +2255,20 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         if(pstampil4!=null){
                             pstampil4.close();
                         }
-                    }                            
+                    }  
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rslica!=null){
+                    rslica.close();
+                }
+                if(pslica!=null){
+                    pslica.close();
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error Detail : "+e);
+            System.out.println("Notif : "+e);
         }
         
     }
@@ -2845,7 +2837,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
         isPsien();
         tampiltarif(order);
-        tampilMEDQLAB(order);
+        tampilMEDQLAB();
     }
 
     private void simpan() {

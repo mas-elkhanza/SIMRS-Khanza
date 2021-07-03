@@ -118,8 +118,8 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
             }else if(i==13){
                 column.setPreferredWidth(80);
             }else{
-                //column.setMinWidth(0);
-                //column.setMaxWidth(0);                   
+                column.setMinWidth(0);
+                column.setMaxWidth(0);                   
             }    
         }
         warna.kolom=0;
