@@ -20,9 +20,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgReg.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgPemberianDiet.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgKasirRalan.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganTagihanObatBHP.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/DlgHutangObatBelumLunas.java</file>
         </group>
     </open-files>
 </project-private>

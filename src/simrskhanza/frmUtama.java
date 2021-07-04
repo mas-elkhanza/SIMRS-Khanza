@@ -589,6 +589,7 @@ import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganRVPBPJS;
 import keuangan.KeuanganSetTarifOnline;
+import keuangan.KeuanganTagihanObatBHP;
 import keuangan.KeuanganValidasiPenagihanPiutang;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -17125,7 +17126,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     } 
     
     private void btnTagihanHutangObatActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganTagihanObatBHP form=new KeuanganTagihanObatBHP(this,false);
+        form.tampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     private void btnPengembalianDepositPasienActionPerformed(java.awt.event.ActionEvent evt) {
@@ -32203,7 +32212,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBatalPendaftaranMobileJKN.addActionListener(this::btnBatalPendaftaranMobileJKNActionPerformed);
         
         btnTagihanHutangObat = new widget.ButtonBig();
-        btnTagihanHutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_mail-send-receive_118784.png"))); 
+        btnTagihanHutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_3387311_document_money_report_sheet_shopping_icon_48px.png"))); 
         btnTagihanHutangObat.setText("Titip Faktur/Tagihan Obat & BHP");
         btnTagihanHutangObat.setIconTextGap(0);
         btnTagihanHutangObat.setName("btnTagihanHutangObat"); 
