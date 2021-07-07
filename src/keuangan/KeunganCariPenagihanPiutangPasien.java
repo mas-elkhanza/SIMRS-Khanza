@@ -413,7 +413,7 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik pada nomor permintaan untuk verifikasi pilihan");
+        tbDokter.setToolTipText("Silahkan klik pada nomor tagihan untuk verifikasi pilihan");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {

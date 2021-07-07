@@ -194,7 +194,7 @@ import javax.swing.JOptionPane;
 import keuangan.DlgAkunBayar;
 import keuangan.DlgBayarPemesanan;
 import keuangan.DlgBayarPiutang;
-import keuangan.DlgBubes;
+import keuangan.KeuanganBubes;
 import keuangan.DlgCashflow;
 import keuangan.DlgDetailJMDokter;
 import keuangan.DlgDetailPotongan;
@@ -331,8 +331,8 @@ import keuangan.DlgRBMenejemen;
 import keuangan.DlgRHKSO;
 import keuangan.DlgRHMenejemen;
 import keuangan.DlgRekapPembayaranPerPoli;
-import keuangan.DlgRekapPoliAnak;
-import keuangan.DlgRincianPiutangPasien;
+import keuangan.KeuanganRekapPoliAnak;
+import keuangan.KeuanganRincianPiutangPasien;
 import laporan.DlgBulananHAIs;
 import laporan.DlgCekEntryRalan;
 import laporan.DlgDkkPenyakitMenularRalan;
@@ -404,7 +404,7 @@ import keuangan.DlgDeposit;
 import keuangan.DlgJnsPerawatanRalan;
 import keuangan.DlgPaymentPoint2;
 import keuangan.DlgPembayaranPerAKunBayar2;
-import keuangan.DlgSaldoAkunPerBulan;
+import keuangan.KeuanganSaldoAkunPerBulan;
 import laporan.DlgHAIsPerBangsal;
 import laporan.DlgJumlahMacamDiet;
 import laporan.DlgJumlahPorsiDiet;
@@ -583,7 +583,7 @@ import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
-import keuangan.DlgRingkasanTindakan;
+import keuangan.KeuaganRingkasanTindakan;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
@@ -8398,7 +8398,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBubes bubes=new DlgBubes(this,false);
+        KeuanganBubes bubes=new KeuanganBubes(this,false);
         bubes.isCek();
         bubes.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bubes.setLocationRelativeTo(PanelUtama);
@@ -10801,7 +10801,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnRincianPiutangPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRincianPiutangPasienActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgRincianPiutangPasien billing=new DlgRincianPiutangPasien(this,false);
+        KeuanganRincianPiutangPasien billing=new KeuanganRincianPiutangPasien(this,false);
         billing.tampil();
         billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         billing.setLocationRelativeTo(PanelUtama);
@@ -11416,7 +11416,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgRekapPoliAnak aplikasi=new DlgRekapPoliAnak(this,false);
+        KeuanganRekapPoliAnak aplikasi=new KeuanganRekapPoliAnak(this,false);
         aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
@@ -13483,7 +13483,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSaldoAkunPerBulan aplikasi=new DlgSaldoAkunPerBulan(this,false);
+        KeuanganSaldoAkunPerBulan aplikasi=new KeuanganSaldoAkunPerBulan(this,false);
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -17037,7 +17037,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnRingkasanTindakanRalanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgRingkasanTindakan dettin=new DlgRingkasanTindakan(this,false);
+        KeuaganRingkasanTindakan dettin=new KeuaganRingkasanTindakan(this,false);
         dettin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         dettin.setLocationRelativeTo(PanelUtama);
         dettin.setVisible(true);

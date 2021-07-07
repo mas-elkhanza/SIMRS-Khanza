@@ -908,7 +908,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if (i == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("titip_faktur","?,?,?,?","No.Tagihan",4,new String[]{
+                if(Sequel.menyimpantf2("titip_faktur","?,?,?,?,'Ditagihkan'","No.Tagihan",4,new String[]{
                     NoTagihan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),nip.getText(),Keterangan.getText()
                 })==true){
                     row=tbBangsal.getRowCount();
@@ -943,7 +943,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TCari,BtnCari1);
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void NoTagihanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoTagihanKeyPressed
@@ -1030,11 +1030,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeunganCariTagihanObatBHP form=new KeunganCariTagihanObatBHP(null,false);
+        form.emptTeks();
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setAlwaysOnTop(false);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
     private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
-        
+        Valid.pindah(evt,BtnSimpan,BtnKeluar);
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     /**
