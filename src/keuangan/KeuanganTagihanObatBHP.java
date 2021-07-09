@@ -60,12 +60,12 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
         Object[] rowRwJlDr={
             "P","No.Faktur","No.Order","Supplier","Petugas Penerima",
             "Tgl.Faktur","Tgl.Datang","Tgl.Tempo","Posisi Barang","Tagihan",
-            "Sisa Hutang","Pembayaran","Sisa","Bank Suplier","No.Rekening"
+            "Sisa Hutang"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==11)||(colIndex==0)) {
+                if (colIndex==0) {
                     a=true;
                 }
                 return a;
@@ -74,8 +74,7 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
                 java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Object.class,java.lang.Object.class
+                java.lang.Double.class,java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -87,7 +86,7 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 11; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(22);
@@ -107,13 +106,6 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
                 column.setPreferredWidth(75);
             }else if(i==8){
                 column.setPreferredWidth(140);
-            }else if(i==12){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==13){
-                column.setPreferredWidth(110);
-            }else if(i==14){
-                column.setPreferredWidth(110);
             }else{
                 column.setPreferredWidth(80);
             }
@@ -799,18 +791,6 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
                 if(tbBangsal.getSelectedRow()!= -1){
                     if(evt.getClickCount()==1){
                         if(tbBangsal.getSelectedColumn()==0){
-                            if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString().equals("0")){
-                                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()), tbBangsal.getSelectedRow(),11);
-                            }
-                            if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
-                                tbBangsal.setValueAt(
-                                    (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
-                                    Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
-                                    ,tbBangsal.getSelectedRow(),10);
-                            }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                                tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),11);
-                                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
-                            }
                             getData();
                         }
                         panggilPhoto();
@@ -824,19 +804,7 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if(tbBangsal.getSelectedRow()!= -1){
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
-                        tbBangsal.setValueAt(
-                                (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
-                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
-                                ,tbBangsal.getSelectedRow(),10);
-                    }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                        tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
-                    }
                     getData();
-                }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
-                    if(tbBangsal.getSelectedColumn()==11){
-                       tbBangsal.setValueAt(0, tbBangsal.getSelectedRow(),11); 
-                    }
                 }
             }
         }
@@ -930,6 +898,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Tagihan sudah ada sebelumnya...!!");
                 }
                 if(sukses==true){
+                    autoNomor();
                     Sequel.Commit();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -1002,18 +971,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tbBangsalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbBangsalPropertyChange
         if(this.isVisible()==true){
             if(tbBangsal.getSelectedRow()!= -1){
-                if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString().equals("0")){
-                    tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()), tbBangsal.getSelectedRow(),11);
-                }
-                if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
-                    tbBangsal.setValueAt(
-                        (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
-                        Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
-                        ,tbBangsal.getSelectedRow(),10);
-                }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),11);
-                    tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
-                }
                 getData();
             }
         }
@@ -1158,8 +1115,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         false,rs.getString("no_faktur"),rs.getString("no_order"),
                         rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
                         rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),rs.getString("nm_bangsal"),
-                        rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
-                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),rs.getString("rekening")
+                        rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar"))
                     });
                     sisahutang=sisahutang+rs.getDouble("tagihan");
                     cicilan=cicilan+rs.getDouble("bayar");
@@ -1185,7 +1141,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         bayar=0;
         for(i=0;i<row;i++){  
             if(tbBangsal.getValueAt(i,0).toString().equals("true")){
-                 bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,11).toString());     
+                 bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,10).toString());     
             }
         }
         LCount1.setText(Valid.SetAngka(bayar));

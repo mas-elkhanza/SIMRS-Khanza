@@ -56,7 +56,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
     private boolean sukses=false;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
+    private String iyem,notagihan="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1028,6 +1028,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             
             if(sukses==true){
+                if(!notagihan.equals("")){
+                    Sequel.queryu("update titip_faktur set status='Dibayar' where no_tagihan=?",notagihan);
+                    notagihan="";
+                }
                 Sequel.Commit();
                 tampil();
             }else{
@@ -1090,7 +1094,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void ppSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaActionPerformed
         for(row=0;row<tbBangsal.getRowCount();row++){
             tbBangsal.setValueAt(true,row,0);
+            if(tbBangsal.getValueAt(row,11).toString().equals("0")){
+                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(row,12).toString()), row,11);
+            }
+            if(tbBangsal.getValueAt(row,0).toString().equals("true")){
+                tbBangsal.setValueAt(
+                    (Double.parseDouble(tbBangsal.getValueAt(row,12).toString())-
+                    Double.parseDouble(tbBangsal.getValueAt(row,11).toString()))
+                    ,row,10);
+            }else if(tbBangsal.getValueAt(row,0).toString().equals("false")){
+                tbBangsal.setValueAt(0,row,11);
+                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(row,12).toString()),row,10);
+            }
         }
+        getData();
     }//GEN-LAST:event_ppSemuaActionPerformed
 
     private void TglDatang1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglDatang1KeyPressed
@@ -1203,7 +1220,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Tanggal tgl_bayar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){
+    private void tampil(){
         Valid.tabelKosong(tabMode);
         try{
             if(ChkTanggalDatang.isSelected()==true){
@@ -1360,6 +1377,65 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }else{
                 System.out.println("Notifikasi : "+e);
             }
+        }
+    }
+    
+    public void isCek(){
+        BtnBayar.setEnabled(akses.getbayar_pemesanan_obat());
+        if(akses.getjml2()>=1){
+            nip.setEditable(false);
+            BtnPetugas.setEnabled(false);
+            nip.setText(akses.getkode());
+            Sequel.cariIsi("select nama from petugas where nip=?",nama_petugas,nip.getText());
+        }  
+    }
+    
+    public void tampilTagihan(String notagihan){
+        this.notagihan=notagihan;
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement(
+                    "select pemesanan.no_faktur,pemesanan.no_order,datasuplier.nama_suplier,pemesanan.kode_suplier, "+
+                    "petugas.nama,pemesanan.tgl_tempo,pemesanan.tgl_pesan,pemesanan.tgl_faktur,bangsal.nm_bangsal,pemesanan.tagihan,"+
+                    "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where bayar_pemesanan.no_faktur=pemesanan.no_faktur) as bayar, "+
+                    "datasuplier.nama_bank,datasuplier.rekening from pemesanan "+
+                    "inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "+
+                    "inner join petugas on pemesanan.nip=petugas.nip "+
+                    "inner join bangsal on pemesanan.kd_bangsal=bangsal.kd_bangsal "+
+                    "inner join detail_titip_faktur on detail_titip_faktur.no_faktur=pemesanan.no_faktur "+
+                    "where pemesanan.status<>'Sudah Dibayar' and detail_titip_faktur.no_tagihan=?");
+            try {
+                ps.setString(1,notagihan);
+                rs=ps.executeQuery();
+                sisahutang=0;
+                cicilan=0;
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString("no_faktur"),rs.getString("no_order"),
+                        rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
+                        rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),rs.getString("nm_bangsal"),
+                        rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
+                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),rs.getString("rekening")
+                    });
+                    sisahutang=sisahutang+rs.getDouble("tagihan");
+                    cicilan=cicilan+rs.getDouble("bayar");
+                    kdsup.setText(rs.getString("kode_suplier"));
+                    nmsup.setText(rs.getString("nama_suplier"));
+                }
+                LCount.setText(Valid.SetAngka(sisahutang-cicilan));
+                ppSemuaActionPerformed(null);
+            } catch (Exception e) {
+                System.out.println("Notifikasi Data Hutang: "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
     }
 }
