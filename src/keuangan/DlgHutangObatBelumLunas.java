@@ -122,8 +122,8 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(140);
             }else if(i==12){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
             }else if(i==13){
                 column.setPreferredWidth(110);
             }else if(i==14){
