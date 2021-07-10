@@ -591,6 +591,7 @@ import keuangan.KeuanganRVPBPJS;
 import keuangan.KeuanganSetTarifOnline;
 import keuangan.KeuanganTagihanObatBHP;
 import keuangan.KeuanganValidasiPenagihanPiutang;
+import keuangan.KeuanganValidasiTagihanObatBHP;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
@@ -17147,6 +17148,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnValidasiTagihanObatBHPActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganValidasiTagihanObatBHP form=new KeuanganValidasiTagihanObatBHP(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17766,7 +17778,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPermintaanRanap,btnBPJSReferensiDiagnosaPRB,btnBPJSReferensiObatPRB,btnBPJSSuratKontrol,btnPenggunaanBHPOK,btnSuratKeteranganRawatInap,
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
-            btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien;
+            btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP;
     
     public void isWall(){
         try{            
@@ -19629,6 +19641,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettagihan_hutang_obat()==true){
                 Panelmenu.add(btnTagihanHutangObat);
+                jmlmenu++;
+            }
+            
+            if(akses.getvalidasi_tagihan_hutang_obat()==true){
+                Panelmenu.add(btnValidasiTagihanObatBHP);
                 jmlmenu++;
             }
 
@@ -23243,6 +23260,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettagihan_hutang_obat()==true){
             Panelmenu.add(btnTagihanHutangObat);
+            jmlmenu++;
+        }
+        
+        if(akses.getvalidasi_tagihan_hutang_obat()==true){
+            Panelmenu.add(btnValidasiTagihanObatBHP);
             jmlmenu++;
         }
 
@@ -27545,6 +27567,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettagihan_hutang_obat()==true){
             if(btnTagihanHutangObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanHutangObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getvalidasi_tagihan_hutang_obat()==true){
+            if(btnValidasiTagihanObatBHP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnValidasiTagihanObatBHP);
                 jmlmenu++;
             }                
         }
@@ -32256,6 +32285,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengembalianDepositPasien.setName("btnPengembalianDepositPasien"); 
         btnPengembalianDepositPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPengembalianDepositPasien.addActionListener(this::btnPengembalianDepositPasienActionPerformed);
+        
+        btnValidasiTagihanObatBHP = new widget.ButtonBig();
+        btnValidasiTagihanObatBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_3387295_credit_finance_machine_payment_shopping_icon_48px.png"))); 
+        btnValidasiTagihanObatBHP.setText("Validasi Titip Faktur/Tagihan Obat & BHP");
+        btnValidasiTagihanObatBHP.setIconTextGap(0);
+        btnValidasiTagihanObatBHP.setName("btnValidasiTagihanObatBHP"); 
+        btnValidasiTagihanObatBHP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnValidasiTagihanObatBHP.addActionListener(this::btnValidasiTagihanObatBHPActionPerformed);
     }
 
     

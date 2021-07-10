@@ -39,7 +39,7 @@ public class ApiMEDQLAB {
     private HttpEntity requestEntity;
     private JsonNode root;
     private sekuel Sequel=new sekuel();
-    private JsonNode response,response2;
+    private JsonNode response,response2,response3,response4;
     private ObjectMapper mapper = new ObjectMapper();
     
     public ApiMEDQLAB(){
@@ -405,6 +405,48 @@ public class ApiMEDQLAB {
                                 Sequel.menyimpan(
                                     "temporary_permintaan_lab","'0','"+list2.path("testid_simrs").asText()+"','"+list2.path("name").asText()+"','"+hasil+"','"+list2.path("flag").asText()+"','"+list2.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
                                 );
+                                
+                                response3 = list2.path("childs");
+                                if(response3.isArray()){
+                                    for(JsonNode list3:response3){
+                                        hasil="";
+                                        if(!list3.path("value").asText().equals("")){
+                                            hasil=list3.path("value").asText();
+                                        }
+                                        if(!list3.path("value_string").asText().equals("")){
+                                            hasil=list3.path("value_string").asText();
+                                        }
+                                        if(!list3.path("value_memo").asText().equals("")){
+                                            hasil=list3.path("value_memo").asText();
+                                        }
+
+                                        System.out.println(" id : "+list3.path("testid_simrs").asText()+", name : "+list3.path("name").asText()+", value : "+list3.path("value").asText()+", value_string : "+list3.path("value_string").asText()+", value_memo : "+list3.path("value_memo").asText()+", keterangan : "+list3.path("flag").asText()+", nilai_normal : "+list3.path("nilai_normal").asText());
+                                        Sequel.menyimpan(
+                                            "temporary_permintaan_lab","'0','"+list3.path("testid_simrs").asText()+"','"+list3.path("name").asText()+"','"+hasil+"','"+list3.path("flag").asText()+"','"+list3.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                                        );
+                                        
+                                        response4 = list3.path("childs");
+                                        if(response4.isArray()){
+                                            for(JsonNode list4:response4){
+                                                hasil="";
+                                                if(!list4.path("value").asText().equals("")){
+                                                    hasil=list4.path("value").asText();
+                                                }
+                                                if(!list4.path("value_string").asText().equals("")){
+                                                    hasil=list4.path("value_string").asText();
+                                                }
+                                                if(!list4.path("value_memo").asText().equals("")){
+                                                    hasil=list4.path("value_memo").asText();
+                                                }
+
+                                                System.out.println(" id : "+list4.path("testid_simrs").asText()+", name : "+list4.path("name").asText()+", value : "+list4.path("value").asText()+", value_string : "+list4.path("value_string").asText()+", value_memo : "+list4.path("value_memo").asText()+", keterangan : "+list4.path("flag").asText()+", nilai_normal : "+list4.path("nilai_normal").asText());
+                                                Sequel.menyimpan(
+                                                    "temporary_permintaan_lab","'0','"+list4.path("testid_simrs").asText()+"','"+list4.path("name").asText()+"','"+hasil+"','"+list4.path("flag").asText()+"','"+list4.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                                                );
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
