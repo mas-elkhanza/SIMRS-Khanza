@@ -35,11 +35,11 @@ public final class KeuanganValidasiTagihanObatBHP extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
     private InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     private int i;
-    private double sisahutang=0;
+    private double sisahutang=0,bayar=0;
     private String carisuplier="",cari="";
 
     /** Creates new form DlgLhtBiaya
@@ -63,15 +63,15 @@ public final class KeuanganValidasiTagihanObatBHP extends javax.swing.JDialog {
         for (int i = 0; i < 5; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(65);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(235);
             }else if(i==3){
-                column.setPreferredWidth(380);
+                column.setPreferredWidth(240);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(110);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -109,8 +109,8 @@ public final class KeuanganValidasiTagihanObatBHP extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(suplier.getTable().getSelectedRow()!= -1){
-                    kdsuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
-                    nmsuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),3).toString());
+                    kdsuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());
+                    nmsuplier.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
                     tampil();
                 }      
                 kdsuplier.requestFocus();
@@ -391,12 +391,23 @@ public final class KeuanganValidasiTagihanObatBHP extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
+        }else if(tabMode.getRowCount()!=0){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Sequel.queryu("truncate table temporary");
+            
+            int row=tabMode.getRowCount();
+            for(int i=0;i<row;i++){  
+                Sequel.menyimpan("temporary","'0','"+
+                                tabMode.getValueAt(i,0).toString()+"','"+
+                                tabMode.getValueAt(i,1).toString()+"','"+
+                                tabMode.getValueAt(i,2).toString()+"','"+
+                                tabMode.getValueAt(i,3).toString()+"','"+
+                                tabMode.getValueAt(i,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
+            }
+            Sequel.menyimpan("temporary","'0','TOTAL TAGIHAN :','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
             Map<String, Object> param = new HashMap<>();    
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -405,19 +416,9 @@ public final class KeuanganValidasiTagihanObatBHP extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptRValidasiPiutang.jasper","report","::[ Data Tagihan Piutang ]::",
-                "select penagihan_piutang.no_tagihan,penagihan_piutang.tanggal,penagihan_piutang.tanggaltempo,bagianpenagihan.nama,"+
-                 "suplier.nama_perusahaan,akun_penagihan_piutang.nama_bank,sum(detail_penagihan_piutang.sisahutang) as total "+
-                 "from penagihan_piutang inner join pegawai as bagianpenagihan on bagianpenagihan.nik=penagihan_piutang.nip "+
-                 "inner join suplier on penagihan_piutang.kd_pj=suplier.kd_pj "+
-                 "inner join akun_penagihan_piutang on akun_penagihan_piutang.kd_rek=penagihan_piutang.kd_rek "+
-                 "inner join detail_penagihan_piutang on detail_penagihan_piutang.no_tagihan=penagihan_piutang.no_tagihan "+
-                 "where penagihan_piutang.status='Proses Penagihan' and suplier.nama_perusahaan like '%"+nmsuplier.getText()+"%' and "+
-                 "(penagihan_piutang.no_tagihan like '%"+TCari.getText()+"%' or bagianpenagihan.nama like '%"+TCari.getText()+"%' or "+
-                 "suplier.nama_perusahaan like '%"+TCari.getText()+"%' or akun_penagihan_piutang.nama_bank like '%"+TCari.getText()+"%')"+
-                 "group by penagihan_piutang.no_tagihan order by penagihan_piutang.tanggal",param);
+            Valid.MyReport("rptValidasiTagihanObatBHP.jasper","report","::[ Data Pegajuan Titip Faktur/Tagihan Obat & BHP ]::",param);
+            this.setCursor(Cursor.getDefaultCursor());
         }
-        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -505,15 +506,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBayarActionPerformed
         if(tbBangsal.getSelectedRow()> -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgPiutangBelumLunas form=new DlgPiutangBelumLunas(null,false);
+            DlgHutangObatBelumLunas form=new DlgHutangObatBelumLunas(null,false);
             form.isCek();
-            form.tampiltagihan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().trim());
+            form.tampilTagihan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            Valid.textKosong(TCari,"pilihan data");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Tagihan yang diajukan..!!");
         }
     }//GEN-LAST:event_BtnBayarActionPerformed
 
@@ -523,7 +524,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
         if(tbBangsal.getSelectedRow()!= -1){  
-            LCount1.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString());
+            LCount1.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
         }
     }//GEN-LAST:event_tbBangsalMouseClicked
 
@@ -573,29 +574,51 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.tabelKosong(tabMode);
         try{
             sisahutang=0;
+            carisuplier="";cari="";
+            if(!nmsuplier.getText().trim().equals("")){
+                carisuplier=" and pemesanan.kode_suplier='"+kdsuplier.getText()+"' ";
+            }
+            
+            if(!TCari.getText().trim().equals("")){
+                cari=" and (titip_faktur.no_tagihan like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or titip_faktur.keterangan like '%"+TCari.getText()+"%' or detail_titip_faktur.no_faktur like '%"+TCari.getText()+"%' or datasuplier.nama_suplier like '%"+TCari.getText()+"%' ) ";
+            }
+            
             ps=koneksi.prepareStatement(
-                     "select penagihan_piutang.no_tagihan,penagihan_piutang.tanggal,penagihan_piutang.tanggaltempo,bagianpenagihan.nama,"+
-                     "suplier.nama_perusahaan,akun_penagihan_piutang.nama_bank,sum(detail_penagihan_piutang.sisahutang) as total "+
-                     "from penagihan_piutang inner join pegawai as bagianpenagihan on bagianpenagihan.nik=penagihan_piutang.nip "+
-                     "inner join suplier on penagihan_piutang.kd_pj=suplier.kd_pj "+
-                     "inner join akun_penagihan_piutang on akun_penagihan_piutang.kd_rek=penagihan_piutang.kd_rek "+
-                     "inner join detail_penagihan_piutang on detail_penagihan_piutang.no_tagihan=penagihan_piutang.no_tagihan "+
-                     "where penagihan_piutang.status='Proses Penagihan' and suplier.nama_perusahaan like ? and "+
-                     "(penagihan_piutang.no_tagihan like ? or bagianpenagihan.nama like ? or suplier.nama_perusahaan like ? or akun_penagihan_piutang.nama_bank like ?)"+
-                     "group by penagihan_piutang.no_tagihan order by penagihan_piutang.tanggal");
+                     "select titip_faktur.no_tagihan,titip_faktur.tanggal,titip_faktur.nip,petugas.nama,"+
+                     "titip_faktur.keterangan,titip_faktur.status,sum(pemesanan.tagihan) as tagihan from titip_faktur "+
+                     "inner join petugas on petugas.nip=titip_faktur.nip "+
+                     "inner join detail_titip_faktur on detail_titip_faktur.no_tagihan=titip_faktur.no_tagihan "+
+                     "inner join pemesanan on detail_titip_faktur.no_faktur=pemesanan.no_faktur "+
+                     "inner join datasuplier on datasuplier.kode_suplier=pemesanan.kode_suplier "+
+                     "where titip_faktur.status='Ditagihkan' "+carisuplier+cari+" group by titip_faktur.no_tagihan order by titip_faktur.tanggal");
             try {
-                ps.setString(1,"%"+nmsuplier.getText()+"%");
-                ps.setString(2,"%"+TCari.getText()+"%");
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
-                ps.setString(5,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    bayar=0;
+                    ps2=koneksi.prepareStatement(
+                        "select (SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where bayar_pemesanan.no_faktur=pemesanan.no_faktur) as bayar "+
+                        "from detail_titip_faktur inner join pemesanan on detail_titip_faktur.no_faktur=pemesanan.no_faktur "+
+                        "where detail_titip_faktur.no_tagihan='"+rs.getString("no_tagihan")+"'");
+                    try {
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            bayar=bayar+rs2.getDouble("bayar");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_tagihan"),rs.getString("tanggal"),rs.getString("nama"),rs.getString("tanggaltempo"),
-                        rs.getString("nama_perusahaan"),rs.getString("nama_bank"),Valid.SetAngka(rs.getDouble("total"))
+                        rs.getString("no_tagihan"),rs.getString("tanggal"),rs.getString("nip")+" "+rs.getString("nama"),
+                        rs.getString("keterangan"),Valid.SetAngka(rs.getDouble("tagihan")-bayar)
                     });
-                    sisahutang=sisahutang+rs.getDouble("total");
+                    sisahutang=sisahutang+(rs.getDouble("tagihan")-bayar);
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -613,7 +636,4 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Notifikasi : "+e);
         }
     }
-
-    
-    
 }
