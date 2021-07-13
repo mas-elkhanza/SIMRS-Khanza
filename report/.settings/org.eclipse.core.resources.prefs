@@ -30,6 +30,7 @@ encoding/rptResepPulang.jrxml=UTF-8
 encoding/rptResumeRanap.jrxml=UTF-8
 encoding/rptSKL2.jrxml=UTF-8
 encoding/rptSertifikatBayi.jrxml=UTF-8
+encoding/rptSkCovid.jrxml=UTF-8
 encoding/rptSpri.jrxml=UTF-8
 encoding/rptStokKeluarMedis.jrxml=UTF-8
 encoding/rptStokKeluarMedisPerItem.jrxml=UTF-8
