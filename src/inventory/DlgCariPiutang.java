@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -1455,6 +1456,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         kdbar.requestFocus();        
     } 
      
+    public void cariNoTagihan(String notagihan,Date Taggal){
+        NoNota.setText(notagihan);
+        Tgl1.setDate(Taggal);
+        Tgl2.setDate(Taggal);
+        tampil();
+    }
     public void isCek(){
         MnDetailCicilan.setEnabled(akses.getbayar_piutang());
         BtnPrint.setEnabled(akses.getpiutang_obat());

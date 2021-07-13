@@ -583,7 +583,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBayarActionPerformed
         if(tbBangsal.getSelectedRow()> -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgPiutangBelumLunas form=new DlgPiutangBelumLunas(null,false);
+            KeuanganPiutangBelumLunas form=new KeuanganPiutangBelumLunas(null,false);
             form.isCek();
             form.tampiltagihan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().trim());
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
