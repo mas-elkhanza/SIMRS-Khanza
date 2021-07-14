@@ -883,10 +883,13 @@ public class DlgDeposit extends javax.swing.JDialog {
                     if(Sequel.queryu2tf("delete from deposit where no_deposit=?", 1,new String[]{
                         tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                     })==true){
-                        Sequel.queryu("delete from tampjurnal");                    
+                        Sequel.queryu2("delete from tampjurnal"); 
                         Sequel.menyimpan("tampjurnal","'"+Uang_Muka_Ranap+"','UANG MUKA RANAP','"+BesarDeposit.getText()+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()+"','"+AkunBayar.getSelectedItem()+"','0','"+BesarDeposit.getText()+"'","Rekening"); 
                         sukses=jur.simpanJurnal(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN DEPOSIT PASIEN "+TNoRw.getText()+" "+TNoRM.getText()+" "+TPasien.getText()+", OLEH "+akses.getkode()); 
+                        if(sukses==true){
+                            sukses=Sequel.queryu2tf("delete from tagihan_sadewa where no_nota=?",1,new String[]{tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()}); 
+                        }
                     }else{
                         sukses=false;
                     }
