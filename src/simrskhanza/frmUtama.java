@@ -65,6 +65,7 @@ import bridging.BPJSMonitoringKlaim;
 import bridging.BPJSRujukanKeluar;
 import bridging.BPJSSPRI;
 import bridging.BPJSSuratKontrol;
+import bridging.BRIApiIntegrasi;
 import bridging.CoronaDiagnosa;
 import bridging.INACBGCariCoderNIK;
 import bridging.INACBGCoderNIK;
@@ -17172,6 +17173,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnIntegrasiBRIApiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BRIApiIntegrasi form=new BRIApiIntegrasi(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17792,7 +17804,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
-            btnPiutangObatBelumLunas;
+            btnPiutangObatBelumLunas,btnIntegrasiBRIApi;
     
     public void isWall(){
         try{            
@@ -19557,11 +19569,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnAkunPenagihanPiutang);  
                 jmlmenu++;
             }
-            
-            if(akses.getakun_host_to_host_bank_jateng()==true){
-                Panelmenu.add(btnAkunRekeningHtHBankJateng);
-                jmlmenu++;
-            }
 
             if(akses.getpengaturan_rekening()==true){
                 Panelmenu.add(btnPengaturanRekening);   
@@ -20182,6 +20189,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbatal_pendaftaran_mobilejkn_bpjs()==true){
                 Panelmenu.add(btnBatalPendaftaranMobileJKN);
+                jmlmenu++;
+            }
+            
+            if(akses.getakun_host_to_host_bank_jateng()==true){
+                Panelmenu.add(btnAkunRekeningHtHBankJateng);
+                jmlmenu++;
+            }
+            
+            if(akses.getintegrasi_briapi()==true){
+                Panelmenu.add(btnIntegrasiBRIApi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -23181,11 +23198,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnAkunPenagihanPiutang);  
             jmlmenu++;
         }
-        
-        if(akses.getakun_host_to_host_bank_jateng()==true){
-            Panelmenu.add(btnAkunRekeningHtHBankJateng);
-            jmlmenu++;
-        }
 
         if(akses.getpengaturan_rekening()==true){
             Panelmenu.add(btnPengaturanRekening);   
@@ -23805,6 +23817,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbatal_pendaftaran_mobilejkn_bpjs()==true){
             Panelmenu.add(btnBatalPendaftaranMobileJKN);
+            jmlmenu++;
+        }
+        
+        if(akses.getakun_host_to_host_bank_jateng()==true){
+            Panelmenu.add(btnAkunRekeningHtHBankJateng);
+            jmlmenu++;
+        }
+        
+        if(akses.getintegrasi_briapi()==true){
+            Panelmenu.add(btnIntegrasiBRIApi);
             jmlmenu++;
         }
 
@@ -27454,13 +27476,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-        
-        if(akses.getakun_host_to_host_bank_jateng()==true){
-            if(btnAkunRekeningHtHBankJateng.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnAkunRekeningHtHBankJateng);
-                jmlmenu++;
-            }                
-        }
 
         if(akses.getpengaturan_rekening()==true){
             if(btnPengaturanRekening.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -28326,6 +28341,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbatal_pendaftaran_mobilejkn_bpjs()==true){
             if(btnBatalPendaftaranMobileJKN.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBatalPendaftaranMobileJKN);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getakun_host_to_host_bank_jateng()==true){
+            if(btnAkunRekeningHtHBankJateng.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAkunRekeningHtHBankJateng);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getintegrasi_briapi()==true){
+            if(btnIntegrasiBRIApi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnIntegrasiBRIApi);
                 jmlmenu++;
             }                
         }
@@ -32206,8 +32235,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPendapatanPerCaraBayar.addActionListener(this::btnPendapatanPerCaraBayarActionPerformed);
         
         btnAkunRekeningHtHBankJateng = new widget.ButtonBig();
-        btnAkunRekeningHtHBankJateng.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_business-work_4_2377643.png")));
-        btnAkunRekeningHtHBankJateng.setText("Akun Rekening HtH Bank Jateng");
+        btnAkunRekeningHtHBankJateng.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bankjateng.png")));
+        btnAkunRekeningHtHBankJateng.setText("Host To Host Bank Jateng");
         btnAkunRekeningHtHBankJateng.setIconTextGap(0);
         btnAkunRekeningHtHBankJateng.setName("btnAkunRekeningHtHBankJateng"); 
         btnAkunRekeningHtHBankJateng.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -32332,6 +32361,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPiutangObatBelumLunas.setName("btnPiutangObatBelumLunas"); 
         btnPiutangObatBelumLunas.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPiutangObatBelumLunas.addActionListener(this::btnPiutangObatBelumLunasActionPerformed);
+        
+        btnIntegrasiBRIApi = new widget.ButtonBig();
+        btnIntegrasiBRIApi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/briapi.png"))); 
+        btnIntegrasiBRIApi.setText("Integrasi BRI API");
+        btnIntegrasiBRIApi.setIconTextGap(0);
+        btnIntegrasiBRIApi.setName("btnIntegrasiBRIApi"); 
+        btnIntegrasiBRIApi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnIntegrasiBRIApi.addActionListener(this::btnIntegrasiBRIApiActionPerformed);
     }
 
     

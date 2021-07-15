@@ -180,10 +180,11 @@ public class DlgUser extends javax.swing.JDialog {
                 "[E]Ringkasan Pengajuan Non Medis","[E]Ringkasan Pemesanan Non Medis","[E]Ringkasan Pengadaan Non Medis","[E]Ringkasan Penerimaan Non Medis",
                 "[E]Ringkasan Stok Keluar Non Medis","[E]Ringkasan Retur Suplier Non Medis","[J]Penerimaan/Omset/Kas Masuk","[J]Validasi Penagihan Piutang",
                 "[A]Permintaan Rawat Inap","[K]Referensi Diagnosa PRB VClaim","[K]Referensi Obat PRB VClaim","[K]Surat Kontrol VClaim","[D]Penggunaan BHP OK/VK",
-                "[O]Surat Keterangan Rawat Inap","[O]Surat Keterangan Sehat","[J]Pendapatan Per Cara Bayar","[J]Akun Rekening HtH Bank Jateng","[J]Pembayaran Bank Jateng",
+                "[O]Surat Keterangan Rawat Inap","[O]Surat Keterangan Sehat","[J]Pendapatan Per Cara Bayar","[K]Host To Host Bank Jateng","[J]Pembayaran Bank Jateng",
                 "[K]Surat PRI VClaim","[H]Ringkasan Tindakan","[I]Lama Pelayanan Pasien","[O]Surat Keterangan Sakit Pihak 2","[J]Titip Faktur/Tagihan Obat & BHP",
                 "[K]Referensi Pendaftaran Mobile JKN","[K]Batal Pendaftaran Mobile JKN","[I]Lama Operasi","[N]Jumlah Inventaris Per Kategori","[N]Jumlah Inventaris Per Merk",
-                "[N]Jumlah Inventaris Per Produsen","[J]Pengembalian Deposit Pasien","[J]Validasi Titip Faktur/Tagihan Obat & BHP","[J]Piutang Obat & BHP Belum Lunas"
+                "[N]Jumlah Inventaris Per Produsen","[J]Pengembalian Deposit Pasien","[J]Validasi Titip Faktur/Tagihan Obat & BHP","[J]Piutang Obat & BHP Belum Lunas",
+                "[K]Integrasi BRI API"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -393,7 +394,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 726;i++) {
+        for (i = 0; i < 727;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1978,7 +1979,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(153);
                     break;
                 case 710:
-                    column.setPreferredWidth(175);
+                    column.setPreferredWidth(145);
                     break;
                 case 711:
                     column.setPreferredWidth(142);
@@ -2024,6 +2025,9 @@ public class DlgUser extends javax.swing.JDialog {
                     break;
                 case 725:
                     column.setPreferredWidth(180);
+                    break;
+                case 726:
+                    column.setPreferredWidth(105);
                     break;
                 default:
                     column.setPreferredWidth(140);
@@ -2522,7 +2526,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3290,7 +3294,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_inventaris_produsen='"+tbUser.getValueAt(i,722).toString()+"',"+
                     "pengembalian_deposit_pasien='"+tbUser.getValueAt(i,723).toString()+"',"+
                     "validasi_tagihan_hutang_obat='"+tbUser.getValueAt(i,724).toString()+"',"+
-                    "piutang_obat_belum_lunas='"+tbUser.getValueAt(i,725).toString()+"'");
+                    "piutang_obat_belum_lunas='"+tbUser.getValueAt(i,725).toString()+"',"+
+                    "integrasi_briapi='"+tbUser.getValueAt(i,726).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4097,7 +4102,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "grafik_inventaris_produsen='"+tbUser.getValueAt(barisdicopy,722).toString()+"',"+
                                     "pengembalian_deposit_pasien='"+tbUser.getValueAt(barisdicopy,723).toString()+"',"+
                                     "validasi_tagihan_hutang_obat='"+tbUser.getValueAt(barisdicopy,724).toString()+"',"+
-                                    "piutang_obat_belum_lunas='"+tbUser.getValueAt(barisdicopy,725).toString()+"'");
+                                    "piutang_obat_belum_lunas='"+tbUser.getValueAt(barisdicopy,725).toString()+"',"+
+                                    "integrasi_briapi='"+tbUser.getValueAt(barisdicopy,726).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4436,7 +4442,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng,bpjs_surat_pri,"+
                         "ringkasan_tindakan,lama_pelayanan_pasien,surat_sakit_pihak_2,tagihan_hutang_obat,referensi_mobilejkn_bpjs,batal_pendaftaran_mobilejkn_bpjs,"+
                         "lama_operasi,grafik_inventaris_kategori,grafik_inventaris_merk,grafik_inventaris_produsen,pengembalian_deposit_pasien,"+
-                        "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas from user order by AES_DECRYPT(id_user,'nur')");
+                        "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5174,7 +5180,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_inventaris_produsen"),
                                rs.getBoolean("pengembalian_deposit_pasien"),
                                rs.getBoolean("validasi_tagihan_hutang_obat"),
-                               rs.getBoolean("piutang_obat_belum_lunas")
+                               rs.getBoolean("piutang_obat_belum_lunas"),
+                               rs.getBoolean("integrasi_briapi")
                             });
                         }   
                     } catch (Exception e) {
@@ -5901,7 +5908,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_inventaris_produsen"),
                            rs.getBoolean("pengembalian_deposit_pasien"),
                            rs.getBoolean("validasi_tagihan_hutang_obat"),
-                           rs.getBoolean("piutang_obat_belum_lunas")
+                           rs.getBoolean("piutang_obat_belum_lunas"),
+                           rs.getBoolean("integrasi_briapi")
                         });
                     }                                             
                  }

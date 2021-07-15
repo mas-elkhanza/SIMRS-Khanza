@@ -670,7 +670,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng,bpjs_surat_pri,"+
                         "ringkasan_tindakan,lama_pelayanan_pasien,surat_sakit_pihak_2,tagihan_hutang_obat,referensi_mobilejkn_bpjs,batal_pendaftaran_mobilejkn_bpjs,"+
                         "lama_operasi,grafik_inventaris_kategori,grafik_inventaris_merk,grafik_inventaris_produsen,pengembalian_deposit_pasien,"+
-                        "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2119,10 +2119,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[J]Pendapatan Per Cara Bayar",rs.getBoolean("pendapatan_per_carabayar")});
                     }
                     
-                    if("[J]Akun Rekening HtH Bank Jateng".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[J]Akun Rekening HtH Bank Jateng",rs.getBoolean("akun_host_to_host_bank_jateng")});
-                    }
-                    
                     if("[J]Pembayaran Bank Jateng".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Pembayaran Bank Jateng",rs.getBoolean("pembayaran_bank_jateng")});
                     }
@@ -2521,6 +2517,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Batal Pendaftaran Mobile JKN".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Batal Pendaftaran Mobile JKN",rs.getBoolean("batal_pendaftaran_mobilejkn_bpjs")});
+                    }
+                    
+                    if("[K]Host To Host Bank Jateng".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Host To Host Bank Jateng",rs.getBoolean("akun_host_to_host_bank_jateng")});
+                    }
+                    
+                    if("[K]Integrasi BRI API".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Integrasi BRI API",rs.getBoolean("integrasi_briapi")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5034,10 +5038,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pendapatan_per_carabayar='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[J]Akun Rekening HtH Bank Jateng".equals(tbUser.getValueAt(i,1).toString())){
-                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","akun_host_to_host_bank_jateng='"+tbUser.getValueAt(i,2).toString()+"'");
-            }
-            
             if("[J]Pembayaran Bank Jateng".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pembayaran_bank_jateng='"+tbUser.getValueAt(i,2).toString()+"'");
             }
@@ -5441,7 +5441,15 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             if("[K]Batal Pendaftaran Mobile JKN".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","batal_pendaftaran_mobilejkn_bpjs='"+tbUser.getValueAt(i,2).toString()+"'");
             }
-
+            
+            if("[K]Host To Host Bank Jateng".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","akun_host_to_host_bank_jateng='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Integrasi BRI API".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","integrasi_briapi='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pasien='"+tbUser.getValueAt(i,2).toString()+"'");
             }
