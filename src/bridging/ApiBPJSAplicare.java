@@ -1,7 +1,6 @@
 package bridging;
 
 import fungsi.koneksiDB;
-import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.KeyManagementException;
@@ -9,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.Properties;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
@@ -22,7 +20,6 @@ import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
 public class ApiBPJSAplicare {        
-    private static final Properties prop = new Properties();
     private String Key,Consid;
     private long GetUTCdatetimeAsString;
     private String salt;
@@ -36,8 +33,7 @@ public class ApiBPJSAplicare {
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
     public ApiBPJSAplicare(){
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        try {           
             Key = koneksiDB.SECRETKEYAPIAPLICARE();
             Consid = koneksiDB.CONSIDAPIAPLICARE();
         } catch (Exception ex) {
