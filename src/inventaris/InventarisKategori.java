@@ -585,7 +585,7 @@ public class InventarisKategori extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         String sql="select * from inventaris_kategori order by id_kategori";
         prosesCari(sql);
     }
