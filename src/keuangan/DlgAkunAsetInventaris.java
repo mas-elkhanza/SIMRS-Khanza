@@ -55,7 +55,7 @@ public class DlgAkunAsetInventaris extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"P","ID Jenis","Nama Jenis","Kode Rekening","Nama Rekening"};
+        Object[] row={"P","ID Jenis","Nama Jenis","Kode Akun","Nama Akun Rekening"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -86,9 +86,9 @@ public class DlgAkunAsetInventaris extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(215);
             }else if(i==3){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==4){
-                column.setPreferredWidth(215);
+                column.setPreferredWidth(220);
             }
         }
         
@@ -444,7 +444,7 @@ public class DlgAkunAsetInventaris extends javax.swing.JDialog {
         panelBiasa1.setPreferredSize(new java.awt.Dimension(1023, 77));
         panelBiasa1.setLayout(null);
 
-        jLabel10.setText("Rekening/COA :");
+        jLabel10.setText("Akun/Rekening/COA :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelBiasa1.add(jLabel10);
         jLabel10.setBounds(0, 42, 125, 23);
