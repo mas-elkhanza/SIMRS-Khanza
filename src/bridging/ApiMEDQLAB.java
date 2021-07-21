@@ -191,7 +191,7 @@ public class ApiMEDQLAB {
                     if(root.path("metaData").path("code").asText().equals("200")){
                         JOptionPane.showMessageDialog(null,"Berhasil terkirim..");   
                     }else{
-                        JOptionPane.showMessageDialog(null,"Gagal terkirim. Silahkan hubungi administrator");  
+                        JOptionPane.showMessageDialog(null,root.path("metaData").path("message").asText());  
                     }
                 }
              } catch (Exception e) {
@@ -325,7 +325,7 @@ public class ApiMEDQLAB {
                     requestEntity = new HttpEntity(requestJson,headers);	    
                     root = mapper.readTree(getRest().exchange(URL+"/api/v1/saveOrder", HttpMethod.POST, requestEntity, String.class).getBody());
                     if(root.path("metaData").path("code").asText().equals("200")){
-                        JOptionPane.showMessageDialog(null,"Berhasil terkirim..");   
+                        JOptionPane.showMessageDialog(null,root.path("metaData").path("message").asText());  
                     }else{
                         JOptionPane.showMessageDialog(null,"Gagal terkirim. Silahkan hubungi administrator");  
                     }

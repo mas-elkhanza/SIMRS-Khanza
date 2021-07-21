@@ -15,6 +15,10 @@ import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -22,14 +26,22 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
+import static net.sf.jasperreports.engine.data.JRXmlaDataSource.url;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicNameValuePair;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.crypto.codec.Base64;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 public class ApiBRI {        
@@ -91,17 +103,15 @@ public class ApiBRI {
         token="";
         try{
             headers = new HttpHeaders();
-            headers.add("Content-Type","application/x-www-form-urlencoded");
-            token ="{" +
-                        "\"client_id\":\""+consumer_key+"\"," +
-                        "\"client_secret\":\""+consumer_secret+"\"" +
-                   "}";
-            System.out.println(token);
-            requestEntity = new HttpEntity(token,headers);
-            System.out.println(urlapi+"/oauth/client_credential/accesstoken?grant_type=client_credentials");
-            token=getRest().exchange(urlapi+"/oauth/client_credential/accesstoken?grant_type=client_credentials", HttpMethod.POST, requestEntity, String.class).getBody();
-            System.out.println("JSON : "+token);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
+            map.add("client_id",consumer_key);
+            map.add("client_secret",consumer_secret);
+            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+            token=getRest().postForEntity(urlapi+"/oauth/client_credential/accesstoken?grant_type=client_credentials", request , String.class ).getBody();
             root = mapper.readTree(token);
+            token=root.path("access_token").asText();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

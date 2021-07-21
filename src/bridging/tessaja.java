@@ -12,7 +12,7 @@ package bridging;
 public class tessaja {
     public static ApiBRI api=new ApiBRI();
     public static void main(String[] args) {
-         api.Token();
+         System.out.println("Token : "+api.Token());
     }
     
 }
