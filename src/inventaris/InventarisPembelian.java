@@ -277,6 +277,8 @@ public class InventarisPembelian extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         AkunBayar = new widget.ComboBox();
         jLabel10 = new widget.Label();
+        jLabel11 = new widget.Label();
+        AkunBayar1 = new widget.ComboBox();
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Kd2.setName("Kd2"); // NOI18N
@@ -309,7 +311,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Barang Aset/Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -566,14 +568,14 @@ public class InventarisPembelian extends javax.swing.JDialog {
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 73));
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 103));
         panelisi3.setLayout(null);
 
         label15.setText("No.Faktur :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 75, 23);
+        label15.setBounds(325, 70, 80, 23);
 
         NoFaktur.setName("NoFaktur"); // NOI18N
         NoFaktur.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -583,13 +585,13 @@ public class InventarisPembelian extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoFaktur);
-        NoFaktur.setBounds(79, 10, 110, 23);
+        NoFaktur.setBounds(409, 70, 200, 23);
 
         label11.setText("Tgl.Beli :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(192, 10, 50, 23);
+        label11.setBounds(0, 10, 78, 23);
 
         TglBeli.setDisplayFormat("dd-MM-yyyy");
         TglBeli.setName("TglBeli"); // NOI18N
@@ -599,13 +601,13 @@ public class InventarisPembelian extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglBeli);
-        TglBeli.setBounds(246, 10, 90, 23);
+        TglBeli.setBounds(83, 10, 90, 23);
 
         label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(335, 40, 70, 23);
+        label13.setBounds(325, 40, 80, 23);
 
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -621,7 +623,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(335, 10, 70, 23);
+        label16.setBounds(325, 10, 80, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -673,12 +675,21 @@ public class InventarisPembelian extends javax.swing.JDialog {
 
         AkunBayar.setName("AkunBayar"); // NOI18N
         panelisi3.add(AkunBayar);
-        AkunBayar.setBounds(79, 40, 257, 23);
+        AkunBayar.setBounds(83, 40, 220, 23);
 
         jLabel10.setText("Akun Bayar :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelisi3.add(jLabel10);
-        jLabel10.setBounds(0, 40, 75, 23);
+        jLabel10.setBounds(0, 40, 78, 23);
+
+        jLabel11.setText("Akun Jenis :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        panelisi3.add(jLabel11);
+        jLabel11.setBounds(0, 70, 78, 23);
+
+        AkunBayar1.setName("AkunBayar1"); // NOI18N
+        panelisi3.add(AkunBayar1);
+        AkunBayar1.setBounds(83, 70, 220, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -1025,6 +1036,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AkunBayar;
+    private widget.ComboBox AkunBayar1;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
@@ -1045,6 +1057,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Button btnSuplier;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;
     private widget.TextBox kdptg;
     private widget.TextBox kdsup;
     private widget.Label label10;

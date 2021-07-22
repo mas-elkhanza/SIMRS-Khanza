@@ -414,14 +414,11 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tbRiwayatKehamilan1.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TempatPersalinan.setDocument(new batasInput((byte)30).getKata(TempatPersalinan));
-        UsiaHamil.setDocument(new batasInput((byte)20).getKata(UsiaHamil));
-        JenisPersalinan.setDocument(new batasInput((byte)20).getKata(JenisPersalinan));
-        Penolong.setDocument(new batasInput((byte)30).getKata(Penolong));
-        Penyulit.setDocument(new batasInput((byte)40).getKata(Penyulit));
-        BBPB.setDocument(new batasInput((byte)10).getKata(BBPB));
-        Keadaan.setDocument(new batasInput((byte)40).getKata(Keadaan));
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        KeluhanUtama.setDocument(new batasInput((int)500).getKata(KeluhanUtama));
+        RPK.setDocument(new batasInput((int)100).getKata(RPK));
+        PSK.setDocument(new batasInput((int)100).getKata(PSK));
+        RBedah.setDocument(new batasInput((int)100).getKata(RBedah));
+        Alergi.setDocument(new batasInput((int)25).getKata(Alergi));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

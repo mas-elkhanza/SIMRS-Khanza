@@ -17192,6 +17192,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPengadaanAsetActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17812,7 +17816,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
-            btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris;
+            btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset;
     
     public void isWall(){
         try{            
@@ -18812,6 +18816,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpengajuan_asetinventaris()==true){
                 Panelmenu.add(btnPengajuanAsetInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.getpengadaan_aset_inventaris()==true){
+                Panelmenu.add(btnPengadaanAset);
                 jmlmenu++;
             }
             
@@ -22457,6 +22466,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPengajuanAsetInventaris);
             jmlmenu++;
         }  
+        
+        if(akses.getpengadaan_aset_inventaris()==true){
+            Panelmenu.add(btnPengadaanAset);
+            jmlmenu++;
+        }
         
         if(akses.getrekap_pengajuan_aset_departemen()==true){
             Panelmenu.add(btnRekapPengajuanAsetDepartemen);
@@ -26435,6 +26449,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpengajuan_asetinventaris()==true){
             if(btnPengajuanAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengajuanAsetInventaris);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpengadaan_aset_inventaris()==true){
+            if(btnPengadaanAset.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengadaanAset);
                 jmlmenu++;
             }                
         }
@@ -32402,6 +32423,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAkunAsetInventaris.setName("btnAkunAsetInventaris"); 
         btnAkunAsetInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAkunAsetInventaris.addActionListener(this::btnAkunAsetInventarisActionPerformed);
+        
+        btnPengadaanAset = new widget.ButtonBig();
+        btnPengadaanAset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/10999_bag_cash_coin_money_icon.png"))); 
+        btnPengadaanAset.setText("Pengadaan Aset/Inventaris");
+        btnPengadaanAset.setIconTextGap(0);
+        btnPengadaanAset.setName("btnPengadaanAset"); 
+        btnPengadaanAset.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengadaanAset.addActionListener(this::btnPengadaanAsetActionPerformed);
     }
 
     
