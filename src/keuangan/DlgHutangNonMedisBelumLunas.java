@@ -10,7 +10,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import ipsrs.IPSRSSuplier;
+import ipsrs.IPSRSCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -46,7 +46,7 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs;
-    private IPSRSSuplier suplier=new IPSRSSuplier(null,false);
+    private IPSRSCariSuplier suplier=new IPSRSCariSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
     private String koderekening="",tanggaldatang="",tanggaltempo="",Bayar_Pemesanan_Non_Medis=Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun");

@@ -1,7 +1,7 @@
 package inventaris;
 
 
-import ipsrs.*;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
@@ -37,16 +37,14 @@ public class InventarisPembelian extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private IPSRSCariPembelian form=new IPSRSCariPembelian(null,false);
     private double ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,meterai=0;
     private int jml=0,i=0,row=0,index=0;
-    private riwayatnonmedis Trackbarang=new riwayatnonmedis();
     private boolean[] ganti;
-    private String[] kodebarang,namabarang,satuan;
+    private String[] kodebarang,namabarang,produsen,merk,kategori,jenis;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
     private WarnaTable2 warna=new WarnaTable2();
     private boolean sukses=true;
-    private String akunbayar,akunpembelian=Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun");
+    private String akunbayar,akunpembelian="";
     private File file;
     private FileWriter fileWriter;
     private String iyem;
@@ -54,6 +52,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    private InventarisCariPembelian form=new InventarisCariPembelian(null,false);
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -62,19 +61,20 @@ public class InventarisPembelian extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] judul={"Jml","Kode Barang","Nama Barang","Satuan","G","Hrg.Beli(Rp)","Subtotal Beli(Rp)","Disk(%)","Diskon(Rp)","Ttl.Beli"};
+        Object[] judul={"Jml","Kode Barang","Nama Barang","Produsen","Merk","Kategori","Jenis","Hrg.Beli(Rp)","Subtotal Beli(Rp)","Disk(%)","Diskon(Rp)","Ttl.Beli"};
         tabMode=new DefaultTableModel(null,judul){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==4)||(colIndex==5)||(colIndex==7)||(colIndex==8)) {
+                if ((colIndex==0)||(colIndex==7)||(colIndex==9)||(colIndex==10)) {
                     a=true;
                 }
                 return a;
              }
              Class[] types = new Class[] {
                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                java.lang.Boolean.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class 
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.Boolean.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class 
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -86,7 +86,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(42);
@@ -97,16 +97,20 @@ public class InventarisPembelian extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(50);
             }else if(i==4){
-                column.setPreferredWidth(22);
-            }else if(i==5){
-                column.setPreferredWidth(90);
-            }else if(i==6){
-                column.setPreferredWidth(90);
-            }else if(i==7){
                 column.setPreferredWidth(50);
+            }else if(i==5){
+                column.setPreferredWidth(50);
+            }else if(i==6){
+                column.setPreferredWidth(50);
+            }else if(i==7){
+                column.setPreferredWidth(90);
             }else if(i==8){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(90);
             }else if(i==9){
+                column.setPreferredWidth(50);
+            }else if(i==10){
+                column.setPreferredWidth(75);
+            }else if(i==11){
                 column.setPreferredWidth(95);
             }
         }
@@ -167,7 +171,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPembelianIPSRS")){
+                if(akses.getform().equals("InventarisPembelian")){
                     if(form.suplier.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),1).toString());
@@ -190,7 +194,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgPembelianIPSRS")){
+                if(akses.getform().equals("InventarisPembelian")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         form.suplier.dispose();
                     }                
@@ -207,7 +211,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPembelianIPSRS")){
+                if(akses.getform().equals("InventarisPembelian")){
                     if(form.petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
@@ -278,7 +282,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
         AkunBayar = new widget.ComboBox();
         jLabel10 = new widget.Label();
         jLabel11 = new widget.Label();
-        AkunBayar1 = new widget.ComboBox();
+        AkunAset = new widget.ComboBox();
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Kd2.setName("Kd2"); // NOI18N
@@ -687,9 +691,9 @@ public class InventarisPembelian extends javax.swing.JDialog {
         panelisi3.add(jLabel11);
         jLabel11.setBounds(0, 70, 78, 23);
 
-        AkunBayar1.setName("AkunBayar1"); // NOI18N
-        panelisi3.add(AkunBayar1);
-        AkunBayar1.setBounds(83, 70, 220, 23);
+        AkunAset.setName("AkunAset"); // NOI18N
+        panelisi3.add(AkunAset);
+        AkunAset.setBounds(83, 70, 220, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -700,12 +704,12 @@ public class InventarisPembelian extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        form.emptTeks();    
+        /*form.emptTeks();    
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
-        form.setVisible(true);
+        form.setVisible(true);*/
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -761,7 +765,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     sukses=false;
                 } 
 
-                if(Sequel.menyimpantf2("ipsrspembelian","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
+                if(Sequel.menyimpantf2("inventaris_pembelian","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                         NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),
                         ""+sbttl,""+ttldisk,""+ttl,""+ppn,""+meterai,""+(ttl+ppn+meterai),akunbayar
                 })==true){
@@ -773,7 +777,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,5).toString(),tbDokter.getValueAt(i,6).toString(),
                                 tbDokter.getValueAt(i,7).toString(),tbDokter.getValueAt(i,8).toString(),tbDokter.getValueAt(i,9).toString()
                             })==true){
-                                Trackbarang.catatRiwayat(tbDokter.getValueAt(i,1).toString(),Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),0,"Pengadaan", akses.getkode(),"Simpan");
                                 Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
                                     tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,1).toString()
                                 });
@@ -963,7 +966,7 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdptgKeyPressed
 
 private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("DlgPembelianIPSRS");
+        akses.setform("InventarisPembelian");
         form.suplier.emptTeks();
         form.suplier.isCek();
         form.suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -973,7 +976,7 @@ private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnSuplierActionPerformed
 
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("DlgPembelianIPSRS");
+        akses.setform("InventarisPembelian");
         form.petugas.emptTeks();
         form.petugas.isCek();
         form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -984,13 +987,13 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
-        tampilAkunBayar();
+        tampilAkun();
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        akses.setform("DlgPembelianIPSRS");
-        IPSRSBarang barang=new IPSRSBarang(null,false);
+        akses.setform("InventarisPembelian");
+        InventarisBarang barang=new InventarisBarang(null,false);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1035,8 +1038,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox AkunAset;
     private widget.ComboBox AkunBayar;
-    private widget.ComboBox AkunBayar1;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
@@ -1096,7 +1099,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
         kodebarang=new String[jml];
         namabarang=new String[jml];
-        satuan=new String[jml];
+        produsen=new String[jml];
+        merk=new String[jml];
+        kategori=new String[jml];
+        jenis=new String[jml];
         harga=new double[jml];
         jumlah=new double[jml];
         subtotal=new double[jml];
@@ -1111,13 +1117,16 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     jumlah[index]=Double.parseDouble(tbDokter.getValueAt(i,0).toString());
                     kodebarang[index]=tbDokter.getValueAt(i,1).toString();
                     namabarang[index]=tbDokter.getValueAt(i,2).toString();
-                    satuan[index]=tbDokter.getValueAt(i,3).toString();
-                    ganti[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,4).toString());
-                    harga[index]=Double.parseDouble(tbDokter.getValueAt(i,5).toString());
-                    subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,6).toString());
-                    diskon[index]=Double.parseDouble(tbDokter.getValueAt(i,7).toString());
-                    besardiskon[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
-                    jmltotal[index]=Double.parseDouble(tbDokter.getValueAt(i,9).toString());
+                    produsen[index]=tbDokter.getValueAt(i,3).toString();
+                    merk[index]=tbDokter.getValueAt(i,4).toString();
+                    kategori[index]=tbDokter.getValueAt(i,5).toString();
+                    jenis[index]=tbDokter.getValueAt(i,6).toString();
+                    ganti[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,7).toString());
+                    harga[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
+                    subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,9).toString());
+                    diskon[index]=Double.parseDouble(tbDokter.getValueAt(i,10).toString());
+                    besardiskon[index]=Double.parseDouble(tbDokter.getValueAt(i,11).toString());
+                    jmltotal[index]=Double.parseDouble(tbDokter.getValueAt(i,12).toString());
                     index++;
                 }
             } catch (Exception e) {
@@ -1125,14 +1134,26 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
         Valid.tabelKosong(tabMode);
         for(i=0;i<jml;i++){
-            tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],ganti[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i]});
+            tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],produsen[i],merk[i],kategori[i],jenis[i],ganti[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i]});
         }
         try{
             ps=koneksi.prepareStatement(
-                    "select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,ipsrsbarang.harga "+
-                    " from ipsrsbarang where ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? or "+
-                    " ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? or "+
-                    " ipsrsbarang.status='1' and ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
+                    "select inventaris_barang.kode_barang, inventaris_barang.nama_barang, inventaris_barang.jml_barang, "+
+                    "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn,"+
+                    "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis "+
+                    "from inventaris_barang inner join inventaris_produsen "+
+                    "inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk "+
+                    "on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen and inventaris_barang.id_merk=inventaris_merk.id_merk "+
+                    "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
+                    "where inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_barang.jml_barang like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' "+
+                    "or inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' order by inventaris_barang.kode_barang");
             try{   
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1233,11 +1254,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from ipsrspembelian where tgl_beli='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from inventaris_pembelian where tgl_beli='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"' ",
                 "PI"+TglBeli.getSelectedItem().toString().substring(6,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
-    private void tampilAkunBayar() {         
+    private void tampilAkun() {         
          try{      
              file=new File("./cache/akunbayar.iyem");
              file.createNewFile();
@@ -1268,9 +1289,45 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
              iyem=null;
         } catch (Exception e) {
             if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
+                System.out.println("Notifikasi Akun Bayar : Data tidak ditemukan..!!");
             }else{
-                System.out.println("Notifikasi : "+e);
+                System.out.println("Notifikasi Akun Bayar : "+e);
+            }
+        }
+         
+        try{      
+             file=new File("./cache/akunaset.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             iyem="";
+             ps=koneksi.prepareStatement("select rekening.nm_rek,akun_aset_inventaris.kd_rek from akun_aset_inventaris inner join rekening on akun_aset_inventaris.kd_rek=rekening.kd_rek group by rekening.nm_rek order by rekening.nm_rek");
+             try{
+                 rs=ps.executeQuery();
+                 AkunAset.removeAllItems();
+                 while(rs.next()){    
+                     AkunAset.addItem(rs.getString(1).replaceAll("\"",""));
+                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
+                 }
+             }catch (Exception e) {
+                 System.out.println("Notifikasi : "+e);
+             } finally{
+                 if(rs != null){
+                     rs.close();
+                 } 
+                 if(ps != null){
+                     ps.close();
+                 } 
+             }
+
+             fileWriter.write("{\"akunaset\":["+iyem.substring(0,iyem.length()-1)+"]}");
+             fileWriter.flush();
+             fileWriter.close();
+             iyem=null;
+        } catch (Exception e) {
+            if(e.toString().contains("begin")){
+                System.out.println("Notifikasi Akun Aset : Data tidak ditemukan..!!");
+            }else{
+                System.out.println("Notifikasi Akun Aset : "+e);
             }
         }
     }

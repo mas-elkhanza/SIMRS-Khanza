@@ -19,7 +19,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import ipsrs.IPSRSSuplier;
+import ipsrs.IPSRSCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -55,7 +55,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private IPSRSSuplier suplier=new IPSRSSuplier(null,false);
+    private IPSRSCariSuplier suplier=new IPSRSCariSuplier(null,false);
     private boolean sukses=false;
     private double total=0,hutang=0,sisahutang=0;
     private String koderekening="";

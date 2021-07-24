@@ -30,7 +30,7 @@ public class IPSRSCariReturBeli extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  IPSRSSuplier suplier=new IPSRSSuplier(null,false);
+    public  IPSRSCariSuplier suplier=new IPSRSCariSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  IPSRSBarang barang=new IPSRSBarang(null,false);
     private riwayatnonmedis Trackbarang=new riwayatnonmedis();

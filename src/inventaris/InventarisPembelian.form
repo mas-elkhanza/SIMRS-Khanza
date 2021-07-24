@@ -762,12 +762,12 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.ComboBox" name="AkunBayar1">
+            <Component class="widget.ComboBox" name="AkunAset">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="AkunBayar1" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="AkunAset" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

@@ -283,7 +283,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
     private InventarisProdusen produsen=new InventarisProdusen(null,false); 
     private InventarisMerk merk=new InventarisMerk(null,false); 
     private InventarisKategori kategori=new InventarisKategori(null,false);
-    private InventarisJenis jenis=new InventarisJenis(null,false); 
+    public InventarisJenis jenis=new InventarisJenis(null,false); 
 
     /** This method is called from within the constructor to
      * initialize the form.

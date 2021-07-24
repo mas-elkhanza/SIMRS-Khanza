@@ -506,6 +506,7 @@ import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import informasi.InformasiStokDarah;
 import inventaris.AsalHibah;
+import inventaris.InventarisPembelian;
 import inventaris.InventarisPemeliharaan;
 import inventaris.InventarisPerbaikan;
 import inventaris.InventarisPermintaanPerbaikan;
@@ -544,7 +545,7 @@ import inventory.InventoryRingkasanReturJualBarangMedis;
 import inventory.InventoryRingkasanReturSuplierBarangMedis;
 import inventory.InventoryRingkasanStokKeluarBarangMedis;
 import inventory.InventoryVerifikasiPenerimaan;
-import ipsrs.DlgPengajuanBarangNonMedis;
+import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRingkasanPemesananBarangNonMedis;
@@ -14627,7 +14628,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPengajuanBarangNonMedisActionPerformed(java.awt.event.ActionEvent evt) { 
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPengajuanBarangNonMedis form=new DlgPengajuanBarangNonMedis(this,false);
+        IPSRSPengajuanBarangNonMedis form=new IPSRSPengajuanBarangNonMedis(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
@@ -17193,7 +17194,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPengadaanAsetActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisPembelian pembelian=new InventarisPembelian(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
