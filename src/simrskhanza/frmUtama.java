@@ -17219,6 +17219,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenerimaanAsetActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17839,7 +17843,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
-            btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris;
+            btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset;
     
     public void isWall(){
         try{            
@@ -18849,6 +18853,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpengadaan_aset_inventaris()==true){
                 Panelmenu.add(btnPengadaanAset);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenerimaan_aset_inventaris()==true){
+                Panelmenu.add(btnPenerimaanAset);
                 jmlmenu++;
             }
             
@@ -22502,6 +22511,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpengadaan_aset_inventaris()==true){
             Panelmenu.add(btnPengadaanAset);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenerimaan_aset_inventaris()==true){
+            Panelmenu.add(btnPenerimaanAset);
             jmlmenu++;
         }
         
@@ -26496,6 +26510,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpengadaan_aset_inventaris()==true){
             if(btnPengadaanAset.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengadaanAset);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenerimaan_aset_inventaris()==true){
+            if(btnPenerimaanAset.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenerimaanAset);
                 jmlmenu++;
             }                
         }
@@ -32465,7 +32486,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAkunAsetInventaris.addActionListener(this::btnAkunAsetInventarisActionPerformed);
         
         btnPengadaanAset = new widget.ButtonBig();
-        btnPengadaanAset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/49599_add_package_icon.png"))); 
+        btnPengadaanAset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/10999_bag_cash_coin_money_icon.png"))); 
         btnPengadaanAset.setText("Pengadaan Aset/Inventaris");
         btnPengadaanAset.setIconTextGap(0);
         btnPengadaanAset.setName("btnPengadaanAset"); 
@@ -32479,6 +32500,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuplierInventaris.setName("btnSuplierInventaris"); 
         btnSuplierInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSuplierInventaris.addActionListener(this::btnSuplierInventarisActionPerformed);
+        
+        btnPenerimaanAset = new widget.ButtonBig();
+        btnPenerimaanAset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/49599_add_package_icon.png"))); 
+        btnPenerimaanAset.setText("Penerimaan Aset/Inventaris");
+        btnPenerimaanAset.setIconTextGap(0);
+        btnPenerimaanAset.setName("btnPenerimaanAset"); 
+        btnPenerimaanAset.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenerimaanAset.addActionListener(this::btnPenerimaanAsetActionPerformed);
     }
 
     
