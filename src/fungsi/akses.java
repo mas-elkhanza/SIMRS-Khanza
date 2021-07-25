@@ -159,7 +159,7 @@ public final class akses {
             bpjs_surat_pri=false,ringkasan_tindakan=false,lama_pelayanan_pasien=false,surat_sakit_pihak_2=false,tagihan_hutang_obat=false,
             referensi_mobilejkn_bpjs=false,batal_pendaftaran_mobilejkn_bpjs=false,lama_operasi=false,grafik_inventaris_kategori=false,grafik_inventaris_merk=false,
             grafik_inventaris_produsen=false,pengembalian_deposit_pasien=false,validasi_tagihan_hutang_obat=false,piutang_obat_belum_lunas=false,
-            integrasi_briapi=false,pengadaan_aset_inventaris=false,akun_aset_inventaris=false;
+            integrasi_briapi=false,pengadaan_aset_inventaris=false,akun_aset_inventaris=false,suplier_inventaris=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -908,6 +908,7 @@ public final class akses {
                         akses.integrasi_briapi=true;
                         akses.pengadaan_aset_inventaris=true;
                         akses.akun_aset_inventaris=true;
+                        akses.suplier_inventaris=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1640,6 +1641,7 @@ public final class akses {
                         akses.integrasi_briapi=rs2.getBoolean("integrasi_briapi");
                         akses.pengadaan_aset_inventaris=rs2.getBoolean("pengadaan_aset_inventaris");
                         akses.akun_aset_inventaris=rs2.getBoolean("akun_aset_inventaris");
+                        akses.suplier_inventaris=rs2.getBoolean("suplier_inventaris");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2370,6 +2372,7 @@ public final class akses {
                         akses.integrasi_briapi=false;
                         akses.pengadaan_aset_inventaris=false;
                         akses.akun_aset_inventaris=false;
+                        akses.suplier_inventaris=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3155,4 +3158,5 @@ public final class akses {
     public static boolean getintegrasi_briapi(){return akses.integrasi_briapi;}
     public static boolean getpengadaan_aset_inventaris(){return akses.pengadaan_aset_inventaris;}
     public static boolean getakun_aset_inventaris(){return akses.akun_aset_inventaris;}
+    public static boolean getsuplier_inventaris(){return akses.suplier_inventaris;}
 }   

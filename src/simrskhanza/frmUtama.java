@@ -510,6 +510,7 @@ import inventaris.InventarisPembelian;
 import inventaris.InventarisPemeliharaan;
 import inventaris.InventarisPerbaikan;
 import inventaris.InventarisPermintaanPerbaikan;
+import inventaris.InventarisSuplier;
 import inventaris.KeslingLimbahB3Medis;
 import inventaris.KeslingLimbahDomestik;
 import inventaris.KeslingMutuAirLimbah;
@@ -17205,6 +17206,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuplierInventarisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisSuplier suplier=new InventarisSuplier(this,false);
+        suplier.isCek();
+        suplier.emptTeks();
+        suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        suplier.setLocationRelativeTo(PanelUtama);
+        suplier.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17825,7 +17839,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKeteranganSehat,btnPendapatanPerCaraBayar,btnAkunRekeningHtHBankJateng,btnPembayaranBankJateng,btnBPJSSuratPRI,btnRingkasanTindakanRalan,
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
-            btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset;
+            btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris;
     
     public void isWall(){
         try{            
@@ -18825,6 +18839,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpengajuan_asetinventaris()==true){
                 Panelmenu.add(btnPengajuanAsetInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.getsuplier_inventaris()==true){
+                Panelmenu.add(btnSuplierInventaris);
                 jmlmenu++;
             }
             
@@ -22476,6 +22495,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }  
         
+        if(akses.getsuplier_inventaris()==true){
+            Panelmenu.add(btnSuplierInventaris);
+            jmlmenu++;
+        }
+
         if(akses.getpengadaan_aset_inventaris()==true){
             Panelmenu.add(btnPengadaanAset);
             jmlmenu++;
@@ -26458,6 +26482,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpengajuan_asetinventaris()==true){
             if(btnPengajuanAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengajuanAsetInventaris);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsuplier_inventaris()==true){
+            if(btnSuplierInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuplierInventaris);
                 jmlmenu++;
             }                
         }
@@ -32434,12 +32465,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAkunAsetInventaris.addActionListener(this::btnAkunAsetInventarisActionPerformed);
         
         btnPengadaanAset = new widget.ButtonBig();
-        btnPengadaanAset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/10999_bag_cash_coin_money_icon.png"))); 
+        btnPengadaanAset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/49599_add_package_icon.png"))); 
         btnPengadaanAset.setText("Pengadaan Aset/Inventaris");
         btnPengadaanAset.setIconTextGap(0);
         btnPengadaanAset.setName("btnPengadaanAset"); 
         btnPengadaanAset.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPengadaanAset.addActionListener(this::btnPengadaanAsetActionPerformed);
+        
+        btnSuplierInventaris = new widget.ButtonBig();
+        btnSuplierInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1988878_front_lorry_truck_vehicle_icon.png"))); 
+        btnSuplierInventaris.setText("Suplier Aset/Inventaris");
+        btnSuplierInventaris.setIconTextGap(0);
+        btnSuplierInventaris.setName("btnSuplierInventaris"); 
+        btnSuplierInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuplierInventaris.addActionListener(this::btnSuplierInventarisActionPerformed);
     }
 
     
