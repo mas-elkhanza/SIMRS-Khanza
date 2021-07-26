@@ -916,12 +916,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ps=koneksi.prepareStatement("select inventaris_pembelian.tgl_beli,inventaris_pembelian.no_faktur, "+
                     "inventaris_pembelian.kode_suplier,inventaris_suplier.nama_suplier, "+
                     "inventaris_pembelian.nip,petugas.nama,inventaris_pembelian.subtotal,inventaris_pembelian.potongan,inventaris_pembelian.total, "+
-                    "inventaris_pembelian.ppn,inventaris_pembelian.tagihan,inventaris_pembelian.meterai from "+
+                    "inventaris_pembelian.ppn,inventaris_pembelian.tagihan,inventaris_pembelian.meterai,"+
+                    "akunbayar.nm_rek as akun_bayar,akunaset.nm_rek as akun_aset from "+
                     "inventaris_pembelian inner join inventaris_suplier on inventaris_pembelian.kode_suplier=inventaris_suplier.kode_suplier "+
                     "inner join petugas on inventaris_pembelian.nip=petugas.nip "+
                     "inner join inventaris_detail_beli on inventaris_pembelian.no_faktur=inventaris_detail_beli.no_faktur "+
                     "inner join inventaris_barang on inventaris_detail_beli.kode_barang=inventaris_barang.kode_barang "+
                     "inner join inventaris_jenis on inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
+                    "inner join rekening as akunbayar on akunbayar.kd_rek=inventaris_pembelian.kd_rek "+
+                    "inner join rekening as akunaset on akunaset.kd_rek=inventaris_pembelian.kd_rek_aset "+
                     " where inventaris_pembelian.tgl_beli between ? and ? and inventaris_pembelian.no_faktur like ? and inventaris_suplier.nama_suplier like ? and petugas.nama like ?  and inventaris_jenis.nama_jenis like ? and inventaris_barang.nama_barang like ? "+
                     (TCari.getText().trim().equals("")?"":"and (inventaris_pembelian.no_faktur like ? or inventaris_pembelian.kode_suplier like ? or inventaris_suplier.nama_suplier like ? or inventaris_pembelian.nip like ? or petugas.nama like ? or "+
                     "inventaris_jenis.nama_jenis like ? or inventaris_detail_beli.kode_barang like ? or inventaris_barang.nama_barang like ?)")+" group by inventaris_pembelian.no_faktur order by inventaris_pembelian.tgl_beli,inventaris_pembelian.no_faktur ");
@@ -974,9 +977,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                             Valid.SetAngka(rs2.getDouble(8)),Valid.SetAngka(rs2.getDouble(9)),Valid.SetAngka(rs2.getDouble(10))});
                             no++;
                         }
-                        tabMode.addRow(new Object[]{"","","","Total",":","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
-                        tabMode.addRow(new Object[]{"","","","PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
-                        tabMode.addRow(new Object[]{"","","","Meterai",":","","","","",Valid.SetAngka(rs.getDouble("meterai"))});
+                        tabMode.addRow(new Object[]{"","Akun Bayar",": "+rs.getString("akun_bayar"),"Total",":","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
+                        tabMode.addRow(new Object[]{"","Akun Aset",": "+rs.getString("akun_aset"),"PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
+                        tabMode.addRow(new Object[]{"","","","Biaya Tambahan",":","","","","",Valid.SetAngka(rs.getDouble("meterai"))});
                         tabMode.addRow(new Object[]{"","","","Tagihan",":","","","","",Valid.SetAngka(rs.getDouble("tagihan"))});
                         tagihan=tagihan+rs.getDouble("tagihan");
                     } catch (Exception e) {
@@ -1013,7 +1016,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(akses.getipsrs_pengadaan_barang());
+        BtnPrint.setEnabled(akses.getpengadaan_aset_inventaris());
+        if(akses.getkode().equals("Admin Utama")){
+            ppHapus.setEnabled(true);
+        }else{
+            ppHapus.setEnabled(false);
+        } 
     }
     
 }
