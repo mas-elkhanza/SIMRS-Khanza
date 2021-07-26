@@ -508,6 +508,7 @@ import informasi.InformasiStokDarah;
 import inventaris.AsalHibah;
 import inventaris.InventarisPembelian;
 import inventaris.InventarisPemeliharaan;
+import inventaris.InventarisPemesanan;
 import inventaris.InventarisPerbaikan;
 import inventaris.InventarisPermintaanPerbaikan;
 import inventaris.InventarisSuplier;
@@ -17220,7 +17221,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPenerimaanAsetActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisPemesanan pemesanan=new InventarisPemesanan(this,false);
+        pemesanan.isCek();
+        pemesanan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pemesanan.setLocationRelativeTo(PanelUtama);
+        pemesanan.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**

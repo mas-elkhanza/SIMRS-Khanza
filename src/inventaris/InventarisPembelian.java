@@ -739,7 +739,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(nmptg.getText().trim().equals("")){
             Valid.textKosong(kdptg,"Petugas");
         }else if(Meterai.getText().trim().equals("")){
-            Valid.textKosong(Meterai,"meterai");
+            Valid.textKosong(Meterai,"Biaya Tambahan");
+        }else if(AkunBayar.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(AkunBayar,"Akun Bayar");
+        }else if(AkunAset.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(AkunAset,"Akun Aset");
         }else if(tbDokter.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
@@ -1280,8 +1284,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
-            BtnSimpan.setEnabled(akses.getipsrs_pengadaan_barang());
-            BtnTambah.setEnabled(akses.getipsrs_barang());
+            BtnSimpan.setEnabled(akses.getpengadaan_aset_inventaris());
+            BtnTambah.setEnabled(akses.getinventaris_koleksi());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
         }        
     }

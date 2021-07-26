@@ -66,7 +66,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
             "Tgl.Asuhan","Anamnesis","Tiba di Ruang Rawat","Cara Masuk","Keluhan Utama","Penyakit Selama Kehamilan","Riwayat Penyakit Keluarga","Riwayat Pembedahan",
-            "Riwayat Alergi","Komplikasi Kehamilan Sebelumnya","Keterangan","Umur Menarche","Lamanya Mens","Banyaknya Pembalut","Siklus Haid","Ket.Siklus Haid","Dirasakan Saat Menstruasi",
+            "Riwayat Alergi","Komplikasi Kehamilan Sebelumnya","Keterangan Komplikasi Sebelumnya","Umur Menarche","Lamanya Mens","Banyaknya Pembalut","Siklus Haid","Ket.Siklus Haid","Dirasakan Saat Menstruasi",
             "Status Menikah","Jml.Nikah","Usia Perkawinan 1","Status Perkawinan 1","Usia Perkawinan 2","Status Perkawinan 2","Usia Perkawinan 3","Status Perkawinan 3",
             "G","P","A","Anak Yang Hidup","HPHT","Usia Hamil","Tg.Perkiraan","Riwayat Imunisasi","ANC","ANC Ke","Ket. ANC","Keluhan Hamil Muda","Keluhan Hamil Tua"
         }){
@@ -78,7 +78,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 30; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -90,6 +90,54 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                 column.setPreferredWidth(65);
             }else if(i==4){
                 column.setPreferredWidth(25);
+            }else if(i==5){
+                column.setPreferredWidth(85);
+            }else if(i==6){
+                column.setPreferredWidth(150);
+            }else if(i==7){
+                column.setPreferredWidth(85);
+            }else if(i==8){
+                column.setPreferredWidth(150);
+            }else if(i==9){
+                column.setPreferredWidth(90);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(117);
+            }else if(i==12){
+                column.setPreferredWidth(90);
+            }else if(i==13){
+                column.setPreferredWidth(110);
+            }else if(i==14){
+                column.setPreferredWidth(70);
+            }else if(i==15){
+                column.setPreferredWidth(250);
+            }else if(i==16){
+                column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(150);
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setPreferredWidth(175);
+            }else if(i==21){
+                column.setPreferredWidth(180);
+            }else if(i==22){
+                column.setPreferredWidth(84);
+            }else if(i==23){
+                column.setPreferredWidth(78);
+            }else if(i==24){
+                column.setPreferredWidth(108);
+            }else if(i==25){
+                column.setPreferredWidth(60);
+            }else if(i==26){
+                column.setPreferredWidth(80);
+            }else if(i==27){
+                column.setPreferredWidth(150);
+            }else if(i==28){
+                column.setPreferredWidth(100);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -6504,7 +6552,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
-                        rs.getString("kd_dokter"),rs.getString("nm_dokter")
+                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("tiba_diruang_rawat"),rs.getString("cara_masuk"),rs.getString("keluhan"),rs.getString("psk"),rs.getString("rpk"),
+                        rs.getString("rp"),rs.getString("alergi"),rs.getString("komplikasi_sebelumnya"),rs.getString("keterangan_komplikasi_sebelumnya"),rs.getString("riwayat_mens_umur"),rs.getString("riwayat_mens_lamanya"),rs.getString("riwayat_mens_banyaknya"),
+                        rs.getString("riwayat_mens_siklus"),rs.getString("riwayat_mens_ket_siklus")
                     });
                 }
             } catch (Exception e) {
@@ -6786,7 +6836,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     }
 
     private void getMasalah() {
-        if(tbObat.getSelectedRow()!= -1){
+        /*if(tbObat.getSelectedRow()!= -1){
             TNoRM1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             MasalahKebidanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),122).toString());
@@ -6818,7 +6868,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             }
-        }
+        }*/
     }
     
     private void isBMI(){

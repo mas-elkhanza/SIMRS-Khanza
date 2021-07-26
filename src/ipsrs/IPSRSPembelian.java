@@ -739,6 +739,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(kdsup,"Supplier");
         }else if(nmptg.getText().trim().equals("")){
             Valid.textKosong(kdptg,"Petugas");
+        }else if(AkunBayar.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(AkunBayar,"Akun Bayar");
         }else if(Meterai.getText().trim().equals("")){
             Valid.textKosong(Meterai,"meterai");
         }else if(tbDokter.getRowCount()==0){

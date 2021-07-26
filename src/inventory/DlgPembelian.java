@@ -919,6 +919,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(kdptg,"Petugas");
         }else if(nmgudang.getText().trim().equals("")){
             Valid.textKosong(kdgudang,"Lokasi");
+        }else if(AkunBayar.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(AkunBayar,"Akun Bayar");
         }else if(tbDokter.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
