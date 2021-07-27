@@ -155,7 +155,7 @@
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="626" y="0" width="73" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="057754e5-8cd8-4bb7-a3a1-7b66b4ac7d7f"/>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -171,7 +171,7 @@
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="438" y="0" width="68" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="357bf2b1-82ab-4446-83e5-8ff0199d1098"/>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -179,7 +179,7 @@
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="506" y="0" width="85" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="45dcd38e-61ee-4352-ba57-8f507d68ce01"/>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -187,7 +187,7 @@
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="591" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="51db47ae-0bd0-4a3d-86b0-a0dc07353f77"/>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -243,7 +243,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="438" y="1" width="68" height="10" uuid="499a65f4-7c4e-4af7-8816-4d664e569858"/>
-				<textElement>
+				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -251,7 +251,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="506" y="1" width="85" height="10" uuid="b3cdcd31-c79e-4200-a49a-aa98ce4ce655"/>
-				<textElement>
+				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -259,7 +259,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="591" y="1" width="35" height="10" uuid="4761a505-e17b-4ccc-a137-75a061968d5f"/>
-				<textElement>
+				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -267,7 +267,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="626" y="1" width="73" height="10" uuid="82739202-0cba-4a68-8e94-73c8093dad46"/>
-				<textElement>
+				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>

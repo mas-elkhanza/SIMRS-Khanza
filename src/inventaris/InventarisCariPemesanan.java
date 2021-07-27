@@ -20,7 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
@@ -44,7 +46,8 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private boolean sukses=false;
     private String Kontra_Penerimaan_AsetInventaris=Sequel.cariIsi("select Kontra_Penerimaan_AsetInventaris from set_akun");
-
+    private DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+    
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -62,6 +65,7 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
+        rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
         for (int i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
@@ -72,16 +76,22 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==3){
                 column.setPreferredWidth(35);
+                column.setCellRenderer(rightRenderer);
             }else if(i==4){
                 column.setPreferredWidth(90);
+                column.setCellRenderer(rightRenderer);
             }else if(i==5){
                 column.setPreferredWidth(90);
+                column.setCellRenderer(rightRenderer);
             }else if(i==6){
                 column.setPreferredWidth(40);
+                column.setCellRenderer(rightRenderer);
             }else if(i==7){
                 column.setPreferredWidth(90);
+                column.setCellRenderer(rightRenderer);
             }else if(i==8){
                 column.setPreferredWidth(100);
+                column.setCellRenderer(rightRenderer);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1037,9 +1047,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 Valid.textKosong(TCari,"No.Faktur");
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.meghapus("bukti_pemesanan_logistik", "no_faktur",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                Sequel.menyimpan2("bukti_pemesanan_logistik","?,''",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-                Valid.panggilUrl("penerimaanlogistik/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&nofaktur="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                Sequel.meghapus("inventaris_bukti_pemesanan", "no_faktur",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                Sequel.menyimpan2("inventaris_bukti_pemesanan","?,''",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
+                Valid.panggilUrl("penerimaanaset/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&nofaktur="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -1212,10 +1222,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ps2.close();
                         }
                     }
-                    tabMode.addRow(new Object[]{"","Nomor Order",rs.getString("no_order"),"","Tgl.Faktur",rs.getString("tgl_faktur"),"","Total",Valid.SetAngka(rs.getDouble("total2"))});
-                    tabMode.addRow(new Object[]{"","Akun Aset",rs.getString("akun_aset"),"","Tgl.Datang",rs.getString("tgl_pesan"),"","Tambahan Biaya",Valid.SetAngka(rs.getDouble("meterai"))});
-                    tabMode.addRow(new Object[]{"","","","","Jth.Tempo",rs.getString("tgl_tempo"),"","PPN",Valid.SetAngka(rs.getDouble("ppn"))});
-                    tabMode.addRow(new Object[]{"","","","","Status Bayar",rs.getString("status"),"","Tagihan",Valid.SetAngka(rs.getDouble("tagihan"))});
+                    tabMode.addRow(new Object[]{"","No. Order : "+rs.getString("no_order"),"","","Tanggal Faktur :",rs.getString("tgl_faktur"),"","Total :",Valid.SetAngka(rs.getDouble("total2"))});
+                    tabMode.addRow(new Object[]{"","Akun Aset : "+rs.getString("akun_aset"),"","","Tanggal Datang :",rs.getString("tgl_pesan"),"","Tambahan Biaya :",Valid.SetAngka(rs.getDouble("meterai"))});
+                    tabMode.addRow(new Object[]{"","","","","Jatuh Tempo :",rs.getString("tgl_tempo"),"","PPN :",Valid.SetAngka(rs.getDouble("ppn"))});
+                    tabMode.addRow(new Object[]{"","","","","Status Bayar :",rs.getString("status"),"","Tagihan :",Valid.SetAngka(rs.getDouble("tagihan"))});
                     tagihan=tagihan+rs.getDouble("tagihan");
                 }
             } catch (Exception e) {
@@ -1267,7 +1277,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select photo from bukti_pemesanan_logistik where no_faktur=?");
+                ps=koneksi.prepareStatement("select photo from inventaris_bukti_pemesanan where no_faktur=?");
                 try {
                     ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -1275,7 +1285,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penerimaanlogistik/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-335)+"' height='"+(internalFrame1.getHeight()-265)+"'/></center></body></html>");
+                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penerimaanaset/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-335)+"' height='"+(internalFrame1.getHeight()-265)+"'/></center></body></html>");
                         }  
                     }else{
                         LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
