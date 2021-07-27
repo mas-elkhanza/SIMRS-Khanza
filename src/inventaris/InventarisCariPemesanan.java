@@ -43,6 +43,7 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
     private boolean sukses=false;
+    private String Kontra_Penerimaan_AsetInventaris=Sequel.cariIsi("select Kontra_Penerimaan_AsetInventaris from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -265,12 +266,6 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
         
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-        
-        try {
-            pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, tgl_faktur,status from inventaris_pemesanan where no_faktur=?");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 
     /** This method is called from within the constructor to
@@ -935,7 +930,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPemesananIPSRS.jasper","report","::[ Transaksi Penerimaan Barang Non Medis ]::",param);
+            Valid.MyReport("rptPemesananAset.jasper","report","::[ Transaksi Penerimaan Barang Aset/Inventaris ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -957,34 +952,46 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,"No.Faktur");
   }else{
      try {
-         pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-         rs=pscaripesan.executeQuery();
-         while(rs.next()){
-             Sequel.AutoComitFalse();
-             sukses=true;
-             
-             Sequel.queryu("delete from tampjurnal");
-             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Penerimaan_NonMedis from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",rs.getString("tagihan")
-             });    
-             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Kontra_Penerimaan_NonMedis from set_akun"),"HUTANG BARANG NON MEDIS",rs.getString("tagihan"),"0"
-             }); 
-             sukses=jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
-             
-             if(sukses==true){
-                Sequel.queryu2("delete from inventaris_pemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-                Sequel.Commit();
-                tampil();
-             }else{
-                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                Sequel.RollBack();
-             }
+         pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, tgl_faktur,status,kd_rek_aset from inventaris_pemesanan where no_faktur=?");
+         try {
+            pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            rs=pscaripesan.executeQuery();
+            while(rs.next()){
+                Sequel.AutoComitFalse();
+                sukses=true;
 
-             Sequel.AutoComitTrue();
+                Sequel.queryu("delete from tampjurnal");
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("tagihan")
+                });    
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS",rs.getString("tagihan"),"0"
+                }); 
+                sukses=jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL PENERIMAAN BARANG ASET/INVENTARIS"+", OLEH "+akses.getkode());
+
+                if(sukses==true){
+                   Sequel.queryu2("delete from inventaris_pemesanan where no_faktur=?",1,new String[]{rs.getString("no_faktur")});
+                   Sequel.Commit();
+                   tampil();
+                }else{
+                   JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                   Sequel.RollBack();
+                }
+
+                Sequel.AutoComitTrue();
+            }  
+         } catch (Exception e) {
+            System.out.println("Notif : "+e);
+         } finally{
+             if(rs!=null){
+                 rs.close();
+             }
+             if(pscaripesan!=null){
+                 pscaripesan.close();
+             }
          }          
-     } catch (SQLException ex) {
-         System.out.println(ex);
+     } catch (Exception ex) {
+         System.out.println("Notif : "+ex);
      }      
   }       
     
