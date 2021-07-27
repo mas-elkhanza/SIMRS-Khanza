@@ -52,7 +52,7 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
         initComponents();
 
         Object[] row={"No.Faktur","Suplier","Petugas","Jml","Harga(Rp)","SubTotal(Rp)",
-                    "Disk(%)","Bsr.Disk(Rp)","Total(Rp)"};
+                    "Dis(%)","Bsr.Disk(Rp)","Total(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -68,7 +68,7 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(200);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==3){
                 column.setPreferredWidth(35);
             }else if(i==4){
@@ -76,7 +76,7 @@ public class InventarisCariPemesanan extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(40);
             }else if(i==7){
                 column.setPreferredWidth(90);
             }else if(i==8){
@@ -1129,12 +1129,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "inventaris_pemesanan.kode_suplier,inventaris_suplier.nama_suplier, "+
                     "inventaris_pemesanan.nip,petugas.nama,inventaris_pemesanan.tgl_faktur, "+
                     "inventaris_pemesanan.tgl_tempo,inventaris_pemesanan.status,inventaris_pemesanan.total2,inventaris_pemesanan.ppn,"+
-                    "inventaris_pemesanan.meterai,inventaris_pemesanan.tagihan,inventaris_pemesanan.no_order "+
+                    "inventaris_pemesanan.meterai,inventaris_pemesanan.tagihan,inventaris_pemesanan.no_order,akunaset.nm_rek as akun_aset "+
                     " from inventaris_pemesanan inner join inventaris_suplier on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
                     " inner join petugas on inventaris_pemesanan.nip=petugas.nip "+
                     " inner join inventaris_detail_pesan on inventaris_pemesanan.no_faktur=inventaris_detail_pesan.no_faktur "+
                     " inner join inventaris_barang on inventaris_detail_pesan.kode_barang=inventaris_barang.kode_barang "+
                     " inner join inventaris_jenis on inventaris_jenis.id_jenis=inventaris_jenis.id_jenis "+
+                    " inner join rekening as akunaset on akunaset.kd_rek=inventaris_pemesanan.kd_rek_aset "+
                     " where inventaris_pemesanan.tgl_pesan between ? and ? and inventaris_pemesanan.no_faktur like ? and inventaris_suplier.nama_suplier like ? and petugas.nama like ?  and inventaris_jenis.nama_jenis like ? and inventaris_barang.nama_barang like ? "+
                     (TCari.getText().trim().equals("")?"":"and (inventaris_pemesanan.no_faktur like ? or inventaris_pemesanan.kode_suplier like ? or inventaris_suplier.nama_suplier like ? or inventaris_pemesanan.nip like ? or petugas.nama like ? or "+
                     "inventaris_detail_pesan.kode_barang like ? or inventaris_barang.nama_barang like ? or inventaris_pemesanan.no_order like ? or inventaris_jenis.nama_jenis like ?) ")+
@@ -1204,10 +1205,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ps2.close();
                         }
                     }
-                    tabMode.addRow(new Object[]{rs.getString("no_order"),"Tgl.Faktur",": "+rs.getString("tgl_faktur"),"","","Total",":","",Valid.SetAngka(rs.getDouble("total2"))});
-                    tabMode.addRow(new Object[]{"","Tgl.Datang",": "+rs.getString("tgl_pesan"),"","","Tambahan Biaya",":","",Valid.SetAngka(rs.getDouble("meterai"))});
-                    tabMode.addRow(new Object[]{"","Jth.Tempo",": "+rs.getString("tgl_tempo"),"","","PPN",":","",Valid.SetAngka(rs.getDouble("ppn"))});
-                    tabMode.addRow(new Object[]{"","Status Bayar",": "+rs.getString("status"),"","","Tagihan",":","",Valid.SetAngka(rs.getDouble("tagihan"))});
+                    tabMode.addRow(new Object[]{"","Nomor Order",rs.getString("no_order"),"","Tgl.Faktur",rs.getString("tgl_faktur"),"","Total",Valid.SetAngka(rs.getDouble("total2"))});
+                    tabMode.addRow(new Object[]{"","Akun Aset",rs.getString("akun_aset"),"","Tgl.Datang",rs.getString("tgl_pesan"),"","Tambahan Biaya",Valid.SetAngka(rs.getDouble("meterai"))});
+                    tabMode.addRow(new Object[]{"","","","","Jth.Tempo",rs.getString("tgl_tempo"),"","PPN",Valid.SetAngka(rs.getDouble("ppn"))});
+                    tabMode.addRow(new Object[]{"","","","","Status Bayar",rs.getString("status"),"","Tagihan",Valid.SetAngka(rs.getDouble("tagihan"))});
                     tagihan=tagihan+rs.getDouble("tagihan");
                 }
             } catch (Exception e) {

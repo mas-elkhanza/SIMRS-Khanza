@@ -68,7 +68,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             "Tgl.Asuhan","Anamnesis","Tiba di Ruang Rawat","Cara Masuk","Keluhan Utama","Penyakit Selama Kehamilan","Riwayat Penyakit Keluarga","Riwayat Pembedahan",
             "Riwayat Alergi","Komplikasi Kehamilan Sebelumnya","Keterangan Komplikasi Sebelumnya","Umur Menarche","Lamanya Mens","Banyaknya Pembalut","Siklus Haid","Ket.Siklus Haid","Dirasakan Saat Menstruasi",
             "Status Menikah","Jml.Nikah","Usia Perkawinan 1","Status Perkawinan 1","Usia Perkawinan 2","Status Perkawinan 2","Usia Perkawinan 3","Status Perkawinan 3",
-            "G","P","A","Hidup","HPHT","Usia Hamil","Tg.Perkiraan","Riwayat Imunisasi","ANC","ANC Ke","Ket. ANC","Keluhan Hamil Muda","Keluhan Hamil Tua"
+            "G","P","A","Hidup","HPHT","Usia Hamil","Tg.Perkiraan","Riwayat Imunisasi","ANC","ANC Ke","Ket. ANC","Keluhan Hamil Muda","Keluhan Hamil Tua","Riwayat Keluarga Berencana",
+            "Lamanya KB","Komplikasi KB","Ket Komplikasi KB"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -78,7 +79,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 40; i++) {
+        for (i = 0; i < 53; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -160,6 +161,32 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                 column.setPreferredWidth(22);
             }else if(i==39){
                 column.setPreferredWidth(37);
+            }else if(i==40){
+                column.setPreferredWidth(65);
+            }else if(i==41){
+                column.setPreferredWidth(59);
+            }else if(i==42){
+                column.setPreferredWidth(70);
+            }else if(i==43){
+                column.setPreferredWidth(97);
+            }else if(i==44){
+                column.setPreferredWidth(35);
+            }else if(i==45){
+                column.setPreferredWidth(45);
+            }else if(i==46){
+                column.setPreferredWidth(70);
+            }else if(i==47){
+                column.setPreferredWidth(105);
+            }else if(i==48){
+                column.setPreferredWidth(98);
+            }else if(i==49){
+                column.setPreferredWidth(150);
+            }else if(i==50){
+                column.setPreferredWidth(70);
+            }else if(i==51){
+                column.setPreferredWidth(90);
+            }else if(i==52){
+                column.setPreferredWidth(120);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -6579,7 +6606,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                         rs.getString("riwayat_mens_siklus"),rs.getString("riwayat_mens_ket_siklus"),rs.getString("riwayat_mens_dirasakan"),rs.getString("riwayat_perkawinan_status"),rs.getString("riwayat_perkawinan_ket_status"),rs.getString("riwayat_perkawinan_usia1"),
                         rs.getString("riwayat_perkawinan_ket_usia1"),rs.getString("riwayat_perkawinan_usia2"),rs.getString("riwayat_perkawinan_ket_usia2"),rs.getString("riwayat_perkawinan_usia3"),rs.getString("riwayat_perkawinan_ket_usia3"),
                         rs.getString("riwayat_persalinan_g"),rs.getString("riwayat_persalinan_p"),rs.getString("riwayat_persalinan_a"),rs.getString("riwayat_persalinan_hidup"),rs.getString("riwayat_hamil_hpht"),rs.getString("riwayat_hamil_usiahamil"),
-                        rs.getString("riwayat_hamil_tp"),rs.getString("riwayat_hamil_imunisasi")
+                        rs.getString("riwayat_hamil_tp"),rs.getString("riwayat_hamil_imunisasi"),rs.getString("riwayat_hamil_anc"),rs.getString("riwayat_hamil_ancke"),rs.getString("riwayat_hamil_ket_ancke"),rs.getString("riwayat_hamil_keluhan_hamil_muda"),
+                        rs.getString("riwayat_hamil_keluhan_hamil_tua"),rs.getString("riwayat_kb"),rs.getString("riwayat_kb_lamanya"),rs.getString("riwayat_kb_komplikasi"),rs.getString("riwayat_kb_ket_komplikasi")
                     });
                 }
             } catch (Exception e) {
