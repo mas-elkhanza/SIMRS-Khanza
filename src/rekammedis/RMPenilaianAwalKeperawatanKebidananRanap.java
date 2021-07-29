@@ -70,7 +70,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             "Status Menikah","Jml.Nikah","Usia Perkawinan 1","Status Perkawinan 1","Usia Perkawinan 2","Status Perkawinan 2","Usia Perkawinan 3","Status Perkawinan 3",
             "G","P","A","Hidup","HPHT","Usia Hamil","Tg.Perkiraan","Riwayat Imunisasi","ANC","ANC Ke","Ket. ANC","Keluhan Hamil Muda","Keluhan Hamil Tua","Riwayat Keluarga Berencana",
             "Lamanya KB","Komplikasi KB","Ket Komplikasi KB","Berhenti KB","Alasan Berhenti KB","Riwayat Genekologi","Obat/Vitamin","Keterangan Obat/Vitamin","Merokok","Rokok/Hari",
-            "Alkohol","Alkohol/Hari","Obat Tidur/Narkoba"
+            "Alkohol","Alkohol/Hari","Obat Tidur/Narkoba","Kesadaran Mental","Keadaan Umum","GCS(E,V,M)","TD","Nadi","RR","Suhu","SpO2","BB","TB","LILA","TFU","TBJ","GD","Letak",
+            "Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","DJJ","Ket DJJ","Portio","Pembukaan Serviks","Ketuban","Hodge"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -80,7 +81,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 63; i++) {
+        for (i = 0; i < 85; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -208,6 +209,48 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                 column.setPreferredWidth(68);
             }else if(i==62){
                 column.setPreferredWidth(103);
+            }else if(i==63){
+                column.setPreferredWidth(105);
+            }else if(i==64){
+                column.setPreferredWidth(84);
+            }else if(i==65){
+                column.setPreferredWidth(63);
+            }else if(i==66){
+                column.setPreferredWidth(50);
+            }else if(i==67){
+                column.setPreferredWidth(35);
+            }else if(i==68){
+                column.setPreferredWidth(35);
+            }else if(i==69){
+                column.setPreferredWidth(35);
+            }else if(i==70){
+                column.setPreferredWidth(35);
+            }else if(i==71){
+                column.setPreferredWidth(35);
+            }else if(i==72){
+                column.setPreferredWidth(35);
+            }else if(i==73){
+                column.setPreferredWidth(35);
+            }else if(i==74){
+                column.setPreferredWidth(55);
+            }else if(i==75){
+                column.setPreferredWidth(55);
+            }else if(i==76){
+                column.setPreferredWidth(27);
+            }else if(i==77){
+                column.setPreferredWidth(55);
+            }else if(i==78){
+                column.setPreferredWidth(65);
+            }else if(i==79){
+                column.setPreferredWidth(65);
+            }else if(i==80){
+                column.setPreferredWidth(75);
+            }else if(i==81){
+                column.setPreferredWidth(65);
+            }else if(i==82){
+                column.setPreferredWidth(50);
+            }else if(i==83){
+                column.setPreferredWidth(40);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -6630,7 +6673,10 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                         rs.getString("riwayat_hamil_tp"),rs.getString("riwayat_hamil_imunisasi"),rs.getString("riwayat_hamil_anc"),rs.getString("riwayat_hamil_ancke"),rs.getString("riwayat_hamil_ket_ancke"),rs.getString("riwayat_hamil_keluhan_hamil_muda"),
                         rs.getString("riwayat_hamil_keluhan_hamil_tua"),rs.getString("riwayat_kb"),rs.getString("riwayat_kb_lamanya"),rs.getString("riwayat_kb_komplikasi"),rs.getString("riwayat_kb_ket_komplikasi"),rs.getString("riwayat_kb_kapaberhenti"),
                         rs.getString("riwayat_kb_alasanberhenti"),rs.getString("riwayat_genekologi"),rs.getString("riwayat_kebiasaan_obat"),rs.getString("riwayat_kebiasaan_ket_obat"),rs.getString("riwayat_kebiasaan_merokok"),rs.getString("riwayat_kebiasaan_ket_merokok"),
-                        rs.getString("riwayat_kebiasaan_alkohol"),rs.getString("riwayat_kebiasaan_ket_alkohol"),rs.getString("riwayat_kebiasaan_narkoba")
+                        rs.getString("riwayat_kebiasaan_alkohol"),rs.getString("riwayat_kebiasaan_ket_alkohol"),rs.getString("riwayat_kebiasaan_narkoba"),rs.getString("pemeriksaan_kebidanan_mental"),rs.getString("pemeriksaan_kebidanan_keadaan_umum"),
+                        rs.getString("pemeriksaan_kebidanan_gcs"),rs.getString("pemeriksaan_kebidanan_td"),rs.getString("pemeriksaan_kebidanan_nadi"),rs.getString("pemeriksaan_kebidanan_rr"),rs.getString("pemeriksaan_kebidanan_suhu"),
+                        rs.getString("pemeriksaan_kebidanan_spo2"),rs.getString("pemeriksaan_kebidanan_bb"),rs.getString("pemeriksaan_kebidanan_tb"),rs.getString("pemeriksaan_kebidanan_lila"),rs.getString("pemeriksaan_kebidanan_tfu"),
+                        rs.getString("pemeriksaan_kebidanan_tbj"),rs.getString("pemeriksaan_kebidanan_letak"),rs.getString("pemeriksaan_kebidanan_presentasi"),rs.getString("pemeriksaan_kebidanan_penurunan")
                     });
                 }
             } catch (Exception e) {

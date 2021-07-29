@@ -671,7 +671,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "ringkasan_tindakan,lama_pelayanan_pasien,surat_sakit_pihak_2,tagihan_hutang_obat,referensi_mobilejkn_bpjs,batal_pendaftaran_mobilejkn_bpjs,"+
                         "lama_operasi,grafik_inventaris_kategori,grafik_inventaris_merk,grafik_inventaris_produsen,pengembalian_deposit_pasien,"+
                         "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi,pengadaan_aset_inventaris,akun_aset_inventaris,"+
-                        "suplier_inventaris,penerimaan_aset_inventaris from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2090,6 +2090,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[J]Bayar Pesan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Bayar Pesan Non Medis",rs.getBoolean("bayar_pesan_non_medis")});
+                    }
+                    
+                    if("[J]Bayar Pesan Aset/Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Bayar Pesan Aset/Inventaris",rs.getBoolean("bayar_pemesanan_iventaris")});
                     }
                     
                     if("[J]Hutang Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5025,6 +5029,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
             if("[J]Bayar Pesan Non Medis".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bayar_pesan_non_medis='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[J]Bayar Pesan Aset/Inventaris".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bayar_pemesanan_iventaris='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[J]Hutang Barang Non Medis".equals(tbUser.getValueAt(i,1).toString())){

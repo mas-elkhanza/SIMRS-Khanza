@@ -184,7 +184,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Surat PRI VClaim","[H]Ringkasan Tindakan","[I]Lama Pelayanan Pasien","[O]Surat Keterangan Sakit Pihak 2","[J]Titip Faktur/Tagihan Obat & BHP",
                 "[K]Referensi Pendaftaran Mobile JKN","[K]Batal Pendaftaran Mobile JKN","[I]Lama Operasi","[N]Jumlah Inventaris Per Kategori","[N]Jumlah Inventaris Per Merk",
                 "[N]Jumlah Inventaris Per Produsen","[J]Pengembalian Deposit Pasien","[J]Validasi Titip Faktur/Tagihan Obat & BHP","[J]Piutang Obat & BHP Belum Lunas",
-                "[K]Integrasi BRI API","[F]Pengadaan Aset/Inventaris","[J]Akun Jenis Aset/Inventaris","[F]Suplier Aset/Inventaris","[F]Penerimaan Aset/Inventaris"
+                "[K]Integrasi BRI API","[F]Pengadaan Aset/Inventaris","[J]Akun Jenis Aset/Inventaris","[F]Suplier Aset/Inventaris","[F]Penerimaan Aset/Inventaris",
+                "[J]Bayar Pesan Aset/Inventaris"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -394,7 +395,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 731;i++) {
+        for (i = 0; i < 732;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2036,9 +2037,12 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(150);
                     break;
                 case 729:
-                    column.setPreferredWidth(135);
+                    column.setPreferredWidth(134);
                     break;
                 case 730:
+                    column.setPreferredWidth(157);
+                    break;
+                case 731:
                     column.setPreferredWidth(157);
                     break;
                 default:
@@ -2539,7 +2543,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3312,7 +3316,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pengadaan_aset_inventaris='"+tbUser.getValueAt(i,727).toString()+"',"+
                     "akun_aset_inventaris='"+tbUser.getValueAt(i,728).toString()+"',"+
                     "suplier_inventaris='"+tbUser.getValueAt(i,729).toString()+"',"+
-                    "penerimaan_aset_inventaris='"+tbUser.getValueAt(i,730).toString()+"'");
+                    "penerimaan_aset_inventaris='"+tbUser.getValueAt(i,730).toString()+"',"+
+                    "bayar_pemesanan_iventaris='"+tbUser.getValueAt(i,731).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4124,7 +4129,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "pengadaan_aset_inventaris='"+tbUser.getValueAt(barisdicopy,727).toString()+"',"+
                                     "akun_aset_inventaris='"+tbUser.getValueAt(barisdicopy,728).toString()+"',"+
                                     "suplier_inventaris='"+tbUser.getValueAt(barisdicopy,729).toString()+"',"+
-                                    "penerimaan_aset_inventaris='"+tbUser.getValueAt(barisdicopy,730).toString()+"'");
+                                    "penerimaan_aset_inventaris='"+tbUser.getValueAt(barisdicopy,730).toString()+"',"+
+                                    "bayar_pemesanan_iventaris='"+tbUser.getValueAt(barisdicopy,731).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4464,7 +4470,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "ringkasan_tindakan,lama_pelayanan_pasien,surat_sakit_pihak_2,tagihan_hutang_obat,referensi_mobilejkn_bpjs,batal_pendaftaran_mobilejkn_bpjs,"+
                         "lama_operasi,grafik_inventaris_kategori,grafik_inventaris_merk,grafik_inventaris_produsen,pengembalian_deposit_pasien,"+
                         "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi,pengadaan_aset_inventaris,akun_aset_inventaris,"+
-                        "suplier_inventaris,penerimaan_aset_inventaris from user order by AES_DECRYPT(id_user,'nur')");
+                        "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5207,7 +5213,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pengadaan_aset_inventaris"),
                                rs.getBoolean("akun_aset_inventaris"),
                                rs.getBoolean("suplier_inventaris"),
-                               rs.getBoolean("penerimaan_aset_inventaris")
+                               rs.getBoolean("penerimaan_aset_inventaris"),
+                               rs.getBoolean("bayar_pemesanan_iventaris")
                             });
                         }   
                     } catch (Exception e) {
@@ -5939,7 +5946,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pengadaan_aset_inventaris"),
                            rs.getBoolean("akun_aset_inventaris"),
                            rs.getBoolean("suplier_inventaris"),
-                           rs.getBoolean("penerimaan_aset_inventaris")
+                           rs.getBoolean("penerimaan_aset_inventaris"),
+                           rs.getBoolean("bayar_pemesanan_iventaris")
                         });
                     }                                             
                  }
