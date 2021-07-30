@@ -2046,7 +2046,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(157);
                     break;
                 case 732:
-                    column.setPreferredWidth(134);
+                    column.setPreferredWidth(133);
                     break;
                 default:
                     column.setPreferredWidth(140);

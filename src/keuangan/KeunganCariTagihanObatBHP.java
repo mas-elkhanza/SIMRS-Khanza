@@ -695,7 +695,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }else{
                 if(Sequel.cariIsi("select status from titip_faktur where no_tagihan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()).equals("Ditagihkan")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgHutangObatBelumLunas form=new DlgHutangObatBelumLunas(null,false);
+                    KeuanganHutangObatBelumLunas form=new KeuanganHutangObatBelumLunas(null,false);
                     form.isCek();
                     form.tampilTagihan(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

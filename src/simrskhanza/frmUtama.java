@@ -321,7 +321,7 @@ import keuangan.DlgAkunPiutang;
 import keuangan.DlgDetailJMDokter2;
 import keuangan.DlgDetailTindakan;
 import keuangan.DlgDetailVKOK;
-import keuangan.DlgHutangObatBelumLunas;
+import keuangan.KeuanganHutangObatBelumLunas;
 import keuangan.DlgPembayaranPerAKunBayar;
 import keuangan.DlgPembayaranPerPoli;
 import keuangan.DlgPiutangPercaraBayar;
@@ -386,7 +386,7 @@ import kepegawaian.DlgRiwayatPenghargaan;
 import kepegawaian.DlgSidikJari;
 import kepegawaian.DlgTemporaryPresensi;
 import keuangan.KeuanganBayarPemesananNonMedis;
-import keuangan.DlgHutangNonMedisBelumLunas;
+import keuangan.KeuanganHutangNonMedisBelumLunas;
 import keuangan.DlgPiutangPerAKunPiutang;
 import laporan.DlgAnggotaMiliterDirawat;
 import laporan.DlgDataInsidenKeselamatan;
@@ -591,6 +591,7 @@ import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuaganRingkasanTindakan;
 import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
+import keuangan.KeuanganHutangAsetIventarisBelumLunas;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganPiutangObatBelumLunas;
@@ -10870,7 +10871,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnHutangObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHutangObatActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgHutangObatBelumLunas form=new DlgHutangObatBelumLunas(this,false);
+        KeuanganHutangObatBelumLunas form=new KeuanganHutangObatBelumLunas(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
@@ -12400,7 +12401,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnHutangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHutangNonMedisActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgHutangNonMedisBelumLunas form=new DlgHutangNonMedisBelumLunas(this,false);
+        KeuanganHutangNonMedisBelumLunas form=new KeuanganHutangNonMedisBelumLunas(this,false);
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -17245,6 +17246,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHutangAsetInventarisActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganHutangAsetIventarisBelumLunas form=new KeuanganHutangAsetIventarisBelumLunas(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -17866,7 +17878,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
-            btnBayarPemesananInventaris;
+            btnBayarPemesananInventaris,btnHutangAsetInventaris;
     
     public void isWall(){
         try{            
@@ -19769,6 +19781,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbayar_pesan_non_medis()==true){
                 Panelmenu.add(btnBayarPesanNonMedis);
+                jmlmenu++;
+            }
+            
+            if(akses.gethutang_aset_inventaris()==true){
+                Panelmenu.add(btnHutangAsetInventaris);
                 jmlmenu++;
             }
             
@@ -23423,6 +23440,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbayar_pesan_non_medis()==true){
             Panelmenu.add(btnBayarPesanNonMedis);
+            jmlmenu++;
+        }
+            
+        if(akses.gethutang_aset_inventaris()==true){
+            Panelmenu.add(btnHutangAsetInventaris);
             jmlmenu++;
         }
         
@@ -27781,6 +27803,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbayar_pesan_non_medis()==true){
             if(btnBayarPesanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPesanNonMedis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gethutang_aset_inventaris()==true){
+            if(btnHutangAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHutangAsetInventaris);
                 jmlmenu++;
             }                
         }
@@ -32556,6 +32585,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarPemesananInventaris.setName("btnBayarPemesananInventaris"); 
         btnBayarPemesananInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBayarPemesananInventaris.addActionListener(this::btnBayarPemesananInventarisActionPerformed);
+        
+        btnHutangAsetInventaris = new widget.ButtonBig();
+        btnHutangAsetInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/49607_product_report_sales_icon.png"))); 
+        btnHutangAsetInventaris.setText("Hutang Aset/Inventaris");
+        btnHutangAsetInventaris.setIconTextGap(0);
+        btnHutangAsetInventaris.setName("btnHutangAsetInventaris"); 
+        btnHutangAsetInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHutangAsetInventaris.addActionListener(this::btnHutangAsetInventarisActionPerformed);
     }
 
     
