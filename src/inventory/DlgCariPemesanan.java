@@ -25,7 +25,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import keuangan.DlgBayarPemesanan;
+import keuangan.KeuanganBayarPemesananFarmasi;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 
@@ -1292,7 +1292,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 Valid.textKosong(TCari,"No.Faktur");
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                DlgBayarPemesanan bayarpesan=new DlgBayarPemesanan(null,false);
+                KeuanganBayarPemesananFarmasi bayarpesan=new KeuanganBayarPemesananFarmasi(null,false);
                 bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 bayarpesan.tampil();
                 bayarpesan.isCek();

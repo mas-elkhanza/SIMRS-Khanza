@@ -27,7 +27,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
-import keuangan.DlgBayarPemesananNonMedis;
+import keuangan.KeuanganBayarPemesananNonMedis;
 
 public class IPSRSCariPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -1096,7 +1096,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"No.Faktur");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgBayarPemesananNonMedis bayarpesan=new DlgBayarPemesananNonMedis(null,false);
+            KeuanganBayarPemesananNonMedis bayarpesan=new KeuanganBayarPemesananNonMedis(null,false);
             bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
             bayarpesan.tampil();
             bayarpesan.isCek();

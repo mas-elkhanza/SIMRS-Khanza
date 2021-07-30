@@ -193,7 +193,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import keuangan.DlgAkunBayar;
-import keuangan.DlgBayarPemesanan;
+import keuangan.KeuanganBayarPemesananFarmasi;
 import keuangan.DlgBayarPiutang;
 import keuangan.KeuanganBubes;
 import keuangan.DlgCashflow;
@@ -385,7 +385,7 @@ import kepegawaian.DlgRiwayatPenelitian;
 import kepegawaian.DlgRiwayatPenghargaan;
 import kepegawaian.DlgSidikJari;
 import kepegawaian.DlgTemporaryPresensi;
-import keuangan.DlgBayarPemesananNonMedis;
+import keuangan.KeuanganBayarPemesananNonMedis;
 import keuangan.DlgHutangNonMedisBelumLunas;
 import keuangan.DlgPiutangPerAKunPiutang;
 import laporan.DlgAnggotaMiliterDirawat;
@@ -589,6 +589,7 @@ import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuaganRingkasanTindakan;
+import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
@@ -10133,7 +10134,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnbayar_pemesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbayar_pemesananActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBayarPemesanan bayarpesan=new DlgBayarPemesanan(this,false);
+        KeuanganBayarPemesananFarmasi bayarpesan=new KeuanganBayarPemesananFarmasi(this,false);
         bayarpesan.tampil();
         bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
@@ -12387,7 +12388,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnBayarPesanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarPesanNonMedisActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBayarPemesananNonMedis bayarpesan=new DlgBayarPemesananNonMedis(this,false);
+        KeuanganBayarPemesananNonMedis bayarpesan=new KeuanganBayarPemesananNonMedis(this,false);
         bayarpesan.tampil();
         bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
@@ -17233,7 +17234,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnBayarPemesananInventarisActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganBayarPemesananAset bayarpesan=new KeuanganBayarPemesananAset(this,false);
+        bayarpesan.tampil();
+        bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        bayarpesan.setLocationRelativeTo(PanelUtama);
+        bayarpesan.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
