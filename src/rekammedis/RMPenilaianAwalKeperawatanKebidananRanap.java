@@ -71,7 +71,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             "G","P","A","Hidup","HPHT","Usia Hamil","Tg.Perkiraan","Riwayat Imunisasi","ANC","ANC Ke","Ket. ANC","Keluhan Hamil Muda","Keluhan Hamil Tua","Riwayat Keluarga Berencana",
             "Lamanya KB","Komplikasi KB","Ket Komplikasi KB","Berhenti KB","Alasan Berhenti KB","Riwayat Genekologi","Obat/Vitamin","Keterangan Obat/Vitamin","Merokok","Rokok/Hari",
             "Alkohol","Alkohol/Hari","Obat Tidur/Narkoba","Kesadaran Mental","Keadaan Umum","GCS(E,V,M)","TD","Nadi","RR","Suhu","SpO2","BB","TB","LILA","TFU","TBJ","GD","Letak",
-            "Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","DJJ","Ket DJJ","Portio","Pembukaan Serviks","Ketuban","Hodge"
+            "Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","DJJ","Keterangan DJJ","Portio","Serviks","Ketuban","Hodge"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -81,7 +81,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 85; i++) {
+        for (i = 0; i < 89; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -251,6 +251,16 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                 column.setPreferredWidth(50);
             }else if(i==83){
                 column.setPreferredWidth(40);
+            }else if(i==84){
+                column.setPreferredWidth(85);
+            }else if(i==85){
+                column.setPreferredWidth(50);
+            }else if(i==86){
+                column.setPreferredWidth(45);
+            }else if(i==87){
+                column.setPreferredWidth(53);
+            }else if(i==88){
+                column.setPreferredWidth(53);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

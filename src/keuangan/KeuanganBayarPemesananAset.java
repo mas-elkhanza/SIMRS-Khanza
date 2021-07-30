@@ -63,7 +63,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Bayar_Pemesanan_Non_Medis=Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun");
+    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -742,6 +742,8 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             Valid.textKosong(besar_bayar,"Pembayaran");
         }else if(nama_petugas.getText().trim().equals("")){
             Valid.textKosong(nip,"Petugas");
+        }else if(AkunBayar.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(AkunBayar,"Akun Bayar");
         }else if(no_bukti.getText().trim().equals("")){
             Valid.textKosong(no_bukti,"No.Bukti");
         }else{            
@@ -769,20 +771,20 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Bayar_Pemesanan_Non_Medis,"HUTANG USAHA",besar_bayar.getText(),"0"
+                        Sequel.cariIsi("select kd_rek_aset from inventaris_pemesanan where no_faktur=?",no_faktur.getText()),"HUTANG USAHA",besar_bayar.getText(),"0"
                     });                     
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         koderekening,AkunBayar.getSelectedItem().toString(),"0",besar_bayar.getText()
                     });    
-                    sukses=jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN BARANG ASET/INVENTARIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
                     
                     if(sukses==true){
                         if((sisahutang<=Double.parseDouble(besar_bayar.getText()))||(sisahutang<=-Double.parseDouble(besar_bayar.getText()))){
-                            Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
+                            Sequel.mengedit("inventaris_pemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
                         }else{
-                            Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
+                            Sequel.mengedit("inventaris_pemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
                         }
-                        if(Sequel.menyimpantf2("bayar_pemesanan_non_medis","?,?,?,?,?,?,?","data", 7,new String[]{
+                        if(Sequel.menyimpantf2("bayar_pemesanan_inventaris","?,?,?,?,?,?,?","data", 7,new String[]{
                             Valid.SetTgl(tgl_bayar.getSelectedItem()+""),no_faktur.getText(),nip.getText(),
                             besar_bayar.getText(),keterangan.getText(),AkunBayar.getSelectedItem().toString(),
                             no_bukti.getText()
@@ -803,7 +805,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     Sequel.AutoComitTrue();
                         
                 }else{
-                    //Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
+                    //Sequel.mengedit("inventaris_pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
                     JOptionPane.showMessageDialog(rootPane,"Maaf sudah dilakukan pembayaran..!!!");
                     TCari.requestFocus();
                 }                   
@@ -826,7 +828,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
         try {
             Sequel.AutoComitFalse();
             sukses=true;   
-            if(Sequel.queryu2tf("delete from bayar_pemesanan_non_medis where tgl_bayar=? and no_faktur=? and "+
+            if(Sequel.queryu2tf("delete from bayar_pemesanan_inventaris where tgl_bayar=? and no_faktur=? and "+
                     "nip=? and besar_bayar=? and keterangan=? and nama_bayar=? and no_bukti=?",7,new String[]{
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),       
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString(),       
@@ -837,9 +839,9 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()
             })==true){
                 if(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString())==Double.parseDouble(besar_bayar.getText())){
-                    Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
+                    Sequel.mengedit("inventaris_pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
                 }else{
-                    Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
+                    Sequel.mengedit("inventaris_pemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
                 }
                 
                 koderekening="";
@@ -864,7 +866,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     koderekening,AkunBayar.getSelectedItem().toString(),besar_bayar.getText(),"0"
                 });    
                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Bayar_Pemesanan_Non_Medis,"HUTANG USAHA","0",besar_bayar.getText()
+                    Sequel.cariIsi("select kd_rek_aset from inventaris_pemesanan where no_faktur=?",no_faktur.getText()),"HUTANG USAHA","0",besar_bayar.getText()
                 }); 
                 sukses=jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode()); 
             }else{
@@ -919,21 +921,21 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
             Valid.MyReportqry("rptBayarPemesananNonMedis.jasper","report","::[ Bayar Pemesanan ]::",
-                    "select bayar_pemesanan_non_medis.tgl_bayar,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tgl_pesan,"+
-                    "ipsrspemesanan.tgl_tempo, bayar_pemesanan_non_medis.no_faktur,"+
-                    "ipsrssuplier.nama_suplier,bayar_pemesanan_non_medis.nama_bayar,bayar_pemesanan_non_medis.no_bukti,"+
-                    "bayar_pemesanan_non_medis.besar_bayar,bayar_pemesanan_non_medis.keterangan,"+
-                    "bayar_pemesanan_non_medis.nip,petugas.nama from bayar_pemesanan_non_medis inner join petugas "+
-                    "inner join ipsrspemesanan inner join ipsrssuplier on bayar_pemesanan_non_medis.nip=petugas.nip "+
-                    "and bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur "+
-                    "and ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier where "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_non_medis.no_faktur like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_non_medis.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_non_medis.no_bukti like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_non_medis.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' "+
-                    " order by bayar_pemesanan_non_medis.tgl_bayar",param);
+                    "select bayar_pemesanan_inventaris.tgl_bayar,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tgl_pesan,"+
+                    "inventaris_pemesanan.tgl_tempo, bayar_pemesanan_inventaris.no_faktur,"+
+                    "ipsrssuplier.nama_suplier,bayar_pemesanan_inventaris.nama_bayar,bayar_pemesanan_inventaris.no_bukti,"+
+                    "bayar_pemesanan_inventaris.besar_bayar,bayar_pemesanan_inventaris.keterangan,"+
+                    "bayar_pemesanan_inventaris.nip,petugas.nama from bayar_pemesanan_inventaris inner join petugas "+
+                    "inner join inventaris_pemesanan inner join ipsrssuplier on bayar_pemesanan_inventaris.nip=petugas.nip "+
+                    "and bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur "+
+                    "and inventaris_pemesanan.kode_suplier=ipsrssuplier.kode_suplier where "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_inventaris.no_faktur like '%"+TCari.getText().trim()+"%' or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_inventaris.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_inventaris.no_bukti like '%"+TCari.getText().trim()+"%' or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_inventaris.keterangan like '%"+TCari.getText().trim()+"%' or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and ipsrssuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' "+
+                    " order by bayar_pemesanan_inventaris.tgl_bayar",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1194,21 +1196,21 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Valid.tabelKosong(tabMode);
         try{           
             ps=koneksi.prepareStatement(
-                    "select bayar_pemesanan_non_medis.tgl_bayar,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tgl_pesan,"+
-                    "ipsrspemesanan.tgl_tempo, bayar_pemesanan_non_medis.no_faktur,"+
-                    "ipsrssuplier.nama_suplier,bayar_pemesanan_non_medis.nama_bayar,bayar_pemesanan_non_medis.no_bukti,"+
-                    "bayar_pemesanan_non_medis.besar_bayar,bayar_pemesanan_non_medis.keterangan,"+
-                    "bayar_pemesanan_non_medis.nip,petugas.nama from bayar_pemesanan_non_medis inner join petugas "+
-                    "inner join ipsrspemesanan inner join ipsrssuplier on bayar_pemesanan_non_medis.nip=petugas.nip "+
-                    "and bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur "+
-                    "and ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier where "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_non_medis.no_faktur like ? or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and ipsrssuplier.nama_suplier like ? or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_non_medis.nama_bayar like ? or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_non_medis.no_bukti like ? or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_non_medis.keterangan like ? or "+
-                    "bayar_pemesanan_non_medis.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ? "+
-                    " order by bayar_pemesanan_non_medis.tgl_bayar");
+                    "select bayar_pemesanan_inventaris.tgl_bayar,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tgl_pesan,"+
+                    "inventaris_pemesanan.tgl_tempo, bayar_pemesanan_inventaris.no_faktur,"+
+                    "ipsrssuplier.nama_suplier,bayar_pemesanan_inventaris.nama_bayar,bayar_pemesanan_inventaris.no_bukti,"+
+                    "bayar_pemesanan_inventaris.besar_bayar,bayar_pemesanan_inventaris.keterangan,"+
+                    "bayar_pemesanan_inventaris.nip,petugas.nama from bayar_pemesanan_inventaris inner join petugas "+
+                    "inner join inventaris_pemesanan inner join ipsrssuplier on bayar_pemesanan_inventaris.nip=petugas.nip "+
+                    "and bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur "+
+                    "and inventaris_pemesanan.kode_suplier=ipsrssuplier.kode_suplier where "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_inventaris.no_faktur like ? or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and ipsrssuplier.nama_suplier like ? or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_inventaris.nama_bayar like ? or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_inventaris.no_bukti like ? or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and bayar_pemesanan_inventaris.keterangan like ? or "+
+                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ? "+
+                    " order by bayar_pemesanan_inventaris.tgl_bayar");
             try {            
                 ps.setString(1,Valid.SetTgl(TglCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglCari2.getSelectedItem()+""));
@@ -1276,8 +1278,8 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void setData(String nofaktur){
         no_faktur.setText(nofaktur);
         TCari.setText(nofaktur);
-        sisahutang=Math.round(Sequel.cariIsiAngka("SELECT tagihan FROM ipsrspemesanan where no_faktur=?",nofaktur)
-                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_non_medis where no_faktur=?",nofaktur));
+        sisahutang=Math.round(Sequel.cariIsiAngka("SELECT tagihan FROM inventaris_pemesanan where no_faktur=?",nofaktur)
+                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_inventaris where no_faktur=?",nofaktur));
         sisa_hutang.setText(Valid.SetAngka(sisahutang));
         besar_bayar.setText("0");
     }

@@ -742,6 +742,8 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
             Valid.textKosong(besar_bayar,"Pembayaran");
         }else if(nama_petugas.getText().trim().equals("")){
             Valid.textKosong(nip,"Petugas");
+        }else if(AkunBayar.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(AkunBayar,"Akun Bayar");
         }else if(no_bukti.getText().trim().equals("")){
             Valid.textKosong(no_bukti,"No.Bukti");
         }else{            
