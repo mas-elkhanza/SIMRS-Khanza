@@ -537,7 +537,7 @@ import inventory.DlgSatuan;
 import inventory.DlgSirkulasiBarang4;
 import inventory.DlgSirkulasiBarang5;
 import inventory.DlgSisaStok;
-import inventory.HibahObatBHP;
+import inventory.InventoryHibahObatBHP;
 import inventory.InventoryPenggunaanBHPOK;
 import inventory.InventoryRingkasanBeriObat;
 import inventory.InventoryRingkasanHibahBarangMedis;
@@ -15364,7 +15364,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnHibahObatBHPActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        HibahObatBHP pembelian=new HibahObatBHP(this,false);
+        InventoryHibahObatBHP pembelian=new InventoryHibahObatBHP(this,false);
         pembelian.isCek();
         pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         pembelian.setLocationRelativeTo(PanelUtama);
@@ -17257,6 +17257,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnHibahAsetInventarisActionPerformed(java.awt.event.ActionEvent evt) {  
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17878,7 +17882,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
-            btnBayarPemesananInventaris,btnHutangAsetInventaris;
+            btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris;
     
     public void isWall(){
         try{            
@@ -18898,6 +18902,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenerimaan_aset_inventaris()==true){
                 Panelmenu.add(btnPenerimaanAset);
+                jmlmenu++;
+            }
+            
+            if(akses.gethibah_aset_inventaris()==true){
+                Panelmenu.add(btnHibahAsetInventaris);
                 jmlmenu++;
             }
             
@@ -22566,6 +22575,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenerimaan_aset_inventaris()==true){
             Panelmenu.add(btnPenerimaanAset);
+            jmlmenu++;
+        }
+
+        if(akses.gethibah_aset_inventaris()==true){
+            Panelmenu.add(btnHibahAsetInventaris);
             jmlmenu++;
         }
 
@@ -26579,6 +26593,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenerimaan_aset_inventaris()==true){
             if(btnPenerimaanAset.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenerimaanAset);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gethibah_aset_inventaris()==true){
+            if(btnHibahAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHibahAsetInventaris);
                 jmlmenu++;
             }                
         }
@@ -32593,6 +32614,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHutangAsetInventaris.setName("btnHutangAsetInventaris"); 
         btnHutangAsetInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHutangAsetInventaris.addActionListener(this::btnHutangAsetInventarisActionPerformed);
+        
+        btnHibahAsetInventaris = new widget.ButtonBig();
+        btnHibahAsetInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1988885_front_lorry_truck_vehicle_icon.png"))); 
+        btnHibahAsetInventaris.setText("Hibah Aset/Inventaris");
+        btnHibahAsetInventaris.setIconTextGap(0);
+        btnHibahAsetInventaris.setName("btnHibahAsetInventaris"); 
+        btnHibahAsetInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHibahAsetInventaris.addActionListener(this::btnHibahAsetInventarisActionPerformed);
     }
 
     
