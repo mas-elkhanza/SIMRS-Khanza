@@ -8,7 +8,7 @@
     <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
     <entry key="PAS"></entry>
     <entry key="CARICEPAT">nonaktif</entry>
-    <entry key="HOSTHYBRIDWEB">eEVvxeruJvL71QyQBstsUw==</entry>
+    <entry key="HOSTHYBRIDWEB">5k7+C7EnUw9nUv2Nix+DBA==</entry>
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="PORTWEB">80</entry>
     <entry key="ANTRIAN">player</entry>
@@ -73,4 +73,9 @@
     <entry key="PORTBRIDGINGRADIOLOGI">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USERBRIDGINGRADIOLOGI">eRhIlj/kMVG0nFPmiTWn0w==</entry>
     <entry key="PASBRIDGINGRADIOLOGI">YUCU0oDkSmw6oZ7+7cUjAE7v6ftn/b20CoX6F/zJs9c=</entry>
+    <entry key="HOSTSYSMEX">pukLYlp26Qw1Q9O5pxubOA==</entry>
+    <entry key="DATABASESYSMEX">o4cUZDSdQxLPdcZer/pr1PnCrQNrd08+Hrx8Y/fi7Os=</entry>
+    <entry key="PORTSYSMEX">nioxtijcpDaKSUiUiP5FAg==</entry>
+    <entry key="USERSYSMEX">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PASSYSMEX">GZP7IU9mFGZRVeP1ga8S9Q==</entry>
 </properties>
