@@ -505,7 +505,8 @@ import grafikanalisa.GrafikTBStatusHIV;
 import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import informasi.InformasiStokDarah;
-import inventaris.AsalHibah;
+import inventaris.InventarisAsalHibah;
+import inventaris.InventarisHibah;
 import inventaris.InventarisPembelian;
 import inventaris.InventarisPemeliharaan;
 import inventaris.InventarisPemesanan;
@@ -15377,7 +15378,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        AsalHibah form=new AsalHibah(this,false);
+        InventarisAsalHibah form=new InventarisAsalHibah(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
@@ -17258,7 +17259,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     } 
     
     private void btnHibahAsetInventarisActionPerformed(java.awt.event.ActionEvent evt) {  
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisHibah hibah=new InventarisHibah(this,false);
+        hibah.isCek();
+        hibah.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        hibah.setLocationRelativeTo(PanelUtama);
+        hibah.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
@@ -32616,7 +32625,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHutangAsetInventaris.addActionListener(this::btnHutangAsetInventarisActionPerformed);
         
         btnHibahAsetInventaris = new widget.ButtonBig();
-        btnHibahAsetInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1988885_front_lorry_truck_vehicle_icon.png"))); 
+        btnHibahAsetInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Workstation_by_Artdesigner_60887.png"))); 
         btnHibahAsetInventaris.setText("Hibah Aset/Inventaris");
         btnHibahAsetInventaris.setIconTextGap(0);
         btnHibahAsetInventaris.setName("btnHibahAsetInventaris"); 

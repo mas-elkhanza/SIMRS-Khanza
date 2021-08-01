@@ -5,7 +5,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventaris.AsalHibah;
+import inventaris.InventarisAsalHibah;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -29,7 +29,7 @@ public class InventoryRingkasanHibahBarangMedis extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  AsalHibah suplier=new AsalHibah(null,false);
+    public  InventarisAsalHibah suplier=new InventarisAsalHibah(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps;
