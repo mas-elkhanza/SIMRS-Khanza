@@ -839,7 +839,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
                                 tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Piutang Pasien"); 
             }
             Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.menyimpan("temporary","'0','','','TOTAL HUTANG :','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+            Sequel.menyimpan("temporary","'0','TOTAL HUTANG :','','','','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             
             
             Map<String, Object> param = new HashMap<>();                 
@@ -850,7 +850,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptHutangNonMedisBelumLunas.jasper","report","::[ Data Hutang Barang Non Medis ]::",param);
+            Valid.MyReport("rptHutangAsetInventaris.jasper","report","::[ Data Hutang Aset/Inventaris ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

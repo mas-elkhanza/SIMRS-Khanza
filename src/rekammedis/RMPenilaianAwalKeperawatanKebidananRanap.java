@@ -72,7 +72,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             "Lamanya KB","Komplikasi KB","Ket Komplikasi KB","Berhenti KB","Alasan Berhenti KB","Riwayat Genekologi","Obat/Vitamin","Keterangan Obat/Vitamin","Merokok","Rokok/Hari",
             "Alkohol","Alkohol/Hari","Obat Tidur/Narkoba","Kesadaran Mental","Keadaan Umum","GCS(E,V,M)","TD","Nadi","RR","Suhu","SpO2","BB","TB","LILA","TFU","TBJ","GD","Letak",
             "Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","DJJ","Keterangan DJJ","Portio","Serviks","Ketuban","Hodge","Panggul","Inspekulo","Keterangan Inspekulo",
-            "Lakmus","Keterangan Lakmus","CTG","Keterangan CTG"
+            "Lakmus","Keterangan Lakmus","CTG","Keterangan CTG","Kepala","Muka","Mata","Hidung","Telinga","Mulut","Leher","Dada","Perut","Genitalia","Ekstremitas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -82,7 +82,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 93; i++) {
+        for (i = 0; i < 105; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -263,10 +263,34 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }else if(i==88){
                 column.setPreferredWidth(53);
             }else if(i==89){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(145);
             }else if(i==90){
                 column.setPreferredWidth(60);
             }else if(i==91){
+                column.setPreferredWidth(115);
+            }else if(i==92){
+                column.setPreferredWidth(60);
+            }else if(i==93){
+                column.setPreferredWidth(115);
+            }else if(i==94){
+                column.setPreferredWidth(60);
+            }else if(i==95){
+                column.setPreferredWidth(115);
+            }else if(i==96){
+                column.setPreferredWidth(80);
+            }else if(i==97){
+                column.setPreferredWidth(50);
+            }else if(i==98){
+                column.setPreferredWidth(128);
+            }else if(i==99){
+                column.setPreferredWidth(50);
+            }else if(i==100){
+                column.setPreferredWidth(50);
+            }else if(i==101){
+                column.setPreferredWidth(50);
+            }else if(i==102){
+                column.setPreferredWidth(120);
+            }else if(i==103){
                 column.setPreferredWidth(120);
             }
         }
@@ -6697,7 +6721,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                         rs.getString("pemeriksaan_kebidanan_his"),rs.getString("pemeriksaan_kebidanan_kekuatan"),rs.getString("pemeriksaan_kebidanan_lamanya"),rs.getString("pemeriksaan_kebidanan_djj"),rs.getString("pemeriksaan_kebidanan_ket_djj"),
                         rs.getString("pemeriksaan_kebidanan_portio"),rs.getString("pemeriksaan_kebidanan_pembukaan"),rs.getString("pemeriksaan_kebidanan_ketuban"),rs.getString("pemeriksaan_kebidanan_hodge"),rs.getString("pemeriksaan_kebidanan_panggul"),
                         rs.getString("pemeriksaan_kebidanan_inspekulo"),rs.getString("pemeriksaan_kebidanan_ket_inspekulo"),rs.getString("pemeriksaan_kebidanan_lakmus"),rs.getString("pemeriksaan_kebidanan_ket_lakmus"),rs.getString("pemeriksaan_kebidanan_ctg"),
-                        rs.getString("pemeriksaan_kebidanan_ket_ctg")
+                        rs.getString("pemeriksaan_kebidanan_ket_ctg"),rs.getString("pemeriksaan_umum_kepala"),rs.getString("pemeriksaan_umum_muka"),rs.getString("pemeriksaan_umum_mata"),rs.getString("pemeriksaan_umum_hidung"),rs.getString("pemeriksaan_umum_telinga"),
+                        rs.getString("pemeriksaan_umum_mulut"),rs.getString("pemeriksaan_umum_leher"),rs.getString("pemeriksaan_umum_dada"),rs.getString("pemeriksaan_umum_perut"),rs.getString("pemeriksaan_umum_genitalia"),rs.getString("pemeriksaan_umum_ekstrimitas")
                     });
                 }
             } catch (Exception e) {

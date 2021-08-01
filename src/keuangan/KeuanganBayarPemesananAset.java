@@ -920,7 +920,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReportqry("rptBayarPemesananNonMedis.jasper","report","::[ Bayar Pemesanan ]::",
+            Valid.MyReportqry("rptBayarPemesananAset.jasper","report","::[ Bayar Pemesanan Aset/Inventaris ]::",
                     "select bayar_pemesanan_inventaris.tgl_bayar,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tgl_pesan,"+
                     "inventaris_pemesanan.tgl_tempo, bayar_pemesanan_inventaris.no_faktur,"+
                     "ipsrssuplier.nama_suplier,bayar_pemesanan_inventaris.nama_bayar,bayar_pemesanan_inventaris.no_bukti,"+

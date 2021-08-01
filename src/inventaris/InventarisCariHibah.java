@@ -34,9 +34,10 @@ public class InventarisCariHibah extends javax.swing.JDialog {
     public  InventarisBarang barang=new InventarisBarang(null,false);
     private PreparedStatement ps,ps2,pscaribeli;
     private ResultSet rs,rs2;
-    private double tagihan=0;
+    private double totalhibah=0;
     private Jurnal jur=new Jurnal();
     private boolean sukses=false;
+    private String Kontra_Hibah_Aset=Sequel.cariIsi("select Kontra_Hibah_Aset from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -45,7 +46,7 @@ public class InventarisCariHibah extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Tgl.Beli","No.Faktur","Suplier","Petugas","Jml","Harga(Rp)","SubTotal(Rp)","Disk(%)","Bsr.Disk(Rp)","Total(Rp)"};
+        Object[] row={"Tgl.Hibah","No.Hibah","Asal Hibah","Petugas","Jml","Harga(Rp)","SubTotal Hibah(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -54,7 +55,7 @@ public class InventarisCariHibah extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -69,13 +70,7 @@ public class InventarisCariHibah extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
-                column.setPreferredWidth(80);
-            }else if(i==7){
-                column.setPreferredWidth(50);
-            }else if(i==8){
-                column.setPreferredWidth(80);
-            }else if(i==9){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(110);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -294,11 +289,11 @@ public class InventarisCariHibah extends javax.swing.JDialog {
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHapus.setText("Hapus Data Pengadaan Barang");
+        ppHapus.setText("Hapus Data Hibah Aset/Inventaris");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppHapus.setPreferredSize(new java.awt.Dimension(220, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppHapusActionPerformed(evt);
@@ -759,12 +754,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,3).toString()+"','"+
                                 tabMode.getValueAt(i,4).toString()+"','"+
                                 tabMode.getValueAt(i,5).toString()+"','"+
-                                tabMode.getValueAt(i,6).toString()+"','"+
-                                tabMode.getValueAt(i,8).toString()+"','"+
-                                tabMode.getValueAt(i,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
+                                tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
             }
             Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
-            Sequel.menyimpan("temporary","'0','Jumlah Total :','','','','','','',' ','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
+            Sequel.menyimpan("temporary","'0','Jumlah Total :','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
             
             
             Map<String, Object> param = new HashMap<>();    
@@ -775,7 +768,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPembelianAset.jasper","report","::[ Transaksi Pembelian Barang Aset/Inventaris ]::",param);
+            Valid.MyReport("rptHibahAset.jasper","report","::[ Transaksi Hibah Barang Aset/Inventaris ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -794,7 +787,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"No.Faktur");
         }else{
            try {
-               pscaribeli=koneksi.prepareStatement("select no_faktur,tagihan,tgl_beli,kd_rek,kd_rek_aset from inventaris_pembelian where no_faktur=?");
+               pscaribeli=koneksi.prepareStatement("select no_hibah,totalhibah,tgl_hibah,kd_rek_aset from inventaris_hibah where no_hibah=?");
                try {
                   pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
                   rs=pscaribeli.executeQuery();
@@ -804,14 +797,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
                       Sequel.queryu("delete from tampjurnal");
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          rs.getString("kd_rek_aset"),"PEMBELIAN","0",rs.getString("tagihan")
+                          rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("totalhibah")
                       });    
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          rs.getString("kd_rek"),"KAS DI TANGAN",rs.getString("tagihan"),"0"
+                          Kontra_Hibah_Aset,"PENDAPATAN HIBAH",rs.getString("totalhibah"),"0"
                       }); 
-                      sukses=jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGADAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
+                      sukses=jur.simpanJurnal(rs.getString("no_hibah"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN HIBAH ASET/INVENTARIS "+", OLEH "+akses.getkode());
                       if(sukses==true){
-                          Sequel.queryu2("delete from inventaris_pembelian where no_faktur=?",1,new String[]{rs.getString("no_faktur")});
+                          Sequel.queryu2("delete from inventaris_hibah where no_hibah=?",1,new String[]{rs.getString("no_hibah")});
                           Sequel.Commit();
                           tampil();
                       }else{
@@ -913,21 +906,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{            
-            ps=koneksi.prepareStatement("select inventaris_pembelian.tgl_beli,inventaris_pembelian.no_faktur, "+
-                    "inventaris_pembelian.kode_suplier,inventaris_suplier.nama_suplier, "+
-                    "inventaris_pembelian.nip,petugas.nama,inventaris_pembelian.subtotal,inventaris_pembelian.potongan,inventaris_pembelian.total, "+
-                    "inventaris_pembelian.ppn,inventaris_pembelian.tagihan,inventaris_pembelian.meterai,"+
-                    "akunbayar.nm_rek as akun_bayar,akunaset.nm_rek as akun_aset from "+
-                    "inventaris_pembelian inner join inventaris_suplier on inventaris_pembelian.kode_suplier=inventaris_suplier.kode_suplier "+
-                    "inner join petugas on inventaris_pembelian.nip=petugas.nip "+
-                    "inner join inventaris_detail_beli on inventaris_pembelian.no_faktur=inventaris_detail_beli.no_faktur "+
-                    "inner join inventaris_barang on inventaris_detail_beli.kode_barang=inventaris_barang.kode_barang "+
+            ps=koneksi.prepareStatement("select inventaris_hibah.tgl_hibah,inventaris_hibah.no_hibah, "+
+                    "inventaris_hibah.kode_pemberi,pemberihibah.nama_pemberi, "+
+                    "inventaris_hibah.nip,petugas.nama,inventaris_hibah.totalhibah,"+
+                    "akunaset.nm_rek as akun_aset from "+
+                    "inventaris_hibah inner join pemberihibah on inventaris_hibah.kode_pemberi=pemberihibah.kode_pemberi "+
+                    "inner join petugas on inventaris_hibah.nip=petugas.nip "+
+                    "inner join inventaris_detail_hibah on inventaris_hibah.no_hibah=inventaris_detail_hibah.no_hibah "+
+                    "inner join inventaris_barang on inventaris_detail_hibah.kode_barang=inventaris_barang.kode_barang "+
                     "inner join inventaris_jenis on inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
-                    "inner join rekening as akunbayar on akunbayar.kd_rek=inventaris_pembelian.kd_rek "+
-                    "inner join rekening as akunaset on akunaset.kd_rek=inventaris_pembelian.kd_rek_aset "+
-                    " where inventaris_pembelian.tgl_beli between ? and ? and inventaris_pembelian.no_faktur like ? and inventaris_suplier.nama_suplier like ? and petugas.nama like ?  and inventaris_jenis.nama_jenis like ? and inventaris_barang.nama_barang like ? "+
-                    (TCari.getText().trim().equals("")?"":"and (inventaris_pembelian.no_faktur like ? or inventaris_pembelian.kode_suplier like ? or inventaris_suplier.nama_suplier like ? or inventaris_pembelian.nip like ? or petugas.nama like ? or "+
-                    "inventaris_jenis.nama_jenis like ? or inventaris_detail_beli.kode_barang like ? or inventaris_barang.nama_barang like ?)")+" group by inventaris_pembelian.no_faktur order by inventaris_pembelian.tgl_beli,inventaris_pembelian.no_faktur ");
+                    "inner join rekening as akunaset on akunaset.kd_rek=inventaris_hibah.kd_rek_aset "+
+                    " where inventaris_hibah.tgl_hibah between ? and ? and inventaris_hibah.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and inventaris_jenis.nama_jenis like ? and inventaris_barang.nama_barang like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (inventaris_hibah.no_hibah like ? or inventaris_hibah.kode_pemberi like ? or pemberihibah.nama_pemberi like ? or inventaris_hibah.nip like ? or petugas.nama like ? or "+
+                    "inventaris_jenis.nama_jenis like ? or inventaris_detail_hibah.kode_barang like ? or inventaris_barang.nama_barang like ?)")+" group by inventaris_hibah.no_hibah order by inventaris_hibah.tgl_hibah,inventaris_hibah.no_hibah ");
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
@@ -947,19 +938,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps.setString(15,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
-                tagihan=0;
+                totalhibah=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
-                          rs.getString(5)+", "+rs.getString(6),"","","","","",""
+                          rs.getString(5)+", "+rs.getString(6),"","",""
                     });      
-                    ps2=koneksi.prepareStatement("select inventaris_detail_beli.kode_barang,inventaris_barang.nama_barang, "+
-                        "inventaris_barang.id_jenis,inventaris_jenis.nama_jenis,inventaris_detail_beli.jumlah,inventaris_detail_beli.harga, "+
-                        "inventaris_detail_beli.subtotal,inventaris_detail_beli.dis,inventaris_detail_beli.besardis,inventaris_detail_beli.total "+
-                        "from inventaris_detail_beli inner join inventaris_barang on inventaris_detail_beli.kode_barang=inventaris_barang.kode_barang "+
+                    ps2=koneksi.prepareStatement("select inventaris_detail_hibah.kode_barang,inventaris_barang.nama_barang, "+
+                        "inventaris_barang.id_jenis,inventaris_jenis.nama_jenis,inventaris_detail_hibah.jumlah,inventaris_detail_hibah.h_hibah, "+
+                        "inventaris_detail_hibah.subtotalhibah "+
+                        "from inventaris_detail_hibah inner join inventaris_barang on inventaris_detail_hibah.kode_barang=inventaris_barang.kode_barang "+
                         "inner join inventaris_jenis on inventaris_barang.id_jenis=inventaris_jenis.id_jenis where "+
-                        " inventaris_detail_beli.no_faktur=? and inventaris_barang.nama_barang like ? and inventaris_jenis.nama_jenis like ? "+
-                        (TCari.getText().trim().equals("")?"":"and (inventaris_detail_beli.kode_barang like ? or inventaris_barang.nama_barang like ? or "+
-                        "inventaris_jenis.nama_jenis like ?)")+" order by inventaris_detail_beli.kode_barang  ");
+                        " inventaris_detail_hibah.no_hibah=? and inventaris_barang.nama_barang like ? and inventaris_jenis.nama_jenis like ? "+
+                        (TCari.getText().trim().equals("")?"":"and (inventaris_detail_hibah.kode_barang like ? or inventaris_barang.nama_barang like ? or "+
+                        "inventaris_jenis.nama_jenis like ?)")+" order by inventaris_detail_hibah.kode_barang  ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmbar.getText()+"%");
@@ -973,15 +964,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         int no=1;
                         while(rs2.next()){
                             tabMode.addRow(new Object[]{"",no+". "+rs2.getString(1),rs2.getString(2),rs2.getString(4),
-                                            rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7)),
-                                            Valid.SetAngka(rs2.getDouble(8)),Valid.SetAngka(rs2.getDouble(9)),Valid.SetAngka(rs2.getDouble(10))});
+                                            rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7))});
                             no++;
                         }
-                        tabMode.addRow(new Object[]{"","Akun Bayar",": "+rs.getString("akun_bayar"),"Total",":","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
-                        tabMode.addRow(new Object[]{"","Akun Aset",": "+rs.getString("akun_aset"),"PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
-                        tabMode.addRow(new Object[]{"","","","Biaya Tambahan",":","","","","",Valid.SetAngka(rs.getDouble("meterai"))});
-                        tabMode.addRow(new Object[]{"","","","Tagihan",":","","","","",Valid.SetAngka(rs.getDouble("tagihan"))});
-                        tagihan=tagihan+rs.getDouble("tagihan");
+                        tabMode.addRow(new Object[]{"","Akun Aset :",rs.getString("akun_aset"),"Total :","","",Valid.SetAngka(rs.getDouble("totalhibah"))});
+                        totalhibah=totalhibah+rs.getDouble("totalhibah");
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{
@@ -993,7 +980,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }   
                 }                
-                LTotal.setText(Valid.SetAngka(tagihan));
+                LTotal.setText(Valid.SetAngka(totalhibah));
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
