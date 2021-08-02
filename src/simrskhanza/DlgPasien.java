@@ -1197,9 +1197,9 @@ public class DlgPasien extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(propinsiref.getTable().getSelectedRow()!= -1){   
+                    KdProp.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),1).toString());
                     switch (pilih) {
                         case 1:
-                            KdProp.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),1).toString());
                             Propinsi.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),2).toString().toUpperCase());
                             break;
                         case 2:
@@ -1241,9 +1241,9 @@ public class DlgPasien extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kabupatenref.getTable().getSelectedRow()!= -1){   
+                    KdKab.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),1).toString());
                     switch (pilih) {
                         case 1:
-                            KdKab.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),1).toString());
                             Kabupaten.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),2).toString().toUpperCase());
                             break;
                         case 2:
@@ -1285,9 +1285,9 @@ public class DlgPasien extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kecamatanref.getTable().getSelectedRow()!= -1){   
+                    KdKec.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),1).toString());
                     switch (pilih) {
                         case 1:
-                            KdKec.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),1).toString());
                             Kecamatan.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),2).toString().toUpperCase());
                             break;
                         case 2:
@@ -1329,9 +1329,9 @@ public class DlgPasien extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kelurahanref.getTable().getSelectedRow()!= -1){    
+                    KdKel.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),1).toString());
                     switch (pilih) {
                         case 1:
-                            KdKel.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),1).toString());
                             Kelurahan.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),2).toString().toUpperCase());
                             break;
                         case 2:
@@ -6608,12 +6608,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             }     
             KelurahanPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(KdKab.getText().trim().equals("")||Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
+            if(KdKab.getText().trim().equals("")||KabupatenPj.getText().trim().equals("")||KabupatenPj.getText().trim().equals("KABUPATEN")){
                 JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
                 BtnKabupaten.requestFocus();
             }else{
                 pilih=2;
-                kecamatanref.setPropinsi(KdKab.getText(),Kabupaten.getText());
+                kecamatanref.setPropinsi(KdKab.getText(),KabupatenPj.getText());
                 kecamatanref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 kecamatanref.setLocationRelativeTo(internalFrame1);
                 kecamatanref.setVisible(true);
@@ -6659,12 +6659,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             }     
             KecamatanPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(KdProp.getText().trim().equals("")||Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
+            if(KdProp.getText().trim().equals("")||PropinsiPj.getText().trim().equals("")||PropinsiPj.getText().trim().equals("PROPINSI")){
                 JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
                 BtnPropinsi.requestFocus();
             }else{
                 pilih=2;
-                kabupatenref.setPropinsi(KdProp.getText(),Propinsi.getText());
+                kabupatenref.setPropinsi(KdProp.getText(),PropinsiPj.getText());
                 kabupatenref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 kabupatenref.setLocationRelativeTo(internalFrame1);
                 kabupatenref.setVisible(true);
@@ -6718,12 +6718,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             }     
             AlamatPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
+            if(KdKec.getText().trim().equals("")||KecamatanPj.getText().trim().equals("")||KecamatanPj.getText().trim().equals("KECAMATAN")){
                 JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
                 BtnKelurahan.requestFocus();
             }else{
                 pilih=2;
-                kelurahanref.setPropinsi(KdKec.getText(),Kecamatan.getText());
+                kelurahanref.setPropinsi(KdKec.getText(),KecamatanPj.getText());
                 kelurahanref.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 kelurahanref.setLocationRelativeTo(internalFrame1);
                 kelurahanref.setVisible(true);
