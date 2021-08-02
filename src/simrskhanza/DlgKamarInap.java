@@ -5346,7 +5346,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
-            if (tbKamIn.getSelectedRow() > 0) {
+            if (tbKamIn.getSelectedRow() >= 0) {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 ketCovid.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
                 ketCovid.setLocationRelativeTo(internalFrame1);
                 ketCovid.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 1).toString(),
@@ -5355,6 +5356,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString());
                 ketCovid.tampil();
                 ketCovid.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Maaf, Pilih data dahulu!");
             }
         }
     }// GEN-LAST:event_MnSuratKetCovidActionPerformed
@@ -5546,7 +5550,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             WindowInputKamar.setLocationRelativeTo(internalFrame1);
             WindowInputKamar.setVisible(true);
         }
-    }// GEN-LAST:event_BtnOutActionPerformed
+    }
 
     private void BtnOutKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnOutKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -5554,12 +5558,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } else {
             Valid.pindah(evt, BtnIn, btnPindah);
         }
-    }// GEN-LAST:event_BtnOutKeyPressed
+    }
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnKeluarActionPerformed
         WindowInputKamar.dispose();
         dispose();
-    }// GEN-LAST:event_BtnKeluarActionPerformed
+    }
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnKeluarKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -5568,7 +5572,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } else {
             Valid.pindah(evt, BtnPrint, TCari);
         }
-    }// GEN-LAST:event_BtnKeluarKeyPressed
+    }
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnPrintActionPerformed
         if (!TCari.getText().trim().equals("")) {
