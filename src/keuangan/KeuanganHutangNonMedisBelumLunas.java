@@ -56,7 +56,7 @@ public final class KeuanganHutangNonMedisBelumLunas extends javax.swing.JDialog 
     private boolean sukses=false;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
+    private String iyem,notagihan="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -106,7 +106,7 @@ public final class KeuanganHutangNonMedisBelumLunas extends javax.swing.JDialog 
             if(i==0){
                 column.setPreferredWidth(22);
             }else if(i==1){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(100);
             }else if(i==2){
                 column.setPreferredWidth(85);
             }else if(i==3){
@@ -1045,8 +1045,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             
             if(sukses==true){
+                if(!notagihan.equals("")){
+                    Sequel.queryu("update ipsrs_titip_faktur set status='Dibayar' where no_tagihan=?",notagihan);
+                    notagihan="";
+                }
                 Sequel.Commit();
                 tampil();
+                bayar=0;
+                LCount1.setText("0");
             }else{
                 JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                 Sequel.RollBack();
@@ -1128,12 +1134,27 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         for(row=0;row<tbBangsal.getRowCount();row++){
             tbBangsal.setValueAt(false,row,0);
         }
+        bayar=0;
+        LCount1.setText("0");
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void ppSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaActionPerformed
         for(row=0;row<tbBangsal.getRowCount();row++){
             tbBangsal.setValueAt(true,row,0);
+            if(tbBangsal.getValueAt(row,10).toString().equals("0")){
+                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(row,11).toString()), row,10);
+            }
+            if(tbBangsal.getValueAt(row,0).toString().equals("true")){
+                tbBangsal.setValueAt(
+                    (Double.parseDouble(tbBangsal.getValueAt(row,11).toString())-
+                    Double.parseDouble(tbBangsal.getValueAt(row,10).toString()))
+                    ,row,9);
+            }else if(tbBangsal.getValueAt(row,0).toString().equals("false")){
+                tbBangsal.setValueAt(0,row,10);
+                tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(row,11).toString()),row,9);
+            }
         }
+        getData();
     }//GEN-LAST:event_ppSemuaActionPerformed
 
     private void tbBangsalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbBangsalPropertyChange
@@ -1306,7 +1327,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         bayar=0;
         for(i=0;i<row;i++){  
             if(tbBangsal.getValueAt(i,0).toString().equals("true")){
-                 bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,11).toString());     
+                 bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,10).toString());     
             }
         }
         LCount1.setText(Valid.SetAngka(bayar));
@@ -1393,6 +1414,64 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }else{
                 System.out.println("Notifikasi : "+e);
             }
+        }
+    }
+    
+    public void isCek(){
+        BtnBayar.setEnabled(akses.getbayar_pesan_non_medis());
+        if(akses.getjml2()>=1){
+            nip.setEditable(false);
+            BtnPetugas.setEnabled(false);
+            nip.setText(akses.getkode());
+            Sequel.cariIsi("select nama from petugas where nip=?",nama_petugas,nip.getText());
+        }  
+    }
+    
+    public void tampilTagihan(String notagihan){
+        this.notagihan=notagihan;
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement(
+                    "select ipsrspemesanan.no_faktur,ipsrspemesanan.no_order,ipsrssuplier.nama_suplier,ipsrspemesanan.kode_suplier, "+
+                    "petugas.nama,ipsrspemesanan.tgl_tempo,ipsrspemesanan.tgl_pesan,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tagihan,"+
+                    "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_non_medis where bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur) as bayar, "+
+                    "ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrspemesanan "+
+                    "inner join ipsrssuplier on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
+                    "inner join petugas on ipsrspemesanan.nip=petugas.nip "+
+                    "inner join ipsrs_detail_titip_faktur on ipsrs_detail_titip_faktur.no_faktur=ipsrspemesanan.no_faktur "+
+                    "where ipsrspemesanan.status<>'Sudah Dibayar' and ipsrs_detail_titip_faktur.no_tagihan=?");
+            try {
+                ps.setString(1,notagihan);
+                rs=ps.executeQuery();
+                sisahutang=0;
+                cicilan=0;
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString("no_faktur"),rs.getString("no_order"),
+                        rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
+                        rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),
+                        rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
+                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),rs.getString("rekening")
+                    });
+                    sisahutang=sisahutang+rs.getDouble("tagihan");
+                    cicilan=cicilan+rs.getDouble("bayar");
+                    kdsup.setText(rs.getString("kode_suplier"));
+                    nmsup.setText(rs.getString("nama_suplier"));
+                }
+                LCount.setText(Valid.SetAngka(sisahutang-cicilan));
+                ppSemuaActionPerformed(null);
+            } catch (Exception e) {
+                System.out.println("Notifikasi Data Hutang: "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
     }
 }
