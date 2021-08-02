@@ -318,6 +318,10 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                 column.setPreferredWidth(107);
             }else if(i==115){
                 column.setPreferredWidth(118);
+            }else if(i==116){
+                column.setPreferredWidth(147);
+            }else if(i==117){
+                column.setPreferredWidth(158);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

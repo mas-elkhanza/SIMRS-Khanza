@@ -601,6 +601,7 @@ import keuangan.KeuanganSetTarifOnline;
 import keuangan.KeuanganTagihanNonMedis;
 import keuangan.KeuanganTagihanObatBHP;
 import keuangan.KeuanganValidasiPenagihanPiutang;
+import keuangan.KeuanganValidasiTagihanNonMedis;
 import keuangan.KeuanganValidasiTagihanObatBHP;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -17283,6 +17284,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnValidasiTagihanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganValidasiTagihanNonMedis form=new KeuanganValidasiTagihanNonMedis(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17904,7 +17916,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPasien,btnSuratSakitPihak2,btnReferensiPendaftaranMobileJKN,btnBatalPendaftaranMobileJKN,btnTagihanHutangObat,btnLamaOperasi,
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
-            btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis;
+            btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis;
     
     public void isWall(){
         try{            
@@ -19812,6 +19824,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettitip_faktur_non_medis()==true){
                 Panelmenu.add(btnTagihanHutangNonMedis);
+                jmlmenu++;
+            }
+            
+            if(akses.getvalidasi_tagihan_non_medis()==true){
+                Panelmenu.add(btnValidasiTagihanNonMedis);
                 jmlmenu++;
             }
             
@@ -23481,6 +23498,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettitip_faktur_non_medis()==true){
             Panelmenu.add(btnTagihanHutangNonMedis);
+            jmlmenu++;
+        }
+        
+        if(akses.getvalidasi_tagihan_non_medis()==true){
+            Panelmenu.add(btnValidasiTagihanNonMedis);
             jmlmenu++;
         }
 
@@ -27856,6 +27878,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettitip_faktur_non_medis()==true){
             if(btnTagihanHutangNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanHutangNonMedis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getvalidasi_tagihan_non_medis()==true){
+            if(btnValidasiTagihanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnValidasiTagihanNonMedis);
                 jmlmenu++;
             }                
         }
@@ -32669,6 +32698,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnTagihanHutangNonMedis.setName("btnTagihanHutangNonMedis"); 
         btnTagihanHutangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnTagihanHutangNonMedis.addActionListener(this::btnTagihanHutangNonMedisActionPerformed);
+        
+        btnValidasiTagihanNonMedis = new widget.ButtonBig();
+        btnValidasiTagihanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_3387295_credit_finance_machine_payment_shopping_icon_48px.png"))); 
+        btnValidasiTagihanNonMedis.setText("Validasi Titip Faktur/Tagihan Non Medis");
+        btnValidasiTagihanNonMedis.setIconTextGap(0);
+        btnValidasiTagihanNonMedis.setName("btnValidasiTagihanNonMedis"); 
+        btnValidasiTagihanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnValidasiTagihanNonMedis.addActionListener(this::btnValidasiTagihanNonMedisActionPerformed);
     }
 
     
