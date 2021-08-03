@@ -672,7 +672,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "lama_operasi,grafik_inventaris_kategori,grafik_inventaris_merk,grafik_inventaris_produsen,pengembalian_deposit_pasien,"+
                         "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi,pengadaan_aset_inventaris,akun_aset_inventaris,"+
                         "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris,hutang_aset_inventaris,hibah_aset_inventaris,"+
-                        "titip_faktur_non_medis,validasi_tagihan_non_medis from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2175,6 +2175,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[J]Validasi Titip Faktur/Tagihan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Validasi Titip Faktur/Tagihan Non Medis",rs.getBoolean("validasi_tagihan_non_medis")});
+                    }
+                    
+                    if("[J]Titip Faktur/Tagihan Aset/Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Titip Faktur/Tagihan Aset/Inventaris",rs.getBoolean("titip_faktur_aset")});
                     }
                     
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5130,6 +5134,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[J]Validasi Titip Faktur/Tagihan Non Medis".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","validasi_tagihan_non_medis='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[J]Titip Faktur/Tagihan Aset/Inventaris".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","titip_faktur_aset='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }

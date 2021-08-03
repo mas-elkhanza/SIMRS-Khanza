@@ -1202,7 +1202,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             nip.setEditable(false);
             BtnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
-            BtnSimpan.setEnabled(akses.gettagihan_hutang_obat());
+            BtnSimpan.setEnabled(akses.gettitip_faktur_non_medis());
             Sequel.cariIsi("select nama from petugas where nip=?",nama_petugas,nip.getText());
         }        
     }

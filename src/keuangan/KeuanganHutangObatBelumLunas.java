@@ -1229,6 +1229,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampil(){
         Valid.tabelKosong(tabMode);
         try{
+            tanggaldatang="";
+            tanggaltempo="";
             if(ChkTanggalDatang.isSelected()==true){
                 tanggaldatang=" pemesanan.tgl_pesan between '"+Valid.SetTgl(TglDatang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglDatang2.getSelectedItem()+"")+"' and ";
             }
