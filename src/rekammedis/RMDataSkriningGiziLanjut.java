@@ -1643,7 +1643,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
     }
     
     private void isBMI(){
-        if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
+        if((Valid.SetAngka(TB.getText())>0)&&(Valid.SetAngka(BB.getText())>0)){
             IMT.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
         }
     }

@@ -602,6 +602,7 @@ import keuangan.KeuanganTagihanAset;
 import keuangan.KeuanganTagihanNonMedis;
 import keuangan.KeuanganTagihanObatBHP;
 import keuangan.KeuanganValidasiPenagihanPiutang;
+import keuangan.KeuanganValidasiTagihanAset;
 import keuangan.KeuanganValidasiTagihanNonMedis;
 import keuangan.KeuanganValidasiTagihanObatBHP;
 import laporan.DlgBulananKlasifikasiPasienRanap;
@@ -17308,6 +17309,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnValidasiTagihanAsetActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganValidasiTagihanAset form=new KeuanganValidasiTagihanAset(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -17930,7 +17941,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
-            btnTagihanHutangAset;
+            btnTagihanHutangAset,btnValidasiTagihanAset;
     
     public void isWall(){
         try{            
@@ -19858,6 +19869,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettitip_faktur_aset()==true){
                 Panelmenu.add(btnTagihanHutangAset);
+                jmlmenu++;
+            }
+            
+            if(akses.getvalidasi_tagihan_aset()==true){
+                Panelmenu.add(btnValidasiTagihanAset);
                 jmlmenu++;
             }
             
@@ -23537,6 +23553,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettitip_faktur_aset()==true){
             Panelmenu.add(btnTagihanHutangAset);
+            jmlmenu++;
+        }
+        
+        if(akses.getvalidasi_tagihan_aset()==true){
+            Panelmenu.add(btnValidasiTagihanAset);
             jmlmenu++;
         }
         
@@ -27930,6 +27951,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettitip_faktur_aset()==true){
             if(btnTagihanHutangAset.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanHutangAset);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getvalidasi_tagihan_aset()==true){
+            if(btnValidasiTagihanAset.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnValidasiTagihanAset);
                 jmlmenu++;
             }                
         }
@@ -32745,6 +32773,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnTagihanHutangAset.setName("btnTagihanHutangAset"); 
         btnTagihanHutangAset.setPreferredSize(new java.awt.Dimension(200, 90));
         btnTagihanHutangAset.addActionListener(this::btnTagihanHutangAsetActionPerformed);
+        
+        btnValidasiTagihanAset = new widget.ButtonBig();
+        btnValidasiTagihanAset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_3387295_credit_finance_machine_payment_shopping_icon_48px.png"))); 
+        btnValidasiTagihanAset.setText("Validasi Titip Faktur/Tagihan Aset/Inventaris");
+        btnValidasiTagihanAset.setIconTextGap(0);
+        btnValidasiTagihanAset.setName("btnValidasiTagihanAset"); 
+        btnValidasiTagihanAset.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnValidasiTagihanAset.addActionListener(this::btnValidasiTagihanAsetActionPerformed);
+
     }
 
     

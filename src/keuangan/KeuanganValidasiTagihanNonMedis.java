@@ -9,6 +9,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import inventory.InventoryCariSuplier;
+import ipsrs.IPSRSCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -37,7 +38,7 @@ public final class KeuanganValidasiTagihanNonMedis extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
+    private IPSRSCariSuplier suplier=new IPSRSCariSuplier(null,false);
     private int i;
     private double sisahutang=0,bayar=0;
     private String carisuplier="",cari="";

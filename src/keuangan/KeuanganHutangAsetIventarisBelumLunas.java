@@ -10,6 +10,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import inventaris.InventarisCariSuplier;
 import ipsrs.IPSRSCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -46,7 +47,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs;
-    private IPSRSCariSuplier suplier=new IPSRSCariSuplier(null,false);
+    private InventarisCariSuplier suplier=new InventarisCariSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
     private String koderekening="",tanggaldatang="",tanggaltempo="";
