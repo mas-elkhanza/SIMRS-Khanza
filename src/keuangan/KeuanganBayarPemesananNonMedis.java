@@ -776,7 +776,7 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         koderekening,AkunBayar.getSelectedItem().toString(),"0",besar_bayar.getText()
                     });    
-                    sukses=jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(no_bukti.getText(),"U","BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
                     
                     if(sukses==true){
                         if((sisahutang<=Double.parseDouble(besar_bayar.getText()))||(sisahutang<=-Double.parseDouble(besar_bayar.getText()))){
@@ -868,7 +868,7 @@ public final class KeuanganBayarPemesananNonMedis extends javax.swing.JDialog {
                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                     Bayar_Pemesanan_Non_Medis,"HUTANG USAHA","0",besar_bayar.getText()
                 }); 
-                sukses=jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode()); 
+                sukses=jur.simpanJurnal(no_bukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode()); 
             }else{
                 sukses=false;
             }

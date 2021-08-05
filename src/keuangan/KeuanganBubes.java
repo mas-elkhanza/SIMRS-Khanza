@@ -437,11 +437,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             ResultSet rs=koneksi.prepareStatement("select jurnal.tgl_jurnal,jurnal.no_jurnal,detailjurnal.debet,detailjurnal.kredit,jurnal.no_bukti,jurnal.keterangan "+
                             "from jurnal inner join detailjurnal on jurnal.no_jurnal=detailjurnal.no_jurnal  where "+
-                            "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"%' ").executeQuery();
+                            "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"%'").executeQuery();
             
             ResultSet rs2=koneksi.prepareStatement("select rekeningtahun.saldo_awal,rekening.tipe, "+
                             " rekening.balance from rekeningtahun inner join rekening on rekeningtahun.kd_rek=rekening.kd_rek "+
-                            " where rekeningtahun.kd_rek='"+kdrek.getText()+"' and rekeningtahun.thn like '%"+Tahun.getSelectedItem()+"%'  ").executeQuery();
+                            " where rekeningtahun.kd_rek='"+kdrek.getText()+"' and rekeningtahun.thn like '%"+Tahun.getSelectedItem()+"%' ").executeQuery();
             double saldoakhir = 0,saldoawal=0,tampawal=0;
             String tipe="",balance="";
             while(rs2.next()){
