@@ -1,8 +1,3 @@
-/*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
- */
-
-
 package rekammedis;
 
 import fungsi.WarnaTable;
@@ -78,7 +73,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             "a. Kondisi Psikologis","b. Adakah Perilaku","Keterangan Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan dengan Anggota Keluarga","e. Agama","f. Tinggal Dengan",
             "Keterangan Tinggal","g. Pekerjaan","h. Pembayaran","i. Nilai-nilai Kepercayaan","Ket. Nilai-nilai Kepercayaan","j. Bahasa Sehari-hari","k. Pendidikan Pasien",
             "l. Pendidikan P.J.","m. Edukasi Diberikan Kepada","Keterangan Edukasi","Penilaian Nyeri","Penyebab","Keterangan Penyebab","Kualitas","Keterangan Kualitas",
-            "Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri hilang bila","Keterangan Nyeri Hilang","Diberitahukan Dokter","Pada Jam"
+            "Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri hilang bila","Keterangan Nyeri Hilang","Diberitahukan Dokter","Pada Jam","1. Riwayat Jatuh","Nilai 1",
+            "2. Diagnosis Sekunder (≥ 2 Diagnosis Medis)","Nilai 2","3. Alat Bantu","Nilai 3","4. Terpasang Infuse","Nilai 4","5. Gaya Berjalan","Nilai 5","6. Status Mental",
+            "Nilai 6","Total Nilai"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -88,7 +85,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 149; i++) {
+        for (i = 0; i < 164; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -383,9 +380,41 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             }else if(i==145){
                 column.setPreferredWidth(63);
             }else if(i==146){
-                column.setPreferredWidth(113);
+                column.setPreferredWidth(60);
             }else if(i==147){
-                column.setPreferredWidth(123);
+                column.setPreferredWidth(87);
+            }else if(i==148){
+                column.setPreferredWidth(126);
+            }else if(i==149){
+                column.setPreferredWidth(110);
+            }else if(i==150){
+                column.setPreferredWidth(60);
+            }else if(i==151){
+                column.setPreferredWidth(90);
+            }else if(i==152){
+                column.setPreferredWidth(40);
+            }else if(i==153){
+                column.setPreferredWidth(225);
+            }else if(i==154){
+                column.setPreferredWidth(40);
+            }else if(i==155){
+                column.setPreferredWidth(218);
+            }else if(i==156){
+                column.setPreferredWidth(40);
+            }else if(i==157){
+                column.setPreferredWidth(105);
+            }else if(i==158){
+                column.setPreferredWidth(40);
+            }else if(i==159){
+                column.setPreferredWidth(160);
+            }else if(i==160){
+                column.setPreferredWidth(40);
+            }else if(i==161){
+                column.setPreferredWidth(220);
+            }else if(i==162){
+                column.setPreferredWidth(40);
+            }else if(i==163){
+                column.setPreferredWidth(58);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -6826,7 +6855,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                         rs.getString("riwayat_psiko_budaya"),rs.getString("riwayat_psiko_ket_budaya"),rs.getString("nama_bahasa"),rs.getString("pnd"),rs.getString("riwayat_psiko_pend_pj"),rs.getString("riwayat_psiko_edukasi_pada"),
                         rs.getString("riwayat_psiko_ket_edukasi_pada"),rs.getString("penilaian_nyeri"),rs.getString("penilaian_nyeri_penyebab"),rs.getString("penilaian_nyeri_ket_penyebab"),rs.getString("penilaian_nyeri_kualitas"),
                         rs.getString("penilaian_nyeri_ket_kualitas"),rs.getString("penilaian_nyeri_lokasi"),rs.getString("penilaian_nyeri_menyebar"),rs.getString("penilaian_nyeri_skala"),rs.getString("penilaian_nyeri_waktu"),rs.getString("penilaian_nyeri_hilang"),
-                        rs.getString("penilaian_nyeri_ket_hilang"),rs.getString("penilaian_nyeri_diberitahukan_dokter"),rs.getString("penilaian_nyeri_jam_diberitahukan_dokter")
+                        rs.getString("penilaian_nyeri_ket_hilang"),rs.getString("penilaian_nyeri_diberitahukan_dokter"),rs.getString("penilaian_nyeri_jam_diberitahukan_dokter"),rs.getString("penilaian_jatuh_skala1"),rs.getString("penilaian_jatuh_nilai1"),
+                        rs.getString("penilaian_jatuh_skala2"),rs.getString("penilaian_jatuh_nilai2"),rs.getString("penilaian_jatuh_skala3"),rs.getString("penilaian_jatuh_nilai3"),rs.getString("penilaian_jatuh_skala4"),rs.getString("penilaian_jatuh_nilai4"),
+                        rs.getString("penilaian_jatuh_skala5"),rs.getString("penilaian_jatuh_nilai5"),rs.getString("penilaian_jatuh_skala6"),rs.getString("penilaian_jatuh_nilai6"),rs.getString("penilaian_jatuh_totalnilai")
                     });
                 }
             } catch (Exception e) {
