@@ -2319,7 +2319,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
                 ChkAccor.setSelected(false);
                 isMenu();
                 tampil();
-                emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
             }

@@ -3175,7 +3175,6 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 ChkAccor.setSelected(false);
                 isMenu();
                 tampil();
-                emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
             }

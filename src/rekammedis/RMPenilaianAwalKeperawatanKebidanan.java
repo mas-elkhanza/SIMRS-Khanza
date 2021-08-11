@@ -3832,7 +3832,6 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 ChkAccor.setSelected(false);
                 isMenu();
                 tampil();
-                emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
             }
@@ -6041,7 +6040,11 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
     
     private void isBMI(){
         if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
-            BMI.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            try {
+                BMI.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            } catch (Exception e) {
+                BMI.setText("");
+            }
         }
     }
 
@@ -6087,4 +6090,5 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             System.out.println("Notif : "+e);
         }
     }
+    
 }
