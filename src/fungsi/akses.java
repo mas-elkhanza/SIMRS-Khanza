@@ -161,7 +161,7 @@ public final class akses {
             grafik_inventaris_produsen=false,pengembalian_deposit_pasien=false,validasi_tagihan_hutang_obat=false,piutang_obat_belum_lunas=false,
             integrasi_briapi=false,pengadaan_aset_inventaris=false,akun_aset_inventaris=false,suplier_inventaris=false,penerimaan_aset_inventaris=false,
             bayar_pemesanan_iventaris=false,hutang_aset_inventaris=false,hibah_aset_inventaris=false,titip_faktur_non_medis=false,validasi_tagihan_non_medis=false,
-            titip_faktur_aset=false,validasi_tagihan_aset=false;
+            titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -919,6 +919,7 @@ public final class akses {
                         akses.validasi_tagihan_non_medis=true;
                         akses.titip_faktur_aset=true;
                         akses.validasi_tagihan_aset=true;
+                        akses.hibah_non_medis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1660,6 +1661,7 @@ public final class akses {
                         akses.validasi_tagihan_non_medis=rs2.getBoolean("validasi_tagihan_non_medis");
                         akses.titip_faktur_aset=rs2.getBoolean("titip_faktur_aset");
                         akses.validasi_tagihan_aset=rs2.getBoolean("validasi_tagihan_aset");
+                        akses.hibah_non_medis=rs2.getBoolean("hibah_non_medis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2399,6 +2401,7 @@ public final class akses {
                         akses.validasi_tagihan_non_medis=false;
                         akses.titip_faktur_aset=false;
                         akses.validasi_tagihan_aset=false;
+                        akses.hibah_non_medis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3193,4 +3196,5 @@ public final class akses {
     public static boolean getvalidasi_tagihan_non_medis(){return akses.validasi_tagihan_non_medis;}
     public static boolean gettitip_faktur_aset(){return akses.titip_faktur_aset;}
     public static boolean getvalidasi_tagihan_aset(){return akses.validasi_tagihan_aset;}
+    public static boolean gethibah_non_medis(){return akses.hibah_non_medis;}
 }   
