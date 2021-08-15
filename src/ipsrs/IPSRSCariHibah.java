@@ -294,7 +294,7 @@ public class IPSRSCariHibah extends javax.swing.JDialog {
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(220, 25));
+        ppHapus.setPreferredSize(new java.awt.Dimension(230, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppHapusActionPerformed(evt);

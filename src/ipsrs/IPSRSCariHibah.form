@@ -30,7 +30,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="ppHapus" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 25]"/>
+              <Dimension value="[230, 25]"/>
             </Property>
           </Properties>
           <Events>
