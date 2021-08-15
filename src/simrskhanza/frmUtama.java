@@ -550,6 +550,7 @@ import inventory.InventoryRingkasanStokKeluarBarangMedis;
 import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
+import ipsrs.IPSRSHibah;
 import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRingkasanPemesananBarangNonMedis;
 import ipsrs.IPSRSRingkasanPenerimaanBarangNonMedis;
@@ -17319,6 +17320,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnHibahNonMedisActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSHibah hibah=new IPSRSHibah(this,false);
+        hibah.isCek();
+        hibah.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        hibah.setLocationRelativeTo(PanelUtama);
+        hibah.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -17941,7 +17954,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
-            btnTagihanHutangAset,btnValidasiTagihanAset;
+            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis;
     
     public void isWall(){
         try{            
@@ -18795,6 +18808,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getringkasan_penerimaan_nonmedis()==true){
                 Panelmenu.add(btnRingkasanPenerimaanNonMedis);  
+                jmlmenu++;
+            }
+            
+            if(akses.gethibah_non_medis()==true){
+                Panelmenu.add(btnHibahNonMedis);  
                 jmlmenu++;
             }
 
@@ -22489,6 +22507,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getringkasan_penerimaan_nonmedis()==true){
             Panelmenu.add(btnRingkasanPenerimaanNonMedis);  
+            jmlmenu++;
+        }
+        
+        if(akses.gethibah_non_medis()==true){
+            Panelmenu.add(btnHibahNonMedis);  
             jmlmenu++;
         }
 
@@ -26461,6 +26484,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getringkasan_penerimaan_nonmedis()==true){
             if(btnRingkasanPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRingkasanPenerimaanNonMedis);  
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gethibah_non_medis()==true){
+            if(btnHibahNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHibahNonMedis);  
                 jmlmenu++;
             }                
         }
@@ -32781,7 +32811,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnValidasiTagihanAset.setName("btnValidasiTagihanAset"); 
         btnValidasiTagihanAset.setPreferredSize(new java.awt.Dimension(200, 90));
         btnValidasiTagihanAset.addActionListener(this::btnValidasiTagihanAsetActionPerformed);
-
+        
+        btnHibahNonMedis = new widget.ButtonBig();
+        btnHibahNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/307356_box_brown_cardboard_package_icon.png"))); 
+        btnHibahNonMedis.setText("Hibah Non Medis");
+        btnHibahNonMedis.setIconTextGap(0);
+        btnHibahNonMedis.setName("btnHibahNonMedis"); 
+        btnHibahNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHibahNonMedis.addActionListener(this::btnHibahNonMedisActionPerformed);
     }
 
     
