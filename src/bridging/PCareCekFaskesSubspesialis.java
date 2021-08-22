@@ -566,6 +566,13 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
             }
         }
     } 
+    
+    public void setCari(String kodespesialis,String namaspesialis,String kodesarana, String namasarana){
+        KdSpesialis.setText(kodespesialis);
+        NmSpesialis.setText(namaspesialis);
+        KdSarana.setText(kodesarana);
+        NmSarana.setText(namasarana);
+    }
 
     public JTable getTable(){
         return tbKamar;

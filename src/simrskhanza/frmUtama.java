@@ -438,6 +438,7 @@ import bridging.INACBGPerawatanCorona;
 import bridging.MobileJKNPembatalanPendaftaran;
 import bridging.MobileJKNReferensiPendaftaran;
 import bridging.PCareCekKartu;
+import bridging.PCareCekReferensiTACC;
 import grafikanalisa.GrafikHemodialisaPerBulan;
 import grafikanalisa.GrafikHemodialisaPerTanggal;
 import grafikanalisa.GrafikInventarisPerJenis;
@@ -17332,6 +17333,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnCekPCareTACCActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekReferensiTACC form=new PCareCekReferensiTACC(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }  
+    
     /**
     * @param args the command line arguments
     */
@@ -17954,7 +17967,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
-            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis;
+            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC;
     
     public void isWall(){
         try{            
@@ -20264,6 +20277,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpcare_cek_tindakan()==true){
                 Panelmenu.add(btnPCareReferensiTindakan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpcare_alasan_tacc()==true){
+                Panelmenu.add(btnCekPCareTACC);
                 jmlmenu++;
             }
             
@@ -23952,6 +23970,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpcare_cek_tindakan()==true){
             Panelmenu.add(btnPCareReferensiTindakan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpcare_alasan_tacc()==true){
+            Panelmenu.add(btnCekPCareTACC);
             jmlmenu++;
         }
         
@@ -28510,6 +28533,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpcare_alasan_tacc()==true){
+            if(btnCekPCareTACC.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekPCareTACC);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpcare_cek_faskessubspesialis()==true){
             if(btnPCareFaskesSubspesialis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareFaskesSubspesialis);
@@ -32819,6 +32849,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHibahNonMedis.setName("btnHibahNonMedis"); 
         btnHibahNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHibahNonMedis.addActionListener(this::btnHibahNonMedisActionPerformed);
+        
+        btnCekPCareTACC = new widget.ButtonBig();
+        btnCekPCareTACC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pcare.png"))); 
+        btnCekPCareTACC.setText("Referensi TACC PCare");
+        btnCekPCareTACC.setIconTextGap(0);
+        btnCekPCareTACC.setName("btnCekPCareTACC"); 
+        btnCekPCareTACC.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekPCareTACC.addActionListener(this::btnCekPCareTACCActionPerformed);
     }
 
     
