@@ -1051,7 +1051,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Sequel.menyimpan("tampjurnal","'"+rs.getString("kd_rek")+"','KAS DI TANGAN','0','"+ttljual+"'","Rekening"); 
                         Sequel.menyimpan("tampjurnal","'"+HPP_Barang_Toko+"','HPP Barang Toko','0','"+ttlhpp+"'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Persediaan_Barang_Toko+"','Persediaan Barang Toko','"+ttlhpp+"','0'","Rekening");                              
-                        sukses=jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","BATAL PENJUALAN BARANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());
+                        sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","BATAL PENJUALAN BARANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());
                   } 
 
                   if(sukses==true){

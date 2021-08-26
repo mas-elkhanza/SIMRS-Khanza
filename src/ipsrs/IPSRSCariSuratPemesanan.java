@@ -28,7 +28,7 @@ public class IPSRSCariSuratPemesanan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  IPSRSSuplier suplier=new IPSRSSuplier(null,false);
+    public  IPSRSCariSuplier suplier=new IPSRSCariSuplier(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     public  IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2;

@@ -11,6 +11,8 @@
 
 package permintaan;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import fungsi.WarnaTable;
@@ -26,6 +28,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,6 +63,13 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
     private int jml=0,i=0,index=0,jmlparsial=0;
     private String kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",kamar,namakamar,status="";
     private String norawatibu="",aktifkanparsial="no";
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -111,19 +123,19 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCariPeriksa.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -697,7 +709,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        tampil();
     }//GEN-LAST:event_formWindowOpened
 
     private void TCariPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariPeriksaKeyPressed
@@ -711,12 +723,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_TCariPeriksaKeyPressed
 
     private void btnCariPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPeriksaActionPerformed
-        tampil();
+        tampil2();
     }//GEN-LAST:event_btnCariPeriksaActionPerformed
 
     private void btnCariPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariPeriksaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
+            tampil2();
         }else{
             Valid.pindah(evt, TCariPeriksa, BtnAllPeriksa);
         }
@@ -725,6 +737,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private void BtnAllPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksaActionPerformed
         TCariPeriksa.setText("");
         tampil();
+        tampil2();
     }//GEN-LAST:event_BtnAllPeriksaActionPerformed
 
     private void BtnAllPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllPeriksaKeyPressed
@@ -997,6 +1010,39 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     
     private void tampil() {         
         try{
+            file=new File("./cache/permintaanradiologi.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem=""; 
+        
+            pspemeriksaan=koneksi.prepareStatement(
+                    "select kd_jenis_prw,nm_perawatan,kd_pj,kelas from jns_perawatan_radiologi where status='1' order by kd_jenis_prw");
+            try {
+                rs=pspemeriksaan.executeQuery();
+                while(rs.next()){
+                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KodePJ\":\""+rs.getString(3)+"\",\"Kelas\":\""+rs.getString(4)+"\"},";
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(pspemeriksaan!=null){
+                    pspemeriksaan.close();
+                }
+            }
+            fileWriter.write("{\"permintaanradiologi\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi 2 : "+e);
+        }
+    }
+    
+    private void tampil2() {         
+        try{
             jml=0;
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1026,93 +1072,53 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i]});
             }    
         
-            pspemeriksaan=koneksi.prepareStatement(
-                    "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
-                    "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
-                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
-                    "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
-                    "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
-                    " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
-                    " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and jns_perawatan_radiologi.nm_perawatan like ? "+
-                    "order by jns_perawatan_radiologi.kd_jenis_prw");
-            pspemeriksaan2=koneksi.prepareStatement(
-                    "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
-                    "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
-                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
-                    "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
-                    "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
-                    " jns_perawatan_radiologi.status='1' and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
-                    " jns_perawatan_radiologi.status='1' and jns_perawatan_radiologi.nm_perawatan like ?  "+
-                    "order by jns_perawatan_radiologi.kd_jenis_prw");
-            pspemeriksaan3=koneksi.prepareStatement(
-                    "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
-                    "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
-                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
-                    "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
-                    "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
-                    " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
-                    " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.nm_perawatan like ? "+
-                    "order by jns_perawatan_radiologi.kd_jenis_prw");
-            pspemeriksaan4=koneksi.prepareStatement(
-                    "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
-                    "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
-                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
-                    "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
-                    "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
-                    " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
-                    " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.nm_perawatan like ?  "+
-                    "order by jns_perawatan_radiologi.kd_jenis_prw");
-            try {
-                if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("No")){
-                    pspemeriksaan.setString(1,Penjab.getText().trim());
-                    pspemeriksaan.setString(2,"%"+TCariPeriksa.getText().trim()+"%");
-                    pspemeriksaan.setString(3,Penjab.getText().trim());
-                    pspemeriksaan.setString(4,"%"+TCariPeriksa.getText().trim()+"%");
-                    rs=pspemeriksaan.executeQuery();
-                }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("No")){
-                    pspemeriksaan2.setString(1,"%"+TCariPeriksa.getText().trim()+"%");                
-                    pspemeriksaan2.setString(2,"%"+TCariPeriksa.getText().trim()+"%");
-                    rs=pspemeriksaan2.executeQuery();
-                }else if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("Yes")){
-                    pspemeriksaan3.setString(1,Penjab.getText().trim());
-                    pspemeriksaan3.setString(2,kelas.trim());
-                    pspemeriksaan3.setString(3,"%"+TCariPeriksa.getText().trim()+"%");
-                    pspemeriksaan3.setString(4,Penjab.getText().trim());
-                    pspemeriksaan3.setString(5,kelas.trim());
-                    pspemeriksaan3.setString(6,"%"+TCariPeriksa.getText().trim()+"%");
-                    rs=pspemeriksaan3.executeQuery();
-                }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("Yes")){
-                    pspemeriksaan4.setString(1,kelas.trim());
-                    pspemeriksaan4.setString(2,"%"+TCariPeriksa.getText().trim()+"%"); 
-                    pspemeriksaan4.setString(3,kelas.trim());               
-                    pspemeriksaan4.setString(4,"%"+TCariPeriksa.getText().trim()+"%");
-                    rs=pspemeriksaan4.executeQuery();
+            myObj = new FileReader("./cache/permintaanradiologi.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("permintaanradiologi");
+            if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("No")){
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        if((list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                            tabMode.addRow(new Object[]{
+                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                            });
+                        }
+                    }
                 }
-            
-                while(rs.next()){                
-                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+            }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("No")){
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        if(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                            });
+                        }
+                    }
                 }
-            } catch (Exception e) {
-                System.out.println("Notifikasi 1 : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
+            }else if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("Yes")){
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                            tabMode.addRow(new Object[]{
+                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                            });
+                        }
+                    }
                 }
-                if(pspemeriksaan!=null){
-                    pspemeriksaan.close();
+            }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("Yes")){
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                            tabMode.addRow(new Object[]{
+                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                            });
+                        }
+                    }
                 }
-                if(pspemeriksaan2!=null){
-                    pspemeriksaan2.close();
-                }
-                if(pspemeriksaan3!=null){
-                    pspemeriksaan3.close();
-                }
-                if(pspemeriksaan4!=null){
-                    pspemeriksaan4.close();
-                }
-            }
+            }   
+            myObj.close(); 
         }catch(Exception e){
-            System.out.println("Notifikasi 2 : "+e);
+            System.out.println("Notifikasi : Data tidak ditemukan..!!");
         }
     }
     
@@ -1122,7 +1128,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             tbPemeriksaan.setValueAt(false,i,0);
         }
         Valid.tabelKosong(tabMode);
-        tampil();
+        tampil2();
     }
     
     public void emptTeks() {

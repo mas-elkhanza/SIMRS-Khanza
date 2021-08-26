@@ -1,8 +1,3 @@
-/*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
- */
-
-
 package rekammedis;
 
 import fungsi.WarnaTable;
@@ -63,7 +58,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","TD","Nadi","RR","Suhu",
-            "GCS","BB","TB","LILA","BMI","TFU","TBJ","Letak","Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","BJJ","Keterangan BJJ",
+            "GCS","BB","TB","LILA","BMI","TFU","TBJ","Letak","Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","DJJ","Keterangan DJJ",
             "Portio","Pembukaan Serviks","Ketuban","Hodge","Inspekulo","Hasil Inspekulo","CTG","Hasil CTG","USG","Hasil USG","Laboratorium",
             "Hasil Laboratorium","Lakmus","Hasil Lakmus","Pemeriksaan Panggul","Keluhan Utama","Menarche","Lamanya","Banyaknya","Haid Terakhir",
             "Siklus","Ket.Siklus","Masalah Menstruasi","Stts.Menikah","Kali","Usia Kw 1","Stts.Kawin 1","Usia Kw 2","Stts.Kawin 2","Usia Kw 3",
@@ -974,7 +969,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2021" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1571,7 +1566,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020 18:30:43" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2021 08:17:48" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1777,7 +1772,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         FormInput.add(jLabel44);
         jLabel44.setBounds(137, 170, 25, 23);
 
-        jLabel45.setText("Gerak janin x/30 menit, BJJ :");
+        jLabel45.setText("Gerak janin x/30 menit, DJJ :");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
         jLabel45.setBounds(493, 200, 150, 23);
@@ -2380,7 +2375,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         jLabel92.setBounds(0, 610, 170, 23);
 
         HPHT.setForeground(new java.awt.Color(50, 70, 50));
-        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020" }));
+        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2021" }));
         HPHT.setDisplayFormat("dd-MM-yyyy");
         HPHT.setName("HPHT"); // NOI18N
         HPHT.setOpaque(false);
@@ -2419,7 +2414,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         jLabel96.setBounds(505, 610, 40, 23);
 
         TP.setForeground(new java.awt.Color(50, 70, 50));
-        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020" }));
+        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2021" }));
         TP.setDisplayFormat("dd-MM-yyyy");
         TP.setName("TP"); // NOI18N
         TP.setOpaque(false);
@@ -3206,7 +3201,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         jLabel151.setBounds(695, 1300, 75, 23);
 
         jLabel152.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel152.setText("2. Apakah nafsu makan berkurang karena tidak nafsu makan ?");
+        jLabel152.setText("2. Apakah asupan makan berkurang karena tidak nafsu makan ?");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
         jLabel152.setBounds(40, 1330, 460, 23);
@@ -3575,7 +3570,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3589,7 +3584,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3837,7 +3832,6 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 ChkAccor.setSelected(false);
                 isMenu();
                 tampil();
-                emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
             }
@@ -4089,7 +4083,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                                             "<td width='44%' valign='top'>Lamanya</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("lamanya")+" detik</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Gerak janin, BJJ </td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("bjj")+" /mnt</td>"+
+                                            "<td width='44%' valign='top'>Gerak janin, DJJ </td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("bjj")+" /mnt</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='44%' valign='top'>Status</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_bjj")+"</td>"+
@@ -6046,7 +6040,11 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
     
     private void isBMI(){
         if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
-            BMI.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            try {
+                BMI.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            } catch (Exception e) {
+                BMI.setText("");
+            }
         }
     }
 
@@ -6092,4 +6090,5 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             System.out.println("Notif : "+e);
         }
     }
+    
 }

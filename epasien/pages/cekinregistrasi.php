@@ -6,8 +6,8 @@
     
     $json       = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $json       = json_decode(encrypt_decrypt($json,"d"),true);
-    $kd_dokter  = $json["kd_dokter"];
-    if (isset($kd_dokter)) {
+    if (isset($json["kd_dokter"])) {
+        $kd_dokter  = $json["kd_dokter"];
         $kd_poli    = $json["kd_poli"];
         $tanggal    = $json["tanggal"];
         $kd_pj      = $json["kd_pj"];
@@ -87,7 +87,7 @@
                 $sttsumur    = "Th";
                 $umur        = 0;
                 $querypasien = bukaquery2("select no_rkm_medis,namakeluarga,alamatpj,kelurahanpj,kecamatanpj,kabupatenpj,propinsipj,keluarga,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan,
-                                          TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari
+                                          TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari,tgl_daftar
                                           from pasien where no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' ");
                 if($rsquerypasien = mysqli_fetch_array($querypasien)) {
                     if($rsquerypasien["tahun"] > 0){
@@ -102,8 +102,15 @@
                             $sttsumur   = "Hr";
                         }
                     }
+                    
+                    $biayareg=0;
+                    if($rsquerypasien["tgl_daftar"]==$tanggal){
+                        $biayareg=getOne2("select registrasi from poliklinik where kd_poli='$kd_poli'");
+                    }else{
+                        getOne2("select registrasilama from poliklinik where kd_poli='$kd_poli'");
+                    }
 
-                    $insert     = Tambah4("reg_periksa","'$no_reg','$no_rawat','$tanggal',current_time(),'$kd_dokter','".encrypt_decrypt($_SESSION["ses_pasien"],"d")."','$kd_poli','".$rsquerypasien["namakeluarga"]."','".$rsquerypasien["alamatpj"]."','".$rsquerypasien["keluarga"]."','".getOne2("select registrasilama from poliklinik where kd_poli='$kd_poli'")."','Belum','Lama','Ralan','$kd_pj','$umur','$sttsumur','Belum Bayar','$statuspoli'");
+                    $insert     = Tambah4("reg_periksa","'$no_reg','$no_rawat','$tanggal',current_time(),'$kd_dokter','".encrypt_decrypt($_SESSION["ses_pasien"],"d")."','$kd_poli','".$rsquerypasien["namakeluarga"]."','".$rsquerypasien["alamatpj"]."','".$rsquerypasien["keluarga"]."','".$biayareg."','Belum','Lama','Ralan','$kd_pj','$umur','$sttsumur','Belum Bayar','$statuspoli'");
                     if($insert){
                         Ubah3("skdp_bpjs","status='Sudah Periksa' where no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and tanggal_datang='$tanggal'");
                         Ubah3("booking_registrasi","status='Terdaftar' where no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and tanggal_periksa='$tanggal' and kd_dokter='$kd_dokter' and kd_poli='$kd_poli' and kd_pj='$kd_pj'");

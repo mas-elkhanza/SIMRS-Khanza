@@ -669,7 +669,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                         Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'");       
                         Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'");                            
                     }
-                    sukses=jur.simpanJurnal(NoRawat.getText(),Sequel.cariIsi("select current_date()"),"U","TINDAKAN RAWAT JALAN PASIEN "+NoRawat.getText()+" DIPOSTING OLEH "+akses.getkode());    
+                    sukses=jur.simpanJurnal(NoRawat.getText(),"U","TINDAKAN RAWAT JALAN PASIEN "+NoRawat.getText()+" DIPOSTING OLEH "+akses.getkode());    
                 }
 
                 if(sukses==true){
@@ -789,7 +789,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                         Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','HPP Persediaan Obat Rawat Jalan','"+ttlhpp+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Persediaan Obat Rawat Jalan','0','"+ttlhpp+"'","Rekening");                              
                     }
-                    sukses=jur.simpanJurnal(NoRawat.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBERIAN OBAT RAWAT JALAN PASIEN, DIPOSTING OLEH "+akses.getkode());     
+                    sukses=jur.simpanJurnal(NoRawat.getText(),"U","PEMBERIAN OBAT RAWAT JALAN PASIEN, DIPOSTING OLEH "+akses.getkode());     
                 }
 
                 if(sukses==true){

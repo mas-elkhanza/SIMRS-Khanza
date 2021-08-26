@@ -737,7 +737,7 @@
                         UpdateDataKlaim3($nosep,$nokartu,$tgl_registrasi,$keluar,$jnsrawat,$kelas_rawat,$adl_sub_acute,
                             $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
                             $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure, 
-                            $tarif_poli_eks,$nama_dokter,getKelasRS(),"","","#",$codernik,
+                            $tarif_poli_eks,$nama_dokter,getKelasRS(),"71","COVID-19","#",$codernik,
                             $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
                             $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$pemulasaraan_jenazah,$kantong_jenazah, 
@@ -754,7 +754,7 @@
                         UpdateDataKlaim2($nosep,$nokartu,$tgl_registrasi,$keluar,$jnsrawat,$kelas_rawat,$adl_sub_acute,
                             $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
                             $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure, 
-                            $tarif_poli_eks,$nama_dokter,getKelasRS(),"","","#",$codernik,
+                            $tarif_poli_eks,$nama_dokter,getKelasRS(),"3","JKN","#",$codernik,
                             $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
                             $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat);

@@ -654,7 +654,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ranap+"','Beban Jasa Menejemen Tindakan Ranap','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ranap+"'");       
                     Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ranap+"','Utang Jasa Menejemen Tindakan Ranap','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ranap+"'");                            
                 }
-                sukses=jur.simpanJurnal(NoRawat.getText(),Sequel.cariIsi("select current_date()"),"U","TINDAKAN RAWAT INAP PASIEN "+NoRawat.getText()+" DIPOSTING OLEH "+akses.getkode());    
+                sukses=jur.simpanJurnal(NoRawat.getText(),"U","TINDAKAN RAWAT INAP PASIEN "+NoRawat.getText()+" DIPOSTING OLEH "+akses.getkode());    
             }
                   
             if(sukses==true){
@@ -776,7 +776,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
                     Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
                 }
-                sukses=jur.simpanJurnal(NoRawat.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+akses.getkode());     
+                sukses=jur.simpanJurnal(NoRawat.getText(),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+akses.getkode());     
             }
             
             if(sukses==true){

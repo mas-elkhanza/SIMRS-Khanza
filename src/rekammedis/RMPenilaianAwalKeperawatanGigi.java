@@ -1,8 +1,3 @@
-/*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
- */
-
-
 package rekammedis;
 
 import fungsi.WarnaTable;
@@ -2235,7 +2230,6 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
                 ChkAccor.setSelected(false);
                 isMenu();
                 tampil();
-                emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
             }
@@ -3797,7 +3791,11 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
     
     private void isBMI(){
         if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
-            BMI.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            try {
+                BMI.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            } catch (Exception e) {
+                BMI.setText("");
+            }
         }
     }
 }

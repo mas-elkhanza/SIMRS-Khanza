@@ -1,7 +1,6 @@
 package bridging;
 
 import fungsi.koneksiDB;
-import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
@@ -11,7 +10,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.Properties;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
@@ -23,11 +21,9 @@ import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
 public class ApiKemenkesSisrute {        
-    private static final Properties prop = new Properties();
     private String Key,Consid,pass;
     public ApiKemenkesSisrute(){
-        try {            
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        try {                    
             pass = koneksiDB.PASSSISRUTE();
             Consid = koneksiDB.IDSISRUTE();
             MessageDigest md = MessageDigest.getInstance("MD5");

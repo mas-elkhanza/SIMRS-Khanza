@@ -41,7 +41,7 @@
                            'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','BuktiRegistrasi',
                            'CekBilling2','Pengaduan','BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba',
                            'TampilSuratBebasNarkoba','SuratRujuk','TampilSuratRujuk','SuratCovid','TampilSuratCovid','SuratKontrol','TampilSuratKontrol',
-                           'SimpanBookingRegistrasi','CekinRegistrasi','CekinRegistrasi2','BuktiRegistrasi2','Perpustakaan','KartuPasien');
+                           'SimpanBookingRegistrasi','CekinRegistrasi','CekinRegistrasi2','BuktiRegistrasi2','Perpustakaan','KartuPasien','RiwayatLaboratUser');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -105,11 +105,14 @@
                 case "SuratRujuk"                              : include_once("pages/listsuratrujuk.php"); break;
                 case "TampilSuratRujuk"                        : include_once("pages/listtampilsuratrujuk.php"); break;
                 case "SuratCovid"                              : include_once("pages/listsuratcovid.php"); break;
-                case "TampilSuratCovod"                        : include_once("pages/listtampilsuratcovid.php"); break;
+                case "TampilSuratCovid"                        : include_once("pages/listtampilsuratcovid.php"); break;
                 case "SuratKontrol"                            : include_once("pages/listsuratkontrol.php"); break;
                 case "TampilSuratKontrol"                      : include_once("pages/listtampilsuratkontrol.php"); break;
                 case "Perpustakaan"                            : include_once("pages/listperpustakaan.php"); break;
+                case "AntrianPemeriksaanLab"                   : include_once("pages/listriwayatlaborat.php"); break;
                 case "KartuPasien"                             : include_once("pages/listkartu.php"); break;
+                case "TampilPermintaanLab"                     : include_once("pages/listtampilpermintaanlab.php"); break;
+                case "TampilHasilLab"                          : include_once("pages/listtampilhasillab.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

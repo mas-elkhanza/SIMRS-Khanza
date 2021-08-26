@@ -554,7 +554,7 @@ public class koneksiDB {
     public static String TOKENINHEALTH(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("TOKENINHEALTH");
+            var=EnkripsiAES.decrypt(prop.getProperty("TOKENINHEALTH"));
         }catch(Exception e){
             var=""; 
         }

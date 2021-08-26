@@ -427,6 +427,7 @@ public final class DlgCariKategori extends javax.swing.JDialog {
                 System.out.println("Notifikasi : "+e);
             }
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {

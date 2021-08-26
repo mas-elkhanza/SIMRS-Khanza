@@ -47,9 +47,6 @@ public class InventarisRuang extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(10,10);
-        setSize(459,539);
-
         Object[] row={"ID Ruang","Nama Ruang"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -586,7 +583,7 @@ public class InventarisRuang extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select * from inventaris_ruang where id_ruang like ? "+

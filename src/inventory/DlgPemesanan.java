@@ -1007,6 +1007,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 }                                        
                             }
                         } catch (Exception e) {
+                            sukses=false;
                             System.out.println("Notifikasi : "+e);
                         }                
                     } 
@@ -1014,7 +1015,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         Sequel.queryu("delete from tampjurnal");
                         Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG",""+(ttl+ppn+meterai),"0"});
                         Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA","0",""+(ttl+ppn+meterai)}); 
-                        sukses=jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),"U","PENERIMAAN BARANG DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());
+                        sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());
                     }
                 }else{
                     sukses=false;
@@ -1393,6 +1394,11 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         tampil();
+        LSubtotal.setText("0");
+        LPotongan.setText("0");
+        LTotal2.setText("0");
+        LPpn.setText("0");
+        LTagiha.setText("0");
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1666,7 +1672,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }
             myObj.close();
         }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            System.out.println("Notifikasi : Data tidak ditemukan..!!");
         }        
     }
 

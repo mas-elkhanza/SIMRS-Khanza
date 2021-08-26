@@ -93,7 +93,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Beban_Jasa_Menejemen_Laborat_Ranap,Utang_Jasa_Menejemen_Laborat_Ranap,Beban_Jasa_Sarana_Radiologi_Ranap,
             Utang_Jasa_Sarana_Radiologi_Ranap,Beban_Jasa_Perujuk_Radiologi_Ranap,Utang_Jasa_Perujuk_Radiologi_Ranap,
             Beban_Jasa_Menejemen_Radiologi_Ranap,Utang_Jasa_Menejemen_Radiologi_Ranap,Kerugian_Klaim_BPJS_RVP,
-            Lebih_Bayar_Klaim_BPJS_RVP,Piutang_BPJS_RVP;
+            Lebih_Bayar_Klaim_BPJS_RVP,Piutang_BPJS_RVP,Sisa_Uang_Muka_Ranap,Kontra_Penerimaan_AsetInventaris,
+            Kontra_Hibah_Aset,Hibah_Non_Medis,Kontra_Hibah_Non_Medis;
     private String copyakun="";
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
@@ -741,57 +742,62 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Harian_Ranap=tbPengaturan.getValueAt(126,1).toString();
             Uang_Muka_Ranap=tbPengaturan.getValueAt(127,1).toString();
             Piutang_Pasien_Ranap=tbPengaturan.getValueAt(128,1).toString();
-            Pengadaan_Obat=tbPengaturan.getValueAt(129,1).toString();
-            Pemesanan_Obat=tbPengaturan.getValueAt(130,1).toString();
-            Kontra_Pemesanan_Obat=tbPengaturan.getValueAt(131,1).toString();
-            Bayar_Pemesanan_Obat=tbPengaturan.getValueAt(132,1).toString();
-            Penjualan_Obat=tbPengaturan.getValueAt(133,1).toString();
-            Piutang_Obat=tbPengaturan.getValueAt(134,1).toString();
-            Kontra_Piutang_Obat=tbPengaturan.getValueAt(135,1).toString();
-            Retur_Ke_Suplayer=tbPengaturan.getValueAt(136,1).toString();
-            Kontra_Retur_Ke_Suplayer=tbPengaturan.getValueAt(137,1).toString();
-            Retur_Dari_pembeli=tbPengaturan.getValueAt(138,1).toString();
-            Kontra_Retur_Dari_Pembeli=tbPengaturan.getValueAt(139,1).toString();
-            Retur_Piutang_Obat=tbPengaturan.getValueAt(140,1).toString();
-            Kontra_Retur_Piutang_Obat=tbPengaturan.getValueAt(141,1).toString();
-            Pengadaan_Ipsrs=tbPengaturan.getValueAt(142,1).toString();
-            Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(143,1).toString();
-            Kontra_Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(144,1).toString();
-            Bayar_Piutang_Pasien=tbPengaturan.getValueAt(145,1).toString();
-            Pengambilan_Utd=tbPengaturan.getValueAt(146,1).toString();
-            Kontra_Pengambilan_Utd=tbPengaturan.getValueAt(147,1).toString();        
-            Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(148,1).toString();
-            Kontra_Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(149,1).toString();
-            Penyerahan_Darah=tbPengaturan.getValueAt(150,1).toString();
-            Stok_Keluar_Medis=tbPengaturan.getValueAt(151,1).toString();
-            Kontra_Stok_Keluar_Medis=tbPengaturan.getValueAt(152,1).toString();
-            HPP_Obat_Jual_Bebas=tbPengaturan.getValueAt(153,1).toString();
-            Persediaan_Obat_Jual_Bebas=tbPengaturan.getValueAt(154,1).toString();
-            Penerimaan_NonMedis=tbPengaturan.getValueAt(155,1).toString();
-            Kontra_Penerimaan_NonMedis=tbPengaturan.getValueAt(156,1).toString();
-            Bayar_Pemesanan_Non_Medis=tbPengaturan.getValueAt(157,1).toString();
-            Hibah_Obat=tbPengaturan.getValueAt(158,1).toString();
-            Kontra_Hibah_Obat=tbPengaturan.getValueAt(159,1).toString();
-            Penerimaan_Toko=tbPengaturan.getValueAt(160,1).toString();
-            Kontra_Penerimaan_Toko=tbPengaturan.getValueAt(161,1).toString();
-            Pengadaan_Toko=tbPengaturan.getValueAt(162,1).toString();
-            Bayar_Pemesanan_Toko=tbPengaturan.getValueAt(163,1).toString();
-            Penjualan_Toko=tbPengaturan.getValueAt(164,1).toString();
-            HPP_Barang_Toko=tbPengaturan.getValueAt(165,1).toString();
-            Persediaan_Barang_Toko=tbPengaturan.getValueAt(166,1).toString();
-            Piutang_Toko=tbPengaturan.getValueAt(167,1).toString();
-            Kontra_Piutang_Toko=tbPengaturan.getValueAt(168,1).toString();
-            Retur_Beli_Toko=tbPengaturan.getValueAt(169,1).toString();
-            Kontra_Retur_Beli_Toko=tbPengaturan.getValueAt(170,1).toString();
-            Retur_Beli_Non_Medis=tbPengaturan.getValueAt(171,1).toString();
-            Kontra_Retur_Beli_Non_Medis=tbPengaturan.getValueAt(172,1).toString();
-            Retur_Jual_Toko=tbPengaturan.getValueAt(173,1).toString();
-            Kontra_Retur_Jual_Toko=tbPengaturan.getValueAt(174,1).toString();
-            Retur_Piutang_Toko=tbPengaturan.getValueAt(175,1).toString();
-            Kontra_Retur_Piutang_Toko=tbPengaturan.getValueAt(176,1).toString();
-            Kerugian_Klaim_BPJS_RVP=tbPengaturan.getValueAt(177,1).toString();
-            Lebih_Bayar_Klaim_BPJS_RVP=tbPengaturan.getValueAt(178,1).toString();
-            Piutang_BPJS_RVP=tbPengaturan.getValueAt(179,1).toString();
+            Sisa_Uang_Muka_Ranap=tbPengaturan.getValueAt(129,1).toString();
+            Pengadaan_Obat=tbPengaturan.getValueAt(130,1).toString();
+            Pemesanan_Obat=tbPengaturan.getValueAt(131,1).toString();
+            Kontra_Pemesanan_Obat=tbPengaturan.getValueAt(132,1).toString();
+            Bayar_Pemesanan_Obat=tbPengaturan.getValueAt(133,1).toString();
+            Penjualan_Obat=tbPengaturan.getValueAt(134,1).toString();
+            Piutang_Obat=tbPengaturan.getValueAt(135,1).toString();
+            Kontra_Piutang_Obat=tbPengaturan.getValueAt(136,1).toString();
+            Retur_Ke_Suplayer=tbPengaturan.getValueAt(137,1).toString();
+            Kontra_Retur_Ke_Suplayer=tbPengaturan.getValueAt(138,1).toString();
+            Retur_Dari_pembeli=tbPengaturan.getValueAt(139,1).toString();
+            Kontra_Retur_Dari_Pembeli=tbPengaturan.getValueAt(140,1).toString();
+            Retur_Piutang_Obat=tbPengaturan.getValueAt(141,1).toString();
+            Kontra_Retur_Piutang_Obat=tbPengaturan.getValueAt(142,1).toString();
+            Pengadaan_Ipsrs=tbPengaturan.getValueAt(143,1).toString();
+            Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(144,1).toString();
+            Kontra_Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(145,1).toString();
+            Bayar_Piutang_Pasien=tbPengaturan.getValueAt(146,1).toString();
+            Pengambilan_Utd=tbPengaturan.getValueAt(147,1).toString();
+            Kontra_Pengambilan_Utd=tbPengaturan.getValueAt(148,1).toString();        
+            Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(149,1).toString();
+            Kontra_Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(150,1).toString();
+            Penyerahan_Darah=tbPengaturan.getValueAt(151,1).toString();
+            Stok_Keluar_Medis=tbPengaturan.getValueAt(152,1).toString();
+            Kontra_Stok_Keluar_Medis=tbPengaturan.getValueAt(153,1).toString();
+            HPP_Obat_Jual_Bebas=tbPengaturan.getValueAt(154,1).toString();
+            Persediaan_Obat_Jual_Bebas=tbPengaturan.getValueAt(155,1).toString();
+            Penerimaan_NonMedis=tbPengaturan.getValueAt(156,1).toString();
+            Kontra_Penerimaan_NonMedis=tbPengaturan.getValueAt(157,1).toString();
+            Bayar_Pemesanan_Non_Medis=tbPengaturan.getValueAt(158,1).toString();
+            Hibah_Obat=tbPengaturan.getValueAt(159,1).toString();
+            Kontra_Hibah_Obat=tbPengaturan.getValueAt(160,1).toString();
+            Penerimaan_Toko=tbPengaturan.getValueAt(161,1).toString();
+            Kontra_Penerimaan_Toko=tbPengaturan.getValueAt(162,1).toString();
+            Pengadaan_Toko=tbPengaturan.getValueAt(163,1).toString();
+            Bayar_Pemesanan_Toko=tbPengaturan.getValueAt(164,1).toString();
+            Penjualan_Toko=tbPengaturan.getValueAt(165,1).toString();
+            HPP_Barang_Toko=tbPengaturan.getValueAt(166,1).toString();
+            Persediaan_Barang_Toko=tbPengaturan.getValueAt(167,1).toString();
+            Piutang_Toko=tbPengaturan.getValueAt(168,1).toString();
+            Kontra_Piutang_Toko=tbPengaturan.getValueAt(169,1).toString();
+            Retur_Beli_Toko=tbPengaturan.getValueAt(170,1).toString();
+            Kontra_Retur_Beli_Toko=tbPengaturan.getValueAt(171,1).toString();
+            Retur_Beli_Non_Medis=tbPengaturan.getValueAt(172,1).toString();
+            Kontra_Retur_Beli_Non_Medis=tbPengaturan.getValueAt(173,1).toString();
+            Retur_Jual_Toko=tbPengaturan.getValueAt(174,1).toString();
+            Kontra_Retur_Jual_Toko=tbPengaturan.getValueAt(175,1).toString();
+            Retur_Piutang_Toko=tbPengaturan.getValueAt(176,1).toString();
+            Kontra_Retur_Piutang_Toko=tbPengaturan.getValueAt(177,1).toString();
+            Kerugian_Klaim_BPJS_RVP=tbPengaturan.getValueAt(178,1).toString();
+            Lebih_Bayar_Klaim_BPJS_RVP=tbPengaturan.getValueAt(179,1).toString();
+            Piutang_BPJS_RVP=tbPengaturan.getValueAt(180,1).toString();
+            Kontra_Penerimaan_AsetInventaris=tbPengaturan.getValueAt(181,1).toString();
+            Kontra_Hibah_Aset=tbPengaturan.getValueAt(182,1).toString();
+            Hibah_Non_Medis=tbPengaturan.getValueAt(183,1).toString();
+            Kontra_Hibah_Non_Medis=tbPengaturan.getValueAt(184,1).toString();
             
             if(Pengadaan_Obat.equals("")||Pemesanan_Obat.equals("")||Kontra_Pemesanan_Obat.equals("")||Bayar_Pemesanan_Obat.equals("")||Penjualan_Obat.equals("")||
                     Piutang_Obat.equals("")||Kontra_Piutang_Obat.equals("")||Retur_Ke_Suplayer.equals("")||Kontra_Retur_Ke_Suplayer.equals("")||
@@ -844,7 +850,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Beban_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||Utang_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||Beban_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||
                     Utang_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||HPP_Obat_Operasi_Ranap.equals("")||Persediaan_Obat_Kamar_Operasi_Ranap.equals("")||
                     Harian_Ranap.equals("")||Uang_Muka_Ranap.equals("")||Piutang_Pasien_Ranap.equals("")||Kerugian_Klaim_BPJS_RVP.equals("")||Lebih_Bayar_Klaim_BPJS_RVP.equals("")||
-                    Piutang_BPJS_RVP.equals("")){
+                    Piutang_BPJS_RVP.equals("")||Sisa_Uang_Muka_Ranap.equals("")||Kontra_Penerimaan_AsetInventaris.equals("")||Kontra_Hibah_Aset.equals("")||
+                    Hibah_Non_Medis.equals("")||Kontra_Hibah_Non_Medis.equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                     tbPengaturan.requestFocus();
             }else{
@@ -879,11 +886,11 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Beban_Jasa_Medik_Paramedis_Operasi_Ranap,Utang_Jasa_Medik_Paramedis_Operasi_Ranap,HPP_Obat_Operasi_Ranap
                 });
                 Sequel.queryu("delete from set_akun_ranap2");
-                Sequel.menyimpan("set_akun_ranap2","?,?,?,?",4,new String[]{
-                   Persediaan_Obat_Kamar_Operasi_Ranap,Harian_Ranap,Uang_Muka_Ranap,Piutang_Pasien_Ranap
+                Sequel.menyimpan("set_akun_ranap2","?,?,?,?,?",5,new String[]{
+                   Persediaan_Obat_Kamar_Operasi_Ranap,Harian_Ranap,Uang_Muka_Ranap,Piutang_Pasien_Ranap,Sisa_Uang_Muka_Ranap
                 });
                 Sequel.queryu("delete from set_akun");
-                Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",51,new String[]{
+                Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",55,new String[]{
                     Pengadaan_Obat,
                     Pemesanan_Obat,Kontra_Pemesanan_Obat,Bayar_Pemesanan_Obat,Penjualan_Obat,Piutang_Obat,
                     Kontra_Piutang_Obat,Retur_Ke_Suplayer,Kontra_Retur_Ke_Suplayer,Retur_Dari_pembeli,
@@ -896,7 +903,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Pengadaan_Toko,Bayar_Pemesanan_Toko,Penjualan_Toko,HPP_Barang_Toko,Persediaan_Barang_Toko,
                     Piutang_Toko,Kontra_Piutang_Toko,Retur_Beli_Toko,Kontra_Retur_Beli_Toko,Retur_Beli_Non_Medis,
                     Kontra_Retur_Beli_Non_Medis,Retur_Jual_Toko,Kontra_Retur_Jual_Toko,Retur_Piutang_Toko,
-                    Kontra_Retur_Piutang_Toko,Kerugian_Klaim_BPJS_RVP,Lebih_Bayar_Klaim_BPJS_RVP,Piutang_BPJS_RVP
+                    Kontra_Retur_Piutang_Toko,Kerugian_Klaim_BPJS_RVP,Lebih_Bayar_Klaim_BPJS_RVP,Piutang_BPJS_RVP,
+                    Kontra_Penerimaan_AsetInventaris,Kontra_Hibah_Aset,Hibah_Non_Medis,Kontra_Hibah_Non_Medis
                 });
                 JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
                 tampil();
@@ -1300,6 +1308,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Harian_Ranap="";
             Uang_Muka_Ranap="";
             Piutang_Pasien_Ranap="";
+            Sisa_Uang_Muka_Ranap="";
             Pengadaan_Obat="";
             Pemesanan_Obat="";
             Kontra_Pemesanan_Obat="";
@@ -1351,6 +1360,10 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kerugian_Klaim_BPJS_RVP="";
             Lebih_Bayar_Klaim_BPJS_RVP="";
             Piutang_BPJS_RVP="";
+            Kontra_Penerimaan_AsetInventaris="";
+            Kontra_Hibah_Aset="";
+            Hibah_Non_Medis="";
+            Kontra_Hibah_Non_Medis="";
             
             ps=koneksi.prepareStatement("select * from set_akun_ralan");
             try {
@@ -1516,7 +1529,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Persediaan_Obat_Kamar_Operasi_Ranap=rs.getString("Persediaan_Obat_Kamar_Operasi_Ranap");                    
                     Harian_Ranap=rs.getString("Harian_Ranap");                    
                     Uang_Muka_Ranap=rs.getString("Uang_Muka_Ranap");                    
-                    Piutang_Pasien_Ranap=rs.getString("Piutang_Pasien_Ranap");  
+                    Piutang_Pasien_Ranap=rs.getString("Piutang_Pasien_Ranap");              
+                    Sisa_Uang_Muka_Ranap=rs.getString("Sisa_Uang_Muka_Ranap");  
                 }            
             } catch (Exception e) {
                 System.out.println(e);
@@ -1584,6 +1598,10 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Kerugian_Klaim_BPJS_RVP=rs.getString("Kerugian_Klaim_BPJS_RVP");
                     Lebih_Bayar_Klaim_BPJS_RVP=rs.getString("Lebih_Bayar_Klaim_BPJS_RVP");
                     Piutang_BPJS_RVP=rs.getString("Piutang_BPJS_RVP");
+                    Kontra_Penerimaan_AsetInventaris=rs.getString("Kontra_Penerimaan_AsetInventaris");
+                    Kontra_Hibah_Aset=rs.getString("Kontra_Hibah_Aset");
+                    Hibah_Non_Medis=rs.getString("Hibah_Non_Medis");
+                    Kontra_Hibah_Non_Medis=rs.getString("Kontra_Hibah_Non_Medis");
                 }               
             } catch (Exception e) {
                 System.out.println("Notif Set Akun :"+e);
@@ -2231,7 +2249,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Harian_Ranap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Harian_Ranap)
             });
-            tabMode.addRow(new Object[]{" [Kredit] Akun Uang Muka Pasien pada Billing menu Rawat Inap",Uang_Muka_Ranap,
+            tabMode.addRow(new Object[]{" [Kredit] Akun Uang Muka Pasien pada Deposit menu Rawat Inap",Uang_Muka_Ranap,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Uang_Muka_Ranap),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Uang_Muka_Ranap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Uang_Muka_Ranap)
@@ -2240,6 +2258,11 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Piutang_Pasien_Ranap),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Piutang_Pasien_Ranap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Piutang_Pasien_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Sisa Uang Muka Pasien pada Billing menu Rawat Inap",Sisa_Uang_Muka_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Sisa_Uang_Muka_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Sisa_Uang_Muka_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Sisa_Uang_Muka_Ranap)
             });
             tabMode.addRow(new Object[]{" [Debet] Akun Pengadaan Obat & BHP pada menu Pengadaan Obat & BHP",Pengadaan_Obat,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Pengadaan_Obat),
@@ -2495,6 +2518,26 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Piutang_BPJS_RVP),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Piutang_BPJS_RVP),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Piutang_BPJS_RVP)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Penerimaan Barang Aset/Inventaris pada menu Penerimaan Barang Aset/Inventaris",Kontra_Penerimaan_AsetInventaris,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Penerimaan_AsetInventaris),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Penerimaan_AsetInventaris),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Penerimaan_AsetInventaris)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Hibah Aset/Inventaris pada menu Hibah Aset/Inventaris",Kontra_Hibah_Aset,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Hibah_Aset),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Hibah_Aset),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Hibah_Aset)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Hibah Non Medis pada menu Hibah Non Medis",Hibah_Non_Medis,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Hibah_Non_Medis),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Hibah_Non_Medis),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Hibah_Non_Medis)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Hibah Non Medis pada menu Hibah Non Medis",Kontra_Hibah_Non_Medis,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Hibah_Non_Medis),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Hibah_Non_Medis),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Hibah_Non_Medis)
             });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

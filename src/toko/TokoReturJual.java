@@ -803,7 +803,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Retur_Jual_Toko,"RETUR PENJUALAN",""+ttl,"0"});
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Retur_Jual_Toko,"KONTRA RETUR PENJUALAN","0",""+ttl});
-                    sukses=jur.simpanJurnal(NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),"U","RETUR PENJUALAN TOKO"+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(NoRetur.getText(),"U","RETUR PENJUALAN TOKO"+", OLEH "+akses.getkode());
                 }
 
                 if(sukses==true){

@@ -522,7 +522,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Penunjang_Utd from set_akun"),"PENGAMBILAN BARANG NON MEDIS UTD",""+subtotal,"0"});
                     Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Penunjang_Utd from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",""+subtotal}); 
-                    sukses=jur.simpanJurnal(Valid.SetTgl(Tanggal.getSelectedItem()+"").replaceAll("-","/"),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PENGAMBILAN BARANG NON MEDIS UTD"+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(Valid.SetTgl(Tanggal.getSelectedItem()+"").replaceAll("-","/"),"U","PENGAMBILAN BARANG NON MEDIS UTD"+", OLEH "+akses.getkode());
                 }
                    
                 if(sukses==true){

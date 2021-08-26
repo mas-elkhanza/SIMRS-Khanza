@@ -27,7 +27,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -384,7 +383,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select * from penjab order by png_jawab");
+            ps=koneksi.prepareStatement("select * from penjab where status='1' order by png_jawab");
             try{           
                 rs=ps.executeQuery();
                 i=1;
@@ -444,6 +443,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{
                             i,list.path("KodeAsuransi").asText(),list.path("NamaAsuransi").asText(),list.path("PerusahaanAsuransi").asText(),list.path("AlamatAsuransi").asText(),list.path("NoTelp").asText(),list.path("Attn").asText()
                         });
+                        i++;
                     }
                 }
             }
@@ -451,6 +451,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : Data tidak ditemukan..!!");
         }
+        LCount.setText(""+tabMode.getRowCount());
     } 
     
     public void onCari(){        

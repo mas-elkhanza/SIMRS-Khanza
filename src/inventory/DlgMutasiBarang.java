@@ -1224,7 +1224,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             rsstok=psstok.executeQuery();
                             if(rsstok.next()){
                                 tbDokter.setValueAt(rsstok.getDouble(1),i,6);
-                                tbDokter.setValueAt(rsstok.getDouble("dasar"),i,1);
                             } 
                         } catch (Exception e) {
                             System.out.println("Note : "+e);

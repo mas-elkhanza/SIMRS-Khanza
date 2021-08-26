@@ -888,7 +888,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                           Sequel.cariIsi("select kd_rek from tokopembelian where no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
                       }); 
-                      sukses=jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGADAAN BARANG TOKO"+", OLEH "+akses.getkode());
+                      sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PENGADAAN BARANG TOKO"+", OLEH "+akses.getkode());
                       if(sukses==true){
                            Sequel.queryu2("delete from tokopembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
                            Sequel.Commit();

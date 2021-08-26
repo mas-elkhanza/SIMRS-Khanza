@@ -927,7 +927,7 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
                         "pengajuan_cuti.jumlah,pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
                         "from pengajuan_cuti inner join pegawai as peg1 on pengajuan_cuti.nik=peg1.nik "+
                         "inner join pegawai as peg2 on pengajuan_cuti.nik_pj=peg2.nik where "+
-                        "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' order by pengajuan_cuti.tanggal",param);
+                        "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by pengajuan_cuti.tanggal",param);
             }else{
                 Valid.MyReportqry("rptPengajuanCutiAdmin.jasper","report","::[ Data Pengajuan Cuti ]::",
                        "select pengajuan_cuti.no_pengajuan,pengajuan_cuti.tanggal,pengajuan_cuti.tanggal_awal,pengajuan_cuti.tanggal_akhir,"+
@@ -935,17 +935,17 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
                         "pengajuan_cuti.jumlah,pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
                         "from pengajuan_cuti inner join pegawai as peg1 on pengajuan_cuti.nik=peg1.nik "+
                         "inner join pegawai as peg2 on pengajuan_cuti.nik_pj=peg2.nik where "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.nik like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.urgensi like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.alamat like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.kepentingan like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.nik_pj like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
-                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.status like '%"+TCari.getText().trim()+"%' order by pengajuan_cuti.tanggal",param);
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_cuti.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_cuti.nik like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_cuti.urgensi like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_cuti.alamat like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_cuti.kepentingan like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_cuti.nik_pj like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_cuti.status like '%"+TCari.getText().trim()+"%' order by pengajuan_cuti.tanggal",param);
            }
                 
         }

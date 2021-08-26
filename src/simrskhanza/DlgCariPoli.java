@@ -440,5 +440,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : Data tidak ditemukan..!!");
         }
+        LCount.setText(""+tabMode.getRowCount());
     } 
 }

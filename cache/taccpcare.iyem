@@ -1,0 +1,19 @@
+{
+    "referensiTACC":[
+        {"kdTacc":"-1","nmTacc":"Tanpa TACC","alasanTacc":""},
+        {"kdTacc":"0","nmTacc":"Tidak ada TACC","alasanTacc":""},
+        {"kdTacc":"1","nmTacc":"Time","alasanTacc":"< 3 Hari"},
+        {"kdTacc":"1","nmTacc":"Time","alasanTacc":">= 3 - 7 Hari"},
+        {"kdTacc":"1","nmTacc":"Time","alasanTacc":">= 7 Hari"},
+        {"kdTacc":"2","nmTacc":"Age","alasanTacc":"< 1 Bulan"},
+        {"kdTacc":"2","nmTacc":"Age","alasanTacc":">= 1 Bulan s/d < 12 Bulan"},
+        {"kdTacc":"2","nmTacc":"Age","alasanTacc":">= 1 Tahun s/d < 5 Tahun"},
+        {"kdTacc":"2","nmTacc":"Age","alasanTacc":">= 5 Tahun s/d < 12 Tahun"},
+        {"kdTacc":"2","nmTacc":"Age","alasanTacc":">= 12 Tahun s/d < 55 Tahun"},
+        {"kdTacc":"2","nmTacc":"Age","alasanTacc":">= 55 Tahun"},
+        {"kdTacc":"3","nmTacc":"Complication","alasanTacc":"A09 - Diarrhoea and gastroenteritis of presumed infectious origin"},
+        {"kdTacc":"4","nmTacc":"Comorbidity","alasanTacc":"< 3 Hari"},
+        {"kdTacc":"4","nmTacc":"Comorbidity","alasanTacc":">= 3 - 7 Hari"},
+        {"kdTacc":"4","nmTacc":"Comorbidity","alasanTacc":">= 7 Hari"}
+    ]
+}

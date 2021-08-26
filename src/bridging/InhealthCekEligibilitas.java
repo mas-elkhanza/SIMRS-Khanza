@@ -75,7 +75,6 @@ import simrskhanza.DlgCariSuku;
  */
 public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -4575,11 +4574,10 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
 
     public void cekEligibilitas(String nomorpeserta){
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/EligibilitasPeserta";	
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/EligibilitasPeserta";	
 	    HttpHeaders headers = new HttpHeaders();            
             headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                             "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
                             "\"nokainhealth\": \""+NoKartu.getText()+"\"," +
                             "\"tglpelayanan\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
@@ -5035,11 +5033,10 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     
     private void insertSJP(){
         try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/SimpanSJP";	
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/SimpanSJP";	
 	    HttpHeaders headers = new HttpHeaders();            
             headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                             "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
                             "\"tanggalpelayanan\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\","+
                             "\"jenispelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\","+

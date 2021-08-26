@@ -112,7 +112,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
                 "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Registrasi Per Agama","[N]Registrasi Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
                 "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Registrasi Per Suku/Bangsa",
-                "[N]Registrasi Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli VClaim","[N]Registrasi Per Cacat Fisik","[F]Barang CSSD","[K]SKDP BPJS","[A]Booking Registrasi",
+                "[N]Registrasi Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli VClaim","[N]Registrasi Per Cacat Fisik","[F]Barang CSSD","[O]Surat Kontrol","[A]Booking Registrasi",
                 "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim","[K]Referensi Kecamatan VClaim","[K]Referensi Dokter DPJP VClaim","[K]Riwayat Rujukan RS di VClaim",
                 "[K]Tanggal Rujukan di VClaim","[A]Permintaan Lab","[A]Permintaan Radiologi","[O]Indeks Surat","[O]Map Surat","[O]Almari Surat","[O]Rak Surat","[O]Ruang Surat",
                 "[O]Klasifikasi Surat","[O]Status Surat","[O]Sifat Surat","[O]Stts Balas Surat","[O]Surat Masuk","[K]Referensi Dokter PCare","[K]Referensi Poli PCare",
@@ -127,7 +127,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[H]Hapus Nota Salah","[A]Asesmen Awal Rawat Inap","[I]HAIs Per Kamar/Bangsal","[D]PPN Obat","[J]Saldo Akun Per Bulan","[S]Display Antrian Apotek",
                 "[K]Referensi Faskes Sisrute","[K]Referensi Alasan Rujuk Sisrute","[K]Referensi Diagnosa Sisrute","[K]Rujukan Masuk Sisrute","[K]Rujukan Keluar Sisrute",
                 "[K]Cek SKDP VClaim","[D]Data Batch","[I]Kunjungan Lab Ralan","[I]Kunjungan Lab Ranap","[I]Kunjungan Radiologi Ralan","[I]Kunjungan Radiologi Ranap",
-                "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[S]Password Asuransi","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
+                "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[S]Password BPJS","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
                 "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB","[N]Status HIV TB","[N]Skoring Anak TB","[N]Konfirmasi Skoring 5 TB",
                 "[N]Konfirmasi Skoring 6 TB","[N]Sumber Obat TB","[N]Hasil Akhir Pengobatan TB","[N]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
                 "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
@@ -179,7 +179,14 @@ public class DlgUser extends javax.swing.JDialog {
                 "[D]Ringkasan Stok Keluar Obat & BHP","[D]Ringkasan Retur Suplier Obat & BHP","[D]Ringkasan Retur Pembeli Obat & BHP","[L]Penilaian Awal Ranap Kebidanan",
                 "[E]Ringkasan Pengajuan Non Medis","[E]Ringkasan Pemesanan Non Medis","[E]Ringkasan Pengadaan Non Medis","[E]Ringkasan Penerimaan Non Medis",
                 "[E]Ringkasan Stok Keluar Non Medis","[E]Ringkasan Retur Suplier Non Medis","[J]Penerimaan/Omset/Kas Masuk","[J]Validasi Penagihan Piutang",
-                "[A]Permintaan Rawat Inap"
+                "[A]Permintaan Rawat Inap","[K]Referensi Diagnosa PRB VClaim","[K]Referensi Obat PRB VClaim","[K]Surat Kontrol VClaim","[D]Penggunaan BHP OK/VK",
+                "[O]Surat Keterangan Rawat Inap","[O]Surat Keterangan Sehat","[J]Pendapatan Per Cara Bayar","[K]Host To Host Bank Jateng","[J]Pembayaran Bank Jateng",
+                "[K]Surat PRI VClaim","[H]Ringkasan Tindakan","[I]Lama Pelayanan Pasien","[O]Surat Keterangan Sakit Pihak 2","[J]Titip Faktur/Tagihan Obat & BHP",
+                "[K]Referensi Pendaftaran Mobile JKN","[K]Batal Pendaftaran Mobile JKN","[I]Lama Operasi","[N]Jumlah Inventaris Per Kategori","[N]Jumlah Inventaris Per Merk",
+                "[N]Jumlah Inventaris Per Produsen","[J]Pengembalian Deposit Pasien","[J]Validasi Titip Faktur/Tagihan Obat & BHP","[J]Piutang Obat & BHP Belum Lunas",
+                "[K]Integrasi BRI API","[F]Pengadaan Aset/Inventaris","[J]Akun Jenis Aset/Inventaris","[F]Suplier Aset/Inventaris","[F]Penerimaan Aset/Inventaris",
+                "[J]Bayar Pesan Aset/Inventaris","[J]Hutang Aset/Inventaris","[F]Hibah Aset/Inventaris","[J]Titip Faktur/Tagihan Non Medis","[J]Validasi Titip Faktur/Tagihan Non Medis",
+                "[J]Titip Faktur/Tagihan Aset/Inventaris","[J]Validasi Titip Faktur/Tagihan Aset/Inventaris","[E]Hibah Non Medis","[K]Referensi TACC PCare"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -370,6 +377,14 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -383,7 +398,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 703;i++) {
+        for (i = 0; i < 740;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1946,8 +1961,119 @@ public class DlgUser extends javax.swing.JDialog {
                 case 702:
                     column.setPreferredWidth(137);
                     break;
-                default:
+                case 703:
+                    column.setPreferredWidth(176);
+                    break;
+                case 704:
+                    column.setPreferredWidth(155);
+                    break;
+                case 705:
+                    column.setPreferredWidth(123);
+                    break;
+                case 706:
+                    column.setPreferredWidth(138);
+                    break;
+                case 707:
+                    column.setPreferredWidth(167);
+                    break;
+                case 708:
+                    column.setPreferredWidth(139);
+                    break;
+                case 709:
+                    column.setPreferredWidth(153);
+                    break;
+                case 710:
+                    column.setPreferredWidth(145);
+                    break;
+                case 711:
+                    column.setPreferredWidth(142);
+                    break;
+                case 712:
+                    column.setPreferredWidth(105);
+                    break;
+                case 713:
+                    column.setPreferredWidth(119);
+                    break;
+                case 714:
+                    column.setPreferredWidth(133);
+                    break;
+                case 715:
+                    column.setPreferredWidth(173);
+                    break;
+                case 716:
+                    column.setPreferredWidth(178);
+                    break;
+                case 717:
+                    column.setPreferredWidth(187);
+                    break;
+                case 718:
+                    column.setPreferredWidth(165);
+                    break;
+                case 719:
+                    column.setPreferredWidth(85);
+                    break;
+                case 720:
+                    column.setPreferredWidth(171);
+                    break;
+                case 721:
+                    column.setPreferredWidth(154);
+                    break;
+                case 722:
+                    column.setPreferredWidth(175);
+                    break;
+                case 723:
+                    column.setPreferredWidth(163);
+                    break;
+                case 724:
+                    column.setPreferredWidth(220);
+                    break;
+                case 725:
+                    column.setPreferredWidth(180);
+                    break;
+                case 726:
+                    column.setPreferredWidth(105);
+                    break;
+                case 727:
+                    column.setPreferredWidth(153);
+                    break;
+                case 728:
+                    column.setPreferredWidth(150);
+                    break;
+                case 729:
+                    column.setPreferredWidth(134);
+                    break;
+                case 730:
+                    column.setPreferredWidth(157);
+                    break;
+                case 731:
+                    column.setPreferredWidth(157);
+                    break;
+                case 732:
+                    column.setPreferredWidth(133);
+                    break;
+                case 733:
+                    column.setPreferredWidth(127);
+                    break;
+                case 734:
+                    column.setPreferredWidth(172);
+                    break;
+                case 735:
+                    column.setPreferredWidth(214);
+                    break;
+                case 736:
+                    column.setPreferredWidth(197);
+                    break;
+                case 737:
+                    column.setPreferredWidth(239);
+                    break;
+                case 738:
+                    column.setPreferredWidth(103);
+                    break;
+                case 739:
                     column.setPreferredWidth(130);
+                    break;
+                default:
+                    column.setPreferredWidth(140);
                     break;
             }
         }
@@ -2443,7 +2569,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3188,7 +3315,44 @@ public class DlgUser extends javax.swing.JDialog {
                     "ringkasan_returbeli_nonmedis='"+tbUser.getValueAt(i,699).toString()+"',"+
                     "omset_penerimaan='"+tbUser.getValueAt(i,700).toString()+"',"+
                     "validasi_penagihan_piutang='"+tbUser.getValueAt(i,701).toString()+"',"+
-                    "permintaan_ranap='"+tbUser.getValueAt(i,702).toString()+"'");
+                    "permintaan_ranap='"+tbUser.getValueAt(i,702).toString()+"',"+
+                    "bpjs_diagnosa_prb='"+tbUser.getValueAt(i,703).toString()+"',"+
+                    "bpjs_obat_prb='"+tbUser.getValueAt(i,704).toString()+"',"+
+                    "bpjs_surat_kontrol='"+tbUser.getValueAt(i,705).toString()+"',"+
+                    "penggunaan_bhp_ok='"+tbUser.getValueAt(i,706).toString()+"',"+
+                    "surat_keterangan_rawat_inap='"+tbUser.getValueAt(i,707).toString()+"',"+
+                    "surat_keterangan_sehat='"+tbUser.getValueAt(i,708).toString()+"',"+
+                    "pendapatan_per_carabayar='"+tbUser.getValueAt(i,709).toString()+"',"+
+                    "akun_host_to_host_bank_jateng='"+tbUser.getValueAt(i,710).toString()+"',"+
+                    "pembayaran_bank_jateng='"+tbUser.getValueAt(i,711).toString()+"',"+
+                    "bpjs_surat_pri='"+tbUser.getValueAt(i,712).toString()+"',"+
+                    "ringkasan_tindakan='"+tbUser.getValueAt(i,713).toString()+"',"+
+                    "lama_pelayanan_pasien='"+tbUser.getValueAt(i,714).toString()+"',"+
+                    "surat_sakit_pihak_2='"+tbUser.getValueAt(i,715).toString()+"',"+
+                    "tagihan_hutang_obat='"+tbUser.getValueAt(i,716).toString()+"',"+
+                    "referensi_mobilejkn_bpjs='"+tbUser.getValueAt(i,717).toString()+"',"+
+                    "batal_pendaftaran_mobilejkn_bpjs='"+tbUser.getValueAt(i,718).toString()+"',"+
+                    "lama_operasi='"+tbUser.getValueAt(i,719).toString()+"',"+
+                    "grafik_inventaris_kategori='"+tbUser.getValueAt(i,720).toString()+"',"+
+                    "grafik_inventaris_merk='"+tbUser.getValueAt(i,721).toString()+"',"+
+                    "grafik_inventaris_produsen='"+tbUser.getValueAt(i,722).toString()+"',"+
+                    "pengembalian_deposit_pasien='"+tbUser.getValueAt(i,723).toString()+"',"+
+                    "validasi_tagihan_hutang_obat='"+tbUser.getValueAt(i,724).toString()+"',"+
+                    "piutang_obat_belum_lunas='"+tbUser.getValueAt(i,725).toString()+"',"+
+                    "integrasi_briapi='"+tbUser.getValueAt(i,726).toString()+"',"+
+                    "pengadaan_aset_inventaris='"+tbUser.getValueAt(i,727).toString()+"',"+
+                    "akun_aset_inventaris='"+tbUser.getValueAt(i,728).toString()+"',"+
+                    "suplier_inventaris='"+tbUser.getValueAt(i,729).toString()+"',"+
+                    "penerimaan_aset_inventaris='"+tbUser.getValueAt(i,730).toString()+"',"+
+                    "bayar_pemesanan_iventaris='"+tbUser.getValueAt(i,731).toString()+"',"+
+                    "hutang_aset_inventaris='"+tbUser.getValueAt(i,732).toString()+"',"+
+                    "hibah_aset_inventaris='"+tbUser.getValueAt(i,733).toString()+"',"+
+                    "titip_faktur_non_medis='"+tbUser.getValueAt(i,734).toString()+"',"+
+                    "validasi_tagihan_non_medis='"+tbUser.getValueAt(i,735).toString()+"',"+
+                    "titip_faktur_aset='"+tbUser.getValueAt(i,736).toString()+"',"+
+                    "validasi_tagihan_aset='"+tbUser.getValueAt(i,737).toString()+"',"+
+                    "hibah_non_medis='"+tbUser.getValueAt(i,738).toString()+"',"+
+                    "pcare_alasan_tacc='"+tbUser.getValueAt(i,739).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3972,7 +4136,44 @@ public class DlgUser extends javax.swing.JDialog {
                                     "ringkasan_returbeli_nonmedis='"+tbUser.getValueAt(barisdicopy,699).toString()+"',"+
                                     "omset_penerimaan='"+tbUser.getValueAt(barisdicopy,700).toString()+"',"+
                                     "validasi_penagihan_piutang='"+tbUser.getValueAt(barisdicopy,701).toString()+"',"+
-                                    "permintaan_ranap='"+tbUser.getValueAt(barisdicopy,702).toString()+"'");
+                                    "permintaan_ranap='"+tbUser.getValueAt(barisdicopy,702).toString()+"',"+
+                                    "bpjs_diagnosa_prb='"+tbUser.getValueAt(barisdicopy,703).toString()+"',"+
+                                    "bpjs_obat_prb='"+tbUser.getValueAt(barisdicopy,704).toString()+"',"+
+                                    "bpjs_surat_kontrol='"+tbUser.getValueAt(barisdicopy,705).toString()+"',"+
+                                    "penggunaan_bhp_ok='"+tbUser.getValueAt(barisdicopy,706).toString()+"',"+
+                                    "surat_keterangan_rawat_inap='"+tbUser.getValueAt(barisdicopy,707).toString()+"',"+
+                                    "surat_keterangan_sehat='"+tbUser.getValueAt(barisdicopy,708).toString()+"',"+
+                                    "pendapatan_per_carabayar='"+tbUser.getValueAt(barisdicopy,709).toString()+"',"+
+                                    "akun_host_to_host_bank_jateng='"+tbUser.getValueAt(barisdicopy,710).toString()+"',"+
+                                    "pembayaran_bank_jateng='"+tbUser.getValueAt(barisdicopy,711).toString()+"',"+
+                                    "bpjs_surat_pri='"+tbUser.getValueAt(barisdicopy,712).toString()+"',"+
+                                    "ringkasan_tindakan='"+tbUser.getValueAt(barisdicopy,713).toString()+"',"+
+                                    "lama_pelayanan_pasien='"+tbUser.getValueAt(barisdicopy,714).toString()+"',"+
+                                    "surat_sakit_pihak_2='"+tbUser.getValueAt(barisdicopy,715).toString()+"',"+
+                                    "tagihan_hutang_obat='"+tbUser.getValueAt(barisdicopy,716).toString()+"',"+
+                                    "referensi_mobilejkn_bpjs='"+tbUser.getValueAt(barisdicopy,717).toString()+"',"+
+                                    "batal_pendaftaran_mobilejkn_bpjs='"+tbUser.getValueAt(barisdicopy,718).toString()+"',"+
+                                    "lama_operasi='"+tbUser.getValueAt(barisdicopy,719).toString()+"',"+
+                                    "grafik_inventaris_kategori='"+tbUser.getValueAt(barisdicopy,720).toString()+"',"+
+                                    "grafik_inventaris_merk='"+tbUser.getValueAt(barisdicopy,721).toString()+"',"+
+                                    "grafik_inventaris_produsen='"+tbUser.getValueAt(barisdicopy,722).toString()+"',"+
+                                    "pengembalian_deposit_pasien='"+tbUser.getValueAt(barisdicopy,723).toString()+"',"+
+                                    "validasi_tagihan_hutang_obat='"+tbUser.getValueAt(barisdicopy,724).toString()+"',"+
+                                    "piutang_obat_belum_lunas='"+tbUser.getValueAt(barisdicopy,725).toString()+"',"+
+                                    "integrasi_briapi='"+tbUser.getValueAt(barisdicopy,726).toString()+"',"+
+                                    "pengadaan_aset_inventaris='"+tbUser.getValueAt(barisdicopy,727).toString()+"',"+
+                                    "akun_aset_inventaris='"+tbUser.getValueAt(barisdicopy,728).toString()+"',"+
+                                    "suplier_inventaris='"+tbUser.getValueAt(barisdicopy,729).toString()+"',"+
+                                    "penerimaan_aset_inventaris='"+tbUser.getValueAt(barisdicopy,730).toString()+"',"+
+                                    "bayar_pemesanan_iventaris='"+tbUser.getValueAt(barisdicopy,731).toString()+"',"+
+                                    "hutang_aset_inventaris='"+tbUser.getValueAt(barisdicopy,732).toString()+"',"+
+                                    "hibah_aset_inventaris='"+tbUser.getValueAt(barisdicopy,733).toString()+"',"+
+                                    "titip_faktur_non_medis='"+tbUser.getValueAt(barisdicopy,734).toString()+"',"+
+                                    "validasi_tagihan_non_medis='"+tbUser.getValueAt(barisdicopy,735).toString()+"',"+
+                                    "titip_faktur_aset='"+tbUser.getValueAt(barisdicopy,736).toString()+"',"+
+                                    "validasi_tagihan_aset='"+tbUser.getValueAt(barisdicopy,737).toString()+"',"+
+                                    "hibah_non_medis='"+tbUser.getValueAt(barisdicopy,738).toString()+"',"+
+                                    "pcare_alasan_tacc='"+tbUser.getValueAt(barisdicopy,739).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4115,13 +4316,17 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_MnCopyHakAksesActionPerformed
 
     private void MnSetUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSetUserActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        personal.isUser(TKd.getText(),TNmUser.getText(),TPass.getText());
-        personal.setSize(460,this.getHeight()-50);
-        personal.setLocationRelativeTo(internalFrame1);
-        personal.setAlwaysOnTop(false);
-        personal.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());   
+        if(tbUser.getSelectedRow()!= -1){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            personal.isUser(TKd.getText(),TNmUser.getText(),TPass.getText());
+            personal.setSize(460,this.getHeight()-50);
+            personal.setLocationRelativeTo(internalFrame1);
+            personal.setAlwaysOnTop(false);
+            personal.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());   
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih dulu nama user..!!");
+        }   
     }//GEN-LAST:event_MnSetUserActionPerformed
 
     /**
@@ -4303,14 +4508,20 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "ringkasan_beri_obat,ringkasan_piutang_obat,ringkasan_stok_keluar_obat,ringkasan_retur_suplier_obat,ringkasan_retur_pembeli_obat,"+
                         "penilaian_awal_keperawatan_ranapkebidanan,ringkasan_pengajuan_nonmedis,ringkasan_pemesanan_nonmedis,ringkasan_pengadaan_nonmedis,"+
                         "ringkasan_penerimaan_nonmedis,ringkasan_stokkeluar_nonmedis,ringkasan_returbeli_nonmedis,omset_penerimaan,validasi_penagihan_piutang,"+
-                        "permintaan_ranap from user order by AES_DECRYPT(id_user,'nur')");
+                        "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol,penggunaan_bhp_ok,surat_keterangan_rawat_inap,"+
+                        "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng,bpjs_surat_pri,"+
+                        "ringkasan_tindakan,lama_pelayanan_pasien,surat_sakit_pihak_2,tagihan_hutang_obat,referensi_mobilejkn_bpjs,batal_pendaftaran_mobilejkn_bpjs,"+
+                        "lama_operasi,grafik_inventaris_kategori,grafik_inventaris_merk,grafik_inventaris_produsen,pengembalian_deposit_pasien,"+
+                        "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi,pengadaan_aset_inventaris,akun_aset_inventaris,"+
+                        "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris,hutang_aset_inventaris,hibah_aset_inventaris,"+
+                        "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset,validasi_tagihan_aset,hibah_non_medis,pcare_alasan_tacc from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     user="";
                     user=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString(1));
                     jabatan=Sequel.cariIsi("select nm_sps from spesialis where kd_sps=?",Sequel.cariIsi("select kd_sps from dokter where kd_dokter=?",rs.getString(1)));
-                    if(user.equals("")){
+                    if(user.equals("")){    
                         user=Sequel.cariIsi("select nama from petugas where nip=?",rs.getString(1));
                         jabatan=Sequel.cariIsi("select nm_jbtn from jabatan where kd_jbtn=?",Sequel.cariIsi("select kd_jbtn from petugas where nip=?",rs.getString(1)));
                     }    
@@ -5018,7 +5229,44 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("ringkasan_returbeli_nonmedis"),
                                rs.getBoolean("omset_penerimaan"),
                                rs.getBoolean("validasi_penagihan_piutang"),
-                               rs.getBoolean("permintaan_ranap")
+                               rs.getBoolean("permintaan_ranap"),
+                               rs.getBoolean("bpjs_diagnosa_prb"),
+                               rs.getBoolean("bpjs_obat_prb"),
+                               rs.getBoolean("bpjs_surat_kontrol"),
+                               rs.getBoolean("penggunaan_bhp_ok"),
+                               rs.getBoolean("surat_keterangan_rawat_inap"),
+                               rs.getBoolean("surat_keterangan_sehat"),
+                               rs.getBoolean("pendapatan_per_carabayar"),
+                               rs.getBoolean("akun_host_to_host_bank_jateng"),
+                               rs.getBoolean("pembayaran_bank_jateng"),
+                               rs.getBoolean("bpjs_surat_pri"),
+                               rs.getBoolean("ringkasan_tindakan"),
+                               rs.getBoolean("lama_pelayanan_pasien"),
+                               rs.getBoolean("surat_sakit_pihak_2"),
+                               rs.getBoolean("tagihan_hutang_obat"),
+                               rs.getBoolean("referensi_mobilejkn_bpjs"),
+                               rs.getBoolean("batal_pendaftaran_mobilejkn_bpjs"),
+                               rs.getBoolean("lama_operasi"),
+                               rs.getBoolean("grafik_inventaris_kategori"),
+                               rs.getBoolean("grafik_inventaris_merk"),
+                               rs.getBoolean("grafik_inventaris_produsen"),
+                               rs.getBoolean("pengembalian_deposit_pasien"),
+                               rs.getBoolean("validasi_tagihan_hutang_obat"),
+                               rs.getBoolean("piutang_obat_belum_lunas"),
+                               rs.getBoolean("integrasi_briapi"),
+                               rs.getBoolean("pengadaan_aset_inventaris"),
+                               rs.getBoolean("akun_aset_inventaris"),
+                               rs.getBoolean("suplier_inventaris"),
+                               rs.getBoolean("penerimaan_aset_inventaris"),
+                               rs.getBoolean("bayar_pemesanan_iventaris"),
+                               rs.getBoolean("hutang_aset_inventaris"),
+                               rs.getBoolean("hibah_aset_inventaris"),
+                               rs.getBoolean("titip_faktur_non_medis"),
+                               rs.getBoolean("validasi_tagihan_non_medis"),
+                               rs.getBoolean("titip_faktur_aset"),
+                               rs.getBoolean("validasi_tagihan_aset"),
+                               rs.getBoolean("hibah_non_medis"),
+                               rs.getBoolean("pcare_alasan_tacc")
                             });
                         }   
                     } catch (Exception e) {
@@ -5722,7 +5970,44 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("ringkasan_returbeli_nonmedis"),
                            rs.getBoolean("omset_penerimaan"),
                            rs.getBoolean("validasi_penagihan_piutang"),
-                           rs.getBoolean("permintaan_ranap")
+                           rs.getBoolean("permintaan_ranap"),
+                           rs.getBoolean("bpjs_diagnosa_prb"),
+                           rs.getBoolean("bpjs_obat_prb"),
+                           rs.getBoolean("bpjs_surat_kontrol"),
+                           rs.getBoolean("penggunaan_bhp_ok"),
+                           rs.getBoolean("surat_keterangan_rawat_inap"),
+                           rs.getBoolean("surat_keterangan_sehat"),
+                           rs.getBoolean("pendapatan_per_carabayar"),
+                           rs.getBoolean("akun_host_to_host_bank_jateng"),
+                           rs.getBoolean("pembayaran_bank_jateng"),
+                           rs.getBoolean("bpjs_surat_pri"),
+                           rs.getBoolean("ringkasan_tindakan"),
+                           rs.getBoolean("lama_pelayanan_pasien"),
+                           rs.getBoolean("surat_sakit_pihak_2"),
+                           rs.getBoolean("tagihan_hutang_obat"),
+                           rs.getBoolean("referensi_mobilejkn_bpjs"),
+                           rs.getBoolean("batal_pendaftaran_mobilejkn_bpjs"),
+                           rs.getBoolean("lama_operasi"),
+                           rs.getBoolean("grafik_inventaris_kategori"),
+                           rs.getBoolean("grafik_inventaris_merk"),
+                           rs.getBoolean("grafik_inventaris_produsen"),
+                           rs.getBoolean("pengembalian_deposit_pasien"),
+                           rs.getBoolean("validasi_tagihan_hutang_obat"),
+                           rs.getBoolean("piutang_obat_belum_lunas"),
+                           rs.getBoolean("integrasi_briapi"),
+                           rs.getBoolean("pengadaan_aset_inventaris"),
+                           rs.getBoolean("akun_aset_inventaris"),
+                           rs.getBoolean("suplier_inventaris"),
+                           rs.getBoolean("penerimaan_aset_inventaris"),
+                           rs.getBoolean("bayar_pemesanan_iventaris"),
+                           rs.getBoolean("hutang_aset_inventaris"),
+                           rs.getBoolean("hibah_aset_inventaris"),
+                           rs.getBoolean("titip_faktur_non_medis"),
+                           rs.getBoolean("validasi_tagihan_non_medis"),
+                           rs.getBoolean("titip_faktur_aset"),
+                           rs.getBoolean("validasi_tagihan_aset"),
+                           rs.getBoolean("hibah_non_medis"),
+                           rs.getBoolean("pcare_alasan_tacc")
                         });
                     }                                             
                  }

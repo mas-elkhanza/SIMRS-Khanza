@@ -413,7 +413,7 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik pada nomor permintaan untuk verifikasi pilihan");
+        tbDokter.setToolTipText("Silahkan klik pada nomor tagihan untuk verifikasi pilihan");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -994,7 +994,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 Valid.textKosong(TCari,"pilihan data");
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                DlgPiutangBelumLunas form=new DlgPiutangBelumLunas(null,false);
+                KeuanganPiutangBelumLunas form=new KeuanganPiutangBelumLunas(null,false);
                 form.isCek();
                 form.tampiltagihan(tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

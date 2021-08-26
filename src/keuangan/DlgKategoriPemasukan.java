@@ -119,24 +119,14 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgKategoriPemasukan")){
                     if(rekening.getTabel().getSelectedRow()!= -1){  
                         if(pilihan==1){
-                            if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("R")&&
-                                rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("K")){
-                                KdAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                                NmAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
-                                KdAkun.requestFocus();
-                            }else{
-                                JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe R dan Balance K..!!");
-                            }                            
+                            KdAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                            NmAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
+                            KdAkun.requestFocus();                       
                         }else if(pilihan==2){
-                            if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
-                                rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
-                                KdKontraAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                                NmKontraAKun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
-                                KdAkun.requestFocus();
-                            }else{
-                                JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe N dan Balance D..!!");
-                            }                                
-                        }                         
+                            KdKontraAkun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                            NmKontraAKun.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());
+                            KdKontraAkun.requestFocus();                               
+                        }                          
                     }                 
                 }
             }

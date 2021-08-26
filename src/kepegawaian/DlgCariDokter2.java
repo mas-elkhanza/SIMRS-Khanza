@@ -434,7 +434,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                         rs.getString(10),rs.getString(11),rs.getString(12),
                         rs.getString(13),rs.getString(14)
                     });
-                    iyem=iyem+"{\"KodeDokter\":\""+rs.getString(1)+"\",\"NamaDokter\":\""+rs.getString(2)+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4)+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"AlamatTinggal\":\""+rs.getString(8)+"\",\"NoTelp\":\""+rs.getString(9)+"\",\"SttsNikah\":\""+rs.getString(10)+"\",\"Spesialis\":\""+rs.getString(11)+"\",\"Alumni\":\""+rs.getString(12)+"\",\"NoIjinPraktek\":\""+rs.getString(13)+"\",\"Kuota\":\""+rs.getString(14)+"\"},";
+                    iyem=iyem+"{\"KodeDokter\":\""+rs.getString(1)+"\",\"NamaDokter\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4).replaceAll("\"","")+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"AlamatTinggal\":\""+rs.getString(8).replaceAll("\"","")+"\",\"NoTelp\":\""+rs.getString(9)+"\",\"SttsNikah\":\""+rs.getString(10)+"\",\"Spesialis\":\""+rs.getString(11)+"\",\"Alumni\":\""+rs.getString(12).replaceAll("\"","")+"\",\"NoIjinPraktek\":\""+rs.getString(13)+"\",\"Kuota\":\""+rs.getString(14)+"\"},";
                 }
             }catch(SQLException e){
                 System.out.println("Notifikasi : "+e);

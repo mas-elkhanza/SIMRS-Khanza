@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -1086,7 +1087,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG PASIEN','0','"+Sequel.cariIsi("select sisapiutang from piutang where nota_piutang='"+rs.getString("nota_piutang")+"'")+"'","Rekening");    
                     Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','"+Sequel.cariIsi("select sisapiutang  from piutang where nota_piutang='"+rs.getString("nota_piutang")+"'")+"','0'","Rekening"); 
-                    sukses=jur.simpanJurnal(rs.getString("nota_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL PIUTANG OBAT DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(rs.getString("nota_piutang"),"U","BATAL PIUTANG OBAT DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
                 }
                     
                 if(sukses==true){
@@ -1455,6 +1456,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         kdbar.requestFocus();        
     } 
      
+    public void cariNoTagihan(String notagihan,Date Taggal){
+        NoNota.setText(notagihan);
+        Tgl1.setDate(Taggal);
+        Tgl2.setDate(Taggal);
+        tampil();
+    }
     public void isCek(){
         MnDetailCicilan.setEnabled(akses.getbayar_piutang());
         BtnPrint.setEnabled(akses.getpiutang_obat());

@@ -283,7 +283,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
     private InventarisProdusen produsen=new InventarisProdusen(null,false); 
     private InventarisMerk merk=new InventarisMerk(null,false); 
     private InventarisKategori kategori=new InventarisKategori(null,false);
-    private InventarisJenis jenis=new InventarisJenis(null,false); 
+    public InventarisJenis jenis=new InventarisJenis(null,false); 
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -1199,7 +1199,7 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.ComboBox thn_produksi;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         String sql="select inventaris_barang.kode_barang, inventaris_barang.nama_barang, inventaris_barang.jml_barang, "+
                    "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn,"+
                    "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis from inventaris_barang inner join inventaris_produsen "+

@@ -4,8 +4,8 @@
     }
     $norawat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $norawat = json_decode(encrypt_decrypt($norawat,"d"),true); 
-    $norawat = $norawat["norawat"];
-    if (isset($norawat)) {
+    if (isset($norawat["norawat"])) {
+        $norawat = $norawat["norawat"];
         $queryresume = bukaquery("select resume_pasien.kd_dokter,dokter.nm_dokter,resume_pasien.kondisi_pulang,resume_pasien.keluhan_utama, 
             resume_pasien.jalannya_penyakit,resume_pasien.pemeriksaan_penunjang,resume_pasien.hasil_laborat,resume_pasien.diagnosa_utama,resume_pasien.kd_diagnosa_utama, 
             resume_pasien.diagnosa_sekunder,resume_pasien.kd_diagnosa_sekunder,resume_pasien.diagnosa_sekunder2,resume_pasien.kd_diagnosa_sekunder2, 

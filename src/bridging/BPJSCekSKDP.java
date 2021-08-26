@@ -11,6 +11,7 @@
 
 package bridging;
 
+import surat.SuratKontrol;
 import fungsi.WarnaTable;
 import java.awt.Dimension;
 import javax.swing.JTable;
@@ -98,7 +99,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     public  DlgJabatanPolri jabatanpolri=new DlgJabatanPolri(null,false);
     private BPJSCekNoKartu cekViaBPJSKartu=new BPJSCekNoKartu();
     private BPJSCekReferensiDokterDPJP dpjp=new BPJSCekReferensiDokterDPJP(null,false);
-    private DlgSKDPBPJS skdp=new DlgSKDPBPJS(null,false);
+    private BPJSSuratKontrol skdp=new BPJSSuratKontrol(null,false);
     private BPJSCekReferensiPropinsi propinsikll=new BPJSCekReferensiPropinsi(null,false);
     private BPJSCekReferensiKabupaten kabupatenkll=new BPJSCekReferensiKabupaten(null,false);
     private BPJSCekReferensiKecamatan kecamatankll=new BPJSCekReferensiKecamatan(null,false);
@@ -1145,7 +1146,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(skdp.getTable().getSelectedRow()!= -1){                   
-                    NoSKDP.setText(skdp.getTable().getValueAt(skdp.getTable().getSelectedRow(),11).toString());
+                    NoSKDP.setText(skdp.getTable().getValueAt(skdp.getTable().getSelectedRow(),9).toString());
                     NoSKDP.requestFocus();
                 }                  
             }
@@ -1620,7 +1621,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2021" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1687,7 +1688,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         MnDocument.setBackground(new java.awt.Color(255, 255, 254));
         MnDocument.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDocument.setForeground(new java.awt.Color(50,50,50));
+        MnDocument.setForeground(new java.awt.Color(50, 50, 50));
         MnDocument.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDocument.setText("Cetak Document");
         MnDocument.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1703,7 +1704,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPengajuan.setForeground(new java.awt.Color(50,50,50));
+        ppPengajuan.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan.setText("Pengajuan SEP");
         ppPengajuan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1719,7 +1720,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPengajuan1.setForeground(new java.awt.Color(50,50,50));
+        ppPengajuan1.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan1.setText("Aproval SEP");
         ppPengajuan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1798,7 +1799,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Peserta BPJS Berdasarkan Nomor SKDP ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Peserta BPJS Berdasarkan Nomor SKDP ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1833,7 +1834,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(560, 168));
         FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormKelengkapanPasien.setName("FormKelengkapanPasien"); // NOI18N
         FormKelengkapanPasien.setOpaque(false);
         FormKelengkapanPasien.setPreferredSize(new java.awt.Dimension(1000, 485));
@@ -1973,7 +1974,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 180, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2019" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2021" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2768,7 +2769,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         FormInput.add(FormKelengkapanPasien);
 
-        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormKelengkapanSEP.setName("FormKelengkapanSEP"); // NOI18N
         FormKelengkapanSEP.setOpaque(false);
         FormKelengkapanSEP.setPreferredSize(new java.awt.Dimension(1000, 337));
@@ -2791,7 +2792,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(495, 55, 90, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2019 11:34:11" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2021 02:15:22" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -2810,7 +2811,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(331, 265, 60, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2019" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2021" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3242,7 +3243,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         jLabel47.setBounds(744, 55, 70, 23);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2019" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2021" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setName("TanggalKKL"); // NOI18N
         TanggalKKL.setOpaque(false);
@@ -3466,7 +3467,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
 
         NoSKDP.setHighlighter(null);
         NoSKDP.setName("NoSKDP"); // NOI18N
-        NoSKDP.setPreferredSize(new java.awt.Dimension(130, 23));
+        NoSKDP.setPreferredSize(new java.awt.Dimension(210, 23));
         NoSKDP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoSKDPKeyPressed(evt);
@@ -4902,7 +4903,6 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     }//GEN-LAST:event_NoSKDPKeyPressed
 
     private void btnSKDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSKDPActionPerformed
-        skdp.setNoRm(TNo.getText(),TNm.getText());
         skdp.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         skdp.setLocationRelativeTo(internalFrame1);
         skdp.setVisible(true);
@@ -5159,17 +5159,39 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     public void tampil(String noskdp) {
         try {
             nosep="";
-            TNo.setText(Sequel.cariIsi("select no_rkm_medis from skdp_bpjs where no_antrian=? order by tanggal_rujukan desc limit 1",noskdp));
-            NoKartu.setText(Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis=?",TNo.getText()));
-            kddokter.setText(Sequel.cariIsi("select kd_dokter from skdp_bpjs where no_antrian=? order by tanggal_rujukan desc limit 1",noskdp));
-            TDokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter.getText()));
-            NoRujukan.setText(Sequel.cariIsi("select no_sep from bridging_sep where no_kartu=? order by tglsep desc limit 1",NoKartu.getText()));
-            norawat=Sequel.cariIsi("select no_rawat from bridging_sep where no_sep=?",NoRujukan.getText());
-            kdpoli.setText(Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norawat));
-            KdPoli.setText(Sequel.cariIsi("select kd_poli_bpjs from maping_poli_bpjs where kd_poli_rs=?",kdpoli.getText()));
-            NmPoli.setText(Sequel.cariIsi("select nm_poli_bpjs from maping_poli_bpjs where kd_poli_rs=?",kdpoli.getText()));
-            KdDPJP.setText(Sequel.cariIsi("select kddpjp from bridging_sep where no_sep=?",NoRujukan.getText()));
-            KdDPJP.setText(Sequel.cariIsi("select nmdpdjp from bridging_sep where no_sep=?",NoRujukan.getText()));
+            ps=koneksi.prepareStatement(
+                "select bridging_sep.no_rawat,bridging_sep.no_sep,bridging_sep.no_kartu,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tanggal_lahir,"+
+                "bridging_sep.jkel,bridging_sep.diagawal,bridging_sep.nmdiagnosaawal,bridging_surat_kontrol_bpjs.tgl_surat,bridging_surat_kontrol_bpjs.no_surat,"+
+                "bridging_surat_kontrol_bpjs.jenis,bridging_surat_kontrol_bpjs.tgl_rencana,bridging_surat_kontrol_bpjs.kd_dokter_bpjs,bridging_surat_kontrol_bpjs.nm_dokter_bpjs,"+
+                "bridging_surat_kontrol_bpjs.kd_poli_bpjs,bridging_surat_kontrol_bpjs.nm_poli_bpjs,bridging_sep.kddpjp,bridging_sep.nmdpdjp from bridging_sep inner join bridging_surat_kontrol_bpjs "+
+                "on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat=?");
+            try {
+                ps.setString(1,noskdp);
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    TNo.setText(rs.getString("nomr"));
+                    NoKartu.setText(rs.getString("no_kartu"));
+                    kddokter.setText(rs.getString("kd_dokter_bpjs"));
+                    TDokter.setText(rs.getString("nm_dokter_bpjs"));
+                    NoRujukan.setText(rs.getString("no_sep"));
+                    norawat=rs.getString("no_rawat");
+                    kdpoli.setText(Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norawat));
+                    KdPoli.setText(rs.getString("kd_poli_bpjs"));
+                    NmPoli.setText(rs.getString("nm_poli_bpjs"));
+                    KdDPJP.setText(rs.getString("kddpjp"));
+                    KdDPJP.setText(rs.getString("nmdpdjp"));                   
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }   
+                
             isPoli();
             cekViaBPJSKartu.tampil(NoKartu.getText());
             peserta="";

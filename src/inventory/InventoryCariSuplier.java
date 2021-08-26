@@ -351,19 +351,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
                     " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
                     " datasuplier.nama_bank,datasuplier.rekening from datasuplier "+
-                    " where datasuplier.kode_suplier like ? or "+
-                    " datasuplier.nama_suplier like ? or "+
-                    " datasuplier.alamat like ? or "+
-                    " datasuplier.kota like ? or "+
-                    " datasuplier.nama_bank like ? or "+
-                    " datasuplier.no_telp like ? order by datasuplier.kode_suplier");
+                    " order by datasuplier.kode_suplier");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -419,6 +408,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 System.out.println("Notifikasi : "+ex);
             }
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {

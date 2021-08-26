@@ -153,7 +153,7 @@ public final class PCareCekMappingDokter extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel16.setText("Kode/Nama Poli/Unit :");
+        jLabel16.setText("Kode/Nama Dokter :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass6.add(jLabel16);

@@ -947,7 +947,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                               Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                   Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun"),"HUTANG BARANG TOKO",rs.getString("tagihan"),"0"
                               }); 
-                              sukses=jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN TOKO"+", OLEH "+akses.getkode());
+                              sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN TOKO"+", OLEH "+akses.getkode());
                           }     
                                
                           if(sukses==true){

@@ -6,8 +6,8 @@
     
     $json       = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $json       = json_decode(encrypt_decrypt($json,"d"),true);
-    $kd_dokter  = $json["kd_dokter"];
-    if (isset($kd_dokter)) {
+    if (isset($json["kd_dokter"])) {
+        $kd_dokter  = $json["kd_dokter"];
         $kd_poli    = $json["kd_poli"];
         $tanggal    = $json["tanggal"];
         $kd_pj      = $json["kd_pj"];

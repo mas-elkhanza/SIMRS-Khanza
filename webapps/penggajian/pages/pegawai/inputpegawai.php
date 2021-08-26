@@ -624,7 +624,7 @@
                     $bpd            = str_replace("'","`",trim($_POST['bpd']));
                     $rekening       = str_replace("'","`",trim($_POST['rekening']));
                     $stts_aktif     = trim($_POST['stts_aktif']);
-                    $wajibmasuk     = trim($_POST['wajibmasuk']);
+                    $wajibmasuk     = validangka(trim($_POST['wajibmasuk']));
                     $kode_kelompok  = trim($_POST['kode_kelompok']);
                     $kode_resiko    = trim($_POST['kode_resiko']);
                     $kode_emergency = trim($_POST['kode_emergency']);
@@ -639,10 +639,10 @@
                          (!empty($kode_resiko))&&(!empty($kode_emergency))) {
                         switch($action) {
                             case "TAMBAH":
-                                echo "'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
+                                /*echo "'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
                                 '$departemen','$bidang','$stts_wp','$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
                                 '$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif','$wajibmasuk','0','0',
-                                '$mulai_kontrak','0','0','$photo','$no_ktp'";
+                                '$mulai_kontrak','0','0','$photo','$no_ktp'"*/;
                                 Tambah(" pegawai ","'0','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$kode_kelompok','$kode_resiko','$kode_emergency',
                                        '$departemen','$bidang','$stts_wp','$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
                                        '$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif','$wajibmasuk','0','0',

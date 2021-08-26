@@ -882,6 +882,8 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         NmBangsalCari.setText("");
+        KdDiet.setText("");
+        NmDiet.setText("");
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 

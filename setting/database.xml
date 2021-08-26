@@ -26,13 +26,13 @@
     <entry key="ALARMPENGADUANPASIEN">yes</entry>
     <entry key="ALARMPERMINTAANRANAP">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
-    <entry key="URLAPIBPJS">https://dvlp.bpjs-kesehatan.go.id/VClaim-rest</entry>
+    <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
     <entry key="SECRETKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLAPIPCARE">https://new-api.bpjs-kesehatan.go.id/pcare-rest-v3.0</entry>
+    <entry key="URLAPIPCARE">http://api.bpjs-kesehatan.go.id/pcare-rest-v3.0</entry>
     <entry key="SECRETKEYAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
@@ -94,4 +94,7 @@
     <entry key="PORTELIMS">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USERELIMS">kMR3WfAwUK6MbhCyydxa0g==</entry>
     <entry key="PASELIMS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPIMEDQLAB">https://dev-prembun.applimetis.id</entry>
+    <entry key="SECRETKEYAPIMEDQLAB">8ZipZmIxePiEF1zVagxxcQ==</entry>
+    <entry key="CONSIDAPIMEDQLAB">6IhC1JqxJ8ffoUfJz36IiA==</entry>
 </properties>

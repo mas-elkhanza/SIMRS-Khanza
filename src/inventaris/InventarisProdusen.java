@@ -793,7 +793,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         String sql="select inventaris_produsen.kode_produsen, inventaris_produsen.nama_produsen, inventaris_produsen.alamat_produsen, inventaris_produsen.no_telp,"+
                    "inventaris_produsen.email, inventaris_produsen.website_produsen from inventaris_produsen "+
                    "where inventaris_produsen.kode_produsen like '%"+TCari.getText().trim()+"%' "+

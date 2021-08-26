@@ -666,7 +666,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-05-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1072,7 +1072,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ranap+"','Beban Jasa Menejemen Tindakan Ranap','"+ttlmenejemen+"','0'","debet=debet+'"+(ttlmenejemen)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ranap+"'");       
                             Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ranap+"','Utang Jasa Menejemen Tindakan Ranap','0','"+ttlmenejemen+"'","kredit=kredit+'"+(ttlmenejemen)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ranap+"'");                            
                         }
-                        sukses=jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode()); 
+                        sukses=jur.simpanJurnal(TNoRw.getText(),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode()); 
                     }
                                                                        
                     if(sukses==true){
@@ -1397,7 +1397,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
                                     rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2)+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrdr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
+                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrdr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
                             }                        
                         }   
                         break;
@@ -1411,7 +1411,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
                                     rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2)+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrpr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
+                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrpr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
                             }                            
                         }   
                         break;
@@ -1425,7 +1425,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
                                     rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2)+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrdrpr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
+                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrdrpr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
                             }                        
                         }   
                         break;
