@@ -912,7 +912,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                         ps2.setString(2,"%"+Tahun.getSelectedItem()+"%");
                         rs2=ps2.executeQuery();                
                         if(rs2.next()){
-                            switch (rs.getString("balance")) {
+                            /*switch (rs.getString("balance")) {
                                 case "D":
                                     md=rs2.getDouble(1);
                                     mk=rs2.getDouble(2);
@@ -921,6 +921,22 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                                     md=rs2.getDouble(2);
                                     mk=rs2.getDouble(1);
                                     break;
+                            }*/
+                            if(rs.getString("tipe").equals("R")&&rs.getString("balance").equals("K")){
+                                md=rs2.getDouble(2);
+                                mk=rs2.getDouble(1);
+                            }else if(rs.getString("tipe").equals("R")&&rs.getString("balance").equals("D")){
+                                md=rs2.getDouble(1);
+                                mk=rs2.getDouble(2);
+                            }else if(rs.getString("tipe").equals("M")){
+                                md=rs2.getDouble(2);
+                                mk=rs2.getDouble(1);
+                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("D")){
+                                md=rs2.getDouble(1);
+                                mk=rs2.getDouble(2);
+                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("K")){
+                                md=rs2.getDouble(2);
+                                mk=rs2.getDouble(1);
                             }
 
                             saldoakhir=rs.getDouble(6)+(md-mk);

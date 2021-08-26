@@ -4128,7 +4128,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         panelGlass11.setName("panelGlass11"); // NOI18N
         panelGlass11.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
+        panelGlass11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         jLabel21.setText("Kamar :");
         jLabel21.setName("jLabel21"); // NOI18N
@@ -4167,7 +4167,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         panelGlass11.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(280, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(265, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -4213,7 +4213,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         panelCari.setName("panelCari"); // NOI18N
         panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
-        panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
+        panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         R1.setBackground(new java.awt.Color(240, 250, 230));
         R1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
@@ -4236,11 +4236,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-05-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(100, 23));
+        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
         DTPCari1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DTPCari1ItemStateChanged(evt);
@@ -4259,11 +4259,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-05-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(100, 23));
+        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         DTPCari2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DTPCari1ItemStateChanged(evt);
@@ -4286,11 +4286,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-05-2021" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2021" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
-        DTPCari3.setPreferredSize(new java.awt.Dimension(100, 23));
+        DTPCari3.setPreferredSize(new java.awt.Dimension(95, 23));
         DTPCari3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DTPCari3ItemStateChanged(evt);
@@ -4309,11 +4309,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-05-2021" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2021" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
-        DTPCari4.setPreferredSize(new java.awt.Dimension(100, 23));
+        DTPCari4.setPreferredSize(new java.awt.Dimension(95, 23));
         DTPCari4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DTPCari4ItemStateChanged(evt);
@@ -4354,11 +4354,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         jLabel5.setText("No. Rawat :");
         jLabel5.setName("jLabel5"); // NOI18N
-        jLabel5.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel5.setPreferredSize(new java.awt.Dimension(68, 23));
         panelGlass9.add(jLabel5);
 
         TNoRw1.setEditable(false);
@@ -4376,7 +4376,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         TPasien1.setEditable(false);
         TPasien1.setHighlighter(null);
         TPasien1.setName("TPasien1"); // NOI18N
-        TPasien1.setPreferredSize(new java.awt.Dimension(215, 23));
+        TPasien1.setPreferredSize(new java.awt.Dimension(210, 23));
         panelGlass9.add(TPasien1);
 
         jLabel37.setText("Stts.Bayar :");
