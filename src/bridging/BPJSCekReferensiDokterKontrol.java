@@ -321,7 +321,7 @@ public final class BPJSCekReferensiDokterKontrol extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

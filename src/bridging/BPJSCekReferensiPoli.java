@@ -340,12 +340,12 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
 	    headers.add("X-Signature",api.getHmac());
             requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/poli/"+poli;	
-            //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
                 if(response.path("poli").isArray()){
                     i=1;
                     for(JsonNode list:response.path("poli")){

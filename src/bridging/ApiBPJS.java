@@ -3,12 +3,17 @@ package bridging;
 import fungsi.koneksiDB;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.Mac;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -22,7 +27,7 @@ import org.springframework.web.client.RestTemplate;
 public class ApiBPJS {        
     private String Key,Consid;
     private long GetUTCdatetimeAsString;
-    private String salt;
+    private String salt,hasildcrypt="",hasildekompresi="";
     private String generateHmacSHA256Signature;
     private byte[] hmacData;
     private Mac mac;
@@ -32,6 +37,7 @@ public class ApiBPJS {
     private SecretKeySpec secretKey;
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
+    private ApiBPJSAesKeySpec mykey;
     
     public ApiBPJS(){
         try {
@@ -72,6 +78,14 @@ public class ApiBPJS {
     public long GetUTCdatetimeAsString(){    
         millis = System.currentTimeMillis();   
         return millis/1000;
+    }
+    
+    public String Decrypt(String data)throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+        System.out.println(data);
+        mykey = ApiBPJSEnc.generateKey(Consid+Key+String.valueOf(GetUTCdatetimeAsString()));
+        hasildcrypt=ApiBPJSEnc.decrypt(data, mykey.getKey(), mykey.getIv());
+        hasildekompresi=ApiBPJSLZString.decompressFromEncodedURIComponent(hasildcrypt);
+        return hasildekompresi;
     }
     
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {

@@ -313,17 +313,13 @@ public final class BPJSCekReferensiSpesialistikKontrol extends javax.swing.JDial
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-            /*System.out.println("X-Cons-ID:"+koneksiDB.CONSIDAPIBPJS());
-	    System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));            
-	    System.out.println("X-Signature:"+api.getHmac());
-            System.out.println("Content-Type: Application/x-www-form-urlencoded");*/
-	    requestEntity = new HttpEntity(headers);
+            requestEntity = new HttpEntity(headers);
             //System.out.println(URL+"/"+JenisKontrol.getText().substring(0,1)+"/nomor/"+Nomor.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText());
             root = mapper.readTree(api.getRest().exchange(URL+"/"+JenisKontrol.getText().substring(0,1)+"/nomor/"+Nomor.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

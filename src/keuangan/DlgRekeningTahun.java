@@ -923,23 +923,26 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                                     break;
                             }*/
                             if(rs.getString("tipe").equals("R")&&rs.getString("balance").equals("K")){
-                                md=rs2.getDouble(2);
-                                mk=rs2.getDouble(1);
+                                md=rs2.getDouble(1);
+                                mk=rs2.getDouble(2);
+                                saldoakhir=rs.getDouble(6)+(mk-md);
                             }else if(rs.getString("tipe").equals("R")&&rs.getString("balance").equals("D")){
-                                md=rs2.getDouble(1);
-                                mk=rs2.getDouble(2);
+                                md=rs2.getDouble(2);
+                                mk=rs2.getDouble(1);
+                                saldoakhir=rs.getDouble(6)+(md-mk);
                             }else if(rs.getString("tipe").equals("M")){
-                                md=rs2.getDouble(2);
-                                mk=rs2.getDouble(1);
-                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("D")){
                                 md=rs2.getDouble(1);
                                 mk=rs2.getDouble(2);
-                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("K")){
+                                saldoakhir=rs.getDouble(6)+(mk-md);
+                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("D")){
                                 md=rs2.getDouble(2);
                                 mk=rs2.getDouble(1);
+                                saldoakhir=rs.getDouble(6)+(md-mk);
+                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("K")){
+                                md=rs2.getDouble(1);
+                                mk=rs2.getDouble(2);
+                                saldoakhir=rs.getDouble(6)+(mk-md);
                             }
-
-                            saldoakhir=rs.getDouble(6)+(md-mk);
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);

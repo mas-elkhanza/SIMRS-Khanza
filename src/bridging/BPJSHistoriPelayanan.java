@@ -507,7 +507,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response").path("histori");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText())).path("histori");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){

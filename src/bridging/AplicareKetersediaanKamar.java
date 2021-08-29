@@ -787,7 +787,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                 nameNode = root.path("metadata");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
                 if(nameNode.path("message").asText().equals("Data berhasil disimpan.")){
                     if(Sequel.menyimpantf("aplicare_ketersediaan_kamar","?,?,?,?,?,?,?,?","Data",8,new String[]{
                             KdKelas.getText(),KdKamar.getText(),Kelas.getSelectedItem().toString(),Kapasitas.getText(),
@@ -842,9 +842,9 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                     //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                     root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/delete/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                     nameNode = root.path("metadata");
-                    //System.out.println("code : "+nameNode.path("code").asText());
-                    //System.out.println("message : "+nameNode.path("message").asText());
-                    response = root.path("response");
+                    System.out.println("code : "+nameNode.path("code").asText());
+                    System.out.println("message : "+nameNode.path("message").asText());
+                    response = mapper.readTree(api.Decrypt(root.path("response").asText()));
                     if(nameNode.path("message").asText().equals("Data berhasil dihapus.")){
                         Sequel.queryu2("delete from aplicare_ketersediaan_kamar where kode_kelas_aplicare=? and kd_bangsal=? and kelas=?",3,new String[]{
                             tbJnsPerawatan.getValueAt(i,1).toString(),tbJnsPerawatan.getValueAt(i,2).toString(),tbJnsPerawatan.getValueAt(i,4).toString()
@@ -907,9 +907,9 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                 //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                 nameNode = root.path("metadata");
-                //System.out.println("code : "+nameNode.path("code").asText());
-                //System.out.println("message : "+nameNode.path("message").asText());
-                response = root.path("response");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
                 if(nameNode.path("message").asText().equals("Data berhasil diupdate.")){
                     if(Sequel.mengedittf("aplicare_ketersediaan_kamar","kode_kelas_aplicare=? and kd_bangsal=? and kelas=?",
                         "kode_kelas_aplicare=?,kd_bangsal=?,kelas=?,kapasitas=?,tersedia=?,tersediapria=?,tersediawanita=?,tersediapriawanita=?",11,new String[]{
