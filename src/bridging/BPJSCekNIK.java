@@ -28,7 +28,7 @@ public class BPJSCekNIK {
             mrnoMR="",mrnoTelepon="",nama="",nik="",noKartu="",pisa="",
             provUmumkdProvider="",provUmumnmProvider="",sex="",statusPesertaketerangan="",
             statusPesertakode="",tglCetakKartu="",tglLahir="",tglTAT="",
-            tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="",URL="",link="";
+            tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="",URL="",link="",utc="";
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     private ApiBPJS api=new ApiBPJS();
@@ -53,8 +53,9 @@ public class BPJSCekNIK {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -63,7 +64,7 @@ public class BPJSCekNIK {
             System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
             if(nameNode.path("code").asText().equals("200")){
-                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 this.nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();
                 cobnmAsuransi=response.path("peserta").path("cob").path("nmAsuransi").asText();

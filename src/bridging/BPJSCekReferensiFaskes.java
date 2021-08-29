@@ -45,7 +45,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private ApiBPJS api=new ApiBPJS();
-    private String URL="",link="";
+    private String URL="",link="",utc="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -337,8 +337,9 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/faskes/"+faskes+"/1";	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -347,7 +348,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "A","Faskes 1",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(response.path("faskes").isArray()){
                     i=1;
                     for(JsonNode list:response.path("faskes")){
@@ -374,8 +375,9 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/faskes/"+faskes+"/2";	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -387,7 +389,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "B","Faskes 2/RS",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(response.path("faskes").isArray()){
                     i=1;
                     for(JsonNode list:response.path("faskes")){

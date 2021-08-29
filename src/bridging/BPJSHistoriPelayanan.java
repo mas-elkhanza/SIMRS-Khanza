@@ -47,7 +47,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
     private int i=0;
     private DlgPasien pasien=new DlgPasien(null,false);
     private ApiBPJS api=new ApiBPJS();
-    private String URL="",link="";
+    private String URL="",link="",utc="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -499,15 +499,16 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/monitoring/HistoriPelayanan/NoKartu/"+nomorrujukan+"/tglAwal/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(DTPCari2.getSelectedItem()+"");	
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText())).path("histori");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("histori");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){

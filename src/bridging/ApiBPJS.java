@@ -26,8 +26,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class ApiBPJS {        
     private String Key,Consid;
-    private long GetUTCdatetimeAsString;
-    private String salt,hasildcrypt="",hasildekompresi="";
+    private String salt;
     private String generateHmacSHA256Signature;
     private byte[] hmacData;
     private Mac mac;
@@ -47,9 +46,9 @@ public class ApiBPJS {
             System.out.println("Notifikasi : "+ex);
         }
     }
-    public String getHmac() {        
-        GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
-        salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
+
+    public String getHmac(String utc) {               
+        salt = Consid +"&"+utc;
 	generateHmacSHA256Signature = null;
 	try {
 	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,Key);
@@ -60,7 +59,7 @@ public class ApiBPJS {
 	}
 	return generateHmacSHA256Signature;
     }
-
+    
     public String generateHmacSHA256Signature(String data, String key)throws GeneralSecurityException {
         hmacData = null;
 	try {
@@ -80,12 +79,12 @@ public class ApiBPJS {
         return millis/1000;
     }
     
-    public String Decrypt(String data)throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+    public String Decrypt(String data,String utc)throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         System.out.println(data);
-        mykey = ApiBPJSEnc.generateKey(Consid+Key+String.valueOf(GetUTCdatetimeAsString()));
-        hasildcrypt=ApiBPJSEnc.decrypt(data, mykey.getKey(), mykey.getIv());
-        hasildekompresi=ApiBPJSLZString.decompressFromEncodedURIComponent(hasildcrypt);
-        return hasildekompresi;
+        mykey = ApiBPJSEnc.generateKey(Consid+Key+utc);
+        data=ApiBPJSEnc.decrypt(data, mykey.getKey(), mykey.getIv());
+        data=ApiBPJSLZString.decompressFromEncodedURIComponent(data);
+        return data;
     }
     
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {

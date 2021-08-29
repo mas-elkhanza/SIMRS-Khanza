@@ -40,7 +40,7 @@ public final class BPJSCekReferensiDokterKontrol extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0;
     private ApiBPJS api=new ApiBPJS();
-    private String URL="",link="";
+    private String URL="",link="",utc="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -309,8 +309,9 @@ public final class BPJSCekReferensiDokterKontrol extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
             /*System.out.println("X-Cons-ID:"+koneksiDB.CONSIDAPIBPJS());
 	    System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));            
 	    System.out.println("X-Signature:"+api.getHmac());
@@ -321,7 +322,7 @@ public final class BPJSCekReferensiDokterKontrol extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

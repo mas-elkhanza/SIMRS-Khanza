@@ -29,7 +29,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -48,7 +47,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String URL="",link="";
+    private String URL="",link="",utc="";
     private ApiBPJS api=new ApiBPJS();
     private BPJSCekReferensiPoli spesialis=new BPJSCekReferensiPoli(null,false);
     private HttpHeaders headers ;
@@ -458,8 +457,9 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -470,7 +470,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "A","Rawat Inap",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
@@ -511,7 +511,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "B","Rawat Jalan",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
