@@ -3893,8 +3893,9 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                 headers= new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                 headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-Timestamp",utc);
+                headers.add("X-Signature",api.getHmac(utc));
                 requestJson =" {" +
                 "\"request\": {" +
                     "\"t_sep\": {" +
@@ -3911,7 +3912,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = mapper.readTree(api.Decrypt(root.path("response").asText()));
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{

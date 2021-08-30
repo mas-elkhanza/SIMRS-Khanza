@@ -173,7 +173,7 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Insiden Keselamatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Insiden Keselamatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -427,7 +427,7 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(0, 42, 85, 23);
 
-        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KPC", "KTC", "KNC", "KTD", "Sentinel" }));
+        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KTC", "KNC", "KTD", "Sentinel" }));
         Jenis.setName("Jenis"); // NOI18N
         Jenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
