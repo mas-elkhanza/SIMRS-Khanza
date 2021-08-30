@@ -5376,7 +5376,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 dlgPasienMati.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgPasienMati.setLocationRelativeTo(internalFrame1);
                 dlgPasienMati.emptTeks();
-                dlgPasienMati.setNoRm(TNoRM.getText());
+                dlgPasienMati.setNoRm(TNoRM.getText(),TPasien.getText());
                 dlgPasienMati.isCek();
                 dlgPasienMati.setVisible(true);
                 if(tabMode.getRowCount()!=0){tampil();}
