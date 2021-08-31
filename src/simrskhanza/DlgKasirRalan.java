@@ -8668,22 +8668,21 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             if(tbKasirRalan.getSelectedRow()!= -1){
                 try {
-                    pskasir=koneksi.prepareStatement("select no_peserta,nm_pasien,tgl_lahir,jk from pasien where no_rkm_medis=?");
+                    pskasir=koneksi.prepareStatement("select * from bridging_sep where no_rawat=?");
                     try {
-                        pskasir.setString(1,TNoRM.getText());
+                        pskasir.setString(1,TNoRw.getText());
                         rskasir=pskasir.executeQuery();
                         if(rskasir.next()){
-                            if(rskasir.getString("no_peserta").length()<13){
-                                JOptionPane.showMessageDialog(null,"Kartu BPJS Pasien tidak valid, silahkan hubungi bagian terkait..!!");
-                            }else{
-                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                BPJSSPRI form=new BPJSSPRI(null,false);
-                                form.setNoRm(TNoRw.getText(),rskasir.getString("no_peserta"),TNoRM.getText(),rskasir.getString("nm_pasien"),rskasir.getString("tgl_lahir"),rskasir.getString("jk"));
-                                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                form.setLocationRelativeTo(internalFrame1);
-                                form.setVisible(true);
-                                this.setCursor(Cursor.getDefaultCursor());
-                            }
+                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                            BPJSSPRI form=new BPJSSPRI(null,false);
+                            form.setNoRm(rskasir.getString("no_rawat"),rskasir.getString("no_kartu"),TNoRM.getText(),TPasien.getText(),rskasir.getString("tanggal_lahir"),rskasir.getString("jkel"),rskasir.getString("no_sep"));
+                            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            form.setLocationRelativeTo(internalFrame1);
+                            form.setVisible(true);
+                            this.setCursor(Cursor.getDefaultCursor());
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Pasien tersebut belum terbit SEP, silahkan hubungi bagian terkait..!!");
+                            TCari.requestFocus();
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
