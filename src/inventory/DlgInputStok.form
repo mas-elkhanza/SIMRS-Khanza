@@ -128,6 +128,11 @@
         </MenuItem>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="txtIdOpname">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtIdOpname" noResource="true"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
