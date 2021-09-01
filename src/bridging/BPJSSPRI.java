@@ -76,7 +76,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Rawat","No.Kartu","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Diagnosa","Tgl.Surat",
-                "No.Surat","Tgl.Kontrol","Kode Dokter","Nama Dokter/Sepesialis","Kode Poli","Nama Poli/Unit"
+                "No.Surat","Tgl.Kontrol","Kode Dokter","Nama Dokter/Sepesialis","Kode Poli","Nama Poli/Unit","No.SEP"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -86,7 +86,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -116,6 +116,9 @@ public class BPJSSPRI extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==13){
                 column.setPreferredWidth(150);
+            }else if(i==14){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -933,10 +936,10 @@ public class BPJSSPRI extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
-                URL = link+"/RencanaKontrol/InsertSPRI";            
+                URL = link+"/RencanaKontrol/insert";            
                 requestJson ="{" +
                                 "\"request\": {" +
-                                    "\"noKartu\":\""+NoKartu.getText()+"\"," +
+                                    "\"noSEP\":\""+NoSEP.getText()+"\"," +
                                     "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
                                     "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
                                     "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
@@ -1172,10 +1175,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                     headers.add("X-Timestamp",utc);
                     headers.add("X-Signature",api.getHmac(utc));
-                    URL = link+"/RencanaKontrol/UpdateSPRI";            
+                    URL = link+"/RencanaKontrol/Update";            
                     requestJson ="{" +
                                     "\"request\": {" +
-                                        "\"noSPRI\":\""+NoSurat.getText()+"\"," +
+                                        "\"noSuratKontrol\":\""+NoSurat.getText()+"\"," +
+                                        "\"noSEP\":\""+NoSEP.getText()+"\"," +
                                         "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
                                         "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
                                         "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
@@ -1443,7 +1447,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "select bridging_surat_pri_bpjs.no_rawat,bridging_surat_pri_bpjs.no_kartu,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
                     "pasien.jk,bridging_surat_pri_bpjs.diagnosa,bridging_surat_pri_bpjs.tgl_surat,bridging_surat_pri_bpjs.no_surat,"+
                     "bridging_surat_pri_bpjs.tgl_rencana,bridging_surat_pri_bpjs.kd_dokter_bpjs,bridging_surat_pri_bpjs.nm_dokter_bpjs,"+
-                    "bridging_surat_pri_bpjs.kd_poli_bpjs,bridging_surat_pri_bpjs.nm_poli_bpjs from reg_periksa inner join bridging_surat_pri_bpjs "+
+                    "bridging_surat_pri_bpjs.kd_poli_bpjs,bridging_surat_pri_bpjs.nm_poli_bpjs,bridging_surat_pri_bpjs.no_sep from reg_periksa inner join bridging_surat_pri_bpjs "+
                     "on bridging_surat_pri_bpjs.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where bridging_surat_pri_bpjs.tgl_rencana between ? and ? "+(TCari.getText().trim().equals("")?"":"and (bridging_surat_pri_bpjs.no_rawat like ? or "+
                     "bridging_surat_pri_bpjs.no_kartu like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or bridging_surat_pri_bpjs.no_surat like ? or "+
@@ -1467,7 +1471,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         tabMode.addRow(new Object[]{
                             rs.getString("no_rawat"),rs.getString("no_kartu"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                             rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("diagnosa"),rs.getString("tgl_surat"),rs.getString("no_surat"),
-                            rs.getString("tgl_rencana"),rs.getString("kd_dokter_bpjs"),rs.getString("nm_dokter_bpjs"),rs.getString("kd_poli_bpjs"),rs.getString("nm_poli_bpjs")
+                            rs.getString("tgl_rencana"),rs.getString("kd_dokter_bpjs"),rs.getString("nm_dokter_bpjs"),rs.getString("kd_poli_bpjs"),
+                            rs.getString("nm_poli_bpjs"),rs.getString("no_sep")
                         });                    
                     }
                 } catch (Exception e) {
@@ -1522,6 +1527,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             KdPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             NmPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            NoSEP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             Valid.SetTgl(TanggalSurat,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             Valid.SetTgl(TanggalKontrol,tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
         }
@@ -1634,8 +1640,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
-            URL = link+"/RencanaKontrol/DeleteSPRI";
-            requestJson ="{\"request\":{\"t_SPRI\":{\"noSPRI\":\""+NoSurat.getText()+"\",\"user\":\""+user+"\"}}}";            
+            URL = link+"/RencanaKontrol/Delete";
+            requestJson ="{\"request\":{\"t_suratkontrol\":{\"noSuratKontrol\":\""+NoSurat.getText()+"\",\"user\":\""+user+"\"}}}";            
             requestEntity = new HttpEntity(requestJson,headers);
             root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
