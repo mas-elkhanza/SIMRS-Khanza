@@ -12,11 +12,10 @@
 package kepegawaian;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -44,6 +43,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private String hari="",poli="";
+    private String shift, form, kdPoli;
     /** Creates new form DlgPenyakit
      * @param frame
      * @param bln */
@@ -120,7 +120,6 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
             });
         }
     }
-    
 
 
     /** This method is called from within the constructor to
@@ -348,6 +347,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         emptTeks();
+        tampil();
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -393,19 +393,19 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                 "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek,jadwal.kuota "+
                 "from dokter inner join spesialis inner join jadwal inner join poliklinik "+
                 "on dokter.kd_sps=spesialis.kd_sps and dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
-                "where jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.kd_dokter like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.nm_dokter like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.jk like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.tmp_lahir like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.tgl_lahir like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.gol_drh like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.agama like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.almt_tgl like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.no_telp like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.stts_nikah like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and spesialis.nm_sps like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.alumni like ? or "+
-                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.no_ijn_praktek like ? order by dokter.nm_dokter");
+                "where jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' AND shift='" + shift + "' and dokter.kd_dokter like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.nm_dokter like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.jk like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.tmp_lahir like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.tgl_lahir like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.gol_drh like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.agama like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.almt_tgl like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.no_telp like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.stts_nikah like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and spesialis.nm_sps like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.alumni like ? or "+
+                " jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and shift='" + shift + "' and dokter.no_ijn_praktek like ? order by dokter.nm_dokter");
             try{
                 if(day==1){
                     hari="AKHAD";
@@ -534,5 +534,11 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     public void SetHari(Date tanggal){
         cal.setTime(tanggal);
         day=cal.get(Calendar.DAY_OF_WEEK);
+    }
+    
+    public void setKdPoliNShift(String shift, String kdPoli, String form) {
+        this.shift = shift;
+        this.kdPoli = kdPoli;
+        this.form = form;
     }
 }
