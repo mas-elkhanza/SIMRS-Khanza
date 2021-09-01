@@ -1534,6 +1534,8 @@ public final class DlgReg extends javax.swing.JDialog {
         btnPenjab1 = new widget.Button();
         ChkTracker = new widget.CekBox();
         DTPReg = new widget.Tanggal1();
+        jLabel25 = new widget.Label();
+        CmbShift = new widget.ComboBox();
         ChkInput = new widget.CekBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
@@ -3904,7 +3906,7 @@ public final class DlgReg extends javax.swing.JDialog {
         DlgDemografi.setUndecorated(true);
         DlgDemografi.setResizable(false);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Demografi Pendaftar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Demografi Pendaftar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -4058,7 +4060,7 @@ public final class DlgReg extends javax.swing.JDialog {
         DlgSakit2.setUndecorated(true);
         DlgSakit2.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -4739,7 +4741,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Registrasi Periksa Hari Ini ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Registrasi Periksa Hari Ini ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -5086,7 +5088,7 @@ public final class DlgReg extends javax.swing.JDialog {
         TDokter.setEditable(false);
         TDokter.setName("TDokter"); // NOI18N
         FormInput.add(TDokter);
-        TDokter.setBounds(183, 102, 209, 23);
+        TDokter.setBounds(180, 130, 209, 23);
 
         TNoRw.setEnabled(false);
         TNoRw.setHighlighter(null);
@@ -5107,7 +5109,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(74, 42, 220, 23);
+        TNoRw.setBounds(74, 42, 190, 23);
 
         jLabel8.setText("Tgl. Reg. :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -5117,7 +5119,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel13.setText("Dr Dituju :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(0, 102, 70, 23);
+        jLabel13.setBounds(0, 130, 70, 23);
 
         jLabel9.setText("Jam :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -5254,12 +5256,12 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel19.setText("Unit :");
         jLabel19.setName("jLabel19"); // NOI18N
         FormInput.add(jLabel19);
-        jLabel19.setBounds(0, 132, 70, 23);
+        jLabel19.setBounds(0, 100, 70, 23);
 
         TPoli.setEditable(false);
         TPoli.setName("TPoli"); // NOI18N
         FormInput.add(TPoli);
-        TPoli.setBounds(141, 132, 156, 23);
+        TPoli.setBounds(156, 100, 150, 23);
 
         TBiaya.setName("TBiaya"); // NOI18N
         TBiaya.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -5268,7 +5270,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(TBiaya);
-        TBiaya.setBounds(298, 132, 94, 23);
+        TBiaya.setBounds(310, 100, 80, 23);
 
         kddokter.setHighlighter(null);
         kddokter.setName("kddokter"); // NOI18N
@@ -5278,7 +5280,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(kddokter);
-        kddokter.setBounds(74, 102, 107, 23);
+        kddokter.setBounds(77, 130, 100, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('3');
@@ -5290,7 +5292,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter);
-        BtnDokter.setBounds(395, 102, 28, 23);
+        BtnDokter.setBounds(390, 130, 28, 23);
 
         kdpoli.setHighlighter(null);
         kdpoli.setName("kdpoli"); // NOI18N
@@ -5308,7 +5310,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(kdpoli);
-        kdpoli.setBounds(74, 132, 66, 23);
+        kdpoli.setBounds(80, 100, 70, 23);
 
         BtnUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnUnit.setMnemonic('4');
@@ -5320,7 +5322,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnUnit);
-        BtnUnit.setBounds(395, 132, 28, 23);
+        BtnUnit.setBounds(390, 100, 28, 23);
 
         jLabel30.setText("Status :");
         jLabel30.setName("jLabel30"); // NOI18N
@@ -5406,7 +5408,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(DTPReg);
-        DTPReg.setBounds(80, 70, 100, 20);
+        DTPReg.setBounds(80, 70, 100, 28);
+
+        jLabel25.setText("Waktu Prksa :");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(270, 40, 70, 23);
+
+        CmbShift.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PAGI", "SORE" }));
+        CmbShift.setName("CmbShift"); // NOI18N
+        CmbShift.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbShiftKeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbShift);
+        CmbShift.setBounds(340, 40, 80, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -5725,6 +5742,10 @@ public final class DlgReg extends javax.swing.JDialog {
         Valid.pindah(evt, TNoRw, CmbJam);
     }//GEN-LAST:event_DTPRegKeyPressed
 
+    private void CmbShiftKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbShiftKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbShiftKeyPressed
+
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {
 //        Valid.pindah(evt, TNoReg, DTPReg);
     }
@@ -5762,29 +5783,29 @@ public final class DlgReg extends javax.swing.JDialog {
         } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
             kdpoli.requestFocus();
         }
-    }// GEN-LAST:event_TNoRMKeyPressed
+    }
 
-    private void TNoRegKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TNoRegKeyPressed
+    private void TNoRegKeyPressed(java.awt.event.KeyEvent evt) {
         Valid.pindah(evt, TCari, TNoRw);
-    }// GEN-LAST:event_TNoRegKeyPressed
+    }
 
-    private void CmbJamKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_CmbJamKeyPressed
+    private void CmbJamKeyPressed(java.awt.event.KeyEvent evt) {
 //        Valid.pindah(evt, DTPReg, CmbMenit);
-    }// GEN-LAST:event_CmbJamKeyPressed
+    }
 
-    private void CmbMenitKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_CmbMenitKeyPressed
+    private void CmbMenitKeyPressed(java.awt.event.KeyEvent evt) {
         Valid.pindah(evt, CmbJam, CmbDetik);
-    }// GEN-LAST:event_CmbMenitKeyPressed
+    }
 
-    private void CmbDetikKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_CmbDetikKeyPressed
+    private void CmbDetikKeyPressed(java.awt.event.KeyEvent evt) {
         Valid.pindah(evt, CmbMenit, kddokter);
-    }// GEN-LAST:event_CmbDetikKeyPressed
+    }
 
-    private void TAlmtKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TAlmtKeyPressed
+    private void TAlmtKeyPressed(java.awt.event.KeyEvent evt) {
         Valid.pindah(evt, THbngn, kdpnj);
-    }// GEN-LAST:event_TAlmtKeyPressed
+    }
 
-    private void BtnPasienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnPasienActionPerformed
+    private void BtnPasienActionPerformed(java.awt.event.ActionEvent evt) {
         akses.setform("DlgReg");
         // pasien.penjab.removeWindowListener(null);
         // pasien.penjab.getTable().removeKeyListener(null);
@@ -5793,13 +5814,13 @@ public final class DlgReg extends javax.swing.JDialog {
         pasien.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
-    }// GEN-LAST:event_BtnPasienActionPerformed
+    }
 
-    private void THbngnKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_THbngnKeyPressed
+    private void THbngnKeyPressed(java.awt.event.KeyEvent evt) {
         Valid.pindah(evt, TPngJwb, TAlmt);
-    }// GEN-LAST:event_THbngnKeyPressed
+    }
 
-    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnSimpanActionPerformed
+    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {
         if (TNoReg.getText().trim().equals("")) {
             Valid.textKosong(TNoReg, "No.Regristrasi");
         } else if (TNoRw.getText().trim().equals("")) {
@@ -5851,31 +5872,31 @@ public final class DlgReg extends javax.swing.JDialog {
                 }
             }
         }
-    }// GEN-LAST:event_BtnSimpanActionPerformed
+    }
 
-    private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnSimpanKeyPressed
+    private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnSimpanActionPerformed(null);
         } else {
             Valid.pindah(evt, kdpnj, BtnBatal);
         }
-    }// GEN-LAST:event_BtnSimpanKeyPressed
+    }
 
-    private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnBatalActionPerformed
+    private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {
         ChkInput.setSelected(true);
         isForm();
         emptTeks();
-    }// GEN-LAST:event_BtnBatalActionPerformed
+    }
 
-    private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnBatalKeyPressed
+    private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             emptTeks();
         } else {
             Valid.pindah(evt, BtnSimpan, BtnHapus);
         }
-    }// GEN-LAST:event_BtnBatalKeyPressed
+    }
 
-    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnHapusActionPerformed
+    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {
 
         for (i = 0; i < tbPetugas.getRowCount(); i++) {
             if (tbPetugas.getValueAt(i, 0).toString().equals("true")) {
@@ -5889,17 +5910,17 @@ public final class DlgReg extends javax.swing.JDialog {
 
         tampil();
         emptTeks();
-    }// GEN-LAST:event_BtnHapusActionPerformed
+    }
 
-    private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnHapusKeyPressed
+    private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnHapusActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnBatal, BtnEdit);
         }
-    }// GEN-LAST:event_BtnHapusKeyPressed
+    }
 
-    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnPrintActionPerformed
+    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
@@ -6002,17 +6023,17 @@ public final class DlgReg extends javax.swing.JDialog {
 
         }
         this.setCursor(Cursor.getDefaultCursor());
-    }// GEN-LAST:event_BtnPrintActionPerformed
+    }
 
-    private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnPrintKeyPressed
+    private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrintActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnHapus, BtnAll);
         }
-    }// GEN-LAST:event_BtnPrintKeyPressed
+    }
 
-    private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnKeluarActionPerformed
+    private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {
         pasien.dispose();
         pasien.bahasa.dispose();
         pasien.cacat.dispose();
@@ -6041,15 +6062,15 @@ public final class DlgReg extends javax.swing.JDialog {
         DlgCatatan.dispose();
         akses.setAktif(false);
         dispose();
-    }// GEN-LAST:event_BtnKeluarActionPerformed
+    }
 
-    private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnKeluarKeyPressed
+    private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnKeluarActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnPrint, TCari);
         }
-    }// GEN-LAST:event_BtnKeluarKeyPressed
+    }
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnAllActionPerformed
         CrPoli.setText("");
@@ -6327,31 +6348,38 @@ public final class DlgReg extends javax.swing.JDialog {
     }// GEN-LAST:event_kddokterKeyPressed
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnDokterActionPerformed
-        pilihan = 1;
-        akses.setform("DlgReg");
-        if (aktifjadwal.equals("aktif")) {
-            if (akses.getkode().equals("Admin Utama")) {
+        if (!kdpoli.getText().isBlank()) {
+            pilihan = 1;
+            akses.setform("DlgReg");
+            if (aktifjadwal.equals("aktif")) {
+                if (akses.getkode().equals("Admin Utama")) {
+                    dokter.isCek();
+                    dokter.TCari.requestFocus();
+                    dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dokter.setKdPoliNShift(CmbShift.getSelectedItem().toString(), kdpoli.getText(), Valid.SetDateToString(DTPReg.getDate()), "reg");
+                    dokter.setLocationRelativeTo(internalFrame1);
+                    dokter.setVisible(true);
+                } else {
+                    dokter2.setPoli(TPoli.getText());
+                    dokter2.isCek();
+                    dokter2.SetHari(DTPReg.getDate());
+                    dokter2.tampil();
+                    dokter2.TCari.requestFocus();
+                    dokter2.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                    dokter2.setKdPoliNShift(CmbShift.getSelectedItem().toString(), kdpoli.getText(), "reg");
+                    dokter2.setLocationRelativeTo(internalFrame1);
+                    dokter2.setVisible(true);
+                }
+            } else {
                 dokter.isCek();
                 dokter.TCari.requestFocus();
                 dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+                dokter.setKdPoliNShift(CmbShift.getSelectedItem().toString(), kdpoli.getText(), Valid.SetDateToString(DTPReg.getDate()), "reg");
                 dokter.setLocationRelativeTo(internalFrame1);
                 dokter.setVisible(true);
-            } else {
-                dokter2.setPoli(TPoli.getText());
-                dokter2.isCek();
-                dokter2.SetHari(DTPReg.getDate());
-                dokter2.tampil();
-                dokter2.TCari.requestFocus();
-                dokter2.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-                dokter2.setLocationRelativeTo(internalFrame1);
-                dokter2.setVisible(true);
             }
         } else {
-            dokter.isCek();
-            dokter.TCari.requestFocus();
-            dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-            dokter.setLocationRelativeTo(internalFrame1);
-            dokter.setVisible(true);
+            JOptionPane.showMessageDialog(rootPane, "Unit Poli Belum di Pilih...");
         }
     }// GEN-LAST:event_BtnDokterActionPerformed
 
@@ -7032,7 +7060,7 @@ public final class DlgReg extends javax.swing.JDialog {
                     "billing/LaporanKunjunganBulananPoli.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
                     + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
-    }// GEN-LAST:event_MnLaporanRekapKunjunganBulananPoliActionPerformed
+    }
 
     private void MnLaporanRekapPenyakitRalanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnLaporanRekapPenyakitRalanActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7042,9 +7070,9 @@ public final class DlgReg extends javax.swing.JDialog {
         ktginventaris.setLocationRelativeTo(this);
         ktginventaris.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
-    }// GEN-LAST:event_MnLaporanRekapPenyakitRalanActionPerformed
+    }
 
-    private void MnNoResepActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnNoResepActionPerformed
+    private void MnNoResepActionPerformed(java.awt.event.ActionEvent evt) {
         if (TPasien.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbPetugas.requestFocus();
@@ -7066,9 +7094,9 @@ public final class DlgReg extends javax.swing.JDialog {
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
-    }// GEN-LAST:event_MnNoResepActionPerformed
+    }
 
-    private void MnCheckListActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnCheckListActionPerformed
+    private void MnCheckListActionPerformed(java.awt.event.ActionEvent evt) {
         if (!TPasien.getText().equals("")) {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
@@ -7088,59 +7116,59 @@ public final class DlgReg extends javax.swing.JDialog {
                     "select current_date() as sekarang", param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-    }// GEN-LAST:event_MnCheckListActionPerformed
+    }
 
-    private void Kabupaten2KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_Kabupaten2KeyPressed
+    private void Kabupaten2KeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
             btnKabActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnKeluar3, Kecamatan2);
         }
-    }// GEN-LAST:event_Kabupaten2KeyPressed
+    }
 
-    private void Kecamatan2KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_Kecamatan2KeyPressed
+    private void Kecamatan2KeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
             btnKecActionPerformed(null);
         } else {
             Valid.pindah(evt, Kabupaten2, Kelurahan2);
         }
-    }// GEN-LAST:event_Kecamatan2KeyPressed
+    }
 
-    private void Kelurahan2KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_Kelurahan2KeyPressed
+    private void Kelurahan2KeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
             btnKelActionPerformed(null);
         } else {
             Valid.pindah(evt, Kecamatan2, BtnPrint4);
         }
-    }// GEN-LAST:event_Kelurahan2KeyPressed
+    }
 
-    private void BtnPrint4KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnPrint4KeyPressed
+    private void BtnPrint4KeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrint4ActionPerformed(null);
         } else {
             Valid.pindah(evt, Kelurahan2, BtnPrint3);
         }
-    }// GEN-LAST:event_BtnPrint4KeyPressed
+    }
 
-    private void BtnPrint3KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnPrint3KeyPressed
+    private void BtnPrint3KeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrint3ActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnPrint4, BtnKeluar3);
         }
-    }// GEN-LAST:event_BtnPrint3KeyPressed
+    }
 
-    private void BtnKeluar3KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnKeluar3KeyPressed
+    private void BtnKeluar3KeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnKeluar3ActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnPrint3, Kabupaten2);
         }
-    }// GEN-LAST:event_BtnKeluar3KeyPressed
+    }
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
         tampil();
-    }// GEN-LAST:event_formWindowOpened
+    }
 
     private void MnPeriksaRadiologiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPeriksaRadiologiActionPerformed
         if (tbPetugas.getRowCount() == 0) {
@@ -10104,6 +10132,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private widget.ComboBox CmbDetik;
     private widget.ComboBox CmbJam;
     private widget.ComboBox CmbMenit;
+    private widget.ComboBox CmbShift;
     private widget.TextBox CrDokter;
     private widget.TextBox CrDokter3;
     private widget.TextBox CrPoli;
@@ -10315,6 +10344,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private widget.Label jLabel22;
     private widget.Label jLabel23;
     private widget.Label jLabel24;
+    private widget.Label jLabel25;
     private widget.Label jLabel3;
     private widget.Label jLabel30;
     private widget.Label jLabel34;
@@ -11032,39 +11062,47 @@ public final class DlgReg extends javax.swing.JDialog {
                     if (Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"
                             + kdpoli.getText() + "' and tanggal_periksa='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "'") >= Sequel.cariInteger(
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'") >= Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                             + kdpoli.getText() + "' and tgl_registrasi='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"
                                 + kdpoli.getText() + "' and tanggal_periksa='"
-                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                                 + kdpoli.getText() + "' and tgl_registrasi='"
-                                + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'", "", 3, TNoReg);
                     }
                     break;
                 case "dokter":
                     if (Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"
                             + kddokter.getText() + "' and tanggal_periksa='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "'") >= Sequel.cariInteger(
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'") >= Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"
                                 + kddokter.getText() + "' and tanggal_periksa='"
-                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                                 + kddokter.getText() + "' and tgl_registrasi='"
-                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'",
                                 "", 3, TNoReg);
                     }
                     break;
@@ -11077,17 +11115,20 @@ public final class DlgReg extends javax.swing.JDialog {
                                     "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                                     + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
                                     + "' and tgl_registrasi='"
-                                    + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
+                                    + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                    + " and shift='" + CmbShift.getSelectedItem().toString() + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"
                                 + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
-                                + "' and tanggal_periksa='" + Valid.SetDateToString(DTPReg.getDate()) + "'",
+                                + "' and tanggal_periksa='" + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                                 + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
-                                + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "'",
+                                + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'",
                                 "", 3, TNoReg);
                     }
                     break;
@@ -11098,16 +11139,19 @@ public final class DlgReg extends javax.swing.JDialog {
                             + Valid.SetDateToString(DTPReg.getDate()) + "'") >= Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                             + kdpoli.getText() + "' and tgl_registrasi='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"
                                 + kdpoli.getText() + "' and tanggal_periksa='"
-                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                                 + kdpoli.getText() + "' and tgl_registrasi='"
-                                + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                                + " and shift='" + CmbShift.getSelectedItem().toString() + "'", "", 3, TNoReg);
                     }
                     break;
             }
@@ -11116,24 +11160,27 @@ public final class DlgReg extends javax.swing.JDialog {
                 case "poli":
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                             + kdpoli.getText() + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate())
-                            + "'", "", 3, TNoReg);
+                            + "' and shift='" + CmbShift.getSelectedItem().toString() + "'", "", 3, TNoReg);
                     break;
                 case "dokter":
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'", "", 3, TNoReg);
                     break;
                 case "dokter + poli":
                     Valid.autoNomer3(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
-                            + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "'",
+                            + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'",
                             "", 3, TNoReg);
                     break;
                 default:
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'"
+                            + " and shift='" + CmbShift.getSelectedItem().toString() + "'", "", 3, TNoReg);
                     break;
             }
         }
@@ -11142,7 +11189,6 @@ public final class DlgReg extends javax.swing.JDialog {
                 "select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"
                 + Valid.SetDateToString(DTPReg.getDate()) + "' ",
                 dateformat.format(DTPReg.getDate()) + "/", 6, TNoRw);
-
     }
 
     /**
@@ -11275,54 +11321,48 @@ public final class DlgReg extends javax.swing.JDialog {
             status = "Lama";
         }
 
-        if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
+        if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 20,
                 new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
                     kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(), TAlmt.getText(),
                     THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(), "Ralan", kdpnj.getText(), umur,
-                    sttsumur, "Belum Bayar", status}) == true) {
+                    sttsumur, "Belum Bayar", status, CmbShift.getSelectedItem().toString()}) == true) {
             ceksukses = true;
         } else {
             isNumber();
-            if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
+            if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 20,
                     new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
-                        CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
-                        + CmbDetik.getSelectedItem(),
+                        CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
                         kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(), TAlmt.getText(),
-                        THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(), "Ralan", kdpnj.getText(),
-                        umur, sttsumur, "Belum Bayar", status}) == true) {
+                        THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(), "Ralan", kdpnj.getText(), umur,
+                        sttsumur, "Belum Bayar", status, CmbShift.getSelectedItem().toString()}) == true) {
                 ceksukses = true;
             } else {
                 isNumber();
-                if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
+                if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 20,
                         new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
-                            CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
-                            + CmbDetik.getSelectedItem(),
-                            kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
-                            TAlmt.getText(), THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(),
-                            "Ralan", kdpnj.getText(), umur, sttsumur, "Belum Bayar", status}) == true) {
+                            CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
+                            kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(), TAlmt.getText(),
+                            THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(), "Ralan", kdpnj.getText(), umur,
+                            sttsumur, "Belum Bayar", status, CmbShift.getSelectedItem().toString()}) == true) {
                     ceksukses = true;
                 } else {
                     isNumber();
-                    if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
-                            new String[]{TNoReg.getText(), TNoRw.getText(),
-                                Valid.SetDateToString(DTPReg.getDate()),
-                                CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
-                                + CmbDetik.getSelectedItem(),
-                                kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
-                                TAlmt.getText(), THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(),
-                                "Ralan", kdpnj.getText(), umur, sttsumur, "Belum Bayar", status}) == true) {
+                    if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 20,
+                            new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
+                                CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
+                                kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(), TAlmt.getText(),
+                                THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(), "Ralan", kdpnj.getText(), umur,
+                                sttsumur, "Belum Bayar", status, CmbShift.getSelectedItem().toString()}) == true) {
                         ceksukses = true;
                     } else {
                         isNumber();
-                        if (Sequel.menyimpantf("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
-                                new String[]{TNoReg.getText(), TNoRw.getText(),
-                                    Valid.SetDateToString(DTPReg.getDate()),
-                                    CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
-                                    + CmbDetik.getSelectedItem(),
-                                    kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
-                                    TAlmt.getText(), THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(),
-                                    "Ralan", kdpnj.getText(), umur, sttsumur, "Belum Bayar", status}) == true) {
+                        if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 20,
+                                new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
+                                    CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
+                                    kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(), TAlmt.getText(),
+                                    THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(), "Ralan", kdpnj.getText(), umur,
+                                    sttsumur, "Belum Bayar", status, CmbShift.getSelectedItem().toString()}) == true) {
                             ceksukses = true;
                         } else {
                             TNoRM.requestFocus();
@@ -11481,6 +11521,5 @@ public final class DlgReg extends javax.swing.JDialog {
             Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, kuota);
             isPas();
         }
-
     }
 }
