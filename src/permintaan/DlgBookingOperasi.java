@@ -1664,7 +1664,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnPrint.setEnabled(akses.getbooking_operasi());
         BtnKamarInap.setVisible(akses.getkamar_inap());
         BtnRiwayatPasien.setVisible(akses.getresume_pasien());
-        BtnOperasi.setVisible(akses.getoperasi());
+        BtnTagihanOperasi.setVisible(akses.getoperasi());
         BtnEdit.setEnabled(akses.getbooking_operasi());   
         BtnObatBhp.setVisible(akses.getresep_dokter());
         BtnPermintaanLab.setVisible(akses.getpermintaan_lab());
