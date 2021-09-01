@@ -1022,7 +1022,7 @@
                     <StringItem index="9" value="ICCU"/>
                     <StringItem index="10" value="PICU"/>
                     <StringItem index="11" value="NICU"/>
-                    <StringItem index="12" value="Perinatologi"/>
+                    <StringItem index="12" value="Neoristi"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbUpf" noResource="true"/>
