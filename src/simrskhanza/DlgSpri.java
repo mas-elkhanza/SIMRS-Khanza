@@ -1080,7 +1080,7 @@ public class DlgSpri extends javax.swing.JDialog {
         panelBiasa1.add(BtnSeek3);
         BtnSeek3.setBounds(860, 70, 28, 23);
 
-        cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "Sakura", "HCU", "ICU", "ICCU", "PICU", "NICU", "Perinatologi" }));
+        cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "Sakura", "HCU", "ICU", "ICCU", "PICU", "NICU", "Perinatologi", "NEORISTI" }));
         cmbUpf.setName("cmbUpf"); // NOI18N
         cmbUpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

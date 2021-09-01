@@ -1009,7 +1009,7 @@
             <Component class="widget.ComboBox" name="cmbUpf">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="13">
+                  <StringArray count="14">
                     <StringItem index="0" value="Kebidanan"/>
                     <StringItem index="1" value="PD"/>
                     <StringItem index="2" value="PD (Kemuning)"/>
@@ -1023,6 +1023,7 @@
                     <StringItem index="10" value="PICU"/>
                     <StringItem index="11" value="NICU"/>
                     <StringItem index="12" value="Perinatologi"/>
+                    <StringItem index="13" value="NEORISTI"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbUpf" noResource="true"/>
