@@ -53,7 +53,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Dokter","Nama Dokter","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Alamat Tinggal","No.HP/Telp","Stts.Nikah","Spesialis","Alumni","No.Ijin Praktek"};
+        Object[] row={"Kode Dokter","Nama Dokter","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Alamat Tinggal","No.HP/Telp","Stts.Nikah","Spesialis","Alumni","No.Ijin Praktek","Kuota"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -62,7 +62,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 14; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -90,6 +90,8 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==12){
                 column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(50);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -392,7 +394,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             if (form.equals("reg")) {
                 ps = koneksi.prepareStatement("select dokter.kd_dokter,nm_dokter,jk,tmp_lahir, "
                         + "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "
-                        + "stts_nikah,nm_sps,alumni,no_ijn_praktek "
+                        + "stts_nikah,nm_sps,alumni,no_ijn_praktek,jadwal.kuota  "
                         + "from dokter inner join jadwal on dokter.kd_dokter=jadwal.kd_dokter "
                         + "inner join spesialis on dokter.kd_sps=spesialis.kd_sps "
                         + "where status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and dokter.kd_dokter like ? or "
@@ -411,7 +413,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             } else {
             ps=koneksi.prepareStatement("select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                 "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
-                "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
+                "stts_nikah,nm_sps,alumni,no_ijn_praktek,jadwal.kuota  "+
                 "from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps "+
                 "where status='1' and kd_dokter like ? or "+
                 " status='1' and nm_dokter like ? or "+
@@ -472,7 +474,8 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                                    rs.getString(10),
                                    rs.getString(11),
                                    rs.getString(12),
-                                   rs.getString(13)};
+                                   rs.getString(13),
+                                   rs.getString(14)};
                     tabMode.addRow(data);
                 }
             }catch(SQLException e){
@@ -520,7 +523,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         this.kdPoli = kdPoli;
         this.form = form;
         this.hari = getHari(hari);
-        System.out.println("S.K.F.H>>>" + shift + kdPoli + form + getHari(hari));
     }
     
     private String getHari(String hari) {
