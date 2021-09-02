@@ -12,11 +12,10 @@
 package kepegawaian;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -24,6 +23,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +43,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
+    private String shift, kdPoli, form="", hari;
     /** Creates new form DlgPenyakit
      * @param frame
      * @param bln */
@@ -48,7 +53,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Dokter","Nama Dokter","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Alamat Tinggal","No.HP/Telp","Stts.Nikah","Spesialis","Alumni","No.Ijin Praktek"};
+        Object[] row={"Kode Dokter","Nama Dokter","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Alamat Tinggal","No.HP/Telp","Stts.Nikah","Spesialis","Alumni","No.Ijin Praktek","Kuota"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -57,7 +62,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 14; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -85,6 +90,8 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==12){
                 column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(50);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -343,7 +350,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        emptTeks();
+        emptTeks();tampil();
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -384,9 +391,29 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
+            if (form.equals("reg")) {
+                ps = koneksi.prepareStatement("select dokter.kd_dokter,nm_dokter,jk,tmp_lahir, "
+                        + "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "
+                        + "stts_nikah,nm_sps,alumni,no_ijn_praktek,jadwal.kuota  "
+                        + "from dokter inner join jadwal on dokter.kd_dokter=jadwal.kd_dokter "
+                        + "inner join spesialis on dokter.kd_sps=spesialis.kd_sps "
+                        + "where status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and dokter.kd_dokter like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and nm_dokter like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and jk like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and tmp_lahir like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and tgl_lahir like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and gol_drh like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and agama like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and almt_tgl like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and no_telp like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and stts_nikah like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and nm_sps like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and alumni like ? or "
+                        + " status='1' AND hari_kerja='" + hari + "' AND shift='" + shift + "' AND kd_poli='" + kdPoli + "' and no_ijn_praktek like ? order by nm_dokter");
+            } else {
             ps=koneksi.prepareStatement("select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                 "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
-                "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
+                "stts_nikah,nm_sps,alumni,no_ijn_praktek,jadwal.kuota  "+
                 "from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps "+
                 "where status='1' and kd_dokter like ? or "+
                 " status='1' and nm_dokter like ? or "+
@@ -401,20 +428,38 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                 " status='1' and nm_sps like ? or "+
                 " status='1' and alumni like ? or "+
                 " status='1' and no_ijn_praktek like ? order by nm_dokter");
+            }
             try{
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+TCari.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,"%"+TCari.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,"%"+TCari.getText().trim()+"%");
+                
+                if (form.equals("reg")) {
+                    ps.setString(1, "%" + TCari.getText().trim() + "%");
+                    ps.setString(2, "%" + TCari.getText().trim() + "%");
+                    ps.setString(3, "%" + TCari.getText().trim() + "%");
+                    ps.setString(4, "%" + TCari.getText().trim() + "%");
+                    ps.setString(5, "%" + TCari.getText().trim() + "%");
+                    ps.setString(6, "%" + TCari.getText().trim() + "%");
+                    ps.setString(7, "%" + TCari.getText().trim() + "%");
+                    ps.setString(8, "%" + TCari.getText().trim() + "%");
+                    ps.setString(9, "%" + TCari.getText().trim() + "%");
+                    ps.setString(10, "%" + TCari.getText().trim() + "%");
+                    ps.setString(11, "%" + TCari.getText().trim() + "%");
+                    ps.setString(12, "%" + TCari.getText().trim() + "%");
+                    ps.setString(13, "%" + TCari.getText().trim() + "%");
+                } else {
+                    ps.setString(1, "%" + TCari.getText().trim() + "%");
+                    ps.setString(2, "%" + TCari.getText().trim() + "%");
+                    ps.setString(3, "%" + TCari.getText().trim() + "%");
+                    ps.setString(4, "%" + TCari.getText().trim() + "%");
+                    ps.setString(5, "%" + TCari.getText().trim() + "%");
+                    ps.setString(6, "%" + TCari.getText().trim() + "%");
+                    ps.setString(7, "%" + TCari.getText().trim() + "%");
+                    ps.setString(8, "%" + TCari.getText().trim() + "%");
+                    ps.setString(9, "%" + TCari.getText().trim() + "%");
+                    ps.setString(10, "%" + TCari.getText().trim() + "%");
+                    ps.setString(11, "%" + TCari.getText().trim() + "%");
+                    ps.setString(12, "%" + TCari.getText().trim() + "%");
+                    ps.setString(13, "%" + TCari.getText().trim() + "%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     String[] data={rs.getString(1),
@@ -429,7 +474,8 @@ public final class DlgCariDokter extends javax.swing.JDialog {
                                    rs.getString(10),
                                    rs.getString(11),
                                    rs.getString(12),
-                                   rs.getString(13)};
+                                   rs.getString(13),
+                                   rs.getString(14)};
                     tabMode.addRow(data);
                 }
             }catch(SQLException e){
@@ -470,5 +516,38 @@ public final class DlgCariDokter extends javax.swing.JDialog {
      */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getdokter());
+    }
+    
+    public void setKdPoliNShift(String shift, String kdPoli, String hari, String form) {
+        this.shift = shift;
+        this.kdPoli = kdPoli;
+        this.form = form;
+        this.hari = getHari(hari);
+    }
+    
+    private String getHari(String hari) {
+        String h = null;
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(hari);
+            int no = date.getDay();
+            if (no == 0) {
+                h = "AKHAD";
+            } else if (no == 1) {
+                h = "SENIN";
+            } else if (no == 2) {
+                h = "SELASA";
+            } else if (no == 3) {
+                h = "RABU";
+            } else if (no == 4) {
+                h = "KAMIS";
+            } else if (no == 5) {
+                h = "JUMAT";
+            } else if (no == 6) {
+                h = "SABTU";
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(DlgCariDokter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return h;
     }
 }
