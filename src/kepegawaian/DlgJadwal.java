@@ -805,7 +805,7 @@ public class DlgJadwal extends javax.swing.JDialog {
             if (tbJadwal.getSelectedRow() != -1) {
                 Sequel.queryu("update jadwal set jam_mulai='" + cmbJam1.getSelectedItem() + ":" + cmbMnt1.getSelectedItem() + ":" + cmbDtk1.getSelectedItem() + "',"
                         + "jam_selesai='" + cmbJam2.getSelectedItem() + ":" + cmbMnt2.getSelectedItem() + ":" + cmbDtk2.getSelectedItem() + "',"
-                        + "kd_poli='" + KdPoli.getText() + "',kd_dokter='" + kddokter.getText() + "',hari_kerja='" + cmbHari.getSelectedItem() + "',kuota='" + Kuota.getText() + "' where "
+                        + "kd_poli='" + KdPoli.getText() + "',kd_dokter='" + kddokter.getText() + "',hari_kerja='" + cmbHari.getSelectedItem() + "',kuota='" + Kuota.getText() + "',shift='" + cmbShift.getSelectedItem().toString() + "' where "
                         + "kd_dokter='" + tbJadwal.getValueAt(tbJadwal.getSelectedRow(), 1).toString() + "' "
                         + "and hari_kerja='" + tbJadwal.getValueAt(tbJadwal.getSelectedRow(), 3).toString() + "' "
                         + "and jam_mulai='" + tbJadwal.getValueAt(tbJadwal.getSelectedRow(), 4).toString() + "' "
