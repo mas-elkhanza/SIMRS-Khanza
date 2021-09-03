@@ -5722,8 +5722,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             }else {
                 emptTeks();
                 ChkCari.setSelected(false);
-                isForm();
-                JOptionPane.showMessageDialog(null,cekViaBPJSKartu.informasi);                
+                isForm();           
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : "+ex);

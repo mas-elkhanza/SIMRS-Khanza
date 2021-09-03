@@ -388,7 +388,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        //tampil();
     }//GEN-LAST:event_formWindowOpened
 
     /**

@@ -5716,8 +5716,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }else {
                 emptTeks();
                 ChkCari.setSelected(false);
-                isForm();
-                JOptionPane.showMessageDialog(null,cekViaBPJS.informasi);                
+                isForm();               
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : "+ex);            
