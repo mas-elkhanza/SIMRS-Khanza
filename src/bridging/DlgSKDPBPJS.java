@@ -435,6 +435,8 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         Terapi = new widget.TextBox();
         NoReg = new widget.TextBox();
         jLabel18 = new widget.Label();
+        cmbShift = new widget.ComboBox();
+        jLabel38 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -463,7 +465,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ SKDP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ SKDP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -698,7 +700,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -721,7 +723,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -743,7 +745,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(85, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2021" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -766,7 +768,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2021" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -850,7 +852,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         TPasien.setBounds(185, 10, 190, 23);
 
         TanggalSurat.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020 11:01:16" }));
+        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2021 01:42:44" }));
         TanggalSurat.setDisplayFormat("dd-MM-yyyy hh:mm:ss");
         TanggalSurat.setName("TanggalSurat"); // NOI18N
         TanggalSurat.setOpaque(false);
@@ -1005,7 +1007,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         jLabel14.setBounds(0, 160, 92, 23);
 
         TanggalPeriksa.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020 11:01:17" }));
+        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2021 01:42:44" }));
         TanggalPeriksa.setDisplayFormat("dd-MM-yyyy hh:mm:ss");
         TanggalPeriksa.setName("TanggalPeriksa"); // NOI18N
         TanggalPeriksa.setOpaque(false);
@@ -1081,6 +1083,21 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
         jLabel18.setBounds(375, 160, 95, 23);
+
+        cmbShift.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PAGI", "SORE" }));
+        cmbShift.setName("cmbShift"); // NOI18N
+        cmbShift.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbShiftKeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbShift);
+        cmbShift.setBounds(660, 10, 80, 23);
+
+        jLabel38.setText("Shift :");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(610, 10, 50, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1373,11 +1390,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Valid.SetTgl(TanggalSurat.getSelectedItem() + ""), NoSurat.getText(), KdDokter.getText(), Status.getSelectedItem().toString(),
                     tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString(), tbObat.getValueAt(tbObat.getSelectedRow(), 11).toString()
                 }) == true) {
-                    Sequel.mengedit3("booking_registrasi", "no_rkm_medis=? and tanggal_periksa=?", "tanggal_booking=?,no_rkm_medis=?,tanggal_periksa=?,kd_dokter=?,kd_poli=?,no_reg=?", 8, new String[]{
+                    Sequel.mengedit3("booking_registrasi", "no_rkm_medis=? and tanggal_periksa=?", "tanggal_booking=?,no_rkm_medis=?,tanggal_periksa=?,kd_dokter=?,kd_poli=?,no_reg=?,shift=?", 9, new String[]{
                         Valid.SetTgl(TanggalSurat.getSelectedItem() + ""), TNoRM.getText(),
                         Valid.SetTgl(TanggalPeriksa.getSelectedItem() + ""), KdDokter.getText(),
                         KdPoli.getText(), NoReg.getText(), tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString(),
-                        tbObat.getValueAt(tbObat.getSelectedRow(), 9).toString()
+                        tbObat.getValueAt(tbObat.getSelectedRow(), 9).toString(),cmbShift.getSelectedItem().toString()
                     });
                     emptTeks();
                     tampil();
@@ -1547,6 +1564,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_tbObatKeyReleased
 
+    private void cmbShiftKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbShiftKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbShiftKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1606,6 +1627,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Tanggal TanggalSurat;
     private widget.TextBox Terapi;
     private javax.swing.ButtonGroup buttonGroup1;
+    private widget.ComboBox cmbShift;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
@@ -1619,6 +1641,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel22;
     private widget.Label jLabel25;
     private widget.Label jLabel37;
+    private widget.Label jLabel38;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1860,12 +1883,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Alasan1.getText(), Alasan2.getText(), Rtl1.getText(), Rtl2.getText(), Valid.SetTgl(TanggalPeriksa.getSelectedItem() + ""),
             Valid.SetTgl(TanggalSurat.getSelectedItem() + ""), NoSurat.getText(), KdDokter.getText(), Status.getSelectedItem().toString()
         }) == true) {
-            Sequel.menyimpan2("booking_registrasi", "?,?,?,?,?,?,?,?,?,?,?", "Pasien dan Tanggal", 11, new String[]{
-                Valid.SetTgl(TanggalSurat.getSelectedItem() + ""), TanggalSurat.getSelectedItem().toString().substring(11, 19), TNoRM.getText(),
+            Sequel.menyimpan2("booking_registrasi", "?,?,?,?,?,?,?,?,?,?,?,?,?", "Pasien dan Tanggal", 13, new String[]{
+                null,Valid.SetTgl(TanggalSurat.getSelectedItem() + ""), TanggalSurat.getSelectedItem().toString().substring(11, 19), TNoRM.getText(),
                 Valid.SetTgl(TanggalPeriksa.getSelectedItem() + ""), KdDokter.getText(),
                 KdPoli.getText(), NoReg.getText(), Sequel.cariIsi("select kd_pj from pasien where no_rkm_medis=?", TNoRM.getText()), "0",
                 Valid.SetTgl(TanggalPeriksa.getSelectedItem() + "") + " " + TanggalPeriksa.getSelectedItem().toString().substring(11, 19),
-                "belum"
+                "belum", cmbShift.getSelectedItem().toString()
             });
             emptTeks();
             tampil();
