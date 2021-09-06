@@ -1313,11 +1313,13 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatMouseClicked
 
 private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
+if(!KdPoli.getText().toString().equals("")){
     if (aktifjadwal.equals("aktif")) {
         if (akses.getkode().equals("Admin Utama")) {
             dokter.isCek();
             dokter.TCari.requestFocus();
             dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+            dokter.setKdPoliNShift(cmbShift.getSelectedItem().toString(), KdPoli.getText(), Valid.SetDateToString(TanggalPeriksa.getDate()), "reg");
             dokter.setLocationRelativeTo(internalFrame1);
             dokter.setVisible(true);
         } else {
@@ -1327,6 +1329,7 @@ private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             dokter2.tampil();
             dokter2.TCari.requestFocus();
             dokter2.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+            dokter2.setKdPoliNShift(cmbShift.getSelectedItem().toString(), KdPoli.getText(), "reg");
             dokter2.setLocationRelativeTo(internalFrame1);
             dokter2.setVisible(true);
         }
@@ -1334,9 +1337,13 @@ private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         dokter.isCek();
         dokter.TCari.requestFocus();
         dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        dokter.setKdPoliNShift(cmbShift.getSelectedItem().toString(), KdPoli.getText(), Valid.SetDateToString(TanggalPeriksa.getDate()), "reg");
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }
+}else{
+    JOptionPane.showMessageDialog(rootPane, "Pilih Poli Tujuan Dulu...");
+}
 }//GEN-LAST:event_BtnDokterActionPerformed
 
 private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
