@@ -346,7 +346,8 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
             //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

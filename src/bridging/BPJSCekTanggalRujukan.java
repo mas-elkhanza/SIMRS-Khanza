@@ -674,7 +674,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
@@ -803,7 +804,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){

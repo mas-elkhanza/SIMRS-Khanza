@@ -348,7 +348,8 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "A","Faskes 1",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(response.path("faskes").isArray()){
                     i=1;
                     for(JsonNode list:response.path("faskes")){
@@ -389,7 +390,8 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "B","Faskes 2/RS",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(response.path("faskes").isArray()){
                     i=1;
                     for(JsonNode list:response.path("faskes")){

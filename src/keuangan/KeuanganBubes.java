@@ -12,8 +12,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +26,12 @@ public class KeuanganBubes extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
+    private String tanggal="",thn;
+    private PreparedStatement ps,ps2,ps3;
+    private ResultSet rs,rs2;
+    double saldoakhir = 0,saldoawal=0,tampawal=0;
+    String tipe="",balance="",saldoakhirfix="",saldoawalfix="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -49,7 +53,7 @@ public class KeuanganBubes extends javax.swing.JDialog {
         for (int i = 0; i < 8; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(110);
             }else if(i==1){
                 column.setPreferredWidth(110);
             }else if(i==2){
@@ -124,15 +128,20 @@ public class KeuanganBubes extends javax.swing.JDialog {
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
         panelisi4 = new widget.panelisi();
-        label32 = new widget.Label();
-        Tahun = new widget.ComboBox();
         label17 = new widget.Label();
         kdrek = new widget.TextBox();
         nmrek = new widget.TextBox();
         BtnCari6 = new widget.Button();
         label19 = new widget.Label();
-        BtnCari = new widget.Button();
         panelisi1 = new widget.panelisi();
+        label32 = new widget.Label();
+        Tahun = new widget.ComboBox();
+        ChkBulan = new widget.CekBox();
+        CmbBulan = new widget.ComboBox();
+        ChkTanggal = new widget.CekBox();
+        CmbTanggal = new widget.ComboBox();
+        BtnCari = new widget.Button();
+        label33 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
@@ -175,27 +184,13 @@ public class KeuanganBubes extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
-        label32.setText("Tahun :");
-        label32.setName("label32"); // NOI18N
-        label32.setPreferredSize(new java.awt.Dimension(52, 23));
-        panelisi4.add(label32);
-
-        Tahun.setName("Tahun"); // NOI18N
-        Tahun.setPreferredSize(new java.awt.Dimension(80, 23));
-        Tahun.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TahunKeyPressed(evt);
-            }
-        });
-        panelisi4.add(Tahun);
-
         label17.setText("Rekening :");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi4.add(label17);
 
         kdrek.setName("kdrek"); // NOI18N
-        kdrek.setPreferredSize(new java.awt.Dimension(70, 23));
+        kdrek.setPreferredSize(new java.awt.Dimension(140, 23));
         kdrek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kdrekKeyPressed(evt);
@@ -205,7 +200,7 @@ public class KeuanganBubes extends javax.swing.JDialog {
 
         nmrek.setEditable(false);
         nmrek.setName("nmrek"); // NOI18N
-        nmrek.setPreferredSize(new java.awt.Dimension(200, 23));
+        nmrek.setPreferredSize(new java.awt.Dimension(450, 23));
         panelisi4.add(nmrek);
 
         BtnCari6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -224,6 +219,50 @@ public class KeuanganBubes extends javax.swing.JDialog {
         label19.setPreferredSize(new java.awt.Dimension(10, 23));
         panelisi4.add(label19);
 
+        internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
+
+        panelisi1.setName("panelisi1"); // NOI18N
+        panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
+        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        label32.setText("Tahun :");
+        label32.setName("label32"); // NOI18N
+        label32.setPreferredSize(new java.awt.Dimension(52, 23));
+        panelisi1.add(label32);
+
+        Tahun.setName("Tahun"); // NOI18N
+        Tahun.setPreferredSize(new java.awt.Dimension(80, 23));
+        Tahun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahunKeyPressed(evt);
+            }
+        });
+        panelisi1.add(Tahun);
+
+        ChkBulan.setText("Bulan :");
+        ChkBulan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ChkBulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkBulan.setName("ChkBulan"); // NOI18N
+        ChkBulan.setPreferredSize(new java.awt.Dimension(67, 23));
+        panelisi1.add(ChkBulan);
+
+        CmbBulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        CmbBulan.setName("CmbBulan"); // NOI18N
+        CmbBulan.setPreferredSize(new java.awt.Dimension(62, 23));
+        panelisi1.add(CmbBulan);
+
+        ChkTanggal.setText("Tanggal :");
+        ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkTanggal.setName("ChkTanggal"); // NOI18N
+        ChkTanggal.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelisi1.add(ChkTanggal);
+
+        CmbTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        CmbTanggal.setName("CmbTanggal"); // NOI18N
+        CmbTanggal.setPreferredSize(new java.awt.Dimension(62, 23));
+        panelisi1.add(CmbTanggal);
+
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
         BtnCari.setToolTipText("Alt+2");
@@ -239,13 +278,11 @@ public class KeuanganBubes extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelisi4.add(BtnCari);
+        panelisi1.add(BtnCari);
 
-        internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
-
-        panelisi1.setName("panelisi1"); // NOI18N
-        panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
-        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        label33.setName("label33"); // NOI18N
+        label33.setPreferredSize(new java.awt.Dimension(32, 23));
+        panelisi1.add(label33);
 
         BtnPrint.setBackground(new java.awt.Color(50, 70, 50));
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -416,6 +453,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnCari6;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.CekBox ChkBulan;
+    private widget.CekBox ChkTanggal;
+    private widget.ComboBox CmbBulan;
+    private widget.ComboBox CmbTanggal;
     private widget.TextBox Kd2;
     private widget.ComboBox Tahun;
     private widget.InternalFrame internalFrame1;
@@ -423,6 +464,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label17;
     private widget.Label label19;
     private widget.Label label32;
+    private widget.Label label33;
     private widget.TextBox nmrek;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
@@ -432,51 +474,73 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void prosesCari() {
        Valid.tabelKosong(tabMode);
-       String thn=" rekeningtahun.thn='"+Tahun.getSelectedItem()+"' ";               
+       thn=" rekeningtahun.thn='"+Tahun.getSelectedItem()+"' ";               
        try{
-            
-            ResultSet rs=koneksi.prepareStatement("select jurnal.tgl_jurnal,jurnal.no_jurnal,detailjurnal.debet,detailjurnal.kredit,jurnal.no_bukti,jurnal.keterangan "+
-                            "from jurnal inner join detailjurnal on jurnal.no_jurnal=detailjurnal.no_jurnal  where "+
-                            "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"%'").executeQuery();
-            
-            ResultSet rs2=koneksi.prepareStatement("select rekeningtahun.saldo_awal,rekening.tipe, "+
+            ps2=koneksi.prepareStatement("select rekeningtahun.saldo_awal,rekening.tipe, "+
                             " rekening.balance from rekeningtahun inner join rekening on rekeningtahun.kd_rek=rekening.kd_rek "+
-                            " where rekeningtahun.kd_rek='"+kdrek.getText()+"' and rekeningtahun.thn like '%"+Tahun.getSelectedItem()+"%' ").executeQuery();
-            double saldoakhir = 0,saldoawal=0,tampawal=0;
-            String tipe="",balance="";
-            while(rs2.next()){
-                 saldoawal=rs2.getDouble(1);    
-                 saldoakhir=rs2.getDouble(1); 
-                 tipe=rs2.getString(2);
-                 balance=rs2.getString(3);
-            }          
-                
-            while(rs.next()){  
-                switch (balance) {
-                    case "K":
-                        saldoakhir=saldoakhir+(rs.getDouble("kredit")-rs.getDouble("debet"));
-                        break;
-                    case "D":
-                        saldoakhir=saldoakhir+rs.getDouble("debet")-rs.getDouble("kredit");
-                        break;
+                            " where rekeningtahun.kd_rek='"+kdrek.getText()+"' and rekeningtahun.thn like '%"+Tahun.getSelectedItem()+"%' ");
+            try {
+                saldoakhir = 0;saldoawal=0;tampawal=0;
+                tipe="";balance="";
+                rs2=ps2.executeQuery();
+                if(rs2.next()){
+                    saldoawal=rs2.getDouble(1);    
+                    saldoakhir=rs2.getDouble(1); 
+                    tipe=rs2.getString(2);
+                    balance=rs2.getString(3);
+                    saldoakhirfix="0";
+                    saldoawalfix="0";
+                    
+                    ps=koneksi.prepareStatement(
+                            "select jurnal.tgl_jurnal,jurnal.jam_jurnal,jurnal.no_jurnal,detailjurnal.debet,detailjurnal.kredit,jurnal.no_bukti,jurnal.keterangan "+
+                            "from jurnal inner join detailjurnal on jurnal.no_jurnal=detailjurnal.no_jurnal "+
+                            "where detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"%' "+
+                            "order by jurnal.tgl_jurnal,jurnal.jam_jurnal");
+                    try {
+                        rs=ps.executeQuery();
+                        while(rs.next()){  
+                            saldoakhir=saldoakhir+(rs.getDouble("kredit")-rs.getDouble("debet"));
+                            
+                            if(saldoakhir<0){
+                                saldoakhirfix=df2.format(saldoakhir*(-1));
+                            }else{
+                                saldoakhirfix=df2.format(saldoakhir);
+                            }
+                            
+                            if(saldoawal<0){
+                                saldoawalfix=df2.format(saldoawal*(-1));
+                            }else{
+                                saldoawalfix=df2.format(saldoawal);
+                            }
+
+                            tabMode.addRow(new Object[]{
+                                rs.getString(1)+" "+rs.getString(2),rs.getString(3),rs.getString("no_bukti"),rs.getString("keterangan"),
+                                saldoawalfix,df2.format(rs.getDouble("debet")),df2.format(rs.getDouble("kredit")),saldoakhirfix
+                            });
+                            saldoawal=saldoawal+rs.getDouble("debet")-rs.getDouble("kredit");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
                 }
-                
-                if(saldoawal<0){
-                        saldoawal=saldoawal*(-1);
+           } catch (Exception e) {
+                System.out.println("Notif : "+e);
+           } finally{
+                if(rs2!=null){
+                    rs2.close();
                 }
-                
-                tabMode.addRow(new Object[]{rs.getString(1),
-                               rs.getString(2),rs.getString("no_bukti"),rs.getString("keterangan"),
-                               df2.format(saldoawal),
-                               df2.format(rs.getDouble("debet")),
-                               df2.format(rs.getDouble("kredit")),
-                               df2.format(saldoakhir)});
-                saldoawal=saldoawal+rs.getDouble("debet")-rs.getDouble("kredit");
-                //tampawal=saldoawal;
-                //saldoakhir=saldoawal;
-                
+                if(ps2!=null){
+                    ps2.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
     }

@@ -470,7 +470,8 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "A","Rawat Inap",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
@@ -511,7 +512,8 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "B","Rawat Jalan",""
                 });
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

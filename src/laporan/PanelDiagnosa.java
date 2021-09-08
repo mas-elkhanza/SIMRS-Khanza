@@ -343,7 +343,7 @@ public class PanelDiagnosa extends widget.panelisi {
         ScrollInput.setOpaque(true);
 
         FormData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        FormData.setPreferredSize(new java.awt.Dimension(865, 217));
+        FormData.setPreferredSize(new java.awt.Dimension(865, 417));
         FormData.setLayout(null);
 
         jLabel13.setText("Diagnosa :");

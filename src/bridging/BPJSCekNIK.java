@@ -64,7 +64,8 @@ public class BPJSCekNIK {
             System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
             if(nameNode.path("code").asText().equals("200")){
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 this.nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();
                 cobnmAsuransi=response.path("peserta").path("cob").path("nmAsuransi").asText();

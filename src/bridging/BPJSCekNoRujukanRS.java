@@ -3869,7 +3869,8 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3915,7 +3916,8 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -5263,7 +5265,8 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             peserta="";
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                response = root.path("response").path("rujukan");
                 tabMode.addRow(new Object[]{
                     "Diagnosa",": "+response.path("diagnosa").path("kode").asText()+" "+response.path("diagnosa").path("nama").asText()
                 });                   
@@ -6304,7 +6307,8 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
+            //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
+            response = root.path("response").path("sep").path("noSep");
             if(nameNode.path("code").asText().equals("200")){
                 nosep=response.asText();
                 System.out.println("No.SEP : "+nosep);

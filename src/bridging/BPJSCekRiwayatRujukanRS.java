@@ -405,7 +405,8 @@ public final class BPJSCekRiwayatRujukanRS extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){

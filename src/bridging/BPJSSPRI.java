@@ -952,7 +952,8 @@ public class BPJSSPRI extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("noSPRI");
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("noSPRI");
+                response = root.path("response").path("noSPRI");
                 if(nameNode.path("code").asText().equals("200")){
                     if(Sequel.menyimpantf("bridging_surat_pri_bpjs","?,?,?,?,?,?,?,?,?,?","No.Surat",10,new String[]{
                             NoRawat.getText(),NoKartu.getText(),Valid.SetTgl(TanggalSurat.getSelectedItem()+""),response.asText(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""),KdDokter.getText(),NmDokter.getText(),KdPoli.getText(),NmPoli.getText(),Diagnosa.getText()

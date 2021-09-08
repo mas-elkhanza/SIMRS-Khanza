@@ -349,7 +349,8 @@ public final class BPJSCekReferensiProsedur extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                response = root.path("response");
                 if(response.path("procedure").isArray()){
                     i=1;
                     for(JsonNode list:response.path("procedure")){
