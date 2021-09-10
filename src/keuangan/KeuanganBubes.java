@@ -27,11 +27,12 @@ public class KeuanganBubes extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private String tanggal="",thn;
-    private PreparedStatement ps,ps2,ps3;
+    private String tanggal="";
+    private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    double saldoakhir = 0,saldoawal=0,tampawal=0;
-    String tipe="",balance="",saldoakhirfix="",saldoawalfix="";
+    private double saldoakhir = 0,saldoawal=0,tampawal=0,mk=0,md=0;
+    private int bulanint=0;
+    private String saldoakhirfix="",saldoawalfix="",bulanstring="",sql="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -137,9 +138,9 @@ public class KeuanganBubes extends javax.swing.JDialog {
         label32 = new widget.Label();
         Tahun = new widget.ComboBox();
         ChkBulan = new widget.CekBox();
-        CmbBulan = new widget.ComboBox();
+        Bulan = new widget.ComboBox();
         ChkTanggal = new widget.CekBox();
-        CmbTanggal = new widget.ComboBox();
+        Tanggal = new widget.ComboBox();
         BtnCari = new widget.Button();
         label33 = new widget.Label();
         BtnPrint = new widget.Button();
@@ -244,24 +245,30 @@ public class KeuanganBubes extends javax.swing.JDialog {
         ChkBulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkBulan.setName("ChkBulan"); // NOI18N
         ChkBulan.setPreferredSize(new java.awt.Dimension(67, 23));
+        ChkBulan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkBulanItemStateChanged(evt);
+            }
+        });
         panelisi1.add(ChkBulan);
 
-        CmbBulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        CmbBulan.setName("CmbBulan"); // NOI18N
-        CmbBulan.setPreferredSize(new java.awt.Dimension(62, 23));
-        panelisi1.add(CmbBulan);
+        Bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        Bulan.setName("Bulan"); // NOI18N
+        Bulan.setPreferredSize(new java.awt.Dimension(62, 23));
+        panelisi1.add(Bulan);
 
         ChkTanggal.setText("Tanggal :");
+        ChkTanggal.setEnabled(false);
         ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setName("ChkTanggal"); // NOI18N
         ChkTanggal.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi1.add(ChkTanggal);
 
-        CmbTanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        CmbTanggal.setName("CmbTanggal"); // NOI18N
-        CmbTanggal.setPreferredSize(new java.awt.Dimension(62, 23));
-        panelisi1.add(CmbTanggal);
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        Tanggal.setName("Tanggal"); // NOI18N
+        Tanggal.setPreferredSize(new java.awt.Dimension(62, 23));
+        panelisi1.add(Tanggal);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
@@ -432,6 +439,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         prosesCari();
     }//GEN-LAST:event_formWindowOpened
 
+    private void ChkBulanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkBulanItemStateChanged
+        if(ChkBulan.isSelected()==true){
+            ChkTanggal.setEnabled(true);
+        }else{
+            ChkTanggal.setSelected(false);
+            ChkTanggal.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkBulanItemStateChanged
+
     /**
     * @param args the command line arguments
     */
@@ -453,12 +469,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnCari6;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.ComboBox Bulan;
     private widget.CekBox ChkBulan;
     private widget.CekBox ChkTanggal;
-    private widget.ComboBox CmbBulan;
-    private widget.ComboBox CmbTanggal;
     private widget.TextBox Kd2;
     private widget.ComboBox Tahun;
+    private widget.ComboBox Tanggal;
     private widget.InternalFrame internalFrame1;
     private widget.TextBox kdrek;
     private widget.Label label17;
@@ -474,27 +490,75 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void prosesCari() {
        Valid.tabelKosong(tabMode);
-       thn=" rekeningtahun.thn='"+Tahun.getSelectedItem()+"' ";               
        try{
             ps2=koneksi.prepareStatement("select rekeningtahun.saldo_awal,rekening.tipe, "+
                             " rekening.balance from rekeningtahun inner join rekening on rekeningtahun.kd_rek=rekening.kd_rek "+
                             " where rekeningtahun.kd_rek='"+kdrek.getText()+"' and rekeningtahun.thn like '%"+Tahun.getSelectedItem()+"%' ");
             try {
                 saldoakhir = 0;saldoawal=0;tampawal=0;
-                tipe="";balance="";
+                mk=0;md=0;bulanint=0;bulanstring="01";
                 rs2=ps2.executeQuery();
                 if(rs2.next()){
-                    saldoawal=rs2.getDouble(1);    
-                    saldoakhir=rs2.getDouble(1); 
-                    tipe=rs2.getString(2);
-                    balance=rs2.getString(3);
+                    if(ChkBulan.isSelected()==true){
+                        bulanint=Integer.parseInt(Bulan.getSelectedItem().toString())-1;
+                        if(bulanint<=9){
+                            bulanstring="0"+bulanint;
+                        }else{
+                            bulanstring=""+bulanint;
+                        }
+                        
+                        sql="select sum(detailjurnal.debet),sum(detailjurnal.kredit) "+
+                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                            "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal between '"+Tahun.getSelectedItem()+"-01-01' and '"+Tahun.getSelectedItem()+"-"+bulanstring+"-31'";
+                        
+                        if(ChkTanggal.isSelected()==true){
+                            bulanint=Integer.parseInt(Tanggal.getSelectedItem().toString())-1;
+                            if(bulanint<=9){
+                                bulanstring="0"+bulanint;
+                            }else{
+                                bulanstring=""+bulanint;
+                            }
+                            
+                            sql="select sum(detailjurnal.debet),sum(detailjurnal.kredit) "+
+                                "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal between '"+Tahun.getSelectedItem()+"-01-01' and '"+Tahun.getSelectedItem()+"-"+Bulan.getSelectedItem()+"-"+bulanstring+"'";
+                        }
+                        
+                        ps=koneksi.prepareStatement(sql);
+                        try {
+                            rs=ps.executeQuery();
+                            if(rs.next()){  
+                                md=rs.getDouble(1);
+                                mk=rs.getDouble(2);
+                            } 
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                    }
+                    saldoawal=rs2.getDouble(1)+(mk-md);    
+                    saldoakhir=rs2.getDouble(1)+(mk-md); 
                     saldoakhirfix="0";
                     saldoawalfix="0";
+                    
+                    tanggal=" jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"%' "; 
+                    if(ChkBulan.isSelected()==true){
+                        tanggal=" jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"-"+Bulan.getSelectedItem()+"%' "; 
+                        if(ChkTanggal.isSelected()==true){
+                            tanggal=" jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"-"+Bulan.getSelectedItem()+"-"+Tanggal.getSelectedItem()+"%' "; 
+                        }
+                    }
                     
                     ps=koneksi.prepareStatement(
                             "select jurnal.tgl_jurnal,jurnal.jam_jurnal,jurnal.no_jurnal,detailjurnal.debet,detailjurnal.kredit,jurnal.no_bukti,jurnal.keterangan "+
                             "from jurnal inner join detailjurnal on jurnal.no_jurnal=detailjurnal.no_jurnal "+
-                            "where detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"%' "+
+                            "where detailjurnal.kd_rek='"+kdrek.getText()+"' and "+tanggal+
                             "order by jurnal.tgl_jurnal,jurnal.jam_jurnal");
                     try {
                         rs=ps.executeQuery();

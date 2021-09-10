@@ -217,8 +217,11 @@
                   <Dimension value="[67, 23]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ChkBulanItemStateChanged"/>
+              </Events>
             </Component>
-            <Component class="widget.ComboBox" name="CmbBulan">
+            <Component class="widget.ComboBox" name="Bulan">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="12">
@@ -236,7 +239,7 @@
                     <StringItem index="11" value="12"/>
                   </StringArray>
                 </Property>
-                <Property name="name" type="java.lang.String" value="CmbBulan" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="Bulan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>
                 </Property>
@@ -245,6 +248,7 @@
             <Component class="widget.CekBox" name="ChkTanggal">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tanggal :"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="ChkTanggal" noResource="true"/>
@@ -253,7 +257,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="widget.ComboBox" name="CmbTanggal">
+            <Component class="widget.ComboBox" name="Tanggal">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="31">
@@ -290,7 +294,7 @@
                     <StringItem index="30" value="31"/>
                   </StringArray>
                 </Property>
-                <Property name="name" type="java.lang.String" value="CmbTanggal" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="Tanggal" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[62, 23]"/>
                 </Property>
