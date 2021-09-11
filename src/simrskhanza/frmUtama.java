@@ -32894,8 +32894,5 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnResepLuar.setPreferredSize(new java.awt.Dimension(200, 90));
         btnResepLuar.addActionListener(this::btnResepLuarActionPerformed);
     }
-
-    
-
     
 }

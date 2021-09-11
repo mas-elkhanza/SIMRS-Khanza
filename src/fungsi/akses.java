@@ -161,7 +161,7 @@ public final class akses {
             grafik_inventaris_produsen=false,pengembalian_deposit_pasien=false,validasi_tagihan_hutang_obat=false,piutang_obat_belum_lunas=false,
             integrasi_briapi=false,pengadaan_aset_inventaris=false,akun_aset_inventaris=false,suplier_inventaris=false,penerimaan_aset_inventaris=false,
             bayar_pemesanan_iventaris=false,hutang_aset_inventaris=false,hibah_aset_inventaris=false,titip_faktur_non_medis=false,validasi_tagihan_non_medis=false,
-            titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false,pcare_alasan_tacc=false,resep_luar=false;
+            titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false,pcare_alasan_tacc=false,resep_luar=false,surat_bebas_tbc=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -922,6 +922,7 @@ public final class akses {
                         akses.hibah_non_medis=true;
                         akses.pcare_alasan_tacc=true;
                         akses.resep_luar=true;
+                        akses.surat_bebas_tbc=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1666,6 +1667,7 @@ public final class akses {
                         akses.hibah_non_medis=rs2.getBoolean("hibah_non_medis");
                         akses.pcare_alasan_tacc=rs2.getBoolean("pcare_alasan_tacc");
                         akses.resep_luar=rs2.getBoolean("resep_luar");
+                        akses.surat_bebas_tbc=rs2.getBoolean("surat_bebas_tbc");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2408,6 +2410,7 @@ public final class akses {
                         akses.hibah_non_medis=false;
                         akses.pcare_alasan_tacc=false;
                         akses.resep_luar=false;
+                        akses.surat_bebas_tbc=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3205,4 +3208,5 @@ public final class akses {
     public static boolean gethibah_non_medis(){return akses.hibah_non_medis;}
     public static boolean getpcare_alasan_tacc(){return akses.pcare_alasan_tacc;}
     public static boolean getresep_luar(){return akses.resep_luar;}
+    public static boolean getsurat_bebas_tbc(){return akses.surat_bebas_tbc;}
 }   
