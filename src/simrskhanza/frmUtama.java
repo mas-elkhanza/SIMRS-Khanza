@@ -32887,7 +32887,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCekPCareTACC.addActionListener(this::btnCekPCareTACCActionPerformed);
         
         btnResepLuar = new widget.ButtonBig();
-        btnResepLuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_prescription_45215.png"))); 
+        btnResepLuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5994864_capsule_drug_medicine_pill_tablet_icon.png"))); 
         btnResepLuar.setText("Resep Luar");
         btnResepLuar.setIconTextGap(0);
         btnResepLuar.setName("btnResepLuar"); 

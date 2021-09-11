@@ -89,11 +89,11 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         tbResep.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabmodeUbahRacikan=new DefaultTableModel(null,new Object[]{
-                "Tgl.Rawat","Jam Rawat","No.Rawat","Kode Barang","Nama Barang","Aturan Pakai"
+                "Kode Barang","Nama Barang","Jumlah","Aturan Pakai"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if (colIndex==5) {
+                if ((colIndex==2)||(colIndex==3)) {
                     a=true;
                 }
                 return a;
@@ -105,33 +105,26 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         tbTambahan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbTambahan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbTambahan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==1){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==2){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==3){
                 column.setPreferredWidth(90);
-            }else if(i==4){
-                column.setPreferredWidth(250);
-            }else if(i==5){
+            }else if(i==1){
+                column.setPreferredWidth(200);
+            }else if(i==2){
+                column.setPreferredWidth(50);
+            }else if(i==3){
                 column.setPreferredWidth(200);
             }
         }
         tbTambahan.setDefaultRenderer(Object.class, new WarnaTable());
 
         tabmodeUbahRacikan2=new DefaultTableModel(null,new Object[]{
-                "Tgl.Rawat","Jam Rawat","No.Rawat","No.Racik","Nama Racik","Aturan Pakai"
+                "No.Racik","Nama Racik","Aturan Pakai"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if (colIndex==5) {
+                if ((colIndex==1)||(colIndex==2)) {
                     a=true;
                 }
                 return a;
@@ -143,22 +136,13 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         tbTambahan1.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbTambahan1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 3; i++) {
             TableColumn column = tbTambahan1.getColumnModel().getColumn(i);
             if(i==0){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(60);
             }else if(i==1){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==2){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==3){
-                column.setPreferredWidth(90);
-            }else if(i==4){
                 column.setPreferredWidth(250);
-            }else if(i==5){
+            }else if(i==2){
                 column.setPreferredWidth(200);
             }
         }
@@ -349,7 +333,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
 
         NoResepUbah3.setEditable(false);
         NoResepUbah3.setName("NoResepUbah3"); // NOI18N
-        NoResepUbah3.setPreferredSize(new java.awt.Dimension(150, 23));
+        NoResepUbah3.setPreferredSize(new java.awt.Dimension(170, 23));
         NoResepUbah3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoResepUbah3KeyPressed(evt);
@@ -432,7 +416,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
 
         NoResepUbah4.setEditable(false);
         NoResepUbah4.setName("NoResepUbah4"); // NOI18N
-        NoResepUbah4.setPreferredSize(new java.awt.Dimension(150, 23));
+        NoResepUbah4.setPreferredSize(new java.awt.Dimension(170, 23));
         NoResepUbah4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoResepUbah4KeyPressed(evt);
@@ -605,7 +589,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-09-2021 05:10:46" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-09-2021 20:02:29" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -619,7 +603,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-09-2021 05:10:46" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-09-2021 20:02:29" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -778,19 +762,11 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
         if(NoResepUbah3.getText().trim().equals("")||(tbTambahan.getRowCount()<=0)){
             Valid.textKosong(NoResepUbah3,"Data");
         }else{
-            
+            Sequel.queryu2("delete from resep_luar_obat where no_resep=?",1,new String[]{NoResepUbah3.getText()});
             for(i=0;i<tbTambahan.getRowCount();i++){
-                Sequel.queryu2("delete from aturan_pakai where tgl_perawatan=? and jam=? and no_rawat=? and kode_brng=?",4,new String[]{
-                    tbTambahan.getValueAt(i,0).toString(),tbTambahan.getValueAt(i,1).toString(),
-                    tbTambahan.getValueAt(i,2).toString(),tbTambahan.getValueAt(i,3).toString()
+                Sequel.menyimpan("resep_luar_obat","?,?,?,?",4,new String[]{
+                    NoResepUbah3.getText(),tbTambahan.getValueAt(i,0).toString(),tbTambahan.getValueAt(i,2).toString(),tbTambahan.getValueAt(i,3).toString()
                 });
-                if(!tbTambahan.getValueAt(i,5).toString().equals("")){
-                    Sequel.menyimpan("aturan_pakai","?,?,?,?,?",5,new String[]{
-                        tbTambahan.getValueAt(i,0).toString(),tbTambahan.getValueAt(i,1).toString(),
-                        tbTambahan.getValueAt(i,2).toString(),tbTambahan.getValueAt(i,3).toString(),
-                        tbTambahan.getValueAt(i,5).toString()
-                    });
-                }
             }
             
             tampil();
@@ -838,14 +814,10 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
        if(NoResepUbah4.getText().trim().equals("")||(tbTambahan1.getRowCount()<=0)){
             Valid.textKosong(NoResepUbah4,"Data");
         }else{
-            
             for(i=0;i<tbTambahan1.getRowCount();i++){
-                if(!tbTambahan1.getValueAt(i,5).toString().equals("")){
-                    Sequel.queryu2("update resep_luar_racikan set aturan_pakai=? where tgl_perawatan=? and jam=? and no_rawat=? and no_racik=?",5,new String[]{
-                        tbTambahan1.getValueAt(i,5).toString(),tbTambahan1.getValueAt(i,0).toString(),tbTambahan1.getValueAt(i,1).toString(),
-                        tbTambahan1.getValueAt(i,2).toString(),tbTambahan1.getValueAt(i,3).toString()
-                    });
-                }
+                Sequel.queryu2("update resep_luar_racikan set aturan_pakai=?,nama_racik=? where no_resep=? and no_racik=?",4,new String[]{
+                    tbTambahan1.getValueAt(i,2).toString(),tbTambahan1.getValueAt(i,1).toString(),NoResepUbah4.getText(),tbTambahan1.getValueAt(i,0).toString()
+                });
             }
             
             tampil();
@@ -859,27 +831,31 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
 
     private void ppUbahAturanPakaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUbahAturanPakaiActionPerformed
         if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            TCari.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+             TCari.requestFocus();
         }else if(tbResep.getSelectedRow()>-1){
-            //NoResepUbah3.setText(NoResep.getText());
-            //tampilresep();
-            WindowInput3.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            WindowInput3.setLocationRelativeTo(internalFrame1);
-            WindowInput3.setVisible(true);
+            if(!tbResep.getValueAt(tbResep.getSelectedRow(),0).toString().equals("")){
+                NoResepUbah3.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
+                tampilresep();
+                WindowInput3.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                WindowInput3.setLocationRelativeTo(internalFrame1);
+                WindowInput3.setVisible(true);
+            }
         }
     }//GEN-LAST:event_ppUbahAturanPakaiActionPerformed
 
     private void ppUbahAturanPakai1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUbahAturanPakai1ActionPerformed
         if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            TCari.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+             TCari.requestFocus();
         }else if(tbResep.getSelectedRow()>-1){
-            //NoResepUbah4.setText(NoResep.getText());
-            //tampilresep2();
-            WindowInput4.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            WindowInput4.setLocationRelativeTo(internalFrame1);
-            WindowInput4.setVisible(true);
+            if(!tbResep.getValueAt(tbResep.getSelectedRow(),0).toString().equals("")){
+                NoResepUbah4.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
+                tampilresep2();
+                WindowInput4.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                WindowInput4.setLocationRelativeTo(internalFrame1);
+                WindowInput4.setVisible(true);
+            }
         }
     }//GEN-LAST:event_ppUbahAturanPakai1ActionPerformed
 
@@ -1152,7 +1128,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                                 rs2=ps2.executeQuery();
                                 while(rs2.next()){
                                     tabMode.addRow(new String[]{
-                                        "","  "+rs2.getString("jml")+" "+rs2.getString("satuan"),"   "+rs2.getString("nama_brng"),""
+                                        "","   "+rs2.getString("jml")+" "+rs2.getString("satuan"),"   "+rs2.getString("nama_brng"),""
                                     });
                                 }                                
                             } catch (Exception e) {
@@ -1176,7 +1152,8 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                             psracikan.close();
                         }
                     }
-                }          
+                }   
+                rs.last();
                 LCount.setText(""+rs.getRow());
             } catch(Exception ex){
                 System.out.println("Notifikasi : "+ex);
@@ -1188,9 +1165,66 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                     ps.close();
                 }
             }                
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
+    }
+    
+    private void tampilresep() {
+        Valid.tabelKosong(tabmodeUbahRacikan);
+        try {
+            try {
+                ps2=koneksi.prepareStatement(
+                        "select resep_luar_obat.kode_brng,databarang.nama_brng,resep_luar_obat.jml,resep_luar_obat.aturan_pakai from resep_luar_obat "+
+                        "inner join databarang on resep_luar_obat.kode_brng=databarang.kode_brng where resep_luar_obat.no_resep=?");
+                ps2.setString(1,NoResepUbah3.getText());
+                rs2=ps2.executeQuery();
+                while(rs2.next()){
+                    tabmodeUbahRacikan.addRow(new String[]{
+                        rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("jml"),rs2.getString("aturan_pakai")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs2!=null){
+                    rs2.close();
+                }
+                if(ps2!=null){
+                    ps2.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        } 
+    }
+    
+    private void tampilresep2() {
+        Valid.tabelKosong(tabmodeUbahRacikan2);
+        try {
+            try {
+                ps2=koneksi.prepareStatement(
+                        "select resep_luar_racikan.no_racik,resep_luar_racikan.nama_racik,resep_luar_racikan.aturan_pakai from resep_luar_racikan where resep_luar_racikan.no_resep=?");
+                ps2.setString(1,NoResepUbah4.getText());
+                rs2=ps2.executeQuery();
+                while(rs2.next()){
+                    tabmodeUbahRacikan2.addRow(new String[]{
+                        rs2.getString("no_racik"),rs2.getString("nama_racik"),rs2.getString("aturan_pakai")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs2!=null){
+                    rs2.close();
+                }
+                if(ps2!=null){
+                    ps2.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
 
     public void setNoRm(String norwt,Date tgl1) {
