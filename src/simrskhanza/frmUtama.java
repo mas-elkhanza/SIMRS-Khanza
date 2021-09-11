@@ -539,6 +539,7 @@ import inventory.DlgSatuan;
 import inventory.DlgSirkulasiBarang4;
 import inventory.DlgSirkulasiBarang5;
 import inventory.DlgSisaStok;
+import inventory.InventoryCariResepLuar;
 import inventory.InventoryHibahObatBHP;
 import inventory.InventoryPenggunaanBHPOK;
 import inventory.InventoryRingkasanBeriObat;
@@ -561,7 +562,6 @@ import ipsrs.IPSRSRingkasanPengeluaranBarangNonMedis;
 import ipsrs.IPSRSRingkasanReturBeliBarangNonMedis;
 import ipsrs.IPSRSRiwayatBarang;
 import ipsrs.IPSRSVerifikasiPenerimaan;
-import java.awt.event.ActionEvent;
 import java.net.InetAddress;
 import kepegawaian.DlgDokter;
 import kepegawaian.DlgPetugas;
@@ -17345,6 +17345,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnResepLuarActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryCariResepLuar form=new InventoryCariResepLuar(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }  
+    
     /**
     * @param args the command line arguments
     */
@@ -17967,7 +17978,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
-            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC;
+            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar;
     
     public void isWall(){
         try{            
@@ -18750,6 +18761,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenggunaan_bhp_ok()==true){
                 Panelmenu.add(btnPenggunaanBHPOK);
+                jmlmenu++;
+            }
+            
+            if(akses.getresep_luar()==true){
+                Panelmenu.add(btnResepLuar);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -22455,6 +22471,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenggunaan_bhp_ok()==true){
             Panelmenu.add(btnPenggunaanBHPOK);
+            jmlmenu++;
+        }
+        
+        if(akses.getresep_luar()==true){
+            Panelmenu.add(btnResepLuar);
             jmlmenu++;
         }
 
@@ -26409,6 +26430,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenggunaan_bhp_ok()==true){
             if(btnPenggunaanBHPOK.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenggunaanBHPOK);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getresep_luar()==true){
+            if(btnResepLuar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnResepLuar);
                 jmlmenu++;
             }                
         }
@@ -32857,6 +32885,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCekPCareTACC.setName("btnCekPCareTACC"); 
         btnCekPCareTACC.setPreferredSize(new java.awt.Dimension(200, 90));
         btnCekPCareTACC.addActionListener(this::btnCekPCareTACCActionPerformed);
+        
+        btnResepLuar = new widget.ButtonBig();
+        btnResepLuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_prescription_45215.png"))); 
+        btnResepLuar.setText("Resep Luar");
+        btnResepLuar.setIconTextGap(0);
+        btnResepLuar.setName("btnResepLuar"); 
+        btnResepLuar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnResepLuar.addActionListener(this::btnResepLuarActionPerformed);
     }
 
     
