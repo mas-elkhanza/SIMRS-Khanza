@@ -187,7 +187,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Integrasi BRI API","[F]Pengadaan Aset/Inventaris","[J]Akun Jenis Aset/Inventaris","[F]Suplier Aset/Inventaris","[F]Penerimaan Aset/Inventaris",
                 "[J]Bayar Pesan Aset/Inventaris","[J]Hutang Aset/Inventaris","[F]Hibah Aset/Inventaris","[J]Titip Faktur/Tagihan Non Medis","[J]Validasi Titip Faktur/Tagihan Non Medis",
                 "[J]Titip Faktur/Tagihan Aset/Inventaris","[J]Validasi Titip Faktur/Tagihan Aset/Inventaris","[E]Hibah Non Medis","[K]Referensi TACC PCare","[D]Resep Luar",
-                "[O]Surat Bebas TBC"
+                "[O]Surat Bebas TBC","[O]Surat Keterangan Buta Warna"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -400,7 +400,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 742;i++) {
+        for (i = 0; i < 743;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2080,6 +2080,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 741:
                     column.setPreferredWidth(102);
                     break;
+                case 742:
+                    column.setPreferredWidth(168);
+                    break;
                 default:
                     column.setPreferredWidth(140);
                     break;
@@ -2578,7 +2581,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3362,7 +3365,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "hibah_non_medis='"+tbUser.getValueAt(i,738).toString()+"',"+
                     "pcare_alasan_tacc='"+tbUser.getValueAt(i,739).toString()+"',"+
                     "resep_luar='"+tbUser.getValueAt(i,740).toString()+"',"+
-                    "surat_bebas_tbc='"+tbUser.getValueAt(i,741).toString()+"'");
+                    "surat_bebas_tbc='"+tbUser.getValueAt(i,741).toString()+"',"+
+                    "surat_buta_warna='"+tbUser.getValueAt(i,742).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4185,7 +4189,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "hibah_non_medis='"+tbUser.getValueAt(barisdicopy,738).toString()+"',"+
                                     "pcare_alasan_tacc='"+tbUser.getValueAt(barisdicopy,739).toString()+"',"+
                                     "resep_luar='"+tbUser.getValueAt(barisdicopy,740).toString()+"',"+
-                                    "surat_bebas_tbc='"+tbUser.getValueAt(barisdicopy,741).toString()+"'");
+                                    "surat_bebas_tbc='"+tbUser.getValueAt(barisdicopy,741).toString()+"',"+
+                                    "surat_buta_warna='"+tbUser.getValueAt(barisdicopy,742).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4527,7 +4532,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi,pengadaan_aset_inventaris,akun_aset_inventaris,"+
                         "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris,hutang_aset_inventaris,hibah_aset_inventaris,"+
                         "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset,validasi_tagihan_aset,hibah_non_medis,pcare_alasan_tacc,"+
-                        "resep_luar,surat_bebas_tbc from user order by AES_DECRYPT(id_user,'nur')");
+                        "resep_luar,surat_bebas_tbc,surat_buta_warna from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5281,7 +5286,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("hibah_non_medis"),
                                rs.getBoolean("pcare_alasan_tacc"),
                                rs.getBoolean("resep_luar"),
-                               rs.getBoolean("surat_bebas_tbc")
+                               rs.getBoolean("surat_bebas_tbc"),
+                               rs.getBoolean("surat_buta_warna")
                             });
                         }   
                     } catch (Exception e) {
@@ -6024,7 +6030,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("hibah_non_medis"),
                            rs.getBoolean("pcare_alasan_tacc"),
                            rs.getBoolean("resep_luar"),
-                           rs.getBoolean("surat_bebas_tbc")
+                           rs.getBoolean("surat_bebas_tbc"),
+                           rs.getBoolean("surat_buta_warna")
                         });
                     }                                             
                  }

@@ -684,9 +684,11 @@ import surat.PengumumanEPasien;
 import surat.SuratAlmari;
 import surat.SuratBalas;
 import surat.SuratBebasNarkoba;
+import surat.SuratButaWarna;
 import surat.SuratCutiHamil;
 import surat.SuratIndeks;
 import surat.SuratKeluar;
+import surat.SuratKeteranganBebasTBC;
 import surat.SuratKeteranganCovid;
 import surat.SuratKeteranganRawatInap;
 import surat.SuratKeteranganSehat;
@@ -17356,6 +17358,32 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnSuratBebasTBCActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratKeteranganBebasTBC form=new SuratKeteranganBebasTBC(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSuratButaWarnaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratButaWarna form=new SuratButaWarna(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17978,7 +18006,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
-            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar;
+            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna;
     
     public void isWall(){
         try{            
@@ -21369,6 +21397,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_keterangan_sehat()==true){
                 Panelmenu.add(btnSuratKeteranganSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_bebas_tbc()==true){
+                Panelmenu.add(btnSuratBebasTBC);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_buta_warna()==true){
+                Panelmenu.add(btnSuratButaWarna);
                 jmlmenu++;
             }
             
@@ -25063,6 +25101,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_keterangan_sehat()==true){
             Panelmenu.add(btnSuratKeteranganSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_bebas_tbc()==true){
+            Panelmenu.add(btnSuratBebasTBC);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_buta_warna()==true){
+            Panelmenu.add(btnSuratButaWarna);
             jmlmenu++;
         }
 
@@ -30061,6 +30109,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_bebas_tbc()==true){
+            if(btnSuratBebasTBC.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratBebasTBC);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsurat_buta_warna()==true){
+            if(btnSuratButaWarna.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratButaWarna);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengumuman_epasien()==true){
             if(btnPengumumanEPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengumumanEPasien);
@@ -32893,6 +32955,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnResepLuar.setName("btnResepLuar"); 
         btnResepLuar.setPreferredSize(new java.awt.Dimension(200, 90));
         btnResepLuar.addActionListener(this::btnResepLuarActionPerformed);
+        
+        btnSuratBebasTBC = new widget.ButtonBig();
+        btnSuratBebasTBC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088716_clean_lungs_protect_icon.png"))); 
+        btnSuratBebasTBC.setText("Surat Bebas TBC");
+        btnSuratBebasTBC.setIconTextGap(0);
+        btnSuratBebasTBC.setName("btnSuratBebasTBC"); 
+        btnSuratBebasTBC.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratBebasTBC.addActionListener(this::btnSuratBebasTBCActionPerformed);
+        
+        btnSuratButaWarna = new widget.ButtonBig();
+        btnSuratButaWarna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1994549_cmyk_color_color chart_colour_design_icon.png"))); 
+        btnSuratButaWarna.setText("Surat Keterangan Buta Warna");
+        btnSuratButaWarna.setIconTextGap(0);
+        btnSuratButaWarna.setName("btnSuratButaWarna"); 
+        btnSuratButaWarna.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratButaWarna.addActionListener(this::btnSuratButaWarnaActionPerformed);
     }
     
 }

@@ -873,6 +873,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         NmPoli.setText("");
         KdDokter.setText("");
         NmDokter.setText("");
+        TCari.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 

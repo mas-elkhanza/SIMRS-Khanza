@@ -1427,6 +1427,20 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         }
     }
 
+    public void setNoRm(String norwt,String norm,String namapasien,String kodedokter,String namadokter,Date tgl1, Date tgl2) {
+        TNoRw.setText(norwt);
+        TCari.setText(norwt);
+        DTPCari1.setDate(tgl1);
+        DTPCari2.setDate(tgl2);
+        TNoRM.setText(norm);
+        TPasien.setText(namapasien);
+        KdDok.setText(kodedokter);
+        TDokter.setText(namadokter);
+        ChkInput.setSelected(true);
+        isForm();
+        autoSKBN();
+    }
+    
     private void isRawat() {
          Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat='"+TNoRw.getText()+"' ",TNoRM);
     }
@@ -1435,17 +1449,6 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
     }
     
-    public void setNoRm(String norwt, Date tgl1, Date tgl2) {
-        TNoRw.setText(norwt);
-        TCari.setText(norwt);
-        DTPCari1.setDate(tgl1);
-        DTPCari2.setDate(tgl2);
-        isRawat();
-        isPsien(); 
-        ChkInput.setSelected(true);
-        isForm();
-        autoSKBN();
-    }
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
