@@ -4579,6 +4579,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         WindowInputKamar.dispose();
+        WindowDiagnosaAkhir.dispose();
+        WindowDiagnosaMasuk.dispose();
+        WindowPindahKamar.dispose();
+        WindowRanapGabung.dispose();
+        WindowCaraBayar.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 

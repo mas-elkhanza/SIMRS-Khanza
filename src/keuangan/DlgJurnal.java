@@ -517,6 +517,11 @@ public class DlgJurnal extends javax.swing.JDialog {
 
         TglJurnal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglJurnal.setName("TglJurnal"); // NOI18N
+        TglJurnal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TglJurnalItemStateChanged(evt);
+            }
+        });
         TglJurnal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglJurnalKeyPressed(evt);
@@ -815,6 +820,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
     }//GEN-LAST:event_formWindowOpened
+
+    private void TglJurnalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglJurnalItemStateChanged
+        try {
+            NoJur.setText(Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_jurnal,6),signed)),0) from jurnal where tgl_jurnal='"+Valid.SetTgl(TglJurnal.getSelectedItem()+"")+"' ","JR"+Valid.SetTgl(TglJurnal.getSelectedItem()+"").replaceAll("-",""),6));
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_TglJurnalItemStateChanged
 
     /**
     * @param args the command line arguments

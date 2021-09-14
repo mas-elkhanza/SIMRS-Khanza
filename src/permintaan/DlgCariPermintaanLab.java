@@ -82,6 +82,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         initComponents();
 
         WindowAmbilSampel.setSize(530,80);
+        WindowTerkirim.setSize(300,90);
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam","Sampel","Jam","Hasil","Jam",
             "Kode Dokter","Dokter Perujuk","Poli Registrasi","Informasi Tambahan","Diagnosis Klinis",
@@ -430,6 +431,9 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         BtnSimpan4 = new widget.Button();
         jLabel26 = new widget.Label();
         TanggalPulang = new widget.Tanggal();
+        WindowTerkirim = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -534,7 +538,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2021 08:56:17" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2021 15:15:39" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -543,6 +547,29 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         TanggalPulang.setBounds(110, 32, 150, 23);
 
         WindowAmbilSampel.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
+
+        WindowTerkirim.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowTerkirim.setTitle("Informasi Bridging Teras LIS");
+        WindowTerkirim.setName("WindowTerkirim"); // NOI18N
+        WindowTerkirim.setResizable(false);
+        WindowTerkirim.getContentPane().setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Berhasil terkirim..!!");
+        jLabel1.setName("jLabel1"); // NOI18N
+        WindowTerkirim.getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 15, 150, 23);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("OK");
+        jButton1.setName("jButton1"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        WindowTerkirim.getContentPane().add(jButton1);
+        jButton1.setBounds(200, 15, 75, 30);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1582,6 +1609,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         WindowAmbilSampel.dispose();
+        WindowTerkirim.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -3148,6 +3176,10 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }  
     }//GEN-LAST:event_BtnAmbilLISMADQLABActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        WindowTerkirim.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3208,10 +3240,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private javax.swing.JDialog WindowAmbilSampel;
+    private javax.swing.JDialog WindowTerkirim;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private widget.Label jLabel10;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
@@ -3829,13 +3864,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
                         if (newState == Worker.State.SUCCEEDED) {
                             try {
+                                System.out.println("Eksekusi URL : "+engine.getLocation());
                                 if(engine.getLocation().contains("SuksesKirim")){
-                                    JOptionPane.showMessageDialog(null,"Permintaan Lab berhasil dikirim...");
+                                    WindowTerkirim.setLocationRelativeTo(null);
+                                    WindowTerkirim.setVisible(true);
                                 }else if(engine.getLocation().contains("json")){
                                     json=engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/json=","").replaceAll("_"," ");
                                     JOptionPane.showMessageDialog(null,json);
-                                }else{
-                                    JOptionPane.showMessageDialog(null,"Proses gagal....!");
                                 }
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
