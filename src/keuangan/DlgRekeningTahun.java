@@ -912,30 +912,18 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                         ps2.setString(2,"%"+Tahun.getSelectedItem()+"%");
                         rs2=ps2.executeQuery();                
                         if(rs2.next()){
-                            /*if(rs.getString("tipe").equals("R")&&rs.getString("balance").equals("K")){
-                                md=rs2.getDouble(1);
-                                mk=rs2.getDouble(2);
-                                saldoakhir=rs.getDouble(6)+(mk-md);
-                            }else if(rs.getString("tipe").equals("R")&&rs.getString("balance").equals("D")){
-                                md=rs2.getDouble(2);
-                                mk=rs2.getDouble(1);
-                                saldoakhir=rs.getDouble(6)+(md-mk);
-                            }else if(rs.getString("tipe").equals("M")){
-                                md=rs2.getDouble(1);
-                                mk=rs2.getDouble(2);
-                                saldoakhir=rs.getDouble(6)+(mk-md);
-                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("D")){
-                                md=rs2.getDouble(2);
-                                mk=rs2.getDouble(1);
-                                saldoakhir=rs.getDouble(6)+(md-mk);
-                            }else if(rs.getString("tipe").equals("N")&&rs.getString("balance").equals("K")){
-                                md=rs2.getDouble(1);
-                                mk=rs2.getDouble(2);
-                                saldoakhir=rs.getDouble(6)+(mk-md);
-                            }*/
-                            md=rs2.getDouble(1);
-                            mk=rs2.getDouble(2);
-                            saldoakhir=rs.getDouble(6)+(mk-md);
+                            switch (rs.getString("balance")) {
+                                case "D":
+                                    md=rs2.getDouble(1);
+                                    mk=rs2.getDouble(2);
+                                    break;
+                                case "K":
+                                    md=rs2.getDouble(2);
+                                    mk=rs2.getDouble(1);
+                                    break;
+                            }
+
+                            saldoakhir=rs.getDouble(6)+(md-mk);
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -952,7 +940,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                         tabMode.addRow(new Object[]{
                              rs.getString(1).substring(0, 4),rs.getString(2),rs.getString(3),
                              rs.getString(4),rs.getString(5),df2.format(rs.getDouble(6)),
-                             df2.format(md),df2.format(mk),df2.format(saldoakhir*(-1))
+                             df2.format(md),df2.format(mk),"("+df2.format(saldoakhir*(-1))+")"
                         });      
                     }else{
                         tabMode.addRow(new Object[]{

@@ -1254,7 +1254,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
         operasi.setBayar(penjab, kelas);
         operasi.isCek();
-        operasi.tampil2();
         operasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         operasi.setLocationRelativeTo(internalFrame1);
         operasi.setVisible(true);

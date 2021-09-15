@@ -467,7 +467,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         }
     }
     
-    public void tampil2() {  
+    private void tampil2() {  
         try{
             myObj = new FileReader("./cache/paketoperasi.iyem");
             root = mapper.readTree(myObj);

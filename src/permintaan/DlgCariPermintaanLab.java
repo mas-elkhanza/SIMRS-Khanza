@@ -2992,37 +2992,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                        json="";
                         loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"apiteras2.php?nopermintaan="+NoPermintaan);
-                        if(!json.equals("")){
-                            try {
-                                root=mapper.readTree(json);
-                                response = root.path("hasil");
-                                Sequel.queryu("truncate table temporary_permintaan_lab");
-                                if(response.isArray()){
-                                    for(JsonNode list:response){
-                                        Sequel.menyimpan("temporary_permintaan_lab","'0','"+root.path("idi").asText()+"','"+
-                                                list.path("namatest").asText()+"','"+
-                                                list.path("hasil").asText()+"','"+
-                                                list.path("refer").asText()+"','"+
-                                                list.path("unit").asText()+"','"+
-                                                list.path("ac").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
-                                    }
-                                }
-                            } catch (Exception ex) {
-                                System.out.println("Notif : "+ex);
-                            }
-                            DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
-                            dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                            dlgro.setLocationRelativeTo(internalFrame1);
-                            dlgro.emptTeks();
-                            dlgro.isCek(); 
-                            dlgro.setOrderLICA(NoPermintaan,NoRawat,"Ralan");
-                            dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
-                            TeksKosong();
-                            dlgro.setVisible(true);
-                            this.setCursor(Cursor.getDefaultCursor());
-                        }   
+                        this.setCursor(Cursor.getDefaultCursor());
                     }
                 }else{            
                     JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
@@ -3869,8 +3840,36 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     WindowTerkirim.setLocationRelativeTo(null);
                                     WindowTerkirim.setVisible(true);
                                 }else if(engine.getLocation().contains("json")){
+                                    json="";
                                     json=engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/json=","").replaceAll("_"," ");
-                                    JOptionPane.showMessageDialog(null,json);
+                                    if(!json.equals("")){
+                                        try {
+                                            root=mapper.readTree(json);
+                                            response = root.path("hasil");
+                                            Sequel.queryu("truncate table temporary_permintaan_lab");
+                                            if(response.isArray()){
+                                                for(JsonNode list:response){
+                                                    Sequel.menyimpan("temporary_permintaan_lab","'0','"+root.path("idi").asText()+"','"+
+                                                            list.path("namatest").asText()+"','"+
+                                                            list.path("hasil").asText()+"','"+
+                                                            list.path("refer").asText()+"','"+
+                                                            list.path("unit").asText()+"','"+
+                                                            list.path("ac").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                                                }
+                                            }
+                                        } catch (Exception ex) {
+                                            System.out.println("Notif : "+ex);
+                                        }
+                                        DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                                        dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                        dlgro.setLocationRelativeTo(internalFrame1);
+                                        dlgro.emptTeks();
+                                        dlgro.isCek(); 
+                                        dlgro.setOrderLICA(NoPermintaan,NoRawat,"Ralan");
+                                        dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
+                                        TeksKosong();
+                                        dlgro.setVisible(true);
+                                    }
                                 }
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);

@@ -253,6 +253,7 @@ public class KeuanganBubes extends javax.swing.JDialog {
         panelisi1.add(ChkBulan);
 
         Bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        Bulan.setEnabled(false);
         Bulan.setName("Bulan"); // NOI18N
         Bulan.setPreferredSize(new java.awt.Dimension(62, 23));
         panelisi1.add(Bulan);
@@ -263,9 +264,15 @@ public class KeuanganBubes extends javax.swing.JDialog {
         ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setName("ChkTanggal"); // NOI18N
         ChkTanggal.setPreferredSize(new java.awt.Dimension(75, 23));
+        ChkTanggal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkTanggalItemStateChanged(evt);
+            }
+        });
         panelisi1.add(ChkTanggal);
 
         Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        Tanggal.setEnabled(false);
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(62, 23));
         panelisi1.add(Tanggal);
@@ -442,11 +449,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void ChkBulanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkBulanItemStateChanged
         if(ChkBulan.isSelected()==true){
             ChkTanggal.setEnabled(true);
+            Bulan.setEnabled(true);
         }else{
+            Bulan.setSelectedIndex(0);
+            Bulan.setEnabled(false);
             ChkTanggal.setSelected(false);
             ChkTanggal.setEnabled(false);
         }
     }//GEN-LAST:event_ChkBulanItemStateChanged
+
+    private void ChkTanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkTanggalItemStateChanged
+        if(ChkTanggal.isSelected()==true){
+            Tanggal.setEnabled(true);
+        }else{
+            Tanggal.setSelectedIndex(0);
+            Tanggal.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkTanggalItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -499,6 +518,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 mk=0;md=0;bulanint=0;bulanstring="01";
                 rs2=ps2.executeQuery();
                 if(rs2.next()){
+                    saldoawal=rs2.getDouble(1);    
+                    saldoakhir=rs2.getDouble(1);
+                    
                     if(ChkBulan.isSelected()==true){
                         bulanint=Integer.parseInt(Bulan.getSelectedItem().toString())-1;
                         if(bulanint<=9){
@@ -507,7 +529,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             bulanstring=""+bulanint;
                         }
                         
-                        sql="select sum(detailjurnal.debet),sum(detailjurnal.kredit) "+
+                        sql="select sum(detailjurnal.debet) as debet,sum(detailjurnal.kredit) as kredit "+
                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                             "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal between '"+Tahun.getSelectedItem()+"-01-01' and '"+Tahun.getSelectedItem()+"-"+bulanstring+"-31'";
                         
@@ -519,7 +541,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 bulanstring=""+bulanint;
                             }
                             
-                            sql="select sum(detailjurnal.debet),sum(detailjurnal.kredit) "+
+                            sql="select sum(detailjurnal.debet) as debet,sum(detailjurnal.kredit) as kredit "+
                                 "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                 "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal between '"+Tahun.getSelectedItem()+"-01-01' and '"+Tahun.getSelectedItem()+"-"+Bulan.getSelectedItem()+"-"+bulanstring+"'";
                         }
@@ -528,8 +550,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         try {
                             rs=ps.executeQuery();
                             if(rs.next()){  
-                                md=rs.getDouble(1);
-                                mk=rs.getDouble(2);
+                                switch (rs2.getString("balance")) {
+                                    case "K":
+                                        saldoakhir=saldoakhir+(rs.getDouble("kredit")-rs.getDouble("debet"));
+                                        saldoawal=saldoawal+(rs.getDouble("kredit")-rs.getDouble("debet"));
+                                        break;
+                                    case "D":
+                                        saldoakhir=saldoakhir+rs.getDouble("debet")-rs.getDouble("kredit");
+                                        saldoawal=saldoawal+rs.getDouble("debet")-rs.getDouble("kredit");
+                                        break;
+                                }
                             } 
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -542,8 +572,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                     }
-                    saldoawal=rs2.getDouble(1)+(mk-md);    
-                    saldoakhir=rs2.getDouble(1)+(mk-md); 
+                    
                     saldoakhirfix="0";
                     saldoawalfix="0";
                     
@@ -563,7 +592,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     try {
                         rs=ps.executeQuery();
                         while(rs.next()){  
-                            saldoakhir=saldoakhir+(rs.getDouble("kredit")-rs.getDouble("debet"));
+                            switch (rs2.getString("balance")) {
+                                case "K":
+                                    saldoakhir=saldoakhir+(rs.getDouble("kredit")-rs.getDouble("debet"));
+                                    break;
+                                case "D":
+                                    saldoakhir=saldoakhir+rs.getDouble("debet")-rs.getDouble("kredit");
+                                    break;
+                            }
                             
                             if(saldoakhir<0){
                                 saldoakhirfix=df2.format(saldoakhir*(-1));
@@ -581,7 +617,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs.getString(1)+" "+rs.getString(2),rs.getString(3),rs.getString("no_bukti"),rs.getString("keterangan"),
                                 saldoawalfix,df2.format(rs.getDouble("debet")),df2.format(rs.getDouble("kredit")),saldoakhirfix
                             });
-                            saldoawal=saldoawal+rs.getDouble("debet")-rs.getDouble("kredit");
+                            saldoawal=saldoakhir;
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);

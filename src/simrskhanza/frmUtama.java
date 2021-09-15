@@ -684,6 +684,7 @@ import surat.PengumumanEPasien;
 import surat.SuratAlmari;
 import surat.SuratBalas;
 import surat.SuratBebasNarkoba;
+import surat.SuratBebasTato;
 import surat.SuratButaWarna;
 import surat.SuratCutiHamil;
 import surat.SuratIndeks;
@@ -17384,6 +17385,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratBebasTatoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratBebasTato form=new SuratBebasTato(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18006,7 +18020,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
-            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna;
+            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna,btnSuratBebasTato;
     
     public void isWall(){
         try{            
@@ -21407,6 +21421,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_buta_warna()==true){
                 Panelmenu.add(btnSuratButaWarna);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_bebas_tato()==true){
+                Panelmenu.add(btnSuratBebasTato);
                 jmlmenu++;
             }
             
@@ -25111,6 +25130,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_buta_warna()==true){
             Panelmenu.add(btnSuratButaWarna);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_bebas_tato()==true){
+            Panelmenu.add(btnSuratBebasTato);
             jmlmenu++;
         }
 
@@ -30123,6 +30147,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_bebas_tato()==true){
+            if(btnSuratBebasTato.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratBebasTato);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengumuman_epasien()==true){
             if(btnPengumumanEPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengumumanEPasien);
@@ -32971,6 +33002,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratButaWarna.setName("btnSuratButaWarna"); 
         btnSuratButaWarna.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSuratButaWarna.addActionListener(this::btnSuratButaWarnaActionPerformed);
+        
+        btnSuratBebasTato = new widget.ButtonBig();
+        btnSuratBebasTato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/24675_art_brush_color_drawing_paint_icon.png"))); 
+        btnSuratBebasTato.setText("Surat Bebas Tato");
+        btnSuratBebasTato.setIconTextGap(0);
+        btnSuratBebasTato.setName("btnSuratBebasTato"); 
+        btnSuratBebasTato.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratBebasTato.addActionListener(this::btnSuratBebasTatoActionPerformed);
     }
     
 }

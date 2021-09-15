@@ -263,7 +263,7 @@ public final class InventoryResepLuar extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(aturanpakai.getTable().getSelectedRow()!= -1){  
                     if(TabRawat.getSelectedIndex()==0){
-                        tbResep.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbResep.getSelectedRow(),8);
+                        tbResep.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbResep.getSelectedRow(),6);
                     }else if(TabRawat.getSelectedIndex()==1){
                         tbObatResepRacikan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObatResepRacikan.getSelectedRow(),5);
                         tbObatResepRacikan.requestFocus();

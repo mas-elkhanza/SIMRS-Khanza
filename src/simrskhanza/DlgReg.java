@@ -99,6 +99,7 @@ import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMTriaseIGD;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
 import surat.SuratBebasNarkoba;
+import surat.SuratBebasTato;
 import surat.SuratButaWarna;
 import surat.SuratCutiHamil;
 import surat.SuratKeteranganBebasTBC;
@@ -889,6 +890,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jMenu4 = new javax.swing.JMenu();
         MnSuratKontrol = new javax.swing.JMenuItem();
         MnSuratButaWarna = new javax.swing.JMenuItem();
+        MnSuratBebasTato = new javax.swing.JMenuItem();
         MnCetakSuratBebasTBC = new javax.swing.JMenuItem();
         MnCetakSuratSehat = new javax.swing.JMenuItem();
         MnCetakSuratSehat1 = new javax.swing.JMenuItem();
@@ -2037,6 +2039,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         jMenu4.add(MnSuratButaWarna);
+
+        MnSuratBebasTato.setBackground(new java.awt.Color(255, 255, 254));
+        MnSuratBebasTato.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSuratBebasTato.setForeground(new java.awt.Color(50, 50, 50));
+        MnSuratBebasTato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSuratBebasTato.setText("Surat Bebas Tato");
+        MnSuratBebasTato.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSuratBebasTato.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSuratBebasTato.setName("MnSuratBebasTato"); // NOI18N
+        MnSuratBebasTato.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnSuratBebasTato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSuratBebasTatoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnSuratBebasTato);
 
         MnCetakSuratBebasTBC.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakSuratBebasTBC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -10116,6 +10134,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnSuratButaWarnaActionPerformed
 
+    private void MnSuratBebasTatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSuratBebasTatoActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNoRw.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratBebasTato resume=new SuratBebasTato(null,false);
+                resume.isCek();
+                resume.emptTeks();
+                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resume.setLocationRelativeTo(internalFrame1);
+                resume.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                resume.tampil();
+                resume.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnSuratBebasTatoActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10303,6 +10344,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnStatusBaru;
     private javax.swing.JMenuItem MnStatusLama;
     private javax.swing.JMenuItem MnSudah;
+    private javax.swing.JMenuItem MnSuratBebasTato;
     private javax.swing.JMenuItem MnSuratButaWarna;
     private javax.swing.JMenuItem MnSuratJaminanPelayanan;
     private javax.swing.JMenuItem MnSuratKontrol;
@@ -10887,7 +10929,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnCetakSuratSehat2.setEnabled(akses.getsurat_keterangan_sehat());   
         MnCetakSuratSakitPihak2.setEnabled(akses.getsurat_sakit_pihak_2());  
         MnCetakSuratBebasTBC.setEnabled(akses.getsurat_bebas_tbc());     
-        MnSuratButaWarna.setEnabled(akses.getsurat_buta_warna());     
+        MnSuratButaWarna.setEnabled(akses.getsurat_buta_warna());      
+        MnSuratBebasTato.setEnabled(akses.getsurat_bebas_tato());     
         
         if(akses.getkode().equals("Admin Utama")){
             MnGabungNoRawat.setEnabled(true);
