@@ -11,7 +11,6 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import inventaris.InventarisCariSuplier;
-import ipsrs.IPSRSCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1439,7 +1438,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "select inventaris_pemesanan.no_faktur,inventaris_pemesanan.no_order,inventaris_suplier.nama_suplier,inventaris_pemesanan.kode_suplier, "+
                     "petugas.nama,inventaris_pemesanan.tgl_tempo,inventaris_pemesanan.tgl_pesan,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tagihan,"+
                     "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_inventaris where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur) as bayar, "+
-                    "inventaris_suplier.nama_bank,inventaris_suplier.rekening from inventaris_pemesanan "+
+                    "inventaris_suplier.nama_bank,inventaris_suplier.rekening,inventaris_pemesanan.kd_rek_aset from inventaris_pemesanan "+
                     "inner join inventaris_suplier on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
                     "inner join petugas on inventaris_pemesanan.nip=petugas.nip "+
                     "inner join inventaris_detail_titip_faktur on inventaris_detail_titip_faktur.no_faktur=inventaris_pemesanan.no_faktur "+
@@ -1455,7 +1454,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
                         rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),
                         rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
-                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),rs.getString("rekening")
+                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),
+                        rs.getString("rekening"),rs.getString("kd_rek_aset")
                     });
                     sisahutang=sisahutang+rs.getDouble("tagihan");
                     cicilan=cicilan+rs.getDouble("bayar");

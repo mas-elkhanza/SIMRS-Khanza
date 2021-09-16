@@ -1085,7 +1085,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 Valid.MyReportqry("rptBebasNarkoba1.jasper","report","::[ Surat SKBN 1 ]::",
                               " select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,perusahaan_pasien.nama_perusahaan,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur," +
-                              " pasien.tmp_lahir,pasien.agama,pasien.nm_pasien,pasien.jk,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,suku_bangsa.nama_suku_bangsa " +
+                              " pasien.tmp_lahir,pasien.agama,pasien.nm_pasien,pasien.jk,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,suku_bangsa.nama_suku_bangsa,reg_periksa.kd_dokter " +
                               " from reg_periksa inner join pasien inner join kelurahan inner join perusahaan_pasien inner join kecamatan inner join kabupaten inner join suku_bangsa " +
                               " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and pasien.kd_kel=kelurahan.kd_kel "+
                               " and pasien.perusahaan_pasien=perusahaan_pasien.kode_perusahaan and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.suku_bangsa=suku_bangsa.id "+
@@ -1122,7 +1122,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 Valid.MyReportqry("rptBebasNarkoba2.jasper","report","::[ Surat SKBN 2 ]::",
                               " select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,perusahaan_pasien.nama_perusahaan,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur," +
-                              " pasien.tmp_lahir,pasien.agama,pasien.nm_pasien,pasien.jk,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,suku_bangsa.nama_suku_bangsa " +
+                              " pasien.tmp_lahir,pasien.agama,pasien.nm_pasien,pasien.jk,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,suku_bangsa.nama_suku_bangsa,reg_periksa.kd_dokter " +
                               " from reg_periksa inner join pasien inner join kelurahan inner join perusahaan_pasien inner join kecamatan inner join kabupaten inner join suku_bangsa " +
                               " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and pasien.kd_kel=kelurahan.kd_kel "+
                               " and pasien.perusahaan_pasien=perusahaan_pasien.kode_perusahaan and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.suku_bangsa=suku_bangsa.id "+
@@ -1157,10 +1157,10 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
                 finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDok.getText());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+TDokter.getText()+"\nID "+(finger.equals("")?KdDok.getText():finger)+"\n"+TanggalSurat.getSelectedItem());  
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReportqry("rptBebasNarkoba3.jasper","report","::[ Surat SKBN 1 ]::",
+                Valid.MyReportqry("rptBebasNarkoba3.jasper","report","::[ Surat SKBN 3 ]::",
                               " select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,perusahaan_pasien.nama_perusahaan,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur," +
                               " pasien.tmp_lahir,pasien.agama,pasien.nm_pasien,pasien.jk,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,suku_bangsa.nama_suku_bangsa,pasien.nip,"+
-                              " pangkat_polri.nama_pangkat,satuan_polri.nama_satuan,jabatan_polri.nama_jabatan " +
+                              " pangkat_polri.nama_pangkat,satuan_polri.nama_satuan,jabatan_polri.nama_jabatan,reg_periksa.kd_dokter " +
                               " from reg_periksa inner join pasien inner join kelurahan inner join perusahaan_pasien inner join kecamatan inner join kabupaten inner join suku_bangsa "+
                               " inner join pangkat_polri inner join satuan_polri inner join jabatan_polri inner join pasien_polri "+
                               " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and pasien.kd_kel=kelurahan.kd_kel "+
@@ -1241,7 +1241,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+TDokter.getText()+"\nID "+(finger.equals("")?KdDok.getText():finger)+"\n"+TanggalSurat.getSelectedItem());  
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 Valid.MyReportqry("rptBebasNarkoba.jasper","report","::[ Surat SKBN 4 ]::",
-                              " select reg_periksa.no_rawat,dokter.nm_dokter,pasien.tgl_lahir,pasien.nm_pasien,pasien.pekerjaan,pasien.alamat,pasien.jk " +
+                              " select reg_periksa.no_rawat,dokter.nm_dokter,pasien.tgl_lahir,pasien.nm_pasien,pasien.pekerjaan,pasien.alamat,pasien.jk,reg_periksa.kd_dokter " +
                               " from reg_periksa inner join pasien inner join dokter " +
                               " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
                 this.setCursor(Cursor.getDefaultCursor());  
