@@ -622,14 +622,17 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                             nonota=Sequel.cariIsi("select nota_jual from penjualan where nota_jual=?",rs.getString("no_nota"));
                             if(!nonota.equals("")){
                                 notajual=rs.getString("no_nota");
+                                carabayar="Penjualan Apotek";
                             }else if(nonota.equals("")){
                                 nonota=Sequel.cariIsi("select no_deposit from deposit where no_deposit=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     nodeposit=rs.getString("no_nota");
+                                    carabayar="Deposit Pasien";
                                 }else{
                                     nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
                                     if(!nonota.equals("")){
                                         nopemasukanlain=rs.getString("no_nota");
+                                        carabayar="Pemasukan Lain-lain";
                                     }else{
                                         nopemasukanlain="";
                                     }

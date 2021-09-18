@@ -4173,14 +4173,18 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),18).toString().equals("Batal")){
                     JOptionPane.showMessageDialog(null,"Pasien berstatus batal periksa...!");
                 }else{
-                    akses.setstatus(true);
-                    DlgKamarInap dlgki=new DlgKamarInap(null,false);
-                    dlgki.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                    dlgki.setLocationRelativeTo(internalFrame1);
-                    dlgki.emptTeks();
-                    dlgki.isCek();
-                    dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
-                    dlgki.setVisible(true);
+                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
+                    }else{
+                        akses.setstatus(true);
+                        DlgKamarInap dlgki=new DlgKamarInap(null,false);
+                        dlgki.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                        dlgki.setLocationRelativeTo(internalFrame1);
+                        dlgki.emptTeks();
+                        dlgki.isCek();
+                        dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
+                        dlgki.setVisible(true);
+                    }
                 }
             }
         }
