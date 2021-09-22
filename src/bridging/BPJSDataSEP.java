@@ -3139,6 +3139,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                             "\"noKartu\": \""+NoKartu.getText()+"\"," +
                                             "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
                                             "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
+                                            "\"jnsPengajuan\": \"1\"," +
                                             "\"keterangan\": \""+Catatan.getText()+"\"," +
                                             "\"user\": \""+user+"\"" +
                                         "}" +

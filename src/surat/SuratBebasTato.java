@@ -54,7 +54,7 @@ public final class SuratBebasTato extends javax.swing.JDialog {
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Surat","No.Rawat","No.R.M.","Nama Pasien","Tgl.Periksa","Hasil Pemeriksaan","Kode Dokter","Nm Dokter","Keperluan"
+            "No.Surat","No.Rawat","No.R.M.","Nama Pasien","Tgl.Periksa","Hasil Pemeriksaan","Kode Dokter","Nama Dokter","Keperluan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -64,7 +64,7 @@ public final class SuratBebasTato extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -77,13 +77,13 @@ public final class SuratBebasTato extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(65);
             }else if(i==5){
-                column.setPreferredWidth(220);
+                column.setPreferredWidth(100);
             }else if(i==6){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(90);
             }else if(i==7){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(150);
+            }else if(i==8){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());        

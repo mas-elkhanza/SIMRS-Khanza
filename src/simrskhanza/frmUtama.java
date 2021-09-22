@@ -693,6 +693,7 @@ import surat.SuratKeteranganBebasTBC;
 import surat.SuratKeteranganCovid;
 import surat.SuratKeteranganRawatInap;
 import surat.SuratKeteranganSehat;
+import surat.SuratKewaspadaanKesehatan;
 import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratMasuk;
@@ -17398,6 +17399,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratKewaspadaanKesehatanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratKewaspadaanKesehatan form=new SuratKewaspadaanKesehatan(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18020,7 +18034,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikInventarisKategori,btnGrafikInventarisMerk,btnGrafikInventarisProdusen,btnPengembalianDepositPasien,btnValidasiTagihanObatBHP,
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
-            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna,btnSuratBebasTato;
+            btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna,btnSuratBebasTato,
+            btnSuratKewaspadaanKesehatan;
     
     public void isWall(){
         try{            
@@ -21426,6 +21441,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_bebas_tato()==true){
                 Panelmenu.add(btnSuratBebasTato);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_kewaspadaan_kesehatan()==true){
+                Panelmenu.add(btnSuratKewaspadaanKesehatan);
                 jmlmenu++;
             }
             
@@ -25135,6 +25155,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_bebas_tato()==true){
             Panelmenu.add(btnSuratBebasTato);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_kewaspadaan_kesehatan()==true){
+            Panelmenu.add(btnSuratKewaspadaanKesehatan);
             jmlmenu++;
         }
 
@@ -30154,6 +30179,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_kewaspadaan_kesehatan()==true){
+            if(btnSuratKewaspadaanKesehatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratKewaspadaanKesehatan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengumuman_epasien()==true){
             if(btnPengumumanEPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengumumanEPasien);
@@ -33010,6 +33042,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratBebasTato.setName("btnSuratBebasTato"); 
         btnSuratBebasTato.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSuratBebasTato.addActionListener(this::btnSuratBebasTatoActionPerformed);
+        
+        btnSuratKewaspadaanKesehatan = new widget.ButtonBig();
+        btnSuratKewaspadaanKesehatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5929237_avatar_fever_man_sick_coronavirus_icon.png"))); 
+        btnSuratKewaspadaanKesehatan.setText("Surat Kewaspadaan Kesehatan");
+        btnSuratKewaspadaanKesehatan.setIconTextGap(0);
+        btnSuratKewaspadaanKesehatan.setName("btnSuratKewaspadaanKesehatan"); 
+        btnSuratKewaspadaanKesehatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratKewaspadaanKesehatan.addActionListener(this::btnSuratKewaspadaanKesehatanActionPerformed);
     }
     
 }
