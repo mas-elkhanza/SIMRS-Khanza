@@ -893,7 +893,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
         }else{
             try {
                 Sequel.AutoComitFalse();
-                Sequel.menyimpan("jnj_jabatan","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpan("jnj_jabatan","?,?,?,?",3,new String[]{"-","-","0","0"});
                 Sequel.menyimpan("departemen","?,?",2,new String[]{"-","-"});
                 Sequel.menyimpan("bidang","?",1,new String[]{"-"});
                 Sequel.menyimpan("bank","'T'");

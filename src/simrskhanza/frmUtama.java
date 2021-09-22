@@ -493,6 +493,7 @@ import grafikanalisa.GrafikPeristiwaK3PerLokasiKejadian;
 import grafikanalisa.GrafikPeristiwaK3PerPenyebab;
 import grafikanalisa.GrafikPeristiwaK3PerTahun;
 import grafikanalisa.GrafikPeristiwaK3PerTanggal;
+import grafikanalisa.GrafikPorsiDietPerTanggal;
 import grafikanalisa.GrafikStatusPulangRanap;
 import grafikanalisa.GrafikTBHasilAkhirPengobatan;
 import grafikanalisa.GrafikTBHasilTesHIV;
@@ -17412,6 +17413,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikPorsiDietPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPorsiDietPerTanggal aplikasi=new GrafikPorsiDietPerTanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18035,7 +18047,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
             btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna,btnSuratBebasTato,
-            btnSuratKewaspadaanKesehatan;
+            btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal;
     
     public void isWall(){
         try{            
@@ -21325,6 +21337,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_inventaris_produsen()==true){
                 Panelmenu.add(btnGrafikInventarisProdusen);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_porsidiet_pertanggal()==true){
+                Panelmenu.add(btnGrafikPorsiDietPerTanggal);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -25040,6 +25057,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_inventaris_produsen()==true){
             Panelmenu.add(btnGrafikInventarisProdusen);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_porsidiet_pertanggal()==true){
+            Panelmenu.add(btnGrafikPorsiDietPerTanggal);
             jmlmenu++;
         }
 
@@ -30018,6 +30040,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_porsidiet_pertanggal()==true){
+            if(btnGrafikPorsiDietPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPorsiDietPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -33050,6 +33079,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratKewaspadaanKesehatan.setName("btnSuratKewaspadaanKesehatan"); 
         btnSuratKewaspadaanKesehatan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSuratKewaspadaanKesehatan.addActionListener(this::btnSuratKewaspadaanKesehatanActionPerformed);
+        
+        btnGrafikPorsiDietPerTanggal = new widget.ButtonBig();
+        btnGrafikPorsiDietPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikPorsiDietPerTanggal.setText("Porsi Diet Per Tanggal");
+        btnGrafikPorsiDietPerTanggal.setIconTextGap(0);
+        btnGrafikPorsiDietPerTanggal.setName("btnGrafikPorsiDietPerTanggal"); 
+        btnGrafikPorsiDietPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPorsiDietPerTanggal.addActionListener(this::btnGrafikPorsiDietPerTanggalActionPerformed);
     }
     
 }
