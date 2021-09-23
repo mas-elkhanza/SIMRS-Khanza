@@ -162,7 +162,7 @@ public final class akses {
             integrasi_briapi=false,pengadaan_aset_inventaris=false,akun_aset_inventaris=false,suplier_inventaris=false,penerimaan_aset_inventaris=false,
             bayar_pemesanan_iventaris=false,hutang_aset_inventaris=false,hibah_aset_inventaris=false,titip_faktur_non_medis=false,validasi_tagihan_non_medis=false,
             titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false,pcare_alasan_tacc=false,resep_luar=false,surat_bebas_tbc=false,
-            surat_buta_warna=false,surat_bebas_tato=false,surat_kewaspadaan_kesehatan=false,grafik_porsidiet_pertanggal=false;
+            surat_buta_warna=false,surat_bebas_tato=false,surat_kewaspadaan_kesehatan=false,grafik_porsidiet_pertanggal=false,grafik_porsidiet_perbulan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -928,6 +928,7 @@ public final class akses {
                         akses.surat_bebas_tato=true;
                         akses.surat_kewaspadaan_kesehatan=true;
                         akses.grafik_porsidiet_pertanggal=true;
+                        akses.grafik_porsidiet_perbulan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1677,6 +1678,7 @@ public final class akses {
                         akses.surat_bebas_tato=rs2.getBoolean("surat_bebas_tato");
                         akses.surat_kewaspadaan_kesehatan=rs2.getBoolean("surat_kewaspadaan_kesehatan");
                         akses.grafik_porsidiet_pertanggal=rs2.getBoolean("grafik_porsidiet_pertanggal");
+                        akses.grafik_porsidiet_perbulan=rs2.getBoolean("grafik_porsidiet_perbulan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2424,6 +2426,7 @@ public final class akses {
                         akses.surat_bebas_tato=false;
                         akses.surat_kewaspadaan_kesehatan=false;
                         akses.grafik_porsidiet_pertanggal=false;
+                        akses.grafik_porsidiet_perbulan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3226,4 +3229,5 @@ public final class akses {
     public static boolean getsurat_bebas_tato(){return akses.surat_bebas_tato;}
     public static boolean getsurat_kewaspadaan_kesehatan(){return akses.surat_kewaspadaan_kesehatan;}
     public static boolean getgrafik_porsidiet_pertanggal(){return akses.grafik_porsidiet_pertanggal;}
+    public static boolean getgrafik_porsidiet_perbulan(){return akses.grafik_porsidiet_perbulan;}
 }   
