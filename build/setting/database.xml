@@ -32,11 +32,11 @@
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLAPIPCARE">https://api.bpjs-kesehatan.go.id/pcare-rest-v3.0</entry>
-    <entry key="SECRETKEYAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CONSIDAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="PASSPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="USERPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPIPCARE">https://new-api.bpjs-kesehatan.go.id/pcare-rest-v3.0</entry>
+    <entry key="SECRETKEYAPIPCARE">xPueBzRlvk1+TYL7i0Vhjg==</entry>
+    <entry key="CONSIDAPIPCARE">rgnbQ0aMwwOA4xHf2utJZQ==</entry>
+    <entry key="PASSPCARE">IcSBTCK8Yf5GrciZ/a2XuA==</entry>
+    <entry key="USERPCARE">wNqHuRjy0jfHzYcnxabsKA==</entry>
     <entry key="DIVREGPCARE">REGIONAL V-JAWA TENGAH</entry>
     <entry key="KACABPCARE">SURAKARTA</entry>
     <entry key="URLAPISISRUTE">https://api.sisrute.kemkes.go.id</entry>
