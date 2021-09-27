@@ -494,6 +494,7 @@ import grafikanalisa.GrafikPeristiwaK3PerPenyebab;
 import grafikanalisa.GrafikPeristiwaK3PerTahun;
 import grafikanalisa.GrafikPeristiwaK3PerTanggal;
 import grafikanalisa.GrafikPorsiDietPerBulan;
+import grafikanalisa.GrafikPorsiDietPerRuang;
 import grafikanalisa.GrafikPorsiDietPerTahun;
 import grafikanalisa.GrafikPorsiDietPerTanggal;
 import grafikanalisa.GrafikStatusPulangRanap;
@@ -17448,6 +17449,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnGrafikPorsiDietPerRuangActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPorsiDietPerRuang aplikasi=new GrafikPorsiDietPerRuang(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18071,7 +18083,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPiutangObatBelumLunas,btnIntegrasiBRIApi,btnAkunAsetInventaris,btnPengadaanAset,btnSuplierInventaris,btnPenerimaanAset,
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
             btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna,btnSuratBebasTato,
-            btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun;
+            btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun,btnGrafikPorsiDietPerRuang;
     
     public void isWall(){
         try{            
@@ -21376,6 +21388,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_porsidiet_pertahun()==true){
                 Panelmenu.add(btnGrafikPorsiDietPerTahun);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_porsidiet_perbangsal()==true){
+                Panelmenu.add(btnGrafikPorsiDietPerRuang);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -25106,6 +25123,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_porsidiet_pertahun()==true){
             Panelmenu.add(btnGrafikPorsiDietPerTahun);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_porsidiet_perbangsal()==true){
+            Panelmenu.add(btnGrafikPorsiDietPerRuang);
             jmlmenu++;
         }
 
@@ -30105,6 +30127,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_porsidiet_perbangsal()==true){
+            if(btnGrafikPorsiDietPerRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPorsiDietPerRuang);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -33161,6 +33190,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikPorsiDietPerTahun.setName("btnGrafikPorsiDietPerTahun"); 
         btnGrafikPorsiDietPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
         btnGrafikPorsiDietPerTahun.addActionListener(this::btnGrafikPorsiDietPerTahunActionPerformed);
+        
+        btnGrafikPorsiDietPerRuang = new widget.ButtonBig();
+        btnGrafikPorsiDietPerRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikPorsiDietPerRuang.setText("Porsi Diet Per Ruang");
+        btnGrafikPorsiDietPerRuang.setIconTextGap(0);
+        btnGrafikPorsiDietPerRuang.setName("btnGrafikPorsiDietPerRuang"); 
+        btnGrafikPorsiDietPerRuang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPorsiDietPerRuang.addActionListener(this::btnGrafikPorsiDietPerRuangActionPerformed);
     }
     
 }

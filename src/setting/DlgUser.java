@@ -188,7 +188,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[J]Bayar Pesan Aset/Inventaris","[J]Hutang Aset/Inventaris","[F]Hibah Aset/Inventaris","[J]Titip Faktur/Tagihan Non Medis","[J]Validasi Titip Faktur/Tagihan Non Medis",
                 "[J]Titip Faktur/Tagihan Aset/Inventaris","[J]Validasi Titip Faktur/Tagihan Aset/Inventaris","[E]Hibah Non Medis","[K]Referensi TACC PCare","[D]Resep Luar",
                 "[O]Surat Bebas TBC","[O]Surat Keterangan Buta Warna","[O]Surat Bebas Tato","[O]Surat Kewaspadaan Kesehatan","[N]Porsi Diet Per Tanggal","[N]Porsi Diet Per Bulan",
-                "[N]Porsi Diet Per Tahun"
+                "[N]Porsi Diet Per Tahun","[N]Porsi Diet Per Ruang"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -402,7 +402,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 748;i++) {
+        for (i = 0; i < 749;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2100,6 +2100,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 747:
                     column.setPreferredWidth(121);
                     break;
+                case 748:
+                    column.setPreferredWidth(122);
+                    break;
                 default:
                     column.setPreferredWidth(140);
                     break;
@@ -2598,7 +2601,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3388,7 +3391,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "surat_kewaspadaan_kesehatan='"+tbUser.getValueAt(i,744).toString()+"',"+
                     "grafik_porsidiet_pertanggal='"+tbUser.getValueAt(i,745).toString()+"',"+
                     "grafik_porsidiet_perbulan='"+tbUser.getValueAt(i,746).toString()+"',"+
-                    "grafik_porsidiet_pertahun='"+tbUser.getValueAt(i,747).toString()+"'");
+                    "grafik_porsidiet_pertahun='"+tbUser.getValueAt(i,747).toString()+"',"+
+                    "grafik_porsidiet_perbangsal='"+tbUser.getValueAt(i,748).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4217,7 +4221,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "surat_kewaspadaan_kesehatan='"+tbUser.getValueAt(barisdicopy,744).toString()+"',"+
                                     "grafik_porsidiet_pertanggal='"+tbUser.getValueAt(barisdicopy,745).toString()+"',"+
                                     "grafik_porsidiet_perbulan='"+tbUser.getValueAt(barisdicopy,746).toString()+"',"+
-                                    "grafik_porsidiet_pertahun='"+tbUser.getValueAt(barisdicopy,747).toString()+"'");
+                                    "grafik_porsidiet_pertahun='"+tbUser.getValueAt(barisdicopy,747).toString()+"',"+
+                                    "grafik_porsidiet_perbangsal='"+tbUser.getValueAt(barisdicopy,748).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4560,7 +4565,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris,hutang_aset_inventaris,hibah_aset_inventaris,"+
                         "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset,validasi_tagihan_aset,hibah_non_medis,pcare_alasan_tacc,"+
                         "resep_luar,surat_bebas_tbc,surat_buta_warna,surat_bebas_tato,surat_kewaspadaan_kesehatan,grafik_porsidiet_pertanggal,"+
-                        "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5320,7 +5325,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("surat_kewaspadaan_kesehatan"),
                                rs.getBoolean("grafik_porsidiet_pertanggal"),
                                rs.getBoolean("grafik_porsidiet_perbulan"),
-                               rs.getBoolean("grafik_porsidiet_pertahun")
+                               rs.getBoolean("grafik_porsidiet_pertahun"),
+                               rs.getBoolean("grafik_porsidiet_perbangsal")
                             });
                         }   
                     } catch (Exception e) {
@@ -6069,7 +6075,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("surat_kewaspadaan_kesehatan"),
                            rs.getBoolean("grafik_porsidiet_pertanggal"),
                            rs.getBoolean("grafik_porsidiet_perbulan"),
-                           rs.getBoolean("grafik_porsidiet_pertahun")
+                           rs.getBoolean("grafik_porsidiet_pertahun"),
+                           rs.getBoolean("grafik_porsidiet_perbangsal")
                         });
                     }                                             
                  }

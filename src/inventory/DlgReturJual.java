@@ -98,7 +98,7 @@ public class DlgReturJual extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
         
 
-        NoRetur.setDocument(new batasInput((byte)20).getKata(NoRetur));
+        NoRetur.setDocument(new batasInput((byte)14).getKata(NoRetur));
         kdmem.setDocument(new batasInput((byte)15).getKata(kdmem));
         NoNota.setDocument(new batasInput((byte)20).getKata(NoNota));
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
@@ -1482,7 +1482,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void autonomor() {
         if(!formvalid.equals("No")){
             Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,3),signed)),0) from returjual where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
-                "RJ"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
+                "RJ"+TglRetur.getSelectedItem().toString().substring(6,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
         }else{
             Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,2),signed)),0) from returjual where no_retur_jual like '%"+norawat+"%' ",norawat,2,NoRetur); 
         }

@@ -674,7 +674,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris,hutang_aset_inventaris,hibah_aset_inventaris,"+
                         "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset,validasi_tagihan_aset,hibah_non_medis,pcare_alasan_tacc,"+
                         "resep_luar,surat_bebas_tbc,surat_buta_warna,surat_bebas_tato,surat_kewaspadaan_kesehatan,grafik_porsidiet_pertanggal,"+
-                        "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3249,6 +3249,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[N]Porsi Diet Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[N]Porsi Diet Per Tahun",rs.getBoolean("grafik_porsidiet_pertahun")});
+                    }
+                    
+                    if("[N]Porsi Diet Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Porsi Diet Per Ruang",rs.getBoolean("grafik_porsidiet_perbangsal")});
                     }
                     
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6256,6 +6260,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[N]Porsi Diet Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_porsidiet_pertahun='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[N]Porsi Diet Per Ruang".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_porsidiet_perbangsal='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[O]Indeks Surat".equals(tbUser.getValueAt(i,1).toString())){

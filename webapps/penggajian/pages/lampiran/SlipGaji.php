@@ -3,9 +3,9 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baristahun   = mysqli_fetch_row($hasil);
-   $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
-   $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
-   $hari      = empty($baristhn[2])?date("d"):$baristhn[2];
+   $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
+   $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
    $bln_leng  = strlen($blnini);
    $bulan     = "0";
    if ($bln_leng==1){
@@ -14,7 +14,7 @@
        $bulan=$blnini;
    }
 
-   $bulanindex = empty($baristhn[1])?date("m"):$baristhn[1];
+   $bulanindex = empty($baristahun[1])?date("m"):$baristahun[1];
 
    $_sqllibur = "select `tanggal`, `ktg`
                         from set_hari_libur
@@ -42,7 +42,7 @@
                 DATE_FORMAT(mulai_kerja, '%Y%m'))/12), ' Tahun ',MOD(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'), DATE_FORMAT(mulai_kerja, '%Y%m')),12), ' Bulan ') as lama,
                 pendidikan.indek as index_pendidikan,(To_days('$tahun-$bulan-$hari')-to_days(mulai_kerja))/365 as masker,stts_kerja.indek as index_status,
                 pegawai.indek as index_struktural,pegawai.pengurang,pegawai.mulai_kontrak,CONCAT(FLOOR(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'),DATE_FORMAT(mulai_kontrak, '%Y%m'))/12), ' Tahun ',MOD(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'), DATE_FORMAT(mulai_kontrak, '%Y%m')),12), ' Bulan ') as lamakontrak,
-                (To_days('$tahun-$bulan-$hari')-to_days(mulai_kontrak))/365 as maskon, pegawai.cuti_diambil,pegawai.dankes
+                (To_days('$tahun-$bulan-$hari')-to_days(mulai_kontrak))/365 as maskon, pegawai.cuti_diambil,pegawai.dankes,stts_kerja.ktg as statuskerja
                 from pegawai inner join pendidikan inner join stts_kerja inner join kelompok_jabatan inner join resiko_kerja inner join emergency_index
                 inner join jnj_jabatan inner join departemen on pegawai.departemen=departemen.dep_id and pegawai.pendidikan=pendidikan.tingkat and pegawai.stts_kerja=stts_kerja.stts and pegawai.jnj_jabatan=jnj_jabatan.kode
                 and pegawai.kode_kelompok=kelompok_jabatan.kode_kelompok and pegawai.kode_resiko=resiko_kerja.kode_resiko and pegawai.kode_emergency=emergency_index.kode_emergency
@@ -182,7 +182,7 @@
 				  <td width='60px'>Index Kary</td><td width='3px'>:</td><td width='90px'>$totalind</td>
 				</tr>
                                 <tr class='isi6'>
-				  <td width='60px'>Stts.Kerja</td><td width='3px'>:</td><td width='90px' colspan=4>$baris[18]</td>
+				  <td width='60px'>Stts.Kerja</td><td width='3px'>:</td><td width='90px' colspan=4>$baris[statuskerja]</td>
 				  
 				</tr>
 			     </table>";
@@ -794,15 +794,15 @@
                                         $hasil25=bukaquery($_sql25);
                                         $baris25 = mysqli_fetch_array($hasil25);
                                         $jamsostek   = isset($baris25[0])?$baris25[0]:0;
-                                            $dansos      = isset($baris25[1])?$baris25[1]:0;
-                                            $simwajib    = isset($baris25[2])?$baris25[2]:0;
-                                            $angkop      = isset($baris25[3])?$baris25[3]:0;
-                                            $angla       = isset($baris25[4])?$baris25[4]:0;
-                                            $telpri      = isset($baris25[5])?$baris25[5]:0;
-                                            $pajak       = isset($baris25[6])?$baris25[6]:0;
-                                            $pribadi     = isset($baris25[7])?$baris25[7]:0;
-                                            $lain        = isset($baris25[8])?$baris25[8]:0;
-                                            $bpjs        = isset($baris25[9])?$baris25[9]:0;
+                                            $dansos      = isset($baris25[1])?validangka($baris25[1]):0;
+                                            $simwajib    = isset($baris25[2])?validangka($baris25[2]):0;
+                                            $angkop      = isset($baris25[3])?validangka($baris25[3]):0;
+                                            $angla       = isset($baris25[4])?validangka($baris25[4]):0;
+                                            $telpri      = isset($baris25[5])?validangka($baris25[5]):0;
+                                            $pajak       = isset($baris25[6])?validangka($baris25[6]):0;
+                                            $pribadi     = isset($baris25[7])?validangka($baris25[7]):0;
+                                            $lain        = isset($baris25[8])?validangka($baris25[8]):0;
+                                            $bpjs        = isset($baris25[9])?validangka($baris25[9]):0;
 
                                             $ttljamsostek=$ttljamsostek+$jamsostek;
                                             $ttldansos=$ttldansos+$dansos;

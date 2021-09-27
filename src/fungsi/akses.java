@@ -163,7 +163,7 @@ public final class akses {
             bayar_pemesanan_iventaris=false,hutang_aset_inventaris=false,hibah_aset_inventaris=false,titip_faktur_non_medis=false,validasi_tagihan_non_medis=false,
             titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false,pcare_alasan_tacc=false,resep_luar=false,surat_bebas_tbc=false,
             surat_buta_warna=false,surat_bebas_tato=false,surat_kewaspadaan_kesehatan=false,grafik_porsidiet_pertanggal=false,grafik_porsidiet_perbulan=false,
-            grafik_porsidiet_pertahun=false;
+            grafik_porsidiet_pertahun=false,grafik_porsidiet_perbangsal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -931,6 +931,7 @@ public final class akses {
                         akses.grafik_porsidiet_pertanggal=true;
                         akses.grafik_porsidiet_perbulan=true;
                         akses.grafik_porsidiet_pertahun=true;
+                        akses.grafik_porsidiet_perbangsal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1682,6 +1683,7 @@ public final class akses {
                         akses.grafik_porsidiet_pertanggal=rs2.getBoolean("grafik_porsidiet_pertanggal");
                         akses.grafik_porsidiet_perbulan=rs2.getBoolean("grafik_porsidiet_perbulan");
                         akses.grafik_porsidiet_pertahun=rs2.getBoolean("grafik_porsidiet_pertahun");
+                        akses.grafik_porsidiet_perbangsal=rs2.getBoolean("grafik_porsidiet_perbangsal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2431,6 +2433,7 @@ public final class akses {
                         akses.grafik_porsidiet_pertanggal=false;
                         akses.grafik_porsidiet_perbulan=false;
                         akses.grafik_porsidiet_pertahun=false;
+                        akses.grafik_porsidiet_perbangsal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3235,4 +3238,5 @@ public final class akses {
     public static boolean getgrafik_porsidiet_pertanggal(){return akses.grafik_porsidiet_pertanggal;}
     public static boolean getgrafik_porsidiet_perbulan(){return akses.grafik_porsidiet_perbulan;}
     public static boolean getgrafik_porsidiet_pertahun(){return akses.grafik_porsidiet_pertahun;}
+    public static boolean getgrafik_porsidiet_perbangsal(){return akses.grafik_porsidiet_perbangsal;}
 }   
