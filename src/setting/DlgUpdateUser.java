@@ -674,7 +674,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris,hutang_aset_inventaris,hibah_aset_inventaris,"+
                         "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset,validasi_tagihan_aset,hibah_non_medis,pcare_alasan_tacc,"+
                         "resep_luar,surat_bebas_tbc,surat_buta_warna,surat_bebas_tato,surat_kewaspadaan_kesehatan,grafik_porsidiet_pertanggal,"+
-                        "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal,penilaian_awal_medis_ralan,"+
+                        "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2781,6 +2782,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Penilaian Awal Ranap Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Ranap Kebidanan",rs.getBoolean("penilaian_awal_keperawatan_ranapkebidanan")});
+                    }
+                    
+                    if("[L]Penilaian Awal Medis Ralan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Medis Ralan",rs.getBoolean("penilaian_awal_medis_ralan")});
+                    }
+                    
+                    if("[L]Master Masalah Keperawatan Mata".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Master Masalah Keperawatan Mata",rs.getBoolean("master_masalah_keperawatan_mata")});
+                    }
+                    
+                    if("[L]Penilaian Awal Ralan Mata".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[LPenilaian Awal Ralan Mata",rs.getBoolean("penilaian_awal_keperawatan_mata")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5792,6 +5805,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Penilaian Awal Ranap Kebidanan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_keperawatan_ranapkebidanan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Penilaian Awal Medis Ralan".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_ralan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Master Masalah Keperawatan Mata".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_masalah_keperawatan_mata='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Penilaian Awal Ralan Mata".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_keperawatan_mata='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

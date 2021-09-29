@@ -446,10 +446,15 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 42, 92, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2020" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2021" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
+        Tanggal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TanggalItemStateChanged(evt);
+            }
+        });
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKeyPressed(evt);
@@ -944,6 +949,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private void DiagnosisKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinisKeyPressed
         Valid.pindah(evt,InformasiTambahan,BtnSimpan);
     }//GEN-LAST:event_DiagnosisKlinisKeyPressed
+
+    private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
+        try {
+            autoNomor();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_TanggalItemStateChanged
 
     /**
     * @param args the command line arguments
