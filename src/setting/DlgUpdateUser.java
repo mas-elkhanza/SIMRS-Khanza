@@ -2793,7 +2793,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     }
                     
                     if("[L]Penilaian Awal Ralan Mata".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[LPenilaian Awal Ralan Mata",rs.getBoolean("penilaian_awal_keperawatan_mata")});
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Ralan Mata",rs.getBoolean("penilaian_awal_keperawatan_mata")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
