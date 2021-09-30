@@ -169,7 +169,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             "Tgl.Rawat", "Status", "No.Rawat", "No.RM", "Nama Pasien", "Kode Dokter", "Dokter Penanggung Jawab", "Kondisi Pulang", "Keluhan utama riwayat penyakit yang postif",
             "Jalannya penyakit selama perawatan", "Pemeriksaan penunjang yang positif", "Hasil laboratorium yang positif", "Diagnosa Utama", "ICD10 Utama", "Diagnosa Sekunder 1",
             "ICD10 Sek 1", "Diagnosa Sekunder 2", "ICD10 Sek 2", "Diagnosa Sekunder 3", "ICD10 Sek 3", "Diagnosa Sekunder 4", "ICD10 Sek 4", "Prosedur Utama", "ICD9 Utama",
-            "Prosedur Sekunder 1", "ICD9 Sek1", "Prosedur Sekunder 2", "ICD9 Sek2", "Prosedur Sekunder 3", "ICD9 Sek3", "Kondisi Pulang", "Riwayat Penyakit", "Tindakan di RS", "Alasan Pulang", "Pemeriksaan Fisik", "Penyakit Penyerta"
+            "Prosedur Sekunder 1", "ICD9 Sek1", "Prosedur Sekunder 2", "ICD9 Sek2", "Prosedur Sekunder 3", "ICD9 Sek3", "Kondisi Pulang", "Riwayat Penyakit", "Tindakan di RS", "Alasan Pulang", "Pemeriksaan Fisik", "Penyakit Penyerta","nomor"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -1567,6 +1567,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             JasperViewer.viewReport(print, false);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada" + ex);
+            System.out.println("Error "+ex);
         }
     }
 
@@ -2109,7 +2110,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         + "resume_pasien.diagnosa_sekunder3,resume_pasien.kd_diagnosa_sekunder3,resume_pasien.diagnosa_sekunder4,resume_pasien.kd_diagnosa_sekunder4, "
                         + "resume_pasien.prosedur_utama,resume_pasien.kd_prosedur_utama,resume_pasien.prosedur_sekunder,resume_pasien.kd_prosedur_sekunder, "
                         + "resume_pasien.prosedur_sekunder2,resume_pasien.kd_prosedur_sekunder2,resume_pasien.prosedur_sekunder3,resume_pasien.kd_prosedur_sekunder3,"
-                        + "resume_pasien.riwayat_penyakit,resume_pasien.tindakan_perawatan,resume_pasien.alasan_pulang,resume_pasien.kondisi_pulang,resume_pasien.pemeriksaan_fisik "
+                        + "resume_pasien.riwayat_penyakit,resume_pasien.tindakan_perawatan,resume_pasien.alasan_pulang,resume_pasien.kondisi_pulang,resume_pasien.pemeriksaan_fisik,resume_pasien.noresume "
                         + "from resume_pasien inner join reg_periksa on resume_pasien.no_rawat=reg_periksa.no_rawat  "
                         + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter "
                         + "where reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
@@ -2122,7 +2123,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         + "resume_pasien.diagnosa_sekunder3,resume_pasien.kd_diagnosa_sekunder3,resume_pasien.diagnosa_sekunder4,resume_pasien.kd_diagnosa_sekunder4, "
                         + "resume_pasien.prosedur_utama,resume_pasien.kd_prosedur_utama,resume_pasien.prosedur_sekunder,resume_pasien.kd_prosedur_sekunder, "
                         + "resume_pasien.prosedur_sekunder2,resume_pasien.kd_prosedur_sekunder2,resume_pasien.prosedur_sekunder3,resume_pasien.kd_prosedur_sekunder3,"
-                        + "resume_pasien.riwayat_penyakit,resume_pasien.tindakan_perawatan,resume_pasien.alasan_pulang,resume_pasien.kondisi_pulang,resume_pasien.pemeriksaan_fisik "
+                        + "resume_pasien.riwayat_penyakit,resume_pasien.tindakan_perawatan,resume_pasien.alasan_pulang,resume_pasien.kondisi_pulang,resume_pasien.pemeriksaan_fisik,resume_pasien.noresume "
                         + "from resume_pasien inner join reg_periksa on resume_pasien.no_rawat=reg_periksa.no_rawat  "
                         + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter "
                         + "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut like ? or "
@@ -2188,7 +2189,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         rs.getString("kd_diagnosa_sekunder4"), rs.getString("prosedur_utama"), rs.getString("kd_prosedur_utama"), rs.getString("prosedur_sekunder"),
                         rs.getString("kd_prosedur_sekunder"), rs.getString("prosedur_sekunder2"), rs.getString("kd_prosedur_sekunder2"), rs.getString("prosedur_sekunder3"),
                         rs.getString("kd_prosedur_sekunder3"), rs.getString("kondisi_pulang"), rs.getString("riwayat_penyakit"), rs.getString("tindakan_perawatan"),
-                        rs.getString("alasan_pulang"), rs.getString("pemeriksaan_fisik")
+                        rs.getString("alasan_pulang"), rs.getString("pemeriksaan_fisik"),"",rs.getString("noresume")
                     });
                 }
             } catch (Exception e) {
