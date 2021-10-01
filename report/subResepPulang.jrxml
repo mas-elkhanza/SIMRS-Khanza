@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subResepPulang" columnCount="2" printOrder="Horizontal" pageWidth="555" pageHeight="200" columnWidth="276" columnSpacing="2" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d143e5d9-80b9-43c4-9ea8-902888bd3059">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="no_rawat" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT resep_pulang.aturan_pakai,
+	databarang.nama_brng
+FROM resep_pulang
+	INNER JOIN databarang ON 
+	 resep_pulang.kode_brng = databarang.kode_brng 
+WHERE 
+	 resep_pulang.no_rawat = $P{no_rawat} 
+	 AND databarang.kode_kategori = 'obat']]>
+	</queryString>
+	<field name="nama_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="databarang"/>
+	</field>
+	<field name="aturan_pakai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="aturan_pakai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep_pulang"/>
+	</field>
+	<columnHeader>
+		<band height="13" splitType="Immediate">
+			<staticText>
+				<reportElement x="0" y="0" width="189" height="13" uuid="fa08c7ab-57d3-445f-9a13-22d5b851a6f6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f060ccb6-194f-400a-b45d-b95e1f79f920"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="0" width="87" height="13" uuid="b62b4ed7-674f-45aa-85cf-4963850d293c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a68c39b4-7cea-4e85-9f8f-f9b58d5fc590"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aturan Pakai]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Immediate">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="189" height="13" uuid="0f2baf04-8b7b-4656-8840-76771e0c19a6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f060ccb6-194f-400a-b45d-b95e1f79f920"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="189" y="0" width="87" height="13" uuid="b6108439-dcaa-4233-a1c5-4a6d206ef75a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a68c39b4-7cea-4e85-9f8f-f9b58d5fc590"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
