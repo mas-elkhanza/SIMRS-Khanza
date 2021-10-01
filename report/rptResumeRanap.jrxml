@@ -16,7 +16,6 @@
 	<parameter name="no_rawat" class="java.lang.String"/>
 	<parameter name="tgl_awal" class="java.lang.String"/>
 	<parameter name="tgl_ahir" class="java.lang.String"/>
-	<parameter name="no_resume" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
 	<parameter name="dataSourceObat" class="java.util.Collection"/>
 	<parameter name="cari" class="java.lang.String"/>
@@ -42,6 +41,7 @@
 	resume_pasien.jalannya_penyakit,
 	resume_pasien.pemeriksaan_penunjang,
 	resume_pasien.hasil_laborat,
+	resume_pasien.noresume,
 	resume_pasien.diagnosa_utama,
 	resume_pasien.kd_diagnosa_utama,
 	resume_pasien.diagnosa_sekunder,
@@ -78,7 +78,7 @@ FROM resume_pasien
 	 reg_periksa.no_rawat = pemeriksaan_ranap.no_rawat 
      left join skdp_bpjs on skdp_bpjs.no_rkm_medis=pasien.no_rkm_medis 
      left join ttd_dokter ON ttd_dokter.kd_dokter = dokter.kd_dokter 
-    where reg_periksa.tgl_registrasi between $P{tgl_awal} and $P{tgl_ahir} and reg_periksa.no_rawat like $P{cari}  
+    where resume_pasien.tgl_resume between $P{tgl_awal} and $P{tgl_ahir} and resume_pasien.no_rawat like $P{cari}  
     group by reg_periksa.no_rawat]]>
 	</queryString>
 	<field name="tgl_registrasi" class="java.sql.Date">
@@ -159,6 +159,10 @@ FROM resume_pasien
 	</field>
 	<field name="hasil_laborat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="hasil_laborat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
+	</field>
+	<field name="noresume" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="noresume"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
 	</field>
 	<field name="diagnosa_utama" class="java.lang.String">
@@ -249,7 +253,7 @@ FROM resume_pasien
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="315" splitType="Stretch">
+		<band height="349" splitType="Stretch">
 			<rectangle>
 				<reportElement x="290" y="102" width="265" height="50" uuid="793d52b3-f264-469d-8855-dd7ef8222c57"/>
 				<graphicElement>
@@ -891,7 +895,7 @@ FROM resume_pasien
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{no_resume}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{noresume}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="483" y="85" width="71" height="15" uuid="96e2b7c5-37d6-4e79-9c96-de5f105e1f6e"/>
@@ -901,13 +905,8 @@ FROM resume_pasien
 				</textElement>
 				<text><![CDATA[RM 13 Rev. 3]]></text>
 			</staticText>
-		</band>
-	</pageHeader>
-	<detail>
-		<band height="28" splitType="Prevent">
-			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<subreport>
-				<reportElement x="0" y="1" width="555" height="27" uuid="9df82c46-e9be-4ba7-ae60-8da1bdb223a0"/>
+				<reportElement x="0" y="319" width="555" height="28" uuid="9df82c46-e9be-4ba7-ae60-8da1bdb223a0"/>
 				<subreportParameter name="no_rawat">
 					<subreportParameterExpression><![CDATA[$F{no_rawat}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -915,7 +914,12 @@ FROM resume_pasien
 				<subreportExpression><![CDATA["subResumeObat.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
-		<band height="118" splitType="Prevent">
+	</pageHeader>
+	<detail>
+		<band height="26" splitType="Prevent">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+		</band>
+		<band height="138" splitType="Prevent">
 			<rectangle>
 				<reportElement x="241" y="35" width="153" height="35" uuid="34e4e53f-b717-4893-b527-f417301f64db"/>
 				<graphicElement>
@@ -1066,9 +1070,9 @@ FROM resume_pasien
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="78">
+		<band height="104">
 			<rectangle>
-				<reportElement x="0" y="3" width="555" height="75" uuid="ebff6a7b-eda7-4486-a66d-8a0fb139325f">
+				<reportElement x="0" y="14" width="555" height="75" uuid="ebff6a7b-eda7-4486-a66d-8a0fb139325f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -1076,14 +1080,14 @@ FROM resume_pasien
 				</graphicElement>
 			</rectangle>
 			<image>
-				<reportElement x="10" y="22" width="100" height="50" uuid="05f84380-7136-4ecf-a957-b68f91915798"/>
+				<reportElement x="10" y="33" width="100" height="50" uuid="05f84380-7136-4ecf-a957-b68f91915798"/>
 				<imageExpression><![CDATA[$F{ttd}]]></imageExpression>
 			</image>
 			<rectangle>
-				<reportElement x="359" y="10" width="190" height="51" uuid="ac6bf24b-37c4-46d4-b83a-1b102620a68c"/>
+				<reportElement x="359" y="21" width="190" height="51" uuid="ac6bf24b-37c4-46d4-b83a-1b102620a68c"/>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Transparent" x="4" y="10" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="14500a93-5ef3-4424-90bd-4c61089096c1"/>
+				<reportElement mode="Transparent" x="4" y="21" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="14500a93-5ef3-4424-90bd-4c61089096c1"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1092,7 +1096,7 @@ FROM resume_pasien
 				<text><![CDATA[Dokter yang Merawat]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="6" y="58" width="156" height="12" uuid="82535bde-bc53-4de0-9f68-7f052d8f9e8c">
+				<reportElement x="6" y="69" width="156" height="12" uuid="82535bde-bc53-4de0-9f68-7f052d8f9e8c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -1101,7 +1105,7 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="177" y="11" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="ca89a9f1-7477-49d9-a511-9c0d612c2d7a"/>
+				<reportElement mode="Transparent" x="177" y="22" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="ca89a9f1-7477-49d9-a511-9c0d612c2d7a"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1110,7 +1114,7 @@ FROM resume_pasien
 				<text><![CDATA[Pasien / Keluarga]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="177" y="58" width="158" height="12" uuid="673f0b81-9e33-42e3-9156-d9b1978cfe99">
+				<reportElement x="177" y="69" width="158" height="12" uuid="673f0b81-9e33-42e3-9156-d9b1978cfe99">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -1119,7 +1123,7 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="373" y="19" width="56" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="f25da4d6-68ca-4af9-8b28-7e84fe6d986d"/>
+				<reportElement mode="Transparent" x="373" y="30" width="56" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="f25da4d6-68ca-4af9-8b28-7e84fe6d986d"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1128,7 +1132,7 @@ FROM resume_pasien
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="373" y="36" width="56" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="0a4d2eec-85c5-4ca4-bee8-f1489b7ac150"/>
+				<reportElement mode="Transparent" x="373" y="47" width="56" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="0a4d2eec-85c5-4ca4-bee8-f1489b7ac150"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1137,7 +1141,7 @@ FROM resume_pasien
 				<text><![CDATA[Jam]]></text>
 			</staticText>
 			<textField pattern="dd-MM-yyyy" isBlankWhenNull="true">
-				<reportElement x="443" y="19" width="100" height="12" uuid="794d4c71-f69d-4553-9503-0fe0c5e37b68">
+				<reportElement x="443" y="30" width="100" height="12" uuid="794d4c71-f69d-4553-9503-0fe0c5e37b68">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -1146,7 +1150,7 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{tgl_keluar}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="429" y="19" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="e9a443f0-0627-4010-b91a-52b34bf951a7"/>
+				<reportElement mode="Transparent" x="429" y="30" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="e9a443f0-0627-4010-b91a-52b34bf951a7"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1155,7 +1159,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="429" y="36" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="56dbe7d7-680a-482d-b2c8-4b806819ca53"/>
+				<reportElement mode="Transparent" x="429" y="47" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="56dbe7d7-680a-482d-b2c8-4b806819ca53"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1164,7 +1168,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField pattern="hh:mm:ss" isBlankWhenNull="true">
-				<reportElement x="443" y="36" width="100" height="12" uuid="a80293a5-245f-4a22-be68-36063151255e">
+				<reportElement x="443" y="47" width="100" height="12" uuid="a80293a5-245f-4a22-be68-36063151255e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -1174,10 +1178,4 @@ FROM resume_pasien
 			</textField>
 		</band>
 	</columnFooter>
-	<summary>
-		<band height="85"/>
-	</summary>
-	<noData>
-		<band height="64"/>
-	</noData>
 </jasperReport>

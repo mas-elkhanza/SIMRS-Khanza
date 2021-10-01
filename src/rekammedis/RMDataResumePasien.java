@@ -1349,10 +1349,11 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         } else if (tblDiagnosa.getModel().getValueAt(0, 1).toString().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Diagnosa Utama Masih Kosong.");
         } else {
-             int no_antrian = Sequel.cariInteger("Select max(noresume) from resume_pasien where tgl_resume like '"+Valid.SetDateToString(now).substring(0,8)+"%'");
-            if (no_antrian == 0) {
-                no_antrian = 1;
-            }
+            String dateNow = Valid.SetDateToString(now);
+             int no = Sequel.cariInteger("Select max(noresume) from resume_pasien where tgl_resume like '"+Valid.SetDateToString(now).substring(0,8)+"%'");
+            System.out.println("no_antrian resume :"+no);
+            String no_antrian = withLargeIntegers(no+1) + "/RSUIHA/" + Valid.RomanNumerals(Integer.parseInt(dateNow.substring(5, 6))) + "/RANAP/" + dateNow.substring(0, 4);
+            
             if (Sequel.menyimpantf("resume_pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 32, new String[]{
                 TNoRw.getText(), KodeDokter.getText(), KeluhanUtama.getText(), JalannyaPenyakit.getText(), PemeriksaanPenunjang.getText(), HasilLaborat.getText(),
                 tblDiagnosa.getModel().getValueAt(0, 1).toString(), tblDiagnosa.getModel().getValueAt(0, 0).toString(),
@@ -1361,7 +1362,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 tblDiagnosa.getModel().getValueAt(3, 1).toString(), tblDiagnosa.getModel().getValueAt(3, 0).toString(),
                 tblDiagnosa.getModel().getValueAt(4, 1).toString(), tblDiagnosa.getModel().getValueAt(4, 0).toString(),
                 "", "", "", "", "", "", "", "", kondisiSaatPulang.getText(), riwayatPenyakit.getText(), tindakanSlRS.getText(), PemeriksaanFisik.getText(),
-                Kondisi.getSelectedItem().toString(), penyakitPenyerta.getText(),withLargeIntegers(no_antrian+1), Valid.SetDateToString(now)
+                Kondisi.getSelectedItem().toString(), penyakitPenyerta.getText(),no_antrian, Valid.SetDateToString(now)
             }) == true) {
                 tampil();
                 tampilObat();
@@ -1516,16 +1517,11 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (TCari.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Pilih data dahulu.");
-        }
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
-//            PrintResume();
             print();
-//            Valid.panggilUrl("billing/LaporanResumeMedis.php?no_rawat=" + TNoRw.getText() + "&tgl_awal=" + Valid.SetDateToString(DTPCari1.getDate()) + "&tgl_ahir=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1536,7 +1532,6 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     }
 
     private void print() {
-        int no_antrian = 1;
         String reportName = "subResumeObat.jasper", reportDirName = "report";
         try {
             String path = "./" + reportDirName + "/" + reportName;
@@ -1555,15 +1550,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     + "INNER JOIN dokter ON resume_pasien.kd_dokter=dokter.kd_dokter "
                     + "INNER JOIN ttd_dokter ON dokter.kd_dokter=ttd_dokter.kd_dokter"));
             param.put("SUBREPORT_DIR", path);
-//                param.put("dataSourceObat", listKategori);
-            no_antrian = Sequel.cariInteger("Select max(noresume) from resume_pasien");
-            if (no_antrian == 0) {
-                no_antrian = 1;
-            }
-            String tgl = Sequel.cariString("Select tgl_resume from resume_pasien where no_rawat='" + TNoRw.getText() + "'");
-            System.out.println("tanggal resume :"+tgl);
-            param.put("no_resume", withLargeIntegers(no_antrian) + "/RSUIHA/" + Valid.RomanNumerals(Integer.parseInt(tgl.substring(5, 6))) + "/RANAP/" + tgl.substring(0, 4));
-
+            
             param.put("tgl_awal", Valid.SetDateToString(DTPCari1.getDate()));
             param.put("tgl_ahir", Valid.SetDateToString(DTPCari2.getDate()));
             JasperPrint print = JasperFillManager.fillReport(reports, param, koneksi);
@@ -1891,26 +1878,37 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     }//GEN-LAST:event_HasilLaboratKeyPressed
 
     private void MnLaporanResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLaporanResumeActionPerformed
-        if (tbObat.getSelectedRow() > -1) {
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars", akses.getnamars());
-            param.put("alamatrs", akses.getalamatrs());
-            param.put("kotars", akses.getkabupatenrs());
-            param.put("propinsirs", akses.getpropinsirs());
-            param.put("kontakrs", akses.getkontakrs());
-            param.put("emailrs", akses.getemailrs());
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
-            param.put("norawat", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
-            param.put("finger", Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()));
-            if (tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString().equals("Ralan")) {
-                param.put("ruang", Sequel.cariIsi("select poliklinik.nm_poli from poliklinik inner join reg_periksa on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat=?", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
-                param.put("tanggalkeluar", Sequel.cariIsi("select DATE_FORMAT(tgl_registrasi, '%d-%m-%Y') from reg_periksa where no_rawat=?", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
-            } else {
-                param.put("ruang", Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar inner join kamar_inap on bangsal.kd_bangsal=kamar.kd_bangsal and kamar_inap.kd_kamar=kamar.kd_kamar where no_rawat=? order by tgl_masuk desc limit 1 ", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
-                param.put("tanggalkeluar", Sequel.cariIsi("select DATE_FORMAT(tgl_keluar, '%d-%m-%Y') from kamar_inap where no_rawat=? order by tgl_keluar desc limit 1 ", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
-            }
-            Valid.MyReport("rptLaporanResume.jasper", "report", "::[ Laporan Resume Pasien ]::", param);
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if (TCari.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Maaf, Pilih data dahulu.");
         }
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnBatal.requestFocus();
+        } else if (tabMode.getRowCount() != 0) {
+            print();
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+//        if (tbObat.getSelectedRow() > -1) {
+//            Map<String, Object> param = new HashMap<>();
+//            param.put("namars", akses.getnamars());
+//            param.put("alamatrs", akses.getalamatrs());
+//            param.put("kotars", akses.getkabupatenrs());
+//            param.put("propinsirs", akses.getpropinsirs());
+//            param.put("kontakrs", akses.getkontakrs());
+//            param.put("emailrs", akses.getemailrs());
+//            param.put("logo", Sequel.cariGambar("select logo from setting"));
+//            param.put("norawat", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
+//            param.put("finger", Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()));
+//            if (tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString().equals("Ralan")) {
+//                param.put("ruang", Sequel.cariIsi("select poliklinik.nm_poli from poliklinik inner join reg_periksa on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat=?", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
+//                param.put("tanggalkeluar", Sequel.cariIsi("select DATE_FORMAT(tgl_registrasi, '%d-%m-%Y') from reg_periksa where no_rawat=?", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
+//            } else {
+//                param.put("ruang", Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar inner join kamar_inap on bangsal.kd_bangsal=kamar.kd_bangsal and kamar_inap.kd_kamar=kamar.kd_kamar where no_rawat=? order by tgl_masuk desc limit 1 ", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
+//                param.put("tanggalkeluar", Sequel.cariIsi("select DATE_FORMAT(tgl_keluar, '%d-%m-%Y') from kamar_inap where no_rawat=? order by tgl_keluar desc limit 1 ", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString()));
+//            }
+//            Valid.MyReport("rptLaporanResume.jasper", "report", "::[ Laporan Resume Pasien ]::", param);
+//        }
     }//GEN-LAST:event_MnLaporanResumeActionPerformed
 
     private void MnInputDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInputDiagnosaActionPerformed
@@ -2116,7 +2114,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         + "resume_pasien.riwayat_penyakit,resume_pasien.tindakan_perawatan,resume_pasien.alasan_pulang,resume_pasien.kondisi_pulang,resume_pasien.pemeriksaan_fisik,resume_pasien.noresume "
                         + "from resume_pasien inner join reg_periksa on resume_pasien.no_rawat=reg_periksa.no_rawat  "
                         + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter "
-                        + "where reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
+                        + "where resume_pasien.tgl_resume between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
             } else {
                 ps = koneksi.prepareStatement(
                         "select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "
@@ -2129,17 +2127,17 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         + "resume_pasien.riwayat_penyakit,resume_pasien.tindakan_perawatan,resume_pasien.alasan_pulang,resume_pasien.kondisi_pulang,resume_pasien.pemeriksaan_fisik,resume_pasien.noresume "
                         + "from resume_pasien inner join reg_periksa on resume_pasien.no_rawat=reg_periksa.no_rawat  "
                         + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter "
-                        + "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and pasien.nm_pasien like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kd_dokter like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and dokter.nm_dokter like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kondisi_pulang like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kd_diagnosa_utama like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.diagnosa_utama like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.prosedur_utama like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rawat like ? or "
-                        + "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kd_prosedur_utama like ? "
+                        + "where resume_pasien.tgl_resume between ? and ? and reg_periksa.status_lanjut like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and reg_periksa.no_rkm_medis like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and pasien.nm_pasien like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kd_dokter like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and dokter.nm_dokter like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kondisi_pulang like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kd_diagnosa_utama like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.diagnosa_utama like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.prosedur_utama like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and reg_periksa.no_rawat like ? or "
+                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kd_prosedur_utama like ? "
                         + "order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
             }
             try {
