@@ -1367,6 +1367,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 tampilObat();
                 tampilObatPulang();
                 emptTeks();
+                
+                JOptionPane.showMessageDialog(rootPane, "Simpan Data Berhasil");
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1558,7 +1560,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             if (no_antrian == 0) {
                 no_antrian = 1;
             }
-            String tgl = Sequel.cariString("Select tgl_keluar from kamar_inap where no_rawat='" + TNoRw.getText() + "'");
+            String tgl = Sequel.cariString("Select tgl_resume from resume_pasien where no_rawat='" + TNoRw.getText() + "'");
+            System.out.println("tanggal resume :"+tgl);
             param.put("no_resume", withLargeIntegers(no_antrian) + "/RSUIHA/" + Valid.RomanNumerals(Integer.parseInt(tgl.substring(5, 6))) + "/RANAP/" + tgl.substring(0, 4));
 
             param.put("tgl_awal", Valid.SetDateToString(DTPCari1.getDate()));

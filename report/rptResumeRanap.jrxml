@@ -74,7 +74,7 @@ FROM resume_pasien
 	 kamar.kd_kamar = kamar_inap.kd_kamar 
 	inner join bangsal ON 
 	 kamar.kd_bangsal = bangsal.kd_bangsal 
-	inner join pemeriksaan_ranap ON 
+	left join pemeriksaan_ranap ON 
 	 reg_periksa.no_rawat = pemeriksaan_ranap.no_rawat 
      left join skdp_bpjs on skdp_bpjs.no_rkm_medis=pasien.no_rkm_medis 
      left join ttd_dokter ON ttd_dokter.kd_dokter = dokter.kd_dokter 
@@ -1136,7 +1136,7 @@ FROM resume_pasien
 				</textElement>
 				<text><![CDATA[Jam]]></text>
 			</staticText>
-			<textField pattern="dd-MM-yyyy">
+			<textField pattern="dd-MM-yyyy" isBlankWhenNull="true">
 				<reportElement x="443" y="19" width="100" height="12" uuid="794d4c71-f69d-4553-9503-0fe0c5e37b68">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1163,7 +1163,7 @@ FROM resume_pasien
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField pattern="hh:mm:ss">
+			<textField pattern="hh:mm:ss" isBlankWhenNull="true">
 				<reportElement x="443" y="36" width="100" height="12" uuid="a80293a5-245f-4a22-be68-36063151255e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
