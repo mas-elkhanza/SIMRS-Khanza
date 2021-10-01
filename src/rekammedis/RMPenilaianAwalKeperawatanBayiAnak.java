@@ -3165,18 +3165,14 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()>-1){
-            if(Sequel.queryu2tf("delete from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?",1,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-            })==true){
-                TNoRM1.setText("");
-                TPasien1.setText("");
-                Sequel.meghapus("penilaian_awal_keperawatan_ralan_bayi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                Valid.tabelKosong(tabModeDetailMasalah);
-                ChkAccor.setSelected(false);
-                isMenu();
-                tampil();
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
             }else{
-                JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),91).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                }
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
@@ -3231,30 +3227,14 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
             if(tbObat.getSelectedRow()>-1){
-                if(Sequel.mengedittf("penilaian_awal_keperawatan_ralan_bayi","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,td=?,nadi=?,rr=?,suhu=?,gcs=?,bb=?,tb=?,lp=?,lk=?,ld=?,keluhan_utama=?,rpd=?,rpk=?,rpo=?,alergi=?,anakke=?,darisaudara=?,caralahir=?,ket_caralahir=?,umurkelahiran=?,kelainanbawaan=?,ket_kelainan_bawaan=?,usiatengkurap=?,usiaduduk=?,usiaberdiri=?,usiagigipertama=?,usiaberjalan=?,usiabicara=?,usiamembaca=?,usiamenulis=?,gangguanemosi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,adl=?,status_psiko=?,ket_psiko=?,hub_keluarga=?,pengasuh=?,ket_pengasuh=?,ekonomi=?,budaya=?,ket_budaya=?,edukasi=?,ket_edukasi=?,berjalan_a=?,berjalan_b=?,berjalan_c=?,hasil=?,lapor=?,ket_lapor=?,sg1=?,nilai1=?,sg2=?,nilai2=?,sg3=?,nilai3=?,sg4=?,nilai4=?,total_hasil=?,wajah=?,nilaiwajah=?,kaki=?,nilaikaki=?,aktifitas=?,nilaiaktifitas=?,menangis=?,nilaimenangis=?,bersuara=?,nilaibersuara=?,hasilnyeri=?,nyeri=?,lokasi=?,durasi=?,frekuensi=?,nyeri_hilang=?,ket_nyeri=?,pada_dokter=?,ket_dokter=?,rencana=?,nip=?",86,new String[]{
-                        TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
-                        Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),LP.getText(),LK.getText(),LD.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),Anakke.getText(),DariSaudara.getText(),
-                        CaraKelahiran.getSelectedItem().toString(),KetCaraKelahiran.getText(),UmurKelahiran.getSelectedItem().toString(),KelainanBawaan.getSelectedItem().toString(),KetKelainanBawaan.getText(),UsiaTengkurap.getText(),
-                        UsiaDuduk.getText(),UsiaBerdiri.getText(),UsiaGigi.getText(),UsiaBerjalan.getText(),UsiaBicara.getText(),UsiaMembaca.getText(),UsiaMenulis.getText(),GangguanEmosi.getText(),AlatBantu.getSelectedItem().toString(),
-                        KetBantu.getText(),Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(),
-                        Pengasuh.getSelectedItem().toString(),KetPengasuh.getText(),Ekonomi.getSelectedItem().toString(),StatusBudaya.getSelectedItem().toString(),KetBudaya.getText(),Edukasi.getSelectedItem().toString(),KetEdukasi.getText(),
-                        RJa1.getSelectedItem().toString(),RJa2.getSelectedItem().toString(),RJb.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(),SG1.getSelectedItem().toString(),
-                        NilaiGizi1.getText(),SG2.getSelectedItem().toString(),NilaiGizi2.getText(),SG3.getSelectedItem().toString(),NilaiGizi3.getText(),SG4.getSelectedItem().toString(),NilaiGizi4.getText(),TotalNilaiGizi.getText(),
-                        SkalaWajah.getSelectedItem().toString(),NilaiWajah.getText(),SkalaKaki.getSelectedItem().toString(),NilaiKaki.getText(),SkalaAktifitas.getSelectedItem().toString(),NilaiAktifitas.getText(),SkalaMenangis.getSelectedItem().toString(),
-                        NilaiMenangis.getText(),SkalaBersuara.getSelectedItem().toString(),NilaiBersuara.getText(),SkalaNyeri.getText(),Nyeri.getSelectedItem().toString(),Lokasi.getText(),Durasi.getText(),Frekuensi.getText(),
-                        NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                     })==true){
-                        Sequel.meghapus("penilaian_awal_keperawatan_ralan_bayi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                        for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
-                            if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_bayi_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
-                            }
-                        }
-                        getMasalah();
-                        getImunisasi();
-                        tampil();
-                        emptTeks();
-                        TabRawat.setSelectedIndex(1);
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else{
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),91).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
@@ -5372,6 +5352,50 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             }
         } catch (Exception e) {
             System.out.println("Notif : "+e);
+        }
+    }
+
+    private void hapus() {
+        if(Sequel.queryu2tf("delete from penilaian_awal_keperawatan_ralan_bayi where no_rawat=?",1,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        })==true){
+            TNoRM1.setText("");
+            TPasien1.setText("");
+            Sequel.meghapus("penilaian_awal_keperawatan_ralan_bayi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Valid.tabelKosong(tabModeDetailMasalah);
+            ChkAccor.setSelected(false);
+            isMenu();
+            tampil();
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+    
+    private void ganti(){
+        if(Sequel.mengedittf("penilaian_awal_keperawatan_ralan_bayi","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,td=?,nadi=?,rr=?,suhu=?,gcs=?,bb=?,tb=?,lp=?,lk=?,ld=?,keluhan_utama=?,rpd=?,rpk=?,rpo=?,alergi=?,anakke=?,darisaudara=?,caralahir=?,ket_caralahir=?,umurkelahiran=?,kelainanbawaan=?,ket_kelainan_bawaan=?,usiatengkurap=?,usiaduduk=?,usiaberdiri=?,usiagigipertama=?,usiaberjalan=?,usiabicara=?,usiamembaca=?,usiamenulis=?,gangguanemosi=?,alat_bantu=?,ket_bantu=?,prothesa=?,ket_pro=?,adl=?,status_psiko=?,ket_psiko=?,hub_keluarga=?,pengasuh=?,ket_pengasuh=?,ekonomi=?,budaya=?,ket_budaya=?,edukasi=?,ket_edukasi=?,berjalan_a=?,berjalan_b=?,berjalan_c=?,hasil=?,lapor=?,ket_lapor=?,sg1=?,nilai1=?,sg2=?,nilai2=?,sg3=?,nilai3=?,sg4=?,nilai4=?,total_hasil=?,wajah=?,nilaiwajah=?,kaki=?,nilaikaki=?,aktifitas=?,nilaiaktifitas=?,menangis=?,nilaimenangis=?,bersuara=?,nilaibersuara=?,hasilnyeri=?,nyeri=?,lokasi=?,durasi=?,frekuensi=?,nyeri_hilang=?,ket_nyeri=?,pada_dokter=?,ket_dokter=?,rencana=?,nip=?",86,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
+                Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),LP.getText(),LK.getText(),LD.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),Anakke.getText(),DariSaudara.getText(),
+                CaraKelahiran.getSelectedItem().toString(),KetCaraKelahiran.getText(),UmurKelahiran.getSelectedItem().toString(),KelainanBawaan.getSelectedItem().toString(),KetKelainanBawaan.getText(),UsiaTengkurap.getText(),
+                UsiaDuduk.getText(),UsiaBerdiri.getText(),UsiaGigi.getText(),UsiaBerjalan.getText(),UsiaBicara.getText(),UsiaMembaca.getText(),UsiaMenulis.getText(),GangguanEmosi.getText(),AlatBantu.getSelectedItem().toString(),
+                KetBantu.getText(),Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(),
+                Pengasuh.getSelectedItem().toString(),KetPengasuh.getText(),Ekonomi.getSelectedItem().toString(),StatusBudaya.getSelectedItem().toString(),KetBudaya.getText(),Edukasi.getSelectedItem().toString(),KetEdukasi.getText(),
+                RJa1.getSelectedItem().toString(),RJa2.getSelectedItem().toString(),RJb.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(),SG1.getSelectedItem().toString(),
+                NilaiGizi1.getText(),SG2.getSelectedItem().toString(),NilaiGizi2.getText(),SG3.getSelectedItem().toString(),NilaiGizi3.getText(),SG4.getSelectedItem().toString(),NilaiGizi4.getText(),TotalNilaiGizi.getText(),
+                SkalaWajah.getSelectedItem().toString(),NilaiWajah.getText(),SkalaKaki.getSelectedItem().toString(),NilaiKaki.getText(),SkalaAktifitas.getSelectedItem().toString(),NilaiAktifitas.getText(),SkalaMenangis.getSelectedItem().toString(),
+                NilaiMenangis.getText(),SkalaBersuara.getSelectedItem().toString(),NilaiBersuara.getText(),SkalaNyeri.getText(),Nyeri.getSelectedItem().toString(),Lokasi.getText(),Durasi.getText(),Frekuensi.getText(),
+                NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+             })==true){
+                Sequel.meghapus("penilaian_awal_keperawatan_ralan_bayi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
+                    if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_bayi_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
+                    }
+                }
+                getMasalah();
+                getImunisasi();
+                tampil();
+                emptTeks();
+                TabRawat.setSelectedIndex(1);
         }
     }
    

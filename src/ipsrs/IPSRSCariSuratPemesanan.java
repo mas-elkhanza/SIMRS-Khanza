@@ -1158,7 +1158,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 Sequel.menyimpan(
                                     "temporary","'0','"+rs2.getString("jumlah")+"','"+rs2.getString("satuan")+"','"+rs2.getString("kode_brng")+"','"+
                                     rs2.getString("nama_brng")+"','"+Valid.SetAngka(rs2.getDouble("h_pesan"))+"','"+Valid.SetAngka(rs2.getDouble("subtotal"))+"','"+
-                                    rs2.getDouble("dis")+"','"+Valid.SetAngka(rs2.getDouble("besardis"))+"','"+Valid.SetAngka(rs.getDouble("total"))+
+                                    rs2.getDouble("dis")+"','"+Valid.SetAngka(rs2.getDouble("besardis"))+"','"+Valid.SetAngka(rs2.getDouble("total"))+
                                     "','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pemesanan"
                                 );
                             }                        

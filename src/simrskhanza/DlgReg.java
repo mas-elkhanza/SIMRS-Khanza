@@ -91,6 +91,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
 import permintaan.DlgPermintaanRanap;
+import rekammedis.RMAsesmenAwalMedisRalanDewasa;
 import rekammedis.RMHemodialisa;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
@@ -840,6 +841,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnPeniliaianAwalKeperawatanGigi = new javax.swing.JMenuItem();
         MnPeniliaianAwalKeperawatanKebidanan = new javax.swing.JMenuItem();
         MnPeniliaianAwalKeperawatanBayiAnak = new javax.swing.JMenuItem();
+        MnPeniliaianAwalMedisRalan = new javax.swing.JMenuItem();
         ppResume = new javax.swing.JMenuItem();
         MnDiagnosa = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
@@ -1258,6 +1260,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         MnRMRawatJalan.add(MnPeniliaianAwalKeperawatanBayiAnak);
+
+        MnPeniliaianAwalMedisRalan.setBackground(new java.awt.Color(255, 255, 254));
+        MnPeniliaianAwalMedisRalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPeniliaianAwalMedisRalan.setForeground(new java.awt.Color(50, 50, 50));
+        MnPeniliaianAwalMedisRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPeniliaianAwalMedisRalan.setText("Penilaian Awal Medis");
+        MnPeniliaianAwalMedisRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPeniliaianAwalMedisRalan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPeniliaianAwalMedisRalan.setName("MnPeniliaianAwalMedisRalan"); // NOI18N
+        MnPeniliaianAwalMedisRalan.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPeniliaianAwalMedisRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPeniliaianAwalMedisRalanActionPerformed(evt);
+            }
+        });
+        MnRMRawatJalan.add(MnPeniliaianAwalMedisRalan);
 
         MnDataRM.add(MnRMRawatJalan);
 
@@ -10218,6 +10236,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnSuratKewaspadaanKesehatanActionPerformed
 
+    private void MnPeniliaianAwalMedisRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeniliaianAwalMedisRalanActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMAsesmenAwalMedisRalanDewasa form=new RMAsesmenAwalMedisRalanDewasa(null,false);
+                form.isCek();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.emptTeks();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPeniliaianAwalMedisRalanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10369,6 +10409,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPeniliaianAwalKeperawatanGigi;
     private javax.swing.JMenuItem MnPeniliaianAwalKeperawatanKebidanan;
     private javax.swing.JMenuItem MnPeniliaianAwalKeperawatanRalan;
+    private javax.swing.JMenuItem MnPeniliaianAwalMedisRalan;
     private javax.swing.JMenuItem MnPeriksaLab;
     private javax.swing.JMenuItem MnPeriksaLab1;
     private javax.swing.JMenuItem MnPeriksaLabPA;
@@ -10994,6 +11035,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSuratButaWarna.setEnabled(akses.getsurat_buta_warna());      
         MnSuratBebasTato.setEnabled(akses.getsurat_bebas_tato());      
         MnSuratKewaspadaanKesehatan.setEnabled(akses.getsurat_kewaspadaan_kesehatan());     
+        MnPeniliaianAwalMedisRalan.setEnabled(akses.getpenilaian_awal_medis_ralan());     
         
         if(akses.getkode().equals("Admin Utama")){
             MnGabungNoRawat.setEnabled(true);

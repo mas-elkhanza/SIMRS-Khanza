@@ -503,7 +503,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
 	    requestEntity = new HttpEntity(headers);
-            URL = link+"/monitoring/HistoriPelayanan/NoKartu/"+nomorrujukan+"/tglAwal/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(DTPCari2.getSelectedItem()+"");	
+            URL = link+"/monitoring/HistoriPelayanan/NoKartu/"+nomorrujukan+"/tglMulai/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(DTPCari2.getSelectedItem()+"");	
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
