@@ -4915,12 +4915,6 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         KetDokter.setText("");
         Rencana.setText("");
         KdPetugas.getText();
-        TPasien.setText("");
-        Jk.setText("");
-        TglLahir.setText("");
-        Agama.setText("");
-        Bahasa.setText("");
-        CacatFisik.setText("");
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
         }

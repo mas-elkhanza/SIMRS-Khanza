@@ -2257,12 +2257,8 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
         }else if(RPO.getText().trim().equals("")){
             Valid.textKosong(RPO,"Riwayat Pengobatan");
-        }else if(Alergi.getText().trim().equals("")){
-            Valid.textKosong(Alergi,"Alergi");
         }else if(TotalHasil.getText().trim().equals("")){
             Valid.textKosong(TotalHasil,"Total Hasil");
-        }else if(Lokasi.getText().trim().equals("")){
-            Valid.textKosong(Lokasi,"Lokasi");
         }else if(Rencana.getText().trim().equals("")){
             Valid.textKosong(Rencana,"Rencana");
         }else if(NmPetugas.getText().trim().equals("")){
@@ -2359,12 +2355,8 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
         }else if(RPO.getText().trim().equals("")){
             Valid.textKosong(RPO,"Riwayat Pengobatan");
-        }else if(Alergi.getText().trim().equals("")){
-            Valid.textKosong(Alergi,"Alergi");
         }else if(TotalHasil.getText().trim().equals("")){
             Valid.textKosong(TotalHasil,"Total Hasil");
-        }else if(Lokasi.getText().trim().equals("")){
-            Valid.textKosong(Lokasi,"Lokasi");
         }else if(Rencana.getText().trim().equals("")){
             Valid.textKosong(Rencana,"Rencana");
         }else if(NmPetugas.getText().trim().equals("")){

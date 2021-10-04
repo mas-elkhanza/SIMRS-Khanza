@@ -2168,10 +2168,6 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             Valid.textKosong(BMI,"BMI(Kg/m2)");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
-        }else if(Alergi.getText().trim().equals("")){
-            Valid.textKosong(Alergi,"Alergi");
-        }else if(Lokasi.getText().trim().equals("")){
-            Valid.textKosong(Lokasi,"Lokasi");
         }else if(Rencana.getText().trim().equals("")){
             Valid.textKosong(Rencana,"Rencana");
         }else if(NmPetugas.getText().trim().equals("")){
@@ -2266,10 +2262,6 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             Valid.textKosong(BMI,"BMI(Kg/m2)");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
-        }else if(Alergi.getText().trim().equals("")){
-            Valid.textKosong(Alergi,"Alergi");
-        }else if(Lokasi.getText().trim().equals("")){
-            Valid.textKosong(Lokasi,"Lokasi");
         }else if(Rencana.getText().trim().equals("")){
             Valid.textKosong(Rencana,"Rencana");
         }else if(NmPetugas.getText().trim().equals("")){
