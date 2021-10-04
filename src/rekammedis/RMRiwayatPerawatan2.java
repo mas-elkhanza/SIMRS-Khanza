@@ -246,11 +246,18 @@ public final class RMRiwayatPerawatan2 extends javax.swing.JDialog {
         chkSemua = new widget.CekBox();
         chkDiagnosaPenyakit = new widget.CekBox();
         chkProsedurTindakan = new widget.CekBox();
+        chkPemeriksaanRalan = new widget.CekBox();
+        chkPemeriksaanObstetriRalan = new widget.CekBox();
+        chkPemeriksaanGenekologiRalan = new widget.CekBox();
+        chkPemeriksaanRanap = new widget.CekBox();
+        chkPemeriksaanObstetriRanap = new widget.CekBox();
+        chkCatatanDokter = new widget.CekBox();
         chkTriase = new widget.CekBox();
         chkAsuhanKeperawatanRalan = new widget.CekBox();
         chkAsuhanKeperawatanRalanGigi = new widget.CekBox();
         chkAsuhanKeperawatanRalanBayi = new widget.CekBox();
         chkAsuhanKeperawatanRalanKandungan = new widget.CekBox();
+        chkHemodialisa = new widget.CekBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         tbRegistrasi = new widget.Table();
@@ -630,7 +637,7 @@ public final class RMRiwayatPerawatan2 extends javax.swing.JDialog {
         chkDiagnosaPenyakit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkDiagnosaPenyakit.setName("chkDiagnosaPenyakit"); // NOI18N
         chkDiagnosaPenyakit.setOpaque(false);
-        chkDiagnosaPenyakit.setPreferredSize(new java.awt.Dimension(230, 20));
+        chkDiagnosaPenyakit.setPreferredSize(new java.awt.Dimension(230, 23));
         FormMenu.add(chkDiagnosaPenyakit);
 
         chkProsedurTindakan.setSelected(true);
@@ -638,43 +645,97 @@ public final class RMRiwayatPerawatan2 extends javax.swing.JDialog {
         chkProsedurTindakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkProsedurTindakan.setName("chkProsedurTindakan"); // NOI18N
         chkProsedurTindakan.setOpaque(false);
-        chkProsedurTindakan.setPreferredSize(new java.awt.Dimension(230, 20));
+        chkProsedurTindakan.setPreferredSize(new java.awt.Dimension(230, 23));
         FormMenu.add(chkProsedurTindakan);
+
+        chkPemeriksaanRalan.setSelected(true);
+        chkPemeriksaanRalan.setText("Pemeriksaan Ralan");
+        chkPemeriksaanRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPemeriksaanRalan.setName("chkPemeriksaanRalan"); // NOI18N
+        chkPemeriksaanRalan.setOpaque(false);
+        chkPemeriksaanRalan.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormMenu.add(chkPemeriksaanRalan);
+
+        chkPemeriksaanObstetriRalan.setSelected(true);
+        chkPemeriksaanObstetriRalan.setText("Pemeriksaan Obstetri Ralan");
+        chkPemeriksaanObstetriRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPemeriksaanObstetriRalan.setName("chkPemeriksaanObstetriRalan"); // NOI18N
+        chkPemeriksaanObstetriRalan.setOpaque(false);
+        chkPemeriksaanObstetriRalan.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormMenu.add(chkPemeriksaanObstetriRalan);
+
+        chkPemeriksaanGenekologiRalan.setSelected(true);
+        chkPemeriksaanGenekologiRalan.setText("Pemeriksaan Genekologi Ralan");
+        chkPemeriksaanGenekologiRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPemeriksaanGenekologiRalan.setName("chkPemeriksaanGenekologiRalan"); // NOI18N
+        chkPemeriksaanGenekologiRalan.setOpaque(false);
+        chkPemeriksaanGenekologiRalan.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormMenu.add(chkPemeriksaanGenekologiRalan);
+
+        chkPemeriksaanRanap.setSelected(true);
+        chkPemeriksaanRanap.setText("Pemeriksaan Ranap");
+        chkPemeriksaanRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPemeriksaanRanap.setName("chkPemeriksaanRanap"); // NOI18N
+        chkPemeriksaanRanap.setOpaque(false);
+        chkPemeriksaanRanap.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormMenu.add(chkPemeriksaanRanap);
+
+        chkPemeriksaanObstetriRanap.setSelected(true);
+        chkPemeriksaanObstetriRanap.setText("Pemeriksaan Obstetri Ranap");
+        chkPemeriksaanObstetriRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPemeriksaanObstetriRanap.setName("chkPemeriksaanObstetriRanap"); // NOI18N
+        chkPemeriksaanObstetriRanap.setOpaque(false);
+        chkPemeriksaanObstetriRanap.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormMenu.add(chkPemeriksaanObstetriRanap);
+
+        chkCatatanDokter.setText("Catatan Dokter");
+        chkCatatanDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanDokter.setName("chkCatatanDokter"); // NOI18N
+        chkCatatanDokter.setOpaque(false);
+        chkCatatanDokter.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormMenu.add(chkCatatanDokter);
 
         chkTriase.setText("Triase IGD/UGD");
         chkTriase.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkTriase.setName("chkTriase"); // NOI18N
         chkTriase.setOpaque(false);
-        chkTriase.setPreferredSize(new java.awt.Dimension(230, 20));
+        chkTriase.setPreferredSize(new java.awt.Dimension(230, 23));
         FormMenu.add(chkTriase);
 
         chkAsuhanKeperawatanRalan.setText("Asuhan Keperawatan Ralan Umum");
         chkAsuhanKeperawatanRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkAsuhanKeperawatanRalan.setName("chkAsuhanKeperawatanRalan"); // NOI18N
         chkAsuhanKeperawatanRalan.setOpaque(false);
-        chkAsuhanKeperawatanRalan.setPreferredSize(new java.awt.Dimension(230, 20));
+        chkAsuhanKeperawatanRalan.setPreferredSize(new java.awt.Dimension(230, 23));
         FormMenu.add(chkAsuhanKeperawatanRalan);
 
         chkAsuhanKeperawatanRalanGigi.setText("Asuhan Keperawatan Ralan Gigi");
         chkAsuhanKeperawatanRalanGigi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkAsuhanKeperawatanRalanGigi.setName("chkAsuhanKeperawatanRalanGigi"); // NOI18N
         chkAsuhanKeperawatanRalanGigi.setOpaque(false);
-        chkAsuhanKeperawatanRalanGigi.setPreferredSize(new java.awt.Dimension(230, 20));
+        chkAsuhanKeperawatanRalanGigi.setPreferredSize(new java.awt.Dimension(230, 23));
         FormMenu.add(chkAsuhanKeperawatanRalanGigi);
 
         chkAsuhanKeperawatanRalanBayi.setText("Asuhan Keperawatan Ralan Bayi/Anak");
         chkAsuhanKeperawatanRalanBayi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkAsuhanKeperawatanRalanBayi.setName("chkAsuhanKeperawatanRalanBayi"); // NOI18N
         chkAsuhanKeperawatanRalanBayi.setOpaque(false);
-        chkAsuhanKeperawatanRalanBayi.setPreferredSize(new java.awt.Dimension(230, 20));
+        chkAsuhanKeperawatanRalanBayi.setPreferredSize(new java.awt.Dimension(230, 23));
         FormMenu.add(chkAsuhanKeperawatanRalanBayi);
 
         chkAsuhanKeperawatanRalanKandungan.setText("Asuhan Keperawatan Ralan Kandungan");
         chkAsuhanKeperawatanRalanKandungan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkAsuhanKeperawatanRalanKandungan.setName("chkAsuhanKeperawatanRalanKandungan"); // NOI18N
         chkAsuhanKeperawatanRalanKandungan.setOpaque(false);
-        chkAsuhanKeperawatanRalanKandungan.setPreferredSize(new java.awt.Dimension(230, 20));
+        chkAsuhanKeperawatanRalanKandungan.setPreferredSize(new java.awt.Dimension(230, 23));
         FormMenu.add(chkAsuhanKeperawatanRalanKandungan);
+
+        chkHemodialisa.setText("Hemodialisa");
+        chkHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkHemodialisa.setName("chkHemodialisa"); // NOI18N
+        chkHemodialisa.setOpaque(false);
+        chkHemodialisa.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormMenu.add(chkHemodialisa);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -788,6 +849,13 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkAsuhanKeperawatanRalanKandungan.setSelected(true);
             chkDiagnosaPenyakit.setSelected(true);
             chkProsedurTindakan.setSelected(true);
+            chkCatatanDokter.setSelected(true);
+            chkHemodialisa.setSelected(true);
+            chkPemeriksaanRalan.setSelected(true);
+            chkPemeriksaanObstetriRalan.setSelected(true);
+            chkPemeriksaanGenekologiRalan.setSelected(true);
+            chkPemeriksaanRanap.setSelected(true);
+            chkPemeriksaanObstetriRanap.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -796,6 +864,13 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkAsuhanKeperawatanRalanKandungan.setSelected(false);
             chkDiagnosaPenyakit.setSelected(false);
             chkProsedurTindakan.setSelected(false);
+            chkCatatanDokter.setSelected(false);
+            chkHemodialisa.setSelected(false);
+            chkPemeriksaanRalan.setSelected(false);
+            chkPemeriksaanObstetriRalan.setSelected(false);
+            chkPemeriksaanGenekologiRalan.setSelected(false);
+            chkPemeriksaanRanap.setSelected(false);
+            chkPemeriksaanObstetriRanap.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -852,7 +927,14 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.CekBox chkAsuhanKeperawatanRalanBayi;
     private widget.CekBox chkAsuhanKeperawatanRalanGigi;
     private widget.CekBox chkAsuhanKeperawatanRalanKandungan;
+    private widget.CekBox chkCatatanDokter;
     private widget.CekBox chkDiagnosaPenyakit;
+    private widget.CekBox chkHemodialisa;
+    private widget.CekBox chkPemeriksaanGenekologiRalan;
+    private widget.CekBox chkPemeriksaanObstetriRalan;
+    private widget.CekBox chkPemeriksaanObstetriRanap;
+    private widget.CekBox chkPemeriksaanRalan;
+    private widget.CekBox chkPemeriksaanRanap;
     private widget.CekBox chkProsedurTindakan;
     private widget.CekBox chkSemua;
     private widget.CekBox chkTriase;
@@ -2925,7 +3007,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     "<td valign='top' width='1%' align='center'>:</td>"+
                                     "<td valign='top' width='79%'>"+
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                         "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
+                                         "<tr align='center'><td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='51%' bgcolor='#FFFAF8'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                 );
                                 rs2.beforeFirst();
                                 w=1;
@@ -2963,7 +3045,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     "<td valign='top' width='1%' align='center'>:</td>"+
                                     "<td valign='top' width='79%'>"+
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                         "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
+                                         "<tr align='center'><td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='51%' bgcolor='#FFFAF8'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                 );
                                 rs2.beforeFirst();
                                 w=1;
@@ -2976,6 +3058,760 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     "</td>"+
                                   "</tr>");
                             }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan catatan dokter
+                    if(chkCatatanDokter.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select catatan_perawatan.no_rawat,catatan_perawatan.tanggal,catatan_perawatan.jam,catatan_perawatan.kd_dokter,dokter.nm_dokter,"+
+                                    "catatan_perawatan.catatan from catatan_perawatan inner join dokter on catatan_perawatan.kd_dokter=dokter.kd_dokter "+
+                                    "where catatan_perawatan.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Catatan Dokter</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                            "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                            "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode Dokter</td>"+
+                                            "<td valign='top' width='20%' bgcolor='#FFFAF8'>Nama Dokter</td>"+
+                                            "<td valign='top' width='51%' bgcolor='#FFFAF8'>Catatan</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tanggal")+" "+rs2.getString("jam")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kd_dokter")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("catatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                         "</tr>");                                        
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan hemodialisa
+                    if(chkHemodialisa.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select hemodialisa.tanggal,hemodialisa.lama,hemodialisa.akses,hemodialisa.dialist,hemodialisa.transfusi,hemodialisa.penarikan, "+
+                                    "hemodialisa.qb,hemodialisa.qd,hemodialisa.ureum,hemodialisa.hb,hemodialisa.hbsag,creatinin,hemodialisa.hiv,hemodialisa.hcv,hemodialisa.lain, "+
+                                    "hemodialisa.kd_dokter,dokter.nm_dokter,hemodialisa.kd_penyakit,penyakit.nm_penyakit from hemodialisa inner join dokter on hemodialisa.kd_dokter=dokter.kd_dokter "+
+                                    "inner join penyakit on hemodialisa.kd_penyakit=penyakit.kd_penyakit where hemodialisa.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Hemodialisa</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                            "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                            "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode Dokter P.J.</td>"+
+                                            "<td valign='top' width='20%' bgcolor='#FFFAF8'>Nama Dokter P.J.</td>"+
+                                            "<td valign='top' width='10%' bgcolor='#FFFAF8'>ICD 10</td>"+
+                                            "<td valign='top' width='41%' bgcolor='#FFFAF8'>Nama Penyakit</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tanggal")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kd_dokter")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kd_penyakit")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("nm_penyakit")+"</td>"+
+                                         "</tr>"+
+                                         "<tr>"+
+                                            "<td valign='top' align='center'></td>"+
+                                            "<td valign='top' colspan='5'>KETERANGAN : "+
+                                                "Lama : "+rs2.getString("lama")+" Jam, "+
+                                                "Akses : "+rs2.getString("akses")+", "+
+                                                "Dialist : "+rs2.getString("dialist")+", "+
+                                                "Transfusi : "+rs2.getString("transfusi")+" Kalf/Durante HD, "+
+                                                "Penarikan Cairan : "+rs2.getString("penarikan")+" ml, "+
+                                                "QB : "+rs2.getString("qb")+", "+
+                                                "QD : "+rs2.getString("qd")+", "+
+                                                "Ureum : "+rs2.getString("ureum")+", "+
+                                                "Hb : "+rs2.getString("hb")+", "+
+                                                "HbsAg : "+rs2.getString("hbsag")+", "+
+                                                "Creatinin : "+rs2.getString("creatinin")+", "+
+                                                "HIV : "+rs2.getString("hiv")+", "+
+                                                "HCV : "+rs2.getString("hcv")+", "+
+                                                "Lain-Lain : "+rs2.getString("lain")+
+                                            "</td>"+
+                                         "</tr>");                                        
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan SOAP Ralan
+                    if(chkPemeriksaanRalan.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
+                                    "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
+                                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,"+
+                                    "pemeriksaan_ralan.instruksi,pemeriksaan_ralan.nip,pegawai.nama,pegawai.jbtn from pemeriksaan_ralan inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik where "+
+                                    "pemeriksaan_ralan.no_rawat='"+rs.getString("no_rawat")+"' order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Pemeriksaan Rawat Jalan</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                            "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                            "<td valign='top' width='54%' bgcolor='#FFFAF8' colspan='6'>Dokter/Paramedis</td>"+
+                                            "<td valign='top' width='27%' bgcolor='#FFFAF8' colspan='3'>Profesi/Jabatan/Departemen</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                            "<td valign='top' colspan='6'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                            "<td valign='top' colspan='3'>"+rs2.getString("jbtn")+"</td>"+
+                                         "</tr>"); 
+                                    if(!rs2.getString("keluhan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Subjek</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("pemeriksaan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Objek</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    htmlContent.append(
+                                            "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Suhu(C)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Tensi</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Kesadaran</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Imunisasi Ke</td>"+
+                                            "</tr>"+
+                                            "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top'></td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("suhu_tubuh")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("tensi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("nadi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("respirasi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("tinggi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("berat")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("gcs")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("kesadaran")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("imun_ke")+"</td>"+
+                                             "</tr>");
+
+                                    if(!rs2.getString("alergi").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Alergi</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("alergi")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("penilaian").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Asesmen</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("rtl").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Plan</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("instruksi").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Instruksi</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("instruksi")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }                                
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan obstetri Ralan
+                    if(chkPemeriksaanObstetriRalan.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select pemeriksaan_obstetri_ralan.tgl_perawatan,pemeriksaan_obstetri_ralan.jam_rawat,pemeriksaan_obstetri_ralan.tinggi_uteri,pemeriksaan_obstetri_ralan.janin,pemeriksaan_obstetri_ralan.letak, " +
+                                    "pemeriksaan_obstetri_ralan.panggul,pemeriksaan_obstetri_ralan.denyut,pemeriksaan_obstetri_ralan.kontraksi, " +
+                                    "pemeriksaan_obstetri_ralan.kualitas_mnt,pemeriksaan_obstetri_ralan.kualitas_dtk,pemeriksaan_obstetri_ralan.fluksus,pemeriksaan_obstetri_ralan.albus, " +
+                                    "pemeriksaan_obstetri_ralan.vulva,pemeriksaan_obstetri_ralan.portio,pemeriksaan_obstetri_ralan.dalam, pemeriksaan_obstetri_ralan.tebal, pemeriksaan_obstetri_ralan.arah, pemeriksaan_obstetri_ralan.pembukaan," +
+                                    "pemeriksaan_obstetri_ralan.penurunan, pemeriksaan_obstetri_ralan.denominator, pemeriksaan_obstetri_ralan.ketuban, pemeriksaan_obstetri_ralan.feto " +
+                                    "from pemeriksaan_obstetri_ralan where pemeriksaan_obstetri_ralan.no_rawat='"+rs.getString("no_rawat")+"' order by pemeriksaan_obstetri_ralan.tgl_perawatan,pemeriksaan_obstetri_ralan.jam_rawat").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Pemeriksaan Obstetri Rawat Jalan</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                            "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tinggi Fundus</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Janin</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Letak</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Panggul</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Denyut</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kontraksi</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Mnt</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Detik</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Fluksus</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Albus</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Dalam</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tebal</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Arah</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Ketuban</td>"+
+                                            "<td valign='top' width='7%' bgcolor='#FFFAF8'>Feto</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tinggi_uteri")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("janin")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("letak")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("panggul")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("denyut")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kontraksi")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kualitas_mnt")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kualitas_dtk")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("fluksus")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("albus")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("dalam")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tebal")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("arah")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("ketuban")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("feto")+"</td>"+
+                                         "</tr>"); 
+                                    if(!rs2.getString("vulva").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Vulva</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("vulva")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("portio").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Portio</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("portio")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("pembukaan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Pembukaan</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("pembukaan")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("penurunan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Penurunan</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("penurunan")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("denominator").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Denominator</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("denominator")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }                                
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan genekologi Ralan
+                    if(chkPemeriksaanGenekologiRalan.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select pemeriksaan_ginekologi_ralan.no_rawat,pemeriksaan_ginekologi_ralan.tgl_perawatan,pemeriksaan_ginekologi_ralan.jam_rawat,pemeriksaan_ginekologi_ralan.inspeksi,pemeriksaan_ginekologi_ralan.inspeksi_vulva,pemeriksaan_ginekologi_ralan.inspekulo_gine, " +
+                                    "pemeriksaan_ginekologi_ralan.fluxus_gine,pemeriksaan_ginekologi_ralan.fluor_gine,pemeriksaan_ginekologi_ralan.vulva_inspekulo, " +
+                                    "pemeriksaan_ginekologi_ralan.portio_inspekulo,pemeriksaan_ginekologi_ralan.sondage,pemeriksaan_ginekologi_ralan.portio_dalam,pemeriksaan_ginekologi_ralan.bentuk, " +
+                                    "pemeriksaan_ginekologi_ralan.cavum_uteri,pemeriksaan_ginekologi_ralan.mobilitas,pemeriksaan_ginekologi_ralan.ukuran, pemeriksaan_ginekologi_ralan.nyeri_tekan, pemeriksaan_ginekologi_ralan.adnexa_kanan, pemeriksaan_ginekologi_ralan.adnexa_kiri," +
+                                    "pemeriksaan_ginekologi_ralan.cavum_douglas " +
+                                    "from pemeriksaan_ginekologi_ralan where pemeriksaan_ginekologi_ralan.no_rawat='"+rs.getString("no_rawat")+"' order by pemeriksaan_ginekologi_ralan.tgl_perawatan,pemeriksaan_ginekologi_ralan.jam_rawat").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Pemeriksaan Ginekologi Rawat Jalan</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                            "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                            "<td valign='top' width='81%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                            "<td valign='top'>"+
+                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>Inspeksi</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("inspeksi")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Vulva/Uretra/Vagina</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("inspeksi_vulva")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>Inspekulo</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("inspekulo_gine")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Fluxus</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("fluxus_gine")+",&nbsp;&nbsp;Fluor Albus : "+rs2.getString("fluor_gine")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Vulva/Vagina</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("vulva_inspekulo")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Portio</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("portio_inspekulo")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Sondage</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("sondage")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>Pemeriksaan Dalam</td>"+
+                                                       "<td border='0' valign='top' width='70%'>:</td>"+
+                                                    "</tr>"+
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Portio</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("portio_dalam")+",&nbsp;&nbsp;Bentuk : "+rs2.getString("bentuk")+"</td>"+
+                                                    "</tr>"+   
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Cavum Uteri</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("cavum_uteri")+",&nbsp;&nbsp;Mobilitas : "+rs2.getString("mobilitas")+"</td>"+
+                                                    "</tr>"+ 
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;</td>"+
+                                                       "<td border='0' valign='top' width='70%'>&nbsp;&nbsp;&nbsp;Ukuran : "+rs2.getString("ukuran")+",&nbsp;&nbsp;Nyeri Tekan : "+rs2.getString("nyeri_tekan")+"</td>"+
+                                                    "</tr>"+ 
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Adnexa/Parametrium</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: Kanan : "+rs2.getString("adnexa_kanan")+",&nbsp;&nbsp;Kiri : "+rs2.getString("adnexa_kiri")+"</td>"+
+                                                    "</tr>"+ 
+                                                    "<tr align='left'>"+
+                                                       "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Cavum Douglas</td>"+
+                                                       "<td border='0' valign='top' width='70%'>: "+rs2.getString("cavum_douglas")+"</td>"+
+                                                    "</tr>"+ 
+                                                "</table>"+
+                                            "</td>"+
+                                         "</tr>");                                                                                     
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }                                
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan pemeriksaan rawat inap
+                    if(chkPemeriksaanRanap.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi," +
+                                    "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
+                                    "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.nip,pegawai.nama,pegawai.jbtn,pemeriksaan_ranap.instruksi "+
+                                    "from pemeriksaan_ranap inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik where pemeriksaan_ranap.no_rawat='"+rs.getString("no_rawat")+"' order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Pemeriksaan Rawat Inap</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                            "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                            "<td valign='top' width='51%' bgcolor='#FFFAF8' colspan='5'>Dokter/Paramedis</td>"+
+                                            "<td valign='top' width='30%' bgcolor='#FFFAF8' colspan='3'>Profesi/Jabatan/Departemen</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                            "<td valign='top' colspan='5'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                            "<td valign='top' colspan='3'>"+rs2.getString("jbtn")+"</td>"+
+                                         "</tr>");   
+
+                                    if(!rs2.getString("keluhan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Subjek</td>"+
+                                                "<td valign='top' colspan='6'> : "+rs2.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("pemeriksaan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Objek</td>"+
+                                                "<td valign='top' colspan='6'> : "+rs2.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Kesadaran</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("suhu_tubuh")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("tensi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("nadi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("respirasi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("tinggi")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("berat")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("gcs")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("kesadaran")+"</td>"+
+                                             "</tr>");
+
+                                    if(!rs2.getString("alergi").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Alergi</td>"+
+                                                "<td valign='top' colspan='6'> : "+rs2.getString("alergi")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("penilaian").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Asesmen</td>"+
+                                                "<td valign='top' colspan='6'> : "+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("rtl").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Plan</td>"+
+                                                "<td valign='top' colspan='6'> : "+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("instruksi").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Instruksi</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("instruksi")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan pemeriksaan obstetri rawat inap
+                    if(chkPemeriksaanObstetriRanap.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select pemeriksaan_obstetri_ranap.tgl_perawatan,pemeriksaan_obstetri_ranap.jam_rawat,pemeriksaan_obstetri_ranap.tinggi_uteri,pemeriksaan_obstetri_ranap.janin,pemeriksaan_obstetri_ranap.letak, " +
+                                    "pemeriksaan_obstetri_ranap.panggul,pemeriksaan_obstetri_ranap.denyut,pemeriksaan_obstetri_ranap.kontraksi, " +
+                                    "pemeriksaan_obstetri_ranap.kualitas_mnt,pemeriksaan_obstetri_ranap.kualitas_dtk,pemeriksaan_obstetri_ranap.fluksus,pemeriksaan_obstetri_ranap.albus, " +
+                                    "pemeriksaan_obstetri_ranap.vulva,pemeriksaan_obstetri_ranap.portio,pemeriksaan_obstetri_ranap.dalam, pemeriksaan_obstetri_ranap.tebal, pemeriksaan_obstetri_ranap.arah, pemeriksaan_obstetri_ranap.pembukaan," +
+                                    "pemeriksaan_obstetri_ranap.penurunan, pemeriksaan_obstetri_ranap.denominator, pemeriksaan_obstetri_ranap.ketuban, pemeriksaan_obstetri_ranap.feto " +
+                                    "from pemeriksaan_obstetri_ranap where pemeriksaan_obstetri_ranap.no_rawat='"+rs.getString("no_rawat")+"' order by pemeriksaan_obstetri_ranap.tgl_perawatan,pemeriksaan_obstetri_ranap.jam_rawat").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Pemeriksaan Obstetri Rawat Inap</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                            "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tinggi Fundus</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Janin</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Letak</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Panggul</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Denyut</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kontraksi</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Mnt</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Detik</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Fluksus</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Albus</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Dalam</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tebal</td>"+
+                                            "<td valign='top' width='6%' bgcolor='#FFFAF8'>Arah</td>"+
+                                            "<td valign='top' width='5%' bgcolor='#FFFAF8'>Ketuban</td>"+
+                                            "<td valign='top' width='7%' bgcolor='#FFFAF8'>Feto</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center'>"+w+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tinggi_uteri")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("janin")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("letak")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("panggul")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("denyut")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kontraksi")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kualitas_mnt")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("kualitas_dtk")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("fluksus")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("albus")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("dalam")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("tebal")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("arah")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("ketuban")+"</td>"+
+                                            "<td valign='top'>"+rs2.getString("feto")+"</td>"+
+                                         "</tr>"); 
+                                    if(!rs2.getString("vulva").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Vulva</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("vulva")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("portio").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Portio</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("portio")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("pembukaan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Pembukaan</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("pembukaan")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("penurunan").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Penurunan</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("penurunan")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    if(!rs2.getString("denominator").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Denominator</td>"+
+                                                "<td valign='top' colspan='13'> : "+rs2.getString("denominator")+"</td>"+
+                                             "</tr>");
+                                    }
+
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }                                
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         } finally{
