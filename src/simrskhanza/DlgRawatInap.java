@@ -6955,13 +6955,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void isForm3(){
         if(ChkInput2.isSelected()==true){
             ChkInput2.setVisible(false);
-            PanelInput2.setPreferredSize(new Dimension(WIDTH,246));
-            panelGlass14.setVisible(true);      
+            PanelInput3.setPreferredSize(new Dimension(WIDTH,246));
+            panelGlass15.setVisible(true);      
             ChkInput2.setVisible(true);
         }else if(ChkInput2.isSelected()==false){           
             ChkInput2.setVisible(false);            
-            PanelInput2.setPreferredSize(new Dimension(WIDTH,20));
-            panelGlass14.setVisible(false);      
+            PanelInput3.setPreferredSize(new Dimension(WIDTH,20));
+            panelGlass15.setVisible(false);      
             ChkInput2.setVisible(true);
         }
     }
