@@ -8480,7 +8480,7 @@ public class PanelRiwayat extends widget.panelisi {
             bg.write(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;border: white;}");
             bg.close();
 
-            File f = new File("resumemedis.html");            
+            File f = new File("riwayat.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
             bw.write(teks.replaceAll(
                     "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")

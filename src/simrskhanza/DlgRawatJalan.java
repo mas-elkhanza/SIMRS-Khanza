@@ -63,6 +63,7 @@ import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
+import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMTriaseIGD;
 
 /**
@@ -1421,7 +1422,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TUkuran = new widget.TextBox();
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
-        panelResume1 = new rekammedis.PanelRiwayat();
         panelDiagnosa1 = new laporan.PanelDiagnosa();
         internalFrame8 = new widget.InternalFrame();
         PanelInput3 = new javax.swing.JPanel();
@@ -1451,6 +1451,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         ChkAccor = new widget.CekBox();
         ScrollMenu = new widget.ScrollPane();
         FormMenu = new widget.PanelBiasa();
+        BtnRiwayat = new widget.Button();
         BtnResepObat = new widget.Button();
         BtnCopyResep = new widget.Button();
         BtnResepLuar = new widget.Button();
@@ -1638,7 +1639,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1652,7 +1653,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3168,11 +3169,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawat.addTab("Pemeriksaan Ginekologi", internalFrame7);
 
-        panelResume1.setBorder(null);
-        panelResume1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        panelResume1.setName("panelResume1"); // NOI18N
-        TabRawat.addTab("Riwayat Pasien", panelResume1);
-
         panelDiagnosa1.setBorder(null);
         panelDiagnosa1.setName("panelDiagnosa1"); // NOI18N
         TabRawat.addTab("Diagnosa", panelDiagnosa1);
@@ -3332,7 +3328,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3428,6 +3424,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         FormMenu.setName("FormMenu"); // NOI18N
         FormMenu.setPreferredSize(new java.awt.Dimension(150, 483));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
+
+        BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnRiwayat.setText("Riwayat Pasien");
+        BtnRiwayat.setFocusPainted(false);
+        BtnRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnRiwayat.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnRiwayat.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnRiwayat.setName("BtnRiwayat"); // NOI18N
+        BtnRiwayat.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnRiwayat.setRoundRect(false);
+        BtnRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRiwayatActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnRiwayat);
 
         BtnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnResepObat.setText("Input Resep");
@@ -3953,13 +3966,13 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         }
                     }
                     break;
-                case 7:
+                case 6:
                     if(akses.getdiagnosa_pasien()==true){
                         panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
                         panelDiagnosa1.simpan();
                     }
                     break;
-                case 8:
+                case 7:
                     if((!KdDok3.getText().trim().equals(""))&&(!TDokter3.getText().trim().equals(""))&&(!Catatan.getText().trim().equals(""))){
                         if(Sequel.menyimpantf("catatan_perawatan","?,?,?,?,?","Data",5,new String[]{
                             Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
@@ -4318,12 +4331,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     }
                     tampilPemeriksaanGinekologi();
                 }   break;
-            case 7:
+            case 6:
                 panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
                 panelDiagnosa1.hapus();
                 LCount.setText(panelDiagnosa1.getRecord()+"");
                 break;
-            case 8:
+            case 7:
                 if(TabModeCatatan.getRowCount()==0){
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
@@ -4564,18 +4577,14 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             tgl+"and pemeriksaan_ginekologi_ralan.inspeksi_vulva like '%"+TCari.getText().trim()+"%' or "+
                             tgl+"and pemeriksaan_ginekologi_ralan.inspekulo_gine like '%"+TCari.getText().trim()+"%' "+
                             "order by pemeriksaan_ginekologi_ralan.no_rawat desc",param);
-                }   break;
-            case 6:
-                if(akses.getresume_pasien()==true){
-                    panelResume1.laporan();
                 }   
                 break;
-            case 7:
+            case 6:
                 if(akses.getdiagnosa_pasien()==true){
                     panelDiagnosa1.cetak();
                 } 
                 break;
-            case 8:
+            case 7:
                 if(TabModeCatatan.getRowCount()==0){
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     BtnBatal.requestFocus();
@@ -4765,16 +4774,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 tampilPemeriksaanGinekologi();
                 break;
             case 6:
-                BtnTambahTindakan.setVisible(false); 
-                TCari.setPreferredSize(new Dimension(240,23));
-                TCariPasien.setText(TNoRM.getText());
-                if(akses.getresume_pasien()==true){
-                    panelResume1.setRM(TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),false);
-                    panelResume1.pilihTab();
-                }                    
-                LCount.setText("0");
-                break;
-            case 7:
                 BtnSimpan.setEnabled(akses.getdiagnosa_pasien());
                 BtnHapus.setEnabled(akses.getdiagnosa_pasien());
                 BtnEdit.setEnabled(akses.getdiagnosa_pasien());
@@ -4788,7 +4787,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     LCount.setText(panelDiagnosa1.getRecord()+"");
                 } 
                 break;
-            case 8:
+            case 7:
                 BtnSimpan.setEnabled(akses.getcatatan_perawatan());
                 BtnHapus.setEnabled(akses.getcatatan_perawatan());
                 BtnEdit.setEnabled(akses.getcatatan_perawatan());
@@ -4967,7 +4966,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             TCari.requestFocus();
                         }
                     }   break; 
-                case 8:
+                case 7:
                     if(!Catatan.getText().trim().equals("")){
                         if(tbCatatan.getSelectedRow()>-1){
                             if(Sequel.mengedittf("catatan_perawatan","no_rawat='"+tbCatatan.getValueAt(tbCatatan.getSelectedRow(),1)+
@@ -5963,6 +5962,21 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalMedisActionPerformed
 
+    private void BtnRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRiwayatActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
+            resume.setNoRm(TNoRM.getText(),TPasien.getText());
+            resume.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            resume.setLocationRelativeTo(internalFrame1);
+            resume.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnRiwayatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6003,6 +6017,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnResepLuar;
     private widget.Button BtnResepObat;
     private widget.Button BtnResume;
+    private widget.Button BtnRiwayat;
     private widget.Button BtnRujukInternal;
     private widget.Button BtnRujukKeluar;
     private widget.Button BtnSKDP;
@@ -6212,7 +6227,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private rekammedis.PanelRiwayat panelResume1;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane3;
@@ -6666,6 +6680,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalMedis.setVisible(akses.getpenilaian_awal_medis_ralan()); 
         if(akses.getpenilaian_awal_medis_ralan()==true){
+            tinggi=tinggi+24;
+        }      
+        BtnRiwayat.setVisible(akses.getresume_pasien());    
+        if(akses.getresume_pasien()==true){
             tinggi=tinggi+24;
         }
         
@@ -7642,20 +7660,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 tampilPemeriksaanGinekologi();
                 break;
             case 6:
-                if(akses.getresume_pasien()==true){
-                    panelResume1.setRM(TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),false);
-                    panelResume1.pilihTab();
-                }  
-                LCount.setText("0");
-                break;
-            case 7:
                 if(akses.getdiagnosa_pasien()==true){
                     panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
                     panelDiagnosa1.pilihTab();
                     LCount.setText(panelDiagnosa1.getRecord()+"");
                 }  
                 break;
-            case 8:
+            case 7:
                 if(akses.getcatatan_perawatan()==true){
                     tampilCatatan();
                 }  

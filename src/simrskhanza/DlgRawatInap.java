@@ -1214,6 +1214,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         ChkAccor = new widget.CekBox();
         ScrollMenu = new widget.ScrollPane();
         FormMenu = new widget.PanelBiasa();
+        BtnRiwayat = new widget.Button();
         BtnResepObat = new widget.Button();
         BtnCopyResep = new widget.Button();
         BtnPermintaanStok = new widget.Button();
@@ -1229,7 +1230,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnAsuhanGizi = new widget.Button();
         BtnMonitoringAsuhanGizi = new widget.Button();
         BtnResume = new widget.Button();
-        BtnRiwayat = new widget.Button();
 
         BagianRS.setEditable(false);
         BagianRS.setText("0");
@@ -1438,7 +1438,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-03-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-10-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1452,7 +1452,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-03-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-10-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3056,7 +3056,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TPasien.setBounds(283, 10, 260, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-03-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-10-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3156,6 +3156,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         FormMenu.setName("FormMenu"); // NOI18N
         FormMenu.setPreferredSize(new java.awt.Dimension(115, 43));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
+
+        BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnRiwayat.setText("Riwayat Pasien");
+        BtnRiwayat.setFocusPainted(false);
+        BtnRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnRiwayat.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnRiwayat.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnRiwayat.setName("BtnRiwayat"); // NOI18N
+        BtnRiwayat.setPreferredSize(new java.awt.Dimension(120, 23));
+        BtnRiwayat.setRoundRect(false);
+        BtnRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRiwayatActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnRiwayat);
 
         BtnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnResepObat.setText("Input Resep");
@@ -3411,23 +3428,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnResume);
-
-        BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnRiwayat.setText("Riwayat Pasien");
-        BtnRiwayat.setFocusPainted(false);
-        BtnRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnRiwayat.setGlassColor(new java.awt.Color(255, 255, 255));
-        BtnRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnRiwayat.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnRiwayat.setName("BtnRiwayat"); // NOI18N
-        BtnRiwayat.setPreferredSize(new java.awt.Dimension(120, 23));
-        BtnRiwayat.setRoundRect(false);
-        BtnRiwayat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRiwayatActionPerformed(evt);
-            }
-        });
-        FormMenu.add(BtnRiwayat);
 
         ScrollMenu.setViewportView(FormMenu);
 
