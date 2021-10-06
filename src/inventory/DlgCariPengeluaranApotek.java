@@ -1508,10 +1508,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     + " and databarang.kdjns=jenis.kdjns "
                     + " inner join pengeluaran_obat_bhp "
                     + " on pengeluaran_obat_bhp.no_keluar=detail_pengeluaran_obat_bhp.no_keluar where "
-                    + tanggal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + jen + bar + " and detail_pengeluaran_obat_bhp.kode_brng like '%" + TCari.getText() + "%' or "
-                    + tanggal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + jen + bar + " and databarang.nama_brng like '%" + TCari.getText() + "%' or "
-                    + tanggal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + jen + bar + " and detail_pengeluaran_obat_bhp.no_batch like '%" + TCari.getText() + "%' or "
-                    + tanggal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + jen + bar + " and jenis.nama like '%" + TCari.getText() + "%' group by detail_pengeluaran_obat_bhp.kode_brng");
+                    + tanggal + nokeluar + bang + ptg + jen + bar + asal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + " and detail_pengeluaran_obat_bhp.kode_brng like '%" + TCari.getText() + "%' or "
+                    + tanggal + nokeluar + bang + ptg + jen + bar + asal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + " and databarang.nama_brng like '%" + TCari.getText() + "%' or "
+                    + tanggal + nokeluar + bang + ptg + jen + bar + asal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + " and detail_pengeluaran_obat_bhp.no_batch like '%" + TCari.getText() + "%' or "
+                    + tanggal + nokeluar + bang + ptg + jen + bar + asal + " and detail_pengeluaran_obat_bhp.no_keluar like '%" + NoNota.getText() + "%' " + " and jenis.nama like '%" + TCari.getText() + "%' group by detail_pengeluaran_obat_bhp.kode_brng");
             try {
                 rs3 = ps3.executeQuery();
                 no = 1;
