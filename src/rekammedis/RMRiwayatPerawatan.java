@@ -357,6 +357,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanKeperawatanRalanGigi = new widget.CekBox();
         chkAsuhanKeperawatanRalanBayi = new widget.CekBox();
         chkAsuhanKeperawatanRalanKandungan = new widget.CekBox();
+        chkAsuhanKeperawatanRanapKandungan = new widget.CekBox();
         chkHemodialisa = new widget.CekBox();
         chkSkriningGiziLanjut = new widget.CekBox();
         chkAsuhanGizi = new widget.CekBox();
@@ -389,7 +390,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Riwayat/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -755,7 +756,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 830));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 853));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -882,6 +883,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanKeperawatanRalanKandungan.setOpaque(false);
         chkAsuhanKeperawatanRalanKandungan.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanKeperawatanRalanKandungan);
+
+        chkAsuhanKeperawatanRanapKandungan.setSelected(true);
+        chkAsuhanKeperawatanRanapKandungan.setText("Penilaian Keperawatan Ranap Kandungan");
+        chkAsuhanKeperawatanRanapKandungan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanKeperawatanRanapKandungan.setName("chkAsuhanKeperawatanRanapKandungan"); // NOI18N
+        chkAsuhanKeperawatanRanapKandungan.setOpaque(false);
+        chkAsuhanKeperawatanRanapKandungan.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanKeperawatanRanapKandungan);
 
         chkHemodialisa.setSelected(true);
         chkHemodialisa.setText("Hemodialisa");
@@ -1246,6 +1255,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkAsuhanKeperawatanRalanGigi.setSelected(true);
             chkAsuhanKeperawatanRalanBayi.setSelected(true);
             chkAsuhanKeperawatanRalanKandungan.setSelected(true);
+            chkAsuhanKeperawatanRanapKandungan.setSelected(true);
             chkDiagnosaPenyakit.setSelected(true);
             chkProsedurTindakan.setSelected(true);
             chkCatatanDokter.setSelected(true);
@@ -1282,6 +1292,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkAsuhanKeperawatanRalanGigi.setSelected(false);
             chkAsuhanKeperawatanRalanBayi.setSelected(false);
             chkAsuhanKeperawatanRalanKandungan.setSelected(false);
+            chkAsuhanKeperawatanRanapKandungan.setSelected(false);
             chkDiagnosaPenyakit.setSelected(false);
             chkProsedurTindakan.setSelected(false);
             chkCatatanDokter.setSelected(false);
@@ -1376,6 +1387,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.CekBox chkAsuhanKeperawatanRalanBayi;
     private widget.CekBox chkAsuhanKeperawatanRalanGigi;
     private widget.CekBox chkAsuhanKeperawatanRalanKandungan;
+    private widget.CekBox chkAsuhanKeperawatanRanapKandungan;
     private widget.CekBox chkBerkasDigital;
     private widget.CekBox chkCatatanDokter;
     private widget.CekBox chkDiagnosaPenyakit;
@@ -1537,7 +1549,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             i++;
                             tabModeRegistrasi.addRow(new String[]{
                                 i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),"",
-                                rs2.getString("kd_dokter"),rs2.getString("nm_dokter"),rs2.getString("umurdaftar")+" "+rs2.getString("sttsumur"),
+                                rs2.getString("kd_dokter"),rs2.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                                 rs2.getString("kd_poli")+" "+rs2.getString("nm_poli"),rs.getString("png_jawab")
                             });
                         }

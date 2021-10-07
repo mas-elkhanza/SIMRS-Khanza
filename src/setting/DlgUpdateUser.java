@@ -675,7 +675,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset,validasi_tagihan_aset,hibah_non_medis,pcare_alasan_tacc,"+
                         "resep_luar,surat_bebas_tbc,surat_buta_warna,surat_bebas_tato,surat_kewaspadaan_kesehatan,grafik_porsidiet_pertanggal,"+
                         "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal,penilaian_awal_medis_ralan,"+
-                        "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata,penilaian_awal_medis_ranap from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2794,6 +2794,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Penilaian Awal Ralan Mata".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Ralan Mata",rs.getBoolean("penilaian_awal_keperawatan_mata")});
+                    }
+                    
+                    if("[L]Penilaian Awal Medis Ranap".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Medis Ranap",rs.getBoolean("penilaian_awal_medis_ranap")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5817,6 +5821,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Penilaian Awal Ralan Mata".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_keperawatan_mata='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Penilaian Awal Medis Ranap".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_ranap='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
