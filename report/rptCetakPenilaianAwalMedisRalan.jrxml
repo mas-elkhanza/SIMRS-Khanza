@@ -39,8 +39,7 @@ penilaian_medis_ralan.tht,penilaian_medis_ralan.thoraks,penilaian_medis_ralan.ab
 penilaian_medis_ralan.ket_fisik,penilaian_medis_ralan.ket_lokalis,penilaian_medis_ralan.penunjang,penilaian_medis_ralan.diagnosis,penilaian_medis_ralan.tata,penilaian_medis_ralan.konsulrujuk,dokter.nm_dokter 
 from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis
 inner join penilaian_medis_ralan on reg_periksa.no_rawat=penilaian_medis_ralan.no_rawat
-inner join dokter on penilaian_medis_ralan.kd_dokter=dokter.kd_dokter 
-inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien]]>
+inner join dokter on penilaian_medis_ralan.kd_dokter=dokter.kd_dokter ]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>

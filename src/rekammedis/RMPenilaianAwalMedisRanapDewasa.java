@@ -1743,9 +1743,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
                         "penilaian_medis_ranap.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ranap on reg_periksa.no_rawat=penilaian_medis_ranap.no_rawat "+
-                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter "+
-                        "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                        "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
+                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter where "+
                         "penilaian_medis_ranap.tanggal between ? and ? order by penilaian_medis_ranap.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
@@ -1757,9 +1755,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
                         "penilaian_medis_ranap.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ranap on reg_periksa.no_rawat=penilaian_medis_ranap.no_rawat "+
-                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter "+
-                        "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                        "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
+                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter where "+
                         "penilaian_medis_ranap.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                         "penilaian_medis_ranap.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_medis_ranap.tanggal");
                 }
@@ -2190,9 +2186,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
                 "penilaian_medis_ranap.edukasi,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_medis_ranap on reg_periksa.no_rawat=penilaian_medis_ranap.no_rawat "+
-                "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter "+
-                "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where penilaian_medis_ranap.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter where penilaian_medis_ranap.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -2395,9 +2389,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
                         "penilaian_medis_ranap.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ranap on reg_periksa.no_rawat=penilaian_medis_ranap.no_rawat "+
-                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter "+
-                        "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                        "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
+                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter where "+
                         "penilaian_medis_ranap.tanggal between ? and ? order by penilaian_medis_ranap.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
@@ -2409,9 +2401,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
                         "penilaian_medis_ranap.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ranap on reg_periksa.no_rawat=penilaian_medis_ranap.no_rawat "+
-                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter "+
-                        "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                        "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where "+
+                        "inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter where "+
                         "penilaian_medis_ranap.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                         "penilaian_medis_ranap.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_medis_ranap.tanggal");
             }
@@ -2552,11 +2542,8 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,"+
-                    "pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,reg_periksa.tgl_registrasi "+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                    "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik "+
                     "where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
@@ -2591,10 +2578,10 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ranap());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ranap());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ranap());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ranap());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
