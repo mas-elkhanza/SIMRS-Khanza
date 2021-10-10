@@ -164,7 +164,7 @@ public final class akses {
             titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false,pcare_alasan_tacc=false,resep_luar=false,surat_bebas_tbc=false,
             surat_buta_warna=false,surat_bebas_tato=false,surat_kewaspadaan_kesehatan=false,grafik_porsidiet_pertanggal=false,grafik_porsidiet_perbulan=false,
             grafik_porsidiet_pertahun=false,grafik_porsidiet_perbangsal=false,penilaian_awal_medis_ralan=false,master_masalah_keperawatan_mata=false,
-            penilaian_awal_keperawatan_mata=false,penilaian_awal_medis_ranap=false,penilaian_awal_medis_ranap_kebidanan=false;
+            penilaian_awal_keperawatan_mata=false,penilaian_awal_medis_ranap=false,penilaian_awal_medis_ranap_kebidanan=false,penilaian_awal_medis_ralan_kebidanan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -938,6 +938,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_mata=true;
                         akses.penilaian_awal_medis_ranap=true;
                         akses.penilaian_awal_medis_ranap_kebidanan=true;
+                        akses.penilaian_awal_medis_ralan_kebidanan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1695,6 +1696,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_mata=rs2.getBoolean("penilaian_awal_keperawatan_mata");
                         akses.penilaian_awal_medis_ranap=rs2.getBoolean("penilaian_awal_medis_ranap");
                         akses.penilaian_awal_medis_ranap_kebidanan=rs2.getBoolean("penilaian_awal_medis_ranap_kebidanan");
+                        akses.penilaian_awal_medis_ralan_kebidanan=rs2.getBoolean("penilaian_awal_medis_ralan_kebidanan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2450,6 +2452,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_mata=false;
                         akses.penilaian_awal_medis_ranap=false;
                         akses.penilaian_awal_medis_ranap_kebidanan=false;
+                        akses.penilaian_awal_medis_ralan_kebidanan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3260,4 +3263,5 @@ public final class akses {
     public static boolean getpenilaian_awal_keperawatan_mata(){return akses.penilaian_awal_keperawatan_mata;}
     public static boolean getpenilaian_awal_medis_ranap(){return akses.penilaian_awal_medis_ranap;}
     public static boolean getpenilaian_awal_medis_ranap_kebidanan(){return akses.penilaian_awal_medis_ranap_kebidanan;}
+    public static boolean getpenilaian_awal_medis_ralan_kebidanan(){return akses.penilaian_awal_medis_ralan_kebidanan;}
 }   

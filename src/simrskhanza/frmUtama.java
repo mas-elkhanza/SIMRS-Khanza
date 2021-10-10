@@ -681,6 +681,7 @@ import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMPenilaianAwalKeperawatanKebidananRanap;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
+import rekammedis.RMPenilaianAwalMedisRalanKandungan;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMSKriningRawatJalan;
@@ -17518,6 +17519,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianAwalMedisRalanKandunganActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianAwalMedisRalanKandungan aplikasi=new RMPenilaianAwalMedisRalanKandungan(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18142,7 +18157,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBayarPemesananInventaris,btnHutangAsetInventaris,btnHibahAsetInventaris,btnTagihanHutangNonMedis,btnValidasiTagihanNonMedis,
             btnTagihanHutangAset,btnValidasiTagihanAset,btnHibahNonMedis,btnCekPCareTACC,btnResepLuar,btnSuratBebasTBC,btnSuratButaWarna,btnSuratBebasTato,
             btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun,btnGrafikPorsiDietPerRuang,
-            btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan;
+            btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
+            btnPenilaianAwalMedisRalanKandungan;
     
     public void isWall(){
         try{            
@@ -20843,21 +20859,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
-            if(akses.getpenilaian_awal_medis_ralan()==true){
-                Panelmenu.add(btnPenilaianAwalMedisRalan);
-                jmlmenu++;
-            }
-            
-            if(akses.getpenilaian_awal_medis_ranap()==true){
-                Panelmenu.add(btnPenilaianAwalMedisRanap);
-                jmlmenu++;
-            }
-            
-            if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
-                Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
-                jmlmenu++;
-            }
-            
             if(akses.getpenilaian_awal_keperawatan_gigi()==true){
                 Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
                 jmlmenu++;
@@ -20875,6 +20876,26 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_keperawatan_anak()==true){
                 Panelmenu.add(btnPenilaianAwalRalanBayi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_medis_ralan()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRalan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_medis_ranap()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRanap);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_medis_ralan_kebidanan()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRalanKandungan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
                 jmlmenu++;
             }
             
@@ -24600,21 +24621,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         } 
         
-        if(akses.getpenilaian_awal_medis_ralan()==true){
-            Panelmenu.add(btnPenilaianAwalMedisRalan);
-            jmlmenu++;
-        }
-        
-        if(akses.getpenilaian_awal_medis_ranap()==true){
-            Panelmenu.add(btnPenilaianAwalMedisRanap);
-            jmlmenu++;
-        }
-        
-        if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
-            Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
-            jmlmenu++;
-        }
-        
         if(akses.getpenilaian_awal_keperawatan_gigi()==true){
             Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
             jmlmenu++;
@@ -24635,6 +24641,25 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getpenilaian_awal_medis_ralan()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRalan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_awal_medis_ranap()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRanap);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan_kebidanan()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRalanKandungan);
+            jmlmenu++;
+        }
+
+        if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+            jmlmenu++;
+        }
         if(akses.gethemodialisa()==true){
             Panelmenu.add(btnHemodialisa);
             jmlmenu++;
@@ -29379,27 +29404,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.getpenilaian_awal_medis_ralan()==true){
-            if(btnPenilaianAwalMedisRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnPenilaianAwalMedisRalan);
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.getpenilaian_awal_medis_ranap()==true){
-            if(btnPenilaianAwalMedisRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnPenilaianAwalMedisRanap);
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
-            if(btnPenilaianAwalMedisRanapKandungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
-                jmlmenu++;
-            }                
-        }
-        
         if(akses.getpenilaian_awal_keperawatan_gigi()==true){
             if(btnPenilaianAwalKeperawatanGigi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
@@ -29424,6 +29428,34 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_awal_keperawatan_anak()==true){
             if(btnPenilaianAwalRalanBayi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalRalanBayi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan()==true){
+            if(btnPenilaianAwalMedisRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRalan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_awal_medis_ranap()==true){
+            if(btnPenilaianAwalMedisRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRanap);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan_kebidanan()==true){
+            if(btnPenilaianAwalMedisRalanKandungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRalanKandungan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
+            if(btnPenilaianAwalMedisRanapKandungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
                 jmlmenu++;
             }                
         }
@@ -32007,7 +32039,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianAwalKeperawatanRalan= new widget.ButtonBig();
         btnPenilaianAwalKeperawatanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_report-clipboard-medical-checklist-healthcare_5859123.png"))); 
-        btnPenilaianAwalKeperawatanRalan.setText("Penilaian Awal Keperawatan Ralan");
+        btnPenilaianAwalKeperawatanRalan.setText("Penilaian Awal Keperawatan Ralan Umum");
         btnPenilaianAwalKeperawatanRalan.setIconTextGap(0);
         btnPenilaianAwalKeperawatanRalan.setName("btnPenilaianAwalKeperawatanRalan"); 
         btnPenilaianAwalKeperawatanRalan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -32296,7 +32328,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianAwalKeperawatanKebidanan = new widget.ButtonBig();
         btnPenilaianAwalKeperawatanKebidanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_209-pregnant-woman-2_3099532.png"))); 
-        btnPenilaianAwalKeperawatanKebidanan.setText("Penilaian Awal Ralan Kebidanan");
+        btnPenilaianAwalKeperawatanKebidanan.setText("Penilaian Awal Keperawatan Ralan Kebidanan");
         btnPenilaianAwalKeperawatanKebidanan.setIconTextGap(0);
         btnPenilaianAwalKeperawatanKebidanan.setName("btnPenilaianAwalKeperawatanKebidanan"); 
         btnPenilaianAwalKeperawatanKebidanan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -32488,7 +32520,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianAwalRalanBayi = new widget.ButtonBig();
         btnPenilaianAwalRalanBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-cot.png"))); 
-        btnPenilaianAwalRalanBayi.setText("Penilaian Awal Ralan Bayi/Anak");
+        btnPenilaianAwalRalanBayi.setText("Penilaian Awal Keperawatan Ralan Bayi/Anak");
         btnPenilaianAwalRalanBayi.setIconTextGap(0);
         btnPenilaianAwalRalanBayi.setName("btnPenilaianAwalRalanBayi"); 
         btnPenilaianAwalRalanBayi.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -32896,7 +32928,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianAwalKeperawatanKebidananRanap = new widget.ButtonBig();
         btnPenilaianAwalKeperawatanKebidananRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_209-pregnant-woman-2_3099532.png"))); 
-        btnPenilaianAwalKeperawatanKebidananRanap.setText("Penilaian Awal Ranap Kebidanan");
+        btnPenilaianAwalKeperawatanKebidananRanap.setText("Penilaian Awal Keperawatan Ranap Kebidanan");
         btnPenilaianAwalKeperawatanKebidananRanap.setIconTextGap(0);
         btnPenilaianAwalKeperawatanKebidananRanap.setName("btnPenilaianAwalKeperawatanKebidananRanap"); 
         btnPenilaianAwalKeperawatanKebidananRanap.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -33335,8 +33367,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterMasalahKeperawatanMata.addActionListener(this::btnMasterMasalahKeperawatanMataActionPerformed);
         
         btnPenilaianAwalMedisRalan = new widget.ButtonBig();
-        btnPenilaianAwalMedisRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5929223_avatar_fever_man_measure_sick_icon.png"))); 
-        btnPenilaianAwalMedisRalan.setText("Penilaian Awal Medis Ralan");
+        btnPenilaianAwalMedisRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5898992_bed_fever_ill_sick_temperature_icon.png"))); 
+        btnPenilaianAwalMedisRalan.setText("Penilaian Awal Medis Ralan Umum");
         btnPenilaianAwalMedisRalan.setIconTextGap(0);
         btnPenilaianAwalMedisRalan.setName("btnPenilaianAwalMedisRalan"); 
         btnPenilaianAwalMedisRalan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -33344,7 +33376,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianAwalMedisRanap = new widget.ButtonBig();
         btnPenilaianAwalMedisRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5898992_bed_fever_ill_sick_temperature_icon.png"))); 
-        btnPenilaianAwalMedisRanap.setText("Penilaian Awal Medis Ranap");
+        btnPenilaianAwalMedisRanap.setText("Penilaian Awal Medis Ranap Umum");
         btnPenilaianAwalMedisRanap.setIconTextGap(0);
         btnPenilaianAwalMedisRanap.setName("btnPenilaianAwalMedisRanap"); 
         btnPenilaianAwalMedisRanap.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -33357,6 +33389,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRanapKandungan.setName("btnPenilaianAwalMedisRanapKandungan"); 
         btnPenilaianAwalMedisRanapKandungan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRanapKandungan.addActionListener(this::btnPenilaianAwalMedisRanapKandunganActionPerformed);
+        
+        btnPenilaianAwalMedisRalanKandungan = new widget.ButtonBig();
+        btnPenilaianAwalMedisRalanKandungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717224_pregnant_woman_pregnancy_baby_gestation_icon.png"))); 
+        btnPenilaianAwalMedisRalanKandungan.setText("Penilaian Awal Medis Ralan Kandungan");
+        btnPenilaianAwalMedisRalanKandungan.setIconTextGap(0);
+        btnPenilaianAwalMedisRalanKandungan.setName("btnPenilaianAwalMedisRalanKandungan"); 
+        btnPenilaianAwalMedisRalanKandungan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalMedisRalanKandungan.addActionListener(this::btnPenilaianAwalMedisRalanKandunganActionPerformed);
     }
     
 }

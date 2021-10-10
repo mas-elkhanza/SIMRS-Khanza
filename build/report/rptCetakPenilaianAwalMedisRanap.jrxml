@@ -41,9 +41,7 @@ penilaian_medis_ranap.rad,penilaian_medis_ranap.penunjang,penilaian_medis_ranap.
 penilaian_medis_ranap.edukasi,dokter.nm_dokter 
 from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis
 inner join penilaian_medis_ranap on reg_periksa.no_rawat=penilaian_medis_ranap.no_rawat 
-inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter 
-inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien 
-inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik]]>
+inner join dokter on penilaian_medis_ranap.kd_dokter=dokter.kd_dokter ]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
