@@ -117,7 +117,8 @@ public class DlgSpri extends javax.swing.JDialog {
             }
         };
         tbSpri.setModel(tabMode);
-
+        Sequel.cariIsi("select nama from ruang_perawatan", cmbUpf);
+        Valid.loadCombo(cmbUpf, "nama", "ruang_perawatan");
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbSpri.setPreferredScrollableViewportSize(new Dimension(500, 500));
         DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
@@ -1079,8 +1080,6 @@ public class DlgSpri extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnSeek3);
         BtnSeek3.setBounds(860, 70, 28, 23);
-
-        cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "Sakura", "HCU", "ICU", "ICCU", "PICU", "NICU", "Neoristi" }));
         cmbUpf.setName("cmbUpf"); // NOI18N
         cmbUpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
