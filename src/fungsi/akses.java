@@ -165,7 +165,7 @@ public final class akses {
             surat_buta_warna=false,surat_bebas_tato=false,surat_kewaspadaan_kesehatan=false,grafik_porsidiet_pertanggal=false,grafik_porsidiet_perbulan=false,
             grafik_porsidiet_pertahun=false,grafik_porsidiet_perbangsal=false,penilaian_awal_medis_ralan=false,master_masalah_keperawatan_mata=false,
             penilaian_awal_keperawatan_mata=false,penilaian_awal_medis_ranap=false,penilaian_awal_medis_ranap_kebidanan=false,penilaian_awal_medis_ralan_kebidanan=false,
-            penilaian_awal_medis_igd=false;
+            penilaian_awal_medis_igd=false,penilaian_awal_medis_ralan_anak=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -941,6 +941,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ranap_kebidanan=true;
                         akses.penilaian_awal_medis_ralan_kebidanan=true;
                         akses.penilaian_awal_medis_igd=true;
+                        akses.penilaian_awal_medis_ralan_anak=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1700,6 +1701,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ranap_kebidanan=rs2.getBoolean("penilaian_awal_medis_ranap_kebidanan");
                         akses.penilaian_awal_medis_ralan_kebidanan=rs2.getBoolean("penilaian_awal_medis_ralan_kebidanan");
                         akses.penilaian_awal_medis_igd=rs2.getBoolean("penilaian_awal_medis_igd");
+                        akses.penilaian_awal_medis_ralan_anak=rs2.getBoolean("penilaian_awal_medis_ralan_anak");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2457,6 +2459,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ranap_kebidanan=false;
                         akses.penilaian_awal_medis_ralan_kebidanan=false;
                         akses.penilaian_awal_medis_igd=false;
+                        akses.penilaian_awal_medis_ralan_anak=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3269,4 +3272,5 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ranap_kebidanan(){return akses.penilaian_awal_medis_ranap_kebidanan;}
     public static boolean getpenilaian_awal_medis_ralan_kebidanan(){return akses.penilaian_awal_medis_ralan_kebidanan;}
     public static boolean getpenilaian_awal_medis_igd(){return akses.penilaian_awal_medis_igd;}
+    public static boolean getpenilaian_awal_medis_ralan_anak(){return akses.penilaian_awal_medis_ralan_anak;}
 }   

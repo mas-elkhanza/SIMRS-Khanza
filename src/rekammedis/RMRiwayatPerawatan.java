@@ -4333,23 +4333,45 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                "II. PEMERIKSAAN KEBIDANAN"+  
                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                   "<tr>"+
-                                                      "<td width='100%' border='0'>"+
-                                                           "Kesadaran Mental : "+rs2.getString("pemeriksaan_kebidanan_mental")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keadaan Umum : "+rs2.getString("pemeriksaan_kebidanan_keadaan_umum")+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GCS(E,V,M) : "+rs2.getString("pemeriksaan_kebidanan_gcs")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TD : "+rs2.getString("pemeriksaan_kebidanan_td")+" mmHg"+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nadi : "+rs2.getString("pemeriksaan_kebidanan_nadi")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RR : "+rs2.getString("pemeriksaan_kebidanan_rr")+" x/menit"+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Suhu : "+rs2.getString("pemeriksaan_kebidanan_suhu")+" °C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpO2 : "+rs2.getString("pemeriksaan_kebidanan_spo2")+" %"+        
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BB : "+rs2.getString("pemeriksaan_kebidanan_bb")+" Kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TB : "+rs2.getString("pemeriksaan_kebidanan_tb")+" cm"+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LILA : "+rs2.getString("pemeriksaan_kebidanan_lila")+" cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TFU : "+rs2.getString("pemeriksaan_kebidanan_tfu")+" cm"+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TBJ : "+rs2.getString("pemeriksaan_kebidanan_tbj")+" gr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Letak : "+rs2.getString("pemeriksaan_kebidanan_letak")+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Presentasi : "+rs2.getString("pemeriksaan_kebidanan_presentasi")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penurunan : "+rs2.getString("pemeriksaan_kebidanan_penurunan")+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kontraksi/HIS : "+rs2.getString("pemeriksaan_kebidanan_his")+" x/10’, Kekuatan : "+rs2.getString("pemeriksaan_kebidanan_kekuatan")+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lamanya : "+rs2.getString("pemeriksaan_kebidanan_lamanya")+" detik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gerak janin x/30 menit, DJJ :"+rs2.getString("pemeriksaan_kebidanan_djj")+"/mnt "+rs2.getString("pemeriksaan_kebidanan_ket_djj")+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Portio : "+rs2.getString("pemeriksaan_kebidanan_portio")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pembukaan Serviks : "+rs2.getString("pemeriksaan_kebidanan_pembukaan")+" cm"+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ketuban : "+rs2.getString("pemeriksaan_kebidanan_ketuban")+" kep/bok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hodge : "+rs2.getString("pemeriksaan_kebidanan_hodge")+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Panggul : "+rs2.getString("pemeriksaan_kebidanan_panggul")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inspekulo : "+rs2.getString("pemeriksaan_kebidanan_inspekulo")+(rs2.getString("pemeriksaan_kebidanan_ket_inspekulo").equals("")?"":", "+rs2.getString("pemeriksaan_kebidanan_ket_inspekulo"))+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lakmus : "+rs2.getString("pemeriksaan_kebidanan_lakmus")+(rs2.getString("pemeriksaan_kebidanan_ket_lakmus").equals("")?"":", "+rs2.getString("pemeriksaan_kebidanan_ket_lakmus"))+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTG : "+rs2.getString("pemeriksaan_kebidanan_ctg")+(rs2.getString("pemeriksaan_kebidanan_ket_ctg").equals("")?"":", "+rs2.getString("pemeriksaan_kebidanan_ket_ctg"))+
-                                                      "</td>"+
+                                                       "<td width='25%' border='0'>Kesadaran Mental : "+rs2.getString("pemeriksaan_kebidanan_mental")+"</td>"+
+                                                       "<td width='25%' border='0'>Keadaan Umum : "+rs2.getString("pemeriksaan_kebidanan_keadaan_umum")+"</td>"+
+                                                       "<td width='25%' border='0'>GCS(E,V,M) : "+rs2.getString("pemeriksaan_kebidanan_gcs")+"</td>"+
+                                                       "<td width='25%' border='0'>TD : "+rs2.getString("pemeriksaan_kebidanan_td")+" mmHg</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>Nadi : "+rs2.getString("pemeriksaan_kebidanan_nadi")+" x/menit</td>"+
+                                                       "<td width='25%' border='0'>RR : "+rs2.getString("pemeriksaan_kebidanan_rr")+" x/menit</td>"+
+                                                       "<td width='25%' border='0'>Suhu : "+rs2.getString("pemeriksaan_kebidanan_suhu")+" °C</td>"+
+                                                       "<td width='25%' border='0'>SpO2 : "+rs2.getString("pemeriksaan_kebidanan_spo2")+" %</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>BB : "+rs2.getString("pemeriksaan_kebidanan_bb")+" Kg</td>"+
+                                                       "<td width='25%' border='0'>TB : "+rs2.getString("pemeriksaan_kebidanan_tb")+" cm</td>"+
+                                                       "<td width='25%' border='0'>LILA : "+rs2.getString("pemeriksaan_kebidanan_lila")+" cm</td>"+
+                                                       "<td width='25%' border='0'>TFU : "+rs2.getString("pemeriksaan_kebidanan_tfu")+" cm</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>TBJ : "+rs2.getString("pemeriksaan_kebidanan_tbj")+" gr</td>"+
+                                                       "<td width='25%' border='0'>Letak : "+rs2.getString("pemeriksaan_kebidanan_letak")+"</td>"+
+                                                       "<td width='25%' border='0'>Presentasi : "+rs2.getString("pemeriksaan_kebidanan_presentasi")+"</td>"+
+                                                       "<td width='25%' border='0'>Penurunan : "+rs2.getString("pemeriksaan_kebidanan_penurunan")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>Kontraksi/HIS : "+rs2.getString("pemeriksaan_kebidanan_his")+" x/10’, Kekuatan : "+rs2.getString("pemeriksaan_kebidanan_kekuatan")+"</td>"+
+                                                       "<td width='25%' border='0'>Lamanya : "+rs2.getString("pemeriksaan_kebidanan_lamanya")+" detik</td>"+
+                                                       "<td width='25%' border='0'>DJJ :"+rs2.getString("pemeriksaan_kebidanan_djj")+"/mnt "+rs2.getString("pemeriksaan_kebidanan_ket_djj")+"</td>"+
+                                                       "<td width='25%' border='0'>Portio : "+rs2.getString("pemeriksaan_kebidanan_portio")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>Pembukaan Serviks : "+rs2.getString("pemeriksaan_kebidanan_pembukaan")+" cm</td>"+
+                                                       "<td width='25%' border='0'>Ketuban : "+rs2.getString("pemeriksaan_kebidanan_ketuban")+" kep/bok</td>"+
+                                                       "<td width='25%' border='0'>Hodge : "+rs2.getString("pemeriksaan_kebidanan_hodge")+"</td>"+
+                                                       "<td width='25%' border='0'>Panggul : "+rs2.getString("pemeriksaan_kebidanan_panggul")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>Inspekulo : "+rs2.getString("pemeriksaan_kebidanan_inspekulo")+(rs2.getString("pemeriksaan_kebidanan_ket_inspekulo").equals("")?"":", "+rs2.getString("pemeriksaan_kebidanan_ket_inspekulo"))+"</td>"+
+                                                       "<td width='25%' border='0'>Lakmus : "+rs2.getString("pemeriksaan_kebidanan_lakmus")+(rs2.getString("pemeriksaan_kebidanan_ket_lakmus").equals("")?"":", "+rs2.getString("pemeriksaan_kebidanan_ket_lakmus"))+"</td>"+
+                                                       "<td width='25%' border='0' colspan='2'>CTG : "+rs2.getString("pemeriksaan_kebidanan_ctg")+(rs2.getString("pemeriksaan_kebidanan_ket_ctg").equals("")?"":", "+rs2.getString("pemeriksaan_kebidanan_ket_ctg"))+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+

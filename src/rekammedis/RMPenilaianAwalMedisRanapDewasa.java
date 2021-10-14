@@ -188,6 +188,8 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
         KetFisik.setDocument(new batasInput((int)5000).getKata(KetFisik));
         KetLokalis.setDocument(new batasInput((int)3000).getKata(KetLokalis));
         Laborat.setDocument(new batasInput((int)3000).getKata(Laborat));
+        Radiologi.setDocument(new batasInput((int)3000).getKata(Radiologi));
+        Penunjang.setDocument(new batasInput((int)3000).getKata(Penunjang));
         Diagnosis.setDocument(new batasInput((int)500).getKata(Diagnosis));
         Tatalaksana.setDocument(new batasInput((int)5000).getKata(Tatalaksana));
         Edukasi.setDocument(new batasInput((int)1000).getKata(Edukasi));
