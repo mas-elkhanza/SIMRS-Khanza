@@ -44,6 +44,7 @@ import bridging.BPJSCekReferensiDiagnosaPRB;
 import bridging.BPJSCekReferensiDokter;
 import bridging.BPJSCekReferensiDokterDPJP;
 import bridging.BPJSCekReferensiDokterHFIS;
+import bridging.BPJSCekReferensiJadwalHFIS;
 import bridging.BPJSCekReferensiKabupaten;
 import bridging.BPJSCekReferensiKecamatan;
 import bridging.BPJSCekReferensiKelasRawat;
@@ -17587,6 +17588,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSReferensiJadwalHFISActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekReferensiJadwalHFIS form=new BPJSCekReferensiJadwalHFIS(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18213,7 +18225,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun,btnGrafikPorsiDietPerRuang,
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
-            btnBPJSReferensiDokterHFIS;
+            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS;
     
     public void isWall(){
         try{            
@@ -20373,6 +20385,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_referensi_dokter_hfis()==true){
                 Panelmenu.add(btnBPJSReferensiDokterHFIS);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_referensi_jadwal_hfis()==true){
+                Panelmenu.add(btnBPJSReferensiJadwalHFIS);
                 jmlmenu++;
             }
             
@@ -24156,6 +24173,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_referensi_dokter_hfis()==true){
             Panelmenu.add(btnBPJSReferensiDokterHFIS);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_referensi_jadwal_hfis()==true){
+            Panelmenu.add(btnBPJSReferensiJadwalHFIS);
             jmlmenu++;
         }
 
@@ -28744,6 +28766,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_referensi_dokter_hfis()==true){
             if(btnBPJSReferensiDokterHFIS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiDokterHFIS);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_referensi_jadwal_hfis()==true){
+            if(btnBPJSReferensiJadwalHFIS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSReferensiJadwalHFIS);
                 jmlmenu++;
             }                
         }
@@ -33552,6 +33581,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiDokterHFIS.setName("btnBPJSReferensiDokterHFIS"); 
         btnBPJSReferensiDokterHFIS.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSReferensiDokterHFIS.addActionListener(this::btnBPJSReferensiDokterHFISActionPerformed);
+        
+        btnBPJSReferensiJadwalHFIS = new widget.ButtonBig();
+        btnBPJSReferensiJadwalHFIS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSReferensiJadwalHFIS.setText("Referensi Jadwal HFIS");
+        btnBPJSReferensiJadwalHFIS.setIconTextGap(0);
+        btnBPJSReferensiJadwalHFIS.setName("btnBPJSReferensiJadwalHFIS"); 
+        btnBPJSReferensiJadwalHFIS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSReferensiJadwalHFIS.addActionListener(this::btnBPJSReferensiJadwalHFISActionPerformed);
     }
     
 }

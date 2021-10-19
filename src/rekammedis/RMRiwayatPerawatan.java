@@ -305,32 +305,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         label19 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        panelisi4 = new widget.panelisi();
-        label17 = new widget.Label();
-        NoRM = new widget.TextBox();
-        NmPasien = new widget.TextBox();
-        BtnSeek2 = new widget.Button();
-        label20 = new widget.Label();
-        Jk = new widget.TextBox();
-        label21 = new widget.Label();
-        TempatLahir = new widget.TextBox();
-        label22 = new widget.Label();
-        Alamat = new widget.TextBox();
-        label23 = new widget.Label();
-        GD = new widget.TextBox();
-        label24 = new widget.Label();
-        IbuKandung = new widget.TextBox();
-        TanggalLahir = new widget.TextBox();
-        label25 = new widget.Label();
-        Agama = new widget.TextBox();
-        StatusNikah = new widget.TextBox();
-        label26 = new widget.Label();
-        Pendidikan = new widget.TextBox();
-        label27 = new widget.Label();
-        label28 = new widget.Label();
-        Bahasa = new widget.TextBox();
-        label29 = new widget.Label();
-        CacatFisik = new widget.TextBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll1 = new widget.ScrollPane();
         tbRegistrasi = new widget.Table();
@@ -386,6 +360,34 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         LoadHTMLPiutang = new widget.editorpane();
         Scroll3 = new widget.ScrollPane();
         LoadHTMLRetensi = new widget.editorpane();
+        PanelInput = new javax.swing.JPanel();
+        ChkInput = new widget.CekBox();
+        FormInput = new widget.panelisi();
+        label17 = new widget.Label();
+        NoRM = new widget.TextBox();
+        NmPasien = new widget.TextBox();
+        BtnSeek2 = new widget.Button();
+        label20 = new widget.Label();
+        Jk = new widget.TextBox();
+        label21 = new widget.Label();
+        TempatLahir = new widget.TextBox();
+        label22 = new widget.Label();
+        Alamat = new widget.TextBox();
+        label23 = new widget.Label();
+        GD = new widget.TextBox();
+        label24 = new widget.Label();
+        IbuKandung = new widget.TextBox();
+        TanggalLahir = new widget.TextBox();
+        label25 = new widget.Label();
+        Agama = new widget.TextBox();
+        StatusNikah = new widget.TextBox();
+        label26 = new widget.Label();
+        Pendidikan = new widget.TextBox();
+        label27 = new widget.Label();
+        label28 = new widget.Label();
+        Bahasa = new widget.TextBox();
+        label29 = new widget.Label();
+        CacatFisik = new widget.TextBox();
 
         Pekerjaan.setEditable(false);
         Pekerjaan.setName("Pekerjaan"); // NOI18N
@@ -514,178 +516,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         panelGlass5.add(BtnKeluar);
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
-
-        panelisi4.setName("panelisi4"); // NOI18N
-        panelisi4.setPreferredSize(new java.awt.Dimension(100, 104));
-        panelisi4.setLayout(null);
-
-        label17.setText("Pasien :");
-        label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label17);
-        label17.setBounds(5, 10, 55, 23);
-
-        NoRM.setName("NoRM"); // NOI18N
-        NoRM.setPreferredSize(new java.awt.Dimension(100, 23));
-        NoRM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRMKeyPressed(evt);
-            }
-        });
-        panelisi4.add(NoRM);
-        NoRM.setBounds(64, 10, 100, 23);
-
-        NmPasien.setEditable(false);
-        NmPasien.setName("NmPasien"); // NOI18N
-        NmPasien.setPreferredSize(new java.awt.Dimension(220, 23));
-        panelisi4.add(NmPasien);
-        NmPasien.setBounds(167, 10, 220, 23);
-
-        BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnSeek2.setMnemonic('3');
-        BtnSeek2.setToolTipText("Alt+3");
-        BtnSeek2.setName("BtnSeek2"); // NOI18N
-        BtnSeek2.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnSeek2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSeek2ActionPerformed(evt);
-            }
-        });
-        BtnSeek2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek2KeyPressed(evt);
-            }
-        });
-        panelisi4.add(BtnSeek2);
-        BtnSeek2.setBounds(390, 10, 28, 23);
-
-        label20.setText("J.K. :");
-        label20.setName("label20"); // NOI18N
-        label20.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label20);
-        label20.setBounds(431, 10, 30, 23);
-
-        Jk.setEditable(false);
-        Jk.setName("Jk"); // NOI18N
-        Jk.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(Jk);
-        Jk.setBounds(465, 10, 40, 23);
-
-        label21.setText("Tmp/Tgl.Lahir :");
-        label21.setName("label21"); // NOI18N
-        label21.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label21);
-        label21.setBounds(513, 10, 80, 23);
-
-        TempatLahir.setEditable(false);
-        TempatLahir.setName("TempatLahir"); // NOI18N
-        TempatLahir.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(TempatLahir);
-        TempatLahir.setBounds(597, 10, 140, 23);
-
-        label22.setText("Alamat :");
-        label22.setName("label22"); // NOI18N
-        label22.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label22);
-        label22.setBounds(5, 40, 55, 23);
-
-        Alamat.setEditable(false);
-        Alamat.setName("Alamat"); // NOI18N
-        Alamat.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(Alamat);
-        Alamat.setBounds(64, 40, 354, 23);
-
-        label23.setText("G.D. :");
-        label23.setName("label23"); // NOI18N
-        label23.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label23);
-        label23.setBounds(431, 40, 30, 23);
-
-        GD.setEditable(false);
-        GD.setName("GD"); // NOI18N
-        GD.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(GD);
-        GD.setBounds(465, 40, 40, 23);
-
-        label24.setText("Ibu Kandung :");
-        label24.setName("label24"); // NOI18N
-        label24.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label24);
-        label24.setBounds(513, 40, 80, 23);
-
-        IbuKandung.setEditable(false);
-        IbuKandung.setName("IbuKandung"); // NOI18N
-        IbuKandung.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(IbuKandung);
-        IbuKandung.setBounds(597, 40, 225, 23);
-
-        TanggalLahir.setEditable(false);
-        TanggalLahir.setName("TanggalLahir"); // NOI18N
-        TanggalLahir.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(TanggalLahir);
-        TanggalLahir.setBounds(739, 10, 83, 23);
-
-        label25.setText("Agama :");
-        label25.setName("label25"); // NOI18N
-        label25.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label25);
-        label25.setBounds(5, 70, 55, 23);
-
-        Agama.setEditable(false);
-        Agama.setName("Agama"); // NOI18N
-        Agama.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(Agama);
-        Agama.setBounds(64, 70, 100, 23);
-
-        StatusNikah.setEditable(false);
-        StatusNikah.setName("StatusNikah"); // NOI18N
-        StatusNikah.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(StatusNikah);
-        StatusNikah.setBounds(235, 70, 100, 23);
-
-        label26.setText("Stts.Nikah :");
-        label26.setName("label26"); // NOI18N
-        label26.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label26);
-        label26.setBounds(166, 70, 65, 23);
-
-        Pendidikan.setEditable(false);
-        Pendidikan.setName("Pendidikan"); // NOI18N
-        Pendidikan.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(Pendidikan);
-        Pendidikan.setBounds(409, 70, 80, 23);
-
-        label27.setText("Pendidikan :");
-        label27.setName("label27"); // NOI18N
-        label27.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label27);
-        label27.setBounds(335, 70, 70, 23);
-
-        label28.setText("Bahasa :");
-        label28.setName("label28"); // NOI18N
-        label28.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label28);
-        label28.setBounds(490, 70, 50, 23);
-
-        Bahasa.setEditable(false);
-        Bahasa.setName("Bahasa"); // NOI18N
-        Bahasa.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(Bahasa);
-        Bahasa.setBounds(544, 70, 100, 23);
-
-        label29.setText("Cacat Fisik :");
-        label29.setName("label29"); // NOI18N
-        label29.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi4.add(label29);
-        label29.setBounds(643, 70, 70, 23);
-
-        CacatFisik.setEditable(false);
-        CacatFisik.setName("CacatFisik"); // NOI18N
-        CacatFisik.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelisi4.add(CacatFisik);
-        CacatFisik.setBounds(717, 70, 105, 23);
-
-        internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
@@ -1105,6 +935,206 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
+        PanelInput.setBackground(new java.awt.Color(255, 255, 255));
+        PanelInput.setName("PanelInput"); // NOI18N
+        PanelInput.setOpaque(false);
+        PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setMnemonic('M');
+        ChkInput.setSelected(true);
+        ChkInput.setText(".: Tampilkan/Sembunyikan Data Pasien");
+        ChkInput.setBorderPainted(true);
+        ChkInput.setBorderPaintedFlat(true);
+        ChkInput.setFocusable(false);
+        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput.setName("ChkInput"); // NOI18N
+        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkInputActionPerformed(evt);
+            }
+        });
+        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
+
+        FormInput.setName("FormInput"); // NOI18N
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 104));
+        FormInput.setLayout(null);
+
+        label17.setText("Pasien :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label17);
+        label17.setBounds(5, 10, 55, 23);
+
+        NoRM.setName("NoRM"); // NOI18N
+        NoRM.setPreferredSize(new java.awt.Dimension(100, 23));
+        NoRM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRMKeyPressed(evt);
+            }
+        });
+        FormInput.add(NoRM);
+        NoRM.setBounds(64, 10, 100, 23);
+
+        NmPasien.setEditable(false);
+        NmPasien.setName("NmPasien"); // NOI18N
+        NmPasien.setPreferredSize(new java.awt.Dimension(220, 23));
+        FormInput.add(NmPasien);
+        NmPasien.setBounds(167, 10, 220, 23);
+
+        BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSeek2.setMnemonic('3');
+        BtnSeek2.setToolTipText("Alt+3");
+        BtnSeek2.setName("BtnSeek2"); // NOI18N
+        BtnSeek2.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnSeek2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeek2ActionPerformed(evt);
+            }
+        });
+        BtnSeek2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSeek2KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnSeek2);
+        BtnSeek2.setBounds(390, 10, 28, 23);
+
+        label20.setText("J.K. :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label20);
+        label20.setBounds(431, 10, 30, 23);
+
+        Jk.setEditable(false);
+        Jk.setName("Jk"); // NOI18N
+        Jk.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(Jk);
+        Jk.setBounds(465, 10, 40, 23);
+
+        label21.setText("Tmp/Tgl.Lahir :");
+        label21.setName("label21"); // NOI18N
+        label21.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label21);
+        label21.setBounds(513, 10, 80, 23);
+
+        TempatLahir.setEditable(false);
+        TempatLahir.setName("TempatLahir"); // NOI18N
+        TempatLahir.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(TempatLahir);
+        TempatLahir.setBounds(597, 10, 140, 23);
+
+        label22.setText("Alamat :");
+        label22.setName("label22"); // NOI18N
+        label22.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label22);
+        label22.setBounds(5, 40, 55, 23);
+
+        Alamat.setEditable(false);
+        Alamat.setName("Alamat"); // NOI18N
+        Alamat.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(Alamat);
+        Alamat.setBounds(64, 40, 354, 23);
+
+        label23.setText("G.D. :");
+        label23.setName("label23"); // NOI18N
+        label23.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label23);
+        label23.setBounds(431, 40, 30, 23);
+
+        GD.setEditable(false);
+        GD.setName("GD"); // NOI18N
+        GD.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(GD);
+        GD.setBounds(465, 40, 40, 23);
+
+        label24.setText("Ibu Kandung :");
+        label24.setName("label24"); // NOI18N
+        label24.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label24);
+        label24.setBounds(513, 40, 80, 23);
+
+        IbuKandung.setEditable(false);
+        IbuKandung.setName("IbuKandung"); // NOI18N
+        IbuKandung.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(IbuKandung);
+        IbuKandung.setBounds(597, 40, 225, 23);
+
+        TanggalLahir.setEditable(false);
+        TanggalLahir.setName("TanggalLahir"); // NOI18N
+        TanggalLahir.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(TanggalLahir);
+        TanggalLahir.setBounds(739, 10, 83, 23);
+
+        label25.setText("Agama :");
+        label25.setName("label25"); // NOI18N
+        label25.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label25);
+        label25.setBounds(5, 70, 55, 23);
+
+        Agama.setEditable(false);
+        Agama.setName("Agama"); // NOI18N
+        Agama.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(Agama);
+        Agama.setBounds(64, 70, 100, 23);
+
+        StatusNikah.setEditable(false);
+        StatusNikah.setName("StatusNikah"); // NOI18N
+        StatusNikah.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(StatusNikah);
+        StatusNikah.setBounds(235, 70, 100, 23);
+
+        label26.setText("Stts.Nikah :");
+        label26.setName("label26"); // NOI18N
+        label26.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label26);
+        label26.setBounds(166, 70, 65, 23);
+
+        Pendidikan.setEditable(false);
+        Pendidikan.setName("Pendidikan"); // NOI18N
+        Pendidikan.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(Pendidikan);
+        Pendidikan.setBounds(409, 70, 80, 23);
+
+        label27.setText("Pendidikan :");
+        label27.setName("label27"); // NOI18N
+        label27.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label27);
+        label27.setBounds(335, 70, 70, 23);
+
+        label28.setText("Bahasa :");
+        label28.setName("label28"); // NOI18N
+        label28.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label28);
+        label28.setBounds(490, 70, 50, 23);
+
+        Bahasa.setEditable(false);
+        Bahasa.setName("Bahasa"); // NOI18N
+        Bahasa.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(Bahasa);
+        Bahasa.setBounds(544, 70, 100, 23);
+
+        label29.setText("Cacat Fisik :");
+        label29.setName("label29"); // NOI18N
+        label29.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormInput.add(label29);
+        label29.setBounds(643, 70, 70, 23);
+
+        CacatFisik.setEditable(false);
+        CacatFisik.setName("CacatFisik"); // NOI18N
+        CacatFisik.setPreferredSize(new java.awt.Dimension(100, 23));
+        FormInput.add(CacatFisik);
+        CacatFisik.setBounds(717, 70, 105, 23);
+
+        PanelInput.add(FormInput, java.awt.BorderLayout.PAGE_START);
+
+        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -1331,6 +1361,10 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
+    private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
+        isForm();
+    }//GEN-LAST:event_ChkInputActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1357,6 +1391,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnSeek2;
     private widget.TextBox CacatFisik;
     private widget.CekBox ChkAccor;
+    private widget.CekBox ChkInput;
+    private widget.panelisi FormInput;
     private widget.PanelBiasa FormMenu;
     private widget.TextBox GD;
     private widget.TextBox IbuKandung;
@@ -1369,6 +1405,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox NmPasien;
     private widget.TextBox NoRM;
     private widget.PanelBiasa PanelAccor;
+    private javax.swing.JPanel PanelInput;
     private widget.TextBox Pekerjaan;
     private widget.TextBox Pendidikan;
     private widget.RadioButton R1;
@@ -1441,7 +1478,6 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label28;
     private widget.Label label29;
     private widget.panelisi panelGlass5;
-    private widget.panelisi panelisi4;
     private widget.Table tbRegistrasi;
     // End of variables declaration//GEN-END:variables
 
@@ -7218,5 +7254,19 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }   
+    }
+    
+    private void isForm(){
+        if(ChkInput.isSelected()==true){
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,126));
+            FormInput.setVisible(true);      
+            ChkInput.setVisible(true);
+        }else if(ChkInput.isSelected()==false){           
+            ChkInput.setVisible(false);            
+            PanelInput.setPreferredSize(new Dimension(WIDTH,20));
+            FormInput.setVisible(false);      
+            ChkInput.setVisible(true);
+        }
     }
 }

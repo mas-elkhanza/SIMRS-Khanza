@@ -15,7 +15,6 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.batasInput;
 import fungsi.koneksiDB;
 import java.awt.Dimension;
 import javax.swing.JTable;
@@ -26,10 +25,12 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
-import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -52,6 +53,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private BPJSCekReferensiPoliHFIS poli=new BPJSCekReferensiPoliHFIS(null,false);
 
     /** Creates new form DlgKamar
      * @param parent
@@ -63,7 +65,9 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Poli","Nama Poli","Kode Subspesialis","Nama Subspesialis"}){
+        tabMode=new DefaultTableModel(null,new String[]{
+            "No.","Kode Subspesialis","Nama Subspesialis","Kode Poli","Nama Poli","Kode Dokter","Nama Dokter","Hari","Nama Hari","Libur","Jadwal","Kapasitas"
+        }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -72,21 +76,71 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 12; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(40);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
             }else if(i==3){
                 column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
+            }else if(i==5){
+                column.setPreferredWidth(100);
+            }else if(i==6){
+                column.setPreferredWidth(200);
+            }else if(i==7){
+                column.setPreferredWidth(40);
+            }else if(i==8){
+                column.setPreferredWidth(100);
+            }else if(i==9){
+                column.setPreferredWidth(40);
+            }else if(i==10){
+                column.setPreferredWidth(120);
+            }else if(i==11){
+                column.setPreferredWidth(70);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(poli.getTable().getSelectedRow()!= -1){                   
+                    KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),2).toString());
+                    KdPoli.requestFocus();
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        poli.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    poli.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
         
         try {
             link=koneksiDB.URLAPIBPJS();
@@ -112,11 +166,12 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         tbKamar = new widget.Table();
         panelGlass6 = new widget.panelisi();
         jLabel19 = new widget.Label();
-        KdProp = new widget.TextBox();
-        NmProp = new widget.TextBox();
-        BtnPropinsi = new widget.Button();
+        KdPoli = new widget.TextBox();
+        NmPoli = new widget.TextBox();
+        BtnPoli = new widget.Button();
         jLabel20 = new widget.Label();
         Tanggal = new widget.Tanggal();
+        BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -149,28 +204,28 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(37, 23));
         panelGlass6.add(jLabel19);
 
-        KdProp.setEditable(false);
-        KdProp.setHighlighter(null);
-        KdProp.setName("KdProp"); // NOI18N
-        KdProp.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelGlass6.add(KdProp);
+        KdPoli.setEditable(false);
+        KdPoli.setHighlighter(null);
+        KdPoli.setName("KdPoli"); // NOI18N
+        KdPoli.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass6.add(KdPoli);
 
-        NmProp.setEditable(false);
-        NmProp.setName("NmProp"); // NOI18N
-        NmProp.setPreferredSize(new java.awt.Dimension(150, 23));
-        panelGlass6.add(NmProp);
+        NmPoli.setEditable(false);
+        NmPoli.setName("NmPoli"); // NOI18N
+        NmPoli.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelGlass6.add(NmPoli);
 
-        BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPropinsi.setMnemonic('3');
-        BtnPropinsi.setToolTipText("ALt+3");
-        BtnPropinsi.setName("BtnPropinsi"); // NOI18N
-        BtnPropinsi.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnPropinsi.addActionListener(new java.awt.event.ActionListener() {
+        BtnPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPoli.setMnemonic('3');
+        BtnPoli.setToolTipText("ALt+3");
+        BtnPoli.setName("BtnPoli"); // NOI18N
+        BtnPoli.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPropinsiActionPerformed(evt);
+                BtnPoliActionPerformed(evt);
             }
         });
-        panelGlass6.add(BtnPropinsi);
+        panelGlass6.add(BtnPoli);
 
         jLabel20.setText("Tanggal :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -181,6 +236,23 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass6.add(Tanggal);
+
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setMnemonic('6');
+        BtnCari.setToolTipText("Alt+6");
+        BtnCari.setName("BtnCari"); // NOI18N
+        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariActionPerformed(evt);
+            }
+        });
+        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(BtnCari);
 
         jLabel17.setName("jLabel17"); // NOI18N
         jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
@@ -256,7 +328,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
+            param.put("polirs",akses.getpropinsirs());
             //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
@@ -266,9 +338,30 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
 
-    private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        
-    }//GEN-LAST:event_BtnPropinsiActionPerformed
+    private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setLocationRelativeTo(internalFrame1);
+        poli.setVisible(true);
+    }//GEN-LAST:event_BtnPoliActionPerformed
+
+    private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        if(KdPoli.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih poli terlebih dahulu...!!");
+            BtnPoli.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }   
+    }//GEN-LAST:event_BtnCariActionPerformed
+
+    private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnCariActionPerformed(null);
+        }else{
+            Valid.pindah(evt,BtnKeluar,BtnPrint);
+        }
+    }//GEN-LAST:event_BtnCariKeyPressed
 
     /**
     * @param args the command line arguments
@@ -287,11 +380,12 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnCari;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPoli;
     private widget.Button BtnPrint;
-    private widget.Button BtnPropinsi;
-    private widget.TextBox KdProp;
-    private widget.TextBox NmProp;
+    private widget.TextBox KdPoli;
+    private widget.TextBox NmPoli;
     private widget.ScrollPane Scroll;
     private widget.Tanggal Tanggal;
     private widget.InternalFrame internalFrame1;
@@ -302,7 +396,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String poli) {
+    public void tampil() {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -312,8 +406,8 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
 	    headers.add("x-signature",api.getHmac(utc));
 	    headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
-            URL = link+"/ref/poli";	
-            System.out.println(link+"/ref/poli");
+            URL = link+"/jadwaldokter/kodepoli/"+KdPoli.getText()+"/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+            System.out.println(URL);
             //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
@@ -324,14 +418,14 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
-                        if(list.path("nmpoli").asText().toLowerCase().contains(poli.toLowerCase())||
-                                list.path("nmsubspesialis").asText().toLowerCase().contains(poli.toLowerCase())||
-                                list.path("kdsubspesialis").asText().toLowerCase().contains(poli.toLowerCase())||
-                                list.path("kdpoli").asText().toLowerCase().contains(poli.toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                i+".",list.path("kdpoli").asText(),list.path("nmpoli").asText(),list.path("kdsubspesialis").asText(),list.path("nmsubspesialis").asText()
-                            });
-                        }
+                        tabMode.addRow(new Object[]{
+                            i+".",list.path("kodesubspesialis").asText(),list.path("namasubspesialis").asText(),
+                            list.path("kodepoli").asText(),list.path("namapoli").asText(),
+                            list.path("kodedokter").asText(),list.path("namadokter").asText(),
+                            list.path("hari").asText(),list.path("namahari").asText(),
+                            list.path("libur").asText(),list.path("jadwal").asText(),
+                            list.path("kapasitaspasien").asText()
+                        });
                         i++;
                     }
                 }
