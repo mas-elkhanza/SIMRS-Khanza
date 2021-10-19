@@ -417,11 +417,7 @@ public final class DlgCariAturanPakai extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

@@ -6366,11 +6366,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
              fileWriter.close();
              iyem=null;
         } catch (Exception e) {
-            if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
     }
     
@@ -6459,11 +6455,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
              fileWriter.close();
              iyem=null;
         } catch (Exception e) {
-            if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
     }
     
@@ -6528,11 +6520,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
              fileWriter.close();
              iyem=null;        
         }catch(Exception e){
-             if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-             }else{
-                System.out.println("Notifikasi : "+e);
-             }
+             System.out.println("Notifikasi : "+e);
         }
     }
     
@@ -6590,11 +6578,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
              }
              myObj.close();
         }catch(Exception e){
-             if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-             }else{
-                System.out.println("Notifikasi : "+e);
-             }
+             System.out.println("Notifikasi : "+e);
         }
     }
     
@@ -6627,11 +6611,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
              fileWriter.close();
              iyem=null;        
         }catch(Exception e){
-             if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-             }else{
-                System.out.println("Notifikasi : "+e);
-             }
+             System.out.println("Notifikasi : "+e);
         }
     }
     

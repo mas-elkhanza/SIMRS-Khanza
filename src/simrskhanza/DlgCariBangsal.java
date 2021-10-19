@@ -429,7 +429,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

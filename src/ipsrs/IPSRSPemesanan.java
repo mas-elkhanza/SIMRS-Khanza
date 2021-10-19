@@ -1273,7 +1273,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }
             myObj.close();
         }catch(Exception e){
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+e);
         }
     }
 

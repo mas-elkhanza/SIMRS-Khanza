@@ -409,11 +409,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             fileWriter.close();
             iyem=null;   
         }catch(Exception e){
-            if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
@@ -447,7 +443,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+ex);
         }
     } 
 }

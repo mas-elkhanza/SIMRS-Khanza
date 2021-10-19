@@ -676,7 +676,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "resep_luar,surat_bebas_tbc,surat_buta_warna,surat_bebas_tato,surat_kewaspadaan_kesehatan,grafik_porsidiet_pertanggal,"+
                         "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal,penilaian_awal_medis_ralan,"+
                         "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata,penilaian_awal_medis_ranap,penilaian_awal_medis_ranap_kebidanan,"+
-                        "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak,bpjs_referensi_poli_hfis,"+
+                        "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2587,6 +2588,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Referensi TACC PCare".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Referensi TACC PCare",rs.getBoolean("pcare_alasan_tacc")});
+                    }
+                    
+                    if("[K]Referensi Poli HFIS".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Referensi Poli HFIS",rs.getBoolean("bpjs_referensi_poli_hfis")});
+                    }
+                    
+                    if("[K]Referensi Dokter HFIS".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Referensi Dokter HFIS",rs.getBoolean("bpjs_referensi_dokter_hfis")});
+                    }
+                    
+                    if("[K]Referensi Jadwal HFIS".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Referensi Jadwal HFIS",rs.getBoolean("bpjs_referensi_jadwal_hfis")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5630,6 +5643,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[K]Referensi TACC PCare".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_alasan_tacc='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Referensi Poli HFIS".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_referensi_poli_hfis='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Referensi Dokter HFIS".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_referensi_dokter_hfis='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Referensi Jadwal HFIS".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_referensi_jadwal_hfis='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){

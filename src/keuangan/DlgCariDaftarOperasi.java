@@ -516,7 +516,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             }   
             myObj.close();   
         }catch(Exception e){
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

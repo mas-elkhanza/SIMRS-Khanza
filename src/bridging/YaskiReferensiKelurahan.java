@@ -371,7 +371,7 @@ public final class YaskiReferensiKelurahan extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+ex);
         }
     }    
 

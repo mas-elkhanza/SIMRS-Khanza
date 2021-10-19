@@ -292,6 +292,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        Pekerjaan = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         R1 = new widget.RadioButton();
@@ -385,6 +386,10 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         LoadHTMLPiutang = new widget.editorpane();
         Scroll3 = new widget.ScrollPane();
         LoadHTMLRetensi = new widget.editorpane();
+
+        Pekerjaan.setEditable(false);
+        Pekerjaan.setName("Pekerjaan"); // NOI18N
+        Pekerjaan.setPreferredSize(new java.awt.Dimension(100, 23));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1364,6 +1369,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox NmPasien;
     private widget.TextBox NoRM;
     private widget.PanelBiasa PanelAccor;
+    private widget.TextBox Pekerjaan;
     private widget.TextBox Pendidikan;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
@@ -1451,7 +1457,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             ps=koneksi.prepareStatement(
                     "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.agama,"+
                     "bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,pasien.gol_darah,pasien.nm_ibu,pasien.stts_nikah,pasien.pnd, "+
-                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "+
+                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,pasien.pekerjaan "+
                     "from pasien inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik "+
                     "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
@@ -1475,6 +1481,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     Pendidikan.setText(rs.getString("pnd"));
                     Bahasa.setText(rs.getString("nama_bahasa"));
                     CacatFisik.setText(rs.getString("nama_cacat"));
+                    Pekerjaan.setText(rs.getString("pekerjaan"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -4381,10 +4388,145 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                "III. PEMERIKSAAN UMUM"+  
                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                   "<tr>"+
-                                                      "<td width='100%' border='0'>"+
-                                                           "Kepala : "+rs2.getString("pemeriksaan_umum_kepala")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muka : "+rs2.getString("pemeriksaan_umum_muka")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mata : "+rs2.getString("pemeriksaan_umum_mata")+
-                                                           "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hidung : "+rs2.getString("pemeriksaan_umum_hidung")+
-                                                      "</td>"+
+                                                       "<td width='25%' border='0'>Kepala : "+rs2.getString("pemeriksaan_umum_kepala")+"</td>"+
+                                                       "<td width='25%' border='0'>Muka : "+rs2.getString("pemeriksaan_umum_muka")+"</td>"+
+                                                       "<td width='25%' border='0'>Mata : "+rs2.getString("pemeriksaan_umum_mata")+"</td>"+
+                                                       "<td width='25%' border='0'>Hidung : "+rs2.getString("pemeriksaan_umum_hidung")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>Telinga : "+rs2.getString("pemeriksaan_umum_telinga")+"</td>"+
+                                                       "<td width='25%' border='0'>Mulut : "+rs2.getString("pemeriksaan_umum_mulut")+"</td>"+
+                                                       "<td width='25%' border='0'>Leher : "+rs2.getString("pemeriksaan_umum_leher")+"</td>"+
+                                                       "<td width='25%' border='0'>Dada : "+rs2.getString("pemeriksaan_umum_dada")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='25%' border='0'>Perut : "+rs2.getString("pemeriksaan_umum_perut")+"</td>"+
+                                                       "<td width='25%' border='0'>Genitalia : "+rs2.getString("pemeriksaan_umum_genitalia")+"</td>"+
+                                                       "<td width='50%' border='0' colspan='2'>Ekstremitas : "+rs2.getString("pemeriksaan_umum_ekstrimitas")+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"+
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "IV. PENGKAJIAN FUNGSI"+  
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>a. Kemampuan Aktifitas Sehari-hari</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_kemampuan_aktifitas")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>b. Berjalan</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_berjalan")+(rs2.getString("pengkajian_fungsi_ket_berjalan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ket_berjalan"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>c. Aktifitas</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_aktivitas")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>d. Alat Ambulasi</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_ambulasi")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>e. Ekstremitas Atas</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_ekstrimitas_atas")+(rs2.getString("pengkajian_fungsi_ket_ekstrimitas_atas").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ket_ekstrimitas_atas"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>f. Ekstremitas Bawah</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_ekstrimitas_bawah")+(rs2.getString("pengkajian_fungsi_ket_ekstrimitas_bawah").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ket_ekstrimitas_bawah"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>g. Kemampuan Menggenggam</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_kemampuan_menggenggam")+(rs2.getString("pengkajian_fungsi_ket_kemampuan_menggenggam").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ket_kemampuan_menggenggam"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>h. Kemampuan Koordinasi</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_koordinasi")+(rs2.getString("pengkajian_fungsi_ket_koordinasi").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ket_koordinasi"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='37%' border='0'>i. Kesimpulan Gangguan Fungsi</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='62%' border='0'>"+rs2.getString("pengkajian_fungsi_gangguan_fungsi")+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"+
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "V. RIWAYAT PSIKOLOGIS – SOSIAL – EKONOMI – BUDAYA – SPIRITUAL"+  
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>a. Kondisi Psikologis</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_kondisipsiko")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>b. Adakah Perilaku</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_adakah_prilaku")+(rs2.getString("riwayat_psiko_ket_adakah_prilaku").equals("")?"":", "+rs2.getString("riwayat_psiko_ket_adakah_prilaku"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>c. Gangguan Jiwa di Masa Lalu</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_gangguan_jiwa")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>d. Hubungan Pasien dengan Anggota Keluarga</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_hubungan_pasien")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>e. Agama</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+Agama.getText()+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>f. Tinggal Dengan</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_tinggal_dengan")+(rs2.getString("riwayat_psiko_ket_tinggal_dengan").equals("")?"":", "+rs2.getString("riwayat_psiko_ket_tinggal_dengan"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>g. Pekerjaan</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+Pekerjaan.getText()+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>h. Pembayaran</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs.getString("png_jawab")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>i. Nilai-nilai Kepercayaan/Budaya Yang Perlu Diperhatikan</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_budaya")+(rs2.getString("riwayat_psiko_ket_budaya").equals("")?"":", "+rs2.getString("riwayat_psiko_ket_budaya"))+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>j. Bahasa Sehari-hari</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+Bahasa.getText()+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>k. Pendidikan Pasien</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+Pendidikan.getText()+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>l. Pendidikan P.J.</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_pend_pj")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='49%' border='0'>m. Edukasi Diberikan Kepada</td>"+
+                                                       "<td width='1%' border='0'>:</td>"+
+                                                       "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_edukasi_pada")+(rs2.getString("riwayat_psiko_ket_edukasi_pada").equals("")?"":", "+rs2.getString("riwayat_psiko_ket_edukasi_pada"))+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+
