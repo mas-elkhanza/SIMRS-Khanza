@@ -1,19 +1,98 @@
--- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for osx10.10 (x86_64)
+-- MariaDB dump 10.19  Distrib 10.4.20-MariaDB, for osx10.10 (x86_64)
 --
 -- Host: localhost    Database: sik_bridging_lab
 -- ------------------------------------------------------
--- Server version	10.1.37-MariaDB
+-- Server version	10.4.20-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `HisToLisDetail`
+--
+
+DROP TABLE IF EXISTS `HisToLisDetail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `HisToLisDetail` (
+  `RowID` int(11) NOT NULL AUTO_INCREMENT,
+  `HisToLisHeaderID` int(11) NOT NULL,
+  `HisKodeTest` varchar(50) NOT NULL,
+  `Cito` char(1) NOT NULL,
+  `tgl_insert` datetime DEFAULT NULL,
+  `Qty` int(11) DEFAULT NULL,
+  PRIMARY KEY (`RowID`)
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `HisToLisDetail`
+--
+
+LOCK TABLES `HisToLisDetail` WRITE;
+/*!40000 ALTER TABLE `HisToLisDetail` DISABLE KEYS */;
+INSERT INTO `HisToLisDetail` VALUES (1,5,'665','N','2021-10-05 00:00:00',0),(2,5,'666','N','2021-10-05 00:00:00',0),(3,5,'667','N','2021-10-05 00:00:00',0),(4,5,'668','N','2021-10-05 00:00:00',0),(5,5,'669','N','2021-10-05 00:00:00',0),(6,5,'670','N','2021-10-05 00:00:00',0),(7,5,'671','N','2021-10-05 00:00:00',0),(8,5,'672','N','2021-10-05 00:00:00',0),(9,5,'673','N','2021-10-05 00:00:00',0),(10,5,'674','N','2021-10-05 00:00:00',0),(11,5,'675','N','2021-10-05 00:00:00',0),(12,5,'2198','N','2021-10-05 00:00:00',0),(13,5,'2199','N','2021-10-05 00:00:00',0),(14,5,'2200','N','2021-10-05 00:00:00',0),(15,5,'2201','N','2021-10-05 00:00:00',0),(16,5,'2202','N','2021-10-05 00:00:00',0),(17,6,'665','N','2021-10-14 00:00:00',0),(18,6,'666','N','2021-10-14 00:00:00',0),(19,6,'667','N','2021-10-14 00:00:00',0),(20,6,'668','N','2021-10-14 00:00:00',0),(21,6,'669','N','2021-10-14 00:00:00',0),(22,6,'670','N','2021-10-14 00:00:00',0),(23,6,'671','N','2021-10-14 00:00:00',0),(24,6,'672','N','2021-10-14 00:00:00',0),(25,6,'673','N','2021-10-14 00:00:00',0),(26,6,'674','N','2021-10-14 00:00:00',0),(27,6,'675','N','2021-10-14 00:00:00',0),(28,6,'2198','N','2021-10-14 00:00:00',0),(29,6,'2199','N','2021-10-14 00:00:00',0),(30,6,'2200','N','2021-10-14 00:00:00',0),(31,6,'2201','N','2021-10-14 00:00:00',0),(32,6,'2202','N','2021-10-14 00:00:00',0);
+/*!40000 ALTER TABLE `HisToLisDetail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `HisToLisHeader`
+--
+
+DROP TABLE IF EXISTS `HisToLisHeader`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `HisToLisHeader` (
+  `RowID` int(11) NOT NULL AUTO_INCREMENT,
+  `HisNoReg` varchar(50) NOT NULL,
+  `HisNoOrder` varchar(50) NOT NULL,
+  `Ipop` varchar(50) NOT NULL,
+  `NoRM` varchar(50) NOT NULL,
+  `NamaPasien` varchar(200) NOT NULL,
+  `JenisKelamin` char(10) DEFAULT NULL,
+  `TglLahir` datetime DEFAULT NULL,
+  `AlamatPasien` varchar(200) DEFAULT NULL,
+  `KodeRuang` varchar(50) DEFAULT NULL,
+  `Ruangan` varchar(200) DEFAULT NULL,
+  `KodeDokterKlinisi` varchar(100) DEFAULT NULL,
+  `NamaDokterKlinisi` varchar(100) DEFAULT NULL,
+  `KodeDokter` varchar(50) DEFAULT NULL,
+  `DokterKodePJ` varchar(100) DEFAULT NULL,
+  `Diagnosa` varchar(200) DEFAULT NULL,
+  `JenisPasien` varchar(50) DEFAULT NULL,
+  `Kelas` varchar(50) DEFAULT NULL,
+  `flag_lempar` char(1) DEFAULT NULL,
+  `DetailCount` int(11) DEFAULT NULL,
+  `copyorder` varchar(1) DEFAULT NULL,
+  `NoSample` varchar(50) DEFAULT NULL,
+  `NamaDokterPJ` varchar(200) DEFAULT NULL,
+  `Action` char(10) NOT NULL,
+  `UnitPengirim` varchar(50) DEFAULT NULL,
+  `Rujukan` char(10) NOT NULL,
+  `Status` char(10) NOT NULL,
+  `HisTanggalKirim` datetime NOT NULL,
+  `LisTanggalTerima` datetime DEFAULT NULL,
+  PRIMARY KEY (`RowID`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `HisToLisHeader`
+--
+
+LOCK TABLES `HisToLisHeader` WRITE;
+/*!40000 ALTER TABLE `HisToLisHeader` DISABLE KEYS */;
+INSERT INTO `HisToLisHeader` VALUES (5,'2021/10/05/000002','PL202110050001','Rawat Jalan','000001','WINDIARTO','L','1988-02-24 00:00:00',', -, -, -, -','INT','INT Poli Penyakit Dalam','D0000002','dr. Aisyah','D0000002','dr. Aisyah','-','UMUM','Ralan','0',16,'0','PL202110050001','dr. Aisyah','A','INT Poli Penyakit Dalam','N','0','2021-10-05 00:00:00','2021-10-05 00:00:00'),(6,'2021/09/22/000001','PL202110140001','Rawat Inap','-','-','L','2021-09-22 00:00:00',', -, -, -, -','K1','Kamar Kelas I','D0000002','dr. Aisyah','D0000002','dr. Aisyah','-','UMUM','Kelas 1','0',16,'0','PL202110140001','dr. Aisyah','A','K1.01','N','0','2021-10-14 00:00:00','2021-10-14 00:00:00');
+/*!40000 ALTER TABLE `HisToLisHeader` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `LIS_ORDER`
@@ -284,4 +363,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-06 16:23:13
+-- Dump completed on 2021-10-19 23:13:54
