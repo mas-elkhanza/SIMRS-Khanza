@@ -30,7 +30,6 @@ import org.springframework.http.MediaType;
  * @author windiartonugroho
  */
 public class frmUtama extends javax.swing.JFrame {
-    private  Properties prop = new Properties();
     private  Connection koneksi=koneksiDB.condb();
     private  sekuel Sequel=new sekuel();
     private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select kode_ppk from setting");
@@ -49,12 +48,6 @@ public class frmUtama extends javax.swing.JFrame {
      */
     public frmUtama() {
         initComponents();
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIAPLICARE");	
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-        }
         
         this.setSize(390,340);
         

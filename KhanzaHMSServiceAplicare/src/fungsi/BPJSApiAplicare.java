@@ -1,6 +1,5 @@
 package fungsi;
 
-import AESsecurity.EnkripsiAES;
 import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;

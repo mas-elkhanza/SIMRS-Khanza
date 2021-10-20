@@ -1131,7 +1131,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormInput.add(CacatFisik);
         CacatFisik.setBounds(717, 70, 105, 23);
 
-        PanelInput.add(FormInput, java.awt.BorderLayout.PAGE_START);
+        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
