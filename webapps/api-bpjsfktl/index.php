@@ -491,7 +491,7 @@
                                                     }
                                                 }
                                                 
-                                                $query = bukaquery2("insert into reg_periksa values('$noReg', '$no_rawat', '$decode[tanggalperiksa]',current_time(), '$kddokter', '$datapeserta[no_rkm_medis]', '$kdpoli', '$datapeserta[namakeluarga]', '$datapeserta[alamatpj], $datapeserta[kelurahanpj], $datapeserta[kecamatanpj], $datapeserta[kabupatenpj], $datapeserta[propinsipj]', '$datapeserta[keluarga]', '".getOne2("select registrasilama from poliklinik where kd_poli='$kdpoli'")."', 'Belum','".str_replace("1","Baru",$statusdaftar).str_replace("0","Lama",$statusdaftar)."','Ralan', '".CARABAYAR."', '$umur','$sttsumur','Belum Bayar', '$statuspoli')");
+                                                $query = bukaquery2("insert into reg_periksa values('$noReg', '$no_rawat', '$decode[tanggalperiksa]',current_time(), '$kddokter', '$datapeserta[no_rkm_medis]', '$kdpoli', '$datapeserta[namakeluarga]', '$datapeserta[alamatpj], $datapeserta[kelurahanpj], $datapeserta[kecamatanpj], $datapeserta[kabupatenpj], $datapeserta[propinsipj]', '$datapeserta[keluarga]', '".getOne2("select registrasilama from poliklinik where kd_poli='$kdpoli'")."', 'Belum','".str_replace("0","Lama",str_replace("1","Baru",$statusdaftar))."','Ralan', '".CARABAYAR."', '$umur','$sttsumur','Belum Bayar', '$statuspoli')");
                                                 if ($query) {
                                                     $response = array(
                                                         'response' => array(
