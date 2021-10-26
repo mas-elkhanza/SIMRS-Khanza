@@ -7,7 +7,7 @@ package khanzahmsservicemobilejkn;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fungsi.ApiBPJS;
+import fungsi.ApiMobileJKN;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import java.awt.event.ActionEvent;
@@ -33,7 +33,7 @@ public class frmUtama extends javax.swing.JFrame {
     private  Connection koneksi=koneksiDB.condb();
     private  sekuel Sequel=new sekuel();
     private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select kode_ppk from setting"),utc="",link="";
-    private  ApiBPJS api=new ApiBPJS();
+    private  ApiMobileJKN api=new ApiMobileJKN();
     private  HttpHeaders headers;
     private  HttpEntity requestEntity;
     private  ObjectMapper mapper= new ObjectMapper();
@@ -49,7 +49,7 @@ public class frmUtama extends javax.swing.JFrame {
     public frmUtama() {
         initComponents();
         try {
-            link=koneksiDB.URLAPIBPJS();
+            link=koneksiDB.URLAPIMOBILEJKN();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -196,11 +196,11 @@ public class frmUtama extends javax.swing.JFrame {
                                 try {     
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
-                                    headers.add("x-cons-id",koneksiDB.CONSIDAPIBPJS());
+                                    headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
                                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                                     headers.add("x-timestamp",utc);
                                     headers.add("x-signature",api.getHmac(utc));
-                                    headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                                    headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                     requestJson ="{" +
                                                     "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                     "\"jenispasien\": \"JKN\"," +
@@ -262,11 +262,11 @@ public class frmUtama extends javax.swing.JFrame {
                                 try {     
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
-                                    headers.add("x-cons-id",koneksiDB.CONSIDAPIBPJS());
+                                    headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
                                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                                     headers.add("x-timestamp",utc);
                                     headers.add("x-signature",api.getHmac(utc));
-                                    headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                                    headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                     requestJson ="{" +
                                                      "\"kodebooking\": \""+rs.getString("no_rawat_batal")+"\"," +
                                                      "\"keterangan\": \""+rs.getString("keterangan")+"\"" +

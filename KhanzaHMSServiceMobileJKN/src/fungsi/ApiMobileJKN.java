@@ -24,7 +24,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
-public class ApiBPJS {        
+public class ApiMobileJKN {        
     private String Key,Consid;
     private String salt;
     private String generateHmacSHA256Signature;
@@ -38,10 +38,10 @@ public class ApiBPJS {
     private HttpComponentsClientHttpRequestFactory factory;
     private ApiBPJSAesKeySpec mykey;
     
-    public ApiBPJS(){
+    public ApiMobileJKN(){
         try {
-            Key = koneksiDB.SECRETKEYAPIBPJS();
-            Consid = koneksiDB.CONSIDAPIBPJS();
+            Key = koneksiDB.SECRETKEYAPIMOBILEJKN();
+            Consid = koneksiDB.CONSIDAPIMOBILEJKN();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
