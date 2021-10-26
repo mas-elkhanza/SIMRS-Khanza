@@ -668,14 +668,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/Rujukan/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
             requestEntity = new HttpEntity(headers);
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
-                response = root.path("response").path("rujukan");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
@@ -798,14 +799,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/Rujukan/RS/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 	    requestEntity = new HttpEntity(headers);
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
-                response = root.path("response").path("rujukan");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){

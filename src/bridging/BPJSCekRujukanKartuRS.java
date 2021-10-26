@@ -3954,6 +3954,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 requestJson =" {" +
                     "\"request\": {" +
                         "\"t_sep\": {" +
@@ -3970,8 +3971,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -4001,6 +4002,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 requestJson =" {" +
                     "\"request\": {" +
                         "\"t_sep\": {" +
@@ -4017,8 +4019,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -5388,14 +5390,15 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             peserta="";
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
-                response = root.path("response").path("rujukan");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = root.path("response").path("rujukan");
                 tabMode.addRow(new Object[]{
                     "Diagnosa",": "+response.path("diagnosa").path("kode").asText()+" "+response.path("diagnosa").path("nama").asText()
                 });                   
@@ -6377,6 +6380,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/SEP/1.1/insert";
             requestJson ="{" +
                           "\"request\":" +
@@ -6441,8 +6445,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
-            response = root.path("response").path("sep").path("noSep");
+            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
+            //response = root.path("response").path("sep").path("noSep");
             if(nameNode.path("code").asText().equals("200")){
                 nosep=response.asText();
                 System.out.println("No.SEP : "+nosep);

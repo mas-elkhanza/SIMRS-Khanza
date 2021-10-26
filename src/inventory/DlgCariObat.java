@@ -1274,15 +1274,15 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?,?,?","data",14,new String[]{
                                             Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,13).toString(),
                                             tbObat.getValueAt(i,6).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),
-                                            tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Valid.SetAngka2(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                            tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Math.round(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
                                                 (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),
                                             "Ralan",kdgudang.getText(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString()
                                         })==true){
-                                            ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                            ttljual=ttljual+Math.round(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                     Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                            (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)));
-                                            ttlhpp=ttlhpp+(Double.parseDouble(tbObat.getValueAt(i,13).toString())*
+                                                            (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))));
+                                            ttlhpp=ttlhpp+Math.round(Double.parseDouble(tbObat.getValueAt(i,13).toString())*
                                                             (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)));
                                             if(!tbObat.getValueAt(i,11).toString().equals("")){
                                                 Sequel.menyimpan("aturan_pakai","?,?,?,?,?",5,new String[]{
@@ -1335,15 +1335,15 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?,?,?","data",14,new String[]{
                                             Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,13).toString(),
                                             tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
-                                            tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                            tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Math.round(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
                                                 Double.parseDouble(tbObat.getValueAt(i,1).toString()))),
                                             "Ralan",kdgudang.getText(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString()
                                         })==true){
-                                            ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                            ttljual=ttljual+Math.round(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                     Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                            Double.parseDouble(tbObat.getValueAt(i,1).toString()));
-                                            ttlhpp=ttlhpp+(Double.parseDouble(tbObat.getValueAt(i,13).toString())*
+                                                            Double.parseDouble(tbObat.getValueAt(i,1).toString())));
+                                            ttlhpp=ttlhpp+Math.round(Double.parseDouble(tbObat.getValueAt(i,13).toString())*
                                                             Double.parseDouble(tbObat.getValueAt(i,1).toString()));
                                             if(!tbObat.getValueAt(i,11).toString().equals("")){
                                                 Sequel.menyimpan("aturan_pakai","?,?,?,?,?",5,new String[]{
@@ -1407,15 +1407,15 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?,?,?","data",14,new String[]{
                                     Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,13).toString(),
                                     tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
-                                    tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                    tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Math.round(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                         Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
                                         Double.parseDouble(tbObat.getValueAt(i,1).toString()))),
                                     "Ralan",kdgudang.getText(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString()
                                 })==true){
-                                    ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                    ttljual=ttljual+Math.round(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                             Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                    Double.parseDouble(tbObat.getValueAt(i,1).toString()));
-                                    ttlhpp=ttlhpp+(Double.parseDouble(tbObat.getValueAt(i,13).toString())*
+                                                    Double.parseDouble(tbObat.getValueAt(i,1).toString())));
+                                    ttlhpp=ttlhpp+Math.round(Double.parseDouble(tbObat.getValueAt(i,13).toString())*
                                                     Double.parseDouble(tbObat.getValueAt(i,1).toString()));        
                                     if(!tbObat.getValueAt(i,11).toString().equals("")){
                                         Sequel.menyimpan("aturan_pakai","?,?,?,?,?",5,new String[]{
@@ -1492,16 +1492,16 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     tbDetailObatRacikan.getValueAt(i,1).toString(),tbDetailObatRacikan.getValueAt(i,5).toString(),
                                     tbDetailObatRacikan.getValueAt(i,4).toString(),""+Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()),
                                     tbDetailObatRacikan.getValueAt(i,11).toString(),tbDetailObatRacikan.getValueAt(i,12).toString(),
-                                    ""+(Double.parseDouble(tbDetailObatRacikan.getValueAt(i,11).toString())+                                        
+                                    ""+Math.round(Double.parseDouble(tbDetailObatRacikan.getValueAt(i,11).toString())+                                        
                                         Double.parseDouble(tbDetailObatRacikan.getValueAt(i,12).toString())+
                                         (Double.parseDouble(tbDetailObatRacikan.getValueAt(i,4).toString())*
                                         Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()))),
                                     "Ralan",kdgudang.getText(),tbDetailObatRacikan.getValueAt(i,16).toString(),tbDetailObatRacikan.getValueAt(i,17).toString()
                                 })==true){
-                                    ttljual=ttljual+Double.parseDouble(tbDetailObatRacikan.getValueAt(i,11).toString())+
+                                    ttljual=ttljual+Math.round(Double.parseDouble(tbDetailObatRacikan.getValueAt(i,11).toString())+
                                             Double.parseDouble(tbDetailObatRacikan.getValueAt(i,12).toString())+(Double.parseDouble(tbDetailObatRacikan.getValueAt(i,4).toString())*
-                                                    Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()));
-                                    ttlhpp=ttlhpp+(Double.parseDouble(tbDetailObatRacikan.getValueAt(i,5).toString())*
+                                                    Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString())));
+                                    ttlhpp=ttlhpp+Math.round(Double.parseDouble(tbDetailObatRacikan.getValueAt(i,5).toString())*
                                                     Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()));
                                     if(aktifkanbatch.equals("yes")){
                                         Sequel.mengedit("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa-?",4,new String[]{
@@ -4083,10 +4083,10 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             try {
                 if(Double.parseDouble(tabModeobat.getValueAt(r,1).toString())>0){
                     try {                
-                        y=Double.parseDouble(tabModeobat.getValueAt(r,1).toString())*
+                        y=Math.round(Double.parseDouble(tabModeobat.getValueAt(r,1).toString())*
                           Double.parseDouble(tabModeobat.getValueAt(r,6).toString())+
                           Double.parseDouble(tabModeobat.getValueAt(r,8).toString())+
-                          Double.parseDouble(tabModeobat.getValueAt(r,9).toString());                                                
+                          Double.parseDouble(tabModeobat.getValueAt(r,9).toString()));                                                
                     } catch (Exception e) {
                         y=0;
                     }
@@ -4100,10 +4100,10 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             try {
                 if(Double.parseDouble(tabModeDetailObatRacikan.getValueAt(r,10).toString())>0){
                     try {
-                        y=Double.parseDouble(tabModeDetailObatRacikan.getValueAt(r,10).toString())*
+                        y=Math.round(Double.parseDouble(tabModeDetailObatRacikan.getValueAt(r,10).toString())*
                           Double.parseDouble(tabModeDetailObatRacikan.getValueAt(r,4).toString())+
                           Double.parseDouble(tabModeDetailObatRacikan.getValueAt(r,11).toString())+
-                          Double.parseDouble(tabModeDetailObatRacikan.getValueAt(r,12).toString());
+                          Double.parseDouble(tabModeDetailObatRacikan.getValueAt(r,12).toString()));
                     } catch (Exception e) {
                         y=0;
                     }
@@ -4115,7 +4115,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         LTotal.setText(Valid.SetAngka(ttl));
         ppnobat=0;
         if(tampilkan_ppnobat_ralan.equals("Yes")){
-            ppnobat=ttl*0.1;
+            ppnobat=Math.round(ttl*0.1);
             ttl=ttl+ppnobat;
             LPpn.setText(Valid.SetAngka(ppnobat));
             LTotalTagihan.setText(Valid.SetAngka(ttl));

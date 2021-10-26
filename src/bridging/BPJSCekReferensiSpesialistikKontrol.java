@@ -314,14 +314,15 @@ public final class BPJSCekReferensiSpesialistikKontrol extends javax.swing.JDial
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
             //System.out.println(URL+"/"+JenisKontrol.getText().substring(0,1)+"/nomor/"+Nomor.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText());
             root = mapper.readTree(api.getRest().exchange(URL+"/"+JenisKontrol.getText().substring(0,1)+"/nomor/"+Nomor.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

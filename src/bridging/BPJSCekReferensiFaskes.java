@@ -340,6 +340,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/faskes/"+faskes+"/1";	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -348,8 +349,8 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "A","Faskes 1",""
                 });
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("faskes").isArray()){
                     i=1;
                     for(JsonNode list:response.path("faskes")){
@@ -379,6 +380,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/faskes/"+faskes+"/2";	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -390,8 +392,8 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "B","Faskes 2/RS",""
                 });
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("faskes").isArray()){
                     i=1;
                     for(JsonNode list:response.path("faskes")){

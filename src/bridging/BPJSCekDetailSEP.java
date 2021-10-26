@@ -247,6 +247,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+	    headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL+sep, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
@@ -254,8 +255,8 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("Sukses")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 tabMode.addRow(new Object[]{
                     "Catatan",": "+response.path("catatan").asText(),""
                 });

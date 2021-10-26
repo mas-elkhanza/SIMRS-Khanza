@@ -56,6 +56,7 @@ public class BPJSCekNIK {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -64,8 +65,8 @@ public class BPJSCekNIK {
             System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
             if(nameNode.path("code").asText().equals("200")){
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 this.nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();
                 cobnmAsuransi=response.path("peserta").path("cob").path("nmAsuransi").asText();

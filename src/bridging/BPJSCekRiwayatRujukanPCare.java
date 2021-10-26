@@ -399,14 +399,15 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/Rujukan/List/Peserta/"+nomorrujukan;	
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
-                response = root.path("response").path("rujukan");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("rujukan");
+                //response = root.path("response").path("rujukan");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){

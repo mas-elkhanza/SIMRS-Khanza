@@ -312,18 +312,15 @@ public final class BPJSCekReferensiDokterKontrol extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
-            /*System.out.println("X-Cons-ID:"+koneksiDB.CONSIDAPIBPJS());
-	    System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));            
-	    System.out.println("X-Signature:"+api.getHmac());
-            System.out.println("Content-Type: Application/x-www-form-urlencoded");*/
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
             //System.out.println(URL+"/"+JenisKontrol.getText().substring(0,1)+"/KdPoli/"+Poli.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText());
             root = mapper.readTree(api.getRest().exchange(URL+"/"+JenisKontrol.getText().substring(0,1)+"/KdPoli/"+Poli.getText()+"/TglRencanaKontrol/"+TanggalKontrol.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

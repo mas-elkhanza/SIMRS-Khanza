@@ -677,7 +677,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal,penilaian_awal_medis_ralan,"+
                         "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata,penilaian_awal_medis_ranap,penilaian_awal_medis_ranap_kebidanan,"+
                         "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak,bpjs_referensi_poli_hfis,"+
-                        "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2828,6 +2828,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Penilaian Awal Medis Ralan Bayi/Anak".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Medis Ralan Bayi/Anak",rs.getBoolean("penilaian_awal_medis_ralan_anak")});
+                    }
+                    
+                    if("[L]Penilaian Fisioterapi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Fisioterapi",rs.getBoolean("penilaian_fisioterapi")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5883,6 +5887,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Penilaian Awal Medis Ralan Bayi/Anak".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_ralan_anak='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Penilaian Fisioterapi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_fisioterapi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

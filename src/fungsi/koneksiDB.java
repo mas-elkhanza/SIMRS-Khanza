@@ -297,6 +297,16 @@ public class koneksiDB {
         return var;
     }
     
+    public static String USERKEYAPIBPJS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERKEYAPIBPJS"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String URLAPIAPLICARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -321,6 +331,56 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIAPLICARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USERKEYAPIAPLICARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERKEYAPIAPLICARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPIMOBILEJKN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPIMOBILEJKN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String SECRETKEYAPIMOBILEJKN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIMOBILEJKN"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String CONSIDAPIMOBILEJKN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIMOBILEJKN"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USERKEYAPIMOBILEJKN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERKEYAPIMOBILEJKN"));
         }catch(Exception e){
             var=""; 
         }
@@ -859,16 +919,6 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIMEDQLAB"));
-        }catch(Exception e){
-            var=""; 
-        }
-        return var;
-    }
-    
-    public static String USERKEYAPIBPJS(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("USERKEYAPIBPJS"));
         }catch(Exception e){
             var=""; 
         }

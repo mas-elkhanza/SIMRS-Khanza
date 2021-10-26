@@ -805,6 +805,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                     headers.add("X-Timestamp",utc);
                     headers.add("X-Signature",api.getHmac(utc));
+                    headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                     requestJson ="{" +
                                     "\"request\": {" +
                                         "\"t_rujukan\": {" +
@@ -825,8 +826,8 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                     nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
-                    //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                    response = root.path("response");
+                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                    //response = root.path("response");
                     if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit3("bridging_rujukan_bpjs","no_rujukan=?","ppkDirujuk=?,tipeRujukan=?,jnsPelayanan=?,catatan=?,diagRujukan=?,poliRujukan=?,nm_ppkDirujuk=?,nama_diagRujukan=?,nama_poliRujukan=?",10,new String[]{
                             KdPpkRujukan1.getText(),TipeRujukan.getSelectedItem().toString(),JenisPelayanan1.getSelectedItem().toString().substring(0,1),
@@ -1262,6 +1263,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             requestJson ="{" +
                             "\"request\": {" +
                                 "\"t_rujukan\": {" +

@@ -17599,6 +17599,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnFisioterapiActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18225,7 +18229,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun,btnGrafikPorsiDietPerRuang,
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
-            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS;
+            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi;
     
     public void isWall(){
         try{            
@@ -20993,6 +20997,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gethemodialisa()==true){
                 Panelmenu.add(btnHemodialisa);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_fisioterapi()==true){
+                Panelmenu.add(btnFisioterapi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){  
@@ -24777,8 +24786,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
             jmlmenu++;
         }
+        
         if(akses.gethemodialisa()==true){
             Panelmenu.add(btnHemodialisa);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_fisioterapi()==true){
+            Panelmenu.add(btnFisioterapi);
             jmlmenu++;
         }
         
@@ -29619,6 +29634,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_fisioterapi()==true){
+            if(btnFisioterapi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnFisioterapi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -33589,6 +33611,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiJadwalHFIS.setName("btnBPJSReferensiJadwalHFIS"); 
         btnBPJSReferensiJadwalHFIS.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSReferensiJadwalHFIS.addActionListener(this::btnBPJSReferensiJadwalHFISActionPerformed);
+        
+        btnFisioterapi = new widget.ButtonBig();
+        btnFisioterapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6009609_corona_coronavirus_covid19_crowd_huddle_icon.png")));
+        btnFisioterapi.setText("Fisioterapi");
+        btnFisioterapi.setIconTextGap(0);
+        btnFisioterapi.setName("btnFisioterapi"); 
+        btnFisioterapi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnFisioterapi.addActionListener(this::btnFisioterapiActionPerformed);
     }
     
 }

@@ -44,7 +44,7 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private ApiBPJS api=new ApiBPJS();
+    private ApiMobileJKN api=new ApiMobileJKN();
     private String URL="",link="",utc="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -114,7 +114,7 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
         } 
         
         try {
-            link=koneksiDB.URLAPIBPJS();
+            link=koneksiDB.URLAPIMOBILEJKN();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -341,11 +341,11 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("x-cons-id",koneksiDB.CONSIDAPIBPJS());
+	    headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("x-timestamp",utc);
 	    headers.add("x-signature",api.getHmac(utc));
-	    headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+	    headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
             requestEntity = new HttpEntity(headers);
             URL = link+"/ref/poli";	
             System.out.println(link+"/ref/poli");
@@ -354,8 +354,8 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

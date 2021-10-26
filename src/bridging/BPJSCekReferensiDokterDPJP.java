@@ -460,6 +460,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -470,8 +471,8 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "A","Rawat Inap",""
                 });
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
@@ -512,8 +513,8 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "B","Rawat Jalan",""
                 });
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

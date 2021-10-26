@@ -2657,6 +2657,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                     headers.add("X-Timestamp",utc);
                     headers.add("X-Signature",api.getHmac(utc));
+                    headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                     URL = link+"/SEP/1.1/Update";	
                     requestJson ="{" +
                                   "\"request\":" +
@@ -2714,8 +2715,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
-                    //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                    response = root.path("response");
+                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                    //response = root.path("response");
                     if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit("bridging_sep",
                              "no_sep=?","no_sep=?,no_rawat=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
@@ -3048,6 +3049,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 URL = link+"/Sep/updtglplg";	
                 requestJson ="{" +
                               "\"request\":" +
@@ -3065,8 +3067,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                          Valid.SetTgl(TanggalPulang.getSelectedItem()+"")+" "+TanggalPulang.getSelectedItem().toString().substring(11,19),
@@ -3132,6 +3134,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 URL = link+"/Sep/pengajuanSEP";	
                 requestJson =" {" +
                                     "\"request\": {" +
@@ -3150,8 +3153,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3243,6 +3246,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 URL = link+"/Sep/aprovalSEP";	
                 requestJson =" {" +
                                     "\"request\": {" +
@@ -3260,8 +3264,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3323,6 +3327,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 URL = link+"/Rujukan/insert";	
                 requestJson ="{" +
                                 "\"request\": {" +
@@ -3344,8 +3349,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     if(Sequel.menyimpantf2("bridging_rujukan_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rujukan",13,new String[]{
                             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(TanggalRujukKeluar.getSelectedItem()+""),
@@ -3620,6 +3625,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 URL = link+"/SEP/"+NoSEP.getText();	
                 requestEntity = new HttpEntity(headers);
                 //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -3628,8 +3634,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("message").asText().equals("Sukses")){
-                    //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                    response = root.path("response");
+                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                    //response = root.path("response");
                     Catatan.setText(response.path("catatan").asText());
                     NmPenyakit.setText(response.path("diagnosa").asText());
                     if(response.path("jnsPelayanan").asText().toLowerCase().contains("inap")){
@@ -4439,6 +4445,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/SEP/Delete";
             requestJson ="{\"request\":{\"t_sep\":{\"noSep\":\""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\",\"user\":\""+user+"\"}}}";            
             requestEntity = new HttpEntity(requestJson,headers);
@@ -4500,6 +4507,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/SEP/1.1/insert";            
             requestJson ="{" +
                           "\"request\":" +
@@ -4562,8 +4570,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
-            response = root.path("response").path("sep").path("noSep");
+            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
+            //response = root.path("response").path("sep").path("noSep");
             if(nameNode.path("code").asText().equals("200")){
                  System.out.println("SEP : "+response.asText());
                  if(Sequel.menyimpantf("bridging_sep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","SEP",44,new String[]{
@@ -4584,46 +4592,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                          "-",NoBalasan.getText()
                      });
                      if(JenisPelayanan.getSelectedIndex()==1){
-                        /*try {
-                            headers = new HttpHeaders();
-                            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-                            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                            headers.add("X-Signature",api.getHmac());
-                            URL = link+"/Sep/updtglplg";	
-                            requestJson ="{" +
-                                          "\"request\":" +
-                                             "{" +
-                                                "\"t_sep\":" +
-                                                   "{" +
-                                                    "\"noSep\":\""+response.asText()+"\"," +
-                                                    "\"tglPulang\":\""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                                                    "\"user\":\""+user+"\"" +                                            
-                                                   "}" +
-                                             "}" +
-                                         "}";
-                            requestEntity = new HttpEntity(requestJson,headers);
-                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
-                            nameNode = root.path("metaData");
-                            System.out.println("code : "+nameNode.path("code").asText());
-                            System.out.println("message : "+nameNode.path("message").asText());
-                            response = mapper.readTree(api.Decrypt(root.path("response").asText()));
-                            if(nameNode.path("code").asText().equals("200")){*/
-                                Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
-                                     Valid.SetTgl(TanggalSEP.getSelectedItem()+""),
-                                     response.asText()
-                                });
-                                emptTeks();                         
-                                tampil();     
-                            /*}else{
-                                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                            }
-                        }catch (Exception ex) {
-                            System.out.println("Notifikasi Bridging : "+ex);
-                            if(ex.toString().contains("UnknownHostException")){
-                                JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
-                            }
-                        }*/
+                            Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
+                                 Valid.SetTgl(TanggalSEP.getSelectedItem()+""),
+                                 response.asText()
+                            });
+                            emptTeks();                         
+                            tampil();     
                      } 
                      if(!prb.equals("")){
                         if(Sequel.menyimpantf("bpjs_prb","?,?","PRB",2,new String[]{response.asText(),prb})==true){

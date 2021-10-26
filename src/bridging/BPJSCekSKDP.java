@@ -4446,6 +4446,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 requestJson =" {" +
                     "\"request\": {" +
                         "\"t_sep\": {" +
@@ -4462,8 +4463,8 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -4493,6 +4494,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                 requestJson =" {" +
                         "\"request\": {" +
                             "\"t_sep\": {" +
@@ -4509,8 +4511,8 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -5827,6 +5829,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
             URL = link+"/SEP/1.1/insert";
             requestJson ="{" +
                           "\"request\":" +
@@ -5891,8 +5894,8 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
-            response = root.path("response").path("sep").path("noSep");
+            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
+            //response = root.path("response").path("sep").path("noSep");
             if(nameNode.path("code").asText().equals("200")){
                 nosep=response.asText();
                 System.out.println("No.SEP : "+nosep);

@@ -339,6 +339,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIAPLICARE());
 	    requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metadata");
@@ -346,8 +347,8 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
             //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

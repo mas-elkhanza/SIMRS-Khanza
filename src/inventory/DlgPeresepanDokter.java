@@ -3768,8 +3768,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             try {
                 if(Double.parseDouble(tabModeResep.getValueAt(r,1).toString())>0){
                     try {                
-                        y=Double.parseDouble(tabModeResep.getValueAt(r,1).toString())*
-                          Double.parseDouble(tabModeResep.getValueAt(r,6).toString());                                                
+                        y=Math.round(Double.parseDouble(tabModeResep.getValueAt(r,1).toString())*
+                          Double.parseDouble(tabModeResep.getValueAt(r,6).toString()));                                                
                     } catch (Exception e) {
                         y=0;
                     }
@@ -3782,8 +3782,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         for(r=0;r<row2;r++){ 
             if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(r,13).toString())>0){
                 try {
-                    y=Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,13).toString())*
-                      Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,4).toString());
+                    y=Math.round(Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,13).toString())*
+                      Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,4).toString()));
                 } catch (Exception e) {
                     y=0;
                 }
@@ -3793,7 +3793,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         LTotal.setText(Valid.SetAngka(ttl));
         ppnobat=0;
         if(tampilkan_ppnobat_ralan.equals("Yes")){
-            ppnobat=ttl*0.1;
+            ppnobat=Math.round(ttl*0.1);
             ttl=ttl+ppnobat;
             LPpn.setText(Valid.SetAngka(ppnobat));
             LTotalTagihan.setText(Valid.SetAngka(ttl));
