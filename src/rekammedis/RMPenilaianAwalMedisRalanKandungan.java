@@ -2157,7 +2157,7 @@ public final class RMPenilaianAwalMedisRalanKandungan extends javax.swing.JDialo
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
-            if(evt.getClickCount()==2){
+            if((evt.getClickCount()==2)&&(tbObat.getSelectedColumn()==0)){
                 TabRawat.setSelectedIndex(0);
             }
         }

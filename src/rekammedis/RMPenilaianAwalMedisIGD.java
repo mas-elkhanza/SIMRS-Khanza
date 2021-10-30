@@ -1877,7 +1877,7 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
-            if(evt.getClickCount()==2){
+            if((evt.getClickCount()==2)&&(tbObat.getSelectedColumn()==0)){
                 TabRawat.setSelectedIndex(0);
             }
         }

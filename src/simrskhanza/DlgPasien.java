@@ -4645,7 +4645,7 @@ private void tbPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
-            if(evt.getClickCount()==2){
+            if((evt.getClickCount()==2)&&(tbPasien.getSelectedColumn()==0)){
                 TabRawat.setSelectedIndex(0);
             }
         }
@@ -7963,7 +7963,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 getDataTni();
             } catch (java.lang.NullPointerException e) {
             }
-            if(evt.getClickCount()==2){
+            if((evt.getClickCount()==2)&&(tbPasien2.getSelectedColumn()==0)){
                 TabRawat.setSelectedIndex(0);
             }
         }
@@ -7996,7 +7996,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 getDataPolri();
             } catch (java.lang.NullPointerException e) {
             }
-            if(evt.getClickCount()==2){
+            if((evt.getClickCount()==2)&&(tbPasien3.getSelectedColumn()==0)){
                 TabRawat.setSelectedIndex(0);
             }
         }
