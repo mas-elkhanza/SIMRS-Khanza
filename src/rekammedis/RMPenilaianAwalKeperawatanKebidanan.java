@@ -4433,6 +4433,9 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 getMasalah();
             } catch (java.lang.NullPointerException e) {
             }
+            if(evt.getClickCount()==2){
+                TabRawat.setSelectedIndex(0);
+            }
         }
 }//GEN-LAST:event_tbObatMouseClicked
 

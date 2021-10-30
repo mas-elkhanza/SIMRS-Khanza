@@ -3808,6 +3808,9 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 getImunisasi();
             } catch (java.lang.NullPointerException e) {
             }
+            if(evt.getClickCount()==2){
+                TabRawat.setSelectedIndex(0);
+            }
         }
 }//GEN-LAST:event_tbObatMouseClicked
 

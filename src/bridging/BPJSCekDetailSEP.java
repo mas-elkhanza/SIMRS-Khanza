@@ -253,7 +253,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("message").asText().equals("Sukses")){
+            if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");

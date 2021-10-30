@@ -51,6 +51,7 @@ import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMPenilaianAwalKeperawatanKebidananRanap;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
+import rekammedis.RMPenilaianFisioterapi;
 
 /**
  *
@@ -1238,6 +1239,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnAwalKeperawatanKandungan = new widget.Button();
         BtnAwalMedis = new widget.Button();
         BtnAwalMedisKandungan = new widget.Button();
+        BtnAwalFisioterapi = new widget.Button();
 
         BagianRS.setEditable(false);
         BagianRS.setText("0");
@@ -3499,6 +3501,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalMedisKandungan);
+
+        BtnAwalFisioterapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalFisioterapi.setText("Awal Fisioterapi");
+        BtnAwalFisioterapi.setFocusPainted(false);
+        BtnAwalFisioterapi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalFisioterapi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalFisioterapi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalFisioterapi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalFisioterapi.setName("BtnAwalFisioterapi"); // NOI18N
+        BtnAwalFisioterapi.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnAwalFisioterapi.setRoundRect(false);
+        BtnAwalFisioterapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalFisioterapiActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalFisioterapi);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -5913,6 +5932,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalMedisKandunganActionPerformed
 
+    private void BtnAwalFisioterapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalFisioterapiActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianFisioterapi form=new RMPenilaianFisioterapi(null,false);
+            form.isCek();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.emptTeks();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAwalFisioterapiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5934,6 +5970,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private javax.swing.JTextField Bhp;
     private widget.Button BtnAll;
     private widget.Button BtnAsuhanGizi;
+    private widget.Button BtnAwalFisioterapi;
     private widget.Button BtnAwalKeperawatanKandungan;
     private widget.Button BtnAwalMedis;
     private widget.Button BtnAwalMedisKandungan;
@@ -6695,6 +6732,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalMedisKandungan.setEnabled(akses.getpenilaian_awal_medis_ranap_kebidanan());   
         if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalFisioterapi.setEnabled(akses.getpenilaian_fisioterapi());   
+        if(akses.getpenilaian_fisioterapi()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(150,(tinggi+10)));

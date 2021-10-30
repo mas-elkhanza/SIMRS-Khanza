@@ -63,7 +63,7 @@ public class BPJSCekNIK {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            informasi=nameNode.path("message").asText();
+            informasi="";
             if(nameNode.path("code").asText().equals("200")){
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
@@ -96,6 +96,7 @@ public class BPJSCekNIK {
                 tglTMT=response.path("peserta").path("tglTMT").asText();
                 umurumurSaatPelayanan=response.path("peserta").path("umur").path("umurSaatPelayanan").asText();
                 umurumurSekarang=response.path("peserta").path("umur").path("umurSekarang").asText();
+                informasi="OK";
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   

@@ -4714,8 +4714,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -4762,8 +4760,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                //response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -6150,9 +6146,10 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
-            //response = root.path("response").path("sep").path("noSep");
+            JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
+                //response = root.path("response").path("sep").path("noSep");
                 nosep=response.asText();
                 System.out.println("No.SEP : "+nosep);
                 if(Sequel.menyimpantf("bridging_sep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","SEP",44,new String[]{
@@ -6211,8 +6208,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
                 if(statuspasien.equals("Baru")){
                     Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
-                }                    
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                }      
             }
         }catch (Exception ex) {
             Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());

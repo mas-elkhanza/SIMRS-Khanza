@@ -1806,7 +1806,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         scrollPane3.setViewportView(RPK);
 
         FormInput.add(scrollPane3);
-        scrollPane3.setBounds(594, 150, 260, 42);
+        scrollPane3.setBounds(594, 150, 260, 43);
 
         jLabel32.setText("Riwayat Penyakit Keluarga :");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -1828,7 +1828,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         scrollPane4.setViewportView(RBedah);
 
         FormInput.add(scrollPane4);
-        scrollPane4.setBounds(594, 200, 260, 42);
+        scrollPane4.setBounds(594, 200, 260, 43);
 
         jLabel40.setText("Komplikasi Kehamilan Sebelumnya :");
         jLabel40.setName("jLabel40"); // NOI18N
@@ -5744,6 +5744,9 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
                 isMenu();
                 getMasalah();
             } catch (java.lang.NullPointerException e) {
+            }
+            if(evt.getClickCount()==2){
+                TabRawat.setSelectedIndex(0);
             }
         }
 }//GEN-LAST:event_tbObatMouseClicked

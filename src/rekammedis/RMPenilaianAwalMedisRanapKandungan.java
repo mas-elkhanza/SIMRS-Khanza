@@ -2196,12 +2196,11 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
-//                ChkAccor.setSelected(true);
-//                isMenu();
-//                getMasalah();
                 getData();
-//                TabRawat.setSelectedIndex(0);
             } catch (java.lang.NullPointerException e) {
+            }
+            if(evt.getClickCount()==2){
+                TabRawat.setSelectedIndex(0);
             }
         }
 }//GEN-LAST:event_tbObatMouseClicked
@@ -2210,9 +2209,6 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
         if(tabMode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
-//                    ChkAccor.setSelected(true);
-//                    isMenu();
-//                    getMasalah();
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }

@@ -2848,6 +2848,9 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
                 getMasalah();
             } catch (java.lang.NullPointerException e) {
             }
+            if(evt.getClickCount()==2){
+                TabRawat.setSelectedIndex(0);
+            }
         }
 }//GEN-LAST:event_tbObatMouseClicked
 
@@ -2883,7 +2886,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Monitoring,BtnSimpan);
+        Valid.pindah(evt,Rencana,Informasi);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed

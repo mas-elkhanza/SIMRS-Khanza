@@ -2830,8 +2830,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Medis Ralan Bayi/Anak",rs.getBoolean("penilaian_awal_medis_ralan_anak")});
                     }
                     
-                    if("[L]Penilaian Fisioterapi".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[L]Penilaian Fisioterapi",rs.getBoolean("penilaian_fisioterapi")});
+                    if("[L]Penilaian Awal Fisioterapi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Fisioterapi",rs.getBoolean("penilaian_fisioterapi")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5889,7 +5889,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_ralan_anak='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Penilaian Fisioterapi".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Penilaian Awal Fisioterapi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_fisioterapi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             

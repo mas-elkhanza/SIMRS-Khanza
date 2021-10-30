@@ -176,6 +176,19 @@ public class BPJSSPRI extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        dokter.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    dokter.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
+        
         poli.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -197,6 +210,19 @@ public class BPJSSPRI extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
+        
+        poli.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    poli.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
         
         penyakit.addWindowListener(new WindowListener() {
             @Override
@@ -325,11 +351,11 @@ public class BPJSSPRI extends javax.swing.JDialog {
         MnSurat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSurat.setForeground(new java.awt.Color(50, 50, 50));
         MnSurat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSurat.setText("Surat Kontrol");
+        MnSurat.setText("Surat Perintah Rawat Inap");
         MnSurat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnSurat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSurat.setName("MnSurat"); // NOI18N
-        MnSurat.setPreferredSize(new java.awt.Dimension(160, 26));
+        MnSurat.setPreferredSize(new java.awt.Dimension(200, 26));
         MnSurat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSuratActionPerformed(evt);
@@ -569,7 +595,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
         R1.setPreferredSize(new java.awt.Dimension(115, 23));
         panelCari.add(R1);
 
-        DTPTanggalSurat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2021" }));
+        DTPTanggalSurat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPTanggalSurat1.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalSurat1.setName("DTPTanggalSurat1"); // NOI18N
         DTPTanggalSurat1.setOpaque(false);
@@ -592,7 +618,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPTanggalSurat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2021" }));
+        DTPTanggalSurat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPTanggalSurat2.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalSurat2.setName("DTPTanggalSurat2"); // NOI18N
         DTPTanggalSurat2.setOpaque(false);
@@ -619,7 +645,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(120, 23));
         panelCari.add(R2);
 
-        DTPTanggalKontrol1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2021" }));
+        DTPTanggalKontrol1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPTanggalKontrol1.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalKontrol1.setName("DTPTanggalKontrol1"); // NOI18N
         DTPTanggalKontrol1.setOpaque(false);
@@ -642,7 +668,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPTanggalKontrol2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2021" }));
+        DTPTanggalKontrol2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPTanggalKontrol2.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalKontrol2.setName("DTPTanggalKontrol2"); // NOI18N
         DTPTanggalKontrol2.setOpaque(false);
@@ -721,7 +747,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
         NoKartu.setBounds(300, 10, 110, 23);
 
         TanggalSurat.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2021" }));
+        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         TanggalSurat.setDisplayFormat("dd-MM-yyyy");
         TanggalSurat.setName("TanggalSurat"); // NOI18N
         TanggalSurat.setOpaque(false);
@@ -801,7 +827,7 @@ public class BPJSSPRI extends javax.swing.JDialog {
         jLabel14.setBounds(528, 70, 100, 23);
 
         TanggalKontrol.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2021" }));
+        TanggalKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         TanggalKontrol.setDisplayFormat("dd-MM-yyyy");
         TanggalKontrol.setName("TanggalKontrol"); // NOI18N
         TanggalKontrol.setOpaque(false);
@@ -937,10 +963,10 @@ public class BPJSSPRI extends javax.swing.JDialog {
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
                 headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-                URL = link+"/RencanaKontrol/insert";            
+                URL = link+"/RencanaKontrol/InsertSPRI";            
                 requestJson ="{" +
                                 "\"request\": {" +
-                                    "\"noSEP\":\""+NoSEP.getText()+"\"," +
+                                    "\"noKartu\":\""+NoKartu.getText()+"\"," +
                                     "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
                                     "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
                                     "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
@@ -953,11 +979,12 @@ public class BPJSSPRI extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("noSPRI");
-                //response = root.path("response").path("noSPRI");
                 if(nameNode.path("code").asText().equals("200")){
-                    if(Sequel.menyimpantf("bridging_surat_pri_bpjs","?,?,?,?,?,?,?,?,?,?","No.Surat",10,new String[]{
-                            NoRawat.getText(),NoKartu.getText(),Valid.SetTgl(TanggalSurat.getSelectedItem()+""),response.asText(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""),KdDokter.getText(),NmDokter.getText(),KdPoli.getText(),NmPoli.getText(),Diagnosa.getText()
+                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("noSPRI");
+                    //response = root.path("response").path("noSPRI");
+                
+                    if(Sequel.menyimpantf("bridging_surat_pri_bpjs","?,?,?,?,?,?,?,?,?,?,?","No.Surat",11,new String[]{
+                            NoRawat.getText(),NoKartu.getText(),Valid.SetTgl(TanggalSurat.getSelectedItem()+""),response.asText(),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""),KdDokter.getText(),NmDokter.getText(),KdPoli.getText(),NmPoli.getText(),Diagnosa.getText(),NoSEP.getText()
                         })==true){
                         emptTeks();
                         tampil();
@@ -1133,7 +1160,7 @@ private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     if(KdPoli.getText().equals("")||NmPoli.getText().equals("")){
         Valid.textKosong(BtnPoli,"Unit/Poli");
     }else{
-        dokter.SetKontrol(KdPoli.getText(),"2: SPRI",Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
+        dokter.SetKontrol(KdPoli.getText(),"1: SPRI",Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
@@ -1181,8 +1208,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     URL = link+"/RencanaKontrol/Update";            
                     requestJson ="{" +
                                     "\"request\": {" +
-                                        "\"noSuratKontrol\":\""+NoSurat.getText()+"\"," +
-                                        "\"noSEP\":\""+NoSEP.getText()+"\"," +
+                                        "\"noSPRI\":\""+NoSurat.getText()+"\"," +
                                         "\"kodeDokter\":\""+KdDokter.getText()+"\"," +
                                         "\"poliKontrol\":\""+KdPoli.getText()+"\"," +
                                         "\"tglRencanaKontrol\":\""+Valid.SetTgl(TanggalKontrol.getSelectedItem()+"")+"\"," +
@@ -1196,8 +1222,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("200")){
-                        if(Sequel.mengedittf("bridging_surat_pri_bpjs","no_surat=?","tgl_surat=?,tgl_rencana=?,kd_dokter_bpjs=?,nm_dokter_bpjs=?,kd_poli_bpjs=?,nm_poli_bpjs=?,diagnosa=?",8,new String[]{
-                                Valid.SetTgl(TanggalSurat.getSelectedItem()+""),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""),KdDokter.getText(),NmDokter.getText(),KdPoli.getText(),NmPoli.getText(),Diagnosa.getText(),NoSurat.getText()
+                        if(Sequel.mengedittf("bridging_surat_pri_bpjs","no_surat=?","tgl_surat=?,tgl_rencana=?,kd_dokter_bpjs=?,nm_dokter_bpjs=?,kd_poli_bpjs=?,nm_poli_bpjs=?,diagnosa=?,no_sep=?",9,new String[]{
+                                Valid.SetTgl(TanggalSurat.getSelectedItem()+""),Valid.SetTgl(TanggalKontrol.getSelectedItem()+""),KdDokter.getText(),NmDokter.getText(),KdPoli.getText(),NmPoli.getText(),Diagnosa.getText(),NoSEP.getText(),NoSurat.getText()
                             })==true){
                             emptTeks();
                             tampil();
@@ -1250,7 +1276,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnPoliKeyPressed
 
     private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
-        poli.SetKontrol(NoSEP.getText(),"2: SPRI",Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
+        poli.SetKontrol(NoKartu.getText(),"1: SPRI",Valid.SetTgl(TanggalKontrol.getSelectedItem()+""));
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setVisible(true);

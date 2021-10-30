@@ -63,7 +63,7 @@ public class DlgSirkulasiBarang5 extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
               "Kode Barang","Nama Barang","Satuan","Tgl.Opname","Stok Awal","Stok Awal(Rp)","Pengadaan","Pengadaan(Rp)",
-              "Pemesanan","Pemesanan(Rp)","Penjualan","Penjualan(Rp)","Ke Pasien","Ke Pasien(Rp)","Piutang Jual","Piutang Jual(Rp)",
+              "Penerimaan","Penerimaan(Rp)","Penjualan","Penjualan(Rp)","Ke Pasien","Ke Pasien(Rp)","Piutang Jual","Piutang Jual(Rp)",
               "Retur Beli","Retur Beli(Rp)","Retur Jual","Retur Jual(Rp)","Retur Piutang","Retur Piutang(Rp)",
               "Pengambilan UTD","Pengambilan UTD(Rp)","Stok Keluar Medis","Stok Keluar Medis(Rp)","Resep Pulang","Resep Pulang(Rp)",
               "Mutasi Masuk","Mutasi Masuk(Rp)","Mutasi Keluar","Mutasi Keluar(Rp)","Hibah","Hibah(Rp)","Stok Akhir","Stok Akhir(Rp)"

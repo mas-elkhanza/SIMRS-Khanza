@@ -190,7 +190,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[O]Surat Bebas TBC","[O]Surat Keterangan Buta Warna","[O]Surat Bebas Tato","[O]Surat Kewaspadaan Kesehatan","[N]Porsi Diet Per Tanggal","[N]Porsi Diet Per Bulan",
                 "[N]Porsi Diet Per Tahun","[N]Porsi Diet Per Ruang","[L]Penilaian Awal Medis Ralan Umum","[L]Master Masalah Keperawatan Mata","[L]Penilaian Awal Keperawatan Ralan Mata",
                 "[L]Penilaian Awal Medis Ranap Umum","[L]Penilaian Awal Medis Ranap Kandungan","[L]Penilaian Awal Medis Ralan Kandungan","[L]Penilaian Awal Medis IGD",
-                "[L]Penilaian Awal Medis Ralan Bayi/Anak","[K]Referensi Poli HFIS","[K]Referensi Dokter HFIS","[K]Referensi Jadwal HFIS","[L]Penilaian Fisioterapi"
+                "[L]Penilaian Awal Medis Ralan Bayi/Anak","[K]Referensi Poli HFIS","[K]Referensi Dokter HFIS","[K]Referensi Jadwal HFIS","[L]Penilaian Awal Fisioterapi"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2140,7 +2140,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(131);
                     break;
                 case 760:
-                    column.setPreferredWidth(120);
+                    column.setPreferredWidth(147);
                     break;
                 default:
                     column.setPreferredWidth(140);

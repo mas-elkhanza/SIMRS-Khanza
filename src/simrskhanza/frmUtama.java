@@ -689,6 +689,7 @@ import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
+import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMSKriningRawatJalan;
 import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
@@ -17600,7 +17601,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnFisioterapiActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianFisioterapi aplikasi=new RMPenilaianFisioterapi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
@@ -33614,7 +33625,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnFisioterapi = new widget.ButtonBig();
         btnFisioterapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6009609_corona_coronavirus_covid19_crowd_huddle_icon.png")));
-        btnFisioterapi.setText("Fisioterapi");
+        btnFisioterapi.setText("Awal Fisioterapi");
         btnFisioterapi.setIconTextGap(0);
         btnFisioterapi.setName("btnFisioterapi"); 
         btnFisioterapi.setPreferredSize(new java.awt.Dimension(200, 90));

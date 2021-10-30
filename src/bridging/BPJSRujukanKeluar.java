@@ -826,9 +826,10 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                     nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
-                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                    //response = root.path("response");
                     if(nameNode.path("code").asText().equals("200")){
+                        response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                        //response = root.path("response");
+                    
                         Sequel.mengedit3("bridging_rujukan_bpjs","no_rujukan=?","ppkDirujuk=?,tipeRujukan=?,jnsPelayanan=?,catatan=?,diagRujukan=?,poliRujukan=?,nm_ppkDirujuk=?,nama_diagRujukan=?,nama_poliRujukan=?",10,new String[]{
                             KdPpkRujukan1.getText(),TipeRujukan.getSelectedItem().toString(),JenisPelayanan1.getSelectedItem().toString().substring(0,1),
                             Catatan1.getText(),KdPenyakit1.getText(),KdPoli1.getText(),NmPpkRujukan1.getText(),NmPenyakit1.getText(),NmPoli1.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()

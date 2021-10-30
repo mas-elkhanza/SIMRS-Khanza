@@ -1135,7 +1135,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             totalpesan=rs2.getDouble(2);
                         }
                     } catch (Exception e) {
-                        System.out.println("Pemesanan : "+e);
+                        System.out.println("Penerimaan : "+e);
                     } finally{
                         if(rs2!=null){
                             rs2.close();
@@ -1567,7 +1567,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             totalpesan=rs2.getDouble(2);
                         }
                     } catch (Exception e) {
-                        System.out.println("Pemesanan : "+e);
+                        System.out.println("Penerimaan : "+e);
                     } finally{
                         if(rs2!=null){
                             rs2.close();

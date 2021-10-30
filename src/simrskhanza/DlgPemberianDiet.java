@@ -884,6 +884,8 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         NmBangsalCari.setText("");
         KdDiet.setText("");
         NmDiet.setText("");
+        WaktuDiet2.setText("");
+        JamDiet2.setText("");
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
