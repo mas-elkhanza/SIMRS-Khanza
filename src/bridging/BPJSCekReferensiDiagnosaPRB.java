@@ -271,7 +271,7 @@ public final class BPJSCekReferensiDiagnosaPRB extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJSReferensiPoli.jasper","report","[ Pencarian Referensi Poli ]",param);
+            Valid.MyReport("rptCariBPJSReferensiDiagnosaPRB.jasper","report","[ Pencarian Referensi Diagnosa PRB ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

@@ -190,7 +190,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[O]Surat Bebas TBC","[O]Surat Keterangan Buta Warna","[O]Surat Bebas Tato","[O]Surat Kewaspadaan Kesehatan","[N]Porsi Diet Per Tanggal","[N]Porsi Diet Per Bulan",
                 "[N]Porsi Diet Per Tahun","[N]Porsi Diet Per Ruang","[L]Penilaian Awal Medis Ralan Umum","[L]Master Masalah Keperawatan Mata","[L]Penilaian Awal Keperawatan Ralan Mata",
                 "[L]Penilaian Awal Medis Ranap Umum","[L]Penilaian Awal Medis Ranap Kandungan","[L]Penilaian Awal Medis Ralan Kandungan","[L]Penilaian Awal Medis IGD",
-                "[L]Penilaian Awal Medis Ralan Bayi/Anak","[K]Referensi Poli HFIS","[K]Referensi Dokter HFIS","[K]Referensi Jadwal HFIS","[L]Penilaian Awal Fisioterapi"
+                "[L]Penilaian Awal Medis Ralan Bayi/Anak","[K]Referensi Poli HFIS","[K]Referensi Dokter HFIS","[K]Referensi Jadwal HFIS","[L]Penilaian Awal Fisioterapi",
+                "[K]Program PRB di VClaim"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -405,7 +406,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 761;i++) {
+        for (i = 0; i < 762;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2142,8 +2143,11 @@ public class DlgUser extends javax.swing.JDialog {
                 case 760:
                     column.setPreferredWidth(147);
                     break;
+                case 761:
+                    column.setPreferredWidth(135);
+                    break;
                 default:
-                    column.setPreferredWidth(140);
+                    column.setPreferredWidth(138);
                     break;
             }
         }
@@ -2640,7 +2644,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3443,7 +3447,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_referensi_poli_hfis='"+tbUser.getValueAt(i,757).toString()+"',"+
                     "bpjs_referensi_dokter_hfis='"+tbUser.getValueAt(i,758).toString()+"',"+
                     "bpjs_referensi_jadwal_hfis='"+tbUser.getValueAt(i,759).toString()+"',"+
-                    "penilaian_fisioterapi='"+tbUser.getValueAt(i,760).toString()+"'");
+                    "penilaian_fisioterapi='"+tbUser.getValueAt(i,760).toString()+"',"+
+                    "bpjs_program_prb='"+tbUser.getValueAt(i,761).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4285,7 +4290,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "bpjs_referensi_poli_hfis='"+tbUser.getValueAt(barisdicopy,757).toString()+"',"+
                                     "bpjs_referensi_dokter_hfis='"+tbUser.getValueAt(barisdicopy,758).toString()+"',"+
                                     "bpjs_referensi_jadwal_hfis='"+tbUser.getValueAt(barisdicopy,759).toString()+"',"+
-                                    "penilaian_fisioterapi='"+tbUser.getValueAt(barisdicopy,760).toString()+"'");
+                                    "penilaian_fisioterapi='"+tbUser.getValueAt(barisdicopy,760).toString()+"',"+
+                                    "bpjs_program_prb='"+tbUser.getValueAt(barisdicopy,761).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4631,7 +4637,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal,penilaian_awal_medis_ralan,"+
                         "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata,penilaian_awal_medis_ranap,penilaian_awal_medis_ranap_kebidanan,"+
                         "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak,bpjs_referensi_poli_hfis,"+
-                        "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi from user order by AES_DECRYPT(id_user,'nur')");
+                        "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi,bpjs_program_prb from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5404,7 +5410,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_referensi_poli_hfis"),
                                rs.getBoolean("bpjs_referensi_dokter_hfis"),
                                rs.getBoolean("bpjs_referensi_jadwal_hfis"),
-                               rs.getBoolean("penilaian_fisioterapi")
+                               rs.getBoolean("penilaian_fisioterapi"),
+                               rs.getBoolean("bpjs_program_prb")
                             });
                         }   
                     } catch (Exception e) {
@@ -6166,7 +6173,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_referensi_poli_hfis"),
                            rs.getBoolean("bpjs_referensi_dokter_hfis"),
                            rs.getBoolean("bpjs_referensi_jadwal_hfis"),
-                           rs.getBoolean("penilaian_fisioterapi")
+                           rs.getBoolean("penilaian_fisioterapi"),
+                           rs.getBoolean("bpjs_program_prb")
                         });
                     }                                             
                  }

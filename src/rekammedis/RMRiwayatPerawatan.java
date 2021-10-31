@@ -333,6 +333,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanKeperawatanRalanBayi = new widget.CekBox();
         chkAsuhanKeperawatanRalanKandungan = new widget.CekBox();
         chkAsuhanKeperawatanRanapKandungan = new widget.CekBox();
+        chkAsuhanMedisRalan = new widget.CekBox();
         chkHemodialisa = new widget.CekBox();
         chkSkriningGiziLanjut = new widget.CekBox();
         chkAsuhanGizi = new widget.CekBox();
@@ -726,6 +727,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanKeperawatanRanapKandungan.setOpaque(false);
         chkAsuhanKeperawatanRanapKandungan.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanKeperawatanRanapKandungan);
+
+        chkAsuhanMedisRalan.setSelected(true);
+        chkAsuhanMedisRalan.setText("Penilaian Medis Ralan Umum");
+        chkAsuhanMedisRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanMedisRalan.setName("chkAsuhanMedisRalan"); // NOI18N
+        chkAsuhanMedisRalan.setOpaque(false);
+        chkAsuhanMedisRalan.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanMedisRalan);
 
         chkHemodialisa.setSelected(true);
         chkHemodialisa.setText("Hemodialisa");
@@ -1291,6 +1300,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkAsuhanKeperawatanRalanBayi.setSelected(true);
             chkAsuhanKeperawatanRalanKandungan.setSelected(true);
             chkAsuhanKeperawatanRanapKandungan.setSelected(true);
+            chkAsuhanMedisRalan.setSelected(true);
             chkDiagnosaPenyakit.setSelected(true);
             chkProsedurTindakan.setSelected(true);
             chkCatatanDokter.setSelected(true);
@@ -1328,6 +1338,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkAsuhanKeperawatanRalanBayi.setSelected(false);
             chkAsuhanKeperawatanRalanKandungan.setSelected(false);
             chkAsuhanKeperawatanRanapKandungan.setSelected(false);
+            chkAsuhanMedisRalan.setSelected(false);
             chkDiagnosaPenyakit.setSelected(false);
             chkProsedurTindakan.setSelected(false);
             chkCatatanDokter.setSelected(false);
@@ -1431,6 +1442,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.CekBox chkAsuhanKeperawatanRalanGigi;
     private widget.CekBox chkAsuhanKeperawatanRalanKandungan;
     private widget.CekBox chkAsuhanKeperawatanRanapKandungan;
+    private widget.CekBox chkAsuhanMedisRalan;
     private widget.CekBox chkBerkasDigital;
     private widget.CekBox chkCatatanDokter;
     private widget.CekBox chkDiagnosaPenyakit;
@@ -3514,6 +3526,11 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 rs2.close();
                             }
                         }
+                    }
+                    
+                    //menampilkan asuhan awal medis rawat jalan
+                    if(chkAsuhanMedisRalan.isSelected()==true){
+                        
                     }
                     
                     //menampilkan diagnosa penyakit
