@@ -65,6 +65,7 @@ import bridging.BPJSHistoriPelayanan;
 import bridging.BPJSMapingDokterDPJP;
 import bridging.BPJSMapingPoli;
 import bridging.BPJSMonitoringKlaim;
+import bridging.BPJSProgramPRB;
 import bridging.BPJSRujukanKeluar;
 import bridging.BPJSSPRI;
 import bridging.BPJSSuratKontrol;
@@ -17615,7 +17616,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnBPJSProgramPRBActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSProgramPRB aplikasi=new BPJSProgramPRB(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**

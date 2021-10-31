@@ -2715,10 +2715,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("200")){
                         response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                         //response = root.path("response");
-                    
                         Sequel.mengedit("bridging_sep",
                              "no_sep=?","no_sep=?,no_rawat=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
                              "nmppkrujukan=?,kdppkpelayanan=?,nmppkpelayanan=?,catatan=?,diagawal=?,"+
@@ -2747,8 +2747,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                          emptTeks(); 
                          TabRawat.setSelectedIndex(1);
                          tampil();          
-                    }else{
-                        JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                     }
                 }catch (Exception ex) {
                     System.out.println("Notifikasi Bridging : "+ex);
@@ -4452,12 +4450,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
+            JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
                 Sequel.meghapus("bridging_sep","no_sep",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 tampil();
                 emptTeks();
-            }else{
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
         } catch (Exception e) {   
             System.out.println("Notif : "+e);
@@ -4568,12 +4565,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
-            System.out.println("message : "+nameNode.path("message").asText());
+            JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
                  response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
                  //response = root.path("response").path("sep").path("noSep");
-            
-                 System.out.println("SEP : "+response.asText());
                  if(Sequel.menyimpantf("bridging_sep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","SEP",44,new String[]{
                      response.asText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),Valid.SetTgl(TanggalRujuk.getSelectedItem()+""), 
                      NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
@@ -4607,8 +4602,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         
                      emptTeks();
                  }                     
-            }else{
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
         }catch (Exception ex) {
             System.out.println("Notifikasi Bridging : "+ex);

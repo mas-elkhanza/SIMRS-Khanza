@@ -2346,7 +2346,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                   "</tr>"+
                                                   "<tr>"+
                                                       "<td width='50%'>Riwayat Penyakit Keluarga : "+rs2.getString("rpk")+"</td>"+
-                                                      "<td width='50%'>Riwayat Pengobatan : "+rs2.getString("rpd")+"</td>"+
+                                                      "<td width='50%'>Riwayat Pengobatan : "+rs2.getString("rpo")+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+
@@ -2847,7 +2847,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                   "</tr>"+
                                                   "<tr>"+
                                                       "<td width='50%'>Riwayat Penyakit Keluarga : "+rs2.getString("rpk")+"</td>"+
-                                                      "<td width='50%'>Riwayat Pengobatan : "+rs2.getString("rpd")+"</td>"+
+                                                      "<td width='50%'>Riwayat Pengobatan : "+rs2.getString("rpo")+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+
@@ -3530,7 +3530,76 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     
                     //menampilkan asuhan awal medis rawat jalan
                     if(chkAsuhanMedisRalan.isSelected()==true){
-                        
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select penilaian_medis_ralan.tanggal,penilaian_medis_ralan.kd_dokter,penilaian_medis_ralan.anamnesis,penilaian_medis_ralan.hubungan,"+
+                                    "penilaian_medis_ralan.keluhan_utama,penilaian_medis_ralan.rps,penilaian_medis_ralan.rpd,penilaian_medis_ralan.rpk,penilaian_medis_ralan.rpo,"+
+                                    "penilaian_medis_ralan.alergi,penilaian_medis_ralan.keadaan,penilaian_medis_ralan.gcs,penilaian_medis_ralan.kesadaran,penilaian_medis_ralan.td,"+
+                                    "penilaian_medis_ralan.nadi,penilaian_medis_ralan.rr,penilaian_medis_ralan.suhu,penilaian_medis_ralan.spo,penilaian_medis_ralan.bb,"+
+                                    "penilaian_medis_ralan.tb,penilaian_medis_ralan.kepala,penilaian_medis_ralan.gigi,penilaian_medis_ralan.tht,penilaian_medis_ralan.thoraks,"+
+                                    "penilaian_medis_ralan.abdomen,penilaian_medis_ralan.genital,penilaian_medis_ralan.ekstremitas,penilaian_medis_ralan.kulit,"+
+                                    "penilaian_medis_ralan.ket_fisik,penilaian_medis_ralan.ket_lokalis,penilaian_medis_ralan.penunjang,penilaian_medis_ralan.diagnosis,"+
+                                    "penilaian_medis_ralan.tata,penilaian_medis_ralan.konsulrujuk,dokter.nm_dokter "+
+                                    "from penilaian_medis_ralan inner join dokter on penilaian_medis_ralan.kd_dokter=dokter.kd_dokter "+
+                                    "where penilaian_medis_ralan.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Penilaian Awal Medis Rawat Jalan Umum</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                                );
+                                rs2.beforeFirst();
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "YANG MELAKUKAN PENGKAJIAN"+  
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                      "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                                      "<td width='33%' border='0'>Dokter : "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                                      "<td width='33%' border='0'>Anamnesis : "+rs2.getString("anamnesis")+(rs2.getString("hubungan").equals("")?"":", "+rs2.getString("hubungan"))+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"+
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "I. RIWAYAT KESEHATAN"+  
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                      "<td colspan='2'>Keluhan Utama : "+rs2.getString("keluhan_utama")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                      "<td colspan='2'>Riwayat Penyakit Sekarang : "+rs2.getString("rps")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                      "<td width='50%'>Riwayat Penyakit Dahulu : "+rs2.getString("rpd")+"</td>"+
+                                                      "<td width='50%'>Riwayat Alergi : "+rs2.getString("alergi")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                      "<td width='50%'>Riwayat Penyakit Keluarga : "+rs2.getString("rpk")+"</td>"+
+                                                      "<td width='50%'>Riwayat Pengunaan Obat : "+rs2.getString("rpo")+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"); 
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
                     }
                     
                     //menampilkan diagnosa penyakit
