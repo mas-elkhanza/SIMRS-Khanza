@@ -17614,6 +17614,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSProgramPRBActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18240,7 +18244,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun,btnGrafikPorsiDietPerRuang,
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
-            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi;
+            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB;
     
     public void isWall(){
         try{            
@@ -20355,6 +20359,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_obat_prb()==true){
                 Panelmenu.add(btnBPJSReferensiObatPRB);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_program_prb()==true){
+                Panelmenu.add(btnBPJSProgramPRB);
                 jmlmenu++;
             }
             
@@ -24148,6 +24157,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_obat_prb()==true){
             Panelmenu.add(btnBPJSReferensiObatPRB);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_program_prb()==true){
+            Panelmenu.add(btnBPJSProgramPRB);
             jmlmenu++;
         }
         
@@ -28729,6 +28743,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_obat_prb()==true){
             if(btnBPJSReferensiObatPRB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiObatPRB);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_program_prb()==true){
+            if(btnBPJSProgramPRB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSProgramPRB);
                 jmlmenu++;
             }                
         }
@@ -33630,6 +33651,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnFisioterapi.setName("btnFisioterapi"); 
         btnFisioterapi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnFisioterapi.addActionListener(this::btnFisioterapiActionPerformed);
+        
+        btnBPJSProgramPRB = new widget.ButtonBig();
+        btnBPJSProgramPRB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSProgramPRB.setText("Program PRB di VClaim");
+        btnBPJSProgramPRB.setIconTextGap(0);
+        btnBPJSProgramPRB.setName("btnBPJSProgramPRB"); 
+        btnBPJSProgramPRB.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSProgramPRB.addActionListener(this::btnBPJSProgramPRBActionPerformed);
     }
     
 }
