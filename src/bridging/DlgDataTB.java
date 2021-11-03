@@ -10,11 +10,6 @@
  */
 
 package bridging;
-import bridging.ApiKemenkesSITT;
-import bridging.YaskiReferensiKabupaten;
-import bridging.YaskiReferensiKecamatan;
-import bridging.YaskiReferensiKelurahan;
-import bridging.YaskiReferensiPropinsi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
@@ -29,6 +24,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -72,6 +68,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private YaskiReferensiKelurahan kelurahan=new YaskiReferensiKelurahan(null,false);
     private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     private String id_tb_03="",kdwasor="",idrs="",URL="",requestJson="";
+    private FileReader myObj;
     
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -2527,35 +2524,20 @@ public final class DlgDataTB extends javax.swing.JDialog {
             BtnPropinsi.requestFocus();
         }else{
             try {
-                headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
-                requestEntity = new HttpEntity(headers);
-                rest=new RestTemplate();
-                root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/provinsi/?search="+Propinsi.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
-                nameNode = root.path("status");
-                if(nameNode.asText().equals("ok")){
-                    response = root.path("data");
-                    if(response.isArray()){
-                        i=0;
-                        for(JsonNode list:response){
-                            if(list.path("nama").asText().toLowerCase().contains(Propinsi.getText().toLowerCase())){
-                                KdProp.setText(list.path("id_prov").asText());
-                                i++;
-                            }
-                        }
-                        if(i==0){
-                            KdProp.setText("");
-                            JOptionPane.showMessageDialog(null,"Data Propinsi tidak ditemukan..!!");
+                myObj = new FileReader("./cache/propinsi.iyem");
+                root = mapper.readTree(myObj);
+                Valid.tabelKosong(tabMode);
+                response = root.path("propinsi");
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        if(list.path("id").asText().toLowerCase().contains(KdProp.getText().toLowerCase())){
+                            Propinsi.setText(list.path("nama").asText());
                         }
                     }
-                }else {
-                    JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
-                }   
+                }
+                myObj.close();
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
-                if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
-                }
             }
         }
     }//GEN-LAST:event_BtnCari1ActionPerformed
@@ -2578,36 +2560,20 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 BtnKelurahan.requestFocus();
             }else{
                 try {
-                    headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
-                    requestEntity = new HttpEntity(headers);
-                    rest=new RestTemplate();
-                    root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/kecamatan/"+KdKec.getText()+"/kelurahan", HttpMethod.GET, requestEntity, String.class).getBody());
-                    nameNode = root.path("status");
-                    if(nameNode.asText().equals("ok")){
-                        response = root.path("data");
-                        if(response.isArray()){
-                            i=0;
-                            for(JsonNode list:response){
-                                System.out.println(list.path("nama").asText().toLowerCase());
-                                if(list.path("nama").asText().toLowerCase().contains(Kelurahan.getText().toLowerCase())){
-                                    KdKel.setText(list.path("id_kel").asText());
-                                    i++;
-                                }
-                            }
-                            if(i==0){
-                                KdKel.setText("");
-                                JOptionPane.showMessageDialog(null,"Data Kelurahan tidak ditemukan..!!");
+                    myObj = new FileReader("./cache/kelurahan.iyem");
+                    root = mapper.readTree(myObj);
+                    Valid.tabelKosong(tabMode);
+                    response = root.path("kelurahan");
+                    if(response.isArray()){
+                        for(JsonNode list:response){
+                            if(list.path("id").asText().toLowerCase().contains(KdKel.getText().toLowerCase())){
+                                Kelurahan.setText(list.path("nama").asText());
                             }
                         }
-                    }else {
-                        JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
-                    }   
+                    }
+                    myObj.close();
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
-                    if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
-                    }
                 }
             }
         }
@@ -2639,35 +2605,20 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 BtnKecamatan.requestFocus();
             }else{
                 try {
-                    headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
-                    requestEntity = new HttpEntity(headers);
-                    rest=new RestTemplate();
-                    root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/kabupaten/"+KdKab.getText()+"/kecamatan", HttpMethod.GET, requestEntity, String.class).getBody());
-                    nameNode = root.path("status");
-                    if(nameNode.asText().equals("ok")){
-                        response = root.path("data");
-                        if(response.isArray()){
-                            i=0;
-                            for(JsonNode list:response){
-                                if(list.path("nama").asText().toLowerCase().contains(Kecamatan.getText().toLowerCase())){
-                                    KdKec.setText(list.path("id_kec").asText());
-                                    i++;
-                                }
-                            }
-                            if(i==0){
-                                KdKec.setText("");
-                                JOptionPane.showMessageDialog(null,"Data Kecamatan tidak ditemukan..!!");
+                    myObj = new FileReader("./cache/kecamatan.iyem");
+                    root = mapper.readTree(myObj);
+                    Valid.tabelKosong(tabMode);
+                    response = root.path("kecamatan");
+                    if(response.isArray()){
+                        for(JsonNode list:response){
+                            if(list.path("id").asText().toLowerCase().contains(KdKec.getText().toLowerCase())){
+                                Kecamatan.setText(list.path("nama").asText());
                             }
                         }
-                    }else {
-                        JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
-                    }   
+                    }
+                    myObj.close();
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
-                    if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
-                    }
                 }
             }
         }
@@ -2687,35 +2638,20 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 BtnPropinsi.requestFocus();
             }else{
                 try {
-                    headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
-                    requestEntity = new HttpEntity(headers);
-                    rest=new RestTemplate();
-                    root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/provinsi/"+KdProp.getText()+"/kabupaten", HttpMethod.GET, requestEntity, String.class).getBody());
-                    nameNode = root.path("status");
-                    if(nameNode.asText().equals("ok")){
-                        response = root.path("data");
-                        if(response.isArray()){
-                            i=0;
-                            for(JsonNode list:response){
-                                if(list.path("nama").asText().toLowerCase().contains(Kabupaten.getText().toLowerCase())){
-                                    KdKab.setText(list.path("id_kab").asText());
-                                    i++;
-                                }
-                            }
-                            if(i==0){
-                                KdKab.setText("");
-                                JOptionPane.showMessageDialog(null,"Data Kabupaten tidak ditemukan..!!");
+                    myObj = new FileReader("./cache/kabupaten.iyem");
+                    root = mapper.readTree(myObj);
+                    Valid.tabelKosong(tabMode);
+                    response = root.path("kabupaten");
+                    if(response.isArray()){
+                        for(JsonNode list:response){
+                            if(list.path("id").asText().toLowerCase().contains(KdKab.getText().toLowerCase())){
+                                Kabupaten.setText(list.path("nama").asText());
                             }
                         }
-                    }else {
-                        JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
-                    }   
+                    }
+                    myObj.close();
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
-                    if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
-                    }
                 }
             }
         }

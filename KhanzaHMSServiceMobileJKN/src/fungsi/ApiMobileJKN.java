@@ -1,6 +1,5 @@
 package fungsi;
 
-import fungsi.koneksiDB;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;

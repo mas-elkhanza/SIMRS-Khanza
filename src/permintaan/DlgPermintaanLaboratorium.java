@@ -1691,11 +1691,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void emptTeks() {
-        KodePerujuk.setText("");
-        NmPerujuk.setText("");
         Pemeriksaan.setText("");
-        InformasiTambahan.setText(""); 
-        DiagnosisKlinis.setText(""); 
         TCari.setText("");
         DiperolehDengan.setText("");
         LokasiPengambilan.setText("");

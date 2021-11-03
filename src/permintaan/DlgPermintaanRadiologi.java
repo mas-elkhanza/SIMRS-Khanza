@@ -1145,10 +1145,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }
     
     public void emptTeks() {
-        KodePerujuk.setText("");
-        NmPerujuk.setText(""); 
-        InformasiTambahan.setText(""); 
-        DiagnosisKlinis.setText(""); 
         TCariPeriksa.setText("");
         TNoPermintaan.requestFocus();
         autoNomor();

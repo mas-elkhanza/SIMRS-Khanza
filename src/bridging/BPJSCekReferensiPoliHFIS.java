@@ -77,13 +77,13 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(40);
             }else if(i==1){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(220);
             }else if(i==3){
                 column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(300);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -276,7 +276,7 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJSReferensiHFIS.jasper","report","[ Pencarian Referensi Poli HFIS ]",param);
+            Valid.MyReport("rptCariBPJSReferensiPoliHFIS.jasper","report","[ Pencarian Referensi Poli HFIS ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -348,17 +348,16 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
 	    headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
             requestEntity = new HttpEntity(headers);
             URL = link+"/ref/poli";	
-            System.out.println(link+"/ref/poli");
-            //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            System.out.println(URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            nameNode = root.path("metaData");
-            if(nameNode.path("code").asText().equals("200")){
+            nameNode = root.path("metadata");
+            if(nameNode.path("code").asText().equals("1")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
-                if(response.path("list").isArray()){
+                if(response.isArray()){
                     i=1;
-                    for(JsonNode list:response.path("list")){
+                    for(JsonNode list:response){
                         if(list.path("nmpoli").asText().toLowerCase().contains(poli.toLowerCase())||
                                 list.path("nmsubspesialis").asText().toLowerCase().contains(poli.toLowerCase())||
                                 list.path("kdsubspesialis").asText().toLowerCase().contains(poli.toLowerCase())||
@@ -370,8 +369,8 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
                         i++;
                     }
                 }
-            }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+            }else{
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText()); 
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);

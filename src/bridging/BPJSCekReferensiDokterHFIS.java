@@ -342,17 +342,15 @@ public final class BPJSCekReferensiDokterHFIS extends javax.swing.JDialog {
 	    headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
             requestEntity = new HttpEntity(headers);
             URL = link+"/ref/dokter";	
-            System.out.println(link+"/ref/dokter");
-            //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            System.out.println(URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            nameNode = root.path("metaData");
-            if(nameNode.path("code").asText().equals("200")){
+            nameNode = root.path("metadata");
+            if(nameNode.path("code").asText().equals("1")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
-                //response = root.path("response");
-                if(response.path("list").isArray()){
+                if(response.isArray()){
                     i=1;
-                    for(JsonNode list:response.path("list")){
+                    for(JsonNode list:response){
                         if(list.path("namadokter").asText().toLowerCase().contains(poli.toLowerCase())||
                                 list.path("kodedokter").asText().toLowerCase().contains(poli.toLowerCase())){
                             tabMode.addRow(new Object[]{

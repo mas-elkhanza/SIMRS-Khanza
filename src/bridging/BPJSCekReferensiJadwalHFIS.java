@@ -80,29 +80,29 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         for (int i = 0; i < 12; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==7){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(30);
             }else if(i==8){
-                column.setPreferredWidth(100);
-            }else if(i==9){
-                column.setPreferredWidth(40);
-            }else if(i==10){
-                column.setPreferredWidth(120);
-            }else if(i==11){
                 column.setPreferredWidth(70);
+            }else if(i==9){
+                column.setPreferredWidth(35);
+            }else if(i==10){
+                column.setPreferredWidth(70);
+            }else if(i==11){
+                column.setPreferredWidth(60);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -125,8 +125,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
                         KodeSubspesialis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),3).toString());
                         NmSubspesialis.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),4).toString());
                         KodePoliUpdate.requestFocus();
-                    }
-                        
+                    }   
                 }                  
             }
             @Override
@@ -302,7 +301,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
         NmPoliUpdate.setEditable(false);
         NmPoliUpdate.setName("NmPoliUpdate"); // NOI18N
         internalFrame6.add(NmPoliUpdate);
-        NmPoliUpdate.setBounds(146, 30, 181, 23);
+        NmPoliUpdate.setBounds(146, 30, 151, 23);
 
         btnPoliklinikUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliklinikUpdate.setMnemonic('7');
@@ -319,7 +318,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
             }
         });
         internalFrame6.add(btnPoliklinikUpdate);
-        btnPoliklinikUpdate.setBounds(329, 30, 28, 23);
+        btnPoliklinikUpdate.setBounds(299, 30, 28, 23);
 
         jLabel22.setText("Dokter :");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -611,7 +610,14 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','"+
                                 tabMode.getValueAt(r,3).toString()+"','"+
-                                tabMode.getValueAt(r,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,4).toString()+"','"+
+                                tabMode.getValueAt(r,5).toString()+"','"+
+                                tabMode.getValueAt(r,6).toString()+"','"+
+                                tabMode.getValueAt(r,7).toString()+"','"+
+                                tabMode.getValueAt(r,8).toString()+"','"+
+                                tabMode.getValueAt(r,9).toString()+"','"+
+                                tabMode.getValueAt(r,10).toString()+"','"+
+                                tabMode.getValueAt(r,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Jadwal"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -623,7 +629,7 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJSReferensiHFIS.jasper","report","[ Pencarian Referensi Poli HFIS ]",param);
+            Valid.MyReport("rptCariBPJSReferensiJadwalHFIS.jasper","report","[ Pencarian Referensi Jadwal HFIS ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -840,16 +846,15 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
             requestEntity = new HttpEntity(headers);
             URL = link+"/jadwaldokter/kodepoli/"+KdPoli.getText()+"/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
             System.out.println(URL);
-            //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            nameNode = root.path("metaData");
+            nameNode = root.path("metadata");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
-                if(response.path("list").isArray()){
+                if(response.isArray()){
                     i=1;
-                    for(JsonNode list:response.path("list")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             i+".",list.path("kodesubspesialis").asText(),list.path("namasubspesialis").asText(),
                             list.path("kodepoli").asText(),list.path("namapoli").asText(),
