@@ -902,7 +902,7 @@ public class DlgDokter extends javax.swing.JDialog {
         }else{
             try { 
                 Sequel.AutoComitFalse();
-                Sequel.menyimpan("jnj_jabatan","'-','-','0'");
+                Sequel.menyimpan("jnj_jabatan","'-','-','0','0'");
                 Sequel.menyimpan("departemen","'-','-'");
                 Sequel.menyimpan("bidang","'-'");
                 Sequel.menyimpan("bank","'T'");

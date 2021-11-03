@@ -2,10 +2,10 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
-   $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
-   $hari      = empty($baristhn[2])?date("d"):$baristhn[2];
+   $baristahun   = mysqli_fetch_row($hasil);
+   $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
+   $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
    $bln_leng  = strlen($blnini);
    $bulan     = "0";
    if ($bln_leng==1){

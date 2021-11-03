@@ -55,7 +55,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
-    private String now=dateFormat.format(date),lembarobat="",status="";
+    private String now=dateFormat.format(date),lembarobat="",status="",rincianobat="",finger="";
     private double total=0,jumlahtotal=0;
     private Properties prop = new Properties();
     private DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
@@ -1670,9 +1670,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                 }
                 
-                ps=koneksi.prepareStatement(
-                    "select obat_racikan.nama_racik," +
-                    "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
+                psracikan=koneksi.prepareStatement(
+                    "select obat_racikan.no_racik,obat_racikan.nama_racik,obat_racikan.tgl_perawatan,obat_racikan.jam," +
+                    "obat_racikan.no_rawat,obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
                     "from resep_obat inner join reg_periksa inner join " +
                     "obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat " +
                     "and obat_racikan.kd_racik=metode_racik.kd_racik " +
@@ -1681,21 +1681,54 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat "+
                     "where resep_obat.no_resep=?");
                 try {
-                    ps.setString(1,NoResep.getText());
-                    rs=ps.executeQuery();
-                    while(rs.next()){
+                    psracikan.setString(1,NoResep.getText());
+                    rsracikan=psracikan.executeQuery();
+                    while(rsracikan.next()){
+                        rincianobat="";
+                        ps2=koneksi.prepareStatement(
+                            "select databarang.nama_brng,detail_pemberian_obat.jml from "+
+                            "detail_pemberian_obat inner join databarang inner join detail_obat_racikan "+
+                            "on detail_pemberian_obat.kode_brng=databarang.kode_brng and "+
+                            "detail_pemberian_obat.kode_brng=detail_obat_racikan.kode_brng and "+
+                            "detail_pemberian_obat.tgl_perawatan=detail_obat_racikan.tgl_perawatan and "+
+                            "detail_pemberian_obat.jam=detail_obat_racikan.jam and "+
+                            "detail_pemberian_obat.no_rawat=detail_obat_racikan.no_rawat "+
+                            "where detail_pemberian_obat.tgl_perawatan=? and detail_pemberian_obat.jam=? and "+
+                            "detail_pemberian_obat.no_rawat=? and detail_obat_racikan.no_racik=? order by databarang.kode_brng");
+                        try {
+                            ps2.setString(1,rsracikan.getString("tgl_perawatan"));
+                            ps2.setString(2,rsracikan.getString("jam"));
+                            ps2.setString(3,rsracikan.getString("no_rawat"));
+                            ps2.setString(4,rsracikan.getString("no_racik"));
+                            rs2=ps2.executeQuery();
+                            total=0;
+                            while(rs2.next()){
+                                rincianobat=rs2.getString("nama_brng")+" "+rs2.getString("jml")+","+rincianobat;
+                            }                                
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi Detail Racikan : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        rincianobat = rincianobat.substring(0,rincianobat.length() - 1);
+                        
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                            "0",rs.getString("nama_racik"),rs.getString("aturan_pakai"),rs.getString("jml_dr"),rs.getString("nm_racik"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                            "0",rsracikan.getString("nama_racik")+" ("+rincianobat+")",rsracikan.getString("aturan_pakai"),rsracikan.getString("jml_dr"),rsracikan.getString("nm_racik"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
                 } catch (Exception e) {
-                    System.out.println("Notif 2 : "+e);
+                    System.out.println("Notif Racikan : "+e);
                 } finally{
-                    if(rs!=null){
-                        rs.close();
+                    if(rsracikan!=null){
+                        rsracikan.close();
                     }
-                    if(ps!=null){
-                        ps.close();
+                    if(psracikan!=null){
+                        psracikan.close();
                     }
                 }
             } catch (Exception e) {
@@ -1717,6 +1750,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("norm",TNoRm.getText());
             param.put("peresep",NmDokter.getText());
             param.put("noresep",NoResep.getText());
+            finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDokter.getText());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NmDokter.getText()+"\nID "+(finger.equals("")?KdDokter.getText():finger)+"\n"+DTPBeri.getSelectedItem());  
             param.put("jam",cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             

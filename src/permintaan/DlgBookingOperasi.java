@@ -1254,7 +1254,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
         operasi.setBayar(penjab, kelas);
         operasi.isCek();
-        operasi.tampil2();
         operasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         operasi.setLocationRelativeTo(internalFrame1);
         operasi.setVisible(true);
@@ -1664,7 +1663,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnPrint.setEnabled(akses.getbooking_operasi());
         BtnKamarInap.setVisible(akses.getkamar_inap());
         BtnRiwayatPasien.setVisible(akses.getresume_pasien());
-        BtnOperasi.setVisible(akses.getoperasi());
+        BtnTagihanOperasi.setVisible(akses.getoperasi());
         BtnEdit.setEnabled(akses.getbooking_operasi());   
         BtnObatBhp.setVisible(akses.getresep_dokter());
         BtnPermintaanLab.setVisible(akses.getpermintaan_lab());

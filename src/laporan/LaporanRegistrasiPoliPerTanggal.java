@@ -108,6 +108,7 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
         ppRegistrasiPasienLama = new javax.swing.JMenuItem();
         ppRegistrasiPasienBaru1 = new javax.swing.JMenuItem();
         ppRegistrasiPasienLama1 = new javax.swing.JMenuItem();
+        ppRegistrasiPasienNonBatal = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJadwal = new widget.Table();
@@ -189,6 +190,22 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppRegistrasiPasienLama1);
+
+        ppRegistrasiPasienNonBatal.setBackground(new java.awt.Color(255, 255, 254));
+        ppRegistrasiPasienNonBatal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRegistrasiPasienNonBatal.setForeground(new java.awt.Color(50, 50, 50));
+        ppRegistrasiPasienNonBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppRegistrasiPasienNonBatal.setText("Filter Registrasi Pasien Non Batal");
+        ppRegistrasiPasienNonBatal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRegistrasiPasienNonBatal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRegistrasiPasienNonBatal.setName("ppRegistrasiPasienNonBatal"); // NOI18N
+        ppRegistrasiPasienNonBatal.setPreferredSize(new java.awt.Dimension(235, 25));
+        ppRegistrasiPasienNonBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRegistrasiPasienNonBatalBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppRegistrasiPasienNonBatal);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -514,6 +531,11 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
         tampil();
     }//GEN-LAST:event_ppRegistrasiPasienLama1BtnPrintActionPerformed
 
+    private void ppRegistrasiPasienNonBatalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRegistrasiPasienNonBatalBtnPrintActionPerformed
+        filter="Registrasi Non Batal";
+        tampil();
+    }//GEN-LAST:event_ppRegistrasiPasienNonBatalBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -550,6 +572,7 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppRegistrasiPasienBaru1;
     private javax.swing.JMenuItem ppRegistrasiPasienLama;
     private javax.swing.JMenuItem ppRegistrasiPasienLama1;
+    private javax.swing.JMenuItem ppRegistrasiPasienNonBatal;
     private widget.Table tbJadwal;
     // End of variables declaration//GEN-END:variables
 
@@ -740,6 +763,8 @@ public class LaporanRegistrasiPoliPerTanggal extends javax.swing.JDialog {
             jml=Sequel.cariIsiAngka("select count(no_rawat) from reg_periksa where stts_daftar='Baru' and stts='Batal' and kd_poli='"+kode+"' and tgl_registrasi=?",tanggal);
         }else if(filter.equals("Registrasi Lama Batal")){
             jml=Sequel.cariIsiAngka("select count(no_rawat) from reg_periksa where stts_daftar='Lama' and stts='Batal' and kd_poli='"+kode+"' and tgl_registrasi=?",tanggal);
+        }else if(filter.equals("Registrasi Non Batal")){
+            jml=Sequel.cariIsiAngka("select count(no_rawat) from reg_periksa where stts<>'Batal' and kd_poli='"+kode+"' and tgl_registrasi=?",tanggal);
         }
         return jml;
     }

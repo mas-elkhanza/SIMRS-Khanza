@@ -343,7 +343,7 @@ public class PanelDiagnosa extends widget.panelisi {
         ScrollInput.setOpaque(true);
 
         FormData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        FormData.setPreferredSize(new java.awt.Dimension(865, 217));
+        FormData.setPreferredSize(new java.awt.Dimension(865, 417));
         FormData.setLayout(null);
 
         jLabel13.setText("Diagnosa :");
@@ -490,7 +490,7 @@ public class PanelDiagnosa extends widget.panelisi {
         DlgPenyakit tariflab=new DlgPenyakit(null,false);
         tariflab.emptTeks();
         tariflab.isCek();
-        tariflab.setSize(this.getWidth(),this.getHeight());
+        tariflab.setSize(this.getWidth(),this.getHeight()+100);
         tariflab.setLocationRelativeTo(this);
         tariflab.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -513,7 +513,7 @@ public class PanelDiagnosa extends widget.panelisi {
         DlgICD9 tariflab=new DlgICD9(null,false);
         tariflab.emptTeks();
         tariflab.isCek();
-        tariflab.setSize(this.getWidth(),this.getHeight()-20);
+        tariflab.setSize(this.getWidth(),this.getHeight()+100);
         tariflab.setLocationRelativeTo(this);
         tariflab.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());

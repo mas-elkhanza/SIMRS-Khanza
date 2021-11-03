@@ -58,12 +58,12 @@
                 if ((!empty($nik))&&(!empty($kode))&&(!empty($dokumen))) {
                     switch($action) {
                         case "TAMBAH":
-                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="jpeg")){
+                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")||(strtolower(substr($dokumen,-3))=="pdf")){
                                 move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                                 Tambah(" berkas_pegawai "," '$nik','$tgl_uploud','$kode','$dokumen'", " Berkas Pegawai " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori)."'>";
                             }else{
-                                echo "Berkas harus JPEG/JPG";
+                                echo "Berkas harus JPEG/JPG/PDF";
                             } 
                             break;
                     }

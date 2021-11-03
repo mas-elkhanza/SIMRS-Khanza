@@ -1165,28 +1165,8 @@ public final class sekuel {
     
     public int cariRegistrasi(String norawat){
         angka=0;
-        try {
-            ps=connect.prepareStatement(
-                    "select count(billing.no_rawat) from billing where billing.no_rawat=?");
-            try {
-                ps.setString(1,norawat);
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    angka=rs.getInt(1);
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        angka=cariInteger("select count(billing.no_rawat) from billing where billing.no_rawat=?",norawat)+
+              cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where reg_periksa.no_rawat=? and reg_periksa.stts='Batal'",norawat);
         return angka;
     }
     

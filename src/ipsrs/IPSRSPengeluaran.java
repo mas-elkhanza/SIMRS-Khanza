@@ -870,10 +870,19 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 ps.setString(1,nopermintaan);
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("jumlah"),rs.getString(1),rs.getString(2),rs.getString(3),
-                        rs.getString(4),rs.getDouble(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
-                    });
+                    if(rs.getDouble("jumlah")>rs.getDouble("stok")){
+                        JOptionPane.showMessageDialog(null,"Stok tidak mencukupi...!");
+                        tabMode.addRow(new Object[]{
+                            "",rs.getString(1),rs.getString(2),rs.getString(3),
+                            rs.getString(4),rs.getDouble(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
+                        });
+                    }else{
+                        tabMode.addRow(new Object[]{
+                            rs.getString("jumlah"),rs.getString(1),rs.getString(2),rs.getString(3),
+                            rs.getString(4),rs.getDouble(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
+                        });
+                    }
+                        
                 } 
             }catch(Exception e){
                 System.out.println(e);

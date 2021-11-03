@@ -388,7 +388,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        //tampil();
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -467,7 +467,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         }
     }
     
-    public void tampil2() {  
+    private void tampil2() {  
         try{
             myObj = new FileReader("./cache/paketoperasi.iyem");
             root = mapper.readTree(myObj);
@@ -516,7 +516,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             }   
             myObj.close();   
         }catch(Exception e){
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

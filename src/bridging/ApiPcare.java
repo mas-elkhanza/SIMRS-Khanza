@@ -29,6 +29,7 @@ public class ApiPcare {
             System.out.println("Notifikasi : "+ex);
         }        
     }
+    
     public String getHmac() {        
         long GetUTCdatetimeAsString = GetUTCdatetimeAsString();
         String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);

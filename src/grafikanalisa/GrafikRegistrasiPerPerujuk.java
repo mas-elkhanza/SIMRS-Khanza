@@ -11,12 +11,24 @@
 
 package grafikanalisa;
 
+import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -32,6 +44,11 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final validasi Valid=new validasi();
     private ResultSet rs;
+    private final DefaultTableModel tabMode;
+    private int i=0;
+    private PreparedStatement ps;
+    private double total=0;
+    private sekuel Sequel=new sekuel();
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -40,6 +57,28 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
+        tabMode=new DefaultTableModel(null,new Object[]{"Perujuk","Jumlah Rujukan","Persentase Rujukan(%)"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+
+        tbBangsal.setModel(tabMode);
+        //tampil();
+        //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
+        tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 3; i++) {
+            TableColumn column = tbBangsal.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(400);
+            }else if(i==1){
+                column.setPreferredWidth(150);
+            }else if(i==2){
+                column.setPreferredWidth(150);
+            }
+        }
+
+        tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
         
     }
 
@@ -53,17 +92,20 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
     private void initComponents() {
 
         internalFrame1 = new widget.InternalFrame();
-        panelBiasa3 = new widget.PanelBiasa();
         panelGlass5 = new widget.panelisi();
         jLabel33 = new widget.Label();
         Tanggal1 = new widget.Tanggal();
         jLabel32 = new widget.Label();
         Tanggal2 = new widget.Tanggal();
+        BtnCari = new widget.Button();
         jLabel34 = new widget.Label();
+        BtnPrint = new widget.Button();
         BtnPrint4 = new widget.Button();
         BtnPrint3 = new widget.Button();
         BtnPrint5 = new widget.Button();
         BtnKeluar3 = new widget.Button();
+        Scroll = new widget.ScrollPane();
+        tbBangsal = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -81,25 +123,21 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelBiasa3.setName("panelBiasa3"); // NOI18N
-        panelBiasa3.setLayout(null);
-        internalFrame1.add(panelBiasa3, java.awt.BorderLayout.CENTER);
-
         panelGlass5.setName("panelGlass5"); // NOI18N
         panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel33.setText("Periode Registrasi :");
+        jLabel33.setText("Periode :");
         jLabel33.setName("jLabel33"); // NOI18N
-        jLabel33.setPreferredSize(new java.awt.Dimension(105, 23));
+        jLabel33.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(jLabel33);
 
         Tanggal1.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2020" }));
+        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2021" }));
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
         Tanggal1.setOpaque(false);
-        Tanggal1.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tanggal1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass5.add(Tanggal1);
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -109,17 +147,42 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
         panelGlass5.add(jLabel32);
 
         Tanggal2.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2020" }));
+        Tanggal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2021" }));
         Tanggal2.setDisplayFormat("dd-MM-yyyy");
         Tanggal2.setName("Tanggal2"); // NOI18N
         Tanggal2.setOpaque(false);
-        Tanggal2.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tanggal2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass5.add(Tanggal2);
+
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setMnemonic('1');
+        BtnCari.setToolTipText("Alt+1");
+        BtnCari.setName("BtnCari"); // NOI18N
+        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(BtnCari);
 
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setName("jLabel34"); // NOI18N
         jLabel34.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(jLabel34);
+
+        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        BtnPrint.setMnemonic('T');
+        BtnPrint.setText("Cetak");
+        BtnPrint.setToolTipText("Alt+T");
+        BtnPrint.setName("BtnPrint"); // NOI18N
+        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrintActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(BtnPrint);
 
         BtnPrint4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Bar Chart (copy).png"))); // NOI18N
         BtnPrint4.setMnemonic('G');
@@ -195,6 +258,15 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
+        Scroll.setName("Scroll"); // NOI18N
+        Scroll.setOpaque(true);
+
+        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setName("tbBangsal"); // NOI18N
+        Scroll.setViewportView(tbBangsal);
+
+        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -223,8 +295,8 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
         
        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Registrasi Per Perujuk Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Perujuk","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
         ChartFrame cf = new ChartFrame("Grafik Registrasi Per Perujuk",freeChart);
-        cf.setSize(panelBiasa3.getWidth(),panelBiasa3.getHeight());   
-        cf.setLocationRelativeTo(panelBiasa3);
+        cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
+        cf.setLocationRelativeTo(Scroll);
         cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
         cf.setAlwaysOnTop(true);
         cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -254,10 +326,10 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
            "'"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' "+
            "and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' "+
            "group by rujuk_masuk.dokter_perujuk","Perujuk");
-       kas.setSize(panelBiasa3.getWidth(),panelBiasa3.getHeight());  
+       kas.setSize(Scroll.getWidth(),Scroll.getHeight());  
        kas.setModal(true);
        kas.setAlwaysOnTop(true);
-       kas.setLocationRelativeTo(panelBiasa3);
+       kas.setLocationRelativeTo(Scroll);
        kas.setVisible(true);
     }//GEN-LAST:event_BtnPrint4ActionPerformed
 
@@ -281,9 +353,9 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
         
         JFreeChart freeChart = ChartFactory.createPieChart("Grafik Registrasi Per Perujuk Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),dpd,true,true, false);
         ChartFrame cf = new ChartFrame("Grafik Registrasi Per Perujuk",freeChart);
-        cf.setSize(panelBiasa3.getWidth(),panelBiasa3.getHeight());   
+        cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
         cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-        cf.setLocationRelativeTo(panelBiasa3);
+        cf.setLocationRelativeTo(Scroll);
         cf.setAlwaysOnTop(true);
         cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
         cf.setVisible(true);
@@ -292,6 +364,39 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
     private void BtnPrint5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint5KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnPrint5KeyPressed
+
+    private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        tampil();
+    }//GEN-LAST:event_BtnCariActionPerformed
+
+    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            //TCari.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("periode","Periode "+Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Sequel.queryu("truncate table temporary_grafik");
+            for(int r=0;r<tabMode.getRowCount();r++){
+                Sequel.menyimpan("temporary_grafik","'0','"+
+                    tabMode.getValueAt(r,0).toString()+"','"+
+                    tabMode.getValueAt(r,1).toString()+"','"+
+                    tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+            }
+
+            Valid.MyReport("rptRegistrasiPerPerujuk.jasper","report","::[ Laporan Jumlah Registrasi Per Perujuk ]::",param);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnPrintActionPerformed
 
     /**
     * @param args the command line arguments
@@ -310,18 +415,54 @@ public class GrafikRegistrasiPerPerujuk extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnCari;
     private widget.Button BtnKeluar3;
+    private widget.Button BtnPrint;
     private widget.Button BtnPrint3;
     private widget.Button BtnPrint4;
     private widget.Button BtnPrint5;
+    private widget.ScrollPane Scroll;
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel32;
     private widget.Label jLabel33;
     private widget.Label jLabel34;
-    private widget.PanelBiasa panelBiasa3;
     private widget.panelisi panelGlass5;
+    private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    private void tampil() {
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement("select rujuk_masuk.dokter_perujuk,count(rujuk_masuk.dokter_perujuk) as jumlah "+
+                   "from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat "+
+                   "where tgl_registrasi between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by rujuk_masuk.dokter_perujuk");
+            try {
+                rs=ps.executeQuery();
+                total=0;
+                while(rs.next()){
+                    total=total+rs.getDouble(2);
+                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                }
+                if(tabMode.getRowCount()>0){
+                    tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %"});
+                    for(i=0;i<tbBangsal.getRowCount();i++){ 
+                        tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
 }

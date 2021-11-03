@@ -832,7 +832,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Telp.setText("0");
         
         Kd.requestFocus();
-        Valid.autoNomer("perusahaan_pasien","S",4,Kd);
+        Valid.autoNomer("perusahaan_pasien","I",4,Kd);
     }
 
     private void getData() {

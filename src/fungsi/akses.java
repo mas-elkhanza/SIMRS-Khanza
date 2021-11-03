@@ -161,7 +161,12 @@ public final class akses {
             grafik_inventaris_produsen=false,pengembalian_deposit_pasien=false,validasi_tagihan_hutang_obat=false,piutang_obat_belum_lunas=false,
             integrasi_briapi=false,pengadaan_aset_inventaris=false,akun_aset_inventaris=false,suplier_inventaris=false,penerimaan_aset_inventaris=false,
             bayar_pemesanan_iventaris=false,hutang_aset_inventaris=false,hibah_aset_inventaris=false,titip_faktur_non_medis=false,validasi_tagihan_non_medis=false,
-            titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false,pcare_alasan_tacc=false;
+            titip_faktur_aset=false,validasi_tagihan_aset=false,hibah_non_medis=false,pcare_alasan_tacc=false,resep_luar=false,surat_bebas_tbc=false,
+            surat_buta_warna=false,surat_bebas_tato=false,surat_kewaspadaan_kesehatan=false,grafik_porsidiet_pertanggal=false,grafik_porsidiet_perbulan=false,
+            grafik_porsidiet_pertahun=false,grafik_porsidiet_perbangsal=false,penilaian_awal_medis_ralan=false,master_masalah_keperawatan_mata=false,
+            penilaian_awal_keperawatan_mata=false,penilaian_awal_medis_ranap=false,penilaian_awal_medis_ranap_kebidanan=false,penilaian_awal_medis_ralan_kebidanan=false,
+            penilaian_awal_medis_igd=false,penilaian_awal_medis_ralan_anak=false,bpjs_referensi_poli_hfis=false,bpjs_referensi_dokter_hfis=false,
+            bpjs_referensi_jadwal_hfis=false,penilaian_fisioterapi=false,bpjs_program_prb=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -921,6 +926,28 @@ public final class akses {
                         akses.validasi_tagihan_aset=true;
                         akses.hibah_non_medis=true;
                         akses.pcare_alasan_tacc=true;
+                        akses.resep_luar=true;
+                        akses.surat_bebas_tbc=true;
+                        akses.surat_buta_warna=true;
+                        akses.surat_bebas_tato=true;
+                        akses.surat_kewaspadaan_kesehatan=true;
+                        akses.grafik_porsidiet_pertanggal=true;
+                        akses.grafik_porsidiet_perbulan=true;
+                        akses.grafik_porsidiet_pertahun=true;
+                        akses.grafik_porsidiet_perbangsal=true;
+                        akses.penilaian_awal_medis_ralan=true;
+                        akses.master_masalah_keperawatan_mata=true;
+                        akses.penilaian_awal_keperawatan_mata=true;
+                        akses.penilaian_awal_medis_ranap=true;
+                        akses.penilaian_awal_medis_ranap_kebidanan=true;
+                        akses.penilaian_awal_medis_ralan_kebidanan=true;
+                        akses.penilaian_awal_medis_igd=true;
+                        akses.penilaian_awal_medis_ralan_anak=true;
+                        akses.bpjs_referensi_poli_hfis=true;
+                        akses.bpjs_referensi_dokter_hfis=true;
+                        akses.bpjs_referensi_jadwal_hfis=true;
+                        akses.penilaian_fisioterapi=true;
+                        akses.bpjs_program_prb=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1664,6 +1691,28 @@ public final class akses {
                         akses.validasi_tagihan_aset=rs2.getBoolean("validasi_tagihan_aset");
                         akses.hibah_non_medis=rs2.getBoolean("hibah_non_medis");
                         akses.pcare_alasan_tacc=rs2.getBoolean("pcare_alasan_tacc");
+                        akses.resep_luar=rs2.getBoolean("resep_luar");
+                        akses.surat_bebas_tbc=rs2.getBoolean("surat_bebas_tbc");
+                        akses.surat_buta_warna=rs2.getBoolean("surat_buta_warna");
+                        akses.surat_bebas_tato=rs2.getBoolean("surat_bebas_tato");
+                        akses.surat_kewaspadaan_kesehatan=rs2.getBoolean("surat_kewaspadaan_kesehatan");
+                        akses.grafik_porsidiet_pertanggal=rs2.getBoolean("grafik_porsidiet_pertanggal");
+                        akses.grafik_porsidiet_perbulan=rs2.getBoolean("grafik_porsidiet_perbulan");
+                        akses.grafik_porsidiet_pertahun=rs2.getBoolean("grafik_porsidiet_pertahun");
+                        akses.grafik_porsidiet_perbangsal=rs2.getBoolean("grafik_porsidiet_perbangsal");
+                        akses.penilaian_awal_medis_ralan=rs2.getBoolean("penilaian_awal_medis_ralan");
+                        akses.master_masalah_keperawatan_mata=rs2.getBoolean("master_masalah_keperawatan_mata");
+                        akses.penilaian_awal_keperawatan_mata=rs2.getBoolean("penilaian_awal_keperawatan_mata");
+                        akses.penilaian_awal_medis_ranap=rs2.getBoolean("penilaian_awal_medis_ranap");
+                        akses.penilaian_awal_medis_ranap_kebidanan=rs2.getBoolean("penilaian_awal_medis_ranap_kebidanan");
+                        akses.penilaian_awal_medis_ralan_kebidanan=rs2.getBoolean("penilaian_awal_medis_ralan_kebidanan");
+                        akses.penilaian_awal_medis_igd=rs2.getBoolean("penilaian_awal_medis_igd");
+                        akses.penilaian_awal_medis_ralan_anak=rs2.getBoolean("penilaian_awal_medis_ralan_anak");
+                        akses.bpjs_referensi_poli_hfis=rs2.getBoolean("bpjs_referensi_poli_hfis");
+                        akses.bpjs_referensi_dokter_hfis=rs2.getBoolean("bpjs_referensi_dokter_hfis");
+                        akses.bpjs_referensi_jadwal_hfis=rs2.getBoolean("bpjs_referensi_jadwal_hfis");
+                        akses.penilaian_fisioterapi=rs2.getBoolean("penilaian_fisioterapi");
+                        akses.bpjs_program_prb=rs2.getBoolean("bpjs_program_prb");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2405,6 +2454,28 @@ public final class akses {
                         akses.validasi_tagihan_aset=false;
                         akses.hibah_non_medis=false;
                         akses.pcare_alasan_tacc=false;
+                        akses.resep_luar=false;
+                        akses.surat_bebas_tbc=false;
+                        akses.surat_buta_warna=false;
+                        akses.surat_bebas_tato=false;
+                        akses.surat_kewaspadaan_kesehatan=false;
+                        akses.grafik_porsidiet_pertanggal=false;
+                        akses.grafik_porsidiet_perbulan=false;
+                        akses.grafik_porsidiet_pertahun=false;
+                        akses.grafik_porsidiet_perbangsal=false;
+                        akses.penilaian_awal_medis_ralan=false;
+                        akses.master_masalah_keperawatan_mata=false;
+                        akses.penilaian_awal_keperawatan_mata=false;
+                        akses.penilaian_awal_medis_ranap=false;
+                        akses.penilaian_awal_medis_ranap_kebidanan=false;
+                        akses.penilaian_awal_medis_ralan_kebidanan=false;
+                        akses.penilaian_awal_medis_igd=false;
+                        akses.penilaian_awal_medis_ralan_anak=false;
+                        akses.bpjs_referensi_poli_hfis=false;
+                        akses.bpjs_referensi_dokter_hfis=false;
+                        akses.bpjs_referensi_jadwal_hfis=false;
+                        akses.penilaian_fisioterapi=false;
+                        akses.bpjs_program_prb=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3201,4 +3272,26 @@ public final class akses {
     public static boolean getvalidasi_tagihan_aset(){return akses.validasi_tagihan_aset;}
     public static boolean gethibah_non_medis(){return akses.hibah_non_medis;}
     public static boolean getpcare_alasan_tacc(){return akses.pcare_alasan_tacc;}
+    public static boolean getresep_luar(){return akses.resep_luar;}
+    public static boolean getsurat_bebas_tbc(){return akses.surat_bebas_tbc;}
+    public static boolean getsurat_buta_warna(){return akses.surat_buta_warna;}
+    public static boolean getsurat_bebas_tato(){return akses.surat_bebas_tato;}
+    public static boolean getsurat_kewaspadaan_kesehatan(){return akses.surat_kewaspadaan_kesehatan;}
+    public static boolean getgrafik_porsidiet_pertanggal(){return akses.grafik_porsidiet_pertanggal;}
+    public static boolean getgrafik_porsidiet_perbulan(){return akses.grafik_porsidiet_perbulan;}
+    public static boolean getgrafik_porsidiet_pertahun(){return akses.grafik_porsidiet_pertahun;}
+    public static boolean getgrafik_porsidiet_perbangsal(){return akses.grafik_porsidiet_perbangsal;}
+    public static boolean getpenilaian_awal_medis_ralan(){return akses.penilaian_awal_medis_ralan;}
+    public static boolean getmaster_masalah_keperawatan_mata(){return akses.master_masalah_keperawatan_mata;}
+    public static boolean getpenilaian_awal_keperawatan_mata(){return akses.penilaian_awal_keperawatan_mata;}
+    public static boolean getpenilaian_awal_medis_ranap(){return akses.penilaian_awal_medis_ranap;}
+    public static boolean getpenilaian_awal_medis_ranap_kebidanan(){return akses.penilaian_awal_medis_ranap_kebidanan;}
+    public static boolean getpenilaian_awal_medis_ralan_kebidanan(){return akses.penilaian_awal_medis_ralan_kebidanan;}
+    public static boolean getpenilaian_awal_medis_igd(){return akses.penilaian_awal_medis_igd;}
+    public static boolean getpenilaian_awal_medis_ralan_anak(){return akses.penilaian_awal_medis_ralan_anak;}
+    public static boolean getbpjs_referensi_poli_hfis(){return akses.bpjs_referensi_poli_hfis;}
+    public static boolean getbpjs_referensi_dokter_hfis(){return akses.bpjs_referensi_dokter_hfis;}
+    public static boolean getbpjs_referensi_jadwal_hfis(){return akses.bpjs_referensi_jadwal_hfis;}
+    public static boolean getpenilaian_fisioterapi(){return akses.penilaian_fisioterapi;}
+    public static boolean getbpjs_program_prb(){return akses.bpjs_program_prb;}
 }   
