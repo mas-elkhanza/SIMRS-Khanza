@@ -27,17 +27,17 @@
     <entry key="ALARMPERMINTAANRANAP">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest-dev</entry>
-    <entry key="SECRETKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CONSIDAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="USERKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="SECRETKEYAPIBPJS">sNcgR0hYeOdTVqxNU6vFvA==</entry>
+    <entry key="CONSIDAPIBPJS">zKUQCiOuy6A8BH6bOX8oZA==</entry>
+    <entry key="USERKEYAPIBPJS">mybLgAMmv2WpT3ksfn54yXhWYfgLaqbiGGpQglDlI/rzldcXQlPl416AUy+rcMc/</entry>
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="USERKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="URLAPIMOBILEJKN">https://apijkn-dev.bpjs-kesehatan.go.id/antreanrs_dev</entry>
-    <entry key="SECRETKEYAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="CONSIDAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="USERKEYAPIMOBILEJKN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="SECRETKEYAPIMOBILEJKN">sNcgR0hYeOdTVqxNU6vFvA==</entry>
+    <entry key="CONSIDAPIMOBILEJKN">zKUQCiOuy6A8BH6bOX8oZA==</entry>
+    <entry key="USERKEYAPIMOBILEJKN">vKo5iTNmPYWjjVvuPIz5Q/jnN2Y6gzCrYXBZQV68vmcJidplM4nohrXAlRuSY3BA</entry>
     <entry key="URLAPIPCARE">https://new-api.bpjs-kesehatan.go.id/pcare-rest-v3.0</entry>
     <entry key="SECRETKEYAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
