@@ -567,7 +567,6 @@
                 $decode = json_decode($konten, true);
                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                     @$tanggal=date("Y-m-d", ($decode['waktu']/1000));
-                    
                     if(empty($decode['kodebooking'])) { 
                         $response = array(
                             'metadata' => array(
@@ -1384,93 +1383,103 @@
                         );
                         http_response_code(201);
                     }else{
-                        $setrm          = fetch_array(bukaquery2("select * from set_urut_no_rkm_medis"));
-                        $awalantahun    = "";
-                        $awalanbulan    = "";
-                        $norm           = "";
-                        $nourut         = "";
-                        
-                        if($setrm["tahun"]=="Yes"){
-                            $awalantahun=date("Y");
-                        }else{
-                            $awalantahun="";
-                        }
-
-                        if($setrm["bulan"]=="Yes"){
-                            $awalanbulan=date('m');
-                        }else{
-                            $awalanbulan="";
-                        }
-
-                       if($setrm["posisi_tahun_bulan"]=="Depan"){
-                            switch ($setrm["urutan"]) {
-                                case "Straight":
-                                    $max    = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0)+1 from set_no_rkm_medis");
-                                    $nourut = sprintf("%06s", $max);
-                                    break;
-                                case "Terminal":
-                                    $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0)+1 from set_no_rkm_medis");
-                                    $nourut = substr(sprintf("%06s", $max),4,2).substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2);
-                                    break;
-                                case "Middle":
-                                    $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0)+1 from set_no_rkm_medis");
-                                    $nourut = substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2).substr(sprintf("%06s", $max),4,2);
-                                    break;
-                            }
-                        }else if($setrm["posisi_tahun_bulan"]=="Belakang"){
-                            switch ($setrm["urutan"]) {
-                                case "Straight":
-                                    $max    = getOne2("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0)+1 from set_no_rkm_medis");
-                                    $nourut = sprintf("%06s", $max);
-                                    break;
-                                case "Terminal":
-                                    $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0)+1 from set_no_rkm_medis");
-                                    $nourut = substr(sprintf("%06s", $max),4,2).substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2);
-                                    break;
-                                case "Middle":
-                                    $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0)+1 from set_no_rkm_medis");
-                                    $nourut = substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2).substr(sprintf("%06s", $max),4,2);
-                                    break;
-                            }            
-                        }
-                        
-                        if($setrm["posisi_tahun_bulan"]=="Depan"){
-                            $norm=$awalantahun.$awalanbulan.$nourut;
-                        }else if($setrm["posisi_tahun_bulan"]=="Belakang"){
-                            if(strlen($awalanbulan.$awalantahun)>0){
-                                $norm=$nourut."-".$awalanbulan.$awalantahun;
-                            }else{
-                                $norm=$nourut;
-                            }            
-                        }
-                        
-                        bukaquery2("insert into kelurahan values('0','$decode[namakel]')");
-                        bukaquery2("insert into kecamatan values('0','$decode[namakec]')");
-                        bukaquery2("insert into kabupaten values('0','$decode[namadati2]')");
-                        bukaquery2("insert into propinsi values('0','$decode[namaprop]')");
-                        
-                        $query = bukaquery2("insert into pasien values('$norm','$decode[nama]','$decode[nik]','$decode[jeniskelamin]','-','$decode[tanggallahir]','-','$decode[alamat]','-','-','JOMBLO','-',current_date(),'$decode[nohp]','0','-','SAUDARA','-','".CARABAYAR."','$decode[nomorkartu]','".getOne2("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel='$decode[namakel]'")."','".getOne2("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec='$decode[namakec]'")."','".getOne2("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab='$decode[namadati2]'")."','-','$decode[alamat]','$decode[namakel]','$decode[namakec]','$decode[namadati2]','-','1','1','1','-','-','".getOne2("select propinsi.kd_prop from propinsi where propinsi.nm_prop='$decode[namaprop]'")."', '$decode[namaprop]')");
-                        if ($query) {
-                            $response = array(
-                                'response' => array(
-                                    'norm' => $norm
-                                ),
-                                'metadata' => array(
-                                    'message' => 'Harap datang ke admisi untuk melengkapi data rekam medis',
-                                    'code' => 200
-                                )
-                            );
-                            http_response_code(200);
-                            bukaquery2("delete from set_no_rkm_medis");
-                            bukaquery2("insert into set_no_rkm_medis values('$norm')");
-                        }else{
+                        if(!empty(cekpasien($decode['nik'],$decode['nomorkartu']))){ 
                             $response = array(
                                 'metadata' => array(
-                                    'message' => 'Maaf Terjadi Kesalahan, Hubungi Admnistrator..',
+                                    'message' => 'Pasien dengan NIK dan No.Kartu tersebut sudah terdaftar',
                                     'code' => 201
                                 )
                             );
                             http_response_code(201);
+                        }else{
+                            $setrm          = fetch_array(bukaquery2("select * from set_urut_no_rkm_medis"));
+                            $awalantahun    = "";
+                            $awalanbulan    = "";
+                            $norm           = "";
+                            $nourut         = "";
+
+                            if($setrm["tahun"]=="Yes"){
+                                $awalantahun=date("Y");
+                            }else{
+                                $awalantahun="";
+                            }
+
+                            if($setrm["bulan"]=="Yes"){
+                                $awalanbulan=date('m');
+                            }else{
+                                $awalanbulan="";
+                            }
+
+                           if($setrm["posisi_tahun_bulan"]=="Depan"){
+                                switch ($setrm["urutan"]) {
+                                    case "Straight":
+                                        $max    = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0)+1 from set_no_rkm_medis");
+                                        $nourut = sprintf("%06s", $max);
+                                        break;
+                                    case "Terminal":
+                                        $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0)+1 from set_no_rkm_medis");
+                                        $nourut = substr(sprintf("%06s", $max),4,2).substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2);
+                                        break;
+                                    case "Middle":
+                                        $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0)+1 from set_no_rkm_medis");
+                                        $nourut = substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2).substr(sprintf("%06s", $max),4,2);
+                                        break;
+                                }
+                            }else if($setrm["posisi_tahun_bulan"]=="Belakang"){
+                                switch ($setrm["urutan"]) {
+                                    case "Straight":
+                                        $max    = getOne2("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0)+1 from set_no_rkm_medis");
+                                        $nourut = sprintf("%06s", $max);
+                                        break;
+                                    case "Terminal":
+                                        $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0)+1 from set_no_rkm_medis");
+                                        $nourut = substr(sprintf("%06s", $max),4,2).substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2);
+                                        break;
+                                    case "Middle":
+                                        $max    = getOne2("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0)+1 from set_no_rkm_medis");
+                                        $nourut = substr(sprintf("%06s", $max),2,2).substr(sprintf("%06s", $max),0,2).substr(sprintf("%06s", $max),4,2);
+                                        break;
+                                }            
+                            }
+
+                            if($setrm["posisi_tahun_bulan"]=="Depan"){
+                                $norm=$awalantahun.$awalanbulan.$nourut;
+                            }else if($setrm["posisi_tahun_bulan"]=="Belakang"){
+                                if(strlen($awalanbulan.$awalantahun)>0){
+                                    $norm=$nourut."-".$awalanbulan.$awalantahun;
+                                }else{
+                                    $norm=$nourut;
+                                }            
+                            }
+
+                            bukaquery2("insert into kelurahan values('0','$decode[namakel]')");
+                            bukaquery2("insert into kecamatan values('0','$decode[namakec]')");
+                            bukaquery2("insert into kabupaten values('0','$decode[namadati2]')");
+                            bukaquery2("insert into propinsi values('0','$decode[namaprop]')");
+
+                            $query = bukaquery2("insert into pasien values('$norm','$decode[nama]','$decode[nik]','$decode[jeniskelamin]','-','$decode[tanggallahir]','-','$decode[alamat]','-','-','JOMBLO','-',current_date(),'$decode[nohp]','0','-','SAUDARA','-','".CARABAYAR."','$decode[nomorkartu]','".getOne2("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel='$decode[namakel]'")."','".getOne2("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec='$decode[namakec]'")."','".getOne2("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab='$decode[namadati2]'")."','-','$decode[alamat]','$decode[namakel]','$decode[namakec]','$decode[namadati2]','-','1','1','1','-','-','".getOne2("select propinsi.kd_prop from propinsi where propinsi.nm_prop='$decode[namaprop]'")."', '$decode[namaprop]')");
+                            if ($query) {
+                                $response = array(
+                                    'response' => array(
+                                        'norm' => $norm
+                                    ),
+                                    'metadata' => array(
+                                        'message' => 'Harap datang ke admisi untuk melengkapi data rekam medis',
+                                        'code' => 200
+                                    )
+                                );
+                                http_response_code(200);
+                                bukaquery2("delete from set_no_rkm_medis");
+                                bukaquery2("insert into set_no_rkm_medis values('$norm')");
+                            }else{
+                                $response = array(
+                                    'metadata' => array(
+                                        'message' => 'Maaf Terjadi Kesalahan, Hubungi Admnistrator..',
+                                        'code' => 201
+                                    )
+                                );
+                                http_response_code(201);
+                            }
                         }
                     }
                 }else {

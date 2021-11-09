@@ -51,7 +51,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
     public  DlgBarang barang=new DlgBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
     private double besarppn=0,ttljual=0,ttlppn=0,ttldisc=0,ttltambahan=0,ttlembalase=0,ttltuslah=0,ttlsubttl=0,subttljual=0,subttldisc=0,subttlall=0,subttltambahan=0,subttlembalase=0,subttltuslah=0,ttlhpp=0;
-    private String totaljual="",notapenjualan="No",verifikasi_penjualan_di_kasir="",
+    private String totaljual="",notapenjualan="No",verifikasi_penjualan_di_kasir="",statusbayar="",datacari="",
             nofak="",mem="",ptg="",sat="",bar="",tanggal="",Penjualan_Obat="",HPP_Obat_Jual_Bebas="",Persediaan_Obat_Jual_Bebas="";
     private String aktifkanbatch="no",kdrek="";
     private StringBuilder htmlContent;
@@ -427,6 +427,8 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         kdsat = new widget.TextBox();
         btnSatuan = new widget.Button();
         nmsat = new widget.TextBox();
+        label14 = new widget.Label();
+        Status = new widget.ComboBox();
         panelisi1 = new widget.panelisi();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
@@ -627,7 +629,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi4.add(label17);
-        label17.setBounds(295, 10, 90, 23);
+        label17.setBounds(445, 10, 50, 23);
 
         kdbar.setName("kdbar"); // NOI18N
         kdbar.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -637,13 +639,13 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdbar);
-        kdbar.setBounds(389, 10, 110, 23);
+        kdbar.setBounds(499, 10, 100, 23);
 
         nmbar.setEditable(false);
         nmbar.setName("nmbar"); // NOI18N
         nmbar.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi4.add(nmbar);
-        nmbar.setBounds(501, 10, 270, 23);
+        nmbar.setBounds(601, 10, 170, 23);
 
         btnBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBarang.setMnemonic('4');
@@ -662,7 +664,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi4.add(label24);
-        label24.setBounds(0, 10, 74, 23);
+        label24.setBounds(187, 10, 40, 23);
 
         kdsat.setName("kdsat"); // NOI18N
         kdsat.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -672,7 +674,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdsat);
-        kdsat.setBounds(79, 10, 53, 23);
+        kdsat.setBounds(232, 10, 53, 23);
 
         btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSatuan.setMnemonic('3');
@@ -685,7 +687,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(btnSatuan);
-        btnSatuan.setBounds(255, 10, 28, 23);
+        btnSatuan.setBounds(406, 10, 28, 23);
 
         nmsat.setName("nmsat"); // NOI18N
         nmsat.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -695,7 +697,19 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(nmsat);
-        nmsat.setBounds(134, 10, 116, 23);
+        nmsat.setBounds(287, 10, 116, 23);
+
+        label14.setText("Status :");
+        label14.setName("label14"); // NOI18N
+        label14.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi4.add(label14);
+        label14.setBounds(0, 10, 53, 23);
+
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Belum Dibayar", "Sudah Dibayar" }));
+        Status.setName("Status"); // NOI18N
+        Status.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelisi4.add(Status);
+        Status.setBounds(58, 10, 120, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -705,11 +719,11 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(70, 23));
+        label10.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(170, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(180, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -821,7 +835,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoNota);
-        NoNota.setBounds(74, 10, 226, 23);
+        NoNota.setBounds(74, 10, 211, 23);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
@@ -837,19 +851,19 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Tgl1);
-        Tgl1.setBounds(74, 40, 100, 23);
+        Tgl1.setBounds(74, 40, 90, 23);
 
         label16.setText("Pasien :");
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(385, 10, 60, 23);
+        label16.setBounds(335, 10, 60, 23);
 
         label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(385, 40, 60, 23);
+        label13.setBounds(335, 40, 60, 23);
 
         kdmem.setName("kdmem"); // NOI18N
         kdmem.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -859,7 +873,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(kdmem);
-        kdmem.setBounds(449, 10, 80, 23);
+        kdmem.setBounds(399, 10, 120, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -869,18 +883,18 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(kdptg);
-        kdptg.setBounds(449, 40, 80, 23);
+        kdptg.setBounds(399, 40, 120, 23);
 
         nmmem.setName("nmmem"); // NOI18N
         nmmem.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmmem);
-        nmmem.setBounds(531, 10, 240, 23);
+        nmmem.setBounds(521, 10, 250, 23);
 
         nmptg.setEditable(false);
         nmptg.setName("nmptg"); // NOI18N
         nmptg.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmptg);
-        nmptg.setBounds(531, 40, 240, 23);
+        nmptg.setBounds(521, 40, 250, 23);
 
         btnPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPasien.setMnemonic('1');
@@ -913,7 +927,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label18);
-        label18.setBounds(173, 40, 30, 23);
+        label18.setBounds(163, 40, 30, 23);
 
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
@@ -923,7 +937,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Tgl2);
-        Tgl2.setBounds(200, 40, 100, 23);
+        Tgl2.setBounds(195, 40, 90, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -1684,6 +1698,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.editorpane LoadHTML1;
     private widget.TextBox NoNota;
     private widget.ScrollPane Scroll;
+    private widget.ComboBox Status;
     private widget.TextBox TCari;
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
@@ -1705,6 +1720,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label13;
+    private widget.Label label14;
     private widget.Label label15;
     private widget.Label label16;
     private widget.Label label17;
@@ -1730,7 +1746,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void tampil() {
         tanggal="  penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
-        nofak="";mem="";ptg="";sat="";bar="";
+        nofak="";mem="";ptg="";sat="";bar="";statusbayar="";datacari="";
         if(!NoNota.getText().equals("")){
             nofak=" and penjualan.nota_jual='"+NoNota.getText()+"' ";
         }        
@@ -1746,9 +1762,21 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(!nmbar.getText().equals("")){
             bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
         }
+        if(!Status.getSelectedItem().toString().equals("Semua")){
+            statusbayar=" and penjualan.status='"+Status.getSelectedItem().toString()+"' ";
+        }
+        if(!TCari.getText().trim().equals("")){
+            datacari=" and (penjualan.nota_jual like '%"+TCari.getText()+"%' or penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                    "penjualan.nm_pasien like '%"+TCari.getText()+"%' or  penjualan.nip like '%"+TCari.getText()+"%' or "+
+                    "petugas.nama like '%"+TCari.getText()+"%' or penjualan.keterangan like '%"+TCari.getText()+"%' or "+
+                    "penjualan.jns_jual like '%"+TCari.getText()+"%' or detailjual.kode_brng like '%"+TCari.getText()+"%' or "+
+                    "bangsal.nm_bangsal like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                    "detailjual.kode_sat like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') ";
+        }
 
         Valid.tabelKosong(tabMode);
         try{
+            ttljual=0;
             ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
                     "penjualan.nip,petugas.nama, "+
                     "penjualan.no_rkm_medis,penjualan.nm_pasien, "+
@@ -1760,17 +1788,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     " and penjualan.kd_bangsal=bangsal.kd_bangsal "+
                     " and penjualan.nota_jual=detailjual.nota_jual "+
                     " and penjualan.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nofak+mem+ptg+sat+bar+" and "+
-                    "(penjualan.nota_jual like '%"+TCari.getText()+"%' or penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                    "penjualan.nm_pasien like '%"+TCari.getText()+"%' or  penjualan.nip like '%"+TCari.getText()+"%' or "+
-                    "petugas.nama like '%"+TCari.getText()+"%' or penjualan.keterangan like '%"+TCari.getText()+"%' or "+
-                    "penjualan.jns_jual like '%"+TCari.getText()+"%' or detailjual.kode_brng like '%"+TCari.getText()+"%' or "+
-                    "bangsal.nm_bangsal like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    "detailjual.kode_sat like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') "+
+                    " where "+tanggal+nofak+mem+ptg+sat+bar+statusbayar+datacari+
                     " group by penjualan.nota_jual order by penjualan.tgl_jual,penjualan.nota_jual ");
             try {
                 rs=ps.executeQuery();
-                ttljual=0;
                 ttlsubttl=0;
                 ttlppn=0;
                 ttlembalase=0;
@@ -1863,8 +1884,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     
     public void tampil2(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tanggal="  penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
-        nofak="";mem="";ptg="";sat="";bar="";
+        tanggal=" penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
+        nofak="";mem="";ptg="";sat="";bar="";statusbayar="";
         if(!NoNota.getText().equals("")){
             nofak=" and penjualan.nota_jual='"+NoNota.getText()+"' ";
         }        
@@ -1880,8 +1901,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(!nmbar.getText().equals("")){
             bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
         }
+        if(!Status.getSelectedItem().toString().equals("Semua")){
+            statusbayar=" and penjualan.status='"+Status.getSelectedItem().toString()+"' ";
+        }
         
         try{
+            ttljual=0;
+            totaljual="";
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
@@ -1906,22 +1932,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     " and penjualan.kd_bangsal=bangsal.kd_bangsal "+
                     " and penjualan.nota_jual=detailjual.nota_jual "+
                     " and penjualan.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nofak+mem+ptg+sat+bar+" and penjualan.nota_jual like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.nm_pasien like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.nip like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.keterangan like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.jns_jual like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and detailjual.kode_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and detailjual.kode_sat like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and jenis.nama like '%"+TCari.getText()+"%' "+
+                    " where "+tanggal+nofak+mem+ptg+sat+bar+statusbayar+" and "+
+                    "(penjualan.nota_jual like '%"+TCari.getText()+"%' or penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                    "penjualan.nm_pasien like '%"+TCari.getText()+"%' or  penjualan.nip like '%"+TCari.getText()+"%' or "+
+                    "petugas.nama like '%"+TCari.getText()+"%' or penjualan.keterangan like '%"+TCari.getText()+"%' or "+
+                    "penjualan.jns_jual like '%"+TCari.getText()+"%' or detailjual.kode_brng like '%"+TCari.getText()+"%' or "+
+                    "bangsal.nm_bangsal like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                    "detailjual.kode_sat like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') "+
                     " group by penjualan.nota_jual order by penjualan.tgl_jual,penjualan.nota_jual ");
             try {
                 rs=ps.executeQuery();
-                ttljual=0;
                 ttlsubttl=0;
                 ttlppn=0;
                 ttlembalase=0;

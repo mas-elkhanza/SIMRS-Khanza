@@ -42,7 +42,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
-    private String aktifkanbatch="no",tanggal= "",datanofaktur="",datasuplier="",datapetugas="",datajenis="",databarang="",dataindustri="",datacari="";
+    private String aktifkanbatch="no",tanggal= "",datanofaktur="",datasuplier="",datapetugas="",datajenis="",databarang="",dataindustri="",datacari="",statusbayar="";
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
@@ -357,6 +357,8 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         kdjenis = new widget.TextBox();
         btnSatuan = new widget.Button();
         nmjenis = new widget.TextBox();
+        label21 = new widget.Label();
+        Status = new widget.ComboBox();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
@@ -492,11 +494,11 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(70, 23));
+        label10.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(170, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(180, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -529,7 +531,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(120, 30));
+        LTotal.setPreferredSize(new java.awt.Dimension(155, 30));
         panelisi1.add(LTotal);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -596,7 +598,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi4.add(label17);
-        label17.setBounds(295, 10, 90, 23);
+        label17.setBounds(445, 10, 50, 23);
 
         kdbar.setName("kdbar"); // NOI18N
         kdbar.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -606,13 +608,13 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdbar);
-        kdbar.setBounds(389, 10, 110, 23);
+        kdbar.setBounds(499, 10, 100, 23);
 
         nmbar.setEditable(false);
         nmbar.setName("nmbar"); // NOI18N
         nmbar.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi4.add(nmbar);
-        nmbar.setBounds(501, 10, 230, 23);
+        nmbar.setBounds(601, 10, 170, 23);
 
         btnBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBarang.setMnemonic('4');
@@ -625,13 +627,13 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(btnBarang);
-        btnBarang.setBounds(734, 10, 28, 23);
+        btnBarang.setBounds(774, 10, 28, 23);
 
         label24.setText("Jenis :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(48, 23));
         panelisi4.add(label24);
-        label24.setBounds(0, 10, 45, 23);
+        label24.setBounds(187, 10, 45, 23);
 
         kdjenis.setName("kdjenis"); // NOI18N
         kdjenis.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -641,7 +643,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdjenis);
-        kdjenis.setBounds(48, 10, 53, 23);
+        kdjenis.setBounds(232, 10, 53, 23);
 
         btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSatuan.setMnemonic('3');
@@ -654,7 +656,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(btnSatuan);
-        btnSatuan.setBounds(273, 10, 28, 23);
+        btnSatuan.setBounds(406, 10, 28, 23);
 
         nmjenis.setName("nmjenis"); // NOI18N
         nmjenis.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -664,7 +666,19 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(nmjenis);
-        nmjenis.setBounds(103, 10, 167, 23);
+        nmjenis.setBounds(287, 10, 116, 23);
+
+        label21.setText("Status :");
+        label21.setName("label21"); // NOI18N
+        label21.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi4.add(label21);
+        label21.setBounds(0, 10, 53, 23);
+
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Dibayar", "Belum Dibayar", "Belum Lunas" }));
+        Status.setName("Status"); // NOI18N
+        Status.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelisi4.add(Status);
+        Status.setBounds(58, 10, 120, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -704,13 +718,13 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(305, 10, 80, 23);
+        label16.setBounds(325, 10, 100, 23);
 
         label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(305, 40, 80, 23);
+        label13.setBounds(325, 40, 100, 23);
 
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -720,7 +734,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(kdsup);
-        kdsup.setBounds(389, 10, 80, 23);
+        kdsup.setBounds(429, 10, 80, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -730,19 +744,19 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(kdptg);
-        kdptg.setBounds(389, 40, 80, 23);
+        kdptg.setBounds(429, 40, 80, 23);
 
         nmsup.setEditable(false);
         nmsup.setName("nmsup"); // NOI18N
         nmsup.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmsup);
-        nmsup.setBounds(471, 10, 260, 23);
+        nmsup.setBounds(511, 10, 260, 23);
 
         nmptg.setEditable(false);
         nmptg.setName("nmptg"); // NOI18N
         nmptg.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmptg);
-        nmptg.setBounds(471, 40, 260, 23);
+        nmptg.setBounds(511, 40, 260, 23);
 
         btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSuplier.setMnemonic('1');
@@ -755,7 +769,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnSuplier);
-        btnSuplier.setBounds(734, 10, 28, 23);
+        btnSuplier.setBounds(774, 10, 28, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -768,7 +782,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnPetugas);
-        btnPetugas.setBounds(734, 40, 28, 23);
+        btnPetugas.setBounds(774, 40, 28, 23);
 
         label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label12.setText("s.d.");
@@ -787,11 +801,11 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         panelisi3.add(TglBeli2);
         TglBeli2.setBounds(213, 40, 90, 23);
 
-        label14.setText("Ind. Farm :");
+        label14.setText("Industri Farmasi :");
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label14);
-        label14.setBounds(315, 70, 70, 23);
+        label14.setBounds(325, 70, 100, 23);
 
         KdIF.setName("KdIF"); // NOI18N
         KdIF.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -801,13 +815,13 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(KdIF);
-        KdIF.setBounds(389, 70, 80, 23);
+        KdIF.setBounds(429, 70, 80, 23);
 
         NmIF.setEditable(false);
         NmIF.setName("NmIF"); // NOI18N
         NmIF.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(NmIF);
-        NmIF.setBounds(471, 70, 260, 23);
+        NmIF.setBounds(511, 70, 260, 23);
 
         btnIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnIF.setMnemonic('2');
@@ -820,7 +834,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnIF);
-        btnIF.setBounds(734, 70, 28, 23);
+        btnIF.setBounds(774, 70, 28, 23);
 
         RDatang.setBackground(new java.awt.Color(240, 250, 230));
         buttonGroup1.add(RDatang);
@@ -1436,6 +1450,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.RadioButton RDatang;
     private widget.RadioButton RFaktur;
     private widget.ScrollPane Scroll4;
+    private widget.ComboBox Status;
     private widget.TextBox TCari;
     private widget.Tanggal TglBeli1;
     private widget.Tanggal TglBeli2;
@@ -1465,6 +1480,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label18;
     private widget.Label label19;
     private widget.Label label20;
+    private widget.Label label21;
     private widget.Label label24;
     private widget.Label label9;
     private widget.TextBox nmbar;
@@ -1520,6 +1536,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 dataindustri=" and industrifarmasi.nama_industri like '%"+NmIF.getText()+"%' ";
             }
             
+            statusbayar="";
+            if(!Status.getSelectedItem().toString().equals("Semua")){
+                statusbayar=" and pemesanan.status='"+Status.getSelectedItem().toString()+"' ";
+            }
+            
             datacari="";
             if(!TCari.getText().trim().equals("")){
                 datacari=" and (pemesanan.no_faktur like '%"+TCari.getText()+"%' or pemesanan.kode_suplier like '%"+TCari.getText()+"%' or datasuplier.nama_suplier like '%"+TCari.getText()+"%' or pemesanan.nip like '%"+TCari.getText()+"%' or "+
@@ -1542,7 +1563,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     " and pemesanan.kode_suplier=datasuplier.kode_suplier "+
                     " and databarang.kode_industri=industrifarmasi.kode_industri "+
                     " and pemesanan.nip=petugas.nip and databarang.kdjns=jenis.kdjns"+
-                    " where "+tanggal+datanofaktur+datasuplier+datapetugas+datajenis+databarang+dataindustri+datacari+
+                    " where "+tanggal+datanofaktur+datasuplier+datapetugas+datajenis+databarang+dataindustri+statusbayar+datacari+
                     " group by pemesanan.no_faktur order by pemesanan.tgl_pesan,pemesanan.no_faktur ");
             try {
                 rs=ps.executeQuery();
