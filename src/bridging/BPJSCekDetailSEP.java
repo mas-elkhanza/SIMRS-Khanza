@@ -258,10 +258,10 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
                 tabMode.addRow(new Object[]{
-                    "Catatan",": "+response.path("catatan").asText(),""
+                    "Nomor SEP",": "+response.path("noSep").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Diagnosa",": "+response.path("diagnosa").asText(),""
+                    "Tanggal SEP",": "+response.path("tglSep").asText(),""
                 });
                 tabMode.addRow(new Object[]{
                     "Jenis Pelayanan",": "+response.path("jnsPelayanan").asText(),""
@@ -270,13 +270,52 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
                     "Kelas Rawat",": "+response.path("kelasRawat").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Nomor SEP",": "+response.path("noSep").asText(),""
+                    "Diagnosa",": "+response.path("diagnosa").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Nomor Rujukan",": "+response.path("noRujukan").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Poli/Unit/Spesialis",": "+response.path("poli").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Poli Eksekutif",": "+response.path("poliEksekutif").asText().replaceAll("0","0. Tidak").replaceAll("1","1.Ya"),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Catatan",": "+response.path("catatan").asText(),""
                 });
                 tabMode.addRow(new Object[]{
                     "Penjamin",": "+response.path("penjamin").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Peserta",": ",""
+                    "Status Kecelakaan",": "+response.path("kdStatusKecelakaan").asText()+" "+response.path("nmstatusKecelakaan").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Lokasi Kecelakaan",": ",""
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Kode Kecamatan",": "+response.path("lokasiKejadian").path("kdKec").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Kode Kabupaten",": "+response.path("lokasiKejadian").path("kdKab").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Kode Propinsi",": "+response.path("lokasiKejadian").path("kdProp").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Keterangan Kejadian",": "+response.path("lokasiKejadian").path("ketKejadian").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Lokasi",": "+response.path("lokasiKejadian").path("lokasi").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Tanggal Kejadian",": "+response.path("lokasiKejadian").path("tglKejadian").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Dokter Penanggung Jawab",": "+response.path("dpjp").path("kdDPJP").asText()+" "+response.path("dpjp").path("nmDPJP").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Kepesertaan",": ",""
                 });
                 tabMode.addRow(new Object[]{
                     "","   Asuransi",": "+response.path("peserta").path("asuransi").asText()
@@ -288,28 +327,31 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
                     "","   Jenis Peserta",": "+response.path("peserta").path("jnsPeserta").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Jenis Kelamin",": "+response.path("peserta").path("kelamin").asText()
+                    "","   Jenis Kelamin",": "+response.path("peserta").path("kelamin").asText().replaceAll("L","LAKI-LAKI").replaceAll("P","Perempuan")
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Nama",": "+response.path("peserta").path("nama").asText()
+                    "","   Nama Peserta",": "+response.path("peserta").path("nama").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   No.Kartu",": "+response.path("peserta").path("noKartu").asText()
+                    "","   Nomor Kartu",": "+response.path("peserta").path("noKartu").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   No.R.M.",": "+response.path("peserta").path("noMr").asText()
+                    "","   Nomor RM",": "+response.path("peserta").path("noMr").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Tangga Lahir",": "+response.path("peserta").path("tglLahir").asText()
+                    "","   Tanggal Lahir",": "+response.path("peserta").path("tglLahir").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "Poli",": "+response.path("poli").asText(),""
+                    "Kontrol",": ",""
                 });
                 tabMode.addRow(new Object[]{
-                    "Eksekutif",": "+response.path("poliEksekutif").asText().replaceAll("0","Tidak").replaceAll("1","Ya"),""
+                    "","   Kode Dokter",": "+response.path("kontrol").path("kdDokter").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "Tanggal SEP",": "+response.path("tglSep").asText(),""
+                    "","   Nama Dokter",": "+response.path("kontrol").path("nmDokter").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Nomor Surat",": "+response.path("kontrol").path("noSurat").asText()
                 });
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
