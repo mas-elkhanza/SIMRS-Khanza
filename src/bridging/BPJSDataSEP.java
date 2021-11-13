@@ -100,7 +100,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setLocation(8,1);
         
         WindowUpdatePulang.setSize(525,135);
-        WindowRujukan.setSize(810,172);
+        WindowRujukan.setSize(830,172);
         WindowCariSEP.setSize(410,115);
 
         tabMode=new DefaultTableModel(null,new Object[]{
@@ -125,9 +125,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(150);
             }else if(i==4){
                 column.setPreferredWidth(67);
             }else if(i==5){
@@ -138,25 +138,25 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==8){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==9){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==10){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==11){
                 column.setPreferredWidth(60);
             }else if(i==12){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==13){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==14){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==15){
                 column.setPreferredWidth(60);
             }else if(i==16){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==17){
                 column.setPreferredWidth(70);
             }else if(i==18){
@@ -164,7 +164,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }else if(i==19){
                 column.setPreferredWidth(100);
             }else if(i==20){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==21){
                 column.setPreferredWidth(68);
             }else if(i==22){
@@ -218,15 +218,15 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==45){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(160);
             }else if(i==46){
                 column.setPreferredWidth(100);
             }else if(i==47){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(170);
             }else if(i==48){
                 column.setPreferredWidth(130);
             }else if(i==49){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(170);
             }else if(i==50){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -740,6 +740,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         TipeRujukan = new widget.ComboBox();
         jLabel34 = new widget.Label();
         Catatan1 = new widget.TextBox();
+        jLabel50 = new widget.Label();
+        TanggalKunjungRujukan = new widget.Tanggal();
         Popup1 = new javax.swing.JPopupMenu();
         ppPengajuan = new javax.swing.JMenuItem();
         ppPengajuan1 = new javax.swing.JMenuItem();
@@ -1191,7 +1193,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 70, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021 09:33:53" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021 16:40:27" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -1284,7 +1286,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         });
         internalFrame6.add(BtnCloseIn5);
-        BtnCloseIn5.setBounds(692, 125, 100, 30);
+        BtnCloseIn5.setBounds(712, 125, 100, 30);
 
         BtnSimpan5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan5.setMnemonic('S');
@@ -1368,7 +1370,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         });
         internalFrame6.add(JenisPelayanan1);
-        JenisPelayanan1.setBounds(514, 55, 278, 23);
+        JenisPelayanan1.setBounds(514, 55, 123, 23);
 
         jLabel32.setText("Diagnosa Rujuk :");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -1423,7 +1425,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         NmPoli1.setHighlighter(null);
         NmPoli1.setName("NmPoli1"); // NOI18N
         internalFrame6.add(NmPoli1);
-        NmPoli1.setBounds(581, 85, 180, 23);
+        NmPoli1.setBounds(581, 85, 200, 23);
 
         btnPoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoli1.setMnemonic('X');
@@ -1440,7 +1442,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         });
         internalFrame6.add(btnPoli1);
-        btnPoli1.setBounds(764, 85, 28, 23);
+        btnPoli1.setBounds(784, 85, 28, 23);
 
         jLabel33.setText("Tipe Rujukan :");
         jLabel33.setName("jLabel33"); // NOI18N
@@ -1480,7 +1482,21 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         });
         internalFrame6.add(Catatan1);
-        Catatan1.setBounds(514, 25, 278, 23);
+        Catatan1.setBounds(514, 25, 298, 23);
+
+        jLabel50.setText("R.Kunjungan :");
+        jLabel50.setName("jLabel50"); // NOI18N
+        internalFrame6.add(jLabel50);
+        jLabel50.setBounds(638, 55, 80, 23);
+
+        TanggalKunjungRujukan.setForeground(new java.awt.Color(50, 70, 50));
+        TanggalKunjungRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021" }));
+        TanggalKunjungRujukan.setDisplayFormat("dd-MM-yyyy");
+        TanggalKunjungRujukan.setName("TanggalKunjungRujukan"); // NOI18N
+        TanggalKunjungRujukan.setOpaque(false);
+        TanggalKunjungRujukan.setPreferredSize(new java.awt.Dimension(95, 23));
+        internalFrame6.add(TanggalKunjungRujukan);
+        TanggalKunjungRujukan.setBounds(722, 55, 90, 23);
 
         WindowRujukan.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
@@ -2982,16 +2998,16 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                param.put("parameter","%"+TCari.getText().trim()+"%");
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+            param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+            param.put("parameter","%"+TCari.getText().trim()+"%");
             Valid.MyReport("rptBridgingDaftar.jasper","report","::[ Data Bridging SEP ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -3519,12 +3535,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 headers.add("X-Timestamp",utc);
                 headers.add("X-Signature",api.getHmac(utc));
                 headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-                URL = link+"/Rujukan/insert";	
+                URL = link+"/Rujukan/2.0/insert";	
                 requestJson ="{" +
                                 "\"request\": {" +
                                     "\"t_rujukan\": {" +
                                         "\"noSep\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
                                         "\"tglRujukan\": \""+Valid.SetTgl(TanggalRujukKeluar.getSelectedItem()+"")+"\"," +
+                                        "\"tglRencanaKunjungan\": \""+Valid.SetTgl(TanggalKunjungRujukan.getSelectedItem()+"")+"\"," +
                                         "\"ppkDirujuk\": \""+KdPpkRujukan1.getText()+"\"," +
                                         "\"jnsPelayanan\": \""+JenisPelayanan1.getSelectedItem().toString().substring(0,1)+"\"," +
                                         "\"catatan\": \""+Catatan1.getText()+"\"," +
@@ -3544,12 +3561,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                     //response = root.path("response");
                 
-                    if(Sequel.menyimpantf2("bridging_rujukan_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rujukan",13,new String[]{
+                    if(Sequel.menyimpantf2("bridging_rujukan_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rujukan",14,new String[]{
                             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(TanggalRujukKeluar.getSelectedItem()+""),
-                            KdPpkRujukan1.getText(),NmPpkRujukan1.getText(),JenisPelayanan1.getSelectedItem().toString().substring(0,1),
-                            Catatan1.getText(),KdPenyakit1.getText(),NmPenyakit1.getText(),
-                            TipeRujukan.getSelectedItem().toString(),KdPoli1.getText(),
-                            NmPoli1.getText(),response.path("rujukan").path("noRujukan").asText(),
+                            Valid.SetTgl(TanggalKunjungRujukan.getSelectedItem()+""),KdPpkRujukan1.getText(),NmPpkRujukan1.getText(),
+                            JenisPelayanan1.getSelectedItem().toString().substring(0,1),Catatan1.getText(),KdPenyakit1.getText(),NmPenyakit1.getText(),
+                            TipeRujukan.getSelectedItem().toString(),KdPoli1.getText(),NmPoli1.getText(),response.path("rujukan").path("noRujukan").asText(),
                             user
                         })==true){
                         Sequel.menyimpan("rujuk","'"+response.path("rujukan").path("noRujukan").asText()+"','"+
@@ -4375,6 +4391,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal TanggalKKL;
     private widget.Tanggal TanggalKematian;
+    private widget.Tanggal TanggalKunjungRujukan;
     private widget.Tanggal TanggalPulang;
     private widget.Tanggal TanggalRujuk;
     private widget.Tanggal TanggalRujukKeluar;
@@ -4447,6 +4464,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.Label jLabel48;
     private widget.Label jLabel49;
     private widget.Label jLabel5;
+    private widget.Label jLabel50;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
