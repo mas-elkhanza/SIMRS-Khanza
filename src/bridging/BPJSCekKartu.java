@@ -1032,8 +1032,11 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     if(pilih==1){
                         KdDPJP.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),1).toString());
                         NmDPJP.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),2).toString());
-                        KdDPJPLayanan.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),1).toString());
-                        NmDPJPLayanan.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),2).toString());
+                        if(JenisPelayanan.getSelectedIndex()==1){ 
+                            KdDPJPLayanan.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),1).toString());
+                            NmDPJPLayanan.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),2).toString());
+                        }
+                            
                         try{
                             ps=koneksi.prepareStatement(
                                     "select maping_dokter_dpjpvclaim.kd_dokter,dokter.nm_dokter from maping_dokter_dpjpvclaim inner join dokter "+
@@ -1744,13 +1747,13 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel52 = new widget.Label();
         PenanggungJawab = new widget.TextBox();
         LabelKelas2 = new widget.Label();
-        jLabel53 = new widget.Label();
-        TujuanKunjungan = new widget.ComboBox();
         jLabel54 = new widget.Label();
+        TujuanKunjungan = new widget.ComboBox();
+        jLabel55 = new widget.Label();
         Penunjang = new widget.ComboBox();
         FlagProsedur = new widget.ComboBox();
-        jLabel55 = new widget.Label();
         jLabel56 = new widget.Label();
+        jLabel57 = new widget.Label();
         AsesmenPoli = new widget.ComboBox();
         LabelPoli6 = new widget.Label();
         KdDPJPLayanan = new widget.TextBox();
@@ -3650,10 +3653,10 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         FormKelengkapanSEP.add(LabelKelas2);
         LabelKelas2.setBounds(200, 235, 40, 23);
 
-        jLabel53.setText("Tujuan Kunjungan :");
-        jLabel53.setName("jLabel53"); // NOI18N
-        FormKelengkapanSEP.add(jLabel53);
-        jLabel53.setBounds(495, 235, 119, 23);
+        jLabel54.setText("Tujuan :");
+        jLabel54.setName("jLabel54"); // NOI18N
+        FormKelengkapanSEP.add(jLabel54);
+        jLabel54.setBounds(495, 235, 90, 23);
 
         TujuanKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Normal", "1. Prosedur", "2. Konsul Dokter" }));
         TujuanKunjungan.setName("TujuanKunjungan"); // NOI18N
@@ -3668,12 +3671,12 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(TujuanKunjungan);
-        TujuanKunjungan.setBounds(618, 235, 290, 23);
+        TujuanKunjungan.setBounds(589, 235, 319, 23);
 
-        jLabel54.setText("Penunjang :");
-        jLabel54.setName("jLabel54"); // NOI18N
-        FormKelengkapanSEP.add(jLabel54);
-        jLabel54.setBounds(495, 295, 119, 23);
+        jLabel55.setText("Penunjang :");
+        jLabel55.setName("jLabel55"); // NOI18N
+        FormKelengkapanSEP.add(jLabel55);
+        jLabel55.setBounds(495, 295, 90, 23);
 
         Penunjang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Radioterapi", "2. Kemoterapi", "3. Rehabilitasi Medik", "4. Rehabilitasi Psikososial", "5. Transfusi Darah", "6. Pelayanan Gigi", "7. Laboratorium", "8. USG", "9. Farmasi", "10. Lain-Lain", "11. MRI", "12. HEMODIALISA" }));
         Penunjang.setEnabled(false);
@@ -3684,7 +3687,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(Penunjang);
-        Penunjang.setBounds(618, 295, 290, 23);
+        Penunjang.setBounds(589, 295, 319, 23);
 
         FlagProsedur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Prosedur Tidak Berkelanjutan", "1. Prosedur dan Terapi Berkelanjutan" }));
         FlagProsedur.setEnabled(false);
@@ -3695,17 +3698,17 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(FlagProsedur);
-        FlagProsedur.setBounds(618, 265, 290, 23);
+        FlagProsedur.setBounds(589, 265, 319, 23);
 
-        jLabel55.setText("Flag Prosedur :");
-        jLabel55.setName("jLabel55"); // NOI18N
-        FormKelengkapanSEP.add(jLabel55);
-        jLabel55.setBounds(495, 265, 119, 23);
-
-        jLabel56.setText("Asesmen Pelayanan :");
+        jLabel56.setText("Flag Prosedur :");
         jLabel56.setName("jLabel56"); // NOI18N
         FormKelengkapanSEP.add(jLabel56);
-        jLabel56.setBounds(495, 325, 119, 23);
+        jLabel56.setBounds(495, 265, 90, 23);
+
+        jLabel57.setText("Asesmen :");
+        jLabel57.setName("jLabel57"); // NOI18N
+        FormKelengkapanSEP.add(jLabel57);
+        jLabel57.setBounds(495, 325, 90, 23);
 
         AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS" }));
         AsesmenPoli.setName("AsesmenPoli"); // NOI18N
@@ -3715,19 +3718,19 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(AsesmenPoli);
-        AsesmenPoli.setBounds(618, 325, 290, 23);
+        AsesmenPoli.setBounds(589, 325, 319, 23);
 
         LabelPoli6.setText("DPJP Layanan :");
         LabelPoli6.setName("LabelPoli6"); // NOI18N
         FormKelengkapanSEP.add(LabelPoli6);
-        LabelPoli6.setBounds(495, 355, 119, 23);
+        LabelPoli6.setBounds(495, 355, 90, 23);
 
         KdDPJPLayanan.setEditable(false);
         KdDPJPLayanan.setBackground(new java.awt.Color(245, 250, 240));
         KdDPJPLayanan.setHighlighter(null);
         KdDPJPLayanan.setName("KdDPJPLayanan"); // NOI18N
         FormKelengkapanSEP.add(KdDPJPLayanan);
-        KdDPJPLayanan.setBounds(618, 355, 61, 23);
+        KdDPJPLayanan.setBounds(589, 355, 90, 23);
 
         NmDPJPLayanan.setEditable(false);
         NmDPJPLayanan.setBackground(new java.awt.Color(245, 250, 240));
@@ -5330,6 +5333,35 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_PembiayaanKeyPressed
 
+    private void LakaLantasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LakaLantasItemStateChanged
+        if(LakaLantas.getSelectedIndex()==0){
+            TanggalKKL.setEnabled(false);
+            Keterangan.setEditable(false);
+            Keterangan.setText("");
+            Suplesi.setEnabled(false);
+            Suplesi.setSelectedIndex(0);
+            NoSEPSuplesi.setText("");
+            NoSEPSuplesi.setEditable(false);
+            KdPropinsi.setText("");
+            NmPropinsi.setText("");
+            btnPropinsi.setEnabled(false);
+            KdKabupaten.setText("");
+            NmKabupaten.setText("");
+            btnKabupaten.setEnabled(false);
+            KdKecamatan.setText("");
+            NmKecamatan.setText("");
+            btnKecamatan.setEnabled(false);
+        }else{
+            TanggalKKL.setEnabled(true);
+            Keterangan.setEditable(true);
+            Suplesi.setEnabled(true);
+            NoSEPSuplesi.setEditable(true);
+            btnPropinsi.setEnabled(true);
+            btnKabupaten.setEnabled(true);
+            btnKecamatan.setEnabled(true);
+        }
+    }//GEN-LAST:event_LakaLantasItemStateChanged
+
     private void TujuanKunjunganItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TujuanKunjunganItemStateChanged
         if(TujuanKunjungan.getSelectedIndex()==0){
             FlagProsedur.setEnabled(false);
@@ -5382,35 +5414,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private void btnDPJPLayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDPJPLayananKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDPJPLayananKeyPressed
-
-    private void LakaLantasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LakaLantasItemStateChanged
-        if(LakaLantas.getSelectedIndex()==0){
-            TanggalKKL.setEnabled(false);
-            Keterangan.setEditable(false);
-            Keterangan.setText("");
-            Suplesi.setEnabled(false);
-            Suplesi.setSelectedIndex(0);
-            NoSEPSuplesi.setText("");
-            NoSEPSuplesi.setEditable(false);
-            KdPropinsi.setText("");
-            NmPropinsi.setText("");
-            btnPropinsi.setEnabled(false);
-            KdKabupaten.setText("");
-            NmKabupaten.setText("");
-            btnKabupaten.setEnabled(false);
-            KdKecamatan.setText("");
-            NmKecamatan.setText("");
-            btnKecamatan.setEnabled(false);
-        }else{
-            TanggalKKL.setEnabled(true);
-            Keterangan.setEditable(true);
-            Suplesi.setEnabled(true);
-            NoSEPSuplesi.setEditable(true);
-            btnPropinsi.setEnabled(true);
-            btnKabupaten.setEnabled(true);
-            btnKecamatan.setEnabled(true);
-        }
-    }//GEN-LAST:event_LakaLantasItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -5628,10 +5631,10 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private widget.Label jLabel50;
     private widget.Label jLabel51;
     private widget.Label jLabel52;
-    private widget.Label jLabel53;
     private widget.Label jLabel54;
     private widget.Label jLabel55;
     private widget.Label jLabel56;
+    private widget.Label jLabel57;
     private widget.Label jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdbahasa;

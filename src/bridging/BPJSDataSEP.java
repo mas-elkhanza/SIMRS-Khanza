@@ -405,8 +405,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     if(pilihan==1){
                         KdDPJP.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                         NmDPJP.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),2).toString());
-                        KdDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                        NmDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),2).toString());
+                        if(JenisPelayanan.getSelectedIndex()==1){ 
+                            KdDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            NmDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),2).toString());
+                        }
                         KdDPJP.requestFocus();  
                     }else{
                         KdDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
