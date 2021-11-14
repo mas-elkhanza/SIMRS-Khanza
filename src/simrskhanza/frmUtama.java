@@ -59,6 +59,7 @@ import bridging.BPJSCekRiwayatRujukanRS;
 import bridging.BPJSCekRujukanKartuPCare;
 import bridging.BPJSCekRujukanKartuRS;
 import bridging.BPJSCekSKDP;
+import bridging.BPJSCekSuplesiJasaRaharja;
 import bridging.BPJSCekTanggalRujukan;
 import bridging.BPJSDataSEP;
 import bridging.BPJSHistoriPelayanan;
@@ -17627,6 +17628,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSSuplesiJasaRaharjaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekSuplesiJasaRaharja aplikasi=new BPJSCekSuplesiJasaRaharja(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18253,7 +18265,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun,btnGrafikPorsiDietPerRuang,
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
-            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB;
+            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja;
     
     public void isWall(){
         try{            
@@ -20408,6 +20420,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_surat_pri()==true){
                 Panelmenu.add(btnBPJSSuratPRI);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_suplesi_jasaraharja()==true){
+                Panelmenu.add(btnBPJSSuplesiJasaRaharja);
                 jmlmenu++;
             }
             
@@ -24209,6 +24226,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getbpjs_suplesi_jasaraharja()==true){
+            Panelmenu.add(btnBPJSSuplesiJasaRaharja);
+            jmlmenu++;
+        }
+
         if(akses.getbpjs_referensi_poli_hfis()==true){
             Panelmenu.add(btnBPJSReferensiPoliHFIS);
             jmlmenu++;
@@ -28808,6 +28830,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_surat_pri()==true){
             if(btnBPJSSuratPRI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSSuratPRI);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_suplesi_jasaraharja()==true){
+            if(btnBPJSSuplesiJasaRaharja.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSSuplesiJasaRaharja);
                 jmlmenu++;
             }                
         }
@@ -33668,6 +33697,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSProgramPRB.setName("btnBPJSProgramPRB"); 
         btnBPJSProgramPRB.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSProgramPRB.addActionListener(this::btnBPJSProgramPRBActionPerformed);
+        
+        btnBPJSSuplesiJasaRaharja = new widget.ButtonBig();
+        btnBPJSSuplesiJasaRaharja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSSuplesiJasaRaharja.setText("Suplesi Jasa Raharja di VClaim");
+        btnBPJSSuplesiJasaRaharja.setIconTextGap(0);
+        btnBPJSSuplesiJasaRaharja.setName("btnBPJSSuplesiJasaRaharja"); 
+        btnBPJSSuplesiJasaRaharja.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSSuplesiJasaRaharja.addActionListener(this::btnBPJSSuplesiJasaRaharjaActionPerformed);
     }
     
 }
