@@ -166,7 +166,7 @@ public final class akses {
             grafik_porsidiet_pertahun=false,grafik_porsidiet_perbangsal=false,penilaian_awal_medis_ralan=false,master_masalah_keperawatan_mata=false,
             penilaian_awal_keperawatan_mata=false,penilaian_awal_medis_ranap=false,penilaian_awal_medis_ranap_kebidanan=false,penilaian_awal_medis_ralan_kebidanan=false,
             penilaian_awal_medis_igd=false,penilaian_awal_medis_ralan_anak=false,bpjs_referensi_poli_hfis=false,bpjs_referensi_dokter_hfis=false,
-            bpjs_referensi_jadwal_hfis=false,penilaian_fisioterapi=false,bpjs_program_prb=false,bpjs_suplesi_jasaraharja=false;
+            bpjs_referensi_jadwal_hfis=false,penilaian_fisioterapi=false,bpjs_program_prb=false,bpjs_suplesi_jasaraharja=false,bpjs_data_induk_kecelakaan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -949,6 +949,7 @@ public final class akses {
                         akses.penilaian_fisioterapi=true;
                         akses.bpjs_program_prb=true;
                         akses.bpjs_suplesi_jasaraharja=true;
+                        akses.bpjs_data_induk_kecelakaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1715,6 +1716,7 @@ public final class akses {
                         akses.penilaian_fisioterapi=rs2.getBoolean("penilaian_fisioterapi");
                         akses.bpjs_program_prb=rs2.getBoolean("bpjs_program_prb");
                         akses.bpjs_suplesi_jasaraharja=rs2.getBoolean("bpjs_suplesi_jasaraharja");
+                        akses.bpjs_data_induk_kecelakaan=rs2.getBoolean("bpjs_data_induk_kecelakaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2479,6 +2481,7 @@ public final class akses {
                         akses.penilaian_fisioterapi=false;
                         akses.bpjs_program_prb=false;
                         akses.bpjs_suplesi_jasaraharja=false;
+                        akses.bpjs_data_induk_kecelakaan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3298,4 +3301,5 @@ public final class akses {
     public static boolean getpenilaian_fisioterapi(){return akses.penilaian_fisioterapi;}
     public static boolean getbpjs_program_prb(){return akses.bpjs_program_prb;}
     public static boolean getbpjs_suplesi_jasaraharja(){return akses.bpjs_suplesi_jasaraharja;}
+    public static boolean getbpjs_data_induk_kecelakaan(){return akses.bpjs_data_induk_kecelakaan;}
 }   
