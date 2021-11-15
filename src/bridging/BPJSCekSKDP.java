@@ -1404,6 +1404,8 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         MnDocument = new javax.swing.JMenuItem();
         ppPengajuan = new javax.swing.JMenuItem();
         ppPengajuan1 = new javax.swing.JMenuItem();
+        ppPengajuan2 = new javax.swing.JMenuItem();
+        ppPengajuan3 = new javax.swing.JMenuItem();
         NoBalasan = new widget.TextBox();
         kdsuku = new widget.TextBox();
         kdbahasa = new widget.TextBox();
@@ -1727,7 +1729,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppPengajuan.setText("Pengajuan SEP");
+        ppPengajuan.setText("Pengajuan SEP Backdate");
         ppPengajuan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPengajuan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppPengajuan.setName("ppPengajuan"); // NOI18N
@@ -1743,7 +1745,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan1.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppPengajuan1.setText("Aproval SEP");
+        ppPengajuan1.setText("Aproval SEP Backdate");
         ppPengajuan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPengajuan1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppPengajuan1.setName("ppPengajuan1"); // NOI18N
@@ -1754,6 +1756,38 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppPengajuan1);
+
+        ppPengajuan2.setBackground(new java.awt.Color(255, 255, 254));
+        ppPengajuan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan2.setForeground(new java.awt.Color(50, 50, 50));
+        ppPengajuan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPengajuan2.setText("Pengajuan SEP Finger");
+        ppPengajuan2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPengajuan2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPengajuan2.setName("ppPengajuan2"); // NOI18N
+        ppPengajuan2.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppPengajuan2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPengajuan2BtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppPengajuan2);
+
+        ppPengajuan3.setBackground(new java.awt.Color(255, 255, 254));
+        ppPengajuan3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuan3.setForeground(new java.awt.Color(50, 50, 50));
+        ppPengajuan3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPengajuan3.setText("Aproval SEP Finger");
+        ppPengajuan3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPengajuan3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPengajuan3.setName("ppPengajuan3"); // NOI18N
+        ppPengajuan3.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppPengajuan3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPengajuan3BtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppPengajuan3);
 
         NoBalasan.setHighlighter(null);
         NoBalasan.setName("NoBalasan"); // NOI18N
@@ -3022,7 +3056,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(295, 355, 54, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021 16:18:04" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021 22:18:29" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -4486,98 +4520,6 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         Valid.pindah(evt,TNoReg,NoSKDP);
     }//GEN-LAST:event_AsalRujukanKeyPressed
 
-    private void ppPengajuanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanBtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbKamar.getRowCount()>0){
-            try {
-                URL = link+"/Sep/pengajuanSEP";
-                headers= new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-                utc=String.valueOf(api.GetUTCdatetimeAsString());
-                headers.add("X-Timestamp",utc);
-                headers.add("X-Signature",api.getHmac(utc));
-                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-                requestJson =" {" +
-                    "\"request\": {" +
-                        "\"t_sep\": {" +
-                            "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
-                            "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                            "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
-                            "\"keterangan\": \""+Catatan.getText()+"\"," +
-                            "\"user\": \""+user+"\"" +
-                        "}" +
-                    "}" +
-                "}";
-                requestEntity = new HttpEntity(requestJson,headers);
-                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                nameNode = root.path("metaData");
-                System.out.println("code : "+nameNode.path("code").asText());
-                System.out.println("message : "+nameNode.path("message").asText());
-                if(nameNode.path("code").asText().equals("200")){
-                    JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
-                }else{
-                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                }
-            }catch (Exception ex) {
-                System.out.println("Notifikasi Bridging : "+ex);
-                if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
-                }
-            }
-        }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
-            NoRujukan.requestFocus();
-        }
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_ppPengajuanBtnPrintActionPerformed
-
-    private void ppPengajuan1BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuan1BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbKamar.getRowCount()>0){
-            try {
-                URL = link+"/Sep/aprovalSEP";
-                headers= new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-                utc=String.valueOf(api.GetUTCdatetimeAsString());
-                headers.add("X-Timestamp",utc);
-                headers.add("X-Signature",api.getHmac(utc));
-                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-                requestJson =" {" +
-                        "\"request\": {" +
-                            "\"t_sep\": {" +
-                            "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
-                            "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                            "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
-                            "\"keterangan\": \""+Catatan.getText()+"\"," +
-                            "\"user\": \""+user+"\"" +
-                        "}" +
-                    "}" +
-                "}";
-                requestEntity = new HttpEntity(requestJson,headers);
-                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                nameNode = root.path("metaData");
-                System.out.println("code : "+nameNode.path("code").asText());
-                System.out.println("message : "+nameNode.path("message").asText());
-                if(nameNode.path("code").asText().equals("200")){
-                    JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
-                }else{
-                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                }
-            }catch (Exception ex) {
-                System.out.println("Notifikasi Bridging : "+ex);
-                if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
-                }
-            }
-        }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
-            NoRujukan.requestFocus();
-        }
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_ppPengajuan1BtnPrintActionPerformed
-
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSDataSEP form=new BPJSDataSEP(null,false);
@@ -5148,6 +5090,194 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDPJPLayananKeyPressed
 
+    private void ppPengajuanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanBtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tbKamar.getRowCount()>0){
+            try {
+                URL = link+"/Sep/pengajuanSEP";
+                headers= new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-Timestamp",utc);
+                headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                requestJson =" {" +
+                "\"request\": {" +
+                "\"t_sep\": {" +
+                "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
+                "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
+                "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
+                "\"jnsPengajuan\": \"1\"," +
+                "\"keterangan\": \""+Catatan.getText()+"\"," +
+                "\"user\": \""+user+"\"" +
+                "}" +
+                "}" +
+                "}";
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("200")){
+                    JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
+                }else{
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                }
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            NoRujukan.requestFocus();
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppPengajuanBtnPrintActionPerformed
+
+    private void ppPengajuan1BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuan1BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tbKamar.getRowCount()>0){
+            try {
+                URL = link+"/Sep/aprovalSEP";
+                headers= new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-Timestamp",utc);
+                headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                requestJson =" {" +
+                "\"request\": {" +
+                "\"t_sep\": {" +
+                "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
+                "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
+                "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
+                "\"jnsPengajuan\": \"1\"," +
+                "\"keterangan\": \""+Catatan.getText()+"\"," +
+                "\"user\": \""+user+"\"" +
+                "}" +
+                "}" +
+                "}";
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("200")){
+                    JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
+                }else{
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                }
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            NoRujukan.requestFocus();
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppPengajuan1BtnPrintActionPerformed
+
+    private void ppPengajuan2BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuan2BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tbKamar.getRowCount()>0){
+            try {
+                URL = link+"/Sep/pengajuanSEP";
+                headers= new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-Timestamp",utc);
+                headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                requestJson =" {" +
+                "\"request\": {" +
+                "\"t_sep\": {" +
+                "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
+                "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
+                "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
+                "\"jnsPengajuan\": \"2\"," +
+                "\"keterangan\": \""+Catatan.getText()+"\"," +
+                "\"user\": \""+user+"\"" +
+                "}" +
+                "}" +
+                "}";
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("200")){
+                    JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
+                }else{
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                }
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            NoRujukan.requestFocus();
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppPengajuan2BtnPrintActionPerformed
+
+    private void ppPengajuan3BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuan3BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tbKamar.getRowCount()>0){
+            try {
+                URL = link+"/Sep/aprovalSEP";
+                headers= new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-Timestamp",utc);
+                headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                requestJson =" {" +
+                "\"request\": {" +
+                "\"t_sep\": {" +
+                "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
+                "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
+                "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
+                "\"jnsPengajuan\": \"2\"," +
+                "\"keterangan\": \""+Catatan.getText()+"\"," +
+                "\"user\": \""+user+"\"" +
+                "}" +
+                "}" +
+                "}";
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("200")){
+                    JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
+                }else{
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                }
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            NoRujukan.requestFocus();
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppPengajuan3BtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5397,6 +5527,8 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     private widget.panelisi panelGlass6;
     private javax.swing.JMenuItem ppPengajuan;
     private javax.swing.JMenuItem ppPengajuan1;
+    private javax.swing.JMenuItem ppPengajuan2;
+    private javax.swing.JMenuItem ppPengajuan3;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
