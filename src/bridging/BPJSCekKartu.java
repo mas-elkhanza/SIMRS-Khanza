@@ -79,7 +79,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",URUTNOREG="",klg="SAUDARA",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
-            umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
+            umur="",umurdaftar="0",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",
             kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",link="",
             status="Baru",propinsi="",propinsipj="",peserta="",utc="",
@@ -6610,6 +6610,8 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }
     
     private void inputRegistrasi(){
+        umurdaftar="0";
+        sttsumur="Th";
         try {
             pscariumur=koneksi.prepareStatement(
                 "select TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun, "+
@@ -6620,17 +6622,15 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 pscariumur.setString(1,TNo.getText());                            
                 rs=pscariumur.executeQuery();
                 if(rs.next()){
-                    umur="0";
-                    sttsumur="Th";
                     if(rs.getInt("tahun")>0){
-                        umur=rs.getString("tahun");
+                        umurdaftar=rs.getString("tahun");
                         sttsumur="Th";
                     }else if(rs.getInt("tahun")==0){
                         if(rs.getInt("bulan")>0){
-                            umur=rs.getString("bulan");
+                            umurdaftar=rs.getString("bulan");
                             sttsumur="Bl";
                         }else if(rs.getInt("bulan")==0){
-                            umur=rs.getString("hari");
+                            umurdaftar=rs.getString("hari");
                             sttsumur="Hr";
                         }
                     }                                
@@ -6658,7 +6658,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),kdpoli.getText(),Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),
-                    klg,TBiaya.getText(),"Belum",statuspasien,"Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
+                    klg,TBiaya.getText(),"Belum",statuspasien,"Ralan",Kdpnj.getText(),umurdaftar,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
                     if(nosisrute.equals("")){
@@ -6685,7 +6685,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),"IGDK",Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),
-                    klg,Sequel.cariIsi("select registrasilama from poliklinik where kd_poli='IGDK'"),"Belum",statuspasien,"Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
+                    klg,Sequel.cariIsi("select registrasilama from poliklinik where kd_poli='IGDK'"),"Belum",statuspasien,"Ralan",Kdpnj.getText(),umurdaftar,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
                     if(nosisrute.equals("")){

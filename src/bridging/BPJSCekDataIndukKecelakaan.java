@@ -28,7 +28,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -331,7 +330,7 @@ public final class BPJSCekDataIndukKecelakaan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSuplesiJasaRaharja.jasper","report","[ Data Suplesi Jasa Raharja ]",param);
+            Valid.MyReport("rptCariBPJSIndukKecelakaan.jasper","report","[ Data Induk Kecelakaan ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

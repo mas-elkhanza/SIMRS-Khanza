@@ -339,7 +339,7 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSuplesiJasaRaharja.jasper","report","[ Data Suplesi Jasa Raharja ]",param);
+            Valid.MyReport("rptCariBPJSSuplesiJasaRaharja.jasper","report","[ Data Suplesi Jasa Raharja ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
