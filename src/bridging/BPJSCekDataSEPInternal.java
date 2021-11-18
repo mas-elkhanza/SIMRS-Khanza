@@ -424,7 +424,7 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
     public void tampil(String nomorkartu) {
         try {
             headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
