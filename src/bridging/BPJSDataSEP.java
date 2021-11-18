@@ -702,6 +702,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppProgramPRB = new javax.swing.JMenuItem();
         ppSuplesiJasaRaharja = new javax.swing.JMenuItem();
         ppDataIndukKecelakaan = new javax.swing.JMenuItem();
+        ppDataSEPInternal = new javax.swing.JMenuItem();
         ppRiwayatPerawatan = new javax.swing.JMenuItem();
         ppSepRujukSama = new javax.swing.JMenuItem();
         ppSepRujukBeda = new javax.swing.JMenuItem();
@@ -1142,6 +1143,22 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         });
         Popup.add(ppDataIndukKecelakaan);
+
+        ppDataSEPInternal.setBackground(new java.awt.Color(255, 255, 254));
+        ppDataSEPInternal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDataSEPInternal.setForeground(new java.awt.Color(50, 50, 50));
+        ppDataSEPInternal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDataSEPInternal.setText("Data SEP Internal");
+        ppDataSEPInternal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDataSEPInternal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDataSEPInternal.setName("ppDataSEPInternal"); // NOI18N
+        ppDataSEPInternal.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppDataSEPInternal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDataSEPInternalBtnPrintActionPerformed(evt);
+            }
+        });
+        Popup.add(ppDataSEPInternal);
 
         ppRiwayatPerawatan.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayatPerawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -4476,6 +4493,23 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppPengajuan3BtnPrintActionPerformed
 
+    private void ppDataSEPInternalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDataSEPInternalBtnPrintActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbObat.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                BPJSCekDataSEPInternal form=new BPJSCekDataSEPInternal(null,false);
+                form.setSEP(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppDataSEPInternalBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -4669,6 +4703,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppAmbilSep;
     private javax.swing.JMenuItem ppDataIndukKecelakaan;
+    private javax.swing.JMenuItem ppDataSEPInternal;
     private javax.swing.JMenuItem ppDetailSEPPeserta;
     private javax.swing.JMenuItem ppPengajuan;
     private javax.swing.JMenuItem ppPengajuan1;
@@ -4911,7 +4946,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppSuratPRI.setEnabled(akses.getbpjs_surat_pri());     
         ppProgramPRB.setEnabled(akses.getbpjs_program_prb());   
         ppSuplesiJasaRaharja.setEnabled(akses.getbpjs_suplesi_jasaraharja());  
-        ppDataIndukKecelakaan.setEnabled(akses.getbpjs_data_induk_kecelakaan());    
+        ppDataIndukKecelakaan.setEnabled(akses.getbpjs_data_induk_kecelakaan());  
+        ppDataSEPInternal.setEnabled(akses.getbpjs_sep_internal());    
         ppRujukan.setEnabled(akses.getbpjs_rujukan_keluar());
     }
     

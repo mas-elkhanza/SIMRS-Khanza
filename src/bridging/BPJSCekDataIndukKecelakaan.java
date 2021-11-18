@@ -350,7 +350,11 @@ public final class BPJSCekDataIndukKecelakaan extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(NoKartu.getText());
+        if(NoKartu.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"No.Kartu masih kosong..!!!");
+        }else{
+            tampil(NoKartu.getText());
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -403,7 +407,7 @@ public final class BPJSCekDataIndukKecelakaan extends javax.swing.JDialog {
 	    headers.add("X-Signature",api.getHmac(utc));
             headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
-            URL = link+"/sep/KllInduk/List/"+nomorkartu;	
+            URL = link+"/sep/KllInduk/List/"+nomorkartu.trim();	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){

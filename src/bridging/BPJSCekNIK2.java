@@ -4035,7 +4035,12 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         }       
         ChkRM.setSelected(true);
         emptTeks();
-        tampil(TNik.getText());
+        if(TNik.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"NIK masih kosong..!!");
+        }else{
+            tampil(TNik.getText().trim());
+        }
+            
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -5907,7 +5912,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     "       Umur Saat Pelayanan",": "+cekViaBPJS.umurumurSaatPelayanan
                 });
                 tabMode.addRow(new Object[]{
-                    "       Umur Sekarang",": "+cekViaBPJS.umurumurSekarang.replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr")
+                    "       Umur Sekarang",": "+cekViaBPJS.umurumurSekarang.replaceAll("tahun","Th ").replaceAll("bulan","Bl ").replaceAll("hari","Hr")
                 });
                 tabMode.addRow(new Object[]{
                     "Informasi",":"
@@ -5937,7 +5942,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     "       Tanggal TMT",": "+cekViaBPJS.cobtglTMT
                 });
                 prb=cekViaBPJS.informasiprolanisPRB.replaceAll("null","");
-                TUmur.setText(cekViaBPJS.umurumurSekarang.replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr"));
+                TUmur.setText(cekViaBPJS.umurumurSekarang.replaceAll("tahun","Th ").replaceAll("bulan","Bl ").replaceAll("hari","Hr"));
                 ps=koneksi.prepareStatement(
                    "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,"+

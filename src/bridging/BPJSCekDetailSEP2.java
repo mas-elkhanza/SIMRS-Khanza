@@ -265,7 +265,11 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(SEP.getText());
+        if(SEP.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"No.SEP masih ksong..!!!");
+        }else{
+            tampil(SEP.getText());
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -316,7 +320,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
 	    headers.add("X-Signature",api.getHmac(utc));
             headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
-            root = mapper.readTree(api.getRest().exchange(URL+sep, HttpMethod.GET, requestEntity, String.class).getBody());
+            root = mapper.readTree(api.getRest().exchange(URL+sep.trim(), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());

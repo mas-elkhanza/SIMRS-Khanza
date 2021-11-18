@@ -31,6 +31,7 @@ import laporan.DlgDataHAIs;
 import bridging.AplicareCekReferensiKamar;
 import bridging.AplicareKetersediaanKamar;
 import bridging.BPJSCekDataIndukKecelakaan;
+import bridging.BPJSCekDataSEPInternal;
 import bridging.BPJSCekDetailSEP2;
 import bridging.BPJSCekKartu;
 import bridging.BPJSCekNIK2;
@@ -17651,6 +17652,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSDataSEPInternalActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekDataSEPInternal aplikasi=new BPJSCekDataSEPInternal(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18277,7 +18289,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratKewaspadaanKesehatan,btnGrafikPorsiDietPerTanggal,btnGrafikPorsiDietPerBulan,btnGrafikPorsiDietPerTahun,btnGrafikPorsiDietPerRuang,
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
-            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan;
+            btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
+            btnBPJSDataSEPInternal;
     
     public void isWall(){
         try{            
@@ -20442,6 +20455,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_data_induk_kecelakaan()==true){
                 Panelmenu.add(btnBPJSDataIndukKecelakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_sep_internal()==true){
+                Panelmenu.add(btnBPJSDataSEPInternal);
                 jmlmenu++;
             }
             
@@ -24250,6 +24268,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_data_induk_kecelakaan()==true){
             Panelmenu.add(btnBPJSDataIndukKecelakaan);
+            jmlmenu++;
+        }
+
+        if(akses.getbpjs_sep_internal()==true){
+            Panelmenu.add(btnBPJSDataSEPInternal);
             jmlmenu++;
         }
 
@@ -28866,6 +28889,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_data_induk_kecelakaan()==true){
             if(btnBPJSDataIndukKecelakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSDataIndukKecelakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_sep_internal()==true){
+            if(btnBPJSDataSEPInternal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSDataSEPInternal);
                 jmlmenu++;
             }                
         }
@@ -33742,6 +33772,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSDataIndukKecelakaan.setName("btnBPJSDataIndukKecelakaan"); 
         btnBPJSDataIndukKecelakaan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSDataIndukKecelakaan.addActionListener(this::btnBPJSDataIndukKecelakaanActionPerformed);
+        
+        btnBPJSDataSEPInternal = new widget.ButtonBig();
+        btnBPJSDataSEPInternal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSDataSEPInternal.setText("Data SEP Internal VClaim");
+        btnBPJSDataSEPInternal.setIconTextGap(0);
+        btnBPJSDataSEPInternal.setName("btnBPJSDataSEPInternal"); 
+        btnBPJSDataSEPInternal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSDataSEPInternal.addActionListener(this::btnBPJSDataSEPInternalActionPerformed);
     }
     
 }

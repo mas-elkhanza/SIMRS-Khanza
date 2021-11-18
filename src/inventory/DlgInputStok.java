@@ -54,7 +54,7 @@ public class DlgInputStok extends javax.swing.JDialog {
     private double[] hargabeli,stok,selisih,lebih,nomihilang,nomilebih;
     private WarnaTable2 warna=new WarnaTable2();
     private boolean aktif=false,sukses=true;
-    private String aktifkanbatch="no",hppfarmasi="",order="order by databarang.nama_brng";
+    private String aktifkanbatch="no",hppfarmasi="",DEPOAKTIFOBAT="",order="order by databarang.nama_brng";
     private File file;
     private FileWriter fileWriter;
     private String iyem;
@@ -185,6 +185,13 @@ public class DlgInputStok extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+        }
+        
+        try {
+            DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            DEPOAKTIFOBAT = "";
         }
         
         try {
@@ -1579,6 +1586,13 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
          
     public void isCek(){
          BtnSimpan.setEnabled(akses.getstok_opname_obat());   
+         if(!akses.getkode().equals("Admin Utama")){
+            if(!DEPOAKTIFOBAT.equals("")){
+                kdgudang.setText(DEPOAKTIFOBAT);
+                nmgudang.setText(Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",DEPOAKTIFOBAT));
+                BtnGudang.setEnabled(false);
+            }
+        }
     }
 
 }

@@ -160,10 +160,15 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
         
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
-            DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+        }
+        
+        try {
+            DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
             DEPOAKTIFOBAT = "";
         }
         

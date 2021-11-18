@@ -359,7 +359,11 @@ public final class BPJSCekSuplesiJasaRaharja extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(NoKartu.getText());
+        if(NoKartu.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"No.Kartu masih kosong...!!");
+        }else{
+            tampil(NoKartu.getText().trim());
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 

@@ -1704,25 +1704,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penjualan...!!!!");
             tbObat.requestFocus();
         }else {
-            
             Sequel.queryu("truncate table temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 try {
                     if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
-                           Sequel.menyimpan2("temporary","'0','"+
-                                   tabMode.getValueAt(i,0).toString()+"','"+
-                                   tabMode.getValueAt(i,1).toString()+"','"+
-                                   tabMode.getValueAt(i,2).toString()+"','"+
-                                   tabMode.getValueAt(i,3).toString()+"','"+
-                                   tabMode.getValueAt(i,4).toString()+"','"+
-                                   tabMode.getValueAt(i,5).toString()+"','"+
-                                   tabMode.getValueAt(i,6).toString()+"','"+
-                                   tabMode.getValueAt(i,8).toString()+"','"+
-                                   tabMode.getValueAt(i,9).toString()+"','"+
-                                   tabMode.getValueAt(i,10).toString()+"','"+
-                                   tabMode.getValueAt(i,11).toString()+"','"+
-                                   tabMode.getValueAt(i,12).toString()+"','"+
-                                   tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
+                        Sequel.menyimpan2("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                            "0",tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),tabMode.getValueAt(i,3).toString(),
+                            tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,8).toString(),
+                            tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),tabMode.getValueAt(i,12).toString(),
+                            tabMode.getValueAt(i,13).toString(),"","","","","","","","","","","","","","","","","","","","","","","",""
+                        });
                     }
                 } catch (Exception e) {
                 }                
@@ -1731,10 +1722,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             for(i=0;i<tbObatRacikan.getRowCount();i++){  
                 try {
                     if(Valid.SetAngka(tbObatRacikan.getValueAt(i,4).toString())>0){
-                           Sequel.menyimpan2("temporary","'0','"+tbObatRacikan.getValueAt(i,4).toString()+"','','"+
-                                   tbObatRacikan.getValueAt(i,0).toString()+". "+tbObatRacikan.getValueAt(i,1).toString()+"','','"+
-                                   tbObatRacikan.getValueAt(i,3).toString()+"','','','','','','','"+
-                                   tbObatRacikan.getValueAt(i,5).toString()+"','0','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
+                        Sequel.menyimpan2("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                            "0",tbObatRacikan.getValueAt(i,4).toString(),"",tbObatRacikan.getValueAt(i,0).toString()+". "+tbObatRacikan.getValueAt(i,1).toString(),"",
+                            tbObatRacikan.getValueAt(i,3).toString(),"","","","","","",tbObatRacikan.getValueAt(i,5).toString(),"0","","","","","","","","","","","",
+                            "","","","","","","","","","","","",""
+                        });
                     }
                 } catch (Exception e) {
                 }                
@@ -1743,19 +1735,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             for(i=0;i<tbDetailObatRacikan.getRowCount();i++){  
                 try {
                     if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,8).toString())>0){
-                           Sequel.menyimpan2("temporary","'0','&nbsp;&nbsp;&nbsp;&nbsp;"+
-                                   tbDetailObatRacikan.getValueAt(i,8).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,1).toString()+"','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-                                   tbDetailObatRacikan.getValueAt(i,2).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,3).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,4).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,5).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,9).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,11).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,12).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,13).toString()+"','"+
-                                   tbDetailObatRacikan.getValueAt(i,14).toString()+"','','"+
-                                   tbDetailObatRacikan.getValueAt(i,15).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
+                        Sequel.menyimpan2("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                            "0","&nbsp;&nbsp;&nbsp;&nbsp;"+tbDetailObatRacikan.getValueAt(i,8).toString(),tbDetailObatRacikan.getValueAt(i,1).toString(),
+                            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+tbDetailObatRacikan.getValueAt(i,2).toString(),tbDetailObatRacikan.getValueAt(i,3).toString(),
+                            tbDetailObatRacikan.getValueAt(i,4).toString(),tbDetailObatRacikan.getValueAt(i,5).toString(),tbDetailObatRacikan.getValueAt(i,9).toString(),
+                            tbDetailObatRacikan.getValueAt(i,11).toString(),tbDetailObatRacikan.getValueAt(i,12).toString(),tbDetailObatRacikan.getValueAt(i,13).toString(),
+                            tbDetailObatRacikan.getValueAt(i,14).toString(),tbDetailObatRacikan.getValueAt(i,15).toString(),"","","","","","","","","","","",
+                            "","","","","","","","","","","","",""
+                        });
                     }
                 } catch (Exception e) {
                 }                

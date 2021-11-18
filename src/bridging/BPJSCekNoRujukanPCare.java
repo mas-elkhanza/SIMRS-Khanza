@@ -3826,7 +3826,11 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             isForm();
         }  
         ChkRM.setSelected(true);
-        tampil(NoRujukan.getText());
+        if(NoRujukan.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"No.Rujukan masih kosong...!!");
+        }else{
+            tampil(NoRujukan.getText().trim());
+        }   
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -5748,7 +5752,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "       Umur Sekarang",": "+response.path("peserta").path("umur").path("umurSekarang").asText()
                 });
-                TUmur.setText(response.path("peserta").path("umur").path("umurSekarang").asText().replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr"));
+                TUmur.setText(response.path("peserta").path("umur").path("umurSekarang").asText().replaceAll("tahun","Th ").replaceAll("bulan","Bl ").replaceAll("hari","Hr"));
                 tabMode.addRow(new Object[]{
                     "Poli Rujukan",": "+response.path("poliRujukan").path("kode").asText()+" "+response.path("poliRujukan").path("nama").asText()
                 }); 

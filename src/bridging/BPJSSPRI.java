@@ -1205,7 +1205,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     headers.add("X-Timestamp",utc);
                     headers.add("X-Signature",api.getHmac(utc));
                     headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-                    URL = link+"/RencanaKontrol/Update";            
+                    URL = link+"/RencanaKontrol/UpdateSPRI";            
                     requestJson ="{" +
                                     "\"request\": {" +
                                         "\"noSPRI\":\""+NoSurat.getText()+"\"," +

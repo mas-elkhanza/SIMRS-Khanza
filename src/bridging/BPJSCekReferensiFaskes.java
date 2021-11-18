@@ -362,7 +362,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                     }
                 }
             }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                System.out.println("Notif Faskes 1 : "+nameNode.path("message").asText());              
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
@@ -405,7 +405,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                     }
                 }
             }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                System.out.println("Notif Faskes 2 : "+nameNode.path("message").asText());              
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
