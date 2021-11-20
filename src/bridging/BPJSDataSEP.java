@@ -3371,7 +3371,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                         "\"noSep\":\""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
                                         "\"statusPulang\":\""+StatusPulang.getSelectedItem().toString().substring(0,1)+"\"," +
                                         "\"noSuratMeninggal\":\""+(NoSuratKematian.getText().equals("")?"":NoSuratKematian.getText())+"\"," +
-                                        "\"noSuratMeninggal\":\""+(TanggalKematian.isEnabled()==false?"":Valid.SetTgl(TanggalKematian.getSelectedItem()+""))+"\"," +
+                                        "\"tglMeninggal\":\""+(TanggalKematian.isEnabled()==false?"":Valid.SetTgl(TanggalKematian.getSelectedItem()+""))+"\"," +
                                         "\"tglPulang\":\""+Valid.SetTgl(TanggalPulang.getSelectedItem()+"")+"\"," +
                                         "\"noLPManual\":\""+(NoLPManual.getText().equals("")?"":NoLPManual.getText())+"\"," +
                                         "\"user\":\""+user+"\"" +                                            
