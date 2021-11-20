@@ -167,7 +167,7 @@ public final class akses {
             penilaian_awal_keperawatan_mata=false,penilaian_awal_medis_ranap=false,penilaian_awal_medis_ranap_kebidanan=false,penilaian_awal_medis_ralan_kebidanan=false,
             penilaian_awal_medis_igd=false,penilaian_awal_medis_ralan_anak=false,bpjs_referensi_poli_hfis=false,bpjs_referensi_dokter_hfis=false,
             bpjs_referensi_jadwal_hfis=false,penilaian_fisioterapi=false,bpjs_program_prb=false,bpjs_suplesi_jasaraharja=false,bpjs_data_induk_kecelakaan=false,
-            bpjs_sep_internal=false,bpjs_klaim_jasa_raharja=false;
+            bpjs_sep_internal=false,bpjs_klaim_jasa_raharja=false,bpjs_daftar_finger_print=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -953,6 +953,7 @@ public final class akses {
                         akses.bpjs_data_induk_kecelakaan=true;
                         akses.bpjs_sep_internal=true;
                         akses.bpjs_klaim_jasa_raharja=true;
+                        akses.bpjs_daftar_finger_print=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1722,6 +1723,7 @@ public final class akses {
                         akses.bpjs_data_induk_kecelakaan=rs2.getBoolean("bpjs_data_induk_kecelakaan");
                         akses.bpjs_sep_internal=rs2.getBoolean("bpjs_sep_internal");
                         akses.bpjs_klaim_jasa_raharja=rs2.getBoolean("bpjs_klaim_jasa_raharja");
+                        akses.bpjs_daftar_finger_print=rs2.getBoolean("bpjs_daftar_finger_print");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2489,6 +2491,7 @@ public final class akses {
                         akses.bpjs_data_induk_kecelakaan=false;
                         akses.bpjs_sep_internal=false;
                         akses.bpjs_klaim_jasa_raharja=false;
+                        akses.bpjs_daftar_finger_print=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3311,4 +3314,5 @@ public final class akses {
     public static boolean getbpjs_data_induk_kecelakaan(){return akses.bpjs_data_induk_kecelakaan;}
     public static boolean getbpjs_sep_internal(){return akses.bpjs_sep_internal;}
     public static boolean getbpjs_klaim_jasa_raharja(){return akses.bpjs_klaim_jasa_raharja;}
+    public static boolean getbpjs_daftar_finger_print(){return akses.bpjs_daftar_finger_print;}
 }   

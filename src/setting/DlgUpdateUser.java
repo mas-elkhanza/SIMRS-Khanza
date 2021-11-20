@@ -678,7 +678,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata,penilaian_awal_medis_ranap,penilaian_awal_medis_ranap_kebidanan,"+
                         "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak,bpjs_referensi_poli_hfis,"+
                         "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi,bpjs_program_prb,bpjs_suplesi_jasaraharja,"+
-                        "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2621,6 +2621,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Klaim Jaminan Jasa Raharja VClaim".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Klaim Jaminan Jasa Raharja VClaim",rs.getBoolean("bpjs_klaim_jasa_raharja")});
+                    }
+                    
+                    if("[K]Pasien Finger Print VClaim".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Pasien Finger Print VClaim",rs.getBoolean("bpjs_daftar_finger_print")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5700,6 +5704,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[K]Klaim Jaminan Jasa Raharja VClaim".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_klaim_jasa_raharja='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Pasien Finger Print VClaim".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_daftar_finger_print='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){

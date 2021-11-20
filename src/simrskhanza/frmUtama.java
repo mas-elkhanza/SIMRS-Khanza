@@ -64,6 +64,7 @@ import bridging.BPJSCekRujukanKartuRS;
 import bridging.BPJSCekSKDP;
 import bridging.BPJSCekSuplesiJasaRaharja;
 import bridging.BPJSCekTanggalRujukan;
+import bridging.BPJSDataFingerPrintPasien;
 import bridging.BPJSDataSEP;
 import bridging.BPJSHistoriPelayanan;
 import bridging.BPJSMapingDokterDPJP;
@@ -17675,6 +17676,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSPasienFingerActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSDataFingerPrintPasien aplikasi=new BPJSDataFingerPrintPasien(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18302,7 +18314,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
-            btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja;
+            btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger;
     
     public void isWall(){
         try{            
@@ -20477,6 +20489,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_klaim_jasa_raharja()==true){
                 Panelmenu.add(btnBPJSKlaimJasaRaharja);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_daftar_finger_print()==true){
+                Panelmenu.add(btnBPJSPasienFinger);
                 jmlmenu++;
             }
             
@@ -24295,6 +24312,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_klaim_jasa_raharja()==true){
             Panelmenu.add(btnBPJSKlaimJasaRaharja);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_daftar_finger_print()==true){
+            Panelmenu.add(btnBPJSPasienFinger);
             jmlmenu++;
         }
 
@@ -28925,6 +28947,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_klaim_jasa_raharja()==true){
             if(btnBPJSKlaimJasaRaharja.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSKlaimJasaRaharja);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_daftar_finger_print()==true){
+            if(btnBPJSPasienFinger.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSPasienFinger);
                 jmlmenu++;
             }                
         }
@@ -33817,6 +33846,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSKlaimJasaRaharja.setName("btnBPJSKlaimJasaRaharja"); 
         btnBPJSKlaimJasaRaharja.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSKlaimJasaRaharja.addActionListener(this::btnBPJSKlaimJasaRaharjaActionPerformed);
+        
+        btnBPJSPasienFinger = new widget.ButtonBig();
+        btnBPJSPasienFinger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSPasienFinger.setText("Pasien Finger Print VClaim");
+        btnBPJSPasienFinger.setIconTextGap(0);
+        btnBPJSPasienFinger.setName("btnBPJSPasienFinger"); 
+        btnBPJSPasienFinger.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSPasienFinger.addActionListener(this::btnBPJSPasienFingerActionPerformed);
     }
     
 }

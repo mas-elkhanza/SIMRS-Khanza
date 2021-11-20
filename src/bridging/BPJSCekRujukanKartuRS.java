@@ -1526,6 +1526,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         ppPengajuan1 = new javax.swing.JMenuItem();
         ppPengajuan2 = new javax.swing.JMenuItem();
         ppPengajuan3 = new javax.swing.JMenuItem();
+        ppStatusFinger = new javax.swing.JMenuItem();
         NoBalasan = new widget.TextBox();
         kdsuku = new widget.TextBox();
         kdbahasa = new widget.TextBox();
@@ -1767,7 +1768,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2021" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1912,6 +1913,22 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppPengajuan3);
+
+        ppStatusFinger.setBackground(new java.awt.Color(255, 255, 254));
+        ppStatusFinger.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppStatusFinger.setForeground(new java.awt.Color(50, 50, 50));
+        ppStatusFinger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppStatusFinger.setText("Status Finger");
+        ppStatusFinger.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppStatusFinger.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppStatusFinger.setName("ppStatusFinger"); // NOI18N
+        ppStatusFinger.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppStatusFinger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppStatusFingerBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppStatusFinger);
 
         NoBalasan.setHighlighter(null);
         NoBalasan.setName("NoBalasan"); // NOI18N
@@ -2296,7 +2313,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 160, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2021" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3356,7 +3373,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(295, 355, 54, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2021 14:44:39" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021 13:17:32" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -3375,7 +3392,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(341, 325, 50, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2021" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3615,7 +3632,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jLabel47.setBounds(694, 25, 120, 23);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2021" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setName("TanggalKKL"); // NOI18N
@@ -5498,6 +5515,40 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppPengajuan3BtnPrintActionPerformed
 
+    private void ppStatusFingerBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppStatusFingerBtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tbKamar.getRowCount()>0){
+            try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-Timestamp",utc);
+                headers.add("X-Signature",api.getHmac(utc));
+                headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+                URL = link+"/SEP/FingerPrint/Peserta/"+TNoPeserta.getText()+"/TglPelayanan/"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"");
+                requestEntity = new HttpEntity(headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                //System.out.println("message : "+nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("200")){
+                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                    JOptionPane.showMessageDialog(null,response.path("status").asText());
+                }
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            NoRujukan.requestFocus();
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppStatusFingerBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5752,6 +5803,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppPengajuan1;
     private javax.swing.JMenuItem ppPengajuan2;
     private javax.swing.JMenuItem ppPengajuan3;
+    private javax.swing.JMenuItem ppStatusFinger;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
@@ -6913,6 +6965,9 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         BtnSimpan.setEnabled(akses.getbpjs_sep());
         ppPengajuan.setEnabled(akses.getbpjs_sep());
         ppPengajuan1.setEnabled(akses.getbpjs_sep());
+        ppPengajuan2.setEnabled(akses.getbpjs_sep());
+        ppPengajuan3.setEnabled(akses.getbpjs_sep());
+        ppStatusFinger.setEnabled(akses.getbpjs_sep());
     }
     
     public void SetNoKartu(String NoPeserta){
