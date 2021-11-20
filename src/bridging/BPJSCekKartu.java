@@ -6567,7 +6567,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                                     "}," +
                                     "\"tujuanKunj\": \""+TujuanKunjungan.getSelectedItem().toString().substring(0,1)+"\","+
                                     "\"flagProcedure\": \""+(FlagProsedur.getSelectedIndex()>0?FlagProsedur.getSelectedItem().toString().substring(0,1):"")+"\","+
-                                    "\"kdPenunjang\": \""+(Penunjang.getSelectedIndex()>0?Penunjang.getSelectedItem().toString().substring(0,1):"")+"\","+
+                                    "\"kdPenunjang\": \""+(Penunjang.getSelectedIndex()>0?Penunjang.getSelectedIndex()+"":"")+"\","+
                                     "\"assesmentPel\": \""+(AsesmenPoli.getSelectedIndex()>0?AsesmenPoli.getSelectedItem().toString().substring(0,1):"")+"\","+
                                     "\"skdp\": {" +
                                         "\"noSurat\": \""+NoSKDP.getText()+"\"," +
@@ -6602,7 +6602,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                      "0000-00-00 00:00:00",AsalRujukan.getSelectedItem().toString(),Eksekutif.getSelectedItem().toString(),COB.getSelectedItem().toString(),TTlp.getText(),Katarak.getSelectedItem().toString(),
                      tglkkl,Keterangan.getText(),Suplesi.getSelectedItem().toString(),NoSEPSuplesi.getText(),KdPropinsi.getText(),NmPropinsi.getText(),KdKabupaten.getText(),NmKabupaten.getText(),
                      KdKecamatan.getText(),NmKecamatan.getText(),NoSKDP.getText(),KdDPJP.getText(),NmDPJP.getText(),TujuanKunjungan.getSelectedItem().toString().substring(0,1),
-                     (FlagProsedur.getSelectedIndex()>0?FlagProsedur.getSelectedItem().toString().substring(0,1):""),(Penunjang.getSelectedIndex()>0?Penunjang.getSelectedItem().toString().substring(0,1):""),
+                     (FlagProsedur.getSelectedIndex()>0?FlagProsedur.getSelectedItem().toString().substring(0,1):""),(Penunjang.getSelectedIndex()>0?Penunjang.getSelectedIndex()+"":""),
                      (AsesmenPoli.getSelectedIndex()>0?AsesmenPoli.getSelectedItem().toString().substring(0,1):""),KdDPJPLayanan.getText(),NmDPJPLayanan.getText()
                  })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
