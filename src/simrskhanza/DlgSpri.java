@@ -561,7 +561,7 @@ public class DlgSpri extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surat Permintaan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surat Permintaan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
 
         Scroll.setComponentPopupMenu(jPopupMenu1);
@@ -1080,7 +1080,6 @@ public class DlgSpri extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnSeek3);
         BtnSeek3.setBounds(860, 70, 28, 23);
-
         cmbUpf.setName("cmbUpf"); // NOI18N
         cmbUpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1098,7 +1097,7 @@ public class DlgSpri extends javax.swing.JDialog {
         ChkJln.setSelected(true);
         ChkJln.setName("ChkJln"); // NOI18N
         panelBiasa1.add(ChkJln);
-        ChkJln.setBounds(490, 10, 20, 18);
+        ChkJln.setBounds(490, 10, 20, 23);
 
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("*");
