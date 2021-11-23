@@ -697,6 +697,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppPulang = new javax.swing.JMenuItem();
         ppDetailSEPPeserta = new javax.swing.JMenuItem();
         ppRujukan = new javax.swing.JMenuItem();
+        ppDaftarRujukan = new javax.swing.JMenuItem();
         ppSuratKontrol = new javax.swing.JMenuItem();
         ppSuratPRI = new javax.swing.JMenuItem();
         ppProgramPRB = new javax.swing.JMenuItem();
@@ -1065,6 +1066,22 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppRujukan);
 
+        ppDaftarRujukan.setBackground(new java.awt.Color(255, 255, 254));
+        ppDaftarRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDaftarRujukan.setForeground(new java.awt.Color(50, 50, 50));
+        ppDaftarRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDaftarRujukan.setText("Daftar Rujukan Keluar");
+        ppDaftarRujukan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDaftarRujukan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDaftarRujukan.setName("ppDaftarRujukan"); // NOI18N
+        ppDaftarRujukan.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppDaftarRujukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDaftarRujukanBtnPrintActionPerformed(evt);
+            }
+        });
+        Popup.add(ppDaftarRujukan);
+
         ppSuratKontrol.setBackground(new java.awt.Color(255, 255, 254));
         ppSuratKontrol.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSuratKontrol.setForeground(new java.awt.Color(50, 50, 50));
@@ -1249,7 +1266,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 70, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021 12:59:37" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021 17:59:03" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -4561,6 +4578,18 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppStatusFingerBtnPrintActionPerformed
 
+    private void ppDaftarRujukanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDaftarRujukanBtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSRujukanKeluar rujuk=new BPJSRujukanKeluar(null,false);
+        rujuk.tampil();
+        rujuk.emptTeks();
+        rujuk.isCek();
+        rujuk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        rujuk.setLocationRelativeTo(internalFrame1);
+        rujuk.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppDaftarRujukanBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -4753,6 +4782,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppAmbilSep;
+    private javax.swing.JMenuItem ppDaftarRujukan;
     private javax.swing.JMenuItem ppDataIndukKecelakaan;
     private javax.swing.JMenuItem ppDataSEPInternal;
     private javax.swing.JMenuItem ppDetailSEPPeserta;
@@ -5003,7 +5033,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppSuplesiJasaRaharja.setEnabled(akses.getbpjs_suplesi_jasaraharja());  
         ppDataIndukKecelakaan.setEnabled(akses.getbpjs_data_induk_kecelakaan());  
         ppDataSEPInternal.setEnabled(akses.getbpjs_sep_internal());    
-        ppRujukan.setEnabled(akses.getbpjs_rujukan_keluar());
+        ppRujukan.setEnabled(akses.getbpjs_rujukan_keluar()); 
+        ppDaftarRujukan.setEnabled(akses.getbpjs_rujukan_keluar());
     }
     
     public void tutupInput(){

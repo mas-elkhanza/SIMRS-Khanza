@@ -299,6 +299,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSuratRujukan = new javax.swing.JMenuItem();
+        MnRujukanKhusus = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -352,13 +353,27 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSuratRujukan.setText("Surat Rujukan");
         MnSuratRujukan.setName("MnSuratRujukan"); // NOI18N
-        MnSuratRujukan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnSuratRujukan.setPreferredSize(new java.awt.Dimension(170, 28));
         MnSuratRujukan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSuratRujukanActionPerformed(evt);
             }
         });
         jPopupMenu1.add(MnSuratRujukan);
+
+        MnRujukanKhusus.setBackground(new java.awt.Color(255, 255, 254));
+        MnRujukanKhusus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRujukanKhusus.setForeground(java.awt.Color.darkGray);
+        MnRujukanKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnRujukanKhusus.setText("Rujukan Khusus");
+        MnRujukanKhusus.setName("MnRujukanKhusus"); // NOI18N
+        MnRujukanKhusus.setPreferredSize(new java.awt.Dimension(170, 28));
+        MnRujukanKhusus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRujukanKhususActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnRujukanKhusus);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -406,7 +421,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         panelGlass8.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -420,7 +435,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         panelGlass8.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -583,7 +598,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         jLabel30.setBounds(0, 12, 102, 23);
 
         TanggalRujukKeluar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujukKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021" }));
+        TanggalRujukKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021" }));
         TanggalRujukKeluar.setDisplayFormat("dd-MM-yyyy");
         TanggalRujukKeluar.setName("TanggalRujukKeluar"); // NOI18N
         TanggalRujukKeluar.setOpaque(false);
@@ -766,7 +781,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         jLabel50.setBounds(638, 42, 80, 23);
 
         TanggalKunjungRujukan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2021" }));
+        TanggalKunjungRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021" }));
         TanggalKunjungRujukan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungRujukan.setName("TanggalKunjungRujukan"); // NOI18N
         TanggalKunjungRujukan.setOpaque(false);
@@ -1048,6 +1063,21 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbObatKeyReleased
 
+    private void MnRujukanKhususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukanKhususActionPerformed
+        if(tbObat.getSelectedRow()!= -1){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            BPJSRujukanKhusus form=new BPJSRujukanKhusus(null,false);
+            form.setNoRm(Sequel.cariIsi("select no_kartu from bridging_sep where no_sep=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()),tbObat.getValueAt(tbObat.getSelectedRow(),2).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data rujukan yang mau dibuatkan rujukan khusus..!!");
+            TCari.requestFocus();
+        }     
+    }//GEN-LAST:event_MnRujukanKhususActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1080,6 +1110,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox KdPpkRujukan1;
     private widget.Label LCount;
     private widget.Label LabelPoli1;
+    private javax.swing.JMenuItem MnRujukanKhusus;
     private javax.swing.JMenuItem MnSuratRujukan;
     private widget.TextBox NmPenyakit1;
     private widget.TextBox NmPoli1;
@@ -1208,6 +1239,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getbpjs_rujukan_keluar());
         BtnEdit.setEnabled(akses.getbpjs_rujukan_keluar());
         BtnPrint.setEnabled(akses.getbpjs_rujukan_keluar());
+        MnRujukanKhusus.setEnabled(akses.getbpjs_rujukan_khusus());
     }
     
     public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
