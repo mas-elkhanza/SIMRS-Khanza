@@ -4985,6 +4985,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             PenanggungJawab.setEditable(false);
             PenanggungJawab.setText("");
             btnDPJPLayanan.setEnabled(true);
+            //btnPoli.setVisible(false);
         }else if(JenisPelayanan.getSelectedIndex()==0){
             LabelPoli.setText("Kamar Tujuan :");
             NaikKelas.setEnabled(true);
@@ -4993,6 +4994,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             KdDPJPLayanan.setText("");
             NmDPJPLayanan.setText("");
             btnDPJPLayanan.setEnabled(false);
+            //btnPoli.setVisible(true);
         }
         KdPoli.setText("");
         NmPoli.setText("");
