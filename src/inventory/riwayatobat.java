@@ -18,7 +18,7 @@ public class riwayatobat {
     private ResultSet rs,rsawal;
     private PreparedStatement ps,psawal;
     private double stokawal=0,stokakhir=0;
-    public void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String kdbangsal,String status,String nobatch,String nofaktur){        
+    public void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String kdbangsal,String status,String nobatch,String nofaktur,String keterangan){        
         try {
             stokakhir=0;stokawal=0;            
             psawal=koneksi.prepareStatement("select stok from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch=? and no_faktur=?");
@@ -46,7 +46,7 @@ public class riwayatobat {
                 }
             }
                      
-            ps=koneksi.prepareStatement("insert into riwayat_barang_medis values(?,?,?,?,?,?,current_date(),current_time(),?,?,?,?,?)");
+            ps=koneksi.prepareStatement("insert into riwayat_barang_medis values(?,?,?,?,?,?,current_date(),current_time(),?,?,?,?,?,?)");
             try {
                 if(posisi.equals("Opname")){
                     ps.setString(1,kodebarang);
@@ -60,6 +60,7 @@ public class riwayatobat {
                     ps.setString(9,status);
                     ps.setString(10,nobatch);
                     ps.setString(11,nofaktur);
+                    ps.setString(12,keterangan);
                     ps.executeUpdate();
                 }else{
                     ps.setString(1,kodebarang);
@@ -73,6 +74,7 @@ public class riwayatobat {
                     ps.setString(9,status);
                     ps.setString(10,nobatch);
                     ps.setString(11,nofaktur);
+                    ps.setString(12,keterangan);
                     ps.executeUpdate();
                 }                    
             } catch (Exception e) {

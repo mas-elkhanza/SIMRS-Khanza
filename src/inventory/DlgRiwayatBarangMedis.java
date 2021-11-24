@@ -42,7 +42,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "Barang","Awal","Masuk","Keluar","Akhir","Posisi",
-            "Tanggal","Jam","Petugas","Lokasi","Status","No.Batch","No.Faktur"
+            "Tanggal","Jam","Petugas","Lokasi","Status","No.Batch","No.Faktur","Keterangan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -51,7 +51,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 14; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(230);
@@ -79,6 +79,8 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==12){
                 column.setPreferredWidth(90);
+            }else if(i==13){
+                column.setPreferredWidth(300);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());         
@@ -461,7 +463,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
                     "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
                     "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
-                    "riwayat_barang_medis.no_faktur from riwayat_barang_medis "+
+                    "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan from riwayat_barang_medis "+
                     "inner join bangsal inner join databarang on "+
                     "riwayat_barang_medis.kode_brng=databarang.kode_brng and "+
                     "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "+
@@ -475,18 +477,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
                         "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
                         "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
-                        "riwayat_barang_medis.no_faktur from riwayat_barang_medis "+
+                        "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan from riwayat_barang_medis "+
                         "inner join bangsal inner join databarang on "+
                         "riwayat_barang_medis.kode_brng=databarang.kode_brng and "+
                         "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and riwayat_barang_medis.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and riwayat_barang_medis.petugas like '%"+TCari.getText().trim()+"%' or "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and riwayat_barang_medis.no_batch like '%"+TCari.getText().trim()+"%' or "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and riwayat_barang_medis.no_faktur like '%"+TCari.getText().trim()+"%' or "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and riwayat_barang_medis.kd_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and riwayat_barang_medis.status like '%"+TCari.getText().trim()+"%' order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ",param);
+                        "riwayat_barang_medis.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+nmbar.getText()+"%' and bangsal.nm_bangsal like '%"+NmGudang.getText()+"%' and "+
+                        "(riwayat_barang_medis.kode_brng like '%"+TCari.getText().trim()+"%' or databarang.nama_brng like '%"+TCari.getText().trim()+"%' or riwayat_barang_medis.petugas like '%"+TCari.getText().trim()+"%' or riwayat_barang_medis.no_batch like '%"+TCari.getText().trim()+"%' or "+
+                        "riwayat_barang_medis.no_faktur like '%"+TCari.getText().trim()+"%' or bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or riwayat_barang_medis.kd_bangsal like '%"+TCari.getText().trim()+"%' or riwayat_barang_medis.status like '%"+TCari.getText().trim()+"%' or "+
+                        "riwayat_barang_medis.keterangan like '%"+TCari.getText().trim()+"%' or riwayat_barang_medis.posisi like '%"+TCari.getText().trim()+"%') order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ",param);
             }
                 
             this.setCursor(Cursor.getDefaultCursor());
@@ -653,7 +651,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
                     "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
                     "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
-                    "riwayat_barang_medis.no_faktur from riwayat_barang_medis "+
+                    "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan from riwayat_barang_medis "+
                     "inner join bangsal inner join databarang on "+
                     "riwayat_barang_medis.kode_brng=databarang.kode_brng and "+
                     "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "+
@@ -667,18 +665,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
                     "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
                     "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
-                    "riwayat_barang_medis.no_faktur from riwayat_barang_medis "+
+                    "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan from riwayat_barang_medis "+
                     "inner join bangsal inner join databarang on "+
                     "riwayat_barang_medis.kode_brng=databarang.kode_brng and "+
                     "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kode_brng like ? or "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and databarang.nama_brng like ? or "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.petugas like ? or "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and bangsal.nm_bangsal like ? or "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.no_batch like ? or "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.no_faktur like ? or "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kd_bangsal like ? or "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.status like ? order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
+                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and "+
+                    "(riwayat_barang_medis.kode_brng like ? or databarang.nama_brng like ? or riwayat_barang_medis.petugas like ? or "+
+                    "bangsal.nm_bangsal like ? or riwayat_barang_medis.no_batch like ? or riwayat_barang_medis.no_faktur like ? or "+
+                    "riwayat_barang_medis.kd_bangsal like ? or riwayat_barang_medis.status like ? or riwayat_barang_medis.keterangan like ? or "+
+                    "riwayat_barang_medis.posisi like ?) "+"order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
             }
                 
             try {
@@ -691,41 +686,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.setString(3,"%"+nmbar.getText()+"%");
                     ps.setString(4,"%"+NmGudang.getText()+"%");
                     ps.setString(5,"%"+TCari.getText().trim()+"%");
-                    ps.setString(6,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(7,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(8,"%"+nmbar.getText()+"%");
-                    ps.setString(9,"%"+NmGudang.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
                     ps.setString(10,"%"+TCari.getText().trim()+"%");
-                    ps.setString(11,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(12,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(13,"%"+nmbar.getText()+"%");
-                    ps.setString(14,"%"+NmGudang.getText()+"%");
-                    ps.setString(15,"%"+TCari.getText().trim()+"%");
-                    ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(18,"%"+nmbar.getText()+"%");
-                    ps.setString(19,"%"+NmGudang.getText()+"%");
-                    ps.setString(20,"%"+TCari.getText().trim()+"%");
-                    ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(23,"%"+nmbar.getText()+"%");
-                    ps.setString(24,"%"+NmGudang.getText()+"%");
-                    ps.setString(25,"%"+TCari.getText().trim()+"%");
-                    ps.setString(26,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(27,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(28,"%"+nmbar.getText()+"%");
-                    ps.setString(29,"%"+NmGudang.getText()+"%");
-                    ps.setString(30,"%"+TCari.getText().trim()+"%");
-                    ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(33,"%"+nmbar.getText()+"%");
-                    ps.setString(34,"%"+NmGudang.getText()+"%");
-                    ps.setString(35,"%"+TCari.getText().trim()+"%");
-                    ps.setString(36,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(37,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(38,"%"+nmbar.getText()+"%");
-                    ps.setString(39,"%"+NmGudang.getText()+"%");
-                    ps.setString(40,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,"%"+TCari.getText().trim()+"%");
+                    ps.setString(14,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();            
                 while(rs.next()){

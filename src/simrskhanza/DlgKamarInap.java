@@ -5418,7 +5418,7 @@ private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                                     akses.setkdbangsal(bangsal);
                                 }
                                 billing.reseppulang.isCek();
-                                billing.reseppulang.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),DTPCari2.getDate());
+                                billing.reseppulang.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien"),DTPCari1.getDate(),DTPCari2.getDate());
                                 billing.reseppulang.tampil();
                                 billing.reseppulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 billing.reseppulang.setLocationRelativeTo(internalFrame1);
@@ -5453,7 +5453,7 @@ private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         akses.setkdbangsal(bangsal);
                     }
                     billing.reseppulang.isCek();
-                    billing.reseppulang.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                    billing.reseppulang.setNoRm(norawat.getText(),TNoRM1.getText(),TPasien1.getText(),DTPCari1.getDate(),DTPCari2.getDate());
                     billing.reseppulang.tampil();
                     billing.reseppulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     billing.reseppulang.setLocationRelativeTo(internalFrame1);
@@ -6966,7 +6966,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                         akses.setkdbangsal(bangsal);
                                     }
                                     billing.reseppulang.inputresep.isCek();
-                                    billing.reseppulang.inputresep.setNoRm(rs2.getString("no_rawat2"),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
+                                    billing.reseppulang.inputresep.setNoRm(rs2.getString("no_rawat2"),rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien"),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
                                     billing.reseppulang.inputresep.tampil();
                                     billing.reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                     billing.reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
@@ -7005,7 +7005,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             akses.setkdbangsal(bangsal);
                         }
                         billing.reseppulang.inputresep.isCek();
-                        billing.reseppulang.inputresep.setNoRm(norawat.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
+                        billing.reseppulang.inputresep.setNoRm(norawat.getText(),TNoRM1.getText(),TPasien1.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
                         billing.reseppulang.inputresep.tampil();
                         billing.reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         billing.reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
@@ -11905,14 +11905,14 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
     private void panggilobat(String norawat) {
         if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",norawat)>0){
-            billing.beriobat.dlgobt2.setNoRm(norawat,DTPCari1.getDate());
+            billing.beriobat.dlgobt2.setNoRm(norawat,TNoRM1.getText(),TPasien1.getText(),DTPCari1.getDate());
             billing.beriobat.dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             billing.beriobat.dlgobt2.setLocationRelativeTo(internalFrame1);
             billing.beriobat.dlgobt2.setVisible(true); 
         }else{
             billing.beriobat.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-            billing.beriobat.dlgobt.setNoRm(norawat,DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+            billing.beriobat.dlgobt.setNoRm(norawat,TNoRM1.getText(),TPasien1.getText(),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
             billing.beriobat.dlgobt.isCek();
             billing.beriobat.dlgobt.tampil();
             billing.beriobat.dlgobt.setVisible(true);

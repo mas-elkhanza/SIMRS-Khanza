@@ -1577,14 +1577,10 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         jLabel52 = new widget.Label();
         PenanggungJawab = new widget.TextBox();
         LabelKelas2 = new widget.Label();
-        jLabel34 = new widget.Label();
-        LakaLantas = new widget.ComboBox();
         jLabel36 = new widget.Label();
         kddokter = new widget.TextBox();
         TDokter = new widget.TextBox();
         BtnDokter = new widget.Button();
-        jLabel47 = new widget.Label();
-        TanggalKKL = new widget.Tanggal();
         jLabel48 = new widget.Label();
         Keterangan = new widget.TextBox();
         jLabel49 = new widget.Label();
@@ -1615,6 +1611,10 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         KdDPJPLayanan = new widget.TextBox();
         NmDPJPLayanan = new widget.TextBox();
         btnDPJPLayanan = new widget.Button();
+        jLabel34 = new widget.Label();
+        LakaLantas = new widget.ComboBox();
+        jLabel47 = new widget.Label();
+        TanggalKKL = new widget.Tanggal();
         ChkCari = new widget.CekBox();
         panelGlass6 = new widget.panelisi();
         jLabel16 = new widget.Label();
@@ -3073,7 +3073,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(295, 355, 54, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021 13:19:19" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021 18:07:34" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -3267,26 +3267,6 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         FormKelengkapanSEP.add(LabelKelas2);
         LabelKelas2.setBounds(200, 235, 40, 23);
 
-        jLabel34.setText("KLL :");
-        jLabel34.setName("jLabel34"); // NOI18N
-        FormKelengkapanSEP.add(jLabel34);
-        jLabel34.setBounds(495, 25, 90, 23);
-
-        LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1. Ya" }));
-        LakaLantas.setName("LakaLantas"); // NOI18N
-        LakaLantas.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                LakaLantasItemStateChanged(evt);
-            }
-        });
-        LakaLantas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                LakaLantasKeyPressed(evt);
-            }
-        });
-        FormKelengkapanSEP.add(LakaLantas);
-        LakaLantas.setBounds(589, 25, 100, 23);
-
         jLabel36.setText("Dr Dituju/DPJP :");
         jLabel36.setName("jLabel36"); // NOI18N
         FormKelengkapanSEP.add(jLabel36);
@@ -3324,27 +3304,6 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         });
         FormKelengkapanSEP.add(BtnDokter);
         BtnDokter.setBounds(880, 205, 28, 23);
-
-        jLabel47.setText("Tanggal Kecelakaan :");
-        jLabel47.setName("jLabel47"); // NOI18N
-        jLabel47.setPreferredSize(new java.awt.Dimension(55, 23));
-        FormKelengkapanSEP.add(jLabel47);
-        jLabel47.setBounds(694, 25, 120, 23);
-
-        TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2021" }));
-        TanggalKKL.setDisplayFormat("dd-MM-yyyy");
-        TanggalKKL.setEnabled(false);
-        TanggalKKL.setName("TanggalKKL"); // NOI18N
-        TanggalKKL.setOpaque(false);
-        TanggalKKL.setPreferredSize(new java.awt.Dimension(95, 23));
-        TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TanggalKKLKeyPressed(evt);
-            }
-        });
-        FormKelengkapanSEP.add(TanggalKKL);
-        TanggalKKL.setBounds(818, 25, 90, 23);
 
         jLabel48.setText("Keterangan :");
         jLabel48.setName("jLabel48"); // NOI18N
@@ -3609,6 +3568,47 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         });
         FormKelengkapanSEP.add(btnDPJPLayanan);
         btnDPJPLayanan.setBounds(880, 355, 28, 23);
+
+        jLabel34.setText("KLL :");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormKelengkapanSEP.add(jLabel34);
+        jLabel34.setBounds(495, 25, 90, 23);
+
+        LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Bukan KLL", "1. KLL Bukan KK", "2. KLL dan KK", "3. KK" }));
+        LakaLantas.setName("LakaLantas"); // NOI18N
+        LakaLantas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LakaLantasItemStateChanged(evt);
+            }
+        });
+        LakaLantas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LakaLantasKeyPressed(evt);
+            }
+        });
+        FormKelengkapanSEP.add(LakaLantas);
+        LakaLantas.setBounds(589, 25, 131, 23);
+
+        jLabel47.setText("Tgl.Kecelakaan :");
+        jLabel47.setName("jLabel47"); // NOI18N
+        jLabel47.setPreferredSize(new java.awt.Dimension(55, 23));
+        FormKelengkapanSEP.add(jLabel47);
+        jLabel47.setBounds(724, 25, 90, 23);
+
+        TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
+        TanggalKKL.setDisplayFormat("dd-MM-yyyy");
+        TanggalKKL.setEnabled(false);
+        TanggalKKL.setName("TanggalKKL"); // NOI18N
+        TanggalKKL.setOpaque(false);
+        TanggalKKL.setPreferredSize(new java.awt.Dimension(95, 23));
+        TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TanggalKKLKeyPressed(evt);
+            }
+        });
+        FormKelengkapanSEP.add(TanggalKKL);
+        TanggalKKL.setBounds(818, 25, 90, 23);
 
         FormInput.add(FormKelengkapanSEP);
 
@@ -4944,39 +4944,6 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_PembiayaanKeyPressed
 
-    private void LakaLantasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LakaLantasItemStateChanged
-        if(LakaLantas.getSelectedIndex()==0){
-            TanggalKKL.setEnabled(false);
-            Keterangan.setEditable(false);
-            Keterangan.setText("");
-            Suplesi.setEnabled(false);
-            Suplesi.setSelectedIndex(0);
-            NoSEPSuplesi.setText("");
-            NoSEPSuplesi.setEditable(false);
-            KdPropinsi.setText("");
-            NmPropinsi.setText("");
-            btnPropinsi.setEnabled(false);
-            KdKabupaten.setText("");
-            NmKabupaten.setText("");
-            btnKabupaten.setEnabled(false);
-            KdKecamatan.setText("");
-            NmKecamatan.setText("");
-            btnKecamatan.setEnabled(false);
-        }else{
-            TanggalKKL.setEnabled(true);
-            Keterangan.setEditable(true);
-            Suplesi.setEnabled(true);
-            NoSEPSuplesi.setEditable(true);
-            btnPropinsi.setEnabled(true);
-            btnKabupaten.setEnabled(true);
-            btnKecamatan.setEnabled(true);
-        }
-    }//GEN-LAST:event_LakaLantasItemStateChanged
-
-    private void LakaLantasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LakaLantasKeyPressed
-        Valid.pindah(evt,NoRujukan,TanggalSEP);
-    }//GEN-LAST:event_LakaLantasKeyPressed
-
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isNumber();
@@ -4999,10 +4966,6 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
         Valid.pindah(evt,btnKecamatan,BtnSimpan);
     }//GEN-LAST:event_BtnDokterKeyPressed
-
-    private void TanggalKKLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKKLKeyPressed
-        Valid.pindah(evt,TanggalSEP,Keterangan);
-    }//GEN-LAST:event_TanggalKKLKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         Valid.pindah(evt,TanggalKKL,Suplesi);
@@ -5332,6 +5295,43 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppStatusFingerBtnPrintActionPerformed
+
+    private void LakaLantasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LakaLantasItemStateChanged
+        if(LakaLantas.getSelectedIndex()==0){
+            TanggalKKL.setEnabled(false);
+            Keterangan.setEditable(false);
+            Keterangan.setText("");
+            Suplesi.setEnabled(false);
+            Suplesi.setSelectedIndex(0);
+            NoSEPSuplesi.setText("");
+            NoSEPSuplesi.setEditable(false);
+            KdPropinsi.setText("");
+            NmPropinsi.setText("");
+            btnPropinsi.setEnabled(false);
+            KdKabupaten.setText("");
+            NmKabupaten.setText("");
+            btnKabupaten.setEnabled(false);
+            KdKecamatan.setText("");
+            NmKecamatan.setText("");
+            btnKecamatan.setEnabled(false);
+        }else{
+            TanggalKKL.setEnabled(true);
+            Keterangan.setEditable(true);
+            Suplesi.setEnabled(true);
+            NoSEPSuplesi.setEditable(true);
+            btnPropinsi.setEnabled(true);
+            btnKabupaten.setEnabled(true);
+            btnKecamatan.setEnabled(true);
+        }
+    }//GEN-LAST:event_LakaLantasItemStateChanged
+
+    private void LakaLantasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LakaLantasKeyPressed
+        Valid.pindah(evt,NoRujukan,TanggalSEP);
+    }//GEN-LAST:event_LakaLantasKeyPressed
+
+    private void TanggalKKLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKKLKeyPressed
+        Valid.pindah(evt,TanggalSEP,Keterangan);
+    }//GEN-LAST:event_TanggalKKLKeyPressed
 
     /**
     * @param args the command line arguments

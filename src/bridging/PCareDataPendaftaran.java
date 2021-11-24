@@ -4180,7 +4180,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         DlgCariObat2 dlgobt2=new DlgCariObat2(null,false);
                         dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgobt2.setLocationRelativeTo(internalFrame1);
-                        dlgobt2.setNoRm(TNoRw.getText(),tanggal.getDate());
+                        dlgobt2.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),tanggal.getDate());
                         dlgobt2.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
                         dlgobt2.isCek();
                         dlgobt2.tampil();
