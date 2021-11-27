@@ -69,12 +69,12 @@
                                 );
                             }
                         } else {
-                            $result = bukaquery("SELECT * FROM tagihan_bpd_jateng WHERE no_rkm_medis = '$decode[no_rkm_medis]'");
+                            $result = bukaquery("SELECT count(*) FROM pasien WHERE no_rkm_medis = '$decode[no_rkm_medis]'");
                             if (JumlahBaris($result) !== 0) {
                                 $sql2 = "SELECT * FROM tagihan_bpd_jateng WHERE no_rkm_medis = '$decode[no_rkm_medis]' AND status_bayar = 'Pending'";
                                 $result2 = bukaquery($sql2);
                                 if (JumlahBaris($result2) !== 0) {
-                                    while ($data = fetch_array($result)) {
+                                    while ($data = fetch_array($result2)) {
                                         $data_array[] = array(
                                             'no_rkm_medis' => $data['no_rkm_medis'],
                                             'nm_pasien' => $data['nm_pasien'],
