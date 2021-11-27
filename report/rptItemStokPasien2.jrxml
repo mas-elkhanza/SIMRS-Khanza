@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="184" pageHeight="113" columnWidth="174" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="0215df48-fc9e-4cec-965a-b946cd41d2b9">
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
@@ -14,6 +14,7 @@
 	<parameter name="propinsirs" class="java.lang.String"/>
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="waktu" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
                                             stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,
@@ -145,30 +146,6 @@
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement x="3" y="82" width="169" height="20" uuid="69622ccb-f1fe-43bb-a5d1-92154dccc969"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="3" y="72" width="132" height="9" uuid="404df43b-cfdf-4067-887a-7252fb8a80f6"/>
-				<textElement>
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="134" y="72" width="38" height="9" uuid="7fe44575-5bf5-4f4a-89ad-809f30c48d48"/>
-				<textElement textAlignment="Right">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
-			</textField>
 			<componentElement>
 				<reportElement x="1" y="27" width="25" height="44" uuid="2dfdac85-ce75-4bda-8c31-cfb743e1af30">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -246,6 +223,32 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="90" width="169" height="11" uuid="e445921a-f825-4d6c-a516-2b83c629e1c4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="81" width="168" height="9" uuid="6c25ce2a-802f-4e1c-b978-f65bc0f4f25c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="72" width="168" height="9" uuid="9b25c688-2659-41a6-88da-07d7a3aab252"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{waktu}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

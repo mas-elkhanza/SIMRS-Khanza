@@ -90,7 +90,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 "Tgl.Lahir","Tempat Lahir","Alamat","Kontak","Jenis Rujukan","Tanggal Rujuk",
                 "Kd.Fas.Tujuan","Nama Faskes Tujuan","Kd Alasan","Alasan Rujuk","Alasan Lainnya",
                 "ICD X","Diagnosa Rujuk","NIK Dokter","Dokter Perujuk","NIK Petugas",
-                "Petugas Entry","Anamnesis & Pemeriksaan Fisik","Kesadaran",
+                "Petugas Perujuk","Anamnesis & Pemeriksaan Fisik","Kesadaran",
                 "Tekanan Darah","Nadi","Suhu","Respirasi","Keadaan Umum","Tingkat Nyeri","Alergi",
                 "Laboratorium","Radiologi","Terapi/Tindakan"
             }){
@@ -1296,7 +1296,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         FormInput.add(BtnDokter);
         BtnDokter.setBounds(712, 210, 28, 23);
 
-        jLabel27.setText("Petugas Entry :");
+        jLabel27.setText("Petugas Perujuk :");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
         jLabel27.setBounds(380, 240, 90, 23);

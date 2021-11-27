@@ -100,7 +100,7 @@
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="3 Riwayat Terakhir"/>
+                <Property name="text" type="java.lang.String" value="5 Riwayat Terakhir"/>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="R1" noResource="true"/>

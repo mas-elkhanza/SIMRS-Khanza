@@ -272,7 +272,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(350);
             }else if(i==5){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(270);
             }
         }
         tbDetailPermintaanStok.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2947,14 +2947,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         });
                         tabMode6.addRow(new String[]{"","","Jumlah","Kode Obat","Nama Obat","Aturan Pakai"});                
                         ps2=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,detail_permintaan_stok_obat_pasien.jml,"+
-                            "databarang.kode_sat,detail_permintaan_stok_obat_pasien.aturan_pakai from detail_permintaan_stok_obat_pasien inner join databarang on "+
-                            "detail_permintaan_stok_obat_pasien.kode_brng=databarang.kode_brng where detail_permintaan_stok_obat_pasien.no_permintaan=? order by databarang.kode_brng");
+                            "databarang.kode_sat,detail_permintaan_stok_obat_pasien.aturan_pakai,detail_permintaan_stok_obat_pasien.pg,"+
+                            "detail_permintaan_stok_obat_pasien.sg,detail_permintaan_stok_obat_pasien.sr,detail_permintaan_stok_obat_pasien.ml "+
+                            "from detail_permintaan_stok_obat_pasien inner join databarang on detail_permintaan_stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                            "where detail_permintaan_stok_obat_pasien.no_permintaan=? order by databarang.kode_brng");
                         try {
                             ps2.setString(1,rs.getString("no_permintaan"));
                             rs2=ps2.executeQuery();
                             while(rs2.next()){
                                 tabMode6.addRow(new String[]{
-                                    "","",rs2.getString("jml")+" "+rs2.getString("kode_sat"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("aturan_pakai")
+                                    "","",rs2.getString("jml")+" "+rs2.getString("kode_sat"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),
+                                    "Pg : "+rs2.getString("pg").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                                    "Sg : "+rs2.getString("sg").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                                    "Sr : "+rs2.getString("sr").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                                    "Ml : "+rs2.getString("ml").replaceAll("true","✓").replaceAll("false","✕")+"   "+
+                                    rs2.getString("aturan_pakai")
                                 });
                             }
                         } catch (Exception e) {

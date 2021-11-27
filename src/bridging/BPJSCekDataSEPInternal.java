@@ -34,6 +34,7 @@ import java.util.Map;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
@@ -463,6 +464,18 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
         NoSEP.setText(nosep);
     }
     
+    public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
+        public HttpEntityEnclosingDeleteRequest(final URI uri) {
+            super();
+            setURI(uri);
+        }
+
+        @Override
+        public String getMethod() {
+            return "DELETE";
+        }
+    }
+    
     @Test
     public void bodyWithDeleteRequest() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
@@ -482,7 +495,7 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
             @Override
             protected HttpUriRequest createHttpUriRequest(HttpMethod httpMethod, URI uri) {
                 if (HttpMethod.DELETE == httpMethod) {
-                    return new BPJSSPRI.HttpEntityEnclosingDeleteRequest(uri);
+                    return new HttpEntityEnclosingDeleteRequest(uri);
                 }
                 return super.createHttpUriRequest(httpMethod, uri);
             }

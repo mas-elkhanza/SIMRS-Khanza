@@ -66,9 +66,9 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(120);
             }else if(i==6){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(55);
             }else if(i==8){
                 column.setPreferredWidth(110);
             }else if(i==9){
@@ -705,7 +705,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs.getString("posisi"),rs.getString("tanggal"),
                         rs.getString("jam"),rs.getString("petugas"),
                         rs.getString("kd_bangsal")+" "+rs.getString("nm_bangsal"),
-                        rs.getString("status"),rs.getString("no_batch"),rs.getString("no_faktur")
+                        rs.getString("status"),rs.getString("no_batch"),
+                        rs.getString("no_faktur"),rs.getString("keterangan")
                     });                    
                 }    
             } catch (Exception e) {

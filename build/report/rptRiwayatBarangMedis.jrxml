@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46ff7c6d-7abe-48b3-bc99-5a15c4387b0c">
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1208" pageHeight="612" orientation="Landscape" columnWidth="1168" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46ff7c6d-7abe-48b3-bc99-5a15c4387b0c">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -13,10 +17,6 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
-	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -29,89 +29,110 @@
 riwayat_barang_medis.masuk,riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,
 riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,riwayat_barang_medis.jam,
 riwayat_barang_medis.petugas,riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,
-riwayat_barang_medis.status,riwayat_barang_medis.no_batch,riwayat_barang_medis.no_faktur 
+riwayat_barang_medis.status,riwayat_barang_medis.no_batch,riwayat_barang_medis.no_faktur ,riwayat_barang_medis.keterangan
 from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_barang_medis.kode_brng=databarang.kode_brng and riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal]]>
 	</queryString>
 	<field name="kode_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kode_brng"/>
 		<property name="com.jaspersoft.studio.field.label" value="kode_brng"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_brng"/>
 		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="databarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="stok_awal" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="stok_awal"/>
 		<property name="com.jaspersoft.studio.field.label" value="stok_awal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="masuk" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="masuk"/>
 		<property name="com.jaspersoft.studio.field.label" value="masuk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="keluar" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="keluar"/>
 		<property name="com.jaspersoft.studio.field.label" value="keluar"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="stok_akhir" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="stok_akhir"/>
 		<property name="com.jaspersoft.studio.field.label" value="stok_akhir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="posisi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="posisi"/>
 		<property name="com.jaspersoft.studio.field.label" value="posisi"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tanggal" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
 		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam"/>
 		<property name="com.jaspersoft.studio.field.label" value="jam"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="petugas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="petugas"/>
 		<property name="com.jaspersoft.studio.field.label" value="petugas"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kd_bangsal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_bangsal"/>
 		<property name="com.jaspersoft.studio.field.label" value="kd_bangsal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_bangsal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_bangsal"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_bangsal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="bangsal"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
 		<property name="com.jaspersoft.studio.field.label" value="status"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_batch" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_batch"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_batch"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
 	</field>
 	<field name="no_faktur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_faktur"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_faktur"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
+	</field>
+	<field name="keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_medis"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="84" splitType="Stretch">
+		<band height="76" splitType="Stretch">
 			<staticText>
-				<reportElement x="189" y="53" width="424" height="23" uuid="ef4a3ad5-3bdf-4dd2-a78e-2bb47a0f9c00"/>
+				<reportElement x="1" y="53" width="1159" height="23" uuid="ef4a3ad5-3bdf-4dd2-a78e-2bb47a0f9c00"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -119,7 +140,7 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 				<text><![CDATA[Riwayat Obat, Alkes & BHP]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="2" y="35" width="958" height="14" uuid="25346a84-dd62-4db9-85a0-934bf889e815"/>
+				<reportElement x="2" y="35" width="1158" height="14" uuid="25346a84-dd62-4db9-85a0-934bf889e815"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -131,13 +152,13 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="0" y="48" width="960" height="1" uuid="1cc7145f-4cb5-4718-ab9f-19f95450d6b9"/>
+				<reportElement x="0" y="48" width="1160" height="1" uuid="1cc7145f-4cb5-4718-ab9f-19f95450d6b9"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="2" y="0" width="958" height="17" uuid="295d1646-5587-4bbf-9f5b-edc02f6815d0"/>
+				<reportElement x="2" y="0" width="1158" height="17" uuid="295d1646-5587-4bbf-9f5b-edc02f6815d0"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -145,7 +166,7 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="25" width="958" height="14" uuid="608f3ff4-c507-4b78-b9cb-21c872c10ccf"/>
+				<reportElement x="2" y="25" width="1158" height="14" uuid="608f3ff4-c507-4b78-b9cb-21c872c10ccf"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -153,7 +174,7 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="14" width="958" height="14" uuid="0b4c29e8-92be-498a-9d0a-b10e08de0db0"/>
+				<reportElement x="2" y="14" width="1158" height="14" uuid="0b4c29e8-92be-498a-9d0a-b10e08de0db0"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -168,6 +189,14 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="958" y="0" width="202" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="7fc3f465-d49d-4234-b085-ff6d5fc2babc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="863" y="0" width="96" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="adf44f4e-5e4f-4c44-a8ba-c99e80d14d5b"/>
 				<textElement verticalAlignment="Middle">
@@ -273,13 +302,13 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 				<text><![CDATA[Posisi]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="960" height="1" uuid="31eadfe0-e16e-4e5b-ac94-835c814b5ed8"/>
+				<reportElement x="0" y="0" width="1160" height="1" uuid="31eadfe0-e16e-4e5b-ac94-835c814b5ed8"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="17" width="960" height="1" uuid="5842661f-d0cd-4b97-b668-ebb0f75ecad4"/>
+				<reportElement x="0" y="17" width="1160" height="1" uuid="5842661f-d0cd-4b97-b668-ebb0f75ecad4"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -394,7 +423,7 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 				<textFieldExpression><![CDATA[$F{no_faktur}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="960" height="1" uuid="39423f17-0d7b-4c5a-943a-90bf4aca675c">
+				<reportElement positionType="Float" x="0" y="11" width="1160" height="1" uuid="39423f17-0d7b-4c5a-943a-90bf4aca675c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -402,6 +431,14 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 					<pen lineWidth="0.2" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="959" y="0" width="198" height="10" uuid="3592f310-d7b1-4952-a775-1372c152359e"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -474,13 +511,13 @@ from riwayat_barang_medis inner join bangsal inner join databarang on riwayat_ba
 				<text><![CDATA[Record :]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="960" height="1" uuid="9d4f1a8d-3bfd-4f40-a0c7-29ed7eb432e6"/>
+				<reportElement x="0" y="0" width="1160" height="1" uuid="9d4f1a8d-3bfd-4f40-a0c7-29ed7eb432e6"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="960" height="1" uuid="ed05de60-359f-4592-afac-3052eb3b6778"/>
+				<reportElement x="0" y="16" width="1160" height="1" uuid="ed05de60-359f-4592-afac-3052eb3b6778"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

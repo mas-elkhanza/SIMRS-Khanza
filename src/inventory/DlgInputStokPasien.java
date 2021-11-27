@@ -61,6 +61,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                    tampilkan_ppnobat_ranap="",aktifkanbatch="no",nopermintaan="",pilihanetiket="",hppfarmasi="";
     private String[] keranap,kodebarang,namabarang,kategori,satuan,nobatch,nofaktur,aturanpakai;
     private Double[] kapasitas,stok,harga,hargabeli,subtotal;
+    private boolean[] pg,sg,sr,ml;
     private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
@@ -71,11 +72,11 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Jml","Kode Barang","Nama Barang","Kategori","Satuan","Kps","Stok","Harga","HargaBeli","Subtotal","No.Batch","No.Faktur","Aturan Pakai"
+                "Jml","Kode Barang","Nama Barang","Kategori","Satuan","Kps","Stok","Harga","HargaBeli","Subtotal","No.Batch","No.Faktur","Aturan Pakai","Pg","Sg","Sr","Ml"
             }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==10)||(colIndex==11)||(colIndex==12)) {
+                if ((colIndex==0)||(colIndex==10)||(colIndex==11)||(colIndex==12)||(colIndex==13)||(colIndex==14)||(colIndex==15)||(colIndex==16)) {
                     a=true;
                 }
                 return a;
@@ -85,7 +86,8 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class
+                java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -97,7 +99,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(45);
@@ -125,7 +127,15 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(100);
             }else if(i==12){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(20);
+            }else if(i==14){
+                column.setPreferredWidth(20);
+            }else if(i==15){
+                column.setPreferredWidth(20);
+            }else if(i==16){
+                column.setPreferredWidth(20);
             }
         }
         warna.kolom=0;
@@ -731,9 +741,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ttlhpp=0;ttljual=0;
                         for(i=0;i<tbDokter.getRowCount();i++){  
                            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                if(Sequel.menyimpantf2("stok_obat_pasien","?,?,?,?,?,?,?,?,?","Stok Obat Pasien",9,new String[]{                            
+                                if(Sequel.menyimpantf2("stok_obat_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?","Stok Obat Pasien",13,new String[]{                            
                                     Valid.SetTgl(Tgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),norawat.getText(),tabMode.getValueAt(i,1).toString(),
-                                    tabMode.getValueAt(i,0).toString(),kdgudang.getText(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),tabMode.getValueAt(i,12).toString()
+                                    tabMode.getValueAt(i,0).toString(),kdgudang.getText(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),tabMode.getValueAt(i,12).toString(),
+                                    tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,14).toString(),tabMode.getValueAt(i,15).toString(),tabMode.getValueAt(i,16).toString()
                                 })==true){
                                     ttlhpp=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,8).toString()));
                                     ttljual=ttljual+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,7).toString()));
@@ -787,7 +798,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             switch (pilihanetiket) {
                                 case "Cetak Aturan Pakai Model 1": 
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'")>0){
+                                        param.put("waktu","PAGI");  
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -796,13 +808,50 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
-                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
-                                    }              
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'",param);
+                                    }   
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'")>0){
+                                        param.put("waktu","SIANG");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'")>0){
+                                        param.put("waktu","SORE");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'")>0){
+                                        param.put("waktu","MALAM");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'",param);
+                                    }
                                     this.setCursor(Cursor.getDefaultCursor());
                                     break;
                                 case "Cetak Aturan Pakai Model 2": 
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'")>0){
+                                        param.put("waktu","PAGI");  
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -811,12 +860,50 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
-                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'",param);
                                     }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'")>0){
+                                        param.put("waktu","SIANG");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'")>0){
+                                        param.put("waktu","SORE");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'")>0){
+                                        param.put("waktu","MALAM");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'",param);
+                                    }
+                                    this.setCursor(Cursor.getDefaultCursor());
                                     break;
                                 case "Cetak Aturan Pakai Model 3": 
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'")>0){
+                                        param.put("waktu","PAGI"); 
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -825,8 +912,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
-                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
-                                    }           
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'",param);
+                                    }      
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'")>0){
+                                        param.put("waktu","SIANG"); 
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'",param);
+                                    } 
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'")>0){
+                                        param.put("waktu","SORE"); 
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'",param);
+                                    } 
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'")>0){
+                                        param.put("waktu","MALAM"); 
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'",param);
+                                    } 
                                     this.setCursor(Cursor.getDefaultCursor());
                                     break;
                                  case "Cetak Label Obat": 
@@ -836,7 +959,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                                             "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
-                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai,"+
+                                            "stok_obat_pasien.pg,stok_obat_pasien.sg,stok_obat_pasien.sr,stok_obat_pasien.ml "+
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
@@ -846,7 +970,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     break;
                                  case "Cetak Aturan Pakai Model 1 & Cetak Label Obat": 
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'")>0){
+                                        param.put("waktu","PAGI");  
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -855,12 +980,51 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
-                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'",param);
+                                    }   
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'")>0){
+                                        param.put("waktu","SIANG");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'")>0){
+                                        param.put("waktu","SORE");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'")>0){
+                                        param.put("waktu","MALAM");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                                             "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
-                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai,"+
+                                            "stok_obat_pasien.pg,stok_obat_pasien.sg,stok_obat_pasien.sr,stok_obat_pasien.ml "+
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
@@ -870,7 +1034,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     break;
                                 case "Cetak Aturan Pakai Model 2 & Cetak Label Obat": 
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'")>0){
+                                        param.put("waktu","PAGI");  
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -879,12 +1044,51 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
-                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'")>0){
+                                        param.put("waktu","SIANG");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'")>0){
+                                        param.put("waktu","SORE");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'")>0){
+                                        param.put("waktu","MALAM");  
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'",param);
+                                    }
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                                             "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
-                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai,"+
+                                            "stok_obat_pasien.pg,stok_obat_pasien.sg,stok_obat_pasien.sr,stok_obat_pasien.ml "+
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
@@ -893,7 +1097,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     break;
                                 case "Cetak Aturan Pakai Model 3 & Cetak Label Obat": 
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'")>0){
+                                        param.put("waktu","PAGI"); 
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -902,12 +1107,51 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
-                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''",param);
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.pg='true'",param);
+                                    }      
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'")>0){
+                                        param.put("waktu","SIANG"); 
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sg='true'",param);
+                                    } 
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'")>0){
+                                        param.put("waktu","SORE"); 
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.sr='true'",param);
+                                    } 
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'")>0){
+                                        param.put("waktu","MALAM"); 
+                                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                        Valid.MyReportqry("rptItemStokPasien3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                            "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                            "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                            "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                                            "where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.ml='true'",param);
+                                    } 
+                                    if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+norawat.getText()+"' and stok_obat_pasien.tanggal='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' and stok_obat_pasien.jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and stok_obat_pasien.aturan_pakai<>''")>0){
                                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                         Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
                                             "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                                             "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
-                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                                            "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai,"+
+                                            "stok_obat_pasien.pg,stok_obat_pasien.sg,stok_obat_pasien.sr,stok_obat_pasien.ml "+
                                             "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
                                             "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                             "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
@@ -929,6 +1173,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             for(index=0;index<tbDokter.getRowCount();index++){   
                                 tbDokter.setValueAt("",index,0); 
                                 tbDokter.setValueAt(0,index,9);  
+                                tbDokter.setValueAt(false,index,13);
+                                tbDokter.setValueAt(false,index,14);
+                                tbDokter.setValueAt(false,index,15);
+                                tbDokter.setValueAt(false,index,16);  
                             }
                             ttl=0;
                             ttlhpp=0;
@@ -1221,6 +1469,14 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         nofaktur=new String[jml];
         aturanpakai=null;
         aturanpakai=new String[jml];
+        pg=null;
+        pg=new boolean[jml];
+        sg=null;
+        sg=new boolean[jml];
+        sr=null;
+        sr=new boolean[jml];
+        ml=null;
+        ml=new boolean[jml];
         
         index=0;        
         for(i=0;i<tbDokter.getRowCount();i++){
@@ -1238,13 +1494,17 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 nobatch[index]=tbDokter.getValueAt(i,10).toString();
                 nofaktur[index]=tbDokter.getValueAt(i,11).toString();
                 aturanpakai[index]=tbDokter.getValueAt(i,12).toString();
+                pg[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,13).toString());
+                sg[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,14).toString());
+                sr[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,15).toString());
+                ml[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,16).toString());
                 index++;
             }
         }
         
         Valid.tabelKosong(tabMode);
         for(i=0;i<jml;i++){
-            tabMode.addRow(new Object[]{keranap[i],kodebarang[i],namabarang[i],kategori[i],satuan[i],kapasitas[i],stok[i],harga[i],hargabeli[i],subtotal[i],nobatch[i],nofaktur[i],aturanpakai[i]});
+            tabMode.addRow(new Object[]{keranap[i],kodebarang[i],namabarang[i],kategori[i],satuan[i],kapasitas[i],stok[i],harga[i],hargabeli[i],subtotal[i],nobatch[i],nofaktur[i],aturanpakai[i],pg[i],sg[i],sr[i],ml[i]});
         }
         try{  
             if(kenaikan>0){
@@ -1278,7 +1538,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("harga"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                         }                  
                     }catch(Exception e){
@@ -1319,7 +1579,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("harga"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                         }                  
                     }catch(Exception e){
@@ -1365,7 +1625,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("kelas1"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1375,7 +1635,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("kelas2"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1385,7 +1645,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("kelas3"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1395,7 +1655,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("utama"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VIP")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1405,7 +1665,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("vip"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1415,7 +1675,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("vvip"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1425,7 +1685,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("beliluar"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1435,7 +1695,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("karyawan"),100),
                                    rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),""
+                                   rstampil.getString("no_faktur"),"",false,false,false,false
                                 });
                             }
                         }                  
@@ -1478,7 +1738,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("kelas1"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1487,7 +1747,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("kelas2"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1496,7 +1756,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("kelas3"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1505,7 +1765,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("utama"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VIP")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1514,7 +1774,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("vip"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1523,7 +1783,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("vvip"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1532,7 +1792,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("beliluar"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                 tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
@@ -1541,7 +1801,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("kode_sat"),
                                    rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                    Valid.roundUp(rstampil.getDouble("karyawan"),100),
-                                   rstampil.getDouble("dasar"),0,"","",""
+                                   rstampil.getDouble("dasar"),0,"","","",false,false,false,false
                                 });
                             }
                         }                  
@@ -1573,7 +1833,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             " databarang.kapasitas,databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
                             " data_batch."+hppfarmasi+" as dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur,"+
                             " detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
-                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
+                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa,"+
+                            " detail_permintaan_stok_obat_pasien.pg,detail_permintaan_stok_obat_pasien.sg,detail_permintaan_stok_obat_pasien.sr,detail_permintaan_stok_obat_pasien.ml "+
                             " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                             " inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join detail_permintaan_stok_obat_pasien on detail_permintaan_stok_obat_pasien.kode_brng=databarang.kode_brng "+
@@ -1603,14 +1864,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
                             }
                             tabMode.addRow(new Object[]{
-                               rstampil.getString("sisa"),rstampil.getString("kode_brng"),
-                               rstampil.getString("nama_brng"),
-                               rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("harga"),100),
-                               rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                               rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                               rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("harga"),100),
+                               rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                               rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                             });
                         }                  
                     }catch(Exception e){
@@ -1627,7 +1884,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama,"+
                             " databarang.kapasitas,databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                             " databarang."+hppfarmasi+" as dasar,gudangbarang.stok,detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
-                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
+                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa,"+
+                            " detail_permintaan_stok_obat_pasien.pg,detail_permintaan_stok_obat_pasien.sg,detail_permintaan_stok_obat_pasien.sr,detail_permintaan_stok_obat_pasien.ml "+
                             " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join detail_permintaan_stok_obat_pasien on detail_permintaan_stok_obat_pasien.kode_brng=databarang.kode_brng "+
                             " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng where"+
@@ -1655,14 +1913,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
                             }
                             tabMode.addRow(new Object[]{
-                               rstampil.getString("sisa"),
-                               rstampil.getString("kode_brng"),
-                               rstampil.getString("nama_brng"),
-                               rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("harga"),100),
-                               rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                               rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("harga"),100),rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                               rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                             });
                         }                  
                     }catch(Exception e){
@@ -1683,7 +1937,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.karyawan,"+
                             " data_batch."+hppfarmasi+" as dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur,"+
                             " detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
-                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
+                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa,"+
+                            " detail_permintaan_stok_obat_pasien.pg,detail_permintaan_stok_obat_pasien.sg,detail_permintaan_stok_obat_pasien.sr,detail_permintaan_stok_obat_pasien.ml "+
                             " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                             " inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join detail_permintaan_stok_obat_pasien on detail_permintaan_stok_obat_pasien.kode_brng=databarang.kode_brng "+
@@ -1713,99 +1968,59 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("kelas1"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("kelas1"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("kelas2"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("kelas2"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("kelas3"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("kelas3"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("utama"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("utama"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VIP")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("vip"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("vip"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("vvip"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("vvip"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("beliluar"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("beliluar"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("karyawan"),100),
-                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
-                                   rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("karyawan"),100),
+                                   rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),rstampil.getString("no_faktur"),rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }
                         }                  
@@ -1825,7 +2040,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             " databarang.kelas2,databarang.kelas3,databarang.utama,databarang.vip,"+
                             " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang."+hppfarmasi+" as dasar,gudangbarang.stok,"+
                             " detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.aturan_pakai, "+
-                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa "+
+                            " if(gudangbarang.stok>detail_permintaan_stok_obat_pasien.jml,detail_permintaan_stok_obat_pasien.jml,gudangbarang.stok) as sisa,"+
+                            " detail_permintaan_stok_obat_pasien.pg,detail_permintaan_stok_obat_pasien.sg,detail_permintaan_stok_obat_pasien.sr,detail_permintaan_stok_obat_pasien.ml "+
                             " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                             " inner join detail_permintaan_stok_obat_pasien on detail_permintaan_stok_obat_pasien.kode_brng=databarang.kode_brng "+
                             " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng where"+
@@ -1853,91 +2069,59 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("kelas1"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("kelas1"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("kelas2"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("kelas2"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("kelas3"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("kelas3"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("utama"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("utama"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VIP")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("vip"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("vip"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("vvip"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("vvip"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("beliluar"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("beliluar"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                 tabMode.addRow(new Object[]{
-                                   rstampil.getString("sisa"),
-                                   rstampil.getString("kode_brng"),
-                                   rstampil.getString("nama_brng"),
-                                   rstampil.getString("nama"),
-                                   rstampil.getString("kode_sat"),
-                                   rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                                   Valid.roundUp(rstampil.getDouble("karyawan"),100),
-                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai")
+                                   rstampil.getString("sisa"),rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
+                                   rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),Valid.roundUp(rstampil.getDouble("karyawan"),100),
+                                   rstampil.getDouble("dasar"),0,"","",rstampil.getString("aturan_pakai"),
+                                   rstampil.getBoolean("pg"),rstampil.getBoolean("sg"),rstampil.getBoolean("sr"),rstampil.getBoolean("ml")
                                 });
                             }
                         }                  
