@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7d38205c-329e-4bac-be32-01e103639235">
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7d38205c-329e-4bac-be32-01e103639235">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -18,59 +27,96 @@
 	<queryString>
 		<![CDATA[select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien) as namapasien,
 concat(stok_obat_pasien.kode_brng,' ',databarang.nama_brng) as namabarang, stok_obat_pasien.jumlah, concat(stok_obat_pasien.kd_bangsal,' ',bangsal.nm_bangsal) as namabangsal, 
-stok_obat_pasien.kode_brng,stok_obat_pasien.kd_bangsal,stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai
+stok_obat_pasien.kode_brng,stok_obat_pasien.kd_bangsal,stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai,
+stok_obat_pasien.pg,stok_obat_pasien.sg,stok_obat_pasien.sr,stok_obat_pasien.ml
 from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat
 inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
 inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng 
 inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 	</queryString>
 	<field name="tanggal" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
 		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam"/>
 		<property name="com.jaspersoft.studio.field.label" value="jam"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 	</field>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="namapasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="namapasien"/>
 		<property name="com.jaspersoft.studio.field.label" value="namapasien"/>
 	</field>
 	<field name="namabarang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="namabarang"/>
 		<property name="com.jaspersoft.studio.field.label" value="namabarang"/>
 	</field>
 	<field name="jumlah" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="jumlah"/>
 		<property name="com.jaspersoft.studio.field.label" value="jumlah"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="namabangsal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="namabangsal"/>
 		<property name="com.jaspersoft.studio.field.label" value="namabangsal"/>
 	</field>
 	<field name="kode_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kode_brng"/>
 		<property name="com.jaspersoft.studio.field.label" value="kode_brng"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 	</field>
 	<field name="kd_bangsal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_bangsal"/>
 		<property name="com.jaspersoft.studio.field.label" value="kd_bangsal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 	</field>
 	<field name="no_batch" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_batch"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_batch"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 	</field>
 	<field name="no_faktur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_faktur"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_faktur"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
 	</field>
 	<field name="aturan_pakai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="aturan_pakai"/>
 		<property name="com.jaspersoft.studio.field.label" value="aturan_pakai"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
+	</field>
+	<field name="pg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pg"/>
+		<property name="com.jaspersoft.studio.field.label" value="pg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sg"/>
+		<property name="com.jaspersoft.studio.field.label" value="sg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sr"/>
+		<property name="com.jaspersoft.studio.field.label" value="sr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ml" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ml"/>
+		<property name="com.jaspersoft.studio.field.label" value="ml"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stok_obat_pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -78,7 +124,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 	<title>
 		<band height="84" splitType="Stretch">
 			<staticText>
-				<reportElement x="189" y="52" width="424" height="23" uuid="a10643a2-2687-48ce-8212-134d95a382ab"/>
+				<reportElement x="2" y="52" width="958" height="23" uuid="a10643a2-2687-48ce-8212-134d95a382ab"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -86,7 +132,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[DATA PEMBERIAN STOK OBAT, ALKES & BHP MEDIS PASIEN RANAP]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="2" y="0" width="800" height="17" uuid="f8a43708-72cd-43fc-a611-3c9061cebac2"/>
+				<reportElement x="2" y="0" width="958" height="17" uuid="f8a43708-72cd-43fc-a611-3c9061cebac2"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -94,7 +140,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="35" width="800" height="14" uuid="1e4149eb-892f-44bf-a7fc-2a45b4c0e797"/>
+				<reportElement x="2" y="35" width="958" height="14" uuid="1e4149eb-892f-44bf-a7fc-2a45b4c0e797"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -102,7 +148,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="25" width="800" height="14" uuid="370db41d-3fe7-42fa-8618-acec52dc33da"/>
+				<reportElement x="2" y="25" width="958" height="14" uuid="370db41d-3fe7-42fa-8618-acec52dc33da"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -110,13 +156,13 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="48" width="802" height="1" uuid="361b01b1-9408-4c25-b169-43f397dcf252"/>
+				<reportElement x="0" y="48" width="960" height="1" uuid="361b01b1-9408-4c25-b169-43f397dcf252"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="2" y="14" width="800" height="14" uuid="e85503c5-1156-4dc4-9e63-5b4688b71729"/>
+				<reportElement x="2" y="14" width="958" height="14" uuid="e85503c5-1156-4dc4-9e63-5b4688b71729"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -136,7 +182,39 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 		<band height="18" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="700" y="0" width="102" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="9ad4b240-d7b6-423e-a172-b29c61beb685"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="888" y="0" width="18" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="4a7ad265-40ac-447b-994b-42c783c299c6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Pg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="906" y="0" width="18" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="d7565044-2a33-4ed9-8ff2-8bd2eb375f39"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Sg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="924" y="0" width="18" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="6645a5eb-84a1-47e3-8eec-05a7be84fefc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Sr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="942" y="0" width="18" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e456297a-0e6b-49e3-93b1-3fc9441d35ce"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ml]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="786" y="0" width="102" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="9ad4b240-d7b6-423e-a172-b29c61beb685"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -152,7 +230,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[Jam]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="560" y="0" width="53" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="f34d40ce-f72f-4bae-bdfa-2beeecf6465a"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="645" y="0" width="53" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="f34d40ce-f72f-4bae-bdfa-2beeecf6465a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -160,7 +238,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[No.Batch]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="613" y="0" width="87" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="fbf365a1-7df9-4213-bb35-4048521da3a6"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="698" y="0" width="88" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="fbf365a1-7df9-4213-bb35-4048521da3a6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -188,7 +266,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[No.Rawat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="457" y="0" width="103" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="edf04bca-b3c7-42e6-8059-e071ce170d0a"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="512" y="0" width="132" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="edf04bca-b3c7-42e6-8059-e071ce170d0a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -196,7 +274,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[Asal Stok]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="160" y="0" width="120" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="1a9bd07e-dbd3-4fdf-97ff-f8c433f7cefd"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="160" y="0" width="154" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="1a9bd07e-dbd3-4fdf-97ff-f8c433f7cefd"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -204,7 +282,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="430" y="0" width="27" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e7f1e400-4536-4327-b8fc-bbdbf9710732">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="485" y="0" width="27" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e7f1e400-4536-4327-b8fc-bbdbf9710732">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -214,7 +292,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[Jml]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="280" y="0" width="150" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="bf83ff47-5635-4ef4-a248-7659cbd7f1f9"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="315" y="0" width="170" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="bf83ff47-5635-4ef4-a248-7659cbd7f1f9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -222,13 +300,13 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[Barang]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="802" height="1" uuid="447ae12a-d0a7-447b-afa2-d6b0bbbe0f37"/>
+				<reportElement x="0" y="0" width="960" height="1" uuid="447ae12a-d0a7-447b-afa2-d6b0bbbe0f37"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="17" width="802" height="1" uuid="ac4a405c-0009-49dd-8955-e6b4d2ca984e"/>
+				<reportElement x="0" y="17" width="960" height="1" uuid="ac4a405c-0009-49dd-8955-e6b4d2ca984e"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -259,7 +337,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{no_rawat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="160" y="0" width="120" height="10" uuid="af209b59-1735-4a81-9b01-20c9a4837bde"/>
+				<reportElement stretchType="RelativeToBandHeight" x="160" y="0" width="154" height="10" uuid="af209b59-1735-4a81-9b01-20c9a4837bde"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -267,7 +345,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{namapasien}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="457" y="0" width="103" height="10" uuid="9d2e2196-c521-470e-a1af-b10d2c7f15db"/>
+				<reportElement stretchType="RelativeToBandHeight" x="512" y="0" width="132" height="10" uuid="9d2e2196-c521-470e-a1af-b10d2c7f15db"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -275,7 +353,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{namabangsal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="280" y="0" width="150" height="10" uuid="1684750c-736b-418a-b6b2-b33c9beee0ee"/>
+				<reportElement stretchType="RelativeToBandHeight" x="315" y="0" width="170" height="10" uuid="1684750c-736b-418a-b6b2-b33c9beee0ee"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -283,7 +361,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{namabarang}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="430" y="0" width="27" height="10" uuid="ff3a4202-43a1-4640-905e-1661a9f2a68c"/>
+				<reportElement stretchType="RelativeToBandHeight" x="485" y="0" width="27" height="10" uuid="ff3a4202-43a1-4640-905e-1661a9f2a68c"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -291,7 +369,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="561" y="0" width="51" height="10" uuid="7eeed9f5-e947-4217-906b-4e77ad09f1f6"/>
+				<reportElement stretchType="RelativeToBandHeight" x="646" y="0" width="51" height="10" uuid="7eeed9f5-e947-4217-906b-4e77ad09f1f6"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -299,7 +377,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{no_batch}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="614" y="0" width="85" height="10" uuid="ddcd202d-e092-4f1e-9c37-581c4c3e2f01"/>
+				<reportElement stretchType="RelativeToBandHeight" x="699" y="0" width="85" height="10" uuid="ddcd202d-e092-4f1e-9c37-581c4c3e2f01"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -307,7 +385,7 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{no_faktur}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="11" width="802" height="1" uuid="c13b6663-655f-4c0f-b29b-0891a495d6c8">
+				<reportElement x="0" y="11" width="960" height="1" uuid="c13b6663-655f-4c0f-b29b-0891a495d6c8">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -323,12 +401,44 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<textFieldExpression><![CDATA[$F{jam}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="700" y="0" width="102" height="10" uuid="a7cca140-fdff-4b4e-b9f0-f9707efce91d"/>
+				<reportElement stretchType="RelativeToBandHeight" x="786" y="0" width="102" height="10" uuid="a7cca140-fdff-4b4e-b9f0-f9707efce91d"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="888" y="0" width="18" height="10" uuid="d8a0f6e1-1542-454c-8df3-d7371f3f2f2f"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pg}.toString().replaceAll( "true","v").replaceAll( "false","x")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="906" y="0" width="18" height="10" uuid="2dc0cc76-f194-4fbe-9593-043bb0ef9a8d"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sg}.toString().replaceAll( "true","v").replaceAll( "false","x")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="924" y="0" width="18" height="10" uuid="dff98f30-7ae0-4ad4-905a-3c128284d42c"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sr}.toString().replaceAll( "true","v").replaceAll( "false","x")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="942" y="0" width="18" height="10" uuid="7d6f9029-e237-499b-94c4-06600c0dd8e9"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ml}.toString().replaceAll( "true","v").replaceAll( "false","x")]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -402,13 +512,13 @@ inner join bangsal on stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal]]>
 				<text><![CDATA[Record :]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="802" height="1" uuid="9035ce0d-3d70-4dc8-a7de-b675a49d847a"/>
+				<reportElement x="0" y="0" width="960" height="1" uuid="9035ce0d-3d70-4dc8-a7de-b675a49d847a"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="802" height="1" uuid="4db26d50-2dce-4e01-af87-ea9df2947e21"/>
+				<reportElement x="0" y="16" width="960" height="1" uuid="4db26d50-2dce-4e01-af87-ea9df2947e21"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
