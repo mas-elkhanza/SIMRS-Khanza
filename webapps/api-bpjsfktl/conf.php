@@ -357,6 +357,17 @@
         return $token;
     }
     
+    function validangka($angka){
+        if (isset($angka)) {
+            if(!is_numeric($angka)) {
+                return 0;
+            }else{
+                return $angka;
+            }
+        }else{
+            return 0;
+        }
+    }
     
     date_default_timezone_set('Asia/Jakarta');
     $month      = date('Y-m');
