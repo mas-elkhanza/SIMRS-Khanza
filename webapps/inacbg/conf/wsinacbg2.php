@@ -2,12 +2,12 @@
     require_once('../../conf/conf.php');
 
     function getKey() {
-       $keyRS = "c903803c73019e08d3463fe72cdd73669422df449b87f2e9cc110c088bc4cf9b";   
+       $keyRS = "0777878abdab93f694bb5ca72af785d4b99b2c60c26bd4e70eea178a2ecd8c22";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.1.132/E-Klaim/ws.php";
+        $UrlWS = "http://10.12.1.68/E-Klaim/ws.php";
         return $UrlWS;
     }
     
@@ -200,8 +200,8 @@
                             "data": {
                                 "nomor_sep": "'.$nomor_sep.'",
                                 "nomor_kartu": "'.$nomor_kartu.'",
-                                "tgl_masuk": "'.$tgl_masuk.'",
-                                "tgl_pulang": "'.$tgl_pulang.'",
+                                "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                                "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
                                 "jenis_rawat": "'.$jenis_rawat.'",
                                 "kelas_rawat": "'.$kelas_rawat.'",
                                 "adl_sub_acute": "'.$adl_sub_acute.'",
@@ -252,7 +252,7 @@
                                 "nama_dokter": "'.$nama_dokter.'",
                                 "kode_tarif": "'.$kode_tarif.'",
                                 "payor_id": "71",
-                                "payor_cd": "COVID-19",
+                                "payor_cd": "JAMINAN COVID-19",
                                 "cob_cd": "'.$cob_cd.'",
                                 "coder_nik": "'.$coder_nik.'"
                             }
@@ -266,8 +266,8 @@
                             "data": {
                                 "nomor_sep": "'.$nomor_sep.'",
                                 "nomor_kartu": "'.$nomor_kartu.'",
-                                "tgl_masuk": "'.$tgl_masuk.'",
-                                "tgl_pulang": "'.$tgl_pulang.'",
+                                "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                                "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
                                 "jenis_rawat": "'.$jenis_rawat.'",
                                 "kelas_rawat": "'.$kelas_rawat.'",
                                 "adl_sub_acute": "'.$adl_sub_acute.'",
@@ -335,8 +335,8 @@
                         "data": {
                             "nomor_sep": "'.$nomor_sep.'",
                             "nomor_kartu": "'.$nomor_kartu.'",
-                            "tgl_masuk": "'.$tgl_masuk.'",
-                            "tgl_pulang": "'.$tgl_pulang.'",
+                            "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                            "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
                             "jenis_rawat": "'.$jenis_rawat.'",
                             "kelas_rawat": "'.$kelas_rawat.'",
                             "adl_sub_acute": "'.$adl_sub_acute.'",
@@ -407,8 +407,8 @@
                         "data": {
                             "nomor_sep": "'.$nomor_sep.'",
                             "nomor_kartu": "'.$nomor_kartu.'",
-                            "tgl_masuk": "'.$tgl_masuk.'",
-                            "tgl_pulang": "'.$tgl_pulang.'",
+                            "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                            "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
                             "jenis_rawat": "'.$jenis_rawat.'",
                             "kelas_rawat": "'.$kelas_rawat.'",
                             "adl_sub_acute": "'.$adl_sub_acute.'",
