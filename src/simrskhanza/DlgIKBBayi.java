@@ -3,7 +3,7 @@ import kepegawaian.DlgCariPegawai;
 import bridging.DUKCAPILJakartaCekNik;
 import bridging.DUKCAPILJakartaPostLahir;
 import fungsi.WarnaTable;
-import fungsi.WarnaTable4;
+import fungsi.WarnaTable5;
 import fungsi.batasInput;
 import grafikanalisa.grafikberat;
 import grafikanalisa.grafikjkelbayi;
@@ -165,9 +165,9 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         for (int i = 0; i < 7; i++) {
             TableColumn column = tbAPGAR.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(54);
+                column.setPreferredWidth(55);
             }else if(i==1){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(61);
             }else if(i==2){
                 column.setPreferredWidth(120);
             }else if(i==3){
@@ -177,16 +177,16 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(28);
             }else if(i==6){
-                column.setPreferredWidth(32);              
+                column.setPreferredWidth(33);              
             }
         }
         
-        tbAPGAR.setRowHeight(30);
-        tbAPGAR.setDefaultRenderer(Object.class, new WarnaTable4());
-        tabModeAPGAR.addRow(new Object[]{"Frekuensi","Tidak Ada","< 100","> 100",null,null,null});
+        tbAPGAR.setRowHeight(33);
+        tbAPGAR.setDefaultRenderer(Object.class, new WarnaTable5());
+        tabModeAPGAR.addRow(new Object[]{"Frekuensi Jantung","Tidak Ada","< 100","> 100",null,null,null});
         tabModeAPGAR.addRow(new Object[]{"Usaha Nafas","Tidak Ada","Lambat Tak Teratur","Menangis Kuat",null,null,null});
         tabModeAPGAR.addRow(new Object[]{"Tanus Otot","Lumpuh","Ext. Fleksi Sedikit","Gerakan Aktif",null,null,null});
-        tabModeAPGAR.addRow(new Object[]{"Releksi","Tidak Ada Respon","Pergerakan Sedikit","Menangis",null,null,null});
+        tabModeAPGAR.addRow(new Object[]{"Refleks","Tidak Ada Respon","Pergerakan Sedikit","Menangis",null,null,null});
         tabModeAPGAR.addRow(new Object[]{"Warna","Biru Pucat","Tubuh Kemerahan, Tangan & Kaki Biru","Kemerahan",null,null,null});
 
         NoRm.setDocument(new batasInput((byte)15).getKata(NoRm));
@@ -463,6 +463,15 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         Scroll2 = new widget.ScrollPane();
         tbAPGAR = new widget.Table();
         label13 = new widget.Label();
+        label67 = new widget.Label();
+        PenyulitKehamilan1 = new widget.TextBox();
+        label68 = new widget.Label();
+        scrollPane4 = new widget.ScrollPane();
+        keterangan1 = new widget.TextArea();
+        label69 = new widget.Label();
+        PenyulitKehamilan2 = new widget.TextBox();
+        label70 = new widget.Label();
+        PenyulitKehamilan3 = new widget.TextBox();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
 
@@ -1683,7 +1692,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(875, 483));
+        FormInput.setPreferredSize(new java.awt.Dimension(880, 490));
         FormInput.setLayout(null);
 
         label12.setText("No.RM Bayi :");
@@ -2205,7 +2214,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         Scroll2.setViewportView(tbAPGAR);
 
         FormInput.add(Scroll2);
-        Scroll2.setBounds(486, 32, 390, 180);
+        Scroll2.setBounds(486, 32, 389, 182);
 
         label13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label13.setText("Nilai APGAR :");
@@ -2213,6 +2222,80 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         label13.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label13);
         label13.setBounds(486, 12, 120, 23);
+
+        label67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label67.setText("Resusitas :");
+        label67.setName("label67"); // NOI18N
+        label67.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label67);
+        label67.setBounds(486, 222, 65, 23);
+
+        PenyulitKehamilan1.setName("PenyulitKehamilan1"); // NOI18N
+        PenyulitKehamilan1.setPreferredSize(new java.awt.Dimension(207, 23));
+        PenyulitKehamilan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenyulitKehamilan1KeyPressed(evt);
+            }
+        });
+        FormInput.add(PenyulitKehamilan1);
+        PenyulitKehamilan1.setBounds(486, 242, 389, 23);
+
+        label68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label68.setText("Obat Yang Diberikan :");
+        label68.setName("label68"); // NOI18N
+        label68.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label68);
+        label68.setBounds(486, 272, 280, 23);
+
+        scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane4.setName("scrollPane4"); // NOI18N
+
+        keterangan1.setColumns(20);
+        keterangan1.setRows(5);
+        keterangan1.setName("keterangan1"); // NOI18N
+        keterangan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                keterangan1KeyPressed(evt);
+            }
+        });
+        scrollPane4.setViewportView(keterangan1);
+
+        FormInput.add(scrollPane4);
+        scrollPane4.setBounds(486, 292, 389, 52);
+
+        label69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label69.setText("Mikasi :");
+        label69.setName("label69"); // NOI18N
+        label69.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label69);
+        label69.setBounds(486, 352, 280, 23);
+
+        PenyulitKehamilan2.setName("PenyulitKehamilan2"); // NOI18N
+        PenyulitKehamilan2.setPreferredSize(new java.awt.Dimension(207, 23));
+        PenyulitKehamilan2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenyulitKehamilan2KeyPressed(evt);
+            }
+        });
+        FormInput.add(PenyulitKehamilan2);
+        PenyulitKehamilan2.setBounds(486, 372, 389, 23);
+
+        label70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label70.setText("Mikonium :");
+        label70.setName("label70"); // NOI18N
+        label70.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label70);
+        label70.setBounds(486, 402, 280, 23);
+
+        PenyulitKehamilan3.setName("PenyulitKehamilan3"); // NOI18N
+        PenyulitKehamilan3.setPreferredSize(new java.awt.Dimension(207, 23));
+        PenyulitKehamilan3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenyulitKehamilan3KeyPressed(evt);
+            }
+        });
+        FormInput.add(PenyulitKehamilan3);
+        PenyulitKehamilan3.setBounds(486, 422, 389, 23);
 
         Scroll1.setViewportView(FormInput);
 
@@ -3667,6 +3750,22 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         //Valid.pindah(evt,P,Hidup);
     }//GEN-LAST:event_AKeyPressed
 
+    private void PenyulitKehamilan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyulitKehamilan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PenyulitKehamilan1KeyPressed
+
+    private void keterangan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keterangan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_keterangan1KeyPressed
+
+    private void PenyulitKehamilan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyulitKehamilan2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PenyulitKehamilan2KeyPressed
+
+    private void PenyulitKehamilan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyulitKehamilan3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PenyulitKehamilan3KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3755,6 +3854,9 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ComboBox PekerjaanSaksi2;
     private widget.ComboBox PenolongLahir;
     private widget.TextBox PenyulitKehamilan;
+    private widget.TextBox PenyulitKehamilan1;
+    private widget.TextBox PenyulitKehamilan2;
+    private widget.TextBox PenyulitKehamilan3;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox Proses;
     private widget.ScrollPane Scroll1;
@@ -3788,6 +3890,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JPanel jPanel2;
     private widget.ComboBox jam;
     private widget.TextArea keterangan;
+    private widget.TextArea keterangan1;
     private widget.Label label10;
     private widget.Label label12;
     private widget.Label label13;
@@ -3841,6 +3944,10 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label64;
     private widget.Label label65;
     private widget.Label label66;
+    private widget.Label label67;
+    private widget.Label label68;
+    private widget.Label label69;
+    private widget.Label label70;
     private widget.Label label9;
     private widget.ComboBox menit;
     private widget.PanelBiasa panelBiasa2;
@@ -3865,6 +3972,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane3;
+    private widget.ScrollPane scrollPane4;
     private widget.Table tbAPGAR;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables

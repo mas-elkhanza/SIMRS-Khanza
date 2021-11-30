@@ -1854,13 +1854,13 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         try {
                             rs2=koneksi.prepareStatement(
                                     "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
-                                    "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.kd_dokter,data_triase_igd.tekanan_darah,"+
+                                    "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nik,data_triase_igd.tekanan_darah,"+
                                     "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                                     "data_triase_igd.cara_masuk,data_triase_igd.alat_transportasi,data_triase_igd.alasan_kedatangan,"+
-                                    "data_triase_igd.keterangan_kedatangan,data_triase_igd.kode_kasus,master_triase_macam_kasus.macam_kasus,dokter.nm_dokter "+
+                                    "data_triase_igd.keterangan_kedatangan,data_triase_igd.kode_kasus,master_triase_macam_kasus.macam_kasus,pegawai.nama "+
                                     "from data_triase_igdprimer inner join data_triase_igd on data_triase_igd.no_rawat=data_triase_igdprimer.no_rawat "+
                                     "inner join master_triase_macam_kasus on data_triase_igd.kode_kasus=master_triase_macam_kasus.kode_kasus "+
-                                    "inner join dokter on data_triase_igdprimer.kd_dokter=data_triase_igdprimer.kd_dokter where data_triase_igd.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                                    "inner join pegawai on data_triase_igdprimer.nik=data_triase_igdprimer.nik where data_triase_igd.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
                             if(rs2.next()){
                                 htmlContent.append(
                                     "<tr class='isi'>"+ 
@@ -2035,8 +2035,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                             "<td valign='middle'>"+rs2.getString("catatan")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi'>"+
-                                            "<td valign='middle'>Dokter IGD</td>"+
-                                            "<td valign='middle'>"+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                            "<td valign='middle'>Dokter/Petugas IGD</td>"+
+                                            "<td valign='middle'>"+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
                                         "</tr>"+
                                       "</table>"+
                                     "</td>"+
@@ -2054,13 +2054,13 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         try {
                             rs2=koneksi.prepareStatement(
                                     "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
-                                    "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.kd_dokter,data_triase_igd.tekanan_darah,"+
+                                    "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nik,data_triase_igd.tekanan_darah,"+
                                     "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                                     "data_triase_igd.cara_masuk,data_triase_igd.alat_transportasi,data_triase_igd.alasan_kedatangan,"+
-                                    "data_triase_igd.keterangan_kedatangan,data_triase_igd.kode_kasus,master_triase_macam_kasus.macam_kasus,dokter.nm_dokter "+
+                                    "data_triase_igd.keterangan_kedatangan,data_triase_igd.kode_kasus,master_triase_macam_kasus.macam_kasus,pegawai.nama "+
                                     "from data_triase_igdsekunder inner join data_triase_igd on data_triase_igd.no_rawat=data_triase_igdsekunder.no_rawat "+
                                     "inner join master_triase_macam_kasus on data_triase_igd.kode_kasus=master_triase_macam_kasus.kode_kasus "+
-                                    "inner join dokter on data_triase_igdsekunder.kd_dokter=dokter.kd_dokter where data_triase_igd.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                                    "inner join pegawai on data_triase_igdsekunder.nik=pegawai.nik where data_triase_igd.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
                             if(rs2.next()){
                                 htmlContent.append(
                                   "<tr class='isi'>"+ 
@@ -2287,8 +2287,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                             "<td valign='middle'>"+rs2.getString("catatan")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi'>"+
-                                            "<td valign='middle'>Dokter IGD</td>"+
-                                            "<td valign='middle'>"+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                            "<td valign='middle'>Dokter/Petugas IGD</td>"+
+                                            "<td valign='middle'>"+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
                                         "</tr>"+
                                       "</table>"+
                                     "</td>"+
