@@ -61,7 +61,6 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
     private ObjectMapper mapper= new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
-    private JsonNode response;
 
     /** Creates new form DlgJnsPerawatanRalan
      * @param parent

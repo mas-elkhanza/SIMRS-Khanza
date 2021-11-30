@@ -39,7 +39,6 @@ public class frmUtama extends javax.swing.JFrame {
     private  ObjectMapper mapper= new ObjectMapper();
     private  JsonNode root;
     private  JsonNode nameNode;
-    private  JsonNode response;
     private  PreparedStatement ps;
     private  ResultSet rs;
 
@@ -202,9 +201,6 @@ public class frmUtama extends javax.swing.JFrame {
                                     //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                                     nameNode = root.path("metadata");
-                                    //System.out.println("code : "+nameNode.path("code").asText());
-                                    //System.out.println("message : "+nameNode.path("message").asText());
-                                    response = root.path("response");
                                     TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
                                 }catch (Exception ex) {
                                     System.out.println("Notifikasi Bridging : "+ex);
