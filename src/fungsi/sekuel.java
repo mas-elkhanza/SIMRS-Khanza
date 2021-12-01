@@ -1102,7 +1102,7 @@ public final class sekuel {
      */
     public boolean mengedittf(String table, String acuan_field, String update, int i, String[] a) {
         bool = true;
-        try {
+        try {System.out.println("update " + table + " set " + update + " where " + acuan_field);
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
             try {
                 for (angka = 1; angka <= i; angka++) {

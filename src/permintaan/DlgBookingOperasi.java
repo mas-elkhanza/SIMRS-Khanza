@@ -989,7 +989,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
                         "and jam_selesai='"+JamSelesai.getSelectedItem()+":"+MenitSelesai.getSelectedItem()+":"+DetikSelesai.getSelectedItem()+"' "+
                         "and kd_dokter='"+KdDokter.getText()+"' "+
                         "and status='"+Status.getSelectedItem()+"' "+
-                        "and kode_paket='"+KdOperasi.getText()+"'");
+                        "and kode_bedah='"+KdOperasi.getText()+"'");
                 tampil();
                 emptTeks();
             }catch(Exception e){
@@ -1149,15 +1149,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(NmOperasi.getText().trim().equals("")){
             Valid.textKosong(KdOperasi,"Operasi");
         }else{
-            if(Sequel.mengedittf("booking_operasi","no_rawat=? and kode_paket=? and tanggal=? and jam_mulai=? and jam_selesai=? and status=? and kd_dokter=?",
-                    "no_rawat=?,kode_paket=?,tanggal=?,jam_mulai=?,jam_selesai=?,status=?,kd_dokter=?",14,new String[]{
-                    TNoRw.getText(),KdOperasi.getText(),Valid.SetDateToString(DTPTgl.getDate()),
+            if(Sequel.mengedittf("booking_operasi",
+                    "no_rawat=? and tanggal=? and jam_mulai=? and jam_selesai=? and status=? and kd_dokter=? and kode_bedah=?",
+                    "no_rawat=?,tanggal=?,jam_mulai=?,jam_selesai=?,status=?,kd_dokter=?,kode_bedah=?",14,new String[]{
+                    TNoRw.getText(),Valid.SetDateToString(DTPTgl.getDate()),
                     JamMulai.getSelectedItem()+":"+MenitMulai.getSelectedItem()+":"+DetikMulai.getSelectedItem(),
                     JamSelesai.getSelectedItem()+":"+MenitSelesai.getSelectedItem()+":"+DetikSelesai.getSelectedItem(),
-                    Status.getSelectedItem().toString(),KdDokter.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
-                    tbObat.getValueAt(tbObat.getSelectedRow(),11).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
+                    Status.getSelectedItem().toString(),KdDokter.getText(),KdOperasi.getText(),
+                    tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
                     tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),
-                    tbObat.getValueAt(tbObat.getSelectedRow(),8).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()
+                    tbObat.getValueAt(tbObat.getSelectedRow(),8).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),13).toString(),
+                    tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()
                  })==true){
                 tampil();
                 emptTeks();
