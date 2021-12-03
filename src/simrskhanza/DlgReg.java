@@ -5852,7 +5852,9 @@ public final class DlgReg extends javax.swing.JDialog {
             TNoReg.requestFocus();
         } else if (Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.no_rkm_medis='"
                 + TNoRM.getText() + "' and kd_dokter='" + kddokter.getText() + "' and kd_pj='" + kdpnj.getText()
-                + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "' and shift='"+CmbShift.getSelectedItem().toString()+"' ") > 0) {
+                + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) 
+                + "' and shift='"+CmbShift.getSelectedItem().toString()
+                + "' and kd_poli='"+kdpoli.getText()+"' ") > 0) {
             JOptionPane.showMessageDialog(null, "Eiiits, Hayo pendaftaran double nih!");
             TNoRM.requestFocus();
         } else {
@@ -5862,7 +5864,9 @@ public final class DlgReg extends javax.swing.JDialog {
                 if (aktifjadwal.equals("aktif")) {
                     if (Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetDateToString(DTPReg.getDate()) + "' and shift='"+CmbShift.getSelectedItem().toString()+"' ") >= kuota) {
+                            + Valid.SetDateToString(DTPReg.getDate()) 
+                            + "' and shift='"+CmbShift.getSelectedItem().toString()+"' "
+                            + "and kd_poli='"+kdpoli.getText()+"'") >= kuota) {
                         JOptionPane.showMessageDialog(null, "Eiiits, Kuota registrasi penuh..!!!");
                         TCari.requestFocus();
                     } else {
@@ -6109,10 +6113,11 @@ public final class DlgReg extends javax.swing.JDialog {
         } else if (Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='" + TNoReg.getText()
                 + "' and no_rawat='" + TNoRw.getText() + "' and no_rkm_medis='" + TNoRM.getText() + "' and kd_dokter='"
                 + kddokter.getText() + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate())
-                + "' ") < 1) {
+                + "' and kd_poli='"+kdpoli.getText()+"'") < 1) {
             if (Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='" + TNoReg.getText()
                     + "' and kd_dokter='" + kddokter.getText() + "' and tgl_registrasi='"
-                    + Valid.SetDateToString(DTPReg.getDate()) + "' ") > 0) {
+                    + Valid.SetDateToString(DTPReg.getDate()) 
+                    + "' and kd_poli='"+kdpoli.getText()+"'") > 0) {
                 JOptionPane.showMessageDialog(null, "Eiiits, Hayo no registrasi double nih!");
                 TNoReg.requestFocus();
             } else {
