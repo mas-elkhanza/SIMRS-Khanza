@@ -152,14 +152,14 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 	<pageHeader>
 		<band height="648" splitType="Stretch">
 			<staticText>
-				<reportElement x="88" y="41" width="90" height="18" uuid="feeab23c-0ea9-4814-aec3-3943ad2ea94d"/>
+				<reportElement x="94" y="41" width="85" height="18" uuid="feeab23c-0ea9-4814-aec3-3943ad2ea94d"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Telah Lahir]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="41" width="364" height="18" uuid="10231513-66df-4464-acd5-d0c54a467837">
+				<reportElement x="189" y="41" width="365" height="18" uuid="10231513-66df-4464-acd5-d0c54a467837">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -177,14 +177,14 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA["Nomor : "+$F{no_skl}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="180" y="41" width="9" height="18" uuid="530c444b-0560-43bb-b1bc-ca670729ee15"/>
+				<reportElement x="179" y="41" width="9" height="18" uuid="530c444b-0560-43bb-b1bc-ca670729ee15"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="88" y="66" width="90" height="17" uuid="acb747dc-0493-46fc-9523-62dcd2ffbe50"/>
+				<reportElement x="94" y="66" width="85" height="17" uuid="acb747dc-0493-46fc-9523-62dcd2ffbe50"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -200,14 +200,14 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEEE", new java.util.Locale("id")).format($F{tgl_lahir}).toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="180" y="66" width="9" height="17" uuid="77bed3c5-d410-4c84-9b59-ee1510b8b2ea"/>
+				<reportElement x="179" y="66" width="9" height="17" uuid="77bed3c5-d410-4c84-9b59-ee1510b8b2ea"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="348" y="66" width="205" height="17" uuid="ccbeae5c-9ce8-456c-8f8b-c5a5d561ea54">
+				<reportElement x="351" y="66" width="203" height="17" uuid="ccbeae5c-9ce8-456c-8f8b-c5a5d561ea54">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -216,28 +216,28 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{jam_lahir}.toString().substring( 0, 5 )+" WIB"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="304" y="66" width="30" height="17" uuid="338c5385-5604-4188-b842-a05c5c2973ce"/>
+				<reportElement x="307" y="66" width="30" height="17" uuid="338c5385-5604-4188-b842-a05c5c2973ce"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Jam]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="336" y="66" width="10" height="17" uuid="06fb0726-949d-46b0-978d-758002c15160"/>
+				<reportElement x="339" y="66" width="10" height="17" uuid="06fb0726-949d-46b0-978d-758002c15160"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="88" y="84" width="90" height="17" uuid="7d171283-cfd3-4bb5-9bfb-cf821536a9a3"/>
+				<reportElement x="94" y="84" width="85" height="17" uuid="7d171283-cfd3-4bb5-9bfb-cf821536a9a3"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="84" width="364" height="17" uuid="8d351e2f-4058-4e5e-afa5-55cedaefe145">
+				<reportElement x="189" y="84" width="365" height="17" uuid="8d351e2f-4058-4e5e-afa5-55cedaefe145">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -246,21 +246,21 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMMM yyyy", new java.util.Locale("id")).format($F{tgl_lahir}).toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="180" y="84" width="9" height="17" uuid="9a94e2cc-d455-4b0b-8172-4fedf402f2ba"/>
+				<reportElement x="179" y="84" width="9" height="17" uuid="9a94e2cc-d455-4b0b-8172-4fedf402f2ba"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="180" y="102" width="9" height="17" uuid="331e13af-9577-41dc-a104-9a022e6276bd"/>
+				<reportElement x="179" y="102" width="9" height="17" uuid="331e13af-9577-41dc-a104-9a022e6276bd"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="102" width="238" height="17" uuid="d51df2f5-e075-4fae-94d8-9a881dfb85dc">
+				<reportElement x="189" y="102" width="365" height="17" uuid="d51df2f5-e075-4fae-94d8-9a881dfb85dc">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -269,7 +269,7 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA["Ny. "+$F{nama_ibu}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="88" y="102" width="90" height="17" uuid="73877768-ffcd-4e84-81a4-66aca990b0a1">
+				<reportElement x="94" y="102" width="85" height="17" uuid="73877768-ffcd-4e84-81a4-66aca990b0a1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -278,14 +278,14 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[IF($F{jk}.equals("L"),"Putra dari Ibu","Putri dari Ibu")]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="180" y="120" width="9" height="17" uuid="21088f5a-4303-465c-bafa-9c40e69775b5"/>
+				<reportElement x="179" y="120" width="9" height="17" uuid="21088f5a-4303-465c-bafa-9c40e69775b5"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="120" width="238" height="17" uuid="d03488f5-9a03-4611-9303-6196aea9d01a">
+				<reportElement x="189" y="120" width="226" height="17" uuid="d03488f5-9a03-4611-9303-6196aea9d01a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -294,21 +294,21 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$P{anakke}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="88" y="120" width="90" height="17" uuid="8bf81b37-00fc-496f-818a-c89796cbcec5"/>
+				<reportElement x="94" y="120" width="85" height="17" uuid="8bf81b37-00fc-496f-818a-c89796cbcec5"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Yang Ke]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="180" y="138" width="9" height="17" uuid="76379a43-03cc-4a4c-9b59-07584ea8f794"/>
+				<reportElement x="179" y="138" width="9" height="17" uuid="76379a43-03cc-4a4c-9b59-07584ea8f794"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="138" width="364" height="17" uuid="24e9fd4b-74ae-4b84-826f-b7da3d7aa53f">
+				<reportElement x="189" y="138" width="365" height="17" uuid="24e9fd4b-74ae-4b84-826f-b7da3d7aa53f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -317,30 +317,30 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA["Tn. "+$F{nama_ayah}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="88" y="138" width="90" height="17" uuid="c4f9ce2a-946d-4522-9ba8-a816bff93f37"/>
+				<reportElement x="94" y="138" width="85" height="17" uuid="c4f9ce2a-946d-4522-9ba8-a816bff93f37"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Nama Ayah]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="88" y="156" width="90" height="17" uuid="28eaa9f8-33ca-406d-8a45-2df4dc316f5d"/>
+				<reportElement x="94" y="156" width="85" height="17" uuid="28eaa9f8-33ca-406d-8a45-2df4dc316f5d"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Tempat Tinggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="180" y="156" width="9" height="17" uuid="af54694f-8183-41e0-810a-4a3e1cf0c6d9"/>
+				<reportElement x="179" y="156" width="9" height="17" uuid="af54694f-8183-41e0-810a-4a3e1cf0c6d9"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="188" y="156" width="365" height="17" uuid="3a68e57a-65c1-4764-8cf9-aa4c4cbf07df"/>
+				<reportElement x="188" y="156" width="366" height="17" uuid="3a68e57a-65c1-4764-8cf9-aa4c4cbf07df"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="11.5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{alamat}.toString().split(",")[0]]]></textFieldExpression>
 			</textField>
@@ -397,9 +397,9 @@ ON pasien_bayi.penolong=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{penolong}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="188" y="173" width="365" height="37" uuid="8dbf6876-92cf-42c5-9a4f-b4e0070e8a21"/>
+				<reportElement x="188" y="173" width="366" height="37" uuid="8dbf6876-92cf-42c5-9a4f-b4e0070e8a21"/>
 				<textElement>
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="11.5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{alamat}.toString().split(",")[1].trim()+" - "+$F{alamat}.toString().split(",")[2]+" - "+$F{alamat}.toString().split(",")[3]]]></textFieldExpression>
 			</textField>

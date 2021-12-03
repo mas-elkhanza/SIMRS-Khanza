@@ -209,7 +209,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[HRGA INV]]></text>
+				<text><![CDATA[BARCODE SN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="611" y="1" width="56" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="655afd54-2672-494d-b956-dcde5b2c817f"/>
@@ -307,13 +307,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tgl_pengadaan}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="542" y="0" width="67" height="10" uuid="9496f35d-7d2f-496f-b6bc-9046d8600614"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{isbn}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="611" y="0" width="54" height="10" uuid="3389f1ed-6371-4049-98da-2c60bab9d84c"/>

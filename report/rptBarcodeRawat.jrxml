@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="162" pageHeight="60" columnWidth="158" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="c37ee618-fbb0-4eea-9c8f-bfd73892db43">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
@@ -57,7 +57,7 @@ reg_periksa.no_rawat= $P{no_rawat}]]>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="31" y="12" width="113" height="9" uuid="22ad8275-02fc-4377-9fa2-3240b20e2876"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -65,7 +65,7 @@ reg_periksa.no_rawat= $P{no_rawat}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="71" y="2" width="73" height="9" uuid="00c25f40-7676-4767-950d-a52311bc1efd"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -73,7 +73,7 @@ reg_periksa.no_rawat= $P{no_rawat}]]>
 				</textElement>
 				<textFieldExpression><![CDATA["Tgl.lahir : "+$P{tgl}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="31" y="2" width="40" height="9" uuid="fb699aa9-1592-473c-bf13-3aca96165cf6"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -81,7 +81,7 @@ reg_periksa.no_rawat= $P{no_rawat}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{norm}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="8" y="49" width="136" height="6" uuid="4b3d0b33-dc82-44a7-bcaa-54fbf88d51bc"/>
 				<textElement>
 					<font fontName="Tahoma" size="4"/>
@@ -135,7 +135,7 @@ reg_periksa.no_rawat= $P{no_rawat}]]>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="7" y="22" width="137" height="10" uuid="e6eaa524-1269-451a-a130-e29391453b4e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>

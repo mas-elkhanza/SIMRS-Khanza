@@ -412,11 +412,11 @@ TEGAL 52131]]></text>
 				<textFieldExpression><![CDATA[$F{alamat}.toString().split(",")[0]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="156" y="118" width="283" height="16" uuid="ffa05b1b-2a91-4aa0-852d-96c5eaed737d"/>
+				<reportElement x="156" y="118" width="408" height="16" uuid="ffa05b1b-2a91-4aa0-852d-96c5eaed737d"/>
 				<textElement>
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jk}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA["BAYI "+$F{jk}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="156" y="132" width="283" height="16" uuid="e2fa1636-0308-4359-848f-b60238fadb27"/>
@@ -447,7 +447,7 @@ TEGAL 52131]]></text>
 				<textFieldExpression><![CDATA[$F{jam_lahir}.toString().substring( 0, 5 )+" WIB"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="155" y="210" width="283" height="16" uuid="64fb3a7b-f2b7-4d3c-b48a-ba41f0129635"/>
+				<reportElement x="155" y="210" width="409" height="16" uuid="64fb3a7b-f2b7-4d3c-b48a-ba41f0129635"/>
 				<textElement>
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subResumeObat" columnCount="2" printOrder="Horizontal" pageWidth="555" pageHeight="200" columnWidth="276" columnSpacing="2" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b287c771-dff2-4eb9-81b0-5abd2813c894">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value="YXR1cmFuX3Bha2FpICwyODYsMTE2LGRlYjZhMjllLWI4MTAtNDUzOC04ZDc0LWZmZWFkNzVlMGU0&#xA;MDtkZXRhaWxfcGVtYmVyaWFuX29iYXQgLDM5MiwxNyw5MmFmMTU0NS0yOGQxLTQ2ODItODI2Mi1j&#xA;MjU3ZTViZmFmNTg7ZGF0YWJhcmFuZyAsMzkzLDExMSxjZjE1NWM1MS1hZTljLTRjZTEtODkwZC05&#xA;ZTczZWQ4OWYwYWM7cmVzZXBfb2JhdCAsMTUsMTA5LDVhZTYwNzZhLWRlYzgtNDczMC04NjQ5LTIw&#xA;Y2IzNzc2ZmJlYTs=&#xA;"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -11,7 +12,6 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<parameter name="no_rawat" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$P{no_rawat}]]></defaultValueExpression>
 	</parameter>

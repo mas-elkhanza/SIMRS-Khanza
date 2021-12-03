@@ -100,7 +100,7 @@
 				</textField>
 				<textField>
 					<reportElement x="127" y="9" width="47" height="12" uuid="3a266232-f43d-4a7c-af99-6ec303262d19"/>
-					<textElement textAlignment="Right">
+					<textElement textAlignment="Left">
 						<font fontName="Tahoma" size="8"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>

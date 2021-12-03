@@ -215,14 +215,6 @@
 				</textElement>
 				<text><![CDATA[Demikian surat keterangan ini dibuat agar yang berkepentingan mengetahui dan menjadikan maklum.]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="317" y="545" width="212" height="20" uuid="6b78830f-8e76-4784-b713-5690bd21a1b9"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="12"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{kotars}+", "+new java.text.SimpleDateFormat("dd-MM-yyyy").format(new Date())]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="317" y="564" width="212" height="20" uuid="b962ac45-02da-4cfc-b86f-ce1ab45a2daf"/>
 				<textElement textAlignment="Center">
@@ -462,6 +454,26 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[*Nama Jelas]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="401" y="545" width="128" height="18" uuid="3763bce0-7419-4a00-90ab-743dbc7810e1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="351" y="545" width="50" height="18" uuid="800c3a20-46d3-45f2-bb88-9e8dd1d9ea13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tegal, ]]></text>
 			</staticText>
 		</band>
 	</detail>
