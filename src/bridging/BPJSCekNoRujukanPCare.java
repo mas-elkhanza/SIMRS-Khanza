@@ -1676,7 +1676,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FlagProsedur = new widget.ComboBox();
         jLabel56 = new widget.Label();
         jLabel57 = new widget.Label();
-        AsesmenPoli = new widget.ComboBox();
         LabelPoli6 = new widget.Label();
         KdDPJPLayanan = new widget.TextBox();
         NmDPJPLayanan = new widget.TextBox();
@@ -1685,6 +1684,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         LakaLantas = new widget.ComboBox();
         jLabel47 = new widget.Label();
         TanggalKKL = new widget.Tanggal();
+        AsesmenPoli = new widget.ComboBox();
 
         TNm.setHighlighter(null);
         TNm.setName("TNm"); // NOI18N
@@ -1704,7 +1704,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -2232,7 +2232,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 160, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3291,7 +3291,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel31);
         jLabel31.setBounds(239, 355, 100, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021 14:11:02" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021 16:01:44" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -3310,7 +3310,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(3, 355, 100, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2021" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-11-2021" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3725,16 +3725,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel57);
         jLabel57.setBounds(495, 325, 90, 23);
 
-        AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS" }));
-        AsesmenPoli.setName("AsesmenPoli"); // NOI18N
-        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AsesmenPoliKeyPressed(evt);
-            }
-        });
-        FormKelengkapanSEP.add(AsesmenPoli);
-        AsesmenPoli.setBounds(589, 325, 319, 23);
-
         LabelPoli6.setText("DPJP Layanan :");
         LabelPoli6.setName("LabelPoli6"); // NOI18N
         FormKelengkapanSEP.add(LabelPoli6);
@@ -3811,6 +3801,16 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         });
         FormKelengkapanSEP.add(TanggalKKL);
         TanggalKKL.setBounds(818, 25, 90, 23);
+
+        AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
+        AsesmenPoli.setName("AsesmenPoli"); // NOI18N
+        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AsesmenPoliKeyPressed(evt);
+            }
+        });
+        FormKelengkapanSEP.add(AsesmenPoli);
+        AsesmenPoli.setBounds(589, 325, 319, 23);
 
         FormInput.add(FormKelengkapanSEP);
 
@@ -5149,10 +5149,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_FlagProsedurKeyPressed
 
-    private void AsesmenPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsesmenPoliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AsesmenPoliKeyPressed
-
     private void btnDPJPLayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayananActionPerformed
         pilih=2;
         dpjp.setPoli(KdPoli.getText(),NmPoli.getText());
@@ -5423,6 +5419,10 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private void TanggalKKLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKKLKeyPressed
         Valid.pindah(evt,TanggalSEP,Keterangan);
     }//GEN-LAST:event_TanggalKKLKeyPressed
+
+    private void AsesmenPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsesmenPoliKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AsesmenPoliKeyPressed
 
     /**
     * @param args the command line arguments

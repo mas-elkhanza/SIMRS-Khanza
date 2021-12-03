@@ -35,7 +35,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="24-11-2021"/>
+            <StringItem index="0" value="04-12-2021"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -807,7 +807,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="24-11-2021"/>
+                                    <StringItem index="0" value="04-12-2021"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2526,7 +2526,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="24-11-2021 16:00:38"/>
+                                    <StringItem index="0" value="04-12-2021 04:51:52"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2563,7 +2563,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="24-11-2021"/>
+                                    <StringItem index="0" value="04-12-2021"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3024,28 +3024,6 @@
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                   <AbsoluteConstraints x="495" y="325" width="90" height="23"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Component class="widget.ComboBox" name="AsesmenPoli">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="5">
-                                    <StringItem index="0" value=""/>
-                                    <StringItem index="1" value="1. Poli spesialis tidak tersedia pada hari sebelumnya"/>
-                                    <StringItem index="2" value="2. Jam Poli telah berakhir pada hari sebelumnya"/>
-                                    <StringItem index="3" value="3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya"/>
-                                    <StringItem index="4" value="4. Atas Instruksi RS"/>
-                                  </StringArray>
-                                </Property>
-                                <Property name="name" type="java.lang.String" value="AsesmenPoli" noResource="true"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AsesmenPoliKeyPressed"/>
-                              </Events>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="589" y="325" width="319" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -3513,7 +3491,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="24-11-2021"/>
+                                    <StringItem index="0" value="04-12-2021"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3530,6 +3508,29 @@
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                   <AbsoluteConstraints x="818" y="25" width="90" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.ComboBox" name="AsesmenPoli">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="6">
+                                    <StringItem index="0" value=" "/>
+                                    <StringItem index="1" value="1. Poli spesialis tidak tersedia pada hari sebelumnya"/>
+                                    <StringItem index="2" value="2. Jam Poli telah berakhir pada hari sebelumnya"/>
+                                    <StringItem index="3" value="3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya"/>
+                                    <StringItem index="4" value="4. Atas Instruksi RS"/>
+                                    <StringItem index="5" value="5. Tujuan Kontrol"/>
+                                  </StringArray>
+                                </Property>
+                                <Property name="name" type="java.lang.String" value="AsesmenPoli" noResource="true"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AsesmenPoliKeyPressed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="589" y="325" width="319" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>

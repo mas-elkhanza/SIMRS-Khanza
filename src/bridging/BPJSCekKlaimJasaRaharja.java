@@ -63,7 +63,7 @@ public final class BPJSCekKlaimJasaRaharja extends javax.swing.JDialog {
 
         Object[] row={
             "No","No.SEP","Tgl.SEP","Tgl.Pulang","No.R.M.","Jenis Pelayanan","Diagnosa","No.Kartu","Nama Pasien","Tgl.Kejadian",
-            "No.Register","Status Dijamin","Status Dikirim","Biaya Dijamin","Plafon","Jumlah Dibayar","Result"
+            "No.Register","Status Dijamin","Status Dikirim","Biaya Dijamin","Plafon","Jumlah Dibayar","Result","Status"
         };
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -74,7 +74,7 @@ public final class BPJSCekKlaimJasaRaharja extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 17; i++) {
+        for (i = 0; i < 18; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(30);
@@ -110,6 +110,8 @@ public final class BPJSCekKlaimJasaRaharja extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }else if(i==16){
                 column.setPreferredWidth(70);
+            }else if(i==17){
+                column.setPreferredWidth(60);
             }
         }
         
@@ -363,7 +365,7 @@ public final class BPJSCekKlaimJasaRaharja extends javax.swing.JDialog {
 	    headers.add("X-Signature",api.getHmac(utc));
             headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
-            URL = link+"/monitoring/JasaRaharja/tglMulai/"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(Tanggal2.getSelectedItem()+"");	
+            URL = link+"/monitoring/JasaRaharja/JnsPelayanan/2/tglMulai/"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(Tanggal2.getSelectedItem()+"");	
             System.out.println("URL : "+URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
@@ -379,15 +381,43 @@ public final class BPJSCekKlaimJasaRaharja extends javax.swing.JDialog {
                             list.path("sep").path("jnsPelayanan").asText().replaceAll("1","Ranap").replaceAll("2","Ralan"),list.path("sep").path("poli").asText(),list.path("sep").path("diagnosa").asText(),list.path("sep").path("peserta").path("noKartu").asText(),
                             list.path("sep").path("peserta").path("nama").asText(),list.path("jasaRaharja").path("tglKejadian").asText(),list.path("jasaRaharja").path("noRegister").asText(),
                             list.path("jasaRaharja").path("ketStatusDijamin").asText(),list.path("jasaRaharja").path("ketStatusDikirim").asText(),Valid.SetAngka(list.path("jasaRaharja").path("biayaDijamin").asDouble()),
-                            Valid.SetAngka(list.path("jasaRaharja").path("plafon").asDouble()),Valid.SetAngka(list.path("jasaRaharja").path("jmlDibayar").asDouble()),list.path("jasaRaharja").path("resultsJasaRaharja").asText()
+                            Valid.SetAngka(list.path("jasaRaharja").path("plafon").asDouble()),Valid.SetAngka(list.path("jasaRaharja").path("jmlDibayar").asDouble()),list.path("jasaRaharja").path("resultsJasaRaharja").asText(),"Ralan"
                         });    
                         i++;
                     }
-                }
-                                       
-            }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
-            }   
+                }                      
+            }  
+            
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+	    requestEntity = new HttpEntity(headers);
+            URL = link+"/monitoring/JasaRaharja/JnsPelayanan/1/tglMulai/"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(Tanggal2.getSelectedItem()+"");	
+            System.out.println("URL : "+URL);
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            if(nameNode.path("code").asText().equals("200")){
+                Valid.tabelKosong(tabMode);
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("jaminan");
+                //response = root.path("response").path("rujukan");
+                if(response.isArray()){
+                    i=1;
+                    for(JsonNode list:response){
+                        tabMode.addRow(new Object[]{
+                            i+"",list.path("sep").path("noSEP").asText(),list.path("sep").path("tglSEP").asText(),list.path("sep").path("tglPlgSEP").asText(),list.path("sep").path("noMr").asText(),
+                            list.path("sep").path("jnsPelayanan").asText().replaceAll("1","Ranap").replaceAll("2","Ralan"),list.path("sep").path("poli").asText(),list.path("sep").path("diagnosa").asText(),list.path("sep").path("peserta").path("noKartu").asText(),
+                            list.path("sep").path("peserta").path("nama").asText(),list.path("jasaRaharja").path("tglKejadian").asText(),list.path("jasaRaharja").path("noRegister").asText(),
+                            list.path("jasaRaharja").path("ketStatusDijamin").asText(),list.path("jasaRaharja").path("ketStatusDikirim").asText(),Valid.SetAngka(list.path("jasaRaharja").path("biayaDijamin").asDouble()),
+                            Valid.SetAngka(list.path("jasaRaharja").path("plafon").asDouble()),Valid.SetAngka(list.path("jasaRaharja").path("jmlDibayar").asDouble()),list.path("jasaRaharja").path("resultsJasaRaharja").asText(),"Ranap"
+                        });    
+                        i++;
+                    }
+                }                      
+            } 
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : "+ex);
             if(ex.toString().contains("UnknownHostException")){

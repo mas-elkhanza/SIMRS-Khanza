@@ -1729,7 +1729,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         FlagProsedur = new widget.ComboBox();
         jLabel56 = new widget.Label();
         jLabel57 = new widget.Label();
-        AsesmenPoli = new widget.ComboBox();
         LabelPoli6 = new widget.Label();
         KdDPJPLayanan = new widget.TextBox();
         NmDPJPLayanan = new widget.TextBox();
@@ -1760,6 +1759,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         LakaLantas = new widget.ComboBox();
         jLabel47 = new widget.Label();
         TanggalKKL = new widget.Tanggal();
+        AsesmenPoli = new widget.ComboBox();
         ChkCari = new widget.CekBox();
         panelGlass6 = new widget.panelisi();
         jLabel16 = new widget.Label();
@@ -3513,16 +3513,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel57);
         jLabel57.setBounds(495, 325, 90, 23);
 
-        AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS" }));
-        AsesmenPoli.setName("AsesmenPoli"); // NOI18N
-        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AsesmenPoliKeyPressed(evt);
-            }
-        });
-        FormKelengkapanSEP.add(AsesmenPoli);
-        AsesmenPoli.setBounds(589, 325, 319, 23);
-
         LabelPoli6.setText("DPJP Layanan :");
         LabelPoli6.setName("LabelPoli6"); // NOI18N
         FormKelengkapanSEP.add(LabelPoli6);
@@ -3798,6 +3788,16 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         });
         FormKelengkapanSEP.add(TanggalKKL);
         TanggalKKL.setBounds(818, 25, 90, 23);
+
+        AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
+        AsesmenPoli.setName("AsesmenPoli"); // NOI18N
+        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AsesmenPoliKeyPressed(evt);
+            }
+        });
+        FormKelengkapanSEP.add(AsesmenPoli);
+        AsesmenPoli.setBounds(589, 325, 319, 23);
 
         FormInput.add(FormKelengkapanSEP);
 
@@ -5241,10 +5241,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_FlagProsedurKeyPressed
 
-    private void AsesmenPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsesmenPoliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AsesmenPoliKeyPressed
-
     private void btnDPJPLayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayananActionPerformed
         pilih=2;
         dpjp.setPoli(KdPoli.getText(),NmPoli.getText());
@@ -5593,6 +5589,10 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         Valid.pindah(evt,TanggalSEP,Keterangan);
     }//GEN-LAST:event_TanggalKKLKeyPressed
 
+    private void AsesmenPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsesmenPoliKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AsesmenPoliKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -5788,7 +5788,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     private widget.Label jLabel31;
     private widget.Label jLabel32;
     private widget.Label jLabel33;
-    private widget.Label jLabel34;
     private widget.Label jLabel35;
     private widget.Label jLabel36;
     private widget.Label jLabel37;
