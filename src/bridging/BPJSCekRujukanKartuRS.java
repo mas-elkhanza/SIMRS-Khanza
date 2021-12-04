@@ -5011,8 +5011,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
         NoRujukan.requestFocus();
         }else if(NoRujukan.getText().trim().equals("")){
-            Valid.textKosong(NoRujukan, "No.Rujukan");
-        }else if(NoRujukan.getText().trim().equals("")){
             Valid.textKosong(NoRujukan, "Nomor Rujukan");
         }else if(KdPpkRujukan.getText().trim().equals("")||NmPpkRujukan.getText().trim().equals("")){
             Valid.textKosong(KdPpkRujukan, "PPK Rujukan");

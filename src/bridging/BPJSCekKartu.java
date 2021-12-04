@@ -4709,17 +4709,13 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             Valid.textKosong(btnKecamatan,"Kecamatan");
         }else if (KdDPJP.getText().trim().equals("")||NmDPJP.getText().trim().equals("")) {
             Valid.textKosong(KdDPJP, "DPJP");
-        }/*else if (NoSKDP.getText().trim().equals("")) {
-            Valid.textKosong(NoSKDP, "No.SKDP");
-        }*/else if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
+        }else if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
             "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "+
             "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNo.getText())>0){
                 JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
                 NoRujukan.requestFocus();
         }else if(NoKartu.getText().trim().equals("")){
             Valid.textKosong(NoKartu, "Nomor Kartu");
-        }else if(NoRujukan.getText().trim().equals("")){
-            Valid.textKosong(NoRujukan, "Nomor Rujukan");
         }else if(KdPpkRujukan.getText().trim().equals("")||NmPpkRujukan.getText().trim().equals("")){
             Valid.textKosong(KdPpkRujukan, "PPK Rujukan");
         }else if(KdPPK.getText().trim().equals("")||NmPPK.getText().trim().equals("")){

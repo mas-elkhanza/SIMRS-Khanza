@@ -2205,10 +2205,12 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         FormInput.add(A);
         A.setBounds(415, 452, 50, 23);
 
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
         Scroll2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         Scroll2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll2.setName("Scroll2"); // NOI18N
 
+        tbAPGAR.setGridColor(new java.awt.Color(180, 180, 180));
         tbAPGAR.setName("tbAPGAR"); // NOI18N
         tbAPGAR.setRowHeight(150);
         Scroll2.setViewportView(tbAPGAR);
