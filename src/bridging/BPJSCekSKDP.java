@@ -6411,6 +6411,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                                         Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ralan");
                             }
 
+                            pilihan.setRujukan(NoSKDP.getText(),Valid.SetTgl(TanggalRujuk.getSelectedItem()+""),KdPoli.getText());
                             pilihan.setSize(500,400);
                             pilihan.setLocationRelativeTo(internalFrame1);
                             pilihan.setVisible(true);
