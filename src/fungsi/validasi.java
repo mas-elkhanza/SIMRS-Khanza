@@ -1223,6 +1223,21 @@ public final class validasi {
         return x;
     }
     
+    public int SetInteger(String txt){
+        int x;   
+        try {
+            if(txt.equals("")){
+                x=0;
+            }else{
+                x=Integer.parseInt(txt);
+            }
+        } catch (Exception e) {
+            x=0;
+        }
+            
+        return x;
+    }
+    
     public double roundUp(double number, int multiple) {
         if(PEMBULATANHARGAOBAT.equals("yes")){
             result = multiple;

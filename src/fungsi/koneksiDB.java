@@ -924,4 +924,14 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String URLCARESTREAM(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLCARESTREAM");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }

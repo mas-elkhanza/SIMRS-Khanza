@@ -1,4 +1,5 @@
 package permintaan;
+import bridging.ApiCareStream;
 import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -49,6 +50,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
     private BackgroundMusic music;
     private ResultSet rs,rs2;
     private Date now;
+    private ApiCareStream carestream=new ApiCareStream();
     private boolean aktif=false,semua;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",
             NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="",
@@ -428,6 +430,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         BtnBarcodePermintaan2 = new widget.Button();
         BtnKirimDataFuji = new widget.Button();
         BtnAmbilDataFUJI = new widget.Button();
+        BtnKirimDataCareStream = new widget.Button();
 
         WindowAmbilSampel.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowAmbilSampel.setName("WindowAmbilSampel"); // NOI18N
@@ -469,7 +472,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2021 02:31:26" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-12-2021 22:01:11" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -969,7 +972,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
         PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(190, 43));
+        PanelAccor.setPreferredSize(new java.awt.Dimension(230, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
 
         ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
@@ -1008,7 +1011,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         BtnCetakHasilRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnCetakHasilRadiologi.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnCetakHasilRadiologi.setName("BtnCetakHasilRadiologi"); // NOI18N
-        BtnCetakHasilRadiologi.setPreferredSize(new java.awt.Dimension(175, 23));
+        BtnCetakHasilRadiologi.setPreferredSize(new java.awt.Dimension(215, 23));
         BtnCetakHasilRadiologi.setRoundRect(false);
         BtnCetakHasilRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1025,7 +1028,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         BtnBarcodePermintaan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnBarcodePermintaan.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnBarcodePermintaan.setName("BtnBarcodePermintaan"); // NOI18N
-        BtnBarcodePermintaan.setPreferredSize(new java.awt.Dimension(175, 23));
+        BtnBarcodePermintaan.setPreferredSize(new java.awt.Dimension(215, 23));
         BtnBarcodePermintaan.setRoundRect(false);
         BtnBarcodePermintaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1042,7 +1045,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         BtnBarcodePermintaan2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnBarcodePermintaan2.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnBarcodePermintaan2.setName("BtnBarcodePermintaan2"); // NOI18N
-        BtnBarcodePermintaan2.setPreferredSize(new java.awt.Dimension(175, 23));
+        BtnBarcodePermintaan2.setPreferredSize(new java.awt.Dimension(215, 23));
         BtnBarcodePermintaan2.setRoundRect(false);
         BtnBarcodePermintaan2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1059,7 +1062,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         BtnKirimDataFuji.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnKirimDataFuji.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnKirimDataFuji.setName("BtnKirimDataFuji"); // NOI18N
-        BtnKirimDataFuji.setPreferredSize(new java.awt.Dimension(175, 23));
+        BtnKirimDataFuji.setPreferredSize(new java.awt.Dimension(215, 23));
         BtnKirimDataFuji.setRoundRect(false);
         BtnKirimDataFuji.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1076,7 +1079,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         BtnAmbilDataFUJI.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnAmbilDataFUJI.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnAmbilDataFUJI.setName("BtnAmbilDataFUJI"); // NOI18N
-        BtnAmbilDataFUJI.setPreferredSize(new java.awt.Dimension(175, 23));
+        BtnAmbilDataFUJI.setPreferredSize(new java.awt.Dimension(215, 23));
         BtnAmbilDataFUJI.setRoundRect(false);
         BtnAmbilDataFUJI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1084,6 +1087,23 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAmbilDataFUJI);
+
+        BtnKirimDataCareStream.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnKirimDataCareStream.setText("Kirim Permintaan ke RIS Care Stream");
+        BtnKirimDataCareStream.setFocusPainted(false);
+        BtnKirimDataCareStream.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnKirimDataCareStream.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnKirimDataCareStream.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnKirimDataCareStream.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnKirimDataCareStream.setName("BtnKirimDataCareStream"); // NOI18N
+        BtnKirimDataCareStream.setPreferredSize(new java.awt.Dimension(215, 23));
+        BtnKirimDataCareStream.setRoundRect(false);
+        BtnKirimDataCareStream.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimDataCareStreamActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnKirimDataCareStream);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -2067,6 +2087,38 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_BtnAmbilDataFUJIActionPerformed
 
+    private void BtnKirimDataCareStreamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimDataCareStreamActionPerformed
+        if(TabPilihRawat.getSelectedIndex()==0){
+            if(!NoRawat.equals("")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(NoPermintaan.trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{   
+                    carestream.kirimRalan(NoPermintaan);
+                }
+                TeksKosong();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            } 
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            if(!NoRawat.equals("")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(NoPermintaan.trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{   
+                    carestream.kirimRanap(NoPermintaan);
+                }
+                TeksKosong();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            } 
+        }
+    }//GEN-LAST:event_BtnKirimDataCareStreamActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2094,6 +2146,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     private widget.Button BtnHapus;
     private widget.Button BtnHasil;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKirimDataCareStream;
     private widget.Button BtnKirimDataFuji;
     private widget.Button BtnPrint;
     private widget.Button BtnSampel;
@@ -2340,6 +2393,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
         BtnPrint.setEnabled(akses.getpermintaan_radiologi());
         BtnKirimDataFuji.setEnabled(akses.getpermintaan_radiologi());
         BtnAmbilDataFUJI.setEnabled(akses.getperiksa_radiologi());
+        BtnKirimDataCareStream.setEnabled(akses.getpermintaan_radiologi());
     }
     
     public void setPasien(String pasien){
@@ -2588,7 +2642,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(190,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(240,HEIGHT));
             FormMenu.setVisible(true); 
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){  

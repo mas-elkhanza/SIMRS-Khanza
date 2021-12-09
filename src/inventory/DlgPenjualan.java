@@ -1573,95 +1573,98 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    pilihanetiket = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cetak aturan pakai..!!","Cetak Aturan Pakai",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Cetak Aturan Pakai Model 1","Cetak Aturan Pakai Model 2","Cetak Aturan Pakai Model 3"},"Cetak Aturan Pakai Model 1");
-                    switch (pilihanetiket) {
-                        case "Cetak Aturan Pakai Model 1": 
-                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            if(Sequel.cariInteger(
-                                    "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                                Valid.MyReportqry("rptItemResepPenjualan.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual, "+
-                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
-                                    "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
-                                    "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                                    "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
-                                    "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                    "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
-                            }
+                    try {
+                        pilihanetiket = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cetak aturan pakai..!!","Cetak Aturan Pakai",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Cetak Aturan Pakai Model 1","Cetak Aturan Pakai Model 2","Cetak Aturan Pakai Model 3"},"Cetak Aturan Pakai Model 1");
+                        switch (pilihanetiket) {
+                            case "Cetak Aturan Pakai Model 1": 
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                if(Sequel.cariInteger(
+                                        "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
+                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    Valid.MyReportqry("rptItemResepPenjualan.jasper","report","::[ Aturan Pakai Obat ]::",
+                                        "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                                        "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
+                                        "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
+                                        "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
+                                        "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
+                                        "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                        "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
+                                }
 
-                            if(Sequel.cariInteger(
-                                    "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                                Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
-                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
-                                    "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
-                                    "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                                    "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
-                                    "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
-                            }                
-                            this.setCursor(Cursor.getDefaultCursor());
-                            break;
-                        case "Cetak Aturan Pakai Model 2": 
-                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            if(Sequel.cariInteger(
-                                    "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                                Valid.MyReportqry("rptItemResepPenjualan3.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual, "+
-                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
-                                    "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
-                                    "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                                    "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
-                                    "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                    "inner join jenis on databarang.kdjns=jenis.kdjns "+
-                                    "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
-                            }
+                                if(Sequel.cariInteger(
+                                        "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
+                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                        "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                                        "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
+                                        "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
+                                        "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
+                                        "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
+                                        "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
+                                }                
+                                this.setCursor(Cursor.getDefaultCursor());
+                                break;
+                            case "Cetak Aturan Pakai Model 2": 
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                if(Sequel.cariInteger(
+                                        "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
+                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    Valid.MyReportqry("rptItemResepPenjualan3.jasper","report","::[ Aturan Pakai Obat ]::",
+                                        "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                                        "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
+                                        "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
+                                        "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
+                                        "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
+                                        "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                        "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                        "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
+                                }
 
-                            if(Sequel.cariInteger(
-                                    "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                                Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
-                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
-                                    "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
-                                    "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                                    "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
-                                    "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
-                            }                
-                            this.setCursor(Cursor.getDefaultCursor());
-                            break;
-                        case "Cetak Aturan Pakai Model 3": 
-                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            if(Sequel.cariInteger(
-                                    "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                                Valid.MyReportqry("rptItemResepPenjualan5.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual, "+
-                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
-                                    "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
-                                    "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                                    "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
-                                    "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                                    "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
-                            }
+                                if(Sequel.cariInteger(
+                                        "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
+                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
+                                        "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                                        "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
+                                        "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
+                                        "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
+                                        "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
+                                        "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
+                                }                
+                                this.setCursor(Cursor.getDefaultCursor());
+                                break;
+                            case "Cetak Aturan Pakai Model 3": 
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                if(Sequel.cariInteger(
+                                        "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
+                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    Valid.MyReportqry("rptItemResepPenjualan5.jasper","report","::[ Aturan Pakai Obat ]::",
+                                        "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                                        "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
+                                        "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
+                                        "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
+                                        "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
+                                        "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                                        "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
+                                }
 
-                            if(Sequel.cariInteger(
-                                    "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                                Valid.MyReportqry("rptItemResepPenjualan6.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
-                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
-                                    "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
-                                    "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                                    "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
-                                    "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
-                            }                
-                            this.setCursor(Cursor.getDefaultCursor());
-                            break;
-                        default:
-                            break;
+                                if(Sequel.cariInteger(
+                                        "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
+                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    Valid.MyReportqry("rptItemResepPenjualan6.jasper","report","::[ Aturan Pakai Obat ]::",
+                                        "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                                        "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
+                                        "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
+                                        "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
+                                        "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
+                                        "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
+                                }                
+                                this.setCursor(Cursor.getDefaultCursor());
+                                break;
+                            default:
+                                break;
+                        }
+                    } catch (Exception e) {
                     }
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
