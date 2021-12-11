@@ -192,7 +192,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Penilaian Awal Medis Ranap Umum","[L]Penilaian Awal Medis Ranap Kandungan","[L]Penilaian Awal Medis Ralan Kandungan","[L]Penilaian Awal Medis IGD",
                 "[L]Penilaian Awal Medis Ralan Bayi/Anak","[K]Referensi Poli HFIS","[K]Referensi Dokter HFIS","[K]Referensi Jadwal HFIS","[L]Penilaian Awal Fisioterapi",
                 "[K]Program PRB di VClaim","[K]Suplesi Jasa Raharja di VClaim","[K]Data Induk Kecelakaan VClaim","[K]Data SEP Internal VClaim","[K]Klaim Jaminan Jasa Raharja VClaim",
-                "[K]Pasien Finger Print VClaim","[K]Rujukan Khusus VClaim"
+                "[K]Pasien Finger Print VClaim","[K]Rujukan Khusus VClaim","[F]Pemeliharaan Gedung"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -398,6 +398,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -411,7 +412,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 768;i++) {
+        for (i = 0; i < 769;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2169,8 +2170,11 @@ public class DlgUser extends javax.swing.JDialog {
                 case 767:
                     column.setPreferredWidth(135);
                     break;
+                case 768:
+                    column.setPreferredWidth(128);
+                    break;
                 default:
-                    column.setPreferredWidth(138);
+                    column.setPreferredWidth(135);
                     break;
             }
         }
@@ -2667,7 +2671,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3477,7 +3481,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_sep_internal='"+tbUser.getValueAt(i,764).toString()+"',"+
                     "bpjs_klaim_jasa_raharja='"+tbUser.getValueAt(i,765).toString()+"',"+
                     "bpjs_daftar_finger_print='"+tbUser.getValueAt(i,766).toString()+"',"+
-                    "bpjs_rujukan_khusus='"+tbUser.getValueAt(i,767).toString()+"'");
+                    "bpjs_rujukan_khusus='"+tbUser.getValueAt(i,767).toString()+"',"+
+                    "pemeliharaan_gedung='"+tbUser.getValueAt(i,768).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4326,7 +4331,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "bpjs_sep_internal='"+tbUser.getValueAt(barisdicopy,764).toString()+"',"+
                                     "bpjs_klaim_jasa_raharja='"+tbUser.getValueAt(barisdicopy,765).toString()+"',"+
                                     "bpjs_daftar_finger_print='"+tbUser.getValueAt(barisdicopy,766).toString()+"',"+
-                                    "bpjs_rujukan_khusus='"+tbUser.getValueAt(barisdicopy,767).toString()+"'");
+                                    "bpjs_rujukan_khusus='"+tbUser.getValueAt(barisdicopy,767).toString()+"',"+
+                                    "pemeliharaan_gedung='"+tbUser.getValueAt(barisdicopy,768).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4673,7 +4679,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata,penilaian_awal_medis_ranap,penilaian_awal_medis_ranap_kebidanan,"+
                         "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak,bpjs_referensi_poli_hfis,"+
                         "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi,bpjs_program_prb,bpjs_suplesi_jasaraharja,"+
-                        "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print,bpjs_rujukan_khusus from user order by AES_DECRYPT(id_user,'nur')");
+                        "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print,bpjs_rujukan_khusus,"+
+                        "pemeliharaan_gedung from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5453,7 +5460,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_sep_internal"),
                                rs.getBoolean("bpjs_klaim_jasa_raharja"),
                                rs.getBoolean("bpjs_daftar_finger_print"),
-                               rs.getBoolean("bpjs_rujukan_khusus")
+                               rs.getBoolean("bpjs_rujukan_khusus"),
+                               rs.getBoolean("pemeliharaan_gedung")
                             });
                         }   
                     } catch (Exception e) {
@@ -6222,7 +6230,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_sep_internal"),
                            rs.getBoolean("bpjs_klaim_jasa_raharja"),
                            rs.getBoolean("bpjs_daftar_finger_print"),
-                           rs.getBoolean("bpjs_rujukan_khusus")
+                           rs.getBoolean("bpjs_rujukan_khusus"),
+                           rs.getBoolean("pemeliharaan_gedung")
                         });
                     }                                             
                  }

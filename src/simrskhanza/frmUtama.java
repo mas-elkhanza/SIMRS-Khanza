@@ -524,6 +524,7 @@ import inventaris.InventarisAsalHibah;
 import inventaris.InventarisHibah;
 import inventaris.InventarisPembelian;
 import inventaris.InventarisPemeliharaan;
+import inventaris.InventarisPemeliharaanGedung;
 import inventaris.InventarisPemesanan;
 import inventaris.InventarisPerbaikan;
 import inventaris.InventarisPermintaanPerbaikan;
@@ -17699,6 +17700,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPemeliharaanGedungActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisPemeliharaanGedung aplikasi=new InventarisPemeliharaanGedung(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18326,7 +18339,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
-            btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus;
+            btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung;
     
     public void isWall(){
         try{            
@@ -19361,6 +19374,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gethibah_aset_inventaris()==true){
                 Panelmenu.add(btnHibahAsetInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemeliharaan_gedung()==true){
+                Panelmenu.add(btnPemeliharaanGedung);
                 jmlmenu++;
             }
             
@@ -23199,6 +23217,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.gethibah_aset_inventaris()==true){
             Panelmenu.add(btnHibahAsetInventaris);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemeliharaan_gedung()==true){
+            Panelmenu.add(btnPemeliharaanGedung);
             jmlmenu++;
         }
 
@@ -27388,6 +27411,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gethibah_aset_inventaris()==true){
             if(btnHibahAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHibahAsetInventaris);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpemeliharaan_gedung()==true){
+            if(btnPemeliharaanGedung.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemeliharaanGedung);
                 jmlmenu++;
             }                
         }
@@ -33891,6 +33921,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSRujukanKhusus.setName("btnBPJSRujukanKhusus"); 
         btnBPJSRujukanKhusus.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSRujukanKhusus.addActionListener(this::btnBPJSRujukanKhususActionPerformed);
+        
+        btnPemeliharaanGedung = new widget.ButtonBig();
+        btnPemeliharaanGedung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_back_house_window-home_2222745.png")));
+        btnPemeliharaanGedung.setText("Pemeliharaan Gedung");
+        btnPemeliharaanGedung.setIconTextGap(0);
+        btnPemeliharaanGedung.setName("btnPemeliharaanGedung"); 
+        btnPemeliharaanGedung.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemeliharaanGedung.addActionListener(this::btnPemeliharaanGedungActionPerformed);
     }
     
 }

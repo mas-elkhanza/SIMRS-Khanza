@@ -530,7 +530,7 @@
                                                                             'norm'=> $datapeserta['no_rkm_medis'],
                                                                             'namapoli' => $jadwal['nm_poli'],
                                                                             'namadokter' => $jadwal['nm_dokter'],
-                                                                            'estimasidilayani' => strtotime($jadwal['jam_mulai'].'+'.$dilayani.' minute')* 1000,
+                                                                            'estimasidilayani' => strtotime($decode[tanggalperiksa]." ".$jadwal['jam_mulai'].'+'.$dilayani.' minute')* 1000,
                                                                             'sisakuotajkn'=>($jadwal['kuota']-$sisakuota-1),
                                                                             'kuotajkn'=> $jadwal['kuota'],
                                                                             'sisakuotanonjkn'=>($jadwal['kuota']-$sisakuota-1),
