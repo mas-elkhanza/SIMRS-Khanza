@@ -231,17 +231,17 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"kuotanonjkn\": "+rs.getString("kuotanonjkn")+"," +
                                                     "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\"" +
                                                 "}";
-                                    TeksArea.append(requestJson+"\n");
+                                    TeksArea.append("JSON : "+requestJson+"\n");
                                     requestEntity = new HttpEntity(requestJson,headers);
                                     URL = link+"/antrean/add";	
-                                    System.out.println(URL);
+                                    System.out.println("URL : "+URL);
                                     //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     nameNode = root.path("metadata");
                                     if(nameNode.path("code").asText().equals("200")){
                                         Sequel.queryu2("update referensi_mobilejkn_bpjs set statuskirim='Sudah' where nomorreferensi='"+rs.getString("nomorreferensi")+"'");
                                     }  
-                                    TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
+                                    TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                                 }catch (Exception ex) {
                                     System.out.println("Notifikasi Bridging : "+ex);
                                 }
@@ -275,17 +275,17 @@ public class frmUtama extends javax.swing.JFrame {
                                                      "\"kodebooking\": \""+rs.getString("no_rawat_batal")+"\"," +
                                                      "\"keterangan\": \""+rs.getString("keterangan")+"\"" +
                                                   "}";
-                                    TeksArea.append(requestJson+"\n");
+                                    TeksArea.append("JSON : "+requestJson+"\n");
                                     requestEntity = new HttpEntity(requestJson,headers);
                                     URL = link+"/antrean/batal";	
-                                    System.out.println(URL);
+                                    System.out.println("URL : "+URL);
                                     //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     nameNode = root.path("metadata");
                                     if(nameNode.path("code").asText().equals("200")){
                                         Sequel.queryu2("update referensi_mobilejkn_bpjs_batal set statuskirim='Sudah' where nomorreferensi='"+rs.getString("nomorreferensi")+"'");
                                     }  
-                                    TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
+                                    TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                                 }catch (Exception ex) {
                                     System.out.println("Notifikasi Bridging : "+ex);
                                 }
@@ -335,17 +335,17 @@ public class frmUtama extends javax.swing.JFrame {
                                                              "\"taskid\": \"3\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
-                                            TeksArea.append(requestJson+"\n");
+                                            TeksArea.append("JSON : "+requestJson+"\n");
                                             requestEntity = new HttpEntity(requestJson,headers);
                                             URL = link+"/antrean/updatewaktu";	
-                                            System.out.println(URL);
+                                            System.out.println("URL : "+URL);
                                             //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             nameNode = root.path("metadata");
                                             if(!nameNode.path("code").asText().equals("200")){
                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='3' and no_rawat='"+rs.getString("no_rawat")+"'");
                                             }  
-                                            TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
+                                            TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                                         }catch (Exception ex) {
                                             System.out.println("Notifikasi Bridging : "+ex);
                                         }
@@ -370,17 +370,17 @@ public class frmUtama extends javax.swing.JFrame {
                                                              "\"taskid\": \"4\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
-                                            TeksArea.append(requestJson+"\n");
+                                            TeksArea.append("JSON : "+requestJson+"\n");
                                             requestEntity = new HttpEntity(requestJson,headers);
                                             URL = link+"/antrean/updatewaktu";	
-                                            System.out.println(URL);
+                                            System.out.println("URL : "+URL);
                                             //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             nameNode = root.path("metadata");
                                             if(!nameNode.path("code").asText().equals("200")){
                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='4' and no_rawat='"+rs.getString("no_rawat")+"'");
                                             }   
-                                            TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
+                                            TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                                         }catch (Exception ex) {
                                             System.out.println("Notifikasi Bridging : "+ex);
                                         }
@@ -405,17 +405,17 @@ public class frmUtama extends javax.swing.JFrame {
                                                              "\"taskid\": \"5\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
-                                            TeksArea.append(requestJson+"\n");
+                                            TeksArea.append("JSON : "+requestJson+"\n");
                                             requestEntity = new HttpEntity(requestJson,headers);
                                             URL = link+"/antrean/updatewaktu";	
-                                            System.out.println(URL);
+                                            System.out.println("URL : "+URL);
                                             //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             nameNode = root.path("metadata");
                                             if(!nameNode.path("code").asText().equals("200")){
                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='5' and no_rawat='"+rs.getString("no_rawat")+"'");
                                             }  
-                                            TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
+                                            TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                                         }catch (Exception ex) {
                                             System.out.println("Notifikasi Bridging : "+ex);
                                         }
