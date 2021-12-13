@@ -679,7 +679,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak,bpjs_referensi_poli_hfis,"+
                         "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi,bpjs_program_prb,bpjs_suplesi_jasaraharja,"+
                         "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print,bpjs_rujukan_khusus,"+
-                        "pemeliharaan_gedung,grafik_perbaikan_inventaris_pertanggal,grafik_perbaikan_inventaris_perbulan from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "pemeliharaan_gedung,grafik_perbaikan_inventaris_pertanggal,grafik_perbaikan_inventaris_perbulan,grafik_perbaikan_inventaris_pertahun from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3346,6 +3346,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[N]Perbaikan Inventaris Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[N]Perbaikan Inventaris Per Bulan",rs.getBoolean("grafik_perbaikan_inventaris_perbulan")});
+                    }
+                    
+                    if("[N]Perbaikan Inventaris Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Perbaikan Inventaris Per Tahun",rs.getBoolean("grafik_perbaikan_inventaris_pertahun")});
                     }
                     
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6445,6 +6449,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[N]Perbaikan Inventaris Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_perbaikan_inventaris_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[N]Perbaikan Inventaris Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_perbaikan_inventaris_pertahun='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[O]Indeks Surat".equals(tbUser.getValueAt(i,1).toString())){
