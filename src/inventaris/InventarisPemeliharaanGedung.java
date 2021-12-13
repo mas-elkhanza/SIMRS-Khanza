@@ -827,7 +827,7 @@ public final class InventarisPemeliharaanGedung extends javax.swing.JDialog {
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
 private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
-  isForm();                
+    isForm();                
 }//GEN-LAST:event_ChkInputActionPerformed
 
 private void NoKegiatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKegiatanKeyPressed
@@ -839,7 +839,8 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 }//GEN-LAST:event_TanggalKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pemeliharaan,3),signed)),0) from pemeliharaan_gedung where date_format(tanggal,'%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+                "PG"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoKegiatan);     
     }//GEN-LAST:event_formWindowOpened
 
     private void tbJnsPerawatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyReleased

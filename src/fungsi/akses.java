@@ -167,7 +167,8 @@ public final class akses {
             penilaian_awal_keperawatan_mata=false,penilaian_awal_medis_ranap=false,penilaian_awal_medis_ranap_kebidanan=false,penilaian_awal_medis_ralan_kebidanan=false,
             penilaian_awal_medis_igd=false,penilaian_awal_medis_ralan_anak=false,bpjs_referensi_poli_hfis=false,bpjs_referensi_dokter_hfis=false,
             bpjs_referensi_jadwal_hfis=false,penilaian_fisioterapi=false,bpjs_program_prb=false,bpjs_suplesi_jasaraharja=false,bpjs_data_induk_kecelakaan=false,
-            bpjs_sep_internal=false,bpjs_klaim_jasa_raharja=false,bpjs_daftar_finger_print=false,bpjs_rujukan_khusus=false,pemeliharaan_gedung=false;
+            bpjs_sep_internal=false,bpjs_klaim_jasa_raharja=false,bpjs_daftar_finger_print=false,bpjs_rujukan_khusus=false,pemeliharaan_gedung=false,
+            grafik_perbaikan_inventaris_pertanggal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -956,6 +957,7 @@ public final class akses {
                         akses.bpjs_daftar_finger_print=true;
                         akses.bpjs_rujukan_khusus=true;
                         akses.pemeliharaan_gedung=true;
+                        akses.grafik_perbaikan_inventaris_pertanggal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1728,6 +1730,7 @@ public final class akses {
                         akses.bpjs_daftar_finger_print=rs2.getBoolean("bpjs_daftar_finger_print");
                         akses.bpjs_rujukan_khusus=rs2.getBoolean("bpjs_rujukan_khusus");
                         akses.pemeliharaan_gedung=rs2.getBoolean("pemeliharaan_gedung");
+                        akses.grafik_perbaikan_inventaris_pertanggal=rs2.getBoolean("grafik_perbaikan_inventaris_pertanggal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2498,6 +2501,7 @@ public final class akses {
                         akses.bpjs_daftar_finger_print=false;
                         akses.bpjs_rujukan_khusus=false;
                         akses.pemeliharaan_gedung=false;
+                        akses.grafik_perbaikan_inventaris_pertanggal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3323,4 +3327,5 @@ public final class akses {
     public static boolean getbpjs_daftar_finger_print(){return akses.bpjs_daftar_finger_print;}
     public static boolean getbpjs_rujukan_khusus(){return akses.bpjs_rujukan_khusus;}
     public static boolean getpemeliharaan_gedung(){return akses.pemeliharaan_gedung;}
+    public static boolean getgrafik_perbaikan_inventaris_pertanggal(){return akses.grafik_perbaikan_inventaris_pertanggal;}
 }   

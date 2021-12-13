@@ -493,6 +493,7 @@ import grafikanalisa.GrafikPenerimaanObatPerbulan;
 import grafikanalisa.GrafikPengajuanAsetDepartemen;
 import grafikanalisa.GrafikPengajuanAsetStatus;
 import grafikanalisa.GrafikPengajuanAsetUrgensi;
+import grafikanalisa.GrafikPerbaikanInventarisPerTanggal;
 import grafikanalisa.GrafikPeristiwaK3PerBagianTubuh;
 import grafikanalisa.GrafikPeristiwaK3PerBulan;
 import grafikanalisa.GrafikPeristiwaK3PerDampakCidera;
@@ -17712,6 +17713,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikPerbaikanInventarisPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPerbaikanInventarisPerTanggal aplikasi=new GrafikPerbaikanInventarisPerTanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18339,7 +18351,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterMasalahKeperawatanMata,btnPenilaianAwalMedisRalan,btnPenilaianAwalMedisRanap,btnPenilaianAwalMedisRanapKandungan,
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
-            btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung;
+            btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal;
     
     public void isWall(){
         try{            
@@ -21744,6 +21756,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_porsidiet_perbangsal()==true){
                 Panelmenu.add(btnGrafikPorsiDietPerRuang);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_perbaikan_inventaris_pertanggal()==true){
+                Panelmenu.add(btnGrafikPerbaikanInventarisPerTanggal);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -25574,6 +25591,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_porsidiet_perbangsal()==true){
             Panelmenu.add(btnGrafikPorsiDietPerRuang);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_perbaikan_inventaris_pertanggal()==true){
+            Panelmenu.add(btnGrafikPerbaikanInventarisPerTanggal);
             jmlmenu++;
         }
 
@@ -30713,6 +30735,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_perbaikan_inventaris_pertanggal()==true){
+            if(btnGrafikPerbaikanInventarisPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPerbaikanInventarisPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -33929,6 +33958,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemeliharaanGedung.setName("btnPemeliharaanGedung"); 
         btnPemeliharaanGedung.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPemeliharaanGedung.addActionListener(this::btnPemeliharaanGedungActionPerformed);
+        
+        btnGrafikPerbaikanInventarisPerTanggal = new widget.ButtonBig();
+        btnGrafikPerbaikanInventarisPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikPerbaikanInventarisPerTanggal.setText("Perbaikan Inventaris Per Tanggal");
+        btnGrafikPerbaikanInventarisPerTanggal.setIconTextGap(0);
+        btnGrafikPerbaikanInventarisPerTanggal.setName("btnGrafikPerbaikanInventarisPerTanggal"); 
+        btnGrafikPerbaikanInventarisPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPerbaikanInventarisPerTanggal.addActionListener(this::btnGrafikPerbaikanInventarisPerTanggalActionPerformed);
     }
     
 }
