@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -183,7 +182,7 @@ public class frmUtama extends javax.swing.JFrame {
                         koneksi=koneksiDB.condb();
                         TeksArea.append("Menjalankan WS tambah antrian Mobile JKN BPJS\n");
                         ps=koneksi.prepareStatement(
-                                "SELECT referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
+                                "SELECT referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
                                 "referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter,referensi_mobilejkn_bpjs.jampraktek,"+
                                 "referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,"+
                                 "referensi_mobilejkn_bpjs.kodepoli,referensi_mobilejkn_bpjs.pasienbaru,referensi_mobilejkn_bpjs.kodedokter,referensi_mobilejkn_bpjs.jampraktek,"+
@@ -207,7 +206,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     headers.add("x-signature",api.getHmac(utc));
                                     headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                     requestJson ="{" +
-                                                    "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
+                                                    "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
                                                     "\"jenispasien\": \"JKN\"," +
                                                     "\"nomorkartu\": \""+rs.getString("nomorkartu")+"\"," +
                                                     "\"nik\": \""+rs.getString("nik")+"\"," +
@@ -272,7 +271,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     headers.add("x-signature",api.getHmac(utc));
                                     headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                     requestJson ="{" +
-                                                     "\"kodebooking\": \""+rs.getString("no_rawat_batal")+"\"," +
+                                                     "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
                                                      "\"keterangan\": \""+rs.getString("keterangan")+"\"" +
                                                   "}";
                                     TeksArea.append("JSON : "+requestJson+"\n");
@@ -302,7 +301,7 @@ public class frmUtama extends javax.swing.JFrame {
                         }
                         
                         ps=koneksi.prepareStatement(
-                                "SELECT referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
+                                "SELECT referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
                                 "referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter,referensi_mobilejkn_bpjs.jampraktek,"+
                                 "referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,"+
                                 "referensi_mobilejkn_bpjs.kodepoli,referensi_mobilejkn_bpjs.pasienbaru,referensi_mobilejkn_bpjs.kodedokter,referensi_mobilejkn_bpjs.jampraktek,"+
@@ -331,7 +330,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
                                                              "\"taskid\": \"3\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
@@ -366,7 +365,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
                                                              "\"taskid\": \"4\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
@@ -401,7 +400,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
                                                              "\"taskid\": \"5\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
