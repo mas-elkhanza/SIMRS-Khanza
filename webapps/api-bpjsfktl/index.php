@@ -38,6 +38,7 @@
         }else if ($method == 'POST') {
             if ((!empty($header['x-username'])) && (!empty($header['x-token']))) {
                 $hash_user = hash_pass($header['x-username'], 12);
+                $hash_pass = hash_pass($header['x-password'], 12);
                 if(!(USERNAME==$header['x-username'])){
                     $response = array(
                         'metadata' => array(
@@ -399,10 +400,10 @@
                                             )
                                         );
                                         http_response_code(201);
-                                    }else if(getOne2("select count(nomorreferensi) from referensi_mobilejkn_bpjs where nomorreferensi='$decode[nomorreferensi]'")>0){
+                                    }else if(getOne2("select count(nomorreferensi) from referensi_mobilejkn_bpjs where (status='Belum' or status='Checkin') and nomorreferensi='$decode[nomorreferensi]'")>0){
                                         $response = array(
                                             'metadata' => array(
-                                                'message' => 'Cilukba',
+                                                'message' => 'Anda sudah terdaftar dalam antrian menggunakan nomor referensi yang sama',
                                                 'code' => 201
                                             )
                                         );
@@ -546,7 +547,7 @@
                                                                                     'norm'=> $datapeserta['no_rkm_medis'],
                                                                                     'namapoli' => $jadwal['nm_poli'],
                                                                                     'namadokter' => $jadwal['nm_dokter'],
-                                                                                    'estimasidilayani' => strtotime($decode[tanggalperiksa]." ".$jadwal['jam_mulai'].'+'.$dilayani.' minute')* 1000,
+                                                                                    'estimasidilayani' => strtotime($decode['tanggalperiksa']." ".$jadwal['jam_mulai'].'+'.$dilayani.' minute')* 1000,
                                                                                     'sisakuotajkn'=>($jadwal['kuota']-$sisakuota-1),
                                                                                     'kuotajkn'=> $jadwal['kuota'],
                                                                                     'sisakuotanonjkn'=>($jadwal['kuota']-$sisakuota-1),
