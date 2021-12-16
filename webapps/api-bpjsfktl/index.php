@@ -38,7 +38,6 @@
         }else if ($method == 'POST') {
             if ((!empty($header['x-username'])) && (!empty($header['x-token']))) {
                 $hash_user = hash_pass($header['x-username'], 12);
-                $hash_pass = hash_pass($header['x-password'], 12);
                 if(!(USERNAME==$header['x-username'])){
                     $response = array(
                         'metadata' => array(
