@@ -561,8 +561,7 @@
 
                                                                             http_response_code(200);
                                                                         } else {
-                                                                            $tanggalupdate=date("Y-m-d H:i:s", ($decode['waktu']/1000));
-                                                                            $update=bukaquery2("update referensi_mobilejkn_bpjs set status='Gagal',validasi='$tanggalupdate' where nobooking='$nobooking'");
+                                                                            $update=bukaquery2("update referensi_mobilejkn_bpjs set status='Gagal',validasi=now() where nobooking='$nobooking'");
                                                                             $response = array(
                                                                                 'metadata' => array(
                                                                                     'message' => "Maaf terjadi kesalahan, hubungi Admnistrator..",
@@ -690,8 +689,7 @@
                                                     );  
                                                     http_response_code(201);
                                                 }else{
-                                                    $tanggalupdate=date("Y-m-d H:i:s", ($decode['waktu']/1000));
-                                                    $update=bukaquery2("update referensi_mobilejkn_bpjs set status='Checkin',validasi='$tanggalupdate' where nobooking='$decode[kodebooking]'");
+                                                    $update=bukaquery2("update referensi_mobilejkn_bpjs set status='Checkin',validasi=now() where nobooking='$decode[kodebooking]'");
                                                     if($update){
                                                         $response = array(
                                                             'metadata' => array(
@@ -796,8 +794,7 @@
                                                 );
                                                 http_response_code(201);
                                             }else if($booking['status']=='Belum'){
-                                                $tanggalupdate = date("Y-m-d H:i:s", ($decode['waktu']/1000));
-                                                $update        = bukaquery2("update referensi_mobilejkn_bpjs set status='Batal',validasi='$tanggalupdate' where nobooking='$decode[kodebooking]'");
+                                                $update        = bukaquery2("update referensi_mobilejkn_bpjs set status='Batal',validasi=now() where nobooking='$decode[kodebooking]'");
                                                 $batal         = bukaquery2("delete from reg_periksa where no_rawat='$booking[no_rawat]'");
                                                 if($batal){
                                                     $response = array(
