@@ -222,7 +222,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"jeniskunjungan\": "+rs.getString("jeniskunjungan").substring(0,1)+"," +
                                                     "\"nomorreferensi\": \""+rs.getString("nomorreferensi")+"\"," +
                                                     "\"nomorantrean\": \""+rs.getString("nomorantrean")+"\"," +
-                                                    "\"angkaantrean\": "+rs.getString("angkaantrean")+"," +
+                                                    "\"angkaantrean\": "+Integer.parseInt(rs.getString("angkaantrean"))+"," +
                                                     "\"estimasidilayani\": "+rs.getString("estimasidilayani")+"," +
                                                     "\"sisakuotajkn\": "+rs.getString("sisakuotajkn")+"," +
                                                     "\"kuotajkn\": "+rs.getString("kuotajkn")+"," +
