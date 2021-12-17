@@ -494,6 +494,7 @@ import grafikanalisa.GrafikPengajuanAsetDepartemen;
 import grafikanalisa.GrafikPengajuanAsetStatus;
 import grafikanalisa.GrafikPengajuanAsetUrgensi;
 import grafikanalisa.GrafikPerbaikanInventarisPerBulan;
+import grafikanalisa.GrafikPerbaikanInventarisPerPelaksanaStatus;
 import grafikanalisa.GrafikPerbaikanInventarisPerTahun;
 import grafikanalisa.GrafikPerbaikanInventarisPerTanggal;
 import grafikanalisa.GrafikPeristiwaK3PerBagianTubuh;
@@ -17748,6 +17749,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikPerbaikanInventarisPerPelaksanaStatusActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPerbaikanInventarisPerPelaksanaStatus aplikasi=new GrafikPerbaikanInventarisPerPelaksanaStatus(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18376,7 +18388,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanKandungan,btnPenilaianAwalMedisIGD,btnPenilaianAwalMedisRalanBayi,btnBPJSReferensiPoliHFIS,
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
-            btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun;
+            btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus;
     
     public void isWall(){
         try{            
@@ -21796,6 +21808,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_perbaikan_inventaris_pertahun()==true){
                 Panelmenu.add(btnGrafikPerbaikanInventarisPerTahun);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_perbaikan_inventaris_perpelaksana_status()==true){
+                Panelmenu.add(btnGrafikPerbaikanInventarisPerPelaksanaStatus);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -25641,6 +25658,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getgrafik_perbaikan_inventaris_pertahun()==true){
             Panelmenu.add(btnGrafikPerbaikanInventarisPerTahun);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_perbaikan_inventaris_perpelaksana_status()==true){
+            Panelmenu.add(btnGrafikPerbaikanInventarisPerPelaksanaStatus);
             jmlmenu++;
         }
 
@@ -30801,6 +30823,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_perbaikan_inventaris_perpelaksana_status()==true){
+            if(btnGrafikPerbaikanInventarisPerPelaksanaStatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPerbaikanInventarisPerPelaksanaStatus);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -34041,6 +34070,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikPerbaikanInventarisPerTahun.setName("btnGrafikPerbaikanInventarisPerTahun"); 
         btnGrafikPerbaikanInventarisPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
         btnGrafikPerbaikanInventarisPerTahun.addActionListener(this::btnGrafikPerbaikanInventarisPerTahunActionPerformed);
+        
+        btnGrafikPerbaikanInventarisPerPelaksanaStatus = new widget.ButtonBig();
+        btnGrafikPerbaikanInventarisPerPelaksanaStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikPerbaikanInventarisPerPelaksanaStatus.setText("Perbaikan Inventaris Per Pelaksana & Status");
+        btnGrafikPerbaikanInventarisPerPelaksanaStatus.setIconTextGap(0);
+        btnGrafikPerbaikanInventarisPerPelaksanaStatus.setName("btnGrafikPerbaikanInventarisPerPelaksanaStatus"); 
+        btnGrafikPerbaikanInventarisPerPelaksanaStatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPerbaikanInventarisPerPelaksanaStatus.addActionListener(this::btnGrafikPerbaikanInventarisPerPelaksanaStatusActionPerformed);
     }
     
 }
