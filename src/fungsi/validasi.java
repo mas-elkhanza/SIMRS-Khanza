@@ -837,6 +837,14 @@ public final class validasi {
         }
     }
     
+    public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JComboBox kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
     public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JTextField kanan){
         if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();

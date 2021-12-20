@@ -110,6 +110,14 @@
                                             )
                                         );  
                                         http_response_code(201);
+                                    }else if(date("Y-m-d")>$decode['tanggalperiksa']){
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Tanggal Periksa tidak berlaku',
+                                                'code' => 201
+                                            )
+                                        );  
+                                        http_response_code(201);
                                     }else if(empty($decode['jampraktek'])) { 
                                         $response = array(
                                             'metadata' => array(

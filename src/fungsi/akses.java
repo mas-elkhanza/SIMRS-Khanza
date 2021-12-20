@@ -169,7 +169,7 @@ public final class akses {
             bpjs_referensi_jadwal_hfis=false,penilaian_fisioterapi=false,bpjs_program_prb=false,bpjs_suplesi_jasaraharja=false,bpjs_data_induk_kecelakaan=false,
             bpjs_sep_internal=false,bpjs_klaim_jasa_raharja=false,bpjs_daftar_finger_print=false,bpjs_rujukan_khusus=false,pemeliharaan_gedung=false,
             grafik_perbaikan_inventaris_pertanggal=false,grafik_perbaikan_inventaris_perbulan=false,grafik_perbaikan_inventaris_pertahun=false,
-            grafik_perbaikan_inventaris_perpelaksana_status=false;
+            grafik_perbaikan_inventaris_perpelaksana_status=false,penilaian_mcu=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -962,6 +962,7 @@ public final class akses {
                         akses.grafik_perbaikan_inventaris_perbulan=true;
                         akses.grafik_perbaikan_inventaris_pertahun=true;
                         akses.grafik_perbaikan_inventaris_perpelaksana_status=true;
+                        akses.penilaian_mcu=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1738,6 +1739,7 @@ public final class akses {
                         akses.grafik_perbaikan_inventaris_perbulan=rs2.getBoolean("grafik_perbaikan_inventaris_perbulan");
                         akses.grafik_perbaikan_inventaris_pertahun=rs2.getBoolean("grafik_perbaikan_inventaris_pertahun");
                         akses.grafik_perbaikan_inventaris_perpelaksana_status=rs2.getBoolean("grafik_perbaikan_inventaris_perpelaksana_status");
+                        akses.penilaian_mcu=rs2.getBoolean("penilaian_mcu");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2512,6 +2514,7 @@ public final class akses {
                         akses.grafik_perbaikan_inventaris_perbulan=false;
                         akses.grafik_perbaikan_inventaris_pertahun=false;
                         akses.grafik_perbaikan_inventaris_perpelaksana_status=false;
+                        akses.penilaian_mcu=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3341,4 +3344,5 @@ public final class akses {
     public static boolean getgrafik_perbaikan_inventaris_perbulan(){return akses.grafik_perbaikan_inventaris_perbulan;}
     public static boolean getgrafik_perbaikan_inventaris_pertahun(){return akses.grafik_perbaikan_inventaris_pertahun;}
     public static boolean getgrafik_perbaikan_inventaris_perpelaksana_status(){return akses.grafik_perbaikan_inventaris_perpelaksana_status;}
+    public static boolean getpenilaian_mcu(){return akses.penilaian_mcu;}
 }   
