@@ -292,8 +292,8 @@ public final class RMMCU extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(dokter.getTable().getSelectedRow()!= -1){ 
-                    KdPetugas.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());   
+                    KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                    NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());   
                 }              
             }
             @Override
@@ -355,8 +355,8 @@ public final class RMMCU extends javax.swing.JDialog {
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
         label14 = new widget.Label();
-        KdPetugas = new widget.TextBox();
-        NmPetugas = new widget.TextBox();
+        KdDokter = new widget.TextBox();
+        NmDokter = new widget.TextBox();
         BtnDokter = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
@@ -775,17 +775,17 @@ public final class RMMCU extends javax.swing.JDialog {
         FormInput.add(label14);
         label14.setBounds(0, 40, 70, 23);
 
-        KdPetugas.setEditable(false);
-        KdPetugas.setName("KdPetugas"); // NOI18N
-        KdPetugas.setPreferredSize(new java.awt.Dimension(80, 23));
-        FormInput.add(KdPetugas);
-        KdPetugas.setBounds(74, 40, 100, 23);
+        KdDokter.setEditable(false);
+        KdDokter.setName("KdDokter"); // NOI18N
+        KdDokter.setPreferredSize(new java.awt.Dimension(80, 23));
+        FormInput.add(KdDokter);
+        KdDokter.setBounds(74, 40, 100, 23);
 
-        NmPetugas.setEditable(false);
-        NmPetugas.setName("NmPetugas"); // NOI18N
-        NmPetugas.setPreferredSize(new java.awt.Dimension(207, 23));
-        FormInput.add(NmPetugas);
-        NmPetugas.setBounds(176, 40, 180, 23);
+        NmDokter.setEditable(false);
+        NmDokter.setName("NmDokter"); // NOI18N
+        NmDokter.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(NmDokter);
+        NmDokter.setBounds(176, 40, 180, 23);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter.setMnemonic('2');
@@ -964,7 +964,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2021 12:18:17" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2021 22:47:42" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -983,11 +983,6 @@ public final class RMMCU extends javax.swing.JDialog {
 
         TinggiBadan.setFocusTraversalPolicyProvider(true);
         TinggiBadan.setName("TinggiBadan"); // NOI18N
-        TinggiBadan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TinggiBadanActionPerformed(evt);
-            }
-        });
         TinggiBadan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TinggiBadanKeyPressed(evt);
@@ -1295,86 +1290,171 @@ public final class RMMCU extends javax.swing.JDialog {
 
         Submandibula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         Submandibula.setName("Submandibula"); // NOI18N
+        Submandibula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SubmandibulaKeyPressed(evt);
+            }
+        });
         FormInput.add(Submandibula);
         Submandibula.setBounds(174, 300, 130, 23);
 
         Kesadaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Composmentis", "Apatis", "Somnolen" }));
         Kesadaran.setName("Kesadaran"); // NOI18N
+        Kesadaran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KesadaranKeyPressed(evt);
+            }
+        });
         FormInput.add(Kesadaran);
         Kesadaran.setBounds(356, 220, 125, 23);
 
         Leher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         Leher.setName("Leher"); // NOI18N
+        Leher.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LeherKeyPressed(evt);
+            }
+        });
         FormInput.add(Leher);
         Leher.setBounds(174, 330, 130, 23);
 
         Axila.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         Axila.setName("Axila"); // NOI18N
+        Axila.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AxilaKeyPressed(evt);
+            }
+        });
         FormInput.add(Axila);
         Axila.setBounds(435, 300, 130, 23);
 
         Inguinal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         Inguinal.setName("Inguinal"); // NOI18N
+        Inguinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InguinalKeyPressed(evt);
+            }
+        });
         FormInput.add(Inguinal);
         Inguinal.setBounds(435, 330, 130, 23);
 
         Supraklavikula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         Supraklavikula.setName("Supraklavikula"); // NOI18N
+        Supraklavikula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SupraklavikulaKeyPressed(evt);
+            }
+        });
         FormInput.add(Supraklavikula);
         Supraklavikula.setBounds(724, 300, 130, 23);
 
         Oedema.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         Oedema.setName("Oedema"); // NOI18N
+        Oedema.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                OedemaKeyPressed(evt);
+            }
+        });
         FormInput.add(Oedema);
         Oedema.setBounds(146, 400, 105, 23);
 
         NyeriTekanSinusFrontalis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         NyeriTekanSinusFrontalis.setName("NyeriTekanSinusFrontalis"); // NOI18N
+        NyeriTekanSinusFrontalis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriTekanSinusFrontalisKeyPressed(evt);
+            }
+        });
         FormInput.add(NyeriTekanSinusFrontalis);
         NyeriTekanSinusFrontalis.setBounds(445, 400, 105, 23);
 
         NyeriTekananSinusMaxilaris.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         NyeriTekananSinusMaxilaris.setName("NyeriTekananSinusMaxilaris"); // NOI18N
+        NyeriTekananSinusMaxilaris.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriTekananSinusMaxilarisKeyPressed(evt);
+            }
+        });
         FormInput.add(NyeriTekananSinusMaxilaris);
         NyeriTekananSinusMaxilaris.setBounds(749, 400, 105, 23);
 
         Palpebra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Oedem", "Ptosis" }));
         Palpebra.setName("Palpebra"); // NOI18N
+        Palpebra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PalpebraKeyPressed(evt);
+            }
+        });
         FormInput.add(Palpebra);
         Palpebra.setBounds(162, 450, 120, 23);
 
         Sklera.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Ikterik" }));
         Sklera.setName("Sklera"); // NOI18N
+        Sklera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SkleraKeyPressed(evt);
+            }
+        });
         FormInput.add(Sklera);
         Sklera.setBounds(341, 450, 100, 23);
 
         TestButaWarna.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Buta Warna Partial", "Buta Warna Total" }));
         TestButaWarna.setName("TestButaWarna"); // NOI18N
+        TestButaWarna.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TestButaWarnaKeyPressed(evt);
+            }
+        });
         FormInput.add(TestButaWarna);
         TestButaWarna.setBounds(709, 450, 145, 23);
 
         Konjungtiva.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Anemis", "Hiperemis" }));
         Konjungtiva.setName("Konjungtiva"); // NOI18N
+        Konjungtiva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KonjungtivaKeyPressed(evt);
+            }
+        });
         FormInput.add(Konjungtiva);
         Konjungtiva.setBounds(162, 480, 120, 23);
 
         Lensa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jernih", "Keruh", "Kacamata" }));
         Lensa.setName("Lensa"); // NOI18N
+        Lensa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LensaKeyPressed(evt);
+            }
+        });
         FormInput.add(Lensa);
         Lensa.setBounds(341, 480, 100, 23);
 
         Cornea.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
         Cornea.setName("Cornea"); // NOI18N
+        Cornea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CorneaKeyPressed(evt);
+            }
+        });
         FormInput.add(Cornea);
         Cornea.setBounds(505, 450, 115, 23);
 
         Pupil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isokor", "Anisokor" }));
         Pupil.setName("Pupil"); // NOI18N
+        Pupil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PupilKeyPressed(evt);
+            }
+        });
         FormInput.add(Pupil);
         Pupil.setBounds(505, 480, 115, 23);
 
         LubangTelinga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lapang", "Sempit", "Serumen Prop" }));
         LubangTelinga.setName("LubangTelinga"); // NOI18N
+        LubangTelinga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LubangTelingaKeyPressed(evt);
+            }
+        });
         FormInput.add(LubangTelinga);
         LubangTelinga.setBounds(140, 530, 118, 23);
 
@@ -1390,6 +1470,11 @@ public final class RMMCU extends javax.swing.JDialog {
 
         DaunTelinga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
         DaunTelinga.setName("DaunTelinga"); // NOI18N
+        DaunTelinga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DaunTelingaKeyPressed(evt);
+            }
+        });
         FormInput.add(DaunTelinga);
         DaunTelinga.setBounds(306, 530, 114, 23);
 
@@ -1400,6 +1485,11 @@ public final class RMMCU extends javax.swing.JDialog {
 
         SelaputPendengaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Intak", "Tidak Intak" }));
         SelaputPendengaran.setName("SelaputPendengaran"); // NOI18N
+        SelaputPendengaran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SelaputPendengaranKeyPressed(evt);
+            }
+        });
         FormInput.add(SelaputPendengaran);
         SelaputPendengaran.setBounds(548, 530, 105, 23);
 
@@ -1410,6 +1500,11 @@ public final class RMMCU extends javax.swing.JDialog {
 
         NyeriMastoideus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         NyeriMastoideus.setName("NyeriMastoideus"); // NOI18N
+        NyeriMastoideus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriMastoideusKeyPressed(evt);
+            }
+        });
         FormInput.add(NyeriMastoideus);
         NyeriMastoideus.setBounds(756, 530, 98, 23);
 
@@ -1426,6 +1521,11 @@ public final class RMMCU extends javax.swing.JDialog {
 
         SeptumNasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Deviasi" }));
         SeptumNasi.setName("SeptumNasi"); // NOI18N
+        SeptumNasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SeptumNasiKeyPressed(evt);
+            }
+        });
         FormInput.add(SeptumNasi);
         SeptumNasi.setBounds(166, 580, 100, 23);
 
@@ -1436,6 +1536,11 @@ public final class RMMCU extends javax.swing.JDialog {
 
         LubangHidung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lapang", "Rhinore", "Epistaksis" }));
         LubangHidung.setName("LubangHidung"); // NOI18N
+        LubangHidung.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LubangHidungKeyPressed(evt);
+            }
+        });
         FormInput.add(LubangHidung);
         LubangHidung.setBounds(444, 580, 100, 23);
 
@@ -1472,26 +1577,51 @@ public final class RMMCU extends javax.swing.JDialog {
 
         Bibir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lembab", "Kering" }));
         Bibir.setName("Bibir"); // NOI18N
+        Bibir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BibirKeyPressed(evt);
+            }
+        });
         FormInput.add(Bibir);
         Bibir.setBounds(127, 630, 88, 23);
 
         Caries.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         Caries.setName("Caries"); // NOI18N
+        Caries.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CariesKeyPressed(evt);
+            }
+        });
         FormInput.add(Caries);
         Caries.setBounds(287, 630, 98, 23);
 
         Lidah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bersih", "Kotor", "Tremor" }));
         Lidah.setName("Lidah"); // NOI18N
+        Lidah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LidahKeyPressed(evt);
+            }
+        });
         FormInput.add(Lidah);
         Lidah.setBounds(452, 630, 85, 23);
 
         Faring.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Hiperemis" }));
         Faring.setName("Faring"); // NOI18N
+        Faring.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FaringKeyPressed(evt);
+            }
+        });
         FormInput.add(Faring);
         Faring.setBounds(610, 630, 100, 23);
 
         Tonsil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "T1-T1", "T2-T2", "T3-T3", "T4-T4", "T0-T0" }));
         Tonsil.setName("Tonsil"); // NOI18N
+        Tonsil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TonsilKeyPressed(evt);
+            }
+        });
         FormInput.add(Tonsil);
         Tonsil.setBounds(774, 630, 80, 23);
 
@@ -1513,11 +1643,21 @@ public final class RMMCU extends javax.swing.JDialog {
 
         KelenjarLimfe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         KelenjarLimfe.setName("KelenjarLimfe"); // NOI18N
+        KelenjarLimfe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KelenjarLimfeKeyPressed(evt);
+            }
+        });
         FormInput.add(KelenjarLimfe);
         KelenjarLimfe.setBounds(175, 680, 140, 23);
 
         KelenjarGondok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         KelenjarGondok.setName("KelenjarGondok"); // NOI18N
+        KelenjarGondok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KelenjarGondokKeyPressed(evt);
+            }
+        });
         FormInput.add(KelenjarGondok);
         KelenjarGondok.setBounds(505, 680, 140, 23);
 
@@ -1565,26 +1705,51 @@ public final class RMMCU extends javax.swing.JDialog {
 
         GerakanDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simetris", "Tidak Simetris" }));
         GerakanDada.setName("GerakanDada"); // NOI18N
+        GerakanDada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GerakanDadaKeyPressed(evt);
+            }
+        });
         FormInput.add(GerakanDada);
         GerakanDada.setBounds(173, 750, 129, 23);
 
         BunyiNapas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vesikuler", "Bronkhial", "Trakeal" }));
         BunyiNapas.setName("BunyiNapas"); // NOI18N
+        BunyiNapas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BunyiNapasKeyPressed(evt);
+            }
+        });
         FormInput.add(BunyiNapas);
         BunyiNapas.setBounds(173, 780, 129, 23);
 
         VocalFremitus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sama", "Tidak Sama" }));
         VocalFremitus.setName("VocalFremitus"); // NOI18N
+        VocalFremitus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                VocalFremitusKeyPressed(evt);
+            }
+        });
         FormInput.add(VocalFremitus);
         VocalFremitus.setBounds(495, 750, 116, 23);
 
         BunyiTambahan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Wheezing", "Tronkhi" }));
         BunyiTambahan.setName("BunyiTambahan"); // NOI18N
+        BunyiTambahan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BunyiTambahanKeyPressed(evt);
+            }
+        });
         FormInput.add(BunyiTambahan);
         BunyiTambahan.setBounds(495, 780, 116, 23);
 
         PerkusiDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sonor", "Pekak" }));
         PerkusiDada.setName("PerkusiDada"); // NOI18N
+        PerkusiDada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PerkusiDadaKeyPressed(evt);
+            }
+        });
         FormInput.add(PerkusiDada);
         PerkusiDada.setBounds(756, 750, 98, 23);
 
@@ -1677,24 +1842,39 @@ public final class RMMCU extends javax.swing.JDialog {
 
         IctusCordis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Terlihat", "Terlihat", "Teraba", "Tidak Teraba" }));
         IctusCordis.setName("IctusCordis"); // NOI18N
+        IctusCordis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IctusCordisKeyPressed(evt);
+            }
+        });
         FormInput.add(IctusCordis);
         IctusCordis.setBounds(163, 830, 139, 23);
 
         BunyiJantung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reguler", "Irreguler", "Korotkoff I, II", "Gallop", "Lain-lain" }));
         BunyiJantung.setName("BunyiJantung"); // NOI18N
+        BunyiJantung.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BunyiJantungKeyPressed(evt);
+            }
+        });
         FormInput.add(BunyiJantung);
         BunyiJantung.setBounds(495, 830, 116, 23);
 
         Batas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Melebar" }));
         Batas.setName("Batas"); // NOI18N
+        Batas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BatasKeyPressed(evt);
+            }
+        });
         FormInput.add(Batas);
         Batas.setBounds(756, 830, 98, 23);
 
         Inspeksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Datar", "Cembung" }));
         Inspeksi.setName("Inspeksi"); // NOI18N
-        Inspeksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InspeksiActionPerformed(evt);
+        Inspeksi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InspeksiKeyPressed(evt);
             }
         });
         FormInput.add(Inspeksi);
@@ -1702,54 +1882,109 @@ public final class RMMCU extends javax.swing.JDialog {
 
         Palpasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Supel", "Tegang (Defans Muscular)" }));
         Palpasi.setName("Palpasi"); // NOI18N
+        Palpasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PalpasiKeyPressed(evt);
+            }
+        });
         FormInput.add(Palpasi);
         Palpasi.setBounds(424, 880, 187, 23);
 
         PerkusiAbdomen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Timpani", "Hipertimpani" }));
         PerkusiAbdomen.setName("PerkusiAbdomen"); // NOI18N
+        PerkusiAbdomen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PerkusiAbdomenKeyPressed(evt);
+            }
+        });
         FormInput.add(PerkusiAbdomen);
         PerkusiAbdomen.setBounds(145, 910, 130, 23);
 
         Auskultasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Meningkat (>4x/menit)" }));
         Auskultasi.setName("Auskultasi"); // NOI18N
+        Auskultasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AuskultasiKeyPressed(evt);
+            }
+        });
         FormInput.add(Auskultasi);
         Auskultasi.setBounds(424, 910, 187, 23);
 
         Hepar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         Hepar.setName("Hepar"); // NOI18N
+        Hepar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HeparKeyPressed(evt);
+            }
+        });
         FormInput.add(Hepar);
         Hepar.setBounds(724, 880, 130, 23);
 
         Limpa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
         Limpa.setName("Limpa"); // NOI18N
+        Limpa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LimpaKeyPressed(evt);
+            }
+        });
         FormInput.add(Limpa);
         Limpa.setBounds(724, 910, 130, 23);
 
         NyeriKtok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         NyeriKtok.setName("NyeriKtok"); // NOI18N
+        NyeriKtok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriKtokKeyPressed(evt);
+            }
+        });
         FormInput.add(NyeriKtok);
         NyeriKtok.setBounds(291, 960, 110, 23);
 
         ExtremitasAtas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal; Yaitu" }));
         ExtremitasAtas.setName("ExtremitasAtas"); // NOI18N
+        ExtremitasAtas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ExtremitasAtasKeyPressed(evt);
+            }
+        });
         FormInput.add(ExtremitasAtas);
         ExtremitasAtas.setBounds(187, 1010, 147, 23);
 
         ExtremitasBawah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak  Normal; Yaitu" }));
         ExtremitasBawah.setName("ExtremitasBawah"); // NOI18N
+        ExtremitasBawah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ExtremitasBawahKeyPressed(evt);
+            }
+        });
         FormInput.add(ExtremitasBawah);
         ExtremitasBawah.setBounds(579, 1010, 147, 23);
 
         KetExtremitasAtas.setName("KetExtremitasAtas"); // NOI18N
+        KetExtremitasAtas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KetExtremitasAtasKeyPressed(evt);
+            }
+        });
         FormInput.add(KetExtremitasAtas);
         KetExtremitasAtas.setBounds(337, 1010, 125, 23);
 
         KetExtremitasBawah.setName("KetExtremitasBawah"); // NOI18N
+        KetExtremitasBawah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KetExtremitasBawahKeyPressed(evt);
+            }
+        });
         FormInput.add(KetExtremitasBawah);
         KetExtremitasBawah.setBounds(729, 1010, 125, 23);
 
         Kulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tato", "Penyakit Kulit" }));
         Kulit.setName("Kulit"); // NOI18N
+        Kulit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KulitKeyPressed(evt);
+            }
+        });
         FormInput.add(Kulit);
         Kulit.setBounds(553, 960, 118, 23);
 
@@ -1805,7 +2040,7 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane4.setBounds(594, 115, 260, 48);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText(" cm");
+        jLabel24.setText("cm");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
         jLabel24.setBounds(409, 250, 30, 23);
@@ -2051,13 +2286,13 @@ public final class RMMCU extends javax.swing.JDialog {
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(Kesimpulan.getText().trim().equals("")){
-            Valid.textKosong(Palpebra,"Kesimpulan");
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else if(Anjuran.getText().trim().equals("")){
             Valid.textKosong(Anjuran,"Anjuran");
-        }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Petugas");
+        }else if(NmDokter.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter");
         }else{
-           if(Sequel.menyimpantf("penilaian_MCU","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",75,new String[]{
+           if(Sequel.menyimpantf("penilaian_mcu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",71,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),Palpebra.getSelectedItem().toString(),
                     Konjungtiva.getSelectedItem().toString(),Sklera.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),TinggiBadan.getText(),BeratBadan.getText(),Kesadaran.getSelectedItem().toString(),
                     Submandibula.getSelectedItem().toString(),Leher.getSelectedItem().toString(),Supraklavikula.getSelectedItem().toString(),Axila.getSelectedItem().toString(),Inguinal.getSelectedItem().toString(),Oedema.getSelectedItem().toString(),NyeriTekanSinusFrontalis.getSelectedItem().toString(),
@@ -2068,7 +2303,7 @@ public final class RMMCU extends javax.swing.JDialog {
                     KelenjarLimfe.getSelectedItem().toString(),KelenjarGondok.getSelectedItem().toString(),GerakanDada.getSelectedItem().toString(),VocalFremitus.getSelectedItem().toString(),PerkusiDada.getSelectedItem().toString(),BunyiNapas.getSelectedItem().toString(),BunyiTambahan.getSelectedItem().toString(),
                     IctusCordis.getSelectedItem().toString(),BunyiJantung.getSelectedItem().toString(),Batas.getSelectedItem().toString(),Inspeksi.getSelectedItem().toString(),Palpasi.getSelectedItem().toString(),PerkusiAbdomen.getSelectedItem().toString(),Auskultasi.getSelectedItem().toString(),Hepar.getSelectedItem().toString(),Limpa.getSelectedItem().toString(),NyeriKtok.getSelectedItem().toString(),ExtremitasAtas.getSelectedItem().toString(),KetExtremitasAtas.getText(),ExtremitasBawah.getSelectedItem().toString(),KetExtremitasBawah.getText(),Kulit.getSelectedItem().toString(),
                     EKG.getText(),RongsenThorax.getText(),Alkohol.getText(),Kesimpulan.getText(),Anjuran.getText(),
-                    KdPetugas.getText()
+                    KdDokter.getText()
                 })==true){
                     emptTeks();
             }
@@ -2099,7 +2334,7 @@ public final class RMMCU extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString())){
+                if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh dokter yang bersangkutan..!!");
@@ -2134,14 +2369,14 @@ public final class RMMCU extends javax.swing.JDialog {
             Valid.textKosong(TinggiBadan,"GCS");
         }else if(BeratBadan.getText().trim().equals("")){
             Valid.textKosong(BeratBadan,"BB(Kg)");       
-        }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Petugas");
+        }else if(NmDokter.getText().trim().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString())){
+                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
@@ -2180,42 +2415,42 @@ public final class RMMCU extends javax.swing.JDialog {
             try{
                 if(TCari.getText().equals("")){
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_MCU.tanggal,penilaian_MCU.informasi,penilaian_MCU.palpebra,"+
-                            "penilaian_MCU.konjungtiva,penilaian_MCU.sklera,penilaian_MCU.td,penilaian_MCU.hr,penilaian_MCU.rr,penilaian_MCU.suhu,penilaian_MCU.tinggi_badan,penilaian_MCU.berat_badan,"+
-                            "penilaian_MCU.kesadaran,penilaian_MCU.submandibula,penilaian_MCU.leher,penilaian_MCU.supraklavikula,penilaian_MCU.axila,penilaian_MCU.inguinal,penilaian_MCU.oedema,"+
-                            "penilaian_MCU.sinus_frontalis,penilaian_MCU.riwayat_penyakit_sekarang,penilaian_MCU.ket_riwayat_penyakit_sekarang,penilaian_MCU.riwayat_penyakit_keluarga,penilaian_MCU.ket_riwayat_penyakit_keluarga,penilaian_MCU.riwayat_penyakit_dahulu,penilaian_MCU.ket_riwayat_penyakit_dahulu,"+
-                            "penilaian_MCU.riwayat_alergi_makanan,penilaian_MCU.ket_riwayat_alergi_makanan,penilaian_MCU.adl,penilaian_MCU.sinus_maxillaris,penilaian_MCU.merokok,penilaian_MCU.cornea,"+
-                            "penilaian_MCU.lensa,penilaian_MCU.pupil,penilaian_MCU.buta_warna,penilaian_MCU.laboratorium,penilaian_MCU.lubang_telinga,penilaian_MCU.daun_telinga,penilaian_MCU.selaput_pendengaran,penilaian_MCU.nyeri_mastoideus,"+
-                            "penilaian_MCU.septum_nasi,penilaian_MCU.lubang_hidung,penilaian_MCU.bibir,penilaian_MCU.caries,penilaian_MCU.lidah,penilaian_MCU.faring,penilaian_MCU.tonsil,penilaian_MCU.kelenjar_limfe,penilaian_MCU.kelenjar_gondok,"+
-                            "penilaian_MCU.gerakan_dada,penilaian_MCU.vocal_fremitus,penilaian_MCU.perkusi,penilaian_MCU.bunyi_napas,penilaian_MCU.bunyi_tambahan,"+
-                            "penilaian_MCU.ictus_cordis, penilaian_MCU.bunyi_jantung,penilaian_MCU.batas,penilaian_MCU.inspeksi,penilaian_MCU.palpasi,penilaian_MCU.perkusi_abdomen,penilaian_MCU.auskultasi,penilaian_MCU.hepar,penilaian_MCU.limpa,penilaian_MCU.nyeri_ktok,"+
-                            "penilaian_MCU.extremitas_atas,penilaian_MCU.ket_extremitas_atas,penilaian_MCU.extremitas_bawah,penilaian_MCU.ket_extremitas_bawah,penilaian_MCU.kulit,"+
-                            "penilaian_MCU.hasil_ekg,penilaian_MCU.hasil_thorax,penilaian_MCU.alkohol,penilaian_MCU.kesimpulan,penilaian_MCU.anjuran,penilaian_MCU.nip,dokter.nama "+
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_mcu.tanggal,penilaian_mcu.informasi,penilaian_mcu.palpebra,"+
+                            "penilaian_mcu.konjungtiva,penilaian_mcu.sklera,penilaian_mcu.td,penilaian_mcu.hr,penilaian_mcu.rr,penilaian_mcu.suhu,penilaian_mcu.tinggi_badan,penilaian_mcu.berat_badan,"+
+                            "penilaian_mcu.kesadaran,penilaian_mcu.submandibula,penilaian_mcu.leher,penilaian_mcu.supraklavikula,penilaian_mcu.axila,penilaian_mcu.inguinal,penilaian_mcu.oedema,"+
+                            "penilaian_mcu.sinus_frontalis,penilaian_mcu.riwayat_penyakit_sekarang,penilaian_mcu.ket_riwayat_penyakit_sekarang,penilaian_mcu.riwayat_penyakit_keluarga,penilaian_mcu.ket_riwayat_penyakit_keluarga,penilaian_mcu.riwayat_penyakit_dahulu,penilaian_mcu.ket_riwayat_penyakit_dahulu,"+
+                            "penilaian_mcu.riwayat_alergi_makanan,penilaian_mcu.ket_riwayat_alergi_makanan,penilaian_mcu.adl,penilaian_mcu.sinus_maxillaris,penilaian_mcu.merokok,penilaian_mcu.cornea,"+
+                            "penilaian_mcu.lensa,penilaian_mcu.pupil,penilaian_mcu.buta_warna,penilaian_mcu.laboratorium,penilaian_mcu.lubang_telinga,penilaian_mcu.daun_telinga,penilaian_mcu.selaput_pendengaran,penilaian_mcu.nyeri_mastoideus,"+
+                            "penilaian_mcu.septum_nasi,penilaian_mcu.lubang_hidung,penilaian_mcu.bibir,penilaian_mcu.caries,penilaian_mcu.lidah,penilaian_mcu.faring,penilaian_mcu.tonsil,penilaian_mcu.kelenjar_limfe,penilaian_mcu.kelenjar_gondok,"+
+                            "penilaian_mcu.gerakan_dada,penilaian_mcu.vocal_fremitus,penilaian_mcu.perkusi,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,"+
+                            "penilaian_mcu.ictus_cordis, penilaian_mcu.bunyi_jantung,penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.hepar,penilaian_mcu.limpa,penilaian_mcu.nyeri_ktok,"+
+                            "penilaian_mcu.extremitas_atas,penilaian_mcu.ket_extremitas_atas,penilaian_mcu.extremitas_bawah,penilaian_mcu.ket_extremitas_bawah,penilaian_mcu.kulit,"+
+                            "penilaian_mcu.hasil_ekg,penilaian_mcu.hasil_thorax,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join penilaian_MCU on reg_periksa.no_rawat=penilaian_MCU.no_rawat "+
-                            "inner join dokter on penilaian_MCU.nip=dokter.nip where "+
-                            "penilaian_MCU.tanggal between ? and ? order by penilaian_MCU.tanggal");
+                            "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
+                            "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where "+
+                            "penilaian_mcu.tanggal between ? and ? order by penilaian_mcu.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_MCU.tanggal,penilaian_MCU.informasi,penilaian_MCU.palpebra,"+
-                            "penilaian_MCU.konjungtiva,penilaian_MCU.sklera,penilaian_MCU.td,penilaian_MCU.hr,penilaian_MCU.rr,penilaian_MCU.suhu,penilaian_MCU.tinggi_badan,penilaian_MCU.berat_badan,"+
-                            "penilaian_MCU.kesadaran,penilaian_MCU.submandibula,penilaian_MCU.leher,penilaian_MCU.supraklavikula,penilaian_MCU.axila,penilaian_MCU.inguinal,penilaian_MCU.oedema,"+
-                            "penilaian_MCU.sinus_frontalis,penilaian_MCU.riwayat_penyakit_sekarang,penilaian_MCU.ket_riwayat_penyakit_sekarang,penilaian_MCU.riwayat_penyakit_keluarga,penilaian_MCU.ket_riwayat_penyakit_keluarga,penilaian_MCU.riwayat_penyakit_dahulu,penilaian_MCU.ket_riwayat_penyakit_dahulu,"+
-                            "penilaian_MCU.riwayat_alergi_makanan,penilaian_MCU.ket_riwayat_alergi_makanan,penilaian_MCU.adl,penilaian_MCU.sinus_maxillaris,penilaian_MCU.merokok,penilaian_MCU.cornea,"+
-                            "penilaian_MCU.lensa,penilaian_MCU.pupil,penilaian_MCU.buta_warna,penilaian_MCU.laboratorium,penilaian_MCU.lubang_telinga,penilaian_MCU.daun_telinga,penilaian_MCU.selaput_pendengaran,penilaian_MCU.nyeri_mastoideus,"+
-                            "penilaian_MCU.septum_nasi,penilaian_MCU.lubang_hidung,penilaian_MCU.bibir,penilaian_MCU.caries,penilaian_MCU.lidah,penilaian_MCU.faring,penilaian_MCU.tonsil,penilaian_MCU.kelenjar_limfe,penilaian_MCU.kelenjar_gondok,"+
-                            "penilaian_MCU.gerakan_dada,penilaian_MCU.vocal_fremitus,penilaian_MCU.perkusi,penilaian_MCU.bunyi_napas,penilaian_MCU.bunyi_tambahan,"+
-                            "penilaian_MCU.ictus_cordis, penilaian_MCU.bunyi_jantung,penilaian_MCU.batas,penilaian_MCU.inspeksi,penilaian_MCU.palpasi,penilaian_MCU.perkusi_abdomen,penilaian_MCU.auskultasi,penilaian_MCU.hepar,penilaian_MCU.limpa,penilaian_MCU.nyeri_ktok,"+
-                            "penilaian_MCU.extremitas_atas,penilaian_MCU.ket_extremitas_atas,penilaian_MCU.extremitas_bawah,penilaian_MCU.ket_extremitas_bawah,penilaian_MCU.kulit,"+
-                            "penilaian_MCU.hasil_ekg,penilaian_MCU.hasil_thorax,penilaian_MCU.alkohol,penilaian_MCU.kesimpulan,penilaian_MCU.anjuran,penilaian_MCU.nip,dokter.nama "+
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_mcu.tanggal,penilaian_mcu.informasi,penilaian_mcu.palpebra,"+
+                            "penilaian_mcu.konjungtiva,penilaian_mcu.sklera,penilaian_mcu.td,penilaian_mcu.hr,penilaian_mcu.rr,penilaian_mcu.suhu,penilaian_mcu.tinggi_badan,penilaian_mcu.berat_badan,"+
+                            "penilaian_mcu.kesadaran,penilaian_mcu.submandibula,penilaian_mcu.leher,penilaian_mcu.supraklavikula,penilaian_mcu.axila,penilaian_mcu.inguinal,penilaian_mcu.oedema,"+
+                            "penilaian_mcu.sinus_frontalis,penilaian_mcu.riwayat_penyakit_sekarang,penilaian_mcu.ket_riwayat_penyakit_sekarang,penilaian_mcu.riwayat_penyakit_keluarga,penilaian_mcu.ket_riwayat_penyakit_keluarga,penilaian_mcu.riwayat_penyakit_dahulu,penilaian_mcu.ket_riwayat_penyakit_dahulu,"+
+                            "penilaian_mcu.riwayat_alergi_makanan,penilaian_mcu.ket_riwayat_alergi_makanan,penilaian_mcu.adl,penilaian_mcu.sinus_maxillaris,penilaian_mcu.merokok,penilaian_mcu.cornea,"+
+                            "penilaian_mcu.lensa,penilaian_mcu.pupil,penilaian_mcu.buta_warna,penilaian_mcu.laboratorium,penilaian_mcu.lubang_telinga,penilaian_mcu.daun_telinga,penilaian_mcu.selaput_pendengaran,penilaian_mcu.nyeri_mastoideus,"+
+                            "penilaian_mcu.septum_nasi,penilaian_mcu.lubang_hidung,penilaian_mcu.bibir,penilaian_mcu.caries,penilaian_mcu.lidah,penilaian_mcu.faring,penilaian_mcu.tonsil,penilaian_mcu.kelenjar_limfe,penilaian_mcu.kelenjar_gondok,"+
+                            "penilaian_mcu.gerakan_dada,penilaian_mcu.vocal_fremitus,penilaian_mcu.perkusi,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,"+
+                            "penilaian_mcu.ictus_cordis, penilaian_mcu.bunyi_jantung,penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.hepar,penilaian_mcu.limpa,penilaian_mcu.nyeri_ktok,"+
+                            "penilaian_mcu.extremitas_atas,penilaian_mcu.ket_extremitas_atas,penilaian_mcu.extremitas_bawah,penilaian_mcu.ket_extremitas_bawah,penilaian_mcu.kulit,"+
+                            "penilaian_mcu.hasil_ekg,penilaian_mcu.hasil_thorax,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join penilaian_MCU on reg_periksa.no_rawat=penilaian_MCU.no_rawat "+
-                            "inner join dokter on penilaian_MCU.nip=dokter.nip where "+
-                            "penilaian_MCU.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
-                            "penilaian_MCU.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
-                            "penilaian_MCU.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                            "penilaian_MCU.tanggal between ? and ? and penilaian_MCU.nip like ? or "+
-                            "penilaian_MCU.tanggal between ? and ? and dokter.nama like ? order by penilaian_MCU.tanggal");
+                            "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
+                            "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where "+
+                            "penilaian_mcu.tanggal between ? and ? and reg_periksa.no_rawat like ? or "+
+                            "penilaian_mcu.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
+                            "penilaian_mcu.tanggal between ? and ? and pasien.nm_pasien like ? or "+
+                            "penilaian_mcu.tanggal between ? and ? and penilaian_mcu.kd_dokter like ? or "+
+                            "penilaian_mcu.tanggal between ? and ? and dokter.nm_dokter like ? order by penilaian_mcu.tanggal");
                 }
 
                 try {
@@ -2314,7 +2549,7 @@ public final class RMMCU extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Kesimpulan</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Anjuran</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Petugas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -2398,8 +2633,8 @@ public final class RMMCU extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("alkohol")+"</td>"+
                                "<td valign='top'>"+rs.getString("kesimpulan")+"</td>"+
                                "<td valign='top'>"+rs.getString("anjuran")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nip")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kd_dokter")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nm_dokter")+"</td>"+
                             "</tr>");
                     }
                     LoadHTML.setText(
@@ -2546,7 +2781,7 @@ public final class RMMCU extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void BeratBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BeratBadanKeyPressed
-        Valid.pindah(evt,TinggiBadan,Kesadaran);
+        Valid.pindah(evt,TinggiBadan,Suhu);
     }//GEN-LAST:event_BeratBadanKeyPressed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
@@ -2554,27 +2789,27 @@ public final class RMMCU extends javax.swing.JDialog {
     }//GEN-LAST:event_NadiKeyPressed
 
     private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        Valid.pindah(evt,RR,TinggiBadan);
+        Valid.pindah(evt,BeratBadan,Submandibula);
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Informasi,Nadi);
+        Valid.pindah(evt,Kesadaran,Nadi);
     }//GEN-LAST:event_TDKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        Valid.pindah(evt,Nadi,Suhu);
+        Valid.pindah(evt,Nadi,TinggiBadan);
     }//GEN-LAST:event_RRKeyPressed
 
     private void InformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiKeyPressed
-        Valid.pindah(evt,TglAsuhan,Palpebra);
+        Valid.pindah(evt,TglAsuhan,RiwayatPenyakitSekarang);
     }//GEN-LAST:event_InformasiKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
-        Valid.pindah(evt,Anjuran,Informasi);
+        Valid.pindah2(evt,KdDokter,Informasi);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void TinggiBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinggiBadanKeyPressed
-        Valid.pindah(evt,Suhu,BeratBadan);
+        Valid.pindah(evt,RR,BeratBadan);
     }//GEN-LAST:event_TinggiBadanKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
@@ -2588,23 +2823,23 @@ public final class RMMCU extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void RiwayatAlergiMakananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatAlergiMakananKeyPressed
-        //Valid.pindah(evt,RiwayatAlergiMkn,ADL);
+        Valid.pindah(evt,RiwayatPenyakitDahulu,KeadaanUmum);
     }//GEN-LAST:event_RiwayatAlergiMakananKeyPressed
 
     private void KeadaanUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmumKeyPressed
-        Valid.pindah(evt,RiwayatAlergiMakanan,NyeriTekananSinusMaxilaris);
+        Valid.pindah(evt,RiwayatAlergiMakanan,Kesadaran);
     }//GEN-LAST:event_KeadaanUmumKeyPressed
 
     private void PemeriksaanLaboratoriumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanLaboratoriumKeyPressed
-        Valid.pindah(evt,TestButaWarna,LubangTelinga);
+        Valid.pindah2(evt,KetExtremitasBawah,RongsenThorax);
     }//GEN-LAST:event_PemeriksaanLaboratoriumKeyPressed
 
     private void RongsenThoraxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RongsenThoraxKeyPressed
-        Valid.pindah2(evt,EKG,Alkohol);
+        Valid.pindah2(evt,PemeriksaanLaboratorium,EKG);
     }//GEN-LAST:event_RongsenThoraxKeyPressed
 
     private void EKGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGKeyPressed
-        Valid.pindah2(evt,LubangTelinga,RongsenThorax);
+        Valid.pindah2(evt,RongsenThorax,Merokok);
     }//GEN-LAST:event_EKGKeyPressed
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
@@ -2618,7 +2853,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private void MnPenilaianMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMCUActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
+            param.put("nm_dokterrs",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
@@ -2631,50 +2866,238 @@ public final class RMMCU extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
 
             Valid.MyReportqry("rptCetakPenilaianAwalMCU.jasper","report","::[ Laporan Penilaian Awal MCU ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_MCU.tanggal,penilaian_MCU.informasi,penilaian_MCU.palpebra,"+
-                "penilaian_MCU.konjungtiva,penilaian_MCU.sklera,penilaian_MCU.td,penilaian_MCU.hr,penilaian_MCU.rr,penilaian_MCU.suhu,penilaian_MCU.tinggi_badan,penilaian_MCU.berat_badan,"+
-                "penilaian_MCU.kesadaran,penilaian_MCU.submandibula,penilaian_MCU.leher,penilaian_MCU.supraklavikula,penilaian_MCU.axila,penilaian_MCU.inguinal,penilaian_MCU.oedema,"+
-                "penilaian_MCU.sinus_frontalis,penilaian_MCU.riwayat_penyakit_sekarang,penilaian_MCU.ket_riwayat_penyakit_sekarang,penilaian_MCU.riwayat_penyakit_keluarga,penilaian_MCU.ket_riwayat_penyakit_keluarga,penilaian_MCU.riwayat_penyakit_dahulu,penilaian_MCU.ket_riwayat_penyakit_dahulu,"+
-                "penilaian_MCU.riwayat_alergi_makanan,penilaian_MCU.ket_riwayat_alergi_makanan,penilaian_MCU.adl,penilaian_MCU.sinus_maxillaris,penilaian_MCU.merokok,penilaian_MCU.cornea,"+
-                "penilaian_MCU.lensa,penilaian_MCU.pupil,penilaian_MCU.buta_warna,penilaian_MCU.laboratorium,penilaian_MCU.lubang_telinga,penilaian_MCU.daun_telinga,penilaian_MCU.selaput_pendengaran,penilaian_MCU.nyeri_mastoideus,"+
-                "penilaian_MCU.septum_nasi,penilaian_MCU.lubang_hidung,penilaian_MCU.bibir,penilaian_MCU.caries,penilaian_MCU.lidah,penilaian_MCU.faring,penilaian_MCU.tonsil,penilaian_MCU.kelenjar_limfe,penilaian_MCU.kelenjar_gondok,"+
-                "penilaian_MCU.gerakan_dada,penilaian_MCU.vocal_fremitus,penilaian_MCU.perkusi,penilaian_MCU.bunyi_napas,penilaian_MCU.bunyi_tambahan,"+
-                "penilaian_MCU.ictus_cordis, penilaian_MCU.bunyi_jantung,penilaian_MCU.batas,penilaian_MCU.inspeksi,penilaian_MCU.palpasi,penilaian_MCU.perkusi_abdomen,penilaian_MCU.auskultasi,penilaian_MCU.hepar,penilaian_MCU.limpa,penilaian_MCU.nyeri_ktok,"+
-                "penilaian_MCU.extremitas_atas,penilaian_MCU.ket_extremitas_atas,penilaian_MCU.extremitas_bawah,penilaian_MCU.ket_extremitas_bawah,penilaian_MCU.kulit,"+
-                "penilaian_MCU.hasil_ekg,penilaian_MCU.hasil_thorax,penilaian_MCU.alkohol,penilaian_MCU.kesimpulan,penilaian_MCU.anjuran,penilaian_MCU.nip,dokter.nama "+
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_mcu.tanggal,penilaian_mcu.informasi,penilaian_mcu.palpebra,"+
+                "penilaian_mcu.konjungtiva,penilaian_mcu.sklera,penilaian_mcu.td,penilaian_mcu.hr,penilaian_mcu.rr,penilaian_mcu.suhu,penilaian_mcu.tinggi_badan,penilaian_mcu.berat_badan,"+
+                "penilaian_mcu.kesadaran,penilaian_mcu.submandibula,penilaian_mcu.leher,penilaian_mcu.supraklavikula,penilaian_mcu.axila,penilaian_mcu.inguinal,penilaian_mcu.oedema,"+
+                "penilaian_mcu.sinus_frontalis,penilaian_mcu.riwayat_penyakit_sekarang,penilaian_mcu.ket_riwayat_penyakit_sekarang,penilaian_mcu.riwayat_penyakit_keluarga,penilaian_mcu.ket_riwayat_penyakit_keluarga,penilaian_mcu.riwayat_penyakit_dahulu,penilaian_mcu.ket_riwayat_penyakit_dahulu,"+
+                "penilaian_mcu.riwayat_alergi_makanan,penilaian_mcu.ket_riwayat_alergi_makanan,penilaian_mcu.adl,penilaian_mcu.sinus_maxillaris,penilaian_mcu.merokok,penilaian_mcu.cornea,"+
+                "penilaian_mcu.lensa,penilaian_mcu.pupil,penilaian_mcu.buta_warna,penilaian_mcu.laboratorium,penilaian_mcu.lubang_telinga,penilaian_mcu.daun_telinga,penilaian_mcu.selaput_pendengaran,penilaian_mcu.nyeri_mastoideus,"+
+                "penilaian_mcu.septum_nasi,penilaian_mcu.lubang_hidung,penilaian_mcu.bibir,penilaian_mcu.caries,penilaian_mcu.lidah,penilaian_mcu.faring,penilaian_mcu.tonsil,penilaian_mcu.kelenjar_limfe,penilaian_mcu.kelenjar_gondok,"+
+                "penilaian_mcu.gerakan_dada,penilaian_mcu.vocal_fremitus,penilaian_mcu.perkusi,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,"+
+                "penilaian_mcu.ictus_cordis, penilaian_mcu.bunyi_jantung,penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.hepar,penilaian_mcu.limpa,penilaian_mcu.nyeri_ktok,"+
+                "penilaian_mcu.extremitas_atas,penilaian_mcu.ket_extremitas_atas,penilaian_mcu.extremitas_bawah,penilaian_mcu.ket_extremitas_bawah,penilaian_mcu.kulit,"+
+                "penilaian_mcu.hasil_ekg,penilaian_mcu.hasil_thorax,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join penilaian_MCU on reg_periksa.no_rawat=penilaian_MCU.no_rawat "+
-                "inner join dokter on penilaian_MCU.nip=dokter.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
+                "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMCUActionPerformed
 
-    private void TinggiBadanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TinggiBadanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TinggiBadanActionPerformed
-
-    private void InspeksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InspeksiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InspeksiActionPerformed
-
     private void RiwayatPenyakitSekarangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSekarangKeyPressed
-        //Valid.pindah2(evt,RiwayatPenyakitSkrg,RiwayatPenyakitKlrg);
+        Valid.pindah2(evt,Informasi,RiwayatPenyakitKeluarga);
     }//GEN-LAST:event_RiwayatPenyakitSekarangKeyPressed
 
     private void RiwayatPenyakitKeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitKeluargaKeyPressed
-        //Valid.pindah2(evt,RiwayatPenyakitKlrg,RiwayatPenyakitDhl);
+        Valid.pindah2(evt,RiwayatPenyakitSekarang,RiwayatPenyakitDahulu);
     }//GEN-LAST:event_RiwayatPenyakitKeluargaKeyPressed
 
     private void RiwayatPenyakitDahuluKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitDahuluKeyPressed
-        //Valid.pindah2(evt,RiwayatPenyakitDhl,RiwayatAlergiMkn);
+        Valid.pindah2(evt,RiwayatPenyakitKeluarga,RiwayatAlergiMakanan);
     }//GEN-LAST:event_RiwayatPenyakitDahuluKeyPressed
 
     private void MerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerokokKeyPressed
-        Valid.pindah(evt,NyeriTekananSinusMaxilaris,Cornea);
+        Valid.pindah(evt,EKG,Alkohol);
     }//GEN-LAST:event_MerokokKeyPressed
 
     private void AlkoholKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlkoholKeyPressed
-        Valid.pindah2(evt,RongsenThorax,Kesimpulan);
+        Valid.pindah2(evt,Merokok,Kesimpulan);
     }//GEN-LAST:event_AlkoholKeyPressed
+
+    private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
+        Valid.pindah(evt,KeadaanUmum,TD);
+    }//GEN-LAST:event_KesadaranKeyPressed
+
+    private void SubmandibulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SubmandibulaKeyPressed
+        Valid.pindah(evt,Suhu,Axila);
+    }//GEN-LAST:event_SubmandibulaKeyPressed
+
+    private void AxilaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AxilaKeyPressed
+        Valid.pindah(evt,Submandibula,Supraklavikula);
+    }//GEN-LAST:event_AxilaKeyPressed
+
+    private void SupraklavikulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SupraklavikulaKeyPressed
+        Valid.pindah(evt,Axila,Leher);
+    }//GEN-LAST:event_SupraklavikulaKeyPressed
+
+    private void LeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeherKeyPressed
+        Valid.pindah(evt,Supraklavikula,Inguinal);
+    }//GEN-LAST:event_LeherKeyPressed
+
+    private void InguinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InguinalKeyPressed
+        Valid.pindah(evt,Leher,Oedema);
+    }//GEN-LAST:event_InguinalKeyPressed
+
+    private void OedemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OedemaKeyPressed
+        Valid.pindah(evt,Inguinal,NyeriTekanSinusFrontalis);
+    }//GEN-LAST:event_OedemaKeyPressed
+
+    private void NyeriTekanSinusFrontalisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriTekanSinusFrontalisKeyPressed
+        Valid.pindah(evt,Oedema,NyeriTekananSinusMaxilaris);
+    }//GEN-LAST:event_NyeriTekanSinusFrontalisKeyPressed
+
+    private void NyeriTekananSinusMaxilarisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriTekananSinusMaxilarisKeyPressed
+        Valid.pindah(evt,NyeriTekanSinusFrontalis,Palpebra);
+    }//GEN-LAST:event_NyeriTekananSinusMaxilarisKeyPressed
+
+    private void PalpebraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PalpebraKeyPressed
+        Valid.pindah(evt,NyeriTekananSinusMaxilaris,Sklera);
+    }//GEN-LAST:event_PalpebraKeyPressed
+
+    private void SkleraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkleraKeyPressed
+        Valid.pindah(evt,Palpebra,Cornea);
+    }//GEN-LAST:event_SkleraKeyPressed
+
+    private void CorneaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CorneaKeyPressed
+        Valid.pindah(evt,Sklera,TestButaWarna);
+    }//GEN-LAST:event_CorneaKeyPressed
+
+    private void TestButaWarnaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TestButaWarnaKeyPressed
+        Valid.pindah(evt,Cornea,Konjungtiva);
+    }//GEN-LAST:event_TestButaWarnaKeyPressed
+
+    private void KonjungtivaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonjungtivaKeyPressed
+        Valid.pindah(evt,TestButaWarna,Lensa);
+    }//GEN-LAST:event_KonjungtivaKeyPressed
+
+    private void LensaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LensaKeyPressed
+        Valid.pindah(evt,Konjungtiva,Pupil);
+    }//GEN-LAST:event_LensaKeyPressed
+
+    private void PupilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PupilKeyPressed
+        Valid.pindah(evt,Lensa,LubangTelinga);
+    }//GEN-LAST:event_PupilKeyPressed
+
+    private void LubangTelingaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LubangTelingaKeyPressed
+        Valid.pindah(evt,Pupil,DaunTelinga);
+    }//GEN-LAST:event_LubangTelingaKeyPressed
+
+    private void DaunTelingaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DaunTelingaKeyPressed
+        Valid.pindah(evt,LubangTelinga,SelaputPendengaran);
+    }//GEN-LAST:event_DaunTelingaKeyPressed
+
+    private void SelaputPendengaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SelaputPendengaranKeyPressed
+        Valid.pindah(evt,DaunTelinga,NyeriMastoideus);
+    }//GEN-LAST:event_SelaputPendengaranKeyPressed
+
+    private void NyeriMastoideusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriMastoideusKeyPressed
+        Valid.pindah(evt,SelaputPendengaran,SeptumNasi);
+    }//GEN-LAST:event_NyeriMastoideusKeyPressed
+
+    private void SeptumNasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeptumNasiKeyPressed
+        Valid.pindah(evt,NyeriMastoideus,LubangHidung);
+    }//GEN-LAST:event_SeptumNasiKeyPressed
+
+    private void LubangHidungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LubangHidungKeyPressed
+        Valid.pindah(evt,SeptumNasi,Bibir);
+    }//GEN-LAST:event_LubangHidungKeyPressed
+
+    private void BibirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BibirKeyPressed
+        Valid.pindah(evt,LubangHidung,Caries);
+    }//GEN-LAST:event_BibirKeyPressed
+
+    private void CariesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CariesKeyPressed
+        Valid.pindah(evt,Bibir,Lidah);
+    }//GEN-LAST:event_CariesKeyPressed
+
+    private void LidahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LidahKeyPressed
+        Valid.pindah(evt,Caries,Faring);
+    }//GEN-LAST:event_LidahKeyPressed
+
+    private void FaringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaringKeyPressed
+        Valid.pindah(evt,Lidah,Tonsil);
+    }//GEN-LAST:event_FaringKeyPressed
+
+    private void TonsilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TonsilKeyPressed
+        Valid.pindah(evt,Faring,KelenjarLimfe);
+    }//GEN-LAST:event_TonsilKeyPressed
+
+    private void KelenjarLimfeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelenjarLimfeKeyPressed
+        Valid.pindah(evt,Tonsil,KelenjarGondok);
+    }//GEN-LAST:event_KelenjarLimfeKeyPressed
+
+    private void KelenjarGondokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelenjarGondokKeyPressed
+        Valid.pindah(evt,KelenjarLimfe,GerakanDada);
+    }//GEN-LAST:event_KelenjarGondokKeyPressed
+
+    private void GerakanDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GerakanDadaKeyPressed
+        Valid.pindah(evt,KelenjarGondok,VocalFremitus);
+    }//GEN-LAST:event_GerakanDadaKeyPressed
+
+    private void VocalFremitusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VocalFremitusKeyPressed
+        Valid.pindah(evt,GerakanDada,PerkusiDada);
+    }//GEN-LAST:event_VocalFremitusKeyPressed
+
+    private void PerkusiDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerkusiDadaKeyPressed
+        Valid.pindah(evt,VocalFremitus,BunyiNapas);
+    }//GEN-LAST:event_PerkusiDadaKeyPressed
+
+    private void BunyiNapasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BunyiNapasKeyPressed
+        Valid.pindah(evt,PerkusiDada,BunyiTambahan);
+    }//GEN-LAST:event_BunyiNapasKeyPressed
+
+    private void BunyiTambahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BunyiTambahanKeyPressed
+        Valid.pindah(evt,BunyiNapas,IctusCordis);
+    }//GEN-LAST:event_BunyiTambahanKeyPressed
+
+    private void IctusCordisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IctusCordisKeyPressed
+        Valid.pindah(evt,BunyiTambahan,BunyiJantung);
+    }//GEN-LAST:event_IctusCordisKeyPressed
+
+    private void BunyiJantungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BunyiJantungKeyPressed
+        Valid.pindah(evt,IctusCordis,Batas);
+    }//GEN-LAST:event_BunyiJantungKeyPressed
+
+    private void BatasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatasKeyPressed
+        Valid.pindah(evt,BunyiJantung,Inspeksi);
+    }//GEN-LAST:event_BatasKeyPressed
+
+    private void InspeksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InspeksiKeyPressed
+        Valid.pindah(evt,Batas,Palpasi);
+    }//GEN-LAST:event_InspeksiKeyPressed
+
+    private void PalpasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PalpasiKeyPressed
+        Valid.pindah(evt,Inspeksi,Hepar);
+    }//GEN-LAST:event_PalpasiKeyPressed
+
+    private void HeparKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HeparKeyPressed
+        Valid.pindah(evt,Palpasi,PerkusiAbdomen);
+    }//GEN-LAST:event_HeparKeyPressed
+
+    private void PerkusiAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerkusiAbdomenKeyPressed
+        Valid.pindah(evt,Hepar,Auskultasi);
+    }//GEN-LAST:event_PerkusiAbdomenKeyPressed
+
+    private void AuskultasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AuskultasiKeyPressed
+        Valid.pindah(evt,PerkusiAbdomen,Limpa);
+    }//GEN-LAST:event_AuskultasiKeyPressed
+
+    private void LimpaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LimpaKeyPressed
+        Valid.pindah(evt,Auskultasi,NyeriKtok);
+    }//GEN-LAST:event_LimpaKeyPressed
+
+    private void NyeriKtokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKtokKeyPressed
+        Valid.pindah(evt,Limpa,Kulit);
+    }//GEN-LAST:event_NyeriKtokKeyPressed
+
+    private void KulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KulitKeyPressed
+        Valid.pindah(evt,NyeriKtok,ExtremitasAtas);
+    }//GEN-LAST:event_KulitKeyPressed
+
+    private void ExtremitasAtasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ExtremitasAtasKeyPressed
+        Valid.pindah(evt,Kulit,KetExtremitasAtas);
+    }//GEN-LAST:event_ExtremitasAtasKeyPressed
+
+    private void KetExtremitasAtasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetExtremitasAtasKeyPressed
+        Valid.pindah(evt,ExtremitasAtas,ExtremitasBawah);
+    }//GEN-LAST:event_KetExtremitasAtasKeyPressed
+
+    private void ExtremitasBawahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ExtremitasBawahKeyPressed
+        Valid.pindah(evt,KetExtremitasAtas,KetExtremitasBawah);
+    }//GEN-LAST:event_ExtremitasBawahKeyPressed
+
+    private void KetExtremitasBawahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetExtremitasBawahKeyPressed
+        Valid.pindah(evt,ExtremitasBawah,PemeriksaanLaboratorium);
+    }//GEN-LAST:event_KetExtremitasBawahKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2729,7 +3152,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ComboBox Inguinal;
     private widget.ComboBox Inspeksi;
     private widget.TextBox Jk;
-    private widget.TextBox KdPetugas;
+    private widget.TextBox KdDokter;
     private widget.ComboBox KeadaanUmum;
     private widget.ComboBox KelenjarGondok;
     private widget.ComboBox KelenjarLimfe;
@@ -2750,7 +3173,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.TextBox Merokok;
     private javax.swing.JMenuItem MnPenilaianMCU;
     private widget.TextBox Nadi;
-    private widget.TextBox NmPetugas;
+    private widget.TextBox NmDokter;
     private widget.ComboBox NyeriKtok;
     private widget.ComboBox NyeriMastoideus;
     private widget.ComboBox NyeriTekanSinusFrontalis;
@@ -2923,39 +3346,39 @@ public final class RMMCU extends javax.swing.JDialog {
         try{
             if(TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_MCU.tanggal,penilaian_MCU.informasi,penilaian_MCU.palpebra,"+
-                        "penilaian_MCU.konjungtiva,penilaian_MCU.sklera,penilaian_MCU.td,penilaian_MCU.hr,penilaian_MCU.rr,penilaian_MCU.suhu,penilaian_MCU.tinggi_badan,penilaian_MCU.berat_badan,"+
-                        "penilaian_MCU.kesadaran,penilaian_MCU.submandibula,penilaian_MCU.leher,penilaian_MCU.supraklavikula,penilaian_MCU.axila,penilaian_MCU.inguinal,penilaian_MCU.oedema,"+
-                        "penilaian_MCU.sinus_frontalis,penilaian_MCU.riwayat_penyakit_sekarang,penilaian_MCU.ket_riwayat_penyakit_sekarang,penilaian_MCU.riwayat_penyakit_keluarga,penilaian_MCU.ket_riwayat_penyakit_keluarga,penilaian_MCU.riwayat_penyakit_dahulu,penilaian_MCU.ket_riwayat_penyakit_dahulu,"+
-                        "penilaian_MCU.riwayat_alergi_makanan,penilaian_MCU.ket_riwayat_alergi_makanan,penilaian_MCU.adl,penilaian_MCU.sinus_maxillaris,penilaian_MCU.merokok,penilaian_MCU.cornea,"+
-                        "penilaian_MCU.lensa,penilaian_MCU.pupil,penilaian_MCU.buta_warna,penilaian_MCU.laboratorium,penilaian_MCU.lubang_telinga,penilaian_MCU.daun_telinga,penilaian_MCU.selaput_pendengaran,penilaian_MCU.nyeri_mastoideus,"+
-                        "penilaian_MCU.septum_nasi,penilaian_MCU.lubang_hidung,penilaian_MCU.bibir,penilaian_MCU.caries,penilaian_MCU.lidah,penilaian_MCU.faring,penilaian_MCU.tonsil,penilaian_MCU.kelenjar_limfe,penilaian_MCU.kelenjar_gondok,"+
-                        "penilaian_MCU.gerakan_dada,penilaian_MCU.vocal_fremitus,penilaian_MCU.perkusi,penilaian_MCU.bunyi_napas,penilaian_MCU.bunyi_tambahan,"+
-                        "penilaian_MCU.ictus_cordis, penilaian_MCU.bunyi_jantung,penilaian_MCU.batas,penilaian_MCU.inspeksi,penilaian_MCU.palpasi,penilaian_MCU.perkusi_abdomen,penilaian_MCU.auskultasi,penilaian_MCU.hepar,penilaian_MCU.limpa,penilaian_MCU.nyeri_ktok,"+
-                        "penilaian_MCU.extremitas_atas,penilaian_MCU.ket_extremitas_atas,penilaian_MCU.extremitas_bawah,penilaian_MCU.ket_extremitas_bawah,penilaian_MCU.kulit,"+
-                        "penilaian_MCU.hasil_ekg,penilaian_MCU.hasil_thorax,penilaian_MCU.alkohol,penilaian_MCU.kesimpulan,penilaian_MCU.anjuran,penilaian_MCU.nip,dokter.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_mcu.tanggal,penilaian_mcu.informasi,penilaian_mcu.palpebra,"+
+                        "penilaian_mcu.konjungtiva,penilaian_mcu.sklera,penilaian_mcu.td,penilaian_mcu.hr,penilaian_mcu.rr,penilaian_mcu.suhu,penilaian_mcu.tinggi_badan,penilaian_mcu.berat_badan,"+
+                        "penilaian_mcu.kesadaran,penilaian_mcu.submandibula,penilaian_mcu.leher,penilaian_mcu.supraklavikula,penilaian_mcu.axila,penilaian_mcu.inguinal,penilaian_mcu.oedema,"+
+                        "penilaian_mcu.sinus_frontalis,penilaian_mcu.riwayat_penyakit_sekarang,penilaian_mcu.ket_riwayat_penyakit_sekarang,penilaian_mcu.riwayat_penyakit_keluarga,penilaian_mcu.ket_riwayat_penyakit_keluarga,penilaian_mcu.riwayat_penyakit_dahulu,penilaian_mcu.ket_riwayat_penyakit_dahulu,"+
+                        "penilaian_mcu.riwayat_alergi_makanan,penilaian_mcu.ket_riwayat_alergi_makanan,penilaian_mcu.adl,penilaian_mcu.sinus_maxillaris,penilaian_mcu.merokok,penilaian_mcu.cornea,"+
+                        "penilaian_mcu.lensa,penilaian_mcu.pupil,penilaian_mcu.buta_warna,penilaian_mcu.laboratorium,penilaian_mcu.lubang_telinga,penilaian_mcu.daun_telinga,penilaian_mcu.selaput_pendengaran,penilaian_mcu.nyeri_mastoideus,"+
+                        "penilaian_mcu.septum_nasi,penilaian_mcu.lubang_hidung,penilaian_mcu.bibir,penilaian_mcu.caries,penilaian_mcu.lidah,penilaian_mcu.faring,penilaian_mcu.tonsil,penilaian_mcu.kelenjar_limfe,penilaian_mcu.kelenjar_gondok,"+
+                        "penilaian_mcu.gerakan_dada,penilaian_mcu.vocal_fremitus,penilaian_mcu.perkusi,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,"+
+                        "penilaian_mcu.ictus_cordis, penilaian_mcu.bunyi_jantung,penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.hepar,penilaian_mcu.limpa,penilaian_mcu.nyeri_ktok,"+
+                        "penilaian_mcu.extremitas_atas,penilaian_mcu.ket_extremitas_atas,penilaian_mcu.extremitas_bawah,penilaian_mcu.ket_extremitas_bawah,penilaian_mcu.kulit,"+
+                        "penilaian_mcu.hasil_ekg,penilaian_mcu.hasil_thorax,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis"+
-                        "inner join penilaian_MCU on reg_periksa.no_rawat=penilaian_MCU.no_rawat "+
-                        "inner join dokter on penilaian_MCU.nip=dokter.nip where "+
-                        "penilaian_MCU.tanggal between ? and ? order by penilaian_MCU.tanggal");
+                        "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
+                        "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where "+
+                        "penilaian_mcu.tanggal between ? and ? order by penilaian_mcu.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_MCU.tanggal,penilaian_MCU.informasi,penilaian_MCU.palpebra,"+
-                        "penilaian_MCU.konjungtiva,penilaian_MCU.sklera,penilaian_MCU.td,penilaian_MCU.hr,penilaian_MCU.rr,penilaian_MCU.suhu,penilaian_MCU.tinggi_badan,penilaian_MCU.berat_badan,"+
-                        "penilaian_MCU.kesadaran,penilaian_MCU.submandibula,penilaian_MCU.leher,penilaian_MCU.supraklavikula,penilaian_MCU.axila,penilaian_MCU.inguinal,penilaian_MCU.oedema,"+
-                        "penilaian_MCU.sinus_frontalis,penilaian_MCU.riwayat_penyakit_sekarang,penilaian_MCU.ket_riwayat_penyakit_sekarang,penilaian_MCU.riwayat_penyakit_keluarga,penilaian_MCU.ket_riwayat_penyakit_keluarga,penilaian_MCU.riwayat_penyakit_dahulu,penilaian_MCU.ket_riwayat_penyakit_dahulu,"+
-                        "penilaian_MCU.riwayat_alergi_makanan,penilaian_MCU.ket_riwayat_alergi_makanan,penilaian_MCU.adl,penilaian_MCU.sinus_maxillaris,penilaian_MCU.merokok,penilaian_MCU.cornea,"+
-                        "penilaian_MCU.lensa,penilaian_MCU.pupil,penilaian_MCU.buta_warna,penilaian_MCU.laboratorium,penilaian_MCU.lubang_telinga,penilaian_MCU.daun_telinga,penilaian_MCU.selaput_pendengaran,penilaian_MCU.nyeri_mastoideus,"+
-                        "penilaian_MCU.septum_nasi,penilaian_MCU.lubang_hidung,penilaian_MCU.bibir,penilaian_MCU.caries,penilaian_MCU.lidah,penilaian_MCU.faring,penilaian_MCU.tonsil,penilaian_MCU.kelenjar_limfe,penilaian_MCU.kelenjar_gondok,"+
-                        "penilaian_MCU.gerakan_dada,penilaian_MCU.vocal_fremitus,penilaian_MCU.perkusi,penilaian_MCU.bunyi_napas,penilaian_MCU.bunyi_tambahan,"+
-                        "penilaian_MCU.ictus_cordis, penilaian_MCU.bunyi_jantung,penilaian_MCU.batas,penilaian_MCU.inspeksi,penilaian_MCU.palpasi,penilaian_MCU.perkusi_abdomen,penilaian_MCU.auskultasi,penilaian_MCU.hepar,penilaian_MCU.limpa,penilaian_MCU.nyeri_ktok,"+
-                        "penilaian_MCU.extremitas_atas,penilaian_MCU.ket_extremitas_atas,penilaian_MCU.extremitas_bawah,penilaian_MCU.ket_extremitas_bawah,penilaian_MCU.kulit,"+
-                        "penilaian_MCU.hasil_ekg,penilaian_MCU.hasil_thorax,penilaian_MCU.alkohol,penilaian_MCU.kesimpulan,penilaian_MCU.anjuran,penilaian_MCU.nip,dokter.nama "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_mcu.tanggal,penilaian_mcu.informasi,penilaian_mcu.palpebra,"+
+                        "penilaian_mcu.konjungtiva,penilaian_mcu.sklera,penilaian_mcu.td,penilaian_mcu.hr,penilaian_mcu.rr,penilaian_mcu.suhu,penilaian_mcu.tinggi_badan,penilaian_mcu.berat_badan,"+
+                        "penilaian_mcu.kesadaran,penilaian_mcu.submandibula,penilaian_mcu.leher,penilaian_mcu.supraklavikula,penilaian_mcu.axila,penilaian_mcu.inguinal,penilaian_mcu.oedema,"+
+                        "penilaian_mcu.sinus_frontalis,penilaian_mcu.riwayat_penyakit_sekarang,penilaian_mcu.ket_riwayat_penyakit_sekarang,penilaian_mcu.riwayat_penyakit_keluarga,penilaian_mcu.ket_riwayat_penyakit_keluarga,penilaian_mcu.riwayat_penyakit_dahulu,penilaian_mcu.ket_riwayat_penyakit_dahulu,"+
+                        "penilaian_mcu.riwayat_alergi_makanan,penilaian_mcu.ket_riwayat_alergi_makanan,penilaian_mcu.adl,penilaian_mcu.sinus_maxillaris,penilaian_mcu.merokok,penilaian_mcu.cornea,"+
+                        "penilaian_mcu.lensa,penilaian_mcu.pupil,penilaian_mcu.buta_warna,penilaian_mcu.laboratorium,penilaian_mcu.lubang_telinga,penilaian_mcu.daun_telinga,penilaian_mcu.selaput_pendengaran,penilaian_mcu.nyeri_mastoideus,"+
+                        "penilaian_mcu.septum_nasi,penilaian_mcu.lubang_hidung,penilaian_mcu.bibir,penilaian_mcu.caries,penilaian_mcu.lidah,penilaian_mcu.faring,penilaian_mcu.tonsil,penilaian_mcu.kelenjar_limfe,penilaian_mcu.kelenjar_gondok,"+
+                        "penilaian_mcu.gerakan_dada,penilaian_mcu.vocal_fremitus,penilaian_mcu.perkusi,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,"+
+                        "penilaian_mcu.ictus_cordis, penilaian_mcu.bunyi_jantung,penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.hepar,penilaian_mcu.limpa,penilaian_mcu.nyeri_ktok,"+
+                        "penilaian_mcu.extremitas_atas,penilaian_mcu.ket_extremitas_atas,penilaian_mcu.extremitas_bawah,penilaian_mcu.ket_extremitas_bawah,penilaian_mcu.kulit,"+
+                        "penilaian_mcu.hasil_ekg,penilaian_mcu.hasil_thorax,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_MCU on reg_periksa.no_rawat=penilaian_MCU.no_rawat "+
-                        "inner join dokter on penilaian_MCU.nip=dokter.nip where penilaian_MCU.tanggal between ? and ? and "+
+                        "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
+                        "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where penilaian_mcu.tanggal between ? and ? and "+
                         "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_MCU.nip like ? or dokter.nama like ?) order by penilaian_MCU.tanggal");
+                        "penilaian_mcu.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_mcu.tanggal");
             }
                 
             try {
@@ -2988,7 +3411,7 @@ public final class RMMCU extends javax.swing.JDialog {
                         rs.getString("ictus_cordis"), rs.getString("bunyi_jantung"), rs.getString("batas"),rs.getString("inspeksi"),rs.getString("palpasi"),
                         rs.getString("perkusi_abdomen"),rs.getString("auskultasi"),rs.getString("hepar"),rs.getString("limpa"),rs.getString("nyeri_ktok"),rs.getString("extremitas_atas"),rs.getString("ket_extremitas_atas"),rs.getString("extremitas_bawah"),rs.getString("ket_extremitas_bawah"),rs.getString("kulit"),
                         rs.getString("hasil_ekg"),rs.getString("hasil_thorax"),rs.getString("alkohol"),rs.getString("kesimpulan"),
-                        rs.getString("anjuran"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("anjuran"),rs.getString("kd_dokter"),rs.getString("nm_dokter")
                     });
                 }
             } catch (Exception e) {
@@ -3158,8 +3581,8 @@ public final class RMMCU extends javax.swing.JDialog {
             Alkohol.setText(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString()); 
             Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),76).toString()); 
             Anjuran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),77).toString()); 
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString()); 
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString()); 
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString()); 
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString()); 
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -3202,17 +3625,16 @@ public final class RMMCU extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpasien());
-        BtnHapus.setEnabled(akses.getpasien());
-        BtnEdit.setEnabled(akses.getpasien());
-        BtnEdit.setEnabled(akses.getpasien());
+        BtnSimpan.setEnabled(akses.getpenilaian_mcu());
+        BtnHapus.setEnabled(akses.getpenilaian_mcu());
+        BtnEdit.setEnabled(akses.getpenilaian_mcu());
         if(akses.getjml2()>=1){
-            KdPetugas.setEditable(false);
+            KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
-            KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from dokter where nip=?", NmPetugas,KdPetugas.getText());
-            if(NmPetugas.getText().equals("")){
-                KdPetugas.setText("");
+            KdDokter.setText(akses.getkode());
+            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NmDokter,KdDokter.getText());
+            if(NmDokter.getText().equals("")){
+                KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
             }
         }            
@@ -3224,7 +3646,7 @@ public final class RMMCU extends javax.swing.JDialog {
     }
     
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_MCU where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_mcu where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tampil();
@@ -3235,7 +3657,7 @@ public final class RMMCU extends javax.swing.JDialog {
 
     private void ganti() {
         if(Sequel.mengedittf("penilaian_mcu","no_rawat=?",
-                "no_rawat=?,tanggal=?,informasi=?,palpebra=?,konjungtiva=?,sklera=?,td=?,hr=?,rr=?,suhu=?,tinggi_badan=?,berat_badan=?,kesadaran=?,submandibula=?,leher=?,supraklavikula=?,axila=?,inguinal=?,oedema=?,sinus_frontalis=?,riwayat_penyakit_sekarang=?,ket_riwayat_penyakit_sekarang=?,riwayat_penyakit_keluarga=?,ket_riwayat_penyakit_keluarga=?,riwayat_penyakit_dahulu=?,ket_riwayat_penyakit_dahulu=?,riwayat_alergi_makanan=?,ket_riwayat_alergi_makanan=?,adl=?,sinus_maxillaris=?,merokok=?,cornea=?,lensa=?,pupil=?,buta_warna=?,laboratorium=?,lubang_telinga=?,daun_telinga=?,selaput_pendengaran=?,nyeri_mastoideus=?,septum_nasi=?,lubang_hidung=?,bibir=?,caries=?,lidah=?,faring=?,tonsil=?,kelenjar_limfe=?,kelenjar_gondok=?,gerakan_dada=?,vocal_fremitus=?,perkusi=?,bunyi_napas=?,bunyi_tambahan=?,ictus_cordis=?,bunyi_jantung=?,batas=?,inspeksi=?,palpasi=?,perkusi_abdomen=?,auskultasi=?,hepar=?,limpa=?,nyeri_ktok=?,extremitas_atas=?,ket_extremitas_atas=?,extremitas_bawah=?,ket_extremitas_bawah=?,kulit=?,hasil_ekg=?,hasil_thorax=?,alkohol=?,kesimpulan=?,anjuran=?,nip=?",
+                "no_rawat=?,tanggal=?,informasi=?,palpebra=?,konjungtiva=?,sklera=?,td=?,hr=?,rr=?,suhu=?,tinggi_badan=?,berat_badan=?,kesadaran=?,submandibula=?,leher=?,supraklavikula=?,axila=?,inguinal=?,oedema=?,sinus_frontalis=?,riwayat_penyakit_sekarang=?,ket_riwayat_penyakit_sekarang=?,riwayat_penyakit_keluarga=?,ket_riwayat_penyakit_keluarga=?,riwayat_penyakit_dahulu=?,ket_riwayat_penyakit_dahulu=?,riwayat_alergi_makanan=?,ket_riwayat_alergi_makanan=?,adl=?,sinus_maxillaris=?,merokok=?,cornea=?,lensa=?,pupil=?,buta_warna=?,laboratorium=?,lubang_telinga=?,daun_telinga=?,selaput_pendengaran=?,nyeri_mastoideus=?,septum_nasi=?,lubang_hidung=?,bibir=?,caries=?,lidah=?,faring=?,tonsil=?,kelenjar_limfe=?,kelenjar_gondok=?,gerakan_dada=?,vocal_fremitus=?,perkusi=?,bunyi_napas=?,bunyi_tambahan=?,ictus_cordis=?,bunyi_jantung=?,batas=?,inspeksi=?,palpasi=?,perkusi_abdomen=?,auskultasi=?,hepar=?,limpa=?,nyeri_ktok=?,extremitas_atas=?,ket_extremitas_atas=?,extremitas_bawah=?,ket_extremitas_bawah=?,kulit=?,hasil_ekg=?,hasil_thorax=?,alkohol=?,kesimpulan=?,anjuran=?,kd_dokter=?",
                 76,new String[]{
                 TNoRw.getText(),
                 Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
@@ -3307,7 +3729,7 @@ public final class RMMCU extends javax.swing.JDialog {
                 Alkohol.getText(),
                 Kesimpulan.getText(),
                 Anjuran.getText(),
-                KdPetugas.getText(),
+                KdDokter.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
              })==true){
                 tampil();
