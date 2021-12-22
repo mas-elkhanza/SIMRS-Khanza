@@ -455,14 +455,14 @@
                                                     /* Silahkan aktifkan ini jika tidak ingin BPJS bisa menginsert data pasien baru
                                                      * $response = array(
                                                         'metadata' => array(
-                                                            'message' =>  "Data pasien ini tidak ditemukan, silahkan melakukan registrasi pasien baru ke loket administrasi Kami",
+                                                            'message' =>  'Data pasien ini tidak ditemukan, silahkan melakukan registrasi pasien baru ke loket administrasi Kami',
                                                             'code' => 201
                                                         )
                                                     ); 
                                                     http_response_code(201);*/
                                                     $response = array(
                                                         'metadata' => array(
-                                                            'message' =>  "Data pasien ini tidak ditemukan",
+                                                            'message' =>  'Data pasien ini tidak ditemukan',
                                                             'code' => 202
                                                         )
                                                     ); 
@@ -857,7 +857,7 @@
                                         );
                                         http_response_code(201);
                                     }else{
-                                        $booking = fetch_array(bukaquery2("select nobooking,no_rawat,tanggalperiksa,status,validasi,nomorreferensi,kodedokter,kodepoli,jampraktek from referensi_mobilejkn_bpjs where no_rawat='$decode[kodebooking]'"));
+                                        $booking = fetch_array(bukaquery2("select nobooking,no_rawat,tanggalperiksa,status,validasi,nomorreferensi,kodedokter,kodepoli,jampraktek from referensi_mobilejkn_bpjs where nobooking='$decode[kodebooking]'"));
                                         if(empty($booking['status'])) {
                                             $response = array(
                                                 'metadata' => array(
@@ -867,7 +867,15 @@
                                             );
                                             http_response_code(201);
                                         }else{
-                                            if($booking['status']=='Belum'){
+                                            if($booking['status']=='Batal'){
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'Data booking sudah dibatalkan',
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
+                                            }else if($booking['status']=='Belum'){
                                                 $response = array(
                                                     'metadata' => array(
                                                         'message' => 'Anda belum melakukan checkin, Silahkan checkin terlebih dahulu',
@@ -878,7 +886,7 @@
                                             }else if($booking['status']=='Checkin'){
                                                 $kodedokter = getOne2("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs='$booking[kodedokter]'");
                                                 $kodepoli   = getOne2("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs='$booking[kodepoli]'");
-                                                $noreg      = getOne2("select no_reg from reg_periksa where no_rawat='$decode[kodebooking]'");
+                                                $noreg      = getOne2("select no_reg from reg_periksa where no_rawat='$booking[no_rawat]'");
                                                 $data = fetch_array(bukaquery("SELECT reg_periksa.kd_poli,poliklinik.nm_poli,dokter.nm_dokter,
                                                     reg_periksa.no_reg,COUNT(reg_periksa.no_rawat) as total_antrean,
                                                     IFNULL(SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END),0) as sisa_antrean
@@ -913,6 +921,14 @@
                                                     );
                                                     http_response_code(201);
                                                 } 
+                                            }else{
+                                                $response = array(
+                                                    'metadata' => array(
+                                                        'message' => 'Antrean Tidak Ditemukan !',
+                                                        'code' => 201
+                                                    )
+                                                );
+                                                http_response_code(201);
                                             }
                                         }
                                     }
@@ -1253,6 +1269,14 @@
                                         $response = array(
                                             'metadata' => array(
                                                 'message' => 'Format Tanggal Lahir tidak sesuai, format yang benar adalah yyyy-mm-dd',
+                                                'code' => 201
+                                            )
+                                        );  
+                                        http_response_code(201);
+                                    }else if($decode['tanggallahir']>date("Y-m-d")){
+                                        $response = array(
+                                            'metadata' => array(
+                                                'message' => 'Tanggal lahir pasien salah',
                                                 'code' => 201
                                             )
                                         );  
