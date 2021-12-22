@@ -492,7 +492,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 }
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notif Ketersediaan : "+ex);
+                            System.out.println("Notif : "+ex);
                         } finally{
                             if(rs!=null){
                                 rs.close();
