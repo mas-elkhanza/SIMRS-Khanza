@@ -619,6 +619,7 @@
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
                                     @$tanggal=date("Y-m-d", ($decode['waktu']/1000));
+                                    @$tanggalchekcin=date("Y-m-d H:i:s", ($decode['waktu']/1000));
                                     if(empty($decode['kodebooking'])) { 
                                         $response = array(
                                             'metadata' => array(
@@ -660,7 +661,7 @@
                                         );  
                                         http_response_code(201);
                                     }else{
-                                        $booking = fetch_array(bukaquery2("select nobooking,tanggalperiksa,status,validasi from referensi_mobilejkn_bpjs where nobooking='$decode[kodebooking]'"));
+                                        $booking = fetch_array(bukaquery2("select nobooking,tanggalperiksa,status,validasi,left(jampraktek,5) as jampraktek from referensi_mobilejkn_bpjs where nobooking='$decode[kodebooking]'"));
                                         if(empty($booking['status'])) {
                                             $response = array(
                                                 'metadata' => array(
@@ -687,11 +688,11 @@
                                                 );
                                                 http_response_code(201);
                                             }else if($booking['status']=='Belum'){
-                                                $interval  = getOne2("select (TO_DAYS('$booking[tanggalperiksa]')-TO_DAYS('$tanggal'))");
+                                                $interval  = getOne2("select TIMESTAMPDIFF(MINUTE,'$booking[tanggalperiksa] $booking[jampraktek]:00',$tanggalchekcin) AS difference");
                                                 if($interval<=0){
                                                     $response = array(
                                                         'metadata' => array(
-                                                            'message' => 'Chekin Anda sudah expired, maksimal 1 hari sebelum tanggal periksa. Silahkan konfirmasi ke loket pendaftaran',
+                                                            'message' => 'Chekin Anda sudah expired. Silahkan konfirmasi ke loket pendaftaran',
                                                             'code' => 201
                                                         )
                                                     );  
@@ -1555,7 +1556,7 @@
                                                         'norm' => $norm
                                                     ),
                                                     'metadata' => array(
-                                                        'message' => 'Harap datang ke admisi untuk melengkapi data rekam medis',
+                                                        'message' => 'Pasien berhasil mendapatkann nomor RM, silahkan lanjutkan ke booking. Pasien tidak perlu ke admisi',
                                                         'code' => 200
                                                     )
                                                 );

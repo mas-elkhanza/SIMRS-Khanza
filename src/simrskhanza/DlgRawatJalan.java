@@ -59,6 +59,7 @@ import permintaan.DlgBookingOperasi;
 import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
+import rekammedis.RMMCU;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
@@ -1482,6 +1483,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalMedisKandungan = new widget.Button();
         BtnAwalMedisAnak = new widget.Button();
         BtnAwalFisioterapi = new widget.Button();
+        BtnMedicalCheckUp = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1649,7 +1651,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-12-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1663,7 +1665,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-12-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3338,7 +3340,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2021" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-12-2021" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3876,6 +3878,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalFisioterapi);
+
+        BtnMedicalCheckUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnMedicalCheckUp.setText("Medical Check Up");
+        BtnMedicalCheckUp.setFocusPainted(false);
+        BtnMedicalCheckUp.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnMedicalCheckUp.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnMedicalCheckUp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnMedicalCheckUp.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnMedicalCheckUp.setName("BtnMedicalCheckUp"); // NOI18N
+        BtnMedicalCheckUp.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnMedicalCheckUp.setRoundRect(false);
+        BtnMedicalCheckUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnMedicalCheckUpActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnMedicalCheckUp);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -6166,6 +6185,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalFisioterapiActionPerformed
 
+    private void BtnMedicalCheckUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMedicalCheckUpActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMMCU form=new RMMCU(null,false);
+            form.isCek();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.emptTeks();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnMedicalCheckUpActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6204,6 +6240,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnJadwalOperasi;
     private widget.Button BtnKamar;
     private widget.Button BtnKeluar;
+    private widget.Button BtnMedicalCheckUp;
     private widget.Button BtnObatBhp;
     private widget.Button BtnPermintaanLab;
     private widget.Button BtnPermintaanRad;
@@ -6898,6 +6935,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalFisioterapi.setVisible(akses.getpenilaian_fisioterapi()); 
         if(akses.getpenilaian_fisioterapi()==true){
+            tinggi=tinggi+24;
+        }
+        BtnMedicalCheckUp.setVisible(akses.getpenilaian_mcu()); 
+        if(akses.getpenilaian_mcu()==true){
             tinggi=tinggi+24;
         }
         
