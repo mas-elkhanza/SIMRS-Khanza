@@ -2192,13 +2192,13 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(90);
                     break;
                 case 774:
-                    column.setPreferredWidth(110);
+                    column.setPreferredWidth(108);
                     break;
                 case 775:
-                    column.setPreferredWidth(130);
+                    column.setPreferredWidth(131);
                     break;
                 case 776:
-                    column.setPreferredWidth(100);
+                    column.setPreferredWidth(102);
                     break;
                 default:
                     column.setPreferredWidth(135);
@@ -3516,7 +3516,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_perbaikan_inventaris_pertahun='"+tbUser.getValueAt(i,771).toString()+"',"+
                     "grafik_perbaikan_inventaris_perpelaksana_status='"+tbUser.getValueAt(i,772).toString()+"',"+
                     "penilaian_mcu='"+tbUser.getValueAt(i,773).toString()+"',"+
-                    "peminjam_piuatang='"+tbUser.getValueAt(i,774).toString()+"',"+
+                    "peminjam_piutang='"+tbUser.getValueAt(i,774).toString()+"',"+
                     "akun_piutang_lain='"+tbUser.getValueAt(i,775).toString()+"',"+
                     "piutang_lainlain='"+tbUser.getValueAt(i,776).toString()+"'");
             }            
@@ -4375,7 +4375,7 @@ public class DlgUser extends javax.swing.JDialog {
                                         "grafik_perbaikan_inventaris_pertahun='"+tbUser.getValueAt(barisdicopy,771).toString()+"',"+
                                         "grafik_perbaikan_inventaris_perpelaksana_status='"+tbUser.getValueAt(barisdicopy,772).toString()+"',"+
                                         "penilaian_mcu='"+tbUser.getValueAt(barisdicopy,773).toString()+"',"+
-                                        "peminjam_piuatang='"+tbUser.getValueAt(barisdicopy,774).toString()+"',"+
+                                        "peminjam_piutang='"+tbUser.getValueAt(barisdicopy,774).toString()+"',"+
                                         "akun_piutang_lain='"+tbUser.getValueAt(barisdicopy,775).toString()+"',"+
                                         "piutang_lainlain='"+tbUser.getValueAt(barisdicopy,776).toString()+"'");
                                 }    
@@ -4731,7 +4731,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi,bpjs_program_prb,bpjs_suplesi_jasaraharja,"+
                         "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print,bpjs_rujukan_khusus,"+
                         "pemeliharaan_gedung,grafik_perbaikan_inventaris_pertanggal,grafik_perbaikan_inventaris_perbulan,grafik_perbaikan_inventaris_pertahun,"+
-                        "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piuatang,akun_piutang_lain,piutang_lainlain from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,akun_piutang_lain,piutang_lainlain from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5518,7 +5518,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_perbaikan_inventaris_pertahun"),
                                rs.getBoolean("grafik_perbaikan_inventaris_perpelaksana_status"),
                                rs.getBoolean("penilaian_mcu"),
-                               rs.getBoolean("peminjam_piuatang"),
+                               rs.getBoolean("peminjam_piutang"),
                                rs.getBoolean("akun_piutang_lain"),
                                rs.getBoolean("piutang_lainlain")
                             });
@@ -6296,7 +6296,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_perbaikan_inventaris_pertahun"),
                            rs.getBoolean("grafik_perbaikan_inventaris_perpelaksana_status"),
                            rs.getBoolean("penilaian_mcu"),
-                           rs.getBoolean("peminjam_piuatang"),
+                           rs.getBoolean("peminjam_piutang"),
                            rs.getBoolean("akun_piutang_lain"),
                            rs.getBoolean("piutang_lainlain")
                         });
