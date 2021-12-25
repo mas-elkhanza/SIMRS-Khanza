@@ -1243,7 +1243,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()); 
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()); 
-            Valid.SetTgl(DTPTgl,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString().substring(0,10));
             cmbJam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString().substring(11,13));
             cmbMnt.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString().substring(14,16));
             cmbDtk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString().substring(17,19)); 
@@ -1252,6 +1251,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Persenppn.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             BesarPPN.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             DibayarPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Valid.SetTgl(DTPTgl,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString().substring(0,10));
         }
     }
 
