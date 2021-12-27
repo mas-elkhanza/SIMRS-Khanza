@@ -615,6 +615,7 @@ import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganHutangAsetIventarisBelumLunas;
 import keuangan.KeuanganKlaimRalan;
+import keuangan.KeuanganPeminjamPiutang;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganPiutangObatBelumLunas;
 import keuangan.KeuanganRVPBPJS;
@@ -17775,6 +17776,32 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnCaraBayarActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPenanggungJawab aplikasi=new DlgPenanggungJawab(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPeminjamPiutangActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPeminjamPiutang aplikasi=new KeuanganPeminjamPiutang(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18404,7 +18431,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
-            btnPenilaianMCU;
+            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang;
     
     public void isWall(){
         try{            
@@ -20175,6 +20202,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
 
+            if(akses.getcara_bayar()==true){
+                Panelmenu.add(btnCaraBayar);  
+                jmlmenu++;
+            } 
+            
             if(akses.getakun_rekening()==true){
                 Panelmenu.add(btnRekening);  
                 jmlmenu++;
@@ -20357,6 +20389,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbayar_pemesanan_iventaris()==true){
                 Panelmenu.add(btnBayarPemesananInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.getpeminjam_piutang()==true){
+                Panelmenu.add(btnPeminjamPiutang);
                 jmlmenu++;
             }
 
@@ -24034,6 +24071,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
 
+        if(akses.getcara_bayar()==true){
+            Panelmenu.add(btnCaraBayar);  
+            jmlmenu++;
+        } 
+
         if(akses.getakun_rekening()==true){
             Panelmenu.add(btnRekening);  
             jmlmenu++;
@@ -24216,6 +24258,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbayar_pemesanan_iventaris()==true){
             Panelmenu.add(btnBayarPemesananInventaris);
+            jmlmenu++;
+        }
+        
+        if(akses.getpeminjam_piutang()==true){
+            Panelmenu.add(btnPeminjamPiutang);
             jmlmenu++;
         }
         
@@ -28544,6 +28591,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
 
+        if(akses.getcara_bayar()==true){
+            if(btnCaraBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCaraBayar);  
+                jmlmenu++;
+            }                
+        }  
+        
         if(akses.getakun_rekening()==true){
             if(btnRekening.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekening);  
@@ -28799,6 +28853,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbayar_pemesanan_iventaris()==true){
             if(btnBayarPemesananInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPemesananInventaris);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpeminjam_piutang()==true){
+            if(btnPeminjamPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPeminjamPiutang);
                 jmlmenu++;
             }                
         }
@@ -34119,6 +34180,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianMCU.setName("btnPenilaianMCU"); 
         btnPenilaianMCU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianMCU.addActionListener(this::btnPenilaianMCUActionPerformed);
+        
+        btnCaraBayar = new widget.ButtonBig();
+        btnCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4171274_day_heart_love_time_valentine_icon.png"))); 
+        btnCaraBayar.setText("Asuransi/Askes/Jenis Bayar");
+        btnCaraBayar.setIconTextGap(0);
+        btnCaraBayar.setName("btnCaraBayar"); 
+        btnCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCaraBayar.addActionListener(this::btnCaraBayarActionPerformed);
+        
+        btnPeminjamPiutang = new widget.ButtonBig();
+        btnPeminjamPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Teachers-24_103847.png"))); 
+        btnPeminjamPiutang.setText("Peminjam Piutang");
+        btnPeminjamPiutang.setIconTextGap(0);
+        btnPeminjamPiutang.setName("btnPeminjamPiutang"); 
+        btnPeminjamPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPeminjamPiutang.addActionListener(this::btnPeminjamPiutangActionPerformed);
     }
     
 }

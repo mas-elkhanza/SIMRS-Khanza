@@ -664,16 +664,16 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){       
-                Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());       
+            Map<String, Object> param = new HashMap<>();    
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());       
             Valid.MyReportqry("rptPenjab.jasper","report","::[ Data Satuan ]::","select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp,attn "+
-                " from penjab where  kd_pj like '%"+TCari.getText().trim()+"%' or "+
-                " png_jawab like '%"+TCari.getText().trim()+"%' order by kd_pj",param);
+                " from penjab where status='1' and (kd_pj like '%"+TCari.getText().trim()+"%' or "+
+                " png_jawab like '%"+TCari.getText().trim()+"%') order by kd_pj",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -902,10 +902,10 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getadmin());
-        BtnHapus.setEnabled(akses.getadmin());
-        BtnEdit.setEnabled(akses.getadmin());
-        BtnPrint.setEnabled(akses.getadmin());
+        BtnSimpan.setEnabled(akses.getcara_bayar());
+        BtnHapus.setEnabled(akses.getcara_bayar());
+        BtnEdit.setEnabled(akses.getcara_bayar());
+        BtnPrint.setEnabled(akses.getcara_bayar());
         if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
