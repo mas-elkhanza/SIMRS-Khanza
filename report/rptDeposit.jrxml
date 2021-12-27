@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="88528f11-b6c3-4f84-83ec-9530a9c291ce">
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="88528f11-b6c3-4f84-83ec-9530a9c291ce">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -8,15 +8,6 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -27,7 +18,7 @@
 	<queryString>
 		<![CDATA[select deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
 deposit.tgl_deposit,deposit.nama_bayar,deposit.besar_deposit,akun_bayar.ppn,deposit.besarppn,
-(deposit.besar_deposit+deposit.besarppn),deposit.nip,petugas.nama,akun_bayar.kd_rek 
+(deposit.besar_deposit+deposit.besarppn),deposit.nip,petugas.nama,akun_bayar.kd_rek ,deposit.keterangan
 from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat 
 inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
 inner join petugas on deposit.nip=petugas.nip 
@@ -109,6 +100,12 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="akun_bayar"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keterangan"/>
+		<property name="com.jaspersoft.studio.field.label" value="keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="deposit"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<variable name="totaldeposit" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{besar_deposit}]]></variableExpression>
 	</variable>
@@ -124,7 +121,7 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 	<title>
 		<band height="91" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="52" width="800" height="16" uuid="bcaef5fb-7928-4258-ad5f-cf959d444bd5"/>
+				<reportElement x="0" y="52" width="960" height="16" uuid="bcaef5fb-7928-4258-ad5f-cf959d444bd5"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -136,7 +133,7 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="0" y="25" width="800" height="14" uuid="5111f5f5-7098-4a45-95d4-c18bc6d09b0d"/>
+				<reportElement x="0" y="25" width="960" height="14" uuid="5111f5f5-7098-4a45-95d4-c18bc6d09b0d"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -144,7 +141,7 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="14" width="800" height="14" uuid="bf925e9f-66ff-460a-96ca-3033a020bb2f"/>
+				<reportElement x="0" y="14" width="960" height="14" uuid="bf925e9f-66ff-460a-96ca-3033a020bb2f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -152,7 +149,7 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="36" width="800" height="14" uuid="77673cd5-7f14-4bb2-abfa-f586b65d34e2"/>
+				<reportElement x="0" y="36" width="960" height="14" uuid="77673cd5-7f14-4bb2-abfa-f586b65d34e2"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -160,13 +157,13 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="49" width="800" height="1" uuid="648d34c3-3579-4d2f-b710-62614e94e4c9"/>
+				<reportElement x="0" y="49" width="960" height="1" uuid="648d34c3-3579-4d2f-b710-62614e94e4c9"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="0" y="0" width="800" height="17" uuid="6b8ae12f-d2a6-4da9-97d8-e7ccbbbd9c55"/>
+				<reportElement x="0" y="0" width="960" height="17" uuid="6b8ae12f-d2a6-4da9-97d8-e7ccbbbd9c55"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="13"/>
 					<paragraph lineSpacing="Single"/>
@@ -180,6 +177,14 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 	</pageHeader>
 	<columnHeader>
 		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="800" y="1" width="160" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="06565843-7338-4fd5-aa64-4bb41404ea98"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="640" y="1" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="68c790bf-c533-4467-8a4b-ac509e2375d8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -269,13 +274,13 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<text><![CDATA[Petugas]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="800" height="1" uuid="e77c38e3-3793-4902-bdd4-5f8cd954a696"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="960" height="1" uuid="e77c38e3-3793-4902-bdd4-5f8cd954a696"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="800" height="1" uuid="dd324780-d451-42ef-ac66-390daf860964"/>
+				<reportElement x="0" y="16" width="960" height="1" uuid="dd324780-d451-42ef-ac66-390daf860964"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -373,7 +378,7 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<textFieldExpression><![CDATA[$F{nip}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="800" height="1" uuid="9d65118a-d31d-4d8b-9935-434fd81b4d45">
+				<reportElement positionType="Float" x="0" y="11" width="960" height="1" uuid="9d65118a-d31d-4d8b-9935-434fd81b4d45">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -381,6 +386,14 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement positionType="Float" mode="Transparent" x="800" y="0" width="160" height="10" uuid="8bc3fa94-9ac8-4d37-9d8c-2cdea419a0c0"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -431,13 +444,13 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="800" height="1" uuid="eedb03a3-a970-4930-9b61-c00a0e0b65e9"/>
+				<reportElement x="0" y="0" width="960" height="1" uuid="eedb03a3-a970-4930-9b61-c00a0e0b65e9"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="23" width="800" height="1" uuid="1b7ee1b8-76fd-4482-a750-59019e787ac1"/>
+				<reportElement x="0" y="23" width="960" height="1" uuid="1b7ee1b8-76fd-4482-a750-59019e787ac1"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -472,7 +485,7 @@ inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar]]>
 				<textFieldExpression><![CDATA[$V{totaldeposit}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="0" width="800" height="1" uuid="8399f634-15a9-4cee-909b-c8fe6d8c966d"/>
+				<reportElement positionType="Float" x="0" y="0" width="960" height="1" uuid="8399f634-15a9-4cee-909b-c8fe6d8c966d"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

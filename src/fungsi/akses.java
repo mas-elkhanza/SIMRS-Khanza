@@ -169,7 +169,8 @@ public final class akses {
             bpjs_referensi_jadwal_hfis=false,penilaian_fisioterapi=false,bpjs_program_prb=false,bpjs_suplesi_jasaraharja=false,bpjs_data_induk_kecelakaan=false,
             bpjs_sep_internal=false,bpjs_klaim_jasa_raharja=false,bpjs_daftar_finger_print=false,bpjs_rujukan_khusus=false,pemeliharaan_gedung=false,
             grafik_perbaikan_inventaris_pertanggal=false,grafik_perbaikan_inventaris_perbulan=false,grafik_perbaikan_inventaris_pertahun=false,
-            grafik_perbaikan_inventaris_perpelaksana_status=false,penilaian_mcu=false,peminjam_piutang=false,piutang_lainlain=false,cara_bayar=false;
+            grafik_perbaikan_inventaris_perpelaksana_status=false,penilaian_mcu=false,peminjam_piutang=false,piutang_lainlain=false,cara_bayar=false,
+            audit_kepatuhan_apd=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -966,6 +967,7 @@ public final class akses {
                         akses.peminjam_piutang=true;
                         akses.piutang_lainlain=true;
                         akses.cara_bayar=true;
+                        akses.audit_kepatuhan_apd=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1746,6 +1748,7 @@ public final class akses {
                         akses.peminjam_piutang=rs2.getBoolean("peminjam_piutang");
                         akses.piutang_lainlain=rs2.getBoolean("piutang_lainlain");
                         akses.cara_bayar=rs2.getBoolean("cara_bayar");
+                        akses.audit_kepatuhan_apd=rs2.getBoolean("audit_kepatuhan_apd");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2524,6 +2527,7 @@ public final class akses {
                         akses.peminjam_piutang=false;
                         akses.piutang_lainlain=false;
                         akses.cara_bayar=false;
+                        akses.audit_kepatuhan_apd=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3357,4 +3361,5 @@ public final class akses {
     public static boolean getpeminjam_piutang(){return akses.peminjam_piutang;}
     public static boolean getpiutang_lainlain(){return akses.piutang_lainlain;}
     public static boolean getcara_bayar(){return akses.cara_bayar;}
+    public static boolean getaudit_kepatuhan_apd(){return akses.audit_kepatuhan_apd;}
 }   
