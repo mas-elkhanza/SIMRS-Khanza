@@ -228,7 +228,7 @@ import keuangan.DlgPemasukanLain;
 import keuangan.DlgPembayaranRalan;
 import keuangan.DlgPembayaranRalanPerHari;
 import keuangan.DlgPembayaranRanap;
-import keuangan.DlgPembyaranRanapPerhari;
+import keuangan.DlgPembayaranRanapPerhari;
 import keuangan.DlgPengaturanRekening;
 import keuangan.DlgPengeluaranHarian;
 import keuangan.KeuanganPiutangBelumLunas;
@@ -610,12 +610,13 @@ import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
-import keuangan.KeuaganRingkasanTindakan;
+import keuangan.KeuanganRingkasanTindakan;
 import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganHutangAsetIventarisBelumLunas;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPeminjamPiutang;
+import keuangan.KeuanganPiutangLainLain;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganPiutangObatBelumLunas;
 import keuangan.KeuanganRVPBPJS;
@@ -9611,7 +9612,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnTagihanRanapPerhariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTagihanRanapPerhariActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPembyaranRanapPerhari rhkeluaripsrs=new DlgPembyaranRanapPerhari(this,false);
+        DlgPembayaranRanapPerhari rhkeluaripsrs=new DlgPembayaranRanapPerhari(this,false);
         rhkeluaripsrs.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         rhkeluaripsrs.setLocationRelativeTo(PanelUtama);
         rhkeluaripsrs.setVisible(true);
@@ -17081,7 +17082,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnRingkasanTindakanRalanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeuaganRingkasanTindakan dettin=new KeuaganRingkasanTindakan(this,false);
+        KeuanganRingkasanTindakan dettin=new KeuanganRingkasanTindakan(this,false);
         dettin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         dettin.setLocationRelativeTo(PanelUtama);
         dettin.setVisible(true);
@@ -17802,6 +17803,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPiutangLainLainActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPiutangLainLain aplikasi=new KeuanganPiutangLainLain(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18431,7 +18445,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
-            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang;
+            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain;
     
     public void isWall(){
         try{            
@@ -20394,6 +20408,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpeminjam_piutang()==true){
                 Panelmenu.add(btnPeminjamPiutang);
+                jmlmenu++;
+            }
+            
+            if(akses.getpiutang_lainlain()==true){
+                Panelmenu.add(btnPiutangLainLain);
                 jmlmenu++;
             }
 
@@ -24263,6 +24282,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpeminjam_piutang()==true){
             Panelmenu.add(btnPeminjamPiutang);
+            jmlmenu++;
+        }
+        
+        if(akses.getpiutang_lainlain()==true){
+            Panelmenu.add(btnPiutangLainLain);
             jmlmenu++;
         }
         
@@ -28860,6 +28884,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpeminjam_piutang()==true){
             if(btnPeminjamPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPeminjamPiutang);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpiutang_lainlain()==true){
+            if(btnPiutangLainLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPiutangLainLain);
                 jmlmenu++;
             }                
         }
@@ -34196,6 +34227,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPeminjamPiutang.setName("btnPeminjamPiutang"); 
         btnPeminjamPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPeminjamPiutang.addActionListener(this::btnPeminjamPiutangActionPerformed);
+        
+        btnPiutangLainLain = new widget.ButtonBig();
+        btnPiutangLainLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_11001_cash_coins_money_pig_piggy bank_icon_48px.png"))); 
+        btnPiutangLainLain.setText("Piutang Lain-lain");
+        btnPiutangLainLain.setIconTextGap(0);
+        btnPiutangLainLain.setName("btnPiutangLainLain"); 
+        btnPiutangLainLain.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangLainLain.addActionListener(this::btnPiutangLainLainActionPerformed);
     }
     
 }

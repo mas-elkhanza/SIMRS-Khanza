@@ -159,6 +159,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                 }
             });
         }  
+        
         petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}

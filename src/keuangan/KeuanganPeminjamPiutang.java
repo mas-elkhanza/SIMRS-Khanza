@@ -33,7 +33,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import restore.DlgRestoreCaraBayar;
+import restore.DlgRestorePeminjamPiutang;
 
 /**
  *
@@ -816,7 +816,7 @@ private void NmPeminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_NoTelpKeyPressed
 
     private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
-        DlgRestoreCaraBayar restore=new DlgRestoreCaraBayar(null,true);
+        DlgRestorePeminjamPiutang restore=new DlgRestorePeminjamPiutang(null,true);
         restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
@@ -963,10 +963,10 @@ private void NmPeminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getcara_bayar());
-        BtnHapus.setEnabled(akses.getcara_bayar());
-        BtnEdit.setEnabled(akses.getcara_bayar());
-        BtnPrint.setEnabled(akses.getcara_bayar());
+        BtnSimpan.setEnabled(akses.getpeminjam_piutang());
+        BtnHapus.setEnabled(akses.getpeminjam_piutang());
+        BtnEdit.setEnabled(akses.getpeminjam_piutang());
+        BtnPrint.setEnabled(akses.getpeminjam_piutang());
         if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
