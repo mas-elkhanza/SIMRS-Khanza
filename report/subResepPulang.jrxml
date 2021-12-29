@@ -25,7 +25,7 @@ WHERE
 	<columnHeader>
 		<band height="13" splitType="Immediate">
 			<staticText>
-				<reportElement x="0" y="0" width="189" height="13" uuid="fa08c7ab-57d3-445f-9a13-22d5b851a6f6">
+				<reportElement x="0" y="0" width="275" height="13" uuid="fa08c7ab-57d3-445f-9a13-22d5b851a6f6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f060ccb6-194f-400a-b45d-b95e1f79f920"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -37,25 +37,13 @@ WHERE
 				</textElement>
 				<text><![CDATA[Nama Obat]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="189" y="0" width="87" height="13" uuid="b62b4ed7-674f-45aa-85cf-4963850d293c">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a68c39b4-7cea-4e85-9f8f-f9b58d5fc590"/>
-				</reportElement>
-				<box>
-					<pen lineWidth="1.0" lineStyle="Solid"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Aturan Pakai]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="13" splitType="Immediate">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="0" width="189" height="13" uuid="0f2baf04-8b7b-4656-8840-76771e0c19a6">
+				<reportElement x="0" y="0" width="275" height="13" uuid="0f2baf04-8b7b-4656-8840-76771e0c19a6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f060ccb6-194f-400a-b45d-b95e1f79f920"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -67,19 +55,6 @@ WHERE
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="189" y="0" width="87" height="13" uuid="b6108439-dcaa-4233-a1c5-4a6d206ef75a">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a68c39b4-7cea-4e85-9f8f-f9b58d5fc590"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<box padding="2">
-					<pen lineWidth="1.0" lineStyle="Solid"/>
-				</box>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
