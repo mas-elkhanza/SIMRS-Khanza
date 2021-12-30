@@ -194,7 +194,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Program PRB di VClaim","[K]Suplesi Jasa Raharja di VClaim","[K]Data Induk Kecelakaan VClaim","[K]Data SEP Internal VClaim","[K]Klaim Jaminan Jasa Raharja VClaim",
                 "[K]Pasien Finger Print VClaim","[K]Rujukan Khusus VClaim","[F]Pemeliharaan Gedung","[N]Perbaikan Inventaris Per Tanggal","[N]Perbaikan Inventaris Per Bulan",
                 "[N]Perbaikan Inventaris Per Tahun","[N]Perbaikan Inventaris Per Pelaksana & Status","[L]Penilaian MCU","[J]Peminjam Piutang","[J]Piutang Lain-lain",
-                "[J]Asuransi/Askes/Jenis Bayar","[C]Audit Kepatuhan APD"
+                "[J]Asuransi/Askes/Jenis Bayar","[C]Audit Kepatuhan APD","[K]Task ID Mobile JKN"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -416,7 +416,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 778;i++) {
+        for (i = 0; i < 779;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2204,6 +2204,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 777:
                     column.setPreferredWidth(126);
                     break;
+                case 778:
+                    column.setPreferredWidth(113);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2703,7 +2706,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3523,7 +3526,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "peminjam_piutang='"+tbUser.getValueAt(i,774).toString()+"',"+
                     "piutang_lainlain='"+tbUser.getValueAt(i,775).toString()+"',"+
                     "cara_bayar='"+tbUser.getValueAt(i,776).toString()+"',"+
-                    "audit_kepatuhan_apd='"+tbUser.getValueAt(i,777).toString()+"'");
+                    "audit_kepatuhan_apd='"+tbUser.getValueAt(i,777).toString()+"',"+
+                    "bpjs_task_id='"+tbUser.getValueAt(i,778).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4383,7 +4387,8 @@ public class DlgUser extends javax.swing.JDialog {
                                         "peminjam_piutang='"+tbUser.getValueAt(barisdicopy,774).toString()+"',"+
                                         "piutang_lainlain='"+tbUser.getValueAt(barisdicopy,775).toString()+"',"+
                                         "cara_bayar='"+tbUser.getValueAt(barisdicopy,776).toString()+"',"+
-                                        "audit_kepatuhan_apd='"+tbUser.getValueAt(barisdicopy,777).toString()+"'");
+                                        "audit_kepatuhan_apd='"+tbUser.getValueAt(barisdicopy,777).toString()+"',"+
+                                        "bpjs_task_id='"+tbUser.getValueAt(barisdicopy,778).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -4737,7 +4742,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi,bpjs_program_prb,bpjs_suplesi_jasaraharja,"+
                         "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print,bpjs_rujukan_khusus,"+
                         "pemeliharaan_gedung,grafik_perbaikan_inventaris_pertanggal,grafik_perbaikan_inventaris_perbulan,grafik_perbaikan_inventaris_pertahun,"+
-                        "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,piutang_lainlain,cara_bayar,audit_kepatuhan_apd from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,piutang_lainlain,cara_bayar,audit_kepatuhan_apd,bpjs_task_id "+
+                        "from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5527,7 +5533,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("peminjam_piutang"),
                                rs.getBoolean("piutang_lainlain"),
                                rs.getBoolean("cara_bayar"),
-                               rs.getBoolean("audit_kepatuhan_apd")
+                               rs.getBoolean("audit_kepatuhan_apd"),
+                               rs.getBoolean("bpjs_task_id")
                             });
                         }   
                     } catch (Exception e) {
@@ -6306,7 +6313,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("peminjam_piutang"),
                            rs.getBoolean("piutang_lainlain"),
                            rs.getBoolean("cara_bayar"),
-                           rs.getBoolean("audit_kepatuhan_apd")
+                           rs.getBoolean("audit_kepatuhan_apd"),
+                           rs.getBoolean("bpjs_task_id")
                         });
                     }                                             
                  }

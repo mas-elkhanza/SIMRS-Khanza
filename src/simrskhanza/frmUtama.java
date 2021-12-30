@@ -75,6 +75,7 @@ import bridging.BPJSRujukanKeluar;
 import bridging.BPJSRujukanKhusus;
 import bridging.BPJSSPRI;
 import bridging.BPJSSuratKontrol;
+import bridging.BPJSTaskIDMobileJKN;
 import bridging.BRIApiIntegrasi;
 import bridging.CoronaDiagnosa;
 import bridging.INACBGCariCoderNIK;
@@ -17816,6 +17817,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSTaskIDMobileJKNActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSTaskIDMobileJKN aplikasi=new BPJSTaskIDMobileJKN(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18445,7 +18457,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
-            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain;
+            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN;
     
     public void isWall(){
         try{            
@@ -20665,6 +20677,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_referensi_jadwal_hfis()==true){
                 Panelmenu.add(btnBPJSReferensiJadwalHFIS);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_task_id()==true){
+                Panelmenu.add(btnBPJSTaskIDMobileJKN);
                 jmlmenu++;
             }
             
@@ -24538,6 +24555,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_referensi_jadwal_hfis()==true){
             Panelmenu.add(btnBPJSReferensiJadwalHFIS);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_task_id()==true){
+            Panelmenu.add(btnBPJSTaskIDMobileJKN);
             jmlmenu++;
         }
 
@@ -29241,6 +29263,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_referensi_jadwal_hfis()==true){
             if(btnBPJSReferensiJadwalHFIS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiJadwalHFIS);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_task_id()==true){
+            if(btnBPJSTaskIDMobileJKN.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSTaskIDMobileJKN);
                 jmlmenu++;
             }                
         }
@@ -34235,6 +34264,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPiutangLainLain.setName("btnPiutangLainLain"); 
         btnPiutangLainLain.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPiutangLainLain.addActionListener(this::btnPiutangLainLainActionPerformed);
+        
+        btnBPJSTaskIDMobileJKN = new widget.ButtonBig();
+        btnBPJSTaskIDMobileJKN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSTaskIDMobileJKN.setText("Task ID Mobile JKN");
+        btnBPJSTaskIDMobileJKN.setIconTextGap(0);
+        btnBPJSTaskIDMobileJKN.setName("btnBPJSTaskIDMobileJKN"); 
+        btnBPJSTaskIDMobileJKN.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSTaskIDMobileJKN.addActionListener(this::btnBPJSTaskIDMobileJKNActionPerformed);
     }
     
 }
