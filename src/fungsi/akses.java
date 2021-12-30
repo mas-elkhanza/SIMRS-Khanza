@@ -170,7 +170,7 @@ public final class akses {
             bpjs_sep_internal=false,bpjs_klaim_jasa_raharja=false,bpjs_daftar_finger_print=false,bpjs_rujukan_khusus=false,pemeliharaan_gedung=false,
             grafik_perbaikan_inventaris_pertanggal=false,grafik_perbaikan_inventaris_perbulan=false,grafik_perbaikan_inventaris_pertahun=false,
             grafik_perbaikan_inventaris_perpelaksana_status=false,penilaian_mcu=false,peminjam_piutang=false,piutang_lainlain=false,cara_bayar=false,
-            audit_kepatuhan_apd=false,bpjs_task_id=false;
+            audit_kepatuhan_apd=false,bpjs_task_id=false,bayar_piutang_lain=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -969,6 +969,7 @@ public final class akses {
                         akses.cara_bayar=true;
                         akses.audit_kepatuhan_apd=true;
                         akses.bpjs_task_id=true;
+                        akses.bayar_piutang_lain=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1751,6 +1752,7 @@ public final class akses {
                         akses.cara_bayar=rs2.getBoolean("cara_bayar");
                         akses.audit_kepatuhan_apd=rs2.getBoolean("audit_kepatuhan_apd");
                         akses.bpjs_task_id=rs2.getBoolean("bpjs_task_id");
+                        akses.bayar_piutang_lain=rs2.getBoolean("bayar_piutang_lain");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2531,6 +2533,7 @@ public final class akses {
                         akses.cara_bayar=false;
                         akses.audit_kepatuhan_apd=false;
                         akses.bpjs_task_id=false;
+                        akses.bayar_piutang_lain=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3366,4 +3369,5 @@ public final class akses {
     public static boolean getcara_bayar(){return akses.cara_bayar;}
     public static boolean getaudit_kepatuhan_apd(){return akses.audit_kepatuhan_apd;}
     public static boolean getbpjs_task_id(){return akses.bpjs_task_id;}
+    public static boolean getbayar_piutang_lain(){return akses.bayar_piutang_lain;}
 }   

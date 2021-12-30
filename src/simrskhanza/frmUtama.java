@@ -614,6 +614,7 @@ import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganRingkasanTindakan;
 import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
+import keuangan.KeuanganBayarPiutangLain;
 import keuangan.KeuanganHutangAsetIventarisBelumLunas;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPeminjamPiutang;
@@ -17828,6 +17829,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBayarPiutangLainLainActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganBayarPiutangLain aplikasi=new KeuanganBayarPiutangLain(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18457,7 +18471,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
-            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN;
+            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain;
     
     public void isWall(){
         try{            
@@ -20425,6 +20439,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpiutang_lainlain()==true){
                 Panelmenu.add(btnPiutangLainLain);
+                jmlmenu++;
+            }
+            
+            if(akses.getbayar_piutang_lain()==true){
+                Panelmenu.add(btnBayarPiutangLainLain);
                 jmlmenu++;
             }
 
@@ -24307,6 +24326,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getbayar_piutang_lain()==true){
+            Panelmenu.add(btnBayarPiutangLainLain);
+            jmlmenu++;
+        }
+
         if(akses.getposting_jurnal()==true){
             Panelmenu.add(btnPostingJurnal); 
             jmlmenu++;
@@ -28913,6 +28937,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpiutang_lainlain()==true){
             if(btnPiutangLainLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutangLainLain);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbayar_piutang_lain()==true){
+            if(btnBayarPiutangLainLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarPiutangLainLain);
                 jmlmenu++;
             }                
         }
@@ -34272,6 +34303,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSTaskIDMobileJKN.setName("btnBPJSTaskIDMobileJKN"); 
         btnBPJSTaskIDMobileJKN.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSTaskIDMobileJKN.addActionListener(this::btnBPJSTaskIDMobileJKNActionPerformed);
+        
+        btnBayarPiutangLainLain = new widget.ButtonBig();
+        btnBayarPiutangLainLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/47679_card_credit_payment_icon.png")));
+        btnBayarPiutangLainLain.setText("Bayar Piutang Lain-lain");
+        btnBayarPiutangLainLain.setIconTextGap(0);
+        btnBayarPiutangLainLain.setName("btnBayarPiutangLainLain"); 
+        btnBayarPiutangLainLain.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarPiutangLainLain.addActionListener(this::btnBayarPiutangLainLainActionPerformed);
     }
     
 }
