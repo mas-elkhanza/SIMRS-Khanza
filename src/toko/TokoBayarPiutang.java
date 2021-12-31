@@ -856,8 +856,10 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReportqry("rptBayarToko.jasper","report","::[ Bayar Piutang Toko ]::","select toko_bayar_piutang.tgl_bayar, toko_bayar_piutang.no_member,tokomember.nama, toko_bayar_piutang.besar_cicilan,"+
-                "toko_bayar_piutang.catatan, toko_bayar_piutang.nota_piutang from toko_bayar_piutang inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member where "+
+            Valid.MyReportqry("rptBayarToko.jasper","report","::[ Bayar Piutang Toko ]::",
+                "select toko_bayar_piutang.tgl_bayar, toko_bayar_piutang.no_member,tokomember.nama, toko_bayar_piutang.besar_cicilan,"+
+                "toko_bayar_piutang.catatan, toko_bayar_piutang.nota_piutang from toko_bayar_piutang "+
+                "inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member where "+
                 "toko_bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and toko_bayar_piutang.nota_piutang like '%"+TCari.getText()+"%' or "+
                 "toko_bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and toko_bayar_piutang.no_member like '%"+TCari.getText()+"%' or "+
                 "toko_bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokomember.nama like '%"+TCari.getText()+"%' or "+

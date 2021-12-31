@@ -17811,7 +17811,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganPiutangLainLain aplikasi=new KeuanganPiutangLainLain(this,false);
         aplikasi.isCek();
-        aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -20437,7 +20436,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
-            if(akses.getpiutang_lainlain()==true){
+            if((akses.getpiutang_lainlain()==true)||(akses.getbayar_piutang_lain()==true)){
                 Panelmenu.add(btnPiutangLainLain);
                 jmlmenu++;
             }
@@ -24321,7 +24320,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
-        if(akses.getpiutang_lainlain()==true){
+        if((akses.getpiutang_lainlain()==true)||(akses.getbayar_piutang_lain()==true)){
             Panelmenu.add(btnPiutangLainLain);
             jmlmenu++;
         }
@@ -28934,7 +28933,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.getpiutang_lainlain()==true){
+        if((akses.getpiutang_lainlain()==true)||(akses.getbayar_piutang_lain()==true)){
             if(btnPiutangLainLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutangLainLain);
                 jmlmenu++;

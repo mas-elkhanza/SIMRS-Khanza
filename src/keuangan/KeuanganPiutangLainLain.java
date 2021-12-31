@@ -42,6 +42,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
+import toko.TokoBayarPiutang;
 
 /**
  *
@@ -245,6 +246,8 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        ppBayarPiutang = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -302,6 +305,25 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
             }
         });
 
+        Popup.setName("Popup"); // NOI18N
+
+        ppBayarPiutang.setBackground(new java.awt.Color(255, 255, 254));
+        ppBayarPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBayarPiutang.setForeground(new java.awt.Color(50, 50, 50));
+        ppBayarPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/bantuan.png"))); // NOI18N
+        ppBayarPiutang.setText("Bayar Piutang");
+        ppBayarPiutang.setComponentPopupMenu(Popup);
+        ppBayarPiutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBayarPiutang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBayarPiutang.setName("ppBayarPiutang"); // NOI18N
+        ppBayarPiutang.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppBayarPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBayarPiutangBtnPrintActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBayarPiutang);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -319,6 +341,7 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -1011,6 +1034,27 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }//GEN-LAST:event_KdPeminjamKeyPressed
 
+    private void ppBayarPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBayarPiutangBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbKamar.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            KeuanganBayarPiutangLain bayarpiutang=new KeuanganBayarPiutangLain(null,false);
+            bayarpiutang.emptTeks();
+            bayarpiutang.setData(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString());
+            bayarpiutang.isCek();
+            bayarpiutang.tampil();
+            bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
+            bayarpiutang.setLocationRelativeTo(this);
+            bayarpiutang.setAlwaysOnTop(false);
+            bayarpiutang.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ppBayarPiutangBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1052,6 +1096,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox NoNota;
     private widget.TextBox NominalPinjam;
     private javax.swing.JPanel PanelInput;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
@@ -1076,6 +1121,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
+    private javax.swing.JMenuItem ppBayarPiutang;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
