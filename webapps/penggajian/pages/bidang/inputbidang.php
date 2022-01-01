@@ -10,14 +10,14 @@
         <form name="frm_ruang" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $nama        =isset($_GET['nama'])?$_GET['nama']:NULL;
+                $action      = isset($_GET['action'])?$_GET['action']:NULL;
+                $nama        = isset($_GET['nama'])?$_GET['nama']:NULL;
                 if($action == "TAMBAH"){
                     $nama      = isset($_GET['nama'])?$_GET['nama']:NULL;
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT nama FROM bidang WHERE nama='$nama'";
-                    $hasil        = bukaquery($_sql);
-                    $baris        = mysqli_fetch_row($hasil);
+                    $_sql      = "SELECT nama FROM bidang WHERE nama='$nama'";
+                    $hasil     = bukaquery($_sql);
+                    $baris     = mysqli_fetch_row($hasil);
                     $nama      = $baris[0];
                 }
                 echo"<input type=hidden name=nama value=$nama><input type=hidden name=action value=$action>";
@@ -25,7 +25,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Bidang</td><td width="">:</td>
-                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $nama;?>" size="30" maxlength="15">
+                    <td width="67%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $nama;?>" size="30" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -35,6 +35,7 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $nama   = trim(isset($_POST['nama']))?trim($_POST['nama']):NULL;
+                    $nama   = validTeks($nama);
                     if (!empty($nama)) {
                         switch($action) {
                             case "TAMBAH":

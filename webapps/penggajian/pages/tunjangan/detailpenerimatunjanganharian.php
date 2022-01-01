@@ -5,22 +5,22 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
-		$id                 =isset($_GET['id'])?$_GET['id']:NULL;
+		        $id                 =isset($_GET['id'])?$_GET['id']:NULL;
                 $id_tnj             =isset($_GET['id_tnj'])?$_GET['id_tnj']:NULL;
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
-		$_sql = "SELECT nik,nama FROM pegawai where id='$id'";
+		        $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
                 $baris = mysqli_fetch_row($hasil);
 
-                $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
+                    $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    @$next              = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
+                    @$prev              = $barisprev[0];
                     
                     if(empty($prev)){
                         $prev=$next;
@@ -38,11 +38,11 @@
                           </div>";
             ?>
             <table width="100%" align="center">
-		<tr class="head">
+		        <tr class="head">
                     <td width="31%" >NIP</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[0];?></td>
                 </tr>
-		<tr class="head">
+		        <tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[1];?></td>
                 </tr>
@@ -67,16 +67,16 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-		    $id                 =trim($_POST['id']);
-                    $id_tnj             =trim($_POST['id_tnj']);
-                    if ((!empty($id))&&(!empty($id_tnj))) {
+		            $id                 = validTeks(trim($_POST['id']));
+                    $id_tnj             = validTeks(trim($_POST['id_tnj']));
+                    if ((isset($id))&&(isset($id_tnj))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" pnm_tnj_harian ","'$id','$id_tnj'", " Detail tunjangan harian diterima " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPenerimaTunjanganHarian&action=TAMBAH&id=$id'>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($id_tnj))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -84,13 +84,13 @@
             <div style="width: 100%; height: 67%; overflow: auto;">
             <?php
                 $_sql = "SELECT pnm_tnj_harian.id,
-		        pnm_tnj_harian.id_tnj,
-			master_tunjangan_harian.nama,
-			master_tunjangan_harian.tnj
-			from master_tunjangan_harian inner join pnm_tnj_harian
-			where pnm_tnj_harian.id_tnj=master_tunjangan_harian.id
-		        and pnm_tnj_harian.id='$id'
-			ORDER BY master_tunjangan_harian.nama ASC ";
+                            pnm_tnj_harian.id_tnj,
+                            master_tunjangan_harian.nama,
+                            master_tunjangan_harian.tnj
+                            from master_tunjangan_harian inner join pnm_tnj_harian
+                            where pnm_tnj_harian.id_tnj=master_tunjangan_harian.id
+                            and pnm_tnj_harian.id='$id'
+                            ORDER BY master_tunjangan_harian.nama ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
 
@@ -102,7 +102,7 @@
                                 <td width='35%'><div align='center'>Besar Tunjangan</div></td>
                             </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
-                      echo "<tr class='isi'>
+                        echo "<tr class='isi'>
                                 <td>
                                     <center>";?>
                                     <a href="?act=DetailPenerimaTunjanganHarian&action=HAPUS&id=<?php print $baris[0] ?>&id_tnj=<?php print $baris[1]; ?>" >[hapus]</a>
@@ -115,7 +115,15 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data detail tunjangan harian yang diterima masih kosong !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='10'><div align='center'>Proses</div></td>
+                                <td width='55%'><div align='center'>Nama Tunjangan</div></td>
+                                <td width='35%'><div align='center'>Besar Tunjangan</div></td>
+                            </tr>
+                        </table>";
+            }
         ?>
         </div>
         </form>

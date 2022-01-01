@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.DlgCariSatuan;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -86,14 +86,26 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
         kdsat.setDocument(new batasInput((byte)4).getKata(kdsat));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TKd.requestFocus();
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         satuan.addWindowListener(new WindowListener() {
@@ -103,7 +115,7 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgObatOperasi")){
+                if(akses.getform().equals("DlgObatOperasi")){
                     if(satuan.getTable().getSelectedRow()!= -1){                   
                         kdsat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(),0).toString());                    
                         nmsat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(),1).toString());
@@ -120,18 +132,6 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
-        try {
-            ps=koneksi.prepareStatement("select obatbhp_ok.kd_obat, obatbhp_ok.nm_obat, kodesatuan.satuan, "+
-                   "obatbhp_ok.hargasatuan from obatbhp_ok inner join kodesatuan "+
-                   "on obatbhp_ok.kode_sat=kodesatuan.kode_sat "+
-                   "where obatbhp_ok.kd_obat like ? or "+
-                   "obatbhp_ok.nm_obat like ? or "+
-                   "kodesatuan.satuan like ? "+
-                   "order by obatbhp_ok.kd_obat");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
     
     private DlgCariSatuan satuan=new DlgCariSatuan(null,false);
@@ -186,7 +186,7 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat & BHP Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat & BHP Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -603,9 +603,9 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
             if(TCari.getText().trim().equals("")){
-                Valid.MyReport("rptBangsal.jrxml","report","::[ Data Kamar ]::","select * from order by kd_bangsal",param);
+                Valid.MyReport("rptBangsal.jasper","report","::[ Data Kamar ]::","select * from order by kd_bangsal",param);
             }else if(! TCari.getText().trim().equals("")){
-                Valid.MyReport("rptBangsal.jrxml","report","::[ Data Kamar ]::","select * from where kd_bangsal like '%"+TCari.getText().trim()+"%' "+
+                Valid.MyReport("rptBangsal.jasper","report","::[ Data Kamar ]::","select * from where kd_bangsal like '%"+TCari.getText().trim()+"%' "+
                                "or nm_bangsal like '%"+TCari.getText().trim()+"%' "+
                                "or kelas like '%"+TCari.getText().trim()+"%' order by kd_bangsal",param);
             }
@@ -693,7 +693,7 @@ private void kdsatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kds
 }//GEN-LAST:event_kdsatKeyPressed
 
 private void BtnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuanActionPerformed
-        var.setform("DlgObatOperasi");
+        akses.setform("DlgObatOperasi");
         satuan.emptTeks();
         satuan.isCek();
         satuan.setSize(656,350);
@@ -756,16 +756,35 @@ private void BtnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void tampil() {        
         Valid.tabelKosong(tabMode2);
         try{
-            ps.setString(1,"%"+TCari.getText()+"%");
-            ps.setString(2,"%"+TCari.getText()+"%");
-            ps.setString(3,"%"+TCari.getText()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode2.addRow(new String[]{rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4)});
+            ps=koneksi.prepareStatement("select obatbhp_ok.kd_obat, obatbhp_ok.nm_obat, kodesatuan.satuan, "+
+               "obatbhp_ok.hargasatuan from obatbhp_ok inner join kodesatuan "+
+               "on obatbhp_ok.kode_sat=kodesatuan.kode_sat "+
+               "where obatbhp_ok.kd_obat like ? or "+
+               "obatbhp_ok.nm_obat like ? or "+
+               "kodesatuan.satuan like ? "+
+               "order by obatbhp_ok.kd_obat");
+            try {
+                ps.setString(1,"%"+TCari.getText()+"%");
+                ps.setString(2,"%"+TCari.getText()+"%");
+                ps.setString(3,"%"+TCari.getText()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode2.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),
+                        rs.getString(3),rs.getString(4)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
+                
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

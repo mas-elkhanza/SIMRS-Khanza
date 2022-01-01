@@ -8,11 +8,13 @@
     <body>
    <?php
         $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;
+        $keyword= validTeks($keyword);
         $_sql         = "SELECT * FROM set_tahun";
         $hasil        = bukaquery($_sql);
         $baris        = mysqli_fetch_row($hasil);
-        $tahun        = $baris[0];
-        $bulan        = $baris[1];
+        $tahun        = empty($baris[0])?date("Y"):$baris[0];
+        $bulan        = empty($baris[1])?date("m"):$baris[1];
+   
         $_sql = "SELECT pegawai.id, 
 		        pegawai.nik,
 				pegawai.nama,
@@ -60,7 +62,7 @@
                     <tr class='head'>
                         <td width='100px'><div align='center'>NIP</div></td>
                         <td width='250px'><div align='center'>Nama</div></td>
-			<td width='100px'><div align='center'>Departemen</div></td>
+			            <td width='100px'><div align='center'>Departemen</div></td>
                         <td width='80px'><div align='center'>Anggota Koperasi</div></td>
                         <td width='80px'><div align='center'>Anggota Jamsostek</div></td>
                         <td width='80px'><div align='center'>Anggota BPJS</div></td>
@@ -112,6 +114,30 @@
                              </tr>";
                     }
             echo "</table>";
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <caption><h3><font color='999999'>Laporan Potongan Gaji Tahun ".$tahun." Bulan ".$bulan."</font></h3></caption>
+                    <tr class='head'>
+                        <td width='100px'><div align='center'>NIP</div></td>
+                        <td width='250px'><div align='center'>Nama</div></td>
+			            <td width='100px'><div align='center'>Departemen</div></td>
+                        <td width='80px'><div align='center'>Anggota Koperasi</div></td>
+                        <td width='80px'><div align='center'>Anggota Jamsostek</div></td>
+                        <td width='80px'><div align='center'>Anggota BPJS</div></td>
+                        <td width='100px'><div align='center'>BPJS</div></td>
+                        <td width='100px'><div align='center'>Jamsostek</div></td>
+                        <td width='100px'><div align='center'>Dana Sosial</div></td>
+                        <td width='100px'><div align='center'>Simpanan Wajib</div></td>
+                        <td width='100px'><div align='center'>Angsuran Koperasi</div></td>
+                        <td width='100px'><div align='center'>Angsuran Lain</div></td>
+                        <td width='100px'><div align='center'>Telepon Pribadi</div></td>
+                        <td width='100px'><div align='center'>Pajak</div></td>
+                        <td width='100px'><div align='center'>Pribadi</div></td>
+                        <td width='100px'><div align='center'>Lain-Lain</div></td>
+                        <td width='100px'><div align='center'>Total Potongan</div></td>
+                        <td width='200px'><div align='center'>Keterangan</div></td>
+                    </tr>
+                </table>";
         }
         echo("<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                   <tr class='head'>

@@ -24,15 +24,15 @@
                     $tingkatx     = $baris[0];
                     $indek        = $baris[1];
                     $gapok1       = $baris[2];
-                    $kenaikan       = $baris[3];
-                    $maksimal       = $baris[4];
+                    $kenaikan     = $baris[3];
+                    $maksimal     = $baris[4];
                 }
                 echo"<input type=hidden name=tingkatx value='$tingkatx'><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Tingkat Pendidikan</td><td width="">:</td>
-                    <td width="67%"><input name="tingkat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo isset($tingkat)?$tingkat:NULL;?>" size="50" maxlength="80">
+                    <td width="67%"><input name="tingkat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo isset($tingkat)?$tingkat:NULL;?>" size="50" maxlength="80" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -65,13 +65,13 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $tingkat   = trim($_POST['tingkat']);
-                    $tingkatx  = trim($_POST['tingkatx']);
-                    $indek     = trim($_POST['indek']);
-                    $gapok1       = trim($_POST['gapok1']);
-                    $kenaikan       = trim($_POST['kenaikan']);
-                    $maksimal       = trim($_POST['maksimal']);
-                    if (!empty($tingkat)&&!empty($indek)&&!empty($gapok1)&&!empty($kenaikan)&&!empty($maksimal)) {
+                    $tingkat        = validTeks(trim($_POST['tingkat']));
+                    $tingkatx       = validTeks(trim($_POST['tingkatx']));
+                    $indek          = validangka(trim($_POST['indek']));
+                    $gapok1         = validangka(trim($_POST['gapok1']));
+                    $kenaikan       = validangka(trim($_POST['kenaikan']));
+                    $maksimal       = validangka(trim($_POST['maksimal']));
+                    if (isset($tingkat)&&isset($indek)&&isset($gapok1)&&isset($kenaikan)&&isset($maksimal)) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" pendidikan "," '$tingkat','$indek','$gapok1','$kenaikan','$maksimal' ", " Pendidikan " );
@@ -83,9 +83,8 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPendidikan'></head><body></body></html>";
                                 break;
                         }
-                    }else if (empty($tingkat)||empty($indek)||empty($gapok1)||empty($kenaikan)||empty($maksimal)){
+                    }else{
                         echo 'Semua field harus isi..!! ';
-                        //echo "1'$tingkat',2'$indek',3'$gapok1',4'$kenaikan',5'$maksimal'";
                     }
                 }
             ?>

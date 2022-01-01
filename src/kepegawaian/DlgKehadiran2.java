@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -74,14 +74,26 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
         Departemen.setSelectedItem("Semua");
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -157,14 +169,13 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Kehadiran & Tambahan Jaga ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Kehadiran & Tambahan Jaga ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -266,7 +277,7 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(50, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass7.add(BlnCari);
 
         label12.setText("Departemen :");
@@ -337,8 +348,8 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
-            Sequel.queryu("delete from temporary");
+            
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -377,14 +388,14 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,34).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','"+
                                 tabMode.getValueAt(r,35).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','','',''","Rekap Presensi"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("departemen",Departemen.getSelectedItem().toString().replaceAll("Semua",""));
                 param.put("periode","01 - 31 BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
@@ -424,12 +435,12 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
                     switch (pilihan) {
                         case "Tampilkan Semua":
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            Valid.MyReport("rptRekapKehadiran.jrxml","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::","select * from temporary",param);            
+                            Valid.MyReport("rptRekapKehadiran.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
                             this.setCursor(Cursor.getDefaultCursor());
                             break;
                         case "Tanpa departemen & jabatan":
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            Valid.MyReport("rptRekapKehadiran2.jrxml","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::","select * from temporary",param);            
+                            Valid.MyReport("rptRekapKehadiran2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
                             this.setCursor(Cursor.getDefaultCursor());
                             break;
                     }

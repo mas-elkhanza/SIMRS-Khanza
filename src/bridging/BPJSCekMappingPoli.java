@@ -14,14 +14,13 @@ package bridging;
 
 import fungsi.WarnaTable;
 import fungsi.batasInput;
-import fungsi.koneksiDB;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
+import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -36,7 +35,6 @@ import javax.swing.event.DocumentEvent;
 public final class BPJSCekMappingPoli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
-    private sekuel Sequel=new sekuel();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;    
@@ -78,14 +76,26 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
         
         Poli.setDocument(new batasInput((byte)100).getKata(Poli));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
               
@@ -124,7 +134,7 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Mapping Referensi Poli/Unit VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Mapping Referensi Poli/Unit VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -255,7 +265,7 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         poli.emptTeks();
         poli.isCek();
-        poli.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -333,6 +343,6 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.getmapping_poli_bpjs());
+        BtnTambah.setEnabled(akses.getmapping_poli_bpjs());
     }
 }

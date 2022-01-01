@@ -2,14 +2,12 @@ package informasi;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -21,11 +19,10 @@ import javax.swing.table.TableColumn;
  */
 public final class InformasiTarifLab extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps;
-    private ResultSet rs;    
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;    
 
     /** Creates new form DlgJnsPerawatanRalan
      * @param parent
@@ -60,28 +57,28 @@ public final class InformasiTarifLab extends javax.swing.JDialog {
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
-        
-        try {            
-            ps=koneksi.prepareStatement(
-                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,penjab.png_jawab "+
-                    "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
-                    " jns_perawatan_lab.kd_jenis_prw like ? or  jns_perawatan_lab.nm_perawatan like ? or "+
-                    " penjab.png_jawab like ? or jns_perawatan_lab.total_byr like ?  "+
-                    "order by jns_perawatan_lab.kd_jenis_prw");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    
     }
     
 
@@ -118,7 +115,7 @@ public final class InformasiTarifLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Informasi Tarif Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Informasi Tarif Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -295,20 +292,55 @@ public final class InformasiTarifLab extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");    
-
-            rs=ps.executeQuery();
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               Valid.SetAngka(rs.getDouble(3)),
-                               rs.getString(4)};
-                tabMode.addRow(data);
+            ps=koneksi.prepareStatement(
+                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,penjab.png_jawab "+
+                    "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where jns_perawatan_lab.status='1' and "+
+                    " (jns_perawatan_lab.kd_jenis_prw like ? or  jns_perawatan_lab.nm_perawatan like ? or "+
+                    " penjab.png_jawab like ? or jns_perawatan_lab.total_byr like ?)  "+
+                    "order by jns_perawatan_lab.kd_jenis_prw");
+            try {            
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");  
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),rs.getString(4)
+                    });
+                    ps2=koneksi.prepareStatement(
+                            "select template_laboratorium.Pemeriksaan,template_laboratorium.biaya_item from template_laboratorium "+
+                            "where template_laboratorium.kd_jenis_prw=? order by template_laboratorium.urut");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            tabMode.addRow(new String[]{
+                                "","   "+rs2.getString(1),Valid.SetAngka(rs2.getDouble(2)),rs.getString(4)
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

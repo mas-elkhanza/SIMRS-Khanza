@@ -70,7 +70,8 @@ public class DlgSetEmbalase extends javax.swing.JDialog {
 
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Embalase.setDocument(new batasInput((byte)10).getKata(Embalase));
+        Embalase.setDocument(new batasInput((byte)10).getOnlyAngka(Embalase));
+        Tuslah.setDocument(new batasInput((byte)10).getOnlyAngka(Tuslah));
         try {
             ps=koneksi.prepareStatement("select * from set_embalase ");
         } catch (Exception e) {
@@ -112,7 +113,7 @@ public class DlgSetEmbalase extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Embalase & Tuslah Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Embalase & Tuslah Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));

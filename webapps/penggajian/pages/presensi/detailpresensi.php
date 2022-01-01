@@ -3,13 +3,13 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
+   $bln_leng     = strlen(empty($baris[1])?date("m"):$baris[1]);
    if ($bln_leng==1){
-    	$bulan="0".$baris[1];
+    	$bulan = "0".$bulan;
    }else{
-		$bulan=$baris[1]; 
+		$bulan = $bulan;
    }
 ?>
 <div id="post">
@@ -24,19 +24,19 @@
                 $jns                =isset($_GET['jns'])?$_GET['jns']:NULL;
                 $lembur             =isset($_GET['lembur'])?$_GET['lembur']:NULL;
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=tgl value=$tgl><input type=hidden name=action value=$action>";
-		$_sql = "SELECT nik,nama FROM pegawai where id='$id'";
-                $hasil=bukaquery($_sql);
-                $baris = mysqli_fetch_row($hasil);
+		        $_sql       = "SELECT nik,nama FROM pegawai where id='$id'";
+                $hasil      = bukaquery($_sql);
+                $baris      = mysqli_fetch_row($hasil);
 
                     $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    @$next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
+                    @$prev               = $barisprev[0];
                     if(empty($next)){
                         $next=$prev;
                     }
@@ -59,16 +59,16 @@
                      <?php echo $baris[0];?>
                     </td>
                 </tr>
-		<tr class="head">
+		        <tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[1];?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Tanggal</td><td width="">:</td>
                     <td width="67%">
-                        <select name="TglPres" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="TglPres" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                              <?php
-                                loadTgl();
+                                loadTgl2();
                              ?>
                         </select>
                         <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
@@ -96,31 +96,31 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
-                    $tgl                =$tahun."-".$bulan."-".trim($_POST['TglPres']);
-                    $lembur             =trim($_POST['lembur']);
-                    $jns                =trim($_POST['jns']);
-                    if ((!empty($id))&&(!empty($tgl))&&(!empty($jns))) {
+                    $id                 = trim($_POST['id']);
+                    $tgl                = $tahun."-".$bulan."-".trim($_POST['TglPres']);
+                    $lembur             = validangka(trim($_POST['lembur']));
+                    $jns                = trim($_POST['jns']);
+                    if ((isset($id))&&(isset($tgl))&&(isset($jns))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" presensi "," '$tgl','$id','$jns','$lembur'", " lembur " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailPresensi&action=TAMBAH&id=$id'>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($tgl))||(empty($jns))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
             ?>
             <div style="width: 100%; height: 53%; overflow: auto;">
             <?php
-                $_sql = "SELECT tgl,id,jns,lembur
+                $_sql   = "SELECT tgl,id,jns,lembur
                         from presensi where id='$id'
-			and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC ";
-                $hasil=bukaquery($_sql);
-                $jumlah=mysqli_num_rows($hasil);
-                $ttllembur=0;
-                $ttlhr=0;
+			            and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC ";
+                $hasil  = bukaquery($_sql);
+                $jumlah = mysqli_num_rows($hasil);
+                $ttllembur = 0;
+                $ttlhr = 0;
 
                 if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -152,7 +152,16 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data lembur masih kosong !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='10%'><div align='center'>Proses</div></td>
+                                <td width='20%'><div align='center'>Tgl.Lembur</div></td>
+                                <td width='50%'><div align='center'>Jns Lembur</div></td>
+                                <td width='20%'><div align='center'>Lembur</div></td>
+                            </tr>
+                      </table>";
+            }
         ?>
         </div>
         </form>
@@ -161,11 +170,11 @@
                 Hapus(" presensi"," id ='".$_GET['id']."' and tgl ='".$_GET['tgl']."'","?act=DetailPresensi&action=TAMBAH&id=$id");
             }
 
-        if(mysqli_num_rows($hasil)!=0) {
-                $hasil1=bukaquery("SELECT tgl,id,jns,lembur
-                        from presensi where id='$id'
-			     and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC ");
-                $jumladiv=mysqli_num_rows($hasil1);
+            if(mysqli_num_rows($hasil)!=0) {
+                $hasil1 = bukaquery("SELECT tgl,id,jns,lembur
+                          from presensi where id='$id'
+			              and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC ");
+                $jumladiv = mysqli_num_rows($hasil1);
                 $i=$jumladiv/19;
                 $i=ceil($i);
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -173,7 +182,7 @@
                         <td><div align='left'>Data : $jumlah, Ttl.Lembur HB : ".$ttllembur." , Ttl.Lembur HR : ".$ttlhr." <a target=_blank href=../penggajian/pages/presensi/LaporanPresensiDetail.php?&id=$id>| Laporan |</a></div></td>                        
                     </tr>     
                  </table>");
-        }
+            }
         ?>
     </div>
 

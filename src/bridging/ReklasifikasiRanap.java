@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -26,7 +26,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -34,7 +33,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingRanap;
-import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariCaraBayar;
 
 /**
  *
@@ -47,7 +46,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2,pspenyakit,psprosedur;
     private ResultSet rs,rs2;
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private double all=0,Laborat=0,Radiologi=0,Operasi=0,Obat=0,Ranap_Dokter=0,Ranap_Paramedis=0,Ranap_Dokter_Paramedis=0,Ralan_Dokter=0,
              Ralan_Paramedis=0,ttlRalan_Dokter_Paramedis=0,Ralan_Dokter_Paramedis=0,Tambahan=0,Potongan=0,Kamar=0,Registrasi=0,Harian=0,Retur_Obat=0,Resep_Pulang=0,
              ttlRanap_Dokter_Paramedis=0,Service=0,ttlLaborat=0,ttlRadiologi=0,ttlOperasi=0,ttlObat=0,ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlRalan_Dokter=0,
@@ -218,7 +217,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnBilling.setBackground(new java.awt.Color(255, 255, 255));
+        MnBilling.setBackground(new java.awt.Color(255, 255, 254));
         MnBilling.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBilling.setForeground(java.awt.Color.darkGray);
         MnBilling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -243,7 +242,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Reklasifikasi Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Reklasifikasi Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -308,7 +307,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
         panelGlass5.add(BtnPrint);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(100,80,80));
+        jLabel10.setForeground(new java.awt.Color(50,50,50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total Reklasifikasi :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -316,7 +315,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(100,80,80));
+        LCount.setForeground(new java.awt.Color(50,50,50));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
@@ -352,7 +351,6 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -364,7 +362,6 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(27, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -436,7 +433,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("truncate table temporary2");
             for(int r=0;r<tabMode.getRowCount();r++){  
                     Sequel.menyimpan("temporary2","'0','"+
@@ -531,17 +528,16 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,89).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,90).toString().replaceAll("'","`")+"','','','','','','','','','',''","data");
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptReklasifikasiRalan.jrxml","report","::[ Reklasifikasi Ranap ]::",
-                "select * from temporary2 order by no asc",param);
+            Valid.MyReport("rptReklasifikasiRalan.jasper","report","::[ Reklasifikasi Ranap ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -649,8 +645,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else{
             DlgBilingRanap billing=new DlgBilingRanap(null,false);
             billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());            
-            billing.isRawat();
             billing.isCek();
+            billing.isRawat();
             billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             billing.setLocationRelativeTo(internalFrame1);
             billing.setVisible(true); 
@@ -1370,7 +1366,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             Sequel.cariIsi("select code_cbg from inacbg_grouping_stage1 inner join bridging_sep on bridging_sep.no_sep=inacbg_grouping_stage1.no_sep where bridging_sep.no_rawat=?",rs.getString("no_rawat")),
                             Valid.SetAngka(Laborat+Radiologi+Operasi+Obat+Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+
                             Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Kamar+Registrasi+Harian+Retur_Obat+Resep_Pulang+Service),
-                            Valid.SetAngka(kebidanan),Valid.SetAngka(operasi2),Valid.SetAngka(Ranap_Dokter+Ralan_Dokter),
+                            Valid.SetAngka(kebidanan),Valid.SetAngka(Operasi-kebidanan),Valid.SetAngka(Ranap_Dokter+Ralan_Dokter),
                             Valid.SetAngka(Ranap_Dokter_Paramedis+Ralan_Dokter_Paramedis),Valid.SetAngka(Ranap_Paramedis+Ralan_Paramedis),
                             Valid.SetAngka(Tambahan+Registrasi+Service),0,Valid.SetAngka(Laborat),0,Valid.SetAngka(Radiologi),0,
                             Valid.SetAngka(Kamar+Harian),0,Valid.SetAngka(Obat+Retur_Obat+Resep_Pulang),0,0,0,Valid.SetAngka(Potongan),

@@ -3,14 +3,15 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-		$bulan=$baris[1];
-   }
+   $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
+        $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
+        $bln_leng  = strlen($blnini);
+        $bulan     = "0";
+        if ($bln_leng==1){
+            $bulan="0".$blnini;
+        }else{
+            $bulan=$blnini;
+        }
 ?>
 <div id="post">
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
@@ -18,7 +19,7 @@
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;
                 $id                 =isset($_GET['id'])?$_GET['id']:NULL;
-                $TglPres            =isset($_GET['TglPres'])?$_GET['TglPres']:date('d');
+                $TglPres            =isset($_GET['tgl'])?substr($_GET['tgl'],8,10):date('d');
                 $JamDatang          =isset($_GET['JamDatang'])?$_GET['JamDatang']:"00";
                 $MenitDatang        =isset($_GET['MenitDatang'])?$_GET['MenitDatang']:"00";
                 $DetikDatang        =isset($_GET['DetikDatang'])?$_GET['DetikDatang']:"00";
@@ -29,7 +30,7 @@
                 $kamar              =isset($_GET['kamar'])?$_GET['kamar']:NULL;
                 $diagnosa           =isset($_GET['diagnosa'])?$_GET['diagnosa']:NULL;
                 $jmlh               =isset($_GET['jmlh'])?$_GET['jmlh']:NULL;
-                $TglPres            =substr(isset($_GET['tgl']),8,2)?substr($_GET['tgl'],8,2):NULL;
+                
                 echo "
                      <input type=hidden name=action value=$action>
                      <input type=hidden name=tgl value=$tgl>
@@ -48,12 +49,12 @@
                  $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' and pegawai.jbtn like '%dokter spesialis%' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    @$next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' and pegawai.jbtn like '%dokter spesialis%' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
+                    @$prev               = $barisprev[0];
                     
                     if(empty($next)){
                         $next=$prev;
@@ -73,16 +74,16 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >NIP</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[0];?></td>
+                    <td width="67%"><?php echo @$baris[0];?></td>
                 </tr>
 				<tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[1];?></td>
+                    <td width="67%"><?php echo @$baris[1];?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Tanggal</td><td width="">:</td>
                     <td width="67%">
-                        <select name="TglPres" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="TglPres" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                              <?php
                                     if($action == "UBAH"){
                                         echo "<option id='TxtIsi13' value=$TglPres>$TglPres</option>";
@@ -94,7 +95,7 @@
                         <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
-		<tr class="head">
+		        <tr class="head">
                     <td width="25%" >Tindakan</td><td width="">:</td>
                     <td width="75%">
                         <select name="tnd" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2">
@@ -143,16 +144,20 @@
                     $TglPres            =isset($_POST['TglPres'])?$_POST['TglPres']:date('d');
                     $tgl                =$tahun."-".$bulan."-".$TglPres." ".$JamDatang.":".$MenitDatang.":".$DetikDatang;
                     $tnd                =trim(isset($_POST['tnd']))?trim($_POST['tnd']):NULL;
+                    $tnd                =validTeks($tnd);
                     $_sql = "SELECT jm FROM master_tindakan where id='$tnd'";
                     $hasil=bukaquery($_sql);
                     $baris = mysqli_fetch_array($hasil);
                     $jm                 =$baris[0];
                     $nm_pasien          =trim(isset($_POST['nm_pasien']))?trim($_POST['nm_pasien']):NULL;
+                    $nm_pasien          =validTeks($nm_pasien);
                     $kamar              ="-";
                     $diagnosa           =trim(isset($_POST['diagnosa']))?trim($_POST['diagnosa']):NULL;
+                    $diagnosa           =validTeks($diagnosa);
                     $jmlh               =trim(isset($_POST['jmlh']))?trim($_POST['jmlh']):NULL;
+                    $jmlh               =validangka($jmlh);
                     $ttljm              =$jm*$jmlh;
-                    if ((!empty($id))&&(!empty($tgl))&&(!empty($tnd))) {
+                    if ((isset($id))&&(isset($tgl))&&(isset($tnd))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" tindakan "," '$tgl','$id','$tnd','$ttljm','$nm_pasien',
@@ -164,7 +169,7 @@
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputTindakanSpesialis&action=TAMBAH&id=$id'>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($tgl))||(empty($tnd))){
+                    }else {
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -197,10 +202,10 @@
                                 <td width='25%'><div align='center'>Nama Tindakan-Kelas</div></td>
                                 <td width='25%'><div align='center'>JM Tindakan</div></td>
                             </tr>";
-			  $ttljms=0;
+			        $ttljms=0;
                     while($baris = mysqli_fetch_array($hasil)) {
                         $ttljms=$ttljms+$baris[4];
-                      echo "<tr class='isi' title='$baris[3], $baris[4], $baris[5]'>
+                        echo "<tr class='isi' title='$baris[3], $baris[4], $baris[5]'>
                                 <td width='70'>
                                     <center>
                                     <a href=?act=InputTindakanSpesialis&action=UBAH&nm_pasien=".str_replace(" ","_",$baris[5])."&tgl=".substr($baris[0],0,10)."&id=".$baris[1]."&tnd=".$baris[2]."&jmlh=".$baris[8].">[edit]</a>";?>
@@ -216,7 +221,17 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data Detail masih kosong !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='7%'><div align='center'>Proses</div></td>
+                                <td width='10%'><div align='center'>Tgl.Tindakan</div></td>
+                                <td width='33%'><div align='center'>Nama Pasien</div></td>
+                                <td width='25%'><div align='center'>Nama Tindakan-Kelas</div></td>
+                                <td width='25%'><div align='center'>JM Tindakan</div></td>
+                            </tr>
+                        </table>";
+            }
         ?>
         </div>
         </form>

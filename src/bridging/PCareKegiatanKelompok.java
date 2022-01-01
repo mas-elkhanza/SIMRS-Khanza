@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -58,8 +58,14 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private int i=0;
     private final Properties prop = new Properties();
     private PCareClubProlanis barang=new PCareClubProlanis(null,false);
-    private String URL="",link="",requestJson="";
-    private PcareApi api=new PcareApi();
+    private String URL="",link="",requestJson="",otorisasi;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
+    private ApiPcare api=new ApiPcare();
     private DlgPasien pasien=new DlgPasien(null,false);
     private double total=0;
     
@@ -131,14 +137,26 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         Biaya.setDocument(new batasInput((byte)15).getKata(Biaya));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -265,6 +283,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
             link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -345,14 +364,13 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppPeserta.setBackground(new java.awt.Color(255, 255, 255));
+        ppPeserta.setBackground(new java.awt.Color(255, 255, 254));
         ppPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPeserta.setForeground(new java.awt.Color(100, 80, 80));
+        ppPeserta.setForeground(new java.awt.Color(50,50,50));
         ppPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPeserta.setText("Masukkan Daftar Peserta Kegiatan");
         ppPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPeserta.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPeserta.setIconTextGap(8);
         ppPeserta.setName("ppPeserta"); // NOI18N
         ppPeserta.setPreferredSize(new java.awt.Dimension(250, 25));
         ppPeserta.addActionListener(new java.awt.event.ActionListener() {
@@ -367,9 +385,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         WindowInputPeserta.setUndecorated(true);
         WindowInputPeserta.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Daftar Peserta Kegiatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Daftar Peserta Kegiatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
-        internalFrame7.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame7.setLayout(null);
 
         BtnCloseIn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -477,7 +494,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -516,6 +533,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -647,9 +665,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -662,9 +679,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -786,9 +802,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(526, 10, 90, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -808,7 +823,6 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Kegiatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01 Senam", "10 Penyuluhan", "11 Penyuluhan dan Senam" }));
         Kegiatan.setName("Kegiatan"); // NOI18N
-        Kegiatan.setOpaque(false);
         Kegiatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KegiatanKeyPressed(evt);
@@ -819,7 +833,6 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Kelompok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01 Diabetes Melitus", "02 Hipertensi" }));
         Kelompok.setName("Kelompok"); // NOI18N
-        Kelompok.setOpaque(false);
         Kelompok.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelompokKeyPressed(evt);
@@ -965,12 +978,11 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         }else{
             try {
                 URL = link+"/kelompok/kegiatan";
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
-                headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 requestJson ="{" +
                                 "\"eduId\":null," +
@@ -984,14 +996,13 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                                 "\"keterangan\":\""+Keterangan.getText()+"\"," +
                                 "\"biaya\": "+Biaya.getText() +
                               "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     System.out.println("Edu ID : "+response.asText());
                     if(Sequel.menyimpantf("pcare_kegiatan_kelompok","?,?,?,?,?,?,?,?,?,?,?","Edu ID",11,new String[]{
                         response.asText(),kdClub.getText(),NmClub.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Kegiatan.getSelectedItem().toString(),
@@ -1006,7 +1017,19 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }catch (Exception ex) {
                 System.out.println("Notifikasi Bridging : "+ex);
                 if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                }else if(ex.toString().contains("500")){
+                    JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                }else if(ex.toString().contains("401")){
+                    JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                }else if(ex.toString().contains("408")){
+                    JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                }else if(ex.toString().contains("424")){
+                    JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                }else if(ex.toString().contains("412")){
+                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+                }else if(ex.toString().contains("204")){
+                    JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                 }
             }              
         }
@@ -1038,17 +1061,15 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             if(tbJnsPerawatan.getSelectedRow()!= -1){
                 try {
                     URL = link+"/kelompok/kegiatan/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString();
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                    HttpEntity requestEntity = new HttpEntity(headers);
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    requestEntity = new HttpEntity(headers);
+                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("200")){
@@ -1061,7 +1082,19 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                 }catch (Exception ex) {
                     System.out.println("Notifikasi Bridging : "+ex);
                     if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                        JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                    }else if(ex.toString().contains("500")){
+                        JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                    }else if(ex.toString().contains("401")){
+                        JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                    }else if(ex.toString().contains("408")){
+                        JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                    }else if(ex.toString().contains("424")){
+                        JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                    }else if(ex.toString().contains("412")){
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+                    }else if(ex.toString().contains("204")){
+                        JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }
                 }    
             }
@@ -1093,17 +1126,15 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             if(tbJnsPerawatan.getSelectedRow()!= -1){
                 try {
                     URL = link+"/kelompok/kegiatan/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString();
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                    HttpEntity requestEntity = new HttpEntity(headers);
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    requestEntity = new HttpEntity(headers);
+                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("200")){
@@ -1122,12 +1153,11 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }
             try {
                 URL = link+"/kelompok/kegiatan";
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
-                headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 requestJson ="{" +
                                 "\"eduId\":null," +
@@ -1141,14 +1171,13 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                                 "\"keterangan\":\""+Keterangan.getText()+"\"," +
                                 "\"biaya\": "+Biaya.getText() +
                               "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     System.out.println("Edu ID : "+response.asText());
                     if(Sequel.menyimpantf("pcare_kegiatan_kelompok","?,?,?,?,?,?,?,?,?,?,?","Edu ID",11,new String[]{
                         response.asText(),kdClub.getText(),NmClub.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Kegiatan.getSelectedItem().toString(),
@@ -1198,24 +1227,17 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPCareKegiatanKelompok.jrxml","report","::[ Data Kegiatan Kelompok PCare ]::",
-                   "select eduId,clubId,namaClub,tglPelayanan,nmKegiatan,nmKelompok,materi, "+
-                   "pembicara,lokasi,keterangan,biaya from pcare_kegiatan_kelompok where "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and eduId like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and clubId like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and nmKelompok like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and materi like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pembicara like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and lokasi like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and keterangan like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and nmKegiatan like '%"+TCari.getText().trim()+"%' order by eduId",param);            
+                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));   
+                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));   
+                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                Valid.MyReport("rptPCareKegiatanKelompok.jasper","report","::[ Data Kegiatan Kelompok PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1352,25 +1374,23 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         }else{
             try {
                 URL = link+"/kelompok/peserta";
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
-                headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 requestJson ="{" +
                                 "\"eduId\":\""+EduId.getText()+"\"," +
                                 "\"noKartu\":\""+NoKartu.getText()+"\"" +
                               "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     if(Sequel.menyimpantf("pcare_peserta_kegiatan_kelompok","?,?","Edu ID",2,new String[]{
                         EduId.getText(),NoRM.getText()
                     })==true){                                                 
@@ -1557,10 +1577,10 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                         rs.getString("keterangan"),rs.getDouble("biaya")
                     });
                     total=total+rs.getDouble("biaya");
-                    tabMode.addRow(new Object[]{
-                        "","","Total",":","","","","","","",total
-                    });
                 }
+                tabMode.addRow(new Object[]{
+                    "","","Total",":","","","","","","",total
+                });
             } catch (Exception e) {
                 System.out.println("Notif Ketersediaan : "+e);
             } finally{
@@ -1605,11 +1625,11 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpcare_kegiatan_kelompok());
-        BtnHapus.setEnabled(var.getpcare_kegiatan_kelompok());
-        BtnEdit.setEnabled(var.getpcare_kegiatan_kelompok());
-        BtnPrint.setEnabled(var.getpcare_kegiatan_kelompok());
-        ppPeserta.setEnabled(var.getpcare_peserta_kegiatan_kelompok());
+        BtnSimpan.setEnabled(akses.getpcare_kegiatan_kelompok());
+        BtnHapus.setEnabled(akses.getpcare_kegiatan_kelompok());
+        BtnEdit.setEnabled(akses.getpcare_kegiatan_kelompok());
+        BtnPrint.setEnabled(akses.getpcare_kegiatan_kelompok());
+        ppPeserta.setEnabled(akses.getpcare_peserta_kegiatan_kelompok());
     }
     
     public JTable getTable(){

@@ -5,8 +5,6 @@
 package inventory;
 
 import fungsi.koneksiDB;
-import fungsi.sekuel;
-import fungsi.validasi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,19 +14,19 @@ import java.sql.ResultSet;
  * @author khanzamedia
  */
 public class riwayatobat {
-    private final sekuel Sequel=new sekuel();
-    private final validasi Valid=new validasi();
     private final Connection koneksi=koneksiDB.condb(); 
     private ResultSet rs,rsawal;
     private PreparedStatement ps,psawal;
     private double stokawal=0,stokakhir=0;
-    public void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String kdbangsal,String status){        
+    public void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String kdbangsal,String status,String nobatch,String nofaktur,String keterangan){        
         try {
             stokakhir=0;stokawal=0;            
-            psawal=koneksi.prepareStatement("select stok from gudangbarang where kode_brng=? and kd_bangsal=?");
+            psawal=koneksi.prepareStatement("select stok from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch=? and no_faktur=?");
             try {
                 psawal.setString(1,kodebarang);
                 psawal.setString(2,kdbangsal);
+                psawal.setString(3,nobatch);
+                psawal.setString(4,nofaktur);
                 rs=psawal.executeQuery();
                 if(rs.next()){
                     stokawal=rs.getDouble("stok");
@@ -48,7 +46,7 @@ public class riwayatobat {
                 }
             }
                      
-            ps=koneksi.prepareStatement("insert into riwayat_barang_medis values(?,?,?,?,?,?,current_date(),current_time(),?,?,?)");
+            ps=koneksi.prepareStatement("insert into riwayat_barang_medis values(?,?,?,?,?,?,current_date(),current_time(),?,?,?,?,?,?)");
             try {
                 if(posisi.equals("Opname")){
                     ps.setString(1,kodebarang);
@@ -60,6 +58,9 @@ public class riwayatobat {
                     ps.setString(7,petugas);
                     ps.setString(8,kdbangsal);
                     ps.setString(9,status);
+                    ps.setString(10,nobatch);
+                    ps.setString(11,nofaktur);
+                    ps.setString(12,keterangan);
                     ps.executeUpdate();
                 }else{
                     ps.setString(1,kodebarang);
@@ -71,6 +72,9 @@ public class riwayatobat {
                     ps.setString(7,petugas);
                     ps.setString(8,kdbangsal);
                     ps.setString(9,status);
+                    ps.setString(10,nobatch);
+                    ps.setString(11,nofaktur);
+                    ps.setString(12,keterangan);
                     ps.executeUpdate();
                 }                    
             } catch (Exception e) {

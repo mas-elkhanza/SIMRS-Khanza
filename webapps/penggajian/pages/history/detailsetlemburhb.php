@@ -32,7 +32,7 @@
             <?php
                 $BtnSimpan=$_POST['BtnSimpan'];
                 if (isset($BtnSimpan)) {
-                    $tnj                =trim($_POST['tnj']);
+                    $tnj                = validTeks(trim($_POST['tnj']));
                     if (!empty($tnj)) {
                         switch($action) {
                             case "TAMBAH":

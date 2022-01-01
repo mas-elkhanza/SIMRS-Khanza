@@ -26,8 +26,6 @@ import java.sql.PreparedStatement;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,10 +35,15 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
     private final Connection koneksi=koneksiDB.condb();
     private final Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();   
     private static final Properties prop = new Properties();
-    private String antri="0",loket="0";
+    private String antri="0",loket="0",nol_detik,detik;
     private PreparedStatement pshapus,pssimpan,pscari;
     private ResultSet rs;
     private BackgroundMusic music;
+    private int nilai_detik;
+    private String[] urut={"","./suara/satu.mp3","./suara/dua.mp3","./suara/tiga.mp3","./suara/empat.mp3",
+                       "./suara/lima.mp3","./suara/enam.mp3","./suara/tujuh.mp3","./suara/delapan.mp3",
+                       "./suara/sembilan.mp3","./suara/sepuluh.mp3","./suara/sebelas.mp3"};
+        
     /** Creates new form DlgBiling
      * @param parent
      * @param modal */
@@ -54,14 +57,6 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
         } catch (IOException ex) {
             System.out.println(ex);
-        }
-        
-        try {
-            pshapus=koneksi.prepareStatement("delete from antriloket");
-            pssimpan=koneksi.prepareStatement("insert into antriloket values(?,?)");
-            pscari=koneksi.prepareStatement("select antrian,loket from antriloket");
-        } catch (Exception e) {
-            System.out.println(e);
         }
         
         jam();
@@ -106,27 +101,28 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         DlgDisplay.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         DlgDisplay.setName("DlgDisplay"); // NOI18N
 
+        internalFrame5.setBackground(new java.awt.Color(250, 255, 250));
         internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 200, 100)), "::[ Informasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 32), new java.awt.Color(50, 100, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setPreferredSize(new java.awt.Dimension(500, 110));
-        internalFrame5.setWarnaAtas(new java.awt.Color(255, 255, 255));
-        internalFrame5.setWarnaBawah(new java.awt.Color(230, 255, 230));
+        internalFrame5.setWarnaBawah(new java.awt.Color(250, 255, 250));
         internalFrame5.setLayout(new java.awt.BorderLayout());
 
+        paneliklan.setBackground(new java.awt.Color(250, 255, 250));
         paneliklan.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/coba.gif"))); // NOI18N
         paneliklan.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         paneliklan.setPreferredSize(new java.awt.Dimension(200, 140));
         paneliklan.setRound(false);
-        paneliklan.setWarna(new java.awt.Color(150, 255, 150));
+        paneliklan.setWarna(new java.awt.Color(250, 255, 250));
         paneliklan.setLayout(null);
         internalFrame5.add(paneliklan, java.awt.BorderLayout.CENTER);
 
-        panelruntext.setBackground(new java.awt.Color(230, 255, 230));
+        panelruntext.setBackground(new java.awt.Color(250, 255, 250));
         panelruntext.setName("panelruntext"); // NOI18N
         panelruntext.setPreferredSize(new java.awt.Dimension(100, 100));
         panelruntext.setLayout(new java.awt.BorderLayout());
 
-        labelruntext.setBackground(new java.awt.Color(238, 255, 238));
+        labelruntext.setBackground(new java.awt.Color(250, 255, 250));
         labelruntext.setForeground(new java.awt.Color(50, 100, 50));
         labelruntext.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelruntext.setFont(new java.awt.Font("Tahoma", 0, 35)); // NOI18N
@@ -138,13 +134,14 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         DlgDisplay.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
 
+        form1.setBackground(new java.awt.Color(250, 255, 250));
         form1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 200, 100)), " Antrian Registrasi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 45), new java.awt.Color(50, 100, 50))); // NOI18N
         form1.setName("form1"); // NOI18N
         form1.setPreferredSize(new java.awt.Dimension(550, 150));
-        form1.setWarnaAtas(new java.awt.Color(255, 255, 255));
-        form1.setWarnaBawah(new java.awt.Color(230, 255, 230));
+        form1.setWarnaBawah(new java.awt.Color(250, 255, 250));
         form1.setLayout(new java.awt.GridLayout(2, 0));
 
+        labelantri1.setBackground(new java.awt.Color(250, 255, 250));
         labelantri1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 250, 150)), "No.Antrian :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 32), new java.awt.Color(50, 100, 50))); // NOI18N
         labelantri1.setForeground(new java.awt.Color(50, 100, 50));
         labelantri1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -154,6 +151,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         labelantri1.setPreferredSize(new java.awt.Dimension(300, 50));
         form1.add(labelantri1);
 
+        labelLoket.setBackground(new java.awt.Color(250, 255, 250));
         labelLoket.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 250, 150)), "Loket :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 32), new java.awt.Color(50, 100, 50))); // NOI18N
         labelLoket.setForeground(new java.awt.Color(50, 100, 50));
         labelLoket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -309,10 +307,29 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
     private void BtnAntri1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAntri1ActionPerformed
         try {
-            pshapus.executeUpdate();
-            pssimpan.setString(1,cmbloket.getSelectedItem().toString());
-            pssimpan.setString(2,Antrian.getText());
-            pssimpan.executeUpdate();
+            pshapus=koneksi.prepareStatement("delete from antriloket");
+            try {
+                pshapus.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(pshapus!=null){
+                    pshapus.close();
+                }
+            }
+            
+            pssimpan=koneksi.prepareStatement("insert into antriloket values(?,?)");
+            try{
+                pssimpan.setString(1,cmbloket.getSelectedItem().toString());
+                pssimpan.setString(2,Antrian.getText());
+                pssimpan.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(pssimpan!=null){
+                    pssimpan.close();
+                }
+            } 
             System.out.println("Loket : "+cmbloket.getSelectedItem().toString()+" Antrian : "+Antrian.getText());
         } catch (Exception e) {
             System.out.println(e);
@@ -337,7 +354,16 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
     private void BtnBatal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal2ActionPerformed
         try {
-            pshapus.executeUpdate();
+            pshapus=koneksi.prepareStatement("delete from antriloket");
+            try {
+                pshapus.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(pshapus!=null){
+                    pshapus.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e);
         }  
@@ -411,11 +437,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         }
     } 
     
-    private void panggil(int antrian){
-        String[] urut={"","./suara/satu.mp3","./suara/dua.mp3","./suara/tiga.mp3","./suara/empat.mp3",
-                       "./suara/lima.mp3","./suara/enam.mp3","./suara/tujuh.mp3","./suara/delapan.mp3",
-                       "./suara/sembilan.mp3","./suara/sepuluh.mp3","./suara/sebelas.mp3"};
-        
+    private void panggil(int antrian){        
         if (antrian < 12){
             try {
                 music = new BackgroundMusic(urut[antrian]);
@@ -485,26 +507,37 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
     
     private void jam(){
         ActionListener taskPerformer = new ActionListener(){
-            private int nilai_detik;
             public void actionPerformed(ActionEvent e) {
-                String nol_detik = "";                
+                nol_detik = "";                
                 Date now = Calendar.getInstance().getTime();
                 nilai_detik = now.getSeconds();
                 if (nilai_detik <= 9) {
                     nol_detik = "0";
                 }
                 
-                String detik = nol_detik + Integer.toString(nilai_detik);
+                detik = nol_detik + Integer.toString(nilai_detik);
                 System.out.println("detik : "+detik);
                 if(detik.equals("05")||detik.equals("10")||detik.equals("15")||detik.equals("20")||detik.equals("25")||detik.equals("30")||detik.equals("35")||detik.equals("40")||detik.equals("45")||detik.equals("50")||detik.equals("55")||detik.equals("00")){                    
                     antri="";
                     loket="";
                     try {
-                        rs=pscari.executeQuery();
-                        if(rs.next()){
-                            antri=rs.getString("antrian");
-                            loket=rs.getString("loket");
-                        }
+                        pscari=koneksi.prepareStatement("select antrian,loket from antriloket");
+                        try {
+                            rs=pscari.executeQuery();
+                            if(rs.next()){
+                                antri=rs.getString("antrian");
+                                loket=rs.getString("loket");
+                            }
+                        } catch (Exception z) {
+                            System.out.println("Notif : "+z);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(pscari!=null){
+                                pscari.close();
+                            }
+                        }  
                     } catch (Exception ez) {
                         System.out.println(ez);
                     }
@@ -529,11 +562,6 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
                         i=Integer.parseInt(antri)+1;
                         Antrian.setText(""+i);
-                        /*try {
-                            pshapus.executeUpdate();
-                        } catch (Exception ex) {
-                            System.out.println(ex);
-                        }*/
                     }                          
                 }
             }

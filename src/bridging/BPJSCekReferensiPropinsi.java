@@ -21,12 +21,9 @@ import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
@@ -40,12 +37,16 @@ import org.springframework.http.MediaType;
  */
 public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
-    private sekuel Sequel=new sekuel();
     private int i=0;
-    private BPJSApi api=new BPJSApi();
-    private String URL="",link="";
+    private ApiBPJS api=new ApiBPJS();
+    private String URL="",link="",utc="";
+    private HttpHeaders headers ;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -79,20 +80,31 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
         
         Propinsi.setDocument(new batasInput((byte)100).getKata(Propinsi));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Propinsi.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Propinsi.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        tampil(Propinsi.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Propinsi.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        tampil(Propinsi.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Propinsi.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        tampil(Propinsi.getText());
+                    }
+                }
             });
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            link=koneksiDB.URLAPIBPJS();
             URL = link+"/referensi/propinsi";	
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -127,14 +139,13 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Propinsi VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Propinsi VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -270,19 +281,20 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-	    HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+	    requestEntity = new HttpEntity(headers);
+	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
@@ -305,6 +317,41 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
             }
         }
     }    
+    
+    public String tampilKan(String poli) {
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+	    requestEntity = new HttpEntity(headers);
+	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            if(nameNode.path("code").asText().equals("200")){
+                Valid.tabelKosong(tabMode);
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
+                if(response.path("list").isArray()){
+                    for(JsonNode list:response.path("list")){
+                        if(list.path("kode").asText().toLowerCase().contains(poli.toLowerCase())){
+                            poli=list.path("nama").asText();
+                        }
+                    }
+                }
+            }else {
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+            }   
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
+            }
+        }
+        return poli;
+    } 
 
     public JTable getTable(){
         return tbKamar;

@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -26,11 +26,11 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2,ps3;
-    private ResultSet rs,rs2,rs3;
-    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
+    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private int i=0;
-    private double jumlah,total,totalkeluar,jumlah2,total2,totalkeluar2;
+    private double jumlah,total,totalkeluar,jumlah2;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -113,8 +113,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
             ps2=koneksi.prepareStatement("select sum(ipsrsdetailpengeluaran.jumlah) as jumlah,sum(ipsrsdetailpengeluaran.total) as total "+
                     "from ipsrsdetailpengeluaran inner join ipsrspengeluaran on ipsrsdetailpengeluaran.no_keluar=ipsrspengeluaran.no_keluar "+
                     "where ipsrsdetailpengeluaran.kode_brng=? and ipsrspengeluaran.tanggal between ? and ?");
-            ps3=koneksi.prepareStatement("select sum(beri_bhp_radiologi.jumlah) as jumlah,sum(beri_bhp_radiologi.total) as total "+
-                    "from beri_bhp_radiologi where beri_bhp_radiologi.kode_brng=? and beri_bhp_radiologi.tgl_periksa between ? and ?");
         } catch (Exception e) {
             System.out.println(e);
         }     
@@ -158,7 +156,7 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -176,7 +174,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
@@ -191,7 +188,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -208,7 +204,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -354,8 +349,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
-            Sequel.queryu("delete from temporary");
+            
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -366,17 +361,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
-            Sequel.AutoComitTrue();            
+                        
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRHKeluarIpsrs.jrxml","report","[ Rekap Harian Stok Keluar Barang Non Medis, Radiologi, Ipsrs ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptRHKeluarIpsrs.jasper","report","[ Rekap Harian Stok Keluar Barang Non Medis, Radiologi, Ipsrs ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -508,12 +502,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps.setString(1,"%"+kdbarang.getText().trim()+"%");
             rs=ps.executeQuery();
             totalkeluar=0;
-            totalkeluar2=0;
             while(rs.next()){
                 jumlah=0;
                 total=0;
                 jumlah2=0;
-                total2=0;
                 ps2.setString(1,rs.getString("kode_brng"));
                 ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -523,23 +515,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     total=rs2.getDouble("total");
                     totalkeluar=totalkeluar+total;
                 }
-                ps3.setString(1,rs.getString("kode_brng"));
-                ps3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs3=ps3.executeQuery();
-                while(rs3.next()){
-                    jumlah2=rs3.getDouble("jumlah");
-                    total2=rs3.getDouble("total");
-                    totalkeluar2=totalkeluar2+total2;
-                }
                 if((jumlah+jumlah2)>0){
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),Valid.SetAngka(jumlah+jumlah2),Valid.SetAngka(total+total2)
+                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),Valid.SetAngka(jumlah+jumlah2),Valid.SetAngka(total)
                     });                    
                 }                
             }   
-            if((totalkeluar+totalkeluar2)>0){
-                tabMode.addRow(new Object[]{"Total Pengeluaran :","","","","",Valid.SetAngka(totalkeluar+totalkeluar2)
+            if((totalkeluar)>0){
+                tabMode.addRow(new Object[]{"Total Pengeluaran :","","","","",Valid.SetAngka(totalkeluar)
                 });
             }
             this.setCursor(Cursor.getDefaultCursor());              

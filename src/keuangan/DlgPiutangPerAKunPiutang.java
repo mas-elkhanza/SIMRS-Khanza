@@ -14,7 +14,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -55,27 +55,38 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         setSize(885,674);
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
-        InputModalAwal.setDocument(new batasInput((byte)16).getOnlyAngka(InputModalAwal));
         LoadHTML.setEditable(true);
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#645050;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -92,12 +103,6 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WindowModalAwal = new javax.swing.JDialog();
-        internalFrame2 = new widget.InternalFrame();
-        InputModalAwal = new widget.TextBox();
-        jLabel8 = new widget.Label();
-        BtnCloseIn = new widget.Button();
-        BtnSimpan2 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
@@ -115,70 +120,6 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
 
-        WindowModalAwal.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        WindowModalAwal.setName("WindowModalAwal"); // NOI18N
-        WindowModalAwal.setUndecorated(true);
-        WindowModalAwal.setResizable(false);
-
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Modal Awal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
-        internalFrame2.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaBawah(new java.awt.Color(240, 245, 235));
-        internalFrame2.setLayout(null);
-
-        InputModalAwal.setHighlighter(null);
-        InputModalAwal.setName("InputModalAwal"); // NOI18N
-        InputModalAwal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                InputModalAwalKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(InputModalAwal);
-        InputModalAwal.setBounds(84, 27, 170, 23);
-
-        jLabel8.setText("Modal Awal :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        internalFrame2.add(jLabel8);
-        jLabel8.setBounds(0, 27, 80, 23);
-
-        BtnCloseIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnCloseIn.setMnemonic('U');
-        BtnCloseIn.setText("Tutup");
-        BtnCloseIn.setToolTipText("Alt+U");
-        BtnCloseIn.setName("BtnCloseIn"); // NOI18N
-        BtnCloseIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseInActionPerformed(evt);
-            }
-        });
-        BtnCloseIn.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCloseInKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnCloseIn);
-        BtnCloseIn.setBounds(380, 25, 100, 30);
-
-        BtnSimpan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan2.setMnemonic('S');
-        BtnSimpan2.setText("Simpan");
-        BtnSimpan2.setToolTipText("Alt+S");
-        BtnSimpan2.setName("BtnSimpan2"); // NOI18N
-        BtnSimpan2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpan2ActionPerformed(evt);
-            }
-        });
-        BtnSimpan2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpan2KeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnSimpan2);
-        BtnSimpan2.setBounds(275, 25, 100, 30);
-
-        WindowModalAwal.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -188,7 +129,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Piutang Pasien Per Akun Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Piutang Pasien Per Akun Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -201,7 +142,6 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -213,14 +153,13 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass5.add(Tgl2);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(100,80,80));
+        jLabel12.setForeground(new java.awt.Color(50,50,50));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setName("jLabel12"); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(10, 23));
@@ -275,7 +214,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(100,80,80));
+        jLabel11.setForeground(new java.awt.Color(50,50,50));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setName("jLabel11"); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(10, 23));
@@ -339,24 +278,23 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
             File g = new File("fileakunbayar.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#645050;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
             File f = new File("PembayaranPerAkunBayar.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll(
-                    "<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
                                     "<font size='2' face='Tahoma'>PIUTANG PER AKUN PIUTANG<br>TANGGAL "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
@@ -430,34 +368,6 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TCariKeyPressed
 
-    private void InputModalAwalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InputModalAwalKeyPressed
-        Valid.pindah(evt,BtnCloseIn,TCari);
-    }//GEN-LAST:event_InputModalAwalKeyPressed
-
-    private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
-        WindowModalAwal.dispose();
-    }//GEN-LAST:event_BtnCloseInActionPerformed
-
-    private void BtnCloseInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCloseInKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            WindowModalAwal.dispose();
-        }else{Valid.pindah(evt, BtnSimpan2, InputModalAwal);}
-    }//GEN-LAST:event_BtnCloseInKeyPressed
-
-    private void BtnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan2ActionPerformed
-        if(InputModalAwal.getText().trim().equals("")){
-            Valid.textKosong(InputModalAwal,"Modal Awal");
-        }else{
-            Sequel.queryu("delete from set_modal_payment");
-            Sequel.menyimpan("set_modal_payment","'"+InputModalAwal.getText()+"'","Modal Awal");
-            WindowModalAwal.setVisible(false);
-        }
-    }//GEN-LAST:event_BtnSimpan2ActionPerformed
-
-    private void BtnSimpan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan2KeyPressed
-        Valid.pindah(evt,InputModalAwal,BtnCloseIn);
-    }//GEN-LAST:event_BtnSimpan2KeyPressed
-
     /**
     * @param args the command line arguments
     */
@@ -477,22 +387,16 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
-    private widget.Button BtnCloseIn;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.Button BtnSimpan2;
-    private widget.TextBox InputModalAwal;
     private widget.editorpane LoadHTML;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
-    private javax.swing.JDialog WindowModalAwal;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private widget.Label jLabel8;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
@@ -505,12 +409,12 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='80px'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='100px'>No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='220px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='90px'>Uang Muka</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='90px'>Piutang</td>");
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>No.Nota</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='220px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Uang Muka</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Piutang</td>");
             kolom=0;
             akunbayar=new String[Sequel.cariInteger("select count(nama_bayar) from akun_piutang")];
             psakunbayar=koneksi.prepareStatement("select nama_bayar from akun_piutang order by nama_bayar");
@@ -519,7 +423,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                 while(rsakunbayar.next()){
                     akunbayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#fafff5' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);

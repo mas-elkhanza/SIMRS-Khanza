@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -118,14 +118,26 @@ public class DlgDokter extends javax.swing.JDialog {
         TAlumni.setDocument(new batasInput((byte)60).getKata(TAlumni));
         TTlp.setDocument(new batasInput((byte)13).getOnlyAngka(TTlp));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         
@@ -255,9 +267,9 @@ public class DlgDokter extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
+        MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(100, 80, 80));
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -281,7 +293,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -467,8 +479,7 @@ public class DlgDokter extends javax.swing.JDialog {
         cmbCrJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "LAKI-LAKI", "PEREMPUAN" }));
         cmbCrJk.setLightWeightPopupEnabled(false);
         cmbCrJk.setName("cmbCrJk"); // NOI18N
-        cmbCrJk.setOpaque(false);
-        cmbCrJk.setPreferredSize(new java.awt.Dimension(100, 23));
+        cmbCrJk.setPreferredSize(new java.awt.Dimension(120, 23));
         cmbCrJk.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCrJkItemStateChanged(evt);
@@ -489,8 +500,7 @@ public class DlgDokter extends javax.swing.JDialog {
         CmbCrGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "A", "B", "AB", "O", "-" }));
         CmbCrGd.setLightWeightPopupEnabled(false);
         CmbCrGd.setName("CmbCrGd"); // NOI18N
-        CmbCrGd.setOpaque(false);
-        CmbCrGd.setPreferredSize(new java.awt.Dimension(100, 23));
+        CmbCrGd.setPreferredSize(new java.awt.Dimension(70, 23));
         CmbCrGd.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCrJkItemStateChanged(evt);
@@ -508,11 +518,10 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel16.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass8.add(jLabel16);
 
-        CmbCrStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "MENIKAH", "SINGLE", "JANDA", "DUDHA" }));
+        CmbCrStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "MENIKAH", "BELUM MENIKAH", "JANDA", "DUDHA", "JOMBLO" }));
         CmbCrStts.setLightWeightPopupEnabled(false);
         CmbCrStts.setName("CmbCrStts"); // NOI18N
-        CmbCrStts.setOpaque(false);
-        CmbCrStts.setPreferredSize(new java.awt.Dimension(100, 23));
+        CmbCrStts.setPreferredSize(new java.awt.Dimension(130, 23));
         CmbCrStts.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCrJkItemStateChanged(evt);
@@ -596,18 +605,17 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmp);
-        TTmp.setBounds(111, 102, 148, 23);
+        TTmp.setBounds(111, 102, 146, 23);
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         CmbJk.setName("CmbJk"); // NOI18N
-        CmbJk.setOpaque(false);
         CmbJk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbJkKeyPressed(evt);
             }
         });
         FormInput.add(CmbJk);
-        CmbJk.setBounds(111, 72, 100, 23);
+        CmbJk.setBounds(111, 72, 110, 23);
 
         TNm.setHighlighter(null);
         TNm.setName("TNm"); // NOI18N
@@ -627,18 +635,17 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel9.setText("Gol. Darah :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(231, 72, 80, 23);
+        jLabel9.setBounds(221, 72, 75, 23);
 
         CMbGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "AB", "O", "-" }));
         CMbGd.setName("CMbGd"); // NOI18N
-        CMbGd.setOpaque(false);
         CMbGd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CMbGdKeyPressed(evt);
             }
         });
         FormInput.add(CMbGd);
-        CMbGd.setBounds(315, 72, 50, 23);
+        CMbGd.setBounds(300, 72, 65, 23);
 
         jLabel13.setText("Tmp/Tgl. Lahir :");
         jLabel13.setName("jLabel13"); // NOI18N
@@ -646,7 +653,7 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel13.setBounds(2, 102, 105, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-10-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-08-2020" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -666,7 +673,6 @@ public class DlgDokter extends javax.swing.JDialog {
         cmbAgama.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISLAM", "KRISTEN", "KATOLIK", "HINDU", "BUDHA", "KONG HU CHU", "-" }));
         cmbAgama.setLightWeightPopupEnabled(false);
         cmbAgama.setName("cmbAgama"); // NOI18N
-        cmbAgama.setOpaque(false);
         cmbAgama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbAgamaKeyPressed(evt);
@@ -680,10 +686,9 @@ public class DlgDokter extends javax.swing.JDialog {
         FormInput.add(jLabel19);
         jLabel19.setBounds(639, 12, 90, 23);
 
-        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "SINGLE", "JANDA", "DUDHA", "JOMBLO" }));
+        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "BELUM MENIKAH", "JANDA", "DUDHA", "JOMBLO" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
-        CmbStts.setOpaque(false);
         CmbStts.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbSttsKeyPressed(evt);
@@ -896,16 +901,19 @@ public class DlgDokter extends javax.swing.JDialog {
             Valid.textKosong(KdSps,"spesialis");
         }else{
             try { 
-                koneksi.setAutoCommit(false);
-                Sequel.menyimpan("jnj_jabatan","'-','-','0'");
+                Sequel.AutoComitFalse();
+                Sequel.menyimpan("jnj_jabatan","'-','-','0','0'");
                 Sequel.menyimpan("departemen","'-','-'");
                 Sequel.menyimpan("bidang","'-'");
                 Sequel.menyimpan("bank","'T'");
                 Sequel.menyimpan("stts_wp","'-','-'");
                 Sequel.menyimpan("stts_kerja","'-','-','0'");
+                Sequel.menyimpan("kelompok_jabatan","'-','-','0'");
+                Sequel.menyimpan("resiko_kerja","'-','-','0'");
+                Sequel.menyimpan("emergency_index","'-','-','0'");
                 Sequel.menyimpan("pendidikan","'-','0','0','0','0'");
                 Sequel.menyimpan("pegawai","'0','"+TKd.getText()+"','"+TNm.getText()+"','"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+
-                        "'-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/'");        
+                        "'-','-','-','-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/','-'");        
                 Sequel.menyimpan("dokter","'"+TKd.getText()+"','"+
                         TNm.getText()+"','"+
                         CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"','"+
@@ -919,7 +927,8 @@ public class DlgDokter extends javax.swing.JDialog {
                         KdSps.getText()+"','"+
                         TAlumni.getText()+"','"+
                         TNoi.getText()+"','1'","Kode Dokter");
-                koneksi.setAutoCommit(true); 
+                Sequel.Commit();
+                Sequel.AutoComitTrue();
                 tampil();
                 emptTeks();
             } catch (Exception ex) {
@@ -974,14 +983,14 @@ public class DlgDokter extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDokter.jrxml","report","::[ Data Dokter ]::",
+                Valid.MyReportqry("rptDokter.jasper","report","::[ Data Dokter ]::",
                         "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir, "+
                    "dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
                    "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek "+
@@ -1436,11 +1445,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getdokter());
-        BtnHapus.setEnabled(var.getdokter());
-        BtnEdit.setEnabled(var.getdokter());
-        BtnPrint.setEnabled(var.getdokter());
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.getdokter());
+        BtnHapus.setEnabled(akses.getdokter());
+        BtnEdit.setEnabled(akses.getdokter());
+        BtnPrint.setEnabled(akses.getdokter());
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

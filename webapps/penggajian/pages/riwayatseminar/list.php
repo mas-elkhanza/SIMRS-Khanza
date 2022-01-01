@@ -1,13 +1,15 @@
 <?php
     $action      =isset($_GET['action'])?$_GET['action']:NULL;
     $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
+    $keyword= validTeks($keyword);
     echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
 ?>
 <div style="width: 100%; height: 99%; overflow: auto;">
     <?php
-        $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama FROM  pegawai
-		 where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
-		 pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%'
+        $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,departemen.nama as departemen,pegawai.bidang FROM pegawai
+		 inner join departemen on pegawai.departemen=departemen.dep_id where pegawai.stts_aktif<>'KELUAR' and 
+                 (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or 
+                 departemen.nama like '%".$keyword."%' or pegawai.bidang like '%".$keyword."%')
 		 order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
@@ -15,9 +17,11 @@
             echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head2'>
                         <td width='5%'><div align='center'>Proses</div></td>
-                        <td width='11%'><div align='center'>NIP</div></td>
-                        <td width='25%'><div align='center'>Nama</div></td>
-                        <td width='59%'><div align='center'>Riwayat Kegiatan Ilmiah & Pelatihan Pegawai</div></td>
+                        <td width='8%'><div align='center'>NIP</div></td>
+                        <td width='20%'><div align='center'>Nama</div></td>
+                        <td width='12%'><div align='center'>Departemen</div></td>
+                        <td width='10%'><div align='center'>Bidang</div></td>
+                        <td width='55%'><div align='center'>Riwayat Kegiatan Ilmiah & Pelatihan Pegawai</div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
@@ -28,6 +32,8 @@
                                </td>
                                 <td valign='top'><a href=?act=InputRiwayatSeminar&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
                                 <td valign='top'><a href=?act=InputRiwayatSeminar&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
+                                <td valign='top'><a href=?act=InputRiwayatSeminar&action=TAMBAH&id=$baris[0]>$baris[3]</a></td>
+                                <td valign='top'><a href=?act=InputRiwayatSeminar&action=TAMBAH&id=$baris[0]>$baris[4]</a></td>
                                 <td valign='top'>
                                    <table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
                                         $_sql2 = "SELECT nama_seminar, mulai, penyelengara, tempat from riwayat_seminar where id='$baris[0]' ORDER BY mulai ASC ";
@@ -60,9 +66,11 @@
             echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head2'>
                         <td width='5%'><div align='center'>Proses</div></td>
-                        <td width='11%'><div align='center'>NIP</div></td>
-                        <td width='25%'><div align='center'>Nama</div></td>
-                        <td width='59%'><div align='center'>Riwayat Kegiatan Ilmiah & Pelatihan Pegawai</div></td>
+                        <td width='8%'><div align='center'>NIP</div></td>
+                        <td width='20%'><div align='center'>Nama</div></td>
+                        <td width='12%'><div align='center'>Departemen</div></td>
+                        <td width='10%'><div align='center'>Bidang</div></td>
+                        <td width='55%'><div align='center'>Riwayat Kegiatan Ilmiah & Pelatihan Pegawai</div></td>
                     </tr>
                   </table>";
         }

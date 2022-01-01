@@ -10,16 +10,18 @@
         $_sql         = "SELECT * FROM set_tahun";
 		$hasil        = bukaquery($_sql);
 		$baris        = mysqli_fetch_row($hasil);
-		$tahun         = $baris[0];
-		$bln_leng=strlen($baris[1]);
-		$bulan="0";
-		if ($bln_leng==1){
-			$bulan="0".$baris[1];
-		}else{
-			$bulan=$baris[1];
-		}
+		$tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
+        $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
+        $bln_leng  = strlen($blnini);
+        $bulan     = "0";
+        if ($bln_leng==1){
+            $bulan="0".$blnini;
+        }else{
+            $bulan=$blnini;
+        }
 		
         $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;
+        $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
 		        pegawai.departemen,sum(tindakan.jmlh),sum(tindakan.jm)
                 FROM tindakan right OUTER JOIN pegawai

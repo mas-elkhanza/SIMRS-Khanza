@@ -11,13 +11,12 @@
 
 package keuangan;
 import kepegawaian.DlgCariPetugas;
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -53,6 +52,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgKategoriPemasukan kategori=new DlgKategoriPemasukan(null,false);
     private double total=0;
+    private boolean sukses=true;
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -84,7 +84,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         for (int i = 0; i < 9; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==1){
                 column.setPreferredWidth(120);
             }else if(i==2){
@@ -111,16 +111,28 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         KdPtg.setDocument(new batasInput((byte)20).getKata(KdPtg));
         pemasukan.setDocument(new batasInput((byte)15).getKata(pemasukan));
-        Nomor.setDocument(new batasInput((byte)15).getKata(Nomor));
+        Nomor.setDocument(new batasInput((byte)17).getKata(Nomor));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -131,7 +143,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPemasukanLain")){
+                if(akses.getform().equals("DlgPemasukanLain")){
                     if(petugas.getTable().getSelectedRow()!= -1){        
                         KdPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         NmPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -170,7 +182,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPemasukanLain")){
+                if(akses.getform().equals("DlgPemasukanLain")){
                     if(kategori.getTabel().getSelectedRow()!= -1){        
                         KdKategori.setText(kategori.getTabel().getValueAt(kategori.getTabel().getSelectedRow(),0).toString());
                         NmKategori.setText(kategori.getTabel().getValueAt(kategori.getTabel().getSelectedRow(),1).toString());
@@ -247,7 +259,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        cetakkwitansi.setBackground(new java.awt.Color(255, 255, 255));
+        cetakkwitansi.setBackground(new java.awt.Color(255, 255, 254));
         cetakkwitansi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         cetakkwitansi.setForeground(java.awt.Color.darkGray);
         cetakkwitansi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -270,7 +282,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemasukan Lain-Lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemasukan Lain-Lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -434,9 +446,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -449,9 +460,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -594,7 +604,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         btnKategori.setBounds(409, 12, 28, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2017 14:23:31" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019 10:17:53" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -626,7 +636,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             }
         });
         FormInput.add(pemasukan);
-        pemasukan.setBounds(563, 40, 172, 23);
+        pemasukan.setBounds(566, 40, 169, 23);
 
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -700,15 +710,16 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         }else if(KdKategori.getText().trim().equals("")||NmKategori.getText().trim().equals("")){
             Valid.textKosong(KdKategori,"Kategori Pemasukkan");
         }else if(pemasukan.getText().trim().equals("")||pemasukan.getText().trim().equals("0")){
-            Valid.textKosong(pemasukan,"Pengeluaran");
+            Valid.textKosong(pemasukan,"Pemasukan");
         }else{
-            Sequel.AutoComitFalse();            
-            try {
-                if(Sequel.menyimpantf("pemasukan_lain","?,?,?,?,?,?,?","Pemasukan",7,new String[]{
-                    Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    KdKategori.getText(),pemasukan.getText(),KdPtg.getText(),Keterangan.getText(),Keperluan.getText()
-                })==true){
-                    Sequel.queryu("delete from tampjurnal");
+            Sequel.AutoComitFalse();
+            sukses=true;       
+            if(Sequel.menyimpantf("pemasukan_lain","?,?,?,?,?,?,?","Pemasukan",7,new String[]{
+                Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                KdKategori.getText(),pemasukan.getText(),KdPtg.getText(),Keterangan.getText(),Keperluan.getText()
+            })==true){
+                Sequel.queryu("delete from tampjurnal");
+                try {
                     psakun=koneksi.prepareStatement(
                         "select kd_rek,'Akun',kd_rek2,'Kontra Akun' from kategori_pemasukan_lain where kode_kategori=?");
                     try {
@@ -717,9 +728,10 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         if(rs.next()){
                             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()});
                             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"}); 
-                            jur.simpanJurnal(Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMASUKAN LAIN-LAIN, Petugas : "+NmPtg.getText());
+                            sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
                         }
                     } catch (Exception e) {
+                        sukses=false;
                         System.out.println("Jurnal : "+e);
                     } finally{
                         if(rs!=null){
@@ -729,15 +741,31 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                             psakun.close();
                         }
                     }
-                    Sequel.menyimpan2("tagihan_sadewa","'"+Nomor.getText()+"','-','"+Keterangan.getText()+"','-',concat('"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+
-                        "',' ',CURTIME()),'Pelunasan','"+total+"','"+pemasukan.getText()+"','Sudah','"+var.getkode()+"'","No.Transaksi");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            }            
+                    if(sukses==true){
+                        sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+Nomor.getText()+"','-','"+Keterangan.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+
+                            "',' ',CURTIME()),'Pelunasan','"+total+"','"+pemasukan.getText()+"','Sudah','"+akses.getkode()+"'","No.Transaksi");
+                    }   
+                } catch (Exception e) {
+                    sukses=false;
+                    System.out.println("Notifikasi : "+e);
+                }  
+            }else{
+                sukses=false;
+            }
+            
+            if(sukses==true){
+                Sequel.Commit();
+            }else{
+                sukses=false;
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }
+            
             Sequel.AutoComitTrue();
-            tampil();
-            emptTeks();
+            if(sukses==true){
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -769,11 +797,13 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(Keterangan.getText().trim().equals(""))){
             if(tbResep.getSelectedRow()>-1){
-                Sequel.AutoComitFalse();                
-                try {
-                    if(Sequel.queryu2tf("delete from pemasukan_lain where no_masuk=?",1,new String[]{
-                        tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
-                    })==true){
+                Sequel.AutoComitFalse();
+                sukses=true;       
+                    
+                if(Sequel.queryu2tf("delete from pemasukan_lain where no_masuk=?",1,new String[]{
+                    tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
+                })==true){
+                    try {
                         Sequel.queryu("delete from tampjurnal");
                         psakun=koneksi.prepareStatement(
                             "select kd_rek,'Akun',kd_rek2,'Kontra Akun' from kategori_pemasukan_lain where kode_kategori=?");
@@ -783,9 +813,10 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                             if(rs.next()){
                                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"});
                                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()}); 
-                                jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PEMASUKAN LAIN-LAIN, Petugas : "+NmPtg.getText());
+                                sukses=jur.simpanJurnal(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {
+                            sukses=false;
                             System.out.println("Jurnal : "+e);
                         } finally{
                             if(rs!=null){
@@ -795,14 +826,30 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                                 psakun.close();
                             }
                         }
-                        Valid.hapusTable(tabMode,Nomor,"tagihan_sadewa","no_nota");
-                    }                                           
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
+                        if(sukses==true){
+                            Sequel.queryu2("delete from tagihan_sadewa where no_nota='"+tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()+"'"); 
+                        }
+                    } catch (Exception e) {
+                        sukses=false;
+                        System.out.println("Notifikasi : "+e);
+                    }
+                }else{
+                    sukses=false;
+                }                                           
+                
+                if(sukses==true){
+                    Sequel.Commit();
+                }else{
+                    sukses=false;
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
                 }
+
                 Sequel.AutoComitTrue();
-                tampil();
-                emptTeks();
+                if(sukses==true){
+                    tampil();
+                    emptTeks();
+                }
             }                
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -827,30 +874,28 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPemasukanLain.jrxml","report","::[ Data Pemasukan Lain-Lain ]::",
-                "select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.keperluan, pemasukan_lain.besar, pemasukan_lain.nip, "+
-                    "petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori "+
-                    "from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip "+
-                    "and pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori where "+
-                        "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pemasukan_lain.keperluan like '%"+TCari.getText().trim()+"%' or "+
-                    "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pemasukan_lain.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                    "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pemasukan_lain.nip like '%"+TCari.getText().trim()+"%' or "+
-                    "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pemasukan_lain.kode_kategori like '%"+TCari.getText().trim()+"%' or "+
-                    "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kategori_pemasukan_lain.nama_kategori like '%"+TCari.getText().trim()+"%' order by pemasukan_lain.tanggal ",param);
+            Valid.MyReportqry("rptPemasukanLain.jasper","report","::[ Data Pemasukan Lain-Lain ]::",
+                "select pemasukan_lain.no_masuk,pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.keperluan, pemasukan_lain.besar, pemasukan_lain.nip, "+
+                "petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori "+
+                "from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip "+
+                "and pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori where "+
+                "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
+                (TCari.getText().trim().equals("")?"":" and (pemasukan_lain.keperluan like '%"+TCari.getText().trim()+"%' or pemasukan_lain.keterangan like '%"+TCari.getText().trim()+"%' or "+
+                "pemasukan_lain.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or pemasukan_lain.kode_kategori like '%"+TCari.getText().trim()+"%' or "+
+                "kategori_pemasukan_lain.nama_kategori like '%"+TCari.getText().trim()+"%' or pemasukan_lain.no_masuk like '%"+TCari.getText().trim()+"%') ")+
+                "order by pemasukan_lain.tanggal ",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -936,7 +981,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgPemasukanLain");
+        akses.setform("DlgPemasukanLain");
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.isCek();
         petugas.setLocationRelativeTo(internalFrame1);
@@ -972,7 +1017,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_KdKategoriKeyPressed
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
-        var.setform("DlgPemasukanLain");
+        akses.setform("DlgPemasukanLain");
         kategori.emptTeks();
         kategori.tampil();
         kategori.isCek();
@@ -1001,8 +1046,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             tbResep.requestFocus();
         }else {
-            Sequel.AutoComitFalse();
-            Sequel.queryu("delete from temporary");
+            
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 try {
@@ -1021,7 +1066,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (Exception e) {
                 }                
             }
-            Sequel.AutoComitTrue();
+            
             Valid.panggilUrl("billing/LaporanKeuangan.php?kode="+Nomor.getText()+"&Tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"&nama="+NmKategori.getText().replaceAll(" ","_")+"&petugas="+NmPtg.getText().replaceAll(" ","_")+"&keperluan="+Keperluan.getText().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&nom="+pemasukan.getText().replaceAll(" ","_")+"&kategori="+NmKategori.getText().replaceAll(" ","_"));
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1102,27 +1147,22 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 "petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori "+
                 "from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip "+
                 "and pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori where "+
-                "pemasukan_lain.tanggal between ? and ? and pemasukan_lain.keterangan like ? or "+
-                "pemasukan_lain.tanggal between ? and ? and pemasukan_lain.nip like ? or "+
-                "pemasukan_lain.tanggal between ? and ? and petugas.nama like ? or "+
-                "pemasukan_lain.tanggal between ? and ? and pemasukan_lain.kode_kategori like ? or "+
-                "pemasukan_lain.tanggal between ? and ? and kategori_pemasukan_lain.nama_kategori like ? order by pemasukan_lain.tanggal");
+                "pemasukan_lain.tanggal between ? and ? "+(TCari.getText().trim().equals("")?"":
+                "and (pemasukan_lain.keterangan like ? or pemasukan_lain.nip like ? or petugas.nama like ? or "+
+                "pemasukan_lain.kode_kategori like ? or kategori_pemasukan_lain.nama_kategori like ? or pemasukan_lain.no_masuk like ?) ")+
+                "order by pemasukan_lain.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){                
@@ -1145,7 +1185,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
                 
             if(total>0){
-                tabMode.addRow(new Object[]{"",">>","Jumlah Total Pemasukan :","",total,"","",""}); 
+                tabMode.addRow(new Object[]{"",">> Total Pemasukan :","","",total,"","",""}); 
             }        
             LCount.setText((""+(tabMode.getRowCount()-1)).replaceAll("-1","0"));                        
         }catch(SQLException e){
@@ -1165,7 +1205,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void getData() {
         if(tbResep.getSelectedRow()!= -1){
-            Nomor.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString()+" ",""));
+            Nomor.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
             NmKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),2).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString()+" ",""));
             NmPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),3).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),8).toString()+" ",""));
             pemasukan.setText(String.valueOf(tbResep.getValueAt(tbResep.getSelectedRow(),4).toString()));
@@ -1193,13 +1233,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             KdPtg.setEditable(false);
             btnPetugas.setEnabled(false);
-            KdPtg.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getpemasukan_lain());
-            BtnHapus.setEnabled(var.getpemasukan_lain());
-            BtnPrint.setEnabled(var.getpemasukan_lain());
+            KdPtg.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getpemasukan_lain());
+            BtnHapus.setEnabled(akses.getpemasukan_lain());
+            BtnPrint.setEnabled(akses.getpemasukan_lain());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPtg,KdPtg.getText());
         }      
         
@@ -1207,6 +1247,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_masuk,3),signed)),0) from pemasukan_lain where tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
-                "PL"+Tanggal.getSelectedItem().toString().substring(8,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,Nomor); 
+                "PL"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,Nomor); 
     }
 }

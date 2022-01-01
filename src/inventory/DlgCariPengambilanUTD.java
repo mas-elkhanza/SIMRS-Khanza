@@ -16,10 +16,9 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,6 +46,8 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
     private double total=0;
     private Jurnal jur=new Jurnal();
     private riwayatobat Trackobat=new riwayatobat();
+    private String aktifkanbatch="no";
+    private boolean sukses=true;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -57,7 +58,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Kode Barang","Nama Barang","Jml","Harga","Subtotal","Dari","","Tanggal","Keterangan"
+                "Kode Barang","Nama Barang","Jml","Harga","Subtotal","Dari","","Tanggal","Keterangan","No.Batch","No.Faktur"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -66,7 +67,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 11; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -87,19 +88,42 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                 column.setPreferredWidth(120);
             }else if(i==8){
                 column.setPreferredWidth(140);
+            }else if(i==9){
+                column.setPreferredWidth(70);
+            }else if(i==10){
+                column.setPreferredWidth(100);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
+        }
+        
+        try {
+            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            aktifkanbatch = "no";
         }
         
     }    
@@ -145,7 +169,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengambilan BHP Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengambilan BHP Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -172,9 +196,8 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(120, 23));
         panelisi3.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-03-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -187,9 +210,8 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelisi3.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-03-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -343,26 +365,61 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
             Sequel.AutoComitFalse();
-            Sequel.queryu("delete from utd_pengambilan_medis where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+
-                          "and kd_bangsal_dr='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
-                          "and tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' "+
-                          "and jml='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"'");
-            Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",var.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus");
-            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
-                             "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
-                             "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"'", 
-                             "stok=stok+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
-                             "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' and "+
-                             "kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"'");
-            Sequel.menyimpan("utd_stok_medis","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
-                             "'-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'", 
-                             "stok=stok-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
-                             "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"'");
-            Sequel.queryu("delete from tampjurnal");
-            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Utd from set_akun"),"PENGAMBILAN BHP MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
-            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Utd from set_akun"),"PERSEDIAAN BARANG/OBAT/ALKES/BHP",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
-            jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5));
-            BtnCariActionPerformed(evt);
+            sukses=true;
+            if(Sequel.queryutf("delete from utd_pengambilan_medis where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+
+                  "and kd_bangsal_dr='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
+                  "and tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' "+
+                  "and jml='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"' "+
+                  "and no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9)+"' "+
+                  "and no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10)+"' ")==true){
+                Sequel.menyimpan("utd_stok_medis","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
+                                 "'-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'", 
+                                 "stok=stok-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
+                                 "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"'");
+                if(aktifkanbatch.equals("yes")){
+                    Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
+                        ""+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()
+                    });
+                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus",tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString(),"UTD/BD");
+                    Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10)+"'", 
+                                     "stok=stok+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
+                                     "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' and "+
+                                     "kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
+                                     "and no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9)+"' "+
+                                     "and no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10)+"' ");
+                }else{
+                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus","","","UTD/BD");
+                    Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','',''", 
+                                     "stok=stok+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
+                                     "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' and "+
+                                     "kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
+                                     "and no_batch='' and no_faktur='' ");
+                }
+            }else{
+                sukses=false;
+            }
+                
+            if(sukses==true){
+                Sequel.queryu("delete from tampjurnal");
+                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Utd from set_akun"),"PENGAMBILAN BHP MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
+                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Utd from set_akun"),"PERSEDIAAN BARANG/OBAT/ALKES/BHP",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
+                sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5)+", OLEH "+akses.getkode());
+            }
+            
+            if(sukses==true){
+                Sequel.Commit();
+                BtnCariActionPerformed(evt);
+            }else{
+                sukses=false;
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }   
             Sequel.AutoComitTrue();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -429,14 +486,14 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             BtnKeluar.requestFocus();
         }else {   
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));                       
-            Valid.MyReport("rptPengambilanUTD.jrxml","report","::[ Transaksi Pengambilan BHP Medis UTD ]::", 
+            Valid.MyReportqry("rptPengambilanUTD.jasper","report","::[ Transaksi Pengambilan BHP Medis UTD ]::", 
                     "select utd_pengambilan_medis.kode_brng,databarang.nama_brng,utd_pengambilan_medis.jml,utd_pengambilan_medis.hargabeli,"+
                     "utd_pengambilan_medis.total,utd_pengambilan_medis.kd_bangsal_dr,bangsal.nm_bangsal,utd_pengambilan_medis.tanggal,"+
                     "utd_pengambilan_medis.keterangan,databarang.kode_sat from utd_pengambilan_medis inner join databarang inner join bangsal "+
@@ -456,7 +513,7 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnCetakKeyPressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        BtnHapus.setEnabled(var.getpengambilan_utd());       
+        BtnHapus.setEnabled(akses.getpengambilan_utd());       
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -502,41 +559,59 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement(
-                    "select utd_pengambilan_medis.kode_brng,databarang.nama_brng,utd_pengambilan_medis.jml,utd_pengambilan_medis.hargabeli,"+
-                    "utd_pengambilan_medis.total,utd_pengambilan_medis.kd_bangsal_dr,bangsal.nm_bangsal,utd_pengambilan_medis.tanggal,"+
-                    "utd_pengambilan_medis.keterangan,databarang.kode_sat from utd_pengambilan_medis inner join databarang inner join bangsal "+
-                    "on utd_pengambilan_medis.kode_brng=databarang.kode_brng and utd_pengambilan_medis.kd_bangsal_dr=bangsal.kd_bangsal "+
-                    "where utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kode_brng like ? or "+
-                    "utd_pengambilan_medis.tanggal between ? and ? and databarang.nama_brng like ? or "+
-                    "utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kd_bangsal_dr like ? or "+
-                    "utd_pengambilan_medis.tanggal between ? and ? and bangsal.nm_bangsal like ? or "+
-                    "utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.keterangan like ? order by utd_pengambilan_medis.tanggal");
+            if(TCari.getText().trim().equals("")){
+                ps=koneksi.prepareStatement(
+                        "select utd_pengambilan_medis.kode_brng,databarang.nama_brng,utd_pengambilan_medis.jml,utd_pengambilan_medis.hargabeli,"+
+                        "utd_pengambilan_medis.total,utd_pengambilan_medis.kd_bangsal_dr,bangsal.nm_bangsal,utd_pengambilan_medis.tanggal,"+
+                        "utd_pengambilan_medis.keterangan,databarang.kode_sat,utd_pengambilan_medis.no_batch,utd_pengambilan_medis.no_faktur "+
+                        "from utd_pengambilan_medis inner join databarang on utd_pengambilan_medis.kode_brng=databarang.kode_brng  "+
+                        "inner join bangsal on utd_pengambilan_medis.kd_bangsal_dr=bangsal.kd_bangsal "+
+                        "where utd_pengambilan_medis.tanggal between ? and ? order by utd_pengambilan_medis.tanggal");
+            }else{
+                ps=koneksi.prepareStatement(
+                        "select utd_pengambilan_medis.kode_brng,databarang.nama_brng,utd_pengambilan_medis.jml,utd_pengambilan_medis.hargabeli,"+
+                        "utd_pengambilan_medis.total,utd_pengambilan_medis.kd_bangsal_dr,bangsal.nm_bangsal,utd_pengambilan_medis.tanggal,"+
+                        "utd_pengambilan_medis.keterangan,databarang.kode_sat,utd_pengambilan_medis.no_batch,utd_pengambilan_medis.no_faktur "+
+                        "from utd_pengambilan_medis inner join databarang on utd_pengambilan_medis.kode_brng=databarang.kode_brng  "+
+                        "inner join bangsal on utd_pengambilan_medis.kd_bangsal_dr=bangsal.kd_bangsal "+
+                        "where utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kode_brng like ? or "+
+                        "utd_pengambilan_medis.tanggal between ? and ? and databarang.nama_brng like ? or "+
+                        "utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kd_bangsal_dr like ? or "+
+                        "utd_pengambilan_medis.tanggal between ? and ? and bangsal.nm_bangsal like ? or "+
+                        "utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.keterangan like ? order by utd_pengambilan_medis.tanggal");
+            }
+                
             try {
                 total=0;
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().trim().equals("")){
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                }else{
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("kode_brng"),rs.getString("nama_brng")+" ("+rs.getString("kode_sat")+")",
                         rs.getString("jml"),rs.getString("hargabeli"),
                         rs.getString("total"),rs.getString("kd_bangsal_dr")+" "+rs.getString("nm_bangsal"),
-                        rs.getString("kd_bangsal_dr"),rs.getString("tanggal"),
-                        rs.getString("keterangan")
+                        rs.getString("kd_bangsal_dr"),rs.getString("tanggal"),rs.getString("keterangan"),
+                        rs.getString("no_batch"),rs.getString("no_faktur")
                     });
                     total=total+rs.getDouble("total");
                 }

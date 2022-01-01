@@ -2,9 +2,9 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun        = $baris[0];
-   $bulan        = $baris[1];
+   $baristahun   = mysqli_fetch_row($hasil);
+   $tahun        = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $bulan        = empty($baristahun[1])?date("m"):$baristahun[1];
 ?>
 <div id="post">
     <div class="entry">
@@ -65,7 +65,7 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $id                 =trim($_POST['id']);
-                    $jml                =trim($_POST['jml']);
+                    $jml                = validangka(trim($_POST['jml']));
                     if ((!empty($id))&&(!empty($jml))) {
                         switch($action) {
                             case "TAMBAH":

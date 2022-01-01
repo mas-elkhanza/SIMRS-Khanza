@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -82,14 +82,26 @@ public class DlgProyeksiBeriObat2 extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());         
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));        
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {prosesCari();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        prosesCari();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {prosesCari();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        prosesCari();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {prosesCari();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        prosesCari();
+                    }
+                }
             });
         }
         barang.addWindowListener(new WindowListener() {
@@ -99,7 +111,7 @@ public class DlgProyeksiBeriObat2 extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgProyeksiBeriObat")){
+                if(akses.getform().equals("DlgProyeksiBeriObat")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
@@ -122,7 +134,7 @@ public class DlgProyeksiBeriObat2 extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgProyeksiBeriObat")){
+                if(akses.getform().equals("DlgProyeksiBeriObat")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                         kdbar.requestFocus();
@@ -184,7 +196,7 @@ public class DlgProyeksiBeriObat2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Proyeksi Keuntungan Obat, Alkes & BHP Medis Ranap & Ralan Non Terhutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Proyeksi Keuntungan Obat, Alkes & BHP Medis Ranap & Ralan Non Terhutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -202,7 +214,6 @@ public class DlgProyeksiBeriObat2 extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
@@ -217,7 +228,6 @@ public class DlgProyeksiBeriObat2 extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(115, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(110, 23));
@@ -229,7 +239,6 @@ public class DlgProyeksiBeriObat2 extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(110, 23));
@@ -396,14 +405,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                        "and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
             
             Map<String, Object> param = new HashMap<>();  
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptProyeksiBeriObat.jrxml","report","::[ Proyeksi Keuntungan Pemberian Obat ]::",
+            Valid.MyReportqry("rptProyeksiBeriObat.jasper","report","::[ Proyeksi Keuntungan Pemberian Obat ]::",
                         "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.no_rawat, "+
                         "detail_pemberian_obat.kode_brng,databarang.nama_brng, "+
                         "kodesatuan.satuan,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.jml, "+
@@ -479,7 +488,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdbarKeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        var.setform("DlgProyeksiBeriObat");
+        akses.setform("DlgProyeksiBeriObat");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -602,7 +611,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-         BtnPrint.setEnabled(var.getkeuntungan_beri_obat());
+         BtnPrint.setEnabled(akses.getkeuntungan_beri_obat());
     }
      
  

@@ -6,44 +6,13 @@
             $nik          = str_replace("_"," ",isset($_GET['nik']))?str_replace("_"," ",$_GET['nik']):NULL;
             $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
             $kategori     = str_replace("_"," ",isset($_GET['kategori']))?str_replace("_"," ",$_GET['kategori']):NULL;
-            $_sql         = "select nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_kerja,
-                            pendidikan from pegawai where nik='$nik' ";
-            $hasil        = bukaquery($_sql);
-            $baris        = mysqli_fetch_array($hasil);
-            $nama         = $baris["nama"];
-            $jk           = $baris["jk"];
-            $jbtn         = $baris["jbtn"];
-            $jnj_jabatan  = getOne("select nama from jnj_jabatan where kode='".$baris["jnj_jabatan"]."'");
-            $departemen   = getOne("select nama from departemen where dep_id='".$baris["departemen"]."'");
-            $bidang       = $baris["bidang"];
-            $pendidikan   = $baris["pendidikan"];
-
             echo "<input type=hidden name=nik value='$nik'>
                   <input type=hidden name=kategori value='$kategori'>
                   <input type=hidden name=action value=$action>";
         ?>
         <table width="100%" align="center" border="0">
             <tr class="isi2">
-                <td width="15%">Jenis Kelamin</td><td width="1%">:</td>
-                <td width="34%"><?php echo $jk;?></td>
-                <td width="15%">Jabatan</td><td width="1%">:</td>
-                <td width="34%"><?php echo $jbtn;?></td>
-            </tr>
-            <tr class="isi2">
-                <td width="15%">Jenjang Jabatan</td><td width="1%">:</td>
-                <td width="34%"><?php echo $jnj_jabatan;?></td>
-                <td width="15%">Departemen</td><td width="1%">:</td>
-                <td width="34%"><?php echo $departemen;?></td>
-            </tr>  
-            <tr class="isi2">
-                <td width="15%">Bidang</td><td width="1%">:</td>
-                <td width="34%"><?php echo $bidang;?></td>
-                <td width="15%">Pendidikan</td><td width="1%">:</td>
-                <td width="34%"><?php echo $pendidikan;?></td>
-            </tr>         
-            <tr class="isi2">
-                <td width="15%">Berkas Pegawai</td><td width="1%">:</td>
-                <td width="34%">
+                <td width="100%">&nbsp;&nbsp;Berkas :
                     <select name="kode" class="text4">
                         <?php
                             $_sql = "SELECT kode,nama_berkas FROM master_berkas_pegawai where kategori='$kategori' ORDER BY no_urut";
@@ -56,9 +25,7 @@
                     </select>
                     <input name="dokumen" class="text3" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=file id="TxtIsi1" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-                <td width="15%">Tgl.Uploud</td><td width="1%">:</td>
-                <td width="34%">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tgl.Uploud :
                     <select name="TglUploud" class="text">
                          <?php
                            loadTglnow();
@@ -74,27 +41,29 @@
                             loadThnnow();
                          ?>
                     </select>
+                    <input name=BtnSimpan type=submit class="button" value="&nbsp;&nbsp;Simpan&nbsp;&nbsp;">&nbsp<input name=BtnKosong type=reset class="button" value="&nbsp;&nbsp;Kosong&nbsp;&nbsp;">
                 </td>
             </tr>   
         </table>
-        <div align="center"><input name=BtnSimpan type=submit class="button" value="&nbsp;&nbsp;Simpan&nbsp;&nbsp;">&nbsp<input name=BtnKosong type=reset class="button" value="&nbsp;&nbsp;Kosong&nbsp;&nbsp;"></div><br>
+        <br>
         <?php
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $nik           = trim($_POST['nik']);
                 $kategori      = trim($_POST['kategori']);
+                $kategori      = validTeks($kategori);
                 $kode          = trim($_POST['kode']);
                 $tgl_uploud    = trim($_POST['ThnUploud'])."-".trim($_POST['BlnUploud'])."-".trim($_POST['TglUploud']);
                 $dokumen       = str_replace(" ","_","pages/berkaspegawai/berkas/".$_FILES['dokumen']['name']);
                 if ((!empty($nik))&&(!empty($kode))&&(!empty($dokumen))) {
                     switch($action) {
                         case "TAMBAH":
-                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="jpeg")){
+                            if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-4))=="jpeg")||(strtolower(substr($dokumen,-3))=="pdf")){
                                 move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                                 Tambah(" berkas_pegawai "," '$nik','$tgl_uploud','$kode','$dokumen'", " Berkas Pegawai " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori)."'>";
                             }else{
-                                echo "Berkas harus JPEG/JPG";
+                                echo "Berkas harus JPEG/JPG/PDF";
                             } 
                             break;
                     }
@@ -103,7 +72,9 @@
                 }
             }
         ?>
+        <div style="width: 100%; height: 85%; overflow: auto;">
         <?php
+            $keyword = validTeks($keyword);
             $_sql = "SELECT berkas_pegawai.nik, berkas_pegawai.tgl_uploud,berkas_pegawai.kode_berkas,
                     master_berkas_pegawai.nama_berkas,berkas_pegawai.berkas from berkas_pegawai inner join 
                     master_berkas_pegawai on berkas_pegawai.kode_berkas=master_berkas_pegawai.kode 
@@ -156,6 +127,7 @@
                         </tr>
                       </table>";}
     ?>
+    </div>
     <?php
         if ($action=="HAPUS") {      
             unlink($_GET['berkas']);

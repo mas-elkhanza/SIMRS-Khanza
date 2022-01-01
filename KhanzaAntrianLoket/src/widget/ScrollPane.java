@@ -12,10 +12,6 @@ import usu.widget.glass.ViewPortGlass;
  */
 public class ScrollPane extends JScrollPane {
 
-    /*
-     * Serial version UID
-     */
-    private static final long serialVersionUID = 1L;
 
     public ScrollPane() {
         super();
@@ -23,7 +19,7 @@ public class ScrollPane extends JScrollPane {
         setOpaque(false);
         //setBorder(new LineBorder(new Color(235,140,235)));
         //setBackground(new Color(255,235,255));
-        setBorder(new LineBorder(new Color(237,242,232)));
+        setBorder(new LineBorder(new Color(((239,244,234)))));
         setBackground(new Color(255,255,255));
     }
 }

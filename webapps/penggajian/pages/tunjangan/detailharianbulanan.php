@@ -11,16 +11,16 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                @$tnj                =$_GET['tnj'];
-                @$tnj2                =$_GET['tnj2'];
+                $action         = isset($_GET['action'])?$_GET['action']:NULL;
+                @$tnj           = $_GET['tnj'];
+                @$tnj2          = $_GET['tnj2'];
                 echo "<input type=hidden name=tnj  value=$tnj><input type=hidden name=tnj2  value=$tnj2><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Tunjangan Harian</td><td width="">:</td>
                     <td width="67%">
-                        <select name="tnj" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="tnj" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                             <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT id,nama,tnj FROM master_tunjangan_harian ORDER BY nama";
@@ -54,16 +54,16 @@
             <?php
                 @$BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    @$tnj                =trim($_POST['tnj']);
-                    @$tnj2               =trim($_POST['tnj2']);
-                    if ((!empty($tnj))&&(!empty($tnj2))) {
+                    @$tnj                = validTeks(trim($_POST['tnj']));
+                    @$tnj2               = validTeks(trim($_POST['tnj2']));
+                    if ((isset($tnj))&&(isset($tnj2))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" harian_kurangi_bulanan ","'$tnj','$tnj2'", " Data Tnj.Harian - Tnj.Bulanan " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailHarianBulanan&action=TAMBAH'>";
                                 break;
                         }
-                    }else if ((empty($tnj))||(empty($tnj2))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -88,7 +88,7 @@
                                 <td width='44%'><div align='center'>Bulanan</div></td>
                             </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
-                      echo "<tr class='isi'>
+                        echo "<tr class='isi'>
                                 <td>
                                     <center>";?>
                                     <a href="?act=DetailHarianBulanan&action=HAPUS&tnj=<?php print $baris[2]?>&tnj2=<?php print $baris[3]?>">[hapus]</a>
@@ -101,7 +101,15 @@
                     }
                 echo "</table>";
 
-            } else {echo "<b>Data Master Tunjangan Harian - Bulanan !</b>";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='12%'><div align='center'>Proses</div></td>
+                                <td width='44%'><div align='center'>Harian</div></td>
+                                <td width='44%'><div align='center'>Bulanan</div></td>
+                            </tr>
+                        </table>";
+            }
         ?>
         </div>
         </form>

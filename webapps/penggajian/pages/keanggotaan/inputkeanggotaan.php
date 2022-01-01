@@ -6,7 +6,7 @@
             <?php
                 echo "";
                 $id          =isset($_GET['id'])?$_GET['id']:NULL;
-                $action      =isset($_GET['action'])?$_GET['action']:NULL; 
+                $action      =isset($_GET['action'])?$_GET['action']:NULL;
                 $_sql = "SELECT id,koperasi,jamsostek,bpjs FROM keanggotaan WHERE id='$id'";
                 $hasil=bukaquery($_sql);
                 if(mysqli_num_rows($hasil)!=0) {
@@ -14,31 +14,31 @@
                 }else if(mysqli_num_rows($hasil)==0) {
                     $action = "TAMBAH";
                 }
-                
+
                 $baris     = mysqli_fetch_row($hasil);
-                $koperasi  = $baris[1];
-                $jamsostek = $baris[2];
-                $bpjs      = $baris[3];
-                
+                @$koperasi  = $baris[1];
+                @$jamsostek = $baris[2];
+                @$bpjs      = $baris[3];
+
                 $_sql2 = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil2=bukaquery($_sql2);
-                $baris2 = mysqli_fetch_row($hasil2);                
+                $baris2 = mysqli_fetch_row($hasil2);
                 echo"<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 
                     $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    @$next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
-                    
+                    @$prev               = $barisprev[0];
+
                     if(empty($prev)){
                         $prev=$next;
                     }
-                    
+
                     if(empty($next)){
                         $next=$prev;
                     }
@@ -115,10 +115,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id        = trim($_POST['id']);
-                    $koperasi  = trim($_POST['koperasi']);
-                    $jamsostek = trim($_POST['jamsostek']);
-                    $bpjs      = trim($_POST['bpjs']);
+                    $id        = validTeks(trim($_POST['id']));
+                    $koperasi  = validTeks(trim($_POST['koperasi']));
+                    $jamsostek = validTeks(trim($_POST['jamsostek']));
+                    $bpjs      = validTeks(trim($_POST['bpjs']));
                     if ((!empty($id))&&(!empty($koperasi))&&(!empty($jamsostek))&&(!empty($bpjs))) {
                         switch($action) {
                             case "TAMBAH":

@@ -16,14 +16,14 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -37,6 +37,8 @@ public class InventarisRuang extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -44,9 +46,6 @@ public class InventarisRuang extends javax.swing.JDialog {
     public InventarisRuang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        this.setLocation(10,10);
-        setSize(459,539);
 
         Object[] row={"ID Ruang","Nama Ruang"};
         tabMode=new DefaultTableModel(null,row){
@@ -73,14 +72,26 @@ public class InventarisRuang extends javax.swing.JDialog {
         TKd.setDocument(new batasInput((byte)5).getKata(TKd));
         TNm.setDocument(new batasInput((byte)40).getKata(TNm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
     }
@@ -129,7 +140,7 @@ public class InventarisRuang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ruang Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ruang Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -170,6 +181,7 @@ public class InventarisRuang extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -465,8 +477,7 @@ public class InventarisRuang extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari("select * from inventaris_ruang where id_ruang like '%"+TCari.getText().trim()+"%' "+
-                "or nama_ruang like '%"+TCari.getText().trim()+"%' ");
+        tampil();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -482,8 +493,8 @@ public class InventarisRuang extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyReleased
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        prosesCari("select * from inventaris_ruang order by id_ruang");
         emptTeks();
+        tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -572,19 +583,28 @@ public class InventarisRuang extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
-        String sql="select * from inventaris_ruang order by id_ruang";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ResultSet rs=koneksi.prepareStatement(sql).executeQuery();
-            while(rs.next()){
-                String[] data={rs.getString(1),rs.getString(2)};
-                tabMode.addRow(data);
-             }
+            ps=koneksi.prepareStatement("select * from inventaris_ruang where id_ruang like ? "+
+                "or nama_ruang like ? order by id_ruang");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
@@ -612,8 +632,8 @@ public class InventarisRuang extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getinventaris_ruang());
-       BtnHapus.setEnabled(var.getinventaris_ruang());
-       BtnEdit.setEnabled(var.getinventaris_ruang());
+       BtnSimpan.setEnabled(akses.getinventaris_ruang());
+       BtnHapus.setEnabled(akses.getinventaris_ruang());
+       BtnEdit.setEnabled(akses.getinventaris_ruang());
     }
 }

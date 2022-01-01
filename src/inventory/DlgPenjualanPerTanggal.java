@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -47,8 +47,8 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private PreparedStatement ps,ps2;
-    private ResultSet rs,rs2;
+    private PreparedStatement ps;
+    private ResultSet rs;
     private String dateString,dayOfWeek,hari,lokasi="";
     private double h1=0,h2=0,h3=0,h4=0,h5=0,h6=0,h7=0,h8=0,h9=0,h10=0,h11=0,h12=0,h13=0,
                    h14=0,h15=0,h16=0,h17=0,h18=0,h19=0,h20=0,h21=0,h22=0,h23=0,h24=0,h25=0,h26=0,h27=0,h28=0,h29=0,h30=0,h31=0 ;
@@ -75,14 +75,26 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         jenis.addWindowListener(new WindowListener() {
@@ -267,14 +279,13 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppLokasi.setBackground(new java.awt.Color(255, 255, 255));
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLokasi.setForeground(new java.awt.Color(100,80,80));
+        ppLokasi.setForeground(new java.awt.Color(50,50,50));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppLokasi.setText("Tampilkan Per Lokasi");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppLokasi.setIconTextGap(8);
         ppLokasi.setName("ppLokasi"); // NOI18N
         ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
         ppLokasi.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +304,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -301,7 +312,6 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJadwal.setComponentPopupMenu(jPopupMenu1);
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -324,7 +334,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
         nmjns.setEditable(false);
         nmjns.setName("nmjns"); // NOI18N
-        nmjns.setPreferredSize(new java.awt.Dimension(205, 23));
+        nmjns.setPreferredSize(new java.awt.Dimension(206, 23));
         panelBiasa1.add(nmjns);
 
         BtnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -346,7 +356,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
         nmkategori.setEditable(false);
         nmkategori.setName("nmkategori"); // NOI18N
-        nmkategori.setPreferredSize(new java.awt.Dimension(205, 23));
+        nmkategori.setPreferredSize(new java.awt.Dimension(206, 23));
         panelBiasa1.add(nmkategori);
 
         BtnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -368,7 +378,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
         nmgolongan.setEditable(false);
         nmgolongan.setName("nmgolongan"); // NOI18N
-        nmgolongan.setPreferredSize(new java.awt.Dimension(205, 23));
+        nmgolongan.setPreferredSize(new java.awt.Dimension(206, 23));
         panelBiasa1.add(nmgolongan);
 
         BtnGolongan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -400,7 +410,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(55, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass8.add(BlnCari);
 
         jLabel6.setText("Key Word :");
@@ -409,7 +419,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
         panelGlass8.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -556,7 +566,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
         jenis.isCek();
-        jenis.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         jenis.setLocationRelativeTo(internalFrame1);
         jenis.setAlwaysOnTop(false);
         jenis.setVisible(true);
@@ -564,7 +574,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void BtnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKategoriActionPerformed
         kategori.isCek();
-        kategori.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        kategori.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         kategori.setLocationRelativeTo(internalFrame1);
         kategori.setAlwaysOnTop(false);
         kategori.setVisible(true);
@@ -572,7 +582,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void BtnGolonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganActionPerformed
         golongan.isCek();
-        golongan.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        golongan.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         golongan.setLocationRelativeTo(internalFrame1);
         golongan.setAlwaysOnTop(false);
         golongan.setVisible(true);
@@ -595,8 +605,8 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
-            Sequel.queryu("delete from temporary");
+            
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -636,14 +646,14 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,35).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','',''","Rekap Presensi"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("periode","01 - 31 BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 param.put("jd1","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")");
@@ -678,10 +688,10 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
                 if(lokasi.equals("")){
-                    Valid.MyReport("rptPenjualanPerTanggal.jrxml","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::","select * from temporary",param);            
+                    Valid.MyReport("rptPenjualanPerTanggal.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::",param);            
                 }else if(!lokasi.equals("")){                    
                     param.put("bangsal",lokasi);
-                    Valid.MyReport("rptPenjualanPerTanggal2.jrxml","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::","select * from temporary",param);            
+                    Valid.MyReport("rptPenjualanPerTanggal2.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::",param);            
                 }
                                          
         }
@@ -698,7 +708,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
     private void ppLokasiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLokasiBtnPrintActionPerformed
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
     }//GEN-LAST:event_ppLokasiBtnPrintActionPerformed

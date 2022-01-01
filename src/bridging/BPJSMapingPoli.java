@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -87,14 +87,26 @@ public final class BPJSMapingPoli extends javax.swing.JDialog {
         KdPoliBPJS.setDocument(new batasInput((byte)15).getKata(KdPoliBPJS)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));                  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -205,7 +217,7 @@ public final class BPJSMapingPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mapping Poli/Unit RS & BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mapping Poli/Unit RS & BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -243,6 +255,7 @@ public final class BPJSMapingPoli extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -586,17 +599,15 @@ public final class BPJSMapingPoli extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptMapingPoliBPJS.jrxml","report","::[ Mapping Unit RS & BPJS ]::",
-                   "select maping_poli_bpjs.kd_poli_rs,poliklinik.nm_poli,maping_poli_bpjs.kd_poli_bpjs,maping_poli_bpjs.nm_poli_bpjs "+
-                   "from maping_poli_bpjs inner join poliklinik on maping_poli_bpjs.kd_poli_rs=poliklinik.kd_poli where "+
-                   "maping_poli_bpjs.kd_poli_rs like '%"+TCari.getText().trim()+"%' or poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' or maping_poli_bpjs.kd_poli_bpjs like '%"+TCari.getText().trim()+"%' or maping_poli_bpjs.nm_poli_bpjs like '%"+TCari.getText().trim()+"%' order by poliklinik.nm_poli",param);            
+                param.put("parameter","%"+TCari.getText().trim()+"%");
+                Valid.MyReport("rptMapingPoliBPJS.jasper","report","::[ Mapping Unit RS & BPJS ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -778,10 +789,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getmapping_poli_bpjs());
-        BtnHapus.setEnabled(var.getmapping_poli_bpjs());
-        BtnEdit.setEnabled(var.getmapping_poli_bpjs());
-        BtnPrint.setEnabled(var.getmapping_poli_bpjs());
+        BtnSimpan.setEnabled(akses.getmapping_poli_bpjs());
+        BtnHapus.setEnabled(akses.getmapping_poli_bpjs());
+        BtnEdit.setEnabled(akses.getmapping_poli_bpjs());
+        BtnPrint.setEnabled(akses.getmapping_poli_bpjs());
     }
     
     public JTable getTable(){

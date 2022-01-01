@@ -20,14 +20,14 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" />
+                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
             </table><br> 
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-
+        $keyword= validTeks($keyword);
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,
 		 pegawai.departemen from pegawai
 		 where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or
@@ -44,7 +44,7 @@
                         <td width='22%'><div align='center'>Nama</div></td>
                         <td width='10%'><div align='center'>Departemen</div></td>
                         <td width='30%'><div align='center'>Tnj. Bulanan Diterima</div></td>
-			<td width='30%x'><div align='center'>Tnj. Harian Diterima</div></td>
+			            <td width='30%x'><div align='center'>Tnj. Harian Diterima</div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
@@ -76,7 +76,17 @@
                              </tr>";
                     }
             echo "</table>";           
-        } else {echo "Data penerima tunjangan masih kosong !";}
+        } else {
+            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <tr class='head'>
+                        <td width='8%'><div align='center'>NIP</div></td>
+                        <td width='22%'><div align='center'>Nama</div></td>
+                        <td width='10%'><div align='center'>Departemen</div></td>
+                        <td width='30%'><div align='center'>Tnj. Bulanan Diterima</div></td>
+			            <td width='30%x'><div align='center'>Tnj. Harian Diterima</div></td>
+                    </tr>
+                </table>";
+        }
 
     ?>
     </div>

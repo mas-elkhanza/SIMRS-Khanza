@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -98,14 +98,26 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
         Tarif.setDocument(new batasInput((byte)10).getOnlyAngka(Tarif));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         WindowInputParkir.setSize(445,200);
@@ -248,7 +260,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
             }
         });
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame2.setLayout(null);
@@ -325,7 +337,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -706,7 +718,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptKamarInap.jrxml","report","::[ Data Kamar Inap Pasien ]::",sql,param);*/
+                Valid.MyReport("rptKamarInap.jasper","report","::[ Data Kamar Inap Pasien ]::",sql,param);*/
 
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -762,7 +774,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
 
     private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
 //        TOut.setText("");
-        var.setstatus(false);
+        akses.setstatus(false);
         WindowInputParkir.dispose();
     }//GEN-LAST:event_BtnCloseInActionPerformed
 
@@ -834,7 +846,7 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_formWindowOpened
 
     private void WindowInputParkirWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_WindowInputParkirWindowActivated
-         var.setstatus(false);
+         akses.setstatus(false);
     }//GEN-LAST:event_WindowInputParkirWindowActivated
 
     private void BarcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BarcodeKeyPressed
@@ -1053,13 +1065,13 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     
     
     public void isCek(){
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             NmPetugas.setEnabled(false);
             btnPetugas.setEnabled(false);
-            BtnHapus.setEnabled(var.getparkir_in());
-            BtnPrint.setEnabled(var.getparkir_in());
-            KdPetugas.setText(var.getkode());
+            BtnHapus.setEnabled(akses.getparkir_in());
+            BtnPrint.setEnabled(akses.getparkir_in());
+            KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?",NmPetugas,KdPetugas.getText());
         }else{
             KdPetugas.setEditable(true);
