@@ -608,6 +608,7 @@ import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgLhtBankJateng;
 import keuangan.DlgOmsetPenerimaan;
+import keuangan.DlgPembayaranPerAKunBayar4;
 import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
@@ -17841,6 +17842,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPembayaranAkunBayar4ActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPembayaranPerAKunBayar4 aplikasi=new DlgPembayaranPerAKunBayar4(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18470,7 +18482,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
-            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain;
+            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4;
     
     public void isWall(){
         try{            
@@ -19817,6 +19829,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpembayaran_akun_bayar3()==true){
                 Panelmenu.add(btnPembayaranAkunBayar3);
+                jmlmenu++;
+            }
+            
+            if(akses.getpembayaran_akun_bayar4()==true){
+                Panelmenu.add(btnPembayaranAkunBayar4);
                 jmlmenu++;
             }
             
@@ -23703,6 +23720,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpembayaran_akun_bayar3()==true){
             Panelmenu.add(btnPembayaranAkunBayar3);
+            jmlmenu++;
+        }
+        
+        if(akses.getpembayaran_akun_bayar4()==true){
+            Panelmenu.add(btnPembayaranAkunBayar4);
             jmlmenu++;
         }
         
@@ -28069,6 +28091,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpembayaran_akun_bayar3()==true){
             if(btnPembayaranAkunBayar3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranAkunBayar3);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpembayaran_akun_bayar4()==true){
+            if(btnPembayaranAkunBayar4.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranAkunBayar4);
                 jmlmenu++;
             }                
         }
@@ -34310,6 +34339,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarPiutangLainLain.setName("btnBayarPiutangLainLain"); 
         btnBayarPiutangLainLain.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBayarPiutangLainLain.addActionListener(this::btnBayarPiutangLainLainActionPerformed);
+        
+        btnPembayaranAkunBayar4 = new widget.ButtonBig();
+        btnPembayaranAkunBayar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnPembayaranAkunBayar4.setText("Pembayaran Per Akun Bayar 4");
+        btnPembayaranAkunBayar4.setIconTextGap(0);
+        btnPembayaranAkunBayar4.setName("btnPembayaranAkunBayar4");
+        btnPembayaranAkunBayar4.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranAkunBayar4.addActionListener(this::btnPembayaranAkunBayar4ActionPerformed);
     }
     
 }
