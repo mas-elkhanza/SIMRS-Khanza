@@ -569,6 +569,7 @@ import inventory.InventoryRingkasanPiutangBarangMedis;
 import inventory.InventoryRingkasanReturJualBarangMedis;
 import inventory.InventoryRingkasanReturSuplierBarangMedis;
 import inventory.InventoryRingkasanStokKeluarBarangMedis;
+import inventory.InventoryStokAkhirFarmasiPerTanggal;
 import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
@@ -17853,6 +17854,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnStokAkhirFarmasiPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryStokAkhirFarmasiPerTanggal aplikasi=new InventoryStokAkhirFarmasiPerTanggal(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18482,7 +18494,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDokterHFIS,btnBPJSReferensiJadwalHFIS,btnFisioterapi,btnBPJSProgramPRB,btnBPJSSuplesiJasaRaharja,btnBPJSDataIndukKecelakaan,
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
-            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4;
+            btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
+            btnStokAkhirFarmasiPerTanggal;
     
     public void isWall(){
         try{            
@@ -19270,6 +19283,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getresep_luar()==true){
                 Panelmenu.add(btnResepLuar);
+                jmlmenu++;
+            }
+            
+            if(akses.getstok_akhir_farmasi_pertanggal()==true){
+                Panelmenu.add(btnStokAkhirFarmasiPerTanggal);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -23170,6 +23188,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getresep_luar()==true){
             Panelmenu.add(btnResepLuar);
+            jmlmenu++;
+        }
+
+        if(akses.getstok_akhir_farmasi_pertanggal()==true){
+            Panelmenu.add(btnStokAkhirFarmasiPerTanggal);
             jmlmenu++;
         }
 
@@ -27321,6 +27344,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getresep_luar()==true){
             if(btnResepLuar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnResepLuar);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getstok_akhir_farmasi_pertanggal()==true){
+            if(btnStokAkhirFarmasiPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnStokAkhirFarmasiPerTanggal);
                 jmlmenu++;
             }                
         }
@@ -34347,6 +34377,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPembayaranAkunBayar4.setName("btnPembayaranAkunBayar4");
         btnPembayaranAkunBayar4.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPembayaranAkunBayar4.addActionListener(this::btnPembayaranAkunBayar4ActionPerformed);
+        
+        btnStokAkhirFarmasiPerTanggal = new widget.ButtonBig();
+        btnStokAkhirFarmasiPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_bag_icons-15_1075431.png"))); // NOI18N
+        btnStokAkhirFarmasiPerTanggal.setText("Stok Akhir Farmasi Per Tanggal");
+        btnStokAkhirFarmasiPerTanggal.setIconTextGap(0);
+        btnStokAkhirFarmasiPerTanggal.setName("btnStokAkhirFarmasiPerTanggal");
+        btnStokAkhirFarmasiPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStokAkhirFarmasiPerTanggal.addActionListener(this::btnStokAkhirFarmasiPerTanggalActionPerformed);
     }
     
 }

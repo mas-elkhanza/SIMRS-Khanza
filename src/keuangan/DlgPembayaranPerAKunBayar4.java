@@ -568,9 +568,9 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             );   
             
             kolom=0;
-            i=Sequel.cariInteger("select count(nama_bayar) from akun_bayar");
+            i=Sequel.cariInteger("select count(akun_bayar.nama_bayar) from akun_bayar");
             namabayar=new String[i];
-            psakunbayar=koneksi.prepareStatement("select nama_bayar from akun_bayar order by nama_bayar");
+            psakunbayar=koneksi.prepareStatement("select akun_bayar.nama_bayar from akun_bayar order by akun_bayar.nama_bayar");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
                 while(rsakunbayar.next()){
@@ -604,7 +604,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
@@ -620,7 +620,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                                 "<td>"+
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
-                            bayar=Sequel.cariIsiAngka("select sum(besar_bayar) from detail_nota_inap where no_rawat='"+rs.getString("no_rawat")+"' and nama_bayar='"+namabayar[i]+"'");
+                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap where detail_nota_inap.no_rawat='"+rs.getString("no_rawat")+"' and detail_nota_inap.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
                                 htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
@@ -658,7 +658,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
@@ -674,7 +674,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                                 "<td>"+
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
-                            bayar=Sequel.cariIsiAngka("select sum(besar_bayar) from detail_nota_jalan where no_rawat='"+rs.getString("no_rawat")+"' and nama_bayar='"+namabayar[i]+"'");
+                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan where detail_nota_jalan.no_rawat='"+rs.getString("no_rawat")+"' and detail_nota_jalan.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
                                 htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
@@ -710,7 +710,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
@@ -762,7 +762,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
@@ -778,7 +778,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                                 "<td>"+
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom;i++){
-                            bayar=Sequel.cariIsiAngka("select sum(besar_deposit) from deposit where no_deposit='"+rs.getString("no_nota")+"' and nama_bayar='"+namabayar[i]+"'");
+                            bayar=Sequel.cariIsiAngka("select sum(deposit.besar_deposit) from deposit where deposit.no_deposit='"+rs.getString("no_nota")+"' and deposit.nama_bayar='"+namabayar[i]+"'");
                             if(bayar>0){
                                 htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
                                 totalbayar[i]=totalbayar[i]+bayar;
@@ -804,10 +804,10 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             } 
             
             kolom2=0;
-            i=Sequel.cariInteger("select count(kd_rek) from rekening where kd_rek in (select kd_rek from akun_bayar group by kd_rek)");
+            i=Sequel.cariInteger("select count(rekening.kd_rek) from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)");
             akunrekening=new String[i];
             namarekening=new String[i];
-            psakunbayar=koneksi.prepareStatement("select kd_rek,nm_rek from rekening where kd_rek in (select kd_rek2 from kategori_pemasukan_lain group by kd_rek2) order by nm_rek");
+            psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
                 while(rsakunbayar.next()){
@@ -839,7 +839,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
-                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
+                    petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                     
                     if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||rs.getString("no_nota").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
