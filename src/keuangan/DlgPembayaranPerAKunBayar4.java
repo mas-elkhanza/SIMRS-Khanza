@@ -593,7 +593,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             all=0;
             //rawat inap
             ps= koneksi.prepareStatement(
-                    "select tagihan_sadewa.no_nota,penjab.png_jawab,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas,nota_inap.no_rawat "+
+                    "select nota_inap.no_nota,penjab.png_jawab,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas,nota_inap.no_rawat "+
                     "from tagihan_sadewa inner join nota_inap on tagihan_sadewa.no_nota=nota_inap.no_rawat "+
                     "inner join reg_periksa on nota_inap.no_rawat=reg_periksa.no_rawat "+
                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
@@ -647,7 +647,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             
             //rawat jalan
             ps= koneksi.prepareStatement(
-                    "select tagihan_sadewa.no_nota,penjab.png_jawab,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas,nota_jalan.no_rawat "+
+                    "select nota_jalan.no_nota,penjab.png_jawab,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas,nota_jalan.no_rawat "+
                     "from tagihan_sadewa inner join nota_jalan on tagihan_sadewa.no_nota=nota_jalan.no_rawat "+
                     "inner join reg_periksa on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
