@@ -669,7 +669,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                                 bayar=0;
                             }
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
                             }
                             totalbayar[i]=totalbayar[i]+bayar;
                         }
