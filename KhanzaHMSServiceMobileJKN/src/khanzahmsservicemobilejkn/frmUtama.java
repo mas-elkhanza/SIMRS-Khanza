@@ -657,7 +657,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                              "\"taskid\": \"3\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
@@ -692,7 +692,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                              "\"taskid\": \"4\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
@@ -727,7 +727,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                              "\"taskid\": \"5\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
@@ -762,7 +762,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                              "\"taskid\": \"6\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
@@ -797,7 +797,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                              "\"taskid\": \"7\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
@@ -832,7 +832,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             headers.add("x-signature",api.getHmac(utc));
                                             headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
                                             requestJson ="{" +
-                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+                                                             "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                              "\"taskid\": \"99\"," +
                                                              "\"waktu\": \""+parsedDate.getTime()+"\"" +
                                                           "}";
