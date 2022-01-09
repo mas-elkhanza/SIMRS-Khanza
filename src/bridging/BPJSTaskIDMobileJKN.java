@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -63,7 +62,7 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Booking","No.RM","Nama Pasien","No.HP","No.Kartu","NIK","Tanggal","Poliklinik","Dokter","Jam Praktek","Jenis Kunjungan","Nomor Referensi","Waktu RS","Waktu","Task Name","Task ID"
+                "No.Rawat","No.RM","Nama Pasien","No.HP","No.Kartu","NIK","Tanggal","Poliklinik","Dokter","Waktu RS","Waktu","Task Name","Task ID"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +71,7 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(110);
@@ -93,18 +92,12 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(160);
             }else if(i==9){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(115);
             }else if(i==10){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(115);
             }else if(i==11){
-                column.setPreferredWidth(125);
-            }else if(i==12){
-                column.setPreferredWidth(115);
-            }else if(i==13){
-                column.setPreferredWidth(115);
-            }else if(i==14){
                 column.setPreferredWidth(150);
-            }else if(i==15){
+            }else if(i==12){
                 column.setPreferredWidth(40);
             }
         }
@@ -382,9 +375,91 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
+                   "SELECT reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_tlp,pasien.no_peserta,"+
+                   "pasien.no_ktp,reg_periksa.tgl_registrasi,poliklinik.nm_poli,dokter.nm_dokter "+
+                   "FROM reg_periksa INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "INNER JOIN poliklinik ON reg_periksa.kd_poli=poliklinik.kd_poli "+
+                   "INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter "+
+                   "WHERE reg_periksa.tgl_registrasi BETWEEN ? AND ? "+(TCari.getText().equals("")?"":
+                   "and (reg_periksa.no_rawat LIKE ? OR reg_periksa.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ? OR "+
+                   "pasien.no_tlp LIKE ? OR pasien.no_peserta LIKE ? OR pasien.no_ktp LIKE ? OR "+
+                   "poliklinik.nm_poli LIKE ? OR dokter.nm_dokter LIKE ?) ")+
+                   "order by reg_periksa.tgl_registrasi");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText()+"%");
+                }
+                    
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    try {
+                        headers = new HttpHeaders();
+                        headers.setContentType(MediaType.APPLICATION_JSON);
+                        headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
+                        utc=String.valueOf(api.GetUTCdatetimeAsString());
+                        headers.add("x-timestamp",utc);
+                        headers.add("x-signature",api.getHmac(utc));
+                        headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
+                        requestJson ="{" +
+                                        "\"kodebooking\": \""+rs.getString("no_rawat")+"\"" +
+                                     "}";
+                        requestEntity = new HttpEntity(requestJson,headers);
+                        URL = link+"/antrean/getlisttask";	
+                        System.out.println("URL : "+URL);
+                        System.out.println("JSON : "+requestJson);
+                        root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                        nameNode = root.path("metadata");
+                        if(nameNode.path("code").asText().equals("200")){
+                            Valid.tabelKosong(tabMode);
+                            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                            if(response.isArray()){
+                                for(JsonNode list:response){
+                                    tabMode.addRow(new Object[]{
+                                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                                        rs.getString("no_tlp"),rs.getString("no_peserta"),rs.getString("no_ktp"),
+                                        rs.getString("tgl_registrasi"),rs.getString("nm_poli"),rs.getString("nm_dokter"),
+                                        list.path("wakturs").asText(),list.path("waktu").asText(),list.path("taskname").asText(),
+                                        list.path("taskid").asText()
+                                    });
+                                }
+                            }
+                        }else {
+                            JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                        }   
+                    } catch (Exception ex) {
+                        System.out.println("Notifikasi : "+ex);
+                        if(ex.toString().contains("UnknownHostException")){
+                            JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{
+            ps=koneksi.prepareStatement(
                    "SELECT referensi_mobilejkn_bpjs.nobooking,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
-                   "referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter,referensi_mobilejkn_bpjs.jampraktek,"+
-                   "referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi "+
+                   "referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter "+
                    "FROM referensi_mobilejkn_bpjs INNER JOIN reg_periksa ON referensi_mobilejkn_bpjs.no_rawat=reg_periksa.no_rawat "+
                    "INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "INNER JOIN poliklinik ON reg_periksa.kd_poli=poliklinik.kd_poli "+
@@ -392,8 +467,7 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
                    "WHERE referensi_mobilejkn_bpjs.tanggalperiksa BETWEEN ? AND ? "+(TCari.getText().equals("")?"":
                    "and (referensi_mobilejkn_bpjs.nobooking LIKE ? OR reg_periksa.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ? OR "+
                    "referensi_mobilejkn_bpjs.nohp LIKE ? OR referensi_mobilejkn_bpjs.nomorkartu LIKE ? OR referensi_mobilejkn_bpjs.nik LIKE ? OR "+
-                   "poliklinik.nm_poli LIKE ? OR dokter.nm_dokter LIKE ? OR referensi_mobilejkn_bpjs.jeniskunjungan LIKE ? OR "+
-                   "referensi_mobilejkn_bpjs.nomorreferensi LIKE ? OR referensi_mobilejkn_bpjs.status LIKE ?) ")+
+                   "poliklinik.nm_poli LIKE ? OR dokter.nm_dokter LIKE ?) ")+
                    "order by referensi_mobilejkn_bpjs.tanggalperiksa");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
@@ -407,9 +481,6 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
                     ps.setString(10,"%"+TCari.getText()+"%");
-                    ps.setString(11,"%"+TCari.getText()+"%");
-                    ps.setString(12,"%"+TCari.getText()+"%");
-                    ps.setString(13,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -440,7 +511,6 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
                                         rs.getString("nobooking"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                                         rs.getString("nohp"),rs.getString("nomorkartu"),rs.getString("nik"),
                                         rs.getString("tanggalperiksa"),rs.getString("nm_poli"),rs.getString("nm_dokter"),
-                                        rs.getString("jampraktek"),rs.getString("jeniskunjungan"),rs.getString("nomorreferensi"),
                                         list.path("wakturs").asText(),list.path("waktu").asText(),list.path("taskname").asText(),
                                         list.path("taskid").asText()
                                     });
