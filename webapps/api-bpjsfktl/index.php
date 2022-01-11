@@ -175,7 +175,7 @@
                                                     WHERE reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' AND reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' 
                                                     and jam_reg between '$jammulai:00' and '$jamselesai:00'"));
 
-                                                if ($data['sisa_antrean'] >0) {
+                                                if ($data['sisa_antrean'] >=0) {
                                                     $response = array(
                                                         'response' => array(
                                                             'namapoli' => $data['nm_poli'],
@@ -689,7 +689,7 @@
                                                 http_response_code(201);
                                             }else if($booking['status']=='Belum'){
                                                 $interval  = getOne2("select TIMESTAMPDIFF(MINUTE,'$booking[tanggalperiksa] $booking[jampraktek]:00','$tanggalchekcin') AS difference");
-                                                if($interval<=0){
+                                                if($interval>=0){
                                                     $response = array(
                                                         'metadata' => array(
                                                             'message' => 'Chekin Anda sudah expired. Silahkan konfirmasi ke loket pendaftaran',

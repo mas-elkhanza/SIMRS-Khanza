@@ -582,11 +582,11 @@ public class frmUtama extends javax.swing.JFrame {
                                 try {
                                     ps2.setString(1,hari);
                                     ps2.setString(2,rs.getString("kd_dokter"));
-                                    ps2.setString(2,rs.getString("kd_poli"));
+                                    ps2.setString(3,rs.getString("kd_poli"));
                                     rs2=ps2.executeQuery();
                                     if(rs2.next()){
                                         try {     
-                                            datajam=Sequel.cariIsi("select DATE_ADD(concat("+rs.getString("tgl_registrasi")+",' ',"+rs2.getString("jam_mulai")+"),INTERVAL "+(Integer.parseInt(rs.getString("no_reg"))*10)+" MINUTE) ");
+                                            datajam=Sequel.cariIsi("select DATE_ADD(concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),INTERVAL "+(Integer.parseInt(rs.getString("no_reg"))*10)+" MINUTE) ");
                                             parsedDate = dateFormat.parse(datajam);
                                             headers = new HttpHeaders();
                                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -606,7 +606,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                             "\"pasienbaru\": "+rs.getString("stts_daftar").replaceAll("Baru","1").replaceAll("Lama","0").replaceAll("-","0")+"," +
                                                             "\"norm\": \""+rs.getString("no_rkm_medis")+"\"," +
                                                             "\"tanggalperiksa\": \""+rs.getString("tgl_registrasi")+"\"," +
-                                                            "\"kodedokter\": "+Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter_bpjs from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter=?",rs.getString("kodedokter"))+"," +
+                                                            "\"kodedokter\": "+Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter_bpjs from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter=?",rs.getString("kd_dokter"))+"," +
                                                             "\"namadokter\": \""+rs.getString("nm_dokter")+"\"," +
                                                             "\"jampraktek\": \""+rs2.getString("jam_mulai").substring(0,4)+"-"+rs2.getString("jam_selesai").substring(0,4)+"\"," +
                                                             "\"jeniskunjungan\": 3," +
