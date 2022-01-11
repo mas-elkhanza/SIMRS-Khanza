@@ -709,6 +709,7 @@ import rekammedis.RMPenilaianAwalMedisRalanKandungan;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMPenilaianFisioterapi;
+import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
@@ -17865,6 +17866,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnRiwayatKamarPasienActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMRiwayatKamarPasien aplikasi=new RMRiwayatKamarPasien(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18495,7 +18508,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
-            btnStokAkhirFarmasiPerTanggal;
+            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien;
     
     public void isWall(){
         try{            
@@ -21158,6 +21171,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsoap_perawatan()==true){
                 Panelmenu.add(btnSOAPPerawatan); 
+                jmlmenu++;
+            }
+            
+            if(akses.getriwayat_kamar_pasien()==true){
+                Panelmenu.add(btnRiwayatKamarPasien); 
                 jmlmenu++;
             }
             
@@ -25050,6 +25068,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsoap_perawatan()==true){
             Panelmenu.add(btnSOAPPerawatan); 
+            jmlmenu++;
+        }
+        
+        if(akses.getriwayat_kamar_pasien()==true){
+            Panelmenu.add(btnRiwayatKamarPasien); 
             jmlmenu++;
         }
 
@@ -29953,6 +29976,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getriwayat_kamar_pasien()==true){
+            if(btnRiwayatKamarPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatKamarPasien); 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getinsiden_keselamatan_pasien()==true){
             if(btnInsidenKeselamatanPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInsidenKeselamatanPasien); 
@@ -34385,6 +34415,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnStokAkhirFarmasiPerTanggal.setName("btnStokAkhirFarmasiPerTanggal");
         btnStokAkhirFarmasiPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
         btnStokAkhirFarmasiPerTanggal.addActionListener(this::btnStokAkhirFarmasiPerTanggalActionPerformed);
+        
+        btnRiwayatKamarPasien = new widget.ButtonBig();
+        btnRiwayatKamarPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Coronavirus-covid19-case-patient-hospital-treatment_6009596.png"))); // NOI18N
+        btnRiwayatKamarPasien.setText("Riwayat Kamar Pasien");
+        btnRiwayatKamarPasien.setIconTextGap(0);
+        btnRiwayatKamarPasien.setName("btnRiwayatKamarPasien");
+        btnRiwayatKamarPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatKamarPasien.addActionListener(this::btnRiwayatKamarPasienActionPerformed);
     }
     
 }

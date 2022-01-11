@@ -175,7 +175,7 @@ public class frmUtama extends javax.swing.JFrame {
                 jam = nol_jam + Integer.toString(nilai_jam);
                 menit = nol_menit + Integer.toString(nilai_menit);
                 detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("01")&&((nilai_menit%3)==0)){
+                if(detik.equals("01")&&((nilai_menit%10)==0)){
                     if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
                         TeksArea.setText("");
                     }
@@ -608,7 +608,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                             "\"tanggalperiksa\": \""+rs.getString("tgl_registrasi")+"\"," +
                                                             "\"kodedokter\": "+Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter_bpjs from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter=?",rs.getString("kd_dokter"))+"," +
                                                             "\"namadokter\": \""+rs.getString("nm_dokter")+"\"," +
-                                                            "\"jampraktek\": \""+rs2.getString("jam_mulai").substring(0,4)+"-"+rs2.getString("jam_selesai").substring(0,4)+"\"," +
+                                                            "\"jampraktek\": \""+rs2.getString("jam_mulai").substring(0,5)+"-"+rs2.getString("jam_selesai").substring(0,5)+"\"," +
                                                             "\"jeniskunjungan\": 3," +
                                                             "\"nomorreferensi\": \"-\"," +
                                                             "\"nomorantrean\": \""+rs.getString("no_reg")+"\"," +
