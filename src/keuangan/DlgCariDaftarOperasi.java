@@ -428,14 +428,14 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            pstindakan=koneksi.prepareStatement("select kode_paket,nm_perawatan,kategori,kd_pj,kelas,operator1, operator2, operator3, "+
-                   "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
-                   "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
-                   "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
-                   "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
-                   "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
-                   "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
-                   "from paket_operasi where status='1' order by nm_perawatan ");
+            pstindakan=koneksi.prepareStatement(
+                   "select paket_operasi.kode_paket,paket_operasi.nm_perawatan,paket_operasi.kategori,paket_operasi.kd_pj,paket_operasi.kelas,"+
+                   "paket_operasi.operator1,paket_operasi.operator2,paket_operasi.operator3,paket_operasi.asisten_operator1,paket_operasi.asisten_operator2,"+
+                   "paket_operasi.asisten_operator3,paket_operasi.instrumen,paket_operasi.dokter_anak,paket_operasi.perawaat_resusitas,"+
+                   "paket_operasi.dokter_anestesi,paket_operasi.asisten_anestesi,paket_operasi.asisten_anestesi2,paket_operasi.bidan,paket_operasi.bidan2,"+
+                   "paket_operasi.bidan3,paket_operasi.perawat_luar,paket_operasi.alat,paket_operasi.sewa_ok,paket_operasi.akomodasi,paket_operasi.bagian_rs,"+
+                   "paket_operasi.omloop,paket_operasi.omloop2,paket_operasi.omloop3,paket_operasi.omloop4,paket_operasi.omloop5,paket_operasi.sarpras,"+
+                   "paket_operasi.dokter_pjanak,paket_operasi.dokter_umum from paket_operasi where paket_operasi.status='1' order by paket_operasi.nm_perawatan ");
             try {
                 rs=pstindakan.executeQuery();
                 while(rs.next()){
@@ -446,7 +446,10 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
                             "\",\"Bidan2\":\""+rs.getString("bidan2")+"\",\"Bidan3\":\""+rs.getString("bidan3")+"\",\"PerawatLuar\":\""+rs.getString("perawat_luar")+"\",\"Alat\":\""+rs.getString("alat")+"\",\"SewaOK/VK\":\""+rs.getString("sewa_ok")+
                             "\",\"Akomodasi\":\""+rs.getString("akomodasi")+"\",\"NMS\":\""+rs.getString("bagian_rs")+"\",\"Onloop1\":\""+rs.getString("omloop")+"\",\"Onloop2\":\""+rs.getString("omloop2")+"\",\"Onloop3\":\""+rs.getString("omloop3")+
                             "\",\"Onloop4\":\""+rs.getString("omloop4")+"\",\"Onloop5\":\""+rs.getString("omloop5")+"\",\"Sarpras\":\""+rs.getString("sarpras")+"\",\"drPjAnak\":\""+rs.getString("dokter_pjanak")+"\",\"drUmum\":\""+rs.getString("dokter_umum")+
-                            "\",\"Total\":\""+rs.getString("jumlah")+"\",\"KodePJ\":\""+rs.getString("kd_pj")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
+                            "\",\"Total\":\""+(rs.getDouble("operator1")+rs.getDouble("operator2")+rs.getDouble("operator3")+rs.getDouble("asisten_operator1")+rs.getDouble("asisten_operator2")+rs.getDouble("asisten_operator3")+rs.getDouble("instrumen")+
+                            rs.getDouble("dokter_anak")+rs.getDouble("perawaat_resusitas")+rs.getDouble("alat")+rs.getDouble("dokter_anestesi")+rs.getDouble("asisten_anestesi")+rs.getDouble("asisten_anestesi2")+rs.getDouble("bidan")+rs.getDouble("bidan2")+
+                            rs.getDouble("bidan3")+rs.getDouble("perawat_luar")+rs.getDouble("sewa_ok")+rs.getDouble("akomodasi")+rs.getDouble("bagian_rs")+rs.getDouble("omloop")+rs.getDouble("omloop2")+rs.getDouble("omloop3")+rs.getDouble("omloop4")+
+                            rs.getDouble("omloop5")+rs.getDouble("sarpras")+rs.getDouble("dokter_pjanak")+rs.getDouble("dokter_umum"))+"\",\"KodePJ\":\""+rs.getString("kd_pj")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);

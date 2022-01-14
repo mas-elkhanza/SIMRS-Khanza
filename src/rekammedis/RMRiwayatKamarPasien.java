@@ -409,7 +409,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "<tr align='center'>"+
                                   "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
                                   "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Masuk</td>"+
-                                  "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggak Keluar</td>"+
+                                  "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Keluar</td>"+
                                   "<td valign='top' width='10%' bgcolor='#FFFAF8'>Lama Inap</td>"+
                                   "<td valign='top' width='36%' bgcolor='#FFFAF8'>Kamar</td>"+
                                   "<td valign='top' width='10%' bgcolor='#FFFAF8'>Status</td>"+

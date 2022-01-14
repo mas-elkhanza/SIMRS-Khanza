@@ -632,6 +632,7 @@ import keuangan.KeuanganValidasiPenagihanPiutang;
 import keuangan.KeuanganValidasiTagihanAset;
 import keuangan.KeuanganValidasiTagihanNonMedis;
 import keuangan.KeuanganValidasiTagihanObatBHP;
+import laporan.DlgAuditKepatuhanAPD;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
@@ -17878,6 +17879,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnAuditKepatuhanAPDActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditKepatuhanAPD aplikasi=new DlgAuditKepatuhanAPD(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18508,7 +18521,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
-            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien;
+            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD;
     
     public void isWall(){
         try{            
@@ -20245,6 +20258,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdemografi_umur_kunjungan()==true){  
                 Panelmenu.add(btnDemografiUmurKunjungan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_kepatuhan_apd()==true){  
+                Panelmenu.add(btnAuditKepatuhanAPD);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -24145,6 +24163,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdemografi_umur_kunjungan()==true){  
             Panelmenu.add(btnDemografiUmurKunjungan);                 
+            jmlmenu++;
+        }
+
+        if(akses.getaudit_kepatuhan_apd()==true){  
+            Panelmenu.add(btnAuditKepatuhanAPD);                 
             jmlmenu++;
         }
 
@@ -28682,6 +28705,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdemografi_umur_kunjungan()==true){  
             if(btnDemografiUmurKunjungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDemografiUmurKunjungan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_kepatuhan_apd()==true){  
+            if(btnAuditKepatuhanAPD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditKepatuhanAPD);                 
                 jmlmenu++;
             }                
         }
@@ -34423,6 +34453,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRiwayatKamarPasien.setName("btnRiwayatKamarPasien");
         btnRiwayatKamarPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRiwayatKamarPasien.addActionListener(this::btnRiwayatKamarPasienActionPerformed);
+        
+        btnAuditKepatuhanAPD = new widget.ButtonBig();
+        btnAuditKepatuhanAPD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5986179_admit_hospital_insurance_medical_medicine_icon.png"))); // NOI18N
+        btnAuditKepatuhanAPD.setText("Audit Kepatuhan APD");
+        btnAuditKepatuhanAPD.setIconTextGap(0);
+        btnAuditKepatuhanAPD.setName("btnAuditKepatuhanAPD");
+        btnAuditKepatuhanAPD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditKepatuhanAPD.addActionListener(this::btnAuditKepatuhanAPDActionPerformed);
     }
     
 }

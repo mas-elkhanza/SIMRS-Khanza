@@ -1029,7 +1029,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             iyem=""; 
         
             pspemeriksaan=koneksi.prepareStatement(
-                    "select kd_jenis_prw,nm_perawatan,kd_pj,kelas from jns_perawatan_radiologi where status='1' order by kd_jenis_prw");
+                    "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.kd_pj,jns_perawatan_radiologi.kelas from jns_perawatan_radiologi where jns_perawatan_radiologi.status='1' order by jns_perawatan_radiologi.kd_jenis_prw");
             try {
                 rs=pspemeriksaan.executeQuery();
                 while(rs.next()){
