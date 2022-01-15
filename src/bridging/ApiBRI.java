@@ -90,11 +90,6 @@ public class ApiBRI {
             System.out.println("Notifikasi : "+ex);
         }
     }
-    
-    public String getHmac() {        
-        GetUTCdatetimeAsString = GetUTCdatetimeAsString();   
-	return generateHmacSHA256Signature;
-    }
 
     public String generateHmacSHA256Signature(String data, String key)throws GeneralSecurityException {
         hmacData = null;
