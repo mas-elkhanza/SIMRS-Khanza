@@ -299,7 +299,6 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSuratRujukan = new javax.swing.JMenuItem();
-        MnRujukanKhusus = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -360,20 +359,6 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnSuratRujukan);
-
-        MnRujukanKhusus.setBackground(new java.awt.Color(255, 255, 254));
-        MnRujukanKhusus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRujukanKhusus.setForeground(java.awt.Color.darkGray);
-        MnRujukanKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRujukanKhusus.setText("Rujukan Khusus");
-        MnRujukanKhusus.setName("MnRujukanKhusus"); // NOI18N
-        MnRujukanKhusus.setPreferredSize(new java.awt.Dimension(170, 28));
-        MnRujukanKhusus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnRujukanKhususActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnRujukanKhusus);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1063,21 +1048,6 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbObatKeyReleased
 
-    private void MnRujukanKhususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukanKhususActionPerformed
-        if(tbObat.getSelectedRow()!= -1){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            BPJSRujukanKhusus form=new BPJSRujukanKhusus(null,false);
-            form.setNoRm(Sequel.cariIsi("select no_kartu from bridging_sep where no_sep=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()),tbObat.getValueAt(tbObat.getSelectedRow(),2).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            form.setLocationRelativeTo(internalFrame1);
-            form.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
-        }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data rujukan yang mau dibuatkan rujukan khusus..!!");
-            TCari.requestFocus();
-        }     
-    }//GEN-LAST:event_MnRujukanKhususActionPerformed
-
     /**
     * @param args the command line arguments
     */
@@ -1110,7 +1080,6 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox KdPpkRujukan1;
     private widget.Label LCount;
     private widget.Label LabelPoli1;
-    private javax.swing.JMenuItem MnRujukanKhusus;
     private javax.swing.JMenuItem MnSuratRujukan;
     private widget.TextBox NmPenyakit1;
     private widget.TextBox NmPoli1;
@@ -1239,7 +1208,6 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getbpjs_rujukan_keluar());
         BtnEdit.setEnabled(akses.getbpjs_rujukan_keluar());
         BtnPrint.setEnabled(akses.getbpjs_rujukan_keluar());
-        MnRujukanKhusus.setEnabled(akses.getbpjs_rujukan_khusus());
     }
     
     public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {

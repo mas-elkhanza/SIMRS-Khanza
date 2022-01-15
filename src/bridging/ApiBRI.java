@@ -14,6 +14,9 @@ import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
@@ -23,6 +26,7 @@ import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.crypto.codec.Base64;
@@ -33,7 +37,7 @@ import org.springframework.web.client.RestTemplate;
 public class ApiBRI {        
     private Connection koneksi=koneksiDB.condb();
     private long GetUTCdatetimeAsString;
-    private String kd_rek,nm_rek, consumer_key, consumer_secret, institution_code, briva_no, urlapi,token;
+    private String kd_rek,nm_rek, consumer_key, consumer_secret, institution_code, briva_no, urlapi,token,signature,timestamp,timestamp2,json="";
     private String generateHmacSHA256Signature;
     private byte[] hmacData;
     private Mac mac;
@@ -51,6 +55,8 @@ public class ApiBRI {
     private sekuel Sequel=new sekuel();
     private JsonNode response;
     private ObjectMapper mapper = new ObjectMapper();
+    private Date date,date2;
+    private SimpleDateFormat sdf,sdf2;
     
     public ApiBRI(){
         try {
@@ -66,8 +72,8 @@ public class ApiBRI {
                    nm_rek=rs.getString("nm_rek");
                    consumer_key=rs.getString("consumer_key");
                    consumer_secret=rs.getString("consumer_secret");
-                   institution_code=rs.getString("kd_rek");
-                   briva_no=rs.getString("institution_code");
+                   institution_code=rs.getString("institution_code");
+                   briva_no=rs.getString("briva_no");
                    urlapi=rs.getString("urlapi");
                }
             } catch (Exception e) {
@@ -85,28 +91,8 @@ public class ApiBRI {
         }
     }
     
-    public String Token(){
-        token="";
-        try{
-            headers = new HttpHeaders();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
-            map.add("client_id",consumer_key);
-            map.add("client_secret",consumer_secret);
-            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-            token=getRest().postForEntity(urlapi+"/oauth/client_credential/accesstoken?grant_type=client_credentials", request , String.class ).getBody();
-            root = mapper.readTree(token);
-            token=root.path("access_token").asText();
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }
-        return token;
-    }
-    
     public String getHmac() {        
-        GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
-       
+        GetUTCdatetimeAsString = GetUTCdatetimeAsString();   
 	return generateHmacSHA256Signature;
     }
 
@@ -144,6 +130,77 @@ public class ApiBRI {
         factory=new HttpComponentsClientHttpRequestFactory();
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
         return new RestTemplate(factory);
+    }
+    
+    public String Token(){
+        token="";
+        try{
+            headers = new HttpHeaders();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
+            map.add("client_id",consumer_key);
+            map.add("client_secret",consumer_secret);
+            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+            token=getRest().postForEntity(urlapi+"/oauth/client_credential/accesstoken?grant_type=client_credentials", request , String.class ).getBody();
+            System.out.println("Get Token : "+token);
+            root = mapper.readTree(token);
+            token=root.path("access_token").asText();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        return token;
+    }
+    
+    public String Signature(String path,String verb,String token,String timestamp,String body){
+        signature="";
+        try {
+            System.out.println("Payload : "+"path="+path+"&verb="+verb+"&token=Bearer "+token+"&timestamp="+timestamp+"&body="+body);
+            signature=generateHmacSHA256Signature("path="+path+"&verb="+verb+"&token=Bearer "+token+"&timestamp="+timestamp+"&body="+body,consumer_secret);
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        return signature;
+    }
+    
+    public void buatVA(String norawat,String nama,String bayar,String keterangan){
+        try{
+            token=Token();
+            date = new Date(System.currentTimeMillis());
+            sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            timestamp=sdf.format(date);
+            date2 = new Date(System.currentTimeMillis()+86400000);
+            sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            timestamp2=sdf2.format(date2);
+            System.out.println("consumer_key : "+consumer_key);
+            System.out.println("consumer_secret : "+consumer_secret);
+            json="{" +
+                    "\"institutionCode\": \""+institution_code+"\"," +
+                    "\"brivaNo\": \""+briva_no+"\"," +
+                    "\"custCode\": \""+norawat+"\"," +
+                    "\"nama\": \""+nama+"\"," +
+                    "\"amount\": \""+bayar+"\"," +
+                    "\"keterangan\": \""+keterangan+"\"," +
+                    "\"expiredDate\": \""+timestamp2+"\"" +
+                 "}";
+            System.out.println("JSON : "+json);
+            signature=Signature("/v1/briva","POST",token,timestamp,json);
+            
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("BRI-Timestamp",timestamp);
+            headers.add("BRI-Signature",signature);
+            headers.add("Authorization","Bearer "+token); 
+            System.out.println("URL : "+urlapi+"/v1/briva");
+            System.out.println("BRI-Timestamp : "+timestamp);
+            System.out.println("BRI-Signature : "+signature);
+            System.out.println("Authorization : "+"Bearer "+token);
+            requestEntity = new HttpEntity(json,headers);
+            json = mapper.readTree(getRest().exchange(urlapi+"/v1/briva", HttpMethod.POST, requestEntity, String.class).getBody()).toString();
+            System.out.println("Respon : "+json);
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
     }
 
 }

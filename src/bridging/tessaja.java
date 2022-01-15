@@ -12,7 +12,7 @@ package bridging;
 public class tessaja {
     public static ApiBRI api=new ApiBRI();
     public static void main(String[] args) {
-         System.out.println("Token : "+api.Token());
+         api.buatVA("2021011500001","Paijo","200000","tes");
     }
     
 }

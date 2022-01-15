@@ -165,8 +165,6 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningGizi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -219,22 +217,6 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         Sepatu = new widget.ComboBox();
         ChkInput = new widget.CekBox();
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnSkriningGizi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningGizi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningGizi.setText("Formulir Skrining Gizi Lanjut");
-        MnSkriningGizi.setName("MnSkriningGizi"); // NOI18N
-        MnSkriningGizi.setPreferredSize(new java.awt.Dimension(250, 26));
-        MnSkriningGizi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningGiziActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnSkriningGizi);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -249,7 +231,6 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -972,27 +953,6 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         //Valid.pindah(evt,Detik,BB);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningGiziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningGiziActionPerformed
-        if(tbObat.getSelectedRow()>-1){
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptFormulirSkriningGizi.jasper","report","::[ Formulir Monitoring & Evaluasi Asuhan Gizi Pasien ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur, "+
-                    "pasien.jk,pasien.tgl_lahir,skrining_gizi.tanggal,skrining_gizi.alergi,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb, "+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb, "+
-                    "skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,skrining_gizi.skor_total,skrining_gizi.parameter_total, "+
-                    "skrining_gizi.nip,petugas.nama "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and skrining_gizi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'",param);
-        }
-    }//GEN-LAST:event_MnSkriningGiziActionPerformed
-
     private void TopiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TopiKeyPressed
         Valid.pindah(evt,Tindakan,Masker);
     }//GEN-LAST:event_TopiKeyPressed
@@ -1055,7 +1015,6 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.ComboBox Masker;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningGizi;
     private widget.TextBox NamaPetugas;
     private widget.TextBox Nip;
     private javax.swing.JPanel PanelInput;
@@ -1083,7 +1042,6 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;
