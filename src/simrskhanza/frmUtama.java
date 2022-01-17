@@ -712,6 +712,7 @@ import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
+import rekammedis.RMUjiFungsiKFR;
 import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
 import setting.DlgSetHargaToko;
@@ -17891,6 +17892,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnUjiFungsiKFRActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMUjiFungsiKFR aplikasi=new RMUjiFungsiKFR(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18521,7 +18534,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
-            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD;
+            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR;
     
     public void isWall(){
         try{            
@@ -21379,6 +21392,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_fisioterapi()==true){
                 Panelmenu.add(btnFisioterapi);
+                jmlmenu++;
+            }
+            
+            if(akses.getuji_fungsi_kfr()==true){
+                Panelmenu.add(btnUjiFungsiKFR);
                 jmlmenu++;
             }
             
@@ -25281,6 +25299,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_fisioterapi()==true){
             Panelmenu.add(btnFisioterapi);
+            jmlmenu++;
+        }
+        
+        if(akses.getuji_fungsi_kfr()==true){
+            Panelmenu.add(btnUjiFungsiKFR);
             jmlmenu++;
         }
         
@@ -30272,6 +30295,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getuji_fungsi_kfr()==true){
+            if(btnUjiFungsiKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnUjiFungsiKFR);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_mcu()==true){
             if(btnPenilaianMCU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianMCU);
@@ -32494,18 +32524,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnfee_visit_dokter.addActionListener(this::btnfee_visit_dokterActionPerformed);
         
         btnUser = new widget.ButtonBig();
-        btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484978_application-pgp-signature.png"))); // NOI18N
+        btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484978_application-pgp-signature.png"))); 
         btnUser.setText("Set User");
         btnUser.setIconTextGap(0);
-        btnUser.setName("btnUser"); // NOI18N
+        btnUser.setName("btnUser"); 
         btnUser.setPreferredSize(new java.awt.Dimension(200, 90));
         btnUser.addActionListener(this::btnUserActionPerformed);
         
         btnPengajuanAsetInventaris = new widget.ButtonBig();
-        btnPengajuanAsetInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png"))); // NOI18N
+        btnPengajuanAsetInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png"))); 
         btnPengajuanAsetInventaris.setText("Pengajuan Aset/Inventaris");
         btnPengajuanAsetInventaris.setIconTextGap(0);
-        btnPengajuanAsetInventaris.setName("btnPengajuanAsetInventaris"); // NOI18N
+        btnPengajuanAsetInventaris.setName("btnPengajuanAsetInventaris"); 
         btnPengajuanAsetInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPengajuanAsetInventaris.addActionListener(this::btnPengajuanAsetInventarisActionPerformed);
         
@@ -32542,10 +32572,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikItemApotekPerIndustriFarmasi.addActionListener(this::btnGrafikItemApotekPerIndustriFarmasiActionPerformed);
         
         btn10BesarObatPoli = new widget.ButtonBig();
-        btn10BesarObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_07_Note_Book_2064482.png"))); // NOI18N
+        btn10BesarObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_07_Note_Book_2064482.png"))); 
         btn10BesarObatPoli.setText("10 Obat Terbanyak Poli");
         btn10BesarObatPoli.setIconTextGap(0);
-        btn10BesarObatPoli.setName("btn10BesarObatPoli"); // NOI18N
+        btn10BesarObatPoli.setName("btn10BesarObatPoli"); 
         btn10BesarObatPoli.setPreferredSize(new java.awt.Dimension(200, 90));
         btn10BesarObatPoli.addActionListener(this::btn10BesarObatPoliActionPerformed);
         
@@ -32577,7 +32607,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapPengajuanAsetDepartemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_x-office-document-template_25011.png"))); 
         btnRekapPengajuanAsetDepartemen.setText("Rekap Pengajuan Aset Departemen");
         btnRekapPengajuanAsetDepartemen.setIconTextGap(0);
-        btnRekapPengajuanAsetDepartemen.setName("btnRekapPengajuanAsetDepartemen"); // NOI18N
+        btnRekapPengajuanAsetDepartemen.setName("btnRekapPengajuanAsetDepartemen"); 
         btnRekapPengajuanAsetDepartemen.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRekapPengajuanAsetDepartemen.addActionListener(this::btnRekapPengajuanAsetDepartemenActionPerformed);
         
@@ -32838,10 +32868,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSirkulasiObat5.addActionListener(this::btnSirkulasiObat5ActionPerformed);
         
         btnSirkulasiNonMedis2=new widget.ButtonBig();
-        btnSirkulasiNonMedis2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasiNonMedis2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
         btnSirkulasiNonMedis2.setText("Sirkulasi Non Medis 2");
         btnSirkulasiNonMedis2.setIconTextGap(0);
-        btnSirkulasiNonMedis2.setName("btnSirkulasiNonMedis2"); // NOI18N
+        btnSirkulasiNonMedis2.setName("btnSirkulasiNonMedis2"); 
         btnSirkulasiNonMedis2.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSirkulasiNonMedis2.addActionListener(this::btnSirkulasiNonMedis2ActionPerformed);
         
@@ -33591,18 +33621,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningGiziLanjut.addActionListener(this::btnSkriningGiziLanjutActionPerformed);
         
         btnLamaPenyiapanRM = new widget.ButtonBig();
-        btnLamaPenyiapanRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPenyiapanRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 
         btnLamaPenyiapanRM.setText("Lama Penyiapan RM");
         btnLamaPenyiapanRM.setIconTextGap(0);
-        btnLamaPenyiapanRM.setName("btnLamaPenyiapanRM"); // NOI18N
+        btnLamaPenyiapanRM.setName("btnLamaPenyiapanRM"); 
         btnLamaPenyiapanRM.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLamaPenyiapanRM.addActionListener(this::btnLamaPenyiapanRMActionPerformed);
         
         btnDosisRadiologi = new widget.ButtonBig();
-        btnDosisRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_DocumentManagement-documentation-folder-projectmanagement-filemanagement_6071870.png"))); // NOI18N
+        btnDosisRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_DocumentManagement-documentation-folder-projectmanagement-filemanagement_6071870.png"))); 
         btnDosisRadiologi.setText("Dosis Radiologi");
         btnDosisRadiologi.setIconTextGap(0);
-        btnDosisRadiologi.setName("btnDosisRadiologi"); // NOI18N
+        btnDosisRadiologi.setName("btnDosisRadiologi"); 
         btnDosisRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnDosisRadiologi.addActionListener(this::btnDosisRadiologiActionPerformed);
         
@@ -33610,7 +33640,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDemografiUmurKunjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); 
         btnDemografiUmurKunjungan.setText("Demografi Umur Kunjungan");
         btnDemografiUmurKunjungan.setIconTextGap(0);
-        btnDemografiUmurKunjungan.setName("btnDemografiUmurKunjungan"); // NOI18N
+        btnDemografiUmurKunjungan.setName("btnDemografiUmurKunjungan"); 
         btnDemografiUmurKunjungan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnDemografiUmurKunjungan.addActionListener(this::btnDemografiUmurKunjunganActionPerformed);
         
@@ -33647,7 +33677,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnVerifikasiPenerimaanLogistik.addActionListener(this::btnVerifikasiPenerimaanLogistikActionPerformed);
         
         btnPermintaanLabPA = new widget.ButtonBig();
-        btnPermintaanLabPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
+        btnPermintaanLabPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); 
         btnPermintaanLabPA.setText("Permintaan Lab PA");
         btnPermintaanLabPA.setIconTextGap(0);
         btnPermintaanLabPA.setName("btnPermintaanLabPA"); 
@@ -33655,7 +33685,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPermintaanLabPA.addActionListener(this::btnPermintaanLabPAActionPerformed);
         
         btnLamaPelayananLabPA = new widget.ButtonBig();
-        btnLamaPelayananLabPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananLabPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 
         btnLamaPelayananLabPA.setText("Lama Pelayanan Lab PA");
         btnLamaPelayananLabPA.setIconTextGap(0);
         btnLamaPelayananLabPA.setName("btnLamaPelayananLabPA"); 
@@ -33663,7 +33693,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLamaPelayananLabPA.addActionListener(this::btnLamaPelayananLabPAActionPerformed);
         
         btnRingkasanPengajuanMedis = new widget.ButtonBig();
-        btnRingkasanPengajuanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPengajuanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPengajuanMedis.setText("Ringkasan Pengajuan Obat & BHP");
         btnRingkasanPengajuanMedis.setIconTextGap(0);
         btnRingkasanPengajuanMedis.setName("btnRingkasanPengajuanMedis");
@@ -33671,7 +33701,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPengajuanMedis.addActionListener(this::btnRingkasanPengajuanMedisActionPerformed);
         
         btnRingkasanPemesananMedis = new widget.ButtonBig();
-        btnRingkasanPemesananMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPemesananMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPemesananMedis.setText("Ringkasan Pemesanan Obat & BHP");
         btnRingkasanPemesananMedis.setIconTextGap(0);
         btnRingkasanPemesananMedis.setName("btnRingkasanPemesananMedis");
@@ -33679,7 +33709,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPemesananMedis.addActionListener(this::btnRingkasanPemesananMedisActionPerformed);
         
         btnRingkasanPembelianMedis = new widget.ButtonBig();
-        btnRingkasanPembelianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPembelianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPembelianMedis.setText("Ringkasan Pengadaan Obat & BHP");
         btnRingkasanPembelianMedis.setIconTextGap(0);
         btnRingkasanPembelianMedis.setName("btnRingkasanPembelianMedis");
@@ -33687,7 +33717,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPembelianMedis.addActionListener(this::btnRingkasanPembelianMedisActionPerformed);
         
         btnRingkasanPenerimaanMedis = new widget.ButtonBig();
-        btnRingkasanPenerimaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPenerimaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPenerimaanMedis.setText("Ringkasan Penerimaan Obat & BHP");
         btnRingkasanPenerimaanMedis.setIconTextGap(0);
         btnRingkasanPenerimaanMedis.setName("btnRingkasanPenerimaanMedis");
@@ -33695,7 +33725,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPenerimaanMedis.addActionListener(this::btnRingkasanPenerimaanMedisActionPerformed);
         
         btnRingkasanHibahMedis = new widget.ButtonBig();
-        btnRingkasanHibahMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanHibahMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanHibahMedis.setText("Ringkasan Hibah Obat & BHP");
         btnRingkasanHibahMedis.setIconTextGap(0);
         btnRingkasanHibahMedis.setName("btnRingkasanHibahMedis");
@@ -33703,7 +33733,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanHibahMedis.addActionListener(this::btnRingkasanHibahMedisActionPerformed);
         
         btnRingkasanPenjualanMedis = new widget.ButtonBig();
-        btnRingkasanPenjualanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPenjualanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPenjualanMedis.setText("Ringkasan Penjualan Obat & BHP");
         btnRingkasanPenjualanMedis.setIconTextGap(0);
         btnRingkasanPenjualanMedis.setName("btnRingkasanPenjualanMedis");
@@ -33711,7 +33741,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPenjualanMedis.addActionListener(this::btnRingkasanPenjualanMedisActionPerformed);
         
         btnRingkasanBeriObat = new widget.ButtonBig();
-        btnRingkasanBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanBeriObat.setText("Ringkasan Beri Obat & BHP");
         btnRingkasanBeriObat.setIconTextGap(0);
         btnRingkasanBeriObat.setName("btnRingkasanBeriObat");
@@ -33719,7 +33749,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanBeriObat.addActionListener(this::btnRingkasanBeriObatActionPerformed);
         
         btnRingkasanPiutangObat = new widget.ButtonBig();
-        btnRingkasanPiutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPiutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPiutangObat.setText("Ringkasan Piutang Obat & BHP");
         btnRingkasanPiutangObat.setIconTextGap(0);
         btnRingkasanPiutangObat.setName("btnRingkasanPiutangObat");
@@ -33727,7 +33757,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPiutangObat.addActionListener(this::btnRingkasanPiutangObatActionPerformed);
         
         btnRingkasanStokKeluarObat = new widget.ButtonBig();
-        btnRingkasanStokKeluarObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanStokKeluarObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanStokKeluarObat.setText("Ringkasan Stok Keluar Obat & BHP");
         btnRingkasanStokKeluarObat.setIconTextGap(0);
         btnRingkasanStokKeluarObat.setName("btnRingkasanStokKeluarObat");
@@ -33735,7 +33765,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanStokKeluarObat.addActionListener(this::btnRingkasanStokKeluarObatActionPerformed);
         
         btnRingkasanReturSuplierObat = new widget.ButtonBig();
-        btnRingkasanReturSuplierObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanReturSuplierObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanReturSuplierObat.setText("Ringkasan Retur Suplier Obat & BHP");
         btnRingkasanReturSuplierObat.setIconTextGap(0);
         btnRingkasanReturSuplierObat.setName("btnRingkasanReturSuplierObat");
@@ -33743,7 +33773,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanReturSuplierObat.addActionListener(this::btnRingkasanReturSuplierObatActionPerformed);
         
         btnRingkasanReturJualObat = new widget.ButtonBig();
-        btnRingkasanReturJualObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanReturJualObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanReturJualObat.setText("Ringkasan Retur Pembeli Obat & BHP");
         btnRingkasanReturJualObat.setIconTextGap(0);
         btnRingkasanReturJualObat.setName("btnRingkasanReturJualObat");
@@ -33751,7 +33781,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanReturJualObat.addActionListener(this::btnRingkasanReturJualObatActionPerformed);
         
         btnRingkasanPengajuanNonMedis = new widget.ButtonBig();
-        btnRingkasanPengajuanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPengajuanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPengajuanNonMedis.setText("Ringkasan Pengajuan Non Medis");
         btnRingkasanPengajuanNonMedis.setIconTextGap(0);
         btnRingkasanPengajuanNonMedis.setName("btnRingkasanPengajuanNonMedis");
@@ -33759,7 +33789,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPengajuanNonMedis.addActionListener(this::btnRingkasanPengajuanNonMedisActionPerformed);
         
         btnRingkasanPemesananNonMedis = new widget.ButtonBig();
-        btnRingkasanPemesananNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPemesananNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPemesananNonMedis.setText("Ringkasan Pemesanan Non Medis");
         btnRingkasanPemesananNonMedis.setIconTextGap(0);
         btnRingkasanPemesananNonMedis.setName("btnRingkasanPemesananNonMedis");
@@ -33775,7 +33805,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalKeperawatanKebidananRanap.addActionListener(this::btnPenilaianAwalKeperawatanKebidananRanapActionPerformed);
         
         btnRingkasanPengadaanNonMedis = new widget.ButtonBig();
-        btnRingkasanPengadaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPengadaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPengadaanNonMedis.setText("Ringkasan Pengadaan Non Medis");
         btnRingkasanPengadaanNonMedis.setIconTextGap(0);
         btnRingkasanPengadaanNonMedis.setName("btnRingkasanPengadaanNonMedis");
@@ -33783,7 +33813,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPengadaanNonMedis.addActionListener(this::btnRingkasanPengadaanNonMedisActionPerformed);
         
         btnRingkasanPenerimaanNonMedis = new widget.ButtonBig();
-        btnRingkasanPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanPenerimaanNonMedis.setText("Ringkasan Penerimaan Non Medis");
         btnRingkasanPenerimaanNonMedis.setIconTextGap(0);
         btnRingkasanPenerimaanNonMedis.setName("btnRingkasanPenerimaanNonMedis");
@@ -33791,7 +33821,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPenerimaanNonMedis.addActionListener(this::btnRingkasanPenerimaanNonMedisActionPerformed);
         
         btnRingkasanStokKeluarNonMedis = new widget.ButtonBig();
-        btnRingkasanStokKeluarNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanStokKeluarNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanStokKeluarNonMedis.setText("Ringkasan Stok Keluar Non Medis");
         btnRingkasanStokKeluarNonMedis.setIconTextGap(0);
         btnRingkasanStokKeluarNonMedis.setName("btnRingkasanStokKeluarNonMedis");
@@ -33799,7 +33829,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanStokKeluarNonMedis.addActionListener(this::btnRingkasanStokKeluarNonMedisActionPerformed);
         
         btnRingkasanReturSuplierNonMedis = new widget.ButtonBig();
-        btnRingkasanReturSuplierNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanReturSuplierNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanReturSuplierNonMedis.setText("Ringkasan Retur Suplier Non Medis");
         btnRingkasanReturSuplierNonMedis.setIconTextGap(0);
         btnRingkasanReturSuplierNonMedis.setName("btnRingkasanReturSuplierNonMedis");
@@ -33807,7 +33837,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanReturSuplierNonMedis.addActionListener(this::btnRingkasanReturSuplierNonMedisActionPerformed);
         
         btnOmsetPenerimaan = new widget.ButtonBig();
-        btnOmsetPenerimaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Finance_saving_1889200.png"))); // NOI18N
+        btnOmsetPenerimaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Finance_saving_1889200.png"))); 
         btnOmsetPenerimaan.setText("Penerimaan/Omset/Kas Masuk");
         btnOmsetPenerimaan.setIconTextGap(0);
         btnOmsetPenerimaan.setName("btnOmsetPenerimaan");
@@ -33815,7 +33845,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnOmsetPenerimaan.addActionListener(this::btnOmsetPenerimaanActionPerformed);
         
         btnValidasiPenagihanPiutang = new widget.ButtonBig();
-        btnValidasiPenagihanPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_50_3319638.png"))); // NOI18N
+        btnValidasiPenagihanPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_50_3319638.png"))); 
         btnValidasiPenagihanPiutang.setText("Validasi Penagihan Piutang");
         btnValidasiPenagihanPiutang.setIconTextGap(0);
         btnValidasiPenagihanPiutang.setName("btnValidasiPenagihanPiutang");
@@ -33823,7 +33853,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnValidasiPenagihanPiutang.addActionListener(this::btnValidasiPenagihanPiutangActionPerformed);
         
         btnPermintaanRanap = new widget.ButtonBig();
-        btnPermintaanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Register_6083883.png"))); // NOI18N
+        btnPermintaanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Register_6083883.png"))); 
         btnPermintaanRanap.setText("Permintaan Rawat Inap");
         btnPermintaanRanap.setIconTextGap(0);
         btnPermintaanRanap.setName("btnPermintaanRanap");
@@ -33911,7 +33941,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSSuratPRI.addActionListener(this::btnBPJSSuratPRIActionPerformed);
         
         btnRingkasanTindakanRalan = new widget.ButtonBig();
-        btnRingkasanTindakanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRingkasanTindakanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanTindakanRalan.setText("Ringkasan Tindakan");
         btnRingkasanTindakanRalan.setIconTextGap(0);
         btnRingkasanTindakanRalan.setName("btnRingkasanTindakanRalan");
@@ -33919,7 +33949,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanTindakanRalan.addActionListener(this::btnRingkasanTindakanRalanActionPerformed);
         
         btnLamaPelayananPasien = new widget.ButtonBig();
-        btnLamaPelayananPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 
         btnLamaPelayananPasien.setText("Lama Pelayanan Pasien");
         btnLamaPelayananPasien.setIconTextGap(0);
         btnLamaPelayananPasien.setName("btnLamaPelayananPasien");
@@ -33959,7 +33989,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnTagihanHutangObat.addActionListener(this::btnTagihanHutangObatActionPerformed);
         
         btnLamaOperasi = new widget.ButtonBig();
-        btnLamaOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 
         btnLamaOperasi.setText("Lama Operasi");
         btnLamaOperasi.setIconTextGap(0);
         btnLamaOperasi.setName("btnLamaOperasi"); 
@@ -34431,7 +34461,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarPiutangLainLain.addActionListener(this::btnBayarPiutangLainLainActionPerformed);
         
         btnPembayaranAkunBayar4 = new widget.ButtonBig();
-        btnPembayaranAkunBayar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnPembayaranAkunBayar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); 
         btnPembayaranAkunBayar4.setText("Pembayaran Per Akun Bayar 4");
         btnPembayaranAkunBayar4.setIconTextGap(0);
         btnPembayaranAkunBayar4.setName("btnPembayaranAkunBayar4");
@@ -34439,7 +34469,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPembayaranAkunBayar4.addActionListener(this::btnPembayaranAkunBayar4ActionPerformed);
         
         btnStokAkhirFarmasiPerTanggal = new widget.ButtonBig();
-        btnStokAkhirFarmasiPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_bag_icons-15_1075431.png"))); // NOI18N
+        btnStokAkhirFarmasiPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_bag_icons-15_1075431.png"))); 
         btnStokAkhirFarmasiPerTanggal.setText("Stok Akhir Farmasi Per Tanggal");
         btnStokAkhirFarmasiPerTanggal.setIconTextGap(0);
         btnStokAkhirFarmasiPerTanggal.setName("btnStokAkhirFarmasiPerTanggal");
@@ -34447,7 +34477,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnStokAkhirFarmasiPerTanggal.addActionListener(this::btnStokAkhirFarmasiPerTanggalActionPerformed);
         
         btnRiwayatKamarPasien = new widget.ButtonBig();
-        btnRiwayatKamarPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Coronavirus-covid19-case-patient-hospital-treatment_6009596.png"))); // NOI18N
+        btnRiwayatKamarPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Coronavirus-covid19-case-patient-hospital-treatment_6009596.png"))); 
         btnRiwayatKamarPasien.setText("Riwayat Kamar Pasien");
         btnRiwayatKamarPasien.setIconTextGap(0);
         btnRiwayatKamarPasien.setName("btnRiwayatKamarPasien");
@@ -34455,12 +34485,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRiwayatKamarPasien.addActionListener(this::btnRiwayatKamarPasienActionPerformed);
         
         btnAuditKepatuhanAPD = new widget.ButtonBig();
-        btnAuditKepatuhanAPD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5986179_admit_hospital_insurance_medical_medicine_icon.png"))); // NOI18N
+        btnAuditKepatuhanAPD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5986179_admit_hospital_insurance_medical_medicine_icon.png"))); 
         btnAuditKepatuhanAPD.setText("Audit Kepatuhan APD");
         btnAuditKepatuhanAPD.setIconTextGap(0);
         btnAuditKepatuhanAPD.setName("btnAuditKepatuhanAPD");
         btnAuditKepatuhanAPD.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditKepatuhanAPD.addActionListener(this::btnAuditKepatuhanAPDActionPerformed);
+        
+        btnUjiFungsiKFR = new widget.ButtonBig();
+        btnUjiFungsiKFR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6159284_bicycle_bike_cycling_isometric_mountain bike_icon.png"))); 
+        btnUjiFungsiKFR.setText("Uji Fungsi/Prosedur KFR");
+        btnUjiFungsiKFR.setIconTextGap(0);
+        btnUjiFungsiKFR.setName("btnUjiFungsiKFR");
+        btnUjiFungsiKFR.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUjiFungsiKFR.addActionListener(this::btnUjiFungsiKFRActionPerformed);
     }
     
 }
