@@ -39,8 +39,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
-import kepegawaian.DlgCariPegawai;
-import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -55,7 +53,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariDokter petugas=new DlgCariDokter(null,false);
+    private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String finger="";
     /** Creates new form DlgRujuk
      * @param parent
@@ -67,9 +65,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","BB","TB","Alergi",
-            "Skor IMT/z Score","Skor 1","Skor Kehilangan BB","Skor 2","Skor Efek Penyakit","Skor 3",
-            "Ttl.Skor","Kesimpulan","NIP","Petugas","Tgl.Lahir"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tanggal Uji","Diagnosis Fugsional","Diagnosis Medis","Hasil Yang Didapat","Kesimpulan","Rekomendasi","Kode Dokter","Nama Dokter"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -79,7 +75,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -92,42 +88,35 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(20);
             }else if(i==5){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(65);
             }else if(i==6){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(120);
             }else if(i==7){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(150);
             }else if(i==8){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(150);
             }else if(i==9){
-                column.setPreferredWidth(145);
+                column.setPreferredWidth(150);
             }else if(i==10){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(150);
             }else if(i==11){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(150);
             }else if(i==12){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(80);
             }else if(i==13){
-                column.setPreferredWidth(175);
-            }else if(i==14){
-                column.setPreferredWidth(40);
-            }else if(i==15){
-                column.setPreferredWidth(45);
-            }else if(i==16){
-                column.setPreferredWidth(250);
-            }else if(i==18){
-                column.setPreferredWidth(125);
-            }else{
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(140);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdDokter.setDocument(new batasInput((byte)20).getKata(KdDokter));
-        DiagnosisFungsional.setDocument(new batasInput((byte)5).getKata(DiagnosisFungsional));
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        DiagnosisFungsional.setDocument(new batasInput((int)50).getKata(DiagnosisFungsional));
+        DiagnosisMedis.setDocument(new batasInput((int)50).getKata(DiagnosisMedis));
+        HasilYangDidapat.setDocument(new batasInput((int)100).getKata(HasilYangDidapat));
+        Kesimpulan.setDocument(new batasInput((int)100).getKata(Kesimpulan));
+        HasilYangDidapat.setDocument(new batasInput((int)100).getKata(HasilYangDidapat));
+        Rekomendasi.setDocument(new batasInput((int)100).getKata(Rekomendasi));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -152,16 +141,16 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
             });
         }
         
-        petugas.addWindowListener(new WindowListener() {
+        dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    KdDokter.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmDokter.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                if(dokter.getTable().getSelectedRow()!= -1){                   
+                    KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                    NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                 }  
                 KdDokter.requestFocus();
             }
@@ -192,7 +181,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningGizi = new javax.swing.JMenuItem();
+        MnUjiFungsi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -237,7 +226,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         DiagnosisFungsional = new widget.TextBox();
         JK = new widget.TextBox();
         jLabel13 = new widget.Label();
-        DiganosisMedis = new widget.TextBox();
+        DiagnosisMedis = new widget.TextBox();
         jLabel14 = new widget.Label();
         jLabel15 = new widget.Label();
         HasilYangDidapat = new widget.TextBox();
@@ -249,19 +238,19 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningGizi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningGizi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningGizi.setText("Formulir Skrining Gizi Lanjut");
-        MnSkriningGizi.setName("MnSkriningGizi"); // NOI18N
-        MnSkriningGizi.setPreferredSize(new java.awt.Dimension(250, 26));
-        MnSkriningGizi.addActionListener(new java.awt.event.ActionListener() {
+        MnUjiFungsi.setBackground(new java.awt.Color(255, 255, 254));
+        MnUjiFungsi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnUjiFungsi.setForeground(new java.awt.Color(50, 50, 50));
+        MnUjiFungsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnUjiFungsi.setText("Formulir/Lembar Uji Fungsi/Prosedur KFR");
+        MnUjiFungsi.setName("MnUjiFungsi"); // NOI18N
+        MnUjiFungsi.setPreferredSize(new java.awt.Dimension(270, 26));
+        MnUjiFungsi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningGiziActionPerformed(evt);
+                MnUjiFungsiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningGizi);
+        jPopupMenu1.add(MnUjiFungsi);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -429,11 +418,11 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
 
         jLabel19.setText("Tanggal :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(60, 23));
+        jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -447,7 +436,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -460,7 +449,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(310, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(320, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -543,7 +532,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 240, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -690,15 +679,15 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 100, 125, 23);
 
-        DiganosisMedis.setFocusTraversalPolicyProvider(true);
-        DiganosisMedis.setName("DiganosisMedis"); // NOI18N
-        DiganosisMedis.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosisMedis.setFocusTraversalPolicyProvider(true);
+        DiagnosisMedis.setName("DiagnosisMedis"); // NOI18N
+        DiagnosisMedis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiganosisMedisKeyPressed(evt);
+                DiagnosisMedisKeyPressed(evt);
             }
         });
-        FormInput.add(DiganosisMedis);
-        DiganosisMedis.setBounds(129, 100, 660, 23);
+        FormInput.add(DiagnosisMedis);
+        DiagnosisMedis.setBounds(129, 100, 660, 23);
 
         jLabel14.setText("INSTRUMEN UJI FUNGSI/PROSEDUR KFR :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -795,15 +784,23 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(KdDokter,"Petugas");
+            Valid.textKosong(KdDokter,"Dokter");
         }else if(DiagnosisFungsional.getText().trim().equals("")){
-            Valid.textKosong(DiagnosisFungsional,"Berat Badan");
+            Valid.textKosong(DiagnosisFungsional,"Diagnosis Fungsional");
+        }else if(DiagnosisMedis.getText().trim().equals("")){
+            Valid.textKosong(DiagnosisMedis,"Diagnosis Medis");
+        }else if(HasilYangDidapat.getText().trim().equals("")){
+            Valid.textKosong(HasilYangDidapat,"Hasil Yang Didapat");
+        }else if(Kesimpulan.getText().trim().equals("")){
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Rekomendasi.getText().trim().equals("")){
+            Valid.textKosong(Rekomendasi,"Rekomendasi");
         }else{
-            if(Sequel.menyimpantf("skrining_gizi","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
+            if(Sequel.menyimpantf("uji_fungsi_kfr","?,?,?,?,?,?,?,?","Data",8,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                
+                DiagnosisFungsional.getText(),DiagnosisMedis.getText(),HasilYangDidapat.getText(),Kesimpulan.getText(),Rekomendasi.getText(),KdDokter.getText()
             })==true){
                 tampil();
                 emptTeks();
@@ -833,8 +830,8 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()!= -1){
-            if(Sequel.queryu2tf("delete from skrining_gizi where tanggal=? and no_rawat=?",2,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            if(Sequel.queryu2tf("delete from uji_fungsi_kfr where no_rawat=?",1,new String[]{
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tampil();
                 emptTeks();
@@ -855,14 +852,24 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+            Valid.textKosong(TNoRw,"Pasien");
         }else if(KdDokter.getText().trim().equals("")||NmDokter.getText().trim().equals("")){
-            Valid.textKosong(KdDokter,"Petugas");
+            Valid.textKosong(KdDokter,"Dokter");
         }else if(DiagnosisFungsional.getText().trim().equals("")){
-            Valid.textKosong(DiagnosisFungsional,"Berat Badan");
-        }else{      
-            Sequel.mengedit("skrining_gizi","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,skrining_bb=?,skrining_tb=?,alergi=?,parameter_imt=?,skor_imt=?,"+
-                "parameter_bb=?,skor_bb=?,parameter_penyakit=?,skor_penyakit=?,skor_total=?,parameter_total=?,nip=?",16,new String[]{
+            Valid.textKosong(DiagnosisFungsional,"Diagnosis Fungsional");
+        }else if(DiagnosisMedis.getText().trim().equals("")){
+            Valid.textKosong(DiagnosisMedis,"Diagnosis Medis");
+        }else if(HasilYangDidapat.getText().trim().equals("")){
+            Valid.textKosong(HasilYangDidapat,"Hasil Yang Didapat");
+        }else if(Kesimpulan.getText().trim().equals("")){
+            Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Rekomendasi.getText().trim().equals("")){
+            Valid.textKosong(Rekomendasi,"Rekomendasi");
+        }else{     
+            Sequel.mengedit("uji_fungsi_kfr","no_rawat=?","no_rawat=?,tanggal=?,diagnosis_fungsional=?,diagnosis_medis=?,hasil_didapat=?,kesimpulan=?,rekomedasi=?,kd_dokter=?",9,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                DiagnosisFungsional.getText(),DiagnosisMedis.getText(),HasilYangDidapat.getText(),Kesimpulan.getText(),Rekomendasi.getText(),KdDokter.getText(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             });
             if(tabMode.getRowCount()!=0){tampil();}
             emptTeks();
@@ -878,7 +885,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        petugas.dispose();
+        dokter.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -904,29 +911,25 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataSkriningGiziLanjut.jasper","report","::[ Data Skrining Gizi ]::",
+                Valid.MyReportqry("rptUjiFungsiKFR.jasper","report","::[ Data Uji Fugsi/Prosedur KFR ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,"+
-                    "skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,uji_fungsi_kfr.tanggal,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis,uji_fungsi_kfr.hasil_didapat,"+
+                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.kd_dokter,dokter.nm_dokter,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from uji_fungsi_kfr inner join reg_periksa on uji_fungsi_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip where "+
-                    "skrining_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by skrining_gizi.tanggal ",param);
+                    "inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter where "+
+                    "uji_fungsi_kfr.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by uji_fungsi_kfr.tanggal ",param);
             }else{
-                Valid.MyReportqry("rptDataSkriningGiziLanjut.jasper","report","::[ Data Skrining Gizi ]::",
+                Valid.MyReportqry("rptUjiFungsiKFR.jasper","report","::[ Data Uji Fugsi/Prosedur KFR ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,"+
-                    "skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,uji_fungsi_kfr.tanggal,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis,uji_fungsi_kfr.hasil_didapat,"+
+                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.kd_dokter,dokter.nm_dokter,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from uji_fungsi_kfr inner join reg_periksa on uji_fungsi_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip "+
-                    "where skrining_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%'  or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' "+
-                    "or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or skrining_gizi.alergi like '%"+TCari.getText().trim()+"%' "+
-                    "or skrining_gizi.parameter_total like '%"+TCari.getText().trim()+"%' or skrining_gizi.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like ?) "+
-                    "order by skrining_gizi.tanggal ",param);
+                    "inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter "+
+                    "where uji_fungsi_kfr.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
+                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    "uji_fungsi_kfr.kd_dokter like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%') order by uji_fungsi_kfr.tanggal ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1022,7 +1025,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
 
     private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",NmDokter,KdDokter.getText());
+            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",NmDokter,KdDokter.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1033,17 +1036,17 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     }//GEN-LAST:event_KdDokterKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setVisible(true);
+        dokter.emptTeks();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
         Valid.pindah(evt,Detik,DiagnosisFungsional);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningGiziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningGiziActionPerformed
+    private void MnUjiFungsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnUjiFungsiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1058,37 +1061,37 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
             param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirSkriningGizi.jasper","report","::[ Formulir Monitoring & Evaluasi Asuhan Gizi Pasien ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur, "+
-                    "pasien.jk,pasien.tgl_lahir,skrining_gizi.tanggal,skrining_gizi.alergi,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb, "+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb, "+
-                    "skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,skrining_gizi.skor_total,skrining_gizi.parameter_total, "+
-                    "skrining_gizi.nip,petugas.nama "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and skrining_gizi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'",param);
+                    "pasien.jk,pasien.tgl_lahir,uji_fungsi_kfr.tanggal,uji_fungsi_kfr.hasil_didapat,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis, "+
+                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.parameter_bb,uji_fungsi_kfr.skor_bb, "+
+                    "uji_fungsi_kfr.parameter_penyakit,uji_fungsi_kfr.skor_penyakit,uji_fungsi_kfr.skor_total,uji_fungsi_kfr.parameter_total, "+
+                    "uji_fungsi_kfr.kd_dokter,dokter.nm_dokter "+
+                    "from uji_fungsi_kfr inner join reg_periksa on uji_fungsi_kfr.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and uji_fungsi_kfr.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningGiziActionPerformed
+    }//GEN-LAST:event_MnUjiFungsiActionPerformed
 
     private void DiagnosisFungsionalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisFungsionalKeyPressed
-        //Valid.pindah(evt,btnPetugas,TB);
+        Valid.pindah(evt,btnPetugas,DiagnosisMedis);
     }//GEN-LAST:event_DiagnosisFungsionalKeyPressed
 
     private void JKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_JKKeyPressed
 
-    private void DiganosisMedisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiganosisMedisKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DiganosisMedisKeyPressed
+    private void DiagnosisMedisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisMedisKeyPressed
+        Valid.pindah(evt,DiagnosisFungsional,HasilYangDidapat);
+    }//GEN-LAST:event_DiagnosisMedisKeyPressed
 
     private void HasilYangDidapatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilYangDidapatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DiagnosisMedis,Kesimpulan);
     }//GEN-LAST:event_HasilYangDidapatKeyPressed
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HasilYangDidapat,Rekomendasi);
     }//GEN-LAST:event_KesimpulanKeyPressed
 
     private void RekomendasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekomendasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kesimpulan,BtnSimpan);
     }//GEN-LAST:event_RekomendasiKeyPressed
 
     /**
@@ -1122,7 +1125,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.TextBox DiagnosisFungsional;
-    private widget.TextBox DiganosisMedis;
+    private widget.TextBox DiagnosisMedis;
     private widget.PanelBiasa FormInput;
     private widget.TextBox HasilYangDidapat;
     private widget.TextBox JK;
@@ -1131,7 +1134,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     private widget.TextBox Kesimpulan;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningGizi;
+    private javax.swing.JMenuItem MnUjiFungsi;
     private widget.TextBox NmDokter;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Rekomendasi;
@@ -1171,25 +1174,23 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,"+
-                    "skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,uji_fungsi_kfr.tanggal,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis,uji_fungsi_kfr.hasil_didapat,"+
+                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.kd_dokter,dokter.nm_dokter,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from uji_fungsi_kfr inner join reg_periksa on uji_fungsi_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip where "+
-                    "skrining_gizi.tanggal between ? and ? order by skrining_gizi.tanggal ");
+                    "inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter where "+
+                    "uji_fungsi_kfr.tanggal between ? and ? order by uji_fungsi_kfr.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,"+
-                    "skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,uji_fungsi_kfr.tanggal,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis,uji_fungsi_kfr.hasil_didapat,"+
+                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.kd_dokter,dokter.nm_dokter,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from uji_fungsi_kfr inner join reg_periksa on uji_fungsi_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip "+
-                    "where skrining_gizi.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or skrining_gizi.alergi like ? or skrining_gizi.parameter_total like ? or skrining_gizi.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_gizi.tanggal ");
+                    "inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter "+
+                    "where uji_fungsi_kfr.tanggal between ? and ? and "+
+                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or uji_fungsi_kfr.kd_dokter like ? or dokter.nm_dokter like ?) "+
+                    "order by uji_fungsi_kfr.tanggal ");
             }
                 
             try {
@@ -1204,8 +1205,6 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -1213,10 +1212,9 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),
-                        rs.getString("tanggal"),rs.getString("skrining_bb"),rs.getString("skrining_tb"),rs.getString("alergi"),
-                        rs.getString("parameter_imt"),rs.getString("skor_imt"),rs.getString("parameter_bb"),rs.getString("skor_bb"),
-                        rs.getString("parameter_penyakit"),rs.getString("skor_penyakit"),rs.getString("skor_total"),rs.getString("parameter_total"),
-                        rs.getString("nip"),rs.getString("nama"),rs.getString("lahir")
+                        rs.getString("lahir"),rs.getString("tanggal"),rs.getString("diagnosis_fungsional"),
+                        rs.getString("diagnosis_medis"),rs.getString("hasil_didapat"),rs.getString("kesimpulan"),
+                        rs.getString("rekomedasi"),rs.getString("kd_dokter"),rs.getString("nm_dokter")
                     });
                 }
             } catch (Exception e) {
@@ -1236,25 +1234,35 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        KdDokter.setText("");
-        NmDokter.setText("");
         DiagnosisFungsional.setText("");
+        DiagnosisMedis.setText("");
+        HasilYangDidapat.setText("");
+        Kesimpulan.setText("");
+        Rekomendasi.setText("");
         DiagnosisFungsional.requestFocus();
     } 
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
+            // "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tanggal Uji","Diagnosis Fugsional","Diagnosis Medis","Hasil Yang Didapat","Kesimpulan","Rekomendasi","Kode Dokter","Nama Dokter"
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());  
-            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,15));
-            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
-            DiagnosisFungsional.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            DiagnosisFungsional.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            DiagnosisMedis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            HasilYangDidapat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Rekomendasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(14,15));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(17,19));
         }
     }
     private void isRawat() {
@@ -1262,7 +1270,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
     }
 
     private void isPsien() {
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
+        Sequel.cariIsi("select nm_dokter from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
         Sequel.cariIsi("select jk from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",JK);
         Sequel.cariIsi("select date_format(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",TglLahir,TNoRM.getText());
     }
@@ -1300,6 +1308,9 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         if(akses.getjml2()>=1){
             KdDokter.setText(akses.getkode());
             Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",NmDokter,KdDokter.getText());
+            if(NmDokter.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"User login buka dokter...!");
+            }
         }            
     }
 
