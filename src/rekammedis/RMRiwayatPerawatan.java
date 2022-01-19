@@ -337,6 +337,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanMedisRalan = new widget.CekBox();
         chkAsuhanMedisRalanKandungan = new widget.CekBox();
         chkAsuhanMedisRalanBayi = new widget.CekBox();
+        chkUjiFungsiKFR = new widget.CekBox();
         chkHemodialisa = new widget.CekBox();
         chkSkriningGiziLanjut = new widget.CekBox();
         chkAsuhanGizi = new widget.CekBox();
@@ -762,6 +763,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanMedisRalanBayi.setOpaque(false);
         chkAsuhanMedisRalanBayi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanMedisRalanBayi);
+
+        chkUjiFungsiKFR.setSelected(true);
+        chkUjiFungsiKFR.setText("Uji Fungsi/Prosedur KFR");
+        chkUjiFungsiKFR.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkUjiFungsiKFR.setName("chkUjiFungsiKFR"); // NOI18N
+        chkUjiFungsiKFR.setOpaque(false);
+        chkUjiFungsiKFR.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkUjiFungsiKFR);
 
         chkHemodialisa.setSelected(true);
         chkHemodialisa.setText("Hemodialisa");
@@ -1361,6 +1370,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkPotonganBiaya.setSelected(true);
             chkResume.setSelected(true);
             chkBerkasDigital.setSelected(true);
+            chkUjiFungsiKFR.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1402,6 +1412,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             chkPotonganBiaya.setSelected(false);
             chkResume.setSelected(false);
             chkBerkasDigital.setSelected(false);
+            chkUjiFungsiKFR.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1510,6 +1521,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.CekBox chkTindakanRanapDokterParamedis;
     private widget.CekBox chkTindakanRanapParamedis;
     private widget.CekBox chkTriase;
+    private widget.CekBox chkUjiFungsiKFR;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.Label label17;
@@ -4187,6 +4199,82 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                   "<tr>"+
                                                        "<td width='100%' border='0'>"+rs2.getString("konsul")+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"); 
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan uji fungsi KFR
+                    if(chkUjiFungsiKFR.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select uji_fungsi_kfr.tanggal,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis,uji_fungsi_kfr.hasil_didapat,"+
+                                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.kd_dokter,dokter.nm_dokter "+
+                                    "from uji_fungsi_kfr inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter where "+
+                                    "uji_fungsi_kfr.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Uji Fungsi/Prosedur KFR</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                                );
+                                rs2.beforeFirst();
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "YANG MELAKUKAN PEMERIKSAAN"+  
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                      "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                                      "<td width='66%' border='0'>Dokter : "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"+
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                      "<td width='20%' border='0'>Diagnosa Fungsional</td>"+
+                                                      "<td width='80%' border='0'>: "+rs2.getString("diagnosis_fungsional")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                      "<td width='20%' border='0'>Diagnosa Medis</td>"+
+                                                      "<td width='80%' border='0'>: "+rs2.getString("diagnosis_medis")+"</td>"+
+                                                  "</tr>"+
+                                               "</table>"+
+                                            "</td>"+
+                                         "</tr>"+
+                                         "<tr>"+
+                                            "<td valign='top'>"+
+                                               "INSTRUMEN UJI FUNGSI/PROSEDUR KFR"+  
+                                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                  "<tr>"+
+                                                       "<td width='100%' border='0'>Hasil yang didapat : "+rs2.getString("hasil_didapat")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='100%' border='0'>Kesimpulan : "+rs2.getString("kesimpulan")+"</td>"+
+                                                  "</tr>"+
+                                                  "<tr>"+
+                                                       "<td width='100%' border='0'>Rekomendasi : "+rs2.getString("rekomedasi")+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+

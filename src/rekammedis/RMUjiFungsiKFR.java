@@ -1057,16 +1057,14 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdDokter.getText());
-            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NmDokter.getText()+"\nID "+(finger.equals("")?KdDokter.getText():finger)+"\n"+Tanggal.getSelectedItem()); 
-            param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
-            Valid.MyReportqry("rptFormulirSkriningGizi.jasper","report","::[ Formulir Monitoring & Evaluasi Asuhan Gizi Pasien ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur, "+
-                    "pasien.jk,pasien.tgl_lahir,uji_fungsi_kfr.tanggal,uji_fungsi_kfr.hasil_didapat,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis, "+
-                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.parameter_bb,uji_fungsi_kfr.skor_bb, "+
-                    "uji_fungsi_kfr.parameter_penyakit,uji_fungsi_kfr.skor_penyakit,uji_fungsi_kfr.skor_total,uji_fungsi_kfr.parameter_total, "+
-                    "uji_fungsi_kfr.kd_dokter,dokter.nm_dokter "+
-                    "from uji_fungsi_kfr inner join reg_periksa on uji_fungsi_kfr.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and uji_fungsi_kfr.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'",param);
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NmDokter.getText()+"\nID "+(finger.equals("")?KdDokter.getText():finger)+"\n"+Tanggal.getSelectedItem()); 
+            Valid.MyReportqry("rptCetakUjiFungsiKFR.jasper","report","::[ Formulir/Lembar Uji Fungsi/Prosedur KFR ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "pasien.jk,uji_fungsi_kfr.tanggal,uji_fungsi_kfr.diagnosis_fungsional,uji_fungsi_kfr.diagnosis_medis,uji_fungsi_kfr.hasil_didapat,"+
+                    "uji_fungsi_kfr.kesimpulan,uji_fungsi_kfr.rekomedasi,uji_fungsi_kfr.kd_dokter,dokter.nm_dokter,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir, "+
+                    "date_format(uji_fungsi_kfr.tanggal,'%d-%m-%Y') as periksa from uji_fungsi_kfr inner join reg_periksa on uji_fungsi_kfr.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join dokter on uji_fungsi_kfr.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnUjiFungsiActionPerformed
 
