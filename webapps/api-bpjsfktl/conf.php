@@ -96,8 +96,21 @@
     }
 
     function noRegPoli($kd_poli,$kd_dokter,$tanggal) {
+        //jika base No.Reg nomor registrasi
         $max    = getOne("select ifnull(MAX(CONVERT(no_reg,signed)),0)+1 from reg_periksa where kd_poli='$kd_poli' and kd_dokter='$kd_dokter' and tgl_registrasi='$tanggal'");
         $no_reg = sprintf("%03s", $max);
+        
+        //jika base No.Reg nomor booking
+        /*$max="";
+        $no_reg="";
+        if(getOne("select ifnull(MAX(CONVERT(no_reg,signed)),0)+1 from booking_registrasi where kd_poli='$kd_poli' and kd_dokter='$kd_dokter' and tanggal_periksa='$tanggal'")>=
+                getOne("select ifnull(MAX(CONVERT(no_reg,signed)),0)+1 from reg_periksa where kd_poli='$kd_poli' and kd_dokter='$kd_dokter' and tgl_registrasi='$tanggal'")){
+            $max    = getOne("select ifnull(MAX(CONVERT(no_reg,signed)),0)+1 from booking_registrasi where kd_poli='$kd_poli' and kd_dokter='$kd_dokter' and tanggal_periksa='$tanggal'");
+            $no_reg = sprintf("%03s", $max);
+        }else{
+            $max    = getOne("select ifnull(MAX(CONVERT(no_reg,signed)),0)+1 from reg_periksa where kd_poli='$kd_poli' and kd_dokter='$kd_dokter' and tgl_registrasi='$tanggal'");
+            $no_reg = sprintf("%03s", $max);
+        }*/
         return $no_reg;
     }
 

@@ -162,7 +162,7 @@
                                             if(empty($kuota)) {
                                                 $response = array(
                                                     'metadata' => array(
-                                                        'message' => 'Pendaftaran ke Poli ini sedang tutup',
+                                                        'message' => 'Pendaftaran ke Poli ini tidak tersedia',
                                                         'code' => 201
                                                     )
                                                 );
@@ -445,7 +445,7 @@
                                             if(empty($jadwal['kuota'])) {
                                                 $response = array(
                                                     'metadata' => array(
-                                                        'message' => 'Pendaftaran ke Poli ini sedang tutup',
+                                                        'message' => 'Pendaftaran ke Poli ini tidak tersedia',
                                                         'code' => 201
                                                     )
                                                 );
