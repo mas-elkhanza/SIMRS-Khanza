@@ -149,11 +149,11 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Keluhan.setDocument(new batasInput((int)1000).getKata(Keluhan));
-        JalannyaPenyakit.setDocument(new batasInput((int)1000).getKata(JalannyaPenyakit));
-        PemeriksaanPenunjang.setDocument(new batasInput((int)1000).getKata(PemeriksaanPenunjang));
-        HasilLaborat.setDocument(new batasInput((int)1000).getKata(HasilLaborat));
-        Obat2an.setDocument(new batasInput((int)1000).getKata(Obat2an));
+        Keluhan.setDocument(new batasInput((int)2000).getKata(Keluhan));
+        JalannyaPenyakit.setDocument(new batasInput((int)2000).getKata(JalannyaPenyakit));
+        PemeriksaanPenunjang.setDocument(new batasInput((int)2000).getKata(PemeriksaanPenunjang));
+        HasilLaborat.setDocument(new batasInput((int)2000).getKata(HasilLaborat));
+        Obat2an.setDocument(new batasInput((int)2000).getKata(Obat2an));
         DiagnosaUtama.setDocument(new batasInput((int)80).getKata(DiagnosaUtama));
         DiagnosaSekunder1.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder1));
         DiagnosaSekunder2.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder2));

@@ -687,6 +687,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         PanelInput.add(jLabel12);
         jLabel12.setBounds(402, 42, 60, 23);
 
+        KdPtg.setEditable(false);
         KdPtg.setName("KdPtg"); // NOI18N
         KdPtg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -714,7 +715,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2020" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-01-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1993,9 +1994,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         if(akses.getjml2()>=1){
             KdPtg.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPtg,KdPtg.getText());
+            btnPetugas.setEnabled(false);
         }else{
             KdPtg.setText("");
             NmPtg.setText("");
+            btnPetugas.setEnabled(true);
         }
         BtnSimpan.setEnabled(akses.getperiksa_radiologi());
         BtnTambahPeriksa.setEnabled(akses.gettarif_radiologi());

@@ -160,8 +160,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         FisikKlinis.setDocument(new batasInput((int)100).getKata(FisikKlinis));
         RiwayatPersonal.setDocument(new batasInput((int)100).getKata(RiwayatPersonal));
         PolaMakan.setDocument(new batasInput((int)100).getKata(PolaMakan));
-        DiagnosisGizi.setDocument(new batasInput((int)100).getKata(DiagnosisGizi));
-        IntervensiGizi.setDocument(new batasInput((int)100).getKata(IntervensiGizi));
+        DiagnosisGizi.setDocument(new batasInput((int)500).getKata(DiagnosisGizi));
+        IntervensiGizi.setDocument(new batasInput((int)500).getKata(IntervensiGizi));
         Monitoring.setDocument(new batasInput((int)100).getKata(Monitoring));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));

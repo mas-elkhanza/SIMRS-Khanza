@@ -10047,8 +10047,16 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 CrPtg.setEditable(false);
             }                
         }else{
-            BtnSeek3.setEnabled(true);
-            CrPtg.setEditable(true);
+            namadokter=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",akses.getkode());
+            if(!namadokter.equals("")){
+                CrPtg.setText(namadokter);
+                BtnSeek3.setEnabled(false);
+                CrPtg.setEditable(false);
+            }else{
+                CrPtg.setText("");
+                BtnSeek3.setEnabled(true);
+                CrPtg.setEditable(true);
+            }
         }
         
         if(!namapoli.equals("")){
