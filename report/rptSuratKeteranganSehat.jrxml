@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="420" orientation="Landscape" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b98c6957-7340-483c-9834-702b3e096d12">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -15,6 +15,7 @@
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="finger" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -169,7 +170,7 @@
 				<text><![CDATA[Demikian surat keterangan ini dibuat dengan sebenar-benarnya untuk dapat digunakan sesuai keperluan.]]></text>
 			</staticText>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="360" y="311" width="193" height="23" uuid="2727512b-bb2d-42f4-bed3-645fce487a0f"/>
+				<reportElement x="360" y="283" width="193" height="23" uuid="2727512b-bb2d-42f4-bed3-645fce487a0f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -345,7 +346,7 @@
 				<textFieldExpression><![CDATA[$F{tinggi}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="4" y="291" width="63" height="22" uuid="84c7f4ec-83d4-4336-a0e2-9e5760618a6b"/>
+				<reportElement x="4" y="311" width="63" height="22" uuid="84c7f4ec-83d4-4336-a0e2-9e5760618a6b"/>
 				<textElement>
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -399,7 +400,7 @@
 				<textFieldExpression><![CDATA[$F{kesimpulan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="66" y="292" width="310" height="19" uuid="8df23153-f161-4c1b-b973-a1852c2e489c"/>
+				<reportElement x="66" y="311" width="274" height="59" uuid="8df23153-f161-4c1b-b973-a1852c2e489c"/>
 				<textElement>
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
@@ -412,6 +413,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
 			</textField>
+			<componentElement>
+				<reportElement x="363" y="300" width="188" height="60" isRemoveLineWhenBlank="true" uuid="810f531b-643d-4c63-ba07-cd0e026855db">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
 		</band>
 	</detail>
 	<summary>
