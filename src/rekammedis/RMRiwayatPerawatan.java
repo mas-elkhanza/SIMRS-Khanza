@@ -40,6 +40,8 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
 import simrskhanza.DlgPasien;
 
 /**
@@ -57,6 +59,8 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private double biayaperawatan=0;
     private String kddpjp="",dpjp="",dokterrujukan="",polirujukan="",keputusan="",ke1="",ke2="",ke3="",ke4="",ke5="",ke6="",file="";
     private StringBuilder htmlContent;
+    private HttpClient http = new HttpClient();
+    private GetMethod get;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -102,6 +106,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         tbRegistrasi.setDefaultRenderer(Object.class, new WarnaTable());
         
         NoRM.setDocument(new batasInput((byte)20).getKata(NoRM));
+        NoRawat.setDocument(new batasInput((byte)20).getKata(NoRawat));
         
         pasien.addWindowListener(new WindowListener() {
             @Override
@@ -301,6 +306,8 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        R4 = new widget.RadioButton();
+        NoRawat = new widget.TextBox();
         BtnCari1 = new widget.Button();
         label19 = new widget.Label();
         BtnPrint = new widget.Button();
@@ -407,7 +414,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass5.setName("panelGlass5"); // NOI18N
-        panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
+        panelGlass5.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         R1.setBackground(new java.awt.Color(240, 250, 230));
@@ -428,7 +435,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         R2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         R2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         R2.setName("R2"); // NOI18N
-        R2.setPreferredSize(new java.awt.Dimension(105, 23));
+        R2.setPreferredSize(new java.awt.Dimension(104, 23));
         panelGlass5.add(R2);
 
         R3.setBackground(new java.awt.Color(240, 250, 230));
@@ -454,7 +461,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label18.setText("s.d.");
         label18.setName("label18"); // NOI18N
-        label18.setPreferredSize(new java.awt.Dimension(30, 23));
+        label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
         Tgl2.setDisplayFormat("dd-MM-yyyy");
@@ -466,6 +473,25 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(Tgl2);
+
+        R4.setBackground(new java.awt.Color(240, 250, 230));
+        R4.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
+        buttonGroup1.add(R4);
+        R4.setText("Nomor :");
+        R4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        R4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R4.setName("R4"); // NOI18N
+        R4.setPreferredSize(new java.awt.Dimension(67, 23));
+        panelGlass5.add(R4);
+
+        NoRawat.setName("NoRawat"); // NOI18N
+        NoRawat.setPreferredSize(new java.awt.Dimension(135, 23));
+        NoRawat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRawatKeyPressed(evt);
+            }
+        });
+        panelGlass5.add(NoRawat);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('2');
@@ -486,15 +512,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(35, 23));
+        label19.setPreferredSize(new java.awt.Dimension(15, 23));
         panelGlass5.add(label19);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Cetak");
         BtnPrint.setToolTipText("Alt+T");
         BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnPrintActionPerformed(evt);
@@ -504,10 +529,9 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -1054,25 +1078,25 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label20);
-        label20.setBounds(431, 10, 30, 23);
+        label20.setBounds(436, 10, 30, 23);
 
         Jk.setEditable(false);
         Jk.setName("Jk"); // NOI18N
         Jk.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(Jk);
-        Jk.setBounds(465, 10, 40, 23);
+        Jk.setBounds(470, 10, 40, 23);
 
-        label21.setText("Tmp/Tgl.Lahir :");
+        label21.setText("Tempat & Tgl.Lahir :");
         label21.setName("label21"); // NOI18N
         label21.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label21);
-        label21.setBounds(513, 10, 80, 23);
+        label21.setBounds(523, 10, 110, 23);
 
         TempatLahir.setEditable(false);
         TempatLahir.setName("TempatLahir"); // NOI18N
         TempatLahir.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(TempatLahir);
-        TempatLahir.setBounds(597, 10, 140, 23);
+        TempatLahir.setBounds(637, 10, 140, 23);
 
         label22.setText("Alamat :");
         label22.setName("label22"); // NOI18N
@@ -1090,31 +1114,31 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label23);
-        label23.setBounds(431, 40, 30, 23);
+        label23.setBounds(436, 40, 30, 23);
 
         GD.setEditable(false);
         GD.setName("GD"); // NOI18N
         GD.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(GD);
-        GD.setBounds(465, 40, 40, 23);
+        GD.setBounds(470, 40, 40, 23);
 
-        label24.setText("Ibu Kandung :");
+        label24.setText("Nama Ibu Kandung :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label24);
-        label24.setBounds(513, 40, 80, 23);
+        label24.setBounds(523, 40, 110, 23);
 
         IbuKandung.setEditable(false);
         IbuKandung.setName("IbuKandung"); // NOI18N
         IbuKandung.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(IbuKandung);
-        IbuKandung.setBounds(597, 40, 225, 23);
+        IbuKandung.setBounds(637, 40, 225, 23);
 
         TanggalLahir.setEditable(false);
         TanggalLahir.setName("TanggalLahir"); // NOI18N
         TanggalLahir.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(TanggalLahir);
-        TanggalLahir.setBounds(739, 10, 83, 23);
+        TanggalLahir.setBounds(779, 10, 83, 23);
 
         label25.setText("Agama :");
         label25.setName("label25"); // NOI18N
@@ -1132,49 +1156,49 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         StatusNikah.setName("StatusNikah"); // NOI18N
         StatusNikah.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(StatusNikah);
-        StatusNikah.setBounds(235, 70, 100, 23);
+        StatusNikah.setBounds(245, 70, 100, 23);
 
         label26.setText("Stts.Nikah :");
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label26);
-        label26.setBounds(166, 70, 65, 23);
+        label26.setBounds(176, 70, 65, 23);
 
         Pendidikan.setEditable(false);
         Pendidikan.setName("Pendidikan"); // NOI18N
         Pendidikan.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(Pendidikan);
-        Pendidikan.setBounds(409, 70, 80, 23);
+        Pendidikan.setBounds(429, 70, 80, 23);
 
         label27.setText("Pendidikan :");
         label27.setName("label27"); // NOI18N
         label27.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label27);
-        label27.setBounds(335, 70, 70, 23);
+        label27.setBounds(355, 70, 70, 23);
 
         label28.setText("Bahasa :");
         label28.setName("label28"); // NOI18N
         label28.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label28);
-        label28.setBounds(490, 70, 50, 23);
+        label28.setBounds(520, 70, 50, 23);
 
         Bahasa.setEditable(false);
         Bahasa.setName("Bahasa"); // NOI18N
         Bahasa.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(Bahasa);
-        Bahasa.setBounds(544, 70, 100, 23);
+        Bahasa.setBounds(574, 70, 100, 23);
 
         label29.setText("Cacat Fisik :");
         label29.setName("label29"); // NOI18N
         label29.setPreferredSize(new java.awt.Dimension(55, 23));
         FormInput.add(label29);
-        label29.setBounds(643, 70, 70, 23);
+        label29.setBounds(683, 70, 70, 23);
 
         CacatFisik.setEditable(false);
         CacatFisik.setName("CacatFisik"); // NOI18N
         CacatFisik.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(CacatFisik);
-        CacatFisik.setBounds(717, 70, 105, 23);
+        CacatFisik.setBounds(757, 70, 105, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1222,7 +1246,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnSeek2KeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(NoRM.getText().equals("")||NmPasien.getText().equals("")){
+        if(NoRM.getText().trim().equals("")||NmPasien.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Pasien masih kosong...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1290,7 +1314,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        if(NoRM.getText().equals("")||NmPasien.getText().equals("")){
+        if(NoRM.getText().trim().equals("")||NmPasien.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Pasien masih kosong...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1420,6 +1444,10 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
+    private void NoRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRawatKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoRawatKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1459,6 +1487,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.editorpane LoadHTMLSOAPI;
     private widget.TextBox NmPasien;
     private widget.TextBox NoRM;
+    private widget.TextBox NoRawat;
     private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pekerjaan;
@@ -1466,6 +1495,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
+    private widget.RadioButton R4;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
@@ -1561,7 +1591,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                     "where pasien.no_rkm_medis=?");
             try {
-                ps.setString(1,NoRM.getText());
+                ps.setString(1,NoRM.getText().trim());
                 rs=ps.executeQuery();
                 if(rs.next()){
                     NoRM.setText(rs.getString("no_rkm_medis"));
@@ -1619,19 +1649,29 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
                     "where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and "+
                     "reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi");
+            }else if(R4.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.status_lanjut,"+
+                    "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "poliklinik.kd_poli,poliklinik.nm_poli,penjab.png_jawab from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
+                    "where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and reg_periksa.no_rawat=?");
             }
             
             try {
                 i=0;
                 if(R1.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R2.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R3.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                     ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                }                    
+                }else if(R4.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                    ps.setString(2,NoRawat.getText().trim());
+                }                     
                 rs=ps.executeQuery();
                 while(rs.next()){
                     i++;
@@ -1760,18 +1800,30 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                     "where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and "+
                     "reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi");
+            }else if(R4.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                    "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
+                    "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
+                    "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                    "where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and reg_periksa.no_rawat=?");
             }
             
             try {
                 i=0;
                 if(R1.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R2.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R3.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                     ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else if(R4.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                    ps.setString(2,NoRawat.getText());
                 }            
                 urut=1;
                 rs=ps.executeQuery();
@@ -2930,11 +2982,11 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     try {
                                         rs3=koneksi.prepareStatement(
                                             "select master_imunisasi.kode_imunisasi,master_imunisasi.nama_imunisasi from master_imunisasi inner join riwayat_imunisasi on riwayat_imunisasi.kode_imunisasi=master_imunisasi.kode_imunisasi "+
-                                            "where riwayat_imunisasi.no_rkm_medis='"+NoRM.getText()+"' group by master_imunisasi.kode_imunisasi order by master_imunisasi.kode_imunisasi").executeQuery();
+                                            "where riwayat_imunisasi.no_rkm_medis='"+NoRM.getText().trim()+"' group by master_imunisasi.kode_imunisasi order by master_imunisasi.kode_imunisasi").executeQuery();
                                         while(rs3.next()){
                                             ke1="";ke2="";ke3="";ke4="";ke5="";ke6="";
                                             try {
-                                                rs4=koneksi.prepareStatement("select * from riwayat_imunisasi where no_rkm_medis='"+NoRM.getText()+"' and kode_imunisasi='"+rs3.getString("kode_imunisasi")+"'").executeQuery();
+                                                rs4=koneksi.prepareStatement("select * from riwayat_imunisasi where no_rkm_medis='"+NoRM.getText().trim()+"' and kode_imunisasi='"+rs3.getString("kode_imunisasi")+"'").executeQuery();
                                                 while(rs4.next()){
                                                     if(rs4.getInt("no_imunisasi")==1){
                                                         ke1="&#10003;";
@@ -3378,7 +3430,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     try {
                                         w=1;
                                         rs3=koneksi.prepareStatement(
-                                            "select * from riwayat_persalinan_pasien where no_rkm_medis='"+NoRM.getText()+"' order by tgl_thn").executeQuery();
+                                            "select * from riwayat_persalinan_pasien where no_rkm_medis='"+NoRM.getText().trim()+"' order by tgl_thn").executeQuery();
                                         while(rs3.next()){
                                             htmlContent.append(
                                                    "<tr>"+
@@ -4994,7 +5046,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 try {
                                                     w=1;
                                                     rs3=koneksi.prepareStatement(
-                                                        "select * from riwayat_persalinan_pasien where no_rkm_medis='"+NoRM.getText()+"' order by tgl_thn").executeQuery();
+                                                        "select * from riwayat_persalinan_pasien where no_rkm_medis='"+NoRM.getText().trim()+"' order by tgl_thn").executeQuery();
                                                     while(rs3.next()){
                                                         htmlContent.append(
                                                                "<tr>"+
@@ -7421,6 +7473,19 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             }
                         }
                     }
+                    
+                    if(R4.isSelected()==true){
+                        get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+rs.getString("kd_dokter").replace(" ","_"));
+                        http.executeMethod(get);
+                        
+                        htmlContent.append(
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='2%'></td>"+        
+                                "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
+                                "<td valign='middle' width='1%' align='center'>:</td>"+
+                                "<td valign='middle' width='79%' align='center'>Dokter DPJP<br><img width='90' height='90' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+rs.getString("kd_dokter")+".png'/><br>"+rs.getString("nm_dokter")+"</td>"+
+                              "</tr>");
+                    }
                     htmlContent.append(
                         "<tr class='isi'><td></td><td colspan='3' align='right'>&nbsp;</tr>"
                     );
@@ -7472,16 +7537,23 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.status_lanjut "+
                     "from reg_periksa where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and "+
                     "reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi");
+            }else if(R4.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.status_lanjut "+
+                    "from reg_periksa where reg_periksa.stts<>'Batal' and reg_periksa.no_rkm_medis=? and reg_periksa.no_rawat=?");
             }
             try {
                 if(R1.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R2.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R3.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                     ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else if(R4.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                    ps.setString(2,NoRawat.getText().trim());
                 }  
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7666,18 +7738,29 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
                     " where penjualan.no_rkm_medis=? and penjualan.tgl_jual between ? and ? "+
                     " order by penjualan.tgl_jual ");
+            }else if(R4.isSelected()==true){
+                ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
+                    "penjualan.nip,petugas.nama, "+
+                    "penjualan.no_rkm_medis,penjualan.nm_pasien,penjualan.nama_bayar, "+
+                    "penjualan.keterangan, penjualan.jns_jual, penjualan.ongkir,bangsal.nm_bangsal,penjualan.status "+
+                    " from penjualan inner join petugas on penjualan.nip=petugas.nip "+
+                    " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
+                    " where penjualan.no_rkm_medis=? and penjualan.nota_jual=?");
             }
             
             try {
                 if(R1.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R2.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R3.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                     ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                } 
+                }else if(R4.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                    ps.setString(2,NoRawat.getText().trim());
+                }  
                 rs=ps.executeQuery();
                 while(rs.next()){ 
                     htmlContent.append(
@@ -7884,17 +7967,27 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "bangsal.nm_bangsal,piutang.catatan from piutang inner join petugas on piutang.nip=petugas.nip "+
                     " inner join bangsal on piutang.kd_bangsal=bangsal.kd_bangsal where piutang.no_rkm_medis=? "+
                     " and piutang.tgl_piutang between ? and ? order by piutang.tgl_piutang ");
+            }else if(R4.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select piutang.nota_piutang, piutang.tgl_piutang, "+
+                    "piutang.nip,petugas.nama, piutang.no_rkm_medis,piutang.nm_pasien,piutang.jns_jual,"+
+                    "bangsal.nm_bangsal,piutang.catatan from piutang inner join petugas on piutang.nip=petugas.nip "+
+                    " inner join bangsal on piutang.kd_bangsal=bangsal.kd_bangsal where piutang.no_rkm_medis=? "+
+                    " and piutang.nota_piutang=? ");
             }
             
             try {
                 if(R1.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R2.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                 }else if(R3.isSelected()==true){
-                    ps.setString(1,NoRM.getText());
+                    ps.setString(1,NoRM.getText().trim());
                     ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else if(R4.isSelected()==true){
+                    ps.setString(1,NoRM.getText().trim());
+                    ps.setString(2,NoRawat.getText().trim());
                 } 
                 rs=ps.executeQuery();
                 while(rs.next()){ 
@@ -7993,7 +8086,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             htmlContent = new StringBuilder();
             try{
                 rs3=koneksi.prepareStatement(
-                     "select * from retensi_pasien where no_rkm_medis='"+NoRM.getText()+"' order by tgl_retensi").executeQuery();
+                     "select * from retensi_pasien where no_rkm_medis='"+NoRM.getText().trim()+"' order by tgl_retensi").executeQuery();
                 if(rs3.next()){                                    
                     htmlContent.append(  
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -8055,7 +8148,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        "<tr class='isi'>"+ 
                                          "<td valign='top' width='20%'>No.RM</td>"+
                                          "<td valign='top' width='1%' align='center'>:</td>"+
-                                         "<td valign='top' width='79%'>"+NoRM.getText()+"</td>"+
+                                         "<td valign='top' width='79%'>"+NoRM.getText().trim()+"</td>"+
                                        "</tr>"+
                                        "<tr class='isi'>"+ 
                                          "<td valign='top' width='20%'>Nama Pasien</td>"+

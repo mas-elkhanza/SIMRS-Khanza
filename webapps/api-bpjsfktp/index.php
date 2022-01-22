@@ -613,7 +613,7 @@
         echo "2. Menampilkan status atrian poli, methode GET\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktp/antrean/status/KodePoliPCare/TanggalRegistrasi \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, TanggalRegistrasi gunakan format yyyy-mm-dd,\n";
-        echo "   x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   x-username:user yang diberikan RS yang diberikan RS\n";
         echo "   Hasilnya : \n";
         echo '   {'."\n";
         echo '      "response": {'."\n";
@@ -631,7 +631,7 @@
         echo "3. Menampilkan sisa antrian berdasarkan tanggal pendaftaran pasien, methode GET\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktp/antrean/sisapeserta/NomorKartu/KodePoliPCare/TanggalRegistrasi \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, TanggalRegistrasi gunakan format yyyy-mm-dd\n";
-        echo "   x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   x-username:user yang diberikan RS yang diberikan RS\n";
         echo "   Hasilnya : \n";
         echo '   {'."\n";
         echo '      "response": {'."\n";
@@ -649,7 +649,7 @@
         echo "4. Mengambil antrian, methode POST\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktp/antrean \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, TanggalRegistrasi gunakan format yyyy-mm-dd\n";
-        echo "   x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   x-username:user yang diberikan RS yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
 	echo '      "nomorkartu":"XXXXXXXXX",'."\n";
@@ -675,7 +675,7 @@
         echo "5. Membatalkan antrian, methode PUT\n";
         echo "   gunakan URL http://ipserverws:port/webapps/api-bpjsfktp/antrean/batal \n";
         echo "   Header gunakan x-token:token yang diambil sebelumnya, TanggalRegistrasi gunakan format yyyy-mm-dd\n";
-        echo "   x-username:user yang diberikan RS, x-password:pass yang diberikan RS\n";
+        echo "   x-username:user yang diberikan RS yang diberikan RS\n";
         echo "   Body berisi : \n";
         echo '   {'."\n";
 	echo '      "nomorkartu":"XXXXXXXXX",'."\n";

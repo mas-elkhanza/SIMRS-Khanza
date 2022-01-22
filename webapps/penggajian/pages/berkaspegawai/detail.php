@@ -97,7 +97,12 @@
                     if($baris["berkas"]=="pages/berkaspegawai/berkas"){
                         $gb="-";                            
                     }else{
-                        $gb="<img src='".$baris["berkas"]."' width='850px' height='950px'>";
+                        if((strtolower(substr($baris["berkas"],-3))=="jpg")||(strtolower(substr($baris["berkas"],-4))=="jpeg")){
+                            $gb="<img src='".$baris["berkas"]."' width='850px' height='950px'>";
+                        }else{
+                            $gb= str_replace("pages/berkaspegawai/berkas","",$baris["berkas"]);
+                        }
+                            
                     }
                     echo "<tr class='isi'>
                             <td valign='top'>

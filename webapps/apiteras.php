@@ -92,7 +92,8 @@
     ));
     
     $response = json_decode(curl_exec($curl2),true);
-    curl_close($curl);
+    echo $response;
+    curl_close($curl2);
     if(strpos(strtolower($response["pesan"]),'created')==true){
         echo"<meta http-equiv='refresh' content='1;URL=?aksi=SuksesKirim'>";
     }

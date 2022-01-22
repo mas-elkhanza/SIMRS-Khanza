@@ -11537,7 +11537,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgBerkasRawat berkas=new DlgBerkasRawat(this,false);
         berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
         try {
-            berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            if(akses.gethapus_berkas_digital_perawatan()==true){
+                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");   
+            }else{
+                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/loginnonhapus.php?act=login&usere=admin&passwordte=akusayangsamakamu");  
+            }                  
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

@@ -62,8 +62,10 @@
             switch ($aksi) {
                 case 'HomeAdmin'            : include_once('homevedika.php'); break;
                 case 'List'                 : include_once('pages/list.php'); break;
+                case 'ListNonHapus'         : include_once('pages/listnonhapus.php'); break;
                 case 'ListVedika'           : include_once('pages/listvedika.php'); break;
                 case 'Detail'               : include_once('pages/detail.php'); break;
+                case 'DetailNonHapus'       : include_once('pages/detailnonhapus.php'); break;
                 case 'Detail2'              : include_once('pages/detail2.php'); break;
                 case 'MasterBerkas'         : include_once('pages/master.php'); break;
                 default			    : include_once('homevedika.php');

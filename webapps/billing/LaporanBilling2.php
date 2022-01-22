@@ -1,5 +1,6 @@
 <?php
  include '../conf/conf.php';
+ include '../phpqrcode/qrlib.php'; 
 ?>
 <html>
     <head>
@@ -12,16 +13,17 @@
 
     <?php
         reportsqlinjection();    
-        $petugas = str_replace("_"," ",$_GET['petugas']); 
-        $tanggal = str_replace("_"," ",$_GET['tanggal']);
-        
-        $nonota= str_replace(": ","",getOne("select temp2 from temporary_bayar_ranap where temp1='No.Nota'"));
-        $norawat=getOne("select no_rawat from nota_inap where no_nota='$nonota'");
-        $kodecarabayar=getOne("select kd_pj from reg_periksa where no_rawat='$norawat'");
-        $carabayar=getOne("select png_jawab from penjab where kd_pj='$kodecarabayar'");
-         
-        $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_bayar_ranap order by no asc";   
-        $hasil=bukaquery($_sql);
+        $petugas        = str_replace("_"," ",$_GET['petugas']); 
+        $tanggal        = str_replace("_"," ",$_GET['tanggal']);
+        $nonota         = str_replace(": ","",getOne("select temp2 from temporary_bayar_ranap where temp1='No.Nota'"));
+        $norawat        = getOne("select no_rawat from nota_inap where no_nota='$nonota'");
+        $kodecarabayar  = getOne("select kd_pj from reg_periksa where no_rawat='$norawat'");
+        $carabayar      = getOne("select png_jawab from penjab where kd_pj='$kodecarabayar'");
+        $PNG_TEMP_DIR   = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
+        $PNG_WEB_DIR    = 'temp/';
+        if (!file_exists($PNG_TEMP_DIR)) mkdir($PNG_TEMP_DIR);
+        $_sql           = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_bayar_ranap order by no asc";   
+        $hasil          = bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
             $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
@@ -102,25 +104,23 @@
                                      <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>Kasir</font></td>              
                                     </tr>  
                                     <tr class='isi12' padding='0'>
-                                     <td padding='0' width='40%'><font color='000000' size='1'  face='Tahoma'>&nbsp;</td> 
-                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                     <td padding='0' width='40%' align='right'><font color='000000' size='1'  face='Tahoma'></font></td>              
-                                    </tr> 
-                                    <tr class='isi12' padding='0'>
-                                     <td padding='0' width='40%'><font color='000000' size='1'  face='Tahoma'>&nbsp;</td> 
-                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                     <td padding='0' width='40%' align='right'><font color='000000' size='1'  face='Tahoma'></font></td>              
-                                    </tr> 
-                                    <tr class='isi12' padding='0'>
                                      <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'>( ............................. )</td>     
                                      <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                     <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>(";
+                                     <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>";
                                         if(getOne("select count(nama) from petugas where nip='$petugas'")>=1){
-											echo getOne("select nama from petugas where nip='$petugas'");                                            
+                                            $filename               = $PNG_TEMP_DIR.$petugas.'.png';
+                                            $errorCorrectionLevel   = 'L';
+                                            $matrixPointSize        = 4;
+                                            QRcode::png("Dikeluarkan di ".$setting["nama_instansi"].", Kabupaten/Kota ".$setting["kabupaten"]."\nDitandatangani secara elektronik oleh ".getOne("select nama from petugas where nip='$petugas'")."\nID  ".getOne3("select ifnull(sha1(sidikjari),'".$petugas."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$petugas."'",$petugas)."\n".$tanggal, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
+                                            echo "<img width='50' height='50' src='".$PNG_WEB_DIR.basename($filename)."'/><br>( ".getOne("select nama from petugas where nip='$petugas'")." )";    
                                         }else{
-                                            echo " .............................. ";
+                                            $filename               = $PNG_TEMP_DIR.$petugas.'.png';
+                                            $errorCorrectionLevel   = 'L';
+                                            $matrixPointSize        = 4;
+                                            QRcode::png("Dikeluarkan di ".$setting["nama_instansi"].", Kabupaten/Kota ".$setting["kabupaten"]."\nDitandatangani secara elektronik oleh Admin Utama\nID ADMIN\n".$tanggal, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
+                                            echo "<img width='45' height='45' src='".$PNG_WEB_DIR.basename($filename)."'/><br>( Admin Utama )";
                                         }
-                                        echo ")</font></td>              
+                                        echo "</font></td>              
                                     </tr>   
                               </table>
                             </td>

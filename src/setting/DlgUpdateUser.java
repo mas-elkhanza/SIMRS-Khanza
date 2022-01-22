@@ -681,7 +681,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print,bpjs_rujukan_khusus,"+
                         "pemeliharaan_gedung,grafik_perbaikan_inventaris_pertanggal,grafik_perbaikan_inventaris_perbulan,grafik_perbaikan_inventaris_pertahun,"+
                         "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,piutang_lainlain,cara_bayar,audit_kepatuhan_apd,bpjs_task_id, "+
-                        "bayar_piutang_lain,pembayaran_akun_bayar4,stok_akhir_farmasi_pertanggal,riwayat_kamar_pasien,uji_fungsi_kfr from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "bayar_piutang_lain,pembayaran_akun_bayar4,stok_akhir_farmasi_pertanggal,riwayat_kamar_pasien,uji_fungsi_kfr,hapus_berkas_digital_perawatan from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2912,6 +2912,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Uji Fungsi/Prosedur KFR".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Uji Fungsi/Prosedur KFR",rs.getBoolean("uji_fungsi_kfr")});
+                    }
+                    
+                    if("[L]Hapus Berkas Digital Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Hapus Berkas Digital Perawatan",rs.getBoolean("hapus_berkas_digital_perawatan")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6063,6 +6067,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Uji Fungsi/Prosedur KFR".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","uji_fungsi_kfr='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Hapus Berkas Digital Perawatan".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hapus_berkas_digital_perawatan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

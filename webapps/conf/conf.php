@@ -24,12 +24,8 @@
 
     function cleankar($dirty){
 	$konektor=bukakoneksi();
-	if (get_magic_quotes_gpc()) {
-            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
-	}else{
-            $clean = mysqli_real_escape_string($konektor,$dirty);	
-	} 
-        mysqli_close($konektor);
+	$clean = mysqli_real_escape_string($konektor,$dirty);	
+	mysqli_close($konektor);
 	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
     }
     
@@ -337,6 +333,13 @@
     function getOne($sql) {
         $hasil=bukaquery($sql);
         list($result) =mysqli_fetch_array($hasil);
+        return $result;
+    }
+    
+    function getOne3($sql,$string) {
+        $hasil=bukaquery($sql);
+        list($result) =mysqli_fetch_array($hasil);
+        if(empty($result)) $result=$string;
         return $result;
     }
     
