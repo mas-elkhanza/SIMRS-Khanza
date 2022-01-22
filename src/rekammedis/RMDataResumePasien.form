@@ -348,7 +348,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="28-12-2021"/>
+                        <StringItem index="0" value="21-01-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -376,7 +376,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="28-12-2021"/>
+                        <StringItem index="0" value="21-01-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -505,7 +505,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="scrollInput" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[102, 853]"/>
+                  <Dimension value="[102, 1000]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -526,7 +526,7 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="FormInput" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 830]"/>
+                      <Dimension value="[100, 1000]"/>
                     </Property>
                   </Properties>
 
@@ -653,7 +653,7 @@
                     </Container>
                     <Component class="widget.Label" name="jLabel9">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Tindakan Selama di RS :"/>
+                        <Property name="text" type="java.lang.String" value="Tindak Lanjut :"/>
                         <Property name="name" type="java.lang.String" value="jLabel9" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -741,7 +741,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="410" y="640" width="130" height="23"/>
+                          <AbsoluteConstraints x="10" y="810" width="130" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1006,23 +1006,6 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="kondisiSaatPulang">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="-"/>
-                        <Property name="name" type="java.lang.String" value="kondisiSaatPulang" noResource="true"/>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[80, 23]"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kondisiSaatPulangKeyPressed"/>
-                      </Events>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="150" y="400" width="640" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                     <Component class="widget.Label" name="jLabel10">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Penyakit Penyerta :"/>
@@ -1139,7 +1122,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="10" y="670" width="390" height="130"/>
+                          <AbsoluteConstraints x="150" y="640" width="640" height="160"/>
                         </Constraint>
                       </Constraints>
 
@@ -1159,24 +1142,10 @@
                               <Properties>
                                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="2" rowCount="4">
-                                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                  </Table>
+                                  <Table columnCount="0" rowCount="0"/>
                                 </Property>
                                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                                  <TableColumnModel selectionModel="0">
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                  </TableColumnModel>
+                                  <TableColumnModel selectionModel="0"/>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="tblObatPerawatan" noResource="true"/>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -1198,7 +1167,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="0" y="640" width="130" height="23"/>
+                          <AbsoluteConstraints x="10" y="640" width="130" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1208,7 +1177,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="420" y="670" width="370" height="130"/>
+                          <AbsoluteConstraints x="150" y="810" width="640" height="160"/>
                         </Constraint>
                       </Constraints>
 
@@ -1271,20 +1240,46 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="tindakanSlRS">
+                    <Component class="widget.ComboBox" name="cmbKondisiPulang">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="-"/>
-                        <Property name="name" type="java.lang.String" value="tindakanSlRS" noResource="true"/>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[80, 23]"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Stabil"/>
+                            <StringItem index="1" value="Belum Stabil"/>
+                            <StringItem index="2" value="Meninggal"/>
+                          </StringArray>
                         </Property>
+                        <Property name="name" type="java.lang.String" value="cmbKondisiPulang" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tindakanSlRSKeyPressed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbKondisiPulangActionPerformed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbKondisiPulangKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="150" y="370" width="640" height="23"/>
+                          <AbsoluteConstraints x="150" y="400" width="310" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.ComboBox" name="cmbTindakLanjut">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Pulang"/>
+                            <StringItem index="1" value="Rujuk"/>
+                            <StringItem index="2" value="Pemulasaraan Jenazah (Covid)"/>
+                            <StringItem index="3" value="Pemulasaraan Jenazah (Non Covid)"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="cmbTindakLanjut" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTindakLanjutActionPerformed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbTindakLanjutKeyPressed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="150" y="370" width="310" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
