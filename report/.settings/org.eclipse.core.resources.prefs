@@ -36,4 +36,5 @@ encoding/rptSpri.jrxml=UTF-8
 encoding/rptStokKeluarMedis.jrxml=UTF-8
 encoding/rptStokKeluarMedisPerItem.jrxml=UTF-8
 encoding/rptSuratKematian.jrxml=UTF-8
+encoding/subResepPulang.jrxml=UTF-8
 encoding/subResumeObat.jrxml=UTF-8

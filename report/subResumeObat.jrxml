@@ -16,37 +16,40 @@
 		<defaultValueExpression><![CDATA[$P{no_rawat}]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT resep_obat.tgl_peresepan,
-	databarang.nama_brng,
-	aturan_pakai.aturan AS aturan_pakai
-FROM resep_obat
-	INNER JOIN detail_pemberian_obat ON 
-	 resep_obat.no_rawat = detail_pemberian_obat.no_rawat 
-	left join aturan_pakai ON 
-	 resep_obat.no_rawat = aturan_pakai.no_rawat 
-	INNER JOIN databarang ON 
-	 databarang.kode_brng = detail_pemberian_obat.kode_brng 
+		<![CDATA[SELECT *
+FROM obat_rs_resume
 WHERE 
-	 resep_obat.no_rawat = $P{no_rawat} 
-	 AND databarang.kode_kategori = 'obat' 
-GROUP BY databarang.kode_brng]]>
+	 no_rawat = $P{no_rawat} 
+GROUP BY no_rawat, kode_brng]]>
 	</queryString>
-	<field name="tgl_peresepan" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="tgl_peresepan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="resep_obat"/>
+	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_rs_resume"/>
+	</field>
+	<field name="tgl_perawatan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_perawatan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_rs_resume"/>
+	</field>
+	<field name="kode_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_brng"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_rs_resume"/>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="databarang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_rs_resume"/>
 	</field>
 	<field name="aturan_pakai" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="aturan_pakai"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="aturan_pakai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_rs_resume"/>
+	</field>
+	<field name="dosis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dosis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="obat_rs_resume"/>
 	</field>
 	<columnHeader>
 		<band height="14" splitType="Immediate">
 			<staticText>
-				<reportElement x="0" y="0" width="277" height="14" uuid="d3fbbcd7-588d-4396-bc3d-8578ce1da05e">
+				<reportElement x="0" y="0" width="200" height="14" uuid="d3fbbcd7-588d-4396-bc3d-8578ce1da05e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="441b5a13-ebce-45a5-9abe-57b7113b839b"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -61,13 +64,25 @@ GROUP BY databarang.kode_brng]]>
 				</textElement>
 				<text><![CDATA[Nama Obat]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="77" height="14" uuid="8af3c73d-44ac-4421-a98c-5d151590a1d6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54d7b060-8abc-43d3-8795-78e56fa7493c"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aturan Pakai]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="15" splitType="Immediate">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement x="0" y="0" width="277" height="15" uuid="657ecd3e-d16a-41dc-8a45-5334e81058d6">
+				<reportElement x="0" y="0" width="200" height="15" uuid="657ecd3e-d16a-41dc-8a45-5334e81058d6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="441b5a13-ebce-45a5-9abe-57b7113b839b"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -81,6 +96,18 @@ GROUP BY databarang.kode_brng]]>
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement x="200" y="0" width="77" height="15" uuid="2cbfaff0-9164-4c7b-aceb-601b3cbc7347">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54d7b060-8abc-43d3-8795-78e56fa7493c"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
