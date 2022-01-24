@@ -30,51 +30,24 @@
 
                 echo "<input type=hidden name=no_rawat  value=$no_rawat>
                       <input type=hidden name=action value=$action>";
-                echo "<div align='center' class='link'>
-                          <a href=?act=ListNonHapus>| List Berkas |</a>
-                      </div>";
             ?>
-            <div style="width: 100%; height: 45%; overflow: auto;">
+            <div style="width: 100%; height: 27%; overflow: auto;">
             <table width="100%" align="center">
                 <tr class="isi2">
-                    <td width="25%" >No.Rawat</td><td width="">:</td>
-                    <td width="75%"><?php echo $no_rawat;?></td>
+                    <td width="25%" valign="top">No.Rawat</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><?php echo $no_rawat;?></td>
                 </tr>
                 <tr class="isi2">
-                    <td width="25%" >No.RM</td><td width="">:</td>
-                    <td width="75%"><?php echo $no_rkm_medis;?></td>
+                    <td width="25%" valign="top">No.RM</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><?php echo $no_rkm_medis;?></td>
                 </tr>
 		<tr class="isi2">
-                    <td width="25%">Nama Pasien</td><td width="">:</td>
-                    <td width="75%"><?php echo $nm_pasien.", ".$umurdaftar." ".$sttsumur;?></td>
-                </tr>
+                    <td width="25%" valign="top">Nama Pasien</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><?php echo $nm_pasien.", ".$umurdaftar." ".$sttsumur;?></td>
+                </tr>                
                 <tr class="isi2">
-                    <td width="25%">Jenis Kelamin</td><td width="">:</td>
-                    <td width="75%"><?php echo $jk;?></td>
-                </tr>
-                <tr class="isi2">
-                    <td width="25%">Alamat</td><td width="">:</td>
-                    <td width="75%"><?php echo $almt_pj;?></td>
-                </tr>
-                <tr class="isi2">
-                    <td width="25%">Tgl.Registrasi</td><td width="">:</td>
-                    <td width="75%"><?php echo $tgl_registrasi;?></td>
-                </tr>   
-                <tr class="isi2">
-                    <td width="25%">Poliklinik</td><td width="">:</td>
-                    <td width="75%"><?php echo $nm_poli;?></td>
-                </tr> 
-                <tr class="isi2">
-                    <td width="25%">Dokter</td><td width="">:</td>
-                    <td width="75%"><?php echo $nm_dokter;?></td>
-                </tr> 
-                <tr class="isi2">
-                    <td width="25%">Status</td><td width="">:</td>
-                    <td width="75%"><?php echo $status_lanjut." (".$png_jawab.")";?></td>
-                </tr>
-                <tr class="isi2">
-                    <td width="25%" >Berkas Digital</td><td width="">:</td>
-                    <td width="75%">
+                    <td width="25%" valign="top">Berkas Digital</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top">
                         <select name="kode" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
                             <?php
                                 $_sql = "SELECT kode,nama FROM master_berkas_digital ORDER BY nama";
@@ -89,9 +62,8 @@
                     </td>
                 </tr>
                 <tr class="isi2">
-                    <td width="25%" >File Berkas(PDF/JPG)</td><td width="">:</td>
-                    <td width="75%"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
-                    <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
+                    <td width="25%" valign="top">File Berkas(PDF/JPG)</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
                     </td>
                 </tr>        
             </table>
@@ -109,7 +81,7 @@
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailNonHapus&action=TAMBAH&no_rawat=$no_rawat'>";
+                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&no_rawat=$no_rawat'>";
                                 break;
                         }
                     }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
@@ -117,7 +89,7 @@
                     }
                 }
             ?>
-            <div style="width: 100%; height: 35%; overflow: auto;">
+            <div style="width: 100%; height: 56%; overflow: auto;">
             <?php
                 $_sql = "SELECT berkas_digital_perawatan.no_rawat,berkas_digital_perawatan.kode, 
                         master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file 
@@ -151,21 +123,24 @@
                           </table>";}
         ?>
         </div>
-        </form>
         <?php
-            if ($action=="HAPUS") {                
+            if ($action=="HAPUS") {
                 unlink($_GET['lokasi_file']);
-                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' and lokasi_file='".$_GET['lokasi_file']."' ","?act=DetailNonHapus&action=TAMBAH&no_rawat=$no_rawat");
+                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' and lokasi_file='".$_GET['lokasi_file']."'","?act=Detail2NonHapus&action=TAMBAH&no_rawat=$no_rawat");
             }
-
-        
+            
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td><div align='left'>Data : $jumlah</div></td>                        
+                        <td><div align='left'>Data : $jumlah</div></td><td><input name='BtnKeluar' type='submit' class='button' value='&nbsp;&nbsp;&nbsp;Keluar&nbsp;&nbsp;&nbsp;' /></td>                        
                     </tr>     
                  </table>");
-        
-        ?>
+            
+            $BtnKeluar=isset($_POST['BtnKeluar'])?$_POST['BtnKeluar']:NULL;
+            if (isset($BtnKeluar)) {
+                echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=Keluar'>";
+            }        
+        ?>       
+        </form>
     </div>
 
 </div>

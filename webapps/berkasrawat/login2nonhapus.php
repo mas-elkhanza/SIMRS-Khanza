@@ -4,7 +4,7 @@
             if(($_GET['usere']=="admin")&&($_GET['passwordte']=="akusayangsamakamu")) {
                 session_start();
                 $_SESSION['ses_admin']="admin";
-                $url = "index.php?act=Detail2&action=TAMBAH&no_rawat=".$_GET['no_rawat']."";			
+                $url = "index.php?act=Detail2NonHapus&action=TAMBAH&no_rawat=".$_GET['no_rawat']."";			
             }else{
                     session_start();
                     session_destroy();

@@ -67,6 +67,7 @@
                 case 'Detail'               : include_once('pages/detail.php'); break;
                 case 'DetailNonHapus'       : include_once('pages/detailnonhapus.php'); break;
                 case 'Detail2'              : include_once('pages/detail2.php'); break;
+                case 'Detail2NonHapus'      : include_once('pages/detail2nonhapus.php'); break;
                 case 'MasterBerkas'         : include_once('pages/master.php'); break;
                 default			    : include_once('homevedika.php');
             }
