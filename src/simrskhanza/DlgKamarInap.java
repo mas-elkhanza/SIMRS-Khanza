@@ -5739,14 +5739,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             break;
                         case "KOSONG":
                             if (Sequel.menyimpantf("kamar_inap",
-                                    null + ",'" + norawat.getText() + "','" + kdkamar.getText() + "','" + TTarif.getText()
-                                    + "','" + diagnosaawal.getText() + "','" + diagnosaakhir.getText() + "','"
-                                    + upf.getSelectedItem() + "','" + kirimanDari.getSelectedItem() + "','"
-                                    + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-"
-                                    + CmbTgl.getSelectedItem() + "','" + cmbJam.getSelectedItem() + ":"
-                                    + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem()
-                                    + "','0000-00-00','00:00:00','" + TJmlHari.getText() + "','"
-                                    + ttlbiaya.getText() + "','-'",
+                                    "'"+norawat.getText() + "','" 
+                                            + kdkamar.getText() + "','" 
+                                            + TTarif.getText()+ "','" 
+                                            + diagnosaawal.getText() + "','" 
+                                            + diagnosaakhir.getText() + "','"
+                                    + upf.getSelectedItem() + "','" 
+                                            + kirimanDari.getSelectedItem() + "','"
+                                    + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-" + CmbTgl.getSelectedItem() + "','" 
+                                            + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem()
+                                    + "','0000-00-00','00:00:00','" 
+                                            + TJmlHari.getText() + "','"
+                                    + ttlbiaya.getText() + "',"
+                                            + "'-'",
                                     "No.Rawat") == true) {
                                 Sequel.mengedit("reg_periksa", "no_rawat='" + norawat.getText() + "'",
                                         "status_lanjut='Ranap'");
