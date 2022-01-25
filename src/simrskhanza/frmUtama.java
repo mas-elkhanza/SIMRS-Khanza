@@ -607,6 +607,7 @@ import keuangan.DlgAkunAsetInventaris;
 import keuangan.DlgAkunPenagihanPiutang;
 import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
+import keuangan.DlgKategoriPengeluaran;
 import keuangan.DlgLhtBankJateng;
 import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPembayaranPerAKunBayar4;
@@ -17908,6 +17909,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnKategoriPengeluaranHarianActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKategoriPengeluaran aplikasi=new DlgKategoriPengeluaran(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18538,7 +18552,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
-            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR;
+            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian;
     
     public void isWall(){
         try{            
@@ -20369,6 +20383,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             } 
 
+            if(akses.getkategori_pengeluaran_harian()==true){
+                Panelmenu.add(btnKategoriPengeluaranHarian);
+                jmlmenu++;
+            }
+            
             if(akses.getpengeluaran()==true){
                 Panelmenu.add(btnPengeluaran);
                 jmlmenu++;
@@ -24277,6 +24296,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPengaturanRekening);   
             jmlmenu++;
         } 
+
+        if(akses.getkategori_pengeluaran_harian()==true){
+            Panelmenu.add(btnKategoriPengeluaranHarian);
+            jmlmenu++;
+        }
 
         if(akses.getpengeluaran()==true){
             Panelmenu.add(btnPengeluaran);
@@ -28862,6 +28886,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         } 
 
+        if(akses.getkategori_pengeluaran_harian()==true){
+            if(btnKategoriPengeluaranHarian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKategoriPengeluaranHarian);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengeluaran()==true){
             if(btnPengeluaran.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengeluaran);
@@ -34503,6 +34534,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnUjiFungsiKFR.setName("btnUjiFungsiKFR");
         btnUjiFungsiKFR.setPreferredSize(new java.awt.Dimension(200, 90));
         btnUjiFungsiKFR.addActionListener(this::btnUjiFungsiKFRActionPerformed);
+        
+        btnKategoriPengeluaranHarian = new widget.ButtonBig();
+        btnKategoriPengeluaranHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/299058_tag_icon.png"))); 
+        btnKategoriPengeluaranHarian.setText("Kategori Pengeluaran Harian");
+        btnKategoriPengeluaranHarian.setIconTextGap(0);
+        btnKategoriPengeluaranHarian.setName("btnKategoriPengeluaranHarian");
+        btnKategoriPengeluaranHarian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKategoriPengeluaranHarian.addActionListener(this::btnKategoriPengeluaranHarianActionPerformed);
     }
     
 }

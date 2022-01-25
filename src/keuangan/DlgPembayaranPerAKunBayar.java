@@ -479,6 +479,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
             try {
                 rsjamshift=psjamshift.executeQuery();
                 all=0;
+                no=1;
                 while(rsjamshift.next()){ 
                     ps= koneksi.prepareStatement(
                             "select no_nota,tgl_bayar,nama_pasien,jumlah_bayar,petugas from tagihan_sadewa "+
@@ -492,7 +493,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                             ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_pulang"));
                         }
                         rs=ps.executeQuery();
-                        no=1;
                         while(rs.next()){                            
                             petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
                             if(CmbStatus.getSelectedItem().toString().equals("Semua")){
