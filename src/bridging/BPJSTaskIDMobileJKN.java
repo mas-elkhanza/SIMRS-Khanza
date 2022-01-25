@@ -432,7 +432,7 @@ public final class BPJSTaskIDMobileJKN extends javax.swing.JDialog {
                                 }
                             }
                         }else {
-                            JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                            System.out.println("Notif : "+nameNode.path("message").asText());               
                         }   
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
