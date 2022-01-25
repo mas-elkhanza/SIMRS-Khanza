@@ -919,10 +919,10 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
     
     public void isCek(){
         asalform=akses.getform();       
-        BtnSimpan.setEnabled(akses.getpemasukan_lain());
-        BtnBatal.setEnabled(akses.getpemasukan_lain());
-        BtnEdit.setEnabled(akses.getpemasukan_lain());
-        BtnHapus.setEnabled(akses.getpemasukan_lain());
-        BtnPrint.setEnabled(akses.getpemasukan_lain());      
+        BtnSimpan.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnBatal.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnEdit.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnHapus.setEnabled(akses.getkategori_pemasukan_lain());
+        BtnPrint.setEnabled(akses.getkategori_pemasukan_lain());      
     }
 }

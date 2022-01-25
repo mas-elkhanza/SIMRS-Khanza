@@ -17920,7 +17920,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
-    } 
+    }
+    
+    private void btnKategoriPemasukanLianActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKategoriPengeluaran aplikasi=new DlgKategoriPengeluaran(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     
     /**
     * @param args the command line arguments
@@ -18552,7 +18565,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
-            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian;
+            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian;
     
     public void isWall(){
         try{            
@@ -20393,6 +20406,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
 
+            if(akses.getkategori_pemasukan_lain()==true){
+                Panelmenu.add(btnKategoriPemasukanLian);
+                jmlmenu++;
+            }
+            
             if(akses.getpemasukan_lain()==true){
                 Panelmenu.add(btnPemasukanLain);
                 jmlmenu++;
@@ -24304,6 +24322,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpengeluaran()==true){
             Panelmenu.add(btnPengeluaran);
+            jmlmenu++;
+        }
+
+        if(akses.getkategori_pemasukan_lain()==true){
+            Panelmenu.add(btnKategoriPemasukanLian);
             jmlmenu++;
         }
 
@@ -28900,6 +28923,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
 
+        if(akses.getkategori_pemasukan_lain()==true){
+            if(btnKategoriPemasukanLian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKategoriPemasukanLian);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpemasukan_lain()==true){
             if(btnPemasukanLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemasukanLain);
@@ -34542,6 +34572,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKategoriPengeluaranHarian.setName("btnKategoriPengeluaranHarian");
         btnKategoriPengeluaranHarian.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKategoriPengeluaranHarian.addActionListener(this::btnKategoriPengeluaranHarianActionPerformed);
+        
+        btnKategoriPemasukanLian = new widget.ButtonBig();
+        btnKategoriPemasukanLian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3440908_ecommerce_label_price_shop_shopping_icon.png"))); 
+        btnKategoriPemasukanLian.setText("Kategori Pemasukan Lain-lain");
+        btnKategoriPemasukanLian.setIconTextGap(0);
+        btnKategoriPemasukanLian.setName("btnKategoriPemasukanLian");
+        btnKategoriPemasukanLian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKategoriPemasukanLian.addActionListener(this::btnKategoriPemasukanLianActionPerformed);
     }
     
 }

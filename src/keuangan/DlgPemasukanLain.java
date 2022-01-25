@@ -50,7 +50,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
     private PreparedStatement ps,psakun;
     private ResultSet rs;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgKategoriPemasukan kategori=new DlgKategoriPemasukan(null,false);
+    private DlgCariKategoriPemasukanLain kategori=new DlgCariKategoriPemasukanLain(null,false);
     private double total=0;
     private boolean sukses=true;
 
@@ -1018,8 +1018,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
         akses.setform("DlgPemasukanLain");
-        kategori.emptTeks();
-        kategori.tampil();
         kategori.isCek();
         kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kategori.setLocationRelativeTo(internalFrame1);
