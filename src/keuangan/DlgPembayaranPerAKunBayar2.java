@@ -920,9 +920,7 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }                
-        
-            
+            }   
             
             htmlContent.append(                             
                 "<tr class='isi'>"+

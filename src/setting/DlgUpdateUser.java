@@ -682,7 +682,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "pemeliharaan_gedung,grafik_perbaikan_inventaris_pertanggal,grafik_perbaikan_inventaris_perbulan,grafik_perbaikan_inventaris_pertahun,"+
                         "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,piutang_lainlain,cara_bayar,audit_kepatuhan_apd,bpjs_task_id,"+
                         "bayar_piutang_lain,pembayaran_akun_bayar4,stok_akhir_farmasi_pertanggal,riwayat_kamar_pasien,uji_fungsi_kfr,hapus_berkas_digital_perawatan,"+
-                        "kategori_pengeluaran_harian,kategori_pemasukan_lain from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "kategori_pengeluaran_harian,kategori_pemasukan_lain,pembayaran_akun_bayar5 from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1717,6 +1717,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[H]Pembayaran Per Akun Bayar 4".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[H]Pembayaran Per Akun Bayar 4",rs.getBoolean("pembayaran_akun_bayar4")});
+                    }
+                    
+                    if("[H]Pembayaran Per Akun Bayar 5".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[H]Pembayaran Per Akun Bayar 5",rs.getBoolean("pembayaran_akun_bayar5")});
                     }
                     
                     if("[I]ICD 10".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4876,6 +4880,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[H]Pembayaran Per Akun Bayar 4".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pembayaran_akun_bayar4='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[H]Pembayaran Per Akun Bayar 5".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pembayaran_akun_bayar5='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[I]ICD 10".equals(tbUser.getValueAt(i,1).toString())){

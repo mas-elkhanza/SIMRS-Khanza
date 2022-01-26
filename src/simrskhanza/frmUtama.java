@@ -611,6 +611,7 @@ import keuangan.DlgKategoriPengeluaran;
 import keuangan.DlgLhtBankJateng;
 import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPembayaranPerAKunBayar4;
+import keuangan.DlgPembayaranPerAKunBayar5;
 import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
@@ -17935,6 +17936,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPembayaranAkunBayar5ActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPembayaranPerAKunBayar5 aplikasi=new DlgPembayaranPerAKunBayar5(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -18565,7 +18577,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSDataSEPInternal,btnBPJSKlaimJasaRaharja,btnBPJSPasienFinger,btnBPJSRujukanKhusus,btnPemeliharaanGedung,btnGrafikPerbaikanInventarisPerTanggal,
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
-            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian;
+            btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
+            btnPembayaranAkunBayar5;
     
     public void isWall(){
         try{            
@@ -19922,6 +19935,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpembayaran_akun_bayar4()==true){
                 Panelmenu.add(btnPembayaranAkunBayar4);
+                jmlmenu++;
+            }
+            
+            if(akses.getpembayaran_akun_bayar5()==true){
+                Panelmenu.add(btnPembayaranAkunBayar5);
                 jmlmenu++;
             }
             
@@ -23843,6 +23861,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpembayaran_akun_bayar4()==true){
             Panelmenu.add(btnPembayaranAkunBayar4);
+            jmlmenu++;
+        }
+        
+        if(akses.getpembayaran_akun_bayar5()==true){
+            Panelmenu.add(btnPembayaranAkunBayar5);
             jmlmenu++;
         }
         
@@ -28248,6 +28271,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpembayaran_akun_bayar4()==true){
             if(btnPembayaranAkunBayar4.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranAkunBayar4);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpembayaran_akun_bayar5()==true){
+            if(btnPembayaranAkunBayar5.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranAkunBayar5);
                 jmlmenu++;
             }                
         }
@@ -34580,6 +34610,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKategoriPemasukanLian.setName("btnKategoriPemasukanLian");
         btnKategoriPemasukanLian.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKategoriPemasukanLian.addActionListener(this::btnKategoriPemasukanLianActionPerformed);
+        
+        btnPembayaranAkunBayar5 = new widget.ButtonBig();
+        btnPembayaranAkunBayar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); 
+        btnPembayaranAkunBayar5.setText("Pembayaran Per Akun Bayar 5");
+        btnPembayaranAkunBayar5.setIconTextGap(0);
+        btnPembayaranAkunBayar5.setName("btnPembayaranAkunBayar5");
+        btnPembayaranAkunBayar5.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranAkunBayar5.addActionListener(this::btnPembayaranAkunBayar5ActionPerformed);
     }
     
 }
