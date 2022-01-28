@@ -13,6 +13,7 @@
 
     <?php
         reportsqlinjection();        
+        $petugas        = str_replace("_"," ",$_GET['petugas']); 
         $norawat        = str_replace("_"," ",$_GET['norawat']); 
         $deposit        = str_replace("_"," ",$_GET['deposit']);
         $pasien         = str_replace("_"," ",$_GET['pasien']);

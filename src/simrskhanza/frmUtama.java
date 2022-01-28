@@ -1483,6 +1483,9 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir3 = new javax.swing.JMenuItem();
         MnRekapHadir4 = new javax.swing.JMenuItem();
         MnRekapHadir5 = new javax.swing.JMenuItem();
+        MnInfoLaborat = new javax.swing.JMenuItem();
+        MnInfoLaborat1 = new javax.swing.JMenuItem();
+        MnInfoLaborat2 = new javax.swing.JMenuItem();
         jSeparator13 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -1698,7 +1701,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/05/2021" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/01/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7763,6 +7766,48 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu7.add(MnRekapHadir5);
+
+        MnInfoLaborat.setBackground(new java.awt.Color(255, 255, 254));
+        MnInfoLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoLaborat.setForeground(new java.awt.Color(50, 90, 40));
+        MnInfoLaborat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnInfoLaborat.setText("Antrian Laborat Patologi Klinis");
+        MnInfoLaborat.setName("MnInfoLaborat"); // NOI18N
+        MnInfoLaborat.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoLaborat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoLaboratActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnInfoLaborat);
+
+        MnInfoLaborat1.setBackground(new java.awt.Color(255, 255, 254));
+        MnInfoLaborat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoLaborat1.setForeground(new java.awt.Color(50, 90, 40));
+        MnInfoLaborat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnInfoLaborat1.setText("Antrian Laborat Patologi Anatomi");
+        MnInfoLaborat1.setName("MnInfoLaborat1"); // NOI18N
+        MnInfoLaborat1.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoLaborat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoLaborat1ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnInfoLaborat1);
+
+        MnInfoLaborat2.setBackground(new java.awt.Color(255, 255, 254));
+        MnInfoLaborat2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoLaborat2.setForeground(new java.awt.Color(50, 90, 40));
+        MnInfoLaborat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnInfoLaborat2.setText("Antrian Radiologi");
+        MnInfoLaborat2.setName("MnInfoLaborat2"); // NOI18N
+        MnInfoLaborat2.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoLaborat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoLaborat2ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnInfoLaborat2);
 
         jSeparator13.setBackground(new java.awt.Color(190, 220, 180));
         jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
@@ -14085,6 +14130,24 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnLaboratoriumPAActionPerformed
 
+    private void MnInfoLaboratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInfoLaboratActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("antrianlaborat.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnInfoLaboratActionPerformed
+
+    private void MnInfoLaborat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInfoLaborat1ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("antrianlaborat2.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnInfoLaborat1ActionPerformed
+
+    private void MnInfoLaborat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInfoLaborat2ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("antrianradiologi.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnInfoLaborat2ActionPerformed
+
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -18001,6 +18064,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnInfoBed3;
     private javax.swing.JMenuItem MnInfoBed4;
     private javax.swing.JMenuItem MnInfoBed5;
+    private javax.swing.JMenuItem MnInfoLaborat;
+    private javax.swing.JMenuItem MnInfoLaborat1;
+    private javax.swing.JMenuItem MnInfoLaborat2;
     private javax.swing.JMenuItem MnKoleksiPenelitian;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnPengajuanCutiPegawai;
