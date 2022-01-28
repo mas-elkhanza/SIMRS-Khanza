@@ -181,10 +181,10 @@
                                                             'namapoli' => $data['nm_poli'],
                                                             'namadokter' => $data['nm_dokter'],
                                                             'totalantrean' => $data['total_antrean'],
-                                                            'sisaantrean' => (validangka($data['sisa_antrean'])>0?$data['sisa_antrean']:0),
+                                                            'sisaantrean' => (validangka($data['sisa_antrean'])>=0?($data['sisa_antrean']):0),
                                                             'antreanpanggil' =>$kdpoli."-".getOne2("select reg_periksa.no_reg from reg_periksa where reg_periksa.stts='Belum' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.kd_poli='$kdpoli' and reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' order by CONVERT(RIGHT(reg_periksa.no_reg,3),signed) limit 1 "),
                                                             'sisakuotajkn' => ($kuota-$data['total_antrean']),
-                                                            'kuotajkn' => $kuota,
+                                                            'kuotajkn' => ($kuota),
                                                             'sisakuotanonjkn' => ($kuota-$data['total_antrean']),
                                                             'kuotanonjkn' => ($kuota),
                                                             'keterangan' => $data['keterangan']
@@ -902,7 +902,7 @@
                                                             'nomorantrean' => $data['kd_poli']."-".$noreg,
                                                             'namapoli' => $data['nm_poli'],
                                                             'namadokter' => $data['nm_dokter'],
-                                                            'sisaantrean' => (validangka($data['sisa_antrean'])>0?$data['sisa_antrean']:0),
+                                                            'sisaantrean' => (validangka($data['sisa_antrean'])>=0?($data['sisa_antrean']):0),
                                                             'antreanpanggil' => $data['kd_poli']."-".getOne2("select reg_periksa.no_reg from reg_periksa where reg_periksa.stts='Belum' and reg_periksa.kd_dokter='$kodedokter' and reg_periksa.kd_poli='$kodepoli' and reg_periksa.tgl_registrasi='$booking[tanggalperiksa]' and CONVERT(RIGHT(reg_periksa.no_reg,3),signed)<=CONVERT(RIGHT($noreg,3),signed) order by CONVERT(RIGHT(reg_periksa.no_reg,3),signed) limit 1 "),
                                                             'waktutunggu' => (($data['sisa_antrean']*$waktutunggu)*1000),
                                                             'keterangan' => "Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih .."
