@@ -180,7 +180,7 @@
                                                         'response' => array(
                                                             'namapoli' => $data['nm_poli'],
                                                             'namadokter' => $data['nm_dokter'],
-                                                            'totalantrean' => $data['total_antrean'],
+                                                            'totalantrean' => intval($data['total_antrean']),
                                                             'sisaantrean' => intval(validangka($data['sisa_antrean'])>=0?($data['sisa_antrean']):0),
                                                             'antreanpanggil' =>$kdpoli."-".getOne2("select reg_periksa.no_reg from reg_periksa where reg_periksa.stts='Belum' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.kd_poli='$kdpoli' and reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' order by CONVERT(RIGHT(reg_periksa.no_reg,3),signed) limit 1 "),
                                                             'sisakuotajkn' => intval($kuota-$data['total_antrean']),
