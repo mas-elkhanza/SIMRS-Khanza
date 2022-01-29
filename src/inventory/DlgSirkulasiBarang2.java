@@ -1072,7 +1072,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah) "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
                         " penjualan.tgl_jual  between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
@@ -1522,7 +1522,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah) "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
                         " penjualan.tgl_jual  between ? and ? and penjualan.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));

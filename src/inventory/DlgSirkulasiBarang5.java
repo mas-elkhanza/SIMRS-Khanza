@@ -16,7 +16,6 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -1159,8 +1158,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah), sum(detailjual.total) "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
-                        " penjualan.tgl_jual  between ? and ? ");
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
+                        " penjualan.tgl_jual between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,tglopname);
@@ -1659,8 +1658,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah), sum(detailjual.total)  "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
-                        " penjualan.tgl_jual  between ? and ? and penjualan.kd_bangsal=?");
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
+                        " penjualan.tgl_jual between ? and ? and penjualan.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,tglopname);

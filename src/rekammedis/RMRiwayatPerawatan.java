@@ -7720,7 +7720,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "penjualan.keterangan, penjualan.jns_jual, penjualan.ongkir,bangsal.nm_bangsal,penjualan.status "+
                     " from penjualan inner join petugas on penjualan.nip=petugas.nip "+
                     " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
-                    " where penjualan.no_rkm_medis=? order by penjualan.tgl_jual desc limit 5");
+                    " where penjualan.status='Sudah Dibayar' and penjualan.no_rkm_medis=? order by penjualan.tgl_jual desc limit 5");
             }else if(R2.isSelected()==true){
                 ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
                     "penjualan.nip,petugas.nama, "+
@@ -7728,7 +7728,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "penjualan.keterangan, penjualan.jns_jual, penjualan.ongkir,bangsal.nm_bangsal,penjualan.status "+
                     " from penjualan inner join petugas on penjualan.nip=petugas.nip "+
                     " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
-                    " where penjualan.no_rkm_medis=? order by penjualan.tgl_jual ");
+                    " where penjualan.status='Sudah Dibayar' and penjualan.no_rkm_medis=? order by penjualan.tgl_jual ");
             }else if(R3.isSelected()==true){
                 ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
                     "penjualan.nip,petugas.nama, "+
@@ -7736,7 +7736,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "penjualan.keterangan, penjualan.jns_jual, penjualan.ongkir,bangsal.nm_bangsal,penjualan.status "+
                     " from penjualan inner join petugas on penjualan.nip=petugas.nip "+
                     " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
-                    " where penjualan.no_rkm_medis=? and penjualan.tgl_jual between ? and ? "+
+                    " where penjualan.status='Sudah Dibayar' and penjualan.no_rkm_medis=? and penjualan.tgl_jual between ? and ? "+
                     " order by penjualan.tgl_jual ");
             }else if(R4.isSelected()==true){
                 ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
@@ -7745,7 +7745,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "penjualan.keterangan, penjualan.jns_jual, penjualan.ongkir,bangsal.nm_bangsal,penjualan.status "+
                     " from penjualan inner join petugas on penjualan.nip=petugas.nip "+
                     " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
-                    " where penjualan.no_rkm_medis=? and penjualan.nota_jual=?");
+                    " where penjualan.status='Sudah Dibayar' and penjualan.no_rkm_medis=? and penjualan.nota_jual=?");
             }
             
             try {

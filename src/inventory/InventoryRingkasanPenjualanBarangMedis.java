@@ -1100,7 +1100,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     " and penjualan.kd_bangsal=bangsal.kd_bangsal "+
                     " and penjualan.nota_jual=detailjual.nota_jual "+
                     " and penjualan.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nofak+mem+ptg+sat+bar+" and "+
+                    " where penjualan.status='Sudah Dibayar' and "+tanggal+nofak+mem+ptg+sat+bar+" and "+
                     "(penjualan.nota_jual like '%"+TCari.getText()+"%' or penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
                     "penjualan.nm_pasien like '%"+TCari.getText()+"%' or  penjualan.nip like '%"+TCari.getText()+"%' or "+
                     "petugas.nama like '%"+TCari.getText()+"%' or penjualan.keterangan like '%"+TCari.getText()+"%' or "+
@@ -1293,7 +1293,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     " and penjualan.kd_bangsal=bangsal.kd_bangsal "+
                     " and penjualan.nota_jual=detailjual.nota_jual "+
                     " and penjualan.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nofak+mem+ptg+sat+bar+" and "+
+                    " where penjualan.status='Sudah Dibayar' and "+tanggal+nofak+mem+ptg+sat+bar+" and "+
                     "(penjualan.nota_jual like '%"+TCari.getText()+"%' or penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
                     "penjualan.nm_pasien like '%"+TCari.getText()+"%' or  penjualan.nip like '%"+TCari.getText()+"%' or "+
                     "petugas.nama like '%"+TCari.getText()+"%' or penjualan.keterangan like '%"+TCari.getText()+"%' or "+

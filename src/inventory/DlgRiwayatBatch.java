@@ -470,7 +470,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from penjualan inner join detailjual inner join databarang inner join bangsal inner join petugas "+
                                 "on penjualan.nota_jual=detailjual.nota_jual and databarang.kode_brng=detailjual.kode_brng "+
                                 "and penjualan.kd_bangsal=bangsal.kd_bangsal and penjualan.nip=petugas.nip "+
-                                "where detailjual.kode_brng='"+rs.getString("kode_brng")+"' and detailjual.no_batch='"+rs.getString("no_batch")+"' and detailjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where penjualan.status='Sudah Dibayar' and detailjual.kode_brng='"+rs.getString("kode_brng")+"' and detailjual.no_batch='"+rs.getString("no_batch")+"' and detailjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
