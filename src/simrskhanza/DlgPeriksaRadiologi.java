@@ -2320,6 +2320,10 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     Sequel.mengedit("permintaan_radiologi","noorder=?","tgl_hasil=?,jam_hasil=?",3,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),noorder
                     });
+                    if(status.equals("Ralan")){
+                        Sequel.queryu("delete from antriradiologi2");
+                        Sequel.queryu("insert into antriradiologi2 values('1')");
+                    }
                 }
                 
                 if(status.equals("Ranap")){

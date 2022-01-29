@@ -1976,6 +1976,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Sequel.mengedit("permintaan_labpa","noorder=?","tgl_hasil=?,jam_hasil=?",3,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),noorder
                     });
+                    if(status.equals("Ralan")){
+                        Sequel.queryu("delete from antrilabpa2");
+                        Sequel.queryu("insert into antrilabpa2 values('1')");
+                    }
                 }
                 
                 if(status.equals("Ranap")){

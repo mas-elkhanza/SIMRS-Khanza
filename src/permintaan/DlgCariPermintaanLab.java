@@ -1915,6 +1915,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     BtnCetakHasilLabActionPerformed(evt);
                                     break;
                             }  
+                            Sequel.queryu("delete from antrilabpk");
+                            Sequel.queryu("insert into antrilabpk values('1')");
                             TeksKosong();
                             tampil();
                     }

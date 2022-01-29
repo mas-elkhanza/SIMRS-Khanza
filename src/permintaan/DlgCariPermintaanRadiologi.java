@@ -1601,11 +1601,14 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                 if(tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),0).toString().trim().equals("")){
                     Valid.textKosong(TanggalPulang,"No.Permintaan");
                 }else{
-                    Sequel.mengedit("permintaan_radiologi","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
+                    if(Sequel.mengedittf("permintaan_radiologi","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
                         Valid.SetTgl(TanggalPulang.getSelectedItem()+""),TanggalPulang.getSelectedItem().toString().substring(11,19),tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),0).toString()
-                    });
-                    tampil();
-                    WindowAmbilSampel.dispose();
+                    })==true){
+                        Sequel.queryu("delete from antriradiologi");
+                        Sequel.queryu("insert into antriradiologi values('1')");
+                        tampil();
+                        WindowAmbilSampel.dispose();
+                    }
                 }
             }else{            
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
@@ -1616,11 +1619,12 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                 if(tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),0).toString().trim().equals("")){
                     Valid.textKosong(TanggalPulang,"No.Permintaan");
                 }else{
-                    Sequel.mengedit("permintaan_radiologi","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
+                    if(Sequel.mengedittf("permintaan_radiologi","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
                         Valid.SetTgl(TanggalPulang.getSelectedItem()+""),TanggalPulang.getSelectedItem().toString().substring(11,19),tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),0).toString()
-                    });
-                    tampil3();
-                    WindowAmbilSampel.dispose();
+                    })==true){
+                        tampil3();
+                        WindowAmbilSampel.dispose();
+                    }
                 }
             }else{            
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
