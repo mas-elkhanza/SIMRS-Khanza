@@ -7241,12 +7241,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 
     private boolean simpanRawatJlDrpr() {
-        boolean s = Sequel.menyimpantf("rawat_jl_drpr", "?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum'", "Tindakan", 13, new String[]{
+        boolean s = Sequel.menyimpantf("rawat_jl_drpr", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Tindakan", 15, new String[]{
             TNoRw.getText(), tbTindakan3.getValueAt(i, 1).toString(), KdDok2.getText(), kdptg2.getText(),
             Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
             tbTindakan3.getValueAt(i, 5).toString(), tbTindakan3.getValueAt(i, 6).toString(), tbTindakan3.getValueAt(i, 7).toString(),
             tbTindakan3.getValueAt(i, 8).toString(), tbTindakan3.getValueAt(i, 9).toString(), tbTindakan3.getValueAt(i, 10).toString(),
-            tbTindakan3.getValueAt(i, 4).toString()
+            tbTindakan3.getValueAt(i, 4).toString(), "Belum", null
         });
         stts.add(s);
         return s;
