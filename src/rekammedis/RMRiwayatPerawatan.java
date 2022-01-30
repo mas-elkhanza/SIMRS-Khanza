@@ -573,7 +573,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         LoadHTMLSOAPI.setName("LoadHTMLSOAPI"); // NOI18N
         Scroll2.setViewportView(LoadHTMLSOAPI);
 
-        TabRawat.addTab("Riwayat S.O.A.P.I.", Scroll2);
+        TabRawat.addTab("Riwayat S.O.A.P.I.E", Scroll2);
 
         internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame2.setBorder(null);
@@ -4498,9 +4498,9 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         try {
                             rs2=koneksi.prepareStatement(
                                     "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
-                                    "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
+                                    "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.spo2,pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
                                     "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,"+
-                                    "pemeriksaan_ralan.instruksi,pemeriksaan_ralan.nip,pegawai.nama,pegawai.jbtn from pemeriksaan_ralan inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik where "+
+                                    "pemeriksaan_ralan.instruksi,pemeriksaan_ralan.evaluasi,pemeriksaan_ralan.nip,pegawai.nama,pegawai.jbtn from pemeriksaan_ralan inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik where "+
                                     "pemeriksaan_ralan.no_rawat='"+rs.getString("no_rawat")+"' order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat").executeQuery();
                             if(rs2.next()){
                                 htmlContent.append(
@@ -4513,7 +4513,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                          "<tr align='center'>"+
                                             "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
                                             "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
-                                            "<td valign='top' width='54%' bgcolor='#FFFAF8' colspan='6'>Dokter/Paramedis</td>"+
+                                            "<td valign='top' width='54%' bgcolor='#FFFAF8' colspan='7'>Dokter/Paramedis</td>"+
                                             "<td valign='top' width='27%' bgcolor='#FFFAF8' colspan='3'>Profesi/Jabatan/Departemen</td>"+
                                          "</tr>"
                                 );
@@ -4524,7 +4524,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
                                             "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
-                                            "<td valign='top' colspan='6'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                            "<td valign='top' colspan='7'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                             "<td valign='top' colspan='3'>"+rs2.getString("jbtn")+"</td>"+
                                          "</tr>"); 
                                     if(!rs2.getString("keluhan").equals("")){
@@ -4533,7 +4533,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Subjek</td>"+
-                                                "<td valign='top' colspan='7'> : "+rs2.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='8'> : "+rs2.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -4543,7 +4543,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Objek</td>"+
-                                                "<td valign='top' colspan='7'> : "+rs2.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='8'> : "+rs2.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -4551,15 +4551,16 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                             "<tr>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Suhu(C)</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Tensi</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Kesadaran</td>"+
-                                                "<td valign='top' width='9%' bgcolor='#FFFAF8' align='center'>Imunisasi Ke</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Suhu(C)</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Tensi</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>SpO2(%)</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Kesadaran</td>"+
+                                                "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Imunisasi Ke</td>"+
                                             "</tr>"+
                                             "<tr>"+
                                                 "<td valign='top' align='center'></td>"+
@@ -4570,6 +4571,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'>"+rs2.getString("respirasi")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("tinggi")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("berat")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("spo2")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("gcs")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("kesadaran")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("imun_ke")+"</td>"+
@@ -4581,7 +4583,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Alergi</td>"+
-                                                "<td valign='top' colspan='7'> : "+rs2.getString("alergi")+"</td>"+
+                                                "<td valign='top' colspan='8'> : "+rs2.getString("alergi")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -4591,7 +4593,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Asesmen</td>"+
-                                                "<td valign='top' colspan='7'> : "+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='8'> : "+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -4601,7 +4603,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Plan</td>"+
-                                                "<td valign='top' colspan='7'> : "+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='8'> : "+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -4611,10 +4613,19 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Instruksi</td>"+
-                                                "<td valign='top' colspan='7'> : "+rs2.getString("instruksi")+"</td>"+
+                                                "<td valign='top' colspan='8'> : "+rs2.getString("instruksi")+"</td>"+
                                              "</tr>");
                                     }
 
+                                    if(!rs2.getString("evaluasi").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Evaluasi</td>"+
+                                                "<td valign='top' colspan='8'> : "+rs2.getString("evaluasi")+"</td>"+
+                                             "</tr>");
+                                    }
                                     w++;
                                 }
                                 htmlContent.append(
@@ -5487,8 +5498,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         try {
                             rs2=koneksi.prepareStatement(
                                     "select pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi," +
-                                    "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
-                                    "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.nip,pegawai.nama,pegawai.jbtn,pemeriksaan_ranap.instruksi "+
+                                    "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.spo2,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
+                                    "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.nip,pegawai.nama,pegawai.jbtn,pemeriksaan_ranap.instruksi,pemeriksaan_ranap.evaluasi "+
                                     "from pemeriksaan_ranap inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik where pemeriksaan_ranap.no_rawat='"+rs.getString("no_rawat")+"' order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
                             if(rs2.next()){
                                 htmlContent.append(
@@ -5501,7 +5512,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                          "<tr align='center'>"+
                                             "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
                                             "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
-                                            "<td valign='top' width='51%' bgcolor='#FFFAF8' colspan='5'>Dokter/Paramedis</td>"+
+                                            "<td valign='top' width='51%' bgcolor='#FFFAF8' colspan='6'>Dokter/Paramedis</td>"+
                                             "<td valign='top' width='30%' bgcolor='#FFFAF8' colspan='3'>Profesi/Jabatan/Departemen</td>"+
                                          "</tr>"
                                 );
@@ -5512,7 +5523,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
                                             "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
-                                            "<td valign='top' colspan='5'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                            "<td valign='top' colspan='6'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                             "<td valign='top' colspan='3'>"+rs2.getString("jbtn")+"</td>"+
                                          "</tr>");   
 
@@ -5522,7 +5533,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Subjek</td>"+
-                                                "<td valign='top' colspan='6'> : "+rs2.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -5532,7 +5543,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Objek</td>"+
-                                                "<td valign='top' colspan='6'> : "+rs2.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -5540,14 +5551,15 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                              "<tr>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Suhu(C)</td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Tensi</td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='10%' align='center' bgcolor='#FFFAF8'>Kesadaran</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>SpO2(%)</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='9%' align='center' bgcolor='#FFFAF8'>Kesadaran</td>"+
                                              "</tr>"+
                                              "<tr>"+
                                                 "<td valign='top' align='center'></td>"+
@@ -5558,6 +5570,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'>"+rs2.getString("respirasi")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("tinggi")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("berat")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs2.getString("spo2")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("gcs")+"</td>"+
                                                 "<td valign='top' align='center'>"+rs2.getString("kesadaran")+"</td>"+
                                              "</tr>");
@@ -5568,7 +5581,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Alergi</td>"+
-                                                "<td valign='top' colspan='6'> : "+rs2.getString("alergi")+"</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("alergi")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -5578,7 +5591,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Asesmen</td>"+
-                                                "<td valign='top' colspan='6'> : "+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -5588,7 +5601,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' align='center'></td>"+
                                                 "<td valign='top' colspan='2'>Plan</td>"+
-                                                "<td valign='top' colspan='6'> : "+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>");
                                     }
 
@@ -5602,6 +5615,16 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                              "</tr>");
                                     }
 
+                                    if(!rs2.getString("evaluasi").equals("")){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' align='center'></td>"+
+                                                "<td valign='top' colspan='2'>Evaluasi</td>"+
+                                                "<td valign='top' colspan='7'> : "+rs2.getString("evaluasi")+"</td>"+
+                                             "</tr>");
+                                    }
+                                    
                                     w++;
                                 }
                                 htmlContent.append(
@@ -7521,7 +7544,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Tgl.Reg</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>No.Rawat</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Status</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='84%'>S.O.A.P.I</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='84%'>S.O.A.P.I.E</td>"+
                 "</tr>"
             );     
             if(R1.isSelected()==true){
@@ -7567,9 +7590,9 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     try {
                         rs2=koneksi.prepareStatement(
                                 "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
-                                "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
+                                "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.spo2,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
                                 "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,"+
-                                "pemeriksaan_ralan.instruksi,pemeriksaan_ralan.nip,pegawai.nama,pegawai.jbtn from pemeriksaan_ralan inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik where "+
+                                "pemeriksaan_ralan.instruksi,pemeriksaan_ralan.evaluasi,pemeriksaan_ralan.nip,pegawai.nama,pegawai.jbtn from pemeriksaan_ralan inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik where "+
                                 "pemeriksaan_ralan.no_rawat='"+rs.getString("no_rawat")+"' "+
                                 "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat").executeQuery();
                         if(rs2.next()){
@@ -7577,11 +7600,12 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='7%'>Tanggal</td>"+
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Dokter/Paramedis</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Subjek</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Objek</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Asesmen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Plan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Instruksi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Subjek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Objek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Asesmen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Plan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Instruksi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Evaluasi</td>"+
                                     "</tr>");
                             rs2.beforeFirst();
                             while(rs2.next()){
@@ -7598,12 +7622,14 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         (rs2.getString("respirasi").equals("")?"":"<br>Respirasi(/menit) : "+rs2.getString("respirasi"))+
                                         (rs2.getString("tinggi").equals("")?"":"<br>Tinggi(Cm) : "+rs2.getString("tinggi"))+
                                         (rs2.getString("berat").equals("")?"":"<br>Berat(Kg) : "+rs2.getString("berat"))+
+                                        (rs2.getString("spo2").equals("")?"":"<br>SpO2(%) : "+rs2.getString("spo2"))+
                                         (rs2.getString("gcs").equals("")?"":"<br>GCS(E,V,M) : "+rs2.getString("gcs"))+
                                         (rs2.getString("kesadaran").equals("")?"":"<br>Kesadaran : "+rs2.getString("kesadaran"))+
                                         "</td>"+
                                         "<td align='left'>"+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                         "<td align='left'>"+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                         "<td align='left'>"+rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                     "</tr>"
                                  );
                             } 
@@ -7621,9 +7647,9 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 "select pemeriksaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                                 "pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi, " +
                                 "pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi, " +
-                                "pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan, " +
+                                "pemeriksaan_ranap.berat,pemeriksaan_ranap.spo2,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan, " +
                                 "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl,"+
-                                "pemeriksaan_ranap.instruksi,pemeriksaan_ranap.nip,pegawai.nama,pegawai.jbtn "+
+                                "pemeriksaan_ranap.instruksi,pemeriksaan_ranap.evaluasi,pemeriksaan_ranap.nip,pegawai.nama,pegawai.jbtn "+
                                 "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                 "inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                                 "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik where pemeriksaan_ranap.no_rawat='"+rs.getString("no_rawat")+"' "+
@@ -7633,11 +7659,12 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='7%'>Tanggal</td>"+
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Dokter/Paramedis</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Subjek</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Objek</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Asesmen</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Plan</td>"+
-                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='16%'>Instruksi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Subjek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Objek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='13%'>Asesmen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Plan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Instruksi</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Evaluasi</td>"+
                                     "</tr>");
                             rs2.beforeFirst();
                             while(rs2.next()){
@@ -7654,12 +7681,14 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         (rs2.getString("respirasi").equals("")?"":"<br>Respirasi(/menit) : "+rs2.getString("respirasi"))+
                                         (rs2.getString("tinggi").equals("")?"":"<br>Tinggi(Cm) : "+rs2.getString("tinggi"))+
                                         (rs2.getString("berat").equals("")?"":"<br>Berat(Kg) : "+rs2.getString("berat"))+
+                                        (rs2.getString("spo2").equals("")?"":"<br>SpO2(%) : "+rs2.getString("spo2"))+
                                         (rs2.getString("gcs").equals("")?"":"<br>GCS(E,V,M) : "+rs2.getString("gcs"))+
                                         (rs2.getString("kesadaran").equals("")?"":"<br>Kesadaran : "+rs2.getString("kesadaran"))+
                                         "</td>"+
                                         "<td align='left'>"+rs2.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                         "<td align='left'>"+rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                         "<td align='left'>"+rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                     "</tr>"
                                  ); 
                             } 
