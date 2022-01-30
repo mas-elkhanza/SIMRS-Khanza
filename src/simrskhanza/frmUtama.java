@@ -607,6 +607,7 @@ import keuangan.DlgAkunAsetInventaris;
 import keuangan.DlgAkunPenagihanPiutang;
 import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
+import keuangan.DlgKategoriPemasukan;
 import keuangan.DlgKategoriPengeluaran;
 import keuangan.DlgLhtBankJateng;
 import keuangan.DlgOmsetPenerimaan;
@@ -17991,7 +17992,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgKategoriPengeluaran aplikasi=new DlgKategoriPengeluaran(this,false);
+        DlgKategoriPemasukan aplikasi=new DlgKategoriPemasukan(this,false);
         aplikasi.isCek();
         aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
