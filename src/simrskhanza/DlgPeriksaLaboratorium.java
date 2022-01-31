@@ -2449,7 +2449,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             System.out.println(e);
         }
 
-        isRawat();
+        if(noorder.equals("")){
+           isRawat();
+        }
         isPsien();
         isReset();
     }

@@ -19113,6 +19113,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnBagianTubuhK3PerTahun);
                 jmlmenu++;
             }
+            
+            if(akses.getaudit_kepatuhan_apd()==true){  
+                Panelmenu.add(btnAuditKepatuhanAPD);                 
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==3){ 
             jmlmenu=0;
             if(akses.getindustrifarmasi()==true){
@@ -20401,11 +20406,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdemografi_umur_kunjungan()==true){  
                 Panelmenu.add(btnDemografiUmurKunjungan);                 
-                jmlmenu++;
-            }
-            
-            if(akses.getaudit_kepatuhan_apd()==true){  
-                Panelmenu.add(btnAuditKepatuhanAPD);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -23054,6 +23054,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnBagianTubuhK3PerTahun);
             jmlmenu++;
         }
+        
+        if(akses.getaudit_kepatuhan_apd()==true){  
+            Panelmenu.add(btnAuditKepatuhanAPD);                 
+            jmlmenu++;
+        }
 
         if(akses.getindustrifarmasi()==true){
             Panelmenu.add(btnIndustriFarmasi); 
@@ -24331,11 +24336,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdemografi_umur_kunjungan()==true){  
             Panelmenu.add(btnDemografiUmurKunjungan);                 
-            jmlmenu++;
-        }
-
-        if(akses.getaudit_kepatuhan_apd()==true){  
-            Panelmenu.add(btnAuditKepatuhanAPD);                 
             jmlmenu++;
         }
 
@@ -27113,6 +27113,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
 
+        if(akses.getaudit_kepatuhan_apd()==true){  
+            if(btnAuditKepatuhanAPD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditKepatuhanAPD);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getindustrifarmasi()==true){
             if(btnIndustriFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnIndustriFarmasi); 
@@ -28900,13 +28907,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdemografi_umur_kunjungan()==true){  
             if(btnDemografiUmurKunjungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDemografiUmurKunjungan);                 
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.getaudit_kepatuhan_apd()==true){  
-            if(btnAuditKepatuhanAPD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnAuditKepatuhanAPD);                 
                 jmlmenu++;
             }                
         }
