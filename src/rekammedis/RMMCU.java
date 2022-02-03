@@ -64,7 +64,8 @@ public final class RMMCU extends javax.swing.JDialog {
             "Bibir","Caries","Lidah","Faring","Tonsil","Kelenjar Limfe","Kelenjar Gondok","Gerakan Dada","Vocal Femitus","Perkusi Dada",
             "Bunyi Napas","Bunyi Tambahan","Ictus Cordis","Bunyi Jantung","Batas","Inspeksi","Palpasi","Hepar","Perkusi Abdomen","Auskultasi", 
             "Limpa","Costovertebral","Kondisi Kulit","Extrimitas Atas","Keterangan Extrimitas Atas","Extrimitas Bawah","Keterangan Extrimitas Bawah",
-            "Pemeriksaan Laboratorium", "Rongsen Thorax", "EKG", "Merokok", "Alkohol", "Kesimpulan", "Anjuran","Kode Dokter","Nama Dokter Penanggung Jawab"
+            "Pemeriksaan Laboratorium", "Rongsen Thorax","EKG","Spirometri","Audiometri","Treadmill","Lain-lain", "Merokok", "Alkohol", 
+            "Kesimpulan", "Anjuran","Kode Dokter","Nama Dokter Penanggung Jawab"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -73,7 +74,7 @@ public final class RMMCU extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 76; i++) {
+        for (i = 0; i < 80; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -216,16 +217,24 @@ public final class RMMCU extends javax.swing.JDialog {
             }else if(i==69){
                 column.setPreferredWidth(200);
             }else if(i==70){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(200);
             }else if(i==71){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(200);
             }else if(i==72){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
             }else if(i==73){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
             }else if(i==74){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(120);
             }else if(i==75){
+                column.setPreferredWidth(120);
+            }else if(i==76){
+                column.setPreferredWidth(250);
+            }else if(i==77){
+                column.setPreferredWidth(250);
+            }else if(i==78){
+                column.setPreferredWidth(90);
+            }else if(i==79){
                 column.setPreferredWidth(170);
             }
         }
@@ -247,6 +256,10 @@ public final class RMMCU extends javax.swing.JDialog {
         PemeriksaanLaboratorium.setDocument(new batasInput((int)1000).getKata(PemeriksaanLaboratorium));
         RongsenThorax.setDocument(new batasInput((int)1000).getKata(RongsenThorax));
         EKG.setDocument(new batasInput((int)1000).getKata(EKG));
+        Spirometri.setDocument(new batasInput((int)1000).getKata(Spirometri));
+        Audiometri.setDocument(new batasInput((int)1000).getKata(Audiometri));
+        Treadmill.setDocument(new batasInput((int)1000).getKata(Treadmill));
+        Lainlain.setDocument(new batasInput((int)1000).getKata(Lainlain));
         Merokok.setDocument(new batasInput((int)100).getKata(Merokok));
         Alkohol.setDocument(new batasInput((int)100).getKata(Alkohol));
         Kesimpulan.setDocument(new batasInput((int)1000).getKata(Kesimpulan));
@@ -537,6 +550,22 @@ public final class RMMCU extends javax.swing.JDialog {
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel106 = new widget.Label();
+        jSeparator15 = new javax.swing.JSeparator();
+        jLabel107 = new widget.Label();
+        scrollPane13 = new widget.ScrollPane();
+        Spirometri = new widget.TextArea();
+        jSeparator16 = new javax.swing.JSeparator();
+        jLabel108 = new widget.Label();
+        scrollPane16 = new widget.ScrollPane();
+        Audiometri = new widget.TextArea();
+        jSeparator17 = new javax.swing.JSeparator();
+        jLabel109 = new widget.Label();
+        scrollPane17 = new widget.ScrollPane();
+        Treadmill = new widget.TextArea();
+        jSeparator18 = new javax.swing.JSeparator();
+        jLabel110 = new widget.Label();
+        scrollPane18 = new widget.ScrollPane();
+        Lainlain = new widget.TextArea();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -736,7 +765,7 @@ public final class RMMCU extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 1493));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 1813));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -956,7 +985,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2021 12:10:54" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2022 07:38:31" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1219,7 +1248,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel101.setText("Merokok :");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(0, 1300, 91, 23);
+        jLabel101.setBounds(0, 1620, 91, 23);
 
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
@@ -1237,13 +1266,13 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane14.setViewportView(Kesimpulan);
 
         FormInput.add(scrollPane14);
-        scrollPane14.setBounds(44, 1350, 810, 53);
+        scrollPane14.setBounds(44, 1670, 810, 53);
 
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel102.setText("G. KESIMPULAN");
+        jLabel102.setText("K. KESIMPULAN");
         jLabel102.setName("jLabel102"); // NOI18N
         FormInput.add(jLabel102);
-        jLabel102.setBounds(10, 1330, 190, 23);
+        jLabel102.setBounds(10, 1650, 190, 23);
 
         scrollPane15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane15.setName("scrollPane15"); // NOI18N
@@ -1261,19 +1290,19 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane15.setViewportView(Anjuran);
 
         FormInput.add(scrollPane15);
-        scrollPane15.setBounds(44, 1430, 810, 53);
+        scrollPane15.setBounds(44, 1750, 810, 53);
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel103.setText("H. ANJURAN");
+        jLabel103.setText("L. ANJURAN");
         jLabel103.setName("jLabel103"); // NOI18N
         FormInput.add(jLabel103);
-        jLabel103.setBounds(10, 1410, 330, 23);
+        jLabel103.setBounds(10, 1730, 330, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel104.setText("F. RIWAYAT MEROKOK DAN KONSUMSI ALKOHOL");
+        jLabel104.setText("J. RIWAYAT MEROKOK DAN KONSUMSI ALKOHOL");
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
-        jLabel104.setBounds(10, 1280, 340, 23);
+        jLabel104.setBounds(10, 1600, 340, 23);
 
         jLabel45.setText("Kepala :");
         jLabel45.setName("jLabel45"); // NOI18N
@@ -1453,7 +1482,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel105.setText("Alkohol :");
         jLabel105.setName("jLabel105"); // NOI18N
         FormInput.add(jLabel105);
-        jLabel105.setBounds(456, 1300, 50, 23);
+        jLabel105.setBounds(456, 1620, 50, 23);
 
         jLabel63.setText("Lubang Hidung :");
         jLabel63.setName("jLabel63"); // NOI18N
@@ -2069,7 +2098,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator6.setName("jSeparator6"); // NOI18N
         FormInput.add(jSeparator6);
-        jSeparator6.setBounds(0, 1280, 880, 1);
+        jSeparator6.setBounds(0, 1600, 880, 1);
 
         Merokok.setName("Merokok"); // NOI18N
         Merokok.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2078,7 +2107,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Merokok);
-        Merokok.setBounds(95, 1300, 344, 23);
+        Merokok.setBounds(95, 1620, 344, 23);
 
         Alkohol.setName("Alkohol"); // NOI18N
         Alkohol.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2087,21 +2116,21 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Alkohol);
-        Alkohol.setBounds(510, 1300, 344, 23);
+        Alkohol.setBounds(510, 1620, 344, 23);
 
         jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator7.setName("jSeparator7"); // NOI18N
         FormInput.add(jSeparator7);
-        jSeparator7.setBounds(0, 1330, 880, 1);
+        jSeparator7.setBounds(0, 1650, 880, 1);
 
         jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator8.setName("jSeparator8"); // NOI18N
         FormInput.add(jSeparator8);
-        jSeparator8.setBounds(0, 1410, 880, 1);
+        jSeparator8.setBounds(0, 1730, 880, 1);
 
         jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
@@ -2150,6 +2179,130 @@ public final class RMMCU extends javax.swing.JDialog {
         FormInput.add(jLabel106);
         jLabel106.setBounds(459, 960, 90, 23);
 
+        jSeparator15.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator15.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator15.setName("jSeparator15"); // NOI18N
+        FormInput.add(jSeparator15);
+        jSeparator15.setBounds(0, 1280, 880, 1);
+
+        jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel107.setText("F. SPIROMETRI");
+        jLabel107.setName("jLabel107"); // NOI18N
+        FormInput.add(jLabel107);
+        jLabel107.setBounds(10, 1280, 182, 23);
+
+        scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane13.setName("scrollPane13"); // NOI18N
+        scrollPane13.setPreferredSize(new java.awt.Dimension(199, 52));
+
+        Spirometri.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Spirometri.setColumns(20);
+        Spirometri.setRows(5);
+        Spirometri.setName("Spirometri"); // NOI18N
+        Spirometri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SpirometriKeyPressed(evt);
+            }
+        });
+        scrollPane13.setViewportView(Spirometri);
+
+        FormInput.add(scrollPane13);
+        scrollPane13.setBounds(44, 1300, 810, 53);
+
+        jSeparator16.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator16.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator16.setName("jSeparator16"); // NOI18N
+        FormInput.add(jSeparator16);
+        jSeparator16.setBounds(0, 1360, 880, 1);
+
+        jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel108.setText("G. AUDIOMETRI");
+        jLabel108.setName("jLabel108"); // NOI18N
+        FormInput.add(jLabel108);
+        jLabel108.setBounds(10, 1360, 182, 23);
+
+        scrollPane16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane16.setName("scrollPane16"); // NOI18N
+        scrollPane16.setPreferredSize(new java.awt.Dimension(199, 52));
+
+        Audiometri.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Audiometri.setColumns(20);
+        Audiometri.setRows(5);
+        Audiometri.setName("Audiometri"); // NOI18N
+        Audiometri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AudiometriKeyPressed(evt);
+            }
+        });
+        scrollPane16.setViewportView(Audiometri);
+
+        FormInput.add(scrollPane16);
+        scrollPane16.setBounds(44, 1380, 810, 53);
+
+        jSeparator17.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator17.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator17.setName("jSeparator17"); // NOI18N
+        FormInput.add(jSeparator17);
+        jSeparator17.setBounds(0, 1440, 880, 1);
+
+        jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel109.setText("H. TREADMILL");
+        jLabel109.setName("jLabel109"); // NOI18N
+        FormInput.add(jLabel109);
+        jLabel109.setBounds(10, 1440, 182, 23);
+
+        scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane17.setName("scrollPane17"); // NOI18N
+        scrollPane17.setPreferredSize(new java.awt.Dimension(199, 52));
+
+        Treadmill.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Treadmill.setColumns(20);
+        Treadmill.setRows(5);
+        Treadmill.setName("Treadmill"); // NOI18N
+        Treadmill.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TreadmillKeyPressed(evt);
+            }
+        });
+        scrollPane17.setViewportView(Treadmill);
+
+        FormInput.add(scrollPane17);
+        scrollPane17.setBounds(44, 1460, 810, 53);
+
+        jSeparator18.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator18.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator18.setName("jSeparator18"); // NOI18N
+        FormInput.add(jSeparator18);
+        jSeparator18.setBounds(0, 1520, 880, 1);
+
+        jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel110.setText("I. LAIN-LAIN");
+        jLabel110.setName("jLabel110"); // NOI18N
+        FormInput.add(jLabel110);
+        jLabel110.setBounds(10, 1520, 182, 23);
+
+        scrollPane18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane18.setName("scrollPane18"); // NOI18N
+        scrollPane18.setPreferredSize(new java.awt.Dimension(199, 52));
+
+        Lainlain.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Lainlain.setColumns(20);
+        Lainlain.setRows(5);
+        Lainlain.setName("Lainlain"); // NOI18N
+        Lainlain.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LainlainKeyPressed(evt);
+            }
+        });
+        scrollPane18.setViewportView(Lainlain);
+
+        FormInput.add(scrollPane18);
+        scrollPane18.setBounds(44, 1540, 810, 53);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -2192,7 +2345,7 @@ public final class RMMCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2206,7 +2359,7 @@ public final class RMMCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-02-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2284,7 +2437,7 @@ public final class RMMCU extends javax.swing.JDialog {
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
         }else{
-           if(Sequel.menyimpantf("penilaian_mcu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",71,new String[]{
+           if(Sequel.menyimpantf("penilaian_mcu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",75,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Informasi.getSelectedItem().toString(),RiwayatPenyakitSekarang.getText(),RiwayatPenyakitKeluarga.getText(), 
                     RiwayatPenyakitDahulu.getText(),RiwayatAlergiMakanan.getText(),KeadaanUmum.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),TinggiBadan.getText(),BeratBadan.getText(),Suhu.getText(),
                     Submandibula.getSelectedItem().toString(),Axila.getSelectedItem().toString(),Supraklavikula.getSelectedItem().toString(),Leher.getSelectedItem().toString(),Inguinal.getSelectedItem().toString(),Oedema.getSelectedItem().toString(),
@@ -2295,7 +2448,8 @@ public final class RMMCU extends javax.swing.JDialog {
                     VocalFremitus.getSelectedItem().toString(),PerkusiDada.getSelectedItem().toString(),BunyiNapas.getSelectedItem().toString(),BunyiTambahan.getSelectedItem().toString(),IctusCordis.getSelectedItem().toString(), 
                     BunyiJantung.getSelectedItem().toString(),Batas.getSelectedItem().toString(),Inspeksi.getSelectedItem().toString(),Palpasi.getSelectedItem().toString(),Hepar.getSelectedItem().toString(),PerkusiAbdomen.getSelectedItem().toString(),
                     Auskultasi.getSelectedItem().toString(),Limpa.getSelectedItem().toString(),NyeriKtok.getSelectedItem().toString(),Kulit.getSelectedItem().toString(),ExtremitasAtas.getSelectedItem().toString(),KetExtremitasAtas.getText(), 
-                    ExtremitasBawah.getSelectedItem().toString(),KetExtremitasBawah.getText(),PemeriksaanLaboratorium.getText(),RongsenThorax.getText(),EKG.getText(),Merokok.getText(),Alkohol.getText(),Kesimpulan.getText(),Anjuran.getText()
+                    ExtremitasBawah.getSelectedItem().toString(),KetExtremitasBawah.getText(),PemeriksaanLaboratorium.getText(),RongsenThorax.getText(),EKG.getText(),Spirometri.getText(),Audiometri.getText(),Treadmill.getText(),Lainlain.getText(),
+                    Merokok.getText(),Alkohol.getText(),Kesimpulan.getText(),Anjuran.getText()
                 })==true){
                     emptTeks();
             }
@@ -2409,8 +2563,8 @@ public final class RMMCU extends javax.swing.JDialog {
                             "penilaian_mcu.vocal_femitus,penilaian_mcu.perkusi_dada,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,penilaian_mcu.ictus_cordis,penilaian_mcu.bunyi_jantung,"+
                             "penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.hepar,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.limpa,"+
                             "penilaian_mcu.costovertebral,penilaian_mcu.kondisi_kulit,penilaian_mcu.ekstrimitas_atas,penilaian_mcu.ekstrimitas_atas_ket,penilaian_mcu.ekstrimitas_bawah,"+
-                            "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,"+
-                            "penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
+                            "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.spirometri,penilaian_mcu.audiometri,"+
+                            "penilaian_mcu.treadmill,penilaian_mcu.lainlain,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                             "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
                             "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where "+
@@ -2427,8 +2581,8 @@ public final class RMMCU extends javax.swing.JDialog {
                             "penilaian_mcu.vocal_femitus,penilaian_mcu.perkusi_dada,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,penilaian_mcu.ictus_cordis,penilaian_mcu.bunyi_jantung,"+
                             "penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.hepar,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.limpa,"+
                             "penilaian_mcu.costovertebral,penilaian_mcu.kondisi_kulit,penilaian_mcu.ekstrimitas_atas,penilaian_mcu.ekstrimitas_atas_ket,penilaian_mcu.ekstrimitas_bawah,"+
-                            "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,"+
-                            "penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
+                            "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.spirometri,penilaian_mcu.audiometri,"+
+                            "penilaian_mcu.treadmill,penilaian_mcu.lainlain,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                             "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                             "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
                             "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where "+
@@ -2526,6 +2680,10 @@ public final class RMMCU extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Pemeriksaan Laboratorium</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Rongsen Thorax</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>EKG</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Spirometri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Audiometri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Treadmill</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Lain-Lain</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Merokok</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Alkohol</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='250px'><b>Kesimpulan</b></td>"+
@@ -2607,6 +2765,10 @@ public final class RMMCU extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("laborat")+"</td>"+
                                "<td valign='top'>"+rs.getString("radiologi")+"</td>"+
                                "<td valign='top'>"+rs.getString("ekg")+"</td>"+
+                               "<td valign='top'>"+rs.getString("spirometri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("audiometri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("treadmill")+"</td>"+
+                               "<td valign='top'>"+rs.getString("lainlain")+"</td>"+
                                "<td valign='top'>"+rs.getString("merokok")+"</td>"+
                                "<td valign='top'>"+rs.getString("alkohol")+"</td>"+
                                "<td valign='top'>"+rs.getString("kesimpulan")+"</td>"+
@@ -2617,7 +2779,7 @@ public final class RMMCU extends javax.swing.JDialog {
                     }
                     LoadHTML.setText(
                         "<html>"+
-                          "<table width='7000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='7800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>"
@@ -2642,7 +2804,7 @@ public final class RMMCU extends javax.swing.JDialog {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='7000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='7800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -2817,7 +2979,7 @@ public final class RMMCU extends javax.swing.JDialog {
     }//GEN-LAST:event_RongsenThoraxKeyPressed
 
     private void EKGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGKeyPressed
-        Valid.pindah2(evt,RongsenThorax,Merokok);
+        Valid.pindah2(evt,RongsenThorax,Spirometri);
     }//GEN-LAST:event_EKGKeyPressed
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
@@ -2852,8 +3014,8 @@ public final class RMMCU extends javax.swing.JDialog {
                 "penilaian_mcu.vocal_femitus,penilaian_mcu.perkusi_dada,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,penilaian_mcu.ictus_cordis,penilaian_mcu.bunyi_jantung,"+
                 "penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.hepar,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.limpa,"+
                 "penilaian_mcu.costovertebral,penilaian_mcu.kondisi_kulit,penilaian_mcu.ekstrimitas_atas,penilaian_mcu.ekstrimitas_atas_ket,penilaian_mcu.ekstrimitas_bawah,"+
-                "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,"+
-                "penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
+                "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.spirometri,penilaian_mcu.audiometri,"+
+                "penilaian_mcu.treadmill,penilaian_mcu.lainlain,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
                 "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
@@ -2877,7 +3039,7 @@ public final class RMMCU extends javax.swing.JDialog {
     }//GEN-LAST:event_RiwayatPenyakitDahuluKeyPressed
 
     private void MerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerokokKeyPressed
-        Valid.pindah(evt,EKG,Alkohol);
+        Valid.pindah(evt,Lainlain,Alkohol);
     }//GEN-LAST:event_MerokokKeyPressed
 
     private void AlkoholKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlkoholKeyPressed
@@ -3080,6 +3242,22 @@ public final class RMMCU extends javax.swing.JDialog {
         Valid.pindah(evt,ExtremitasBawah,PemeriksaanLaboratorium);
     }//GEN-LAST:event_KetExtremitasBawahKeyPressed
 
+    private void SpirometriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpirometriKeyPressed
+        Valid.pindah2(evt,EKG,Audiometri);
+    }//GEN-LAST:event_SpirometriKeyPressed
+
+    private void AudiometriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AudiometriKeyPressed
+        Valid.pindah2(evt,Spirometri,Treadmill);
+    }//GEN-LAST:event_AudiometriKeyPressed
+
+    private void TreadmillKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TreadmillKeyPressed
+        Valid.pindah2(evt,Audiometri,Lainlain);
+    }//GEN-LAST:event_TreadmillKeyPressed
+
+    private void LainlainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainlainKeyPressed
+        Valid.pindah2(evt,Treadmill,Merokok);
+    }//GEN-LAST:event_LainlainKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3099,6 +3277,7 @@ public final class RMMCU extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox Alkohol;
     private widget.TextArea Anjuran;
+    private widget.TextArea Audiometri;
     private widget.ComboBox Auskultasi;
     private widget.ComboBox Axila;
     private widget.ComboBox Batas;
@@ -3144,6 +3323,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ComboBox Konjungtiva;
     private widget.ComboBox Kulit;
     private widget.Label LCount;
+    private widget.TextArea Lainlain;
     private widget.ComboBox Leher;
     private widget.ComboBox Lensa;
     private widget.ComboBox Lidah;
@@ -3176,6 +3356,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ComboBox SelaputPendengaran;
     private widget.ComboBox SeptumNasi;
     private widget.ComboBox Sklera;
+    private widget.TextArea Spirometri;
     private widget.ComboBox Submandibula;
     private widget.TextBox Suhu;
     private widget.ComboBox Supraklavikula;
@@ -3190,6 +3371,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.TextBox TglLahir;
     private widget.TextBox TinggiBadan;
     private widget.ComboBox Tonsil;
+    private widget.TextArea Treadmill;
     private widget.ComboBox VocalFremitus;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
@@ -3202,7 +3384,11 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.Label jLabel104;
     private widget.Label jLabel105;
     private widget.Label jLabel106;
+    private widget.Label jLabel107;
+    private widget.Label jLabel108;
+    private widget.Label jLabel109;
     private widget.Label jLabel11;
+    private widget.Label jLabel110;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel15;
@@ -3298,6 +3484,10 @@ public final class RMMCU extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -3314,8 +3504,12 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ScrollPane scrollPane10;
     private widget.ScrollPane scrollPane11;
     private widget.ScrollPane scrollPane12;
+    private widget.ScrollPane scrollPane13;
     private widget.ScrollPane scrollPane14;
     private widget.ScrollPane scrollPane15;
+    private widget.ScrollPane scrollPane16;
+    private widget.ScrollPane scrollPane17;
+    private widget.ScrollPane scrollPane18;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane4;
@@ -3337,8 +3531,8 @@ public final class RMMCU extends javax.swing.JDialog {
                         "penilaian_mcu.vocal_femitus,penilaian_mcu.perkusi_dada,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,penilaian_mcu.ictus_cordis,penilaian_mcu.bunyi_jantung,"+
                         "penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.hepar,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.limpa,"+
                         "penilaian_mcu.costovertebral,penilaian_mcu.kondisi_kulit,penilaian_mcu.ekstrimitas_atas,penilaian_mcu.ekstrimitas_atas_ket,penilaian_mcu.ekstrimitas_bawah,"+
-                        "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,"+
-                        "penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
+                        "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.spirometri,penilaian_mcu.audiometri,"+
+                        "penilaian_mcu.treadmill,penilaian_mcu.lainlain,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
                         "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where "+
@@ -3355,8 +3549,8 @@ public final class RMMCU extends javax.swing.JDialog {
                         "penilaian_mcu.vocal_femitus,penilaian_mcu.perkusi_dada,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,penilaian_mcu.ictus_cordis,penilaian_mcu.bunyi_jantung,"+
                         "penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.hepar,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.limpa,"+
                         "penilaian_mcu.costovertebral,penilaian_mcu.kondisi_kulit,penilaian_mcu.ekstrimitas_atas,penilaian_mcu.ekstrimitas_atas_ket,penilaian_mcu.ekstrimitas_bawah,"+
-                        "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,"+
-                        "penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
+                        "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.spirometri,penilaian_mcu.audiometri,"+
+                        "penilaian_mcu.treadmill,penilaian_mcu.lainlain,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,penilaian_mcu.kd_dokter,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat "+
                         "inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where penilaian_mcu.tanggal between ? and ? and "+
@@ -3394,8 +3588,8 @@ public final class RMMCU extends javax.swing.JDialog {
                         rs.getString("palpasi"),rs.getString("hepar"),rs.getString("perkusi_abdomen"),rs.getString("auskultasi"),rs.getString("limpa"),
                         rs.getString("costovertebral"),rs.getString("kondisi_kulit"),rs.getString("ekstrimitas_atas"),rs.getString("ekstrimitas_atas_ket"),
                         rs.getString("ekstrimitas_bawah"),rs.getString("ekstrimitas_bawah_ket"),rs.getString("laborat"),rs.getString("radiologi"),
-                        rs.getString("ekg"),rs.getString("merokok"),rs.getString("alkohol"),rs.getString("kesimpulan"),rs.getString("anjuran"),
-                        rs.getString("kd_dokter"),rs.getString("nm_dokter")
+                        rs.getString("ekg"),rs.getString("spirometri"),rs.getString("audiometri"),rs.getString("treadmill"),rs.getString("lainlain"),
+                        rs.getString("merokok"),rs.getString("alkohol"),rs.getString("kesimpulan"),rs.getString("anjuran"),rs.getString("kd_dokter"),rs.getString("nm_dokter")
                     });
                 }
             } catch (Exception e) {
@@ -3481,6 +3675,10 @@ public final class RMMCU extends javax.swing.JDialog {
         PemeriksaanLaboratorium.setText("");
         RongsenThorax.setText("");
         EKG.setText("");
+        Spirometri.setText("");
+        Audiometri.setText("");
+        Treadmill.setText("");
+        Lainlain.setText("");
         Merokok.setText("");
         Alkohol.setText("");
         Kesimpulan.setText("");
@@ -3561,12 +3759,16 @@ public final class RMMCU extends javax.swing.JDialog {
             PemeriksaanLaboratorium.setText(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
             RongsenThorax.setText(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
             EKG.setText(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
-            Merokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
-            Alkohol.setText(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
-            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString());
-            Anjuran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),74).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString());
+            Spirometri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+            Audiometri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+            Treadmill.setText(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString());
+            Lainlain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
+            Merokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),74).toString());
+            Alkohol.setText(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),76).toString());
+            Anjuran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),77).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -3640,7 +3842,10 @@ public final class RMMCU extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_mcu","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,informasi=?,rps=?,rpk=?,rpd=?,alergi=?,keadaan=?,kesadaran=?,td=?,nadi=?,rr=?,tb=?,bb=?,suhu=?,submandibula=?,axilla=?,supraklavikula=?,leher=?,inguinal=?,oedema=?,sinus_frontalis=?,sinus_maxilaris=?,palpebra=?,sklera=?,cornea=?,buta_warna=?,konjungtiva=?,lensa=?,pupil=?,lubang_telinga=?,daun_telinga=?,selaput_pendengaran=?,proc_mastoideus=?,septum_nasi=?,lubang_hidung=?,bibir=?,caries=?,lidah=?,faring=?,tonsil=?,kelenjar_limfe=?,kelenjar_gondok=?,gerakan_dada=?,vocal_femitus=?,perkusi_dada=?,bunyi_napas=?,bunyi_tambahan=?,ictus_cordis=?,bunyi_jantung=?,batas=?,inspeksi=?,palpasi=?,hepar=?,perkusi_abdomen=?,auskultasi=?,limpa=?,costovertebral=?,kondisi_kulit=?,ekstrimitas_atas=?,ekstrimitas_atas_ket=?,ekstrimitas_bawah=?,ekstrimitas_bawah_ket=?,laborat=?,radiologi=?,ekg=?,merokok=?,alkohol=?,kesimpulan=?,anjuran=?",72,new String[]{
+        if(Sequel.mengedittf("penilaian_mcu","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,informasi=?,rps=?,rpk=?,rpd=?,alergi=?,keadaan=?,kesadaran=?,td=?,nadi=?,rr=?,tb=?,bb=?,suhu=?,submandibula=?,axilla=?,supraklavikula=?,leher=?,inguinal=?,oedema=?,sinus_frontalis=?,"+
+                "sinus_maxilaris=?,palpebra=?,sklera=?,cornea=?,buta_warna=?,konjungtiva=?,lensa=?,pupil=?,lubang_telinga=?,daun_telinga=?,selaput_pendengaran=?,proc_mastoideus=?,septum_nasi=?,lubang_hidung=?,bibir=?,caries=?,lidah=?,faring=?,tonsil=?,kelenjar_limfe=?,"+
+                "kelenjar_gondok=?,gerakan_dada=?,vocal_femitus=?,perkusi_dada=?,bunyi_napas=?,bunyi_tambahan=?,ictus_cordis=?,bunyi_jantung=?,batas=?,inspeksi=?,palpasi=?,hepar=?,perkusi_abdomen=?,auskultasi=?,limpa=?,costovertebral=?,kondisi_kulit=?,ekstrimitas_atas=?,"+
+                "ekstrimitas_atas_ket=?,ekstrimitas_bawah=?,ekstrimitas_bawah_ket=?,laborat=?,radiologi=?,ekg=?,spirometri=?,audiometri=?,treadmill=?,lainlain=?,merokok=?,alkohol=?,kesimpulan=?,anjuran=?",72,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Informasi.getSelectedItem().toString(),RiwayatPenyakitSekarang.getText(),RiwayatPenyakitKeluarga.getText(), 
                 RiwayatPenyakitDahulu.getText(),RiwayatAlergiMakanan.getText(),KeadaanUmum.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),TinggiBadan.getText(),BeratBadan.getText(),Suhu.getText(),
                 Submandibula.getSelectedItem().toString(),Axila.getSelectedItem().toString(),Supraklavikula.getSelectedItem().toString(),Leher.getSelectedItem().toString(),Inguinal.getSelectedItem().toString(),Oedema.getSelectedItem().toString(),
@@ -3651,7 +3856,8 @@ public final class RMMCU extends javax.swing.JDialog {
                 VocalFremitus.getSelectedItem().toString(),PerkusiDada.getSelectedItem().toString(),BunyiNapas.getSelectedItem().toString(),BunyiTambahan.getSelectedItem().toString(),IctusCordis.getSelectedItem().toString(), 
                 BunyiJantung.getSelectedItem().toString(),Batas.getSelectedItem().toString(),Inspeksi.getSelectedItem().toString(),Palpasi.getSelectedItem().toString(),Hepar.getSelectedItem().toString(),PerkusiAbdomen.getSelectedItem().toString(),
                 Auskultasi.getSelectedItem().toString(),Limpa.getSelectedItem().toString(),NyeriKtok.getSelectedItem().toString(),Kulit.getSelectedItem().toString(),ExtremitasAtas.getSelectedItem().toString(),KetExtremitasAtas.getText(), 
-                ExtremitasBawah.getSelectedItem().toString(),KetExtremitasBawah.getText(),PemeriksaanLaboratorium.getText(),RongsenThorax.getText(),EKG.getText(),Merokok.getText(),Alkohol.getText(),Kesimpulan.getText(),Anjuran.getText(),
+                ExtremitasBawah.getSelectedItem().toString(),KetExtremitasBawah.getText(),PemeriksaanLaboratorium.getText(),RongsenThorax.getText(),EKG.getText(),Spirometri.getText(),Audiometri.getText(),Treadmill.getText(),Lainlain.getText(),
+                Merokok.getText(),Alkohol.getText(),Kesimpulan.getText(),Anjuran.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
              })==true){
                 tampil();
