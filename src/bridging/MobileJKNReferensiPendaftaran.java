@@ -54,7 +54,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","No.HP","No.Kartu","NIK","Tanggal","Poliklinik","Dokter","Jam Praktek","Jenis Kunjungan","Nomor Referensi","Status","Validasi Checkin"
+                "No.Rawat","No.RM","Nama Pasien","No.HP","No.Kartu","NIK","Tanggal","Poliklinik","Dokter","Jam Praktek","Jenis Kunjungan","Nomor Referensi","Status","Validasi Checkin","No.Booking"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -63,7 +63,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(110);
@@ -93,6 +93,8 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
                 column.setPreferredWidth(50);
             }else if(i==13){
                 column.setPreferredWidth(115);
+            }else if(i==14){
+                column.setPreferredWidth(110);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -137,7 +139,16 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
-        panelGlass9 = new widget.panelisi();
+        jPanel3 = new javax.swing.JPanel();
+        panelGlass8 = new widget.panelisi();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
+        BtnCheckin = new widget.Button();
+        BtnBelum = new widget.Button();
+        BtnBatal = new widget.Button();
+        BtnPrint = new widget.Button();
+        BtnKeluar = new widget.Button();
+        panelGlass10 = new widget.panelisi();
         jLabel19 = new widget.Label();
         DTPCari1 = new widget.Tanggal();
         jLabel21 = new widget.Label();
@@ -146,10 +157,6 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        jLabel7 = new widget.Label();
-        LCount = new widget.Label();
-        BtnPrint = new widget.Button();
-        BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -168,50 +175,162 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        panelGlass9.setName("panelGlass9"); // NOI18N
-        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        jPanel3.setName("jPanel3"); // NOI18N
+        jPanel3.setOpaque(false);
+        jPanel3.setPreferredSize(new java.awt.Dimension(44, 100));
+        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelGlass8.setName("panelGlass8"); // NOI18N
+        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(52, 23));
+        panelGlass8.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass8.add(LCount);
+
+        BtnCheckin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnCheckin.setMnemonic('S');
+        BtnCheckin.setText("Checkin");
+        BtnCheckin.setToolTipText("Alt+S");
+        BtnCheckin.setName("BtnCheckin"); // NOI18N
+        BtnCheckin.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnCheckin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCheckinActionPerformed(evt);
+            }
+        });
+        BtnCheckin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCheckinKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnCheckin);
+
+        BtnBelum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnBelum.setMnemonic('B');
+        BtnBelum.setText("Belum");
+        BtnBelum.setToolTipText("Alt+B");
+        BtnBelum.setName("BtnBelum"); // NOI18N
+        BtnBelum.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBelum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBelumActionPerformed(evt);
+            }
+        });
+        BtnBelum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnBelumKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnBelum);
+
+        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnBatal.setMnemonic('H');
+        BtnBatal.setText("Batal");
+        BtnBatal.setToolTipText("Alt+H");
+        BtnBatal.setName("BtnBatal"); // NOI18N
+        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatalActionPerformed(evt);
+            }
+        });
+        BtnBatal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnBatalKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnBatal);
+
+        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        BtnPrint.setMnemonic('T');
+        BtnPrint.setText("Cetak");
+        BtnPrint.setToolTipText("Alt+T");
+        BtnPrint.setName("BtnPrint"); // NOI18N
+        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrintActionPerformed(evt);
+            }
+        });
+        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPrintKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnPrint);
+
+        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar.setMnemonic('K');
+        BtnKeluar.setText("Keluar");
+        BtnKeluar.setToolTipText("Alt+K");
+        BtnKeluar.setName("BtnKeluar"); // NOI18N
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluarActionPerformed(evt);
+            }
+        });
+        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKeluarKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnKeluar);
+
+        jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
+
+        panelGlass10.setName("panelGlass10"); // NOI18N
+        panelGlass10.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel19.setText("Tanggal :");
         jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelGlass9.add(jLabel19);
+        panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-05-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelGlass9.add(DTPCari1);
+        panelGlass10.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("s.d.");
         jLabel21.setName("jLabel21"); // NOI18N
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
-        panelGlass9.add(jLabel21);
+        panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-05-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelGlass9.add(DTPCari2);
+        panelGlass10.add(DTPCari2);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelGlass9.add(jLabel6);
+        jLabel6.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelGlass10.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(170, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass9.add(TCari);
+        panelGlass10.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
@@ -228,7 +347,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass9.add(BtnCari);
+        panelGlass10.add(BtnCari);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
@@ -245,54 +364,11 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
                 BtnAllKeyPressed(evt);
             }
         });
-        panelGlass9.add(BtnAll);
+        panelGlass10.add(BtnAll);
 
-        jLabel7.setText("Record :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass9.add(jLabel7);
+        jPanel3.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(LCount);
-
-        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        BtnPrint.setMnemonic('T');
-        BtnPrint.setToolTipText("Alt+T");
-        BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPrintKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(BtnPrint);
-
-        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        BtnKeluar.setMnemonic('K');
-        BtnKeluar.setToolTipText("Alt+K");
-        BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnKeluarActionPerformed(evt);
-            }
-        });
-        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnKeluarKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(BtnKeluar);
-
-        internalFrame1.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
+        internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -385,6 +461,56 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
+    private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
+        if(tbJnsPerawatan.getSelectedRow()!= -1){
+            if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Batal'",1,new String[]{
+                tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
+            })==true){
+                tampil();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dibatalkan..!!");
+        }
+    }//GEN-LAST:event_BtnBatalActionPerformed
+
+    private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnBatalActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCheckin, BtnPrint);
+        }
+    }//GEN-LAST:event_BtnBatalKeyPressed
+
+    private void BtnCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCheckinActionPerformed
+        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin'",1,new String[]{
+            tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
+        })==true){
+            tampil();
+        }
+    }//GEN-LAST:event_BtnCheckinActionPerformed
+
+    private void BtnCheckinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCheckinKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnCheckinActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCari, BtnBatal);
+        }
+    }//GEN-LAST:event_BtnCheckinKeyPressed
+
+    private void BtnBelumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBelumActionPerformed
+        if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Belum'",1,new String[]{
+            tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
+        })==true){
+            tampil();
+        }
+    }//GEN-LAST:event_BtnBelumActionPerformed
+
+    private void BtnBelumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBelumKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnBelumActionPerformed(null);
+        }else{Valid.pindah(evt, BtnCheckin, BtnBatal);}
+    }//GEN-LAST:event_BtnBelumKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -403,7 +529,10 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
+    private widget.Button BtnBatal;
+    private widget.Button BtnBelum;
     private widget.Button BtnCari;
+    private widget.Button BtnCheckin;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Tanggal DTPCari1;
@@ -416,7 +545,9 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     private widget.Label jLabel21;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private widget.panelisi panelGlass9;
+    private javax.swing.JPanel jPanel3;
+    private widget.panelisi panelGlass10;
+    private widget.panelisi panelGlass8;
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 
@@ -426,8 +557,8 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                    "SELECT referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
                    "referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter,referensi_mobilejkn_bpjs.jampraktek,"+
-                   "referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi "+
-                   "FROM referensi_mobilejkn_bpjs INNER JOIN reg_periksa ON referensi_mobilejkn_bpjs.no_rawat=reg_periksa.no_rawat "+
+                   "referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,"+
+                   "referensi_mobilejkn_bpjs.nobooking FROM referensi_mobilejkn_bpjs INNER JOIN reg_periksa ON referensi_mobilejkn_bpjs.no_rawat=reg_periksa.no_rawat "+
                    "INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "INNER JOIN poliklinik ON reg_periksa.kd_poli=poliklinik.kd_poli "+
                    "INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter "+
@@ -461,7 +592,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
                         rs.getString("nohp"),rs.getString("nomorkartu"),rs.getString("nik"),
                         rs.getString("tanggalperiksa"),rs.getString("nm_poli"),rs.getString("nm_dokter"),
                         rs.getString("jampraktek"),rs.getString("jeniskunjungan"),rs.getString("nomorreferensi"),
-                        rs.getString("status"),rs.getString("validasi")
+                        rs.getString("status"),rs.getString("validasi"),rs.getString("nobooking")
                     });
                 }
             } catch (Exception e) {

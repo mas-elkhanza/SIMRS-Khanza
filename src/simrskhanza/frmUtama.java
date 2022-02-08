@@ -822,7 +822,7 @@ public class frmUtama extends javax.swing.JFrame {
         initKhanza();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/yaski24.png")).getImage());
         
-        this.setSize(screen.width,screen.height);
+        this.setExtendedState(MAXIMIZED_BOTH);
         edAdmin.setDocument(new batasInput((byte)100).getKata(edAdmin));
         edPwd.setDocument(new batasInput((byte)100).getKata(edPwd));
         DlgLogin.setSize(299,180);
@@ -912,10 +912,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         return myInstance;
     }
-    
- 
-    //private DlgMenu menu=new DlgMenu(this,false); 
-    private final Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();   
+     
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -1472,7 +1469,6 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoBed2 = new javax.swing.JMenuItem();
         MnInfoBed1 = new javax.swing.JMenuItem();
         MnInfoBed3 = new javax.swing.JMenuItem();
-        MnInfoBed4 = new javax.swing.JMenuItem();
         MnInfoBed5 = new javax.swing.JMenuItem();
         jSeparator15 = new javax.swing.JPopupMenu.Separator();
         MnKoleksiPenelitian = new javax.swing.JMenuItem();
@@ -1483,6 +1479,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator12 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir3 = new javax.swing.JMenuItem();
         MnRekapHadir4 = new javax.swing.JMenuItem();
+        MnInfoBed4 = new javax.swing.JMenuItem();
         MnRekapHadir5 = new javax.swing.JMenuItem();
         MnInfoLaborat = new javax.swing.JMenuItem();
         MnInfoLaborat1 = new javax.swing.JMenuItem();
@@ -1702,7 +1699,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/01/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/02/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7613,20 +7610,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnInfoBed3);
 
-        MnInfoBed4.setBackground(new java.awt.Color(255, 255, 254));
-        MnInfoBed4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnInfoBed4.setForeground(new java.awt.Color(50, 90, 40));
-        MnInfoBed4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
-        MnInfoBed4.setText("Dashboard Register Poli");
-        MnInfoBed4.setName("MnInfoBed4"); // NOI18N
-        MnInfoBed4.setPreferredSize(new java.awt.Dimension(250, 30));
-        MnInfoBed4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnInfoBed4ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(MnInfoBed4);
-
         MnInfoBed5.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoBed5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed5.setForeground(new java.awt.Color(50, 90, 40));
@@ -7753,6 +7736,20 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu7.add(MnRekapHadir4);
+
+        MnInfoBed4.setBackground(new java.awt.Color(255, 255, 254));
+        MnInfoBed4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoBed4.setForeground(new java.awt.Color(50, 90, 40));
+        MnInfoBed4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnInfoBed4.setText("Antrian Unit/Poliklinik 2");
+        MnInfoBed4.setName("MnInfoBed4"); // NOI18N
+        MnInfoBed4.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoBed4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoBed4ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnInfoBed4);
 
         MnRekapHadir5.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapHadir5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N

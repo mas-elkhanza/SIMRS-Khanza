@@ -54,6 +54,12 @@
         mysqli_close($konektor);
         return $result;
     }
+    
+    function bukaquery3($sql){
+        $konektor = bukakoneksi();
+        mysqli_query($konektor,$sql);
+        mysqli_close($konektor);
+    }
 
     function getOne2($sql) {
         $hasil = bukaquery2($sql);

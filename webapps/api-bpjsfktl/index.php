@@ -1544,10 +1544,10 @@
                                                 }            
                                             }
 
-                                            bukaquery2("insert into kelurahan values('0','$decode[namakel]')");
-                                            bukaquery2("insert into kecamatan values('0','$decode[namakec]')");
-                                            bukaquery2("insert into kabupaten values('0','$decode[namadati2]')");
-                                            bukaquery2("insert into propinsi values('0','$decode[namaprop]')");
+                                            bukaquery3("insert ignore into kelurahan values('0','$decode[namakel]')");
+                                            bukaquery3("insert ignore into kecamatan values('0','$decode[namakec]')");
+                                            bukaquery3("insert ignore into kabupaten values('0','$decode[namadati2]')");
+                                            bukaquery3("insert ignore into propinsi values('0','$decode[namaprop]')");
 
                                             $query = bukaquery2("insert into pasien values('$norm','$decode[nama]','$decode[nik]','$decode[jeniskelamin]','-','$decode[tanggallahir]','-','$decode[alamat]','-','-','JOMBLO','-',current_date(),'$decode[nohp]','0','-','SAUDARA','-','".CARABAYAR."','$decode[nomorkartu]','".getOne2("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel='$decode[namakel]'")."','".getOne2("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec='$decode[namakec]'")."','".getOne2("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab='$decode[namadati2]'")."','-','$decode[alamat]','$decode[namakel]','$decode[namakec]','$decode[namadati2]','-','1','1','1','-','-','".getOne2("select propinsi.kd_prop from propinsi where propinsi.nm_prop='$decode[namaprop]'")."', '$decode[namaprop]')");
                                             if ($query) {
