@@ -289,7 +289,7 @@ public class frmUtama extends javax.swing.JFrame {
                         
                         TeksArea.append("Menjalankan WS batal antrian Mobile JKN Pasien BPJS\n");
                         ps=koneksi.prepareStatement(
-                                "SELECT * FROM referensi_mobilejkn_bpjs_batal where statuskirim='Belum' and tanggalbatal=current_date()");
+                                "SELECT * FROM referensi_mobilejkn_bpjs_batal where referensi_mobilejkn_bpjs_batal.statuskirim='Belum' and referensi_mobilejkn_bpjs_batal.tanggalbatal=current_date()");
                         try {
                             rs=ps.executeQuery();
                             while(rs.next()){
@@ -347,7 +347,7 @@ public class frmUtama extends javax.swing.JFrame {
                         try {
                             rs=ps.executeQuery();
                             while(rs.next()){
-                                datajam=Sequel.cariIsi("select dikirim from mutasi_berkas where no_rawat=? and dikirim<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select mutasi_berkas.dikirim from mutasi_berkas where mutasi_berkas.no_rawat=? and mutasi_berkas.dikirim<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"3",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -382,7 +382,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select diterima from mutasi_berkas where no_rawat=? and diterima<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select mutasi_berkas.diterima from mutasi_berkas where mutasi_berkas.no_rawat=? and mutasi_berkas.diterima<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"4",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -417,7 +417,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select concat(tgl_perawatan,' ',jam_rawat) from pemeriksaan_ralan where no_rawat=?",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select concat(pemeriksaan_ralan.tgl_perawatan,' ',pemeriksaan_ralan.jam_rawat) from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"5",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -452,7 +452,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select concat(tgl_peresepan,' ',jam_peresepan) from resep_obat where no_rawat=?",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select concat(resep_obat.tgl_peresepan,' ',resep_obat.jam_peresepan) from resep_obat where resep_obat.status='ralan' and resep_obat.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"6",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -487,7 +487,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select concat(tgl_perawatan,' ',jam) from resep_obat where no_rawat=? and concat(tgl_perawatan,' ',jam)<>concat(tgl_peresepan,' ',jam_peresepan)",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select concat(resep_obat.tgl_perawatan,' ',resep_obat.jam) from resep_obat where resep_obat.status='ralan' and resep_obat.no_rawat=? and concat(resep_obat.tgl_perawatan,' ',resep_obat.jam)<>concat(resep_obat.tgl_peresepan,' ',resep_obat.jam_peresepan)",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"7",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -522,7 +522,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select now() from reg_periksa where stts='Batal' and no_rawat=?",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select now() from reg_periksa where reg_periksa.stts='Batal' and reg_periksa.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"99",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -578,7 +578,7 @@ public class frmUtama extends javax.swing.JFrame {
                         try {
                             rs=ps.executeQuery();
                             while(rs.next()){
-                                ps2=koneksi.prepareStatement("select * from jadwal where hari_kerja=? and kd_dokter=? and kd_poli=?");
+                                ps2=koneksi.prepareStatement("select * from jadwal where jadwal.hari_kerja=? and jadwal.kd_dokter=? and jadwal.kd_poli=?");
                                 try {
                                     ps2.setString(1,hari);
                                     ps2.setString(2,rs.getString("kd_dokter"));
@@ -643,7 +643,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select dikirim from mutasi_berkas where no_rawat=? and dikirim<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select mutasi_berkas.dikirim from mutasi_berkas where mutasi_berkas.no_rawat=? and mutasi_berkas.dikirim<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"3",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -678,7 +678,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select diterima from mutasi_berkas where no_rawat=? and diterima<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select mutasi_berkas.diterima from mutasi_berkas where mutasi_berkas.no_rawat=? and mutasi_berkas.diterima<>'0000-00-00 00:00:00'",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"4",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -713,7 +713,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select concat(tgl_perawatan,' ',jam_rawat) from pemeriksaan_ralan where no_rawat=?",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select concat(pemeriksaan_ralan.tgl_perawatan,' ',pemeriksaan_ralan.jam_rawat) from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"5",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -748,7 +748,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select concat(tgl_peresepan,' ',jam_peresepan) from resep_obat where no_rawat=?",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select concat(resep_obat.tgl_peresepan,' ',resep_obat.jam_peresepan) from resep_obat where resep_obat.status='ralan' and resep_obat.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"6",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -783,7 +783,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select concat(tgl_perawatan,' ',jam) from resep_obat where no_rawat=? and concat(tgl_perawatan,' ',jam)<>concat(tgl_peresepan,' ',jam_peresepan)",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select concat(resep_obat.tgl_perawatan,' ',resep_obat.jam) from resep_obat where resep_obat.status='ralan' and resep_obat.no_rawat=? and concat(resep_obat.tgl_perawatan,' ',resep_obat.jam)<>concat(resep_obat.tgl_peresepan,' ',resep_obat.jam_peresepan)",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"7",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
@@ -818,7 +818,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select now() from reg_periksa where stts='Batal' and no_rawat=?",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select now() from reg_periksa where reg_periksa.stts='Batal' and reg_periksa.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"99",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
