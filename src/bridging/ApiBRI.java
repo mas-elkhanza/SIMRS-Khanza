@@ -160,10 +160,10 @@ public class ApiBRI {
     public void buatVA(String norawat,String nama,String bayar,String keterangan){
         try{
             token=Token();
-            date = new Date(System.currentTimeMillis());
+            date = new Date(System.currentTimeMillis()-25200000);
             sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             timestamp=sdf.format(date);
-            date2 = new Date(System.currentTimeMillis()+86400000);
+            date2 = new Date(System.currentTimeMillis()-25200000+86400000);
             sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             timestamp2=sdf2.format(date2);
             System.out.println("consumer_key : "+consumer_key);
