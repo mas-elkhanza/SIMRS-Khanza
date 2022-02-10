@@ -9779,7 +9779,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgDetailJMDokter rhtindakandokter=new DlgDetailJMDokter(this,false);
-        rhtindakandokter.isCek();
         rhtindakandokter.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         rhtindakandokter.setLocationRelativeTo(PanelUtama);
         rhtindakandokter.setVisible(true);

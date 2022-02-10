@@ -774,8 +774,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     }
                 }
-                dx="["+dx.substring(0,dx.length()-1)+"]";
+                if(jml>0){
+                    dx="["+dx.substring(0,dx.length()-1)+"]";
+                }   
       
+                jml=0;  
                 pros="";
                 for(i=0;i<tbProsedur.getRowCount();i++){
                     if(tbProsedur.getValueAt(i,0).toString().equals("true")){
@@ -783,7 +786,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         pros=pros+"{\"kode\":\""+tbProsedur.getValueAt(i,1).toString()+"\"},";
                     }
                 }
-                pros="["+pros.substring(0,pros.length()-1)+"]";
+                if(jml>0){
+                    pros="["+pros.substring(0,pros.length()-1)+"]";
+                }
                     
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
