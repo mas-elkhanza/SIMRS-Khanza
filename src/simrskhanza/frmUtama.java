@@ -1481,6 +1481,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir4 = new javax.swing.JMenuItem();
         MnInfoBed4 = new javax.swing.JMenuItem();
         MnRekapHadir5 = new javax.swing.JMenuItem();
+        MnRekapHadir7 = new javax.swing.JMenuItem();
         MnInfoLaborat = new javax.swing.JMenuItem();
         MnInfoLaborat1 = new javax.swing.JMenuItem();
         MnInfoLaborat2 = new javax.swing.JMenuItem();
@@ -1699,7 +1700,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/02/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/02/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7764,6 +7765,20 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu7.add(MnRekapHadir5);
+
+        MnRekapHadir7.setBackground(new java.awt.Color(255, 255, 254));
+        MnRekapHadir7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRekapHadir7.setForeground(new java.awt.Color(50, 90, 40));
+        MnRekapHadir7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnRekapHadir7.setText("Antrian Apotek 2");
+        MnRekapHadir7.setName("MnRekapHadir7"); // NOI18N
+        MnRekapHadir7.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRekapHadir7ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnRekapHadir7);
 
         MnInfoLaborat.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -14145,6 +14160,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnInfoLaborat2ActionPerformed
 
+    private void MnRekapHadir7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHadir7ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("antrianfarmasi.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnRekapHadir7ActionPerformed
+
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -18078,6 +18099,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnRekapHadir4;
     private javax.swing.JMenuItem MnRekapHadir5;
     private javax.swing.JMenuItem MnRekapHadir6;
+    private javax.swing.JMenuItem MnRekapHadir7;
     private javax.swing.JMenuItem MnSudahPulang;
     private javax.swing.JMenuItem MnSudahPulang1;
     private javax.swing.JMenuItem MnSudahPulang2;

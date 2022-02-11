@@ -3608,9 +3608,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 
                 Valid.tabelKosong(tabModeApotek);
                 psobatlangsung=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,"+
-                    " dokter.nm_dokter,if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status "+
+                    " dokter.nm_dokter,if(resep_obat.jam='00:00:00','Belum Terlayani','Sudah Terlayani') as status "+
                     " from resep_obat inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
-                    " where resep_obat.status='ralan' and resep_obat.no_rawat=? order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " where resep_obat.jam_peresepan<>'00:00:00' and resep_obat.status='ralan' and resep_obat.no_rawat=? order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
                 try {
                     psobatlangsung.setString(1,TNoRw.getText());
                     rscariobat=psobatlangsung.executeQuery();
