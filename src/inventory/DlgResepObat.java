@@ -38,6 +38,9 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 
 
@@ -259,6 +262,27 @@ public final class DlgResepObat extends javax.swing.JDialog {
         
         Valid.SetTgl2(DTPCari1,format.format(new Date())+" 00:00:00");
         Valid.SetTgl2(DTPCari2,format.format(new Date())+" 23:59:59"); 
+        
+        ChkAccor.setSelected(false);
+        isPhoto();
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
 
     /** This method is called from within the constructor to
@@ -337,6 +361,13 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ChkRM = new widget.CekBox();
         TNoRm = new widget.TextBox();
         ChkInput = new widget.CekBox();
+        PanelAccor = new widget.PanelBiasa();
+        ChkAccor = new widget.CekBox();
+        FormPhoto = new widget.PanelBiasa();
+        FormPass2 = new widget.PanelBiasa();
+        BtnRefreshPhoto = new widget.Button();
+        Scroll4 = new widget.ScrollPane();
+        LoadHTML = new widget.editorpane();
 
         Popup2.setName("Popup2"); // NOI18N
 
@@ -805,7 +836,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020 00:11:20" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2022 18:31:00" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -819,7 +850,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020 00:11:20" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2022 18:31:00" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -949,7 +980,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         jLabel8.setBounds(0, 42, 95, 23);
 
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2022" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -1045,6 +1076,70 @@ public final class DlgResepObat extends javax.swing.JDialog {
         PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
+
+        PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
+        PanelAccor.setName("PanelAccor"); // NOI18N
+        PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
+        PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccor.setSelected(true);
+        ChkAccor.setFocusable(false);
+        ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setName("ChkAccor"); // NOI18N
+        ChkAccor.setPreferredSize(new java.awt.Dimension(15, 20));
+        ChkAccor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkAccorActionPerformed(evt);
+            }
+        });
+        PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
+
+        FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
+        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Photo Penyerahan Resep : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPhoto.setName("FormPhoto"); // NOI18N
+        FormPhoto.setPreferredSize(new java.awt.Dimension(115, 73));
+        FormPhoto.setLayout(new java.awt.BorderLayout());
+
+        FormPass2.setBackground(new java.awt.Color(255, 255, 255));
+        FormPass2.setBorder(null);
+        FormPass2.setName("FormPass2"); // NOI18N
+        FormPass2.setPreferredSize(new java.awt.Dimension(115, 40));
+
+        BtnRefreshPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnRefreshPhoto.setMnemonic('U');
+        BtnRefreshPhoto.setText("Refresh");
+        BtnRefreshPhoto.setToolTipText("Alt+U");
+        BtnRefreshPhoto.setName("BtnRefreshPhoto"); // NOI18N
+        BtnRefreshPhoto.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnRefreshPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRefreshPhotoActionPerformed(evt);
+            }
+        });
+        FormPass2.add(BtnRefreshPhoto);
+
+        FormPhoto.add(FormPass2, java.awt.BorderLayout.PAGE_END);
+
+        Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll4.setName("Scroll4"); // NOI18N
+        Scroll4.setOpaque(true);
+        Scroll4.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
+        Scroll4.setViewportView(LoadHTML);
+
+        FormPhoto.add(Scroll4, java.awt.BorderLayout.CENTER);
+
+        PanelAccor.add(FormPhoto, java.awt.BorderLayout.CENTER);
+
+        internalFrame1.add(PanelAccor, java.awt.BorderLayout.EAST);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -1831,6 +1926,24 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_ppLabelDataObatActionPerformed
 
+    private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
+        if(tbResep.getSelectedRow()!= -1){
+            if(NoResep.getText().equals("")){
+                Valid.textKosong(TCari,"No.Resep");
+            }else{
+                isPhoto();
+                panggilPhoto();
+            }
+        }else{
+            ChkAccor.setSelected(false);
+            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Resep..!!!");
+        }
+    }//GEN-LAST:event_ChkAccorActionPerformed
+
+    private void BtnRefreshPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRefreshPhotoActionPerformed
+        panggilPhoto();
+    }//GEN-LAST:event_BtnRefreshPhotoActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1856,24 +1969,31 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnKeluar1;
     private widget.Button BtnKeluar2;
     private widget.Button BtnPrint;
+    private widget.Button BtnRefreshPhoto;
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpan3;
     private widget.Button BtnSimpan4;
+    private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkRM;
     private widget.Tanggal DTPBeri;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
+    private widget.PanelBiasa FormPass2;
+    private widget.PanelBiasa FormPhoto;
     private widget.TextBox KdDokter;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.TextBox NmDokter;
     private widget.TextBox NoResep;
     private widget.TextBox NoResepUbah;
     private widget.TextBox NoResepUbah1;
+    private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPopupMenu Popup2;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll4;
     private widget.TextBox TCari;
     private widget.TextBox TNoRm;
     private widget.TextBox TNoRw;
@@ -2241,6 +2361,52 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(ChkRM.isSelected()==true){
             Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,4),signed)),0) from resep_obat where tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' ",
                 DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep); 
+        }
+    }
+    
+    private void isPhoto(){
+        if(ChkAccor.isSelected()==true){
+            ChkAccor.setVisible(false);
+            PanelAccor.setPreferredSize(new Dimension(internalFrame1.getWidth()-300,HEIGHT));
+            FormPhoto.setVisible(true);  
+            ChkAccor.setVisible(true);
+        }else if(ChkAccor.isSelected()==false){    
+            ChkAccor.setVisible(false);
+            PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
+            FormPhoto.setVisible(false);  
+            ChkAccor.setVisible(true);
+        }
+    }
+    
+    private void panggilPhoto() {
+        if(FormPhoto.isVisible()==true){
+            try {
+                ps=koneksi.prepareStatement("select photo from bukti_penyerahan_resep_obat where no_resep=?");
+                try {
+                    ps.setString(1,NoResep.getText());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
+                            LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                        }else{
+                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penyerahanresep/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-330)+"' height='"+(internalFrame1.getHeight()-315)+"'/></center></body></html>");
+                        }  
+                    }else{
+                        LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } 
         }
     }
 }

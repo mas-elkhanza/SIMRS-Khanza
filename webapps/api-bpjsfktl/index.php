@@ -468,7 +468,7 @@
                                                     ); 
                                                     http_response_code(202);
                                                 }else{
-                                                    if(empty($decode['norm'])) { 
+                                                    /*if(empty($decode['norm'])) { 
                                                         $response = array(
                                                             'metadata' => array(
                                                                 'message' => 'No.RM tidak boleh kosong',
@@ -476,7 +476,7 @@
                                                             )
                                                         );
                                                         http_response_code(201);
-                                                    }else if(strpos($decode['norm'],"'")||strpos($decode['norm'],"\\")){
+                                                    }else */if(strpos($decode['norm'],"'")||strpos($decode['norm'],"\\")){
                                                         $response = array(
                                                             'metadata' => array(
                                                                 'message' => 'Format No.RM salah',

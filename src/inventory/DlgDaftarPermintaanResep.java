@@ -142,8 +142,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         
         tabMode3=new DefaultTableModel(null,new Object[]{
                 "No.Resep","Tgl.Peresepan","Jam Peresepan","No.Rawat","No.RM","Pasien","Dokter Peresep",
-                "Status","Kode Dokter","Ruang/Kamar","Kode Bangsal","Jenis Bayar","Tgl.Validasi","Jam Validasi",
-                "Tgl.Penyerahan","Jam Penyerahan"
+                "Status","Kode Dokter","Ruang/Kamar","Kode Bangsal","Jenis Bayar","Tgl.Validasi","Jam Validasi"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -153,7 +152,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         tbResepRanap.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResepRanap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i <16; i++) {
+        for (int i = 0; i <14; i++) {
             TableColumn column = tbResepRanap.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(75);
@@ -185,10 +184,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 column.setPreferredWidth(65);
             }else if(i==13){
                 column.setPreferredWidth(70);
-            }else if(i==14){
-                column.setPreferredWidth(85);
-            }else if(i==15){
-                column.setPreferredWidth(90);
             }
         }
         tbResepRanap.setDefaultRenderer(Object.class, new WarnaTable());
@@ -488,7 +483,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         BtnTambah = new widget.Button();
         BtnEdit = new widget.Button();
         BtnHapus = new widget.Button();
-        BtnHapus1 = new widget.Button();
+        BtnPenyerahan = new widget.Button();
         BtnPrint = new widget.Button();
         BtnRekap = new widget.Button();
         label10 = new widget.Label();
@@ -700,23 +695,23 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         });
         panelisi1.add(BtnHapus);
 
-        BtnHapus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
-        BtnHapus1.setMnemonic('H');
-        BtnHapus1.setText("Serahkan");
-        BtnHapus1.setToolTipText("Alt+H");
-        BtnHapus1.setName("BtnHapus1"); // NOI18N
-        BtnHapus1.setPreferredSize(new java.awt.Dimension(110, 30));
-        BtnHapus1.addActionListener(new java.awt.event.ActionListener() {
+        BtnPenyerahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnPenyerahan.setMnemonic('H');
+        BtnPenyerahan.setText("Penyerahan");
+        BtnPenyerahan.setToolTipText("Alt+H");
+        BtnPenyerahan.setName("BtnPenyerahan"); // NOI18N
+        BtnPenyerahan.setPreferredSize(new java.awt.Dimension(115, 30));
+        BtnPenyerahan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapus1ActionPerformed(evt);
+                BtnPenyerahanActionPerformed(evt);
             }
         });
-        BtnHapus1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnPenyerahan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapus1KeyPressed(evt);
+                BtnPenyerahanKeyPressed(evt);
             }
         });
-        panelisi1.add(BtnHapus1);
+        panelisi1.add(BtnPenyerahan);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -756,7 +751,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
         label10.setText("Record :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(60, 23));
+        label10.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi1.add(label10);
 
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1375,11 +1370,15 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                                 jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",NoRawat));
                             }
                             if(jmlparsial>0){
+                                Sequel.queryu("delete from antriapotek2");
+                                Sequel.queryu("insert into antriapotek2 values('"+NoResep+"','1','"+NoRawat+"')");
                                 panggilform();
                             }else{
                                 if(Sequel.cariRegistrasi(NoRawat)>0){
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                                 }else{ 
+                                    Sequel.queryu("delete from antriapotek2");
+                                    Sequel.queryu("insert into antriapotek2 values('"+NoResep+"','1','"+NoRawat+"')");
                                     panggilform();                             
                                 }
                             }               
@@ -1741,13 +1740,41 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_tbPermintaanStokKeyPressed
 
-    private void BtnHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapus1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnHapus1ActionPerformed
+    private void BtnPenyerahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenyerahanActionPerformed
+        if(TabPilihRawat.getSelectedIndex()==0){
+            if(TabRawatJalan.getSelectedIndex()==0){
+                if(akses.getberi_obat()==true){
+                    if(tabMode.getRowCount()==0){
+                        JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                        TCari.requestFocus();
+                    }else if(NoRawat.equals("")){
+                        JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau diserahkan..!!");
+                    }else{
+                        Sequel.queryu("delete from antriapotek3");
+                        Sequel.queryu("insert into antriapotek3 values('"+NoResep+"','1','"+NoRawat+"')");
+                        Sequel.queryu("delete from bukti_penyerahan_resep_obat where no_resep='"+NoResep+"'");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, Anda tidak punya hak akses untuk mengvalidasi...!!!!");
+                    TCari.requestFocus();
+                }
+            }else if(TabRawatJalan.getSelectedIndex()==1){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
+                TCari.requestFocus();
+            }
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            JOptionPane.showMessageDialog(null,"Maaf, Penyerahan resep hanya untuk rawat jalan..!!!!");
+            TCari.requestFocus();
+        }
+    }//GEN-LAST:event_BtnPenyerahanActionPerformed
 
-    private void BtnHapus1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapus1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnHapus1KeyPressed
+    private void BtnPenyerahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPenyerahanKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnPenyerahanActionPerformed(null);
+        }else{
+           Valid.pindah(evt,BtnHapus,BtnPrint);
+        }
+    }//GEN-LAST:event_BtnPenyerahanKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1770,8 +1797,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnCari;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
-    private widget.Button BtnHapus1;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPenyerahan;
     private widget.Button BtnPrint;
     private widget.Button BtnRekap;
     private widget.Button BtnSeek3;
@@ -2275,9 +2302,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     " if(resep_obat.jam='00:00:00','Belum Terlayani','Sudah Terlayani') as status,"+
                     " bangsal.nm_bangsal,kamar.kd_bangsal,penjab.png_jawab,"+
                     " if(resep_obat.tgl_perawatan='0000-00-00','',resep_obat.tgl_perawatan) as tgl_perawatan,"+
-                    " if(resep_obat.jam='00:00:00','',resep_obat.jam) as jam,"+
-                    " if(resep_obat.tgl_penyerahan='0000-00-00','',resep_obat.tgl_penyerahan) as tgl_penyerahan,"+
-                    " if(resep_obat.jam_penyerahan='00:00:00','',resep_obat.jam_penyerahan) as jam_penyerahan from resep_obat  "+
+                    " if(resep_obat.jam='00:00:00','',resep_obat.jam) as jam from resep_obat  "+
                     " inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "+
                     " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     " inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
@@ -2311,7 +2336,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
-                            rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
+                            rs.getString("tgl_perawatan"),rs.getString("jam")
                         });            
                     } 
                 }else{
@@ -2321,7 +2346,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                 rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                 rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
-                                rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
+                                rs.getString("tgl_perawatan"),rs.getString("jam")
                             });  
                         }                  
                     } 
@@ -2344,9 +2369,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     " if(resep_obat.jam='00:00:00','Belum Terlayani','Sudah Terlayani') as status,"+
                     " bangsal.nm_bangsal,kamar.kd_bangsal,penjab.png_jawab,"+
                     " if(resep_obat.tgl_perawatan='0000-00-00','',resep_obat.tgl_perawatan) as tgl_perawatan,"+
-                    " if(resep_obat.jam='00:00:00','',resep_obat.jam) as jam,"+
-                    " if(resep_obat.tgl_penyerahan='0000-00-00','',resep_obat.tgl_penyerahan) as tgl_penyerahan,"+
-                    " if(resep_obat.jam_penyerahan='00:00:00','',resep_obat.jam_penyerahan) as jam_penyerahan from resep_obat  "+
+                    " if(resep_obat.jam='00:00:00','',resep_obat.jam) as jam from resep_obat  "+
                     " inner join ranap_gabung on ranap_gabung.no_rawat2=resep_obat.no_rawat "+
                     " inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "+
                     " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2381,7 +2404,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
-                            rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
+                            rs.getString("tgl_perawatan"),rs.getString("jam")
                         });            
                     } 
                 }else{
@@ -2391,7 +2414,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                 rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                 rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
-                                rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("tgl_penyerahan"),rs.getString("jam_penyerahan")
+                                rs.getString("tgl_perawatan"),rs.getString("jam")
                             });  
                         }                  
                     } 

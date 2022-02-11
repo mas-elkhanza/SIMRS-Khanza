@@ -1,5 +1,4 @@
 <?php
- //fitur update kamar aplicare ini adalah penyempurnaan dari kontribusi Mas Tirta dari RSUK Ciracas Jakarta Timur
  session_start();
  require_once('conf/conf.php');
  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 

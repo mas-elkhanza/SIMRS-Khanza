@@ -80,7 +80,7 @@
                     $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
                     $hasil=bukaquery($_sql);
                     while ($data = mysqli_fetch_array ($hasil)){
-                        echo "<font size='6' color='#DD0000'><b>".getOne("select concat(reg_periksa.no_reg,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'")."</b></font>";
+                        echo "<font size='6' color='#DD0000'><b>".getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'")."</b></font>";
                         if($data['status']=="1"){
                             echo "<audio autoplay='true' src='bell.wav'>";
                             bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'");
