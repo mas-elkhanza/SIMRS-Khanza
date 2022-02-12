@@ -621,6 +621,7 @@ import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganBayarPiutangLain;
 import keuangan.KeuanganHutangAsetIventarisBelumLunas;
+import keuangan.KeuanganJasaTindakan;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPeminjamPiutang;
 import keuangan.KeuanganPiutangLainLain;
@@ -18063,6 +18064,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnJasaTindakanPasienActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganJasaTindakan aplikasi=new KeuanganJasaTindakan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18699,7 +18711,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
-            btnPembayaranAkunBayar5,btnRuangOperasi;
+            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien;
     
     public void isWall(){
         try{            
@@ -19956,6 +19968,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getdetail_tindakan_okvk()==true){
                 Panelmenu.add(btnDetailVKOK);
+                jmlmenu++;
+            }
+            
+            if(akses.getjasa_tindakan_pasien()==true){
+                Panelmenu.add(btnJasaTindakanPasien);
                 jmlmenu++;
             }
             
@@ -23895,6 +23912,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getjasa_tindakan_pasien()==true){
+            Panelmenu.add(btnJasaTindakanPasien);
+            jmlmenu++;
+        }
+
         if(akses.getpembayaran_ralan()==true){
             Panelmenu.add(btnRalanMasuk);
             jmlmenu++;
@@ -28269,6 +28291,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdetail_tindakan_okvk()==true){
             if(btnDetailVKOK.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDetailVKOK);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getjasa_tindakan_pasien()==true){
+            if(btnJasaTindakanPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJasaTindakanPasien);
                 jmlmenu++;
             }                
         }
@@ -34764,6 +34793,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRuangOperasi.setName("btnRuangOperasi");
         btnRuangOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRuangOperasi.addActionListener(this::btnRuangOperasiActionPerformed);
+        
+        btnJasaTindakanPasien = new widget.ButtonBig();
+        btnJasaTindakanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5859106_avatar_doctor_job_surgeon_user_icon.png"))); 
+        btnJasaTindakanPasien.setText("Jasa Tindakan Pasien");
+        btnJasaTindakanPasien.setIconTextGap(0);
+        btnJasaTindakanPasien.setName("btnJasaTindakanPasien");
+        btnJasaTindakanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJasaTindakanPasien.addActionListener(this::btnJasaTindakanPasienActionPerformed);
     }
     
 }
