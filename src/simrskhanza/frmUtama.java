@@ -816,6 +816,7 @@ public class frmUtama extends javax.swing.JFrame {
     private int jmlmenu=0,grid=0,tinggi=0,i=0,menuawal=0;
     private String coder_nik="",pilihpage="",judulform="",tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),
             AKTIFKANTRACKSQL=koneksiDB.AKTIFKANTRACKSQL();
+    private final Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     /** Creates new form frmUtama */
     private frmUtama() {
         super();
@@ -823,7 +824,7 @@ public class frmUtama extends javax.swing.JFrame {
         initKhanza();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/yaski24.png")).getImage());
         
-        this.setExtendedState(MAXIMIZED_BOTH);
+        this.setSize(screen.width,screen.height);
         edAdmin.setDocument(new batasInput((byte)100).getKata(edAdmin));
         edPwd.setDocument(new batasInput((byte)100).getKata(edPwd));
         DlgLogin.setSize(299,180);
