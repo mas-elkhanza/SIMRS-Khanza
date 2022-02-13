@@ -2977,6 +2977,548 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Notifikasi : "+e);
         }
     }
+
+    private void prosesCariBelumTerclosing() {
+        try{
+            htmlContent = new StringBuilder();
+            htmlContent.append(
+                "<tr class='isi'>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>No.Rawat</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>No.RM</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='23%'>Nama Pasien</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Masuk</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%'>Tgl.Keluar</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Sarana</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Medis</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Jasa Menejemen</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='9%'>Paket Obat/BHP</td>"+
+                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Total</td>"+
+                "</tr>"
+            );
+            
+            ttljasasarana=0;ttljasamedis=0;ttljasamenejemen=0;ttlbhp=0;ttltotal=0;
+            if(chkRalan.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                        "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
+                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_bayar='Belum Bayar' and reg_periksa.status_lanjut='Ralan' "+
+                        "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                        (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
+                        "group by reg_periksa.kd_poli) "+
+                        " order by poliklinik.nm_poli");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>@ "+rs.getString("nm_poli").toUpperCase()+"</td>"+
+                            "</tr>"
+                        );
+                        subjasasarana=0;subjasamedis=0;subjasamenejemen=0;subbhp=0;subtotal=0;
+                        ps2=koneksi.prepareStatement(
+                                "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien "+
+                                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                "where reg_periksa.status_bayar='Belum Bayar' and reg_periksa.status_lanjut='Ralan' and reg_periksa.kd_poli=? "+
+                                "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                                (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
+                                "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                        try {
+                            ps2.setString(1,rs.getString("kd_poli"));
+                            ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                            ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                jasasarana=0;jasamedis=0;jasamenejemen=0;bhp=0;total=0;
+                                jasasarana=Sequel.cariIsiAngka("select sum(rawat_jl_dr.material)+sum(rawat_jl_dr.kso) from rawat_jl_dr where rawat_jl_dr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                           Sequel.cariIsiAngka("select sum(rawat_jl_pr.material)+sum(rawat_jl_pr.kso) from rawat_jl_pr where rawat_jl_pr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                           Sequel.cariIsiAngka("select sum(rawat_jl_drpr.material)+sum(rawat_jl_drpr.kso) from rawat_jl_drpr where rawat_jl_drpr.no_rawat=? ",rs2.getString("no_rawat"));
+                                jasamedis=Sequel.cariIsiAngka("select sum(rawat_jl_dr.tarif_tindakandr) from rawat_jl_dr where rawat_jl_dr.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and rawat_jl_dr.kd_dokter='"+KdDokter.getText()+"' "),rs2.getString("no_rawat"))+
+                                          Sequel.cariIsiAngka("select sum(rawat_jl_pr.tarif_tindakanpr) from rawat_jl_pr where rawat_jl_pr.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and rawat_jl_pr.nip='"+KdDokter.getText()+"' "),rs2.getString("no_rawat"))+
+                                          Sequel.cariIsiAngka("select sum(rawat_jl_drpr.tarif_tindakandr) from rawat_jl_drpr where rawat_jl_drpr.no_rawat=?"+(NmDokter.getText().trim().equals("")?"":" and rawat_jl_drpr.kd_dokter='"+KdDokter.getText()+"' "),rs2.getString("no_rawat"))+
+                                          Sequel.cariIsiAngka("select sum(rawat_jl_drpr.tarif_tindakanpr) from rawat_jl_drpr where rawat_jl_drpr.no_rawat=?"+(NmDokter.getText().trim().equals("")?"":" and rawat_jl_drpr.nip='"+KdDokter.getText()+"' "),rs2.getString("no_rawat"));
+                                jasamenejemen=Sequel.cariIsiAngka("select sum(rawat_jl_dr.menejemen) from rawat_jl_dr where rawat_jl_dr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                              Sequel.cariIsiAngka("select sum(rawat_jl_pr.menejemen) from rawat_jl_pr where rawat_jl_pr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                              Sequel.cariIsiAngka("select sum(rawat_jl_drpr.menejemen) from rawat_jl_drpr where rawat_jl_drpr.no_rawat=? ",rs2.getString("no_rawat"));
+                                bhp=Sequel.cariIsiAngka("select sum(rawat_jl_dr.bhp) from rawat_jl_dr where rawat_jl_dr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                    Sequel.cariIsiAngka("select sum(rawat_jl_pr.bhp) from rawat_jl_pr where rawat_jl_pr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                    Sequel.cariIsiAngka("select sum(rawat_jl_drpr.bhp) from rawat_jl_drpr where rawat_jl_drpr.no_rawat=? ",rs2.getString("no_rawat"));
+                                total=Sequel.cariIsiAngka("select sum(rawat_jl_dr.biaya_rawat) from rawat_jl_dr where rawat_jl_dr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                      Sequel.cariIsiAngka("select sum(rawat_jl_pr.biaya_rawat) from rawat_jl_pr where rawat_jl_pr.no_rawat=? ",rs2.getString("no_rawat"))+
+                                      Sequel.cariIsiAngka("select sum(rawat_jl_drpr.biaya_rawat) from rawat_jl_drpr where rawat_jl_drpr.no_rawat=? ",rs2.getString("no_rawat"));
+
+                                subjasasarana=subjasasarana+jasasarana;
+                                ttljasasarana=ttljasasarana+jasasarana;
+                                subjasamedis=subjasamedis+jasamedis;
+                                ttljasamedis=ttljasamedis+jasamedis;
+                                subjasamenejemen=subjasamenejemen+jasamenejemen;
+                                ttljasamenejemen=ttljasamenejemen+jasamenejemen;
+                                subbhp=subbhp+bhp;
+                                ttlbhp=ttlbhp+bhp;
+                                subtotal=subtotal+total;
+                                ttltotal=ttltotal+total;
+
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left'>"+rs2.getString("no_rawat")+"</td>"+
+                                         "<td valign='middle' align='left'>"+rs2.getString("no_rkm_medis")+"</td>"+
+                                         "<td valign='middle' align='left'>"+rs2.getString("nm_pasien")+"</td>"+
+                                         "<td valign='middle' align='center'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                         "<td valign='middle' align='center'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(jasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(jasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(jasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(bhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(total)+"</td>"+
+                                    "</tr>"
+                                );
+                            }
+                        }catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            }
+                
+            if(chkRanap.isSelected()==true){
+                subjasasarana=0;subjasamedis=0;subjasamenejemen=0;subbhp=0;subtotal=0;
+                ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                        "reg_periksa.status_bayar='Belum Bayar' and reg_periksa.status_lanjut='Ranap' "+
+                        "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                        (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
+                        "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>@ RAWAT INAP</td>"+
+                            "</tr>"
+                        );
+                    }
+                    rs.beforeFirst();
+                    while(rs.next()){
+                        jasasarana=0;jasamedis=0;jasamenejemen=0;bhp=0;total=0;
+                        jasasarana=Sequel.cariIsiAngka("select sum(rawat_inap_dr.material)+sum(rawat_inap_dr.kso) from rawat_inap_dr where rawat_inap_dr.no_rawat=? ",rs.getString("no_rawat"))+
+                                   Sequel.cariIsiAngka("select sum(rawat_inap_pr.material)+sum(rawat_inap_pr.kso) from rawat_inap_pr where rawat_inap_pr.no_rawat=? ",rs.getString("no_rawat"))+
+                                   Sequel.cariIsiAngka("select sum(rawat_inap_drpr.material)+sum(rawat_inap_drpr.kso) from rawat_inap_drpr where rawat_inap_drpr.no_rawat=? ",rs.getString("no_rawat"));
+                        jasamedis=Sequel.cariIsiAngka("select sum(rawat_inap_dr.tarif_tindakandr) from rawat_inap_dr where rawat_inap_dr.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and rawat_inap_dr.kd_dokter='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(rawat_inap_pr.tarif_tindakanpr) from rawat_inap_pr where rawat_inap_pr.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and rawat_inap_pr.nip='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(rawat_inap_drpr.tarif_tindakandr) from rawat_inap_drpr where rawat_inap_drpr.no_rawat=?"+(NmDokter.getText().trim().equals("")?"":" and rawat_inap_drpr.kd_dokter='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(rawat_inap_drpr.tarif_tindakanpr) from rawat_inap_drpr where rawat_inap_drpr.no_rawat=?"+(NmDokter.getText().trim().equals("")?"":" and rawat_inap_drpr.nip='"+KdDokter.getText()+"' "),rs.getString("no_rawat"));
+                        jasamenejemen=Sequel.cariIsiAngka("select sum(rawat_inap_dr.menejemen) from rawat_inap_dr where rawat_inap_dr.no_rawat=? ",rs.getString("no_rawat"))+
+                                      Sequel.cariIsiAngka("select sum(rawat_inap_pr.menejemen) from rawat_inap_pr where rawat_inap_pr.no_rawat=? ",rs.getString("no_rawat"))+
+                                      Sequel.cariIsiAngka("select sum(rawat_inap_drpr.menejemen) from rawat_inap_drpr where rawat_inap_drpr.no_rawat=? ",rs.getString("no_rawat"));
+                        bhp=Sequel.cariIsiAngka("select sum(rawat_inap_dr.bhp) from rawat_inap_dr where rawat_inap_dr.no_rawat=? ",rs.getString("no_rawat"))+
+                            Sequel.cariIsiAngka("select sum(rawat_inap_pr.bhp) from rawat_inap_pr where rawat_inap_pr.no_rawat=? ",rs.getString("no_rawat"))+
+                            Sequel.cariIsiAngka("select sum(rawat_inap_drpr.bhp) from rawat_inap_drpr where rawat_inap_drpr.no_rawat=? ",rs.getString("no_rawat"));
+                        total=Sequel.cariIsiAngka("select sum(rawat_inap_dr.biaya_rawat) from rawat_inap_dr where rawat_inap_dr.no_rawat=? ",rs.getString("no_rawat"))+
+                              Sequel.cariIsiAngka("select sum(rawat_inap_pr.biaya_rawat) from rawat_inap_pr where rawat_inap_pr.no_rawat=? ",rs.getString("no_rawat"))+
+                              Sequel.cariIsiAngka("select sum(rawat_inap_drpr.biaya_rawat) from rawat_inap_drpr where rawat_inap_drpr.no_rawat=? ",rs.getString("no_rawat"));
+
+                        subjasasarana=subjasasarana+jasasarana;
+                        ttljasasarana=ttljasasarana+jasasarana;
+                        subjasamedis=subjasamedis+jasamedis;
+                        ttljasamedis=ttljasamedis+jasamedis;
+                        subjasamenejemen=subjasamenejemen+jasamenejemen;
+                        ttljasamenejemen=ttljasamenejemen+jasamenejemen;
+                        subbhp=subbhp+bhp;
+                        ttlbhp=ttlbhp+bhp;
+                        subtotal=subtotal+total;
+                        ttltotal=ttltotal+total;
+
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rawat")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rkm_medis")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                                 "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
+                                 "<td valign='middle' align='center'>"+Sequel.cariIsi("select if(kamar_inap.tgl_keluar='0000-00-00','Belum Pulang',kamar_inap.tgl_keluar) from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar desc limit 1 ",rs.getString("no_rawat"))+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(bhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(total)+"</td>"+
+                            "</tr>"
+                        );
+                    }
+                }catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                    "</tr>"+
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                    "</tr>"
+                );
+            }
+            
+            if(chkOperasi.isSelected()==true){
+                subjasasarana=0;subjasamedis=0;subjasamenejemen=0;subtotal=0;
+                ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.status_bayar='Belum Bayar' and "+
+                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi where operasi.tgl_operasi between ? and ? group by operasi.no_rawat) "+
+                        "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                        (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
+                        "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>@ RUANG OK/VK</td>"+
+                            "</tr>"
+                        );
+                    }
+                    rs.beforeFirst();
+                    while(rs.next()){
+                        jasasarana=0;jasamedis=0;jasamenejemen=0;total=0;
+                        jasasarana=Sequel.cariIsiAngka("select sum(operasi.biayaalat)+sum(operasi.biayasewaok)+sum(operasi.akomodasi)+sum(operasi.biayasarpras) from operasi where operasi.no_rawat=? ",rs.getString("no_rawat"));
+                        jasamedis=Sequel.cariIsiAngka("select sum(operasi.biayaoperator1) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.operator1='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaoperator2) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.operator2='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaoperator3) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.operator3='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayadokter_anak) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.dokter_anak='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biaya_dokter_umum) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.dokter_umum='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biaya_dokter_pjanak) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.dokter_pjanak='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayadokter_anestesi) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.dokter_anestesi='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaasisten_operator1) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.asisten_operator1='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaasisten_operator2) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.asisten_operator2='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaasisten_operator3) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.asisten_operator3='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayainstrumen) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.instrumen='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaperawaat_resusitas) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.perawaat_resusitas='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaasisten_anestesi) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.asisten_anestesi='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaasisten_anestesi2) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.asisten_anestesi2='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayabidan) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.bidan='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayabidan2) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.bidan2='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayabidan3) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.bidan3='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biayaperawat_luar) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.perawat_luar='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biaya_omloop) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.omloop='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biaya_omloop2) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.omloop2='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biaya_omloop3) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.omloop3='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biaya_omloop4) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.omloop4='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(operasi.biaya_omloop5) from operasi where operasi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and operasi.omloop5='"+KdDokter.getText()+"' "),rs.getString("no_rawat"));
+                        jasamenejemen=Sequel.cariIsiAngka("select sum(operasi.bagian_rs) from operasi where operasi.no_rawat=? ",rs.getString("no_rawat"));
+                        total=Sequel.cariIsiAngka("select sum(operasi.biayaoperator1)+sum(operasi.biayaoperator2)+"+
+                                "sum(operasi.biayaoperator3)+sum(operasi.biayaasisten_operator1)+sum(operasi.biayaasisten_operator2)+"+
+                                "sum(operasi.biayaasisten_operator3)+sum(operasi.biayainstrumen)+sum(operasi.biayadokter_anak)+"+
+                                "sum(operasi.biayaperawaat_resusitas)+sum(operasi.biayadokter_anestesi)+sum(operasi.biayaasisten_anestesi)+"+
+                                "sum(operasi.biayaasisten_anestesi2)+sum(operasi.biayabidan)+sum(operasi.biayabidan2)+sum(operasi.biayabidan3)+"+
+                                "sum(operasi.biayaperawat_luar)+sum(operasi.biaya_omloop)+sum(operasi.biaya_omloop2)+sum(operasi.biaya_omloop3)+"+
+                                "sum(operasi.biaya_omloop4)+sum(operasi.biaya_omloop5)+sum(operasi.biaya_dokter_pjanak)+"+
+                                "sum(operasi.biaya_dokter_umum)+sum(operasi.biayaalat)+sum(operasi.biayasewaok)+sum(operasi.akomodasi)+"+
+                                "sum(operasi.bagian_rs)+sum(operasi.biayasarpras) from operasi where operasi.no_rawat=? ",rs.getString("no_rawat"));
+
+                        subjasasarana=subjasasarana+jasasarana;
+                        ttljasasarana=ttljasasarana+jasasarana;
+
+                        subjasamedis=subjasamedis+jasamedis;
+                        ttljasamedis=ttljasamedis+jasamedis;
+
+                        subjasamenejemen=subjasamenejemen+jasamenejemen;
+                        ttljasamenejemen=ttljasamenejemen+jasamenejemen;
+
+                        subtotal=subtotal+total;
+                        ttltotal=ttltotal+total;
+
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rawat")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rkm_medis")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                                 "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
+                                 "<td valign='middle' align='center'>"+(rs.getString("status_lanjut").equals("Ralan")?rs.getString("tgl_registrasi"):Sequel.cariIsi("select if(kamar_inap.tgl_keluar='0000-00-00','Belum Pulang',kamar_inap.tgl_keluar) from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar desc limit 1 ",rs.getString("no_rawat")))+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>0</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(total)+"</td>"+
+                            "</tr>"
+                        );
+                    }
+                }catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                    "</tr>"+
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                    "</tr>"
+                );
+            }
+            
+            if(chkLaborat.isSelected()==true){
+                subjasasarana=0;subjasamedis=0;subjasamenejemen=0;subbhp=0;subtotal=0;
+                ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                        "reg_periksa.status_bayar='Belum Bayar' and reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab where "+
+                        "concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) between ? and ? group by periksa_lab.no_rawat) "+
+                        "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                        (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
+                        "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>@ LABORATORIUM</td>"+
+                            "</tr>"
+                        );
+                    }
+                    rs.beforeFirst();
+                    while(rs.next()){
+                        jasasarana=0;jasamedis=0;jasamenejemen=0;bhp=0;total=0;
+                        jasasarana=Sequel.cariIsiAngka("select sum(periksa_lab.bagian_rs)+sum(periksa_lab.kso) from periksa_lab where periksa_lab.no_rawat=? ",rs.getString("no_rawat"))+
+                                   Sequel.cariIsiAngka("select sum(detail_periksa_lab.bagian_rs)+sum(detail_periksa_lab.kso) from detail_periksa_lab where detail_periksa_lab.no_rawat=? ",rs.getString("no_rawat"));
+                        jasamedis=Sequel.cariIsiAngka("select sum(periksa_lab.tarif_tindakan_dokter) from periksa_lab where periksa_lab.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and periksa_lab.kd_dokter='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(periksa_lab.tarif_perujuk) from periksa_lab where periksa_lab.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and periksa_lab.dokter_perujuk='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(periksa_lab.tarif_tindakan_petugas) from periksa_lab where periksa_lab.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and periksa_lab.nip='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(detail_periksa_lab.bagian_dokter) from detail_periksa_lab inner join periksa_lab "+
+                                                      "on periksa_lab.no_rawat=detail_periksa_lab.no_rawat and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                                                      "and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa and periksa_lab.jam=detail_periksa_lab.jam "+
+                                                      "where detail_periksa_lab.no_rawat=?"+(NmDokter.getText().trim().equals("")?"":" and periksa_lab.kd_dokter='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(detail_periksa_lab.bagian_perujuk) from detail_periksa_lab inner join periksa_lab "+
+                                                      "on periksa_lab.no_rawat=detail_periksa_lab.no_rawat and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                                                      "and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa and periksa_lab.jam=detail_periksa_lab.jam "+
+                                                      " where detail_periksa_lab.no_rawat=?"+(NmDokter.getText().trim().equals("")?"":" and periksa_lab.dokter_perujuk='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(detail_periksa_lab.bagian_laborat) from detail_periksa_lab inner join periksa_lab "+
+                                                      "on periksa_lab.no_rawat=detail_periksa_lab.no_rawat and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                                                      "and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa and periksa_lab.jam=detail_periksa_lab.jam "+
+                                                      " where detail_periksa_lab.no_rawat=?"+(NmDokter.getText().trim().equals("")?"":" and periksa_lab.nip='"+KdDokter.getText()+"' "),rs.getString("no_rawat"));
+                        jasamenejemen=Sequel.cariIsiAngka("select sum(periksa_lab.menejemen) from periksa_lab where periksa_lab.no_rawat=? ",rs.getString("no_rawat"))+
+                                      Sequel.cariIsiAngka("select sum(detail_periksa_lab.menejemen) from detail_periksa_lab where detail_periksa_lab.no_rawat=? ",rs.getString("no_rawat"));
+                        bhp=Sequel.cariIsiAngka("select sum(periksa_lab.bhp) from periksa_lab where periksa_lab.no_rawat=? ",rs.getString("no_rawat"))+
+                            Sequel.cariIsiAngka("select sum(detail_periksa_lab.bhp) from detail_periksa_lab where detail_periksa_lab.no_rawat=? ",rs.getString("no_rawat"));
+                        total=Sequel.cariIsiAngka("select sum(periksa_lab.biaya) from periksa_lab where periksa_lab.no_rawat=? ",rs.getString("no_rawat"))+
+                              Sequel.cariIsiAngka("select sum(detail_periksa_lab.biaya_item) from detail_periksa_lab where detail_periksa_lab.no_rawat=? ",rs.getString("no_rawat"));
+
+                        subjasasarana=subjasasarana+jasasarana;
+                        ttljasasarana=ttljasasarana+jasasarana;
+                        subjasamedis=subjasamedis+jasamedis;
+                        ttljasamedis=ttljasamedis+jasamedis;
+                        subjasamenejemen=subjasamenejemen+jasamenejemen;
+                        ttljasamenejemen=ttljasamenejemen+jasamenejemen;
+                        subbhp=subbhp+bhp;
+                        ttlbhp=ttlbhp+bhp;
+                        subtotal=subtotal+total;
+                        ttltotal=ttltotal+total;
+
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rawat")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rkm_medis")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                                 "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
+                                 "<td valign='middle' align='center'>"+(rs.getString("status_lanjut").equals("Ralan")?rs.getString("tgl_registrasi"):Sequel.cariIsi("select if(kamar_inap.tgl_keluar='0000-00-00','Belum Pulang',kamar_inap.tgl_keluar) from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar desc limit 1 ",rs.getString("no_rawat")))+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(bhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(total)+"</td>"+
+                            "</tr>"
+                        );
+                    }
+                }catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                    "</tr>"+
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                    "</tr>"
+                );
+            }
+            
+            if(chkRadiologi.isSelected()==true){
+                subjasasarana=0;subjasamedis=0;subjasamenejemen=0;subbhp=0;subtotal=0;
+                ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.status_bayar='Belum Bayar' and "+
+                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi where "+
+                        "concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) between ? and ? group by periksa_radiologi.no_rawat) "+
+                        "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                        (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
+                        "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>@ RADIOLOGI</td>"+
+                            "</tr>"
+                        );
+                    }
+                    rs.beforeFirst();
+                    while(rs.next()){
+                        jasasarana=0;jasamedis=0;jasamenejemen=0;bhp=0;total=0;
+                        jasasarana=Sequel.cariIsiAngka("select sum(periksa_radiologi.bagian_rs)+sum(periksa_radiologi.kso) from periksa_radiologi where periksa_radiologi.no_rawat=? ",rs.getString("no_rawat"));
+                        jasamedis=Sequel.cariIsiAngka("select sum(periksa_radiologi.tarif_tindakan_dokter) from periksa_radiologi where periksa_radiologi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and periksa_radiologi.kd_dokter='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(periksa_radiologi.tarif_perujuk) from periksa_radiologi where periksa_radiologi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and periksa_radiologi.dokter_perujuk='"+KdDokter.getText()+"' "),rs.getString("no_rawat"))+
+                                  Sequel.cariIsiAngka("select sum(periksa_radiologi.tarif_tindakan_petugas) from periksa_radiologi where periksa_radiologi.no_rawat=? "+(NmDokter.getText().trim().equals("")?"":" and periksa_radiologi.nip='"+KdDokter.getText()+"' "),rs.getString("no_rawat"));
+                        jasamenejemen=Sequel.cariIsiAngka("select sum(periksa_radiologi.menejemen) from periksa_radiologi where periksa_radiologi.no_rawat=? ",rs.getString("no_rawat"));
+                        bhp=Sequel.cariIsiAngka("select sum(periksa_radiologi.bhp) from periksa_radiologi where periksa_radiologi.no_rawat=? ",rs.getString("no_rawat"));
+                        total=Sequel.cariIsiAngka("select sum(periksa_radiologi.biaya) from periksa_radiologi where periksa_radiologi.no_rawat=? ",rs.getString("no_rawat"));
+
+                        subjasasarana=subjasasarana+jasasarana;
+                        ttljasasarana=ttljasasarana+jasasarana;
+                        subjasamedis=subjasamedis+jasamedis;
+                        ttljasamedis=ttljasamedis+jasamedis;
+                        subjasamenejemen=subjasamenejemen+jasamenejemen;
+                        ttljasamenejemen=ttljasamenejemen+jasamenejemen;
+                        subbhp=subbhp+bhp;
+                        ttlbhp=ttlbhp+bhp;
+                        subtotal=subtotal+total;
+                        ttltotal=ttltotal+total;
+
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rawat")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("no_rkm_medis")+"</td>"+
+                                 "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                                 "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
+                                 "<td valign='middle' align='center'>"+(rs.getString("status_lanjut").equals("Ralan")?rs.getString("tgl_registrasi"):Sequel.cariIsi("select if(kamar_inap.tgl_keluar='0000-00-00','Belum Pulang',kamar_inap.tgl_keluar) from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar desc limit 1 ",rs.getString("no_rawat")))+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(jasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(bhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(total)+"</td>"+
+                            "</tr>"
+                        );
+                    }
+                }catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                    "</tr>"+
+                    "<tr class='isi'>"+
+                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                    "</tr>"
+                );
+            }
+            htmlContent.append(
+                "<tr class='isi'>"+
+                     "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
+                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
+                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
+                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
+                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
+                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
+                "</tr>"
+            );
+            
+            LoadHTML.setText(
+                "<html>"+
+                  "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                   htmlContent.toString()+
+                  "</table>"+
+                "</html>"
+            );
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
     
     
 }
