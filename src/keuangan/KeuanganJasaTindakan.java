@@ -782,7 +782,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 prosesCariBelumTerclosing();
             }
         }else if(TabRawat.getSelectedIndex()==1){
-            
+            if(cmbStatus.getSelectedItem().equals("Semua")){
+                prosesCariSemua2();
+            }else if(cmbStatus.getSelectedItem().equals("Piutang Belum Lunas")){
+                prosesCariPiutangBelumLunas2();
+            }else if(cmbStatus.getSelectedItem().equals("Piutang Sudah Lunas")){
+                prosesCariPiutangSudahLunas2();
+            }else if(cmbStatus.getSelectedItem().equals("Sudah Bayar Non Piutang")){
+                prosesCariSudahBayarNonPiutang2();
+            }else if(cmbStatus.getSelectedItem().equals("Belum Terclosing Kasir")){
+                prosesCariBelumTerclosing2();
+            }
         }
     }
 
@@ -891,19 +901,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ps2.close();
                             }
                         }
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                            "</tr>"+
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                            "</tr>"
-                        );
+                        rs.last();
+                        if(rs.getRow()>0){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                "</tr>"
+                            );
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -982,6 +995,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -991,20 +1020,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if(ps!=null){
                         ps.close();
                     }
-                }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
+                }   
             }
             
             if(chkOperasi.isSelected()==true){
@@ -1012,15 +1028,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi where operasi.tgl_operasi between ? and ? group by operasi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi group by operasi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -1094,6 +1108,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -1104,19 +1134,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkLaborat.isSelected()==true){
@@ -1124,16 +1141,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab where "+
-                        "concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) between ? and ? group by periksa_lab.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab group by periksa_lab.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -1195,6 +1209,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -1205,19 +1235,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkRadiologi.isSelected()==true){
@@ -1225,16 +1242,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi where "+
-                        "concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) between ? and ? group by periksa_radiologi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi group by periksa_radiologi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -1280,6 +1294,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -1290,30 +1320,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
+            }
+            if(ttltotal>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                         "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
                     "</tr>"
                 );
             }
-            htmlContent.append(
-                "<tr class='isi'>"+
-                     "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
-                "</tr>"
-            );
             
             LoadHTML.setText(
                 "<html>"+
@@ -1435,19 +1454,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ps2.close();
                             }
                         }
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                            "</tr>"+
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                            "</tr>"
-                        );
+                        rs.last();
+                        if(rs.getRow()>0){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                "</tr>"
+                            );
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1528,6 +1550,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -1538,19 +1576,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkOperasi.isSelected()==true){
@@ -1560,15 +1585,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and "+
-                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi where operasi.tgl_operasi between ? and ? group by operasi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi group by operasi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -1642,6 +1665,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -1652,19 +1691,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkLaborat.isSelected()==true){
@@ -1674,16 +1700,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and "+
-                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab where "+
-                        "concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) between ? and ? group by periksa_lab.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab group by periksa_lab.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -1745,6 +1768,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -1755,19 +1794,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkRadiologi.isSelected()==true){
@@ -1777,16 +1803,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and "+
-                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi where "+
-                        "concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) between ? and ? group by periksa_radiologi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi group by periksa_radiologi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -1832,6 +1855,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -1842,30 +1881,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
+            }
+            if(ttltotal>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                         "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
                     "</tr>"
                 );
             }
-            htmlContent.append(
-                "<tr class='isi'>"+
-                     "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
-                "</tr>"
-            );
             
             LoadHTML.setText(
                 "<html>"+
@@ -1987,19 +2015,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ps2.close();
                             }
                         }
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                            "</tr>"+
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                            "</tr>"
-                        );
+                        rs.last();
+                        if(rs.getRow()>0){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                "</tr>"
+                            );
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2080,6 +2111,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2090,19 +2137,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkOperasi.isSelected()==true){
@@ -2112,15 +2146,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' and "+
-                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi where operasi.tgl_operasi between ? and ? group by operasi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi group by operasi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -2194,6 +2226,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2204,19 +2252,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkLaborat.isSelected()==true){
@@ -2226,16 +2261,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' and "+
-                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab where "+
-                        "concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) between ? and ? group by periksa_lab.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab group by periksa_lab.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -2297,6 +2329,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2307,19 +2355,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkRadiologi.isSelected()==true){
@@ -2329,16 +2364,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' and "+
-                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi where "+
-                        "concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) between ? and ? group by periksa_radiologi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi group by periksa_radiologi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -2384,6 +2416,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2394,30 +2442,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
+            }
+            if(ttltotal>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                         "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
                     "</tr>"
                 );
             }
-            htmlContent.append(
-                "<tr class='isi'>"+
-                     "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
-                "</tr>"
-            );
             
             LoadHTML.setText(
                 "<html>"+
@@ -2473,7 +2510,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps2=koneksi.prepareStatement(
                                 "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien "+
                                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                                "where reg_periksa.status_lanjut='Ralan' and reg_periksa.kd_poli=? reg_periksa.status_bayar='Sudah Bayar' "+
+                                "where reg_periksa.status_lanjut='Ralan' and reg_periksa.kd_poli=? and reg_periksa.status_bayar='Sudah Bayar' "+
                                 "and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) "+
                                 "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                                 (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
@@ -2538,19 +2575,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ps2.close();
                             }
                         }
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                            "</tr>"+
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                            "</tr>"
-                        );
+                        rs.last();
+                        if(rs.getRow()>0){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                "</tr>"
+                            );
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2630,6 +2670,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2640,19 +2696,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkOperasi.isSelected()==true){
@@ -2661,15 +2704,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and "+
-                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi where operasi.tgl_operasi between ? and ? group by operasi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi group by operasi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -2743,6 +2784,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2753,19 +2810,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkLaborat.isSelected()==true){
@@ -2774,16 +2818,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and "+
-                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab where "+
-                        "concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) between ? and ? group by periksa_lab.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab group by periksa_lab.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -2845,6 +2886,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2855,19 +2912,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkRadiologi.isSelected()==true){
@@ -2876,16 +2920,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
                         "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and "+
-                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi where "+
-                        "concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) between ? and ? group by periksa_radiologi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi group by periksa_radiologi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -2931,6 +2972,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -2941,30 +2998,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
+            }
+            if(ttltotal>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                         "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
                     "</tr>"
                 );
             }
-            htmlContent.append(
-                "<tr class='isi'>"+
-                     "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
-                "</tr>"
-            );
             
             LoadHTML.setText(
                 "<html>"+
@@ -3083,19 +3129,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ps2.close();
                             }
                         }
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                            "</tr>"+
-                            "<tr class='isi'>"+
-                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                            "</tr>"
-                        );
+                        rs.last();
+                        if(rs.getRow()>0){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi'>"+
+                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                "</tr>"
+                            );
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3175,6 +3224,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -3185,19 +3250,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkOperasi.isSelected()==true){
@@ -3205,15 +3257,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.status_bayar='Belum Bayar' and "+
-                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi where operasi.tgl_operasi between ? and ? group by operasi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select operasi.no_rawat from operasi group by operasi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -3287,6 +3337,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -3297,36 +3363,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkLaborat.isSelected()==true){
                 subjasasarana=0;subjasamedis=0;subjasamenejemen=0;subbhp=0;subtotal=0;
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                        "reg_periksa.status_bayar='Belum Bayar' and reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab where "+
-                        "concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) between ? and ? group by periksa_lab.no_rawat) "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.status_bayar='Belum Bayar' "+
+                        "and reg_periksa.no_rawat in (select periksa_lab.no_rawat from periksa_lab group by periksa_lab.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -3388,6 +3438,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -3398,19 +3464,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
-                htmlContent.append(
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                    "</tr>"
-                );
             }
             
             if(chkRadiologi.isSelected()==true){
@@ -3418,16 +3471,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,pasien.nm_pasien,reg_periksa.status_lanjut "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.status_bayar='Belum Bayar' and "+
-                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi where "+
-                        "concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) between ? and ? group by periksa_radiologi.no_rawat) "+
+                        "reg_periksa.no_rawat in (select periksa_radiologi.no_rawat from periksa_radiologi group by periksa_radiologi.no_rawat) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
                 try {
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                    ps.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                    ps.setString(4,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent.append(
@@ -3473,6 +3523,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "</tr>"
                         );
                     }
+                    rs.last();
+                    if(rs.getRow()>0){
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='5'>SUBTOTAL :</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                 "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                            "</tr>"+
+                            "<tr class='isi'>"+
+                                 "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                            "</tr>"
+                        );
+                    }
                 }catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }finally{
@@ -3483,30 +3549,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.close();
                     }
                 }
+            }
+            if(ttltotal>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='5'>SUNTOTAL :</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                    "</tr>"+
-                    "<tr class='isi'>"+
-                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                         "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
+                         "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
                     "</tr>"
                 );
             }
-            htmlContent.append(
-                "<tr class='isi'>"+
-                     "<td valign='middle' align='left' colspan='5'>JUMLAH TOTAL :</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasasarana)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamedis)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttljasamenejemen)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttlbhp)+"</td>"+
-                     "<td valign='middle' align='right'>"+Valid.SetAngka(ttltotal)+"</td>"+
-                "</tr>"
-            );
             
             LoadHTML.setText(
                 "<html>"+
@@ -3519,6 +3574,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Notifikasi : "+e);
         }
     }
+    
     
     
 }
