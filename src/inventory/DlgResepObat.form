@@ -803,7 +803,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-02-2022 09:37:29"/>
+                        <StringItem index="0" value="13-02-2022 17:02:24"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -831,7 +831,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-02-2022 09:37:30"/>
+                        <StringItem index="0" value="13-02-2022 17:02:24"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1479,7 +1479,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                       <SubComponents>
-                        <Component class="widget.Button" name="btnAmbilPhoto">
+                        <Component class="widget.Button" name="BtnTelaah">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/picture/plus_16.png"/>
@@ -1487,13 +1487,13 @@
                             <Property name="mnemonic" type="int" value="85"/>
                             <Property name="text" type="java.lang.String" value="Telaah"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+U"/>
-                            <Property name="name" type="java.lang.String" value="btnAmbilPhoto" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="BtnTelaah" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[100, 30]"/>
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAmbilPhotoActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnTelaahActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="widget.Button" name="BtnRefreshPhoto1">

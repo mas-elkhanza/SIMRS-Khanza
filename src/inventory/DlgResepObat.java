@@ -369,7 +369,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         TabData = new javax.swing.JTabbedPane();
         FormTelaah = new widget.PanelBiasa();
         FormPass3 = new widget.PanelBiasa();
-        btnAmbilPhoto = new widget.Button();
+        BtnTelaah = new widget.Button();
         BtnRefreshPhoto1 = new widget.Button();
         Scroll5 = new widget.ScrollPane();
         LoadHTML2 = new widget.editorpane();
@@ -846,7 +846,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2022 09:37:29" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2022 17:02:24" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -860,7 +860,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2022 09:37:30" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2022 17:02:24" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1131,18 +1131,18 @@ public final class DlgResepObat extends javax.swing.JDialog {
         FormPass3.setName("FormPass3"); // NOI18N
         FormPass3.setPreferredSize(new java.awt.Dimension(115, 40));
 
-        btnAmbilPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
-        btnAmbilPhoto.setMnemonic('U');
-        btnAmbilPhoto.setText("Telaah");
-        btnAmbilPhoto.setToolTipText("Alt+U");
-        btnAmbilPhoto.setName("btnAmbilPhoto"); // NOI18N
-        btnAmbilPhoto.setPreferredSize(new java.awt.Dimension(100, 30));
-        btnAmbilPhoto.addActionListener(new java.awt.event.ActionListener() {
+        BtnTelaah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnTelaah.setMnemonic('U');
+        BtnTelaah.setText("Telaah");
+        BtnTelaah.setToolTipText("Alt+U");
+        BtnTelaah.setName("BtnTelaah"); // NOI18N
+        BtnTelaah.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnTelaah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAmbilPhotoActionPerformed(evt);
+                BtnTelaahActionPerformed(evt);
             }
         });
-        FormPass3.add(btnAmbilPhoto);
+        FormPass3.add(BtnTelaah);
 
         BtnRefreshPhoto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
         BtnRefreshPhoto1.setMnemonic('U');
@@ -2030,9 +2030,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         panggilTelaah();
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
-    private void btnAmbilPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilPhotoActionPerformed
+    private void BtnTelaahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTelaahActionPerformed
         
-    }//GEN-LAST:event_btnAmbilPhotoActionPerformed
+    }//GEN-LAST:event_BtnTelaahActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2064,6 +2064,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpan3;
     private widget.Button BtnSimpan4;
+    private widget.Button BtnTelaah;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkRM;
@@ -2096,7 +2097,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JTabbedPane TabData;
     private javax.swing.JDialog WindowInput3;
     private javax.swing.JDialog WindowInput4;
-    private widget.Button btnAmbilPhoto;
     private widget.Button btnDokter;
     private widget.ComboBox cmbDtk;
     private widget.ComboBox cmbJam;
@@ -2379,6 +2379,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnSimpan.setEnabled(akses.getresep_obat());
         BtnHapus.setEnabled(akses.getresep_obat());
         BtnPrint.setEnabled(akses.getresep_obat());
+        BtnTelaah.setEnabled(akses.gettelaah_resep());
     }
 
     private void tampilresep() {
@@ -2538,7 +2539,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     "</tr>"+
                                     "<tr class='isi'>"+
                                         "<td valign='middle' align='center'>1</td>"+
-                                        "<td valign='middle' align='left'>Tepat Indetifikasi Pasien</td>"+
+                                        "<td valign='middle' align='left'>Tepat Identifikasi Pasien</td>"+
                                         "<td valign='middle' align='center'>"+rs.getString("resep_identifikasi_pasien")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
@@ -2583,7 +2584,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     "</tr>"+
                                     "<tr class='isi'>"+
                                         "<td valign='middle' align='center'>6</td>"+        
-                                        "<td valign='middle' align='left'>Ada tidak Duplikasi Obat</td>"+
+                                        "<td valign='middle' align='left'>Ada Tidak Duplikasi Obat</td>"+
                                         "<td valign='middle' align='center'>"+rs.getString("resep_ada_tidak_duplikasi_obat")+"</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+

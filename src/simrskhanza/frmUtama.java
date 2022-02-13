@@ -570,6 +570,7 @@ import inventory.InventoryRingkasanReturJualBarangMedis;
 import inventory.InventoryRingkasanReturSuplierBarangMedis;
 import inventory.InventoryRingkasanStokKeluarBarangMedis;
 import inventory.InventoryStokAkhirFarmasiPerTanggal;
+import inventory.InventoryTelaahResep;
 import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
@@ -18076,6 +18077,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnTelaahResepActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryTelaahResep aplikasi=new InventoryTelaahResep(this,false);
+        aplikasi.emptTeks();
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18712,7 +18726,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
-            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien;
+            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep;
     
     public void isWall(){
         try{            
@@ -19510,6 +19524,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getstok_akhir_farmasi_pertanggal()==true){
                 Panelmenu.add(btnStokAkhirFarmasiPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.gettelaah_resep()==true){
+                Panelmenu.add(btnTelaahResep);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -23455,6 +23474,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getstok_akhir_farmasi_pertanggal()==true){
             Panelmenu.add(btnStokAkhirFarmasiPerTanggal);
+            jmlmenu++;
+        }
+
+        if(akses.gettelaah_resep()==true){
+            Panelmenu.add(btnTelaahResep);
             jmlmenu++;
         }
 
@@ -27659,6 +27683,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
 
+        if(akses.gettelaah_resep()==true){
+            if(btnTelaahResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnTelaahResep);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsatuan_barang()==true){
             if(btnSatuan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSatuan);  
@@ -34802,6 +34833,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJasaTindakanPasien.setName("btnJasaTindakanPasien");
         btnJasaTindakanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnJasaTindakanPasien.addActionListener(this::btnJasaTindakanPasienActionPerformed);
+        
+        btnTelaahResep = new widget.ButtonBig();
+        btnTelaahResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5868989_coronavirus_drug_medic_medical_medicine_icon.png"))); 
+        btnTelaahResep.setText("Telaah Resep & Obat");
+        btnTelaahResep.setIconTextGap(0);
+        btnTelaahResep.setName("btnTelaahResep");
+        btnTelaahResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTelaahResep.addActionListener(this::btnTelaahResepActionPerformed);
     }
     
 }
