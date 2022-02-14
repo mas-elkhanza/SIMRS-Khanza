@@ -89,7 +89,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(150);
             }else if(i==6){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(50);
             }else if(i==7){
                 column.setPreferredWidth(25);
             }else if(i==8){
@@ -1203,31 +1203,27 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataSkriningGiziLanjut.jasper","report","::[ Data Skrining Gizi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,"+
-                    "skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip where "+
-                    "skrining_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by skrining_gizi.tanggal ",param);
-            }else{
-                Valid.MyReportqry("rptDataSkriningGiziLanjut.jasper","report","::[ Data Skrining Gizi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
-                    "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,skrining_gizi.skor_penyakit,"+
-                    "skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from skrining_gizi inner join reg_periksa on skrining_gizi.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_gizi.nip=petugas.nip "+
-                    "where skrining_gizi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%'  or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' "+
-                    "or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or skrining_gizi.alergi like '%"+TCari.getText().trim()+"%' "+
-                    "or skrining_gizi.parameter_total like '%"+TCari.getText().trim()+"%' or skrining_gizi.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like ?) "+
-                    "order by skrining_gizi.tanggal ",param);
-            }  
+            Valid.MyReportqry("rptDataTelaahResep.jasper","report","::[ Data Skrining Gizi ]::",
+                "select telaah_farmasi.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,reg_periksa.no_rkm_medis,"+
+                "pasien.nm_pasien,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.jk,pasien.tgl_lahir,resep_obat.kd_dokter,dokter.nm_dokter,resep_obat.status,"+
+                "telaah_farmasi.resep_identifikasi_pasien,telaah_farmasi.resep_ket_identifikasi_pasien,telaah_farmasi.resep_tepat_obat,"+
+                "telaah_farmasi.resep_ket_tepat_obat,telaah_farmasi.resep_tepat_dosis,telaah_farmasi.resep_ket_tepat_dosis,"+
+                "telaah_farmasi.resep_tepat_cara_pemberian,telaah_farmasi.resep_ket_tepat_cara_pemberian,telaah_farmasi.resep_tepat_waktu_pemberian,"+
+                "telaah_farmasi.resep_ket_tepat_waktu_pemberian,telaah_farmasi.resep_ada_tidak_duplikasi_obat,telaah_farmasi.resep_ket_ada_tidak_duplikasi_obat,"+
+                "telaah_farmasi.resep_interaksi_obat,telaah_farmasi.resep_ket_interaksi_obat,telaah_farmasi.resep_kontra_indikasi_obat,"+
+                "telaah_farmasi.resep_ket_kontra_indikasi_obat,telaah_farmasi.obat_tepat_pasien,telaah_farmasi.obat_tepat_obat,"+
+                "telaah_farmasi.obat_tepat_dosis,telaah_farmasi.obat_tepat_cara_pemberian,telaah_farmasi.obat_tepat_waktu_pemberian,"+
+                "telaah_farmasi.nip,petugas.nama "+
+                "from telaah_farmasi inner join resep_obat on telaah_farmasi.no_resep=resep_obat.no_resep "+
+                "inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                "inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
+                "inner join petugas on telaah_farmasi.nip=petugas.nip "+
+                "where resep_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
+                (TCari.getText().equals("")?"":"and (telaah_farmasi.no_resep like '%"+TCari.getText().trim()+"%' or resep_obat.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                "reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or resep_obat.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
+                "dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or resep_obat.status like '%"+TCari.getText().trim()+"%' or telaah_farmasi.nip like '%"+TCari.getText().trim()+"%' or "+
+                "petugas.nama like '%"+TCari.getText().trim()+"%') ")+"order by resep_obat.tgl_perawatan",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1526,7 +1522,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         try{
             ps=koneksi.prepareStatement(
                 "select telaah_farmasi.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,reg_periksa.no_rkm_medis,"+
-                "pasien.nm_pasien,pasien.umur,pasien.jk,pasien.tgl_lahir,resep_obat.kd_dokter,dokter.nm_dokter,resep_obat.status,"+
+                "pasien.nm_pasien,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.jk,pasien.tgl_lahir,resep_obat.kd_dokter,dokter.nm_dokter,resep_obat.status,"+
                 "telaah_farmasi.resep_identifikasi_pasien,telaah_farmasi.resep_ket_identifikasi_pasien,telaah_farmasi.resep_tepat_obat,"+
                 "telaah_farmasi.resep_ket_tepat_obat,telaah_farmasi.resep_tepat_dosis,telaah_farmasi.resep_ket_tepat_dosis,"+
                 "telaah_farmasi.resep_tepat_cara_pemberian,telaah_farmasi.resep_ket_tepat_cara_pemberian,telaah_farmasi.resep_tepat_waktu_pemberian,"+
