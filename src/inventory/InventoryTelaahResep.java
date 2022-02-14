@@ -77,7 +77,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         for (i = 0; i < 35; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==1){
                 column.setPreferredWidth(65);
             }else if(i==2){
@@ -1123,16 +1123,19 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbObat.getSelectedRow()!= -1){
-            if(Sequel.queryu2tf("delete from skrining_gizi where tanggal=? and no_rawat=?",2,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-            })==true){
-                tampil();
-                emptTeks();
+        if(tbObat.getSelectedRow()>-1){
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
             }else{
-                JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+                if(Nip.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                }
             }
-        }            
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+        }           
             
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1145,19 +1148,24 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
+        if(NoResep.getText().trim().equals("")||TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"resep/pasien");
         }else if(Nip.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(Nip,"Petugas");
-        }else{      
-            /*Sequel.mengedit("skrining_gizi","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,skrining_bb=?,skrining_tb=?,alergi=?,parameter_imt=?,skor_imt=?,"+
-                "parameter_bb=?,skor_bb=?,parameter_penyakit=?,skor_penyakit=?,skor_total=?,parameter_total=?,nip=?",16,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                BB.getText(),TB.getText(),Alergi.getText(),cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
-                cmbSkor3.getSelectedItem().toString(),Skor3.getText(),TotalSkor.getText(),ParameterSkor.getText(),nip.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();*/
+        }else{
+            if(tbObat.getSelectedRow()>-1){
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else{
+                    if(Nip.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+            } 
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1609,9 +1617,34 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            //no_resep","tgl_perawatan","jam","no_rawat","reg_periksa.no_rkm_medis","pasien.nm_pasien","pasien.umur","pasien.jk","pasien.tgl_lahir","kd_dokter","dokter.nm_dokter","status","resep_identifikasi_pasien","resep_ket_identifikasi_pasien","resep_tepat_obat","resep_ket_tepat_obat","resep_tepat_dosis","resep_ket_tepat_dosis","resep_tepat_cara_pemberian","resep_ket_tepat_cara_pemberian","resep_tepat_waktu_pemberian","resep_ket_tepat_waktu_pemberian","resep_ada_tidak_duplikasi_obat","resep_ket_ada_tidak_duplikasi_obat","resep_interaksi_obat","resep_ket_interaksi_obat","resep_kontra_indikasi_obat","resep_ket_kontra_indikasi_obat","obat_tepat_pasien","obat_tepat_obat","obat_tepat_dosis","obat_tepat_cara_pemberian","obat_tepat_waktu_pemberian","nip","petugas.nama
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            NoResep.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            ResepTepatIdentifikasiPasien.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            KetResepTepatIdetifikasiPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            ResepTepatObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            KetResepTepatObat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            ResepTepatDosis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            KetResepTepatDosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            ResepTepatCaraPemberian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            KetResepTepatCaraPemberian.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            ResepTepatWaktuPemberian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            KetResepTepatWaktuPemberian.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            ResepTidakDuplikasiObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            KetResepTidakDuplikasiObat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            ResepInteraksiObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            KetResepInteraksiObat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            ResepKontraIndikasiObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            KetResepKontraIndikasiObat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            ObatTepatPasien.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            ObatTepatObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            ObatTepatDosis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            ObatTepatCaraPemberian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            ObatTepatWaktuPemberian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
         }
     }
     private void isRawat() {
@@ -1672,6 +1705,35 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
         }           
+    }
+
+    private void hapus() {
+        if(Sequel.queryu2tf("delete from telaah_farmasi where no_resep=?",1,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        })==true){
+            tampil();
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+
+    private void ganti() {
+        if(Sequel.mengedittf("telaah_farmasi","no_resep=?","no_resep=?,resep_identifikasi_pasien=?,resep_ket_identifikasi_pasien=?,resep_tepat_obat=?,resep_ket_tepat_obat=?,"+
+                "resep_tepat_dosis=?,resep_ket_tepat_dosis=?,resep_tepat_cara_pemberian=?,resep_ket_tepat_cara_pemberian=?,resep_tepat_waktu_pemberian=?,resep_ket_tepat_waktu_pemberian=?,"+
+                "resep_ada_tidak_duplikasi_obat=?,resep_ket_ada_tidak_duplikasi_obat=?,resep_interaksi_obat=?,resep_ket_interaksi_obat=?,resep_kontra_indikasi_obat=?,"+
+                "resep_ket_kontra_indikasi_obat=?,obat_tepat_pasien=?,obat_tepat_obat=?,obat_tepat_dosis=?,obat_tepat_cara_pemberian=?,obat_tepat_waktu_pemberian=?,nip=?",24,new String[]{
+                NoResep.getText(),ResepTepatIdentifikasiPasien.getSelectedItem().toString(),KetResepTepatIdetifikasiPasien.getText(), 
+                ResepTepatObat.getSelectedItem().toString(),KetResepTepatObat.getText(),ResepTepatDosis.getSelectedItem().toString(), 
+                KetResepTepatDosis.getText(),ResepTepatCaraPemberian.getSelectedItem().toString(),KetResepTepatCaraPemberian.getText(), 
+                ResepTepatWaktuPemberian.getSelectedItem().toString(),KetResepTepatWaktuPemberian.getText(),ResepTidakDuplikasiObat.getSelectedItem().toString(), 
+                KetResepTidakDuplikasiObat.getText(),ResepInteraksiObat.getSelectedItem().toString(),KetResepInteraksiObat.getText(), 
+                ResepKontraIndikasiObat.getSelectedItem().toString(),KetResepKontraIndikasiObat.getText(),ObatTepatPasien.getSelectedItem().toString(),
+                ObatTepatObat.getSelectedItem().toString(),ObatTepatDosis.getSelectedItem().toString(),ObatTepatCaraPemberian.getSelectedItem().toString(), 
+                ObatTepatWaktuPemberian.getSelectedItem().toString(),Nip.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            })==true){
+               tampil();
+               emptTeks();
+        }
     }
     
 }
