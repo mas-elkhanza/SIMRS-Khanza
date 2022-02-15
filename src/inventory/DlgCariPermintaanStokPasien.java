@@ -45,7 +45,7 @@ public class DlgCariPermintaanStokPasien extends javax.swing.JDialog {
         for (int i = 0; i < 8; i++) {
             TableColumn column = tbPemisahan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(95);
             }else if(i==1){
                 column.setPreferredWidth(65);
             }else if(i==2){

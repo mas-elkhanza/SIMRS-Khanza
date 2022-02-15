@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="288" columnWidth="553" leftMargin="22" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00591f07-a5e6-4d2b-a277-98ca7f134ccd">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -370,7 +370,7 @@ where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["*) Rujukan Berlaku Sampai Dengan "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan}.getTime() + 7L*24*60*60*1000)]]></textFieldExpression>
+				<textFieldExpression><![CDATA["*) Rujukan Berlaku Sampai Dengan "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan}.getTime() + 90L*24*60*60*1000)]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="1" y="160" width="338" height="14" uuid="ffc63160-e00b-47af-bc11-40370cb25f06"/>
