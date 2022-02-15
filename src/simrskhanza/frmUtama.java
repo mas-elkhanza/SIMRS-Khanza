@@ -543,6 +543,7 @@ import inventaris.PengajuanInventaris;
 import inventaris.RekapPengajuanInventarisDepartemen;
 import inventory.Dlg10ObatTerbanyakPoli;
 import inventory.DlgBarang;
+import inventory.DlgDaftarPermintaanResepPulang;
 import inventory.DlgDaftarPermintaanStokPasien;
 import inventory.DlgJenis;
 import inventory.DlgKadaluarsaBatch;
@@ -18090,6 +18091,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPermintaanResepPulangActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDaftarPermintaanResepPulang aplikasi=new DlgDaftarPermintaanResepPulang(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18726,7 +18740,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
-            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep;
+            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang;
     
     public void isWall(){
         try{            
@@ -19244,6 +19258,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getpermintaan_stok_obat_pasien()==true){
                 Panelmenu.add(btnPermintaanStokObatPasien); 
+                jmlmenu++;
+            }
+            
+            if(akses.getpermintaan_resep_pulang()==true){
+                Panelmenu.add(btnPermintaanResepPulang); 
                 jmlmenu++;
             }
             
@@ -23194,6 +23213,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpermintaan_stok_obat_pasien()==true){
             Panelmenu.add(btnPermintaanStokObatPasien); 
+            jmlmenu++;
+        }
+        
+        if(akses.getpermintaan_resep_pulang()==true){
+            Panelmenu.add(btnPermintaanResepPulang); 
             jmlmenu++;
         }
 
@@ -27287,6 +27311,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpermintaan_stok_obat_pasien()==true){
             if(btnPermintaanStokObatPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanStokObatPasien); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpermintaan_resep_pulang()==true){
+            if(btnPermintaanResepPulang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPermintaanResepPulang); 
                 jmlmenu++;
             }                
         }
@@ -34841,6 +34872,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnTelaahResep.setName("btnTelaahResep");
         btnTelaahResep.setPreferredSize(new java.awt.Dimension(200, 90));
         btnTelaahResep.addActionListener(this::btnTelaahResepActionPerformed);
+        
+        btnPermintaanResepPulang = new widget.ButtonBig();
+        btnPermintaanResepPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_paper_pencil-lb_86334.png"))); 
+        btnPermintaanResepPulang.setText("Permintaan Resep Pulang");
+        btnPermintaanResepPulang.setIconTextGap(0);
+        btnPermintaanResepPulang.setName("btnPermintaanResepPulang");
+        btnPermintaanResepPulang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanResepPulang.addActionListener(this::btnPermintaanResepPulangActionPerformed);
     }
     
 }

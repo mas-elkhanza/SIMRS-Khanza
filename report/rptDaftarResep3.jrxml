@@ -138,7 +138,7 @@
 				<text><![CDATA[Ruang/Kamar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="63" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="39c9445e-5665-497e-b2ab-782f99537ad4">
+				<reportElement mode="Opaque" x="0" y="0" width="66" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="39c9445e-5665-497e-b2ab-782f99537ad4">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -148,7 +148,7 @@
 				<text><![CDATA[ No.Permintaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="63" y="0" width="85" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="6bd4cffe-11ec-45ef-978f-c4225d563dd6">
+				<reportElement mode="Opaque" x="66" y="0" width="82" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="6bd4cffe-11ec-45ef-978f-c4225d563dd6">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -190,7 +190,7 @@
 	<detail>
 		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="2" y="0" width="63" height="10" uuid="7bed3cc7-f4f8-43a1-96f4-0aa6022dd49f">
+				<reportElement x="0" y="0" width="66" height="10" uuid="7bed3cc7-f4f8-43a1-96f4-0aa6022dd49f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -200,7 +200,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="63" y="0" width="85" height="10" uuid="6dca2872-0542-46c3-be24-bd940fd9bb65">
+				<reportElement x="66" y="0" width="82" height="10" uuid="6dca2872-0542-46c3-be24-bd940fd9bb65">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
