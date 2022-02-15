@@ -19,6 +19,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import inventory.DlgCariAturanPakai;
 import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -28,6 +29,8 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -47,9 +50,10 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
     private PreparedStatement psobat;
     private ResultSet rs;
     private WarnaTable2 warna=new WarnaTable2();
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",pilihanetiket="";
     private boolean sukses=true;
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+    private DlgCariAturanPakai aturan=new DlgCariAturanPakai(null,false);
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -60,7 +64,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        tabMode=new DefaultTableModel(null,new Object[]{"Jml","Kode Barang","Nama Barang","Satuan","Dosis","Kandungan","Harga(Rp)","Jenis Obat","No.Batch","No.Faktur","Stok"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Jml","Kode Barang","Nama Barang","Satuan","Aturan Pakai","Kandungan","Harga(Rp)","Jenis Obat","No.Batch","No.Faktur","Stok"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if ((colIndex==0)||(colIndex==4)||(colIndex==8)||(colIndex==9)) {
@@ -138,6 +142,28 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
                 }   
                 kdgudang.requestFocus();
                 tampil();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        aturan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(aturan.getTable().getSelectedRow()!= -1){  
+                    tbKamar.setValueAt(aturan.getTable().getValueAt(aturan.getTable().getSelectedRow(),0).toString(),tbKamar.getSelectedRow(),4);
+                }   
+                tbKamar.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -533,6 +559,71 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
         if(sukses==true){
             Sequel.Commit();
+            
+            Map<String, Object> param = new HashMap<>();  
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            pilihanetiket = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cetak aturan pakai..!!","Cetak Aturan Pakai",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Cetak Aturan Pakai Model 1","Cetak Aturan Pakai Model 2","Cetak Aturan Pakai Model 3","Cetak Label Obat","Cetak Aturan Pakai Model 1 & Cetak Label Obat","Cetak Aturan Pakai Model 2 & Cetak Label Obat","Cetak Aturan Pakai Model 3 & Cetak Label Obat"},"Cetak Aturan Pakai Model 1");
+            switch (pilihanetiket) {
+                case "Cetak Aturan Pakai Model 1": 
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    if(Sequel.cariInteger(
+                            "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
+                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                        Valid.MyReportqry("rptItemResepPulang.jasper","report","::[ Aturan Pakai Obat ]::",
+                            "select resep_pulang.no_rawat,resep_pulang.tanggal, "+
+                            "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                            "resep_pulang.dosis,resep_pulang.jml_barang,kodesatuan.satuan "+
+                            "from resep_pulang inner join reg_periksa on resep_pulang.no_rawat=reg_periksa.no_rawat "+
+                            "inner join databarang on resep_pulang.kode_brng=databarang.kode_brng "+
+                            "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "where resep_pulang.no_rawat='"+TNoRw.getText()+"' and resep_pulang.dosis<>''",param);
+                    }            
+                    this.setCursor(Cursor.getDefaultCursor());
+                    break;
+                case "Cetak Aturan Pakai Model 2": 
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    if(Sequel.cariInteger(
+                            "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
+                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                        Valid.MyReportqry("rptItemResepPulang2.jasper","report","::[ Aturan Pakai Obat ]::",
+                            "select resep_pulang.no_rawat,resep_pulang.tanggal,jenis.nama,"+
+                            "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                            "resep_pulang.dosis,resep_pulang.jml_barang,kodesatuan.satuan "+
+                            "from resep_pulang inner join reg_periksa on resep_pulang.no_rawat=reg_periksa.no_rawat "+
+                            "inner join databarang on resep_pulang.kode_brng=databarang.kode_brng "+
+                            "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                            "inner join jenis on databarang.kdjns= jenis.kdjns "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "where resep_pulang.no_rawat='"+TNoRw.getText()+"' and resep_pulang.dosis<>''",param);
+                    }           
+                    this.setCursor(Cursor.getDefaultCursor());
+                    break;
+                case "Cetak Aturan Pakai Model 3": 
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    if(Sequel.cariInteger(
+                            "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
+                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                        Valid.MyReportqry("rptItemResepPulang3.jasper","report","::[ Aturan Pakai Obat ]::",
+                            "select resep_pulang.no_rawat,resep_pulang.tanggal, "+
+                            "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                            "resep_pulang.dosis,resep_pulang.jml_barang,kodesatuan.satuan "+
+                            "from resep_pulang inner join reg_periksa on resep_pulang.no_rawat=reg_periksa.no_rawat "+
+                            "inner join databarang on resep_pulang.kode_brng=databarang.kode_brng "+
+                            "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "where resep_pulang.no_rawat='"+TNoRw.getText()+"' and resep_pulang.dosis<>''",param);
+                    }             
+                    this.setCursor(Cursor.getDefaultCursor());
+                    break;
+                default:
+                    break;
+            }
         }else{
             sukses=false;
             JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -579,7 +670,14 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCari.setText("");
                 TCari.requestFocus();
-            }
+            }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
+                i=tbKamar.getSelectedColumn();
+                if(i==4){
+                    aturan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    aturan.setLocationRelativeTo(internalFrame1);
+                    aturan.setVisible(true);
+                }
+            } 
         }
     }//GEN-LAST:event_tbKamarKeyPressed
 
