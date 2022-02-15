@@ -181,7 +181,7 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[DAFTAR PERMINTAAN STOK PASIEN]]></text>
+				<text><![CDATA[DAFTAR PERMINTAAN RESEP PULANG]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="14" width="553" height="14" uuid="ec47a433-fab1-4cd8-8429-bf6766c9b3f8"/>
