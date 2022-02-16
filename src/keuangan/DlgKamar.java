@@ -720,8 +720,10 @@ public final class DlgKamar extends javax.swing.JDialog {
         } else if (TTarif.getText().trim().equals("")) {
             Valid.textKosong(TTarif, "Tarif");
         } else {
-            Sequel.menyimpan("kamar", "?,?,?,?,?,?", "Nomer Bad/Kamar", 6, new String[]{
-                TKd.getText(), kd_bangsal.getText(), TTarif.getText(), CmbStatus.getSelectedItem().toString(), Kelas.getSelectedItem().toString(), "1"
+            Sequel.menyimpan("kamar", "?,?,?,?,?,?,?", "Nomer Bad/Kamar", 7, new String[]{
+                TKd.getText(), kd_bangsal.getText(), TTarif.getText(), 
+                CmbStatus.getSelectedItem().toString(), Kelas.getSelectedItem().toString(), 
+                "1", ""
             });
             tampil();
             emptTeks();
