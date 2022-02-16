@@ -1357,6 +1357,7 @@ public final class sekuel {
      */
     public boolean queryu2tf(String qry, int i, String[] a) {
         bool = false;
+        System.out.println("Query: "+qry);
         try {
             try {
                 ps = connect.prepareStatement(qry);

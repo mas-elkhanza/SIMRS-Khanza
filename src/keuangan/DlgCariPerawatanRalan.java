@@ -15,14 +15,12 @@ package keuangan;
 import bridging.PcareApi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kepegawaian.DlgCariPetugas;
-import kepegawaian.DlgCariDokter;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -44,6 +42,8 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -918,7 +918,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             if(Nip2.getText().trim().equals("")||NmPetugas2.getText().trim().equals("")){
                                                 Valid.textKosong(TCariTindakan,"Data Petugas");
                                             }else{
-                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum')");
+                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum',?)");
                                                 try {
                                                     pssimpandokterperawat.setString(1,TNoRw.getText());
                                                     pssimpandokterperawat.setString(2,tbTindakan.getValueAt(i,1).toString());
@@ -933,6 +933,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                     pssimpandokterperawat.setString(11,tbTindakan.getValueAt(i,9).toString()); 
                                                     pssimpandokterperawat.setString(12,tbTindakan.getValueAt(i,10).toString()); 
                                                     pssimpandokterperawat.setString(13,tbTindakan.getValueAt(i,4).toString()); 
+                                                    pssimpandokterperawat.setString(14,null); 
                                                     pssimpandokterperawat.executeUpdate();
                                                     
                                                     if(aktifpcare.equals("yes")){

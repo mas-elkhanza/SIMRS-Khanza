@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptResumeRanap" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="2916e32b-e606-4b16-9a8a-dfe1545609df">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptResumeRanap" pageWidth="595" pageHeight="935" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="2916e32b-e606-4b16-9a8a-dfe1545609df">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -30,8 +39,7 @@
 	pasien.alamat,
 	pasien.jk,
 	kamar_inap.tgl_masuk,
-	kamar_inap.tgl_keluar,
-	kamar_inap.jam_keluar,
+	kamar_inap.jam_masuk,
 	kamar_inap.diagnosa_awal,
 	bangsal.nm_bangsal,
 	resume_pasien.kd_dokter,
@@ -55,13 +63,11 @@
 	resume_pasien.riwayat_penyakit,
 	resume_pasien.penyakit_penyerta,
 	pemeriksaan_ranap.keluhan,
-	pemeriksaan_ranap.pemeriksaan,
 	resume_pasien.tindakan_perawatan ,
 	resume_pasien.pemeriksaan_fisik ,
     resume_pasien.alasan_pulang,skdp_bpjs.alasan1,
     skdp_bpjs.rtl1,
-    skdp_bpjs.tanggal_rujukan,
-    no_antrian
+    no_antrian,tindakan_rs, tgl_kontrol,tgl_pulang,jam_pulang
 FROM resume_pasien
 	inner join reg_periksa ON 
 	 resume_pasien.no_rawat = reg_periksa.no_rawat 
@@ -118,12 +124,8 @@ FROM resume_pasien
 		<property name="com.jaspersoft.studio.field.label" value="tgl_masuk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 	</field>
-	<field name="tgl_keluar" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="tgl_keluar"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
-	</field>
-	<field name="jam_keluar" class="java.sql.Time">
-		<property name="com.jaspersoft.studio.field.label" value="jam_keluar"/>
+	<field name="jam_masuk" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="jam_masuk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 	</field>
 	<field name="diagnosa_awal" class="java.lang.String">
@@ -218,10 +220,6 @@ FROM resume_pasien
 		<property name="com.jaspersoft.studio.field.label" value="keluhan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
 	</field>
-	<field name="pemeriksaan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="pemeriksaan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ranap"/>
-	</field>
 	<field name="tindakan_perawatan" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="tindakan_perawatan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
@@ -242,19 +240,31 @@ FROM resume_pasien
 		<property name="com.jaspersoft.studio.field.label" value="rtl1"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skdp_bpjs"/>
 	</field>
-	<field name="tanggal_rujukan" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="tanggal_rujukan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="skdp_bpjs"/>
-	</field>
 	<field name="no_antrian" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="no_antrian"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skdp_bpjs"/>
+	</field>
+	<field name="tindakan_rs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tindakan_rs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
+	</field>
+	<field name="tgl_kontrol" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_kontrol"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
+	</field>
+	<field name="tgl_pulang" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
+	</field>
+	<field name="jam_pulang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jam_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resume_pasien"/>
 	</field>
 	<title>
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="349" splitType="Stretch">
+		<band height="405" splitType="Stretch">
 			<rectangle>
 				<reportElement x="290" y="102" width="265" height="50" uuid="793d52b3-f264-469d-8855-dd7ef8222c57"/>
 				<graphicElement>
@@ -364,7 +374,7 @@ FROM resume_pasien
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jk}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jk} .equals( "L" ) ? "Laki-Laki" : "Perempuan"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="300" y="116" width="85" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="78651e6f-1781-474b-b687-15582a7cea90">
@@ -383,7 +393,7 @@ FROM resume_pasien
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tgl_masuk}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_masuk}+" "+$F{jam_masuk}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="300" y="128" width="85" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="b7865a02-e322-41c8-941d-6cf5f8b5101a">
@@ -395,14 +405,14 @@ FROM resume_pasien
 				</textElement>
 				<text><![CDATA[Tanggal Keluar]]></text>
 			</staticText>
-			<textField pattern="dd-MM-yyyy" isBlankWhenNull="true">
+			<textField pattern="dd-MM-yyyy" isBlankWhenNull="false">
 				<reportElement positionType="Float" x="392" y="128" width="118" height="10" uuid="7516cb9d-90f1-476e-9460-4eca7a7bc7d8"/>
 				<box leftPadding="2"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tgl_keluar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_pulang}+" "+$F{jam_pulang}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" x="392" y="140" width="118" height="10" uuid="cda7a4fe-54ab-4adf-a6ef-e663af33c85b"/>
@@ -504,37 +514,37 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="317" y="239" width="238" height="62" uuid="82ff1b2a-c1d0-4967-86d3-ea9c7c99479f"/>
+				<reportElement x="289" y="321" width="266" height="43" uuid="82ff1b2a-c1d0-4967-86d3-ea9c7c99479f"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="0" y="239" width="317" height="62" uuid="d01d2378-0cf6-40d3-aa4a-e76ace8f44b0"/>
+				<reportElement x="0" y="321" width="289" height="43" uuid="d01d2378-0cf6-40d3-aa4a-e76ace8f44b0"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="0" y="223" width="555" height="16" uuid="7c615905-b376-4af7-ac44-db9a56718579"/>
+				<reportElement x="0" y="258" width="555" height="63" uuid="7c615905-b376-4af7-ac44-db9a56718579"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="0" y="207" width="555" height="16" uuid="b288b783-5d7e-49c2-a7c4-3378484529c8"/>
+				<reportElement x="0" y="226" width="555" height="32" uuid="b288b783-5d7e-49c2-a7c4-3378484529c8"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="0" y="191" width="555" height="16" uuid="be908bfc-10cc-4d49-9766-a6daa4719065"/>
+				<reportElement x="0" y="210" width="555" height="16" uuid="be908bfc-10cc-4d49-9766-a6daa4719065"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="0" y="175" width="555" height="16" uuid="caa1a420-0c79-41e2-acc2-f8f413bf3340"/>
+				<reportElement x="0" y="175" width="555" height="35" uuid="caa1a420-0c79-41e2-acc2-f8f413bf3340"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
@@ -569,7 +579,7 @@ FROM resume_pasien
 				<text><![CDATA[Keluhan Utama]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="178" width="170" height="10" uuid="9e9b88b3-a5ef-4533-b657-ea4a6a3999c2"/>
+				<reportElement positionType="Float" x="147" y="178" width="400" height="29" uuid="9e9b88b3-a5ef-4533-b657-ea4a6a3999c2"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -577,12 +587,12 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{jalannya_penyakit}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="162" width="170" height="10" uuid="ea1b3a00-6b77-4642-9f80-0354aa0b1928"/>
+				<reportElement positionType="Float" x="147" y="162" width="400" height="10" uuid="ea1b3a00-6b77-4642-9f80-0354aa0b1928"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{diagnosa_awal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{keluhan_utama}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="2" y="178" width="92" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="76060124-b669-4a0c-b7ba-da0e8345bc22">
@@ -596,7 +606,7 @@ FROM resume_pasien
 				<text><![CDATA[Alasan Dirawat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="2" y="194" width="92" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="49ef8b41-cbbd-4c45-af25-60d50a588316">
+				<reportElement mode="Transparent" x="2" y="213" width="92" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="49ef8b41-cbbd-4c45-af25-60d50a588316">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="4"/>
@@ -607,7 +617,7 @@ FROM resume_pasien
 				<text><![CDATA[Riwayat Penyakit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="2" y="210" width="92" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="db09de4b-dc94-45fb-895b-55510c93ad0d">
+				<reportElement mode="Transparent" x="2" y="232" width="92" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="db09de4b-dc94-45fb-895b-55510c93ad0d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="4"/>
@@ -618,7 +628,7 @@ FROM resume_pasien
 				<text><![CDATA[Pemeriksaan Fisik]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="194" width="170" height="10" uuid="1ced7182-88f1-4499-a108-c0c9a886ffda"/>
+				<reportElement positionType="Float" x="147" y="213" width="400" height="10" uuid="1ced7182-88f1-4499-a108-c0c9a886ffda"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -626,7 +636,7 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{riwayat_penyakit}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="210" width="170" height="10" uuid="9aa404c0-9742-401a-812f-06158c18321a"/>
+				<reportElement positionType="Float" x="147" y="229" width="400" height="26" uuid="9aa404c0-9742-401a-812f-06158c18321a"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -634,7 +644,7 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{pemeriksaan_fisik}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="2" y="226" width="138" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="19b01465-3dbc-44c6-b8a4-d5c9745b4b64">
+				<reportElement mode="Transparent" x="2" y="261" width="138" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="19b01465-3dbc-44c6-b8a4-d5c9745b4b64">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="4"/>
@@ -645,15 +655,15 @@ FROM resume_pasien
 				<text><![CDATA[Penemuan Klinik (Lab, radiologi, dll)]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="226" width="170" height="10" uuid="cc6c4f5a-8845-4a0f-97b3-34935fb898c1"/>
-				<textElement>
+				<reportElement positionType="Float" x="147" y="261" width="401" height="60" uuid="cc6c4f5a-8845-4a0f-97b3-34935fb898c1"/>
+				<textElement markup="none">
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pemeriksaan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pemeriksaan_penunjang} +"\nLab: "+ $F{hasil_laborat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="2" y="246" width="138" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="b7c4ef5b-3712-46e3-9f2f-e5f545cb6d96">
+				<reportElement mode="Transparent" x="2" y="325" width="138" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="b7c4ef5b-3712-46e3-9f2f-e5f545cb6d96">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="4"/>
@@ -664,68 +674,22 @@ FROM resume_pasien
 				<text><![CDATA[Diagnosis]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="246" width="50" height="10" uuid="225331be-a0a1-4b96-bf17-b1cdce159b6d"/>
+				<reportElement positionType="Float" x="147" y="325" width="135" height="30" uuid="21cc60db-1e11-4c84-87c1-5e703efd13f0"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{kd_diagnosa_utama}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{kd_diagnosa_utama}+" "+$F{diagnosa_utama}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="200" y="246" width="116" height="10" uuid="21cc60db-1e11-4c84-87c1-5e703efd13f0"/>
+				<reportElement positionType="Float" x="300" y="335" width="248" height="24" uuid="bed20eaf-909d-49c0-b34d-69bdb61abb8c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{diagnosa_utama}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="200" y="256" width="116" height="10" uuid="d35932c6-8b10-4702-9cbc-a4a7891a79b4"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{diagnosa_sekunder}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="256" width="50" height="10" uuid="bed20eaf-909d-49c0-b34d-69bdb61abb8c"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{kd_diagnosa_sekunder}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="276" width="50" height="10" uuid="a96dd0c8-8b5d-4d46-b5c1-5e0b0c69cecf"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{kd_diagnosa_sekunder3}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="200" y="276" width="116" height="10" uuid="7e2316c0-c6e3-44cc-a347-9fb61fd1044f"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{diagnosa_sekunder3}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="286" width="50" height="10" uuid="2f0e5403-3665-430d-85c5-4bcc33ac13a4"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{kd_diagnosa_sekunder4}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="200" y="286" width="116" height="10" uuid="2bb7c351-64d8-4102-ad3b-c4018aa8b0d2"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{diagnosa_sekunder4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{diagnosa_sekunder}+", "+$F{diagnosa_sekunder2}+", "+$F{diagnosa_sekunder3}+", "+$F{diagnosa_sekunder4}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="140" y="162" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="13fc751c-260c-4ee1-92fa-7cc5fba644d8">
@@ -748,7 +712,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="140" y="194" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="f3a2334d-860b-48db-80ac-847e8694bda4">
+				<reportElement mode="Transparent" x="140" y="213" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="f3a2334d-860b-48db-80ac-847e8694bda4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -758,7 +722,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="140" y="210" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="4ed1f720-e89d-4ecf-9bb6-99c0090b7404">
+				<reportElement mode="Transparent" x="140" y="232" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="4ed1f720-e89d-4ecf-9bb6-99c0090b7404">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -768,7 +732,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="140" y="226" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="d9e9ffae-416c-40a8-b26d-acd8403a1933">
+				<reportElement mode="Transparent" x="140" y="261" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="d9e9ffae-416c-40a8-b26d-acd8403a1933">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -778,7 +742,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="140" y="246" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="3614039f-37d8-4c14-897c-828741c4237a">
+				<reportElement mode="Transparent" x="140" y="325" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="3614039f-37d8-4c14-897c-828741c4237a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -788,7 +752,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="320" y="246" width="90" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="c3e4745a-f856-4751-b4d3-38416ae47d5f">
+				<reportElement mode="Transparent" x="300" y="325" width="84" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="c3e4745a-f856-4751-b4d3-38416ae47d5f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -798,7 +762,7 @@ FROM resume_pasien
 				<text><![CDATA[Penyakit Penyerta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="410" y="246" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="525751a3-c494-4f1b-9fe8-2e7c8924b46d">
+				<reportElement mode="Transparent" x="386" y="325" width="7" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="525751a3-c494-4f1b-9fe8-2e7c8924b46d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -807,24 +771,8 @@ FROM resume_pasien
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="147" y="266" width="50" height="10" uuid="9df6b0fb-ae91-4793-9c0d-5773595a96bc"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{kd_diagnosa_sekunder2}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="200" y="266" width="116" height="10" uuid="3fc95267-8d23-46db-82e2-0829334187d4"/>
-				<textElement>
-					<font fontName="SansSerif" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{diagnosa_sekunder2}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="301" width="555" height="13" forecolor="#000000" backcolor="#F0F0DC" uuid="66b912eb-70be-44d4-8691-2f92d5f53938">
+				<reportElement mode="Transparent" x="0" y="364" width="555" height="13" forecolor="#000000" backcolor="#F0F0DC" uuid="66b912eb-70be-44d4-8691-2f92d5f53938">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="4">
@@ -839,14 +787,6 @@ FROM resume_pasien
 				</textElement>
 				<text><![CDATA[Terapi Obat Selama di Rumah Sakit :]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="320" y="260" width="228" height="36" isRemoveLineWhenBlank="true" uuid="b56fcbc4-174c-48b7-b747-f24941d8075f"/>
-				<box leftPadding="4"/>
-				<textElement>
-					<font size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{penyakit_penyerta}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="54" y="31" width="162" height="10" uuid="359c9a7b-81c7-4f9c-935d-7631824edfb9"/>
 				<textElement textAlignment="Left">
@@ -907,7 +847,7 @@ FROM resume_pasien
 				<text><![CDATA[RM 13 Rev. 3]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="0" y="319" width="555" height="28" uuid="9df82c46-e9be-4ba7-ae60-8da1bdb223a0"/>
+				<reportElement x="0" y="377" width="555" height="28" uuid="9df82c46-e9be-4ba7-ae60-8da1bdb223a0"/>
 				<subreportParameter name="no_rawat">
 					<subreportParameterExpression><![CDATA[$F{no_rawat}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -917,12 +857,12 @@ FROM resume_pasien
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="12" splitType="Prevent">
+		<band height="8" splitType="Prevent">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 		</band>
-		<band height="138" splitType="Prevent">
+		<band height="147" splitType="Prevent">
 			<rectangle>
-				<reportElement x="241" y="35" width="153" height="35" uuid="34e4e53f-b717-4893-b527-f417301f64db"/>
+				<reportElement x="253" y="35" width="165" height="63" uuid="34e4e53f-b717-4893-b527-f417301f64db"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
@@ -936,13 +876,13 @@ FROM resume_pasien
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="394" y="35" width="161" height="35" uuid="0f52ba9d-ee19-499a-92a3-b082daa9e3b5"/>
+				<reportElement x="418" y="35" width="137" height="63" uuid="0f52ba9d-ee19-499a-92a3-b082daa9e3b5"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="0" y="35" width="241" height="35" uuid="e015f831-0748-4aac-9a9f-64e901036fc1">
+				<reportElement x="0" y="35" width="253" height="63" uuid="e015f831-0748-4aac-9a9f-64e901036fc1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -950,15 +890,15 @@ FROM resume_pasien
 				</graphicElement>
 			</rectangle>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="20" width="141" height="10" uuid="01098ab5-f0ff-4cb4-8b6d-8ecffcb83bcb"/>
+				<reportElement x="0" y="20" width="415" height="10" uuid="01098ab5-f0ff-4cb4-8b6d-8ecffcb83bcb"/>
 				<box topPadding="0" leftPadding="10" bottomPadding="0" rightPadding="0"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tindakan_perawatan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tindakan_rs}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="6" width="253" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="261ce222-eed9-4674-b9ca-69df7d8c8350">
+				<reportElement mode="Transparent" x="0" y="6" width="415" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="261ce222-eed9-4674-b9ca-69df7d8c8350">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="0" leftPadding="5" bottomPadding="0" rightPadding="0"/>
@@ -969,7 +909,7 @@ FROM resume_pasien
 				<text><![CDATA[Tindakan Selama di Rumah Sakit :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="54" width="230" height="11" uuid="92a28a02-0a07-4c40-90a4-c991f607f40a"/>
+				<reportElement x="0" y="54" width="250" height="35" uuid="92a28a02-0a07-4c40-90a4-c991f607f40a"/>
 				<box topPadding="0" leftPadding="10" bottomPadding="0" rightPadding="0"/>
 				<textElement>
 					<font fontName="SansSerif" size="7"/>
@@ -977,7 +917,7 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{kondisi_pulang}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="40" width="230" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="0189ca2c-c553-475e-bd87-c864facd12de">
+				<reportElement mode="Transparent" x="0" y="40" width="162" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="0189ca2c-c553-475e-bd87-c864facd12de">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="0" leftPadding="5" bottomPadding="0" rightPadding="0"/>
@@ -988,7 +928,7 @@ FROM resume_pasien
 				<text><![CDATA[Kondisi pada saat pulang :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="245" y="40" width="145" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="c02e1edb-4f5f-4136-9f69-dcd1c7e385e0">
+				<reportElement mode="Transparent" x="260" y="40" width="156" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="c02e1edb-4f5f-4136-9f69-dcd1c7e385e0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
@@ -999,7 +939,7 @@ FROM resume_pasien
 				<text><![CDATA[Tindak Lanjut :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="399" y="40" width="152" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="65e7fbdb-b0cc-4db6-8bb8-a70bf3e21420">
+				<reportElement mode="Transparent" x="429" y="40" width="122" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="65e7fbdb-b0cc-4db6-8bb8-a70bf3e21420">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
@@ -1010,7 +950,7 @@ FROM resume_pasien
 				<text><![CDATA[Rencana Kontrol Selanjutnya :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="253" y="6" width="299" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="b80ea347-40ec-41f4-9d83-47dab7a69706">
+				<reportElement mode="Transparent" x="418" y="6" width="134" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="b80ea347-40ec-41f4-9d83-47dab7a69706">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
@@ -1021,7 +961,7 @@ FROM resume_pasien
 				<text><![CDATA[Alasan Pulang :]]></text>
 			</staticText>
 			<subreport>
-				<reportElement positionType="Float" x="0" y="95" width="554" height="27" isPrintWhenDetailOverflows="true" uuid="b5df30fc-e054-49cc-bdad-cdb4a811e998"/>
+				<reportElement positionType="Float" x="0" y="118" width="554" height="27" isPrintWhenDetailOverflows="true" uuid="b5df30fc-e054-49cc-bdad-cdb4a811e998"/>
 				<subreportParameter name="no_rawat">
 					<subreportParameterExpression><![CDATA[$F{no_rawat}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -1029,7 +969,7 @@ FROM resume_pasien
 				<subreportExpression><![CDATA["subResepPulang.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="70" width="555" height="20" forecolor="#000000" backcolor="#F0F0DC" uuid="5a2fb15d-9e80-4397-9269-a048c6ca851d">
+				<reportElement mode="Transparent" x="0" y="98" width="555" height="20" forecolor="#000000" backcolor="#F0F0DC" uuid="5a2fb15d-9e80-4397-9269-a048c6ca851d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="0" leftPadding="4" bottomPadding="0" rightPadding="0">
@@ -1045,23 +985,23 @@ FROM resume_pasien
 				<text><![CDATA[Terapi Pengobatan untuk di rumah :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="245" y="54" width="145" height="10" uuid="442b26b0-8bbd-49dd-9f06-72e9d5723177"/>
+				<reportElement x="260" y="54" width="156" height="34" uuid="442b26b0-8bbd-49dd-9f06-72e9d5723177"/>
 				<box leftPadding="4"/>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tindakan_perawatan}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
-				<reportElement x="399" y="54" width="146" height="10" uuid="6da73331-9103-4c0c-bdf1-434102b5bdce"/>
+				<reportElement x="429" y="54" width="122" height="10" uuid="6da73331-9103-4c0c-bdf1-434102b5bdce"/>
 				<box leftPadding="4"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tanggal_rujukan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_kontrol}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="253" y="20" width="298" height="10" uuid="4cd68d4e-cc48-4a3e-b5e8-bef5cb3f59d6"/>
+				<reportElement x="418" y="20" width="133" height="10" uuid="4cd68d4e-cc48-4a3e-b5e8-bef5cb3f59d6"/>
 				<box leftPadding="4"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
@@ -1071,9 +1011,9 @@ FROM resume_pasien
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="104">
+		<band height="79">
 			<rectangle>
-				<reportElement x="0" y="14" width="555" height="75" uuid="ebff6a7b-eda7-4486-a66d-8a0fb139325f">
+				<reportElement x="0" y="4" width="555" height="75" uuid="ebff6a7b-eda7-4486-a66d-8a0fb139325f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -1081,10 +1021,10 @@ FROM resume_pasien
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="359" y="21" width="190" height="51" uuid="ac6bf24b-37c4-46d4-b83a-1b102620a68c"/>
+				<reportElement x="359" y="11" width="190" height="51" uuid="ac6bf24b-37c4-46d4-b83a-1b102620a68c"/>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Transparent" x="4" y="21" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="14500a93-5ef3-4424-90bd-4c61089096c1"/>
+				<reportElement mode="Transparent" x="4" y="11" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="14500a93-5ef3-4424-90bd-4c61089096c1"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1093,7 +1033,7 @@ FROM resume_pasien
 				<text><![CDATA[Dokter yang Merawat]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="6" y="69" width="156" height="12" uuid="82535bde-bc53-4de0-9f68-7f052d8f9e8c">
+				<reportElement x="6" y="59" width="156" height="12" uuid="82535bde-bc53-4de0-9f68-7f052d8f9e8c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -1102,7 +1042,7 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="177" y="22" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="ca89a9f1-7477-49d9-a511-9c0d612c2d7a"/>
+				<reportElement mode="Transparent" x="177" y="12" width="158" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="ca89a9f1-7477-49d9-a511-9c0d612c2d7a"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1111,7 +1051,7 @@ FROM resume_pasien
 				<text><![CDATA[Pasien / Keluarga]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="177" y="69" width="158" height="12" uuid="673f0b81-9e33-42e3-9156-d9b1978cfe99">
+				<reportElement x="177" y="59" width="158" height="12" uuid="673f0b81-9e33-42e3-9156-d9b1978cfe99">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -1120,34 +1060,34 @@ FROM resume_pasien
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="373" y="30" width="56" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="f25da4d6-68ca-4af9-8b28-7e84fe6d986d"/>
+				<reportElement mode="Transparent" x="364" y="20" width="65" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="f25da4d6-68ca-4af9-8b28-7e84fe6d986d"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Tanggal]]></text>
+				<text><![CDATA[Tanggal Keluar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="373" y="47" width="56" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="0a4d2eec-85c5-4ca4-bee8-f1489b7ac150"/>
+				<reportElement mode="Transparent" x="364" y="37" width="65" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="0a4d2eec-85c5-4ca4-bee8-f1489b7ac150"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Jam]]></text>
+				<text><![CDATA[Jam Keluar]]></text>
 			</staticText>
 			<textField pattern="dd-MM-yyyy" isBlankWhenNull="true">
-				<reportElement x="443" y="30" width="100" height="12" uuid="794d4c71-f69d-4553-9503-0fe0c5e37b68">
+				<reportElement x="443" y="20" width="100" height="12" uuid="794d4c71-f69d-4553-9503-0fe0c5e37b68">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
 					<font fontName="SansSerif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tgl_keluar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_pulang}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="429" y="30" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="e9a443f0-0627-4010-b91a-52b34bf951a7"/>
+				<reportElement mode="Transparent" x="429" y="20" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="e9a443f0-0627-4010-b91a-52b34bf951a7"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1156,7 +1096,7 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="429" y="47" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="56dbe7d7-680a-482d-b2c8-4b806819ca53"/>
+				<reportElement mode="Transparent" x="429" y="37" width="14" height="12" forecolor="#000000" backcolor="#F0F0DC" uuid="56dbe7d7-680a-482d-b2c8-4b806819ca53"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
@@ -1165,13 +1105,13 @@ FROM resume_pasien
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField pattern="hh:mm:ss" isBlankWhenNull="true">
-				<reportElement x="443" y="47" width="100" height="12" uuid="a80293a5-245f-4a22-be68-36063151255e">
+				<reportElement x="443" y="37" width="100" height="12" uuid="a80293a5-245f-4a22-be68-36063151255e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
 					<font fontName="SansSerif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jam_keluar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jam_pulang}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
