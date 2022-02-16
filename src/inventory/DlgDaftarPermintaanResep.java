@@ -30,6 +30,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
+import simrskhanza.DlgInputResepPulang;
 
 public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
@@ -41,6 +42,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private DlgCariObat dlgobt=new DlgCariObat(null,false);
     private DlgCariObat2 dlgobt2=new DlgCariObat2(null,false);
     private DlgInputStokPasien dlgstok=new DlgInputStokPasien(null,false);
+    private DlgInputResepPulang dlgresepulang=new DlgInputResepPulang(null,false);
     private String bangsal="",aktifkanparsial="no",kamar="",alarm="",
             formalarm="",nol_detik,detik,NoResep="",TglPeresepan="",JamPeresepan="",
             NoRawat="",NoRM="",Pasien="",DokterPeresep="",Status="",KodeDokter="",Ruang="",KodeRuang="";
@@ -433,6 +435,25 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 tampil5();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        dlgresepulang.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                tampil7();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -1623,9 +1644,34 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }
             } else if(TabRawatInap.getSelectedIndex()==3){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Permintaan Stok...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Permintaan Stok...!!!!");
                 TCari.requestFocus();
-            }    
+            }else if(TabRawatInap.getSelectedIndex()==4){
+                if(akses.getresep_pulang()==true){
+                    if(tabMode7.getRowCount()==0){
+                        JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                        TCari.requestFocus();
+                    }else if(NoRawat.equals("")){
+                        JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data permintaan resep pulang yang mau divalidasi..!!");
+                    }else{
+                        if(Status.equals("Sudah Terlayani")){
+                            JOptionPane.showMessageDialog(rootPane,"Permintaan Resep Pulang sudah tervalidasi ..!!");
+                        }else {                           
+                            if(Sequel.cariRegistrasi(NoRawat)>0){
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                            }else{ 
+                                panggilform4();                             
+                            }                
+                        }
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, Anda tidak punya hak akses untuk mengvalidasi...!!!!");
+                    TCari.requestFocus();
+                }
+            } else if(TabRawatInap.getSelectedIndex()==5){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Permintaan Resep Pulang...!!!!");
+                TCari.requestFocus();
+            }      
         }            
 }//GEN-LAST:event_BtnTambahActionPerformed
 
@@ -1945,10 +1991,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }                    
                     }
                 }
-            } else if(TabRawatInap.getSelectedIndex()==3){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Permintaan Stok...!!!!");
+            }else if(TabRawatInap.getSelectedIndex()==3){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Permintaan Stok...!!!!");
                 TCari.requestFocus();
-            }  
+            }else if(TabRawatInap.getSelectedIndex()==4){
+                if(akses.getpermintaan_resep_pulang()==true){
+                    if(tabMode7.getRowCount()==0){
+                        JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                        TCari.requestFocus();
+                    }else if(NoRawat.equals("")){
+                        JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data permintaan stok yang mau dihapus..!!");
+                    }else{
+                        if(Status.equals("Sudah Terlayani")){
+                            JOptionPane.showMessageDialog(rootPane,"permintaan resep pulang sudah tervalidasi ..!!");
+                        }else {
+                            Sequel.meghapus("permintaan_resep_pulang","no_permintaan",NoResep); 
+                            TeksKosong();
+                            tampil7();
+                        }                    
+                    }
+                }
+            }else if(TabRawatInap.getSelectedIndex()==5){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Permintaan Resep Pulag...!!!!");
+                TCari.requestFocus();
+            }   
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -2567,6 +2633,27 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         dlgstok.setLocationRelativeTo(internalFrame1);
         TeksKosong();
         dlgstok.setVisible(true);         
+    }
+    
+    private void panggilform4() {
+        kamar=KodeRuang;
+        bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",kamar);
+        if(bangsal.equals("")){
+            if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                akses.setkdbangsal(kamar);
+            }else{
+                akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+            }
+        }else{
+            akses.setkdbangsal(bangsal);
+        }
+        dlgresepulang.setNoRm(NoRawat,NoRM,Pasien,"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
+        dlgresepulang.isCek();
+        dlgresepulang.tampil2(NoResep);
+        dlgresepulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dlgresepulang.setLocationRelativeTo(internalFrame1);
+        TeksKosong();
+        dlgresepulang.setVisible(true);         
     }
     
     public void pilihTab(){
