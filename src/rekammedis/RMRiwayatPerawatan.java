@@ -1875,10 +1875,31 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                       "</tr>"+
                       "<tr class='isi'>"+ 
                         "<td valign='top' width='2%'></td>"+        
-                        "<td valign='top' width='18%'>Dokter</td>"+
+                        "<td valign='top' width='18%'>Dokter Poli</td>"+
                         "<td valign='top' width='1%' align='center'>:</td>"+
                         "<td valign='top' width='79%'>"+rs.getString("nm_dokter")+dokterrujukan+"</td>"+
-                      "</tr>"+
+                      "</tr>"
+                    );
+                    kddpjp="";
+                    dpjp="";
+                    if(rs.getString("status_lanjut").equals("Ranap")){
+                        kddpjp=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",rs.getString("no_rawat"));
+                        if(!kddpjp.equals("")){
+                            dpjp=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddpjp);
+                        }else{
+                            kddpjp=rs.getString("kd_dokter");
+                            dpjp=rs.getString("nm_dokter");
+                        }
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>DPJP Ranap</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+dpjp+"</td>"+
+                          "</tr>"
+                        );
+                    }
+                    htmlContent.append( 
                       "<tr class='isi'>"+ 
                         "<td valign='top' width='2%'></td>"+
                         "<td valign='top' width='18%'>Cara Bayar</td>"+
@@ -7498,15 +7519,15 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     
                     if(R4.isSelected()==true){
-                        get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+rs.getString("kd_dokter").replace(" ","_"));
+                        get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+kddpjp.replace(" ","_"));
                         http.executeMethod(get);
-                        
+
                         htmlContent.append(
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='2%'></td>"+        
                                 "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
                                 "<td valign='middle' width='1%' align='center'>:</td>"+
-                                "<td valign='middle' width='79%' align='center'>Dokter DPJP<br><img width='90' height='90' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+rs.getString("kd_dokter")+".png'/><br>"+rs.getString("nm_dokter")+"</td>"+
+                                "<td valign='middle' width='79%' align='center'>Dokter DPJP<br><img width='90' height='90' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+kddpjp+".png'/><br>"+dpjp+"</td>"+
                               "</tr>");
                     }
                     htmlContent.append(

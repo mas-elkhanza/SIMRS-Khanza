@@ -3389,29 +3389,14 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         bangsal=Sequel.cariIsi("select kd_bangsal from set_depo_ralan where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));
         if(bangsal.equals("")){
             bangsal=bangsaldefault;
-            kdgudang.setEditable(true);
-            nmgudang.setEditable(true);
-            BtnGudang.setEnabled(true);
-        }else{
-            if(akses.getakses_depo_obat()==true){
-                kdgudang.setEditable(true);
-                nmgudang.setEditable(true);
-                BtnGudang.setEnabled(true);
-            }else{
-                kdgudang.setEditable(false);
-                nmgudang.setEditable(false);
-                BtnGudang.setEnabled(false);
-            }
-        }            
+        }           
         kdgudang.setText(bangsal);
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());            
         BtnTambah.setEnabled(akses.getobat());
         TCari.requestFocus();
-        if(akses.getkode().equals("Admin Utama")){
-            kdgudang.setEditable(true);
-            nmgudang.setEditable(true);
-            BtnGudang.setEnabled(true);
-        }
+        kdgudang.setEditable(akses.getakses_depo_obat());
+        nmgudang.setEditable(akses.getakses_depo_obat());
+        BtnGudang.setEnabled(akses.getakses_depo_obat());
     }
     
     public void setNoRm(String norwt,String norm,String nama,String tanggal, String jam) {        

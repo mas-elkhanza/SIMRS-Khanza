@@ -116,7 +116,7 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(100);
             }else if(i==15){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(1030);
             }     
         }
         
@@ -922,7 +922,12 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             Valid.tabelKosong(tabMode);
             pstampilbarang=koneksi.prepareStatement(
                     "select stok_obat_pasien.kode_brng,databarang.nama_brng,sum(stok_obat_pasien.jumlah) as jumlah, "+
-                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai from stok_obat_pasien inner join databarang "+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai,"+
+                    "stok_obat_pasien.jam00,stok_obat_pasien.jam01,stok_obat_pasien.jam02,stok_obat_pasien.jam03,stok_obat_pasien.jam04,stok_obat_pasien.jam05,"+
+                    "stok_obat_pasien.jam06,stok_obat_pasien.jam07,stok_obat_pasien.jam08,stok_obat_pasien.jam09,stok_obat_pasien.jam10,stok_obat_pasien.jam11,"+
+                    "stok_obat_pasien.jam12,stok_obat_pasien.jam13,stok_obat_pasien.jam14,stok_obat_pasien.jam15,stok_obat_pasien.jam16,stok_obat_pasien.jam17,"+
+                    "stok_obat_pasien.jam18,stok_obat_pasien.jam19,stok_obat_pasien.jam20,stok_obat_pasien.jam21,stok_obat_pasien.jam22,stok_obat_pasien.jam23 "+
+                    "from stok_obat_pasien inner join databarang "+
                     "on databarang.kode_brng=stok_obat_pasien.kode_brng where stok_obat_pasien.no_rawat=? "+
                     "group by stok_obat_pasien.kode_brng,stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur order by databarang.nama_brng");
             try {
@@ -1090,6 +1095,30 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     tabMode.addRow(new Object[]{
                         false,rstampilbarang.getString("kode_brng"),rstampilbarang.getString("nama_brng"),stokmasuk,pagi,siang,sore,malam,
                         rstampilbarang.getDouble("jumlah"),keluar,retur,returshs,hilang,rstampilbarang.getString("no_batch"),rstampilbarang.getString("no_faktur"),
+                        "00 : "+rstampilbarang.getString("jam00").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "01 : "+rstampilbarang.getString("jam01").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "02 : "+rstampilbarang.getString("jam02").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "03 : "+rstampilbarang.getString("jam03").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "04 : "+rstampilbarang.getString("jam04").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "05 : "+rstampilbarang.getString("jam05").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "06 : "+rstampilbarang.getString("jam06").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "07 : "+rstampilbarang.getString("jam07").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "08 : "+rstampilbarang.getString("jam08").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "09 : "+rstampilbarang.getString("jam09").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "10 : "+rstampilbarang.getString("jam10").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "11 : "+rstampilbarang.getString("jam11").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "12 : "+rstampilbarang.getString("jam12").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "13 : "+rstampilbarang.getString("jam13").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "14 : "+rstampilbarang.getString("jam14").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "15 : "+rstampilbarang.getString("jam15").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "16 : "+rstampilbarang.getString("jam16").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "17 : "+rstampilbarang.getString("jam17").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "18 : "+rstampilbarang.getString("jam18").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "19 : "+rstampilbarang.getString("jam19").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "20 : "+rstampilbarang.getString("jam20").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "21 : "+rstampilbarang.getString("jam21").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "22 : "+rstampilbarang.getString("jam22").replaceAll("true","✓").replaceAll("false","✕")+"  "+
+                        "23 : "+rstampilbarang.getString("jam23").replaceAll("true","✓").replaceAll("false","✕")+"  |  "+
                         rstampilbarang.getString("aturan_pakai")
                     });
                 }
