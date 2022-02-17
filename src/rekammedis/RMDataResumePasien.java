@@ -2862,7 +2862,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode1);
         try {
             ps1 = koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit "
-                    + "from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where no_rawat='" + TNoRw.getText() + "' and diagnosa_pasien.kd_penyakit!='-'");
+                    + "from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where no_rawat='" + TNoRw.getText() + "' and diagnosa_pasien.kd_penyakit!='-' order by diagnosa_pasien.prioritas asc");
             try {
                 rs1 = ps1.executeQuery();
                 int x = 0, y = 5;
@@ -2874,18 +2874,6 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 for (int j = 0; j < y - x; j++) {
                     tabMode1.addRow(new Object[]{"-", "-"});
                 }
-//                if (x == 3) {
-//                    tabMode1.addRow(new Object[]{"-", "-"});
-//                }
-//                if (x == 2) {
-//                    tabMode1.addRow(new Object[]{"-", "-"});
-//                    tabMode1.addRow(new Object[]{"-", "-"});
-//                }
-//                if (x == 1) {
-//                    tabMode1.addRow(new Object[]{"-", "-"});
-//                    tabMode1.addRow(new Object[]{"-", "-"});
-//                    tabMode1.addRow(new Object[]{"-", "-"});
-//                }
             } catch (Exception e) {
                 System.out.println("Error " + e.toString());
             } finally {

@@ -660,7 +660,7 @@ FROM resume_pasien
 					<font fontName="SansSerif" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pemeriksaan_penunjang} +"\nLab: "+ $F{hasil_laborat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pemeriksaan_penunjang}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="2" y="325" width="138" height="10" forecolor="#000000" backcolor="#F0F0DC" uuid="b7c4ef5b-3712-46e3-9f2f-e5f545cb6d96">
