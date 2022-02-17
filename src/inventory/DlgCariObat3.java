@@ -59,7 +59,8 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
         initComponents();
         this.setLocation(10,2);
         setSize(856,350);
-        Object[] row={"K","Kode Barang","Nama Barang","Msk","Pg","Sg","Sr","Ml","Ttl.Msk","Ttl.Klr","Retur","Rtr.Sh","Ttl.Hlg","No.Batch","No.Faktur","Aturan Pakai"};
+        Object[] row={"K","Kode Barang","Nama Barang","Msk","Pg","Sg","Sr","Ml","Ttl.Msk","Ttl.Klr","Retur","Rtr.Sh","Ttl.Hlg","No.Batch","No.Faktur","Aturan Pakai",
+                      "00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
         tabMode=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = true;
@@ -72,7 +73,11 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -83,7 +88,7 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 40; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -116,8 +121,56 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(100);
             }else if(i==15){
-                column.setPreferredWidth(1030);
-            }     
+                column.setPreferredWidth(100);
+            }else if(i==16){
+                column.setPreferredWidth(20);
+            }else if(i==17){
+                column.setPreferredWidth(20);
+            }else if(i==18){
+                column.setPreferredWidth(20);
+            }else if(i==19){
+                column.setPreferredWidth(20);
+            }else if(i==20){
+                column.setPreferredWidth(20);
+            }else if(i==21){
+                column.setPreferredWidth(20);
+            }else if(i==22){
+                column.setPreferredWidth(20);
+            }else if(i==23){
+                column.setPreferredWidth(20);
+            }else if(i==24){
+                column.setPreferredWidth(20);
+            }else if(i==25){
+                column.setPreferredWidth(20);
+            }else if(i==26){
+                column.setPreferredWidth(20);
+            }else if(i==27){
+                column.setPreferredWidth(20);
+            }else if(i==28){
+                column.setPreferredWidth(20);
+            }else if(i==29){
+                column.setPreferredWidth(20);
+            }else if(i==30){
+                column.setPreferredWidth(20);
+            }else if(i==31){
+                column.setPreferredWidth(20);
+            }else if(i==32){
+                column.setPreferredWidth(20);
+            }else if(i==33){
+                column.setPreferredWidth(20);
+            }else if(i==34){
+                column.setPreferredWidth(20);
+            }else if(i==35){
+                column.setPreferredWidth(20);
+            }else if(i==36){
+                column.setPreferredWidth(20);
+            }else if(i==37){
+                column.setPreferredWidth(20);
+            }else if(i==38){
+                column.setPreferredWidth(20);
+            }else if(i==39){
+                column.setPreferredWidth(20);
+            }    
         }
         
         tbObat.setDefaultRenderer(Object.class, new WarnaTable()); 
@@ -1093,33 +1146,20 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                         hilang=0;
                     }
                     tabMode.addRow(new Object[]{
-                        false,rstampilbarang.getString("kode_brng"),rstampilbarang.getString("nama_brng"),stokmasuk,pagi,siang,sore,malam,
-                        rstampilbarang.getDouble("jumlah"),keluar,retur,returshs,hilang,rstampilbarang.getString("no_batch"),rstampilbarang.getString("no_faktur"),
-                        "00 : "+rstampilbarang.getString("jam00").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "01 : "+rstampilbarang.getString("jam01").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "02 : "+rstampilbarang.getString("jam02").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "03 : "+rstampilbarang.getString("jam03").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "04 : "+rstampilbarang.getString("jam04").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "05 : "+rstampilbarang.getString("jam05").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "06 : "+rstampilbarang.getString("jam06").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "07 : "+rstampilbarang.getString("jam07").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "08 : "+rstampilbarang.getString("jam08").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "09 : "+rstampilbarang.getString("jam09").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "10 : "+rstampilbarang.getString("jam10").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "11 : "+rstampilbarang.getString("jam11").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "12 : "+rstampilbarang.getString("jam12").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "13 : "+rstampilbarang.getString("jam13").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "14 : "+rstampilbarang.getString("jam14").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "15 : "+rstampilbarang.getString("jam15").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "16 : "+rstampilbarang.getString("jam16").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "17 : "+rstampilbarang.getString("jam17").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "18 : "+rstampilbarang.getString("jam18").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "19 : "+rstampilbarang.getString("jam19").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "20 : "+rstampilbarang.getString("jam20").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "21 : "+rstampilbarang.getString("jam21").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "22 : "+rstampilbarang.getString("jam22").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                        "23 : "+rstampilbarang.getString("jam23").replaceAll("true","✓").replaceAll("false","✕")+"  |  "+
-                        rstampilbarang.getString("aturan_pakai")
+                        false,rstampilbarang.getString("kode_brng"),rstampilbarang.getString("nama_brng"),stokmasuk,pagi,siang,sore,malam,rstampilbarang.getDouble("jumlah"),
+                        keluar,retur,returshs,hilang,rstampilbarang.getString("no_batch"),rstampilbarang.getString("no_faktur"),rstampilbarang.getString("aturan_pakai"),
+                        rstampilbarang.getString("jam00").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam01").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam02").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam03").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam04").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam05").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam06").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam07").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam08").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam09").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam10").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam11").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam12").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam13").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam14").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam15").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam16").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam17").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam18").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam19").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam20").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam21").replaceAll("true","✓").replaceAll("false","✕"),
+                        rstampilbarang.getString("jam22").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam23").replaceAll("true","✓").replaceAll("false","✕")
                     });
                 }
             } catch (Exception e) {

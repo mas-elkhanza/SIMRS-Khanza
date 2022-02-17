@@ -86,7 +86,7 @@ public class DlgPermintaanStokPasien extends javax.swing.JDialog {
                 java.lang.Boolean.class,java.lang.Boolean.class,java.lang.Boolean.class,
                 java.lang.Boolean.class,java.lang.Boolean.class,java.lang.Boolean.class,
                 java.lang.Boolean.class,java.lang.Boolean.class,java.lang.Boolean.class,
-                java.lang.Boolean.class,java.lang.Boolean.class, 
+                java.lang.Boolean.class,java.lang.Boolean.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {

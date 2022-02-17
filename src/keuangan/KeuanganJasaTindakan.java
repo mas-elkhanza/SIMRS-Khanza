@@ -956,6 +956,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -965,22 +981,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -1509,6 +1509,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -1518,22 +1534,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -2070,6 +2070,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -2079,22 +2095,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -2630,6 +2630,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -2639,22 +2655,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -3184,6 +3184,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -3193,22 +3209,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Valid.SetAngka(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -3735,6 +3735,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -3744,22 +3760,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -4288,6 +4288,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -4297,22 +4313,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -4849,6 +4849,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -4858,22 +4874,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -5409,6 +5409,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -5418,22 +5434,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
@@ -5963,6 +5963,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "</tr>"
                                 );
                             }
+                            rs2.last();
+                            if(rs2.getRow()>0){
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
+                                         "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
+                                    "</tr>"+
+                                    "<tr class='isi'>"+
+                                         "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -5972,22 +5988,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
-                        rs.last();
-                        if(rs.getRow()>0){
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='5'>SUBTOTAL</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasasarana)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamedis)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subjasamenejemen)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subbhp)+"</td>"+
-                                     "<td valign='middle' align='right'>"+Math.round(subtotal)+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi'>"+
-                                     "<td valign='middle' align='left' colspan='10'>&nbsp;</td>"+
-                                "</tr>"
-                            );
                         }
                     }
                 } catch (Exception e) {
