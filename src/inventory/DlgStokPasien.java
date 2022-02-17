@@ -193,6 +193,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         ppResepObat1 = new javax.swing.JMenuItem();
         ppResepObat2 = new javax.swing.JMenuItem();
         ppLabelObat = new javax.swing.JMenuItem();
+        ppLabelObat2 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -287,6 +288,22 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppLabelObat);
+
+        ppLabelObat2.setBackground(new java.awt.Color(255, 255, 254));
+        ppLabelObat2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppLabelObat2.setForeground(new java.awt.Color(50, 50, 50));
+        ppLabelObat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppLabelObat2.setText("Cetak Label Obat 2");
+        ppLabelObat2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppLabelObat2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppLabelObat2.setName("ppLabelObat2"); // NOI18N
+        ppLabelObat2.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppLabelObat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppLabelObat2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppLabelObat2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1587,6 +1604,315 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppLabelObatActionPerformed
 
+    private void ppLabelObat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLabelObat2ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbKamar.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            //"Tanggal","Jam","No.Rawat"
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam00='true'")>0){
+                param.put("waktu","JAM 00");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam00='true'",param);
+            }   
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam01='true'")>0){
+                param.put("waktu","JAM 01");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam01='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam02='true'")>0){
+                param.put("waktu","JAM 02");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam02='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam03='true'")>0){
+                param.put("waktu","JAM 03");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam03='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam04='true'")>0){
+                param.put("waktu","JAM 04");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam04='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam05='true'")>0){
+                param.put("waktu","JAM 05");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam05='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam06='true'")>0){
+                param.put("waktu","JAM 06");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam06='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam07='true'")>0){
+                param.put("waktu","JAM 07");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam07='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam08='true'")>0){
+                param.put("waktu","JAM 08");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam08='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam09='true'")>0){
+                param.put("waktu","JAM 09");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam09='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam10='true'")>0){
+                param.put("waktu","JAM 10");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam10='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam11='true'")>0){
+                param.put("waktu","JAM 11");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam11='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam12='true'")>0){
+                param.put("waktu","JAM 12");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam12='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam13='true'")>1){
+                param.put("waktu","JAM 13");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam13='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam14='true'")>1){
+                param.put("waktu","JAM 14");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam14='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam15='true'")>1){
+                param.put("waktu","JAM 15");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam15='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam16='true'")>1){
+                param.put("waktu","JAM 16");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam16='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam17='true'")>1){
+                param.put("waktu","JAM 17");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam17='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam18='true'")>1){
+                param.put("waktu","JAM 18");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam18='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam19='true'")>1){
+                param.put("waktu","JAM 19");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam19='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam20='true'")>1){
+                param.put("waktu","JAM 20");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam20='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam22='true'")>0){
+                param.put("waktu","JAM 22");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam22='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam22='true'")>0){
+                param.put("waktu","JAM 22");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam22='true'",param);
+            }
+            if(Sequel.cariInteger("select count(*) from stok_obat_pasien where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam23='true'")>2){
+                param.put("waktu","JAM 23");  
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReportqry("rptLabelDaftarObatStokPasien2.jasper","report","::[ Aturan Pakai Obat ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and stok_obat_pasien.aturan_pakai<>'' and stok_obat_pasien.jam23='true'",param);
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ppLabelObat2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1625,6 +1951,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppLabelObat;
+    private javax.swing.JMenuItem ppLabelObat2;
     private javax.swing.JMenuItem ppResepObat;
     private javax.swing.JMenuItem ppResepObat1;
     private javax.swing.JMenuItem ppResepObat2;
