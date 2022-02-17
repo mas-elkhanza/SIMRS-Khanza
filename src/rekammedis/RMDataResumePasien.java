@@ -130,18 +130,18 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 
         tblObatPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
-        tabMode2 = new DefaultTableModel(null, new Object[]{"Kode Barang", "Nama Obat", "Aturan Pakai"}) {
-//            @Override
-//            public boolean isCellEditable(int rowIndex, int colIndex) {
-//                boolean a = false;
-//                if ((colIndex == 0) || (colIndex == 3)) {
-//                    a = true;
-//                }
-//                return a;
-//            }
+        tabMode2 = new DefaultTableModel(null, new Object[]{"#", "Kode Barang", "Nama Obat", "Aturan Pakai"}) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                boolean a = false;
+                if ((colIndex == 0) || (colIndex == 3)) {
+                    a = true;
+                }
+                return a;
+            }
 
             Class[] types = new Class[]{
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             @Override
@@ -151,13 +151,16 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         };
         tblObatSelamadiRumah.setModel(tabMode2);
 
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 4; j++) {
             TableColumn column = tblObatSelamadiRumah.getColumnModel().getColumn(j);
             switch (j) {
                 case 0:
-                    column.setPreferredWidth(150);//jam
+                    column.setPreferredWidth(5);//jam
                     break;
                 case 1:
+                    column.setPreferredWidth(150);//jam
+                    break;
+                case 2:
                     column.setPreferredWidth(150);//jam
                     break;
                 default:
@@ -687,6 +690,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         BtnTambahObat = new widget.Button();
         nomor = new widget.TextBox();
         jLabel9 = new widget.Label();
+        BtnTambahObat1 = new widget.Button();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -1592,6 +1596,19 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(620, 10, 50, 23);
 
+        BtnTambahObat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnTambahObat1.setMnemonic('2');
+        BtnTambahObat1.setToolTipText("Alt+2");
+        BtnTambahObat1.setName("BtnTambahObat1"); // NOI18N
+        BtnTambahObat1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnTambahObat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTambahObat1ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnTambahObat1);
+        BtnTambahObat1.setBounds(110, 800, 30, 30);
+
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1666,6 +1683,15 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                                     + tblObatPerawatan.getModel().getValueAt(j, 3).toString() + "',''");
                         }
                     }
+                    for (int j = 0; j < tblObatSelamadiRumah.getRowCount(); j++) {
+                        if (tblObatSelamadiRumah.getModel().getValueAt(j, 0).equals(true)) {
+                            Sequel.menyimpan("obat_pulang_resume",
+                                    "'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
+                                    + tblObatSelamadiRumah.getModel().getValueAt(j, 1).toString() + "','"
+                                    + tblObatSelamadiRumah.getModel().getValueAt(j, 2).toString() + "','"
+                                    + tblObatSelamadiRumah.getModel().getValueAt(j, 3).toString() + "',''");
+                        }
+                    }
                     tampil();
                     tampilObat();
                     tampilObatPulang();
@@ -1674,6 +1700,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane, "Simpan Data Berhasil");
                 }
             }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Data Resume udah ada!");
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1706,6 +1734,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString(), tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()
             }) == true) {
                 Sequel.meghapus("obat_rs_resume", "no_rawat", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
+                Sequel.meghapus("obat_pulang_resume", "no_rawat", tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
                 tampil();
                 emptTeks();
                 JOptionPane.showMessageDialog(null, "Berhasil menghapus.");
@@ -1792,6 +1821,17 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                                     + tblObatPerawatan.getModel().getValueAt(j, 1).toString() + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 2).toString() + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 3).toString() + "',''");
+                        }
+                    }
+                }
+                if (Sequel.queryutf("DELETE FROM obat_pulang_resume WHERE no_rawat = '" + TNoRw.getText() + "'") == true) {
+                    for (int j = 0; j < tblObatSelamadiRumah.getRowCount(); j++) {
+                        if (tblObatSelamadiRumah.getModel().getValueAt(j, 0).equals(true)) {
+                            Sequel.menyimpan("obat_pulang_resume",
+                                    "'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
+                                    + tblObatSelamadiRumah.getModel().getValueAt(j, 1).toString() + "','"
+                                    + tblObatSelamadiRumah.getModel().getValueAt(j, 2).toString() + "','"
+                                    + tblObatSelamadiRumah.getModel().getValueAt(j, 3).toString() + "',''");
                         }
                     }
                 }
@@ -2394,7 +2434,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 
     private void BtnTambahObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahObatActionPerformed
         // TODO add your handling code here:
-        obatResume.noRawat(TNoRw.getText(), "0000-00-00");
+        obatResume.noRawat(TNoRw.getText(), "0000-00-00", "perawatan");
         obatResume.tampil();
         obatResume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         obatResume.setLocationRelativeTo(internalFrame1);
@@ -2413,7 +2453,17 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         // TODO add your handling code here:
         tampilObat();
         isDiagnosaAhir();
+        tampilObatPulang();
     }//GEN-LAST:event_formWindowActivated
+
+    private void BtnTambahObat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahObat1ActionPerformed
+        // TODO add your handling code here:
+        obatResume.noRawat(TNoRw.getText(), "0000-00-00", "pulang");
+        obatResume.tampil();
+        obatResume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        obatResume.setLocationRelativeTo(internalFrame1);
+        obatResume.setVisible(true);
+    }//GEN-LAST:event_BtnTambahObat1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2444,6 +2494,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Button BtnTambahObat;
+    private widget.Button BtnTambahObat1;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
@@ -2715,9 +2766,12 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     }
 
     private void tampilObatPulang() {
-        Valid.tabelKosong(tabMode2);
+    String obat = Sequel.cariIsi("select no_rawat from obat_pulang_resume where no_rawat='" + TNoRw.getText() + "'");
+    System.out.println ("Obat :" + obat);
+    Valid.tabelKosong (tabMode2);
         try {
             if (!TNoRw.getText().equals("")) {
+            if (obat.isBlank()) {
                 ps2 = koneksi.prepareStatement(
                         "select resep_pulang.aturan_pakai, barang.kode_brng, barang.nama_brng,barang.kapasitas "
                         + "from resep_pulang "
@@ -2725,38 +2779,51 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         + "where "
                         + "resep_pulang.no_rawat =? "
                         + "and barang.kode_kategori = 'obat'");
-
+            } else {
+                ps2 = koneksi.prepareStatement(
+                        "select obat_pulang_resume.aturan_pakai, obat_pulang_resume.kode_brng, obat_pulang_resume.nama_brng "
+                        + "from obat_pulang_resume "
+                        //                        + "inner join databarang as barang ON resep_pulang.kode_brng = barang.kode_brng "
+                        + "where "
+                        + "obat_pulang_resume.no_rawat =? "
+                //                        + "and barang.kode_kategori = 'obat'"
+                );
             }
-            try {
-                if (!TNoRw.getText().equals("")) {
-                    ps2.setString(1, TNoRw.getText());
-                }
-                rs2 = ps2.executeQuery();
-                System.out.println("rs2 = " + rs2);
-                while (rs2.next()) {
-                    tabMode2.addRow(new Object[]{
-                        rs2.getString("kode_brng"), rs2.getString("nama_brng"), rs2.getString("aturan_pakai")
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println("tampil obat pulang : " + e);
-            } finally {
-                if (rs2 != null) {
-                    rs2.close();
-                }
-                if (ps2 != null) {
-                    ps2.close();
-                }
+        }
+        try {
+            if (!TNoRw.getText().equals("")) {
+                ps2.setString(1, TNoRw.getText());
             }
-        } catch (SQLException ex) {
-            System.out.println("Error tampil obat pulang = " + ex);
+            rs2 = ps2.executeQuery();
+            System.out.println("rs2 = " + rs2);
+            while (rs2.next()) {
+                tabMode2.addRow(new Object[]{
+                    true, rs2.getString("kode_brng"), rs2.getString("nama_brng"), rs2.getString("aturan_pakai")
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("tampil obat pulang : " + e);
+        } finally {
+            if (rs2 != null) {
+                rs2.close();
+            }
+            if (ps2 != null) {
+                ps2.close();
+            }
         }
     }
+    catch (SQLException ex
 
-    /**
-     *
-     */
-    public void emptTeks() {
+    
+        ) {
+            System.out.println("Error tampil obat pulang = " + ex);
+    }
+}
+
+/**
+ *
+ */
+public void emptTeks() {
         KeluhanUtama.setText("");
         JalannyaPenyakit.setText("");
         PemeriksaanFisik.setText("");
@@ -2807,8 +2874,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             riwayatPenyakit.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 31).toString());
 //            penyakitPenyerta.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 32).toString());
             Kondisi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 33).toString());
-//            penyakitPenyerta.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 34).toString());
-            tindakanLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 31).toString());
+            nomor.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 36).toString());
+            tindakanLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 37).toString());
             DateTglPulang.setDate(Valid.SetStringToDate(Sequel.cariIsi("select tgl_pulang from resume_pasien where no_rawat='" + TNoRw.getText() + "'")));
             DateRencanaKon.setDate(Valid.SetStringToDate(Sequel.cariIsi("select tgl_kontrol from resume_pasien where no_rawat='" + TNoRw.getText() + "'")));
             tampilObat();
