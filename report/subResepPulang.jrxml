@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subResepPulang" columnCount="2" printOrder="Horizontal" pageWidth="555" pageHeight="200" columnWidth="276" columnSpacing="2" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d143e5d9-80b9-43c4-9ea8-902888bd3059">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="no_rawat" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT resep_pulang.aturan_pakai,
-	databarang.nama_brng
-FROM resep_pulang
-	INNER JOIN databarang ON 
-	 resep_pulang.kode_brng = databarang.kode_brng 
+		<![CDATA[SELECT obat_pulang_resume.aturan_pakai,
+	obat_pulang_resume.nama_brng
+FROM obat_pulang_resume 
 WHERE 
-	 resep_pulang.no_rawat = $P{no_rawat} 
-	 AND databarang.kode_kategori = 'obat']]>
+	 obat_pulang_resume.no_rawat = $P{no_rawat} ]]>
 	</queryString>
 	<field name="nama_brng" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>

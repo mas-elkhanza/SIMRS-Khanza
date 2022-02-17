@@ -56,7 +56,7 @@ public final class DlgCariObatResume extends javax.swing.JDialog {
     private String signa1 = "1", signa2 = "1", kdObatSK = "", requestJson = "", nokunjungan = "", URL = "", otorisasi, sql = "", no_batchcari = "", tgl_kadaluarsacari = "", no_fakturcari = "", aktifkanbatch = "no", aktifpcare = "no", noresep = "", Suspen_Piutang_Obat_Ranap = "", Obat_Ranap = "", HPP_Obat_Rawat_Inap = "", Persediaan_Obat_Rawat_Inap = "";
     private WarnaTable2 warna = new WarnaTable2();
     private DlgCariBangsal caribangsal = new DlgCariBangsal(null, false);
-    private String no_rawat, tgl_perawatan;
+    private String no_rawat, tgl_perawatan, rawat;
 
     /**
      *
@@ -497,9 +497,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         // TODO add your handling code here:
+        if(rawat.equals("perawatan")){
         for (i = 0; i < tbObat.getRowCount(); i++) {
             if (tbObat.getValueAt(i, 0).toString().equals("true")) {
                   Sequel.menyimpan("obat_rs_resume", "'" + no_rawat + "','" + tgl_perawatan + "','" + tbObat.getValueAt(i, 1).toString() + "','" + tbObat.getValueAt(i, 2).toString() + "','" + tbObat.getValueAt(i, 3).toString()+ "',''");
+            }
+        }
+        }else if(rawat.equals("pulang"))
+        for (i = 0; i < tbObat.getRowCount(); i++) {
+            if (tbObat.getValueAt(i, 0).toString().equals("true")) {
+                  Sequel.menyimpan("obat_pulang_resume", "'" + no_rawat + "','" + tgl_perawatan + "','" + tbObat.getValueAt(i, 1).toString() + "','" + tbObat.getValueAt(i, 2).toString() + "','" + tbObat.getValueAt(i, 3).toString()+ "',''");
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -614,9 +621,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
-    public void noRawat(String no_rawat, String tgl_perawatan){
+    public void noRawat(String no_rawat, String tgl_perawatan, String rawat){
         this.no_rawat = no_rawat;
         this.tgl_perawatan = tgl_perawatan;
+        this.rawat = rawat;
     }
     
     /**
