@@ -244,6 +244,34 @@ public final class sekuel {
         }    
     }
     
+    public void menyimpan3(String table,String value,String sama,int i,String[] a){
+        try {
+            ps=connect.prepareStatement("insert ignore into "+table+" values("+value+")");
+            try{
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                }            
+                ps.executeUpdate();
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);            
+            }finally{
+                if(ps != null){
+                    ps.close();
+                }                
+            }
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);            
+        }    
+    }
+    
     public boolean menyimpantf(String table,String value,String sama,int i,String[] a){        
         try{             
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");

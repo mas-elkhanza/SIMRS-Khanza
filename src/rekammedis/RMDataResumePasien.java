@@ -648,7 +648,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -662,7 +662,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -755,7 +755,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 651));
         FormInput.setLayout(null);
 
-        jLabel4.setText("Keluhan utama riwayat penyakit yang positif :");
+        jLabel4.setText("Keluhan Utama Riwayat Penyakit Yang Positif :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 70, 240, 23);
@@ -874,7 +874,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.add(jLabel5);
         jLabel5.setBounds(0, 10, 100, 23);
 
-        jLabel8.setText("Jalannya penyakit selama perawatan :");
+        jLabel8.setText("Jalannya Penyakit Selama Perawatan :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
         jLabel8.setBounds(0, 127, 240, 23);
@@ -896,7 +896,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.add(scrollPane3);
         scrollPane3.setBounds(244, 127, 541, 50);
 
-        jLabel9.setText("Pemeriksaan penunjang yang positif :");
+        jLabel9.setText("Pemeriksaan Penunjang Yang Positif :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
         jLabel9.setBounds(0, 184, 240, 23);
@@ -918,7 +918,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.add(scrollPane4);
         scrollPane4.setBounds(244, 184, 541, 50);
 
-        jLabel10.setText("Hasil laboratorium yang positif :");
+        jLabel10.setText("Hasil Laboratorium Yang Positif :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
         jLabel10.setBounds(0, 241, 240, 23);
@@ -940,7 +940,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         FormInput.add(scrollPane5);
         scrollPane5.setBounds(244, 241, 541, 50);
 
-        jLabel11.setText("Obat-obatan waktu pulang/nasihat :");
+        jLabel11.setText("Obat-obatan Waktu Pulang/Nasihat :");
         jLabel11.setName("jLabel11"); // NOI18N
         FormInput.add(jLabel11);
         jLabel11.setBounds(0, 590, 240, 23);
