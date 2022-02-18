@@ -546,43 +546,6 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             }
         });
 
-        obatResume.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (obatResume.getTable().getSelectedRow() != -1) {
-                    int row = tblObatPerawatan.getRowCount() + 1;
-                    tblObatPerawatan.setValueAt(obatResume.getTable().getValueAt(obatResume.getTable().getSelectedRow(), 0).toString(), row, 0);
-                    tblObatPerawatan.setValueAt(obatResume.getTable().getValueAt(obatResume.getTable().getSelectedRow(), 1).toString(), row, 1);
-                    tblObatPerawatan.setValueAt(obatResume.getTable().getValueAt(obatResume.getTable().getSelectedRow(), 2).toString(), row, 2);
-                    JalannyaPenyakit.requestFocus();
-                }
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
-        });
-
         ChkInput.setSelected(false);
         isForm();
         isDiagnosaAhir();
@@ -1718,6 +1681,11 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         emptTeks();
         ChkInput.setSelected(true);
         isForm();
+        Date now1 = new Date();
+        String dateNow = Valid.SetDateToString(now1);
+        int no = Sequel.cariInteger("Select max(noresume) from resume_pasien where tgl_resume like '" + Valid.SetDateToString(now).substring(0, 8) + "%'");
+        no_antrian = withLargeIntegers(no + 1) + "/RSUIHA/RANAP/"+ Valid.RomanNumerals(Integer.parseInt(Valid.SetDateToString(DateTglPulang.getDate()).substring(5, 6)))+"/" + dateNow.substring(0, 4);
+        nomor.setText(no_antrian);
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -1798,8 +1766,9 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     + "kd_diagnosa_sekunder=?,diagnosa_sekunder=?,"
                     + "kd_diagnosa_sekunder2=?,diagnosa_sekunder2=?,"
                     + "kd_diagnosa_sekunder3=?,diagnosa_sekunder3=?,"
-                    + "kd_diagnosa_sekunder4=?,diagnosa_sekunder4=? "
-                    + " where no_rawat=? ", 25, new String[]{
+                    + "kd_diagnosa_sekunder4=?,diagnosa_sekunder4=?, "
+                    + "noresume=?"
+                    + " where no_rawat=? ", 26, new String[]{
                         KodeDokter.getText(), KeluhanUtama.getText(),
                         JalannyaPenyakit.getText(), PemeriksaanPenunjang.getText(), HasilLaborat.getText(),
                         kondisiSaatPulang.getText(), riwayatPenyakit.getText(), tindakanLanjut.getText(),
@@ -1811,7 +1780,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         tblDiagnosa.getModel().getValueAt(2, 0).toString(), tblDiagnosa.getModel().getValueAt(2, 1).toString(),
                         tblDiagnosa.getModel().getValueAt(3, 0).toString(), tblDiagnosa.getModel().getValueAt(3, 1).toString(),
                         tblDiagnosa.getModel().getValueAt(4, 0).toString(), tblDiagnosa.getModel().getValueAt(4, 1).toString(),
-                        TNoRw.getText()
+                        nomor.getText(),TNoRw.getText()
                     }) == true) {
                 if (Sequel.queryutf("DELETE FROM obat_rs_resume WHERE no_rawat = '" + TNoRw.getText() + "'") == true) {
                     for (int j = 0; j < tblObatPerawatan.getRowCount(); j++) {
@@ -2874,7 +2843,7 @@ public void emptTeks() {
             riwayatPenyakit.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 31).toString());
 //            penyakitPenyerta.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 32).toString());
             Kondisi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 33).toString());
-            nomor.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 36).toString());
+            nomor.setText(Sequel.cariIsi("select noresume from resume_pasien where no_rawat='" + TNoRw.getText() + "'"));
             tindakanLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 37).toString());
             DateTglPulang.setDate(Valid.SetStringToDate(Sequel.cariIsi("select tgl_pulang from resume_pasien where no_rawat='" + TNoRw.getText() + "'")));
             DateRencanaKon.setDate(Valid.SetStringToDate(Sequel.cariIsi("select tgl_kontrol from resume_pasien where no_rawat='" + TNoRw.getText() + "'")));
@@ -2995,11 +2964,6 @@ public void emptTeks() {
             scrollInput.setVisible(false);
             ChkInput.setVisible(true);
         }
-        Date now1 = new Date();
-        String dateNow = Valid.SetDateToString(now1);
-        int no = Sequel.cariInteger("Select max(noresume) from resume_pasien where tgl_resume like '" + Valid.SetDateToString(now).substring(0, 8) + "%'");
-        no_antrian = withLargeIntegers(no + 1) + "/RSUIHA/" + Valid.RomanNumerals(Integer.parseInt(dateNow.substring(5, 6))) + "/RANAP/" + dateNow.substring(0, 4);
-        nomor.setText(no_antrian);
     }
 
     /**
