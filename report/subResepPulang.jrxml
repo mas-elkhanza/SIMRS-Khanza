@@ -21,7 +21,7 @@ WHERE
 	<columnHeader>
 		<band height="14" splitType="Immediate">
 			<staticText>
-				<reportElement x="0" y="0" width="200" height="14" uuid="fa08c7ab-57d3-445f-9a13-22d5b851a6f6">
+				<reportElement x="0" y="0" width="170" height="14" uuid="fa08c7ab-57d3-445f-9a13-22d5b851a6f6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f060ccb6-194f-400a-b45d-b95e1f79f920"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -35,7 +35,7 @@ WHERE
 				<text><![CDATA[Nama Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="0" width="77" height="14" uuid="8fbc5efa-bc5b-4d53-8a6a-398a1a317523">
+				<reportElement x="170" y="0" width="107" height="14" uuid="8fbc5efa-bc5b-4d53-8a6a-398a1a317523">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54d7b060-8abc-43d3-8795-78e56fa7493c"/>
 				</reportElement>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
@@ -52,7 +52,7 @@ WHERE
 		<band height="15" splitType="Immediate">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="0" width="200" height="15" uuid="0f2baf04-8b7b-4656-8840-76771e0c19a6">
+				<reportElement x="0" y="0" width="170" height="15" uuid="0f2baf04-8b7b-4656-8840-76771e0c19a6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f060ccb6-194f-400a-b45d-b95e1f79f920"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -65,7 +65,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.###">
-				<reportElement x="200" y="0" width="77" height="15" uuid="3b215f7d-818c-4501-833a-0ef0084eb90e">
+				<reportElement x="170" y="0" width="107" height="15" uuid="3b215f7d-818c-4501-833a-0ef0084eb90e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54d7b060-8abc-43d3-8795-78e56fa7493c"/>
 				</reportElement>
 				<box padding="2">
