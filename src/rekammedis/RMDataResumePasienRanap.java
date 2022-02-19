@@ -59,6 +59,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private RMCariTindakan caritindakan=new RMCariTindakan(null,false);
     private RMCariJumlahObat cariobat=new RMCariJumlahObat(null,false);
     private RMCariDiet caridiet=new RMCariDiet(null,false);
+    private RMCariLabPending carilabpending=new RMCariLabPending(null,false);
     private DlgDiagnosaPenyakit penyakit=new DlgDiagnosaPenyakit(null,false);
     
     /** Creates new form DlgRujuk
@@ -517,6 +518,28 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                 if(caridiet.getTable().getSelectedRow()!= -1){
                     Diet.append(caridiet.getTable().getValueAt(caridiet.getTable().getSelectedRow(),2).toString()+", ");
                     Diet.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        carilabpending.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(carilabpending.getTable().getSelectedRow()!= -1){
+                    LabBelum.append(carilabpending.getTable().getValueAt(carilabpending.getTable().getSelectedRow(),2).toString()+", ");
+                    LabBelum.requestFocus();
                 }
             }
             @Override
@@ -2114,6 +2137,8 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         caripemeriksaan.dispose();
         caritindakan.dispose();
         cariradiologi.dispose();
+        caridiet.dispose();
+        carilabpending.dispose();
         penyakit.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
@@ -2523,11 +2548,11 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         if(TNoRw.getText().equals("")&&TNoRM.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Pasien masih kosong...!!!");
         }else{
-            /*rmcarilabpending.setNoRawat(TNoRw.getText());
-            rmcarilabpending.tampil();
-            rmcarilabpending.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            rmcarilabpending.setLocationRelativeTo(internalFrame1);
-            rmcarilabpending.setVisible(true);*/
+            carilabpending.setNoRawat(TNoRw.getText());
+            carilabpending.tampil();
+            carilabpending.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            carilabpending.setLocationRelativeTo(internalFrame1);
+            carilabpending.setVisible(true);
         }
     }//GEN-LAST:event_BtnDokter17ActionPerformed
 
