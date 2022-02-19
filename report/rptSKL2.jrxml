@@ -389,21 +389,21 @@ TEGAL 52131]]></text>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="156" y="58" width="408" height="16" uuid="1cf6490a-8c57-41c9-9db3-49f62e81e07d"/>
+				<reportElement x="156" y="58" width="426" height="16" uuid="1cf6490a-8c57-41c9-9db3-49f62e81e07d"/>
 				<textElement markup="html">
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_ibu}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="156" y="72" width="283" height="16" uuid="8b00540e-522b-49a5-88e9-81e38036cefb"/>
+				<reportElement x="156" y="72" width="426" height="16" uuid="8b00540e-522b-49a5-88e9-81e38036cefb"/>
 				<textElement>
 					<font fontName="Serif" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_ayah}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="ContainerHeight" x="156" y="86" width="408" height="16" uuid="9b3c56bc-faef-497b-87b9-4014e73209d1">
+				<reportElement stretchType="ContainerHeight" x="156" y="86" width="426" height="16" uuid="9b3c56bc-faef-497b-87b9-4014e73209d1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -485,7 +485,7 @@ TEGAL 52131]]></text>
 				<textFieldExpression><![CDATA["Nomor : "+$P{nomor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="ContainerHeight" x="156" y="102" width="408" height="16" uuid="c71c6f03-62fb-4df5-8be4-3ea491092692">
+				<reportElement stretchType="ContainerHeight" x="156" y="102" width="426" height="16" uuid="c71c6f03-62fb-4df5-8be4-3ea491092692">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">

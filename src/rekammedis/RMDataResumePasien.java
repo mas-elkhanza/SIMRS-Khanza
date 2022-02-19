@@ -1774,7 +1774,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         kondisiSaatPulang.getText(), riwayatPenyakit.getText(), tindakanLanjut.getText(),
                         PemeriksaanFisik.getText(), Kondisi.getSelectedItem().toString(),
                         tindakanRS.getText(), tgl_kontrol,
-                        Valid.SetDateToString(DateTglPulang.getDate()), Jam.getSelectedItem().toString() + ':' + Menit.getSelectedItem().toString(),
+                        Valid.SetDateToString(DateTglPulang.getDate()), Jam.getSelectedItem().toString() + ':' + Menit.getSelectedItem().toString()+ ':' + Detik.getSelectedItem().toString(),
                         tblDiagnosa.getModel().getValueAt(0, 0).toString(), tblDiagnosa.getModel().getValueAt(0, 1).toString(),
                         tblDiagnosa.getModel().getValueAt(1, 0).toString(), tblDiagnosa.getModel().getValueAt(1, 1).toString(),
                         tblDiagnosa.getModel().getValueAt(2, 0).toString(), tblDiagnosa.getModel().getValueAt(2, 1).toString(),
@@ -2826,6 +2826,7 @@ public void emptTeks() {
 
     private void getData() {
         if (tbObat.getSelectedRow() != -1) {
+            String jam_pulang = Sequel.cariIsi("select jam_pulang from resume_pasien where no_rawat='" + TNoRw.getText() + "'");
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
             TCari.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 3).toString());
@@ -2845,6 +2846,9 @@ public void emptTeks() {
             Kondisi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 33).toString());
             nomor.setText(Sequel.cariIsi("select noresume from resume_pasien where no_rawat='" + TNoRw.getText() + "'"));
             tindakanLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 37).toString());
+            Jam.setSelectedItem(jam_pulang.substring(0, 2));
+            Menit.setSelectedItem(jam_pulang.substring(3, 5));
+            Detik.setSelectedItem(jam_pulang.substring(6, 8));
             DateTglPulang.setDate(Valid.SetStringToDate(Sequel.cariIsi("select tgl_pulang from resume_pasien where no_rawat='" + TNoRw.getText() + "'")));
             DateRencanaKon.setDate(Valid.SetStringToDate(Sequel.cariIsi("select tgl_kontrol from resume_pasien where no_rawat='" + TNoRw.getText() + "'")));
             tampilObat();
