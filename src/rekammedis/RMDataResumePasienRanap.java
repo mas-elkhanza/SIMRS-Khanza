@@ -48,8 +48,8 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
     private int i=0;    
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private RMCariKeluhan carikeluhan=new RMCariKeluhan(null,false);
@@ -62,6 +62,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private RMCariDiet caridiet=new RMCariDiet(null,false);
     private RMCariLabPending carilabpending=new RMCariLabPending(null,false);
     private DlgDiagnosaPenyakit penyakit=new DlgDiagnosaPenyakit(null,false);
+    private String kodekamar="",namakamar="",tglkeluar="",jamkeluar="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -71,7 +72,15 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Tgl.Rawat","No.Rawat",""
+            "No.Rawat","No.RM","Nama Pasien","Kode Dokter","Dokter Penanggung Jawab","Kode Pengirim","Dokter Pegirim",
+            "Kode Kamar","Kamar/Ruang/Bangsal","Tgl.Masuk","Jam Masuk","Tgl.Keluar","Jam Keluar","Diagnosa Awal Masuk","Alasan Masuk Dirawat",
+            "Keluhan Utama Riwayat Penyakit","Pemeriksaan Fisik","Jalannya Penyakit Selama Perawatan","Pemeriksaan Penunjang Rad Terpenting",
+            "Pemeriksaan Penunjang Lab Terpenting","Tindakan/Operasi Selama Perawatan","Obat-obatan Selama Perawatan","Diagnosa Utama",
+            "ICD10 Utama","Diagnosa Sekunder 1","ICD10 Sek 1","Diagnosa Sekunder 2","ICD10 Sek 2","Diagnosa Sekunder 3","ICD10 Sek 3",
+            "Diagnosa Sekunder 4","ICD10 Sek 4","Prosedur Utama","ICD9 Utama","Prosedur Sekunder 1","ICD9 Sek1","Prosedur Sekunder 2",
+            "ICD9 Sek2","Prosedur Sekunder 3","ICD9 Sek3","Alergi Obat","Diet","Hasil Lab Yang Belum Selesai (Pending)",
+            "Instruksi/Anjuran Dan Edukasi (Follow Up)","Keadaan Pulang","Ket.Keadaan Pulang","Cara Keluar","Ket.Cara Keluar","Dilanjutkan",
+            "Ket.Dilanjutkan","Kontrol Kembali","Obat Pulang"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -81,7 +90,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 95; i++) {
+        for (i = 0; i < 40; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(65);
@@ -91,188 +100,6 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(105);
             }else if(i==3){
                 column.setPreferredWidth(65);
-            }else if(i==4){
-                column.setPreferredWidth(150);
-            }else if(i==5){
-                column.setPreferredWidth(90);
-            }else if(i==6){
-                column.setPreferredWidth(150);
-            }else if(i==7){
-                column.setPreferredWidth(60);
-            }else if(i==8){
-                column.setPreferredWidth(250);
-            }else if(i==9){
-                column.setPreferredWidth(250);
-            }else if(i==10){
-                column.setPreferredWidth(250);
-            }else if(i==11){
-                column.setPreferredWidth(250);
-            }else if(i==12){
-                column.setPreferredWidth(170);
-            }else if(i==13){
-                column.setPreferredWidth(75);
-            }else if(i==14){
-                column.setPreferredWidth(170);
-            }else if(i==15){
-                column.setPreferredWidth(75);
-            }else if(i==16){
-                column.setPreferredWidth(170);
-            }else if(i==17){
-                column.setPreferredWidth(75);
-            }else if(i==18){
-                column.setPreferredWidth(170);
-            }else if(i==19){
-                column.setPreferredWidth(75);
-            }else if(i==20){
-                column.setPreferredWidth(170);
-            }else if(i==21){
-                column.setPreferredWidth(75);
-            }else if(i==22){
-                column.setPreferredWidth(170);
-            }else if(i==23){
-                column.setPreferredWidth(75);
-            }else if(i==24){
-                column.setPreferredWidth(170);
-            }else if(i==25){
-                column.setPreferredWidth(75);
-            }else if(i==26){
-                column.setPreferredWidth(170);
-            }else if(i==27){
-                column.setPreferredWidth(75);
-            }else if(i==28){
-                column.setPreferredWidth(170);
-            }else if(i==29){
-                column.setPreferredWidth(75);
-            }else if(i==30){
-                column.setPreferredWidth(250);
-            }else if(i==31){
-                column.setPreferredWidth(75);
-            }else if(i==32){
-                column.setPreferredWidth(75);
-            }else if(i==33){
-                column.setPreferredWidth(40);
-            }else if(i==34){
-                column.setPreferredWidth(105);
-            }else if(i==35){
-                column.setPreferredWidth(65);
-            }else if(i==36){
-                column.setPreferredWidth(150);
-            }else if(i==37){
-                column.setPreferredWidth(90);
-            }else if(i==38){
-                column.setPreferredWidth(150);
-            }else if(i==39){
-                column.setPreferredWidth(60);
-            }else if(i==40){
-                column.setPreferredWidth(250);
-            }else if(i==41){
-                column.setPreferredWidth(250);
-            }else if(i==42){
-                column.setPreferredWidth(250);
-            }else if(i==43){
-                column.setPreferredWidth(250);
-            }else if(i==44){
-                column.setPreferredWidth(170);
-            }else if(i==45){
-                column.setPreferredWidth(75);
-            }else if(i==46){
-                column.setPreferredWidth(170);
-            }else if(i==47){
-                column.setPreferredWidth(75);
-            }else if(i==48){
-                column.setPreferredWidth(170);
-            }else if(i==49){
-                column.setPreferredWidth(75);
-            }else if(i==50){
-                column.setPreferredWidth(170);
-            }else if(i==51){
-                column.setPreferredWidth(75);
-            }else if(i==52){
-                column.setPreferredWidth(170);
-            }else if(i==53){
-                column.setPreferredWidth(75);
-            }else if(i==54){
-                column.setPreferredWidth(170);
-            }else if(i==55){
-                column.setPreferredWidth(75);
-            }else if(i==56){
-                column.setPreferredWidth(170);
-            }else if(i==57){
-                column.setPreferredWidth(75);
-            }else if(i==58){
-                column.setPreferredWidth(170);
-            }else if(i==59){
-                column.setPreferredWidth(75);
-            }else if(i==60){
-                column.setPreferredWidth(170);
-            }else if(i==61){
-                column.setPreferredWidth(75);
-            }else if(i==62){
-                column.setPreferredWidth(250);
-            }else if(i==63){
-                column.setPreferredWidth(75);
-            }else if(i==64){
-                column.setPreferredWidth(75);
-            }else if(i==65){
-                column.setPreferredWidth(170);
-            }else if(i==66){
-                column.setPreferredWidth(75);
-            }else if(i==67){
-                column.setPreferredWidth(170);
-            }else if(i==68){
-                column.setPreferredWidth(75);
-            }else if(i==69){
-                column.setPreferredWidth(170);
-            }else if(i==70){
-                column.setPreferredWidth(75);
-            }else if(i==71){
-                column.setPreferredWidth(170);
-            }else if(i==72){
-                column.setPreferredWidth(75);
-            }else if(i==73){
-                column.setPreferredWidth(170);
-            }else if(i==74){
-                column.setPreferredWidth(75);
-            }else if(i==75){
-                column.setPreferredWidth(170);
-            }else if(i==76){
-                column.setPreferredWidth(75);
-            }else if(i==77){
-                column.setPreferredWidth(250);
-            }else if(i==78){
-                column.setPreferredWidth(75);
-            }else if(i==79){
-                column.setPreferredWidth(75);
-            }else if(i==80){
-                column.setPreferredWidth(170);
-            }else if(i==81){
-                column.setPreferredWidth(75);
-            }else if(i==82){
-                column.setPreferredWidth(250);
-            }else if(i==83){
-                column.setPreferredWidth(250);
-            }else if(i==84){
-                column.setPreferredWidth(170);
-            }else if(i==85){
-                column.setPreferredWidth(75);
-            }else if(i==86){
-                column.setPreferredWidth(250);
-            }else if(i==87){
-                column.setPreferredWidth(250);
-            }else if(i==88){
-                column.setPreferredWidth(170);
-            }else if(i==89){
-                column.setPreferredWidth(75);
-            }else if(i==90){
-                column.setPreferredWidth(250);
-            }else if(i==91){
-                column.setPreferredWidth(250);
-            }else if(i==92){
-                column.setPreferredWidth(250);
-            }else if(i==93){
-                column.setPreferredWidth(250);
-            }else if(i==94){
-                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2781,142 +2608,65 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().equals("")){
-                ps=koneksi.prepareStatement(
-                    "select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
-                    "resume_pasien_ranap.kd_dokter,dokter.nm_dokter,resume_pasien_ranap.tgl_lahir,resume_pasien_ranap.jk,resume_pasien_ranap.kd_kamar,resume_pasien_ranap.masuk,resume_pasien_ranap.jam_masuk,resume_pasien_ranap.keluar, "+
-                    "resume_pasien_ranap.jam_keluar,resume_pasien_ranap.kd_dokter1,resume_pasien_ranap.nm_dokter1,resume_pasien_ranap.kd_pj,penjab.png_jawab,resume_pasien_ranap.diagnosa_awal,resume_pasien_ranap.alasan,resume_pasien_ranap.keluhan_utama,resume_pasien_ranap.jalannya_penyakit, "+
-                    "resume_pasien_ranap.pemeriksaan_penunjang,resume_pasien_ranap.hasil_laborat,resume_pasien_ranap.terapi,resume_pasien_ranap.diagnosa_utama,resume_pasien_ranap.kd_diagnosa_utama, "+
-                    "resume_pasien_ranap.diagnosa_sekunder,resume_pasien_ranap.kd_diagnosa_sekunder,resume_pasien_ranap.diagnosa_sekunder2,resume_pasien_ranap.kd_diagnosa_sekunder2, "+
-                    "resume_pasien_ranap.diagnosa_sekunder3,resume_pasien_ranap.kd_diagnosa_sekunder3,resume_pasien_ranap.diagnosa_sekunder4,resume_pasien_ranap.kd_diagnosa_sekunder4, "+
-                    "resume_pasien_ranap.prosedur_utama,resume_pasien_ranap.kd_prosedur_utama,resume_pasien_ranap.prosedur_sekunder,resume_pasien_ranap.kd_prosedur_sekunder, "+
-                    "resume_pasien_ranap.prosedur_sekunder2,resume_pasien_ranap.kd_prosedur_sekunder2,resume_pasien_ranap.prosedur_sekunder3,resume_pasien_ranap.kd_prosedur_sekunder3, "+
-                    "resume_pasien_ranap.alergi,resume_pasien_ranap.diet,resume_pasien_ranap.lab_belum,resume_pasien_ranap.edukasi,resume_pasien_ranap.cara_keluar,resume_pasien_ranap.keluar_lainnya, "+
-                    "resume_pasien_ranap.keadaan,resume_pasien_ranap.keadaan_lainnya,resume_pasien_ranap.pengobatan,resume_pasien_ranap.pengobatan_lainnya,resume_pasien_ranap.kontrol, "+
-                    "resume_pasien_ranap.kode_brng,resume_pasien_ranap.nama,resume_pasien_ranap.jml_barang,resume_pasien_ranap.dosis,resume_pasien_ranap.kode_brng1,resume_pasien_ranap.nama1,resume_pasien_ranap.jml_barang1,resume_pasien_ranap.dosis1, "+
-                    "resume_pasien_ranap.kode_brng2,resume_pasien_ranap.nama2,resume_pasien_ranap.jml_barang2,resume_pasien_ranap.dosis2,resume_pasien_ranap.kode_brng3,resume_pasien_ranap.nama3,resume_pasien_ranap.jml_barang3,resume_pasien_ranap.dosis3, "+
-                    "resume_pasien_ranap.kode_brng4,resume_pasien_ranap.nama4,resume_pasien_ranap.jml_barang4,resume_pasien_ranap.dosis4,resume_pasien_ranap.kode_brng5,resume_pasien_ranap.nama5,resume_pasien_ranap.jml_barang5,resume_pasien_ranap.dosis5, "+
-                    "resume_pasien_ranap.kode_brng6,resume_pasien_ranap.nama6,resume_pasien_ranap.jml_barang6,resume_pasien_ranap.dosis6,resume_pasien_ranap.kode_brng7,resume_pasien_ranap.nama7,resume_pasien_ranap.jml_barang7,resume_pasien_ranap.dosis7, "+
-                    "resume_pasien_ranap.kode_brng8,resume_pasien_ranap.nama8,resume_pasien_ranap.jml_barang8,resume_pasien_ranap.dosis8,resume_pasien_ranap.kode_brng9,resume_pasien_ranap.nama9,resume_pasien_ranap.jml_barang9,resume_pasien_ranap.dosis9, "+
-                    "resume_pasien_ranap.sudah from resume_pasien_ranap inner join reg_periksa on resume_pasien_ranap.no_rawat=reg_periksa.no_rawat  "+
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,resume_pasien_ranap.kd_dokter,dokter.nm_dokter,reg_periksa.kd_dokter as kodepengirim,pengirim.nm_dokter as pengirim,"+
+                    "reg_periksa.tgl_registrasi,reg_periksa.jam_reg,resume_pasien_ranap.diagnosa_awal,resume_pasien_ranap.alasan,resume_pasien_ranap.keluhan_utama,resume_pasien_ranap.pemeriksaan_fisik,"+
+                    "resume_pasien_ranap.jalannya_penyakit,resume_pasien_ranap.pemeriksaan_penunjang,resume_pasien_ranap.hasil_laborat,resume_pasien_ranap.tindakan_dan_operasi,resume_pasien_ranap.obat_di_rs,"+
+                    "resume_pasien_ranap.diagnosa_utama,resume_pasien_ranap.kd_diagnosa_utama,resume_pasien_ranap.diagnosa_sekunder,resume_pasien_ranap.kd_diagnosa_sekunder,resume_pasien_ranap.diagnosa_sekunder2,"+
+                    "resume_pasien_ranap.kd_diagnosa_sekunder2,resume_pasien_ranap.diagnosa_sekunder3,resume_pasien_ranap.kd_diagnosa_sekunder3,resume_pasien_ranap.diagnosa_sekunder4,"+
+                    "resume_pasien_ranap.kd_diagnosa_sekunder4,resume_pasien_ranap.prosedur_utama,resume_pasien_ranap.kd_prosedur_utama,resume_pasien_ranap.prosedur_sekunder,resume_pasien_ranap.kd_prosedur_sekunder,"+
+                    "resume_pasien_ranap.prosedur_sekunder2,resume_pasien_ranap.kd_prosedur_sekunder2,resume_pasien_ranap.prosedur_sekunder3,resume_pasien_ranap.kd_prosedur_sekunder3,resume_pasien_ranap.alergi,"+
+                    "resume_pasien_ranap.diet,resume_pasien_ranap.lab_belum,resume_pasien_ranap.edukasi,resume_pasien_ranap.cara_keluar,resume_pasien_ranap.ket_keluar,resume_pasien_ranap.keadaan,"+
+                    "resume_pasien_ranap.ket_keadaan,resume_pasien_ranap.dilanjutkan,resume_pasien_ranap.ket_dilanjutkan,resume_pasien_ranap.kontrol,resume_pasien_ranap.obat_pulang "+
+                    "from resume_pasien_ranap inner join reg_periksa on resume_pasien_ranap.no_rawat=reg_periksa.no_rawat  "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien_ranap.kd_dokter=dokter.kd_dokter "+
-//                    "inner join dokter as nm_dokter1 ON nm_dokter1.kd_dokter=resume_pasien_ranap.kd_dokter1 "+
-                    "inner join penjab on resume_pasien_ranap.kd_pj=penjab.kd_pj "+
-//                    "inner join databarang on resume_pasien_ranap.kode_brng=databarang.kode_brng "+
-//                    "LEFT JOIN databarang as obat1 ON obat1.kode_brng=resume_pasien_ranap.kode_brng1 "+
-//                    "LEFT JOIN databarang as obat2 ON obat2.kode_brng=resume_pasien_ranap.kode_brng2 "+
-//                    "LEFT JOIN databarang as obat3 ON obat3.kode_brng=resume_pasien_ranap.kode_brng3 "+
-//                    "LEFT JOIN databarang as obat4 ON obat4.kode_brng=resume_pasien_ranap.kode_brng4 "+
-//                    "LEFT JOIN databarang as obat5 ON obat5.kode_brng=resume_pasien_ranap.kode_brng5 "+
-//                    "LEFT JOIN databarang as obat6 ON obat6.kode_brng=resume_pasien_ranap.kode_brng6 "+
-//                    "LEFT JOIN databarang as obat7 ON obat7.kode_brng=resume_pasien_ranap.kode_brng7 "+
-//                    "LEFT JOIN databarang as obat8 ON obat8.kode_brng=resume_pasien_ranap.kode_brng8 "+
-//                    "LEFT JOIN databarang as obat9 ON obat9.kode_brng=resume_pasien_ranap.kode_brng9 "+
+                    "inner join dokter as pengirim on reg_periksa.kd_dokter=pengirim.kd_dokter "+
                     "where reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
-            }else{
-                ps=koneksi.prepareStatement(
-                    "select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
-                    "resume_pasien_ranap.kd_dokter,dokter.nm_dokter,resume_pasien_ranap.tgl_lahir,resume_pasien_ranap.jk,resume_pasien_ranap.kd_kamar,resume_pasien_ranap.masuk,resume_pasien_ranap.jam_masuk,resume_pasien_ranap.keluar, "+
-                    "resume_pasien_ranap.jam_keluar,resume_pasien_ranap.kd_dokter1,resume_pasien_ranap.nm_dokter1,resume_pasien_ranap.kd_pj,penjab.png_jawab,resume_pasien_ranap.diagnosa_awal,resume_pasien_ranap.alasan,resume_pasien_ranap.keluhan_utama,resume_pasien_ranap.jalannya_penyakit, "+
-                    "resume_pasien_ranap.pemeriksaan_penunjang,resume_pasien_ranap.hasil_laborat,resume_pasien_ranap.terapi,resume_pasien_ranap.diagnosa_utama,resume_pasien_ranap.kd_diagnosa_utama, "+
-                    "resume_pasien_ranap.diagnosa_sekunder,resume_pasien_ranap.kd_diagnosa_sekunder,resume_pasien_ranap.diagnosa_sekunder2,resume_pasien_ranap.kd_diagnosa_sekunder2, "+
-                    "resume_pasien_ranap.diagnosa_sekunder3,resume_pasien_ranap.kd_diagnosa_sekunder3,resume_pasien_ranap.diagnosa_sekunder4,resume_pasien_ranap.kd_diagnosa_sekunder4, "+
-                    "resume_pasien_ranap.prosedur_utama,resume_pasien_ranap.kd_prosedur_utama,resume_pasien_ranap.prosedur_sekunder,resume_pasien_ranap.kd_prosedur_sekunder, "+
-                    "resume_pasien_ranap.prosedur_sekunder2,resume_pasien_ranap.kd_prosedur_sekunder2,resume_pasien_ranap.prosedur_sekunder3,resume_pasien_ranap.kd_prosedur_sekunder3, "+
-                    "resume_pasien_ranap.alergi,resume_pasien_ranap.diet,resume_pasien_ranap.lab_belum,resume_pasien_ranap.edukasi,resume_pasien_ranap.cara_keluar,resume_pasien_ranap.keluar_lainnya, "+
-                    "resume_pasien_ranap.keadaan,resume_pasien_ranap.keadaan_lainnya,resume_pasien_ranap.pengobatan,resume_pasien_ranap.pengobatan_lainnya,resume_pasien_ranap.kontrol, "+
-                    "resume_pasien_ranap.kode_brng,resume_pasien_ranap.nama,resume_pasien_ranap.jml_barang,resume_pasien_ranap.dosis,resume_pasien_ranap.kode_brng1,resume_pasien_ranap.nama1,resume_pasien_ranap.jml_barang1,resume_pasien_ranap.dosis1, "+
-                    "resume_pasien_ranap.kode_brng2,resume_pasien_ranap.nama2,resume_pasien_ranap.jml_barang2,resume_pasien_ranap.dosis2,resume_pasien_ranap.kode_brng3,resume_pasien_ranap.nama3,resume_pasien_ranap.jml_barang3,resume_pasien_ranap.dosis3, "+
-                    "resume_pasien_ranap.kode_brng4,resume_pasien_ranap.nama4,resume_pasien_ranap.jml_barang4,resume_pasien_ranap.dosis4,resume_pasien_ranap.kode_brng5,resume_pasien_ranap.nama5,resume_pasien_ranap.jml_barang5,resume_pasien_ranap.dosis5, "+
-                    "resume_pasien_ranap.kode_brng6,resume_pasien_ranap.nama6,resume_pasien_ranap.jml_barang6,resume_pasien_ranap.dosis6,resume_pasien_ranap.kode_brng7,resume_pasien_ranap.nama7,resume_pasien_ranap.jml_barang7,resume_pasien_ranap.dosis7, "+
-                    "resume_pasien_ranap.kode_brng8,resume_pasien_ranap.nama8,resume_pasien_ranap.jml_barang8,resume_pasien_ranap.dosis8,resume_pasien_ranap.kode_brng9,resume_pasien_ranap.nama9,resume_pasien_ranap.jml_barang9,resume_pasien_ranap.dosis9, "+
-                    "resume_pasien_ranap.sudah from resume_pasien_ranap inner join reg_periksa on resume_pasien_ranap.no_rawat=reg_periksa.no_rawat  "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien_ranap.kd_dokter=dokter.kd_dokter "+
-//                    "inner join dokter as nm_dokter1 ON nm_dokter1.kd_dokter=resume_pasien_ranap.kd_dokter1 "+
-                    "inner join penjab on resume_pasien_ranap.kd_pj=penjab.kd_pj "+
-//                    "inner join databarang on resume_pasien_ranap.kode_brng=databarang.kode_brng "+
-//                    "LEFT JOIN databarang as obat1 ON obat1.kode_brng=resume_pasien_ranap.kode_brng1 "+
-//                    "LEFT JOIN databarang as obat2 ON obat2.kode_brng=resume_pasien_ranap.kode_brng2 "+
-//                    "LEFT JOIN databarang as obat3 ON obat3.kode_brng=resume_pasien_ranap.kode_brng3 "+
-//                    "LEFT JOIN databarang as obat4 ON obat4.kode_brng=resume_pasien_ranap.kode_brng4 "+
-//                    "LEFT JOIN databarang as obat5 ON obat5.kode_brng=resume_pasien_ranap.kode_brng5 "+
-//                    "LEFT JOIN databarang as obat6 ON obat6.kode_brng=resume_pasien_ranap.kode_brng6 "+
-//                    "LEFT JOIN databarang as obat7 ON obat7.kode_brng=resume_pasien_ranap.kode_brng7 "+
-//                    "LEFT JOIN databarang as obat8 ON obat8.kode_brng=resume_pasien_ranap.kode_brng8 "+
-//                    "LEFT JOIN databarang as obat9 ON obat9.kode_brng=resume_pasien_ranap.kode_brng9 "+
-                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and pasien.nm_pasien like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien_ranap.kd_dokter like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and dokter.nm_dokter like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien_ranap.keluar like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien_ranap.kd_diagnosa_utama like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien_ranap.diagnosa_utama like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien_ranap.prosedur_utama like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rawat like ? or "+
-                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien_ranap.kd_prosedur_utama like ? "+
-                    "order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
-            }
             try {
-                if(TCari.getText().equals("")){
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                }else{
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(12,"%"+TCari.getText()+"%");
-                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(15,"%"+TCari.getText()+"%");
-                    ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(18,"%"+TCari.getText()+"%");
-                    ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(21,"%"+TCari.getText()+"%");
-                    ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(24,"%"+TCari.getText()+"%");
-                    ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(27,"%"+TCari.getText()+"%");
-                    ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(30,"%"+TCari.getText()+"%");
-                    ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    ps.setString(33,"%"+TCari.getText()+"%");
-//                    ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-//                    ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-//                    ps.setString(36,"%"+TCari.getText()+"%");
-                }   
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    kodekamar="";namakamar="";tglkeluar="";jamkeluar="";
+                    ps2=koneksi.prepareStatement(
+                        "select if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,"+
+                        "if(kamar_inap.jam_keluar='00:00:00',current_time(),kamar_inap.jam_keluar) as jam_keluar,kamar_inap.kd_kamar,bangsal.nm_bangsal "+
+                        "from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                        "where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar,kamar_inap.jam_keluar desc limit 1");
+                    try {
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){
+                            kodekamar=rs2.getString("kd_kamar");
+                            namakamar=rs2.getString("nm_bangsal");
+                            tglkeluar=rs2.getString("tgl_keluar");
+                            jamkeluar=rs2.getString("jam_keluar");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
                     tabMode.addRow(new String[]{
-                        rs.getString("tgl_registrasi"),rs.getString("status_lanjut"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_kamar"),rs.getString("masuk"),rs.getString("jam_masuk"),rs.getString("keluar"),
-                        rs.getString("jam_keluar"),rs.getString("kd_dokter1"),rs.getString("nm_dokter1"),rs.getString("kd_pj"),rs.getString("png_jawab"),rs.getString("diagnosa_awal"),rs.getString("alasan"),
-                        rs.getString("keluhan_utama"),rs.getString("jalannya_penyakit"),rs.getString("pemeriksaan_penunjang"),rs.getString("hasil_laborat"),rs.getString("terapi"),rs.getString("diagnosa_utama"),
-                        rs.getString("kd_diagnosa_utama"),rs.getString("diagnosa_sekunder"),rs.getString("kd_diagnosa_sekunder"),rs.getString("diagnosa_sekunder2"),
-                        rs.getString("kd_diagnosa_sekunder2"),rs.getString("diagnosa_sekunder3"),rs.getString("kd_diagnosa_sekunder3"),rs.getString("diagnosa_sekunder4"),
-                        rs.getString("kd_diagnosa_sekunder4"),rs.getString("prosedur_utama"),rs.getString("kd_prosedur_utama"),rs.getString("prosedur_sekunder"),
-                        rs.getString("kd_prosedur_sekunder"),rs.getString("prosedur_sekunder2"),rs.getString("kd_prosedur_sekunder2"),rs.getString("prosedur_sekunder3"),
-                        rs.getString("kd_prosedur_sekunder3"),rs.getString("alergi"),rs.getString("diet"),rs.getString("lab_belum"),rs.getString("edukasi"),rs.getString("cara_keluar"),rs.getString("keluar_lainnya"),
-                        rs.getString("keadaan"),rs.getString("keadaan_lainnya"),rs.getString("pengobatan"),rs.getString("pengobatan_lainnya"),rs.getString("kontrol"),
-                        rs.getString("kode_brng"),rs.getString("nama"),rs.getString("jml_barang"),rs.getString("dosis"),rs.getString("kode_brng1"),rs.getString("nama1"),rs.getString("jml_barang1"),rs.getString("dosis1"),
-                        rs.getString("kode_brng2"),rs.getString("nama2"),rs.getString("jml_barang2"),rs.getString("dosis2"),rs.getString("kode_brng3"),rs.getString("nama3"),rs.getString("jml_barang3"),rs.getString("dosis3"),
-                        rs.getString("kode_brng4"),rs.getString("nama4"),rs.getString("jml_barang4"),rs.getString("dosis4"),rs.getString("kode_brng5"),rs.getString("nama5"),rs.getString("jml_barang5"),rs.getString("dosis5"),
-                        rs.getString("kode_brng6"),rs.getString("nama6"),rs.getString("jml_barang6"),rs.getString("dosis6"),rs.getString("kode_brng7"),rs.getString("nama7"),rs.getString("jml_barang7"),rs.getString("dosis7"),
-                        rs.getString("kode_brng8"),rs.getString("nama8"),rs.getString("jml_barang8"),rs.getString("dosis8"),rs.getString("kode_brng9"),rs.getString("nama9"),rs.getString("jml_barang9"),rs.getString("dosis9"),rs.getString("sudah")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
+                        rs.getString("kodepengirim"),rs.getString("pengirim"),kodekamar,namakamar,rs.getString("tgl_registrasi"),rs.getString("jam_reg"),tglkeluar,
+                        jamkeluar,rs.getString("diagnosa_awal"),rs.getString("alasan"),rs.getString("keluhan_utama"),rs.getString("pemeriksaan_fisik"),
+                        rs.getString("jalannya_penyakit"),rs.getString("pemeriksaan_penunjang"),rs.getString("hasil_laborat"),rs.getString("tindakan_dan_operasi"),
+                        rs.getString("obat_di_rs"),rs.getString("diagnosa_utama"),rs.getString("kd_diagnosa_utama"),rs.getString("diagnosa_sekunder"),
+                        rs.getString("kd_diagnosa_sekunder"),rs.getString("diagnosa_sekunder2"),rs.getString("kd_diagnosa_sekunder2"),rs.getString("diagnosa_sekunder3"),
+                        rs.getString("kd_diagnosa_sekunder3"),rs.getString("diagnosa_sekunder4"),rs.getString("kd_diagnosa_sekunder4"),rs.getString("prosedur_utama"),
+                        rs.getString("kd_prosedur_utama"),rs.getString("prosedur_sekunder"),rs.getString("kd_prosedur_sekunder"),rs.getString("prosedur_sekunder2"),
+                        rs.getString("kd_prosedur_sekunder2"),rs.getString("prosedur_sekunder3"),rs.getString("kd_prosedur_sekunder3"),rs.getString("alergi"),
+                        rs.getString("diet"),rs.getString("lab_belum"),rs.getString("edukasi"),rs.getString("keadaan"),rs.getString("ket_keadaan"),
+                        rs.getString("cara_keluar"),rs.getString("ket_keluar"),rs.getString("dilanjutkan"),rs.getString("ket_dilanjutkan"),rs.getString("kontrol"),
+                        rs.getString("obat_pulang")
                     });
                 }
             } catch (Exception e) {
@@ -2982,54 +2732,6 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());  
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());  
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());  
-            KodeDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());  
-            NamaDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()); 
-            KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Masuk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            JamMasuk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Keluar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            JamKeluar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()); 
-            KodeDokterPengirim.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());  
-            NamaDokterPengirim.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            KdPj.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            CaraBayar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            DiagnosaAwal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()); 
-            Alasan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()); 
-            KeluhanUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString()); 
-            PemeriksaanFisik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());   
-            PemeriksaanRad.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());  
-            HasilLaborat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());  
-            TindakanSelamaDiRS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            DiagnosaUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());  
-            KodeDiagnosaUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            DiagnosaSekunder1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());  
-            KodeDiagnosaSekunder1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());    
-            DiagnosaSekunder2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());  
-            KodeDiagnosaSekunder2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());    
-            DiagnosaSekunder3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());  
-            KodeDiagnosaSekunder3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());    
-            DiagnosaSekunder4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());  
-            KodeDiagnosaSekunder4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());    
-            ProsedurUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());  
-            KodeProsedurUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());     
-            ProsedurSekunder1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());  
-            KodeProsedurSekunder1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString()); 
-            ProsedurSekunder2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());  
-            KodeProsedurSekunder2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString()); 
-            ProsedurSekunder3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());  
-            KodeProsedurSekunder3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());  
-            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            Diet.setText(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
-            LabBelum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
-            Edukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
-            CaraKeluar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
-            KetKeluar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
-            Keadaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
-            KetKeadaanPulang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
-            DIlanjutkan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
-            KetDilanjutkan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString());
-            Valid.SetTgl2(Kontrol,tbObat.getValueAt(tbObat.getSelectedRow(),53).toString());
         }
     }
     
