@@ -2617,8 +2617,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());  
         BtnTambah.setEnabled(akses.getobat());
         TCari.requestFocus();
-        kdgudang.setEditable(akses.getakses_depo_obat());
-        nmgudang.setEditable(akses.getakses_depo_obat());
         BtnGudang.setEnabled(akses.getakses_depo_obat());
     }
     

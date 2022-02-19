@@ -909,26 +909,57 @@ public class PanelDiagnosa extends widget.panelisi {
                             Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Baru"
                         });
                     }  
+                    
                     if(index==1){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_utama=?",2,new String[]{
-                            tbDiagnosa.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_utama=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_diagnosa_utama=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }   
                     }else if(index==2){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder=?",2,new String[]{
-                            tbDiagnosa.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_diagnosa_sekunder=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }
                     }else if(index==3){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder2=?",2,new String[]{
-                            tbDiagnosa.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder2=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_diagnosa_sekunder2=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }
                     }else if(index==4){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder3=?",2,new String[]{
-                            tbDiagnosa.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder3=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_diagnosa_sekunder3=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }   
                     }else if(index==5){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder4=?",2,new String[]{
-                            tbDiagnosa.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder4=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_diagnosa_sekunder4=?",2,new String[]{
+                                tbDiagnosa.getValueAt(i,1).toString(),norawat
+                            });
+                        }
                     }
                         
                     index++;
@@ -952,21 +983,45 @@ public class PanelDiagnosa extends widget.panelisi {
                     });
                     
                     if(index==1){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_utama=?",2,new String[]{
-                            tbProsedur.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_utama=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_prosedur_utama=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }
                     }else if(index==2){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder=?",2,new String[]{
-                            tbProsedur.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_prosedur_sekunder=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }
                     }else if(index==3){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder2=?",2,new String[]{
-                            tbProsedur.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder2=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_prosedur_sekunder2=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }
                     }else if(index==4){
-                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder3=?",2,new String[]{
-                            tbProsedur.getValueAt(i,1).toString(),norawat
-                        });
+                        if(status.equals("Ralan")){
+                            Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder3=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }else if(status.equals("Ranap")){
+                            Sequel.mengedit("resume_pasien_ranap","no_rawat=?","kd_prosedur_sekunder3=?",2,new String[]{
+                                tbProsedur.getValueAt(i,1).toString(),norawat
+                            });
+                        }
                     }
                         
                     index++;

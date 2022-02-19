@@ -1726,22 +1726,16 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
         switch (evt.getKeyCode()) {
-            case KeyEvent.VK_PAGE_DOWN:
-            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-            break;
             case KeyEvent.VK_PAGE_UP:
-            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-            TCari.requestFocus();
-            break;
+                TCari.requestFocus();
+                break;
             case KeyEvent.VK_ENTER:
-            Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-            BtnSimpan.requestFocus();
-            break;
+                Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+                BtnSimpan.requestFocus();
+                break;
             case KeyEvent.VK_UP:
-            BtnGudangActionPerformed(null);
-            break;
-            default:
-            break;
+                BtnGudangActionPerformed(null);
+                break;
         }
     }//GEN-LAST:event_kdgudangKeyPressed
 
@@ -3394,8 +3388,6 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());            
         BtnTambah.setEnabled(akses.getobat());
         TCari.requestFocus();
-        kdgudang.setEditable(akses.getakses_depo_obat());
-        nmgudang.setEditable(akses.getakses_depo_obat());
         BtnGudang.setEnabled(akses.getakses_depo_obat());
     }
     

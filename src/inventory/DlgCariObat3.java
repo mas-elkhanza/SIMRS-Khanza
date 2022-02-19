@@ -20,6 +20,8 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -174,6 +176,29 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
         }
         
         tbObat.setDefaultRenderer(Object.class, new WarnaTable()); 
+        
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(bangsal.getTable().getSelectedRow()!= -1){                   
+                    kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                    nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                } 
+                kdgudang.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
@@ -439,7 +464,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(Jeniskelas,"Data");
         }else if(kdgudang.getText().equals("")){
-            Valid.textKosong(Jeniskelas,"Lokasi");
+            Valid.textKosong(kdgudang,"Lokasi");
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
@@ -562,7 +587,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         Sequel.mengedit("data_batch","no_batch=? and no_faktur=? and kode_brng=?","sisa=sisa-?",4,new String[]{
                                             ""+rsretur.getDouble("jml"),tbObat.getValueAt(i,13).toString(),tbObat.getValueAt(i,14).toString(),tbObat.getValueAt(i,1).toString()
                                         });
-                                        psupdategudang= koneksi.prepareStatement("update gudangbarang set stok=stok-? where kode_brng=? and kd_bangsal=? and no_batch=? and no_faktur=?");           
+                                        psupdategudang = koneksi.prepareStatement("update gudangbarang set stok=stok-? where kode_brng=? and kd_bangsal=? and no_batch=? and no_faktur=?");           
                                         try {
                                             psupdategudang.setDouble(1,rsretur.getDouble("jml"));
                                             psupdategudang.setString(2,tbObat.getValueAt(i,1).toString());
@@ -673,8 +698,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 if(psimpanretur != null){
                                     psimpanretur.close();
                                 }
-                            }                        
-
+                            }   
                         }                  
 
                         psobatsimpan= koneksi.prepareStatement("insert into detail_pemberian_obat values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -1204,15 +1228,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         } 
         kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ranap where kd_pj='"+KdPj.getText()+"' and kelas='"+kelas.getText()+"'");
         
-        if(akses.getakses_depo_obat()==true){
-            kdgudang.setEditable(true);
-            nmgudang.setEditable(true);
-            BtnGudang.setEnabled(true);
-        }else{
-            kdgudang.setEditable(false);
-            nmgudang.setEditable(false);
-            BtnGudang.setEnabled(false);
-        }
+        BtnGudang.setEnabled(akses.getakses_depo_obat());
     }  
     
     
