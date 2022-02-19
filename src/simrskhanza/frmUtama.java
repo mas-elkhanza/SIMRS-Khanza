@@ -700,6 +700,7 @@ import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
+import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMMCU;
@@ -15302,6 +15303,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnResumePasienRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataResumePasienRanap form=new RMDataResumePasienRanap(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.tampil();
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPerkiraanBiayaRanapActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -18740,7 +18754,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
-            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang;
+            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap;
     
     public void isWall(){
         try{            
@@ -21523,6 +21537,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdata_resume_pasien()==true){
                 Panelmenu.add(btnResumePasien);
+                jmlmenu++;
+                Panelmenu.add(btnResumePasienRanap);
                 jmlmenu++;
             }
             
@@ -25465,6 +25481,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdata_resume_pasien()==true){
             Panelmenu.add(btnResumePasien);
+            jmlmenu++;
+            Panelmenu.add(btnResumePasienRanap);
             jmlmenu++;
         }
         
@@ -30463,6 +30481,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(btnResumePasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnResumePasien);
                 jmlmenu++;
+                Panelmenu.add(btnResumePasienRanap);
+                jmlmenu++;
             }                
         }
         
@@ -32986,11 +33006,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnResumePasien = new widget.ButtonBig();
         btnResumePasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-56-document-text_314896.png"))); 
-        btnResumePasien.setText("Resume Pasien");
+        btnResumePasien.setText("Resume Pasien Ralan");
         btnResumePasien.setIconTextGap(0);
         btnResumePasien.setName("btnResumePasien"); 
         btnResumePasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnResumePasien.addActionListener(this::btnResumePasienActionPerformed);
+        
+        btnResumePasienRanap = new widget.ButtonBig();
+        btnResumePasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-56-document-text_314896.png"))); 
+        btnResumePasienRanap.setText("Resume Pasien Ranap");
+        btnResumePasienRanap.setIconTextGap(0);
+        btnResumePasienRanap.setName("btnResumePasienRanap"); 
+        btnResumePasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnResumePasienRanap.addActionListener(this::btnResumePasienRanapActionPerformed);
         
         btnPerkiraanBiayaRanap = new widget.ButtonBig();
         btnPerkiraanBiayaRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Rank-History_49609.png"))); 
