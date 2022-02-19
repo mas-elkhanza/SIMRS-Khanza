@@ -61,6 +61,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     private HttpClient http = new HttpClient();
     private GetMethod get;
+    private DlgPasien pasien=new DlgPasien(null,true);
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -283,9 +284,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         
         ChkAccor.setSelected(false);
         isMenu();
-    }
-    
-    DlgPasien pasien=new DlgPasien(null,false);
+    }    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -378,7 +377,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         label17 = new widget.Label();
         NoRM = new widget.TextBox();
         NmPasien = new widget.TextBox();
-        BtnSeek2 = new widget.Button();
+        BtnPasien = new widget.Button();
         label20 = new widget.Label();
         Jk = new widget.TextBox();
         label21 = new widget.Label();
@@ -1056,23 +1055,23 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormInput.add(NmPasien);
         NmPasien.setBounds(167, 10, 220, 23);
 
-        BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnSeek2.setMnemonic('3');
-        BtnSeek2.setToolTipText("Alt+3");
-        BtnSeek2.setName("BtnSeek2"); // NOI18N
-        BtnSeek2.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnSeek2.addActionListener(new java.awt.event.ActionListener() {
+        BtnPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPasien.setMnemonic('3');
+        BtnPasien.setToolTipText("Alt+3");
+        BtnPasien.setName("BtnPasien"); // NOI18N
+        BtnPasien.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSeek2ActionPerformed(evt);
+                BtnPasienActionPerformed(evt);
             }
         });
-        BtnSeek2.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek2KeyPressed(evt);
+                BtnPasienKeyPressed(evt);
             }
         });
-        FormInput.add(BtnSeek2);
-        BtnSeek2.setBounds(390, 10, 28, 23);
+        FormInput.add(BtnPasien);
+        BtnPasien.setBounds(390, 10, 28, 23);
 
         label20.setText("J.K. :");
         label20.setName("label20"); // NOI18N
@@ -1226,24 +1225,26 @@ private void NoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRM
             isPasien();
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnSeek2ActionPerformed(null);
+            BtnPasienActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isPasien();
             BtnPrint.requestFocus();
         }
 }//GEN-LAST:event_NoRMKeyPressed
 
-private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
+private void BtnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPasienActionPerformed
+    if(akses.getpasien()==true){
         pasien.isCek();
         pasien.emptTeks();
         pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
-}//GEN-LAST:event_BtnSeek2ActionPerformed
+    }   
+}//GEN-LAST:event_BtnPasienActionPerformed
 
-private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek2KeyPressed
+private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPasienKeyPressed
     //Valid.pindah(evt,Tgl2,TKd);
-}//GEN-LAST:event_BtnSeek2KeyPressed
+}//GEN-LAST:event_BtnPasienKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         if(NoRM.getText().trim().equals("")||NmPasien.getText().equals("")){
@@ -1470,8 +1471,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox Bahasa;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPasien;
     private widget.Button BtnPrint;
-    private widget.Button BtnSeek2;
     private widget.TextBox CacatFisik;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;

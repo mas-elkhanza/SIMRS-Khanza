@@ -42,7 +42,6 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPegawai;
 import keuangan.Jurnal;
 import laporan.DlgBerkasRawat;
-import rekammedis.RMDataResumePasien;
 import laporan.DlgDiagnosaPenyakit;
 import permintaan.DlgBookingOperasi;
 import permintaan.DlgPermintaanLaboratorium;
@@ -69,7 +68,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     public  DlgCariPerawatanRanap perawatan=new DlgCariPerawatanRanap(null,false);
     public  DlgCariPerawatanRanap2 perawatan2=new DlgCariPerawatanRanap2(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);  
-    private DlgPasien pasien=new DlgPasien(null,false);
+    public DlgPasien pasien=new DlgPasien(null,false);
     private PreparedStatement ps,ps2,ps3,ps4,ps5,psrekening,ps6;
     private ResultSet rs,rsrekening;
     private int i=0,tinggi=0;

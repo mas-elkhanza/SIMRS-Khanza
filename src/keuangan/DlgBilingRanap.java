@@ -50,6 +50,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import simrskhanza.DlgCariPeriksaLabPA;
+import simrskhanza.DlgInputResepPulang;
 import simrskhanza.DlgPeriksaLaboratoriumPA;
 import simrskhanza.DlgTagihanOperasi;
 
@@ -59,7 +60,6 @@ import simrskhanza.DlgTagihanOperasi;
  */
 public class DlgBilingRanap extends javax.swing.JDialog {
     private final DefaultTableModel tabModeRwJlDr,tabModeTambahan,tabModePotongan,tabModeKamIn,tabModeAkunBayar,tabModeAkunPiutang,tabModeLab,tabModeRad,tabModeApotek;
-    public DlgResepPulang reseppulang=new DlgResepPulang(null,false);
     public DlgPemberianObat beriobat=new DlgPemberianObat(null,false);
     public DlgRawatInap rawatinap=new DlgRawatInap(null,false);
     public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
@@ -585,40 +585,6 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         });
         
         rawatinap.perawatan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {if(akses.getform().equals("DLgBilingRanap")){isRawat();}}
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        reseppulang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {if(akses.getform().equals("DLgBilingRanap")){isRawat();}}
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        reseppulang.inputresep.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -2700,13 +2666,14 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     BtnNota.requestFocus();
                                 }else{
-                                    reseppulang.inputresep.isCek();
-                                    reseppulang.inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",DTPTgl.getSelectedItem().toString().substring(0,10),
+                                    DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
+                                    inputresep.isCek();
+                                    inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",DTPTgl.getSelectedItem().toString().substring(0,10),
                                             Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    reseppulang.inputresep.tampil();
-                                    reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
-                                    reseppulang.inputresep.setVisible(true);
+                                    inputresep.tampil();
+                                    inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    inputresep.setLocationRelativeTo(internalFrame1);
+                                    inputresep.setVisible(true);
                                 }
                             }                                               
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
@@ -2755,13 +2722,14 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     BtnNota.requestFocus();
                                 }else{
-                                    reseppulang.inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
+                                    DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
+                                    inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
                                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    reseppulang.inputresep.isCek();
-                                    reseppulang.inputresep.tampil();
-                                    reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
-                                    reseppulang.inputresep.setVisible(true); 
+                                    inputresep.isCek();
+                                    inputresep.tampil();
+                                    inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    inputresep.setLocationRelativeTo(internalFrame1);
+                                    inputresep.setVisible(true); 
                                 }
                             }                                               
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
@@ -2871,13 +2839,14 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     BtnNota.requestFocus();
                                 }else{
-                                    reseppulang.inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
+                                    DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
+                                    inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
                                     Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    reseppulang.inputresep.isCek();
-                                    reseppulang.inputresep.tampil();
-                                    reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
-                                    reseppulang.inputresep.setVisible(true);
+                                    inputresep.isCek();
+                                    inputresep.tampil();
+                                    inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    inputresep.setLocationRelativeTo(internalFrame1);
+                                    inputresep.setVisible(true);
                                 }
                             }                                                
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
@@ -2926,13 +2895,14 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     BtnNota.requestFocus();
                                 }else{
-                                    reseppulang.inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
+                                    DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
+                                    inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
                                     Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    reseppulang.inputresep.isCek();
-                                    reseppulang.inputresep.tampil();
-                                    reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                    reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
-                                    reseppulang.inputresep.setVisible(true);
+                                    inputresep.isCek();
+                                    inputresep.tampil();
+                                    inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                    inputresep.setLocationRelativeTo(internalFrame1);
+                                    inputresep.setVisible(true);
                                 }
                             }                                                
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
@@ -3005,13 +2975,14 @@ private void MnInputResepPulangActionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNota.requestFocus();
             }else{
                 akses.setform("DLgBilingRanap");
-                reseppulang.inputresep.isCek();
-                reseppulang.inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",DTPTgl.getSelectedItem().toString().substring(0,10),
+                DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
+                inputresep.isCek();
+                inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",DTPTgl.getSelectedItem().toString().substring(0,10),
                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                reseppulang.inputresep.tampil();
-                reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
-                reseppulang.inputresep.setVisible(true);
+                inputresep.tampil();
+                inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                inputresep.setLocationRelativeTo(internalFrame1);
+                inputresep.setVisible(true);
             }                
         }
 }//GEN-LAST:event_MnInputResepPulangActionPerformed
@@ -3594,6 +3565,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void MnDataResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDataResepPulangActionPerformed
         akses.setform("DLgBilingRanap");
+        DlgResepPulang reseppulang=new DlgResepPulang(null,false);
         reseppulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         reseppulang.setLocationRelativeTo(internalFrame1); 
         reseppulang.isCek();
@@ -3955,13 +3927,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 TCari.requestFocus();
             }else{
                 akses.setform("DLgBilingRanap");
-                reseppulang.inputresep.isCek();
-                reseppulang.inputresep.setNoRm(norawatbayi,"-","By.Ny."+TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
+                DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
+                inputresep.isCek();
+                inputresep.setNoRm(norawatbayi,"-","By.Ny."+TPasien.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
                     Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                reseppulang.inputresep.tampil();
-                reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
-                reseppulang.inputresep.setVisible(true);
+                inputresep.tampil();
+                inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                inputresep.setLocationRelativeTo(internalFrame1);
+                inputresep.setVisible(true);
             }                
         }
     }//GEN-LAST:event_MnInputResepPulang1ActionPerformed
@@ -4026,6 +3999,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{
             akses.setform("DLgBilingRanap");
+            DlgResepPulang reseppulang=new DlgResepPulang(null,false);
             reseppulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             reseppulang.setLocationRelativeTo(internalFrame1);
             reseppulang.isCek();

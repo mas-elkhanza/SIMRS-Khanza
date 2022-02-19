@@ -4302,6 +4302,7 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
                     }else{
                         akses.setstatus(true);
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         DlgKamarInap dlgki=new DlgKamarInap(null,false);
                         dlgki.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                         dlgki.setLocationRelativeTo(internalFrame1);
@@ -4309,6 +4310,7 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         dlgki.isCek();
                         dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
                         dlgki.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
                     }
                 }
             }
@@ -4327,6 +4329,7 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                             JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
                 }else {
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
                     dlgrwjl.isCek();
                     dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
@@ -4335,6 +4338,7 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     dlgrwjl.SetPj(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),19).toString());
                     dlgrwjl.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
                     dlgrwjl.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
                 }
             }
                                 
@@ -4349,6 +4353,7 @@ private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbPetugas.requestFocus();
         }else{            
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgRujuk dlgrjk=new DlgRujuk(null,false);
             dlgrjk.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             dlgrjk.setLocationRelativeTo(internalFrame1);
@@ -4357,6 +4362,7 @@ private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             dlgrjk.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
             dlgrjk.tampil();
             dlgrjk.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
         }
 }//GEN-LAST:event_MnRujukActionPerformed
 
@@ -4371,6 +4377,7 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                         JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPemberianObat dlgrwinap=new DlgPemberianObat(null,false);
                 dlgrwinap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                 dlgrwinap.setLocationRelativeTo(internalFrame1);
@@ -4378,6 +4385,7 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
                 dlgrwinap.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ralan");
                 dlgrwinap.tampilPO();
                 dlgrwinap.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
             }                
         }
 }//GEN-LAST:event_MnPemberianObatActionPerformed
@@ -4404,13 +4412,16 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             if(rs.next()){
                                 i=JOptionPane.showConfirmDialog(null, "Masih ada tunggakan pembayaran, apa mau bayar sekarang ?","Konfirmasi",JOptionPane.YES_NO_OPTION);
                                 if(i==JOptionPane.YES_OPTION){
+                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                      DlgLhtPiutang piutang=new DlgLhtPiutang(null,false);
                                      piutang.setNoRm(TNoRM.getText(),rs.getDate(1));
                                      piutang.tampil();
                                      piutang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                      piutang.setLocationRelativeTo(internalFrame1);
                                      piutang.setVisible(true);
-                                }else{                                
+                                     this.setCursor(Cursor.getDefaultCursor());
+                                }else{   
+                                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                     DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
                                     dlgbil.TNoRw.setText(TNoRw.getText());  
                                     dlgbil.isCek();
@@ -4418,8 +4429,10 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     dlgbil.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                                     dlgbil.setLocationRelativeTo(internalFrame1);
                                     dlgbil.setVisible(true);
+                                    this.setCursor(Cursor.getDefaultCursor());
                                 }
-                            }else{                            
+                            }else{   
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
                                 dlgbil.TNoRw.setText(TNoRw.getText());  
                                 dlgbil.isCek();
@@ -4427,6 +4440,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 dlgbil.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                                 dlgbil.setLocationRelativeTo(internalFrame1);
                                 dlgbil.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -4525,6 +4539,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                         JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
                 dlgro.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                 dlgro.setLocationRelativeTo(internalFrame1);
@@ -4532,6 +4547,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 dlgro.isCek();
                 dlgro.setNoRm(TNoRw.getText(),"Ralan");  
                 dlgro.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
             }                
         }
 }//GEN-LAST:event_MnPeriksaLabActionPerformed
@@ -4716,16 +4732,17 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
                 tbPetugas.requestFocus();
       }else{
-            
-                DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
-                rujukmasuk.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                rujukmasuk.setLocationRelativeTo(internalFrame1);
-                rujukmasuk.emptTeks();
-                rujukmasuk.isCek();
-                rujukmasuk.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
-                rujukmasuk.tampil();
-                rujukmasuk.setVisible(true);
-                //this.dispose();
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+       
+            DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
+            rujukmasuk.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            rujukmasuk.setLocationRelativeTo(internalFrame1);
+            rujukmasuk.emptTeks();
+            rujukmasuk.isCek();
+            rujukmasuk.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
+            rujukmasuk.tampil();
+            rujukmasuk.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
         }
 }//GEN-LAST:event_MnRujukMasukActionPerformed
 
@@ -4886,6 +4903,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPeriksaRadiologi dlgro=new DlgPeriksaRadiologi(null,false);
                 dlgro.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                 dlgro.setLocationRelativeTo(internalFrame1);
@@ -4894,6 +4912,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 dlgro.setNoRm(TNoRw.getText(),"Ralan");  
                 dlgro.tampil();
                 dlgro.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
             }
         }
     }//GEN-LAST:event_MnPeriksaRadiologiActionPerformed
@@ -4924,6 +4943,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Masukkan diagnosa lewat kamar inap..!!!");
             }else {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgDiagnosaPenyakit resep=new DlgDiagnosaPenyakit(null,false);
                 resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                 resep.setLocationRelativeTo(internalFrame1);
@@ -4931,6 +4951,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Ralan");
                 resep.panelDiagnosa1.tampil();
                 resep.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
             }
         }
     }//GEN-LAST:event_MnDiagnosaActionPerformed

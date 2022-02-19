@@ -5525,8 +5525,6 @@ public final class DlgReg extends javax.swing.JDialog {
 
     private void BtnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPasienActionPerformed
         akses.setform("DlgReg");
-        //pasien.penjab.removeWindowListener(null);
-        //pasien.penjab.getTable().removeKeyListener(null);
         pasien.emptTeks();
         pasien.isCek();
         pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
