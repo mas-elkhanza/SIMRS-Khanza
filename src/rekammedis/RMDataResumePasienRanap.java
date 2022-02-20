@@ -2905,7 +2905,8 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
-                    TNoRM.setText("no_rkm_medis");
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
                     TPasien.setText(rs.getString("nm_pasien"));
                     Masuk.setText(rs.getString("tgl_registrasi"));
                     JamMasuk.setText(rs.getString("jam_reg"));
@@ -2918,13 +2919,6 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                     NmRuang.setText(rs.getString("nm_bangsal"));
                     KodeDokterPengirim.setText(rs.getString("kd_dokter"));
                     NamaDokterPengirim.setText(rs.getString("nm_dokter"));
-                    KodeDokter.setText(Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",TNoRw.getText()));
-                    if(!KodeDokter.getText().equals("")){
-                        NamaDokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",KodeDokter.getText()));
-                    }else{
-                        KodeDokter.setText(rs.getString("kd_dokter"));
-                        NamaDokter.setText(rs.getString("nm_dokter"));
-                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
