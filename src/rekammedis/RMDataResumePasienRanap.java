@@ -2290,10 +2290,10 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())); 
             param.put("ruang",KdRuang.getText()+" "+NmRuang.getText());
-            param.put("tanggalkeluar",Valid.SetTgl3(Keluar.getText())+" "+JamKeluar.getText());
+            param.put("tanggalkeluar",Valid.SetTgl3(Keluar.getText()));
             Valid.MyReport("rptLaporanResumeRanap.jasper","report","::[ Laporan Resume Pasien ]::",param);
         }
     }//GEN-LAST:event_MnLaporanResumeActionPerformed
