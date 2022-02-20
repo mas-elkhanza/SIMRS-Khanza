@@ -2169,10 +2169,24 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     
     private void isBMI(){
         if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
-            IMT.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            try {
+                IMT.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            } catch (Exception e) {
+                IMT.setText("");
+            }
+                
             if(sttsumur.equals("Bl")){
-                BBPerU.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/umur)+"");
-                TBPerU.setText(Valid.SetAngka7(Valid.SetAngka(TB.getText())/umur)+"");
+                try {
+                    BBPerU.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/umur)+"");
+                } catch (Exception e) {
+                    BBPerU.setText("");
+                }
+                    
+                try {
+                    TBPerU.setText(Valid.SetAngka7(Valid.SetAngka(TB.getText())/umur)+"");
+                } catch (Exception e) {
+                    TBPerU.setText("");
+                }   
             }
         }
     }
