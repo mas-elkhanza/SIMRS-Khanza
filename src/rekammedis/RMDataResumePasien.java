@@ -2980,8 +2980,8 @@ public void emptTeks() {
         BtnPrint.setEnabled(akses.getdata_resume_pasien());
         MnInputDiagnosa.setEnabled(akses.getdiagnosa_pasien());
         if (akses.getjml2() >= 1) {
-            KeluhanUtama.setEditable(false);
-            BtnDokter.setEnabled(false);
+//            KeluhanUtama.setEditable(false);
+//            BtnDokter.setEnabled(false);
             KeluhanUtama.setText(akses.getkode());
             Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NamaDokter, KeluhanUtama.getText());
 //            if (NamaDokter.getText().equals("")) {
