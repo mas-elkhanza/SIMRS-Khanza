@@ -617,6 +617,7 @@ import keuangan.DlgPembayaranPerAKunBayar5;
 import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
+import keuangan.DlgRekapJmDokter;
 import keuangan.KeuanganRingkasanTindakan;
 import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
@@ -8764,7 +8765,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }//GEN-LAST:event_btnRHDOkterActionPerformed
 
     private void btnRBDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRBDokterActionPerformed
-        
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRBJmDokter rbtindakandokter=new DlgRBJmDokter(this,false);
@@ -18118,6 +18118,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRekapJasaDokterActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapJmDokter rbtindakandokter=new DlgRekapJmDokter(this,false);
+        rbtindakandokter.isCek();
+        rbtindakandokter.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rbtindakandokter.setLocationRelativeTo(PanelUtama);
+        rbtindakandokter.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18754,7 +18766,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikPerbaikanInventarisPerBulan,btnGrafikPerbaikanInventarisPerTahun,btnGrafikPerbaikanInventarisPerPelaksanaStatus,
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
-            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap;
+            btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
+            btnRekapJasaDokter;
     
     public void isWall(){
         try{            
@@ -19936,6 +19949,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getbulanan_dokter()==true){
                 Panelmenu.add(btnRBDokter);
+                jmlmenu++;
+            }
+            
+            if(akses.getrekap_jm_dokter()==true){
+                Panelmenu.add(btnRekapJasaDokter);
                 jmlmenu++;
             }
 
@@ -23889,6 +23907,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbulanan_dokter()==true){
             Panelmenu.add(btnRBDokter);
+            jmlmenu++;
+        }
+        
+        if(akses.getrekap_jm_dokter()==true){
+            Panelmenu.add(btnRekapJasaDokter);
             jmlmenu++;
         }
 
@@ -28253,6 +28276,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbulanan_dokter()==true){
             if(btnRBDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBDokter);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getrekap_jm_dokter()==true){
+            if(btnRekapJasaDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapJasaDokter);
                 jmlmenu++;
             }                
         }
@@ -34908,6 +34938,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPermintaanResepPulang.setName("btnPermintaanResepPulang");
         btnPermintaanResepPulang.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPermintaanResepPulang.addActionListener(this::btnPermintaanResepPulangActionPerformed);
+        
+        btnRekapJasaDokter = new widget.ButtonBig();
+        btnRekapJasaDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); 
+        btnRekapJasaDokter.setText("Rekap JM Dokter");
+        btnRekapJasaDokter.setIconTextGap(0);
+        btnRekapJasaDokter.setName("btnRekapJasaDokter");
+        btnRekapJasaDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapJasaDokter.addActionListener(this::btnRekapJasaDokterActionPerformed);
     }
     
 }

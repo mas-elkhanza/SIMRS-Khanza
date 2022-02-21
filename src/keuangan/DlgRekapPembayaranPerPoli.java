@@ -422,8 +422,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             psmasuk.close();
                         }
                     }
-                    tabMode.addRow(new Object[]{i+". ",rspoli.getString(2),jmlpas,total});
-                    i++;
+                    
+                    if(total>0){
+                        tabMode.addRow(new Object[]{i+". ",rspoli.getString(2),jmlpas,total});
+                        i++;
+                    }   
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -435,7 +438,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     pspoli.close();
                 }
             } 
-            tabMode.addRow(new Object[]{"","Total :",ttljmlpas,ttltotal});
+            
+            if(ttltotal>0){
+                tabMode.addRow(new Object[]{"","Total :",ttljmlpas,ttltotal});
+            }
+                
             this.setCursor(Cursor.getDefaultCursor());             
         }catch(Exception e){
             System.out.println("Catatan  "+e);
