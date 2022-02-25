@@ -659,6 +659,7 @@ import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
+import laporan.DlgStatusDataRM;
 import rekammedis.DlgSOAPPerawatan;
 import laporan.LaporanKedatanganPasienPerJam;
 import laporan.LaporanRegistrasiPoliPerTanggal;
@@ -18130,6 +18131,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnStatusDataRMActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgStatusDataRM aplikasi=new DlgStatusDataRM(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18767,7 +18779,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
-            btnRekapJasaDokter;
+            btnRekapJasaDokter,btnStatusDataRM;
     
     public void isWall(){
         try{            
@@ -20534,6 +20546,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdemografi_umur_kunjungan()==true){  
                 Panelmenu.add(btnDemografiUmurKunjungan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getstatus_data_rm()==true){  
+                Panelmenu.add(btnStatusDataRM);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -24486,6 +24503,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdemografi_umur_kunjungan()==true){  
             Panelmenu.add(btnDemografiUmurKunjungan);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getstatus_data_rm()==true){  
+            Panelmenu.add(btnStatusDataRM);                 
             jmlmenu++;
         }
 
@@ -29087,6 +29109,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdemografi_umur_kunjungan()==true){  
             if(btnDemografiUmurKunjungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDemografiUmurKunjungan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getstatus_data_rm()==true){  
+            if(btnStatusDataRM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnStatusDataRM);                 
                 jmlmenu++;
             }                
         }
@@ -34946,6 +34975,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapJasaDokter.setName("btnRekapJasaDokter");
         btnRekapJasaDokter.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRekapJasaDokter.addActionListener(this::btnRekapJasaDokterActionPerformed);
+        
+        btnStatusDataRM = new widget.ButtonBig();
+        btnStatusDataRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4852569_chat_chatting_conversation_files_message_icon.png"))); 
+        btnStatusDataRM.setText("Status Data RM");
+        btnStatusDataRM.setIconTextGap(0);
+        btnStatusDataRM.setName("btnStatusDataRM");
+        btnStatusDataRM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStatusDataRM.addActionListener(this::btnStatusDataRMActionPerformed);
     }
     
 }

@@ -172,7 +172,8 @@ public final class akses {
             grafik_perbaikan_inventaris_perpelaksana_status=false,penilaian_mcu=false,peminjam_piutang=false,piutang_lainlain=false,cara_bayar=false,
             audit_kepatuhan_apd=false,bpjs_task_id=false,bayar_piutang_lain=false,pembayaran_akun_bayar4=false,stok_akhir_farmasi_pertanggal=false,
             riwayat_kamar_pasien=false,uji_fungsi_kfr=false,hapus_berkas_digital_perawatan=false,kategori_pengeluaran_harian=false,kategori_pemasukan_lain=false,
-            pembayaran_akun_bayar5=false,ruang_ok=false,jasa_tindakan_pasien=false,telaah_resep=false,permintaan_resep_pulang=false,rekap_jm_dokter=false;
+            pembayaran_akun_bayar5=false,ruang_ok=false,jasa_tindakan_pasien=false,telaah_resep=false,permintaan_resep_pulang=false,rekap_jm_dokter=false,
+            status_data_rm=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -985,6 +986,7 @@ public final class akses {
                         akses.telaah_resep=true;
                         akses.permintaan_resep_pulang=true;
                         akses.rekap_jm_dokter=true;
+                        akses.status_data_rm=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1781,6 +1783,7 @@ public final class akses {
                         akses.telaah_resep=rs2.getBoolean("telaah_resep");
                         akses.permintaan_resep_pulang=rs2.getBoolean("permintaan_resep_pulang");
                         akses.rekap_jm_dokter=rs2.getBoolean("rekap_jm_dokter");
+                        akses.status_data_rm=rs2.getBoolean("status_data_rm");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2575,6 +2578,7 @@ public final class akses {
                         akses.telaah_resep=false;
                         akses.permintaan_resep_pulang=false;
                         akses.rekap_jm_dokter=false;
+                        akses.status_data_rm=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3424,4 +3428,5 @@ public final class akses {
     public static boolean gettelaah_resep(){return akses.telaah_resep;}
     public static boolean getpermintaan_resep_pulang(){return akses.permintaan_resep_pulang;}
     public static boolean getrekap_jm_dokter(){return akses.rekap_jm_dokter;}
+    public static boolean getstatus_data_rm(){return akses.status_data_rm;}
 }   

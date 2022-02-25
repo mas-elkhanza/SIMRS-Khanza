@@ -683,7 +683,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,piutang_lainlain,cara_bayar,audit_kepatuhan_apd,bpjs_task_id,"+
                         "bayar_piutang_lain,pembayaran_akun_bayar4,stok_akhir_farmasi_pertanggal,riwayat_kamar_pasien,uji_fungsi_kfr,hapus_berkas_digital_perawatan,"+
                         "kategori_pengeluaran_harian,kategori_pemasukan_lain,pembayaran_akun_bayar5,ruang_ok,telaah_resep,jasa_tindakan_pasien,"+
-                        "permintaan_resep_pulang,rekap_jm_dokter from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "permintaan_resep_pulang,rekap_jm_dokter,status_data_rm from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2038,6 +2038,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[I]Lama Operasi".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[I]Lama Operasi",rs.getBoolean("lama_operasi")});
+                    }
+                    
+                    if("[I]Status Data RM".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Status Data RM",rs.getBoolean("status_data_rm")});
                     }
                     
                     if("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5221,6 +5225,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[I]Lama Operasi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","lama_operasi='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[I]Status Data RM".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","status_data_rm='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[J]Deposit Pasien".equals(tbUser.getValueAt(i,1).toString())){
