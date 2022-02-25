@@ -55,7 +55,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2,rs3,rs4;
     private Connection koneksi=koneksiDB.condb();
-    private int i=0,urut=0,w=0,s=0;
+    private int i=0,urut=0,w=0,s=0,urutdpjp=0;
     private double biayaperawatan=0;
     private String kddpjp="",dpjp="",dokterrujukan="",polirujukan="",keputusan="",ke1="",ke2="",ke3="",ke4="",ke5="",ke6="",file="";
     private StringBuilder htmlContent;
@@ -1824,7 +1824,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 }else if(R4.isSelected()==true){
                     ps.setString(1,NoRM.getText().trim());
-                    ps.setString(2,NoRawat.getText());
+                    ps.setString(2,NoRawat.getText().trim());
                 }            
                 urut=1;
                 rs=ps.executeQuery();
@@ -1881,24 +1881,35 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         "<td valign='top' width='79%'>"+rs.getString("nm_dokter")+dokterrujukan+"</td>"+
                       "</tr>"
                     );
-                    kddpjp="";
-                    dpjp="";
                     if(rs.getString("status_lanjut").equals("Ranap")){
-                        kddpjp=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",rs.getString("no_rawat"));
-                        if(!kddpjp.equals("")){
-                            dpjp=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddpjp);
-                        }else{
-                            kddpjp=rs.getString("kd_dokter");
-                            dpjp=rs.getString("nm_dokter");
+                        try{
+                            rs3=koneksi.prepareStatement(
+                                "select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                            if(rs3.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>DPJP Ranap</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"
+                                );
+                                rs3.beforeFirst();
+                                urutdpjp=1;
+                                while(rs3.next()){
+                                    htmlContent.append(urutdpjp+". "+rs3.getString("nm_dokter")+"&nbsp;&nbsp;");
+                                    urutdpjp++;
+                                }
+                                htmlContent.append("</td>"+
+                                  "</tr>"
+                                );    
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi Data Triase IGD : "+e);
+                        } finally{
+                            if(rs3!=null){
+                                rs3.close();
+                            }
                         }
-                        htmlContent.append(
-                          "<tr class='isi'>"+ 
-                            "<td valign='top' width='2%'></td>"+        
-                            "<td valign='top' width='18%'>DPJP Ranap</td>"+
-                            "<td valign='top' width='1%' align='center'>:</td>"+
-                            "<td valign='top' width='79%'>"+dpjp+"</td>"+
-                          "</tr>"
-                        );
                     }
                     htmlContent.append( 
                       "<tr class='isi'>"+ 
@@ -7651,16 +7662,67 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                     
                     if(R4.isSelected()==true){
-                        get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+kddpjp.replace(" ","_"));
-                        http.executeMethod(get);
+                        if(rs.getString("status_lanjut").equals("Ralan")){
+                            get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+rs.getString("kd_dokter").replace(" ","_"));
+                            http.executeMethod(get);
 
-                        htmlContent.append(
-                              "<tr class='isi'>"+ 
-                                "<td valign='top' width='2%'></td>"+        
-                                "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
-                                "<td valign='middle' width='1%' align='center'>:</td>"+
-                                "<td valign='middle' width='79%' align='center'>Dokter DPJP<br><img width='90' height='90' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+kddpjp+".png'/><br>"+dpjp+"</td>"+
-                              "</tr>");
+                            htmlContent.append(
+                                "<tr class='isi'>"+ 
+                                   "<td valign='top' width='2%'></td>"+        
+                                   "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
+                                   "<td valign='middle' width='1%' align='center'>:</td>"+
+                                   "<td valign='middle' width='79%' align='center'>Dokter Poli<br><img width='90' height='90' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+rs.getString("kd_dokter")+".png'/><br>"+rs.getString("nm_dokter")+"</td>"+
+                                "</tr>"
+                            );
+                        }else if(rs.getString("status_lanjut").equals("Ranap")){
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                    "select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                        "<tr class='isi'>"+ 
+                                          "<td valign='top' width='2%'></td>"+        
+                                          "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
+                                          "<td valign='middle' width='1%' align='center'>:</td>"+
+                                          "<td valign='top' width='79%' align='center'>"+
+                                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                 "<tr class='isi'>"
+                                      );
+                                      rs3.beforeFirst();
+                                      urutdpjp=1;
+                                      while(rs3.next()){
+                                          get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+rs3.getString("kd_dokter").replace(" ","_"));
+                                          http.executeMethod(get);
+                                          htmlContent.append("<td border='0' align='center'>Dokter DPJP "+urutdpjp+"<br><img width='90' height='90' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+rs3.getString("kd_dokter")+".png'/><br>"+rs3.getString("nm_dokter")+"</td>");
+                                          urutdpjp++;
+                                      }
+                                      htmlContent.append(
+                                                  "</tr>"+
+                                              "</table>"+
+                                          "</td>"+
+                                        "</tr>"
+                                      );    
+                                }else{
+                                    get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+rs.getString("kd_dokter").replace(" ","_"));
+                                    http.executeMethod(get);
+
+                                    htmlContent.append(
+                                        "<tr class='isi'>"+ 
+                                           "<td valign='top' width='2%'></td>"+        
+                                           "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
+                                           "<td valign='middle' width='1%' align='center'>:</td>"+
+                                           "<td valign='middle' width='79%' align='center'>Dokter DPJP<br><img width='90' height='90' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+rs.getString("kd_dokter")+".png'/><br>"+rs.getString("nm_dokter")+"</td>"+
+                                        "</tr>"
+                                    );
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi Data Triase IGD : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                        }
                     }
                     htmlContent.append(
                         "<tr class='isi'><td></td><td colspan='3' align='right'>&nbsp;</tr>"

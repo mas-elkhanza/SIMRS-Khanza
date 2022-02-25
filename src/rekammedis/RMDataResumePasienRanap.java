@@ -2292,6 +2292,37 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())); 
+            try {
+                ps=koneksi.prepareStatement("select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? and dpjp_ranap.kd_dokter<>?");
+                try {
+                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    ps.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                    rs=ps.executeQuery();
+                    i=2;
+                    while(rs.next()){
+                       if(i==2){
+                           param.put("finger2",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));
+                           param.put("namadokter2",rs.getString("nm_dokter")); 
+                       }
+                       if(i==3){
+                           param.put("finger3",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));
+                           param.put("namadokter3",rs.getString("nm_dokter")); 
+                       }
+                       i++;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
             param.put("ruang",KdRuang.getText()+" "+NmRuang.getText());
             param.put("tanggalkeluar",Valid.SetTgl3(Keluar.getText()));
             Valid.MyReport("rptLaporanResumeRanap.jasper","report","::[ Laporan Resume Pasien ]::",param);

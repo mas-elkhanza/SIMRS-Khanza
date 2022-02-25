@@ -65,7 +65,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private String[] kode,nama,kodebarang,namabarang,satuan,pproyeksi,pkV,pmAS,pFFD,pBSF,pinak,pjml_penyinaran,pdosis;
     private double[] jumlah,total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen;
     private int jml=0,i=0,index=0,jmlparsial=0;
-    private String aktifkanparsial="no",noorder="",kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",pilihan="",pemeriksaan="",kamar,namakamar,status="";
+    private String aktifkanparsial="no",noorder="",kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",pilihan="",pemeriksaan="",kamar,namakamar,status="",url="";
     private double ttl=0,item=0;
     private final Properties prop = new Properties();
     private boolean sukses=false;
@@ -1833,6 +1833,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         KdPtg.setText("");
         NmPtg.setText("");
         KodePj.requestFocus();  
+        url="";
         isReset();
     }
     
@@ -2074,7 +2075,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 rs=pspemeriksaan.executeQuery();                
                 while(rs.next()){      
                     pspemeriksaan2=koneksiradiologi.prepareStatement(
-                            "select proyeksi, kV, mAS, FFD, BSF, inak, jml_penyinaran, dosis from order_out where kode_tindakan=? and no_rontgen=?");
+                            "select proyeksi, kV, mAS, FFD, BSF, inak, jml_penyinaran, dosis,link_ris from order_out where kode_tindakan=? and no_rontgen=?");
                     try {
                         pspemeriksaan2.setString(1,rs.getString("kd_jenis_prw"));
                         pspemeriksaan2.setString(2,order.replaceAll("PR",""));
@@ -2086,6 +2087,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                                 rs2.getString("mAS"),rs2.getString("FFD"),rs2.getString("BSF"),rs2.getString("inak"),rs2.getString("jml_penyinaran"),
                                 rs2.getString("dosis")
                             });
+                            url=rs2.getString("link_ris");
                             koneksiradiologi.prepareStatement("update order_out set statusupdate='1' where kode_tindakan='"+rs.getString("kd_jenis_prw")+"' and no_rontgen='"+order.replaceAll("PR","")+"'").executeUpdate();
                         }
                     } catch (Exception e) {
@@ -2313,9 +2315,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             if(sukses==true){
                 if(!HasilPeriksa.getText().equals("")){
                     Sequel.menyimpan("hasil_radiologi","?,?,?,?", "Hasil Radiologi",4,new String[]{
-                        TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
-                        CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
-                        HasilPeriksa.getText()
+                        TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),HasilPeriksa.getText()
+                    });
+                }
+                
+                if(!url.equals("")){
+                    Sequel.menyimpan("gambar_radiologi","?,?,?,?", "URL Radiologi",4,new String[]{
+                        TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),url
                     });
                 }
                 

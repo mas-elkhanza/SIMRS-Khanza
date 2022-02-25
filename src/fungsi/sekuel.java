@@ -362,6 +362,33 @@ public final class sekuel {
         }            
     }
     
+    public void menyimpanignore(String table,String value,int i,String[] a){
+        try {
+            ps=connect.prepareStatement("insert ignore into "+table+" values("+value+")");
+            try{                 
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                }            
+                ps.executeUpdate();
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);            
+            }finally{
+                if(ps != null){
+                    ps.close();
+                }                
+            }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);   
+        }            
+    }
+    
     public void menyimpan2(String table,String value,int i,String[] a){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
@@ -526,6 +553,24 @@ public final class sekuel {
     public void menyimpan(String table,String value){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            try{
+                ps.executeUpdate();
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);         
+            }finally{
+                if(ps != null){
+                    ps.close();
+                }                
+            }
+            SimpanTrack("insert into "+table+" values("+value+")");
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);  
+        }
+    }
+    
+    public void menyimpanignore(String table,String value){
+        try {
+            ps=connect.prepareStatement("insert ignore into "+table+" values("+value+")");
             try{
                 ps.executeUpdate();
             }catch(Exception e){
