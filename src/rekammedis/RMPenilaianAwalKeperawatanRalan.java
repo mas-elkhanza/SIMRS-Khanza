@@ -5,6 +5,8 @@
 
 package rekammedis;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -19,6 +21,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,6 +57,13 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     private String[] kode,masalah;
     private String masalahkeperawatan="",finger=""; 
     private StringBuilder htmlContent;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -580,13 +590,14 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         Scroll6 = new widget.ScrollPane();
         tbMasalahKeperawatan = new widget.Table();
         label12 = new widget.Label();
-        TCariMasalah = new widget.TextBox();
-        BtnCariPemeriksaan1 = new widget.Button();
         BtnTambahMasalah = new widget.Button();
         Bahasa = new widget.TextBox();
         jLabel76 = new widget.Label();
         jLabel77 = new widget.Label();
         Agama = new widget.TextBox();
+        BtnAllMasalah = new widget.Button();
+        BtnCariMasalah = new widget.Button();
+        TCariMasalah = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1723,7 +1734,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         TotalHasil.setBounds(774, 770, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-10-2021 17:26:52" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021 22:20:55" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1939,35 +1950,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         FormInput.add(label12);
         label12.setBounds(16, 1150, 60, 23);
 
-        TCariMasalah.setToolTipText("Alt+C");
-        TCariMasalah.setName("TCariMasalah"); // NOI18N
-        TCariMasalah.setPreferredSize(new java.awt.Dimension(140, 23));
-        TCariMasalah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TCariMasalahKeyPressed(evt);
-            }
-        });
-        FormInput.add(TCariMasalah);
-        TCariMasalah.setBounds(80, 1150, 245, 23);
-
-        BtnCariPemeriksaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCariPemeriksaan1.setMnemonic('1');
-        BtnCariPemeriksaan1.setToolTipText("Alt+1");
-        BtnCariPemeriksaan1.setName("BtnCariPemeriksaan1"); // NOI18N
-        BtnCariPemeriksaan1.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCariPemeriksaan1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariPemeriksaan1ActionPerformed(evt);
-            }
-        });
-        BtnCariPemeriksaan1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCariPemeriksaan1KeyPressed(evt);
-            }
-        });
-        FormInput.add(BtnCariPemeriksaan1);
-        BtnCariPemeriksaan1.setBounds(330, 1150, 28, 23);
-
         BtnTambahMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahMasalah.setMnemonic('3');
         BtnTambahMasalah.setToolTipText("Alt+3");
@@ -2013,6 +1995,53 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         FormInput.add(Agama);
         Agama.setBounds(86, 530, 110, 23);
 
+        BtnAllMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllMasalah.setMnemonic('2');
+        BtnAllMasalah.setToolTipText("2Alt+2");
+        BtnAllMasalah.setName("BtnAllMasalah"); // NOI18N
+        BtnAllMasalah.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllMasalah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllMasalahActionPerformed(evt);
+            }
+        });
+        BtnAllMasalah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllMasalahKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnAllMasalah);
+        BtnAllMasalah.setBounds(331, 1150, 28, 23);
+
+        BtnCariMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariMasalah.setMnemonic('1');
+        BtnCariMasalah.setToolTipText("Alt+1");
+        BtnCariMasalah.setName("BtnCariMasalah"); // NOI18N
+        BtnCariMasalah.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariMasalah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariMasalahActionPerformed(evt);
+            }
+        });
+        BtnCariMasalah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariMasalahKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnCariMasalah);
+        BtnCariMasalah.setBounds(299, 1150, 28, 23);
+
+        TCariMasalah.setToolTipText("Alt+C");
+        TCariMasalah.setName("TCariMasalah"); // NOI18N
+        TCariMasalah.setPreferredSize(new java.awt.Dimension(140, 23));
+        TCariMasalah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCariMasalahKeyPressed(evt);
+            }
+        });
+        FormInput.add(TCariMasalah);
+        TCariMasalah.setBounds(80, 1150, 215, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -2054,7 +2083,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-10-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2068,7 +2097,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-10-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3119,24 +3148,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
-    private void TCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariMasalahKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampilMasalah();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Rencana.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KetDokter.requestFocus();
-        }
-    }//GEN-LAST:event_TCariMasalahKeyPressed
-
-    private void BtnCariPemeriksaan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPemeriksaan1ActionPerformed
-        tampilMasalah();
-    }//GEN-LAST:event_BtnCariPemeriksaan1ActionPerformed
-
-    private void BtnCariPemeriksaan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariPemeriksaan1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariPemeriksaan1KeyPressed
-
     private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         MasterMasalahKeperawatan form=new MasterMasalahKeperawatan(null,false);
@@ -3148,7 +3159,14 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahMasalahActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampilMasalah();
+        try {
+            if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<4){
+                tampilMasalah2();
+            }else{
+                tampilMasalah();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void BahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaKeyPressed
@@ -3246,6 +3264,43 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_DetailRencanaKeyPressed
 
+    private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
+        TCari.setText("");
+        tampilMasalah();
+    }//GEN-LAST:event_BtnAllMasalahActionPerformed
+
+    private void BtnAllMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllMasalahKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnAllActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCari, TCari);
+        }
+    }//GEN-LAST:event_BtnAllMasalahKeyPressed
+
+    private void BtnCariMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariMasalahActionPerformed
+        tampilMasalah2();
+    }//GEN-LAST:event_BtnCariMasalahActionPerformed
+
+    private void BtnCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariMasalahKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilMasalah2();
+        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
+            Rencana.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            KetDokter.requestFocus();
+        }
+    }//GEN-LAST:event_BtnCariMasalahKeyPressed
+
+    private void TCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariMasalahKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            tampilMasalah2();
+        }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
+            Rencana.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            KetDokter.requestFocus();
+        }
+    }//GEN-LAST:event_TCariMasalahKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3273,9 +3328,10 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     private widget.TextBox BMI;
     private widget.TextBox Bahasa;
     private widget.Button BtnAll;
+    private widget.Button BtnAllMasalah;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
-    private widget.Button BtnCariPemeriksaan1;
+    private widget.Button BtnCariMasalah;
     private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
@@ -3791,6 +3847,39 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     
     private void tampilMasalah() {
         try{
+            Valid.tabelKosong(tabModeMasalah);
+            file=new File("./cache/masalahkeperawatan.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
+            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan order by master_masalah_keperawatan.kode_masalah");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModeMasalah.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+                    iyem=iyem+"{\"KodeMasalah\":\""+rs.getString(1)+"\",\"NamaMasalah\":\""+rs.getString(2)+"\"},";
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            fileWriter.write("{\"masalahkeperawatan\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilMasalah2() {
+        try{
             jml=0;
             for(i=0;i<tbMasalahKeperawatan.getRowCount();i++){
                 if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
@@ -3822,24 +3911,20 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
                     pilih[i],kode[i],masalah[i]
                 });
             }
-            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan where kode_masalah like ? or nama_masalah like ? order by kode_masalah");
-            try {
-                ps.setString(1,"%"+TCariMasalah.getText().trim()+"%");
-                ps.setString(2,"%"+TCariMasalah.getText().trim()+"%");
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabModeMasalah.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
+            
+            myObj = new FileReader("./cache/masalahkeperawatan.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("masalahkeperawatan");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeMasalah").asText().toLowerCase().contains(TCariMasalah.getText().toLowerCase())||list.path("NamaMasalah").asText().toLowerCase().contains(TCariMasalah.getText().toLowerCase())){
+                        tabModeMasalah.addRow(new Object[]{
+                            false,list.path("KodeMasalah").asText(),list.path("NamaMasalah").asText()
+                        });                    
+                    }
                 }
             }
+            myObj.close();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

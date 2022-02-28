@@ -103,7 +103,6 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
         } 
         
     }    
-    private DlgJabatan jabatan=new DlgJabatan(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -295,7 +294,7 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        //jabatan.setModal(true);
+        DlgJabatan jabatan=new DlgJabatan(null,false);
         jabatan.emptTeks();
         jabatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jabatan.setLocationRelativeTo(internalFrame1);
@@ -407,7 +406,8 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
                     if(list.path("KodeJabatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaJabatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("KodeJabatan").asText(),list.path("NamaJabatan").asText()
-                        });                    }
+                        });                    
+                    }
                 }
             }
             myObj.close();
