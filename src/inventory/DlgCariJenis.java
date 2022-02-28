@@ -384,7 +384,7 @@ public final class DlgCariJenis extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             iyem="";
             
-            ps=koneksi.prepareStatement("select * from jenis order by nama ");
+            ps=koneksi.prepareStatement("select * from jenis order by jenis.nama ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){

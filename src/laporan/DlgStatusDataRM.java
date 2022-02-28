@@ -532,8 +532,8 @@ public final class DlgStatusDataRM extends javax.swing.JDialog {
                                         "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
                                         "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
                                         "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,6)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,7)+"</td>"+
                                     "</tr>"
                                 ); 
                             }            
@@ -586,8 +586,8 @@ public final class DlgStatusDataRM extends javax.swing.JDialog {
                                         "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
                                         "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
                                         "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,6)+"</td>"+
-                                        "<td valign='top' align='right'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,7)+"</td>"+
                                     "</tr>"
                                 ); 
                             }            

@@ -388,7 +388,7 @@ public final class DlgCariMetodeRacik extends javax.swing.JDialog {
             iyem="";
             
             i=1;
-            ps=koneksi.prepareStatement("select * from metode_racik order by nm_racik ");
+            ps=koneksi.prepareStatement("select * from metode_racik order by metode_racik.nm_racik ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){

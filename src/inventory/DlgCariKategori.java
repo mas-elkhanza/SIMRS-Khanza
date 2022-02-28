@@ -383,7 +383,7 @@ public final class DlgCariKategori extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             iyem="";
             
-            ps=koneksi.prepareStatement("select * from kategori_barang order by nama ");
+            ps=koneksi.prepareStatement("select * from kategori_barang order by kategori_barang.nama ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
