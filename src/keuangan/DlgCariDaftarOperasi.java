@@ -535,6 +535,12 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     public void setBayar(String penjab,String kelasoperasi){
         this.kd_pj=penjab;
         this.kelas=kelasoperasi;
+        try {
+            if(Valid.daysOld("./cache/paketoperasi.iyem")<4){
+                tampil2();
+            }
+        } catch (Exception e) {
+        }
     }
     public void isCek(){        
        BtnTambah.setEnabled(akses.gettarif_operasi());

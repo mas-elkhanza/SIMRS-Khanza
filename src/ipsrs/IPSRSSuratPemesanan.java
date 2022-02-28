@@ -903,7 +903,14 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(tampilkan==true){
-            tampil();
+            try {
+                if(Valid.daysOld("./cache/suratpemesananipsrs.iyem")<4){
+                    tampil2();
+                }else{
+                    tampil();
+                }
+            } catch (Exception e) {
+            }
         }            
     }//GEN-LAST:event_formWindowOpened
 

@@ -1303,7 +1303,14 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(tampikan==true){
-            tampil();
+            try {
+                if(Valid.daysOld("./cache/penerimaanobat.iyem")<4){
+                    tampil2();
+                }else{
+                    tampil();
+                }
+            } catch (Exception e) {
+            }
         }            
     }//GEN-LAST:event_formWindowOpened
 
