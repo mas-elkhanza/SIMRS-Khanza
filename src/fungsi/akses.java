@@ -173,7 +173,7 @@ public final class akses {
             audit_kepatuhan_apd=false,bpjs_task_id=false,bayar_piutang_lain=false,pembayaran_akun_bayar4=false,stok_akhir_farmasi_pertanggal=false,
             riwayat_kamar_pasien=false,uji_fungsi_kfr=false,hapus_berkas_digital_perawatan=false,kategori_pengeluaran_harian=false,kategori_pemasukan_lain=false,
             pembayaran_akun_bayar5=false,ruang_ok=false,jasa_tindakan_pasien=false,telaah_resep=false,permintaan_resep_pulang=false,rekap_jm_dokter=false,
-            status_data_rm=false;
+            status_data_rm=false,ubah_petugas_lab_pk=false,ubah_petugas_lab_pa=false,ubah_petugas_radiologi=false,gabung_norawat=false,gabung_rm=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -987,6 +987,11 @@ public final class akses {
                         akses.permintaan_resep_pulang=true;
                         akses.rekap_jm_dokter=true;
                         akses.status_data_rm=true;
+                        akses.ubah_petugas_lab_pk=true;
+                        akses.ubah_petugas_lab_pa=true;
+                        akses.ubah_petugas_radiologi=true;
+                        akses.gabung_norawat=true;
+                        akses.gabung_rm=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1784,6 +1789,11 @@ public final class akses {
                         akses.permintaan_resep_pulang=rs2.getBoolean("permintaan_resep_pulang");
                         akses.rekap_jm_dokter=rs2.getBoolean("rekap_jm_dokter");
                         akses.status_data_rm=rs2.getBoolean("status_data_rm");
+                        akses.ubah_petugas_lab_pk=rs2.getBoolean("ubah_petugas_lab_pk");
+                        akses.ubah_petugas_lab_pa=rs2.getBoolean("ubah_petugas_lab_pa");
+                        akses.ubah_petugas_radiologi=rs2.getBoolean("ubah_petugas_radiologi");
+                        akses.gabung_norawat=rs2.getBoolean("gabung_norawat");
+                        akses.gabung_rm=rs2.getBoolean("gabung_rm");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2579,6 +2589,11 @@ public final class akses {
                         akses.permintaan_resep_pulang=false;
                         akses.rekap_jm_dokter=false;
                         akses.status_data_rm=false;
+                        akses.ubah_petugas_lab_pk=false;
+                        akses.ubah_petugas_lab_pa=false;
+                        akses.ubah_petugas_radiologi=false;
+                        akses.gabung_norawat=false;
+                        akses.gabung_rm=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3429,4 +3444,9 @@ public final class akses {
     public static boolean getpermintaan_resep_pulang(){return akses.permintaan_resep_pulang;}
     public static boolean getrekap_jm_dokter(){return akses.rekap_jm_dokter;}
     public static boolean getstatus_data_rm(){return akses.status_data_rm;}
+    public static boolean getubah_petugas_lab_pk(){return akses.ubah_petugas_lab_pk;}
+    public static boolean getubah_petugas_lab_pa(){return akses.ubah_petugas_lab_pa;}
+    public static boolean getubah_petugas_radiologi(){return akses.ubah_petugas_radiologi;}
+    public static boolean getgabung_norawat(){return akses.gabung_norawat;}
+    public static boolean getgabung_rm(){return akses.gabung_rm;}
 }   

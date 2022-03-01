@@ -683,7 +683,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,piutang_lainlain,cara_bayar,audit_kepatuhan_apd,bpjs_task_id,"+
                         "bayar_piutang_lain,pembayaran_akun_bayar4,stok_akhir_farmasi_pertanggal,riwayat_kamar_pasien,uji_fungsi_kfr,hapus_berkas_digital_perawatan,"+
                         "kategori_pengeluaran_harian,kategori_pemasukan_lain,pembayaran_akun_bayar5,ruang_ok,telaah_resep,jasa_tindakan_pasien,"+
-                        "permintaan_resep_pulang,rekap_jm_dokter,status_data_rm from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "permintaan_resep_pulang,rekap_jm_dokter,status_data_rm,ubah_petugas_lab_pk,ubah_petugas_lab_pa,ubah_petugas_radiologi,"+
+                        "gabung_norawat,gabung_rm from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -834,6 +835,22 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[A]Permintaan Rawat Inap".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[A]Permintaan Rawat Inap",rs.getBoolean("permintaan_ranap")});
+                    }
+                    
+                    if("[A]Ubah Petugas Lab PK".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[A]Ubah Petugas Lab PK",rs.getBoolean("ubah_petugas_lab_pk")});
+                    }
+                    
+                    if("[A]Ubah Petugas Lab PA".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[A]Ubah Petugas Lab PA",rs.getBoolean("ubah_petugas_lab_pa")});
+                    }
+                    
+                    if("[A]Ubah Petugas Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[A]Ubah Petugas Radiologi",rs.getBoolean("ubah_petugas_radiologi")});
+                    }
+                    
+                    if("[A]Gabung Nomor Rawat".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[A]Gabung Nomor Rawat",rs.getBoolean("gabung_norawat")});
                     }
                     
                     if("[B]Barcode Ralan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -2952,6 +2969,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[L]Hapus Berkas Digital Perawatan",rs.getBoolean("hapus_berkas_digital_perawatan")});
                     }
                     
+                    if("[L]Gabungkan Data RM".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Gabungkan Data RM",rs.getBoolean("gabung_rm")});
+                    }
+                    
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[M]Pengambilan BHP Medis",rs.getBoolean("pengambilan_utd2")});
                     }
@@ -4021,6 +4042,22 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[A]Permintaan Rawat Inap".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","permintaan_ranap='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[A]Ubah Petugas Lab PK".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ubah_petugas_lab_pk='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[A]Ubah Petugas Lab PA".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ubah_petugas_lab_pa='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[A]Ubah Petugas Radiologi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ubah_petugas_radiologi='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[A]Gabung Nomor Rawat".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","gabung_norawat='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[B]Barcode Ralan".equals(tbUser.getValueAt(i,1).toString())){
@@ -6141,6 +6178,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Hapus Berkas Digital Perawatan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hapus_berkas_digital_perawatan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Gabungkan Data RM".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","gabung_rm='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

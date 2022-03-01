@@ -2460,12 +2460,11 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(akses.getjml2()>=1){
             KdPtg.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPtg,KdPtg.getText());
-            btnPetugas.setEnabled(false);
         }else{
             KdPtg.setText("");
             NmPtg.setText("");
-            btnPetugas.setEnabled(true);
         }
+        btnPetugas.setEnabled(akses.getubah_petugas_lab_pk());
         BtnSimpan.setEnabled(akses.getperiksa_lab());
         BtnPrint.setEnabled(akses.getperiksa_lab());
         BtnHapus.setEnabled(akses.getperiksa_lab());

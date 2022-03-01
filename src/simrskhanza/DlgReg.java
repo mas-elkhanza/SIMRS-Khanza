@@ -11541,12 +11541,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         ppDataIndukKecelakaan.setEnabled(akses.getbpjs_data_induk_kecelakaan());   
         MnPenilaianMCU.setEnabled(akses.getpenilaian_mcu());     
         MnUjiFungsiKFR.setEnabled(akses.getuji_fungsi_kfr());     
-        
-        if(akses.getkode().equals("Admin Utama")){
-            MnGabungNoRawat.setEnabled(true);
-        }else{
-            MnGabungNoRawat.setEnabled(false);
-        } 
+        MnGabungNoRawat.setEnabled(akses.getgabung_norawat());
         
         /*if(MnDataTriaseIGD.isVisible()==false){
             MnRMIGD.setVisible(false);

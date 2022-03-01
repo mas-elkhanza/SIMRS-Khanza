@@ -1994,12 +1994,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         if(akses.getjml2()>=1){
             KdPtg.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPtg,KdPtg.getText());
-            btnPetugas.setEnabled(false);
         }else{
             KdPtg.setText("");
             NmPtg.setText("");
-            btnPetugas.setEnabled(true);
         }
+        btnPetugas.setEnabled(akses.getubah_petugas_radiologi());
         BtnSimpan.setEnabled(akses.getperiksa_radiologi());
         BtnTambahPeriksa.setEnabled(akses.gettarif_radiologi());
         BtnTambahBhp.setEnabled(akses.getipsrs_barang());

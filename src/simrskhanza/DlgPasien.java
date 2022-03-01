@@ -10013,11 +10013,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         BtnHapus.setEnabled(akses.getpasien());
         BtnEdit.setEnabled(akses.getpasien());
         BtnPrint.setEnabled(akses.getpasien());
-        if(akses.getkode().equals("Admin Utama")){
-            ppGabungRM.setEnabled(true);
-        }else{
-            ppGabungRM.setEnabled(false);
-        } 
+        ppGabungRM.setEnabled(akses.getgabung_rm());
         ppRiwayat.setEnabled(akses.getresume_pasien());
         ppCatatanPasien.setEnabled(akses.getcatatan_pasien());
         ppPasienCorona.setEnabled(akses.getpasien_corona());
