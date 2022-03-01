@@ -487,7 +487,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        billing.beriobat.pasien.penjab.addWindowListener(new WindowListener() {
+        billing.carabayar.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -495,9 +495,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgKamarInap")){
-                    if(billing.beriobat.pasien.penjab.getTable().getSelectedRow()!= -1){
-                        kdpenjab.setText(billing.beriobat.pasien.penjab.getTable().getValueAt(billing.beriobat.pasien.penjab.getTable().getSelectedRow(),1).toString());
-                        nmpenjab.setText(billing.beriobat.pasien.penjab.getTable().getValueAt(billing.beriobat.pasien.penjab.getTable().getSelectedRow(),2).toString());
+                    if(billing.carabayar.getTable().getSelectedRow()!= -1){
+                        kdpenjab.setText(billing.carabayar.getTable().getValueAt(billing.carabayar.getTable().getSelectedRow(),1).toString());
+                        nmpenjab.setText(billing.carabayar.getTable().getValueAt(billing.carabayar.getTable().getSelectedRow(),2).toString());
                     } 
                     kdpenjab.requestFocus();
                 }
@@ -512,14 +512,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        billing.beriobat.pasien.penjab.getTable().addKeyListener(new KeyListener() {
+        billing.carabayar.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 if(akses.getform().equals("DlgKamarInap")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        billing.beriobat.pasien.penjab.dispose();
+                        billing.carabayar.dispose();
                     }
                 }
             }
@@ -6404,7 +6404,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
     private void kdpenjabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpenjabKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", nmpenjab,kdpenjab.getText());
+            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpenjab,kdpenjab.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBayarActionPerformed(null);
         }else{
@@ -6414,11 +6414,11 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         akses.setform("DlgKamarInap");
-        billing.beriobat.pasien.penjab.emptTeks();
-        billing.beriobat.pasien.penjab.isCek();
-        billing.beriobat.pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        billing.beriobat.pasien.penjab.setLocationRelativeTo(internalFrame1);
-        billing.beriobat.pasien.penjab.setVisible(true);
+        billing.carabayar.emptTeks();
+        billing.carabayar.isCek();
+        billing.carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        billing.carabayar.setLocationRelativeTo(internalFrame1);
+        billing.carabayar.setVisible(true);
     }//GEN-LAST:event_btnBayarActionPerformed
 
     private void MnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenjabActionPerformed

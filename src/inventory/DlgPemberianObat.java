@@ -44,7 +44,7 @@ import javax.swing.event.DocumentEvent;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariObatPenyakit;
-import simrskhanza.DlgPasien;
+import simrskhanza.DlgCariPasien;
 
 /**
  *
@@ -59,7 +59,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     public  DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
     public  DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
     private riwayatobat Trackobat=new riwayatobat();
-    public DlgPasien pasien=new DlgPasien(null,false);
+    private DlgCariPasien pasien=new DlgCariPasien(null,false);
     private String bangsal="",lokasi="",tgl="",pas="",sql="",status="";
     private PreparedStatement ps,psrekening;
     private ResultSet rs,rsrekening;
@@ -240,14 +240,8 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgPemberianObat")){
                     if(pasien.getTable().getSelectedRow()!= -1){                   
-                        TCariPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                        TCariPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
                     } 
-                    if(pasien.getTable2().getSelectedRow()!= -1){                     
-                        TCariPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
-                    }
-                    if(pasien.getTable3().getSelectedRow()!= -1){                   
-                        TCariPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
-                    }
                     TCariPasien.requestFocus();
                 }
             }
@@ -262,36 +256,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgPemberianObat")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        pasien.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
-        pasien.getTable2().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgPemberianObat")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        pasien.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
-        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override

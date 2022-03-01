@@ -48,6 +48,7 @@ import inventory.DlgResepPulang;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import simrskhanza.DlgCariCaraBayar;
 import simrskhanza.DlgCariPeriksaLabPA;
 import simrskhanza.DlgInputResepPulang;
 import simrskhanza.DlgPeriksaLaboratoriumPA;
@@ -62,6 +63,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
     public DlgPemberianObat beriobat=new DlgPemberianObat(null,false);
     public DlgRawatInap rawatinap=new DlgRawatInap(null,false);
     public DlgDeposit deposit=new DlgDeposit(null,false);
+    public DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -626,7 +628,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        beriobat.pasien.penjab.addWindowListener(new WindowListener() {
+        carabayar.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -634,9 +636,9 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
-                    if(beriobat.pasien.penjab.getTable().getSelectedRow()!= -1){
-                        kdpenjab.setText(beriobat.pasien.penjab.getTable().getValueAt(beriobat.pasien.penjab.getTable().getSelectedRow(),1).toString());
-                        nmpenjab.setText(beriobat.pasien.penjab.getTable().getValueAt(beriobat.pasien.penjab.getTable().getSelectedRow(),2).toString());
+                    if(carabayar.getTable().getSelectedRow()!= -1){
+                        kdpenjab.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString());
+                        nmpenjab.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),2).toString());
                     } 
                     kdpenjab.requestFocus();
                 }
@@ -651,14 +653,14 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        beriobat.pasien.penjab.getTable().addKeyListener(new KeyListener() {
+        carabayar.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        beriobat.pasien.penjab.dispose();
+                        carabayar.dispose();
                     }
                 }
             }
@@ -2009,7 +2011,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2021 06:02:34" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2022 00:41:04" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3555,11 +3557,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
         akses.setform("DLgBilingRanap");
-        beriobat.pasien.penjab.isCek();
-        beriobat.pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        beriobat.pasien.penjab.setLocationRelativeTo(internalFrame1);
-        beriobat.pasien.penjab.setAlwaysOnTop(false);
-        beriobat.pasien.penjab.setVisible(true);
+        carabayar.isCek();
+        carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        carabayar.setLocationRelativeTo(internalFrame1);
+        carabayar.setAlwaysOnTop(false);
+        carabayar.setVisible(true);
     }//GEN-LAST:event_btnPenjabActionPerformed
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
