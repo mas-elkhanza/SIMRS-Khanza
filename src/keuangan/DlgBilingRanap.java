@@ -40,7 +40,6 @@ import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import inventory.DlgPemberianObat;
-import simrskhanza.DlgCariCaraBayar;
 import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaRadiologi;
 import simrskhanza.DlgRawatInap;
@@ -62,7 +61,6 @@ public class DlgBilingRanap extends javax.swing.JDialog {
     private final DefaultTableModel tabModeRwJlDr,tabModeTambahan,tabModePotongan,tabModeKamIn,tabModeAkunBayar,tabModeAkunPiutang,tabModeLab,tabModeRad,tabModeApotek;
     public DlgPemberianObat beriobat=new DlgPemberianObat(null,false);
     public DlgRawatInap rawatinap=new DlgRawatInap(null,false);
-    public DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     public DlgDeposit deposit=new DlgDeposit(null,false);
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -610,9 +608,9 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
                     if(status.equals("belum")){
-                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());                  
+                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(deposit.besar_deposit),0) from deposit where deposit.no_rawat=?",TNoRw.getText());                  
                     }else{
-                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(nota_inap.Uang_Muka),0) from nota_inap where nota_inap.no_rawat=?",TNoRw.getText());
                     }
                     Deposit.setText(Valid.SetAngka(uangdeposit));
                     isKembali();
@@ -628,7 +626,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        penjab.addWindowListener(new WindowListener() {
+        rawatinap.pasien.penjab.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -636,9 +634,9 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
-                    if(penjab.getTable().getSelectedRow()!= -1){
-                        kdpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                        nmpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    if(rawatinap.pasien.penjab.getTable().getSelectedRow()!= -1){
+                        kdpenjab.setText(rawatinap.pasien.penjab.getTable().getValueAt(rawatinap.pasien.penjab.getTable().getSelectedRow(),1).toString());
+                        nmpenjab.setText(rawatinap.pasien.penjab.getTable().getValueAt(rawatinap.pasien.penjab.getTable().getSelectedRow(),2).toString());
                     } 
                     kdpenjab.requestFocus();
                 }
@@ -653,14 +651,14 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        penjab.getTable().addKeyListener(new KeyListener() {
+        rawatinap.pasien.penjab.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        penjab.dispose();
+                        rawatinap.pasien.penjab.dispose();
                     }
                 }
             }
@@ -669,13 +667,34 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         }); 
         
         try {
-            notaranap=Sequel.cariIsi("select cetaknotasimpanranap from set_nota");
-            centangdokterranap=Sequel.cariIsi("select centangdokterranap from set_nota"); 
-            rinciandokterranap=Sequel.cariIsi("select rinciandokterranap from set_nota"); 
-            rincianoperasi=Sequel.cariIsi("select rincianoperasi from set_nota"); 
-            tampilkan_administrasi_di_billingranap=Sequel.cariIsi("select tampilkan_administrasi_di_billingranap from set_nota"); 
-            tampilkan_ppnobat_ranap=Sequel.cariIsi("select tampilkan_ppnobat_ranap from set_nota");
-            centangobatranap=Sequel.cariIsi("select centangobatranap from set_nota"); 
+            psrekening=koneksi.prepareStatement("select * from set_nota");
+            try {
+                rsrekening=psrekening.executeQuery();
+                if(rsrekening.next()){
+                    notaranap=rsrekening.getString("cetaknotasimpanranap");
+                    centangdokterranap=rsrekening.getString("centangdokterranap"); 
+                    rinciandokterranap=rsrekening.getString("rinciandokterranap"); 
+                    rincianoperasi=rsrekening.getString("rincianoperasi"); 
+                    tampilkan_administrasi_di_billingranap=rsrekening.getString("tampilkan_administrasi_di_billingranap");
+                    tampilkan_ppnobat_ranap=rsrekening.getString("tampilkan_ppnobat_ranap");
+                    centangobatranap=rsrekening.getString("centangobatranap"); 
+                }
+            } catch (Exception e) {
+                notaranap="No";
+                centangdokterranap="No";
+                rinciandokterranap="No";
+                rincianoperasi="No";
+                tampilkan_administrasi_di_billingranap="No"; 
+                tampilkan_ppnobat_ranap="No";
+                centangobatranap="No";
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }
         } catch (Exception e) {
             notaranap="No";
             centangdokterranap="No";
@@ -684,8 +703,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             tampilkan_administrasi_di_billingranap="No"; 
             tampilkan_ppnobat_ranap="No";
             centangobatranap="No";
-        }
-            
+        }   
         
         try {
             psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
@@ -3537,11 +3555,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
         akses.setform("DLgBilingRanap");
-        penjab.isCek();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        penjab.setLocationRelativeTo(internalFrame1);
-        penjab.setAlwaysOnTop(false);
-        penjab.setVisible(true);
+        rawatinap.pasien.penjab.isCek();
+        rawatinap.pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        rawatinap.pasien.penjab.setLocationRelativeTo(internalFrame1);
+        rawatinap.pasien.penjab.setAlwaysOnTop(false);
+        rawatinap.pasien.penjab.setVisible(true);
     }//GEN-LAST:event_btnPenjabActionPerformed
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed

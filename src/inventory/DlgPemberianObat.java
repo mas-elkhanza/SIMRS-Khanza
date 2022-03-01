@@ -59,7 +59,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     public  DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
     public  DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
     private riwayatobat Trackobat=new riwayatobat();
-    public  DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
     private DlgPasien pasien=new DlgPasien(null,false);
     private String bangsal="",lokasi="",tgl="",pas="",sql="",status="";
     private PreparedStatement ps,psrekening;
@@ -1242,6 +1241,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }else{ 
                 if(status.equals("ralan")){
                     akses.setform("DlgPemberianObat");
+                    DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
                     dlgobtpny.setNoRm(TNoRw.getText(),Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where no_rawat=? order by prioritas limit 1",TNoRw.getText()));
                     dlgobtpny.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgobtpny.setLocationRelativeTo(internalFrame1);

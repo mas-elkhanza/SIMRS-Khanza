@@ -655,6 +655,7 @@ import laporan.DlgLamaPelayananPasien;
 import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananOperasi;
 import laporan.DlgPelayananPoli;
+import laporan.DlgPenyakit;
 import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
@@ -8210,11 +8211,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnICDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICDActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         isTutup();
-        kasirralan.kamarinap.billing.beriobat.dlgobtpny.penyakit.penyakit.isCek();
-        kasirralan.kamarinap.billing.beriobat.dlgobtpny.penyakit.penyakit.emptTeks();
-        kasirralan.kamarinap.billing.beriobat.dlgobtpny.penyakit.penyakit.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        kasirralan.kamarinap.billing.beriobat.dlgobtpny.penyakit.penyakit.setLocationRelativeTo(PanelUtama);
-        kasirralan.kamarinap.billing.beriobat.dlgobtpny.penyakit.penyakit.setVisible(true);
+        DlgPenyakit penyakit=new DlgPenyakit(null,false);
+        penyakit.isCek();
+        penyakit.emptTeks();
+        penyakit.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        penyakit.setLocationRelativeTo(PanelUtama);
+        penyakit.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnICDActionPerformed

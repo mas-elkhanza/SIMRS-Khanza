@@ -97,11 +97,11 @@ public class DlgPasien extends javax.swing.JDialog {
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,
             p_propinsi=0,p_propinsipj=0;
     private double x=0,i=0;
-    private String kdkel="",kdkec="",kdkab="",kdprop="",klg="SAUDARA",say="",pengurutan="",asalform="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="",
+    private String kdkel="",kdkec="",kdkab="",kdprop="",klg="SAUDARA",pengurutan="",asalform="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
-            kabupatenpj="",propinsi="",propinsipj="",tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
+            kabupatenpj="",propinsi="",propinsipj="",tampilkantni=Sequel.cariIsi("select set_tni_polri.tampilkan_tni_polri from set_tni_polri");
     private PreparedStatement ps,pscariwilayah,pssetalamat,pskelengkapan;
     private ResultSet rs;
     private BPJSCekNIK cekViaBPJS=new BPJSCekNIK();
@@ -112,7 +112,6 @@ public class DlgPasien extends javax.swing.JDialog {
     private LocalDate today=LocalDate.now();
     private LocalDate birthday;
     private Period p;
-    private StringBuilder htmlContent;
 
     /** Creates new form DlgPas
      * @param parent
@@ -126,7 +125,8 @@ public class DlgPasien extends javax.swing.JDialog {
               "G.D.","Pekerjaan","Stts.Nikah","Agama","Tgl.Daftar","No.Telp/HP","Umur","Pendidikan",
               "Keluarga","Nama Keluarga","Asuransi/Askes","No.Peserta","Daftar","Pekerjaan P.J.","Alamat P.J.",
               "ID Suku","Suku/Bangsa","ID Bahasa","Bahasa","ID Peru","Instansi/Perusahaan","NIP/NRP","Email",
-              "Id Cacat","Cacat Fisik"
+              "Id Cacat","Cacat Fisik","kd_pj","alamat","nm_kel","nm_kec","nm_kab","nm_prop","alamatpj","kelurahanpj",
+              "kecamatanpj","kabupatenpj","propinsipj"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -142,9 +142,12 @@ public class DlgPasien extends javax.swing.JDialog {
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class,java.lang.Object.class
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                 java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -157,7 +160,7 @@ public class DlgPasien extends javax.swing.JDialog {
         tbPasien.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbPasien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (z = 0; z < 34; z++) {
+        for (z = 0; z < 45; z++) {
             TableColumn column = tbPasien.getColumnModel().getColumn(z);
             if(z==0){
                 column.setPreferredWidth(20);
@@ -219,7 +222,7 @@ public class DlgPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(120);
             }else if(z==33){
                 column.setPreferredWidth(120);
-            }else if((z==24)||(z==26)||(z==28)||(z==32)){
+            }else if((z==24)||(z==26)||(z==28)||(z==32)||(z==34)||(z==35)||(z==36)||(z==37)||(z==38)||(z==39)||(z==40)||(z==41)||(z==42)||(z==43)||(z==44)){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }
@@ -1198,6 +1201,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(propinsiref.getTable().getSelectedRow()!= -1){   
                     KdProp.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),1).toString());
+                    kdprop="";
                     switch (pilih) {
                         case 1:
                             Propinsi.setText(propinsiref.getTable().getValueAt(propinsiref.getTable().getSelectedRow(),2).toString().toUpperCase());
@@ -1242,6 +1246,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(kabupatenref.getTable().getSelectedRow()!= -1){   
                     KdKab.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),1).toString());
+                    kdkab="";
                     switch (pilih) {
                         case 1:
                             Kabupaten.setText(kabupatenref.getTable().getValueAt(kabupatenref.getTable().getSelectedRow(),2).toString().toUpperCase());
@@ -1286,6 +1291,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(kecamatanref.getTable().getSelectedRow()!= -1){   
                     KdKec.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),1).toString());
+                    kdkec="";
                     switch (pilih) {
                         case 1:
                             Kecamatan.setText(kecamatanref.getTable().getValueAt(kecamatanref.getTable().getSelectedRow(),2).toString().toUpperCase());
@@ -1330,6 +1336,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(kelurahanref.getTable().getSelectedRow()!= -1){    
                     KdKel.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),1).toString());
+                    kdkel="";
                     switch (pilih) {
                         case 1:
                             Kelurahan.setText(kelurahanref.getTable().getValueAt(kelurahanref.getTable().getSelectedRow(),2).toString().toUpperCase());
@@ -8869,12 +8876,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             if(cmbHlm.getSelectedItem().toString().equals("Semua")){
                  if(Carialamat.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                       ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
-                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,"+
                            "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                            "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
-                           "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"+
+                           "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj,"+
                            "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
-                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
+                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik,pasien.kd_pj from pasien "+
                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
                            "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
@@ -8882,48 +8889,33 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                            "inner join penjab on pasien.kd_pj=penjab.kd_pj order by pasien.no_rkm_medis desc");  
                  }else{
                       ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
-                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,"+
                            "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                            "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
-                           "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"+
+                           "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj,"+
                            "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
-                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
+                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik,pasien.kd_pj from pasien "+
                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
                            "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
                            "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "+
                            "inner join penjab on pasien.kd_pj=penjab.kd_pj "+
-                            "where concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ? and pasien.no_rkm_medis like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.nm_pasien like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.no_ktp like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.no_peserta like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.tmp_lahir like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.tgl_lahir like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and penjab.png_jawab like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.alamat like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.gol_darah like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.pekerjaan like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.stts_nikah like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.nip like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and cacat_fisik.nama_cacat like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.namakeluarga like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and perusahaan_pasien.nama_perusahaan like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and bahasa_pasien.nama_bahasa like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and suku_bangsa.nama_suku_bangsa like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.agama like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.nm_ibu like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.tgl_daftar like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.no_tlp like ?  order by pasien.no_rkm_medis desc");  
+                           "where concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ? "+
+                           "and (pasien.no_rkm_medis like ? or  pasien.nm_pasien like ? or pasien.no_ktp like ? or pasien.no_peserta like ? or pasien.tmp_lahir like ? "+
+                           "or pasien.tgl_lahir like ? or penjab.png_jawab like ? or pasien.alamat like ? or pasien.gol_darah like ? or pasien.pekerjaan like ? "+
+                           "or pasien.stts_nikah like ? or pasien.nip like ? or cacat_fisik.nama_cacat like ? or pasien.namakeluarga like ? or perusahaan_pasien.nama_perusahaan like ? "+
+                           "or bahasa_pasien.nama_bahasa like ? or suku_bangsa.nama_suku_bangsa like ? or pasien.agama like ? or pasien.nm_ibu like ? or pasien.tgl_daftar like ? "+
+                           "or pasien.no_tlp like ?) order by pasien.no_rkm_medis desc");  
                  }    
             }else{
                 if(Carialamat.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
-                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,"+
                            "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                            "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
-                           "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"+
+                           "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj,"+
                            "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
-                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
+                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik,pasien.kd_pj from pasien "+
                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
                            "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
@@ -8931,38 +8923,23 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                            "inner join penjab on pasien.kd_pj=penjab.kd_pj order by pasien.no_rkm_medis desc LIMIT ? ");    
                 }else{
                     ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
-                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                           "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,"+
                            "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                            "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
-                           "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"+
+                           "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj,"+
                            "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
-                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
+                           "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik,pasien.kd_pj from pasien "+
                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
                            "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
                            "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "+
                            "inner join penjab on pasien.kd_pj=penjab.kd_pj "+
-                            "where concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ? and pasien.no_rkm_medis like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.nm_pasien like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.no_ktp like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.no_peserta like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.tmp_lahir like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.tgl_lahir like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and penjab.png_jawab like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.alamat like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.gol_darah like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.pekerjaan like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.stts_nikah like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.nip like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and cacat_fisik.nama_cacat like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.namakeluarga like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and perusahaan_pasien.nama_perusahaan like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and bahasa_pasien.nama_bahasa like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and suku_bangsa.nama_suku_bangsa like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.agama like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.nm_ibu like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.tgl_daftar like ? "+
-                            "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ?  and pasien.no_tlp like ?  order by pasien.no_rkm_medis desc LIMIT ? ");    
+                           "where concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ? "+
+                           "and (pasien.no_rkm_medis like ? or  pasien.nm_pasien like ? or pasien.no_ktp like ? or pasien.no_peserta like ? or pasien.tmp_lahir like ? "+
+                           "or pasien.tgl_lahir like ? or penjab.png_jawab like ? or pasien.alamat like ? or pasien.gol_darah like ? or pasien.pekerjaan like ? "+
+                           "or pasien.stts_nikah like ? or pasien.nip like ? or cacat_fisik.nama_cacat like ? or pasien.namakeluarga like ? or perusahaan_pasien.nama_perusahaan like ? "+
+                           "or bahasa_pasien.nama_bahasa like ? or suku_bangsa.nama_suku_bangsa like ? or pasien.agama like ? or pasien.nm_ibu like ? or pasien.tgl_daftar like ? "+
+                           "or pasien.no_tlp like ?)  order by pasien.no_rkm_medis desc LIMIT ? ");    
                 }       
             }          
             try{
@@ -8970,108 +8947,69 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     if(Carialamat.getText().trim().equals("")&&TCari.getText().trim().equals("")){}else{
                         ps.setString(1,"%"+Carialamat.getText().trim()+"%");
                         ps.setString(2,"%"+TCari.getText().trim()+"%");
-                        ps.setString(3,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(3, "%"+TCari.getText().trim()+"%");
                         ps.setString(4, "%"+TCari.getText().trim()+"%");
-                        ps.setString(5,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(5, "%"+TCari.getText().trim()+"%");
                         ps.setString(6, "%"+TCari.getText().trim()+"%");
-                        ps.setString(7,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(7, "%"+TCari.getText().trim()+"%");
                         ps.setString(8, "%"+TCari.getText().trim()+"%");
-                        ps.setString(9,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(9, "%"+TCari.getText().trim()+"%");
                         ps.setString(10, "%"+TCari.getText().trim()+"%");
-                        ps.setString(11,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(11, "%"+TCari.getText().trim()+"%");
                         ps.setString(12, "%"+TCari.getText().trim()+"%");
-                        ps.setString(13,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(13, "%"+TCari.getText().trim()+"%");
                         ps.setString(14, "%"+TCari.getText().trim()+"%");
-                        ps.setString(15,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(15, "%"+TCari.getText().trim()+"%");
                         ps.setString(16, "%"+TCari.getText().trim()+"%");
-                        ps.setString(17,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(17, "%"+TCari.getText().trim()+"%");
                         ps.setString(18, "%"+TCari.getText().trim()+"%");
-                        ps.setString(19,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(19, "%"+TCari.getText().trim()+"%");
                         ps.setString(20, "%"+TCari.getText().trim()+"%");
-                        ps.setString(21,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(21, "%"+TCari.getText().trim()+"%");
                         ps.setString(22, "%"+TCari.getText().trim()+"%");
-                        ps.setString(23,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(24, "%"+TCari.getText().trim()+"%");
-                        ps.setString(25,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(26, "%"+TCari.getText().trim()+"%");
-                        ps.setString(27,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(28, "%"+TCari.getText().trim()+"%");
-                        ps.setString(29,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(30, "%"+TCari.getText().trim()+"%");
-                        ps.setString(31,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(32, "%"+TCari.getText().trim()+"%");
-                        ps.setString(33,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(34, "%"+TCari.getText().trim()+"%");
-                        ps.setString(35,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(36, "%"+TCari.getText().trim()+"%");
-                        ps.setString(37,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(38, "%"+TCari.getText().trim()+"%");
-                        ps.setString(39,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(40, "%"+TCari.getText().trim()+"%");
-                        ps.setString(41,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(42, "%"+TCari.getText().trim()+"%");
-                    }
-                        
+                    }   
                 }else{
                     if(Carialamat.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                         ps.setInt(1,Integer.parseInt(cmbHlm.getSelectedItem().toString()));
                     }else{
                         ps.setString(1,"%"+Carialamat.getText().trim()+"%");
                         ps.setString(2,"%"+TCari.getText().trim()+"%");
-                        ps.setString(3,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(3, "%"+TCari.getText().trim()+"%");
                         ps.setString(4, "%"+TCari.getText().trim()+"%");
-                        ps.setString(5,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(5, "%"+TCari.getText().trim()+"%");
                         ps.setString(6, "%"+TCari.getText().trim()+"%");
-                        ps.setString(7,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(7, "%"+TCari.getText().trim()+"%");
                         ps.setString(8, "%"+TCari.getText().trim()+"%");
-                        ps.setString(9,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(9, "%"+TCari.getText().trim()+"%");
                         ps.setString(10, "%"+TCari.getText().trim()+"%");
-                        ps.setString(11,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(11, "%"+TCari.getText().trim()+"%");
                         ps.setString(12, "%"+TCari.getText().trim()+"%");
-                        ps.setString(13,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(13, "%"+TCari.getText().trim()+"%");
                         ps.setString(14, "%"+TCari.getText().trim()+"%");
-                        ps.setString(15,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(15, "%"+TCari.getText().trim()+"%");
                         ps.setString(16, "%"+TCari.getText().trim()+"%");
-                        ps.setString(17,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(17, "%"+TCari.getText().trim()+"%");
                         ps.setString(18, "%"+TCari.getText().trim()+"%");
-                        ps.setString(19,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(19, "%"+TCari.getText().trim()+"%");
                         ps.setString(20, "%"+TCari.getText().trim()+"%");
-                        ps.setString(21,"%"+Carialamat.getText().trim()+"%");
+                        ps.setString(21, "%"+TCari.getText().trim()+"%");
                         ps.setString(22, "%"+TCari.getText().trim()+"%");
-                        ps.setString(23,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(24, "%"+TCari.getText().trim()+"%");
-                        ps.setString(25,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(26, "%"+TCari.getText().trim()+"%");
-                        ps.setString(27,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(28, "%"+TCari.getText().trim()+"%");
-                        ps.setString(29,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(30, "%"+TCari.getText().trim()+"%");
-                        ps.setString(31,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(32, "%"+TCari.getText().trim()+"%");
-                        ps.setString(33,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(34, "%"+TCari.getText().trim()+"%");
-                        ps.setString(35,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(36, "%"+TCari.getText().trim()+"%");
-                        ps.setString(37,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(38, "%"+TCari.getText().trim()+"%");
-                        ps.setString(39,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(40, "%"+TCari.getText().trim()+"%");
-                        ps.setString(41,"%"+Carialamat.getText().trim()+"%");
-                        ps.setString(42, "%"+TCari.getText().trim()+"%");
-                        ps.setInt(43,Integer.parseInt(cmbHlm.getSelectedItem().toString()));
+                        ps.setInt(23,Integer.parseInt(cmbHlm.getSelectedItem().toString()));
                     }
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),
-                        rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),
-                        rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18),rs.getString(19),
-                        rs.getString(20),"Klik Kanan, Tampilkan Banyak Daftar",rs.getString(21),rs.getString(22),
-                        rs.getString("suku_bangsa"),rs.getString("nama_suku_bangsa"),rs.getString("bahasa_pasien"),
-                        rs.getString("nama_bahasa"),rs.getString("kode_perusahaan"),rs.getString("nama_perusahaan"),
-                        rs.getString("nip"),rs.getString("email"),rs.getString("cacat_fisik"),rs.getString("nama_cacat")
+                        false,rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("jk"),rs.getString("tmp_lahir"),rs.getString("tgl_lahir"),rs.getString("nm_ibu"),
+                        rs.getString("alamat")+", "+rs.getString("nm_kel")+", "+rs.getString("nm_kec")+", "+rs.getString("nm_kab")+", "+rs.getString("nm_prop"),rs.getString("gol_darah"),rs.getString("pekerjaan"),
+                        rs.getString("stts_nikah"),rs.getString("agama"),rs.getString("tgl_daftar"),rs.getString("no_tlp"),rs.getString("umur"),rs.getString("pnd"),rs.getString("keluarga"),
+                        rs.getString("namakeluarga"),rs.getString("png_jawab"),rs.getString("no_peserta"),"Klik Kanan, Tampilkan Banyak Daftar",rs.getString("pekerjaanpj"),
+                        rs.getString("alamatpj")+", "+rs.getString("kelurahanpj")+", "+rs.getString("kecamatanpj")+", "+rs.getString("kabupatenpj")+", "+rs.getString("propinsipj"),
+                        rs.getString("suku_bangsa"),rs.getString("nama_suku_bangsa"),rs.getString("bahasa_pasien"),rs.getString("nama_bahasa"),
+                        rs.getString("kode_perusahaan"),rs.getString("nama_perusahaan"),rs.getString("nip"),rs.getString("email"),rs.getString("cacat_fisik"),
+                        rs.getString("nama_cacat"),rs.getString("kd_pj"),rs.getString("alamat"),rs.getString("nm_kel"),rs.getString("nm_kec"),
+                        rs.getString("nm_kab"),rs.getString("nm_prop"),rs.getString("alamatpj"),rs.getString("kelurahanpj"),
+                        rs.getString("kecamatanpj"),rs.getString("kabupatenpj"),rs.getString("propinsipj")
                     });
                 }          
             }catch(Exception e){
@@ -9736,48 +9674,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 }
 
                 TTmp.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),5).toString());
-                
-                pscariwilayah=koneksi.prepareStatement(
-                        "select pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.pekerjaanpj,"+
-                        "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj from pasien "+
-                        "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
-                        "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                        "where pasien.no_rkm_medis=?");
-                try {
-                    pscariwilayah.setString(1,tbPasien.getValueAt(tbPasien.getSelectedRow(),1).toString());
-                    rs=pscariwilayah.executeQuery();
-                    if(rs.next()){
-                        Alamat.setText(rs.getString("alamat"));
-                        Propinsi.setText(rs.getString("nm_prop"));
-                        Kabupaten.setText(rs.getString("nm_kab"));
-                        Kecamatan.setText(rs.getString("nm_kec"));
-                        Kelurahan.setText(rs.getString("nm_kel"));
-                        PekerjaanPj.setText(rs.getString("pekerjaanpj"));
-                        AlamatPj.setText(rs.getString("alamatpj"));
-                        KelurahanPj.setText(rs.getString("kelurahanpj"));
-                        KecamatanPj.setText(rs.getString("kecamatanpj"));
-                        KabupatenPj.setText(rs.getString("kabupatenpj"));
-                        PropinsiPj.setText(rs.getString("propinsipj"));
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notofikasi : "+e);
-                } finally{
-                    if(rs != null){
-                        rs.close();
-                    }
-                    
-                    if(pscariwilayah != null){
-                        pscariwilayah.close();
-                    }
-                }
-                            
                 CMbGd.setSelectedItem(tbPasien.getValueAt(tbPasien.getSelectedRow(),9).toString());
                 Pekerjaan.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),10).toString());
                 CmbStts.setSelectedItem(tbPasien.getValueAt(tbPasien.getSelectedRow(),11).toString());
                 cmbAgama.setSelectedItem(tbPasien.getValueAt(tbPasien.getSelectedRow(),12).toString());
                 TTlp.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),14).toString());
                 Saudara.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),18).toString());
-                Sequel.cariIsi("select kd_pj from pasien where no_rkm_medis='"+TNo.getText()+"'",Kdpnj);
                 nmpnj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),19).toString());
                 TNoPeserta.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),20).toString());
                 NmIbu.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),7).toString());
@@ -9801,52 +9703,62 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     case "ANAK":
                         R6.setSelected(true);
                         break;
-                        
-                }                
+                }            
+                PekerjaanPj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),22).toString()); 
+                kdsuku.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),24).toString());
+                nmsukubangsa.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),25).toString());
+                kdbahasa.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),26).toString());
+                nmbahasa.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),27).toString());
+                kdperusahaan.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),28).toString());
+                nmperusahaan.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),29).toString());
+                NIP.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),30).toString());
+                EMail.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),31).toString());
+                kdcacat.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),32).toString());
+                nmcacat.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),33).toString());
+                Kdpnj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),34).toString());
+                Alamat.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),35).toString());
+                Kelurahan.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),36).toString());
+                Kecamatan.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),37).toString());
+                Kabupaten.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),38).toString());
+                Propinsi.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),39).toString());
+                AlamatPj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),40).toString());
+                KelurahanPj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),41).toString());
+                KecamatanPj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),42).toString());
+                KabupatenPj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),43).toString());
+                PropinsiPj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),44).toString());
+
+                chkTNI.setSelected(false);
+                kdgolongantni.setText("");
+                nmgolongantni.setText("");
+                kdsatuantni.setText("");
+                nmsatuantni.setText("");
+                kdpangkattni.setText("");
+                nmpangkattni.setText("");
+                kdjabatantni.setText("");
+                nmjabatantni.setText("");   
+                chkPolri.setSelected(false);
+                kdgolonganpolri.setText("");
+                nmgolonganpolri.setText("");
+                kdsatuanpolri.setText("");
+                nmsatuanpolri.setText("");
+                kdpangkatpolri.setText("");
+                nmpangkatpolri.setText("");
+                kdjabatanpolri.setText("");
+                nmjabatanpolri.setText("");      
+                BtnGolonganPolri.setEnabled(false);
+                BtnSatuanPolri.setEnabled(false);
+                BtnJabatanPolri.setEnabled(false);
+                BtnPangkatPolri.setEnabled(false);
+                BtnGolonganTNI.setEnabled(false);
+                BtnSatuanTNI.setEnabled(false);
+                BtnJabatanTNI.setEnabled(false);
+                BtnPangkatTNI.setEnabled(false);
+
+                Valid.SetTgl(DTPLahir,tbPasien.getValueAt(tbPasien.getSelectedRow(),6).toString());
+                Valid.SetTgl(DTPDaftar,tbPasien.getValueAt(tbPasien.getSelectedRow(),13).toString());  
+                panggilPhoto();
             } catch (Exception ex) {
             }   
-            
-            kdsuku.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),24).toString());
-            nmsukubangsa.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),25).toString());
-            kdbahasa.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),26).toString());
-            nmbahasa.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),27).toString());
-            kdperusahaan.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),28).toString());
-            nmperusahaan.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),29).toString());
-            NIP.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),30).toString());
-            EMail.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),31).toString());
-            kdcacat.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),32).toString());
-            nmcacat.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),33).toString());
-            
-            chkTNI.setSelected(false);
-            kdgolongantni.setText("");
-            nmgolongantni.setText("");
-            kdsatuantni.setText("");
-            nmsatuantni.setText("");
-            kdpangkattni.setText("");
-            nmpangkattni.setText("");
-            kdjabatantni.setText("");
-            nmjabatantni.setText("");   
-            chkPolri.setSelected(false);
-            kdgolonganpolri.setText("");
-            nmgolonganpolri.setText("");
-            kdsatuanpolri.setText("");
-            nmsatuanpolri.setText("");
-            kdpangkatpolri.setText("");
-            nmpangkatpolri.setText("");
-            kdjabatanpolri.setText("");
-            nmjabatanpolri.setText("");      
-            BtnGolonganPolri.setEnabled(false);
-            BtnSatuanPolri.setEnabled(false);
-            BtnJabatanPolri.setEnabled(false);
-            BtnPangkatPolri.setEnabled(false);
-            BtnGolonganTNI.setEnabled(false);
-            BtnSatuanTNI.setEnabled(false);
-            BtnJabatanTNI.setEnabled(false);
-            BtnPangkatTNI.setEnabled(false);
-            
-            Valid.SetTgl(DTPLahir,tbPasien.getValueAt(tbPasien.getSelectedRow(),6).toString());
-            Valid.SetTgl(DTPDaftar,tbPasien.getValueAt(tbPasien.getSelectedRow(),13).toString());  
-            panggilPhoto();
         }
     }
     
@@ -10168,25 +10080,25 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 if(posisitahun.equals("Depan")){
                     switch (pengurutan) {
                         case "Straight":
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(set_no_rkm_medis.no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
                             break;
                         case "Terminal":
-                            Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),5,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                             break;
                         case "Middle":
-                            Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),1,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                             break;
                     }
                 }else if(posisitahun.equals("Belakang")){
                     switch (pengurutan) {
                         case "Straight":
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(set_no_rkm_medis.no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
                             break;
                         case "Terminal":
-                            Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),5,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                             break;
                         case "Middle":
-                            Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),1,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                             break;
                     }            
                 }
@@ -10239,7 +10151,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void panggilPhoto() {
         if(FormPhotoPass.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select gambar,aes_decrypt(password,'windi') as password from personal_pasien where no_rkm_medis=?");
+                ps=koneksi.prepareStatement("select personal_pasien.gambar,aes_decrypt(personal_pasien.password,'windi') as password from personal_pasien where personal_pasien.no_rkm_medis=?");
                 try {
                     ps.setString(1,NoRekamMedisDipilih.getText());
                     rs=ps.executeQuery();
