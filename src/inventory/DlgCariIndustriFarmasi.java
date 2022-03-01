@@ -9,7 +9,7 @@
  * Created on May 23, 2010, 12:57:16 AM
  */
 
-package setting;
+package inventory;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,12 +36,12 @@ import javax.swing.table.TableColumn;
  *
  * @author dosen
  */
-public final class DlgCariRuangOperasi extends javax.swing.JDialog {
+public final class DlgCariIndustriFarmasi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
+    private Connection koneksi=koneksiDB.condb();
     private File file;
     private FileWriter fileWriter;
     private String iyem;
@@ -49,33 +49,39 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
+    
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
-    public DlgCariRuangOperasi(java.awt.Frame parent, boolean modal) {
+    public DlgCariIndustriFarmasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(10,2);
-        setSize(656,250);
-        tabMode=new DefaultTableModel(null,new String[]{"Kode Ruang","Nama Ruang Operasi"}){
+        
+        Object[] row={"Kode I.F.","Industri Farmasi","Alamat Industri Farmasi","Kota","No.Telp"};        
+        tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
-        //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 5; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(500);
+                column.setPreferredWidth(250);
+            }else if(i==2){
+                column.setPreferredWidth(250);
+            }else if(i==3){
+                column.setPreferredWidth(110);
+            }else if(i==4){
+                column.setPreferredWidth(90);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -97,8 +103,8 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
                     }
                 }
             });
-        } 
-    }
+        }
+    }    
 
 
     /** This method is called from within the constructor to
@@ -135,7 +141,7 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ruang Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Industri Farmasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -143,6 +149,7 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
+        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -167,8 +174,9 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi3.add(label9);
 
+        TCari.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(212, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -179,6 +187,7 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('1');
         BtnCari.setToolTipText("Alt+1");
+        BtnCari.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnCari.setName("BtnCari"); // NOI18N
         BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnCari.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +205,7 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('2');
         BtnAll.setToolTipText("2Alt+2");
+        BtnAll.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnAll.setName("BtnAll"); // NOI18N
         BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnAll.addActionListener(new java.awt.event.ActionListener() {
@@ -295,15 +305,14 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
             if(evt.getClickCount()==2){
                 dispose();
             }
-        }
+        }         
 }//GEN-LAST:event_tbKamarMouseClicked
 
     private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
-        if(tabMode.getRowCount()!=0){
+       if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 dispose();
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
-                TCari.setText("");
                 TCari.requestFocus();
             }
         }
@@ -314,15 +323,14 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        //ruangoperasi.setModal(true);
-        DlgRuangOperasi ruangoperasi=new DlgRuangOperasi(null,false);
-        ruangoperasi.emptTeks();
-        ruangoperasi.isCek();
-        ruangoperasi.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-        ruangoperasi.setLocationRelativeTo(internalFrame1);
-        ruangoperasi.setAlwaysOnTop(false);
-        ruangoperasi.setVisible(true);
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKategori nama=new DlgKategori(null,false);
+        nama.emptTeks();
+        nama.isCek();
+        nama.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        nama.setLocationRelativeTo(internalFrame1);
+        nama.setAlwaysOnTop(false);
+        nama.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
         
     }//GEN-LAST:event_BtnTambahActionPerformed
@@ -333,7 +341,7 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/ruangoperasi.iyem")<4){
+            if(Valid.daysOld("./cache/industrifarmasi.iyem")<4){
                 tampil2();
             }else{
                 tampil();
@@ -347,7 +355,7 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgCariRuangOperasi dialog = new DlgCariRuangOperasi(new javax.swing.JFrame(), true);
+            DlgCariIndustriFarmasi dialog = new DlgCariIndustriFarmasi(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -372,20 +380,24 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
     private widget.panelisi panelisi3;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
-
+    
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{   
-            file=new File("./cache/ruangoperasi.iyem");
+        try{  
+            file=new File("./cache/industrifarmasi.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select * from ruang_ok order by nm_ruang_ok");
+            
+            ps=koneksi.prepareStatement("select * from industrifarmasi order by industrifarmasi.nama_industri ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2) });
-                    iyem=iyem+"{\"KodeRuang\":\""+rs.getString(1)+"\",\"NamaRuang\":\""+rs.getString(2).replaceAll("\"","")+"\"},";
+                    //"Kode I.F.","Industri Farmasi","Alamat Industri Farmasi","Kota","No.Telp"
+                    tabMode.addRow(new String[]{
+                        rs.getString("kode_industri"),rs.getString("nama_industri"),rs.getString("alamat"),rs.getString("kota"),rs.getString("no_telp")
+                    });
+                    iyem=iyem+"{\"KodeIF\":\""+rs.getString("kode_industri")+"\",\"NamaIF\":\""+rs.getString("nama_industri")+"\",\"Alamat\":\""+rs.getString("alamat")+"\",\"Kota\":\""+rs.getString("kota")+"\",\"NoTelp\":\""+rs.getString("no_telp")+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -396,12 +408,35 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }    
-            fileWriter.write("{\"ruangoperasi\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            }   
+                
+            fileWriter.write("{\"industrifarmasi\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
             iyem=null;
         }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    private void tampil2() {
+        try {
+            myObj = new FileReader("./cache/industrifarmasi.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("industrifarmasi");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeIF").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaIF").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kota").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            list.path("KodeIF").asText(),list.path("NamaIF").asText(),list.path("Alamat").asText(),list.path("Kota").asText(),list.path("NoTelp").asText()
+                        });
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -416,28 +451,6 @@ public final class DlgCariRuangOperasi extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-       BtnTambah.setEnabled(akses.getruang_ok());
-    }
-    
-    private void tampil2() {
-        try {
-            myObj = new FileReader("./cache/ruangoperasi.iyem");
-            root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
-            response = root.path("ruangoperasi");
-            if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("NamaRuang").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{
-                            list.path("KodeRuang").asText(),list.path("NamaRuang").asText()
-                        });
-                    }
-                }
-            }
-            myObj.close();
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }
-        LCount.setText(""+tabMode.getRowCount());
+        BtnTambah.setEnabled(akses.getindustrifarmasi());
     }
 }

@@ -49,7 +49,7 @@ public class DlgBarang extends javax.swing.JDialog {
     public DlgCariKategori kategori = new DlgCariKategori(null, false);
     public DlgCariGolongan golongan = new DlgCariGolongan(null, false);
     public DlgCariSatuan satuan = new DlgCariSatuan(null, false);
-    public DlgIndustriFarmasi industri=new DlgIndustriFarmasi(null,false);
+    public DlgCariIndustriFarmasi industri=new DlgCariIndustriFarmasi(null,false);
     private DlgCariBangsal bangsal = new DlgCariBangsal(null, false);
     private double totalstok, stokgudang;
     private PreparedStatement ps, ps2, ps3, ps4;

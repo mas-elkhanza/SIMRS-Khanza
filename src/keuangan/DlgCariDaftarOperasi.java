@@ -64,14 +64,10 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
                 "Asisten Op 1","Asisten Op 2","Asisten Op 3","Instrumen","dr Anak","Perawat Resus","dr Anastesi",
                 "Asisten Anast 1","Asisten Anast 2","Bidan 1","Bidan 2","Bidan 3","Perawat Luar","Alat","Sewa OK/VK",
                 "Akomodasi","N.M.S.","Onloop 1","Onloop 2","Onloop 3","Onloop 4","Onloop 5",
-                "Sarpras","dr Pj Anak","dr Umum","Total"
+                "Sarpras","dr Pj Anak","dr Umum","Tarif"
             }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = true;
-                if ((colIndex==1)||(colIndex==2)||(colIndex==3)||(colIndex==29)) {
-                    a=false;
-                }
-                return a;
+                return false;
              }
              Class[] types = new Class[] {
                  java.lang.Object.class,java.lang.Object.class,java.lang.Object.class, java.lang.Double.class, 
@@ -98,11 +94,14 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(350);
             }else if(i==2){
                 column.setPreferredWidth(100);
-            }else{
+            }else if(i==31){
                 column.setPreferredWidth(85);
+            }else{
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
