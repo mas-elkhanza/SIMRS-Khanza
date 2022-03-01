@@ -42,7 +42,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
-import simrskhanza.DlgPasien;
+import simrskhanza.DlgCariPasien;
 
 /**
  *
@@ -61,7 +61,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     private HttpClient http = new HttpClient();
     private GetMethod get;
-    private DlgPasien pasien=new DlgPasien(null,true);
+    private DlgCariPasien pasien=new DlgCariPasien(null,true);
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -117,50 +117,20 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(pasien.getTable().getSelectedRow()!= -1){                   
-                    NoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                    NmPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),2).toString());
-                    Jk.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),4).toString());
-                    TempatLahir.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),5).toString());
-                    TanggalLahir.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),6).toString());
-                    IbuKandung.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),7).toString());
-                    Alamat.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),8).toString());
-                    GD.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),9).toString());
-                    StatusNikah.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),11).toString());
-                    Agama.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),12).toString());
-                    Pendidikan.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),16).toString());
-                    Bahasa.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),27).toString());
-                    CacatFisik.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),33).toString());
+                    NoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
+                    NmPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                    Jk.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),3).toString());
+                    TempatLahir.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),4).toString());
+                    TanggalLahir.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),5).toString());
+                    IbuKandung.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),6).toString());
+                    Alamat.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),7).toString());
+                    GD.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),8).toString());
+                    StatusNikah.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),10).toString());
+                    Agama.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),11).toString());
+                    Pendidikan.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),15).toString());
+                    Bahasa.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),26).toString());
+                    CacatFisik.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),32).toString());
                 }    
-                if(pasien.getTable2().getSelectedRow()!= -1){                   
-                    NoRM.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
-                    NmPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),2).toString());
-                    Jk.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),4).toString());
-                    TempatLahir.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),5).toString());
-                    TanggalLahir.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),6).toString());
-                    IbuKandung.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),7).toString());
-                    Alamat.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),8).toString());
-                    GD.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),9).toString());
-                    StatusNikah.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),11).toString());
-                    Agama.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),12).toString());
-                    Pendidikan.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),16).toString());
-                    Bahasa.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),27).toString());
-                    CacatFisik.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),41).toString());
-                } 
-                if(pasien.getTable3().getSelectedRow()!= -1){                   
-                    NoRM.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
-                    NmPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),2).toString());
-                    Jk.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),4).toString());
-                    TempatLahir.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),5).toString());
-                    TanggalLahir.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),6).toString());
-                    IbuKandung.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),7).toString());
-                    Alamat.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),8).toString());
-                    GD.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),9).toString());
-                    StatusNikah.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),11).toString());
-                    Agama.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),12).toString());
-                    Pendidikan.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),16).toString());
-                    Bahasa.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),27).toString());
-                    CacatFisik.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),41).toString());
-                } 
                 NoRM.requestFocus();
             }
             @Override
@@ -174,32 +144,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        pasien.getTable2().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override

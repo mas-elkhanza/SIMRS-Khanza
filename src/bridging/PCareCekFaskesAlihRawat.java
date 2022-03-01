@@ -37,7 +37,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import simrskhanza.DlgPasien;
+import simrskhanza.DlgCariPasien;
 
 /**
  *
@@ -57,7 +57,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private DlgPasien pasien=new DlgPasien(null,false);
+    private DlgCariPasien pasien=new DlgCariPasien(null,false);
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -118,25 +118,11 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(pasien.getTable().getSelectedRow()!= -1){                   
-                    if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString().equals("")){
+                    if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),19).toString().equals("")){
                         JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
                     }else{
-                        NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString());
+                        NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),19).toString());
                     }                     
-                }  
-                if(pasien.getTable2().getSelectedRow()!= -1){ 
-                    if(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),20).toString().equals("")){
-                        JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
-                    }else{
-                        NoKartu.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),20).toString());
-                    } 
-                }
-                if(pasien.getTable3().getSelectedRow()!= -1){ 
-                    if(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),20).toString().equals("")){
-                        JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
-                    }else{
-                        NoKartu.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),20).toString());
-                    } 
                 }                        
             }
             @Override
@@ -161,32 +147,6 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });   
-        
-        pasien.getTable2().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
-        pasien.getTable3().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  

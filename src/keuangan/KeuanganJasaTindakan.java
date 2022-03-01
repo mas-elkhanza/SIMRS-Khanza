@@ -883,8 +883,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkRalan.isSelected()==true){
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
-                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_lanjut='Ralan' "+
-                        "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                        "(select reg_periksa.kd_poli from reg_periksa where concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
                         " order by poliklinik.nm_poli");
@@ -1434,7 +1433,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
                         "(select reg_periksa.kd_poli from reg_periksa inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and reg_periksa.status_lanjut='Ralan' "+
+                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
@@ -1995,7 +1994,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
                         "(select reg_periksa.kd_poli from reg_periksa inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' and reg_periksa.status_lanjut='Ralan' "+
+                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
@@ -2555,8 +2554,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkRalan.isSelected()==true){
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
-                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_lanjut='Ralan' "+
-                        "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) "+
+                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
@@ -3111,7 +3109,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkRalan.isSelected()==true){
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
-                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_bayar='Belum Bayar' and reg_periksa.status_lanjut='Ralan' "+
+                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_bayar='Belum Bayar' "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
@@ -3662,8 +3660,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkRalan.isSelected()==true){
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
-                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_lanjut='Ralan' "+
-                        "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
+                        "(select reg_periksa.kd_poli from reg_periksa where concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
                         " order by poliklinik.nm_poli");
@@ -4213,7 +4210,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
                         "(select reg_periksa.kd_poli from reg_periksa inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and reg_periksa.status_lanjut='Ralan' "+
+                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
@@ -4774,7 +4771,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
                         "(select reg_periksa.kd_poli from reg_periksa inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' and reg_periksa.status_lanjut='Ralan' "+
+                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Lunas' "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
@@ -5334,8 +5331,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkRalan.isSelected()==true){
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
-                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_lanjut='Ralan' "+
-                        "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) "+
+                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+
@@ -5890,7 +5886,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkRalan.isSelected()==true){
                 ps=koneksi.prepareStatement(
                         "select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli in "+
-                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_bayar='Belum Bayar' and reg_periksa.status_lanjut='Ralan' "+
+                        "(select reg_periksa.kd_poli from reg_periksa where reg_periksa.status_bayar='Belum Bayar' "+
                         "and concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? "+
                         (NmCaraBayar.getText().trim().equals("")?"":" and reg_periksa.kd_pj='"+KdCaraBayar.getText()+"' ")+
                         "group by reg_periksa.kd_poli) "+

@@ -626,7 +626,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        rawatinap.pasien.penjab.addWindowListener(new WindowListener() {
+        beriobat.pasien.penjab.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -634,9 +634,9 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
-                    if(rawatinap.pasien.penjab.getTable().getSelectedRow()!= -1){
-                        kdpenjab.setText(rawatinap.pasien.penjab.getTable().getValueAt(rawatinap.pasien.penjab.getTable().getSelectedRow(),1).toString());
-                        nmpenjab.setText(rawatinap.pasien.penjab.getTable().getValueAt(rawatinap.pasien.penjab.getTable().getSelectedRow(),2).toString());
+                    if(beriobat.pasien.penjab.getTable().getSelectedRow()!= -1){
+                        kdpenjab.setText(beriobat.pasien.penjab.getTable().getValueAt(beriobat.pasien.penjab.getTable().getSelectedRow(),1).toString());
+                        nmpenjab.setText(beriobat.pasien.penjab.getTable().getValueAt(beriobat.pasien.penjab.getTable().getSelectedRow(),2).toString());
                     } 
                     kdpenjab.requestFocus();
                 }
@@ -651,14 +651,14 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        rawatinap.pasien.penjab.getTable().addKeyListener(new KeyListener() {
+        beriobat.pasien.penjab.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        rawatinap.pasien.penjab.dispose();
+                        beriobat.pasien.penjab.dispose();
                     }
                 }
             }
@@ -3555,11 +3555,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
         akses.setform("DLgBilingRanap");
-        rawatinap.pasien.penjab.isCek();
-        rawatinap.pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        rawatinap.pasien.penjab.setLocationRelativeTo(internalFrame1);
-        rawatinap.pasien.penjab.setAlwaysOnTop(false);
-        rawatinap.pasien.penjab.setVisible(true);
+        beriobat.pasien.penjab.isCek();
+        beriobat.pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        beriobat.pasien.penjab.setLocationRelativeTo(internalFrame1);
+        beriobat.pasien.penjab.setAlwaysOnTop(false);
+        beriobat.pasien.penjab.setVisible(true);
     }//GEN-LAST:event_btnPenjabActionPerformed
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed

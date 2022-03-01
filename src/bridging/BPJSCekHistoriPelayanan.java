@@ -34,7 +34,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import simrskhanza.DlgPasien;
+import simrskhanza.DlgCariPasien;
 
 /**
  *
@@ -44,7 +44,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private int i=0;
-    private DlgPasien pasien=new DlgPasien(null,false);
+    private DlgCariPasien pasien=new DlgCariPasien(null,false);
     private ApiBPJS api=new ApiBPJS();
     private String URL="",link="",utc="";
     private HttpHeaders headers ;
@@ -115,10 +115,10 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(pasien.getTable().getSelectedRow()!= -1){                   
-                    if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString().equals("")){
+                    if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),19).toString().equals("")){
                         JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
                     }else{
-                        NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString());
+                        NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),19).toString());
                     }                            
                 }  
             }

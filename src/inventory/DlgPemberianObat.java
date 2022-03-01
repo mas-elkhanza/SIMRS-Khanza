@@ -59,7 +59,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     public  DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
     public  DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
     private riwayatobat Trackobat=new riwayatobat();
-    private DlgPasien pasien=new DlgPasien(null,false);
+    public DlgPasien pasien=new DlgPasien(null,false);
     private String bangsal="",lokasi="",tgl="",pas="",sql="",status="";
     private PreparedStatement ps,psrekening;
     private ResultSet rs,rsrekening;
