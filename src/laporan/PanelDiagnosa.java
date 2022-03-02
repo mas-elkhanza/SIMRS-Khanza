@@ -6,11 +6,11 @@
 package laporan;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -26,8 +26,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import laporan.DlgICD9;
-import laporan.DlgPenyakit;
 
 /**
  *
@@ -1016,14 +1014,14 @@ public class PanelDiagnosa extends widget.panelisi {
                             "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
                             "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
                             "pasien.no_rkm_medis='"+norm+"' and diagnosa_pasien.kd_penyakit='"+tbDiagnosa.getValueAt(i,1).toString()+"'")>0){
-                        Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{
+                        Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?,?","Penyakit",6,new String[]{
                             norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
-                            Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Lama"
+                            Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Lama",tbDiagnosa.getValueAt(i,2).toString()
                         });
                     }else{
-                        Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{
+                        Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?,?","Penyakit",6,new String[]{
                             norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
-                            Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Baru"
+                            Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Baru",tbDiagnosa.getValueAt(i,2).toString()
                         });
                     }                            
                 }                    
