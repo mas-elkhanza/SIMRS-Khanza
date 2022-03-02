@@ -693,6 +693,7 @@ import rekammedis.MasterImunisasi;
 import rekammedis.MasterMasalahKeperawatan;
 import rekammedis.MasterMasalahKeperawatanAnak;
 import rekammedis.MasterMasalahKeperawatanGigi;
+import rekammedis.MasterMasalahKeperawatanIGD;
 import rekammedis.MasterMasalahKeperawatanMata;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
@@ -18156,6 +18157,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterMasalahKeperawatanIGDActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMasalahKeperawatanIGD form=new MasterMasalahKeperawatanIGD(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18793,7 +18806,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
-            btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal;
+            btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD;
     
     public void isWall(){
         try{            
@@ -21628,6 +21641,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_masalah_keperawatan_mata()==true){
                 Panelmenu.add(btnMasterMasalahKeperawatanMata);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_masalah_keperawatan_igd()==true){
+                Panelmenu.add(btnMasterMasalahKeperawatanIGD);
                 jmlmenu++;
             }
             
@@ -25587,6 +25605,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmaster_masalah_keperawatan_mata()==true){
             Panelmenu.add(btnMasterMasalahKeperawatanMata);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_masalah_keperawatan_igd()==true){
+            Panelmenu.add(btnMasterMasalahKeperawatanIGD);
             jmlmenu++;
         }
 
@@ -30625,6 +30648,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_masalah_keperawatan_igd()==true){
+            if(btnMasterMasalahKeperawatanIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMasalahKeperawatanIGD);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmaster_imunisasi()==true){
             if(btnMasterImunisasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterImunisasi);
@@ -35022,6 +35052,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanBiayaObatPasienPerTanggal.setName("btnRingkasanBiayaObatPasienPerTanggal");
         btnRingkasanBiayaObatPasienPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanBiayaObatPasienPerTanggal.addActionListener(this::btnRingkasanBiayaObatPasienPerTanggalActionPerformed);
+        
+        btnMasterMasalahKeperawatanIGD = new widget.ButtonBig();
+        btnMasterMasalahKeperawatanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_30-Doctor_5929214.png"))); 
+        btnMasterMasalahKeperawatanIGD.setText("Master Masalah Keperawatan IGD");
+        btnMasterMasalahKeperawatanIGD.setIconTextGap(0);
+        btnMasterMasalahKeperawatanIGD.setName("btnMasterMasalahKeperawatanIGD"); 
+        btnMasterMasalahKeperawatanIGD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterMasalahKeperawatanIGD.addActionListener(this::btnMasterMasalahKeperawatanIGDActionPerformed);
     }
     
 }

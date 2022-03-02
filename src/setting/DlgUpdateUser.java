@@ -539,152 +539,153 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 });
             }
             
-            ps=koneksi.prepareStatement("select penyakit, obat_penyakit, dokter, jadwal_praktek, petugas, pasien, registrasi, tindakan_ralan,"+
-                        "kamar_inap, tindakan_ranap, operasi, rujukan_keluar, rujukan_masuk, beri_obat, resep_pulang, "+
-                        "pasien_meninggal, diet_pasien, kelahiran_bayi, periksa_lab, periksa_radiologi, kasir_ralan, "+
-                        "deposit_pasien, piutang_pasien, peminjaman_berkas, barcode, presensi_harian, presensi_bulanan, "+
-                        "pegawai_admin, pegawai_user, suplier, satuan_barang, konversi_satuan, jenis_barang, obat, "+
-                        "stok_opname_obat, stok_obat_pasien, pengadaan_obat, pemesanan_obat, penjualan_obat, piutang_obat, "+
-                        "retur_ke_suplier, retur_dari_pembeli, retur_obat_ranap, retur_piutang_pasien, keuntungan_penjualan, "+
-                        "keuntungan_beri_obat, sirkulasi_obat, ipsrs_barang, ipsrs_pengadaan_barang, ipsrs_stok_keluar, "+
-                        "ipsrs_rekap_pengadaan, ipsrs_rekap_stok_keluar, ipsrs_pengeluaran_harian, inventaris_jenis, "+
-                        "inventaris_kategori, inventaris_merk, inventaris_ruang, inventaris_produsen, inventaris_koleksi,"+
-                        "inventaris_inventaris, inventaris_sirkulasi, parkir_jenis, parkir_in, parkir_out, parkir_rekap_harian, "+
-                        "parkir_rekap_bulanan, informasi_kamar, harian_tindakan_poli, obat_per_poli, obat_per_kamar, "+
-                        "obat_per_dokter_ralan, obat_per_dokter_ranap, harian_dokter, bulanan_dokter, harian_paramedis,"+
-                        "bulanan_paramedis, pembayaran_ralan, pembayaran_ranap, rekap_pembayaran_ralan, rekap_pembayaran_ranap,"+
-                        "tagihan_masuk, tambahan_biaya, potongan_biaya, resep_obat, resume_pasien, penyakit_ralan, penyakit_ranap, "+
-                        "kamar, tarif_ralan, tarif_ranap, tarif_lab, tarif_radiologi, tarif_operasi, akun_rekening, rekening_tahun, "+
-                        "posting_jurnal, buku_besar, cashflow, keuangan, pengeluaran, setup_pjlab, setup_otolokasi, setup_jam_kamin, "+
-                        "setup_embalase, tracer_login, display, set_harga_obat, set_penggunaan_tarif, set_oto_ralan, biaya_harian, "+
-                        "biaya_masuk_sekali, set_no_rm, billing_ralan, billing_ranap, jm_ranap_dokter, igd, barcoderalan, barcoderanap, "+
-                        "set_harga_obat_ralan,set_harga_obat_ranap,penyakit_pd3i,surveilans_pd3i,surveilans_ralan,diagnosa_pasien, "+
-                        "surveilans_ranap,pny_takmenular_ranap,pny_takmenular_ralan,kunjungan_ralan,rl32,rl33,rl37,rl38,harian_tindakan_dokter,sms, "+
-                        "sidikjari,jam_masuk,jadwal_pegawai,parkir_barcode,set_nota,dpjp_ranap,mutasi_barang,rl34,rl36,"+
-                        "fee_visit_dokter,fee_bacaan_ekg,fee_rujukan_rontgen,fee_rujukan_ranap,fee_ralan,akun_bayar,bayar_pemesanan_obat,"+
-                        "obat_per_dokter_peresep,ipsrs_jenis_barang,pemasukan_lain,pengaturan_rekening,closing_kasir,keterlambatan_presensi,"+
-                        "set_harga_kamar,rekap_per_shift,bpjs_cek_nik,bpjs_cek_kartu,bpjs_cek_riwayat,obat_per_cara_bayar,kunjungan_ranap,"+
-                        "bayar_piutang,payment_point,bpjs_cek_nomor_rujukan,icd9,darurat_stok,retensi_rm,temporary_presensi,jurnal_harian, "+
-                        "sirkulasi_obat2,edit_registrasi,bpjs_referensi_diagnosa,bpjs_referensi_poli,industrifarmasi,harian_js,bulanan_js,"+
-                        "harian_paket_bhp,bulanan_paket_bhp,piutang_pasien2,bpjs_referensi_faskes,bpjs_sep,pengambilan_utd,tarif_utd, "+
-                        "pengambilan_utd2,utd_medis_rusak,pengambilan_penunjang_utd,pengambilan_penunjang_utd2,utd_penunjang_rusak,"+
-                        "suplier_penunjang,utd_donor,bpjs_monitoring_klaim,utd_cekal_darah,utd_komponen_darah,utd_stok_darah, "+
-                        "utd_pemisahan_darah,harian_kamar,rincian_piutang_pasien,keuntungan_beri_obat_nonpiutang,reklasifikasi_ralan, "+
-                        "reklasifikasi_ranap,utd_penyerahan_darah,hutang_obat,riwayat_obat_alkes_bhp,sensus_harian_poli,rl4a,aplicare_referensi_kamar, "+
-                        "aplicare_ketersediaan_kamar,inacbg_klaim_baru_otomatis,inacbg_klaim_baru_manual,inacbg_coder_nik,mutasi_berkas, "+
-                        "akun_piutang,harian_kso,bulanan_kso,harian_menejemen,bulanan_menejemen,inhealth_cek_eligibilitas,inhealth_referensi_jenpel_ruang_rawat, "+
-                        "inhealth_referensi_poli,inhealth_referensi_faskes,inhealth_sjp,piutang_ralan,piutang_ranap,detail_piutang_penjab, "+
-                        "lama_pelayanan_ralan,catatan_pasien,rl4b,rl4asebab,rl4bsebab,data_HAIs,harian_HAIs,bulanan_HAIs,hitung_bor,perusahaan_pasien, "+
-                        "resep_dokter,lama_pelayanan_apotek,hitung_alos,detail_tindakan,rujukan_poli_internal,rekap_poli_anak,grafik_kunjungan_poli, "+
-                        "grafik_kunjungan_perdokter,grafik_kunjungan_perpekerjaan,grafik_kunjungan_perpendidikan,grafik_kunjungan_pertahun,"+
-                        "berkas_digital_perawatan,penyakit_menular_ranap,penyakit_menular_ralan,grafik_kunjungan_perbulan,grafik_kunjungan_pertanggal, "+
-                        "grafik_kunjungan_demografi,grafik_kunjungan_statusdaftartahun,grafik_kunjungan_statusdaftartahun2, "+
-                        "grafik_kunjungan_statusdaftarbulan,grafik_kunjungan_statusdaftarbulan2,grafik_kunjungan_statusdaftartanggal,"+
-                        "grafik_kunjungan_statusdaftartanggal2,grafik_kunjungan_statusbataltahun,grafik_kunjungan_statusbatalbulan,"+
-                        "pcare_cek_penyakit,grafik_kunjungan_statusbataltanggal,kategori_barang,golongan_barang,pemberian_obat_pertanggal,"+
-                        "penjualan_obat_pertanggal,pcare_cek_kesadaran,pembatalan_periksa_dokter,pembayaran_per_unit,rekap_pembayaran_per_unit, "+
-                        "grafik_kunjungan_percarabayar,ipsrs_pengadaan_pertanggal,ipsrs_stokkeluar_pertanggal,grafik_kunjungan_ranaptahun,"+
-                        "pcare_cek_rujukan,grafik_lab_ralantahun,grafik_rad_ralantahun,cek_entry_ralan,inacbg_klaim_baru_manual2,"+
-                        "permintaan_medis,rekap_permintaan_medis,surat_pemesanan_medis,permintaan_non_medis,rekap_permintaan_non_medis, "+
-                        "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat,bpjs_cek_dokter, "+
-                        "bpjs_cek_spesialistik,bpjs_cek_ruangrawat,bpjs_cek_carakeluar,bpjs_cek_pasca_pulang,detail_tindakan_okvk, "+
-                        "billing_parsial,bpjs_cek_nomor_rujukan_rs,bpjs_cek_rujukan_kartu_pcare,bpjs_cek_rujukan_kartu_rs,akses_depo_obat,"+
-                        "bpjs_rujukan_keluar,grafik_lab_ralanbulan,pengeluaran_stok_apotek,grafik_rad_ralanbulan,detailjmdokter2,"+
-                        "pengaduan_pasien,grafik_lab_ralanhari,grafik_rad_ralanhari,sensus_harian_ralan,metode_racik,pembayaran_akun_bayar, "+
-                        "pengguna_obat_resep,rekap_pemesanan,master_berkas_pegawai,berkas_kepegawaian,riwayat_jabatan,riwayat_pendidikan,"+
-                        "riwayat_naik_gaji,kegiatan_ilmiah,riwayat_penghargaan,riwayat_penelitian,penerimaan_non_medis,bayar_pesan_non_medis,"+
-                        "hutang_barang_non_medis,rekap_pemesanan_non_medis,insiden_keselamatan,insiden_keselamatan_pasien,grafik_ikp_pertahun,"+
-                        "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis,grafik_ikp_dampak,"+
-                        "piutang_akun_piutang,grafik_kunjungan_per_agama,grafik_kunjungan_per_umur,suku_bangsa,bahasa_pasien,"+
-                        "golongan_tni,satuan_tni,jabatan_tni,pangkat_tni,golongan_polri,satuan_polri,jabatan_polri,pangkat_polri, "+
-                        "cacat_fisik,grafik_kunjungan_suku,grafik_kunjungan_bahasa,booking_operasi,mapping_poli_bpjs,grafik_kunjungan_per_cacat, "+
-                        "barang_cssd,skdp_bpjs,booking_registrasi,bpjs_cek_propinsi,bpjs_cek_kabupaten,bpjs_cek_kecamatan, "+
-                        "bpjs_cek_dokterdpjp,bpjs_cek_riwayat_rujukanrs,bpjs_cek_tanggal_rujukan,permintaan_lab,permintaan_radiologi, "+
-                        "surat_indeks,surat_map,surat_almari,surat_rak,surat_ruang,surat_klasifikasi,surat_status,surat_sifat,surat_balas,"+
-                        "surat_masuk,pcare_cek_dokter,pcare_cek_poli,pcare_cek_provider,pcare_cek_statuspulang,pcare_cek_spesialis,"+
-                        "pcare_cek_subspesialis,pcare_cek_sarana,pcare_cek_khusus,pcare_cek_obat,pcare_cek_tindakan,"+
-                        "pcare_cek_faskessubspesialis,pcare_cek_faskesalihrawat,pcare_cek_faskesthalasemia,pcare_mapping_obat,"+
-                        "pcare_mapping_tindakan,pcare_club_prolanis,pcare_mapping_poli,pcare_kegiatan_kelompok,pcare_mapping_tindakan_ranap,"+
-                        "pcare_peserta_kegiatan_kelompok,sirkulasi_obat3,bridging_pcare_daftar,pcare_mapping_dokter,"+
-                        "ranap_per_ruang,penyakit_ranap_cara_bayar,anggota_militer_dirawat,set_input_parsial,lama_pelayanan_radiologi, "+
-                        "lama_pelayanan_lab,bpjs_cek_sep,catatan_perawatan,surat_keluar,kegiatan_farmasi,stok_opname_logistik,"+
-                        "sirkulasi_non_medis,rekap_lab_pertahun,perujuk_lab_pertahun,rekap_radiologi_pertahun,perujuk_radiologi_pertahun,"+
-                        "jumlah_porsi_diet,jumlah_macam_diet,payment_point2,pembayaran_akun_bayar2,hapus_nota_salah,"+
-                        "pengkajian_askep,hais_perbangsal,ppn_obat,saldo_akun_perbulan,display_apotek,sisrute_referensi_faskes,"+
-                        "sisrute_referensi_alasanrujuk,sisrute_referensi_diagnosa,sisrute_rujukan_masuk,sisrute_rujukan_keluar,"+
-                        "bpjs_cek_skdp,data_batch,kunjungan_permintaan_lab,kunjungan_permintaan_lab2,kunjungan_permintaan_radiologi,"+
-                        "kunjungan_permintaan_radiologi2,pcare_pemberian_obat,pcare_pemberian_tindakan,pembayaran_akun_bayar3,"+
-                        "password_asuransi,kemenkes_sitt,siranap_ketersediaan_kamar,grafik_tb_periodelaporan,grafik_tb_rujukan,"+
-                        "grafik_tb_riwayat,grafik_tb_tipediagnosis,grafik_tb_statushiv,grafik_tb_skoringanak,grafik_tb_konfirmasiskoring5,"+
-                        "grafik_tb_konfirmasiskoring6,grafik_tb_sumberobat,grafik_tb_hasilakhirpengobatan,grafik_tb_hasilteshiv,"+
-                        "kadaluarsa_batch,sisa_stok,obat_per_resep,pemakaian_air_pdam,limbah_b3_medis,grafik_air_pdam_pertanggal,"+
-                        "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik,"+
-                        "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah,pest_control,ruang_perpustakaan,"+
-                        "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"+
-                        "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
-                        "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
-                        "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
-                        "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
-                        "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"+
-                        "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun,"+
-                        "sekrining_rawat_jalan,bpjs_histori_pelayanan,rekap_mutasi_berkas,skrining_ralan_pernapasan_pertahun,pengajuan_barang_medis,"+
-                        "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"+
-                        "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"+
-                        "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap,kip_pasien_ranap,"+
-                        "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase_igd,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
-                        "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet,"+
-                        "daftar_pasien_ranap,daftar_pasien_ranaptni,pengajuan_asetinventaris,item_apotek_jenis,item_apotek_kategori,"+
-                        "item_apotek_golongan,item_apotek_industrifarmasi,10_obat_terbanyak_poli,grafik_pengajuan_aset_urgensi,"+
-                        "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen,rekap_pengajuan_aset_departemen,grafik_kelompok_jabatanpegawai,"+
-                        "grafik_resiko_kerjapegawai,grafik_emergency_indexpegawai,grafik_inventaris_ruang,harian_HAIs2,grafik_inventaris_jenis,"+
-                        "data_resume_pasien,perkiraan_biaya_ranap,rekap_obat_poli,rekap_obat_pasien,permintaan_perbaikan_inventaris,grafik_HAIs_pasienbangsal,"+
-                        "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk,grafik_HAIs_laju_ilo,"+
-                        "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan,inhealth_mapping_tindakan_ranap,"+
-                        "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"+
-                        "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis,monitoring_asuhan_gizi,"+
-                        "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
-                        "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
-                        "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"+
-                        "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"+
-                        "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"+
-                        "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"+
-                        "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa,toko_sirkulasi,toko_retur_jual,toko_retur_piutang,"+
-                        "toko_sirkulasi2,toko_keuntungan_barang,zis_pengeluaran_penerima_dankes,zis_penghasilan_penerima_dankes,"+
-                        "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes,zis_atap_rumah_penerima_dankes,"+
-                        "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes,zis_dapur_rumah_penerima_dankes,zis_kursi_rumah_penerima_dankes,"+
-                        "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
-                        "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
-                        "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid,pemakaian_air_tanah,"+
-                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli,hemodialisa,laporan_tahunan_irj,"+
-                        "grafik_harian_hemodialisa,grafik_bulanan_hemodialisa,grafik_tahunan_hemodialisa,grafik_bulanan_meninggal,"+
-                        "perbaikan_inventaris,surat_cuti_hamil,permintaan_stok_obat_pasien,pemeliharaan_inventaris,klasifikasi_pasien_ranap,"+
-                        "bulanan_klasifikasi_pasien_ranap,harian_klasifikasi_pasien_ranap,klasifikasi_pasien_perbangsal,soap_perawatan,"+
-                        "klaim_rawat_jalan,skrining_gizi,lama_penyiapan_rm,dosis_radiologi,demografi_umur_kunjungan,jam_diet_pasien,"+
-                        "rvu_bpjs,verifikasi_penerimaan_farmasi,verifikasi_penerimaan_logistik,pemeriksaan_lab_pa,ringkasan_pengajuan_obat,"+
-                        "ringkasan_pemesanan_obat,ringkasan_pengadaan_obat,ringkasan_penerimaan_obat,ringkasan_hibah_obat,ringkasan_penjualan_obat,"+
-                        "ringkasan_beri_obat,ringkasan_piutang_obat,ringkasan_stok_keluar_obat,ringkasan_retur_suplier_obat,ringkasan_retur_pembeli_obat,"+
-                        "penilaian_awal_keperawatan_ranapkebidanan,ringkasan_pengajuan_nonmedis,ringkasan_pemesanan_nonmedis,ringkasan_pengadaan_nonmedis,"+
-                        "ringkasan_penerimaan_nonmedis,ringkasan_stokkeluar_nonmedis,ringkasan_returbeli_nonmedis,omset_penerimaan,validasi_penagihan_piutang,"+
-                        "permintaan_ranap,bpjs_diagnosa_prb,bpjs_obat_prb,bpjs_surat_kontrol,penggunaan_bhp_ok,surat_keterangan_rawat_inap,"+
-                        "surat_keterangan_sehat,pendapatan_per_carabayar,akun_host_to_host_bank_jateng,pembayaran_bank_jateng,bpjs_surat_pri,"+
-                        "ringkasan_tindakan,lama_pelayanan_pasien,surat_sakit_pihak_2,tagihan_hutang_obat,referensi_mobilejkn_bpjs,batal_pendaftaran_mobilejkn_bpjs,"+
-                        "lama_operasi,grafik_inventaris_kategori,grafik_inventaris_merk,grafik_inventaris_produsen,pengembalian_deposit_pasien,"+
-                        "validasi_tagihan_hutang_obat,piutang_obat_belum_lunas,integrasi_briapi,pengadaan_aset_inventaris,akun_aset_inventaris,"+
-                        "suplier_inventaris,penerimaan_aset_inventaris,bayar_pemesanan_iventaris,hutang_aset_inventaris,hibah_aset_inventaris,"+
-                        "titip_faktur_non_medis,validasi_tagihan_non_medis,titip_faktur_aset,validasi_tagihan_aset,hibah_non_medis,pcare_alasan_tacc,"+
-                        "resep_luar,surat_bebas_tbc,surat_buta_warna,surat_bebas_tato,surat_kewaspadaan_kesehatan,grafik_porsidiet_pertanggal,"+
-                        "grafik_porsidiet_perbulan,grafik_porsidiet_pertahun,grafik_porsidiet_perbangsal,penilaian_awal_medis_ralan,"+
-                        "master_masalah_keperawatan_mata,penilaian_awal_keperawatan_mata,penilaian_awal_medis_ranap,penilaian_awal_medis_ranap_kebidanan,"+
-                        "penilaian_awal_medis_ralan_kebidanan,penilaian_awal_medis_igd,penilaian_awal_medis_ralan_anak,bpjs_referensi_poli_hfis,"+
-                        "bpjs_referensi_dokter_hfis,bpjs_referensi_jadwal_hfis,penilaian_fisioterapi,bpjs_program_prb,bpjs_suplesi_jasaraharja,"+
-                        "bpjs_data_induk_kecelakaan,bpjs_sep_internal,bpjs_klaim_jasa_raharja,bpjs_daftar_finger_print,bpjs_rujukan_khusus,"+
-                        "pemeliharaan_gedung,grafik_perbaikan_inventaris_pertanggal,grafik_perbaikan_inventaris_perbulan,grafik_perbaikan_inventaris_pertahun,"+
-                        "grafik_perbaikan_inventaris_perpelaksana_status,penilaian_mcu,peminjam_piutang,piutang_lainlain,cara_bayar,audit_kepatuhan_apd,bpjs_task_id,"+
-                        "bayar_piutang_lain,pembayaran_akun_bayar4,stok_akhir_farmasi_pertanggal,riwayat_kamar_pasien,uji_fungsi_kfr,hapus_berkas_digital_perawatan,"+
-                        "kategori_pengeluaran_harian,kategori_pemasukan_lain,pembayaran_akun_bayar5,ruang_ok,telaah_resep,jasa_tindakan_pasien,"+
-                        "permintaan_resep_pulang,rekap_jm_dokter,status_data_rm,ubah_petugas_lab_pk,ubah_petugas_lab_pa,ubah_petugas_radiologi,"+
-                        "gabung_norawat,gabung_rm,ringkasan_biaya_obat_pasien_pertanggal from user where id_user=AES_ENCRYPT(?,'nur')");
+            ps=koneksi.prepareStatement(
+                "select user.penyakit,user.obat_penyakit,user.dokter,"+
+                "user.jadwal_praktek,user.petugas,user.pasien,user.registrasi,user.tindakan_ralan,user.kamar_inap,user.tindakan_ranap,user.operasi,"+
+                "user.rujukan_keluar,user.rujukan_masuk,user.beri_obat,user.resep_pulang,user.pasien_meninggal,user.diet_pasien,user.kelahiran_bayi,"+
+                "user.periksa_lab,user.periksa_radiologi,user.kasir_ralan,user.deposit_pasien,user.piutang_pasien,user.peminjaman_berkas,user.barcode,"+
+                "user.presensi_harian,user.presensi_bulanan,user.pegawai_admin,user.pegawai_user,user.suplier,user.satuan_barang,user.konversi_satuan,"+
+                "user.jenis_barang,user.obat,user.stok_opname_obat,user.stok_obat_pasien,user.pengadaan_obat,user.pemesanan_obat,user.penjualan_obat,"+
+                "user.piutang_obat,user.retur_ke_suplier,user.retur_dari_pembeli,user.retur_obat_ranap,user.retur_piutang_pasien,user.keuntungan_penjualan,"+
+                "user.keuntungan_beri_obat,user.sirkulasi_obat,user.ipsrs_barang,user.ipsrs_pengadaan_barang,user.ipsrs_stok_keluar,user.ipsrs_rekap_pengadaan,"+
+                "user.ipsrs_rekap_stok_keluar,user.ipsrs_pengeluaran_harian,user.inventaris_jenis,user.inventaris_kategori,user.inventaris_merk,"+
+                "user.inventaris_ruang,user.inventaris_produsen,user.inventaris_koleksi,user.inventaris_inventaris,user.inventaris_sirkulasi,user.parkir_jenis,"+
+                "user.parkir_in,user.parkir_out,user.parkir_rekap_harian,user.parkir_rekap_bulanan,user.informasi_kamar,user.harian_tindakan_poli,"+
+                "user.obat_per_poli,user.obat_per_kamar,user.obat_per_dokter_ralan,user.obat_per_dokter_ranap,user.harian_dokter,user.bulanan_dokter,"+
+                "user.harian_paramedis,user.bulanan_paramedis,user.pembayaran_ralan,user.pembayaran_ranap,user.rekap_pembayaran_ralan,user.rekap_pembayaran_ranap,"+
+                "user.tagihan_masuk,user.tambahan_biaya,user.potongan_biaya,user.resep_obat,user.resume_pasien,user.penyakit_ralan,user.penyakit_ranap,user.kamar,"+
+                "user.tarif_ralan,user.tarif_ranap,user.tarif_lab,user.tarif_radiologi,user.tarif_operasi,user.akun_rekening,user.rekening_tahun,"+
+                "user.posting_jurnal,user.buku_besar,user.cashflow,user.keuangan,user.pengeluaran,user.setup_pjlab,user.setup_otolokasi,user.setup_jam_kamin,"+
+                "user.setup_embalase,user.tracer_login,user.display,user.set_harga_obat,user.set_penggunaan_tarif,user.set_oto_ralan,user.biaya_harian,"+
+                "user.biaya_masuk_sekali,user.set_no_rm,user.billing_ralan,user.billing_ranap,user.jm_ranap_dokter,user.igd,user.barcoderalan,user.barcoderanap,"+
+                "user.set_harga_obat_ralan,user.set_harga_obat_ranap,user.penyakit_pd3i,user.surveilans_pd3i,user.surveilans_ralan,user.diagnosa_pasien,"+
+                "user.surveilans_ranap,user.pny_takmenular_ranap,user.pny_takmenular_ralan,user.kunjungan_ralan,user.rl32,user.rl33,user.rl37,user.rl38,"+
+                "user.harian_tindakan_dokter,user.sms,user.sidikjari,user.jam_masuk,user.jadwal_pegawai,user.parkir_barcode,user.set_nota,user.dpjp_ranap,"+
+                "user.mutasi_barang,user.rl34,user.rl36,user.fee_visit_dokter,user.fee_bacaan_ekg,user.fee_rujukan_rontgen,user.fee_rujukan_ranap,"+
+                "user.fee_ralan,user.akun_bayar,user.bayar_pemesanan_obat,user.obat_per_dokter_peresep,user.ipsrs_jenis_barang,user.pemasukan_lain,"+
+                "user.pengaturan_rekening,user.closing_kasir,user.keterlambatan_presensi,user.set_harga_kamar,user.rekap_per_shift,user.bpjs_cek_nik,"+
+                "user.bpjs_cek_kartu,user.bpjs_cek_riwayat,user.obat_per_cara_bayar,user.kunjungan_ranap,user.bayar_piutang,user.payment_point,"+
+                "user.bpjs_cek_nomor_rujukan,user.icd9,user.darurat_stok,user.retensi_rm,user.temporary_presensi,user.jurnal_harian,user.sirkulasi_obat2,"+
+                "user.edit_registrasi,user.bpjs_referensi_diagnosa,user.bpjs_referensi_poli,user.industrifarmasi,user.harian_js,user.bulanan_js,"+
+                "user.harian_paket_bhp,user.bulanan_paket_bhp,user.piutang_pasien2,user.bpjs_referensi_faskes,user.bpjs_sep,user.pengambilan_utd,"+
+                "user.tarif_utd,user.pengambilan_utd2,user.utd_medis_rusak,user.pengambilan_penunjang_utd,user.pengambilan_penunjang_utd2,user.utd_penunjang_rusak,"+
+                "user.suplier_penunjang,user.utd_donor,user.bpjs_monitoring_klaim,user.utd_cekal_darah,user.utd_komponen_darah,user.utd_stok_darah,"+
+                "user.utd_pemisahan_darah,user.harian_kamar,user.rincian_piutang_pasien,user.keuntungan_beri_obat_nonpiutang,user.reklasifikasi_ralan,"+
+                "user.reklasifikasi_ranap,user.utd_penyerahan_darah,user.hutang_obat,user.riwayat_obat_alkes_bhp,user.sensus_harian_poli,user.rl4a,"+
+                "user.aplicare_referensi_kamar,user.aplicare_ketersediaan_kamar,user.inacbg_klaim_baru_otomatis,user.inacbg_klaim_baru_manual,"+
+                "user.inacbg_coder_nik,user.mutasi_berkas,user.akun_piutang,user.harian_kso,user.bulanan_kso,user.harian_menejemen,user.bulanan_menejemen,"+
+                "user.inhealth_cek_eligibilitas,user.inhealth_referensi_jenpel_ruang_rawat,user.inhealth_referensi_poli,user.inhealth_referensi_faskes,"+
+                "user.inhealth_sjp,user.piutang_ralan,user.piutang_ranap,user.detail_piutang_penjab,user.lama_pelayanan_ralan,user.catatan_pasien,"+
+                "user.rl4b,user.rl4asebab,user.rl4bsebab,user.data_HAIs,user.harian_HAIs,user.bulanan_HAIs,user.hitung_bor,user.perusahaan_pasien,"+
+                "user.resep_dokter,user.lama_pelayanan_apotek,user.hitung_alos,user.detail_tindakan,user.rujukan_poli_internal,user.rekap_poli_anak,"+
+                "user.grafik_kunjungan_poli,user.grafik_kunjungan_perdokter,user.grafik_kunjungan_perpekerjaan,user.grafik_kunjungan_perpendidikan,"+
+                "user.grafik_kunjungan_pertahun,user.berkas_digital_perawatan,user.penyakit_menular_ranap,user.penyakit_menular_ralan,user.grafik_kunjungan_perbulan,"+
+                "user.grafik_kunjungan_pertanggal,user.grafik_kunjungan_demografi,user.grafik_kunjungan_statusdaftartahun,user.grafik_kunjungan_statusdaftartahun2,"+
+                "user.grafik_kunjungan_statusdaftarbulan,user.grafik_kunjungan_statusdaftarbulan2,user.grafik_kunjungan_statusdaftartanggal,"+
+                "user.grafik_kunjungan_statusdaftartanggal2,user.grafik_kunjungan_statusbataltahun,user.grafik_kunjungan_statusbatalbulan,user.pcare_cek_penyakit,"+
+                "user.grafik_kunjungan_statusbataltanggal,user.kategori_barang,user.golongan_barang,user.pemberian_obat_pertanggal,user.penjualan_obat_pertanggal,"+
+                "user.pcare_cek_kesadaran,user.pembatalan_periksa_dokter,user.pembayaran_per_unit,user.rekap_pembayaran_per_unit,user.grafik_kunjungan_percarabayar,"+
+                "user.ipsrs_pengadaan_pertanggal,user.ipsrs_stokkeluar_pertanggal,user.grafik_kunjungan_ranaptahun,user.pcare_cek_rujukan,user.grafik_lab_ralantahun,"+
+                "user.grafik_rad_ralantahun,user.cek_entry_ralan,user.inacbg_klaim_baru_manual2,user.permintaan_medis,user.rekap_permintaan_medis,"+
+                "user.surat_pemesanan_medis,user.permintaan_non_medis,user.rekap_permintaan_non_medis,user.surat_pemesanan_non_medis,user.grafik_per_perujuk,"+
+                "user.bpjs_cek_prosedur,user.bpjs_cek_kelas_rawat,user.bpjs_cek_dokter,user.bpjs_cek_spesialistik,user.bpjs_cek_ruangrawat,user.bpjs_cek_carakeluar,"+
+                "user.bpjs_cek_pasca_pulang,user.detail_tindakan_okvk,user.billing_parsial,user.bpjs_cek_nomor_rujukan_rs,user.bpjs_cek_rujukan_kartu_pcare,"+
+                "user.bpjs_cek_rujukan_kartu_rs,user.akses_depo_obat,user.bpjs_rujukan_keluar,user.grafik_lab_ralanbulan,user.pengeluaran_stok_apotek,"+
+                "user.grafik_rad_ralanbulan,user.detailjmdokter2,user.pengaduan_pasien,user.grafik_lab_ralanhari,user.grafik_rad_ralanhari,user.sensus_harian_ralan,"+
+                "user.metode_racik,user.pembayaran_akun_bayar,user.pengguna_obat_resep,user.rekap_pemesanan,user.master_berkas_pegawai,user.berkas_kepegawaian,"+
+                "user.riwayat_jabatan,user.riwayat_pendidikan,user.riwayat_naik_gaji,user.kegiatan_ilmiah,user.riwayat_penghargaan,user.riwayat_penelitian,"+
+                "user.penerimaan_non_medis,user.bayar_pesan_non_medis,user.hutang_barang_non_medis,user.rekap_pemesanan_non_medis,user.insiden_keselamatan,"+
+                "user.insiden_keselamatan_pasien,user.grafik_ikp_pertahun,user.grafik_ikp_perbulan,user.grafik_ikp_pertanggal,user.riwayat_data_batch,"+
+                "user.grafik_ikp_jenis,user.grafik_ikp_dampak,user.piutang_akun_piutang,user.grafik_kunjungan_per_agama,user.grafik_kunjungan_per_umur,"+
+                "user.suku_bangsa,user.bahasa_pasien,user.golongan_tni,user.satuan_tni,user.jabatan_tni,user.pangkat_tni,user.golongan_polri,user.satuan_polri,"+
+                "user.jabatan_polri,user.pangkat_polri,user.cacat_fisik,user.grafik_kunjungan_suku,user.grafik_kunjungan_bahasa,user.booking_operasi,"+
+                "user.mapping_poli_bpjs,user.grafik_kunjungan_per_cacat,user.barang_cssd,user.skdp_bpjs,user.booking_registrasi,user.bpjs_cek_propinsi,"+
+                "user.bpjs_cek_kabupaten,user.bpjs_cek_kecamatan,user.bpjs_cek_dokterdpjp,user.bpjs_cek_riwayat_rujukanrs,user.bpjs_cek_tanggal_rujukan,"+
+                "user.permintaan_lab,user.permintaan_radiologi,user.surat_indeks,user.surat_map,user.surat_almari,user.surat_rak,user.surat_ruang,"+
+                "user.surat_klasifikasi,user.surat_status,user.surat_sifat,user.surat_balas,user.surat_masuk,user.pcare_cek_dokter,user.pcare_cek_poli,"+
+                "user.pcare_cek_provider,user.pcare_cek_statuspulang,user.pcare_cek_spesialis,user.pcare_cek_subspesialis,user.pcare_cek_sarana,user.pcare_cek_khusus,"+
+                "user.pcare_cek_obat,user.pcare_cek_tindakan,user.pcare_cek_faskessubspesialis,user.pcare_cek_faskesalihrawat,user.pcare_cek_faskesthalasemia,"+
+                "user.pcare_mapping_obat,user.pcare_mapping_tindakan,user.pcare_club_prolanis,user.pcare_mapping_poli,user.pcare_kegiatan_kelompok,"+
+                "user.pcare_mapping_tindakan_ranap,user.pcare_peserta_kegiatan_kelompok,user.sirkulasi_obat3,user.bridging_pcare_daftar,user.pcare_mapping_dokter,"+
+                "user.ranap_per_ruang,user.penyakit_ranap_cara_bayar,user.anggota_militer_dirawat,user.set_input_parsial,user.lama_pelayanan_radiologi,"+
+                "user.lama_pelayanan_lab,user.bpjs_cek_sep,user.catatan_perawatan,user.surat_keluar,user.kegiatan_farmasi,user.stok_opname_logistik,"+
+                "user.sirkulasi_non_medis,user.rekap_lab_pertahun,user.perujuk_lab_pertahun,user.rekap_radiologi_pertahun,user.perujuk_radiologi_pertahun,"+
+                "user.jumlah_porsi_diet,user.jumlah_macam_diet,user.payment_point2,user.pembayaran_akun_bayar2,user.hapus_nota_salah,user.pengkajian_askep,"+
+                "user.hais_perbangsal,user.ppn_obat,user.saldo_akun_perbulan,user.display_apotek,user.sisrute_referensi_faskes,user.sisrute_referensi_alasanrujuk,"+
+                "user.sisrute_referensi_diagnosa,user.sisrute_rujukan_masuk,user.sisrute_rujukan_keluar,user.bpjs_cek_skdp,user.data_batch,user.kunjungan_permintaan_lab,"+
+                "user.kunjungan_permintaan_lab2,user.kunjungan_permintaan_radiologi,user.kunjungan_permintaan_radiologi2,user.pcare_pemberian_obat,"+
+                "user.pcare_pemberian_tindakan,user.pembayaran_akun_bayar3,user.password_asuransi,user.kemenkes_sitt,user.siranap_ketersediaan_kamar,"+
+                "user.grafik_tb_periodelaporan,user.grafik_tb_rujukan,user.grafik_tb_riwayat,user.grafik_tb_tipediagnosis,user.grafik_tb_statushiv,"+
+                "user.grafik_tb_skoringanak,user.grafik_tb_konfirmasiskoring5,user.grafik_tb_konfirmasiskoring6,user.grafik_tb_sumberobat,"+
+                "user.grafik_tb_hasilakhirpengobatan,user.grafik_tb_hasilteshiv,user.kadaluarsa_batch,user.sisa_stok,user.obat_per_resep,user.pemakaian_air_pdam,"+
+                "user.limbah_b3_medis,user.grafik_air_pdam_pertanggal,user.grafik_air_pdam_perbulan,user.grafik_limbahb3_pertanggal,user.grafik_limbahb3_perbulan,"+
+                "user.limbah_domestik,user.grafik_limbahdomestik_pertanggal,user.grafik_limbahdomestik_perbulan,user.mutu_air_limbah,user.pest_control,"+
+                "user.ruang_perpustakaan,user.kategori_perpustakaan,user.jenis_perpustakaan,user.pengarang_perpustakaan,user.penerbit_perpustakaan,"+
+                "user.koleksi_perpustakaan,user.inventaris_perpustakaan,user.set_peminjaman_perpustakaan,user.denda_perpustakaan,user.anggota_perpustakaan,"+
+                "user.peminjaman_perpustakaan,user.bayar_denda_perpustakaan,user.ebook_perpustakaan,user.jenis_cidera_k3rs,user.penyebab_k3rs,user.jenis_luka_k3rs,"+
+                "user.lokasi_kejadian_k3rs,user.dampak_cidera_k3rs,user.jenis_pekerjaan_k3rs,user.bagian_tubuh_k3rs,user.peristiwa_k3rs,user.grafik_k3_pertahun,"+
+                "user.grafik_k3_perbulan,user.grafik_k3_pertanggal,user.grafik_k3_perjeniscidera,user.grafik_k3_perpenyebab,user.grafik_k3_perjenisluka,"+
+                "user.grafik_k3_lokasikejadian,user.grafik_k3_dampakcidera,user.grafik_k3_perjenispekerjaan,user.grafik_k3_perbagiantubuh,user.jenis_cidera_k3rstahun,"+
+                "user.penyebab_k3rstahun,user.jenis_luka_k3rstahun,user.lokasi_kejadian_k3rstahun,user.dampak_cidera_k3rstahun,user.jenis_pekerjaan_k3rstahun,"+
+                "user.bagian_tubuh_k3rstahun,user.sekrining_rawat_jalan,user.bpjs_histori_pelayanan,user.rekap_mutasi_berkas,user.skrining_ralan_pernapasan_pertahun,"+
+                "user.pengajuan_barang_medis,user.pengajuan_barang_nonmedis,user.grafik_kunjungan_ranapbulan,user.grafik_kunjungan_ranaptanggal,"+
+                "user.grafik_kunjungan_ranap_peruang,user.kunjungan_bangsal_pertahun,user.grafik_jenjang_jabatanpegawai,user.grafik_bidangpegawai,"+
+                "user.grafik_departemenpegawai,user.grafik_pendidikanpegawai,user.grafik_sttswppegawai,user.grafik_sttskerjapegawai,user.grafik_sttspulangranap,"+
+                "user.kip_pasien_ranap,user.kip_pasien_ralan,user.bpjs_mapping_dokterdpjp,user.data_triase_igd,user.master_triase_skala1,user.master_triase_skala2,"+
+                "user.master_triase_skala3,user.master_triase_skala4,user.master_triase_skala5,user.master_triase_pemeriksaan,user.master_triase_macamkasus,"+
+                "user.rekap_permintaan_diet,user.daftar_pasien_ranap,user.daftar_pasien_ranaptni,user.pengajuan_asetinventaris,user.item_apotek_jenis,"+
+                "user.item_apotek_kategori,user.item_apotek_golongan,user.item_apotek_industrifarmasi,user.10_obat_terbanyak_poli,user.grafik_pengajuan_aset_urgensi,"+
+                "user.grafik_pengajuan_aset_status,user.grafik_pengajuan_aset_departemen,user.rekap_pengajuan_aset_departemen,user.grafik_kelompok_jabatanpegawai,"+
+                "user.grafik_resiko_kerjapegawai,user.grafik_emergency_indexpegawai,user.grafik_inventaris_ruang,user.harian_HAIs2,user.grafik_inventaris_jenis,"+
+                "user.data_resume_pasien,user.perkiraan_biaya_ranap,user.rekap_obat_poli,user.rekap_obat_pasien,user.permintaan_perbaikan_inventaris,"+
+                "user.grafik_HAIs_pasienbangsal,user.grafik_HAIs_pasienbulan,user.grafik_HAIs_laju_vap,user.grafik_HAIs_laju_iad,user.grafik_HAIs_laju_pleb,"+
+                "user.grafik_HAIs_laju_isk,user.grafik_HAIs_laju_ilo,user.grafik_HAIs_laju_hap,user.inhealth_mapping_poli,user.inhealth_mapping_dokter,"+
+                "user.inhealth_mapping_tindakan_ralan,user.inhealth_mapping_tindakan_ranap,user.inhealth_mapping_tindakan_radiologi,user.inhealth_mapping_tindakan_laborat,"+
+                "user.inhealth_mapping_tindakan_operasi,user.hibah_obat_bhp,user.asal_hibah,user.asuhan_gizi,user.inhealth_kirim_tagihan,user.sirkulasi_obat4,"+
+                "user.sirkulasi_obat5,user.sirkulasi_non_medis2,user.monitoring_asuhan_gizi,user.penerimaan_obat_perbulan,user.rekap_kunjungan,user.surat_sakit,"+
+                "user.penilaian_awal_keperawatan_ralan,user.permintaan_diet,user.master_masalah_keperawatan,user.pengajuan_cuti,user.kedatangan_pasien,user.utd_pendonor,"+
+                "user.toko_suplier,user.toko_jenis,user.toko_set_harga,user.toko_barang,user.penagihan_piutang_pasien,user.akun_penagihan_piutang,user.stok_opname_toko,"+
+                "user.toko_riwayat_barang,user.toko_surat_pemesanan,user.toko_pengajuan_barang,user.toko_penerimaan_barang,user.toko_pengadaan_barang,user.toko_hutang,"+
+                "user.toko_bayar_pemesanan,user.toko_member,user.toko_penjualan,user.registrasi_poli_per_tanggal,user.toko_piutang,user.toko_retur_beli,user.ipsrs_returbeli,"+
+                "user.ipsrs_riwayat_barang,user.pasien_corona,user.toko_pendapatan_harian,user.diagnosa_pasien_corona,user.perawatan_pasien_corona,"+
+                "user.penilaian_awal_keperawatan_gigi,user.master_masalah_keperawatan_gigi,user.toko_bayar_piutang,user.toko_piutang_harian,user.toko_penjualan_harian,"+
+                "user.deteksi_corona,user.penilaian_awal_keperawatan_kebidanan,user.pengumuman_epasien,user.surat_hamil,user.set_tarif_online,user.booking_periksa,"+
+                "user.toko_sirkulasi,user.toko_retur_jual,user.toko_retur_piutang,user.toko_sirkulasi2,user.toko_keuntungan_barang,user.zis_pengeluaran_penerima_dankes,"+
+                "user.zis_penghasilan_penerima_dankes,user.zis_ukuran_rumah_penerima_dankes,user.zis_dinding_rumah_penerima_dankes,user.zis_lantai_rumah_penerima_dankes,"+
+                "user.zis_atap_rumah_penerima_dankes,user.zis_kepemilikan_rumah_penerima_dankes,user.zis_kamar_mandi_penerima_dankes,user.zis_dapur_rumah_penerima_dankes,"+
+                "user.zis_kursi_rumah_penerima_dankes,user.zis_kategori_phbs_penerima_dankes,user.zis_elektronik_penerima_dankes,user.zis_ternak_penerima_dankes,"+
+                "user.zis_jenis_simpanan_penerima_dankes,user.penilaian_awal_keperawatan_anak,user.zis_kategori_asnaf_penerima_dankes,user.master_masalah_keperawatan_anak,"+
+                "user.master_imunisasi,user.zis_patologis_penerima_dankes,user.pcare_cek_kartu,user.surat_bebas_narkoba,user.surat_keterangan_covid,user.pemakaian_air_tanah,"+
+                "user.grafik_air_tanah_pertanggal,user.grafik_air_tanah_perbulan,user.lama_pelayanan_poli,user.hemodialisa,user.laporan_tahunan_irj,"+
+                "user.grafik_harian_hemodialisa,user.grafik_bulanan_hemodialisa,user.grafik_tahunan_hemodialisa,user.grafik_bulanan_meninggal,user.perbaikan_inventaris,"+
+                "user.surat_cuti_hamil,user.permintaan_stok_obat_pasien,user.pemeliharaan_inventaris,user.klasifikasi_pasien_ranap,user.bulanan_klasifikasi_pasien_ranap,"+
+                "user.harian_klasifikasi_pasien_ranap,user.klasifikasi_pasien_perbangsal,user.soap_perawatan,user.klaim_rawat_jalan,user.skrining_gizi,"+
+                "user.lama_penyiapan_rm,user.dosis_radiologi,user.demografi_umur_kunjungan,user.jam_diet_pasien,user.rvu_bpjs,user.verifikasi_penerimaan_farmasi,"+
+                "user.verifikasi_penerimaan_logistik,user.pemeriksaan_lab_pa,user.ringkasan_pengajuan_obat,user.ringkasan_pemesanan_obat,user.ringkasan_pengadaan_obat,"+
+                "user.ringkasan_penerimaan_obat,user.ringkasan_hibah_obat,user.ringkasan_penjualan_obat,user.ringkasan_beri_obat,user.ringkasan_piutang_obat,"+
+                "user.ringkasan_stok_keluar_obat,user.ringkasan_retur_suplier_obat,user.ringkasan_retur_pembeli_obat,user.penilaian_awal_keperawatan_ranapkebidanan,"+
+                "user.ringkasan_pengajuan_nonmedis,user.ringkasan_pemesanan_nonmedis,user.ringkasan_pengadaan_nonmedis,user.ringkasan_penerimaan_nonmedis,"+
+                "user.ringkasan_stokkeluar_nonmedis,user.ringkasan_returbeli_nonmedis,user.omset_penerimaan,user.validasi_penagihan_piutang,user.permintaan_ranap,"+
+                "user.bpjs_diagnosa_prb,user.bpjs_obat_prb,user.bpjs_surat_kontrol,user.penggunaan_bhp_ok,user.surat_keterangan_rawat_inap,user.surat_keterangan_sehat,"+
+                "user.pendapatan_per_carabayar,user.akun_host_to_host_bank_jateng,user.pembayaran_bank_jateng,user.bpjs_surat_pri,user.ringkasan_tindakan,"+
+                "user.lama_pelayanan_pasien,user.surat_sakit_pihak_2,user.tagihan_hutang_obat,user.referensi_mobilejkn_bpjs,user.batal_pendaftaran_mobilejkn_bpjs,"+
+                "user.lama_operasi,user.grafik_inventaris_kategori,user.grafik_inventaris_merk,user.grafik_inventaris_produsen,user.pengembalian_deposit_pasien,"+
+                "user.validasi_tagihan_hutang_obat,user.piutang_obat_belum_lunas,user.integrasi_briapi,user.pengadaan_aset_inventaris,user.akun_aset_inventaris,"+
+                "user.suplier_inventaris,user.penerimaan_aset_inventaris,user.bayar_pemesanan_iventaris,user.hutang_aset_inventaris,user.hibah_aset_inventaris,"+
+                "user.titip_faktur_non_medis,user.validasi_tagihan_non_medis,user.titip_faktur_aset,user.validasi_tagihan_aset,user.hibah_non_medis,"+
+                "user.pcare_alasan_tacc,user.resep_luar,user.surat_bebas_tbc,user.surat_buta_warna,user.surat_bebas_tato,user.surat_kewaspadaan_kesehatan,"+
+                "user.grafik_porsidiet_pertanggal,user.grafik_porsidiet_perbulan,user.grafik_porsidiet_pertahun,user.grafik_porsidiet_perbangsal,"+
+                "user.penilaian_awal_medis_ralan,user.master_masalah_keperawatan_mata,user.penilaian_awal_keperawatan_mata,user.penilaian_awal_medis_ranap,"+
+                "user.penilaian_awal_medis_ranap_kebidanan,user.penilaian_awal_medis_ralan_kebidanan,user.penilaian_awal_medis_igd,user.penilaian_awal_medis_ralan_anak,"+
+                "user.bpjs_referensi_poli_hfis,user.bpjs_referensi_dokter_hfis,user.bpjs_referensi_jadwal_hfis,user.penilaian_fisioterapi,user.bpjs_program_prb,"+
+                "user.bpjs_suplesi_jasaraharja,user.bpjs_data_induk_kecelakaan,user.bpjs_sep_internal,user.bpjs_klaim_jasa_raharja,user.bpjs_daftar_finger_print,"+
+                "user.bpjs_rujukan_khusus,user.pemeliharaan_gedung,user.grafik_perbaikan_inventaris_pertanggal,user.grafik_perbaikan_inventaris_perbulan,"+
+                "user.grafik_perbaikan_inventaris_pertahun,user.grafik_perbaikan_inventaris_perpelaksana_status,user.penilaian_mcu,user.peminjam_piutang,"+
+                "user.piutang_lainlain,user.cara_bayar,user.audit_kepatuhan_apd,user.bpjs_task_id,user.bayar_piutang_lain,user.pembayaran_akun_bayar4,"+
+                "user.stok_akhir_farmasi_pertanggal,user.riwayat_kamar_pasien,user.uji_fungsi_kfr,user.hapus_berkas_digital_perawatan,user.kategori_pengeluaran_harian,"+
+                "user.kategori_pemasukan_lain,user.pembayaran_akun_bayar5,user.ruang_ok,user.telaah_resep,user.jasa_tindakan_pasien,user.permintaan_resep_pulang,"+
+                "user.rekap_jm_dokter,user.status_data_rm,user.ubah_petugas_lab_pk,user.ubah_petugas_lab_pa,user.ubah_petugas_radiologi,user.gabung_norawat,"+
+                "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2975,6 +2976,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Gabungkan Data RM".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Gabungkan Data RM",rs.getBoolean("gabung_rm")});
+                    }
+                    
+                    if("[L]Master Masalah Keperawatan IGD".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Master Masalah Keperawatan IGD",rs.getBoolean("master_masalah_keperawatan_igd")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6190,6 +6195,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Gabungkan Data RM".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","gabung_rm='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Master Masalah Keperawatan IGD".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_masalah_keperawatan_igd='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
