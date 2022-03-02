@@ -548,6 +548,7 @@ import inventory.DlgDaftarPermintaanStokPasien;
 import inventory.DlgJenis;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
+import inventory.InventoryRingkasanBiayaObatPasienPerTanggal;
 import inventory.InventoryPengajuanBarangMedis;
 import inventory.DlgRekapObatPasien;
 import inventory.DlgRekapObatPoli;
@@ -18144,6 +18145,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRingkasanBiayaObatPasienPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryRingkasanBiayaObatPasienPerTanggal aplikasi=new InventoryRingkasanBiayaObatPasienPerTanggal(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18781,7 +18793,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
-            btnRekapJasaDokter,btnStatusDataRM;
+            btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal;
     
     public void isWall(){
         try{            
@@ -19589,6 +19601,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettelaah_resep()==true){
                 Panelmenu.add(btnTelaahResep);
+                jmlmenu++;
+            }
+            
+            if(akses.getringkasan_biaya_obat_pasien_pertanggal()==true){
+                Panelmenu.add(btnRingkasanBiayaObatPasienPerTanggal);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -23556,6 +23573,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.gettelaah_resep()==true){
             Panelmenu.add(btnTelaahResep);
+            jmlmenu++;
+        }
+        
+        if(akses.getringkasan_biaya_obat_pasien_pertanggal()==true){
+            Panelmenu.add(btnRingkasanBiayaObatPasienPerTanggal);
             jmlmenu++;
         }
 
@@ -27782,6 +27804,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettelaah_resep()==true){
             if(btnTelaahResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTelaahResep);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_biaya_obat_pasien_pertanggal()==true){
+            if(btnRingkasanBiayaObatPasienPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanBiayaObatPasienPerTanggal);
                 jmlmenu++;
             }                
         }
@@ -34985,6 +35014,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnStatusDataRM.setName("btnStatusDataRM");
         btnStatusDataRM.setPreferredSize(new java.awt.Dimension(200, 90));
         btnStatusDataRM.addActionListener(this::btnStatusDataRMActionPerformed);
+        
+        btnRingkasanBiayaObatPasienPerTanggal = new widget.ButtonBig();
+        btnRingkasanBiayaObatPasienPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
+        btnRingkasanBiayaObatPasienPerTanggal.setText("Ringkasan Biaya Obat Pasien Per Tanggal");
+        btnRingkasanBiayaObatPasienPerTanggal.setIconTextGap(0);
+        btnRingkasanBiayaObatPasienPerTanggal.setName("btnRingkasanBiayaObatPasienPerTanggal");
+        btnRingkasanBiayaObatPasienPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanBiayaObatPasienPerTanggal.addActionListener(this::btnRingkasanBiayaObatPasienPerTanggalActionPerformed);
     }
     
 }

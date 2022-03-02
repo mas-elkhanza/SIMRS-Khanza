@@ -105,34 +105,34 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         for (int i = 0; i < 16; i++) {
             TableColumn column = tbPemberianObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(65);
             }else if(i==1){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(55);
             }else if(i==2){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(105);
             }else if(i==3){
                 column.setPreferredWidth(80);
             }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(170);
             }else if(i==5){
                 column.setPreferredWidth(100);
             }else if(i==6){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(190);
             }else if(i==7){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(60);
             }else if(i==9){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==10){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(75);
             }else if(i==11){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==12){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==13){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(50);
             }else if(i==14){
                 column.setPreferredWidth(70);
             }else if(i==15){
@@ -1069,22 +1069,20 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                pas=" and reg_periksa.no_rkm_medis='"+TCariPasien.getText()+"' "; 
             }
             tgl=" detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;        
-            Valid.MyReportqry("rptBrObt.jasper","report","::[ Rekam Data Pemberian Obat (UMUM) ]::","select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
+            Valid.MyReportqry("rptBrObt.jasper","report","::[ Rekam Data Pemberian Obat (UMUM) ]::",
+                   "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
                    "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                    "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
-                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total "+
-                   "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang "+
-                   "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and detail_pemberian_obat.kode_brng=databarang.kode_brng "+
-                   "where  "+tgl+"and tgl_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                   tgl+"and detail_pemberian_obat.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                   tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                   tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                   tgl+"and detail_pemberian_obat.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                   tgl+"and detail_pemberian_obat.no_batch like '%"+TCari.getText().trim()+"%' or "+
-                   tgl+"and databarang.nama_brng like '%"+TCari.getText().trim()+"%' "+
-                   "order by detail_pemberian_obat.tgl_perawatan",param);
+                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,"+
+                   "detail_pemberian_obat.kd_bangsal,detail_pemberian_obat.no_batch,detail_pemberian_obat.no_faktur "+
+                   "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                   "where "+tgl+(TCari.getText().trim().equals("")?"":" and (tgl_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                   "detail_pemberian_obat.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                   "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or detail_pemberian_obat.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                   "databarang.nama_brng like '%"+TCari.getText().trim()+"%' or detail_pemberian_obat.no_faktur like '%"+TCari.getText().trim()+"%' or "+
+                   "detail_pemberian_obat.no_batch like '%"+TCari.getText().trim()+"%') ")+" order by detail_pemberian_obat.tgl_perawatan",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1373,36 +1371,34 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
         tgl=" detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;        
         sql="select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                   "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                   "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
-                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,"+
-                   "detail_pemberian_obat.kd_bangsal,detail_pemberian_obat.no_batch,detail_pemberian_obat.no_faktur "+
-                   "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang "+
-                   "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and detail_pemberian_obat.kode_brng=databarang.kode_brng "+
-                   "where "+tgl+" and tgl_perawatan like ? or "+
-                   tgl+"and detail_pemberian_obat.no_rawat like ? or "+
-                   tgl+"and reg_periksa.no_rkm_medis like ? or "+
-                   tgl+"and pasien.nm_pasien like ? or "+
-                   tgl+"and detail_pemberian_obat.kode_brng like ? or "+
-                   tgl+"and databarang.nama_brng like ? or "+
-                   tgl+"and detail_pemberian_obat.no_faktur like ? or "+
-                   tgl+"and detail_pemberian_obat.no_batch like ? "+
-                   "order by detail_pemberian_obat.tgl_perawatan";
+           "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+           "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
+           "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,"+
+           "detail_pemberian_obat.kd_bangsal,detail_pemberian_obat.no_batch,detail_pemberian_obat.no_faktur "+
+           "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+           "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+           "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+           "where "+tgl+(TCari.getText().trim().equals("")?"":" and (tgl_perawatan like ? or "+
+           "detail_pemberian_obat.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+           "pasien.nm_pasien like ? or detail_pemberian_obat.kode_brng like ? or databarang.nama_brng like ? or "+
+           "detail_pemberian_obat.no_faktur like ? or detail_pemberian_obat.no_batch like ?) ")+
+           "order by detail_pemberian_obat.tgl_perawatan";
         
         Valid.tabelKosong(tabModePO);
         try{
             ps=koneksi.prepareStatement(sql);
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+TCari.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 jumlahtotal=0;
                 while(rs.next()){
@@ -1440,36 +1436,33 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
         tgl=" detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_pemberian_obat.kd_bangsal='"+lokasi+"' "+pas;        
         sql="select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                   "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                   "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
-                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,"+
-                   "detail_pemberian_obat.kd_bangsal,detail_pemberian_obat.no_batch,detail_pemberian_obat.no_faktur "+
-                   "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang "+
-                   "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and detail_pemberian_obat.kode_brng=databarang.kode_brng "+
-                   "where "+tgl+" and tgl_perawatan like ? or "+
-                   tgl+"and detail_pemberian_obat.no_rawat like ? or "+
-                   tgl+"and reg_periksa.no_rkm_medis like ? or "+
-                   tgl+"and pasien.nm_pasien like ? or "+
-                   tgl+"and detail_pemberian_obat.kode_brng like ? or "+
-                   tgl+"and detail_pemberian_obat.no_faktur like ? or "+
-                   tgl+"and detail_pemberian_obat.no_batch like ? or "+
-                   tgl+"and databarang.nama_brng like ? "+
-                   "order by detail_pemberian_obat.tgl_perawatan";
+           "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+           "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
+           "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,"+
+           "detail_pemberian_obat.kd_bangsal,detail_pemberian_obat.no_batch,detail_pemberian_obat.no_faktur "+
+           "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+           "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+           "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+           "where "+tgl+(TCari.getText().trim().equals("")?"":" and (tgl_perawatan like ? or "+
+           "detail_pemberian_obat.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+           "pasien.nm_pasien like ? or detail_pemberian_obat.kode_brng like ? or databarang.nama_brng like ? or "+
+           "detail_pemberian_obat.no_faktur like ? or detail_pemberian_obat.no_batch like ?) ")+
+           "order by detail_pemberian_obat.tgl_perawatan";
         
         Valid.tabelKosong(tabModePO);
         try{
             ps=koneksi.prepareStatement(sql);
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+TCari.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 jumlahtotal=0;
                 while(rs.next()){

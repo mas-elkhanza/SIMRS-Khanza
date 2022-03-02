@@ -684,7 +684,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "bayar_piutang_lain,pembayaran_akun_bayar4,stok_akhir_farmasi_pertanggal,riwayat_kamar_pasien,uji_fungsi_kfr,hapus_berkas_digital_perawatan,"+
                         "kategori_pengeluaran_harian,kategori_pemasukan_lain,pembayaran_akun_bayar5,ruang_ok,telaah_resep,jasa_tindakan_pasien,"+
                         "permintaan_resep_pulang,rekap_jm_dokter,status_data_rm,ubah_petugas_lab_pk,ubah_petugas_lab_pa,ubah_petugas_radiologi,"+
-                        "gabung_norawat,gabung_rm from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "gabung_norawat,gabung_rm,ringkasan_biaya_obat_pasien_pertanggal from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1287,6 +1287,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[D]Permintaan Resep Pulang".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[D]Permintaan Resep Pulang",rs.getBoolean("permintaan_resep_pulang")});
+                    }
+                    
+                    if("[D]Ringkasan Biaya Obat Pasien Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[D]Ringkasan Biaya Obat Pasien Per Tanggal",rs.getBoolean("ringkasan_biaya_obat_pasien_pertanggal")});
                     }
                     
                     if("[E]Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4494,6 +4498,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
             if("[D]Permintaan Resep Pulang".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","permintaan_resep_pulang='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[D]Ringkasan Biaya Obat Pasien Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_biaya_obat_pasien_pertanggal='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[E]Barang Non Medis".equals(tbUser.getValueAt(i,1).toString())){
