@@ -2448,7 +2448,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
                         ps2=koneksi.prepareStatement(
                             "select master_masalah_keperawatan_gigi.kode_masalah,master_masalah_keperawatan_gigi.nama_masalah from master_masalah_keperawatan_gigi "+
                             "inner join penilaian_awal_keperawatan_gigi_masalah on penilaian_awal_keperawatan_gigi_masalah.kode_masalah=master_masalah_keperawatan_gigi.kode_masalah "+
-                            "where penilaian_awal_keperawatan_gigi_masalah.no_rawat=? order by kode_masalah");
+                            "where penilaian_awal_keperawatan_gigi_masalah.no_rawat=? order by penilaian_awal_keperawatan_gigi_masalah.kode_masalah");
                         try {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
@@ -3656,7 +3656,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan_gigi.kode_masalah,master_masalah_keperawatan_gigi.nama_masalah from master_masalah_keperawatan_gigi "+
                         "inner join penilaian_awal_keperawatan_gigi_masalah on penilaian_awal_keperawatan_gigi_masalah.kode_masalah=master_masalah_keperawatan_gigi.kode_masalah "+
-                        "where penilaian_awal_keperawatan_gigi_masalah.no_rawat=? order by kode_masalah");
+                        "where penilaian_awal_keperawatan_gigi_masalah.no_rawat=? order by penilaian_awal_keperawatan_gigi_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -3734,7 +3734,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,KdPetugas.getText());
             if(NmPetugas.getText().equals("")){
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
@@ -3858,7 +3858,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan_gigi.kode_masalah,master_masalah_keperawatan_gigi.nama_masalah from master_masalah_keperawatan_gigi "+
                         "inner join penilaian_awal_keperawatan_gigi_masalah on penilaian_awal_keperawatan_gigi_masalah.kode_masalah=master_masalah_keperawatan_gigi.kode_masalah "+
-                        "where penilaian_awal_keperawatan_gigi_masalah.no_rawat=? order by kode_masalah");
+                        "where penilaian_awal_keperawatan_gigi_masalah.no_rawat=? order by penilaian_awal_keperawatan_gigi_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();

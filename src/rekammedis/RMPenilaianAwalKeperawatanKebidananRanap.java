@@ -7739,7 +7739,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,KdPetugas.getText());
             if(NmPetugas.getText().equals("")){
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
@@ -7776,7 +7776,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             TindakanKebidanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),174).toString());
             Valid.tabelKosong(tabModeRiwayatKehamilan2);
             try {
-                ps=koneksi.prepareStatement("select * from riwayat_persalinan_pasien where no_rkm_medis=? order by tgl_thn");
+                ps=koneksi.prepareStatement("select * from riwayat_persalinan_pasien where riwayat_persalinan_pasien.no_rkm_medis=? order by riwayat_persalinan_pasien.tgl_thn");
                 try {
                     ps.setString(1,TNoRM1.getText());
                     rs=ps.executeQuery();
@@ -7844,7 +7844,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private void tampilPersalinan() {
         Valid.tabelKosong(tabModeRiwayatKehamilan);
         try {
-            ps=koneksi.prepareStatement("select * from riwayat_persalinan_pasien where no_rkm_medis=? order by tgl_thn");
+            ps=koneksi.prepareStatement("select * from riwayat_persalinan_pasien where riwayat_persalinan_pasien.no_rkm_medis=? order by riwayat_persalinan_pasien.tgl_thn");
             try {
                 ps.setString(1,TNoRM.getText());
                 rs=ps.executeQuery();

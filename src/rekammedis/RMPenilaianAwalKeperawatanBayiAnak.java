@@ -5104,7 +5104,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan_anak.kode_masalah,master_masalah_keperawatan_anak.nama_masalah from master_masalah_keperawatan_anak "+
                         "inner join penilaian_awal_keperawatan_ralan_bayi_masalah on penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah=master_masalah_keperawatan_anak.kode_masalah "+
-                        "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat=? order by kode_masalah");
+                        "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat=? order by penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -5185,7 +5185,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,KdPetugas.getText());
             if(NmPetugas.getText().equals("")){
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
@@ -5309,7 +5309,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan_anak.kode_masalah,master_masalah_keperawatan_anak.nama_masalah from master_masalah_keperawatan_anak "+
                         "inner join penilaian_awal_keperawatan_ralan_bayi_masalah on penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah=master_masalah_keperawatan_anak.kode_masalah "+
-                        "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat=? order by kode_masalah");
+                        "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat=? order by penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -5343,7 +5343,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 rs=ps.executeQuery();
                 while(rs.next()){
                     ke1=false;ke2=false;ke3=false;ke4=false;ke5=false;ke6=false;
-                    ps2=koneksi.prepareStatement("select * from riwayat_imunisasi where no_rkm_medis=? and kode_imunisasi=?");
+                    ps2=koneksi.prepareStatement("select * from riwayat_imunisasi where riwayat_imunisasi.no_rkm_medis=? and riwayat_imunisasi.kode_imunisasi=?");
                     try {
                         ps2.setString(1,TNoRM1.getText());
                         ps2.setString(2,rs.getString(1));
@@ -5407,7 +5407,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 rs=ps.executeQuery();
                 while(rs.next()){
                     ke1=false;ke2=false;ke3=false;ke4=false;ke5=false;ke6=false;
-                    ps2=koneksi.prepareStatement("select * from riwayat_imunisasi where no_rkm_medis=? and kode_imunisasi=?");
+                    ps2=koneksi.prepareStatement("select * from riwayat_imunisasi where riwayat_imunisasi.no_rkm_medis=? and riwayat_imunisasi.kode_imunisasi=?");
                     try {
                         ps2.setString(1,TNoRM.getText());
                         ps2.setString(2,rs.getString(1));

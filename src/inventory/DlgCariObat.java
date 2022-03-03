@@ -453,7 +453,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
             System.out.println(e);
         }
         
-        tampilkan_ppnobat_ralan=Sequel.cariIsi("select tampilkan_ppnobat_ralan from set_nota"); 
+        tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota"); 
         jam();
     }    
     
