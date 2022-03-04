@@ -1608,6 +1608,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         Gravida.setHighlighter(null);
         Gravida.setName("Gravida"); // NOI18N
+        Gravida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GravidaKeyPressed(evt);
+            }
+        });
         FormInput.add(Gravida);
         Gravida.setBounds(769, 180, 85, 23);
 
@@ -1618,6 +1623,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         Para.setHighlighter(null);
         Para.setName("Para"); // NOI18N
+        Para.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ParaKeyPressed(evt);
+            }
+        });
         FormInput.add(Para);
         Para.setBounds(487, 180, 85, 23);
 
@@ -1628,6 +1638,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         Abortus.setHighlighter(null);
         Abortus.setName("Abortus"); // NOI18N
+        Abortus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AbortusKeyPressed(evt);
+            }
+        });
         FormInput.add(Abortus);
         Abortus.setBounds(629, 180, 85, 23);
 
@@ -1638,6 +1653,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         HPHT.setHighlighter(null);
         HPHT.setName("HPHT"); // NOI18N
+        HPHT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HPHTKeyPressed(evt);
+            }
+        });
         FormInput.add(HPHT);
         HPHT.setBounds(734, 150, 120, 23);
 
@@ -1782,6 +1802,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         JumlahPerdarahan.setHighlighter(null);
         JumlahPerdarahan.setName("JumlahPerdarahan"); // NOI18N
+        JumlahPerdarahan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JumlahPerdarahanKeyPressed(evt);
+            }
+        });
         FormInput.add(JumlahPerdarahan);
         JumlahPerdarahan.setBounds(306, 290, 70, 23);
 
@@ -1792,6 +1817,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         WarnaPerdarahan.setHighlighter(null);
         WarnaPerdarahan.setName("WarnaPerdarahan"); // NOI18N
+        WarnaPerdarahan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                WarnaPerdarahanKeyPressed(evt);
+            }
+        });
         FormInput.add(WarnaPerdarahan);
         WarnaPerdarahan.setBounds(440, 290, 170, 23);
 
@@ -1829,6 +1859,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         KBAB.setHighlighter(null);
         KBAB.setName("KBAB"); // NOI18N
+        KBAB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KBABKeyPressed(evt);
+            }
+        });
         FormInput.add(KBAB);
         KBAB.setBounds(443, 340, 175, 23);
 
@@ -1839,6 +1874,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         BAB.setHighlighter(null);
         BAB.setName("BAB"); // NOI18N
+        BAB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BABKeyPressed(evt);
+            }
+        });
         FormInput.add(BAB);
         BAB.setBounds(229, 340, 50, 23);
 
@@ -1849,6 +1889,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         XBAB.setHighlighter(null);
         XBAB.setName("XBAB"); // NOI18N
+        XBAB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                XBABKeyPressed(evt);
+            }
+        });
         FormInput.add(XBAB);
         XBAB.setBounds(298, 340, 70, 23);
 
@@ -1859,6 +1904,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         WBAB.setHighlighter(null);
         WBAB.setName("WBAB"); // NOI18N
+        WBAB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                WBABKeyPressed(evt);
+            }
+        });
         FormInput.add(WBAB);
         WBAB.setBounds(679, 340, 175, 23);
 
@@ -1869,6 +1919,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         BAK.setHighlighter(null);
         BAK.setName("BAK"); // NOI18N
+        BAK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BAKKeyPressed(evt);
+            }
+        });
         FormInput.add(BAK);
         BAK.setBounds(229, 370, 50, 23);
 
@@ -1880,6 +1935,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         XBAK.setHighlighter(null);
         XBAK.setName("XBAK"); // NOI18N
+        XBAK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                XBAKKeyPressed(evt);
+            }
+        });
         FormInput.add(XBAK);
         XBAK.setBounds(298, 370, 70, 23);
 
@@ -1890,6 +1950,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         WBAK.setHighlighter(null);
         WBAK.setName("WBAK"); // NOI18N
+        WBAK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                WBAKKeyPressed(evt);
+            }
+        });
         FormInput.add(WBAK);
         WBAK.setBounds(443, 370, 175, 23);
 
@@ -1900,6 +1965,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         LBAK.setHighlighter(null);
         LBAK.setName("LBAK"); // NOI18N
+        LBAK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LBAKKeyPressed(evt);
+            }
+        });
         FormInput.add(LBAK);
         LBAK.setBounds(679, 370, 175, 23);
 
@@ -1970,6 +2040,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         Dilaporkan.setHighlighter(null);
         Dilaporkan.setName("Dilaporkan"); // NOI18N
+        Dilaporkan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DilaporkanKeyPressed(evt);
+            }
+        });
         FormInput.add(Dilaporkan);
         Dilaporkan.setBounds(464, 450, 163, 23);
         Dilaporkan.getAccessibleContext().setAccessibleName("");
@@ -1981,6 +2056,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
         Sebutkan.setHighlighter(null);
         Sebutkan.setName("Sebutkan"); // NOI18N
+        Sebutkan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SebutkanKeyPressed(evt);
+            }
+        });
         FormInput.add(Sebutkan);
         Sebutkan.setBounds(691, 450, 163, 23);
         Sebutkan.getAccessibleContext().setAccessibleName("");
@@ -3275,51 +3355,51 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_StatusKehamilanKeyPressed
 
     private void TekananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TekananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Gravida,Pupil);
     }//GEN-LAST:event_TekananKeyPressed
 
     private void PupilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PupilKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tekanan,Neurosensorik);
     }//GEN-LAST:event_PupilKeyPressed
 
     private void NeurosensorikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurosensorikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pupil,Integumen);
     }//GEN-LAST:event_NeurosensorikKeyPressed
 
     private void IntegumenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntegumenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Neurosensorik,Turgor);
     }//GEN-LAST:event_IntegumenKeyPressed
 
     private void TurgorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TurgorKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Integumen,Edema);
     }//GEN-LAST:event_TurgorKeyPressed
 
     private void EdemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdemaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Turgor,Mukosa);
     }//GEN-LAST:event_EdemaKeyPressed
 
     private void MukosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukosaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Edema,Perdarahan);
     }//GEN-LAST:event_MukosaKeyPressed
 
     private void PerdarahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerdarahanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Mukosa,JumlahPerdarahan);
     }//GEN-LAST:event_PerdarahanKeyPressed
 
     private void IntoksikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntoksikasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,WarnaPerdarahan,BAB);
     }//GEN-LAST:event_IntoksikasiKeyPressed
 
     private void PsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PsikologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LBAK,Jiwa);
     }//GEN-LAST:event_PsikologisKeyPressed
 
     private void JiwaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JiwaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Psikologis,Perilaku);
     }//GEN-LAST:event_JiwaKeyPressed
 
     private void PerilakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerilakuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Jiwa,Dilaporkan);
     }//GEN-LAST:event_PerilakuKeyPressed
 
     private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
@@ -3400,6 +3480,70 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
             KetDokter.requestFocus();
         }
     }//GEN-LAST:event_TCariMasalahKeyPressed
+
+    private void HPHTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HPHTKeyPressed
+        Valid.pindah(evt,StatusKehamilan,Para);
+    }//GEN-LAST:event_HPHTKeyPressed
+
+    private void ParaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ParaKeyPressed
+        Valid.pindah(evt,HPHT,Abortus);
+    }//GEN-LAST:event_ParaKeyPressed
+
+    private void AbortusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AbortusKeyPressed
+        Valid.pindah(evt,Para,Gravida);
+    }//GEN-LAST:event_AbortusKeyPressed
+
+    private void GravidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GravidaKeyPressed
+        Valid.pindah(evt,Abortus,Tekanan);
+    }//GEN-LAST:event_GravidaKeyPressed
+
+    private void JumlahPerdarahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahPerdarahanKeyPressed
+        Valid.pindah(evt,Perdarahan,WarnaPerdarahan);
+    }//GEN-LAST:event_JumlahPerdarahanKeyPressed
+
+    private void WarnaPerdarahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WarnaPerdarahanKeyPressed
+        Valid.pindah(evt,JumlahPerdarahan,Intoksikasi);
+    }//GEN-LAST:event_WarnaPerdarahanKeyPressed
+
+    private void BABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BABKeyPressed
+        Valid.pindah(evt,Intoksikasi,XBAB);
+    }//GEN-LAST:event_BABKeyPressed
+
+    private void XBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_XBABKeyPressed
+        Valid.pindah(evt,BAB,KBAB);
+    }//GEN-LAST:event_XBABKeyPressed
+
+    private void KBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KBABKeyPressed
+        Valid.pindah(evt,XBAB,WBAB);
+    }//GEN-LAST:event_KBABKeyPressed
+
+    private void WBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WBABKeyPressed
+        Valid.pindah(evt,KBAB,BAK);
+    }//GEN-LAST:event_WBABKeyPressed
+
+    private void BAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BAKKeyPressed
+        Valid.pindah(evt,WBAB,XBAK);
+    }//GEN-LAST:event_BAKKeyPressed
+
+    private void XBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_XBAKKeyPressed
+        Valid.pindah(evt,BAK,WBAK);
+    }//GEN-LAST:event_XBAKKeyPressed
+
+    private void WBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WBAKKeyPressed
+        Valid.pindah(evt,XBAK,LBAK);
+    }//GEN-LAST:event_WBAKKeyPressed
+
+    private void LBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LBAKKeyPressed
+        Valid.pindah(evt,WBAK,Psikologis);
+    }//GEN-LAST:event_LBAKKeyPressed
+
+    private void DilaporkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DilaporkanKeyPressed
+        Valid.pindah(evt,Perilaku,Sebutkan);
+    }//GEN-LAST:event_DilaporkanKeyPressed
+
+    private void SebutkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SebutkanKeyPressed
+        Valid.pindah(evt,Dilaporkan,Hubungan);
+    }//GEN-LAST:event_SebutkanKeyPressed
 
     /**
     * @param args the command line arguments
