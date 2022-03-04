@@ -711,6 +711,7 @@ import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMMCU;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
+import rekammedis.RMPenilaianAwalKeperawatanIGD;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMPenilaianAwalKeperawatanKebidananRanap;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
@@ -18169,6 +18170,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianAwalKeperawatanIGDActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianAwalKeperawatanIGD aplikasi=new RMPenilaianAwalKeperawatanIGD(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18806,7 +18821,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianMCU,btnCaraBayar,btnPeminjamPiutang,btnPiutangLainLain,btnBPJSTaskIDMobileJKN,btnBayarPiutangLainLain,btnPembayaranAkunBayar4,
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
-            btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD;
+            btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD;
     
     public void isWall(){
         try{            
@@ -21656,6 +21671,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_keperawatan_ralan()==true){
                 Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_keperawatan_igd()==true){
+                Panelmenu.add(btnPenilaianAwalKeperawatanIGD);
                 jmlmenu++;
             }
             
@@ -25623,6 +25643,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         } 
         
+        if(akses.getpenilaian_awal_keperawatan_igd()==true){
+            Panelmenu.add(btnPenilaianAwalKeperawatanIGD);
+            jmlmenu++;
+        }
+
         if(akses.getpenilaian_awal_keperawatan_gigi()==true){
             Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
             jmlmenu++;
@@ -30669,6 +30694,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_awal_keperawatan_igd()==true){
+            if(btnPenilaianAwalKeperawatanIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalKeperawatanIGD);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_keperawatan_gigi()==true){
             if(btnPenilaianAwalKeperawatanGigi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
@@ -35060,6 +35092,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterMasalahKeperawatanIGD.setName("btnMasterMasalahKeperawatanIGD"); 
         btnMasterMasalahKeperawatanIGD.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMasterMasalahKeperawatanIGD.addActionListener(this::btnMasterMasalahKeperawatanIGDActionPerformed);
+        
+        btnPenilaianAwalKeperawatanIGD= new widget.ButtonBig();
+        btnPenilaianAwalKeperawatanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_AMBULANCE-transport-health_care-transportation-urgency_6007988.png"))); 
+        btnPenilaianAwalKeperawatanIGD.setText("Awal Keperawatan IGD");
+        btnPenilaianAwalKeperawatanIGD.setIconTextGap(0);
+        btnPenilaianAwalKeperawatanIGD.setName("btnPenilaianAwalKeperawatanIGD"); 
+        btnPenilaianAwalKeperawatanIGD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalKeperawatanIGD.addActionListener(this::btnPenilaianAwalKeperawatanIGDActionPerformed);
     }
     
 }
