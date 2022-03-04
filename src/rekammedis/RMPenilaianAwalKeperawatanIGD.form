@@ -2662,11 +2662,10 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
-                                <StringItem index="0" value="Ya"/>
-                                <StringItem index="1" value="Tidak"/>
+                                <StringItem index="0" value="Tidak"/>
+                                <StringItem index="1" value="Ya"/>
                               </StringArray>
                             </Property>
-                            <Property name="selectedIndex" type="int" value="1"/>
                             <Property name="name" type="java.lang.String" value="Jiwa" noResource="true"/>
                           </Properties>
                           <Events>

@@ -2006,8 +2006,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         FormInput.add(jLabel119);
         jLabel119.setBounds(311, 420, 180, 23);
 
-        Jiwa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Jiwa.setSelectedIndex(1);
+        Jiwa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Jiwa.setName("Jiwa"); // NOI18N
         Jiwa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -3108,7 +3107,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
-        Valid.pindah2(evt,Informasi,RPO);
+        Valid.pindah2(evt,Informasi,RPD);
     }//GEN-LAST:event_KeluhanUtamaKeyPressed
 
     private void RPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPDKeyPressed
@@ -3120,35 +3119,35 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_RPOKeyPressed
 
     private void AktifitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AktifitasKeyPressed
-        Valid.pindah(evt,RPD,RPO);
+        Valid.pindah(evt,ADL,AlatBantu);
     }//GEN-LAST:event_AktifitasKeyPressed
 
     private void AlatBantuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlatBantuKeyPressed
-        Valid.pindah(evt,RPD,KetAlatBantu);
+        Valid.pindah(evt,Aktifitas,KetAlatBantu);
     }//GEN-LAST:event_AlatBantuKeyPressed
 
     private void KetAlatBantuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetAlatBantuKeyPressed
-        Valid.pindah(evt,AlatBantu,ADL);
+        Valid.pindah(evt,AlatBantu,Nyeri);
     }//GEN-LAST:event_KetAlatBantuKeyPressed
 
     private void ADLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLKeyPressed
-        Valid.pindah(evt,KetAlatBantu,RPD);
+        Valid.pindah(evt,KetEdukasi,Aktifitas);
     }//GEN-LAST:event_ADLKeyPressed
 
     private void TinggalDenganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinggalDenganKeyPressed
-        Valid.pindah(evt,RPD,KetTinggal);
+        Valid.pindah(evt,Hubungan,KetTinggal);
     }//GEN-LAST:event_TinggalDenganKeyPressed
 
     private void KetTinggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetTinggalKeyPressed
-        Valid.pindah(evt,TinggalDengan,RPD);
+        Valid.pindah(evt,TinggalDengan,StatusBudaya);
     }//GEN-LAST:event_KetTinggalKeyPressed
 
     private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        Valid.pindah(evt,KetBudaya,KetEdukasi);
+        Valid.pindah(evt,KetPendidikanPJ,KetEdukasi);
     }//GEN-LAST:event_EdukasiKeyPressed
 
     private void KetEdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetEdukasiKeyPressed
-        Valid.pindah(evt,Edukasi,ATS);
+        Valid.pindah(evt,Edukasi,ADL);
     }//GEN-LAST:event_KetEdukasiKeyPressed
 
     private void LaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LaporKeyPressed
@@ -3156,7 +3155,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_LaporKeyPressed
 
     private void ATSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ATSKeyPressed
-        Valid.pindah(evt,KetEdukasi,BJM);
+        Valid.pindah(evt,KetDokter,BJM);
     }//GEN-LAST:event_ATSKeyPressed
 
     private void BJMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BJMKeyPressed
@@ -3168,7 +3167,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_HasilKeyPressed
 
     private void KetLaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLaporKeyPressed
-        Valid.pindah(evt,Lapor,RPD);
+        Valid.pindah(evt,Lapor,Rencana);
     }//GEN-LAST:event_KetLaporKeyPressed
 
     private void MSAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MSAKeyPressed
@@ -3176,7 +3175,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_MSAKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
-        Valid.pindah(evt,RPD,Provokes);
+        Valid.pindah(evt,KetAlatBantu,Provokes);
     }//GEN-LAST:event_NyeriKeyPressed
 
     private void ProvokesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProvokesKeyPressed
@@ -3224,11 +3223,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_PadaDokterKeyPressed
 
     private void KetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetDokterKeyPressed
-        Valid.pindah(evt,PadaDokter,Rencana);
+        Valid.pindah(evt,PadaDokter,ATS);
     }//GEN-LAST:event_KetDokterKeyPressed
 
     private void RencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KetLapor,BtnSimpan);
     }//GEN-LAST:event_RencanaKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
@@ -3240,11 +3239,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_CacatFisikKeyPressed
 
     private void StatusBudayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusBudayaKeyPressed
-        Valid.pindah(evt,RPD,KetBudaya);
+        Valid.pindah(evt,KetTinggal,KetBudaya);
     }//GEN-LAST:event_StatusBudayaKeyPressed
 
     private void KetBudayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetBudayaKeyPressed
-        Valid.pindah(evt,StatusBudaya,Edukasi);
+        Valid.pindah(evt,StatusBudaya,PendidikanPJ);
     }//GEN-LAST:event_KetBudayaKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
@@ -3403,7 +3402,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_PerilakuKeyPressed
 
     private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sebutkan,TinggalDengan);
     }//GEN-LAST:event_HubunganKeyPressed
 
     private void StatusPernikahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusPernikahanActionPerformed
@@ -3423,11 +3422,11 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_PendidikanPasienKeyPressed
 
     private void KetPendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetPendidikanPJKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PendidikanPJ,Edukasi);
     }//GEN-LAST:event_KetPendidikanPJKeyPressed
 
     private void PendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanPJKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetBudaya,KetPendidikanPJ);
     }//GEN-LAST:event_PendidikanPJKeyPressed
 
     private void InformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiKeyPressed
@@ -3449,7 +3448,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
 
     private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        MasterMasalahKeperawatan form=new MasterMasalahKeperawatan(null,false);
+        MasterMasalahKeperawatanIGD form=new MasterMasalahKeperawatanIGD(null,false);
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
