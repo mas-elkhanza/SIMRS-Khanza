@@ -149,29 +149,29 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
             }else if(i==27){
                 column.setPreferredWidth(105);
             }else if(i==28){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(90);
             }else if(i==29){
                 column.setPreferredWidth(80);
             }else if(i==30){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(65);
             }else if(i==31){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(85);
             }else if(i==32){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(80);
             }else if(i==33){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(77);
             }else if(i==34){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(65);
             }else if(i==35){
-                column.setPreferredWidth(58);
+                column.setPreferredWidth(65);
             }else if(i==36){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==37){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(100);
             }else if(i==38){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==39){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(150);
             }else if(i==40){
                 column.setPreferredWidth(87);
             }else if(i==41){
