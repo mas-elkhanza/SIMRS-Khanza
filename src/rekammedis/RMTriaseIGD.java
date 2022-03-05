@@ -1754,7 +1754,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbTriase.setAutoCreateRowSorter(true);
         tbTriase.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTriase.setName("tbTriase"); // NOI18N
         tbTriase.addMouseListener(new java.awt.event.MouseAdapter() {
