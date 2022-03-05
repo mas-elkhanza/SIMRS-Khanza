@@ -52,7 +52,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public final class RMDataResumePasien extends javax.swing.JDialog {
 
-    private final DefaultTableModel tabMode,tabMode1, tabMode2, tabMode3;
+    private final DefaultTableModel tabMode, tabMode1, tabMode2, tabMode3;
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
@@ -1596,6 +1596,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         String y = Sequel.cariIsi("select no_rawat from resume_pasien where no_rawat='" + TNoRw.getText() + "'");
         if (y.isBlank()) {
             Date tgl = DateRencanaKon.getDate();
@@ -1619,14 +1620,14 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 //            } else if (tblDiagnosa.getModel().getValueAt(0, 1).toString().equals("")) {
 //                JOptionPane.showMessageDialog(rootPane, "Diagnosa Utama Masih Kosong.");
             } else {
-                Date now1 = new Date();
-                String dateNow = Valid.SetDateToString(now1);
-                int no = Sequel.cariInteger("Select max(noresume) from resume_pasien where tgl_resume like '" + Valid.SetDateToString(now).substring(0, 8) + "%'");
-                System.out.println("no_antrian resume :" + no);
+//                Date now1 = new Date();
+//                String dateNow = Valid.SetDateToString(now1);
+//                int no = Sequel.cariInteger("Select max(noresume) from resume_pasien where tgl_resume like '" + Valid.SetDateToString(now).substring(0, 8) + "%'");
+//                System.out.println("no_antrian resume :" + no);
 //            String no_antrian = withLargeIntegers(no + 1) + "/RSUIHA/" + Valid.RomanNumerals(Integer.parseInt(dateNow.substring(5, 6))) + "/RANAP/" + dateNow.substring(0, 4);
 
-                if (Sequel.menyimpantf("resume_pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 36, new String[]{
-                    TNoRw.getText(), KodeDokter.getText(), KeluhanUtama.getText(), JalannyaPenyakit.getText(), PemeriksaanPenunjang.getText(), HasilLaborat.getText(),
+                if (Sequel.menyimpantf("resume_pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 37, new String[]{
+                    null,TNoRw.getText(), KodeDokter.getText(), KeluhanUtama.getText(), JalannyaPenyakit.getText(), PemeriksaanPenunjang.getText(), HasilLaborat.getText(),
                     tblDiagnosa.getModel().getValueAt(0, 1).toString(), tblDiagnosa.getModel().getValueAt(0, 0).toString(),
                     tblDiagnosa.getModel().getValueAt(1, 1).toString(), tblDiagnosa.getModel().getValueAt(1, 0).toString(),
                     tblDiagnosa.getModel().getValueAt(2, 1).toString(), tblDiagnosa.getModel().getValueAt(2, 0).toString(),
@@ -1639,7 +1640,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     for (int j = 0; j < tblObatPerawatan.getRowCount(); j++) {
                         if (tblObatPerawatan.getModel().getValueAt(j, 0).equals(true)) {
                             Sequel.menyimpan("obat_rs_resume",
-                                    "'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
+                                    null+",'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 1).toString() + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 2).toString() + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 3).toString() + "',''");
@@ -1648,15 +1649,15 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     for (int j = 0; j < tblObatSelamadiRumah.getRowCount(); j++) {
                         if (tblObatSelamadiRumah.getModel().getValueAt(j, 0).equals(true)) {
                             Sequel.menyimpan("obat_pulang_resume",
-                                    "'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
+                                    null+",'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
                                     + tblObatSelamadiRumah.getModel().getValueAt(j, 1).toString() + "','"
                                     + tblObatSelamadiRumah.getModel().getValueAt(j, 2).toString() + "','"
                                     + tblObatSelamadiRumah.getModel().getValueAt(j, 3).toString() + "',''");
                         }
                     }
                     tampil();
-                    tampilObat();
-                    tampilObatPulang();
+//                    tampilObat();
+//                    tampilObatPulang();
                     emptTeks();
 
                     JOptionPane.showMessageDialog(rootPane, "Simpan Data Berhasil");
@@ -1665,6 +1666,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Data Resume udah ada!");
         }
+
+        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1723,6 +1726,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Date tgl = DateRencanaKon.getDate();
         System.out.println("Tanggal kontrol:" + tgl);
         String tgl_kontrol = "0000-00-00";
@@ -1785,7 +1789,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     for (int j = 0; j < tblObatPerawatan.getRowCount(); j++) {
                         if (tblObatPerawatan.getModel().getValueAt(j, 0).equals(true)) {
                             Sequel.menyimpan("obat_rs_resume",
-                                    "'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
+                                    null+",'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 1).toString() + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 2).toString() + "','"
                                     + tblObatPerawatan.getModel().getValueAt(j, 3).toString() + "',''");
@@ -1796,7 +1800,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     for (int j = 0; j < tblObatSelamadiRumah.getRowCount(); j++) {
                         if (tblObatSelamadiRumah.getModel().getValueAt(j, 0).equals(true)) {
                             Sequel.menyimpan("obat_pulang_resume",
-                                    "'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
+                                    null+",'" + TNoRw.getText() + "','" + Valid.SetDateToString(now) + "','"
                                     + tblObatSelamadiRumah.getModel().getValueAt(j, 1).toString() + "','"
                                     + tblObatSelamadiRumah.getModel().getValueAt(j, 2).toString() + "','"
                                     + tblObatSelamadiRumah.getModel().getValueAt(j, 3).toString() + "',''");
@@ -1811,6 +1815,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 //                JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
 //            }
         }
+
+        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -2119,7 +2125,9 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         tampil();
+        this.setCursor(Cursor.getDefaultCursor());
 //        tampilObat();
 //        tampilObatPulang();
 }//GEN-LAST:event_BtnCariActionPerformed
@@ -2133,8 +2141,11 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+                                               
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         TCari.setText("");
         tampil();
+        this.setCursor(Cursor.getDefaultCursor());
 //        tampilObat();
 //        tampilObatPulang();
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -2420,6 +2431,14 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         tampilObat();
         isDiagnosaAhir();
         tampilObatPulang();
+        emptTeks();
+        ChkInput.setSelected(true);
+        isForm();
+        Date now1 = new Date();
+        String dateNow = Valid.SetDateToString(now1);
+        int no = Sequel.cariInteger("Select max(noresume) from resume_pasien where tgl_resume like '" + Valid.SetDateToString(now).substring(0, 8) + "%'");
+        no_antrian = withLargeIntegers(no + 1) + "/RSUIHA/RANAP/" + Valid.RomanNumerals(Integer.parseInt(Valid.SetDateToString(DateTglPulang.getDate()).substring(5, 6))) + "/" + dateNow.substring(0, 4);
+        nomor.setText(no_antrian);
     }//GEN-LAST:event_formWindowActivated
 
     private void BtnTambahObat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahObat1ActionPerformed
@@ -2554,7 +2573,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         try {
             if (TCari.getText().equals("")) {
                 ps = koneksi.prepareStatement(
-                        "select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "
+                        "select reg_periksa.tgl_registrasi,resume_pasien.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "
                         + "resume_pasien.kd_dokter,dokter.nm_dokter,resume_pasien.kondisi_pulang,resume_pasien.keluhan_utama,resume_pasien.jalannya_penyakit, "
                         + "resume_pasien.pemeriksaan_penunjang,resume_pasien.hasil_laborat,resume_pasien.diagnosa_utama,resume_pasien.kd_diagnosa_utama, "
                         + "resume_pasien.diagnosa_sekunder,resume_pasien.kd_diagnosa_sekunder,resume_pasien.diagnosa_sekunder2,resume_pasien.kd_diagnosa_sekunder2, "
@@ -2567,7 +2586,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         + "where resume_pasien.tgl_resume between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
             } else {
                 ps = koneksi.prepareStatement(
-                        "select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "
+                        "select reg_periksa.tgl_registrasi,resume_pasien.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "
                         + "resume_pasien.kd_dokter,dokter.nm_dokter,resume_pasien.kondisi_pulang,resume_pasien.keluhan_utama,resume_pasien.jalannya_penyakit, "
                         + "resume_pasien.pemeriksaan_penunjang,resume_pasien.hasil_laborat,resume_pasien.diagnosa_utama,resume_pasien.kd_diagnosa_utama, "
                         + "resume_pasien.diagnosa_sekunder,resume_pasien.kd_diagnosa_sekunder,resume_pasien.diagnosa_sekunder2,resume_pasien.kd_diagnosa_sekunder2, "
@@ -2577,17 +2596,9 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                         + "resume_pasien.riwayat_penyakit,resume_pasien.tindakan_perawatan,resume_pasien.alasan_pulang,resume_pasien.kondisi_pulang,resume_pasien.pemeriksaan_fisik,resume_pasien.noresume,resume_pasien.tindakan_rs "
                         + "from resume_pasien inner join reg_periksa on resume_pasien.no_rawat=reg_periksa.no_rawat  "
                         + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter "
-                        + "where resume_pasien.tgl_resume between ? and ? and reg_periksa.status_lanjut like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and reg_periksa.no_rkm_medis like ? or "
+                        + "where resume_pasien.tgl_resume between ? and ? and reg_periksa.no_rkm_medis = ? or "
                         + "resume_pasien.tgl_resume between ? and ? and pasien.nm_pasien like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kd_dokter like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and dokter.nm_dokter like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kondisi_pulang like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kd_diagnosa_utama like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.diagnosa_utama like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.prosedur_utama like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and reg_periksa.no_rawat like ? or "
-                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.kd_prosedur_utama like ? "
+                        + "resume_pasien.tgl_resume between ? and ? and resume_pasien.no_rawat = ? "
                         + "order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
             }
             try {
@@ -2597,37 +2608,13 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 } else {
                     ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                     ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(3, "%" + TCari.getText() + "%");
+                    ps.setString(3, TCari.getText());
                     ps.setString(4, Valid.SetDateToString(DTPCari1.getDate()));
                     ps.setString(5, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(6, "%" + TCari.getText() + "%");
                     ps.setString(7, Valid.SetDateToString(DTPCari1.getDate()));
                     ps.setString(8, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(9, "%" + TCari.getText() + "%");
-                    ps.setString(10, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(11, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(12, "%" + TCari.getText() + "%");
-                    ps.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(15, "%" + TCari.getText() + "%");
-                    ps.setString(16, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(17, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(18, "%" + TCari.getText() + "%");
-                    ps.setString(19, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(20, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(21, "%" + TCari.getText() + "%");
-                    ps.setString(22, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(23, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(24, "%" + TCari.getText() + "%");
-                    ps.setString(25, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(26, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(27, "%" + TCari.getText() + "%");
-                    ps.setString(28, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(29, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(30, "%" + TCari.getText() + "%");
-                    ps.setString(31, Valid.SetDateToString(DTPCari1.getDate()));
-                    ps.setString(32, Valid.SetDateToString(DTPCari2.getDate()));
-                    ps.setString(33, "%" + TCari.getText() + "%");
+                    ps.setString(9, TCari.getText());
                 }
                 rs = ps.executeQuery();
                 while (rs.next()) {
@@ -2675,6 +2662,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                             + "inner join databarang as barang on barang.kode_brng = detail_pemberian_obat.kode_brng "
                             + "where "
                             + "aturan_pakai.no_rawat =? "
+                            + "and barang.status = '1' "
                             + "and barang.kode_kategori = 'obat' "
                             + "group by aturan_pakai.kode_brng");
                 }
@@ -2749,6 +2737,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                             + "inner join databarang as barang ON resep_pulang.kode_brng = barang.kode_brng "
                             + "where "
                             + "resep_pulang.no_rawat =? "
+                            + "and barang.status = '1' "
                             + "and barang.kode_kategori = 'obat'");
                 } else {
                     ps2 = koneksi.prepareStatement(
@@ -2958,7 +2947,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 //            KeluhanUtama.setEditable(false);
 //            BtnDokter.setEnabled(false);
 //            KeluhanUtama.setText(akses.getkode());
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NamaDokter, KeluhanUtama.getText());
+        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NamaDokter, KeluhanUtama.getText());
 //            if (NamaDokter.getText().equals("")) {
 //                KeluhanUtama.setText("");
 //                JOptionPane.showMessageDialog(null, "User login bukan dokter...!!");
