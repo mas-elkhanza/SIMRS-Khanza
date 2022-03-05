@@ -3857,7 +3857,7 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             param.put("nyeri",Sequel.cariGambar("select nyeri from gambar"));
             param.put("mata",Sequel.cariGambar("select mata from gambar"));  
-            param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),63).toString()));
+            param.put("finger",Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),63).toString()));
             try {
                 masalahkeperawatan="";
                 ps2=koneksi.prepareStatement(

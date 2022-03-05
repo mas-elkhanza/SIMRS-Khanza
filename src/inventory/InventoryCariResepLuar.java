@@ -965,7 +965,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                             param.put("norm",rs.getString("no_rkm_medis"));
                             param.put("peresep",rs.getString("nm_dokter"));
                             param.put("noresep",rs.getString("no_resep"));
-                            finger=Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
+                            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
                             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl(rs.getString("tgl_perawatan")+""));  
                             param.put("jam",rs.getString("jam"));
                             param.put("logo",Sequel.cariGambar("select logo from setting")); 

@@ -73,7 +73,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu","Riwayat Penggunaan obat",
+            "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu","Riwayat Penggunaan obat",
             "Status Kehamilan","Gravida","Para","Abortus","HPHT","Tekanan Intrakranial","Pupil","Neurosensorik/Muskuloskeletal","Integumen","Turgor Kulit","Edema","Mukosa Mulut","Perdarahan",
             "Jumlah Perdarahan (cc)","Warna Perdarahan","Intoksikasi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK","Lain-lain BAK","Kondisi Psikologis",
             "Gangguan Jiwa Di Masa Lalu","Adakah Perilaku","Dilaporkan Ke","Sebutkan","Hubungan Pasien Dengan Anggota Keluarga","Status Pernikahan","Tinggal Dengan","Ket. Tinggal Dengan",
@@ -90,7 +90,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 80; i++) {
+        for (i = 0; i < 81; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -113,144 +113,146 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(200);
             }else if(i==11){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(200);
             }else if(i==12){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(200);
             }else if(i==13){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(80);
             }else if(i==14){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(50);
             }else if(i==15){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(50);
             }else if(i==16){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(50);
             }else if(i==17){
                 column.setPreferredWidth(35);
             }else if(i==18){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(35);
             }else if(i==19){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==20){
                 column.setPreferredWidth(150);
             }else if(i==21){
                 column.setPreferredWidth(150);
             }else if(i==22){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(150);
             }else if(i==23){
-                column.setPreferredWidth(60);
-            }else if(i==24){
-                column.setPreferredWidth(90);
-            }else if(i==25){
-                column.setPreferredWidth(60);
-            }else if(i==26){
-                column.setPreferredWidth(90);
-            }else if(i==27){
-                column.setPreferredWidth(60);
-            }else if(i==28){
-                column.setPreferredWidth(80);
-            }else if(i==29){
                 column.setPreferredWidth(100);
-            }else if(i==30){
-                column.setPreferredWidth(103);
-            }else if(i==31){
-                column.setPreferredWidth(87);
-            }else if(i==32){
-                column.setPreferredWidth(90);
-            }else if(i==33){
-                column.setPreferredWidth(50);
-            }else if(i==34){
-                column.setPreferredWidth(58);
-            }else if(i==35){
-                column.setPreferredWidth(90);
-            }else if(i==36){
+            }else if(i==24){
                 column.setPreferredWidth(60);
-            }else if(i==37){
+            }else if(i==25){
                 column.setPreferredWidth(90);
-            }else if(i==38){
+            }else if(i==26){
+                column.setPreferredWidth(60);
+            }else if(i==27){
+                column.setPreferredWidth(90);
+            }else if(i==28){
+                column.setPreferredWidth(60);
+            }else if(i==29){
+                column.setPreferredWidth(80);
+            }else if(i==30){
+                column.setPreferredWidth(100);
+            }else if(i==31){
+                column.setPreferredWidth(103);
+            }else if(i==32){
                 column.setPreferredWidth(87);
+            }else if(i==33){
+                column.setPreferredWidth(90);
+            }else if(i==34){
+                column.setPreferredWidth(50);
+            }else if(i==35){
+                column.setPreferredWidth(58);
+            }else if(i==36){
+                column.setPreferredWidth(90);
+            }else if(i==37){
+                column.setPreferredWidth(60);
+            }else if(i==38){
+                column.setPreferredWidth(90);
             }else if(i==39){
                 column.setPreferredWidth(87);
             }else if(i==40){
                 column.setPreferredWidth(87);
             }else if(i==41){
-                column.setPreferredWidth(206);
-            }else if(i==42){
-                column.setPreferredWidth(75);
-            }else if(i==43){
-                column.setPreferredWidth(90);
-            }else if(i==44){
-                column.setPreferredWidth(80);
-            }else if(i==45){
-                column.setPreferredWidth(40);
-            }else if(i==46){
-                column.setPreferredWidth(80);
-            }else if(i==47){
-                column.setPreferredWidth(40);
-            }else if(i==48){
-                column.setPreferredWidth(60);
-            }else if(i==49){
                 column.setPreferredWidth(87);
+            }else if(i==42){
+                column.setPreferredWidth(206);
+            }else if(i==43){
+                column.setPreferredWidth(75);
+            }else if(i==44){
+                column.setPreferredWidth(90);
+            }else if(i==45){
+                column.setPreferredWidth(80);
+            }else if(i==46){
+                column.setPreferredWidth(40);
+            }else if(i==47){
+                column.setPreferredWidth(80);
+            }else if(i==48){
+                column.setPreferredWidth(40);
+            }else if(i==49){
+                column.setPreferredWidth(60);
             }else if(i==50){
                 column.setPreferredWidth(87);
             }else if(i==51){
                 column.setPreferredWidth(87);
             }else if(i==52){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(87);
             }else if(i==53){
                 column.setPreferredWidth(90);
             }else if(i==54){
-                column.setPreferredWidth(110);
-            }else if(i==55){
-                column.setPreferredWidth(56);
-            }else if(i==56){
-                column.setPreferredWidth(60);
-            }else if(i==57){
-                column.setPreferredWidth(50);
-            }else if(i==58){
                 column.setPreferredWidth(90);
+            }else if(i==55){
+                column.setPreferredWidth(110);
+            }else if(i==56){
+                column.setPreferredWidth(56);
+            }else if(i==57){
+                column.setPreferredWidth(60);
+            }else if(i==58){
+                column.setPreferredWidth(50);
             }else if(i==59){
                 column.setPreferredWidth(90);
             }else if(i==60){
                 column.setPreferredWidth(90);
             }else if(i==61){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(90);
             }else if(i==62){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(70);
             }else if(i==63){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(200);
             }else if(i==64){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(80);
             }else if(i==65){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(150);
             }else if(i==66){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(100);
             }else if(i==67){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(103);
             }else if(i==68){
-                column.setPreferredWidth(90);
-            }else if(i==69){
-                column.setPreferredWidth(50);
-            }else if(i==70){
-                column.setPreferredWidth(58);
-            }else if(i==71){
-                column.setPreferredWidth(90);
-            }else if(i==72){
-                column.setPreferredWidth(60);
-            }else if(i==73){
-                column.setPreferredWidth(90);
-            }else if(i==74){
                 column.setPreferredWidth(87);
+            }else if(i==69){
+                column.setPreferredWidth(90);
+            }else if(i==70){
+                column.setPreferredWidth(50);
+            }else if(i==71){
+                column.setPreferredWidth(58);
+            }else if(i==72){
+                column.setPreferredWidth(90);
+            }else if(i==73){
+                column.setPreferredWidth(60);
+            }else if(i==74){
+                column.setPreferredWidth(90);
             }else if(i==75){
                 column.setPreferredWidth(87);
             }else if(i==76){
                 column.setPreferredWidth(87);
             }else if(i==77){
-                column.setPreferredWidth(206);
+                column.setPreferredWidth(87);
             }else if(i==78){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(206);
             }else if(i==79){
+                column.setPreferredWidth(75);
+            }else if(i==80){
                 column.setPreferredWidth(75);
             }
         }
@@ -1430,11 +1432,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         CacatFisik.setEditable(false);
         CacatFisik.setFocusTraversalPolicyProvider(true);
         CacatFisik.setName("CacatFisik"); // NOI18N
-        CacatFisik.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CacatFisikKeyPressed(evt);
-            }
-        });
         FormInput.add(CacatFisik);
         CacatFisik.setBounds(719, 620, 135, 23);
 
@@ -1557,11 +1554,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Bahasa.setEditable(false);
         Bahasa.setFocusTraversalPolicyProvider(true);
         Bahasa.setName("Bahasa"); // NOI18N
-        Bahasa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BahasaKeyPressed(evt);
-            }
-        });
         FormInput.add(Bahasa);
         Bahasa.setBounds(519, 510, 120, 23);
 
@@ -1578,11 +1570,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Agama.setEditable(false);
         Agama.setFocusTraversalPolicyProvider(true);
         Agama.setName("Agama"); // NOI18N
-        Agama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AgamaKeyPressed(evt);
-            }
-        });
         FormInput.add(Agama);
         Agama.setBounds(99, 540, 110, 23);
 
@@ -2103,11 +2090,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Pekerjaan.setEditable(false);
         Pekerjaan.setHighlighter(null);
         Pekerjaan.setName("Pekerjaan"); // NOI18N
-        Pekerjaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PekerjaanActionPerformed(evt);
-            }
-        });
         FormInput.add(Pekerjaan);
         Pekerjaan.setBounds(507, 480, 120, 23);
 
@@ -2119,11 +2101,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Pembayaran.setEditable(false);
         Pembayaran.setHighlighter(null);
         Pembayaran.setName("Pembayaran"); // NOI18N
-        Pembayaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PembayaranActionPerformed(evt);
-            }
-        });
         FormInput.add(Pembayaran);
         Pembayaran.setBounds(734, 480, 120, 23);
 
@@ -2135,11 +2112,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         PendidikanPasien.setEditable(false);
         PendidikanPasien.setFocusTraversalPolicyProvider(true);
         PendidikanPasien.setName("PendidikanPasien"); // NOI18N
-        PendidikanPasien.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PendidikanPasienKeyPressed(evt);
-            }
-        });
         FormInput.add(PendidikanPasien);
         PendidikanPasien.setBounds(734, 510, 120, 23);
 
@@ -2704,8 +2676,8 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                     while(rs.next()){
                         masalahkeperawatanigd="";
                         ps2=koneksi.prepareStatement(
-                            "select master_masalah_keperawatan_igd_igd.kode_masalah,master_masalah_keperawatan_igd_igd.nama_masalah from master_masalah_keperawatan_igd_igd "+
-                            "inner join penilaian_awal_keperawatan_igd_masalah on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd_igd.kode_masalah "+
+                            "select master_masalah_keperawatan_igd.kode_masalah,master_masalah_keperawatan_igd.nama_masalah from master_masalah_keperawatan_igd "+
+                            "inner join penilaian_awal_keperawatan_igd_masalah on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd.kode_masalah "+
                             "where penilaian_awal_keperawatan_igd_masalah.no_rawat=? order by penilaian_awal_keperawatan_igd_masalah.kode_masalah");
                         try {
                             ps2.setString(1,rs.getString("no_rawat"));
@@ -3234,10 +3206,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         Valid.pindah2(evt,Rencana,RPD);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
-    private void CacatFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CacatFisikKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CacatFisikKeyPressed
-
     private void StatusBudayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusBudayaKeyPressed
         Valid.pindah(evt,KetTinggal,KetBudaya);
     }//GEN-LAST:event_StatusBudayaKeyPressed
@@ -3263,14 +3231,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void BahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BahasaKeyPressed
-
-    private void AgamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AgamaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AgamaKeyPressed
-
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
         if(tbObat.getSelectedRow()!= -1){
             isMenu();
@@ -3291,12 +3251,12 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             param.put("nyeri",Sequel.cariGambar("select nyeri from gambar")); 
-            param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),63).toString()));
+            param.put("finger",Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),63).toString()));
             try {
                 masalahkeperawatanigd="";
                 ps2=koneksi.prepareStatement(
-                    "select master_masalah_keperawatan_igd_igd.kode_masalah,master_masalah_keperawatan_igd_igd.nama_masalah from master_masalah_keperawatan_igd_igd "+
-                    "inner join penilaian_awal_keperawatan_igd_masalah on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd_igd.kode_masalah "+
+                    "select master_masalah_keperawatan_igd.kode_masalah,master_masalah_keperawatan_igd.nama_masalah from master_masalah_keperawatan_igd "+
+                    "inner join penilaian_awal_keperawatan_igd_masalah on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd.kode_masalah "+
                     "where penilaian_awal_keperawatan_igd_masalah.no_rawat=? order by penilaian_awal_keperawatan_igd_masalah.kode_masalah");
                 try {
                     ps2.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
@@ -3408,18 +3368,6 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
     private void StatusPernikahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusPernikahanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_StatusPernikahanActionPerformed
-
-    private void PekerjaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PekerjaanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PekerjaanActionPerformed
-
-    private void PembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PembayaranActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PembayaranActionPerformed
-
-    private void PendidikanPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanPasienKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PendidikanPasienKeyPressed
 
     private void KetPendidikanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetPendidikanPJKeyPressed
         Valid.pindah(evt,PendidikanPJ,Edukasi);
@@ -3790,7 +3738,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         try{
             if(TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_igd.tanggal,"+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_igd.tanggal,penilaian_awal_keperawatan_igd.informasi,"+
                         "penilaian_awal_keperawatan_igd.keluhan_utama,penilaian_awal_keperawatan_igd.rpd,penilaian_awal_keperawatan_igd.rpo,penilaian_awal_keperawatan_igd.status_kehamilan,penilaian_awal_keperawatan_igd.gravida,penilaian_awal_keperawatan_igd.para,"+
                         "penilaian_awal_keperawatan_igd.abortus,penilaian_awal_keperawatan_igd.hpht,penilaian_awal_keperawatan_igd.tekanan,penilaian_awal_keperawatan_igd.pupil,penilaian_awal_keperawatan_igd.neurosensorik,penilaian_awal_keperawatan_igd.integumen,penilaian_awal_keperawatan_igd.turgor,"+ 
                         "penilaian_awal_keperawatan_igd.edema,penilaian_awal_keperawatan_igd.mukosa,penilaian_awal_keperawatan_igd.perdarahan,penilaian_awal_keperawatan_igd.jumlah_perdarahan,penilaian_awal_keperawatan_igd.warna_perdarahan,penilaian_awal_keperawatan_igd.intoksikasi,"+
@@ -3811,7 +3759,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                         "penilaian_awal_keperawatan_igd.tanggal between ? and ? order by penilaian_awal_keperawatan_igd.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_igd.tanggal,"+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_igd.tanggal,penilaian_awal_keperawatan_igd.informasi,"+
                         "penilaian_awal_keperawatan_igd.keluhan_utama,penilaian_awal_keperawatan_igd.rpd,penilaian_awal_keperawatan_igd.rpo,penilaian_awal_keperawatan_igd.status_kehamilan,penilaian_awal_keperawatan_igd.gravida,penilaian_awal_keperawatan_igd.para,"+
                         "penilaian_awal_keperawatan_igd.abortus,penilaian_awal_keperawatan_igd.hpht,penilaian_awal_keperawatan_igd.tekanan,penilaian_awal_keperawatan_igd.pupil,penilaian_awal_keperawatan_igd.neurosensorik,penilaian_awal_keperawatan_igd.integumen,penilaian_awal_keperawatan_igd.turgor,"+ 
                         "penilaian_awal_keperawatan_igd.edema,penilaian_awal_keperawatan_igd.mukosa,penilaian_awal_keperawatan_igd.perdarahan,penilaian_awal_keperawatan_igd.jumlah_perdarahan,penilaian_awal_keperawatan_igd.warna_perdarahan,penilaian_awal_keperawatan_igd.intoksikasi,"+
@@ -3861,7 +3809,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
-                        rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("status_kehamilan"),rs.getString("gravida"),
+                        rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("status_kehamilan"),rs.getString("gravida"),
                         rs.getString("para"),rs.getString("abortus"),rs.getString("hpht"),rs.getString("tekanan"),rs.getString("pupil"),rs.getString("neurosensorik"),rs.getString("integumen"),rs.getString("turgor"),
                         rs.getString("edema"),rs.getString("mukosa"),rs.getString("perdarahan"),rs.getString("jumlah_perdarahan"),rs.getString("warna_perdarahan"),rs.getString("intoksikasi"),rs.getString("bab"),rs.getString("xbab"),rs.getString("kbab"),
                         rs.getString("wbab"),rs.getString("bak"),rs.getString("xbak"),rs.getString("wbak"),rs.getString("lbak"),rs.getString("psikologis"),rs.getString("jiwa"),rs.getString("perilaku"),rs.getString("dilaporkan"),
@@ -4258,8 +4206,8 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
             try {
                 Valid.tabelKosong(tabModeDetailMasalah);
                 ps=koneksi.prepareStatement(
-                        "select master_masalah_keperawatan_igd_igd.kode_masalah,master_masalah_keperawatan_igd_igd.nama_masalah from master_masalah_keperawatan_igd_igd "+
-                        "inner join penilaian_awal_keperawatan_igd_masalah on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd_igd.kode_masalah "+
+                        "select master_masalah_keperawatan_igd.kode_masalah,master_masalah_keperawatan_igd.nama_masalah from master_masalah_keperawatan_igd "+
+                        "inner join penilaian_awal_keperawatan_igd_masalah on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd.kode_masalah "+
                         "where penilaian_awal_keperawatan_igd_masalah.no_rawat=? order by penilaian_awal_keperawatan_igd_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
