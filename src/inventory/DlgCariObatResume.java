@@ -500,13 +500,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(rawat.equals("perawatan")){
         for (i = 0; i < tbObat.getRowCount(); i++) {
             if (tbObat.getValueAt(i, 0).toString().equals("true")) {
-                  Sequel.menyimpan("obat_rs_resume", "'" + no_rawat + "','" + tgl_perawatan + "','" + tbObat.getValueAt(i, 1).toString() + "','" + tbObat.getValueAt(i, 2).toString() + "','" + tbObat.getValueAt(i, 3).toString()+ "',''");
+                  Sequel.menyimpan("obat_rs_resume", null+",'" + no_rawat + "','" + tgl_perawatan + "','" + tbObat.getValueAt(i, 1).toString() + "','" + tbObat.getValueAt(i, 2).toString() + "','" + tbObat.getValueAt(i, 3).toString()+ "',''");
             }
         }
         }else if(rawat.equals("pulang"))
         for (i = 0; i < tbObat.getRowCount(); i++) {
             if (tbObat.getValueAt(i, 0).toString().equals("true")) {
-                  Sequel.menyimpan("obat_pulang_resume", "'" + no_rawat + "','" + tgl_perawatan + "','" + tbObat.getValueAt(i, 1).toString() + "','" + tbObat.getValueAt(i, 2).toString() + "','" + tbObat.getValueAt(i, 3).toString()+ "',''");
+                  Sequel.menyimpan("obat_pulang_resume", null+",'" + no_rawat + "','" + tgl_perawatan + "','" + tbObat.getValueAt(i, 1).toString() + "','" + tbObat.getValueAt(i, 2).toString() + "','" + tbObat.getValueAt(i, 3).toString()+ "',''");
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
