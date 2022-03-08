@@ -198,7 +198,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[D]Stok Akhir Farmasi Per Tanggal","[L]Riwayat Kamar Pasien","[L]Uji Fungsi/Prosedur KFR","[L]Hapus Berkas Digital Perawatan","[J]Kategori Pengeluaran Harian",
                 "[J]Kategori Pemasukan Lain-lain","[H]Pembayaran Per Akun Bayar 5","[S]Ruang Operasi","[D]Telaah Resep & Obat","[H]Jasa Tindakan Pasien","[D]Permintaan Resep Pulang",
                 "[H]Rekap JM Dokter","[I]Status Data RM","[A]Ubah Petugas Lab PK","[A]Ubah Petugas Lab PA","[A]Ubah Petugas Radiologi","[A]Gabung Nomor Rawat","[L]Gabungkan Data RM",
-                "[D]Ringkasan Biaya Obat Pasien Per Tanggal","[L]Master Masalah Keperawatan IGD","[L]Penilaian Awal Keperawatan IGD"
+                "[D]Ringkasan Biaya Obat Pasien Per Tanggal","[L]Master Masalah Keperawatan IGD","[L]Penilaian Awal Keperawatan IGD","[K]Referensi DPHO Apotek BPJS"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -417,6 +417,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -430,7 +431,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 802;i++) {
+        for (i = 0; i < 803;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2290,6 +2291,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 801:
                     column.setPreferredWidth(181);
                     break;
+                case 802:
+                    column.setPreferredWidth(163);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2789,7 +2793,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3633,7 +3637,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "gabung_rm='"+tbUser.getValueAt(i,798).toString()+"',"+
                     "ringkasan_biaya_obat_pasien_pertanggal='"+tbUser.getValueAt(i,799).toString()+"',"+
                     "master_masalah_keperawatan_igd='"+tbUser.getValueAt(i,800).toString()+"',"+
-                    "penilaian_awal_keperawatan_igd='"+tbUser.getValueAt(i,801).toString()+"'");
+                    "penilaian_awal_keperawatan_igd='"+tbUser.getValueAt(i,801).toString()+"',"+
+                    "bpjs_referensi_dpho_apotek='"+tbUser.getValueAt(i,802).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4517,7 +4522,8 @@ public class DlgUser extends javax.swing.JDialog {
                                         "gabung_rm='"+tbUser.getValueAt(barisdicopy,798).toString()+"',"+
                                         "ringkasan_biaya_obat_pasien_pertanggal='"+tbUser.getValueAt(barisdicopy,799).toString()+"',"+
                                         "master_masalah_keperawatan_igd='"+tbUser.getValueAt(barisdicopy,800).toString()+"',"+
-                                        "penilaian_awal_keperawatan_igd='"+tbUser.getValueAt(barisdicopy,801).toString()+"'");
+                                        "penilaian_awal_keperawatan_igd='"+tbUser.getValueAt(barisdicopy,801).toString()+"',"+
+                                        "bpjs_referensi_dpho_apotek='"+tbUser.getValueAt(barisdicopy,802).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -4875,7 +4881,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.stok_akhir_farmasi_pertanggal,user.riwayat_kamar_pasien,user.uji_fungsi_kfr,user.hapus_berkas_digital_perawatan,user.kategori_pengeluaran_harian,"+
                 "user.kategori_pemasukan_lain,user.pembayaran_akun_bayar5,user.ruang_ok,user.telaah_resep,user.jasa_tindakan_pasien,user.permintaan_resep_pulang,"+
                 "user.rekap_jm_dokter,user.status_data_rm,user.ubah_petugas_lab_pk,user.ubah_petugas_lab_pa,user.ubah_petugas_radiologi,user.gabung_norawat,"+
-                "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd,"+
+                "user.bpjs_referensi_dpho_apotek from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5689,7 +5696,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("gabung_rm"),
                                rs.getBoolean("ringkasan_biaya_obat_pasien_pertanggal"),
                                rs.getBoolean("master_masalah_keperawatan_igd"),
-                               rs.getBoolean("penilaian_awal_keperawatan_igd")
+                               rs.getBoolean("penilaian_awal_keperawatan_igd"),
+                               rs.getBoolean("bpjs_referensi_dpho_apotek")
                             });
                         }   
                     } catch (Exception e) {
@@ -6492,7 +6500,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("gabung_rm"),
                            rs.getBoolean("ringkasan_biaya_obat_pasien_pertanggal"),
                            rs.getBoolean("master_masalah_keperawatan_igd"),
-                           rs.getBoolean("penilaian_awal_keperawatan_igd")
+                           rs.getBoolean("penilaian_awal_keperawatan_igd"),
+                           rs.getBoolean("bpjs_referensi_dpho_apotek")
                         });
                     }                                             
                  }

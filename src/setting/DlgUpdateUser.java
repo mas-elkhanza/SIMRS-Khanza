@@ -685,7 +685,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.stok_akhir_farmasi_pertanggal,user.riwayat_kamar_pasien,user.uji_fungsi_kfr,user.hapus_berkas_digital_perawatan,user.kategori_pengeluaran_harian,"+
                 "user.kategori_pemasukan_lain,user.pembayaran_akun_bayar5,user.ruang_ok,user.telaah_resep,user.jasa_tindakan_pasien,user.permintaan_resep_pulang,"+
                 "user.rekap_jm_dokter,user.status_data_rm,user.ubah_petugas_lab_pk,user.ubah_petugas_lab_pa,user.ubah_petugas_radiologi,user.gabung_norawat,"+
-                "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd,"+
+                "user.bpjs_referensi_dpho_apotek from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2724,6 +2725,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Task ID Mobile JKN".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Task ID Mobile JKN",rs.getBoolean("bpjs_task_id")});
+                    }
+                    
+                    if("[K]Referensi DPHO Apotek BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Referensi DPHO Apotek BPJS",rs.getBoolean("bpjs_referensi_dpho_apotek")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5947,6 +5952,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[K]Task ID Mobile JKN".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_task_id='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Referensi DPHO Apotek BPJS".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_referensi_dpho_apotek='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){
