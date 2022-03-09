@@ -21139,6 +21139,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getbpjs_referensi_poli_apotek()==true){
+                Panelmenu.add(btnBPJSReferensiPoliApotek);
+                jmlmenu++;
+            }
+            
             if(akses.getbpjs_task_id()==true){
                 Panelmenu.add(btnBPJSTaskIDMobileJKN);
                 jmlmenu++;
@@ -25111,6 +25116,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_referensi_dpho_apotek()==true){
             Panelmenu.add(btnBPJSReferensiDPHOApotek);
+            jmlmenu++;
+        }
+
+        if(akses.getbpjs_referensi_poli_apotek()==true){
+            Panelmenu.add(btnBPJSReferensiPoliApotek);
             jmlmenu++;
         }
 
@@ -29944,6 +29954,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_referensi_dpho_apotek()==true){
             if(btnBPJSReferensiDPHOApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiDPHOApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_referensi_poli_apotek()==true){
+            if(btnBPJSReferensiPoliApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSReferensiPoliApotek);
                 jmlmenu++;
             }                
         }
