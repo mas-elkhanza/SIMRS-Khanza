@@ -686,7 +686,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.kategori_pemasukan_lain,user.pembayaran_akun_bayar5,user.ruang_ok,user.telaah_resep,user.jasa_tindakan_pasien,user.permintaan_resep_pulang,"+
                 "user.rekap_jm_dokter,user.status_data_rm,user.ubah_petugas_lab_pk,user.ubah_petugas_lab_pa,user.ubah_petugas_radiologi,user.gabung_norawat,"+
                 "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd,"+
-                "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek,user.bayar_jm_dokter from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2289,6 +2289,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[J]Kategori Pemasukan Lain-lain".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Kategori Pemasukan Lain-lain",rs.getBoolean("kategori_pemasukan_lain")});
+                    }
+                    
+                    if("[J]Bayar JM Dokter".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Bayar JM Dokter",rs.getBoolean("bayar_jm_dokter")});
                     }
                     
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5516,6 +5520,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[J]Kategori Pemasukan Lain-lain".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","kategori_pemasukan_lain='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[J]Bayar JM Dokter".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bayar_jm_dokter='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }

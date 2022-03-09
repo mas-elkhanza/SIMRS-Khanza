@@ -175,7 +175,7 @@ public final class akses {
             pembayaran_akun_bayar5=false,ruang_ok=false,jasa_tindakan_pasien=false,telaah_resep=false,permintaan_resep_pulang=false,rekap_jm_dokter=false,
             status_data_rm=false,ubah_petugas_lab_pk=false,ubah_petugas_lab_pa=false,ubah_petugas_radiologi=false,gabung_norawat=false,gabung_rm=false,
             ringkasan_biaya_obat_pasien_pertanggal=false,master_masalah_keperawatan_igd=false,penilaian_awal_keperawatan_igd=false,bpjs_referensi_dpho_apotek=false,
-            bpjs_referensi_poli_apotek=false;
+            bpjs_referensi_poli_apotek=false,bayar_jm_dokter=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -999,6 +999,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_igd=true;
                         akses.bpjs_referensi_dpho_apotek=true;
                         akses.bpjs_referensi_poli_apotek=true;
+                        akses.bayar_jm_dokter=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1806,6 +1807,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_igd=rs2.getBoolean("penilaian_awal_keperawatan_igd");
                         akses.bpjs_referensi_dpho_apotek=rs2.getBoolean("bpjs_referensi_dpho_apotek");
                         akses.bpjs_referensi_poli_apotek=rs2.getBoolean("bpjs_referensi_poli_apotek");
+                        akses.bayar_jm_dokter=rs2.getBoolean("bayar_jm_dokter");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2611,6 +2613,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_igd=false;
                         akses.bpjs_referensi_dpho_apotek=false;
                         akses.bpjs_referensi_poli_apotek=false;
+                        akses.bayar_jm_dokter=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3471,4 +3474,5 @@ public final class akses {
     public static boolean getpenilaian_awal_keperawatan_igd(){return akses.penilaian_awal_keperawatan_igd;}
     public static boolean getbpjs_referensi_dpho_apotek(){return akses.bpjs_referensi_dpho_apotek;}
     public static boolean getbpjs_referensi_poli_apotek(){return akses.bpjs_referensi_poli_apotek;}
+    public static boolean getbayar_jm_dokter(){return akses.bayar_jm_dokter;}
 }   
