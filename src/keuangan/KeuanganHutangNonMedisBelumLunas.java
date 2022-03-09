@@ -836,7 +836,7 @@ public final class KeuanganHutangNonMedisBelumLunas extends javax.swing.JDialog 
                                 tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Piutang Pasien"); 
             }
             Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.menyimpan("temporary","'0','','','TOTAL HUTANG :','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+            Sequel.menyimpan("temporary","'0','','','TOTAL HUTANG :','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             
             
             Map<String, Object> param = new HashMap<>();                 

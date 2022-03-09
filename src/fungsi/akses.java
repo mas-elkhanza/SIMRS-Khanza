@@ -174,7 +174,8 @@ public final class akses {
             riwayat_kamar_pasien=false,uji_fungsi_kfr=false,hapus_berkas_digital_perawatan=false,kategori_pengeluaran_harian=false,kategori_pemasukan_lain=false,
             pembayaran_akun_bayar5=false,ruang_ok=false,jasa_tindakan_pasien=false,telaah_resep=false,permintaan_resep_pulang=false,rekap_jm_dokter=false,
             status_data_rm=false,ubah_petugas_lab_pk=false,ubah_petugas_lab_pa=false,ubah_petugas_radiologi=false,gabung_norawat=false,gabung_rm=false,
-            ringkasan_biaya_obat_pasien_pertanggal=false,master_masalah_keperawatan_igd=false,penilaian_awal_keperawatan_igd=false,bpjs_referensi_dpho_apotek=false;
+            ringkasan_biaya_obat_pasien_pertanggal=false,master_masalah_keperawatan_igd=false,penilaian_awal_keperawatan_igd=false,bpjs_referensi_dpho_apotek=false,
+            bpjs_referensi_poli_apotek=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -997,6 +998,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_igd=true;
                         akses.penilaian_awal_keperawatan_igd=true;
                         akses.bpjs_referensi_dpho_apotek=true;
+                        akses.bpjs_referensi_poli_apotek=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1803,6 +1805,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_igd=rs2.getBoolean("master_masalah_keperawatan_igd");
                         akses.penilaian_awal_keperawatan_igd=rs2.getBoolean("penilaian_awal_keperawatan_igd");
                         akses.bpjs_referensi_dpho_apotek=rs2.getBoolean("bpjs_referensi_dpho_apotek");
+                        akses.bpjs_referensi_poli_apotek=rs2.getBoolean("bpjs_referensi_poli_apotek");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2607,6 +2610,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_igd=false;
                         akses.penilaian_awal_keperawatan_igd=false;
                         akses.bpjs_referensi_dpho_apotek=false;
+                        akses.bpjs_referensi_poli_apotek=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3466,4 +3470,5 @@ public final class akses {
     public static boolean getmaster_masalah_keperawatan_igd(){return akses.master_masalah_keperawatan_igd;}
     public static boolean getpenilaian_awal_keperawatan_igd(){return akses.penilaian_awal_keperawatan_igd;}
     public static boolean getbpjs_referensi_dpho_apotek(){return akses.bpjs_referensi_dpho_apotek;}
+    public static boolean getbpjs_referensi_poli_apotek(){return akses.bpjs_referensi_poli_apotek;}
 }   

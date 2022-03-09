@@ -31,6 +31,7 @@ import laporan.DlgDataHAIs;
 import bridging.AplicareCekReferensiKamar;
 import bridging.AplicareKetersediaanKamar;
 import bridging.ApotekBPJSCekReferensiDPHO;
+import bridging.ApotekBPJSCekReferensiPoli;
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekDataSEPInternal;
 import bridging.BPJSCekDetailSEP2;
@@ -18196,6 +18197,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSReferensiPoliApotekActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSCekReferensiPoli form=new ApotekBPJSCekReferensiPoli(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18834,7 +18846,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
-            btnBPJSReferensiDPHOApotek;
+            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek;
     
     public void isWall(){
         try{            
@@ -35138,6 +35150,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiDPHOApotek.setName("btnBPJSReferensiDPHOApotek"); 
         btnBPJSReferensiDPHOApotek.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSReferensiDPHOApotek.addActionListener(this::btnBPJSReferensiDPHOApotekActionPerformed);
+        
+        btnBPJSReferensiPoliApotek = new widget.ButtonBig();
+        btnBPJSReferensiPoliApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSReferensiPoliApotek.setText("Referensi Poli Apotek BPJS");
+        btnBPJSReferensiPoliApotek.setIconTextGap(0);
+        btnBPJSReferensiPoliApotek.setName("btnBPJSReferensiPoliApotek"); 
+        btnBPJSReferensiPoliApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSReferensiPoliApotek.addActionListener(this::btnBPJSReferensiPoliApotekActionPerformed);
     }
     
 }

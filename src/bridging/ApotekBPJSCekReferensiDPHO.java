@@ -157,7 +157,7 @@ public final class ApotekBPJSCekReferensiDPHO extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi DPHO Apotek ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi DPHO Apotek BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -367,7 +367,7 @@ public final class ApotekBPJSCekReferensiDPHO extends javax.swing.JDialog {
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(response.path("list").isArray()){
-                    for(JsonNode list:response){
+                    for(JsonNode list:response.path("list")){
                         if(list.path("namaobat").asText().toLowerCase().contains(keyword.toLowerCase())||
                            list.path("kodeobat").asText().toLowerCase().contains(keyword.toLowerCase())||
                            list.path("restriksi").asText().toLowerCase().contains(keyword.toLowerCase())||
