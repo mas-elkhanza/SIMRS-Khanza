@@ -270,7 +270,13 @@ public final class ApotekBPJSCekReferensiDPHO extends javax.swing.JDialog {
                 Sequel.menyimpan("temporary","'0','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,2).toString()+"','"+
+                                tabMode.getValueAt(r,3).toString()+"','"+
+                                tabMode.getValueAt(r,4).toString()+"','"+
+                                tabMode.getValueAt(r,5).toString()+"','"+
+                                tabMode.getValueAt(r,6).toString()+"','"+
+                                tabMode.getValueAt(r,7).toString()+"','"+
+                                tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -282,7 +288,7 @@ public final class ApotekBPJSCekReferensiDPHO extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJSReferensiDokterHFIS.jasper","report","[ Pencarian Referensi Dokter HFIS ]",param);
+            Valid.MyReport("rptCariBPJSReferensiDPHOApotek.jasper","report","[ Pencarian Referensi DPHO Apotek BPJS ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
