@@ -621,6 +621,7 @@ import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.DlgRekapJmDokter;
+import keuangan.KeuanganBayarJMDokter;
 import keuangan.KeuanganRingkasanTindakan;
 import keuangan.KeuanganBayarPemesananAset;
 import keuangan.KeuanganBayarPesanToko;
@@ -18208,6 +18209,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBayarJMDokterActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganBayarJMDokter form=new KeuanganBayarJMDokter(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18846,7 +18858,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
-            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek;
+            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter;
     
     public void isWall(){
         try{            
@@ -20879,6 +20891,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbayar_piutang_lain()==true){
                 Panelmenu.add(btnBayarPiutangLainLain);
+                jmlmenu++;
+            }
+            
+            if(akses.getbayar_jm_dokter()==true){
+                Panelmenu.add(btnBayarJMDokter);
                 jmlmenu++;
             }
 
@@ -24860,6 +24877,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbayar_piutang_lain()==true){
             Panelmenu.add(btnBayarPiutangLainLain);
+            jmlmenu++;
+        }
+
+        if(akses.getbayar_jm_dokter()==true){
+            Panelmenu.add(btnBayarJMDokter);
             jmlmenu++;
         }
 
@@ -29597,6 +29619,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbayar_piutang_lain()==true){
             if(btnBayarPiutangLainLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPiutangLainLain);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbayar_jm_dokter()==true){
+            if(btnBayarJMDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarJMDokter);
                 jmlmenu++;
             }                
         }
@@ -35175,6 +35204,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiPoliApotek.setName("btnBPJSReferensiPoliApotek"); 
         btnBPJSReferensiPoliApotek.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSReferensiPoliApotek.addActionListener(this::btnBPJSReferensiPoliApotekActionPerformed);
+        
+        btnBayarJMDokter = new widget.ButtonBig();
+        btnBayarJMDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4852541_doc_docx_files_odt_rtf_icon.png")));
+        btnBayarJMDokter.setText("Bayar JM Dokter");
+        btnBayarJMDokter.setIconTextGap(0);
+        btnBayarJMDokter.setName("btnBayarJMDokter"); 
+        btnBayarJMDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarJMDokter.addActionListener(this::btnBayarJMDokterActionPerformed);
     }
     
 }

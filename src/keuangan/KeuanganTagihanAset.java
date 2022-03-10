@@ -9,7 +9,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import inventaris.InventarisCariSuplier;
-import ipsrs.IPSRSCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
