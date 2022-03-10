@@ -1193,7 +1193,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         TCari.setText(nonota);
         ChkInput.setSelected(true);
         isForm();
-        sisapiutang=Sequel.cariIsiAngka("SELECT sisapiutang FROM piutang_lainlain where nota_piutang=?",NoNota.getText());
+        sisapiutang=Sequel.cariIsiAngka("SELECT piutang_lainlain.sisapiutang FROM piutang_lainlain where piutang_lainlain.nota_piutang=?",NoNota.getText());
         Sisa.setText(Valid.SetAngka(Valid.roundUp(sisapiutang,100)));
         if(sisapiutang<=0){
             JOptionPane.showMessageDialog(null,"Piutang sudah lunas..!!");
@@ -1246,7 +1246,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              file.createNewFile();
              fileWriter = new FileWriter(file);
              iyem="";
-             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();

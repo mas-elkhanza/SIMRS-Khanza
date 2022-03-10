@@ -27,7 +27,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariCaraBayar;
 
-public class DlgRekapJmDokter extends javax.swing.JDialog {
+public class KeuanganRekapJmDokter extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -48,7 +48,7 @@ public class DlgRekapJmDokter extends javax.swing.JDialog {
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
-    public DlgRekapJmDokter(java.awt.Frame parent, boolean modal) {
+    public KeuanganRekapJmDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -769,7 +769,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgRekapJmDokter dialog = new DlgRekapJmDokter(new javax.swing.JFrame(), true);
+            KeuanganRekapJmDokter dialog = new KeuanganRekapJmDokter(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

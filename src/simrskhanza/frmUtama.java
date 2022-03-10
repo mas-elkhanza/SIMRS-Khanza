@@ -620,7 +620,7 @@ import keuangan.DlgPembayaranPerAKunBayar5;
 import keuangan.DlgPendapatanPerCaraBayar;
 import keuangan.DlgPengembalianDepositPasien;
 import keuangan.DlgPerkiraanBiayaRanap;
-import keuangan.DlgRekapJmDokter;
+import keuangan.KeuanganRekapJmDokter;
 import keuangan.KeuanganBayarJMDokter;
 import keuangan.KeuanganRingkasanTindakan;
 import keuangan.KeuanganBayarPemesananAset;
@@ -18130,7 +18130,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnRekapJasaDokterActionPerformed(java.awt.event.ActionEvent evt) {                                            
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgRekapJmDokter rbtindakandokter=new DlgRekapJmDokter(this,false);
+        KeuanganRekapJmDokter rbtindakandokter=new KeuanganRekapJmDokter(this,false);
         rbtindakandokter.isCek();
         rbtindakandokter.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         rbtindakandokter.setLocationRelativeTo(PanelUtama);
@@ -18214,6 +18214,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganBayarJMDokter form=new KeuanganBayarJMDokter(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);

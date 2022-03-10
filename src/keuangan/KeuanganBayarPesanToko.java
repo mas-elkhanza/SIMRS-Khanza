@@ -1277,8 +1277,8 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void setData(String nofaktur){
         no_faktur.setText(nofaktur);
         TCari.setText(nofaktur);
-        sisahutang=Math.round(Sequel.cariIsiAngka("SELECT tagihan FROM tokopemesanan where no_faktur=?",nofaktur)
-                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(besar_bayar),0) FROM toko_bayar_pemesanan where no_faktur=?",nofaktur));
+        sisahutang=Math.round(Sequel.cariIsiAngka("SELECT tokopemesanan.tagihan FROM tokopemesanan where tokopemesanan.no_faktur=?",nofaktur)
+                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(toko_bayar_pemesanan.besar_bayar),0) FROM toko_bayar_pemesanan where toko_bayar_pemesanan.no_faktur=?",nofaktur));
         sisa_hutang.setText(Valid.SetAngka(sisahutang));
         besar_bayar.setText("0");
     }
@@ -1312,7 +1312,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             nip.setEditable(false);
             BtnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", nama_petugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nama_petugas,nip.getText());
         }else if(akses.getjml1()>=1){
             nip.setEditable(true);
             BtnPetugas.setEnabled(true);
@@ -1326,7 +1326,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
              file.createNewFile();
              fileWriter = new FileWriter(file);
              iyem="";
-             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
