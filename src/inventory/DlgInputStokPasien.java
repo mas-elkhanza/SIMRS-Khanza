@@ -12,11 +12,11 @@
 package inventory;
 
 import fungsi.WarnaTable2;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1265,7 +1265,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         nm_pasien.setText(pasien);
         kelas.setText(Sequel.cariIsi(
                 "select kamar.kelas from kamar inner join kamar_inap on kamar.kd_kamar=kamar_inap.kd_kamar "
-                + "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1", no_rawat));
+                + "where no_rawat=? and (stts_pulang='-' or stts_pulang='AKTIF') order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1", no_rawat));
         if (kelas.getText().equals("Kelas 1")) {
             Jeniskelas.setSelectedItem("Kelas 1");
         } else if (kelas.getText().equals("Kelas 2")) {

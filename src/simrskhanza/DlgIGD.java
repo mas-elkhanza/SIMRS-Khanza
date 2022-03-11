@@ -12,21 +12,18 @@
 
 package simrskhanza;
 
-import rekammedis.RMRiwayatPerawatan;
-import permintaan.DlgBookingOperasi;
-import kepegawaian.DlgCariDokter;
-import inventory.DlgResepObat;
-import inventory.DlgPemberianObat;
 import bridging.BPJSDataSEP;
 import bridging.CoronaPasien;
 import bridging.DlgSKDPBPJS;
 import bridging.INACBGPerawatanCorona;
 import bridging.InhealthDataSJP;
 import bridging.SisruteRujukanKeluar;
-import laporan.DlgFrekuensiPenyakitRalan;
-import keuangan.DlgBilingRalan;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
+import fungsi.koneksiDB;
+import fungsi.sekuel;
+import fungsi.validasi;
 import grafikanalisa.grafikperiksaperagama;
 import grafikanalisa.grafikperiksaperbulan;
 import grafikanalisa.grafikperiksaperdokter;
@@ -36,11 +33,9 @@ import grafikanalisa.grafikperiksaperpekerjaan;
 import grafikanalisa.grafikperiksaperpoli;
 import grafikanalisa.grafikperiksapertahun;
 import grafikanalisa.grafiksql;
-import fungsi.koneksiDB;
-import fungsi.sekuel;
-import fungsi.validasi;
-import fungsi.akses;
+import inventory.DlgPemberianObat;
 import inventory.DlgPeresepanDokter;
+import inventory.DlgResepObat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -74,15 +69,20 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariDokter;
 import keuangan.DlgBilingParsialRalan;
+import keuangan.DlgBilingRalan;
 import keuangan.DlgLhtPiutang;
 import laporan.DlgBerkasRawat;
 import laporan.DlgDataInsidenKeselamatan;
-import rekammedis.RMDataResumePasien;
 import laporan.DlgDiagnosaPenyakit;
+import laporan.DlgFrekuensiPenyakitRalan;
+import permintaan.DlgBookingOperasi;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
+import rekammedis.RMDataResumePasien;
 import rekammedis.RMDeteksiDiniCorona;
+import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMTriaseIGD;
 import surat.SuratSakit;
 import surat.SuratTidakHamil;
@@ -3664,7 +3664,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         } else if (Sequel.cariInteger(
                 "select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "
                         + "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "
-                        + "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",
+                        + "where (kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and pasien.no_rkm_medis=?",
                 TNoRM.getText()) > 0) {
             JOptionPane.showMessageDialog(null, "Pasien sedang dalam masa perawatan di kamar inap..!!");
             TNoRM.requestFocus();

@@ -1391,7 +1391,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
             }
 
             keluar = Sequel.cariIsi(
-                    "select stts_pulang from kamar_inap where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",
+                    "select stts_pulang from kamar_inap where no_rawat=? and (stts_pulang='-' or stts_pulang='AKTIF') order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",
                     TNoRw.getText());
 
             status = "";
@@ -1524,7 +1524,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
             }
 
             keluar = Sequel.cariIsi(
-                    "select stts_pulang from kamar_inap where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",
+                    "select stts_pulang from kamar_inap where no_rawat=? and (stts_pulang='-' or stts_pulang='AKTIF') order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",
                     TNoRw.getText());
 
             param.put("html",

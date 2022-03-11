@@ -1,5 +1,4 @@
 package informasi;
-import simrskhanza.DlgCariBangsal;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -17,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import simrskhanza.DlgCariBangsal;
 
 /**
  *
@@ -738,9 +738,9 @@ private void R3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event
      */
     public void tampil() {
         if(R1.isSelected()==true){
-            kmr=" stts_pulang='-' ";
+            kmr=" (stts_pulang='-' or stts_pulang='AKTIF') ";
             if(!BangsalCari.getText().equals("")){
-                kmr=" stts_pulang='-' and bangsal.nm_bangsal='"+BangsalCari.getText()+"' ";
+                kmr=" (stts_pulang='-' or stts_pulang='AKTIF') and bangsal.nm_bangsal='"+BangsalCari.getText()+"' ";
             }
         }else if(R2.isSelected()==true){
             kmr=" kamar_inap.tgl_masuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";

@@ -11,14 +11,14 @@
 
 package simrskhanza;
 
-import inventory.DlgBarang;
-import inventory.DlgCariKonversi;
 import fungsi.WarnaTable2;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
+import inventory.DlgBarang;
+import inventory.DlgCariKonversi;
 import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -1052,7 +1052,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
         kelas.setText(Sequel.cariIsi(
                 "select kamar.kelas from kamar inner join kamar_inap on kamar.kd_kamar=kamar_inap.kd_kamar "+
-                "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norwt));
+                "where no_rawat=? and (stts_pulang='-' or stts_pulang='AKTIF') order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norwt));
         if(kelas.getText().equals("Kelas 1")){
             Jeniskelas.setSelectedItem("Kelas 1");
         }else if(kelas.getText().equals("Kelas 2")){

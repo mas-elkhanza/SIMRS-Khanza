@@ -11,19 +11,16 @@
 
 package bridging;
 
-import fungsi.WarnaTable;
-import java.awt.Dimension;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -39,12 +36,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariDokter;
 import keuangan.DlgKamar;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgBahasa;
 import simrskhanza.DlgCacatFisik;
 import simrskhanza.DlgGolonganPolri;
@@ -4333,7 +4333,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             Valid.textKosong(NoSKDP, "No.SKDP");
         }*/else if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
             "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "+
-            "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNo.getText())>0){
+            "where (kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and pasien.no_rkm_medis=?",TNo.getText())>0){
                 JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
                 NoRujukan.requestFocus();
         }else if(NoKartu.getText().trim().equals("")){
