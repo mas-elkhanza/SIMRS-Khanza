@@ -5840,7 +5840,7 @@ public final class DlgReg extends javax.swing.JDialog {
         } else if (Sequel.cariInteger(
                 "select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "
                 + "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "
-                + "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",
+                + "where (kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and pasien.no_rkm_medis=?",
                 TNoRM.getText()) > 0) {
             JOptionPane.showMessageDialog(null, "Pasien sedang dalam masa perawatan di kamar inap..!!");
             TNoRM.requestFocus();
