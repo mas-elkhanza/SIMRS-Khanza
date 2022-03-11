@@ -10758,7 +10758,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }
             }
         }
-    }// GEN-LAST:event_MnPermintaanRadiologiActionPerformed
+    }
+// GEN-LAST:event_MnPermintaanRadiologiActionPerformed
 
     private void MnResepDOkterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnResepDOkterActionPerformed
         if (tabMode.getRowCount() == 0) {

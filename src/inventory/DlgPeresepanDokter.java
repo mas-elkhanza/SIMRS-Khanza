@@ -1270,7 +1270,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         Valid.textKosong(NoResep, "No.Resep");
     } else {
         if (status.equals("ranap")) {
-            String kamar = Sequel.cariIsi("Select kd_kamar from kamar_inap where no_rawat='" + TNoRw.getText() + "' and stts_pulang='-'");
+            String kamar = Sequel.cariIsi("Select kd_kamar from kamar_inap where no_rawat='" + TNoRw.getText() + "' and (stts_pulang='-' or stts_pulang='AKTIF')");
             kdKamar.setText(kamar);
         } else {
             kdKamar.setText("-");
@@ -2068,7 +2068,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         TKamar.setText(Sequel.cariIsi("SELECT bangsal.nm_bangsal FROM kamar_inap "
                 + "INNER JOIN kamar ON kamar_inap.kd_kamar = kamar.kd_kamar "
                 + "INNER JOIN bangsal ON bangsal.kd_bangsal = kamar.kd_bangsal "
-                + "WHERE kamar_inap.no_rawat=? AND kamar_inap.stts_pulang='-'",norwt));
+                + "WHERE kamar_inap.no_rawat=? AND (kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF')",norwt));
         
         TCari.requestFocus();
         this.status = status;
@@ -3487,12 +3487,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 kelas = Sequel.cariIsi(
                         "select kamar.kelas from kamar inner join kamar_inap "
                         + "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "
-                        + "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1", norawatibu);
+                        + "and (stts_pulang='-' or stts_pulang='AKTIF') order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1", norawatibu);
             } else {
                 kelas = Sequel.cariIsi(
                         "select kamar.kelas from kamar inner join kamar_inap "
                         + "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "
-                        + "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1", TNoRw.getText());
+                        + "and (stts_pulang='-' or stts_pulang='AKTIF') order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1", TNoRw.getText());
             }
             if (kelas.equals("Kelas 1")) {
                 Jeniskelas.setSelectedItem("Kelas 1");

@@ -1209,7 +1209,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
     private void isRawat() {
          Sequel.cariIsi("select pasien.nm_pasien from reg_periksa inner join pasien "+
                         "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rawat=? ",TPasien,TNoRw.getText());
-         Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=?  and stts_pulang='-' order by tgl_masuk ",Kamar,TNoRw.getText());
+         Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=?  and (stts_pulang='-' or stts_pulang='AKTIF') order by tgl_masuk ",Kamar,TNoRw.getText());
     }
     
     /**

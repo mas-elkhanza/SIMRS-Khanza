@@ -11,13 +11,12 @@
 package keuangan;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -28,13 +27,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -744,11 +739,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     + "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.kd_pj=penjab.kd_pj "
                     + "where "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar_inap.no_rawat like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and reg_periksa.no_rkm_medis like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and pasien.nm_pasien like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar.kd_kamar like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and penjab.png_jawab like ? "
+                    + "(kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar_inap.no_rawat like ? or "
+                    + "(kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and reg_periksa.no_rkm_medis like ? or "
+                    + "(kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and pasien.nm_pasien like ? or "
+                    + "(kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar.kd_kamar like ? or "
+                    + "(kamar_inap.stts_pulang='-' or kamar_inap.stts_pulang='AKTIF') and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and penjab.png_jawab like ? "
                     + "order by bangsal.nm_bangsal");
             try {
                 ps.setString(1, "%" + NmBangsal.getText() + "%");
