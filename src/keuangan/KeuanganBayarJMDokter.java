@@ -1043,23 +1043,45 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join rawat_jl_dr on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
                      "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where rawat_jl_dr.kd_dokter=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.tarif_tindakandr>0 order by reg_periksa.tgl_registrasi,jns_perawatan.nm_perawatan");
+                     "where rawat_jl_dr.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.tarif_tindakandr>0 and "+
+                     "concat(rawat_jl_dr.no_rawat,rawat_jl_dr.kd_jenis_prw,rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat,rawat_jl_dr.kd_dokter) not in "+
+                     "(select concat(bayar_rawat_jl_dr.no_rawat,bayar_rawat_jl_dr.kd_jenis_prw,bayar_rawat_jl_dr.tgl_perawatan,bayar_rawat_jl_dr.jam_rawat,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_rawat_jl_dr on bayar_rawat_jl_dr.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or jns_perawatan.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or rawat_jl_dr.kd_jenis_prw like ?)")+
+                     "order by reg_periksa.tgl_registrasi,jns_perawatan.nm_perawatan");
                  psrawatjalandrpr=koneksi.prepareStatement("select pasien.nm_pasien,rawat_jl_drpr.tarif_tindakandr,"+
                      "jns_perawatan.nm_perawatan,rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat,reg_periksa.kd_pj,rawat_jl_drpr.kd_jenis_prw, "+
                      "reg_periksa.no_rawat,reg_periksa.no_rkm_medis from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join rawat_jl_drpr on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
                      "inner join jns_perawatan on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where rawat_jl_drpr.kd_dokter=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.tarif_tindakandr>0 order by reg_periksa.tgl_registrasi,jns_perawatan.nm_perawatan");
+                     "where rawat_jl_drpr.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.tarif_tindakandr>0 and "+
+                     "concat(rawat_jl_drpr.no_rawat,rawat_jl_drpr.kd_jenis_prw,rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat,rawat_jl_drpr.kd_dokter) not in "+
+                     "(select concat(bayar_rawat_jl_drpr.no_rawat,bayar_rawat_jl_drpr.kd_jenis_prw,bayar_rawat_jl_drpr.tgl_perawatan,bayar_rawat_jl_drpr.jam_rawat,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_rawat_jl_drpr on bayar_rawat_jl_drpr.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or jns_perawatan.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or rawat_jl_drpr.kd_jenis_prw like ?)")+
+                     "order by reg_periksa.tgl_registrasi,jns_perawatan.nm_perawatan");
                  try {
                      psrawatjalandr.setString(1,kddokter.getText());
                      psrawatjalandr.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psrawatjalandr.setString(3,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandr.setString(4,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandr.setString(5,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandr.setString(6,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandr.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsrawatjalandr=psrawatjalandr.executeQuery();
                      
                      psrawatjalandrpr.setString(1,kddokter.getText());
                      psrawatjalandrpr.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psrawatjalandrpr.setString(3,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandrpr.setString(4,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandrpr.setString(5,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandrpr.setString(6,"%"+TCari.getText().trim()+"%");
+                         psrawatjalandrpr.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsrawatjalandrpr=psrawatjalandrpr.executeQuery();
                      
                      while(rsrawatjalandr.next()){
@@ -1106,8 +1128,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join rawat_inap_dr on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
                      "inner join jns_perawatan_inap on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where rawat_inap_dr.kd_dokter=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.tarif_tindakandr>0 order by rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat,jns_perawatan_inap.nm_perawatan  ");
+                     "where rawat_inap_dr.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.tarif_tindakandr>0 and "+
+                     "concat(rawat_inap_dr.no_rawat,rawat_inap_dr.kd_jenis_prw,rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat,rawat_inap_dr.kd_dokter) not in "+
+                     "(select concat(bayar_rawat_inap_dr.no_rawat,bayar_rawat_inap_dr.kd_jenis_prw,bayar_rawat_inap_dr.tgl_perawatan,bayar_rawat_inap_dr.jam_rawat,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_rawat_inap_dr on bayar_rawat_inap_dr.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or jns_perawatan_inap.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or rawat_inap_dr.kd_jenis_prw like ?)")+
+                     "order by rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat,jns_perawatan_inap.nm_perawatan  ");
                  psrawatinapdrpr=koneksi.prepareStatement(
                      "select pasien.nm_pasien,jns_perawatan_inap.nm_perawatan,rawat_inap_drpr.tarif_tindakandr,"+
                      "rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,reg_periksa.kd_pj,rawat_inap_drpr.kd_jenis_prw, " +
@@ -1115,15 +1141,33 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "+
                      "inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where rawat_inap_drpr.kd_dokter=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.tarif_tindakandr>0 order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,jns_perawatan_inap.nm_perawatan  ");
+                     "where rawat_inap_drpr.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_drpr.tarif_tindakandr>0 and "+
+                     "concat(rawat_inap_drpr.no_rawat,rawat_inap_drpr.kd_jenis_prw,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_dokter) not in "+
+                     "(select concat(bayar_rawat_inap_drpr.no_rawat,bayar_rawat_inap_drpr.kd_jenis_prw,bayar_rawat_inap_drpr.tgl_perawatan,bayar_rawat_inap_drpr.jam_rawat,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_rawat_inap_drpr on bayar_rawat_inap_drpr.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or jns_perawatan_inap.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or rawat_inap_drpr.kd_jenis_prw like ?)")+
+                     "order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,jns_perawatan_inap.nm_perawatan  ");
                  try {                            
                      psrawatinapdr.setString(1,kddokter.getText());
                      psrawatinapdr.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psrawatinapdr.setString(3,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdr.setString(4,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdr.setString(5,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdr.setString(6,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdr.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsrawatinapdr=psrawatinapdr.executeQuery();
                      
                      psrawatinapdrpr.setString(1,kddokter.getText());
                      psrawatinapdrpr.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psrawatinapdrpr.setString(3,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdrpr.setString(4,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdrpr.setString(5,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdrpr.setString(6,"%"+TCari.getText().trim()+"%");
+                         psrawatinapdrpr.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsrawatinapdrpr=psrawatinapdrpr.executeQuery();
                      
                      while(rsrawatinapdr.next()){ 
@@ -1169,8 +1213,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where operasi.operator1=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayaoperator1>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                     "where operasi.operator1=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayaoperator1>0 and "+
+                     "concat(operasi.no_rawat,operasi.kode_paket,operasi.tgl_operasi,operasi.operator1) not in "+
+                     "(select concat(bayar_operasi_operator1.no_rawat,bayar_operasi_operator1.kode_paket,bayar_operasi_operator1.tgl_operasi,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_operasi_operator1 on bayar_operasi_operator1.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
+                     "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator2=koneksi.prepareStatement(
                      "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
@@ -1178,8 +1226,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where operasi.operator2=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayaoperator2>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                     "where operasi.operator2=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayaoperator2>0 and "+
+                     "concat(operasi.no_rawat,operasi.kode_paket,operasi.tgl_operasi,operasi.operator2) not in "+
+                     "(select concat(bayar_operasi_operator2.no_rawat,bayar_operasi_operator2.kode_paket,bayar_operasi_operator2.tgl_operasi,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_operasi_operator2 on bayar_operasi_operator2.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
+                     "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator3=koneksi.prepareStatement(
                      "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
@@ -1187,8 +1239,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where operasi.operator3=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayaoperator3>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                     "where operasi.operator3=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayaoperator3>0 and "+
+                     "concat(operasi.no_rawat,operasi.kode_paket,operasi.tgl_operasi,operasi.operator3) not in "+
+                     "(select concat(bayar_operasi_operator3.no_rawat,bayar_operasi_operator3.kode_paket,bayar_operasi_operator3.tgl_operasi,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_operasi_operator3 on bayar_operasi_operator3.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
+                     "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anak=koneksi.prepareStatement(
                      "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
@@ -1196,8 +1252,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where operasi.dokter_anak=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayadokter_anak>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                     "where operasi.dokter_anak=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayadokter_anak>0 and "+
+                     "concat(operasi.no_rawat,operasi.kode_paket,operasi.tgl_operasi,operasi.dokter_anak) not in "+
+                     "(select concat(bayar_operasi_dokter_anak.no_rawat,bayar_operasi_dokter_anak.kode_paket,bayar_operasi_dokter_anak.tgl_operasi,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_operasi_dokter_anak on bayar_operasi_dokter_anak.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
+                     "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_umum=koneksi.prepareStatement(
                      "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
@@ -1205,8 +1265,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where operasi.dokter_umum=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biaya_dokter_umum>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                     "where operasi.dokter_umum=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biaya_dokter_umum>0 and "+
+                     "concat(operasi.no_rawat,operasi.kode_paket,operasi.tgl_operasi,operasi.dokter_umum) not in "+
+                     "(select concat(bayar_operasi_dokter_umum.no_rawat,bayar_operasi_dokter_umum.kode_paket,bayar_operasi_dokter_umum.tgl_operasi,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_operasi_dokter_umum on bayar_operasi_dokter_umum.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
+                     "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_pjanak=koneksi.prepareStatement(
                      "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
@@ -1214,8 +1278,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where operasi.dokter_pjanak=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biaya_dokter_pjanak>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                     "where operasi.dokter_pjanak=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biaya_dokter_pjanak>0 and "+
+                     "concat(operasi.no_rawat,operasi.kode_paket,operasi.tgl_operasi,operasi.dokter_pjanak) not in "+
+                     "(select concat(bayar_operasi_dokter_pjanak.no_rawat,bayar_operasi_dokter_pjanak.kode_paket,bayar_operasi_dokter_pjanak.tgl_operasi,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_operasi_dokter_pjanak on bayar_operasi_dokter_pjanak.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
+                     "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anestesi=koneksi.prepareStatement(
                      "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
@@ -1223,35 +1291,88 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                      "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
                      "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                     "where operasi.dokter_anestesi=? "+
-                     "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayadokter_anestesi>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                     "where operasi.dokter_anestesi=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.biayadokter_anestesi>0 and "+
+                     "concat(operasi.no_rawat,operasi.kode_paket,operasi.tgl_operasi,operasi.dokter_anestesi) not in "+
+                     "(select concat(bayar_operasi_dokter_anestesi.no_rawat,bayar_operasi_dokter_anestesi.kode_paket,bayar_operasi_dokter_anestesi.tgl_operasi,bayar_jm_dokter.kd_dokter) "+
+                     "from bayar_jm_dokter inner join bayar_operasi_dokter_anestesi on bayar_operasi_dokter_anestesi.no_bayar=bayar_jm_dokter.no_bayar) "+(TCari.getText().trim().equals("")?"":
+                     " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
+                     "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  try {
                      psbiayaoperator1.setString(1,kddokter.getText());               
                      psbiayaoperator1.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psbiayaoperator1.setString(3,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator1.setString(4,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator1.setString(5,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator1.setString(6,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator1.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsbiayaoperator1=psbiayaoperator1.executeQuery();
                      
                      psbiayaoperator2.setString(1,kddokter.getText());               
                      psbiayaoperator2.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psbiayaoperator2.setString(3,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator2.setString(4,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator2.setString(5,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator2.setString(6,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator2.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsbiayaoperator2=psbiayaoperator2.executeQuery();
                      
                      psbiayaoperator3.setString(1,kddokter.getText());  
                      psbiayaoperator3.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psbiayaoperator3.setString(3,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator3.setString(4,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator3.setString(5,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator3.setString(6,"%"+TCari.getText().trim()+"%");
+                         psbiayaoperator3.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsbiayaoperator3=psbiayaoperator3.executeQuery();
                      
                      psbiayadokter_anak.setString(1,kddokter.getText());  
                      psbiayadokter_anak.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psbiayadokter_anak.setString(3,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anak.setString(4,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anak.setString(5,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anak.setString(6,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anak.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsbiayadokter_anak=psbiayadokter_anak.executeQuery();
                      
                      psbiaya_dokter_umum.setString(1,kddokter.getText());  
                      psbiaya_dokter_umum.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psbiaya_dokter_umum.setString(3,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_umum.setString(4,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_umum.setString(5,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_umum.setString(6,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_umum.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsbiaya_dokter_umum=psbiaya_dokter_umum.executeQuery();
                      
                      psbiaya_dokter_pjanak.setString(1,kddokter.getText());  
                      psbiaya_dokter_pjanak.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psbiaya_dokter_pjanak.setString(3,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_pjanak.setString(4,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_pjanak.setString(5,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_pjanak.setString(6,"%"+TCari.getText().trim()+"%");
+                         psbiaya_dokter_pjanak.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsbiaya_dokter_pjanak=psbiaya_dokter_pjanak.executeQuery();
                      
                      psbiayadokter_anestesi.setString(1,kddokter.getText());                 
                      psbiayadokter_anestesi.setString(2,"%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%");
+                     if(!TCari.getText().trim().equals("")){
+                         psbiayadokter_anestesi.setString(3,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anestesi.setString(4,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anestesi.setString(5,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anestesi.setString(6,"%"+TCari.getText().trim()+"%");
+                         psbiayadokter_anestesi.setString(7,"%"+TCari.getText().trim()+"%");
+                     }
                      rsbiayadokter_anestesi=psbiayadokter_anestesi.executeQuery();
                      
                      while(rsbiayaoperator1.next()){
@@ -1567,7 +1688,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",Valid.SetAngka(rsperiksa_radiologi.getDouble("tarif_perujuk"))
+                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
