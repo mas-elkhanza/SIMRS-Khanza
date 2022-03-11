@@ -1372,12 +1372,12 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gethibah_obat_bhp());
             BtnTambah.setEnabled(akses.getobat());
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
         }        
     }
 
     private void autoNomor(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_hibah,3),signed)),0) from hibah_obat_bhp where tgl_hibah='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"'","HO"+TglBeli.getSelectedItem().toString().substring(6,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(hibah_obat_bhp.no_hibah,3),signed)),0) from hibah_obat_bhp where hibah_obat_bhp.tgl_hibah='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"'","HO"+TglBeli.getSelectedItem().toString().substring(6,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
     
     private void simpanbatch(){    
@@ -1402,7 +1402,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 switch (pengaturanharga) {
                     case "Per Jenis":
                         try{
-                            rs=koneksi.prepareStatement("select * from setpenjualan where kdjns='"+Sequel.cariIsi("select kdjns from databarang where kode_brng='"+tbDokter.getValueAt(baris,2).toString()+"'")+"'").executeQuery();
+                            rs=koneksi.prepareStatement("select * from setpenjualan where setpenjualan.kdjns='"+Sequel.cariIsi("select databarang.kdjns from databarang where databarang.kode_brng='"+tbDokter.getValueAt(baris,2).toString()+"'")+"'").executeQuery();
                             if(rs.next()){
                                 if(tbDokter.getValueAt(baris,1).toString().equals(tbDokter.getValueAt(baris,4).toString())){
                                     try {
@@ -1540,7 +1540,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }   break;
                     case "Per Barang":
                         try{
-                            rs=koneksi.prepareStatement("select * from setpenjualanperbarang where kode_brng='"+tbDokter.getValueAt(baris,2).toString()+"'").executeQuery();
+                            rs=koneksi.prepareStatement("select * from setpenjualanperbarang where setpenjualanperbarang.kode_brng='"+tbDokter.getValueAt(baris,2).toString()+"'").executeQuery();
                             if(rs.next()){
                                 if(tbDokter.getValueAt(baris,1).toString().equals(tbDokter.getValueAt(baris,4).toString())){
                                     try {

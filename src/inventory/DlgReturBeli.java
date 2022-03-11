@@ -1311,7 +1311,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select  no_faktur, kode_brng, nama_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch,	kadaluarsa from  tampreturbeli where petugas=?");
+            ps=koneksi.prepareStatement(
+                    "select tampreturbeli.no_faktur,tampreturbeli.kode_brng,tampreturbeli.nama_brng,tampreturbeli.satuan,tampreturbeli.h_beli,"+
+                    "tampreturbeli.jml_beli,tampreturbeli.h_retur,tampreturbeli.jml_retur,tampreturbeli.total,tampreturbeli.no_batch,"+
+                    "tampreturbeli.kadaluarsa from tampreturbeli where tampreturbeli.petugas=?");
             try {
                 ttlretur=0;
                 ps.setString(1,akses.getkode());
@@ -1380,7 +1383,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }else if(!satuanretur.getText().equals(Satuanbar.getText())){
                 try {
                     ps=koneksi.prepareStatement(
-                            "select nilai,nilai_konversi from konver_sat where kode_sat=? and sat_konversi=?");
+                            "select konver_sat.nilai,konver_sat.nilai_konversi from konver_sat where konver_sat.kode_sat=? and konver_sat.sat_konversi=?");
                     try {
                         ps.setString(1,Satuanbar.getText());
                         ps.setString(2,satuanretur.getText());
@@ -1424,8 +1427,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     public void isCek(){
         autonomer();
-        Sequel.cariIsi("select kd_bangsal from set_lokasi",kdgudang);
-        Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",nmgudang,kdgudang.getText());
+        Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi",kdgudang);
+        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
         if(akses.getjml2()>=1){
             Kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
@@ -1434,14 +1437,14 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             BtnHapus.setEnabled(akses.getretur_ke_suplier());
             BtnBatal.setEnabled(akses.getretur_ke_suplier());
             Kdptg.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip='"+Kdptg.getText()+"'", Nmptg);
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip='"+Kdptg.getText()+"'", Nmptg);
         }        
     }
 
  
     private void cariBarang(){
         try {
-            ps=koneksi.prepareStatement("select * from databarang where kode_brng=?");
+            ps=koneksi.prepareStatement("select * from databarang where databarang.kode_brng=?");
             try {
                 ps.setString(1,Kdbar.getText());
                 rs=ps.executeQuery();
@@ -1467,7 +1470,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     private void cariBatch() {
         try {
-            ps=koneksi.prepareStatement("select * from data_batch where no_batch=? and kode_brng=? and no_faktur=?");
+            ps=koneksi.prepareStatement("select * from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.no_faktur=?");
             try {
                 ps.setString(1,NoBatch.getText());
                 ps.setString(2,Kdbar.getText());
@@ -1495,13 +1498,13 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
 
     private void autonomer() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_beli,3),signed)),0) from returbeli where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(returbeli.no_retur_beli,3),signed)),0) from returbeli where returbeli.tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
                 "RB"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
     }
 
     private void simpan() {
         try {
-            ps=koneksi.prepareStatement("select no_faktur, kode_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch, jml_retur2 from tampreturbeli where petugas=?");
+            ps=koneksi.prepareStatement("select tampreturbeli.no_faktur, tampreturbeli.kode_brng, tampreturbeli.satuan, tampreturbeli.h_beli, tampreturbeli.jml_beli, tampreturbeli.h_retur, tampreturbeli.jml_retur, tampreturbeli.total,tampreturbeli.no_batch, tampreturbeli.jml_retur2 from tampreturbeli where tampreturbeli.petugas=?");
             try {
                 ps.setString(1,akses.getkode());
                 rs=ps.executeQuery();

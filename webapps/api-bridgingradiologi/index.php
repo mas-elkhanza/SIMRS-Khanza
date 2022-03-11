@@ -290,7 +290,7 @@
                             }else if(!preg_match("/^[0-9]{4}(-|\/)([1-9]|0[1-9]|1[0-2])(-|\/)([1-9]|0[1-9]|[1-2][0-9]|3[0-1])\s(0|[0-1][0-9]|2[0-4]):?((0|[0-5][0-9]):?(0|[0-5][0-9])|6000|60:00)$/",$decode['tanggal_order'])){
                                 $response = array(
                                     'metadata' => array(
-                                        'message' => 'Format Tanggal tidak sesuai, format yang benar adalah yyyy-mm-dd',
+                                        'message' => 'Format Tanggal tidak sesuai, format yang benar adalah yyyy-mm-dd HH:ii:ss',
                                         'code' => 201
                                     )
                                 );  

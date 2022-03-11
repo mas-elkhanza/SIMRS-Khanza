@@ -14,19 +14,19 @@
                                 from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
                                 on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
                                 and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='$no_rawat' ";
-                $hasil        = bukaquery($_sql);
-                $baris        = mysqli_fetch_array($hasil);
-                $no_rkm_medis = $baris["no_rkm_medis"];
-                $nm_pasien    = $baris["nm_pasien"];
-                $umurdaftar   = $baris["umurdaftar"];
-                $sttsumur     = $baris["sttsumur"];
-                $jk           = $baris["jk"];
-                $almt_pj      = $baris["almt_pj"];
-                $tgl_registrasi = $baris["tgl_registrasi"]." ".$baris["jam_reg"];
-                $nm_poli      = $baris["nm_poli"];
-                $nm_dokter    = $baris["nm_dokter"];
-                $status_lanjut  = $baris["status_lanjut"];
-                $png_jawab    = $baris["png_jawab"];
+                @$hasil        = bukaquery($_sql);
+                @$baris        = mysqli_fetch_array($hasil);
+                @$no_rkm_medis = $baris["no_rkm_medis"];
+                @$nm_pasien    = $baris["nm_pasien"];
+                @$umurdaftar   = $baris["umurdaftar"];
+                @$sttsumur     = $baris["sttsumur"];
+                @$jk           = $baris["jk"];
+                @$almt_pj      = $baris["almt_pj"];
+                @$tgl_registrasi = $baris["tgl_registrasi"]." ".$baris["jam_reg"];
+                @$nm_poli      = $baris["nm_poli"];
+                @$nm_dokter    = $baris["nm_dokter"];
+                @$status_lanjut  = $baris["status_lanjut"];
+                @$png_jawab    = $baris["png_jawab"];
 
                 echo "<input type=hidden name=no_rawat  value=$no_rawat>
                       <input type=hidden name=action value=$action>";

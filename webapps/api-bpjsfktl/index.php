@@ -4,9 +4,14 @@
     header("Content-Type: application/json");
     header("Access-Control-Allow-Methods: POST, GET");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-    $url    = isset($_GET['url']) ? $_GET['url'] : '/';
-    $url    = explode("/", $url);
-    $header = apache_request_headers();
+    $url     = isset($_GET['url']) ? $_GET['url'] : '/';
+    $url     = explode("/", $url);
+    $header  = apache_request_headers();
+    $newhead = array();
+    if($header) foreach($header as $idx => $val) {
+        $newhead[strtolower($idx)] = $val;
+    }
+    $header = $newhead;
     $method = $_SERVER['REQUEST_METHOD'];
     $waktutunggu=10;
     
@@ -58,7 +63,6 @@
                     }else{
                         switch ($url[0]) {
                             case "statusantrean":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -218,7 +222,6 @@
                                 }
                                 break;
                             case "ambilantrean":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
 
@@ -614,7 +617,6 @@
                                 }
                                 break;
                             case "checkinantrean":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -731,7 +733,6 @@
                                 }
                                 break;
                             case "batalantrean":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -837,7 +838,6 @@
                                 }
                                 break;
                             case "sisaantrean":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -944,7 +944,6 @@
                                 }
                                 break;
                             case "jadwaloperasirs":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -1060,7 +1059,6 @@
                                 }
                                 break;
                             case "jadwaloperasipasien":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -1142,7 +1140,6 @@
                                 }
                                 break;
                             case "pasienbaru":
-                                $header = apache_request_headers();
                                 $konten = trim(file_get_contents("php://input"));
                                 $decode = json_decode($konten, true);
                                 if((!empty($header['x-token'])) && (USERNAME==$header['x-username']) && (cektoken($header['x-token'])=='true')){
@@ -1502,7 +1499,7 @@
                                                 $awalanbulan="";
                                             }
 
-                                           if($setrm["posisi_tahun_bulan"]=="Depan"){
+                                            if($setrm["posisi_tahun_bulan"]=="Depan"){
                                                 switch ($setrm["urutan"]) {
                                                     case "Straight":
                                                         $max    = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0)+1 from set_no_rkm_medis");

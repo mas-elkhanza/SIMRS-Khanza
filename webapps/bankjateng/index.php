@@ -32,7 +32,7 @@
                                 'token' => $token
                             ),
                             'metadata' => array(
-                                'message' => 'Ok',
+                                'message' => 'OK',
                                 'code' => 200
                             )
                         );
@@ -204,7 +204,7 @@
         echo '         "token": "xxxxxxxxxxxxxxxxx'."\n";
         echo '      },'."\n";
         echo '      "metadata": {'."\n";
-        echo '         "message": "Ok",'."\n";
+        echo '         "message": "OK",'."\n";
         echo '         "code": 200'."\n";
         echo '      }'."\n";
         echo '   }'."\n\n";

@@ -263,6 +263,8 @@
                                 "discharge_status": "'.$discharge_status.'",
                                 "diagnosa": "'.$diagnosa.'",
                                 "procedure": "'.$procedure.'",
+                                "diagnosa_inagrouper": "'.$diagnosa.'",
+                                "procedure_inagrouper": "'.$procedure.'",
                                 "tarif_rs": {
                                     "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
                                     "prosedur_bedah": "'.$prosedur_bedah.'",
@@ -329,6 +331,8 @@
                                 "discharge_status": "'.$discharge_status.'",
                                 "diagnosa": "'.$diagnosa.'",
                                 "procedure": "'.$procedure.'",
+                                "diagnosa_inagrouper": "'.$diagnosa.'",
+                                "procedure_inagrouper": "'.$procedure.'",
                                 "tarif_rs": {
                                     "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
                                     "prosedur_bedah": "'.$prosedur_bedah.'",
@@ -401,6 +405,8 @@
                             "discharge_status": "'.$discharge_status.'",
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
+                            "diagnosa_inagrouper": "'.$diagnosa.'",
+                            "procedure_inagrouper": "'.$procedure.'",
                             "tarif_rs": {
                                 "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
                                 "prosedur_bedah": "'.$prosedur_bedah.'",
@@ -473,6 +479,8 @@
                             "discharge_status": "'.$discharge_status.'",
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
+                            "diagnosa_inagrouper": "'.$diagnosa.'",
+                            "procedure_inagrouper": "'.$procedure.'",
                             "tarif_rs": {
                                 "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
                                 "prosedur_bedah": "'.$prosedur_bedah.'",

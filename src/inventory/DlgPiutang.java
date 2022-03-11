@@ -1188,7 +1188,7 @@ public class DlgPiutang extends javax.swing.JDialog {
              try {
                 stok=0;   
                 if(aktifkanbatch.equals("yes")){
-                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                    ps=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch=? and gudangbarang.no_faktur=?");
                     try {
                         ps.setString(1,kdgudang.getText());
                         ps.setString(2,kdbar.getText());
@@ -1209,7 +1209,7 @@ public class DlgPiutang extends javax.swing.JDialog {
                         }
                     } 
                 }else{
-                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch='' and no_faktur=''");
+                    ps=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''");
                     try {
                         ps.setString(1,kdgudang.getText());
                         ps.setString(2,kdbar.getText());
@@ -1610,12 +1610,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void kdpasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpasienKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmpasien,kdpasien.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmpasien,kdpasien.getText());
             TglJual.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmpasien,kdpasien.getText());
             catatan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPasienActionPerformed(null);
@@ -1722,7 +1722,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select kode_brng,nama_brng,satuan,h_jual,jumlah,subtotal,dis,bsr_dis,total,no_batch,no_faktur,aturan_pakai from tamppiutang where petugas=?");
+            ps=koneksi.prepareStatement(
+                    "select tamppiutang.kode_brng,tamppiutang.nama_brng,tamppiutang.satuan,tamppiutang.h_jual,tamppiutang.jumlah,"+
+                    "tamppiutang.subtotal,tamppiutang.dis,tamppiutang.bsr_dis,tamppiutang.total,tamppiutang.no_batch,tamppiutang.no_faktur,"+
+                    "tamppiutang.aturan_pakai from tamppiutang where tamppiutang.petugas=?");
             try {
                 ps.setString(1,akses.getkode());
                 rs=ps.executeQuery();
@@ -1881,14 +1884,14 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         autoNomor();
         Ongkir.setText("0");
         UangMuka.setText("0");
-        Sequel.cariIsi("select kd_bangsal from set_lokasi",kdgudang);
-        Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",nmgudang,kdgudang.getText());
+        Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi",kdgudang);
+        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
         if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
             BtnSimpan.setEnabled(akses.getpiutang_obat());
             kdptg.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
         }        
     }
     
@@ -1896,7 +1899,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void cariBatch() {
         try {
             ps=koneksi.prepareStatement(
-                    "select * from data_batch where no_batch=? and kode_brng=? and no_faktur=?");
+                    "select * from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.no_faktur=?");
             try {
                 ps.setString(1,NoBatch.getText());
                 ps.setString(2,kdbar.getText());
@@ -1928,9 +1931,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                     
                     if(aktifkanbatch.equals("yes")){
-                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"'")));
+                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select gudangbarang.stok from gudangbarang where gudangbarang.kd_bangsal='"+kdgudang.getText()+"' and gudangbarang.kode_brng='"+kdbar.getText()+"' and gudangbarang.no_batch='"+NoBatch.getText()+"' and gudangbarang.no_faktur='"+NoFaktur.getText()+"'")));
                     }else{
-                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='' and no_faktur=''")));
+                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select gudangbarang.stok from gudangbarang where gudangbarang.kd_bangsal='"+kdgudang.getText()+"' and gudangbarang.kode_brng='"+kdbar.getText()+"' and gudangbarang.no_batch='' and gudangbarang.no_faktur=''")));
                     }
                 }
             } catch (Exception e) {
@@ -1955,13 +1958,13 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
 
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_piutang,3),signed)),0) from piutang where tgl_piutang='"+Valid.SetTgl(TglJual.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(piutang.nota_piutang,3),signed)),0) from piutang where piutang.tgl_piutang='"+Valid.SetTgl(TglJual.getSelectedItem()+"")+"' ",
                 "PD"+TglJual.getSelectedItem().toString().substring(8,10)+TglJual.getSelectedItem().toString().substring(3,5)+TglJual.getSelectedItem().toString().substring(0,2),3,NoNota); 
     }
 
     private void simpan() {
         try {
-            ps=koneksi.prepareStatement("select kode_brng, satuan, h_jual,h_beli, jumlah, subtotal, dis, bsr_dis, total,no_batch,no_faktur,aturan_pakai from tamppiutang where petugas=?");
+            ps=koneksi.prepareStatement("select tamppiutang.kode_brng,tamppiutang.satuan,tamppiutang.h_jual,tamppiutang.h_beli,tamppiutang.jumlah,tamppiutang.subtotal,tamppiutang.dis,tamppiutang.bsr_dis,tamppiutang.total,tamppiutang.no_batch,tamppiutang.no_faktur,tamppiutang.aturan_pakai from tamppiutang where tamppiutang.petugas=?");
             try {
                 ps.setString(1,akses.getkode());
                 rs=ps.executeQuery();
