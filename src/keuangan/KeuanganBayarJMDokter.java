@@ -321,6 +321,21 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         tbBangsal.setToolTipText("Silahkan centang di depan untuk memilih data hutang yang mau dibayar");
         tbBangsal.setComponentPopupMenu(Popup);
         tbBangsal.setName("tbBangsal"); // NOI18N
+        tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBangsalMouseClicked(evt);
+            }
+        });
+        tbBangsal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbBangsalPropertyChange(evt);
+            }
+        });
+        tbBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbBangsalKeyPressed(evt);
+            }
+        });
         Scroll.setViewportView(tbBangsal);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
@@ -814,12 +829,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         for(row=0;row<tbBangsal.getRowCount();row++){
             tbBangsal.setValueAt(false,row,0);
         }
+        getData();
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void ppSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaActionPerformed
         for(row=0;row<tbBangsal.getRowCount();row++){
             tbBangsal.setValueAt(true,row,0);
         }
+        getData();
     }//GEN-LAST:event_ppSemuaActionPerformed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
@@ -890,6 +907,28 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void AkunBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkunBayarKeyPressed
         Valid.pindah(evt,Tanggal,kddokter);
     }//GEN-LAST:event_AkunBayarKeyPressed
+
+    private void tbBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBangsalKeyPressed
+        if(tabMode.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                getData();
+            }
+        }
+    }//GEN-LAST:event_tbBangsalKeyPressed
+
+    private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
+        if(tabMode.getRowCount()!=0){
+            if(tbBangsal.getSelectedColumn()==0){
+                getData();
+            }
+        }
+    }//GEN-LAST:event_tbBangsalMouseClicked
+
+    private void tbBangsalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbBangsalPropertyChange
+        if(this.isVisible()==true){
+            getData();
+        }
+    }//GEN-LAST:event_tbBangsalPropertyChange
 
     /**
     * @param args the command line arguments
