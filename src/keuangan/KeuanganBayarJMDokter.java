@@ -47,7 +47,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private int row=0,i=0;
-    private double total=0,bayar=0;
+    private double total=0,bayar=0,totalrawatjalan=0,totalrawatinap=0,totallabrawatjalan=0,totallabrawatinap=0,totalradrawatjalan=0,totalradrawatinap=0,totaloperasirawatjalan=0,totaloperasirawatinap=0;
     private boolean sukses=true;  
     private File file;
     private FileWriter fileWriter;
@@ -1081,10 +1081,28 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void getData(){
         row=tbBangsal.getRowCount();
-        bayar=0;
+        bayar=0;totalrawatjalan=0;totalrawatinap=0;totallabrawatjalan=0;totallabrawatinap=0;totalradrawatjalan=0;totalradrawatinap=0;totaloperasirawatjalan=0;totaloperasirawatinap=0;
         for(i=0;i<row;i++){  
             if(tbBangsal.getValueAt(i,0).toString().equals("true")){
-                 bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());     
+                if(tbBangsal.getValueAt(i,7).toString().equals("Rawat Jalan")){
+                    totalrawatjalan=totalrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }else if(tbBangsal.getValueAt(i,7).toString().equals("Rawat Inap")){
+                    totalrawatinap=totalrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }else if(tbBangsal.getValueAt(i,7).toString().equals("Laborat Ralan")){
+                    totallabrawatjalan=totallabrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }else if(tbBangsal.getValueAt(i,7).toString().equals("Laborat Ranap")){
+                    totallabrawatinap=totallabrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }else if(tbBangsal.getValueAt(i,7).toString().equals("Radiologi Ralan")){
+                    totalradrawatjalan=totalradrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }else if(tbBangsal.getValueAt(i,7).toString().equals("Radiologi Ranap")){
+                    totalradrawatinap=totalradrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }else if(tbBangsal.getValueAt(i,7).toString().equals("Operasi Ralan")){
+                    totaloperasirawatjalan=totaloperasirawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }else if(tbBangsal.getValueAt(i,7).toString().equals("Operasi Ranap")){
+                    totaloperasirawatinap=totaloperasirawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                }
+                
+                bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());     
             }
         }
         LCount1.setText(Valid.SetAngka(bayar));
