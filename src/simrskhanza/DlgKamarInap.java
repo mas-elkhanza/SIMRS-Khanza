@@ -5457,10 +5457,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
             if (R1.isSelected() == true) {
-                kmr = " stts_pulang='-' and reg_periksa.status_bayar like '%"
+                kmr = " (stts_pulang='-' or stts_pulang='AKTIF') and reg_periksa.status_bayar like '%"
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
                 if (!BangsalCari.getText().equals("")) {
-                    kmr = " stts_pulang='-' and bangsal.nm_bangsal='" + BangsalCari.getText()
+                    kmr = " (stts_pulang='-' or stts_pulang='AKTIF') and bangsal.nm_bangsal='" + BangsalCari.getText()
                             + "' and reg_periksa.status_bayar like '%"
                             + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
                 }
@@ -5739,7 +5739,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             break;
                         case "KOSONG":
                             if (Sequel.menyimpantf("kamar_inap",
-                                    "'" + norawat.getText() + "','"
+                                    null+",'" + norawat.getText() + "','"
                                     + kdkamar.getText() + "','"
                                     + TTarif.getText() + "','"
                                     + diagnosaawal.getText() + "','"
@@ -5751,7 +5751,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     + "','0000-00-00','00:00:00','"
                                     + TJmlHari.getText() + "','"
                                     + ttlbiaya.getText() + "',"
-                                    + "'-'",
+                                    + "'AKTIF'",
                                     "No.Rawat") == true) {
                                 Sequel.mengedit("reg_periksa", "no_rawat='" + norawat.getText() + "'",
                                         "status_lanjut='Ranap'");
@@ -7143,14 +7143,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 case "KOSONG":
                     if (Rganti1.isSelected() == true) {
                         Sequel.menyimpan("kamar_inap",
-                                "'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
+                                null+",'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
                                 + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
                                 + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
                                 + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
                                 + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
                                 + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
                                 + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
-                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
+                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','AKTIF'",
                                 "No.Rawat");
                         Sequel.mengedit("kamar", "kd_kamar='" + kdkamarpindah.getText() + "'", "status='ISI'");
                         Sequel.queryu("delete from kamar_inap where no_rawat='"
@@ -7235,14 +7235,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
                                 "status='KOSONG'");
                         Sequel.menyimpan("kamar_inap",
-                                "'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
+                                null+",'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
                                 + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
                                 + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
                                 + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
                                 + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
                                 + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
                                 + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
-                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
+                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','AKTIF'",
                                 "No.Rawat");
                         Sequel.mengedit("kamar", "kd_kamar='" + kdkamarpindah.getText() + "'", "status='ISI'");
                     } else if (Rganti4.isSelected() == true) {
@@ -7319,14 +7319,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
                                 "status='KOSONG'");
                         Sequel.menyimpan("kamar_inap",
-                                "'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
+                                null+",'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
                                 + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
                                 + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
                                 + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
                                 + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
                                 + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
                                 + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
-                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
+                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','AKTIF'",
                                 "No.Rawat");
                         Sequel.mengedit("kamar", "kd_kamar='" + kdkamarpindah.getText() + "'", "status='ISI'");
                     }
@@ -8624,7 +8624,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
                             + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
                             + "'",
-                            "stts_pulang='-',tgl_keluar='0000-00-00',jam_keluar='00:00:00'");
+                            "stts_pulang='AKTIF',tgl_keluar='0000-00-00',jam_keluar='00:00:00'");
                     tampil();
                     if (chkBaby.isSelected()) {
                         tampilBaby();
@@ -12046,7 +12046,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void tampil() {
         if (R1.isSelected() == true) {
-            kmr = " stts_pulang='-' and reg_periksa.status_bayar like '%"
+            kmr = " (stts_pulang='-' or stts_pulang='AKTIF') and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
                     + "%' and bangsal.nm_bangsal like'%" + BangsalCari.getText() + "%' ";
             if (!BangsalCari.getText().equals("")) {
@@ -12171,7 +12171,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             // + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%'
             // and bangsal.nm_bangsal like'%" + BangsalCari.getText() + "%' ";
 
-            kmr = " stts_pulang='-' and reg_periksa.status_bayar like '%"
+            kmr = " (stts_pulang='-' or stts_pulang='AKTIF') and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
                     + "%' and bangsal.kd_bangsal like'%B0063%' "; // " and bangsal.kd_bangsal='B0063' ";
 
