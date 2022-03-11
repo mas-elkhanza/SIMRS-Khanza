@@ -55,7 +55,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             Beban_Jasa_Medik_Dokter_Laborat_Ralan="",Utang_Jasa_Medik_Dokter_Laborat_Ralan="",Beban_Jasa_Medik_Dokter_Laborat_Ranap="",Utang_Jasa_Medik_Dokter_Laborat_Ranap="",
             Beban_Jasa_Medik_Dokter_Radiologi_Ralan="",Utang_Jasa_Medik_Dokter_Radiologi_Ralan="",Beban_Jasa_Medik_Dokter_Radiologi_Ranap="",Utang_Jasa_Medik_Dokter_Radiologi_Ranap="",
             Beban_Jasa_Medik_Dokter_Operasi_Ralan="",Utang_Jasa_Medik_Dokter_Operasi_Ralan="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",Utang_Jasa_Medik_Dokter_Operasi_Ranap="",
-            Bayar_JM_Dokter=Sequel.cariIsi("select set_akun.Bayar_JM_Dokter from set_akun");
+            Bayar_JM_Dokter=Sequel.cariIsi("select set_akun.Bayar_JM_Dokter from set_akun"),koderekening="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -146,7 +146,9 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             });
         }  
         
-        kddokter.setDocument(new batasInput((byte)10).getKata(kddokter));
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        NoTagihan.setDocument(new batasInput((int)17).getKata(NoTagihan));
+        Keterangan.setDocument(new batasInput((int)70).getKata(Keterangan));
                 
         dokter.addWindowListener(new WindowListener() {
             @Override
@@ -694,6 +696,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         panelisi4.add(label16);
         label16.setBounds(363, 10, 70, 23);
 
+        kddokter.setEditable(false);
         kddokter.setName("kddokter"); // NOI18N
         kddokter.setPreferredSize(new java.awt.Dimension(80, 23));
         kddokter.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -727,6 +730,11 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnPetugasActionPerformed(evt);
+            }
+        });
+        BtnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPetugasKeyPressed(evt);
             }
         });
         panelisi4.add(BtnPetugas);
@@ -839,29 +847,41 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if (i == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("bayar_jm_dokter","?,?,?,?,'Ditagihkan'","No.Tagihan",4,new String[]{
-                    NoTagihan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),kddokter.getText(),Keterangan.getText()
+                
+                koderekening="";
+                try {
+                    myObj = new FileReader("./cache/akunbayar.iyem");
+                    root = mapper.readTree(myObj);
+                    response = root.path("akunbayar");
+                    if(response.isArray()){
+                       for(JsonNode list:response){
+                           if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
+                                koderekening=list.path("KodeRek").asText();  
+                           }
+                       }
+                    }
+                    myObj.close();
+                } catch (Exception e) {
+                    sukses=false;
+                } 
+                
+                if(Sequel.menyimpantf2("bayar_jm_dokter","?,?,?,?,?,?","No.Tagihan",6,new String[]{
+                    NoTagihan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),kddokter.getText(),bayar+"",AkunBayar.getSelectedItem().toString(),Keterangan.getText()
                 })==true){
                     row=tbBangsal.getRowCount();
                     for(i=0;i<row;i++){
                         if(tabMode.getValueAt(i,0).toString().equals("true")){
-                            if(Sequel.menyimpantf2("inventaris_detail_titip_faktur","?,?","Detail Tagihan",2,new String[]{
-                                NoTagihan.getText(),tbBangsal.getValueAt(i,1).toString(),
-                            })==false){
-                                sukses=false;
-                            }else{
-                                tabMode.setValueAt(false,i,0);
-                            }
+                            
                         }
                     }
-                    bayar=0;
-                    LCount1.setText("0");
                 }else{
                     sukses=false;
-                    JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Tagihan sudah ada sebelumnya...!!");
+                    JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan Nomor J.M. sudah ada sebelumnya...!!");
                 }
                 if(sukses==true){
                     autoNomor();
+                    bayar=0;
+                    LCount1.setText("0");
                     Sequel.Commit();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -883,11 +903,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_NoTagihanKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah(evt,NoTagihan,Keterangan);
+        Valid.pindah2(evt,NoTagihan,AkunBayar);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        Valid.pindah(evt,kddokter,BtnSimpan);
+        Valid.pindah(evt,BtnPetugas,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
@@ -970,7 +990,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_kddokterKeyPressed
 
     private void AkunBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkunBayarKeyPressed
-        Valid.pindah(evt,Tanggal,kddokter);
+        Valid.pindah(evt,Tanggal,BtnPetugas);
     }//GEN-LAST:event_AkunBayarKeyPressed
 
     private void tbBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBangsalKeyPressed
@@ -994,6 +1014,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             getData();
         }
     }//GEN-LAST:event_tbBangsalPropertyChange
+
+    private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
+        Valid.pindah(evt,AkunBayar,Keterangan);
+    }//GEN-LAST:event_BtnPetugasKeyPressed
 
     /**
     * @param args the command line arguments
