@@ -1719,7 +1719,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             if(chkRadiologi.isSelected()==true){
                 //periksa radiologi
-                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1748,7 +1748,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -1764,7 +1764,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  //periksa radiologi
-                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1793,7 +1793,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -2480,7 +2480,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             if(chkRadiologi.isSelected()==true){
                 //periksa radiologi
-                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2510,7 +2510,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -2526,7 +2526,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  //periksa radiologi
-                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2556,7 +2556,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -3243,7 +3243,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             if(chkRadiologi.isSelected()==true){
                 //periksa radiologi
-                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3273,7 +3273,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -3289,7 +3289,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  //periksa radiologi
-                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3319,7 +3319,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -3991,7 +3991,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             if(chkRadiologi.isSelected()==true){
                 //periksa radiologi
-                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4020,7 +4020,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -4036,7 +4036,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  //periksa radiologi
-                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4065,7 +4065,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -4737,7 +4737,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             if(chkRadiologi.isSelected()==true){
                 //periksa radiologi
-                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi=koneksi.prepareStatement("select periksa_radiologi.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4766,7 +4766,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -4782,7 +4782,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  //periksa radiologi
-                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                 psperiksa_radiologi2=koneksi.prepareStatement("select periksa_radiologi.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_radiologi.status,"+
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4811,7 +4811,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
                              rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi",rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
