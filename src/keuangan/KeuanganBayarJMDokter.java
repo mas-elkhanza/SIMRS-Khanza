@@ -742,7 +742,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         panelisi4.add(Keterangan);
         Keterangan.setBounds(437, 40, 313, 23);
 
-        label39.setText("No.Bayar :");
+        label39.setText("Nomor J.M. :");
         label39.setName("label39"); // NOI18N
         label39.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label39);
@@ -824,7 +824,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(NoTagihan.getText().trim().equals("")){
-            Valid.textKosong(NoTagihan,"No.Tagihan");
+            Valid.textKosong(NoTagihan,"No.Bayar");
         }else if(kddokter.getText().trim().equals("")||nmdokter.getText().trim().equals("")){
             Valid.textKosong(kddokter,"Petugas");
         }else if(tabMode.getRowCount()==0){
