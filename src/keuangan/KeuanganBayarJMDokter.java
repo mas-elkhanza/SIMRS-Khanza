@@ -108,7 +108,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(220);
             }else if(i==7){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(90);
             }else if(i==8){
                 column.setPreferredWidth(80);
             }
@@ -1246,7 +1246,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             if(chkOperasi.isSelected()==true){
                  psbiayaoperator1=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1259,7 +1259,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator2=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1272,7 +1272,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator3=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1285,7 +1285,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1298,7 +1298,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_umum=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1311,7 +1311,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_pjanak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1324,7 +1324,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anestesi=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1418,7 +1418,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
                              rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi",rsbiayaoperator1.getDouble("biayaoperator1")
+                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -1427,7 +1427,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
                              rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi",rsbiayaoperator2.getDouble("biayaoperator2")
+                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -1436,7 +1436,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
                              rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi",rsbiayaoperator3.getDouble("biayaoperator3")
+                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -1445,7 +1445,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
                              rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi",rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -1454,7 +1454,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
                              rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -1463,7 +1463,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
                              rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -1472,7 +1472,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
                              rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -1527,7 +1527,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkLaborat.isSelected()==true){
                 //periksa lab  
                 psperiksa_lab=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1556,7 +1556,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -1573,7 +1573,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //detail periksa lab
                  psdetaillab=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -1606,7 +1606,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_dokter")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -1623,7 +1623,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //periksa lab perujuk                         
                  psperiksa_lab2=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1652,7 +1652,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_perujuk")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -1668,7 +1668,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  psdetaillab2=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -1701,7 +1701,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_perujuk")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -1996,7 +1996,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             if(chkOperasi.isSelected()==true){
                  psbiayaoperator1=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2010,7 +2010,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator2=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2024,7 +2024,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator3=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2038,7 +2038,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2052,7 +2052,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_umum=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2066,7 +2066,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_pjanak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2080,7 +2080,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anestesi=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2175,7 +2175,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
                              rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi",rsbiayaoperator1.getDouble("biayaoperator1")
+                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -2184,7 +2184,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
                              rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi",rsbiayaoperator2.getDouble("biayaoperator2")
+                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -2193,7 +2193,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
                              rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi",rsbiayaoperator3.getDouble("biayaoperator3")
+                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -2202,7 +2202,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
                              rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi",rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -2211,7 +2211,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
                              rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -2220,7 +2220,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
                              rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -2229,7 +2229,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
                              rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -2284,7 +2284,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkLaborat.isSelected()==true){
                 //periksa lab  
                 psperiksa_lab=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2314,7 +2314,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -2331,7 +2331,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //detail periksa lab
                  psdetaillab=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -2365,7 +2365,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_dokter")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -2382,7 +2382,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //periksa lab perujuk                         
                  psperiksa_lab2=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2412,7 +2412,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_perujuk")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -2428,7 +2428,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  psdetaillab2=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -2462,7 +2462,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_perujuk")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -2759,7 +2759,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             if(chkOperasi.isSelected()==true){
                  psbiayaoperator1=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2773,7 +2773,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator2=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2787,7 +2787,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator3=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2801,7 +2801,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2815,7 +2815,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_umum=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2829,7 +2829,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_pjanak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2843,7 +2843,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anestesi=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2938,7 +2938,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
                              rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi",rsbiayaoperator1.getDouble("biayaoperator1")
+                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -2947,7 +2947,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
                              rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi",rsbiayaoperator2.getDouble("biayaoperator2")
+                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -2956,7 +2956,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
                              rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi",rsbiayaoperator3.getDouble("biayaoperator3")
+                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -2965,7 +2965,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
                              rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi",rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -2974,7 +2974,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
                              rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -2983,7 +2983,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
                              rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -2992,7 +2992,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
                              rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -3047,7 +3047,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkLaborat.isSelected()==true){
                 //periksa lab  
                 psperiksa_lab=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3077,7 +3077,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -3094,7 +3094,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //detail periksa lab
                  psdetaillab=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -3128,7 +3128,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_dokter")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -3145,7 +3145,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //periksa lab perujuk                         
                  psperiksa_lab2=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3175,7 +3175,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_perujuk")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -3191,7 +3191,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  psdetaillab2=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -3225,7 +3225,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_perujuk")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -3518,7 +3518,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             if(chkOperasi.isSelected()==true){
                  psbiayaoperator1=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3531,7 +3531,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator2=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3544,7 +3544,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator3=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3557,7 +3557,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3570,7 +3570,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_umum=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3583,7 +3583,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_pjanak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3596,7 +3596,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anestesi=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3690,7 +3690,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
                              rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi",rsbiayaoperator1.getDouble("biayaoperator1")
+                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -3699,7 +3699,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
                              rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi",rsbiayaoperator2.getDouble("biayaoperator2")
+                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -3708,7 +3708,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
                              rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi",rsbiayaoperator3.getDouble("biayaoperator3")
+                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -3717,7 +3717,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
                              rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi",rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -3726,7 +3726,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
                              rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -3735,7 +3735,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
                              rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -3744,7 +3744,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
                              rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -3799,7 +3799,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkLaborat.isSelected()==true){
                 //periksa lab  
                 psperiksa_lab=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3828,7 +3828,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -3845,7 +3845,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //detail periksa lab
                  psdetaillab=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -3878,7 +3878,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_dokter")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -3895,7 +3895,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //periksa lab perujuk                         
                  psperiksa_lab2=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -3924,7 +3924,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_perujuk")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -3940,7 +3940,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  psdetaillab2=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -3973,7 +3973,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_perujuk")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -4264,7 +4264,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             if(chkOperasi.isSelected()==true){
                  psbiayaoperator1=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator1,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4277,7 +4277,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator2=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator2,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4290,7 +4290,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayaoperator3=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayaoperator3,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4303,7 +4303,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4316,7 +4316,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_umum=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_umum,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4329,7 +4329,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiaya_dokter_pjanak=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biaya_dokter_pjanak,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4342,7 +4342,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      " and (pasien.nm_pasien like ? or paket_operasi.nm_perawatan like ? or reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or operasi.kode_paket like ?)")+
                      "order by operasi.tgl_operasi,paket_operasi.nm_perawatan");
                  psbiayadokter_anestesi=koneksi.prepareStatement(
-                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,"+
+                     "select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayadokter_anestesi,operasi.status,"+
                      "operasi.tgl_operasi,reg_periksa.kd_pj,operasi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
                      "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4436,7 +4436,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
                              rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi",rsbiayaoperator1.getDouble("biayaoperator1")
+                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -4445,7 +4445,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
                              rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi",rsbiayaoperator2.getDouble("biayaoperator2")
+                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -4454,7 +4454,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
                              rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi",rsbiayaoperator3.getDouble("biayaoperator3")
+                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -4463,7 +4463,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
                              rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi",rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -4472,7 +4472,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
                              rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -4481,7 +4481,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
                              rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -4490,7 +4490,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
                              rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -4545,7 +4545,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(chkLaborat.isSelected()==true){
                 //periksa lab  
                 psperiksa_lab=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_tindakan_dokter,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4574,7 +4574,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -4591,7 +4591,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //detail periksa lab
                  psdetaillab=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_dokter,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -4624,7 +4624,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_dokter")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -4641,7 +4641,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                  //periksa lab perujuk                         
                  psperiksa_lab2=koneksi.prepareStatement(
-                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
+                     "select periksa_lab.tarif_perujuk,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,periksa_lab.status,"+
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -4670,7 +4670,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
                              rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsperiksa_lab.getDouble("tarif_perujuk")
+                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -4686,7 +4686,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  }
 
                  psdetaillab2=koneksi.prepareStatement(
-                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,"+
+                     "select detail_periksa_lab.bagian_perujuk,pasien.nm_pasien,periksa_lab.status,"+
                      "template_laboratorium.Pemeriksaan,reg_periksa.kd_pj,reg_periksa.no_rawat,reg_periksa.no_rkm_medis, "+
                      "periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw "+
                      "from detail_periksa_lab inner join periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
@@ -4719,7 +4719,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
                              rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat",rsdetaillab.getDouble("bagian_perujuk")
+                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
