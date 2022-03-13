@@ -72,7 +72,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         setSize(885,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "P","Tanggal","Jam","No.Rawat","No.RM","Nama Pasien","Tindakan Medis","Status","Jasa Medis"
+                "P","Tanggal","Jam","No.Rawat","No.RM","Nama Pasien","Kode","Tindakan Medis","Status","Jasa Medis"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -84,7 +84,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
-                java.lang.Double.class
+                java.lang.Object.class,java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -96,7 +96,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 10; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(22);
@@ -111,10 +111,13 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(180);
             }else if(i==6){
-                column.setPreferredWidth(240);
+                column.setPreferredWidth(70);
             }else if(i==7){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(240);
             }else if(i==8){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==9){
                 column.setPreferredWidth(80);
             }
         }
@@ -865,13 +868,103 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     sukses=false;
                 } 
                 
-                if(Sequel.menyimpantf2("bayar_jm_dokter","?,?,?,?,?,?","No.Tagihan",6,new String[]{
-                    NoTagihan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),kddokter.getText(),bayar+"",AkunBayar.getSelectedItem().toString(),Keterangan.getText()
+                if(Sequel.menyimpantf2("bayar_jm_dokter","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Tagihan",14,new String[]{
+                    NoTagihan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),kddokter.getText(),bayar+"",AkunBayar.getSelectedItem().toString(),Keterangan.getText(),
+                    totalrawatjalan+"",totalrawatinap+"",totallabrawatjalan+"",totallabrawatinap+"",totalradrawatjalan+"",totalradrawatinap+"",totaloperasirawatjalan+"",totaloperasirawatinap+""
                 })==true){
                     row=tbBangsal.getRowCount();
                     for(i=0;i<row;i++){
+                        //"P"0,"Tanggal"1,"Jam"2,"No.Rawat"3,"No.RM"4,"Nama Pasien"5,"Kode "6,"Tindakan Medis"7,"Status"8,"Jasa Medis"9
                         if(tabMode.getValueAt(i,0).toString().equals("true")){
-                            
+                            if(tbBangsal.getValueAt(i,8).toString().equals("Rawat Jalan Dr")){
+                                if(Sequel.menyimpantf2("bayar_rawat_jl_dr","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Rawat Jalan DrPr")){
+                                if(Sequel.menyimpantf2("bayar_rawat_jl_drpr","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Rawat Inap Dr")){
+                                if(Sequel.menyimpantf2("bayar_rawat_inap_dr","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Rawat Inap DrPr")){
+                                if(Sequel.menyimpantf2("bayar_rawat_inap_drpr","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                } 
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Laborat Ralan PJ")){
+                                if(Sequel.menyimpantf2("bayar_periksa_lab","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Laborat Ralan Perujuk")){
+                                if(Sequel.menyimpantf2("bayar_periksa_lab_perujuk","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Laborat Ranap PJ")){
+                                if(Sequel.menyimpantf2("bayar_periksa_lab","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Laborat Ranap Perujuk")){
+                                if(Sequel.menyimpantf2("bayar_periksa_lab_perujuk","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Radiologi Ralan PJ")){
+                                if(Sequel.menyimpantf2("bayar_periksa_radiologi","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Radiologi Ralan Perujuk")){
+                                if(Sequel.menyimpantf2("bayar_periksa_radiologi_perujuk","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Radiologi Ranap PJ")){
+                                if(Sequel.menyimpantf2("bayar_periksa_radiologi","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Radiologi Ranap Perujuk")){
+                                if(Sequel.menyimpantf2("bayar_periksa_radiologi_perujuk","?,?,?,?,?,?",6,new String[]{
+                                    NoTagihan.getText(),tbBangsal.getValueAt(i,3).toString(),tbBangsal.getValueAt(i,6).toString(), 
+                                    tbBangsal.getValueAt(i,1).toString(),tbBangsal.getValueAt(i,2).toString(),tbBangsal.getValueAt(i,9).toString()
+                                  })==false){
+                                    sukses=false;
+                                }
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Operasi Ralan")){
+                                
+                            }else if(tbBangsal.getValueAt(i,8).toString().equals("Operasi Ranap")){
+                                
+                            }
                         }
                     }
                 }else{
@@ -1108,25 +1201,25 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         bayar=0;totalrawatjalan=0;totalrawatinap=0;totallabrawatjalan=0;totallabrawatinap=0;totalradrawatjalan=0;totalradrawatinap=0;totaloperasirawatjalan=0;totaloperasirawatinap=0;
         for(i=0;i<row;i++){  
             if(tbBangsal.getValueAt(i,0).toString().equals("true")){
-                if(tbBangsal.getValueAt(i,7).toString().equals("Rawat Jalan")){
-                    totalrawatjalan=totalrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
-                }else if(tbBangsal.getValueAt(i,7).toString().equals("Rawat Inap")){
-                    totalrawatinap=totalrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
-                }else if(tbBangsal.getValueAt(i,7).toString().equals("Laborat Ralan")){
-                    totallabrawatjalan=totallabrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
-                }else if(tbBangsal.getValueAt(i,7).toString().equals("Laborat Ranap")){
-                    totallabrawatinap=totallabrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
-                }else if(tbBangsal.getValueAt(i,7).toString().equals("Radiologi Ralan")){
-                    totalradrawatjalan=totalradrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
-                }else if(tbBangsal.getValueAt(i,7).toString().equals("Radiologi Ranap")){
-                    totalradrawatinap=totalradrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
-                }else if(tbBangsal.getValueAt(i,7).toString().equals("Operasi Ralan")){
-                    totaloperasirawatjalan=totaloperasirawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
-                }else if(tbBangsal.getValueAt(i,7).toString().equals("Operasi Ranap")){
-                    totaloperasirawatinap=totaloperasirawatinap+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());   
+                if(tbBangsal.getValueAt(i,8).toString().contains("Rawat Jalan")){
+                    totalrawatjalan=totalrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
+                }else if(tbBangsal.getValueAt(i,8).toString().contains("Rawat Inap")){
+                    totalrawatinap=totalrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
+                }else if(tbBangsal.getValueAt(i,8).toString().contains("Laborat Ralan")){
+                    totallabrawatjalan=totallabrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
+                }else if(tbBangsal.getValueAt(i,8).toString().contains("Laborat Ranap")){
+                    totallabrawatinap=totallabrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
+                }else if(tbBangsal.getValueAt(i,8).toString().contains("Radiologi Ralan")){
+                    totalradrawatjalan=totalradrawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
+                }else if(tbBangsal.getValueAt(i,8).toString().contains("Radiologi Ranap")){
+                    totalradrawatinap=totalradrawatinap+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
+                }else if(tbBangsal.getValueAt(i,8).toString().contains("Operasi Ralan")){
+                    totaloperasirawatjalan=totaloperasirawatjalan+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
+                }else if(tbBangsal.getValueAt(i,8).toString().contains("Operasi Ranap")){
+                    totaloperasirawatinap=totaloperasirawatinap+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());   
                 }
                 
-                bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,8).toString());     
+                bayar=bayar+Double.parseDouble(tbBangsal.getValueAt(i,9).toString());     
             }
         }
         LCount1.setText(Valid.SetAngka(bayar));
@@ -1233,8 +1326,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandr.getString("tgl_perawatan"),rsrawatjalandr.getString("jam_rawat"),rsrawatjalandr.getString("no_rawat"),rsrawatjalandr.getString("no_rkm_medis"),
-                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("nm_perawatan")+" ("+rsrawatjalandr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandr.getDouble("tarif_tindakandr")
+                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("kd_jenis_prw"),rsrawatjalandr.getString("nm_perawatan"),
+                             "Rawat Jalan Dr",rsrawatjalandr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandr.getDouble("tarif_tindakandr");
                      }  
@@ -1242,8 +1335,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandrpr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandrpr.getString("tgl_perawatan"),rsrawatjalandrpr.getString("jam_rawat"),rsrawatjalandrpr.getString("no_rawat"),rsrawatjalandrpr.getString("no_rkm_medis"),
-                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("nm_perawatan")+" ("+rsrawatjalandrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandrpr.getDouble("tarif_tindakandr")
+                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("kd_jenis_prw"),rsrawatjalandrpr.getString("nm_perawatan"),
+                             "Rawat Jalan DrPr",rsrawatjalandrpr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandrpr.getDouble("tarif_tindakandr");
                      }
@@ -1319,8 +1412,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdr.getString("tgl_perawatan"),rsrawatinapdr.getString("jam_rawat"),rsrawatinapdr.getString("no_rawat"),rsrawatinapdr.getString("no_rkm_medis"),
-                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("nm_perawatan")+" ("+rsrawatinapdr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdr.getDouble("tarif_tindakandr")
+                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("kd_jenis_prw"),rsrawatinapdr.getString("nm_perawatan"),
+                             "Rawat Inap Dr",rsrawatinapdr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdr.getDouble("tarif_tindakandr");
                      }
@@ -1328,8 +1421,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdrpr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdrpr.getString("tgl_perawatan"),rsrawatinapdrpr.getString("jam_rawat"),rsrawatinapdrpr.getString("no_rawat"),rsrawatinapdrpr.getString("no_rkm_medis"),
-                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("nm_perawatan")+" ("+rsrawatinapdrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdrpr.getDouble("tarif_tindakandr")
+                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("kd_jenis_prw"),rsrawatinapdrpr.getString("nm_perawatan"),
+                             "Rawat Inap DrPr",rsrawatinapdrpr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdrpr.getDouble("tarif_tindakandr");
                      }
@@ -1524,8 +1617,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator1.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
-                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
+                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("kode_paket"),rsbiayaoperator1.getString("nm_perawatan")+"(Operator 1)",
+                             "Operasi "+rsbiayaoperator1.getString("status")+" Op1",rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -1533,8 +1626,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator2.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
-                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
+                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("kode_paket"),rsbiayaoperator2.getString("nm_perawatan")+"(Operator 2)",
+                             "Operasi "+rsbiayaoperator2.getString("status")+" Op2",rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -1542,8 +1635,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator3.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
-                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
+                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("kode_paket"),rsbiayaoperator3.getString("nm_perawatan")+"(Operator 3)",
+                             "Operasi "+rsbiayaoperator3.getString("status")+" Op3",rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -1551,8 +1644,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
-                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("kode_paket"),rsbiayadokter_anak.getString("nm_perawatan")+"(dr Anak)",
+                             "Operasi "+rsbiayadokter_anak.getString("status")+" dr Anak",rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -1560,8 +1653,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anestesi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
-                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("kode_paket"),rsbiayadokter_anestesi.getString("nm_perawatan")+"(dr Anestesi)",
+                             "Operasi "+rsbiayadokter_anestesi.getString("status")+" dr Anastesi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -1569,8 +1662,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_pjanak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
-                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("kode_paket"),rsbiaya_dokter_pjanak.getString("nm_perawatan")+"(dr Pj Anak)",
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status")+" dr PJ Anak",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -1578,8 +1671,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_umum.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
-                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("kode_paket"),rsbiaya_dokter_umum.getString("nm_perawatan")+"(dr Umum)",
+                             "Operasi "+rsbiaya_dokter_umum.getString("status")+" dr Umum",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -1662,8 +1755,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){                                
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" PJ",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -1712,8 +1805,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" PJ",rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -1758,8 +1851,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" Perujuk",rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -1807,8 +1900,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" Perujuk",rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -1854,8 +1947,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" PJ",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -1899,8 +1992,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" Perujuk",rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -1981,8 +2074,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandr.getString("tgl_perawatan"),rsrawatjalandr.getString("jam_rawat"),rsrawatjalandr.getString("no_rawat"),rsrawatjalandr.getString("no_rkm_medis"),
-                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("nm_perawatan")+" ("+rsrawatjalandr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandr.getDouble("tarif_tindakandr")
+                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("kd_jenis_prw"),rsrawatjalandr.getString("nm_perawatan"),
+                             "Rawat Jalan Dr",rsrawatjalandr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandr.getDouble("tarif_tindakandr");
                      }  
@@ -1990,8 +2083,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandrpr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandrpr.getString("tgl_perawatan"),rsrawatjalandrpr.getString("jam_rawat"),rsrawatjalandrpr.getString("no_rawat"),rsrawatjalandrpr.getString("no_rkm_medis"),
-                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("nm_perawatan")+" ("+rsrawatjalandrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandrpr.getDouble("tarif_tindakandr")
+                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("kd_jenis_prw"),rsrawatjalandrpr.getString("nm_perawatan"),
+                             "Rawat Jalan DrPr",rsrawatjalandrpr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandrpr.getDouble("tarif_tindakandr");
                      }
@@ -2069,8 +2162,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdr.getString("tgl_perawatan"),rsrawatinapdr.getString("jam_rawat"),rsrawatinapdr.getString("no_rawat"),rsrawatinapdr.getString("no_rkm_medis"),
-                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("nm_perawatan")+" ("+rsrawatinapdr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdr.getDouble("tarif_tindakandr")
+                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("kd_jenis_prw"),rsrawatinapdr.getString("nm_perawatan"),
+                             "Rawat Inap Dr",rsrawatinapdr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdr.getDouble("tarif_tindakandr");
                      }
@@ -2078,8 +2171,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdrpr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdrpr.getString("tgl_perawatan"),rsrawatinapdrpr.getString("jam_rawat"),rsrawatinapdrpr.getString("no_rawat"),rsrawatinapdrpr.getString("no_rkm_medis"),
-                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("nm_perawatan")+" ("+rsrawatinapdrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdrpr.getDouble("tarif_tindakandr")
+                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("kd_jenis_prw"),rsrawatinapdrpr.getString("nm_perawatan"),
+                             "Rawat Inap DrPr",rsrawatinapdrpr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdrpr.getDouble("tarif_tindakandr");
                      }
@@ -2281,8 +2374,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator1.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
-                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
+                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("kode_paket"),rsbiayaoperator1.getString("nm_perawatan")+"(Operator 1)",
+                             "Operasi "+rsbiayaoperator1.getString("status")+" Op1",rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -2290,8 +2383,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator2.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
-                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
+                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("kode_paket"),rsbiayaoperator2.getString("nm_perawatan")+"(Operator 2)",
+                             "Operasi "+rsbiayaoperator2.getString("status")+" Op2",rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -2299,8 +2392,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator3.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
-                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
+                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("kode_paket"),rsbiayaoperator3.getString("nm_perawatan")+"(Operator 3)",
+                             "Operasi "+rsbiayaoperator3.getString("status")+" Op3",rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -2308,8 +2401,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
-                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("kode_paket"),rsbiayadokter_anak.getString("nm_perawatan")+"(dr Anak)",
+                             "Operasi "+rsbiayadokter_anak.getString("status")+" dr Anak",rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -2317,8 +2410,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anestesi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
-                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("kode_paket"),rsbiayadokter_anestesi.getString("nm_perawatan")+"(dr Anestesi)",
+                             "Operasi "+rsbiayadokter_anestesi.getString("status")+" dr Anastesi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -2326,8 +2419,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_pjanak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
-                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("kode_paket"),rsbiaya_dokter_pjanak.getString("nm_perawatan")+"(dr Pj Anak)",
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status")+" dr PJ Anak",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -2335,8 +2428,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_umum.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
-                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("kode_paket"),rsbiaya_dokter_umum.getString("nm_perawatan")+"(dr Umum)",
+                             "Operasi "+rsbiaya_dokter_umum.getString("status")+" dr Umum",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -2420,8 +2513,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){                                
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" PJ",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -2471,8 +2564,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" PJ",rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -2518,8 +2611,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" Perujuk",rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -2568,8 +2661,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" Perujuk",rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -2616,8 +2709,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" PJ",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -2662,8 +2755,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" Perujuk",rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -2744,8 +2837,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandr.getString("tgl_perawatan"),rsrawatjalandr.getString("jam_rawat"),rsrawatjalandr.getString("no_rawat"),rsrawatjalandr.getString("no_rkm_medis"),
-                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("nm_perawatan")+" ("+rsrawatjalandr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandr.getDouble("tarif_tindakandr")
+                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("kd_jenis_prw"),rsrawatjalandr.getString("nm_perawatan"),
+                             "Rawat Jalan Dr",rsrawatjalandr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandr.getDouble("tarif_tindakandr");
                      }  
@@ -2753,8 +2846,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandrpr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandrpr.getString("tgl_perawatan"),rsrawatjalandrpr.getString("jam_rawat"),rsrawatjalandrpr.getString("no_rawat"),rsrawatjalandrpr.getString("no_rkm_medis"),
-                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("nm_perawatan")+" ("+rsrawatjalandrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandrpr.getDouble("tarif_tindakandr")
+                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("kd_jenis_prw"),rsrawatjalandrpr.getString("nm_perawatan"),
+                             "Rawat Jalan DrPr",rsrawatjalandrpr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandrpr.getDouble("tarif_tindakandr");
                      }
@@ -2832,8 +2925,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdr.getString("tgl_perawatan"),rsrawatinapdr.getString("jam_rawat"),rsrawatinapdr.getString("no_rawat"),rsrawatinapdr.getString("no_rkm_medis"),
-                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("nm_perawatan")+" ("+rsrawatinapdr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdr.getDouble("tarif_tindakandr")
+                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("kd_jenis_prw"),rsrawatinapdr.getString("nm_perawatan"),
+                             "Rawat Inap Dr",rsrawatinapdr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdr.getDouble("tarif_tindakandr");
                      }
@@ -2841,8 +2934,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdrpr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdrpr.getString("tgl_perawatan"),rsrawatinapdrpr.getString("jam_rawat"),rsrawatinapdrpr.getString("no_rawat"),rsrawatinapdrpr.getString("no_rkm_medis"),
-                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("nm_perawatan")+" ("+rsrawatinapdrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdrpr.getDouble("tarif_tindakandr")
+                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("kd_jenis_prw"),rsrawatinapdrpr.getString("nm_perawatan"),
+                             "Rawat Inap DrPr",rsrawatinapdrpr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdrpr.getDouble("tarif_tindakandr");
                      }
@@ -3044,8 +3137,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator1.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
-                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
+                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("kode_paket"),rsbiayaoperator1.getString("nm_perawatan")+"(Operator 1)",
+                             "Operasi "+rsbiayaoperator1.getString("status")+" Op1",rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -3053,8 +3146,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator2.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
-                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
+                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("kode_paket"),rsbiayaoperator2.getString("nm_perawatan")+"(Operator 2)",
+                             "Operasi "+rsbiayaoperator2.getString("status")+" Op2",rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -3062,8 +3155,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator3.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
-                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
+                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("kode_paket"),rsbiayaoperator3.getString("nm_perawatan")+"(Operator 3)",
+                             "Operasi "+rsbiayaoperator3.getString("status")+" Op3",rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -3071,8 +3164,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
-                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("kode_paket"),rsbiayadokter_anak.getString("nm_perawatan")+"(dr Anak)",
+                             "Operasi "+rsbiayadokter_anak.getString("status")+" dr Anak",rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -3080,8 +3173,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anestesi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
-                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("kode_paket"),rsbiayadokter_anestesi.getString("nm_perawatan")+"(dr Anestesi)",
+                             "Operasi "+rsbiayadokter_anestesi.getString("status")+" dr Anastesi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -3089,8 +3182,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_pjanak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
-                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("kode_paket"),rsbiaya_dokter_pjanak.getString("nm_perawatan")+"(dr Pj Anak)",
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status")+" dr PJ Anak",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -3098,8 +3191,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_umum.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
-                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("kode_paket"),rsbiaya_dokter_umum.getString("nm_perawatan")+"(dr Umum)",
+                             "Operasi "+rsbiaya_dokter_umum.getString("status")+" dr Umum",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -3183,8 +3276,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){                                
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" PJ",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -3234,8 +3327,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" PJ",rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -3281,8 +3374,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" Perujuk",rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -3331,8 +3424,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" Perujuk",rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -3379,8 +3472,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" PJ",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -3425,8 +3518,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" Perujuk",rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -3505,8 +3598,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandr.getString("tgl_perawatan"),rsrawatjalandr.getString("jam_rawat"),rsrawatjalandr.getString("no_rawat"),rsrawatjalandr.getString("no_rkm_medis"),
-                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("nm_perawatan")+" ("+rsrawatjalandr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandr.getDouble("tarif_tindakandr")
+                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("kd_jenis_prw"),rsrawatjalandr.getString("nm_perawatan"),
+                             "Rawat Jalan Dr",rsrawatjalandr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandr.getDouble("tarif_tindakandr");
                      }  
@@ -3514,8 +3607,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandrpr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandrpr.getString("tgl_perawatan"),rsrawatjalandrpr.getString("jam_rawat"),rsrawatjalandrpr.getString("no_rawat"),rsrawatjalandrpr.getString("no_rkm_medis"),
-                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("nm_perawatan")+" ("+rsrawatjalandrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandrpr.getDouble("tarif_tindakandr")
+                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("kd_jenis_prw"),rsrawatjalandrpr.getString("nm_perawatan"),
+                             "Rawat Jalan DrPr",rsrawatjalandrpr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandrpr.getDouble("tarif_tindakandr");
                      }
@@ -3591,8 +3684,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdr.getString("tgl_perawatan"),rsrawatinapdr.getString("jam_rawat"),rsrawatinapdr.getString("no_rawat"),rsrawatinapdr.getString("no_rkm_medis"),
-                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("nm_perawatan")+" ("+rsrawatinapdr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdr.getDouble("tarif_tindakandr")
+                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("kd_jenis_prw"),rsrawatinapdr.getString("nm_perawatan"),
+                             "Rawat Inap Dr",rsrawatinapdr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdr.getDouble("tarif_tindakandr");
                      }
@@ -3600,8 +3693,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdrpr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdrpr.getString("tgl_perawatan"),rsrawatinapdrpr.getString("jam_rawat"),rsrawatinapdrpr.getString("no_rawat"),rsrawatinapdrpr.getString("no_rkm_medis"),
-                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("nm_perawatan")+" ("+rsrawatinapdrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdrpr.getDouble("tarif_tindakandr")
+                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("kd_jenis_prw"),rsrawatinapdrpr.getString("nm_perawatan"),
+                             "Rawat Inap DrPr",rsrawatinapdrpr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdrpr.getDouble("tarif_tindakandr");
                      }
@@ -3796,8 +3889,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator1.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
-                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
+                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("kode_paket"),rsbiayaoperator1.getString("nm_perawatan")+"(Operator 1)",
+                             "Operasi "+rsbiayaoperator1.getString("status")+" Op1",rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -3805,8 +3898,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator2.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
-                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
+                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("kode_paket"),rsbiayaoperator2.getString("nm_perawatan")+"(Operator 2)",
+                             "Operasi "+rsbiayaoperator2.getString("status")+" Op2",rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -3814,8 +3907,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator3.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
-                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
+                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("kode_paket"),rsbiayaoperator3.getString("nm_perawatan")+"(Operator 3)",
+                             "Operasi "+rsbiayaoperator3.getString("status")+" Op3",rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -3823,8 +3916,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
-                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("kode_paket"),rsbiayadokter_anak.getString("nm_perawatan")+"(dr Anak)",
+                             "Operasi "+rsbiayadokter_anak.getString("status")+" dr Anak",rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -3832,8 +3925,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anestesi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
-                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("kode_paket"),rsbiayadokter_anestesi.getString("nm_perawatan")+"(dr Anestesi)",
+                             "Operasi "+rsbiayadokter_anestesi.getString("status")+" dr Anastesi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -3841,8 +3934,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_pjanak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
-                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("kode_paket"),rsbiaya_dokter_pjanak.getString("nm_perawatan")+"(dr Pj Anak)",
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status")+" dr PJ Anak",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -3850,8 +3943,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_umum.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
-                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("kode_paket"),rsbiaya_dokter_umum.getString("nm_perawatan")+"(dr Umum)",
+                             "Operasi "+rsbiaya_dokter_umum.getString("status")+" dr Umum",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -3934,8 +4027,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){                                
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" PJ",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -3984,8 +4077,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" PJ",rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -4030,8 +4123,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" Perujuk",rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -4079,8 +4172,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" Perujuk",rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -4126,8 +4219,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" PJ",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -4171,8 +4264,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" Perujuk",rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }
@@ -4251,8 +4344,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandr.getString("tgl_perawatan"),rsrawatjalandr.getString("jam_rawat"),rsrawatjalandr.getString("no_rawat"),rsrawatjalandr.getString("no_rkm_medis"),
-                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("nm_perawatan")+" ("+rsrawatjalandr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandr.getDouble("tarif_tindakandr")
+                             rsrawatjalandr.getString("nm_pasien")+" ("+rsrawatjalandr.getString("kd_pj")+")",rsrawatjalandr.getString("kd_jenis_prw"),rsrawatjalandr.getString("nm_perawatan"),
+                             "Rawat Jalan Dr",rsrawatjalandr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandr.getDouble("tarif_tindakandr");
                      }  
@@ -4260,8 +4353,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatjalandrpr.next()){
                          tabMode.addRow(new Object[]{
                              false,rsrawatjalandrpr.getString("tgl_perawatan"),rsrawatjalandrpr.getString("jam_rawat"),rsrawatjalandrpr.getString("no_rawat"),rsrawatjalandrpr.getString("no_rkm_medis"),
-                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("nm_perawatan")+" ("+rsrawatjalandrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Jalan",rsrawatjalandrpr.getDouble("tarif_tindakandr")
+                             rsrawatjalandrpr.getString("nm_pasien")+" ("+rsrawatjalandrpr.getString("kd_pj")+")",rsrawatjalandrpr.getString("kd_jenis_prw"),rsrawatjalandrpr.getString("nm_perawatan"),
+                             "Rawat Jalan DrPr",rsrawatjalandrpr.getDouble("tarif_tindakandr")
                          });                   
                          total=total+rsrawatjalandrpr.getDouble("tarif_tindakandr");
                      }
@@ -4337,8 +4430,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdr.getString("tgl_perawatan"),rsrawatinapdr.getString("jam_rawat"),rsrawatinapdr.getString("no_rawat"),rsrawatinapdr.getString("no_rkm_medis"),
-                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("nm_perawatan")+" ("+rsrawatinapdr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdr.getDouble("tarif_tindakandr")
+                             rsrawatinapdr.getString("nm_pasien")+" ("+rsrawatinapdr.getString("kd_pj")+")",rsrawatinapdr.getString("kd_jenis_prw"),rsrawatinapdr.getString("nm_perawatan"),
+                             "Rawat Inap Dr",rsrawatinapdr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdr.getDouble("tarif_tindakandr");
                      }
@@ -4346,8 +4439,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsrawatinapdrpr.next()){ 
                          tabMode.addRow(new Object[]{
                              false,rsrawatinapdrpr.getString("tgl_perawatan"),rsrawatinapdrpr.getString("jam_rawat"),rsrawatinapdrpr.getString("no_rawat"),rsrawatinapdrpr.getString("no_rkm_medis"),
-                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("nm_perawatan")+" ("+rsrawatinapdrpr.getString("kd_jenis_prw")+")",
-                             "Rawat Inap",rsrawatinapdrpr.getDouble("tarif_tindakandr")
+                             rsrawatinapdrpr.getString("nm_pasien")+" ("+rsrawatinapdrpr.getString("kd_pj")+")",rsrawatinapdrpr.getString("kd_jenis_prw"),rsrawatinapdrpr.getString("nm_perawatan"),
+                             "Rawat Inap DrPr",rsrawatinapdrpr.getDouble("tarif_tindakandr")
                          });          
                          total=total+rsrawatinapdrpr.getDouble("tarif_tindakandr");
                      }
@@ -4542,8 +4635,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator1.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator1.getString("tgl_operasi").substring(0,10),rsbiayaoperator1.getString("tgl_operasi").substring(11,19),rsbiayaoperator1.getString("no_rawat"),rsbiayaoperator1.getString("no_rkm_medis"),
-                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("nm_perawatan")+" ("+rsbiayaoperator1.getString("kode_paket")+")(Operator 1)",
-                             "Operasi "+rsbiayaoperator1.getString("status"),rsbiayaoperator1.getDouble("biayaoperator1")
+                             rsbiayaoperator1.getString("nm_pasien")+" ("+rsbiayaoperator1.getString("kd_pj")+")",rsbiayaoperator1.getString("kode_paket"),rsbiayaoperator1.getString("nm_perawatan")+"(Operator 1)",
+                             "Operasi "+rsbiayaoperator1.getString("status")+" Op1",rsbiayaoperator1.getDouble("biayaoperator1")
                          });      
                          total=total+rsbiayaoperator1.getDouble("biayaoperator1");
                      }
@@ -4551,8 +4644,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator2.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator2.getString("tgl_operasi").substring(0,10),rsbiayaoperator2.getString("tgl_operasi").substring(11,19),rsbiayaoperator2.getString("no_rawat"),rsbiayaoperator2.getString("no_rkm_medis"),
-                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("nm_perawatan")+" ("+rsbiayaoperator2.getString("kode_paket")+")(Operator 2)",
-                             "Operasi "+rsbiayaoperator2.getString("status"),rsbiayaoperator2.getDouble("biayaoperator2")
+                             rsbiayaoperator2.getString("nm_pasien")+" ("+rsbiayaoperator2.getString("kd_pj")+")",rsbiayaoperator2.getString("kode_paket"),rsbiayaoperator2.getString("nm_perawatan")+"(Operator 2)",
+                             "Operasi "+rsbiayaoperator2.getString("status")+" Op2",rsbiayaoperator2.getDouble("biayaoperator2")
                          });  
                          total=total+rsbiayaoperator2.getDouble("biayaoperator2");
                      }
@@ -4560,8 +4653,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayaoperator3.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayaoperator3.getString("tgl_operasi").substring(0,10),rsbiayaoperator3.getString("tgl_operasi").substring(11,19),rsbiayaoperator3.getString("no_rawat"),rsbiayaoperator3.getString("no_rkm_medis"),
-                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("nm_perawatan")+"  ("+rsbiayaoperator3.getString("kode_paket")+")(Operator 3)",
-                             "Operasi "+rsbiayaoperator3.getString("status"),rsbiayaoperator3.getDouble("biayaoperator3")
+                             rsbiayaoperator3.getString("nm_pasien")+" ("+rsbiayaoperator3.getString("kd_pj")+")",rsbiayaoperator3.getString("kode_paket"),rsbiayaoperator3.getString("nm_perawatan")+"(Operator 3)",
+                             "Operasi "+rsbiayaoperator3.getString("status")+" Op3",rsbiayaoperator3.getDouble("biayaoperator3")
                          });       
                          total=total+rsbiayaoperator3.getDouble("biayaoperator3");
                      }
@@ -4569,8 +4662,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anak.getString("tgl_operasi").substring(0,10),rsbiayadokter_anak.getString("tgl_operasi").substring(11,19),rsbiayadokter_anak.getString("no_rawat"),rsbiayadokter_anak.getString("no_rkm_medis"),
-                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("nm_perawatan")+" ("+rsbiayadokter_anak.getString("kode_paket")+")(dr Anak)",
-                             "Operasi "+rsbiayadokter_anak.getString("status"),rsbiayadokter_anak.getDouble("biayadokter_anak")
+                             rsbiayadokter_anak.getString("nm_pasien")+" ("+rsbiayadokter_anak.getString("kd_pj")+")",rsbiayadokter_anak.getString("kode_paket"),rsbiayadokter_anak.getString("nm_perawatan")+"(dr Anak)",
+                             "Operasi "+rsbiayadokter_anak.getString("status")+" dr Anak",rsbiayadokter_anak.getDouble("biayadokter_anak")
                          });    
                          total=total+rsbiayadokter_anak.getDouble("biayadokter_anak");
                      }
@@ -4578,8 +4671,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiayadokter_anestesi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiayadokter_anestesi.getString("tgl_operasi").substring(0,10),rsbiayadokter_anestesi.getString("tgl_operasi").substring(11,19),rsbiayadokter_anestesi.getString("no_rawat"),rsbiayadokter_anestesi.getString("no_rkm_medis"),
-                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("nm_perawatan")+" ("+rsbiayadokter_anestesi.getString("kode_paket")+")(dr Anestesi)",
-                             "Operasi "+rsbiayadokter_anestesi.getString("status"),rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
+                             rsbiayadokter_anestesi.getString("nm_pasien")+" ("+rsbiayadokter_anestesi.getString("kd_pj")+")",rsbiayadokter_anestesi.getString("kode_paket"),rsbiayadokter_anestesi.getString("nm_perawatan")+"(dr Anestesi)",
+                             "Operasi "+rsbiayadokter_anestesi.getString("status")+" dr Anastesi",rsbiayadokter_anestesi.getDouble("biayadokter_anestesi")
                          });      
                          total=total+rsbiayadokter_anestesi.getDouble("biayadokter_anestesi");
                      }
@@ -4587,8 +4680,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_pjanak.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_pjanak.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_pjanak.getString("no_rawat"),rsbiaya_dokter_pjanak.getString("no_rkm_medis"),
-                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("nm_perawatan")+" ("+rsbiaya_dokter_pjanak.getString("kode_paket")+")(dr Pj Anak)",
-                             "Operasi "+rsbiaya_dokter_pjanak.getString("status"),rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
+                             rsbiaya_dokter_pjanak.getString("nm_pasien")+" ("+rsbiaya_dokter_pjanak.getString("kd_pj")+")",rsbiaya_dokter_pjanak.getString("kode_paket"),rsbiaya_dokter_pjanak.getString("nm_perawatan")+"(dr Pj Anak)",
+                             "Operasi "+rsbiaya_dokter_pjanak.getString("status")+" dr PJ Anak",rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak")
                          });    
                          total=total+rsbiaya_dokter_pjanak.getDouble("biaya_dokter_pjanak");
                      }
@@ -4596,8 +4689,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsbiaya_dokter_umum.next()){
                          tabMode.addRow(new Object[]{
                              false,rsbiaya_dokter_umum.getString("tgl_operasi").substring(0,10),rsbiaya_dokter_umum.getString("tgl_operasi").substring(11,19),rsbiaya_dokter_umum.getString("no_rawat"),rsbiaya_dokter_umum.getString("no_rkm_medis"),
-                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("nm_perawatan")+" ("+rsbiaya_dokter_umum.getString("kode_paket")+")(dr Umum)",
-                             "Operasi "+rsbiaya_dokter_umum.getString("status"),rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
+                             rsbiaya_dokter_umum.getString("nm_pasien")+" ("+rsbiaya_dokter_umum.getString("kd_pj")+")",rsbiaya_dokter_umum.getString("kode_paket"),rsbiaya_dokter_umum.getString("nm_perawatan")+"(dr Umum)",
+                             "Operasi "+rsbiaya_dokter_umum.getString("status")+" dr Umum",rsbiaya_dokter_umum.getDouble("biaya_dokter_umum")
                          });    
                          total=total+rsbiaya_dokter_umum.getDouble("biaya_dokter_umum");
                      }
@@ -4680,8 +4773,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){                                
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" PJ",rsperiksa_lab.getDouble("tarif_tindakan_dokter")
                          });    
                          total=total+rsperiksa_lab.getDouble("tarif_tindakan_dokter");
                      }
@@ -4730,8 +4823,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_dokter")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" PJ",rsdetaillab.getDouble("bagian_dokter")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_dokter");
                      }
@@ -4776,8 +4869,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_lab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_lab.getString("tgl_periksa"),rsperiksa_lab.getString("jam"),rsperiksa_lab.getString("no_rawat"),rsperiksa_lab.getString("no_rkm_medis"),
-                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("nm_perawatan")+" ("+rsperiksa_lab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsperiksa_lab.getString("status"),rsperiksa_lab.getDouble("tarif_perujuk")
+                             rsperiksa_lab.getString("nm_pasien")+" ("+rsperiksa_lab.getString("kd_pj")+")",rsperiksa_lab.getString("kd_jenis_prw"),rsperiksa_lab.getString("nm_perawatan"),
+                             "Laborat "+rsperiksa_lab.getString("status")+" Perujuk",rsperiksa_lab.getDouble("tarif_perujuk")
                          });        
                          total=total+rsperiksa_lab.getDouble("tarif_perujuk");
                      }
@@ -4825,8 +4918,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsdetaillab.next()){
                          tabMode.addRow(new Object[]{
                              false,rsdetaillab.getString("tgl_periksa"),rsdetaillab.getString("jam"),rsdetaillab.getString("no_rawat"),rsdetaillab.getString("no_rkm_medis"),
-                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("Pemeriksaan")+" ("+rsdetaillab.getString("kd_jenis_prw")+")",
-                             "Laborat "+rsdetaillab.getString("status"),rsdetaillab.getDouble("bagian_perujuk")
+                             rsdetaillab.getString("nm_pasien")+" ("+rsdetaillab.getString("kd_pj")+")",rsdetaillab.getString("kd_jenis_prw"),rsdetaillab.getString("Pemeriksaan"),
+                             "Laborat "+rsdetaillab.getString("status")+" Perujuk",rsdetaillab.getDouble("bagian_perujuk")
                          });    
                          total=total+rsdetaillab.getDouble("bagian_perujuk");
                      }
@@ -4872,8 +4965,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" PJ",rsperiksa_radiologi.getDouble("tarif_tindakan_dokter")
                          });      
                          total=total+rsperiksa_radiologi.getDouble("tarif_tindakan_dokter");
                      }
@@ -4917,8 +5010,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      while(rsperiksa_radiologi.next()){
                          tabMode.addRow(new Object[]{
                              false,rsperiksa_radiologi.getString("tgl_periksa"),rsperiksa_radiologi.getString("jam"),rsperiksa_radiologi.getString("no_rawat"),rsperiksa_radiologi.getString("no_rkm_medis"),
-                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("nm_perawatan")+" ("+rsperiksa_radiologi.getString("kd_jenis_prw")+")",
-                             "Radiologi "+rsperiksa_radiologi.getString("status"),rsperiksa_radiologi.getDouble("tarif_perujuk")
+                             rsperiksa_radiologi.getString("nm_pasien")+" ("+rsperiksa_radiologi.getString("kd_pj")+")",rsperiksa_radiologi.getString("kd_jenis_prw"),rsperiksa_radiologi.getString("nm_perawatan"),
+                             "Radiologi "+rsperiksa_radiologi.getString("status")+" Perujuk",rsperiksa_radiologi.getDouble("tarif_perujuk")
                          });     
                          total=total+rsperiksa_radiologi.getDouble("tarif_perujuk");
                      }

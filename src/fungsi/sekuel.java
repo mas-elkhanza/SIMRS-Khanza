@@ -335,6 +335,38 @@ public final class sekuel {
         return bool;
     }
     
+    public boolean menyimpantf2(String table,String value,int i,String[] a){
+        bool=true;
+        try{ 
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            try {
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                }            
+                ps.executeUpdate();
+                bool=true;
+            } catch (Exception e) {
+                bool=false;
+                System.out.println("Notifikasi : "+e);  
+            } finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
+        }catch(Exception e){
+            bool=false;
+            System.out.println("Notifikasi : "+e);  
+        }
+        return bool;
+    }
+    
     public void menyimpan(String table,String value,int i,String[] a){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
