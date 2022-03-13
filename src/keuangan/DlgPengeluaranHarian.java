@@ -761,8 +761,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                     try {
                         Sequel.queryu("delete from tampjurnal");
                         psakun=koneksi.prepareStatement(
-                            "select kd_rek,'Akun',"+
-                            "kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kode_kategori=?");
+                            "select kategori_pengeluaran_harian.kd_rek,'Akun',kategori_pengeluaran_harian.kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
                         try {
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();
