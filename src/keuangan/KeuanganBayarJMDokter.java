@@ -3,7 +3,6 @@
 package keuangan;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.akses;
 import fungsi.batasInput;
@@ -22,12 +21,13 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariCaraBayar;
 
 /**
@@ -40,28 +40,14 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private PreparedStatement ps,psrawatjalandr,psrawatjalandrpr,psrawatinapdr,psrawatinapdrpr,psbiayaoperator1,psbiayaoperator2,psbiayaoperator3,psbiayadokter_anak,
-            psbiayadokter_anestesi,psdetaillab,psperiksa_lab,psperiksa_radiologi,psperiksa_lab2,psdetaillab2,psperiksa_radiologi2,psbiaya_dokter_pjanak,psbiaya_dokter_umum,
-            psrekening;
+            psbiayadokter_anestesi,psdetaillab,psperiksa_lab,psperiksa_radiologi,psperiksa_lab2,psdetaillab2,psperiksa_radiologi2,psbiaya_dokter_pjanak,psbiaya_dokter_umum;
     private ResultSet rs,rsrawatjalandr,rsrawatjalandrpr,rsrawatinapdr,rsrawatinapdrpr,rsbiayaoperator1,rsbiayaoperator2,rsbiayaoperator3,rsbiayadokter_anak,
-            rsbiayadokter_anestesi,rsdetaillab,rsperiksa_lab,rsperiksa_radiologi,rsbiaya_dokter_pjanak,rsbiaya_dokter_umum,rsrekening;
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
+            rsbiayadokter_anestesi,rsdetaillab,rsperiksa_lab,rsperiksa_radiologi,rsbiaya_dokter_pjanak,rsbiaya_dokter_umum;
     private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
     private int row=0,i=0;
-    private Jurnal jur=new Jurnal();
     private double total=0,bayar=0,totalrawatjalan=0,totalrawatinap=0,totallabrawatjalan=0,totallabrawatinap=0,totalradrawatjalan=0,totalradrawatinap=0,totaloperasirawatjalan=0,totaloperasirawatinap=0;
     private boolean sukses=true;  
-    private File file;
-    private FileWriter fileWriter;
-    private String iyem,Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ranap="",Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",
-            Beban_Jasa_Medik_Dokter_Laborat_Ralan="",Utang_Jasa_Medik_Dokter_Laborat_Ralan="",Beban_Jasa_Medik_Dokter_Laborat_Ranap="",Utang_Jasa_Medik_Dokter_Laborat_Ranap="",
-            Beban_Jasa_Medik_Dokter_Radiologi_Ralan="",Utang_Jasa_Medik_Dokter_Radiologi_Ralan="",Beban_Jasa_Medik_Dokter_Radiologi_Ranap="",Utang_Jasa_Medik_Dokter_Radiologi_Ranap="",
-            Beban_Jasa_Medik_Dokter_Operasi_Ralan="",Utang_Jasa_Medik_Dokter_Operasi_Ralan="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",Utang_Jasa_Medik_Dokter_Operasi_Ranap="",
-            Bayar_JM_Dokter=Sequel.cariIsi("select set_akun.Bayar_JM_Dokter from set_akun"),koderekening="";
-    private ObjectMapper mapper = new ObjectMapper();
-    private JsonNode root;
-    private JsonNode response;
-    private FileReader myObj;
-    
+    private KeuanganCariBayarJMDokter form=new KeuanganCariBayarJMDokter(null,false);
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -157,16 +143,16 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         NoTagihan.setDocument(new batasInput((int)17).getKata(NoTagihan));
         Keterangan.setDocument(new batasInput((int)70).getKata(Keterangan));
                 
-        dokter.addWindowListener(new WindowListener() {
+        form.dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){
-                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                if(form.dokter.getTable().getSelectedRow()!= -1){
+                    kddokter.setText(form.dokter.getTable().getValueAt(form.dokter.getTable().getSelectedRow(),0).toString());
+                    nmdokter.setText(form.dokter.getTable().getValueAt(form.dokter.getTable().getSelectedRow(),1).toString());
                 }   
                 kddokter.requestFocus();
             }
@@ -175,7 +161,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             @Override
             public void windowDeiconified(WindowEvent e) {}
             @Override
-            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
+            public void windowActivated(WindowEvent e) {form.dokter.emptTeks();}
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
@@ -213,67 +199,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });  
-        
-        try {
-            psrekening=koneksi.prepareStatement(
-                "select set_akun_ralan.Beban_Jasa_Medik_Dokter_Tindakan_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Tindakan_Ralan,"+
-                "set_akun_ralan.Beban_Jasa_Medik_Dokter_Laborat_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Laborat_Ralan,"+
-                "set_akun_ralan.Beban_Jasa_Medik_Dokter_Radiologi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Radiologi_Ralan,"+
-                "set_akun_ralan.Beban_Jasa_Medik_Dokter_Operasi_Ralan,set_akun_ralan.Utang_Jasa_Medik_Dokter_Operasi_Ralan from set_akun_ralan");
-            try {
-                rsrekening=psrekening.executeQuery();
-                while(rsrekening.next()){
-                    Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");
-                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan");
-                    Beban_Jasa_Medik_Dokter_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Laborat_Ralan");
-                    Utang_Jasa_Medik_Dokter_Laborat_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Laborat_Ralan");
-                    Beban_Jasa_Medik_Dokter_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ralan");
-                    Utang_Jasa_Medik_Dokter_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ralan");
-                    Beban_Jasa_Medik_Dokter_Operasi_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Operasi_Ralan");
-                    Utang_Jasa_Medik_Dokter_Operasi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Operasi_Ralan");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif Rekening : "+e);
-            } finally{
-                if(rsrekening!=null){
-                    rsrekening.close();
-                }
-                if(psrekening!=null){
-                    psrekening.close();
-                }
-            }    
-            
-            psrekening=koneksi.prepareStatement(
-                "select set_akun_ranap.Beban_Jasa_Medik_Dokter_Tindakan_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Tindakan_Ranap,"+
-                "set_akun_ranap.Beban_Jasa_Medik_Dokter_Laborat_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Laborat_Ranap,"+
-                "set_akun_ranap.Beban_Jasa_Medik_Dokter_Radiologi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Radiologi_Ranap,"+
-                "set_akun_ranap.Beban_Jasa_Medik_Dokter_Operasi_Ranap,set_akun_ranap.Utang_Jasa_Medik_Dokter_Operasi_Ranap from set_akun_ranap");
-            try {
-                rsrekening=psrekening.executeQuery();
-                while(rsrekening.next()){
-                    Beban_Jasa_Medik_Dokter_Tindakan_Ranap=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ranap");
-                    Utang_Jasa_Medik_Dokter_Tindakan_Ranap=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ranap");
-                    Beban_Jasa_Medik_Dokter_Laborat_Ranap=rsrekening.getString("Beban_Jasa_Medik_Dokter_Laborat_Ranap");
-                    Utang_Jasa_Medik_Dokter_Laborat_Ranap=rsrekening.getString("Utang_Jasa_Medik_Dokter_Laborat_Ranap");
-                    Beban_Jasa_Medik_Dokter_Radiologi_Ranap=rsrekening.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ranap");
-                    Utang_Jasa_Medik_Dokter_Radiologi_Ranap=rsrekening.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ranap");
-                    Beban_Jasa_Medik_Dokter_Operasi_Ranap=rsrekening.getString("Beban_Jasa_Medik_Dokter_Operasi_Ranap");
-                    Utang_Jasa_Medik_Dokter_Operasi_Ranap=rsrekening.getString("Utang_Jasa_Medik_Dokter_Operasi_Ranap");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif Rekening : "+e);
-            } finally{
-                if(rsrekening!=null){
-                    rsrekening.close();
-                }
-                if(psrekening!=null){
-                    psrekening.close();
-                }
-            }  
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        }); 
 
     }
     
@@ -304,6 +230,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
+        BtnGaji = new widget.Button();
         panelisi1 = new widget.panelisi();
         jLabel10 = new javax.swing.JLabel();
         LCount = new javax.swing.JLabel();
@@ -384,7 +311,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar JM Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Jasa Medis Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -452,7 +379,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         panelisi3.add(label17);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(270, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -493,6 +420,23 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             }
         });
         panelisi3.add(BtnAll);
+
+        BtnGaji.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
+        BtnGaji.setMnemonic('2');
+        BtnGaji.setToolTipText("Alt+2");
+        BtnGaji.setName("BtnGaji"); // NOI18N
+        BtnGaji.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnGaji.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGajiActionPerformed(evt);
+            }
+        });
+        BtnGaji.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnGajiKeyPressed(evt);
+            }
+        });
+        panelisi3.add(BtnGaji);
 
         jPanel1.add(panelisi3, java.awt.BorderLayout.CENTER);
 
@@ -854,19 +798,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 Sequel.AutoComitFalse();
                 sukses=true;
                 
-                koderekening="";
+                form.koderekening="";
                 try {
-                    myObj = new FileReader("./cache/akunbayar.iyem");
-                    root = mapper.readTree(myObj);
-                    response = root.path("akunbayar");
-                    if(response.isArray()){
-                       for(JsonNode list:response){
+                    form.myObj = new FileReader("./cache/akunbayar.iyem");
+                    form.root = form.mapper.readTree(form.myObj);
+                    form.response = form.root.path("akunbayar");
+                    if(form.response.isArray()){
+                       for(JsonNode list:form.response){
                            if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
-                                koderekening=list.path("KodeRek").asText();  
+                                form.koderekening=list.path("KodeRek").asText();  
                            }
                        }
                     }
-                    myObj.close();
+                    form.myObj.close();
                 } catch (Exception e) {
                     sukses=false;
                 } 
@@ -1104,42 +1048,42 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal"); 
                     if(totalrawatjalan>0){
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"','Utang Jasa Medik Dokter Tindakan Ralan','"+totalrawatjalan+"','0'","debet=debet+'"+(totalrawatjalan)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"'");       
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','0','"+totalrawatjalan+"'","kredit=kredit+'"+(totalrawatjalan)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"'");                               
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"','Utang Jasa Medik Dokter Tindakan Ralan','"+totalrawatjalan+"','0'","debet=debet+'"+(totalrawatjalan)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"'");       
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','0','"+totalrawatjalan+"'","kredit=kredit+'"+(totalrawatjalan)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"'");                               
                     }
                     if(totalrawatinap>0){
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Tindakan_Ranap+"','Utang Jasa Medik Dokter Tindakan Ranap','"+totalrawatinap+"','0'","debet=debet+'"+(totalrawatinap)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ranap+"'");       
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"','Beban Jasa Medik Dokter Tindakan Ranap','0','"+totalrawatinap+"'","kredit=kredit+'"+(totalrawatinap)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"'");                               
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Tindakan_Ranap+"','Utang Jasa Medik Dokter Tindakan Ranap','"+totalrawatinap+"','0'","debet=debet+'"+(totalrawatinap)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Tindakan_Ranap+"'");       
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"','Beban Jasa Medik Dokter Tindakan Ranap','0','"+totalrawatinap+"'","kredit=kredit+'"+(totalrawatinap)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"'");                               
                     }
                     if(totallabrawatjalan>0){
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Beban Jasa Medik Dokter Laborat Ralan','0','"+totallabrawatjalan+"'","kredit=kredit+'"+(totallabrawatjalan)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");    
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Laborat_Ralan+"','Utang Jasa Medik Dokter Laborat Ralan','"+totallabrawatjalan+"','0'","debet=debet+'"+(totallabrawatjalan)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Laborat_Ralan+"'");                           
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Beban Jasa Medik Dokter Laborat Ralan','0','"+totallabrawatjalan+"'","kredit=kredit+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");    
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Laborat_Ralan+"','Utang Jasa Medik Dokter Laborat Ralan','"+totallabrawatjalan+"','0'","debet=debet+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Laborat_Ralan+"'");                           
                     }
                     if(totallabrawatinap>0){
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Laborat_Ranap+"','Beban Jasa Medik Dokter Laborat Ranap','0','"+totallabrawatinap+"'","kredit=kredit+'"+(totallabrawatinap)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Laborat_Ranap+"'");    
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Laborat_Ranap+"','Utang Jasa Medik Dokter Laborat Ranap','"+totallabrawatinap+"','0'","debet=debet+'"+(totallabrawatinap)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Laborat_Ranap+"'");                           
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ranap+"','Beban Jasa Medik Dokter Laborat Ranap','0','"+totallabrawatinap+"'","kredit=kredit+'"+(totallabrawatinap)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ranap+"'");    
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Laborat_Ranap+"','Utang Jasa Medik Dokter Laborat Ranap','"+totallabrawatinap+"','0'","debet=debet+'"+(totallabrawatinap)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Laborat_Ranap+"'");                           
                     }
                     if(totalradrawatjalan>0){
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"','Beban Jasa Medik Dokter Radiologi Ralan','0','"+totalradrawatjalan+"'","kredit=kredit+'"+(totalradrawatjalan)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"'");    
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"','Utang Jasa Medik Dokter Radiologi Ralan','"+totalradrawatjalan+"','0'","debet=debet+'"+(totalradrawatjalan)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"'");                           
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"','Beban Jasa Medik Dokter Radiologi Ralan','0','"+totalradrawatjalan+"'","kredit=kredit+'"+(totalradrawatjalan)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"'");    
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"','Utang Jasa Medik Dokter Radiologi Ralan','"+totalradrawatjalan+"','0'","debet=debet+'"+(totalradrawatjalan)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"'");                           
                     }
                     if(totalradrawatinap>0){
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Radiologi_Ranap+"','Beban Jasa Medik Dokter Radiologi Ranap','0','"+totalradrawatinap+"'","kredit=kredit+'"+(totalradrawatinap)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Radiologi_Ranap+"'");    
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Radiologi_Ranap+"','Utang Jasa Medik Dokter Radiologi Ranap','"+totalradrawatinap+"','0'","debet=debet+'"+(totalradrawatinap)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Radiologi_Ranap+"'");                           
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Radiologi_Ranap+"','Beban Jasa Medik Dokter Radiologi Ranap','0','"+totalradrawatinap+"'","kredit=kredit+'"+(totalradrawatinap)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Radiologi_Ranap+"'");    
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Radiologi_Ranap+"','Utang Jasa Medik Dokter Radiologi Ranap','"+totalradrawatinap+"','0'","debet=debet+'"+(totalradrawatinap)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Radiologi_Ranap+"'");                           
                     }
                     if(totaloperasirawatjalan>0){
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Operasi_Ralan+"','Beban Jasa Medik Dokter Operasi Ralan','0','"+totaloperasirawatjalan+"'","kredit=kredit+'"+totaloperasirawatjalan+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Operasi_Ralan+"'");     
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Operasi_Ralan+"','Utang Jasa Medik Dokter Operasi Ralan','"+totaloperasirawatjalan+"','0'","debet=debet+'"+totaloperasirawatjalan+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Operasi_Ralan+"'");                             
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Operasi_Ralan+"','Beban Jasa Medik Dokter Operasi Ralan','0','"+totaloperasirawatjalan+"'","kredit=kredit+'"+totaloperasirawatjalan+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Operasi_Ralan+"'");     
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Operasi_Ralan+"','Utang Jasa Medik Dokter Operasi Ralan','"+totaloperasirawatjalan+"','0'","debet=debet+'"+totaloperasirawatjalan+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Operasi_Ralan+"'");                             
                     }
                     if(totaloperasirawatinap>0){
-                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"','Beban Jasa Medik Dokter Operasi Ranap','0','"+totaloperasirawatinap+"'","kredit=kredit+'"+totaloperasirawatinap+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"'");     
-                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"','Utang Jasa Medik Dokter Operasi Ranap','"+totaloperasirawatinap+"','0'","debet=debet+'"+totaloperasirawatinap+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"'");                             
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Operasi_Ranap+"','Beban Jasa Medik Dokter Operasi Ranap','0','"+totaloperasirawatinap+"'","kredit=kredit+'"+totaloperasirawatinap+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Operasi_Ranap+"'");     
+                        Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Operasi_Ranap+"','Utang Jasa Medik Dokter Operasi Ranap','"+totaloperasirawatinap+"','0'","debet=debet+'"+totaloperasirawatinap+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Operasi_Ranap+"'");                             
                     }
                     if(bayar>0){
-                        Sequel.menyimpan("tampjurnal","'"+Bayar_JM_Dokter+"','Bayar JM Dokter','"+bayar+"','0'","debet=debet+'"+(bayar)+"'","kd_rek='"+Bayar_JM_Dokter+"'");       
-                        Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem().toString()+"','0','"+bayar+"'","kredit=kredit+'"+(bayar)+"'","kd_rek='"+koderekening+"'");  
+                        Sequel.menyimpan("tampjurnal","'"+form.Bayar_JM_Dokter+"','Bayar JM Dokter','"+bayar+"','0'","debet=debet+'"+(bayar)+"'","kd_rek='"+form.Bayar_JM_Dokter+"'");       
+                        Sequel.menyimpan("tampjurnal","'"+form.koderekening+"','"+AkunBayar.getSelectedItem().toString()+"','0','"+bayar+"'","kredit=kredit+'"+(bayar)+"'","kd_rek='"+form.koderekening+"'");  
                     }
-                    sukses=jur.simpanJurnal(NoTagihan.getText(),"U","PEMBAYARAN JASA MEDIS DOKTER"+", OLEH "+akses.getkode());
+                    sukses=form.jur.simpanJurnal(NoTagihan.getText(),"U","PEMBAYARAN JASA MEDIS DOKTER "+kddokter.getText()+" "+nmdokter.getText()+", OLEH "+akses.getkode());
                 }
                 
                 if(sukses==true){
@@ -1191,7 +1135,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeuanganCariTagihanAset form=new KeuanganCariTagihanAset(null,false);
         form.emptTeks();
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1235,12 +1178,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        dokter.emptTeks();
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setAlwaysOnTop(false);
-        dokter.setVisible(true);
+        akses.setform("KeuanganBayarJMDokter");
+        form.dokter.emptTeks();
+        form.dokter.isCek();
+        form.dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.dokter.setLocationRelativeTo(internalFrame1);
+        form.dokter.setAlwaysOnTop(false);
+        form.dokter.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPetugasActionPerformed
 
@@ -1284,6 +1228,61 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.pindah(evt,AkunBayar,Keterangan);
     }//GEN-LAST:event_BtnPetugasKeyPressed
 
+    private void BtnGajiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGajiActionPerformed
+        if(kddokter.getText().trim().equals("")||nmdokter.getText().trim().equals("")){
+            Valid.textKosong(kddokter,"Dokter");
+        }else{
+            if(bayar==0){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih jasa medis yang mau dibayar...!!!!");
+            }else if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            }else if(tabMode.getRowCount()!=0){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Sequel.queryu("truncate table temporary");
+                //"P","Tanggal","Jam","No.Rawat","No.RM","Nama Pasien","Kode","Tindakan Medis","Status","Jasa Medis","Id Detail"
+                for(i=1;i<tabMode.getRowCount();i++){  
+                    if(tabMode.getValueAt(i,0).toString().equals("true")){
+                        Sequel.menyimpan("temporary","'0','"+
+                            tabMode.getValueAt(i,1).toString().replaceAll("'","`")+" "+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
+                            tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"','"+
+                            tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"','"+
+                            tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"','"+
+                            tabMode.getValueAt(i,6).toString().replaceAll("'","`")+"','"+
+                            tabMode.getValueAt(i,7).toString().replaceAll("'","`")+"','"+
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString().replaceAll("'","`")))+
+                            "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                        );
+                    } 
+                }
+                
+                Sequel.menyimpan("temporary","'0','>> Jumlah :','','','','','','"+LCount1.getText()+
+                    "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                ); 
+
+                Map<String, Object> param = new HashMap<>();   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("dokter",nmdokter.getText());   
+                param.put("bulan",Tanggal.getSelectedItem().toString().substring(3,10));   
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptSlipBayarJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_BtnGajiActionPerformed
+
+    private void BtnGajiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnGajiKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnGajiActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnCari, BtnAll);
+        }
+    }//GEN-LAST:event_BtnGajiKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1306,6 +1305,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnCaraBayarRalanDokter;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
+    private widget.Button BtnGaji;
     private widget.Button BtnKeluar;
     private widget.Button BtnPetugas;
     private widget.Button BtnSimpan;
@@ -1411,17 +1411,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void tampilAkunBayar() {         
          try{      
-             file=new File("./cache/akunbayar.iyem");
-             file.createNewFile();
-             fileWriter = new FileWriter(file);
-             iyem="";
+             form.file=new File("./cache/akunbayar.iyem");
+             form.file.createNewFile();
+             form.fileWriter = new FileWriter(form.file);
+             form.iyem="";
              ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                     form.iyem=form.iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1434,10 +1434,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  } 
              }
 
-             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
-             fileWriter.close();
-             iyem=null;
+             form.fileWriter.write("{\"akunbayar\":["+form.iyem.substring(0,form.iyem.length()-1)+"]}");
+             form.fileWriter.flush();
+             form.fileWriter.close();
+             form.iyem=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
