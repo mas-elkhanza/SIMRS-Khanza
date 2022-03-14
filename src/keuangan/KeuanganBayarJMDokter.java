@@ -150,11 +150,13 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(form.dokter.getTable().getSelectedRow()!= -1){
-                    kddokter.setText(form.dokter.getTable().getValueAt(form.dokter.getTable().getSelectedRow(),0).toString());
-                    nmdokter.setText(form.dokter.getTable().getValueAt(form.dokter.getTable().getSelectedRow(),1).toString());
+                if(akses.getform().equals("KeuanganBayarJMDokter")){
+                    if(form.dokter.getTable().getSelectedRow()!= -1){
+                        kddokter.setText(form.dokter.getTable().getValueAt(form.dokter.getTable().getSelectedRow(),0).toString());
+                        nmdokter.setText(form.dokter.getTable().getValueAt(form.dokter.getTable().getSelectedRow(),1).toString());
+                    }   
+                    kddokter.requestFocus();
                 }   
-                kddokter.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -1903,7 +1905,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where periksa_lab.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_lab.tarif_tindakan_dokter>0 and "+
@@ -1999,7 +2000,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where  periksa_lab.dokter_perujuk=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_lab.tarif_perujuk>0 and "+
@@ -2095,7 +2095,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where periksa_radiologi.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_radiologi.tarif_tindakan_dokter>0 and"+
@@ -2140,7 +2139,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where periksa_radiologi.dokter_perujuk=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_radiologi.tarif_perujuk>0 and "+
@@ -2658,7 +2656,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -2756,7 +2753,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -2854,7 +2850,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -2900,7 +2895,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -3419,7 +3413,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -3517,7 +3510,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -3615,7 +3607,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -3661,7 +3652,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
@@ -4169,7 +4159,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and periksa_lab.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_lab.tarif_tindakan_dokter>0 and "+
@@ -4265,7 +4254,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and periksa_lab.dokter_perujuk=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_lab.tarif_perujuk>0 and "+
@@ -4361,7 +4349,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and periksa_radiologi.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_radiologi.tarif_tindakan_dokter>0 and"+
@@ -4406,7 +4393,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien) and periksa_radiologi.dokter_perujuk=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_radiologi.tarif_perujuk>0 and "+
@@ -4913,7 +4899,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Belum Bayar' and periksa_lab.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_lab.tarif_tindakan_dokter>0 and "+
@@ -5009,7 +4994,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_lab.nm_perawatan,periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.no_rawat,periksa_lab.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Belum Bayar' and periksa_lab.dokter_perujuk=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_lab.tarif_perujuk>0 and "+
@@ -5105,7 +5089,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Belum Bayar' and periksa_radiologi.kd_dokter=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_radiologi.tarif_tindakan_dokter>0 and"+
@@ -5150,7 +5133,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "jns_perawatan_radiologi.nm_perawatan,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.no_rawat,periksa_radiologi.kd_jenis_prw,reg_periksa.kd_pj "+
                      " from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
                      " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                     " inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                      " inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                      " inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                      " where reg_periksa.status_bayar='Belum Bayar' and periksa_radiologi.dokter_perujuk=? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and periksa_radiologi.tarif_perujuk>0 and "+
