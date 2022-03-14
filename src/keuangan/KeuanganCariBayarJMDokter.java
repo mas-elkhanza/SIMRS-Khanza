@@ -35,8 +35,8 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,psrekening;
     private ResultSet rs,rs2,rsrekening;
     private String notagihan="",tanggal="",petugas="";
-    private double nilaitagihan=0,totaltagihan=0;
-    private boolean sukses=true;  
+    private double totaltagihan=0;
+    private boolean sukses=true,rincian=false;  
     public Jurnal jur=new Jurnal();
     public File file;
     public FileWriter fileWriter;
@@ -69,15 +69,19 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
         for (int i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(110);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(210);
             }else if(i==3){
-                column.setPreferredWidth(380);
+                column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
+            }else if(i==5){
+                column.setPreferredWidth(260);
+            }else if(i==6){
+                column.setPreferredWidth(100);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -180,6 +184,9 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppRincian = new javax.swing.JMenuItem();
+        ppRincian2 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -206,6 +213,40 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppRincian.setBackground(new java.awt.Color(255, 255, 254));
+        ppRincian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRincian.setForeground(new java.awt.Color(50, 50, 50));
+        ppRincian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppRincian.setText("Sembunyikan Rincian Jasa Medis");
+        ppRincian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRincian.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRincian.setName("ppRincian"); // NOI18N
+        ppRincian.setPreferredSize(new java.awt.Dimension(210, 26));
+        ppRincian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRincianBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppRincian);
+
+        ppRincian2.setBackground(new java.awt.Color(255, 255, 254));
+        ppRincian2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRincian2.setForeground(new java.awt.Color(50, 50, 50));
+        ppRincian2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppRincian2.setText("Tampilkan Rincian Jasa Medis");
+        ppRincian2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRincian2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRincian2.setName("ppRincian2"); // NOI18N
+        ppRincian2.setPreferredSize(new java.awt.Dimension(210, 26));
+        ppRincian2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRincian2BtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppRincian2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -219,6 +260,7 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        scrollPane1.setComponentPopupMenu(jPopupMenu1);
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -234,6 +276,7 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
             }
         ));
         tbDokter.setToolTipText("Silahkan klik pada nomor tagihan untuk verifikasi pilihan");
+        tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
@@ -655,6 +698,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnGajiKeyPressed
 
+    private void ppRincianBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRincianBtnPrintActionPerformed
+        rincian=false;
+        tampil();
+    }//GEN-LAST:event_ppRincianBtnPrintActionPerformed
+
+    private void ppRincian2BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRincian2BtnPrintActionPerformed
+        rincian=true;
+        tampil();
+    }//GEN-LAST:event_ppRincian2BtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -687,6 +740,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Tanggal Tanggal2;
     private widget.Button btnPegawai;
     private widget.InternalFrame internalFrame1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kddokter;
     private widget.Label label11;
     private widget.Label label12;
@@ -695,6 +749,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label9;
     private widget.TextBox nmdokter;
     private widget.panelisi panelisi1;
+    private javax.swing.JMenuItem ppRincian;
+    private javax.swing.JMenuItem ppRincian2;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -717,48 +773,322 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
              try {
                 rs=ps.executeQuery();
                 totaltagihan=0;
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("no_tagihan"),rs.getString("tanggal"),rs.getString("nip")+" "+rs.getString("petugas"),rs.getString("keterangan"),rs.getString("status")
-                    });
-                    tabMode.addRow(new Object[]{
-                        "","Tgl.Tempo","No.Faktur","Nama Suplier","Sisa Hutang"
-                    });
-                    /*ps2=koneksi.prepareStatement(
-                        "select inventaris_pemesanan.tgl_tempo,inventaris_pemesanan.no_faktur,inventaris_pemesanan.kode_suplier,inventaris_suplier.nama_suplier,inventaris_pemesanan.tagihan,"+
-                        "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_inventaris where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur) as bayar from inventaris_titip_faktur "+
-                        "inner join petugas on petugas.nip=inventaris_titip_faktur.nip "+
-                        "inner join inventaris_detail_titip_faktur on inventaris_detail_titip_faktur.no_tagihan=inventaris_titip_faktur.no_tagihan "+
-                        "inner join inventaris_pemesanan on inventaris_detail_titip_faktur.no_faktur=inventaris_pemesanan.no_faktur "+
-                        "inner join inventaris_suplier on inventaris_suplier.kode_suplier=inventaris_pemesanan.kode_suplier "+
-                        "where inventaris_detail_titip_faktur.no_tagihan='"+rs.getString("no_tagihan")+"' and "+
-                        tanggal+status+notagihan+petugas+cari+" order by inventaris_titip_faktur.tanggal");
-                    try {
-                        nilaitagihan=0;
-                        rs2=ps2.executeQuery();
-                        while(rs2.next()){
-                            nilaitagihan=nilaitagihan+(rs2.getDouble("tagihan")-rs2.getDouble("bayar"));
-                            totaltagihan=totaltagihan+(rs2.getDouble("tagihan")-rs2.getDouble("bayar"));
-                            tabMode.addRow(new Object[]{
-                                "",rs2.getString("tgl_tempo"),rs2.getString("no_faktur"),rs2.getString("kode_suplier")+" "+rs2.getString("nama_suplier"),Valid.SetAngka((rs2.getDouble("tagihan")-rs2.getDouble("bayar")))
-                            });
+                if(rincian==false){
+                    while(rs.next()){
+                        tabMode.addRow(new Object[]{
+                            rs.getString("no_bayar"),rs.getString("tanggal"),rs.getString("nama_bayar"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("keterangan"),Valid.SetAngka(rs.getDouble("besar_bayar"))
+                        });
+                        totaltagihan=totaltagihan+rs.getDouble("besar_bayar");
+                    }
+                }else{
+                    while(rs.next()){
+                        totaltagihan=totaltagihan+rs.getDouble("besar_bayar");
+                        tabMode.addRow(new Object[]{
+                            rs.getString("no_bayar"),rs.getString("tanggal"),rs.getString("nama_bayar"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("keterangan"),Valid.SetAngka(rs.getDouble("besar_bayar"))
+                        });
+                        tabMode.addRow(new Object[]{
+                            "","Tanggal & Jam","Pasien","No.Rawat","Kode/ID","Tindakan Medis","Besar J.M."
+                        });
+                        //rawat jalan dr
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,bayar_rawat_jl_dr.tarif_tindakandr,jns_perawatan.nm_perawatan,bayar_rawat_jl_dr.tgl_perawatan,"+
+                            "bayar_rawat_jl_dr.jam_rawat,reg_periksa.kd_pj,bayar_rawat_jl_dr.kd_jenis_prw,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join bayar_rawat_jl_dr on bayar_rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                            "inner join jns_perawatan on bayar_rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                            "where bayar_rawat_jl_dr.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Ralan)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
                         }
-                        if(nilaitagihan>0){
-                            tabMode.addRow(new Object[]{
-                                "","","Jumlah Hutang : ","",Valid.SetAngka(nilaitagihan)
-                            });
+                        //rawat jalan drpr
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,bayar_rawat_jl_drpr.tarif_tindakandr,jns_perawatan.nm_perawatan,bayar_rawat_jl_drpr.tgl_perawatan,"+
+                            "bayar_rawat_jl_drpr.jam_rawat,reg_periksa.kd_pj,bayar_rawat_jl_drpr.kd_jenis_prw,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join bayar_rawat_jl_drpr on bayar_rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
+                            "inner join jns_perawatan on bayar_rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                            "where bayar_rawat_jl_drpr.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Ralan)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
                         }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
+                        //rawat inap dr
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,bayar_rawat_inap_dr.tarif_tindakandr,jns_perawatan_inap.nm_perawatan,bayar_rawat_inap_dr.tgl_perawatan,"+
+                            "bayar_rawat_inap_dr.jam_rawat,reg_periksa.kd_pj,bayar_rawat_inap_dr.kd_jenis_prw,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join bayar_rawat_inap_dr on bayar_rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
+                            "inner join jns_perawatan_inap on bayar_rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                            "where bayar_rawat_inap_dr.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Ranap)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
                         }
-                        if(ps2!=null){
-                            ps2.close();
+                        //rawat inap drpr
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,bayar_rawat_inap_drpr.tarif_tindakandr,jns_perawatan_inap.nm_perawatan,bayar_rawat_inap_drpr.tgl_perawatan,"+
+                            "bayar_rawat_inap_drpr.jam_rawat,reg_periksa.kd_pj,bayar_rawat_inap_drpr.kd_jenis_prw,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join bayar_rawat_inap_drpr on bayar_rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "+
+                            "inner join jns_perawatan_inap on bayar_rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                            "where bayar_rawat_inap_drpr.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Ranap)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
                         }
-                    }*/
+                        //operasi operator 1
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,paket_operasi.nm_perawatan,bayar_operasi_operator1.biayaoperator1,bayar_operasi_operator1.tgl_operasi,"+
+                            "reg_periksa.kd_pj,bayar_operasi_operator1.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from bayar_operasi_operator1 inner join reg_periksa on bayar_operasi_operator1.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join paket_operasi on bayar_operasi_operator1.kode_paket=paket_operasi.kode_paket "+
+                            "where bayar_operasi_operator1.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_operasi").substring(0,19),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kode_paket")+" (Operasi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("biayaoperator1"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        //operasi operator 2
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,paket_operasi.nm_perawatan,bayar_operasi_operator2.biayaoperator2,bayar_operasi_operator2.tgl_operasi,"+
+                            "reg_periksa.kd_pj,bayar_operasi_operator2.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from bayar_operasi_operator2 inner join reg_periksa on bayar_operasi_operator2.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join paket_operasi on bayar_operasi_operator2.kode_paket=paket_operasi.kode_paket "+
+                            "where bayar_operasi_operator2.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_operasi").substring(0,19),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kode_paket")+" (Operasi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("biayaoperator2"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        //operasi operator 3
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,paket_operasi.nm_perawatan,bayar_operasi_operator3.biayaoperator3,bayar_operasi_operator3.tgl_operasi,"+
+                            "reg_periksa.kd_pj,bayar_operasi_operator3.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from bayar_operasi_operator3 inner join reg_periksa on bayar_operasi_operator3.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join paket_operasi on bayar_operasi_operator3.kode_paket=paket_operasi.kode_paket "+
+                            "where bayar_operasi_operator3.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_operasi").substring(0,19),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kode_paket")+" (Operasi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("biayaoperator3"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        //operasi dokter_anak
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,paket_operasi.nm_perawatan,bayar_operasi_dokter_anak.biayadokter_anak,bayar_operasi_dokter_anak.tgl_operasi,"+
+                            "reg_periksa.kd_pj,bayar_operasi_dokter_anak.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from bayar_operasi_dokter_anak inner join reg_periksa on bayar_operasi_dokter_anak.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join paket_operasi on bayar_operasi_dokter_anak.kode_paket=paket_operasi.kode_paket "+
+                            "where bayar_operasi_dokter_anak.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_operasi").substring(0,19),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kode_paket")+" (Operasi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("biayadokter_anak"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        //operasi dokter_umum
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,paket_operasi.nm_perawatan,bayar_operasi_dokter_umum.biaya_dokter_umum,bayar_operasi_dokter_umum.tgl_operasi,"+
+                            "reg_periksa.kd_pj,bayar_operasi_dokter_umum.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from bayar_operasi_dokter_umum inner join reg_periksa on bayar_operasi_dokter_umum.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join paket_operasi on bayar_operasi_dokter_umum.kode_paket=paket_operasi.kode_paket "+
+                            "where bayar_operasi_dokter_umum.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_operasi").substring(0,19),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kode_paket")+" (Operasi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("biaya_dokter_umum"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        //operasi dokter_pjanak
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,paket_operasi.nm_perawatan,bayar_operasi_dokter_pjanak.biaya_dokter_pjanak,bayar_operasi_dokter_pjanak.tgl_operasi,"+
+                            "reg_periksa.kd_pj,bayar_operasi_dokter_pjanak.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from bayar_operasi_dokter_pjanak inner join reg_periksa on bayar_operasi_dokter_pjanak.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join paket_operasi on bayar_operasi_dokter_pjanak.kode_paket=paket_operasi.kode_paket "+
+                            "where bayar_operasi_dokter_pjanak.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_operasi").substring(0,19),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kode_paket")+" (Operasi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("biaya_dokter_pjanak"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        //operasi dokter_anestesi
+                        ps2=koneksi.prepareStatement(
+                            "select pasien.nm_pasien,paket_operasi.nm_perawatan,bayar_operasi_dokter_anestesi.biayadokter_anestesi,bayar_operasi_dokter_anestesi.tgl_operasi,"+
+                            "reg_periksa.kd_pj,bayar_operasi_dokter_anestesi.kode_paket,reg_periksa.no_rawat,reg_periksa.no_rkm_medis "+
+                            "from bayar_operasi_dokter_anestesi inner join reg_periksa on bayar_operasi_dokter_anestesi.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join paket_operasi on bayar_operasi_dokter_anestesi.kode_paket=paket_operasi.kode_paket "+
+                            "where bayar_operasi_dokter_anestesi.no_bayar=?");
+                        try {
+                            ps2.setString(1,rs.getString("no_bayar"));
+                            rs2=ps2.executeQuery();
+                            while(rs2.next()){
+                                tabMode.addRow(new Object[]{
+                                    "",rs2.getString("tgl_operasi").substring(0,19),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
+                                    rs2.getString("no_rawat"),rs2.getString("kode_paket")+" (Operasi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("biayadokter_anestesi"))
+                                });
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                    }
                 }
+                    
                 LTotal.setText(Valid.SetAngka(totaltagihan));
              } catch (Exception e) {
                  System.out.println("Notif : "+e);

@@ -59,7 +59,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         setSize(885,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "P","Tanggal","Jam","No.Rawat","No.RM","Nama Pasien","Kode","Tindakan Medis","Status","Jasa Medis","Id Detail"
+                "P","Tanggal","Jam","No.Rawat","No.RM","Nama Pasien","Kode/ID","Tindakan Medis","Status","Jasa Medis","Id Detail"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
