@@ -324,7 +324,7 @@ public final class DlgCariIndustriFarmasi extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgKategori nama=new DlgKategori(null,false);
+        DlgIndustriFarmasi nama=new DlgIndustriFarmasi(null,false);
         nama.emptTeks();
         nama.isCek();
         nama.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
