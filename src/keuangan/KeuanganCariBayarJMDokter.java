@@ -775,7 +775,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kd_jenis_prw")+" (Ralan)"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -808,7 +808,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kd_jenis_prw")+" (Ralan)"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -841,7 +841,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kd_jenis_prw")+" (Ranap)"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -874,7 +874,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kd_jenis_prw")+" (Ranap)"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -907,7 +907,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kode_paket")+" (Operasi)"+"','"+
+                                rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayaoperator1"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -940,7 +940,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kode_paket")+" (Operasi)"+"','"+
+                                rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayaoperator2"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -973,7 +973,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kode_paket")+" (Operasi)"+"','"+
+                                rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayaoperator3"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -1006,7 +1006,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kode_paket")+" (Operasi)"+"','"+
+                                rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayadokter_anak"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -1039,7 +1039,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kode_paket")+" (Operasi)"+"','"+
+                                rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biaya_dokter_umum"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -1072,7 +1072,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kode_paket")+" (Operasi)"+"','"+
+                                rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biaya_dokter_pjanak"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -1105,7 +1105,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kode_paket")+" (Operasi)"+"','"+
+                                rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayadokter_anestesi"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -1138,7 +1138,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kd_jenis_prw")+" (Laborat)"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakan_dokter"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -1172,7 +1172,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
                                 rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
-                                rs2.getString("kd_jenis_prw")+" (Laborat)"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("Pemeriksaan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("bagian_dokter"))+
                                 "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
@@ -1200,10 +1200,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new Object[]{
-                                "",rs2.getString("tgl_periksa")+" "+rs2.getString("jam"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
-                                rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Laborat)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("tarif_perujuk"))
-                            });
+                            Sequel.menyimpan("temporary","'0','"+
+                                rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
+                                rs2.getString("no_rawat")+"','"+
+                                rs2.getString("no_rkm_medis")+"','"+
+                                rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
+                                rs2.getString("nm_perawatan")+"','"+
+                                Valid.SetAngka(rs2.getDouble("tarif_perujuk"))+
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                            );
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1228,10 +1234,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new Object[]{
-                                "",rs2.getString("tgl_periksa")+" "+rs2.getString("jam"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
-                                rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Laborat)",rs2.getString("Pemeriksaan"),Valid.SetAngka(rs2.getDouble("bagian_perujuk"))
-                            });
+                            Sequel.menyimpan("temporary","'0','"+
+                                rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
+                                rs2.getString("no_rawat")+"','"+
+                                rs2.getString("no_rkm_medis")+"','"+
+                                rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
+                                rs2.getString("Pemeriksaan")+"','"+
+                                Valid.SetAngka(rs2.getDouble("bagian_perujuk"))+
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                            );
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1255,10 +1267,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new Object[]{
-                                "",rs2.getString("tgl_periksa")+" "+rs2.getString("jam"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
-                                rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Radiologi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("tarif_tindakan_dokter"))
-                            });
+                            Sequel.menyimpan("temporary","'0','"+
+                                rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
+                                rs2.getString("no_rawat")+"','"+
+                                rs2.getString("no_rkm_medis")+"','"+
+                                rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
+                                rs2.getString("nm_perawatan")+"','"+
+                                Valid.SetAngka(rs2.getDouble("tarif_tindakan_dokter"))+
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                            );
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1282,10 +1300,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new Object[]{
-                                "",rs2.getString("tgl_periksa")+" "+rs2.getString("jam"),rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")",
-                                rs2.getString("no_rawat"),rs2.getString("kd_jenis_prw")+" (Radiologi)",rs2.getString("nm_perawatan"),Valid.SetAngka(rs2.getDouble("tarif_perujuk"))
-                            });
+                            Sequel.menyimpan("temporary","'0','"+
+                                rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
+                                rs2.getString("no_rawat")+"','"+
+                                rs2.getString("no_rkm_medis")+"','"+
+                                rs2.getString("nm_pasien")+" ("+rs2.getString("kd_pj")+")"+"','"+
+                                rs2.getString("kd_jenis_prw")+"','"+
+                                rs2.getString("nm_perawatan")+"','"+
+                                Valid.SetAngka(rs2.getDouble("tarif_perujuk"))+
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                            );
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1308,8 +1332,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("dokter",nmdokter.getText());   
-                    param.put("bulan",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().substring(3,10));   
+                    param.put("dokter",tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());   
+                    param.put("bulan",Valid.SetTgl3(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()).substring(3,10));   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
                     Valid.MyReport("rptSlipBayarJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
                 } catch (Exception e) {

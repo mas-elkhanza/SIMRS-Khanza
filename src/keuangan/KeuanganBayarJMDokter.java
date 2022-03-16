@@ -1242,7 +1242,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Sequel.queryu("truncate table temporary");
                 //"P","Tanggal","Jam","No.Rawat","No.RM","Nama Pasien","Kode","Tindakan Medis","Status","Jasa Medis","Id Detail"
-                for(i=1;i<tabMode.getRowCount();i++){  
+                for(i=0;i<tabMode.getRowCount();i++){  
                     if(tabMode.getValueAt(i,0).toString().equals("true")){
                         Sequel.menyimpan("temporary","'0','"+
                             tabMode.getValueAt(i,1).toString().replaceAll("'","`")+" "+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
