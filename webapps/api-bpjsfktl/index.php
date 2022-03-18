@@ -139,9 +139,14 @@
                                         );
                                         http_response_code(201);
                                     }else{
-                                        $kdpoli     = getOne2("SELECT kd_poli_rs FROM maping_poli_bpjs WHERE kd_poli_bpjs='$decode[kodepoli]'");
+                                        $jammulai   = substr($decode['jampraktek'],0,5);
+                                        $jamselesai = substr($decode['jampraktek'],6,5);
                                         $kddokter   = getOne2("SELECT kd_dokter FROM maping_dokter_dpjpvclaim WHERE kd_dokter_bpjs='$decode[kodedokter]'");
                                         $hari       = strtoupper(hariindo($decode['tanggalperiksa']));
+                                        //single poli
+                                        //$kdpoli     = getOne2("SELECT kd_poli_rs FROM maping_poli_bpjs WHERE kd_poli_bpjs='$decode[kodepoli]'");
+                                        //double poli
+                                        $kdpoli     = getOne2("SELECT maping_poli_bpjs.kd_poli_rs FROM maping_poli_bpjs inner join jadwal on maping_poli_bpjs.kd_poli_rs=jadwal.kd_poli WHERE maping_poli_bpjs.kd_poli_bpjs='$decode[kodepoli]' and jadwal.kd_dokter='$kddokter' and jadwal.hari_kerja='$hari' and jadwal.jam_mulai='$jammulai:00' and jadwal.jam_selesai='$jamselesai:00' ");
                                         if(empty($kdpoli)) { 
                                             $response = array(
                                                 'metadata' => array(
@@ -159,8 +164,6 @@
                                             );
                                             http_response_code(201);
                                         }else{
-                                            $jammulai   = substr($decode['jampraktek'],0,5);
-                                            $jamselesai = substr($decode['jampraktek'],6,5);
                                             $kuota      = getOne2("select kuota from jadwal where hari_kerja='$hari' and kd_dokter='$kddokter' and kd_poli='$kdpoli' and jam_mulai='$jammulai:00' and jam_selesai='$jamselesai:00'");
 
                                             if(empty($kuota)) {
@@ -176,8 +179,7 @@
                                                     IFNULL(SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END),0) as sisa_antrean,
                                                     ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
                                                     FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter
-                                                    WHERE reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' AND reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' 
-                                                    and jam_reg between '$jammulai:00' and '$jamselesai:00'"));
+                                                    WHERE reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' AND reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter'"));
 
                                                 if ($data['sisa_antrean'] >=0) {
                                                     $response = array(
@@ -419,9 +421,14 @@
                                         );
                                         http_response_code(201);
                                     }else {
-                                        $kdpoli     = getOne2("SELECT kd_poli_rs FROM maping_poli_bpjs WHERE kd_poli_bpjs='$decode[kodepoli]'");
+                                        $jammulai   = substr($decode['jampraktek'],0,5);
+                                        $jamselesai = substr($decode['jampraktek'],6,5);
                                         $kddokter   = getOne2("SELECT kd_dokter FROM maping_dokter_dpjpvclaim WHERE kd_dokter_bpjs='$decode[kodedokter]'");
                                         $hari       = strtoupper(hariindo($decode['tanggalperiksa']));
+                                        //single poli
+                                        //$kdpoli     = getOne2("SELECT kd_poli_rs FROM maping_poli_bpjs WHERE kd_poli_bpjs='$decode[kodepoli]'");
+                                        //double poli
+                                        $kdpoli     = getOne2("SELECT maping_poli_bpjs.kd_poli_rs FROM maping_poli_bpjs inner join jadwal on maping_poli_bpjs.kd_poli_rs=jadwal.kd_poli WHERE maping_poli_bpjs.kd_poli_bpjs='$decode[kodepoli]' and jadwal.kd_dokter='$kddokter' and jadwal.hari_kerja='$hari' and jadwal.jam_mulai='$jammulai:00' and jadwal.jam_selesai='$jamselesai:00' ");
                                         if(empty($kdpoli)) { 
                                             $response = array(
                                                 'metadata' => array(
@@ -439,12 +446,9 @@
                                             );
                                             http_response_code(201);
                                         }else{
-                                            $jammulai   = substr($decode['jampraktek'],0,5);
-                                            $jamselesai = substr($decode['jampraktek'],6,5);
-                                            $jadwal     = fetch_array(bukaquery2("select jadwal.kd_dokter,dokter.nm_dokter,jadwal.hari_kerja,jadwal.jam_mulai,jadwal.jam_selesai,jadwal.kd_poli,poliklinik.nm_poli,jadwal.kuota 
+                                            $jadwal = fetch_array(bukaquery2("select jadwal.kd_dokter,dokter.nm_dokter,jadwal.hari_kerja,jadwal.jam_mulai,jadwal.jam_selesai,jadwal.kd_poli,poliklinik.nm_poli,jadwal.kuota 
                                                             from jadwal inner join poliklinik ON poliklinik.kd_poli=jadwal.kd_poli inner join dokter ON jadwal.kd_dokter=dokter.kd_dokter 
                                                             where jadwal.hari_kerja='$hari' and jadwal.kd_dokter='$kddokter' and jadwal.kd_poli='$kdpoli' and jadwal.jam_mulai='$jammulai:00' and jadwal.jam_selesai='$jamselesai:00'"));
-
                                             if(empty($jadwal['kuota'])) {
                                                 $response = array(
                                                     'metadata' => array(
@@ -885,6 +889,7 @@
                                                 );
                                                 http_response_code(201);
                                             }else if($booking['status']=='Checkin'){
+                                                /*single poli
                                                 $kodedokter = getOne2("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs='$booking[kodedokter]'");
                                                 $kodepoli   = getOne2("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs='$booking[kodepoli]'");
                                                 $noreg      = getOne2("select no_reg from reg_periksa where no_rawat='$booking[no_rawat]'");
@@ -895,7 +900,22 @@
                                                     INNER JOIN dokter ON dokter.kd_dokter=reg_periksa.kd_dokter
                                                     WHERE reg_periksa.kd_dokter='$kodedokter' and reg_periksa.kd_poli='$kodepoli'and reg_periksa.tgl_registrasi='$booking[tanggalperiksa]' 
                                                     and CONVERT(RIGHT(reg_periksa.no_reg,3),signed)<CONVERT(RIGHT($noreg,3),signed)"));
-
+                                                */
+                                                //double poli
+                                                $jammulai   = substr($booking['jampraktek'],0,5);
+                                                $jamselesai = substr($booking['jampraktek'],6,5);
+                                                $hari       = strtoupper(hariindo($booking['tanggalperiksa']));
+                                                $kodedokter = getOne2("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs='$booking[kodedokter]'");
+                                                $kdpoli     = getOne2("SELECT maping_poli_bpjs.kd_poli_rs FROM maping_poli_bpjs inner join jadwal on maping_poli_bpjs.kd_poli_rs=jadwal.kd_poli WHERE maping_poli_bpjs.kd_poli_bpjs='$booking[kodepoli]' and jadwal.kd_dokter='$kddokter' and jadwal.hari_kerja='$hari' and jadwal.jam_mulai='$jammulai:00' and jadwal.jam_selesai='$jamselesai:00' ");
+                                                $noreg      = getOne2("select no_reg from reg_periksa where no_rawat='$booking[no_rawat]'");
+                                                $data = fetch_array(bukaquery("SELECT reg_periksa.kd_poli,poliklinik.nm_poli,dokter.nm_dokter,
+                                                    reg_periksa.no_reg,COUNT(reg_periksa.no_rawat) as total_antrean,
+                                                    IFNULL(SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END),0) as sisa_antrean
+                                                    FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
+                                                    INNER JOIN dokter ON dokter.kd_dokter=reg_periksa.kd_dokter
+                                                    WHERE reg_periksa.kd_dokter='$kodedokter' and reg_periksa.kd_poli='$kodepoli'and reg_periksa.tgl_registrasi='$booking[tanggalperiksa]' 
+                                                    and CONVERT(RIGHT(reg_periksa.no_reg,3),signed)<CONVERT(RIGHT($noreg,3),signed)"));
+                                                
                                                 if ($data['nm_poli'] != '') {
                                                     $response = array(
                                                         'response' => array(
@@ -1499,7 +1519,7 @@
                                                 $awalanbulan="";
                                             }
 
-                                            if($setrm["posisi_tahun_bulan"]=="Depan"){
+                                           if($setrm["posisi_tahun_bulan"]=="Depan"){
                                                 switch ($setrm["urutan"]) {
                                                     case "Straight":
                                                         $max    = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0)+1 from set_no_rkm_medis");

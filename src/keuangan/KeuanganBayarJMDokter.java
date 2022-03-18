@@ -1058,8 +1058,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"','Beban Jasa Medik Dokter Tindakan Ranap','0','"+totalrawatinap+"'","kredit=kredit+'"+(totalrawatinap)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"'");                               
                     }
                     if(totallabrawatjalan>0){
-                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Beban Jasa Medik Dokter Laborat Ralan','0','"+totallabrawatjalan+"'","kredit=kredit+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");    
                         Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Laborat_Ralan+"','Utang Jasa Medik Dokter Laborat Ralan','"+totallabrawatjalan+"','0'","debet=debet+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Laborat_Ralan+"'");                           
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Beban Jasa Medik Dokter Laborat Ralan','0','"+totallabrawatjalan+"'","kredit=kredit+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");    
                     }
                     if(totallabrawatinap>0){
                         Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ranap+"','Beban Jasa Medik Dokter Laborat Ranap','0','"+totallabrawatinap+"'","kredit=kredit+'"+(totallabrawatinap)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ranap+"'");    
