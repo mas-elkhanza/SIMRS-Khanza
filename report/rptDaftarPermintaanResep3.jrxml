@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="javascript" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81d7fe93-a3e4-4d6f-b0fd-979f3249f5cb">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -233,7 +233,7 @@
 	<columnHeader>
 		<band height="15" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="108" y="0" width="47" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="c1866d1e-e182-42b3-8672-0f8b7a20dc71"/>
+				<reportElement mode="Opaque" x="111" y="0" width="44" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="c1866d1e-e182-42b3-8672-0f8b7a20dc71"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -281,7 +281,7 @@
 				<text><![CDATA[Status]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="63" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="0ae33817-0c1b-4758-bd69-6fa1af4fd751"/>
+				<reportElement mode="Opaque" x="0" y="0" width="66" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="0ae33817-0c1b-4758-bd69-6fa1af4fd751"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -289,7 +289,7 @@
 				<text><![CDATA[No.Permintaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="63" y="0" width="45" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ab45f686-7e75-4ce2-949a-ebdef379587a"/>
+				<reportElement mode="Opaque" x="66" y="0" width="45" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ab45f686-7e75-4ce2-949a-ebdef379587a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -356,7 +356,7 @@
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="HH:mm:ss">
-				<reportElement mode="Transparent" x="109" y="0" width="45" height="10" uuid="b5c4d8c7-9a4f-470d-8015-2c7f7d4e615c"/>
+				<reportElement mode="Transparent" x="112" y="0" width="42" height="10" uuid="b5c4d8c7-9a4f-470d-8015-2c7f7d4e615c"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -364,7 +364,7 @@
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
-				<reportElement mode="Transparent" x="63" y="0" width="45" height="10" uuid="2ac0ec9e-96cb-422d-8cc7-dbbbe739c0e0">
+				<reportElement mode="Transparent" x="66" y="0" width="45" height="10" uuid="2ac0ec9e-96cb-422d-8cc7-dbbbe739c0e0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -374,7 +374,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="2" y="0" width="61" height="10" uuid="8f610a70-a34a-40a9-8496-f93c4e5074dc"/>
+				<reportElement mode="Transparent" x="0" y="0" width="66" height="10" uuid="8f610a70-a34a-40a9-8496-f93c4e5074dc"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>

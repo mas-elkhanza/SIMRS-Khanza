@@ -11,7 +11,6 @@
 
 package bridging;
 
-import AESsecurity.EnkripsiAES;
 import fungsi.WarnaTable;
 import java.awt.Dimension;
 import javax.swing.JTable;
@@ -26,10 +25,8 @@ import fungsi.akses;
 import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -45,7 +42,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private ApiBPJS api=new ApiBPJS();
-    private String URL="";
+    private String URL="",utc="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -268,7 +265,11 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(SEP.getText());
+        if(SEP.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"No.SEP masih ksong..!!!");
+        }else{
+            tampil(SEP.getText());
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -314,21 +315,24 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
 	    requestEntity = new HttpEntity(headers);
-            root = mapper.readTree(api.getRest().exchange(URL+sep, HttpMethod.GET, requestEntity, String.class).getBody());
+            root = mapper.readTree(api.getRest().exchange(URL+sep.trim(), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("message").asText().equals("Sukses")){
+            if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
                 tabMode.addRow(new Object[]{
-                    "Catatan",": "+response.path("catatan").asText(),""
+                    "Nomor SEP",": "+response.path("noSep").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Diagnosa",": "+response.path("diagnosa").asText(),""
+                    "Tanggal SEP",": "+response.path("tglSep").asText(),""
                 });
                 tabMode.addRow(new Object[]{
                     "Jenis Pelayanan",": "+response.path("jnsPelayanan").asText(),""
@@ -337,13 +341,52 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
                     "Kelas Rawat",": "+response.path("kelasRawat").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Nomor SEP",": "+response.path("noSep").asText(),""
+                    "Diagnosa",": "+response.path("diagnosa").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Nomor Rujukan",": "+response.path("noRujukan").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Poli/Unit/Spesialis",": "+response.path("poli").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Poli Eksekutif",": "+response.path("poliEksekutif").asText().replaceAll("0","0. Tidak").replaceAll("1","1.Ya"),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Catatan",": "+response.path("catatan").asText(),""
                 });
                 tabMode.addRow(new Object[]{
                     "Penjamin",": "+response.path("penjamin").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Peserta",": ",""
+                    "Status Kecelakaan",": "+response.path("kdStatusKecelakaan").asText()+" "+response.path("nmstatusKecelakaan").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Lokasi Kecelakaan",": ",""
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Kode Kecamatan",": "+response.path("lokasiKejadian").path("kdKec").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Kode Kabupaten",": "+response.path("lokasiKejadian").path("kdKab").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Kode Propinsi",": "+response.path("lokasiKejadian").path("kdProp").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Keterangan Kejadian",": "+response.path("lokasiKejadian").path("ketKejadian").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Lokasi",": "+response.path("lokasiKejadian").path("lokasi").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Tanggal Kejadian",": "+response.path("lokasiKejadian").path("tglKejadian").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Dokter Penanggung Jawab",": "+response.path("dpjp").path("kdDPJP").asText()+" "+response.path("dpjp").path("nmDPJP").asText(),""
+                });
+                tabMode.addRow(new Object[]{
+                    "Kepesertaan",": ",""
                 });
                 tabMode.addRow(new Object[]{
                     "","   Asuransi",": "+response.path("peserta").path("asuransi").asText()
@@ -355,28 +398,31 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
                     "","   Jenis Peserta",": "+response.path("peserta").path("jnsPeserta").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Jenis Kelamin",": "+response.path("peserta").path("kelamin").asText()
+                    "","   Jenis Kelamin",": "+response.path("peserta").path("kelamin").asText().replaceAll("L","LAKI-LAKI").replaceAll("P","Perempuan")
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Nama",": "+response.path("peserta").path("nama").asText()
+                    "","   Nama Peserta",": "+response.path("peserta").path("nama").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   No.Kartu",": "+response.path("peserta").path("noKartu").asText()
+                    "","   Nomor Kartu",": "+response.path("peserta").path("noKartu").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   No.R.M.",": "+response.path("peserta").path("noMr").asText()
+                    "","   Nomor RM",": "+response.path("peserta").path("noMr").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Tangga Lahir",": "+response.path("peserta").path("tglLahir").asText()
+                    "","   Tanggal Lahir",": "+response.path("peserta").path("tglLahir").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "Poli",": "+response.path("poli").asText(),""
+                    "Kontrol",": ",""
                 });
                 tabMode.addRow(new Object[]{
-                    "Eksekutif",": "+response.path("poliEksekutif").asText().replaceAll("0","Tidak").replaceAll("1","Ya"),""
+                    "","   Kode Dokter",": "+response.path("kontrol").path("kdDokter").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "Tanggal SEP",": "+response.path("tglSep").asText(),""
+                    "","   Nama Dokter",": "+response.path("kontrol").path("nmDokter").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","   Nomor Surat",": "+response.path("kontrol").path("noSurat").asText()
                 });
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                

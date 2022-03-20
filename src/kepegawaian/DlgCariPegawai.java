@@ -329,7 +329,14 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/pegawai.iyem")<4){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
@@ -393,9 +400,9 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                        rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
                        rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24)
                     });
-                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"Nama\":\""+rs.getString(2)+"\",\"JK\":\""+rs.getString(3)+"\",\"Jabatan\":\""+rs.getString(4)+"\",\"KodeJenjang\":\""+rs.getString(5)+"\","+
+                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"Nama\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"Jabatan\":\""+rs.getString(4)+"\",\"KodeJenjang\":\""+rs.getString(5)+"\","+
                                "\"Departemen\":\""+rs.getString(6)+"\",\"Bidang\":\""+rs.getString(7)+"\",\"Status\":\""+rs.getString(8)+"\",\"StatusKaryawan\":\""+rs.getString(9)+"\",\"NPWP\":\""+rs.getString(10)+"\","+
-                               "\"Pendidikan\":\""+rs.getString(11)+"\",\"TmpLahir\":\""+rs.getString(12)+"\",\"TglLahir\":\""+rs.getString(13)+"\",\"Alamat\":\""+rs.getString(14)+"\",\"Kota\":\""+rs.getString(15)+"\","+
+                               "\"Pendidikan\":\""+rs.getString(11)+"\",\"TmpLahir\":\""+rs.getString(12)+"\",\"TglLahir\":\""+rs.getString(13)+"\",\"Alamat\":\""+rs.getString(14).replaceAll("\"","")+"\",\"Kota\":\""+rs.getString(15).replaceAll("\"","")+"\","+
                                "\"MulaiKerja\":\""+rs.getString(16)+"\",\"KodeMsKerja\":\""+rs.getString(17)+"\",\"KodeIndex\":\""+rs.getString(18)+"\",\"BPD\":\""+rs.getString(19)+"\",\"Rekening\":\""+rs.getString(20)+"\","+
                                "\"SttsAktif\":\""+rs.getString(21)+"\",\"WajibMasuk\":\""+rs.getString(22)+"\",\"MulaiKontrak\":\""+rs.getString(23)+"\",\"NoKTP\":\""+rs.getString(24)+"\"},";
                 }
@@ -445,7 +452,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+ex);
         }
     } 
 

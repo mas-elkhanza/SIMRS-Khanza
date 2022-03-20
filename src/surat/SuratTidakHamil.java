@@ -43,7 +43,7 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String tgl;
+    private String tgl,finger="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -54,7 +54,7 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Surat","No.Rawat","No.R.M.","Nama Pasien","Tgl.Periksa","Hasil Pemeriksaan"
+            "No.Surat","No.Rawat","No.R.M.","Nama Pasien","Tgl.Periksa","Hasil Pemeriksaan","Kode Dokter","Nm Dokter"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -64,7 +64,7 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 8; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -78,6 +78,12 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
                 column.setPreferredWidth(65);
             }else if(i==5){
                 column.setPreferredWidth(220);
+            }else if(i==6){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==7){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());        
@@ -762,7 +768,8 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());    
-                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText()))); 
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),6).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()));  
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 Valid.MyReportqry("rptSuratTidakHamil.jasper","report","::[ Surat Keterangan Hamil/ Tidak Hamil ]::",
                               "select surat_hamil.no_surat,surat_hamil.hasilperiksa,DATE_FORMAT(surat_hamil.tanggalperiksa,'%d-%m-%Y')as tanggalperiksa,perusahaan_pasien.nama_perusahaan,dokter.nm_dokter,DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y')as tgl_lahir," +
@@ -845,16 +852,16 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                      "select surat_hamil.no_surat,surat_hamil.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                     "surat_hamil.tanggalperiksa,surat_hamil.hasilperiksa "+                  
+                     "surat_hamil.tanggalperiksa,surat_hamil.hasilperiksa,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
                      "from surat_hamil inner join reg_periksa on surat_hamil.no_rawat=reg_periksa.no_rawat "+
-                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                      "where "+tgl+"order by surat_hamil.no_surat");
             }else{
                 ps=koneksi.prepareStatement(
                     "select surat_hamil.no_surat,surat_hamil.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                     "surat_hamil.tanggalperiksa,surat_hamil.hasilperiksa "+                  
+                     "surat_hamil.tanggalperiksa,surat_hamil.hasilperiksa,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
                      "from surat_hamil inner join reg_periksa on surat_hamil.no_rawat=reg_periksa.no_rawat "+
-                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                      "where "+tgl+"and (no_surat like '%"+TCari.getText().trim()+"%' or surat_hamil.no_rawat like '%"+TCari.getText().trim()+"%' or "+
                      "reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or  pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                      "surat_hamil.tanggalperiksa like '%"+TCari.getText().trim()+"%') "+                    
@@ -866,7 +873,8 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
-                        rs.getString(4),rs.getString(5),rs.getString(6)                        
+                        rs.getString(4),rs.getString(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8)                         
                     });
                 }
             } catch (Exception e) {
@@ -916,16 +924,17 @@ public final class SuratTidakHamil extends javax.swing.JDialog {
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
     }
     
-    public void setNoRm(String norwt, Date tgl1, Date tgl2) {
+    public void setNoRm(String norwt,String norm,String pasien, Date tgl1, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl2);
-        isRawat();
-        isPsien(); 
+        TNoRM.setText(norm);
+        TPasien.setText(pasien);
         ChkInput.setSelected(true);
         isForm();
     }
+    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);

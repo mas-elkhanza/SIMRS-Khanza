@@ -6,6 +6,8 @@
 	<property name="ireport.y" value="62"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -13,15 +15,19 @@
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="finger" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select date_format(pasien_mati.tanggal,'%d/%m/%Y') as tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, 
-   pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, 
-                   agama,keterangan from pasien_mati,pasien 
-                   where pasien_mati.no_rkm_medis=pasien.no_rkm_medis order by tanggal]]>
+		<![CDATA[select date_format(pasien_mati.tanggal,'%d-%m-%Y') as tanggal,pasien_mati.jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, 
+pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah, pasien.umur,pasien.alamat,
+pasien.agama,pasien_mati.keterangan,pasien_mati.temp_meninggal,pasien_mati.icd1,pasien_mati.icd2,
+pasien_mati.icd3,pasien_mati.icd4,pasien_mati.kd_dokter,dokter.nm_dokter 
+from pasien_mati inner join pasien on pasien_mati.no_rkm_medis=pasien.no_rkm_medis 
+inner join dokter on pasien_mati.kd_dokter=dokter.kd_dokter]]>
 	</queryString>
 	<field name="tanggal" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
 		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam" class="java.sql.Time">
@@ -39,18 +45,6 @@
 	<field name="nm_pasien" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="umur" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="umur"/>
-		<property name="com.jaspersoft.studio.field.label" value="umur"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="alamat" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
-		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -84,6 +78,18 @@
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="umur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="umur"/>
+		<property name="com.jaspersoft.studio.field.label" value="umur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
+		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="agama" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="agama"/>
 		<property name="com.jaspersoft.studio.field.label" value="agama"/>
@@ -94,6 +100,48 @@
 		<property name="com.jaspersoft.studio.field.name" value="keterangan"/>
 		<property name="com.jaspersoft.studio.field.label" value="keterangan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp_meninggal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp_meninggal"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp_meninggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="icd1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="icd1"/>
+		<property name="com.jaspersoft.studio.field.label" value="icd1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="icd2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="icd2"/>
+		<property name="com.jaspersoft.studio.field.label" value="icd2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="icd3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="icd3"/>
+		<property name="com.jaspersoft.studio.field.label" value="icd3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="icd4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="icd4"/>
+		<property name="com.jaspersoft.studio.field.label" value="icd4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kd_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_dokter"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_mati"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -251,18 +299,8 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="460" y="374" width="76" height="14" uuid="a707b5b7-6b98-488d-bd36-3ec39a674992">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="11"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="350" y="393" width="187" height="14" uuid="593097ef-3a65-4543-b1be-3d28c77b0f48">
+				<reportElement x="350" y="393" width="199" height="14" uuid="593097ef-3a65-4543-b1be-3d28c77b0f48">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -272,7 +310,7 @@
 				<text><![CDATA[Dokter Pemeriksa]]></text>
 			</staticText>
 			<line direction="BottomUp">
-				<reportElement x="360" y="474" width="177" height="1" uuid="2929ea99-deb4-466a-8e32-dc8b20b604e2"/>
+				<reportElement x="350" y="482" width="199" height="1" uuid="2929ea99-deb4-466a-8e32-dc8b20b604e2"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -372,14 +410,14 @@
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="350" y="374" width="110" height="14" uuid="bbdc0d63-2aa5-4e39-8045-32ee22a83d29">
+				<reportElement x="350" y="374" width="199" height="14" uuid="bbdc0d63-2aa5-4e39-8045-32ee22a83d29">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Right">
+				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{kotars}+", "]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{kotars}+", "+$F{tanggal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="271" width="549" height="89" uuid="a430c121-a46d-42bb-8709-6fda44ae5bd9"/>
@@ -388,6 +426,22 @@
 					<paragraph lineSpacing="1_1_2" lineSpacingSize="1.0"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Telah meninggal dunia pada tanggal "+$F{tanggal}+" jam "+$F{jam}+" di "+$P{namars}+" dikarenakan "+$F{keterangan}+". Demikian surat keterangan ini dibuat agar menjadikan maklum dan dapat dipergunakan sebagaimana mestinya"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="350" y="409" width="199" height="59" isRemoveLineWhenBlank="true" uuid="ff96e1ef-cf97-4a68-812e-c49ea8f2b295">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<textField>
+				<reportElement x="350" y="468" width="199" height="14" uuid="2d0041cb-37dc-4a3c-8c75-3755af44429c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="11"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

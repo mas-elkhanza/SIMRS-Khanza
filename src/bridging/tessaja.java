@@ -5,22 +5,14 @@
  */
 package bridging;
 
-import fungsi.koneksiDB;
-
 /**
  *
  * @author khanzasoft
  */
 public class tessaja {
-    public static ApiKemenkesSITT api=new ApiKemenkesSITT();
-    public static void tessaja(){
-        System.out.println("X-rs-id:"+koneksiDB.IDSITT());
-        System.out.println("X-pass:"+koneksiDB.PASSSITT()); 
-        System.out.println("Content-Type:application/json");
-        System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));
-    }
+    public static ApiBRI api=new ApiBRI();
     public static void main(String[] args) {
-         tessaja();
+         api.buatVA("2021011500001","Paijo","200000","tes");
     }
     
 }

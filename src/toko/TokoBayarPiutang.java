@@ -11,6 +11,8 @@
 
 package toko;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import keuangan.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -24,6 +26,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,6 +59,14 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
     private ResultSet rs;
     private String koderekening="",kontraakun=Sequel.cariIsi("select Piutang_Toko from set_akun");
     private boolean sukses=true;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
+    
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -205,7 +218,6 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        Valid.loadCombo(AkunBayar,"nama_bayar","akun_bayar");
         ChkInput.setSelected(false);
         isForm();
     }
@@ -295,6 +307,11 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang Toko ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -671,11 +688,6 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                 BtnCari1ActionPerformed(evt);
             }
         });
-        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCari1KeyPressed(evt);
-            }
-        });
         FormInput.add(BtnCari1);
         BtnCari1.setBounds(250, 10, 28, 23);
 
@@ -708,9 +720,27 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                 sisapiutang=(Sequel.cariIsiAngka("SELECT ifnull(SUM(tokopiutang.sisapiutang),0) FROM tokopiutang where tokopiutang.nota_piutang=?",NoNota.getText())
                              -Sequel.cariIsiAngka("SELECT ifnull(SUM(toko_bayar_piutang.besar_cicilan),0) FROM toko_bayar_piutang where toko_bayar_piutang.nota_piutang=?",NoNota.getText())
                              -Double.parseDouble(Cicilan.getText()));
-                koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",AkunBayar.getSelectedItem().toString());
+                
                 Sequel.AutoComitFalse();
                 sukses=true;
+                
+                koderekening="";
+                try {
+                    myObj = new FileReader("./cache/akunbayar.iyem");
+                    root = mapper.readTree(myObj);
+                    response = root.path("akunbayar");
+                    if(response.isArray()){
+                       for(JsonNode list:response){
+                           if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
+                                koderekening=list.path("KodeRek").asText();  
+                           }
+                       }
+                    }
+                    myObj.close();
+                } catch (Exception e) {
+                    sukses=false;
+                } 
+                
                 if(Sequel.menyimpantf("toko_bayar_piutang","?,?,?,?,?,?,?","Pembayaran",7,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),Kdmem.getText(),Cicilan.getText(),
                         Keterangan.getText(),NoNota.getText(),koderekening,kontraakun
@@ -718,7 +748,7 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                         Sequel.queryu("delete from tampjurnal");                    
                         Sequel.menyimpan("tampjurnal","'"+kontraakun+"','BAYAR PIUTANG TOKO','0','"+Cicilan.getText()+"'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening"); 
-                        sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG TOKO"+", OLEH "+akses.getkode());                   
+                        sukses=jur.simpanJurnal(NoNota.getText(),"U","BAYAR PIUTANG TOKO"+", OLEH "+akses.getkode());                   
                 }else{
                     sukses=false;
                 }  
@@ -769,7 +799,7 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                     Sequel.queryu("delete from tampjurnal");                    
                     Sequel.menyimpan("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','BAYAR PIUTANG TOKO','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"','0'","Rekening");    
                     Sequel.menyimpan("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"','Kontra Akun','0','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'","Rekening"); 
-                    sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG TOKO"+", OLEH "+akses.getkode());     
+                    sukses=jur.simpanJurnal(NoNota.getText(),"U","PEMBATALAN BAYAR PIUTANG TOKO"+", OLEH "+akses.getkode());     
                 }else{
                     sukses=false;
                 }
@@ -826,8 +856,10 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReportqry("rptBayarToko.jasper","report","::[ Bayar Piutang Toko ]::","select toko_bayar_piutang.tgl_bayar, toko_bayar_piutang.no_member,tokomember.nama, toko_bayar_piutang.besar_cicilan,"+
-                "toko_bayar_piutang.catatan, toko_bayar_piutang.nota_piutang from toko_bayar_piutang inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member where "+
+            Valid.MyReportqry("rptBayarToko.jasper","report","::[ Bayar Piutang Toko ]::",
+                "select toko_bayar_piutang.tgl_bayar, toko_bayar_piutang.no_member,tokomember.nama, toko_bayar_piutang.besar_cicilan,"+
+                "toko_bayar_piutang.catatan, toko_bayar_piutang.nota_piutang from toko_bayar_piutang "+
+                "inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member where "+
                 "toko_bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and toko_bayar_piutang.nota_piutang like '%"+TCari.getText()+"%' or "+
                 "toko_bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and toko_bayar_piutang.no_member like '%"+TCari.getText()+"%' or "+
                 "toko_bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokomember.nama like '%"+TCari.getText()+"%' or "+
@@ -1030,9 +1062,9 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
-    private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCari1KeyPressed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tampilAkunBayar();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
@@ -1209,6 +1241,40 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
             FormInput.setVisible(false);      
             ChkInput.setVisible(true);
+        }
+    }
+    
+    private void tampilAkunBayar() {         
+         try{      
+             file=new File("./cache/akunbayar.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             iyem="";
+             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             try{
+                 rs=ps.executeQuery();
+                 AkunBayar.removeAllItems();
+                 while(rs.next()){    
+                     AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
+                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                 }
+             }catch (Exception e) {
+                 System.out.println("Notifikasi : "+e);
+             } finally{
+                 if(rs != null){
+                     rs.close();
+                 } 
+                 if(ps != null){
+                     ps.close();
+                 } 
+             }
+
+             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
+             fileWriter.flush();
+             fileWriter.close();
+             iyem=null;
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
         }
     }
 }

@@ -124,7 +124,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Pemeriksaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -334,13 +334,12 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai "+
                     "from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template where "+
-                    "detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa like ? or "+
-                    "detail_periksa_lab.no_rawat=? and template_laboratorium.Pemeriksaan like ? order by detail_periksa_lab.tgl_periksa, detail_periksa_lab.jam");
+                    "detail_periksa_lab.no_rawat=? and (detail_periksa_lab.tgl_periksa like ? or template_laboratorium.Pemeriksaan like ?) "+
+                    "order by detail_periksa_lab.tgl_periksa, detail_periksa_lab.jam");
             try{
                 ps.setString(1,norawat);
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,norawat);
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {

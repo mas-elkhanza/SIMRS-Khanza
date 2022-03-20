@@ -27,7 +27,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -333,7 +332,14 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/bangsal.iyem")<4){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -379,7 +385,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2) });
-                    iyem=iyem+"{\"KodeKamar\":\""+rs.getString(1)+"\",\"NamaKamar\":\""+rs.getString(2)+"\"},";
+                    iyem=iyem+"{\"KodeKamar\":\""+rs.getString(1)+"\",\"NamaKamar\":\""+rs.getString(2).replaceAll("\"","")+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -396,11 +402,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             fileWriter.close();
             iyem=null;
         }catch(Exception e){
-            if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
@@ -434,11 +436,8 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 }

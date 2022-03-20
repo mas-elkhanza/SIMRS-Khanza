@@ -334,7 +334,14 @@ public final class DlgCariKategori extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/kategoriobat.iyem")<4){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -376,7 +383,7 @@ public final class DlgCariKategori extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             iyem="";
             
-            ps=koneksi.prepareStatement("select * from kategori_barang order by nama ");
+            ps=koneksi.prepareStatement("select * from kategori_barang order by kategori_barang.nama ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -421,12 +428,9 @@ public final class DlgCariKategori extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception e) {
-            if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {

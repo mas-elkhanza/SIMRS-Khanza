@@ -60,7 +60,7 @@ public class DlgSirkulasiBarang4 extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-              "Kode Barang","Nama Barang","Satuan","Tgl.Opname","Stok Awal","Pengadaan","Pemesanan","Penjualan",
+              "Kode Barang","Nama Barang","Satuan","Tgl.Opname","Stok Awal","Pengadaan","Penerimaan","Penjualan",
               "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang","Pengambilan UTD",
               "Stok Keluar Medis","Resep Pulang","Mutasi Masuk","Mutasi Keluar","Hibah","Stok Akhir"
             }){
@@ -1086,8 +1086,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah), sum(detailjual.total) "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
-                        " penjualan.tgl_jual  between ? and ? ");
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
+                        " penjualan.tgl_jual between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,tglopname);
@@ -1586,8 +1586,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah), sum(detailjual.total)  "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
-                        " penjualan.tgl_jual  between ? and ? and penjualan.kd_bangsal=?");
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
+                        " penjualan.tgl_jual between ? and ? and penjualan.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,tglopname);

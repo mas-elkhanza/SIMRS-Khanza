@@ -291,7 +291,7 @@ public final class BPJSPeserta extends javax.swing.JDialog {
                 "       Umur Saat Pelayanan",": "+cekViaBPJSKartu.umurumurSaatPelayanan
             });
             tabMode.addRow(new Object[]{
-                "       Umur Sekarang",": "+cekViaBPJSKartu.umurumurSekarang.replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr")
+                "       Umur Sekarang",": "+cekViaBPJSKartu.umurumurSekarang.replaceAll("tahun","Th ").replaceAll("bulan","Bl ").replaceAll("hari","Hr")
             });
             tabMode.addRow(new Object[]{
                 "Informasi",":"

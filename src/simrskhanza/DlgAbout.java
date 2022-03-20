@@ -171,7 +171,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel17.setText("Khanza SIMKES 2021");
+        jLabel17.setText("Khanza SIMKES 2022");
         jLabel17.setName("jLabel17"); // NOI18N
         panelGlass1.add(jLabel17);
         jLabel17.setBounds(107, 8, 120, 14);
@@ -222,7 +222,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel19.setText("RS Permata Medika Kebumen, RS Aviciena Martapura, dll");
+        jLabel19.setText("RS Permata Medika Kebumen, RS Juanda Kuningan, dll");
         jLabel19.setName("jLabel19"); // NOI18N
         panelGlass4.add(jLabel19);
         jLabel19.setBounds(126, 160, 320, 14);
@@ -261,21 +261,21 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel23.setText("Kontributor & Donatur : RS Amal Sehat Wonogiri Jawa Tengah, RS Sadewa Yogyakarta");
+        jLabel23.setText("Kontributor & Donatur : RS Jeumpa Pontianak Kalimantan Barat, RS Sadewa Yogyakarta,");
         jLabel23.setName("jLabel23"); // NOI18N
         panelGlass4.add(jLabel23);
         jLabel23.setBounds(10, 100, 440, 14);
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel25.setText("RS Mutiara Hati Pringsewu Lampung, RS Pelita Insani Martapura");
+        jLabel25.setText("RS Puri Husada Sleman Yogyakarta, RS Pelita Insani Martapura,");
         jLabel25.setName("jLabel25"); // NOI18N
         panelGlass4.add(jLabel25);
         jLabel25.setBounds(126, 120, 320, 14);
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel26.setText("RS Islam Magelang, RS Citra Husada Pangkalan Bun Kalteng");
+        jLabel26.setText("RS Assyifa Manna, RS Arvita Bunda Sleman Yogyakarta,");
         jLabel26.setName("jLabel26"); // NOI18N
         panelGlass4.add(jLabel26);
         jLabel26.setBounds(126, 140, 320, 14);
@@ -311,7 +311,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(50, 50, 50));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("Bagi yang ingin melakukan Donasi, bisa ke Rekening BRI Syariah 1015369872");
+        jLabel27.setText("Bagi yang ingin melakukan Donasi, bisa ke Rekening BSI 1015369872, kode bank 451");
         jLabel27.setName("jLabel27"); // NOI18N
         panelGlass4.add(jLabel27);
         jLabel27.setBounds(16, 190, 420, 14);
@@ -347,7 +347,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel34.setText("github.com/mas-elkhanza     Tweeter : KhanzaMedia");
+        jLabel34.setText("github.com/mas-elkhanza     Instagram : simrskhanza");
         jLabel34.setName("jLabel34"); // NOI18N
         panelGlass4.add(jLabel34);
         jLabel34.setBounds(58, 70, 420, 14);

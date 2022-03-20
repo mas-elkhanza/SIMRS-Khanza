@@ -20,8 +20,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Calendar;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -299,7 +297,7 @@ public class DlgPilihBayar extends javax.swing.JDialog {
         Valid.tabelKosong(tabmode);
         try{
             ps=koneksi.prepareStatement(
-                    "select * from penjab where kd_pj like ? or png_jawab like ? order by  png_jawab "); 
+                    "select * from penjab where status='1' and (kd_pj like ? or png_jawab like ?) order by  png_jawab "); 
             try{ 
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

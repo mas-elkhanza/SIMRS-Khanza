@@ -64,7 +64,7 @@ public class DlgJurnalHarian extends javax.swing.JDialog {
         for (int i = 0; i < 6; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(110);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
@@ -718,7 +718,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.tabelKosong(tabMode);
             ps=koneksi.prepareStatement(
                    "select jurnal.no_jurnal, jurnal.no_bukti, jurnal.tgl_jurnal,jurnal.keterangan,"+
-                   "detailjurnal.kd_rek, detailjurnal.debet,detailjurnal.kredit,rekening.nm_rek from "+
+                   "detailjurnal.kd_rek, detailjurnal.debet,detailjurnal.kredit,rekening.nm_rek,jurnal.jam_jurnal from "+
                    "jurnal inner join detailjurnal inner join rekening on "+
                    "jurnal.no_jurnal=detailjurnal.no_jurnal and detailjurnal.kd_rek=rekening.kd_rek "+
                    "where jurnal.no_jurnal like ? and rekening.nm_rek like ? and jurnal.tgl_jurnal between ? and ? and jurnal.no_jurnal like ? or "+
@@ -726,7 +726,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                    "jurnal.no_jurnal like ? and rekening.nm_rek like ? and jurnal.tgl_jurnal between ? and ? and detailjurnal.kd_rek like ? or "+
                    "jurnal.no_jurnal like ? and rekening.nm_rek like ? and jurnal.tgl_jurnal between ? and ? and jurnal.keterangan like ? or "+
                    "jurnal.no_jurnal like ? and rekening.nm_rek like ? and jurnal.tgl_jurnal between ? and ? and rekening.nm_rek like ? "+
-                   "order by jurnal.tgl_jurnal asc,jurnal.no_jurnal asc,detailjurnal.debet desc  ");
+                   "order by jurnal.tgl_jurnal asc, jurnal.jam_jurnal asc, jurnal.no_jurnal asc,detailjurnal.debet desc  ");
             try {
                 ps.setString(1,"%"+NoJur.getText().trim()+"%");
                 ps.setString(2,"%"+nmrek.getText().trim()+"%");
@@ -760,13 +760,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ttlkredit=ttlkredit+rs.getDouble("kredit");
                     if(rs.getDouble("kredit")>0){
                         tabMode.addRow(new Object[]{
-                            rs.getString("tgl_jurnal"),rs.getString("kd_rek"),"     "+rs.getString("nm_rek"),
+                            rs.getString("tgl_jurnal")+" "+rs.getString("jam_jurnal"),rs.getString("kd_rek"),"     "+rs.getString("nm_rek"),
                             "No.Jur "+rs.getString("no_jurnal")+", No.Buk "+rs.getString("no_bukti")+
                             ", "+rs.getString("keterangan"),rs.getDouble("debet"),rs.getDouble("kredit")
                         });
                     }else{
                         tabMode.addRow(new Object[]{
-                            rs.getString("tgl_jurnal"),rs.getString("kd_rek"),rs.getString("nm_rek"),
+                            rs.getString("tgl_jurnal")+" "+rs.getString("jam_jurnal"),rs.getString("kd_rek"),rs.getString("nm_rek"),
                             "No.Jur "+rs.getString("no_jurnal")+", No.Buk "+rs.getString("no_bukti")+
                             ", "+rs.getString("keterangan"),rs.getDouble("debet"),rs.getDouble("kredit")
                         });
@@ -774,7 +774,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 if(ttldebet>0||ttlkredit>0){
                     tabMode.addRow(new Object[]{"","","","",null,null});
-                    tabMode.addRow(new Object[]{"","","Total","",ttldebet,ttlkredit});
+                    tabMode.addRow(new Object[]{"Jumlah Total :","","","",ttldebet,ttlkredit});
                     debet.setText(Valid.SetAngka(ttldebet));
                     kredit.setText(Valid.SetAngka(ttlkredit));
                 }                

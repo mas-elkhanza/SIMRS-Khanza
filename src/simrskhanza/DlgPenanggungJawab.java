@@ -30,6 +30,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import restore.DlgRestoreCaraBayar;
 
 /**
  *
@@ -141,6 +142,8 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -183,6 +186,23 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
 
+        Popup.setName("Popup"); // NOI18N
+
+        MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
+        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnRestore.setText("Data Sampah");
+        MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnRestore.setName("MnRestore"); // NOI18N
+        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnRestore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRestoreActionPerformed(evt);
+            }
+        });
+        Popup.add(MnRestore);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -196,11 +216,13 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -553,7 +575,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         }else if(Attn.getText().trim().equals("")){
             Valid.textKosong(Attn,"Attn");
         }else{
-            Sequel.menyimpan("penjab","'"+KdAsuransi.getText()+"','"+NmAsuransi.getText()+"','"+Perusahaan.getText()+"','"+AlamatAsuransi.getText()+"','"+NoTelp.getText()+"','"+Attn.getText()+"'","Kode Penanggung/Askes/Asuransi");
+            Sequel.menyimpan("penjab","'"+KdAsuransi.getText()+"','"+NmAsuransi.getText()+"','"+Perusahaan.getText()+"','"+AlamatAsuransi.getText()+"','"+NoTelp.getText()+"','"+Attn.getText()+"','1'","Kode Penanggung/Askes/Asuransi");
             BtnCariActionPerformed(evt);
             emptTeks();
         }
@@ -582,7 +604,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         for(i=0;i<tbKamar.getRowCount();i++){ 
             if(tbKamar.getValueAt(i,0).toString().equals("true")){
-                Sequel.meghapus("penjab","kd_pj",tbKamar.getValueAt(i,1).toString());
+                Sequel.mengedit("penjab","kd_pj='"+tbKamar.getValueAt(i,1).toString()+"'","status='0'");
             }
         } 
         BtnCariActionPerformed(evt);
@@ -642,16 +664,16 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){       
-                Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());       
+            Map<String, Object> param = new HashMap<>();    
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());       
             Valid.MyReportqry("rptPenjab.jasper","report","::[ Data Satuan ]::","select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp,attn "+
-                " from penjab where  kd_pj like '%"+TCari.getText().trim()+"%' or "+
-                " png_jawab like '%"+TCari.getText().trim()+"%' order by kd_pj",param);
+                " from penjab where status='1' and (kd_pj like '%"+TCari.getText().trim()+"%' or "+
+                " png_jawab like '%"+TCari.getText().trim()+"%') order by kd_pj",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -756,6 +778,13 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         Valid.pindah(evt,Perusahaan,AlamatAsuransi);
     }//GEN-LAST:event_AttnKeyPressed
 
+    private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
+        DlgRestoreCaraBayar restore=new DlgRestoreCaraBayar(null,true);
+        restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        restore.setLocationRelativeTo(internalFrame1);
+        restore.setVisible(true);
+    }//GEN-LAST:event_MnRestoreActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -788,10 +817,12 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.TextBox Kd2;
     private widget.TextBox KdAsuransi;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnRestore;
     private widget.TextBox NmAsuransi;
     private widget.TextBox NoTelp;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Perusahaan;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
@@ -814,7 +845,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         try{
             ps=koneksi.prepareStatement(
                     "select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp,attn "+
-                    "from penjab where  kd_pj like ? or png_jawab like ? order by png_jawab ");
+                    "from penjab where status='1' and (kd_pj like ? or png_jawab like ?) order by png_jawab ");
             try{
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -871,10 +902,15 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getadmin());
-        BtnHapus.setEnabled(akses.getadmin());
-        BtnEdit.setEnabled(akses.getadmin());
-        BtnPrint.setEnabled(akses.getadmin());
+        BtnSimpan.setEnabled(akses.getcara_bayar());
+        BtnHapus.setEnabled(akses.getcara_bayar());
+        BtnEdit.setEnabled(akses.getcara_bayar());
+        BtnPrint.setEnabled(akses.getcara_bayar());
+        if(akses.getkode().equals("Admin Utama")){
+            MnRestore.setEnabled(true);
+        }else{
+            MnRestore.setEnabled(false);
+        }
     }
     
     private void isForm(){

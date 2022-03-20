@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="594" pageHeight="842" columnWidth="521" leftMargin="56" rightMargin="17" topMargin="20" bottomMargin="20" uuid="ede88e92-d6b6-42f5-a55b-70a4e79ca682">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="206"/>
@@ -408,7 +408,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="3" y="2" width="516" height="15" uuid="d9087621-bc7c-47bc-9b45-1f318123d1d3"/>
+				<reportElement positionType="Float" x="3" y="2" width="516" height="15" uuid="d9087621-bc7c-47bc-9b45-1f318123d1d3"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -483,13 +483,21 @@
 				<text><![CDATA[Penanggung Jawab]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="2" y="22" width="210" height="57" isRemoveLineWhenBlank="true" uuid="cef030b5-e26f-4744-950f-135382231ff4">
+				<reportElement x="2" y="22" width="209" height="66" isRemoveLineWhenBlank="true" uuid="cef030b5-e26f-4744-950f-135382231ff4">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="89" width="208" height="15" uuid="4c95fb0f-10f7-4f73-b0b8-7f194a14f28e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{penjab}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

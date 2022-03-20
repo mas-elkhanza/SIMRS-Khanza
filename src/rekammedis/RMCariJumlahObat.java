@@ -334,13 +334,12 @@ public final class RMCariJumlahObat extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,databarang.nama_brng, detail_pemberian_obat.jml, "+
                     "databarang.kode_sat from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng where "+
-                    "detail_pemberian_obat.no_rawat=? and detail_pemberian_obat.tgl_perawatan like ? or "+
-                    "detail_pemberian_obat.no_rawat=? and databarang.nama_brng like ? order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam");
+                    "detail_pemberian_obat.no_rawat=? and (detail_pemberian_obat.tgl_perawatan like ? or databarang.nama_brng like ?) "+
+                    "order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam");
             try{
                 ps.setString(1,norawat);
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,norawat);
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {

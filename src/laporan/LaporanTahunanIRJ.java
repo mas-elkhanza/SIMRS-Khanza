@@ -435,11 +435,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            prosesCari();
-        }else if(TabRawat.getSelectedIndex()==1){
-            prosesCari2();
-        }
+        TabRawatMouseClicked(null);
 }//GEN-LAST:event_btnCariActionPerformed
 
 private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyPressed

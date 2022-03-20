@@ -47,7 +47,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private ApiBPJSAplicare api=new ApiBPJSAplicare();
-    private String URL="";
+    private String URL="",utc="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -336,8 +336,10 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIAPLICARE());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	    utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-Timestamp",utc);
+	    headers.add("X-Signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIAPLICARE());
 	    requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metadata");
@@ -345,6 +347,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
             //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
+                //response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;

@@ -338,7 +338,14 @@ public final class DlgCariMetodeRacik extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/metoderacik.iyem")<4){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -381,7 +388,7 @@ public final class DlgCariMetodeRacik extends javax.swing.JDialog {
             iyem="";
             
             i=1;
-            ps=koneksi.prepareStatement("select * from metode_racik order by nm_racik ");
+            ps=koneksi.prepareStatement("select * from metode_racik order by metode_racik.nm_racik ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -429,12 +436,9 @@ public final class DlgCariMetodeRacik extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {

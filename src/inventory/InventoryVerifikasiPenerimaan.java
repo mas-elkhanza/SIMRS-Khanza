@@ -23,14 +23,13 @@ import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 public class InventoryVerifikasiPenerimaan extends javax.swing.JDialog {
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
+    private final sekuel Sequel=new sekuel();
+    private final validasi Valid=new validasi();
+    private final Connection koneksi=koneksiDB.condb();
     public  InventoryCariSuplier suplier=new InventoryCariSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private PreparedStatement ps,pssub,pspenerimaan,pssubpenerimaan,pssisipan;
     private ResultSet rs,rssub,rspenerimaan,rssubpenerimaan,rssisipan;
-    private double tagihan=0;
     private StringBuilder htmlContent;
     private String carifaktur="",carisuplier="",caripegawai="",carikeyword="",satuan,jumlah="0",status="";
     private double h_pesan=0,subtotal=0,dis=0,besardis=0,total=0,index=0,jumlah2=0,sisipantotal1=0,sisipanpotongan=0,

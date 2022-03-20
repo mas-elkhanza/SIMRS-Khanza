@@ -11,7 +11,6 @@ import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -48,7 +47,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
 import widget.Button;
+import widget.ComboBox;
+import widget.Tanggal;
 import widget.TextArea;
+import java.io.File;
 /**
  *
  * @author Owner
@@ -67,6 +69,7 @@ public final class validasi {
     private final DecimalFormat df7 = new DecimalFormat("######.#"); 
     private PreparedStatement ps;
     private ResultSet rs;
+    private File file;
     private final Calendar now = Calendar.getInstance();
     private final int year=(now.get(Calendar.YEAR));
     private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
@@ -790,7 +793,7 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JTextField kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -798,7 +801,7 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -806,7 +809,7 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JTextArea kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -814,7 +817,7 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JTextField kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -822,7 +825,7 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextArea kiri,JButton kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -830,7 +833,15 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JComboBox kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JComboBox kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -838,13 +849,37 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JTextField kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(java.awt.event.KeyEvent evt,JComboBox kiri,JTextArea kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
         }
     }
 
+    public void pindah2(KeyEvent evt, TextArea kiri, ComboBox kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah2(KeyEvent evt, Tanggal kiri, Button kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextArea kanan) {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();
@@ -888,7 +923,7 @@ public final class validasi {
     }
     
     public void pindah2(java.awt.event.KeyEvent evt,JTextField kiri,JButton kanan){
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_TAB){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kiri.requestFocus();
@@ -1215,6 +1250,21 @@ public final class validasi {
         return x;
     }
     
+    public int SetInteger(String txt){
+        int x;   
+        try {
+            if(txt.equals("")){
+                x=0;
+            }else{
+                x=Integer.parseInt(txt);
+            }
+        } catch (Exception e) {
+            x=0;
+        }
+            
+        return x;
+    }
+    
     public double roundUp(double number, int multiple) {
         if(PEMBULATANHARGAOBAT.equals("yes")){
             result = multiple;
@@ -1274,8 +1324,19 @@ public final class validasi {
         }
         
         return "";
+    }  
+    
+    public int daysOld(String path) {
+        file=new File(path);
+        if (file.lastModified() < 1)
+            return 0;
+        return milliToDay(Calendar.getInstance().getTimeInMillis() - file.lastModified());
     }
 
-    
-       
+    /**
+     * Converts milliseconds to days
+     */
+    public static int milliToDay(long milli) {
+        return (int) ((double) milli / (1000 * 24 * 60 * 60));
+    }
 }

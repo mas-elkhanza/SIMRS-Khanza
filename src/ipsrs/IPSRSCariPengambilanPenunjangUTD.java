@@ -372,7 +372,7 @@ public final class IPSRSCariPengambilanPenunjangUTD extends javax.swing.JDialog 
                 Sequel.queryu("delete from tampjurnal");
                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Penunjang_Utd from set_akun"),"PENGAMBILAN BARANG NON MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Penunjang_Utd from set_akun"),"PERSEDIAAN BARANG NON MEDIS",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
-                sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString().replaceAll("-","/"),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BARANG NON MEDIS UTD"+", OLEH "+akses.getkode());
+                sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString().replaceAll("-","/"),"U","PEMBATALAN PENGAMBILAN BARANG NON MEDIS UTD"+", OLEH "+akses.getkode());
             }
                 
             if(sukses==true){

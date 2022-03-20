@@ -467,10 +467,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                 "and reg_periksa.kd_poli=poliklinik.kd_poli " +
                 "and reg_periksa.no_rawat=resep_obat.no_rawat "+
-                "where resep_obat.jam<>resep_obat.jam_peresepan and resep_obat.tgl_peresepan between ? and ? and poliklinik.nm_poli like ? or " +
-                "resep_obat.jam<>resep_obat.jam_peresepan and resep_obat.tgl_peresepan between ? and ? and dokter.nm_dokter like ? or " +
-                "resep_obat.jam<>resep_obat.jam_peresepan and resep_obat.tgl_peresepan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
-                "resep_obat.jam<>resep_obat.jam_peresepan and resep_obat.tgl_peresepan between ? and ? and pasien.nm_pasien like ?  "+
+                "where resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and poliklinik.nm_poli like ? or " +
+                "resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and dokter.nm_dokter like ? or " +
+                "resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
+                "resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and pasien.nm_pasien like ?  "+
                 "order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));

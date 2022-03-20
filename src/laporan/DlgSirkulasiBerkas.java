@@ -26,7 +26,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPasien;
+import simrskhanza.DlgCariPasien;
 
 /**
  *
@@ -122,51 +122,17 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 if(pasien.getTable().getSelectedRow()!= -1){                   
                     if(pilihan==1){                           
                            try {
-                                NoRm.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                                NmPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),2).toString());
-                                Umur.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),15).toString());
-                                Alamat.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),8).toString());
-                                Pekerjaan.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),10).toString());   
-                                PertamaDaftar.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),13).toString());                       
+                                NoRm.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
+                                NmPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                                Umur.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),14).toString());
+                                Alamat.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),7).toString());
+                                Pekerjaan.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),9).toString());   
+                                PertamaDaftar.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),12).toString());                       
                            } catch (Exception z) {
                            }                           
                            NoRm.requestFocus();
                     }else if(pilihan==2){
-                        RmCari.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                        RmCari.requestFocus();
-                    }
-                } 
-                if(pasien.getTable2().getSelectedRow()!= -1){                   
-                    if(pilihan==1){                           
-                           try {
-                                NoRm.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
-                                NmPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),2).toString());
-                                Umur.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),15).toString());
-                                Alamat.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),8).toString());
-                                Pekerjaan.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),10).toString());   
-                                PertamaDaftar.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),13).toString());                       
-                           } catch (Exception z) {
-                           }                           
-                           NoRm.requestFocus();
-                    }else if(pilihan==2){
-                        RmCari.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
-                        RmCari.requestFocus();
-                    }
-                } 
-                if(pasien.getTable3().getSelectedRow()!= -1){                   
-                    if(pilihan==1){                           
-                           try {
-                                NoRm.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
-                                NmPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),2).toString());
-                                Umur.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),15).toString());
-                                Alamat.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),8).toString());
-                                Pekerjaan.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),10).toString());   
-                                PertamaDaftar.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),13).toString());                       
-                           } catch (Exception z) {
-                           }                           
-                           NoRm.requestFocus();
-                    }else if(pilihan==2){
-                        RmCari.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                        RmCari.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
                         RmCari.requestFocus();
                     }
                 } 
@@ -182,30 +148,6 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        pasien.getTable2().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
@@ -284,7 +226,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
     }
 
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgPasien pasien=new DlgPasien(null,false);
+    private DlgCariPasien pasien=new DlgCariPasien(null,false);
     private int pilihan=0;
 
     /** This method is called from within the constructor to

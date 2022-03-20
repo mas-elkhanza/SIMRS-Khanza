@@ -22,7 +22,7 @@ public class SIMRSKhanza {
            frmUtama utama=frmUtama.getInstance();
            utama.isWall();
            utama.setVisible(true);
-       });
+        });
     }
     
 }

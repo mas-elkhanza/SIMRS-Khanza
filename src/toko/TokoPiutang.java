@@ -1395,7 +1395,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             Sequel.queryu("delete from tampjurnal");                    
             Sequel.menyimpan2("tampjurnal","'"+Piutang_Toko+"','PIUTANG TOKO','"+(tagihan-uangmuka)+"','0'","Rekening");     
             Sequel.menyimpan2("tampjurnal","'"+Kontra_Piutang_Toko+"','Persediaan Barang Toko','0','"+(tagihan-uangmuka)+"'","Rekening");                              
-            sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PIUTANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());     
+            sukses=jur.simpanJurnal(NoNota.getText(),"U","PIUTANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());     
          }
     }
 

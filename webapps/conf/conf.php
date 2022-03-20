@@ -1,9 +1,9 @@
 <?php
 
-    $db_hostname    ="localhost";
-    $db_username    ="root";
-    $db_password    ="";
-    $db_name        ="sik";
+    $db_hostname    = "localhost";
+    $db_username    = "root";
+    $db_password    = "";
+    $db_name        = "sik";
 
     function host(){
         global $db_hostname;
@@ -24,12 +24,8 @@
 
     function cleankar($dirty){
 	$konektor=bukakoneksi();
-	if (get_magic_quotes_gpc()) {
-            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
-	}else{
-            $clean = mysqli_real_escape_string($konektor,$dirty);	
-	} 
-         mysqli_close($konektor);
+	$clean = mysqli_real_escape_string($konektor,$dirty);	
+	mysqli_close($konektor);
 	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
     }
     
@@ -156,8 +152,7 @@
         }*/
         
     }
-
-
+    
     function tutupkoneksi(){
        global  $konektor;
        mysqli_close($konektor);
@@ -166,8 +161,13 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (mysqli_error($konektor)."<br/><font color=red><b>hmmmmmmm.....??????????</b>");
+        or die (/*mysqli_error($konektor).*/"hmmmmmmm.....??????????");
         mysqli_close($konektor);
+        return $result;
+    }
+    
+    function fetch_assoc($sql) {
+        $result = mysqli_fetch_assoc(bukaquery($sql));
         return $result;
     }
      
@@ -181,7 +181,7 @@
     function bukainput($sql){
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor,$sql)
-        or die(mysqli_error()."<br/><font color=red><b>Gagal..!!</b>");
+        or die(/*mysqli_error().*/"<br/><font color=red><b>Gagal..!!</b>");
         mysqli_close($konektor);
         return $result;
     }
@@ -274,7 +274,7 @@
 
     function JurusKibasNaga(){
         $id	= $_SERVER['REMOTE_ADDR'];
-        $sql=bukaquery("DELETE FROM tmp WHERE ID='$id'");
+        $sql = bukaquery("DELETE FROM tmp WHERE ID='$id'");
         return $sql;
     }
 
@@ -334,6 +334,17 @@
         $hasil=bukaquery($sql);
         list($result) =mysqli_fetch_array($hasil);
         return $result;
+    }
+    
+    function getOne3($sql,$string) {
+        $hasil=bukaquery($sql);
+        list($result) =mysqli_fetch_array($hasil);
+        if(empty($result)) $result=$string;
+        return $result;
+    }
+    
+    function fetch_array($result) {
+        return mysqli_fetch_array($result);
     }
 
     function cekKosong($sql) {
@@ -519,24 +530,29 @@
         return $strawal."".$s1."".$s;
     }
 
+    function validation_errors($error) {
+        $errors = '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$error.'</div>';
+        return $errors;
+    }
+    
     function Terbilang($x){
-      $abil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
-      if ($x < 12)
-        return " " . $abil[$x];
-      elseif ($x < 20)
-        return Terbilang($x - 10) . "belas";
-      elseif ($x < 100)
-        return Terbilang($x / 10) . " puluh" . Terbilang($x % 10);
-      elseif ($x < 200)
-        return " seratus" . Terbilang($x - 100);
-      elseif ($x < 1000)
-        return Terbilang($x / 100) . " ratus" . Terbilang($x % 100);
-      elseif ($x < 2000)
-        return " seribu" . Terbilang($x - 1000);
-      elseif ($x < 1000000)
-        return Terbilang($x / 1000) . " ribu" . Terbilang($x % 1000);
-      elseif ($x < 1000000000)
-        return Terbilang($x / 1000000) . " juta" . Terbilang($x % 1000000);
+        $abil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+        if ($x < 12)
+          return " " . $abil[$x];
+        elseif ($x < 20)
+          return Terbilang($x - 10) . "belas";
+        elseif ($x < 100)
+          return Terbilang($x / 10) . " puluh" . Terbilang($x % 10);
+        elseif ($x < 200)
+          return " seratus" . Terbilang($x - 100);
+        elseif ($x < 1000)
+          return Terbilang($x / 100) . " ratus" . Terbilang($x % 100);
+        elseif ($x < 2000)
+          return " seribu" . Terbilang($x - 1000);
+        elseif ($x < 1000000)
+          return Terbilang($x / 1000) . " ribu" . Terbilang($x % 1000);
+        elseif ($x < 1000000000)
+          return Terbilang($x / 1000000) . " juta" . Terbilang($x % 1000000);
     }
         
 ?>

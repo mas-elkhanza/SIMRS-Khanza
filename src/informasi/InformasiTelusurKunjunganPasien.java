@@ -643,15 +643,15 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                         kddpjp="";
                         dpjp="";
                         if(rs.getString("status_lanjut").equals("Ranap")){
-                            kddpjp=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",rs.getString("no_rawat"));
+                            kddpjp=Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",rs.getString("no_rawat"));
                             if(!kddpjp.equals("")){
-                                dpjp=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddpjp);
+                                dpjp=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddpjp);
                             }else{
                                 kddpjp=rs.getString("kd_dokter");
                                 dpjp=rs.getString("nm_dokter");
                             }
-                            kdpenyakit=Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where no_rawat=? and status='Ranap' and prioritas='1'",rs.getString("no_rawat"));
-                            namapenyakit=Sequel.cariIsi("select nm_penyakit from penyakit where kd_penyakit=?",kdpenyakit);
+                            kdpenyakit=Sequel.cariIsi("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1'",rs.getString("no_rawat"));
+                            namapenyakit=Sequel.cariIsi("select penyakit.nm_penyakit from penyakit where penyakit.kd_penyakit=?",kdpenyakit);
                                 
                         }    
                         

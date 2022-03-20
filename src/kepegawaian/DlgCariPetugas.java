@@ -16,7 +16,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -342,7 +341,14 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/petugas.iyem")<4){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -393,7 +399,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)
                     });
-                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"NamaPetugas\":\""+rs.getString(2)+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4)+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"SttsNikah\":\""+rs.getString(8)+"\",\"Alamat\":\""+rs.getString(9)+"\",\"Jabatan\":\""+rs.getString(10)+"\",\"NoTelp\":\""+rs.getString(11)+"\"},";
+                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"NamaPetugas\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4).replaceAll("\"","")+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"SttsNikah\":\""+rs.getString(8)+"\",\"Alamat\":\""+rs.getString(9).replaceAll("\"","")+"\",\"Jabatan\":\""+rs.getString(10)+"\",\"NoTelp\":\""+rs.getString(11)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -410,11 +416,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             fileWriter.close();
             iyem=null;   
         }catch(Exception e){
-            if(e.toString().contains("begin")){
-                System.out.println("Notifikasi : Data tidak ditemukan..!!");
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
@@ -448,7 +450,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : Data tidak ditemukan..!!");
+            System.out.println("Notifikasi : "+ex);
         }
     } 
 }

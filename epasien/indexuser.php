@@ -49,7 +49,7 @@
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
 <body class="theme-pink">
-    <div class="page-loader-wrapper">
+    <!--<div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-red">
@@ -63,7 +63,7 @@
             </div>
             <p>Silahkan tunggu.....!</p>
         </div>
-    </div>
+    </div>-->
     <div class="overlay"></div>
     <div class="search-bar">
         <div class="search-icon">
@@ -312,6 +312,26 @@
                             <span>Riwayat Periksa</span>
                         </a>
                     </li>
+                    <li <?=$halaman=="AntrianTindakan"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">event_seat</i>
+                            <span>Daftar Permintaan & Tindakan</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="AntrianPemeriksaanLab"?"class='active'":""?>>
+                                <a href="index.php?act=AntrianPemeriksaanLab&hal=AntrianTindakan">Pemeriksaan Laborat</a>
+                            </li>
+                            <li <?=$subhalaman=="AntrianPemeriksaanRad"?"class='active'":""?>>
+                                <a href="index.php?act=AntrianPemeriksaanRad&hal=AntrianTindakan">Pemeriksaan Radiologi</a>
+                            </li>
+                            <li <?=$subhalaman=="AtrianResepObat"?"class='active'":""?>>
+                                <a href="index.php?act=AtrianResepObat&hal=AntrianTindakan">Resep Obat</a>
+                            </li>
+                            <li <?=$subhalaman=="AtrianOperasi"?"class='active'":""?>>
+                                <a href="index.php?act=AtrianOperasi&hal=AntrianTindakan">Operasi</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li <?=$halaman=="Surat"?"class='active'":""?>>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">layers</i>
@@ -340,7 +360,7 @@
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">card_membership</i>
                             <span>Fasilitas & Tarif</span>
                         </a>
                         <ul class="ml-menu">

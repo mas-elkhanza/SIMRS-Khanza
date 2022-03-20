@@ -49,7 +49,7 @@ public class DlgBarang extends javax.swing.JDialog {
     public DlgCariKategori kategori = new DlgCariKategori(null, false);
     public DlgCariGolongan golongan = new DlgCariGolongan(null, false);
     public DlgCariSatuan satuan = new DlgCariSatuan(null, false);
-    public DlgIndustriFarmasi industri=new DlgIndustriFarmasi(null,false);
+    public DlgCariIndustriFarmasi industri=new DlgCariIndustriFarmasi(null,false);
     private DlgCariBangsal bangsal = new DlgCariBangsal(null, false);
     private double totalstok, stokgudang;
     private PreparedStatement ps, ps2, ps3, ps4;
@@ -293,7 +293,10 @@ public class DlgBarang extends javax.swing.JDialog {
                             nmsatBesar.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(), 1).toString());
                             BtnSatuanBesar.requestFocus();
                         }
-                            
+                           
+                        if(kdsat.getText().equals(kdsatBesar.getText())){
+                            Isi.setText("1");
+                        }
                     }
                 }
             }
@@ -430,7 +433,7 @@ public class DlgBarang extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });    
+        }); 
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -1678,9 +1681,11 @@ public class DlgBarang extends javax.swing.JDialog {
             Valid.textKosong(kdgolongan, "Golongan");
         } else if (stok_minimal.getText().trim().equals("")) {
             Valid.textKosong(stok_minimal, "Stok Minimal");
-        } else if (Kapasitas.getText().trim().equals("")) {
+        } else if (Valid.SetAngka(Kapasitas.getText().trim())<=0) {
             Valid.textKosong(Kapasitas, "Kapasitas");
-        }  else if (KdIF.getText().trim().equals("") || NmIF.getText().trim().equals("")) {
+        } else if (Valid.SetAngka(Isi.getText().trim())<=0) {
+            Valid.textKosong(Isi, "Isi");
+        } else if (KdIF.getText().trim().equals("") || NmIF.getText().trim().equals("")) {
             Valid.textKosong(KdIF, "Industri Farmasi");
         } else {
             if (ChkKadaluarsa.isSelected() == true) {
@@ -1853,8 +1858,10 @@ public class DlgBarang extends javax.swing.JDialog {
             Valid.textKosong(kdgolongan, "Golongan");
         } else if (stok_minimal.getText().trim().equals("")) {
             Valid.textKosong(stok_minimal, "Stok Minimal");
-        } else if (Kapasitas.getText().trim().equals("")) {
+        } else if (Valid.SetAngka(Kapasitas.getText().trim())<=0) {
             Valid.textKosong(Kapasitas, "Kapasitas");
+        } else if (Valid.SetAngka(Isi.getText().trim())<=0) {
+            Valid.textKosong(Isi, "Isi");
         } else if (KdIF.getText().trim().equals("") || NmIF.getText().trim().equals("")) {
             Valid.textKosong(KdIF, "Industri Farmasi");
         } else {
@@ -2291,7 +2298,14 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_BtnSatuanBesarActionPerformed
 
     private void IsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IsiKeyPressed
-        Valid.pindah(evt,BtnSatuanBesar,BtnSatuan);
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(kdsat.getText().equals(kdsatBesar.getText())){
+                Isi.setText("1");
+            }
+            BtnSatuan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnSatuanBesar.requestFocus();
+        }
     }//GEN-LAST:event_IsiKeyPressed
 
     private void dasarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dasarMouseMoved

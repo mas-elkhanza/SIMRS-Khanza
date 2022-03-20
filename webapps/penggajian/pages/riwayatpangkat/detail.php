@@ -13,12 +13,12 @@
              $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                 $hasilnext        	= bukaquery($_sqlnext);
                 $barisnext        	= mysqli_fetch_row($hasilnext);
-                $next               = $barisnext[0];
+                @$next               = $barisnext[0];
 
                 $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                 $hasilprev        	= bukaquery($_sqlprev);
                 $barisprev        	= mysqli_fetch_row($hasilprev);
-                $prev               = $barisprev[0];
+                @$prev               = $barisprev[0];
 
                 if(empty($prev)){
                     $prev=$next;

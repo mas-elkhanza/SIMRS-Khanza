@@ -69,7 +69,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-03-2021"/>
+                        <StringItem index="0" value="05-03-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -391,7 +391,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Penilaian Awal Pasien Rawat Jalan Kebidanan &amp; Kandungan ]::">
+            <TitledBorder title="::[ Penilaian Awal Keperawatan Rawat Jalan Kebidanan &amp; Kandungan ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -1135,7 +1135,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="13-03-2021 19:05:20"/>
+                                <StringItem index="0" value="05-03-2022 20:30:45"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1509,7 +1509,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel45">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Gerak janin x/30 menit, BJJ :"/>
+                            <Property name="text" type="java.lang.String" value="Gerak janin x/30 menit, DJJ :"/>
                             <Property name="name" type="java.lang.String" value="jLabel45" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2647,7 +2647,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="13-03-2021"/>
+                                <StringItem index="0" value="05-03-2022"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2718,7 +2718,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="13-03-2021"/>
+                                <StringItem index="0" value="05-03-2022"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4202,7 +4202,7 @@
                         <Component class="widget.Label" name="jLabel152">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="2. Apakah nafsu makan berkurang karena tidak nafsu makan ?"/>
+                            <Property name="text" type="java.lang.String" value="2. Apakah asupan makan berkurang karena tidak nafsu makan ?"/>
                             <Property name="name" type="java.lang.String" value="jLabel152" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4787,7 +4787,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="453" y="1610" width="400" height="143"/>
+                              <AbsoluteConstraints x="454" y="1610" width="400" height="143"/>
                             </Constraint>
                           </Constraints>
 
@@ -4818,7 +4818,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="453" y="1590" width="120" height="23"/>
+                              <AbsoluteConstraints x="454" y="1590" width="120" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4900,7 +4900,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbObat">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbObat" noResource="true"/>
                       </Properties>
@@ -4945,7 +4944,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="13-03-2021"/>
+                            <StringItem index="0" value="05-03-2022"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4973,7 +4972,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="13-03-2021"/>
+                            <StringItem index="0" value="05-03-2022"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

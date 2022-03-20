@@ -1,7 +1,6 @@
 package bridging;
 
 import fungsi.koneksiDB;
-import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.KeyManagementException;
@@ -9,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.Properties;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
@@ -21,18 +19,17 @@ import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
 public class ApiPcare {        
-    private static final Properties prop = new Properties();
     private String Key,Consid;
     
     public ApiPcare(){
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             Key = koneksiDB.SECRETKEYAPIPCARE();
             Consid = koneksiDB.CONSIDAPIPCARE();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }        
     }
+    
     public String getHmac() {        
         long GetUTCdatetimeAsString = GetUTCdatetimeAsString();
         String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);

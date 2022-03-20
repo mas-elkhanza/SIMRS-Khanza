@@ -27,7 +27,8 @@ public class DlgSirkulasiNonMedis extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private double ttltotalbeli=0,totalbeli=0,stok=0,aset=0,ttlaset=0,jumlahbeli=0,jumlahutd=0,totalutd=0,ttltotalutd=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,jumlahkeluar,totalkeluar,ttltotalkeluar;
+    private double ttltotalbeli=0,totalbeli=0,stok=0,aset=0,ttlaset=0,jumlahbeli=0,jumlahutd=0,totalutd=0,ttltotalutd=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,
+                    jumlahkeluar=0,totalkeluar=0,ttltotalkeluar=0,jumlahhibah=0,totalhibah=0,ttltotalhibah=0;
     private IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
@@ -39,9 +40,11 @@ public class DlgSirkulasiNonMedis extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok","Stok(Rp)","Pengadaan","Pengadaan(Rp)",
-                      "Penerimaan","Penerimaan(Rp)","Stok Keluar","Stok Keluar(Rp)","Pengambilan UTD","Pengambilan UTD(Rp)"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "Kode Barang","Nama Barang","Satuan","Stok","Stok(Rp)","Pengadaan","Pengadaan(Rp)",
+                "Penerimaan","Penerimaan(Rp)","Stok Keluar","Stok Keluar(Rp)","Pengambilan UTD","Pengambilan UTD(Rp)",
+                "Hibah","Hibah(Rp)"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
@@ -49,7 +52,7 @@ public class DlgSirkulasiNonMedis extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i <13; i++) {
+        for (int i = 0; i <15; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -76,6 +79,10 @@ public class DlgSirkulasiNonMedis extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(70);
             }else if(i==12){
+                column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(70);
+            }else if(i==14){
                 column.setPreferredWidth(100);
             }
         }
@@ -387,12 +394,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','',''",13,new String[]{
+                Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','',''",15,new String[]{
                     tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
                     tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),
                     tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),
-                    tabMode.getValueAt(i,12).toString()
+                    tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,14).toString()
                 }); 
             }
             
@@ -548,7 +555,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         "ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
                         " order by ipsrsbarang.kode_brng");
             try {
-                ttltotalbeli=0;ttltotalpesan=0;ttltotalkeluar=0;ttlaset=0;ttltotalutd=0;
+                ttltotalbeli=0;ttltotalpesan=0;ttltotalkeluar=0;ttlaset=0;ttltotalutd=0;ttltotalhibah=0;
                 ps.setString(1,"%"+nmbar.getText()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+nmbar.getText()+"%");
@@ -558,7 +565,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();            
                 while(rs.next()){
                     totalbeli=0;jumlahbeli=0;totalpesan=0;jumlahpesan=0;jumlahkeluar=0;
-                    totalkeluar=0;stok=0;aset=0;jumlahutd=0;totalutd=0;
+                    totalkeluar=0;stok=0;aset=0;jumlahutd=0;totalutd=0;jumlahhibah=0;totalhibah=0;
 
                     stok=rs.getDouble("stok");
                     aset=rs.getDouble("aset");
@@ -663,23 +670,53 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
-                    if((stok>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahkeluar>0)||(jumlahutd>0)){
+                    //ipsrshibah
+                    ps2=koneksi.prepareStatement("select sum(ipsrs_detail_hibah.jumlah), sum(ipsrs_detail_hibah.subtotalhibah) "+
+                        " from ipsrs_hibah inner join ipsrs_detail_hibah "+
+                        " on ipsrs_hibah.no_hibah=ipsrs_detail_hibah.no_hibah "+
+                        " where ipsrs_detail_hibah.kode_brng=? and ipsrs_hibah.tgl_hibah "+
+                        " between ? and ? ");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahhibah=rs2.getDouble(1);
+                            totalhibah=rs2.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Pemesanan : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    } 
+                    
+                    if((stok>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahkeluar>0)||(jumlahutd>0)||(jumlahhibah>0)){
                         tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
                            rs.getString(3),Valid.SetAngka(stok),Valid.SetAngka(aset),
                            Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
                            Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),
                            Valid.SetAngka(jumlahkeluar),Valid.SetAngka(totalkeluar),
-                           Valid.SetAngka(jumlahutd),Valid.SetAngka(totalutd)
+                           Valid.SetAngka(jumlahutd),Valid.SetAngka(totalutd),
+                           Valid.SetAngka(jumlahhibah),Valid.SetAngka(totalhibah)
                         }); 
                         ttltotalbeli=ttltotalbeli+totalbeli;
                         ttltotalpesan=ttltotalpesan+totalpesan;
                         ttlaset=ttlaset+aset;
                         ttltotalkeluar=ttltotalkeluar+totalkeluar;
                         ttltotalutd=ttltotalutd+totalutd;
+                        ttltotalhibah=ttltotalhibah+totalhibah;
                     }
                 }   
-                tabMode.addRow(new Object[]{"","","","","","","","","","","","",""}); 
-                tabMode.addRow(new Object[]{"<>>","Total :","","",Valid.SetAngka(ttlaset),"",Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",Valid.SetAngka(ttltotalkeluar),"",Valid.SetAngka(ttltotalutd)
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{
+                    "<>>","Total :","","",Valid.SetAngka(ttlaset),"",Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",
+                    Valid.SetAngka(ttltotalkeluar),"",Valid.SetAngka(ttltotalutd),"",Valid.SetAngka(ttltotalhibah)
                 }); 
             } catch (Exception e) {
                 System.out.println("Notifikasi Data Barang : "+e);

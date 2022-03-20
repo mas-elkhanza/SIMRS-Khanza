@@ -39,7 +39,7 @@ public class DlgPilihDokter extends javax.swing.JDialog {
     private ResultSet rs;
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
-    private String hari="";
+    private String hari="",aktifjadwal="";
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -47,13 +47,13 @@ public class DlgPilihDokter extends javax.swing.JDialog {
     public DlgPilihDokter(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-        tabmode=new DefaultTableModel(new Object[]{"Kode","Nama Dokter"},0){
+        tabmode=new DefaultTableModel(new Object[]{"Kode","Nama Dokter","Kuota"},0){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbAdmin.setModel(tabmode);
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             TableColumn column = tbAdmin.getColumnModel().getColumn(i);
             if(i==1){
                 column.setPreferredWidth(600);
@@ -65,7 +65,11 @@ public class DlgPilihDokter extends javax.swing.JDialog {
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
-        
+        try {
+            aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
+        } catch (Exception e) {
+            aktifjadwal="nonaktif";
+        }
     }
 
     /** This method is called from within the constructor to
@@ -307,11 +311,24 @@ public class DlgPilihDokter extends javax.swing.JDialog {
         if(tabmode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
-                    DlgRegistrasi pilih=new DlgRegistrasi(null,true);
-                    pilih.setSize(this.getWidth(),this.getHeight());
-                    pilih.setLocationRelativeTo(this);
-                    pilih.setPasien(LblNoRm.getText(),LblKdPoli.getText(),tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString());
-                    pilih.setVisible(true);
+                    if(aktifjadwal.equals("aktif")){
+                        if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"+tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString()+"' and tgl_registrasi=CURRENT_DATE() ")>=Integer.parseInt(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),2).toString())){
+                            JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
+                            TCari.requestFocus();
+                        }else{
+                            DlgRegistrasi pilih=new DlgRegistrasi(null,true);
+                            pilih.setSize(this.getWidth(),this.getHeight());
+                            pilih.setLocationRelativeTo(this);
+                            pilih.setPasien(LblNoRm.getText(),LblKdPoli.getText(),tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString());
+                            pilih.setVisible(true);
+                        }                    
+                    }else{
+                        DlgRegistrasi pilih=new DlgRegistrasi(null,true);
+                        pilih.setSize(this.getWidth(),this.getHeight());
+                        pilih.setLocationRelativeTo(this);
+                        pilih.setPasien(LblNoRm.getText(),LblKdPoli.getText(),tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString());
+                        pilih.setVisible(true);
+                    } 
                 } catch (java.lang.NullPointerException e) {
                 }
             }
@@ -321,11 +338,24 @@ public class DlgPilihDokter extends javax.swing.JDialog {
     private void tbAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAdminMouseClicked
         if(tabmode.getRowCount()!=0){
             try {
-                DlgRegistrasi pilih=new DlgRegistrasi(null,true);
+                if(aktifjadwal.equals("aktif")){
+                    if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"+tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString()+"' and tgl_registrasi=CURRENT_DATE() ")>=Integer.parseInt(tbAdmin.getValueAt(tbAdmin.getSelectedRow(),2).toString())){
+                        JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
+                        TCari.requestFocus();
+                    }else{
+                        DlgRegistrasi pilih=new DlgRegistrasi(null,true);
+                        pilih.setSize(this.getWidth(),this.getHeight());
+                        pilih.setLocationRelativeTo(this);
+                        pilih.setPasien(LblNoRm.getText(),LblKdPoli.getText(),tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString());
+                        pilih.setVisible(true);
+                    }                    
+                }else{
+                    DlgRegistrasi pilih=new DlgRegistrasi(null,true);
                     pilih.setSize(this.getWidth(),this.getHeight());
                     pilih.setLocationRelativeTo(this);
                     pilih.setPasien(LblNoRm.getText(),LblKdPoli.getText(),tbAdmin.getValueAt(tbAdmin.getSelectedRow(),0).toString());
                     pilih.setVisible(true);
+                } 
             } catch (java.lang.NullPointerException e) {
             }
         }
@@ -419,7 +449,7 @@ public class DlgPilihDokter extends javax.swing.JDialog {
         Valid.tabelKosong(tabmode);
         try{
             ps=koneksi.prepareStatement(
-                    "select dokter.kd_dokter,dokter.nm_dokter "+
+                    "select dokter.kd_dokter,dokter.nm_dokter,jadwal.kuota "+
                     "from dokter inner join jadwal on dokter.kd_dokter=jadwal.kd_dokter "+
                     "where jadwal.hari_kerja=? and jadwal.kd_poli=? and dokter.kd_dokter like ? or "+
                     "jadwal.hari_kerja=? and jadwal.kd_poli=? and dokter.nm_dokter like ? group by dokter.kd_dokter order by dokter.nm_dokter "); 
@@ -447,7 +477,7 @@ public class DlgPilihDokter extends javax.swing.JDialog {
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery(); 
                 while(rs.next()){
-                    tabmode.addRow(new Object[]{rs.getString(1),"  "+rs.getString(2)});
+                    tabmode.addRow(new Object[]{rs.getString(1),"  "+rs.getString(2),rs.getString(3)});
                 }   
             }catch(Exception ex){
                 System.out.println(ex);

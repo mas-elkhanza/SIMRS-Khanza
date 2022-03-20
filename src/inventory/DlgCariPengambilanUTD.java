@@ -380,7 +380,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                     Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
                         ""+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()
                     });
-                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus",tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString());
+                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus",tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString(),"UTD/BD");
                     Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
                                      "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
                                      "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"',"+
@@ -392,7 +392,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                                      "and no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9)+"' "+
                                      "and no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10)+"' ");
                 }else{
-                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus","","");
+                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus","","","UTD/BD");
                     Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
                                      "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
                                      "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','',''", 
@@ -409,7 +409,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                 Sequel.queryu("delete from tampjurnal");
                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Utd from set_akun"),"PENGAMBILAN BHP MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Utd from set_akun"),"PERSEDIAAN BARANG/OBAT/ALKES/BHP",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
-                sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5)+", OLEH "+akses.getkode());
+                sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5)+", OLEH "+akses.getkode());
             }
             
             if(sukses==true){

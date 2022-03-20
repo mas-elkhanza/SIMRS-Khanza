@@ -1,7 +1,6 @@
 package bridging;
 
 import fungsi.koneksiDB;
-import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.MessageDigest;
@@ -9,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.Properties;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 import org.apache.http.conn.scheme.Scheme;
@@ -18,11 +16,9 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 public class ApiKemenkesSITT {        
-    private static final Properties prop = new Properties();
     private String Key,pass;
     public ApiKemenkesSITT(){
         try {            
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
             pass = koneksiDB.PASSSITT();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);

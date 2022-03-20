@@ -390,6 +390,7 @@
                 </Component>
                 <Component class="widget.TextBox" name="KdPtg">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="KdPtg" noResource="true"/>
                   </Properties>
                   <Events>
@@ -437,7 +438,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="12-10-2020"/>
+                        <StringItem index="0" value="01-03-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

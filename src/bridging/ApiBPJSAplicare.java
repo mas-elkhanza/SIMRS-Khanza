@@ -1,16 +1,19 @@
 package bridging;
 
 import fungsi.koneksiDB;
-import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.Properties;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.Mac;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -22,9 +25,7 @@ import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
 public class ApiBPJSAplicare {        
-    private static final Properties prop = new Properties();
     private String Key,Consid;
-    private long GetUTCdatetimeAsString;
     private String salt;
     private String generateHmacSHA256Signature;
     private byte[] hmacData;
@@ -35,18 +36,19 @@ public class ApiBPJSAplicare {
     private SecretKeySpec secretKey;
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
+    private ApiBPJSAesKeySpec mykey;
+    
     public ApiBPJSAplicare(){
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        try {           
             Key = koneksiDB.SECRETKEYAPIAPLICARE();
             Consid = koneksiDB.CONSIDAPIAPLICARE();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
     }
-    public String getHmac() {        
-        GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
-        salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
+    
+    public String getHmac(String utc) {               
+        salt = Consid +"&"+utc;
 	generateHmacSHA256Signature = null;
 	try {
 	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,Key);
@@ -70,6 +72,14 @@ public class ApiBPJSAplicare {
             System.out.println("Error Generate HMac: e");
 	    throw new GeneralSecurityException(e);
 	}
+    }
+    
+    public String Decrypt(String data,String utc)throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+        System.out.println(data);
+        mykey = ApiBPJSEnc.generateKey(Consid+Key+utc);
+        data=ApiBPJSEnc.decrypt(data, mykey.getKey(), mykey.getIv());
+        data=ApiBPJSLZString.decompressFromEncodedURIComponent(data);
+        return data;
     }
         
     public long GetUTCdatetimeAsString(){    

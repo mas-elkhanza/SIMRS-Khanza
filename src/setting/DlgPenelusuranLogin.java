@@ -41,6 +41,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private String keyword="";
 
     /** Creates new form DlgPemberianInfus
      * @param parent
@@ -128,6 +129,8 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppFilterPemulanganPasien = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -150,6 +153,24 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         Scroll1 = new widget.ScrollPane();
         tbObat1 = new widget.Table();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppFilterPemulanganPasien.setBackground(new java.awt.Color(255, 255, 254));
+        ppFilterPemulanganPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppFilterPemulanganPasien.setForeground(java.awt.Color.darkGray);
+        ppFilterPemulanganPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppFilterPemulanganPasien.setText("Filter Pemulangan Pasien");
+        ppFilterPemulanganPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppFilterPemulanganPasien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppFilterPemulanganPasien.setName("ppFilterPemulanganPasien"); // NOI18N
+        ppFilterPemulanganPasien.setPreferredSize(new java.awt.Dimension(240, 25));
+        ppFilterPemulanganPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppFilterPemulanganPasienBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppFilterPemulanganPasien);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -159,7 +180,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penelusuran Login User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penelusuran Login User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -249,7 +270,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -263,7 +284,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -306,7 +327,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,10 +345,12 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
 
         TabRawat.addTab("Penelusuran Login", Scroll);
 
+        Scroll1.setComponentPopupMenu(jPopupMenu1);
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
         tbObat1.setAutoCreateRowSorter(true);
+        tbObat1.setComponentPopupMenu(jPopupMenu1);
         tbObat1.setName("tbObat1"); // NOI18N
         Scroll1.setViewportView(tbObat1);
 
@@ -417,6 +440,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        keyword="";
         if(TabRawat.getSelectedIndex()==0){
             tampil();
         }else if(TabRawat.getSelectedIndex()==1){
@@ -444,6 +468,11 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
             tampil2();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
+
+    private void ppFilterPemulanganPasienBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppFilterPemulanganPasienBtnPrintActionPerformed
+        keyword="update kamar_inap set tgl_keluar";
+        tampil2();
+    }//GEN-LAST:event_ppFilterPemulanganPasienBtnPrintActionPerformed
 
     /**
     * @param args the command line arguments
@@ -479,8 +508,10 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppFilterPemulanganPasien;
     private widget.Table tbObat;
     private widget.Table tbObat1;
     // End of variables declaration//GEN-END:variables
@@ -531,11 +562,22 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                 ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode2.addRow(new Object[]{
-                        rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
-                    });
+                if(keyword.equals("")){
+                    while(rs.next()){
+                        tabMode2.addRow(new Object[]{
+                            rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
+                        });
+                    }
+                }else{
+                    while(rs.next()){
+                        if(rs.getString("sqle").contains(keyword)){
+                            tabMode2.addRow(new Object[]{
+                                rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
+                            });
+                        }
+                    }
                 }
+                    
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{

@@ -25,11 +25,11 @@ public class DlgDaruratStok extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,psstok;
     private ResultSet rs,rsstok;
     private double stok=0;
+    private String aktifkanbatch="no";
 
     /** 
      * @param parent
@@ -86,6 +86,13 @@ public class DlgDaruratStok extends javax.swing.JDialog {
                 }
             });
         }   
+        
+        try {
+            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            aktifkanbatch = "no";
+        }
      
     }    
     /** This method is called from within the constructor to
@@ -385,7 +392,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();            
                 while(rs.next()){ 
-                    psstok=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=?");        
+                    if(aktifkanbatch.equals("yes")){
+                        psstok=koneksi.prepareStatement("select sum(gudangbarang.stok) from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal where bangsal.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kode_brng=?"); 
+                    }else{
+                        psstok=koneksi.prepareStatement("select sum(gudangbarang.stok) from gudangbarang inner join bangsal on gudangbarang.kd_bangsal=bangsal.kd_bangsal where bangsal.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kode_brng=?"); 
+                    }
+                               
                     try {
                         psstok.setString(1,rs.getString(1));
                         rsstok=psstok.executeQuery();

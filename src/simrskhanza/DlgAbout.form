@@ -278,7 +278,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Khanza SIMKES 2021"/>
+                <Property name="text" type="java.lang.String" value="Khanza SIMKES 2022"/>
                 <Property name="name" type="java.lang.String" value="jLabel17" noResource="true"/>
               </Properties>
               <Constraints>
@@ -407,7 +407,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="RS Permata Medika Kebumen, RS Aviciena Martapura, dll"/>
+                <Property name="text" type="java.lang.String" value="RS Permata Medika Kebumen, RS Juanda Kuningan, dll"/>
                 <Property name="name" type="java.lang.String" value="jLabel19" noResource="true"/>
               </Properties>
               <Constraints>
@@ -496,7 +496,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kontributor &amp; Donatur : RS Amal Sehat Wonogiri Jawa Tengah, RS Sadewa Yogyakarta"/>
+                <Property name="text" type="java.lang.String" value="Kontributor &amp; Donatur : RS Jeumpa Pontianak Kalimantan Barat, RS Sadewa Yogyakarta,"/>
                 <Property name="name" type="java.lang.String" value="jLabel23" noResource="true"/>
               </Properties>
               <Constraints>
@@ -513,7 +513,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="RS Mutiara Hati Pringsewu Lampung, RS Pelita Insani Martapura"/>
+                <Property name="text" type="java.lang.String" value="RS Puri Husada Sleman Yogyakarta, RS Pelita Insani Martapura,"/>
                 <Property name="name" type="java.lang.String" value="jLabel25" noResource="true"/>
               </Properties>
               <Constraints>
@@ -530,7 +530,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="RS Islam Magelang, RS Citra Husada Pangkalan Bun Kalteng"/>
+                <Property name="text" type="java.lang.String" value="RS Assyifa Manna, RS Arvita Bunda Sleman Yogyakarta,"/>
                 <Property name="name" type="java.lang.String" value="jLabel26" noResource="true"/>
               </Properties>
               <Constraints>
@@ -593,7 +593,7 @@
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Bagi yang ingin melakukan Donasi, bisa ke Rekening BRI Syariah 1015369872"/>
+                <Property name="text" type="java.lang.String" value="Bagi yang ingin melakukan Donasi, bisa ke Rekening BSI 1015369872, kode bank 451"/>
                 <Property name="name" type="java.lang.String" value="jLabel27" noResource="true"/>
               </Properties>
               <Constraints>
@@ -679,7 +679,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="32" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="github.com/mas-elkhanza     Tweeter : KhanzaMedia"/>
+                <Property name="text" type="java.lang.String" value="github.com/mas-elkhanza     Instagram : simrskhanza"/>
                 <Property name="name" type="java.lang.String" value="jLabel34" noResource="true"/>
               </Properties>
               <Constraints>

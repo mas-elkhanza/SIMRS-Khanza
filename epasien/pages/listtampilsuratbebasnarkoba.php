@@ -5,8 +5,8 @@
     
     $nosurat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
     $nosurat = json_decode(encrypt_decrypt($nosurat,"d"),true); 
-    $nosurat = $nosurat["nosurat"];
-    if (isset($nosurat)) {
+    if (isset($nosurat["nosurat"])) {
+        $nosurat = $nosurat["nosurat"];
         $querysurathamil = bukaquery("select surat_skbn.no_surat,surat_skbn.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.pekerjaan,pasien.umur,DAYNAME(surat_skbn.tanggalsurat) as hari,date_format(surat_skbn.tanggalsurat,'%d/%m/%Y') as tanggalsurat,
                 date_format(surat_skbn.tanggalsurat,'%d') as tanggal,date_format(surat_skbn.tanggalsurat,'%m') as bulan,date_format(surat_skbn.tanggalsurat,'%Y') as tahun,surat_skbn.keperluan,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
                 concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,dokter.nm_dokter,reg_periksa.kd_dokter,surat_skbn.kategori,pasien.tmp_lahir,suku_bangsa.nama_suku_bangsa,pasien.pekerjaan,

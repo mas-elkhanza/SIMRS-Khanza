@@ -922,7 +922,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Sequel.cariIsi("select Kontra_Retur_Piutang_Toko from set_akun"),"KONTRA RETUR JUAL TOKO",rs.getString("total"),"0"
                     }); 
-                    sukses=jur.simpanJurnal(rs.getString("no_retur_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI RETUR JUAL TOKO"+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(rs.getString("no_retur_piutang"),"U","BATAL TRANSAKSI RETUR JUAL TOKO"+", OLEH "+akses.getkode());
                     
                     if(sukses==true){
                         Sequel.queryu2("delete from tokoreturpiutang where no_retur_piutang=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});

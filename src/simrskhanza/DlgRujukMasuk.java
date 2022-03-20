@@ -27,7 +27,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -214,7 +213,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        ChkInput.setSelected(true);
+        ChkInput.setSelected(false);
         isForm();
     }
     private String diagnosa="",diagnosa2="",keluar="",status="",diagnosapulang="";
@@ -1913,7 +1912,9 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl2);
         isRawat();
-        isPsien();              
+        isPsien();    
+        ChkInput.setSelected(true);
+        isForm();
     }
       
     

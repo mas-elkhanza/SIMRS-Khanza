@@ -3,9 +3,9 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baristahun   = mysqli_fetch_row($hasil);
-   $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
-   $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
-   $hari      = empty($baristhn[2])?date("d"):$baristhn[2];
+   $tahun     = empty($baristahun[0])?date("Y"):$baristahun[0];
+   $blnini    = empty($baristahun[1])?date("m"):$baristahun[1];
+   $hari      = empty($baristahun[2])?date("d"):$baristahun[2];
    $bln_leng  = strlen($blnini);
    $bulan     = "0";
    if ($bln_leng==1){
@@ -14,7 +14,7 @@
        $bulan=$blnini;
    }
 
-   $bulanindex = empty($baristhn[1])?date("m"):$baristhn[1];
+   $bulanindex = empty($baristahun[1])?date("m"):$baristahun[1];
 
    $_sqllibur  = "select `tanggal`, `ktg` from set_hari_libur where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
    $hasillibur =bukaquery($_sqllibur);
@@ -717,7 +717,6 @@
                                                         set_insentif.tahun='$tahun' and set_insentif.bulan='$bulanindex' and
                                                         indextotal.kdindex=indexins.dep_id and
                                                         indextotal.kdindex='".$baris["indexins"]."'";
-
                                                 }else if($baris["indexins"]=="DIR"){
                                                     $_sql23="SELECT ($ttlindex/sum(indextotal.ttl))*((indexins.persen/100)*total_insentif)*2.3
                                                         from indextotal,indexins,set_insentif where
@@ -731,9 +730,8 @@
                                                         indextotal.kdindex=indexins.dep_id and
                                                         indextotal.kdindex='MNJ'";                                                    
                                                     }
-
                                                 }
-
+                                                
                                                 $hasil23=bukaquery($_sql23);                                            
                                                 $baris23 = mysqli_fetch_array($hasil23);
                                                 $ttlinsentif=$baris23[0];

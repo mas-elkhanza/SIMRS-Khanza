@@ -15,7 +15,7 @@
 <html lang="en">
 <head>
 
-    <title>Layar Informasi RSIA</title>
+    <title>Layar Informasi Jadwal Operasi</title>
 
     <!-- Meta START -->
     <link rel="icon" href="assets/img/rs.png" type="image/x-icon">
@@ -61,7 +61,7 @@
     <div class="nav-wrapper">
         <ul class="center hide-on-med-and-down" id="nv">
             <li>
-                <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> RSIA</a>
+                <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Jadwal Operasi</a>
             </li>
             <li class="right" style="margin-right: 10px;">
                 <i class="material-icons">perm_contact_calendar</i>

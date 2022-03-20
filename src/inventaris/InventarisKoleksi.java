@@ -243,6 +243,8 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
 
         Popup = new javax.swing.JPopupMenu();
         ppBarcode = new javax.swing.JMenuItem();
+        ppBarcode2 = new javax.swing.JMenuItem();
+        ppBarcode3 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -303,19 +305,51 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
 
         ppBarcode.setBackground(new java.awt.Color(255, 255, 254));
         ppBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBarcode.setForeground(new java.awt.Color(50,50,50));
+        ppBarcode.setForeground(new java.awt.Color(50, 50, 50));
         ppBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppBarcode.setText("Barcode");
         ppBarcode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBarcode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBarcode.setName("ppBarcode"); // NOI18N
-        ppBarcode.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppBarcode.setPreferredSize(new java.awt.Dimension(110, 25));
         ppBarcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBarcodeBtnPrintActionPerformed(evt);
             }
         });
         Popup.add(ppBarcode);
+
+        ppBarcode2.setBackground(new java.awt.Color(255, 255, 254));
+        ppBarcode2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBarcode2.setForeground(new java.awt.Color(50, 50, 50));
+        ppBarcode2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        ppBarcode2.setText("Barcode 2");
+        ppBarcode2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBarcode2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBarcode2.setName("ppBarcode2"); // NOI18N
+        ppBarcode2.setPreferredSize(new java.awt.Dimension(110, 25));
+        ppBarcode2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBarcode2BtnPrintActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBarcode2);
+
+        ppBarcode3.setBackground(new java.awt.Color(255, 255, 254));
+        ppBarcode3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBarcode3.setForeground(new java.awt.Color(50, 50, 50));
+        ppBarcode3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        ppBarcode3.setText("Barcode 3");
+        ppBarcode3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBarcode3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBarcode3.setName("ppBarcode3"); // NOI18N
+        ppBarcode3.setPreferredSize(new java.awt.Dimension(110, 25));
+        ppBarcode3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBarcode3BtnPrintActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBarcode3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -326,7 +360,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Aset Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Aset Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -639,7 +673,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         FormInput.add(btnBarang);
         btnBarang.setBounds(703, 40, 25, 23);
 
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2021" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);
@@ -728,7 +762,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         FormInput.add(asal_barang);
         asal_barang.setBounds(275, 130, 140, 23);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "Posisi Inventaris Di :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "Posisi Inventaris Di :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
@@ -1112,7 +1146,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
 }//GEN-LAST:event_ppBarcodeBtnPrintActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        //tampil();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnRuang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuang1ActionPerformed
@@ -1134,6 +1168,46 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
             }
         }
     }//GEN-LAST:event_tbJnsPerawatanKeyReleased
+
+    private void ppBarcode2BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBarcode2BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BtnCariActionPerformed(evt);
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnBatal.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>(); 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs()); 
+            param.put("ruang","%"+nm_ruangcari.getText().trim()+"%"); 
+            param.put("parameter","%"+TCari.getText().trim()+"%"); 
+            Valid.MyReport("rptBarcodeInventaris2.jasper","report","::[ Data Barang ]::",param);            
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppBarcode2BtnPrintActionPerformed
+
+    private void ppBarcode3BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBarcode3BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BtnCariActionPerformed(evt);
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnBatal.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>(); 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs()); 
+            param.put("ruang","%"+nm_ruangcari.getText().trim()+"%"); 
+            param.put("parameter","%"+TCari.getText().trim()+"%"); 
+            Valid.MyReport("rptBarcodeInventaris3.jasper","report","::[ Data Barang ]::",param);            
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppBarcode3BtnPrintActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1206,6 +1280,8 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppBarcode;
+    private javax.swing.JMenuItem ppBarcode2;
+    private javax.swing.JMenuItem ppBarcode3;
     private widget.ComboBox status_barang;
     private widget.Table tbJnsPerawatan;
     private widget.Tanggal tgl_pengadaan;

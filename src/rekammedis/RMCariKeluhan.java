@@ -124,7 +124,7 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Pemeriksaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Keluhan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -332,14 +332,14 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select tgl_perawatan, jam_rawat, keluhan from pemeriksaan_ralan where "+
-                    "no_rawat=? and tgl_perawatan like ? or "+
-                    "no_rawat=? and keluhan like ? order by tgl_perawatan, jam_rawat");
+                    "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.keluhan "+
+                    "from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? and "+
+                    "(pemeriksaan_ralan.tgl_perawatan like ? or pemeriksaan_ralan.keluhan like ?) "+
+                    "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try{
                 ps.setString(1,norawat);
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,norawat);
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {
@@ -362,14 +362,14 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
         
         try{
             ps=koneksi.prepareStatement(
-                    "select tgl_perawatan, jam_rawat, keluhan from pemeriksaan_ranap where "+
-                    "no_rawat=? and tgl_perawatan like ? or "+
-                    "no_rawat=? and keluhan like ? order by tgl_perawatan, jam_rawat");
+                    "select pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.keluhan "+
+                    "from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat=? and "+
+                    "(pemeriksaan_ranap.tgl_perawatan like ? or pemeriksaan_ranap.keluhan like ?) "+
+                    "order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try{
                 ps.setString(1,norawat);
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,norawat);
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {

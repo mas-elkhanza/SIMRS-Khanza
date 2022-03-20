@@ -160,8 +160,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         FisikKlinis.setDocument(new batasInput((int)100).getKata(FisikKlinis));
         RiwayatPersonal.setDocument(new batasInput((int)100).getKata(RiwayatPersonal));
         PolaMakan.setDocument(new batasInput((int)100).getKata(PolaMakan));
-        DiagnosisGizi.setDocument(new batasInput((int)100).getKata(DiagnosisGizi));
-        IntervensiGizi.setDocument(new batasInput((int)100).getKata(IntervensiGizi));
+        DiagnosisGizi.setDocument(new batasInput((int)500).getKata(DiagnosisGizi));
+        IntervensiGizi.setDocument(new batasInput((int)500).getKata(IntervensiGizi));
         Monitoring.setDocument(new batasInput((int)100).getKata(Monitoring));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -2169,10 +2169,24 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     
     private void isBMI(){
         if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
-            IMT.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)))+"");
+            try {
+                IMT.setText(Valid.SetAngka8(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)),1)+"");
+            } catch (Exception e) {
+                IMT.setText("");
+            }
+                
             if(sttsumur.equals("Bl")){
-                BBPerU.setText(Valid.SetAngka7(Valid.SetAngka(BB.getText())/umur)+"");
-                TBPerU.setText(Valid.SetAngka7(Valid.SetAngka(TB.getText())/umur)+"");
+                try {
+                    BBPerU.setText(Valid.SetAngka8(Valid.SetAngka(BB.getText())/umur,1)+"");
+                } catch (Exception e) {
+                    BBPerU.setText("");
+                }
+                    
+                try {
+                    TBPerU.setText(Valid.SetAngka8(Valid.SetAngka(TB.getText())/umur,1)+"");
+                } catch (Exception e) {
+                    TBPerU.setText("");
+                }   
             }
         }
     }

@@ -2,6 +2,8 @@
 
 package keuangan;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable3;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -14,6 +16,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,6 +51,13 @@ public final class KeuanganHutangToko extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
     private boolean sukses=false;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -204,9 +216,6 @@ public final class KeuanganHutangToko extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });        
-        
-        Valid.loadCombo(nama_bayar,"nama_bayar","akun_bayar");
-
     }
     
 
@@ -264,7 +273,7 @@ public final class KeuanganHutangToko extends javax.swing.JDialog {
         tgl_bayar = new widget.Tanggal();
         BtnPetugas = new widget.Button();
         jLabel12 = new widget.Label();
-        nama_bayar = new widget.ComboBox();
+        AkunBayar = new widget.ComboBox();
         keterangan = new widget.TextBox();
         label39 = new widget.Label();
 
@@ -697,14 +706,14 @@ public final class KeuanganHutangToko extends javax.swing.JDialog {
         panelisi4.add(jLabel12);
         jLabel12.setBounds(0, 40, 75, 23);
 
-        nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
+        AkunBayar.setName("AkunBayar"); // NOI18N
+        AkunBayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nama_bayarKeyPressed(evt);
+                AkunBayarKeyPressed(evt);
             }
         });
-        panelisi4.add(nama_bayar);
-        nama_bayar.setBounds(78, 40, 251, 23);
+        panelisi4.add(AkunBayar);
+        AkunBayar.setBounds(78, 40, 251, 23);
 
         keterangan.setHighlighter(null);
         keterangan.setName("keterangan"); // NOI18N
@@ -867,7 +876,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         no_bukti.requestFocus();
-        tampil();
+        tampilAkunBayar();
     }//GEN-LAST:event_formWindowOpened
 
     private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
@@ -907,16 +916,33 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else if(keterangan.getText().trim().equals("")){
             Valid.textKosong(keterangan,"Keterangan");
         }else if(tabMode.getRowCount()!=0){
-            koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
             Sequel.AutoComitFalse();
             sukses=true;
+            
+            koderekening="";
+            try {
+                myObj = new FileReader("./cache/akunbayar.iyem");
+                root = mapper.readTree(myObj);
+                response = root.path("akunbayar");
+                if(response.isArray()){
+                   for(JsonNode list:response){
+                       if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
+                            koderekening=list.path("KodeRek").asText();  
+                       }
+                   }
+                }
+                myObj.close();
+            } catch (Exception e) {
+                sukses=false;
+            } 
+            
             row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
                     if(Double.parseDouble(tbBangsal.getValueAt(i,10).toString())>0){
                         if(Sequel.menyimpantf("toko_bayar_pemesanan","?,?,?,?,?,?,?","Data", 7,new String[]{
                             Valid.SetTgl(tgl_bayar.getSelectedItem()+""),tabMode.getValueAt(i,1).toString(),nip.getText(),
-                            tabMode.getValueAt(i,10).toString(),keterangan.getText(),nama_bayar.getSelectedItem().toString(),
+                            tabMode.getValueAt(i,10).toString(),keterangan.getText(),AkunBayar.getSelectedItem().toString(),
                             no_bukti.getText()
                         })==true){
                             if((Double.parseDouble(tabMode.getValueAt(i,9).toString())<=0)||(Double.parseDouble(tabMode.getValueAt(i,9).toString())<=-0)){
@@ -929,9 +955,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 akunbayar,"HUTANG BARANG TOKO",tabMode.getValueAt(i,10).toString(),"0"
                             });                     
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                koderekening,nama_bayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,10).toString()
+                                koderekening,AkunBayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,10).toString()
                             });    
-                            if(jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN HUTANG TOKO NO.FAKTUR "+tabMode.getValueAt(i,1).toString()+", OLEH "+akses.getkode())==false){
+                            if(jur.simpanJurnal(no_bukti.getText(),"U","BAYAR PELUNASAN HUTANG TOKO NO.FAKTUR "+tabMode.getValueAt(i,1).toString()+", OLEH "+akses.getkode())==false){
                                 sukses=false;
                             }                                                    
                         }else{
@@ -966,7 +992,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             Sequel.cariIsi("select nama from petugas where nip=?", nama_petugas,nip.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nama_bayar.requestFocus();
+            AkunBayar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             keterangan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -975,7 +1001,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_nipKeyPressed
 
     private void tgl_bayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tgl_bayarKeyPressed
-        Valid.pindah(evt,no_bukti,nama_bayar);
+        Valid.pindah(evt,no_bukti,AkunBayar);
     }//GEN-LAST:event_tgl_bayarKeyPressed
 
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
@@ -989,9 +1015,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPetugasActionPerformed
 
-    private void nama_bayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nama_bayarKeyPressed
+    private void AkunBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkunBayarKeyPressed
         Valid.pindah(evt,tgl_bayar,nip);
-    }//GEN-LAST:event_nama_bayarKeyPressed
+    }//GEN-LAST:event_AkunBayarKeyPressed
 
     private void keteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keteranganKeyPressed
         Valid.pindah(evt,nip,BtnBayar);
@@ -1070,6 +1096,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox AkunBayar;
     private widget.Button BtnAll;
     private widget.Button BtnBayar;
     private widget.Button BtnCari;
@@ -1105,7 +1132,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label label32;
     private widget.Label label36;
     private widget.Label label39;
-    private widget.ComboBox nama_bayar;
     private widget.TextBox nama_petugas;
     private widget.TextBox nip;
     private widget.TextBox nmsup;
@@ -1192,5 +1218,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
         }
         LCount1.setText(Valid.SetAngka(bayar));
+    }
+    
+    private void tampilAkunBayar() {         
+         try{      
+             file=new File("./cache/akunbayar.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             iyem="";
+             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             try{
+                 rs=ps.executeQuery();
+                 AkunBayar.removeAllItems();
+                 while(rs.next()){    
+                     AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
+                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                 }
+             }catch (Exception e) {
+                 System.out.println("Notifikasi : "+e);
+             } finally{
+                 if(rs != null){
+                     rs.close();
+                 } 
+                 if(ps != null){
+                     ps.close();
+                 } 
+             }
+
+             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
+             fileWriter.flush();
+             fileWriter.close();
+             iyem=null;
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
     }
 }

@@ -1128,14 +1128,14 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
         return Sequel.cariIsiAngka("select sum(detailjual.jumlah)"+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng='"+kodebarang+"' and penjualan.tgl_jual=?",tanggal);
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng='"+kodebarang+"' and penjualan.tgl_jual=?",tanggal);
     }
     
     private double JmlObat(String tanggal,String kodebarang,String lokasi){
         return Sequel.cariIsiAngka("select sum(detailjual.jumlah)"+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng='"+kodebarang+"' and kd_bangsal='"+lokasi+"' and penjualan.tgl_jual=?",tanggal);
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng='"+kodebarang+"' and kd_bangsal='"+lokasi+"' and penjualan.tgl_jual=?",tanggal);
     }
     
 }

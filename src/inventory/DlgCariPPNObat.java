@@ -602,11 +602,12 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                     " penjualan.nip,petugas.nama,penjualan.ongkir as ppn,sum(detailjual.total) as total "+
                     " from penjualan inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                     " inner join petugas on penjualan.nip=petugas.nip inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                    " where penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and penjualan.nota_jual like '%"+TCari.getText()+"%' or "+
-                    " penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                    " penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and penjualan.nm_pasien like '%"+TCari.getText()+"%' or "+
-                    " penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and penjualan.nip like '%"+TCari.getText()+"%' or "+
-                    " penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText()+"%' group by penjualan.nota_jual "+
+                    " where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                    (TCari.getText().trim().equals("")?"":" and (penjualan.nota_jual like '%"+TCari.getText()+"%' or "+
+                    " penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                    " penjualan.nm_pasien like '%"+TCari.getText()+"%' or "+
+                    " penjualan.nip like '%"+TCari.getText()+"%' or "+
+                    " petugas.nama like '%"+TCari.getText()+"%') ")+" group by penjualan.nota_jual "+
                     " order by penjualan.tgl_jual,penjualan.nota_jual ",param);
             }                
         }
@@ -975,28 +976,21 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     " penjualan.nip,petugas.nama,penjualan.ongkir as ppn,sum(detailjual.total) as total "+
                     " from penjualan inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                     " inner join petugas on penjualan.nip=petugas.nip inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                    " where penjualan.tgl_jual between ? and ? and penjualan.nota_jual like ? or "+
-                    " penjualan.tgl_jual between ? and ? and penjualan.no_rkm_medis like ? or "+
-                    " penjualan.tgl_jual between ? and ? and penjualan.nm_pasien like ? or "+
-                    " penjualan.tgl_jual between ? and ? and penjualan.nip like ? or "+
-                    " penjualan.tgl_jual between ? and ? and petugas.nama like ? group by penjualan.nota_jual "+
+                    " where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between ? and ? "+
+                    (TCari.getText().trim().equals("")?"":" and (penjualan.nota_jual like ? or "+
+                    " penjualan.no_rkm_medis like ? or and penjualan.nm_pasien like ? or "+
+                    " penjualan.nip like ? or petugas.nama like ?) ")+" group by penjualan.nota_jual "+
                     " order by penjualan.tgl_jual,penjualan.nota_jual ");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                }   
                 rs=ps.executeQuery();
                 total=0;
                 totalppn=0;

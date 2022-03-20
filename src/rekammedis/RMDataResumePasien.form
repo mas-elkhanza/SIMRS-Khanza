@@ -116,7 +116,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Data Resume Medis Pasien ]::">
+            <TitledBorder title="::[ Data Resume Medis Pasien Rawat Jalan ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -375,7 +375,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="03-10-2020"/>
+                        <StringItem index="0" value="20-02-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -403,7 +403,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="03-10-2020"/>
+                        <StringItem index="0" value="20-02-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -559,7 +559,7 @@
                   <SubComponents>
                     <Component class="widget.Label" name="jLabel4">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Keluhan utama riwayat penyakit yang positif :"/>
+                        <Property name="text" type="java.lang.String" value="Keluhan Utama Riwayat Penyakit Yang Positif :"/>
                         <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -773,7 +773,7 @@
                     </Component>
                     <Component class="widget.Label" name="jLabel8">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Jalannya penyakit selama perawatan :"/>
+                        <Property name="text" type="java.lang.String" value="Jalannya Penyakit Selama Perawatan :"/>
                         <Property name="name" type="java.lang.String" value="jLabel8" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -818,7 +818,7 @@
                     </Container>
                     <Component class="widget.Label" name="jLabel9">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Pemeriksaan penunjang yang positif :"/>
+                        <Property name="text" type="java.lang.String" value="Pemeriksaan Penunjang Yang Positif :"/>
                         <Property name="name" type="java.lang.String" value="jLabel9" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -863,7 +863,7 @@
                     </Container>
                     <Component class="widget.Label" name="jLabel10">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Hasil laboratorium yang positif :"/>
+                        <Property name="text" type="java.lang.String" value="Hasil Laboratorium Yang Positif :"/>
                         <Property name="name" type="java.lang.String" value="jLabel10" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -908,7 +908,7 @@
                     </Container>
                     <Component class="widget.Label" name="jLabel11">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Obat-obatan waktu pulang/nasihat :"/>
+                        <Property name="text" type="java.lang.String" value="Obat-obatan Waktu Pulang/Nasihat :"/>
                         <Property name="name" type="java.lang.String" value="jLabel11" noResource="true"/>
                       </Properties>
                       <Constraints>

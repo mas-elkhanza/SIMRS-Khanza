@@ -16,7 +16,6 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -63,7 +62,7 @@ public class DlgSirkulasiBarang5 extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
               "Kode Barang","Nama Barang","Satuan","Tgl.Opname","Stok Awal","Stok Awal(Rp)","Pengadaan","Pengadaan(Rp)",
-              "Pemesanan","Pemesanan(Rp)","Penjualan","Penjualan(Rp)","Ke Pasien","Ke Pasien(Rp)","Piutang Jual","Piutang Jual(Rp)",
+              "Penerimaan","Penerimaan(Rp)","Penjualan","Penjualan(Rp)","Ke Pasien","Ke Pasien(Rp)","Piutang Jual","Piutang Jual(Rp)",
               "Retur Beli","Retur Beli(Rp)","Retur Jual","Retur Jual(Rp)","Retur Piutang","Retur Piutang(Rp)",
               "Pengambilan UTD","Pengambilan UTD(Rp)","Stok Keluar Medis","Stok Keluar Medis(Rp)","Resep Pulang","Resep Pulang(Rp)",
               "Mutasi Masuk","Mutasi Masuk(Rp)","Mutasi Keluar","Mutasi Keluar(Rp)","Hibah","Hibah(Rp)","Stok Akhir","Stok Akhir(Rp)"
@@ -1159,8 +1158,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah), sum(detailjual.total) "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
-                        " penjualan.tgl_jual  between ? and ? ");
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
+                        " penjualan.tgl_jual between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,tglopname);
@@ -1659,8 +1658,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps2=koneksi.prepareStatement("select sum(detailjual.jumlah), sum(detailjual.total)  "+
                         " from penjualan inner join detailjual "+
                         " on penjualan.nota_jual=detailjual.nota_jual "+
-                        " where detailjual.kode_brng=? and "+
-                        " penjualan.tgl_jual  between ? and ? and penjualan.kd_bangsal=?");
+                        " where penjualan.status='Sudah Dibayar' and detailjual.kode_brng=? and "+
+                        " penjualan.tgl_jual between ? and ? and penjualan.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,tglopname);

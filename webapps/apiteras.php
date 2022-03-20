@@ -1,17 +1,29 @@
 <?php
     require_once('conf/conf.php');
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://demo2.terassekawanbersama.co.id/ws/",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_HTTPHEADER => array(
+          "x-user: demo",
+          "x-secret: 123qwe",
+          "x-mod: auth",
+          "x-cid: 4301202030080005"
+        )
+    ));
+
+    $token        = json_decode(curl_exec($curl),true);
+    curl_close($curl);
     $nopermintaan = isset($_GET["nopermintaan"])?$_GET["nopermintaan"]:NULL;
-    $session      = curl_init ( "api.terassekawanbersama.co.id/add_order/" );			
-    $arrheader    = array (
-        'x-cid:mintavendor',
-        'x-user:mintavendor',
-        'x-secret:mintavendor',
-        'x-token:mintavendor',
-        'Content-Type:text/html; charset=UTF-8'
-    );
-  
     $json         = "";
     $json2        = "";
+    
     $qrypermintaan  = bukaquery("select permintaan_lab.noorder,permintaan_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_lab.tgl_permintaan,
         if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,pasien.tgl_lahir,pasien.jk,pasien.alamat,pasien.no_ktp,
         if(permintaan_lab.tgl_sampel='0000-00-00','',permintaan_lab.tgl_sampel) as tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,
@@ -54,25 +66,35 @@
                         "dokter_pk": "'.getOne("select kd_dokterlab from set_pjlab").'",
                         "bahasa": "id",
                         "diagnosa": "'.$rsqrypermintaan['diagnosa_klinis'].'",
-                        "cito": '.(strpos(strtolower($rsqrypermintaan['informasi_tambahan']),'cito')===false?"0":"1").'
+                        "cito": '.(strpos(strtolower($rsqrypermintaan['informasi_tambahan']),'cito')===false?"0":"1").',
+                        "golongan":"-"
                     },
                     "pemeriksaan":['.$json2.'],
                     "no_lab": "'.str_replace("PL","",$rsqrypermintaan['noorder']).'"
                 }';
     }
     
-    echo $json;
-    curl_setopt ( $session, CURLOPT_URL, "api.terassekawanbersama.co.id/add_order/");
-    curl_setopt ( $session, CURLOPT_HTTPHEADER, $arrheader );
-    curl_setopt ( $session, CURLOPT_VERBOSE, true );
-    curl_setopt ( $session, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt ( $session, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt ( $session, CURLOPT_POST, true );
-    curl_setopt ( $session, CURLOPT_POSTFIELDS, $json);
-    curl_setopt ( $session, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
-    curl_setopt ( $session, CURLOPT_RETURNTRANSFER, TRUE );
-    $response = curl_exec ( $session );
-    if(strpos(strtolower($response),'created')===true){
+    $curl2 = curl_init();
+    curl_setopt_array($curl2, array(
+        CURLOPT_URL => "https://demo2.terassekawanbersama.co.id/ws/",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $json,
+        CURLOPT_HTTPHEADER => array(
+          "x-token:$token[token]",
+          "x-mod: order"
+        )
+    ));
+    
+    $response = json_decode(curl_exec($curl2),true);
+    echo $response;
+    curl_close($curl2);
+    if(strpos(strtolower($response["pesan"]),'created')==true){
         echo"<meta http-equiv='refresh' content='1;URL=?aksi=SuksesKirim'>";
     }
  ?>

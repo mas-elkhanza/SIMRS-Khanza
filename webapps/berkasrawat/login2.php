@@ -14,7 +14,5 @@
                     $url = "index.php?act=HomeAdmin";
             }
 	    header("Location:".$url);
-            
 	}
-    
 ?>

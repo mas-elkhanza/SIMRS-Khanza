@@ -589,7 +589,7 @@ public class MasterMasalahKeperawatanAnak extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan_anak where kode_masalah like ? or nama_masalah like ? order by kode_masalah");
+            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan_anak where master_masalah_keperawatan_anak.kode_masalah like ? or master_masalah_keperawatan_anak.nama_masalah like ? order by master_masalah_keperawatan_anak.kode_masalah");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

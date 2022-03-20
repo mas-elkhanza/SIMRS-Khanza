@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1291" pageHeight="612" orientation="Landscape" columnWidth="1251" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3107c42b-71ae-474a-9ccd-c4c2983e751d">
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1391" pageHeight="612" orientation="Landscape" columnWidth="1351" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3107c42b-71ae-474a-9ccd-c4c2983e751d">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="762"/>
 	<property name="ireport.y" value="0"/>
@@ -8,6 +8,15 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -18,10 +27,10 @@
 	<queryString>
 		<![CDATA[select pemeriksaan_ralan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
 pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,
-pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi, 
+pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.spo2,pemeriksaan_ralan.tinggi, 
 pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, 
 pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,
-pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,pemeriksaan_ralan.instruksi,pemeriksaan_ralan.nip,pegawai.nama 
+pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian,pemeriksaan_ralan.instruksi,pemeriksaan_ralan.evaluasi,pemeriksaan_ralan.nip,pegawai.nama 
 from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
 inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat
 inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
@@ -77,6 +86,12 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 	<field name="respirasi" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="respirasi"/>
 		<property name="com.jaspersoft.studio.field.label" value="respirasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ralan"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="spo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="spo2"/>
+		<property name="com.jaspersoft.studio.field.label" value="spo2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ralan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -144,6 +159,12 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ralan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="evaluasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="evaluasi"/>
+		<property name="com.jaspersoft.studio.field.label" value="evaluasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pemeriksaan_ralan"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="nip" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nip"/>
 		<property name="com.jaspersoft.studio.field.label" value="nip"/>
@@ -162,7 +183,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 	<title>
 		<band height="84" splitType="Stretch">
 			<textField>
-				<reportElement x="3" y="25" width="1247" height="14" uuid="1792b426-2b75-4014-bef1-f02cf2604a07"/>
+				<reportElement x="3" y="25" width="1347" height="14" uuid="1792b426-2b75-4014-bef1-f02cf2604a07"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -174,7 +195,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="3" y="35" width="1247" height="14" uuid="8b06e33c-7d65-4f19-b439-682cf1e5c8a6"/>
+				<reportElement x="3" y="35" width="1347" height="14" uuid="8b06e33c-7d65-4f19-b439-682cf1e5c8a6"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -182,7 +203,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="3" y="14" width="1247" height="14" uuid="6676ea36-d9c0-4aad-ad24-4d9acd06b663"/>
+				<reportElement x="3" y="14" width="1347" height="14" uuid="6676ea36-d9c0-4aad-ad24-4d9acd06b663"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -190,7 +211,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="51" width="1249" height="23" uuid="7b8e9a20-6a61-4665-bca0-069f5e3e7fa7"/>
+				<reportElement x="1" y="51" width="1349" height="23" uuid="7b8e9a20-6a61-4665-bca0-069f5e3e7fa7"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -198,13 +219,13 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[DATA PEMERIKSAAN PASIEN]]></text>
 			</staticText>
 			<line>
-				<reportElement x="1" y="48" width="1249" height="1" uuid="9f477774-48fe-4be4-aaab-67f627af6b91"/>
+				<reportElement x="1" y="48" width="1349" height="1" uuid="9f477774-48fe-4be4-aaab-67f627af6b91"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="3" y="0" width="1247" height="17" uuid="e6a83f62-55fd-4a60-b14e-fdd4e348840d"/>
+				<reportElement x="3" y="0" width="1347" height="17" uuid="e6a83f62-55fd-4a60-b14e-fdd4e348840d"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -219,7 +240,23 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 	<columnHeader>
 		<band height="17" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="1150" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="e79cb9e1-2629-47fa-b072-83fbb351d607"/>
+				<reportElement mode="Opaque" x="1098" y="1" width="80" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="845a92f4-c44e-4772-b17e-c61e232a309c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Evaluasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="479" y="0" width="20" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="d6556d03-e2cd-4638-80db-f927491fe916"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[SpO2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1250" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="e79cb9e1-2629-47fa-b072-83fbb351d607"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -227,7 +264,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Dokter/Paramedis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="978" y="1" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="b52088ed-63aa-4956-80ca-6c6d587a69f4"/>
+				<reportElement mode="Opaque" x="998" y="1" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="b52088ed-63aa-4956-80ca-6c6d587a69f4"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -235,7 +272,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Instruksi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="519" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="2754baf6-e76c-446f-b9e6-c5d68139219b"/>
+				<reportElement mode="Opaque" x="539" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="2754baf6-e76c-446f-b9e6-c5d68139219b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -243,7 +280,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Kesadaran]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="792" y="0" width="98" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ee3b7c97-2e61-4c8b-b9aa-8272bd9cbad5"/>
+				<reportElement mode="Opaque" x="812" y="0" width="98" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ee3b7c97-2e61-4c8b-b9aa-8272bd9cbad5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -251,7 +288,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Asesmen]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="890" y="0" width="88" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="4c9c7020-f49f-48b6-82e4-a11ad4a71d34"/>
+				<reportElement mode="Opaque" x="910" y="0" width="88" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="4c9c7020-f49f-48b6-82e4-a11ad4a71d34"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -259,7 +296,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Plan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1122" y="0" width="28" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="c8d0fb04-8d6b-4a3a-8ce3-c92a968ff37b"/>
+				<reportElement mode="Opaque" x="1222" y="0" width="28" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="c8d0fb04-8d6b-4a3a-8ce3-c92a968ff37b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -267,7 +304,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Imun Ke]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1078" y="0" width="44" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ba019d17-d43a-415b-80c3-57a9c0f03a7d"/>
+				<reportElement mode="Opaque" x="1178" y="0" width="44" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ba019d17-d43a-415b-80c3-57a9c0f03a7d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -275,7 +312,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Alergi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="479" y="0" width="40" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="7f4ad4c3-9419-4ce8-913c-556a00249972"/>
+				<reportElement mode="Opaque" x="499" y="0" width="40" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="7f4ad4c3-9419-4ce8-913c-556a00249972"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -357,7 +394,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Tensi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="579" y="0" width="113" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="9bab15ec-414a-4631-a0bc-eadceb24dfd7"/>
+				<reportElement mode="Opaque" x="599" y="0" width="113" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="9bab15ec-414a-4631-a0bc-eadceb24dfd7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -365,7 +402,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Subjek]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="692" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="1359928f-05d2-49f5-adbb-3379fc5f601e"/>
+				<reportElement mode="Opaque" x="712" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="1359928f-05d2-49f5-adbb-3379fc5f601e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -389,13 +426,13 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<text><![CDATA[Jam]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="1250" height="1" uuid="f4cd2041-bded-456f-92f5-c9b10e282465"/>
+				<reportElement x="0" y="0" width="1350" height="1" uuid="f4cd2041-bded-456f-92f5-c9b10e282465"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="1250" height="1" uuid="f0a34437-1ece-4953-8235-e15f4f3591c9"/>
+				<reportElement x="0" y="16" width="1350" height="1" uuid="f0a34437-1ece-4953-8235-e15f4f3591c9"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -496,7 +533,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{berat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="479" y="0" width="40" height="10" uuid="7b244b08-d3aa-41da-86a6-af770e6a4a6e"/>
+				<reportElement positionType="Float" x="499" y="0" width="40" height="10" uuid="7b244b08-d3aa-41da-86a6-af770e6a4a6e"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -504,7 +541,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{gcs}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="579" y="0" width="113" height="10" uuid="69893744-8ee9-4daf-8b20-47ffa61d5af6"/>
+				<reportElement positionType="Float" x="599" y="0" width="113" height="10" uuid="69893744-8ee9-4daf-8b20-47ffa61d5af6"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -512,7 +549,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{keluhan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="692" y="0" width="100" height="10" uuid="b8d87d02-44b6-4930-95a6-fed2e5ce1343"/>
+				<reportElement positionType="Float" x="712" y="0" width="100" height="10" uuid="b8d87d02-44b6-4930-95a6-fed2e5ce1343"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -520,7 +557,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{pemeriksaan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="1078" y="0" width="44" height="10" uuid="1a99e4bc-9013-46b4-bbb2-8c2fa4f4f0a9"/>
+				<reportElement positionType="Float" x="1178" y="0" width="44" height="10" uuid="1a99e4bc-9013-46b4-bbb2-8c2fa4f4f0a9"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -528,7 +565,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{alergi}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="1122" y="0" width="28" height="10" uuid="b4bf6aba-802e-404e-aa41-89402016695a"/>
+				<reportElement positionType="Float" x="1222" y="0" width="28" height="10" uuid="b4bf6aba-802e-404e-aa41-89402016695a"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -536,7 +573,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{imun_ke}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="891" y="0" width="86" height="10" uuid="18d47ebd-4729-47f3-917f-0f86740f9daf"/>
+				<reportElement positionType="Float" x="911" y="0" width="86" height="10" uuid="18d47ebd-4729-47f3-917f-0f86740f9daf"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -544,7 +581,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{rtl}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="792" y="0" width="98" height="10" uuid="d84d056e-419d-4c87-aece-9a6627d7b6db"/>
+				<reportElement positionType="Float" x="812" y="0" width="98" height="10" uuid="d84d056e-419d-4c87-aece-9a6627d7b6db"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -552,7 +589,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{penilaian}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="1250" height="1" uuid="58c2854e-3ba5-4b61-a757-795221a8b1bb">
+				<reportElement positionType="Float" x="0" y="11" width="1350" height="1" uuid="58c2854e-3ba5-4b61-a757-795221a8b1bb">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -560,7 +597,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="519" y="0" width="60" height="10" uuid="fd46e7db-a4e0-43b2-99e1-6f22eb36012d"/>
+				<reportElement positionType="Float" x="539" y="0" width="60" height="10" uuid="fd46e7db-a4e0-43b2-99e1-6f22eb36012d"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -568,7 +605,7 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{kesadaran}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="978" y="0" width="100" height="10" uuid="1269ae68-1087-4c16-a8a5-3caf04621c78"/>
+				<reportElement positionType="Float" x="998" y="0" width="100" height="10" uuid="1269ae68-1087-4c16-a8a5-3caf04621c78"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -576,12 +613,28 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[$F{instruksi}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="1150" y="0" width="100" height="10" uuid="400d7cad-bd90-44aa-a752-81d327c349c8"/>
+				<reportElement positionType="Float" x="1250" y="0" width="100" height="10" uuid="400d7cad-bd90-44aa-a752-81d327c349c8"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="479" y="0" width="20" height="10" uuid="5e06e96c-6ec3-4e15-8928-9e0f70b09c8f"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{spo2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="1098" y="0" width="80" height="10" uuid="302d06c6-fe02-412a-88f0-69102209082e"/>
+				<textElement>
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{evaluasi}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -633,13 +686,13 @@ inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik]]>
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="1250" height="1" uuid="ffeb0c18-3efb-402c-8012-3ecb2789afe7"/>
+				<reportElement x="0" y="0" width="1350" height="1" uuid="ffeb0c18-3efb-402c-8012-3ecb2789afe7"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="23" width="1250" height="1" uuid="ef658236-4326-423d-89ee-47b55b817f52"/>
+				<reportElement x="0" y="23" width="1350" height="1" uuid="ef658236-4326-423d-89ee-47b55b817f52"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

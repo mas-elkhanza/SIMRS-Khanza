@@ -893,17 +893,17 @@ public final class DlgPetugas extends javax.swing.JDialog {
         }else{
             try {
                 Sequel.AutoComitFalse();
-                Sequel.menyimpan("jnj_jabatan","?,?,?",3,new String[]{"-","-","0"});
-                Sequel.menyimpan("departemen","?,?",2,new String[]{"-","-"});
-                Sequel.menyimpan("bidang","?",1,new String[]{"-"});
-                Sequel.menyimpan("bank","'T'");
-                Sequel.menyimpan("stts_wp","?,?",2,new String[]{"-","-"});
-                Sequel.menyimpan("stts_kerja","?,?,?",3,new String[]{"-","-","0"});
-                Sequel.menyimpan("kelompok_jabatan","?,?,?",3,new String[]{"-","-","0"});
-                Sequel.menyimpan("resiko_kerja","?,?,?",3,new String[]{"-","-","0"});
-                Sequel.menyimpan("emergency_index","?,?,?",3,new String[]{"-","-","0"});
-                Sequel.menyimpan("pendidikan","?,?,?,?,?",5,new String[]{"-","0","0","0","0"});
-                Sequel.menyimpan("pegawai","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",34,new String[]{
+                Sequel.menyimpanignore("jnj_jabatan","?,?,?,?",3,new String[]{"-","-","0","0"});
+                Sequel.menyimpanignore("departemen","?,?",2,new String[]{"-","-"});
+                Sequel.menyimpanignore("bidang","?",1,new String[]{"-"});
+                Sequel.menyimpanignore("bank","'T'");
+                Sequel.menyimpanignore("stts_wp","?,?",2,new String[]{"-","-"});
+                Sequel.menyimpanignore("stts_kerja","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpanignore("kelompok_jabatan","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpanignore("resiko_kerja","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpanignore("emergency_index","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpanignore("pendidikan","?,?,?,?,?",5,new String[]{"-","0","0","0","0"});
+                Sequel.menyimpanignore("pegawai","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",34,new String[]{
                     "0",TNip.getText(),TNm.getText(),CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria"),
                     "-","-","-","-","-","-","-","-","-","-","-","0",TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),TAlmt.getText(),"-","1900-01-01","<1",
                     "-","T","-","AKTIF","0","0","0","1900-01-01","0","0","pages/pegawai/photo/","-"

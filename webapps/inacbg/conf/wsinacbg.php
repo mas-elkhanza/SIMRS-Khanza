@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "52eab0d187258e97219ae323c42f12e62e3eab204a6063fbfdce6ccd8b3b768f";   
+       $keyRS = "5c02a6235c3bbf015b913f10a67ef109e5921bdd80c53423e9f8e9653ffe054c";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.62.3/E-Klaim/ws.php";
+        $UrlWS = "http://25.11.80.203/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "BP";
+        $kelasRS = "DP";
         return $kelasRS;
     }
 
@@ -217,61 +217,153 @@
         if($sewa_alat==""){
             $sewa_alat="0";
         }
-        
-        $request ='{
-                        "metadata": {
-                            "method": "set_claim_data",
-                            "nomor_sep": "'.$nomor_sep.'"
-                        },
-                        "data": {
-                            "nomor_sep": "'.$nomor_sep.'",
-                            "nomor_kartu": "'.$nomor_kartu.'",
-                            "tgl_masuk": "'.$tgl_masuk.'",
-                            "tgl_pulang": "'.$tgl_pulang.'",
-                            "jenis_rawat": "'.$jenis_rawat.'",
-                            "kelas_rawat": "'.$kelas_rawat.'",
-                            "adl_sub_acute": "'.$adl_sub_acute.'",
-                            "adl_chronic": "'.$adl_chronic.'",
-                            "icu_indikator": "'.$icu_indikator.'",
-                            "icu_los": "'.$icu_los.'",
-                            "ventilator_hour": "'.$ventilator_hour.'",
-                            "upgrade_class_ind": "'.$upgrade_class_ind.'",
-                            "upgrade_class_class": "'.$upgrade_class_class.'",
-                            "upgrade_class_los": "'.$upgrade_class_los.'",
-                            "add_payment_pct": "'.$add_payment_pct.'",
-                            "birth_weight": "'.$birth_weight.'",
-                            "discharge_status": "'.$discharge_status.'",
-                            "diagnosa": "'.$diagnosa.'",
-                            "procedure": "'.$procedure.'",
-                            "tarif_rs": {
-                                "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
-                                "prosedur_bedah": "'.$prosedur_bedah.'",
-                                "konsultasi": "'.$konsultasi.'",
-                                "tenaga_ahli": "'.$tenaga_ahli.'",
-                                "keperawatan": "'.$keperawatan.'",
-                                "penunjang": "0",
-                                "radiologi": "'.$radiologi.'",
-                                "laboratorium": "'.$laboratorium.'",
-                                "pelayanan_darah": "0",
-                                "rehabilitasi": "0",
-                                "kamar": "'.($kamar+$tarif_poli_eks).'",
-                                "rawat_intensif": "0",
-                                "obat": "'.$obat.'",
-                                "obat_kronis": "'.$obat_kronis.'",
-                                "obat_kemoterapi": "'.$obat_kemoterapi.'",
-                                "alkes": "0",
-                                "bmhp": "'.$bmhp.'",
-                                "sewa_alat": "'.$sewa_alat.'"
-                             },
-                            "tarif_poli_eks": "0",
-                            "nama_dokter": "'.$nama_dokter.'",
-                            "kode_tarif": "'.$kode_tarif.'",
-                            "payor_id": "'.$payor_id.'",
-                            "payor_cd": "'.$payor_cd.'",
-                            "cob_cd": "'.$cob_cd.'",
-                            "coder_nik": "'.$coder_nik.'"
-                        }
-                   }';
+        $hasilcorona=bukaquery(
+                "select pemulasaraan_jenazah,if(pemulasaraan_jenazah='Ya',1,0) as ytpemulasaraan_jenazah, 
+                kantong_jenazah,if(kantong_jenazah='Ya',1,0) as ytkantong_jenazah, 
+                peti_jenazah,if(peti_jenazah='Ya',1,0) as ytpeti_jenazah,  
+                plastik_erat,if(plastik_erat='Ya',1,0) as ytplastik_erat,  
+                desinfektan_jenazah,if(desinfektan_jenazah='Ya',1,0) as ytdesinfektan_jenazah,   
+                mobil_jenazah,if(mobil_jenazah='Ya',1,0) as ytmobil_jenazah,    
+                desinfektan_mobil_jenazah,if(desinfektan_mobil_jenazah='Ya',1,0) as ytdesinfektan_mobil_jenazah,  
+                covid19_status_cd,if(covid19_status_cd='ODP',1,if(covid19_status_cd='PDP',2,3)) as ytcovid19_status_cd, 
+                nomor_kartu_t, episodes1, episodes2,episodes3, episodes4, episodes5, episodes6, 
+                covid19_cc_ind,if(covid19_cc_ind='Ya',1,0) as ytcovid19_cc_ind 
+                from perawatan_corona where no_rawat='".$no_rawat."'");
+        if($bariscorona = mysqli_fetch_array($hasilcorona)) {
+            $episodes1 = $bariscorona["episodes1"];
+            $episodes2 = $bariscorona["episodes2"];
+            $episodes3 = $bariscorona["episodes3"];
+            $episodes4 = $bariscorona["episodes4"];
+            $episodes5 = $bariscorona["episodes5"];
+            $episodes6 = $bariscorona["episodes6"];
+            $episodes  = ($episodes1==0?"":"1;$episodes1#").($episodes2==0?"":"2;$episodes2#").($episodes3==0?"":"3;$episodes3#").($episodes4==0?"":"4;$episodes4#").($episodes5==0?"":"5;$episodes5#").($episodes6==0?"":"6;$episodes6#");  
+            $episodes  = substr($episodes, 0, -1);
+            $request ='{
+                            "metadata": {
+                                "method": "set_claim_data",
+                                "nomor_sep": "'.$nomor_sep.'"
+                            },
+                            "data": {
+                                "nomor_sep": "'.$nomor_sep.'",
+                                "nomor_kartu": "'.$nomor_kartu.'",
+                                "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                                "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
+                                "jenis_rawat": "'.$jenis_rawat.'",
+                                "kelas_rawat": "'.$kelas_rawat.'",
+                                "adl_sub_acute": "'.$adl_sub_acute.'",
+                                "adl_chronic": "'.$adl_chronic.'",
+                                "icu_indikator": "'.$icu_indikator.'",
+                                "icu_los": "'.$icu_los.'",
+                                "ventilator_hour": "'.$ventilator_hour.'",
+                                "upgrade_class_ind": "'.$upgrade_class_ind.'",
+                                "upgrade_class_class": "'.$upgrade_class_class.'",
+                                "upgrade_class_los": "'.$upgrade_class_los.'",
+                                "add_payment_pct": "'.$add_payment_pct.'",
+                                "birth_weight": "'.$birth_weight.'",
+                                "discharge_status": "'.$discharge_status.'",
+                                "diagnosa": "'.$diagnosa.'",
+                                "procedure": "'.$procedure.'",
+                                "diagnosa_inagrouper": "'.$diagnosa.'",
+                                "procedure_inagrouper": "'.$procedure.'",
+                                "tarif_rs": {
+                                    "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
+                                    "prosedur_bedah": "'.$prosedur_bedah.'",
+                                    "konsultasi": "'.$konsultasi.'",
+                                    "tenaga_ahli": "'.$tenaga_ahli.'",
+                                    "keperawatan": "'.$keperawatan.'",
+                                    "penunjang": "0",
+                                    "radiologi": "'.$radiologi.'",
+                                    "laboratorium": "'.$laboratorium.'",
+                                    "pelayanan_darah": "0",
+                                    "rehabilitasi": "0",
+                                    "kamar": "'.($kamar+$tarif_poli_eks).'",
+                                    "rawat_intensif": "0",
+                                    "obat": "'.$obat.'",
+                                    "obat_kronis": "'.$obat_kronis.'",
+                                    "obat_kemoterapi": "'.$obat_kemoterapi.'",
+                                    "alkes": "0",
+                                    "bmhp": "'.$bmhp.'",
+                                    "sewa_alat": "'.$sewa_alat.'"
+                                 },
+                                "pemulasaraan_jenazah": "'.$bariscorona["ytpemulasaraan_jenazah"].'", 
+                                "kantong_jenazah": "'.$bariscorona["ytkantong_jenazah"].'", 
+                                "peti_jenazah": "'.$bariscorona["ytpeti_jenazah"].'", 
+                                "plastik_erat": "'.$bariscorona["ytplastik_erat"].'", 
+                                "desinfektan_jenazah": "'.$bariscorona["ytdesinfektan_jenazah"].'", 
+                                "mobil_jenazah": "'.$bariscorona["ytmobil_jenazah"].'", 
+                                "desinfektan_mobil_jenazah": "'.$bariscorona["ytdesinfektan_mobil_jenazah"].'", 
+                                "covid19_status_cd": "'.$bariscorona["ytcovid19_status_cd"].'", 
+                                "nomor_kartu_t": "'.$bariscorona["nomor_kartu_t"].'", 
+                                "episodes": "'.$episodes.'",
+                                "covid19_cc_ind": "'.$bariscorona["ytcovid19_cc_ind"].'",
+                                "tarif_poli_eks": "'.$tarif_poli_eks.'",
+                                "nama_dokter": "'.$nama_dokter.'",
+                                "kode_tarif": "'.$kode_tarif.'",
+                                "payor_id": "71",
+                                "payor_cd": "JAMINAN COVID-19",
+                                "cob_cd": "'.$cob_cd.'",
+                                "coder_nik": "'.$coder_nik.'"
+                            }
+                       }';
+        }else{
+            $request ='{
+                            "metadata": {
+                                "method": "set_claim_data",
+                                "nomor_sep": "'.$nomor_sep.'"
+                            },
+                            "data": {
+                                "nomor_sep": "'.$nomor_sep.'",
+                                "nomor_kartu": "'.$nomor_kartu.'",
+                                "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                                "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
+                                "jenis_rawat": "'.$jenis_rawat.'",
+                                "kelas_rawat": "'.$kelas_rawat.'",
+                                "adl_sub_acute": "'.$adl_sub_acute.'",
+                                "adl_chronic": "'.$adl_chronic.'",
+                                "icu_indikator": "'.$icu_indikator.'",
+                                "icu_los": "'.$icu_los.'",
+                                "ventilator_hour": "'.$ventilator_hour.'",
+                                "upgrade_class_ind": "'.$upgrade_class_ind.'",
+                                "upgrade_class_class": "'.$upgrade_class_class.'",
+                                "upgrade_class_los": "'.$upgrade_class_los.'",
+                                "add_payment_pct": "'.$add_payment_pct.'",
+                                "birth_weight": "'.$birth_weight.'",
+                                "discharge_status": "'.$discharge_status.'",
+                                "diagnosa": "'.$diagnosa.'",
+                                "procedure": "'.$procedure.'",
+                                "diagnosa_inagrouper": "'.$diagnosa.'",
+                                "procedure_inagrouper": "'.$procedure.'",
+                                "tarif_rs": {
+                                    "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
+                                    "prosedur_bedah": "'.$prosedur_bedah.'",
+                                    "konsultasi": "'.$konsultasi.'",
+                                    "tenaga_ahli": "'.$tenaga_ahli.'",
+                                    "keperawatan": "'.$keperawatan.'",
+                                    "penunjang": "0",
+                                    "radiologi": "'.$radiologi.'",
+                                    "laboratorium": "'.$laboratorium.'",
+                                    "pelayanan_darah": "0",
+                                    "rehabilitasi": "0",
+                                    "kamar": "'.($kamar+$tarif_poli_eks).'",
+                                    "rawat_intensif": "0",
+                                    "obat": "'.$obat.'",
+                                    "obat_kronis": "'.$obat_kronis.'",
+                                    "obat_kemoterapi": "'.$obat_kemoterapi.'",
+                                    "alkes": "0",
+                                    "bmhp": "'.$bmhp.'",
+                                    "sewa_alat": "'.$sewa_alat.'"
+                                 },
+                                "tarif_poli_eks": "0",
+                                "nama_dokter": "'.$nama_dokter.'",
+                                "kode_tarif": "'.$kode_tarif.'",
+                                "payor_id": "3",
+                                "payor_cd": "JKN",
+                                "cob_cd": "'.$cob_cd.'",
+                                "coder_nik": "'.$coder_nik.'"
+                            }
+                       }';
+        }
+            
         //echo "Data : ".$request;
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
@@ -296,8 +388,8 @@
                         "data": {
                             "nomor_sep": "'.$nomor_sep.'",
                             "nomor_kartu": "'.$nomor_kartu.'",
-                            "tgl_masuk": "'.$tgl_masuk.'",
-                            "tgl_pulang": "'.$tgl_pulang.'",
+                            "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                            "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
                             "jenis_rawat": "'.$jenis_rawat.'",
                             "kelas_rawat": "'.$kelas_rawat.'",
                             "adl_sub_acute": "'.$adl_sub_acute.'",
@@ -313,6 +405,8 @@
                             "discharge_status": "'.$discharge_status.'",
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
+                            "diagnosa_inagrouper": "'.$diagnosa.'",
+                            "procedure_inagrouper": "'.$procedure.'",
                             "tarif_rs": {
                                 "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
                                 "prosedur_bedah": "'.$prosedur_bedah.'",
@@ -368,8 +462,8 @@
                         "data": {
                             "nomor_sep": "'.$nomor_sep.'",
                             "nomor_kartu": "'.$nomor_kartu.'",
-                            "tgl_masuk": "'.$tgl_masuk.'",
-                            "tgl_pulang": "'.$tgl_pulang.'",
+                            "tgl_masuk": "'.$tgl_masuk.' 00:00:01",
+                            "tgl_pulang": "'.$tgl_pulang.' 23:59:59",
                             "jenis_rawat": "'.$jenis_rawat.'",
                             "kelas_rawat": "'.$kelas_rawat.'",
                             "adl_sub_acute": "'.$adl_sub_acute.'",
@@ -385,6 +479,8 @@
                             "discharge_status": "'.$discharge_status.'",
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
+                            "diagnosa_inagrouper": "'.$diagnosa.'",
+                            "procedure_inagrouper": "'.$procedure.'",
                             "tarif_rs": {
                                 "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
                                 "prosedur_bedah": "'.$prosedur_bedah.'",

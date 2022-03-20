@@ -61,7 +61,7 @@ public class DlgSetTarif extends javax.swing.JDialog {
 
         for (int i = 0; i < 11; i++) {
             TableColumn column = tbAdmin.getColumnModel().getColumn(i);
-            column.setPreferredWidth(150);
+            column.setPreferredWidth(130);
         }
 
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());

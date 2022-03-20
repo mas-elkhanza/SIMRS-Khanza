@@ -552,7 +552,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Ipsrs from set_akun"),"PERSEDIAAN BARANG",""+(ttl),"0"});
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Ipsrs from set_akun"),"KAS DI TANGAN","0",""+(ttl)}); 
-                    sukses=jur.simpanJurnal(NoKeluar.getText(),Valid.SetTgl(TglKeluar.getSelectedItem()+""),"U","PENGGUNAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(NoKeluar.getText(),"U","PENGGUNAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
                 }
                 
                 if(sukses==true){
@@ -848,6 +848,59 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }   
         }
         
+        isHitung();
+    }
+
+    private void autoNomor() {
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from ipsrspengeluaran where tanggal='"+Valid.SetTgl(TglKeluar.getSelectedItem()+"")+"' ",
+                "SKNM"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
+    }
+
+    public void tampil(String nopermintaan,String keterangan) {
+        Valid.tabelKosong(tabMode);        
+        try{
+            Keterangan.setText(keterangan);
+            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),"+
+                    " ipsrsbarang.kode_sat,stok, ipsrsbarang.harga,detail_permintaan_non_medis.jumlah "+
+                    " from ipsrsbarang inner join detail_permintaan_non_medis "+
+                    " on ipsrsbarang.kode_brng=detail_permintaan_non_medis.kode_brng "+
+                    " where detail_permintaan_non_medis.no_permintaan=? order by ipsrsbarang.nama_brng");
+            
+            try{  
+                ps.setString(1,nopermintaan);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if(rs.getDouble("jumlah")>rs.getDouble("stok")){
+                        JOptionPane.showMessageDialog(null,"Stok tidak mencukupi...!");
+                        tabMode.addRow(new Object[]{
+                            "",rs.getString(1),rs.getString(2),rs.getString(3),
+                            rs.getString(4),rs.getDouble(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
+                        });
+                    }else{
+                        tabMode.addRow(new Object[]{
+                            rs.getString("jumlah"),rs.getString(1),rs.getString(2),rs.getString(3),
+                            rs.getString(4),rs.getDouble(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
+                        });
+                    }
+                        
+                } 
+            }catch(Exception e){
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }  
+            isHitung();
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }        
+    }
+    
+    private void isHitung(){
         ttl=0;
         jml=tbDokter.getRowCount();
         for(i=0;i<jml;i++){    
@@ -859,45 +912,17 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }
             ttl=ttl+keluar;
         }
+        LTotal.setText(Valid.SetAngka(ttl));ttl=0;
+        jml=tbDokter.getRowCount();
+        for(i=0;i<jml;i++){    
+            keluar=0;
+            try {
+                keluar=Double.parseDouble(tbDokter.getValueAt(i,6).toString());
+            }catch (Exception e) {
+                keluar=0;                 
+            }
+            ttl=ttl+keluar;
+        }
         LTotal.setText(Valid.SetAngka(ttl));
-    }
-
-    private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from ipsrspengeluaran where tanggal='"+Valid.SetTgl(TglKeluar.getSelectedItem()+"")+"' ",
-                "SKNM"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
-    }
-
-    public void tampil(String nopermintaan) {
-        
-        Valid.tabelKosong(tabMode);        
-        try{
-            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),"+
-                    " ipsrsbarang.kode_sat,stok, ipsrsbarang.harga,detail_permintaan_non_medis.jumlah "+
-                    " from ipsrsbarang inner join detail_permintaan_non_medis "+
-                    " on ipsrsbarang.kode_brng=detail_permintaan_non_medis.kode_brng "+
-                    " where detail_permintaan_non_medis.no_permintaan=? order by ipsrsbarang.nama_brng");
-            
-            try{  
-                ps.setString(1,nopermintaan);
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("jumlah"),rs.getString(1),rs.getString(2),rs.getString(3),
-                        rs.getString(4),rs.getDouble(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
-                    });
-                } 
-            }catch(Exception e){
-                System.out.println(e);
-            }finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }                                
-        }catch(SQLException e){
-            System.out.println("Notifikasi : "+e);
-        }        
     }
 }
