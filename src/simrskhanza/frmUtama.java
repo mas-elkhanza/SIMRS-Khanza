@@ -31,6 +31,7 @@ import laporan.DlgDataHAIs;
 import bridging.AplicareCekReferensiKamar;
 import bridging.AplicareKetersediaanKamar;
 import bridging.ApotekBPJSCekReferensiDPHO;
+import bridging.ApotekBPJSCekReferensiFaskes;
 import bridging.ApotekBPJSCekReferensiPoli;
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekDataSEPInternal;
@@ -18221,6 +18222,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSReferensiFaskesApotekActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSCekReferensiFaskes form=new ApotekBPJSCekReferensiFaskes(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18859,7 +18871,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
-            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter;
+            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek;
     
     public void isWall(){
         try{            
@@ -21159,6 +21171,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_referensi_poli_apotek()==true){
                 Panelmenu.add(btnBPJSReferensiPoliApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_referensi_faskes_apotek()==true){
+                Panelmenu.add(btnBPJSReferensiFaskesApotek);
                 jmlmenu++;
             }
             
@@ -25144,6 +25161,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_referensi_poli_apotek()==true){
             Panelmenu.add(btnBPJSReferensiPoliApotek);
+            jmlmenu++;
+        }
+
+        if(akses.getbpjs_referensi_faskes_apotek()==true){
+            Panelmenu.add(btnBPJSReferensiFaskesApotek);
             jmlmenu++;
         }
 
@@ -29991,6 +30013,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_referensi_poli_apotek()==true){
             if(btnBPJSReferensiPoliApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiPoliApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_referensi_faskes_apotek()==true){
+            if(btnBPJSReferensiFaskesApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSReferensiFaskesApotek);
                 jmlmenu++;
             }                
         }
@@ -35213,6 +35242,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarJMDokter.setName("btnBayarJMDokter"); 
         btnBayarJMDokter.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBayarJMDokter.addActionListener(this::btnBayarJMDokterActionPerformed);
+        
+        btnBPJSReferensiFaskesApotek = new widget.ButtonBig();
+        btnBPJSReferensiFaskesApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSReferensiFaskesApotek.setText("Referensi Faskes Apotek BPJS");
+        btnBPJSReferensiFaskesApotek.setIconTextGap(0);
+        btnBPJSReferensiFaskesApotek.setName("btnBPJSReferensiFaskesApotek"); 
+        btnBPJSReferensiFaskesApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSReferensiFaskesApotek.addActionListener(this::btnBPJSReferensiFaskesApotekActionPerformed);
     }
     
 }
