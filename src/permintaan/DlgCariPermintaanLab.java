@@ -1,6 +1,7 @@
 package permintaan;
 import bridging.ApiLICA;
 import bridging.ApiMEDQLAB;
+import bridging.ApiSOFTMEDIX;
 import bridging.koneksiDBELIMS;
 import bridging.koneksiDBSMARTLAB;
 import bridging.koneksiDBSysmex;
@@ -68,6 +69,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private Date now;
     private boolean aktif=false,semua;
     private ApiLICA lica=new ApiLICA();
+    private ApiSOFTMEDIX softmedix=new ApiSOFTMEDIX();
     private ObjectMapper mapper = new ObjectMapper();
     private ApiMEDQLAB medqlab=new ApiMEDQLAB();
     private WebEngine engine;
@@ -501,6 +503,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         BtnAmbilLISMADQLAB = new widget.Button();
         BtnKirimLISSMARTLAB = new widget.Button();
         BtnAmbilLISSMARTLAB = new widget.Button();
+        BtnKirimLISSOFTMEDIX = new widget.Button();
+        BtnAmbilLISSOFTMEDIX = new widget.Button();
 
         WindowAmbilSampel.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowAmbilSampel.setName("WindowAmbilSampel"); // NOI18N
@@ -542,7 +546,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-10-2021 13:45:55" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2022 14:26:20" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -1093,7 +1097,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(187, 380));
+        FormMenu.setPreferredSize(new java.awt.Dimension(187, 425));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         BtnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
@@ -1350,6 +1354,40 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAmbilLISSMARTLAB);
+
+        BtnKirimLISSOFTMEDIX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnKirimLISSOFTMEDIX.setText("Kirim Permintaan ke SOFTMEDIX");
+        BtnKirimLISSOFTMEDIX.setFocusPainted(false);
+        BtnKirimLISSOFTMEDIX.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnKirimLISSOFTMEDIX.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnKirimLISSOFTMEDIX.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnKirimLISSOFTMEDIX.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnKirimLISSOFTMEDIX.setName("BtnKirimLISSOFTMEDIX"); // NOI18N
+        BtnKirimLISSOFTMEDIX.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnKirimLISSOFTMEDIX.setRoundRect(false);
+        BtnKirimLISSOFTMEDIX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimLISSOFTMEDIXActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnKirimLISSOFTMEDIX);
+
+        BtnAmbilLISSOFTMEDIX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAmbilLISSOFTMEDIX.setText("Ambil Hasil dari SOFTMEDIX");
+        BtnAmbilLISSOFTMEDIX.setFocusPainted(false);
+        BtnAmbilLISSOFTMEDIX.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAmbilLISSOFTMEDIX.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAmbilLISSOFTMEDIX.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAmbilLISSOFTMEDIX.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAmbilLISSOFTMEDIX.setName("BtnAmbilLISSOFTMEDIX"); // NOI18N
+        BtnAmbilLISSOFTMEDIX.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnAmbilLISSOFTMEDIX.setRoundRect(false);
+        BtnAmbilLISSOFTMEDIX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAmbilLISSOFTMEDIXActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAmbilLISSOFTMEDIX);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -3385,6 +3423,98 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnAmbilLISSMARTLABActionPerformed
 
+    private void BtnKirimLISSOFTMEDIXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimLISSOFTMEDIXActionPerformed
+        if(TabPilihRawat.getSelectedIndex()==0){
+            if(!NoRawat.equals("")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(NoPermintaan.trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{   
+                    softmedix.kirimRalan(NoPermintaan);
+                }
+                TeksKosong();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            } 
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            if(!NoRawat.equals("")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(NoPermintaan.trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{   
+                    softmedix.kirimRanap(NoPermintaan);
+                }
+                TeksKosong();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            } 
+        }
+    }//GEN-LAST:event_BtnKirimLISSOFTMEDIXActionPerformed
+
+    private void BtnAmbilLISSOFTMEDIXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAmbilLISSOFTMEDIXActionPerformed
+        if(TabPilihRawat.getSelectedIndex()==0){
+            if(TabRawatJalan.getSelectedIndex()==0){
+                if(!NoRawat.equals("")){
+                    if(NoPermintaan.trim().equals("")){
+                        Valid.textKosong(TCari,"No.Permintaan");
+                    }else{ 
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        softmedix.ambil(NoPermintaan);
+                        DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                        dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        dlgro.setLocationRelativeTo(internalFrame1);
+                        dlgro.emptTeks();
+                        dlgro.isCek(); 
+                        dlgro.setOrderSOFTMEDIX(NoPermintaan,NoRawat,"Ralan");
+                        dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
+                        TeksKosong();
+                        dlgro.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }
+                }else{            
+                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    TCari.requestFocus();
+                } 
+            }else if(TabRawatJalan.getSelectedIndex()==1){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                TabRawatJalan.setSelectedIndex(0);
+                TCari.requestFocus();
+            }
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            if(TabRawatInap.getSelectedIndex()==0){
+                if(!NoRawat.equals("")){
+                    if(NoPermintaan.trim().equals("")){
+                        Valid.textKosong(TCari,"No.Permintaan");
+                    }else{ 
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        softmedix.ambil(NoPermintaan);
+                        DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                        dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        dlgro.setLocationRelativeTo(internalFrame1);
+                        dlgro.emptTeks();
+                        dlgro.isCek(); 
+                        dlgro.setOrderSOFTMEDIX(NoPermintaan,NoRawat,"Ranap");
+                        dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
+                        TeksKosong();
+                        dlgro.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }
+                }else{            
+                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    TCari.requestFocus();
+                } 
+            }else if(TabRawatInap.getSelectedIndex()==1){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                TabRawatInap.setSelectedIndex(0);
+                TCari.requestFocus();
+            }
+        }  
+    }//GEN-LAST:event_BtnAmbilLISSOFTMEDIXActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3406,6 +3536,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Button BtnAmbilLISELIMS;
     private widget.Button BtnAmbilLISMADQLAB;
     private widget.Button BtnAmbilLISSMARTLAB;
+    private widget.Button BtnAmbilLISSOFTMEDIX;
     private widget.Button BtnAmbilLISTeras;
     private widget.Button BtnAmbilLica;
     private widget.Button BtnAmbilSysmex;
@@ -3420,6 +3551,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Button BtnKirimLISELIMS;
     private widget.Button BtnKirimLISMADQLAB;
     private widget.Button BtnKirimLISSMARTLAB;
+    private widget.Button BtnKirimLISSOFTMEDIX;
     private widget.Button BtnKirimLISTeras;
     private widget.Button BtnKirimLica;
     private widget.Button BtnKirimSysmex;

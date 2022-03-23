@@ -974,4 +974,54 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String URLAPISOFTMEDIX(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPISOFTMEDIX");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PRODUCTSOFTMEDIX(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PRODUCTSOFTMEDIX"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String VERSIONSOFTMEDIX(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("VERSIONSOFTMEDIX"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USERIDSOFTMEDIX(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERIDSOFTMEDIX"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KEYSOFTMEDIX(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("KEYSOFTMEDIX"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }
