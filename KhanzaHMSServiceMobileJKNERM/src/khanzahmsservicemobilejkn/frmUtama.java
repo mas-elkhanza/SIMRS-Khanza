@@ -643,7 +643,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     }
                                 }
                                 
-                                datajam=Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=? and reg_periksa.stts='Belum'",rs.getString("no_rawat"));
+                                datajam=Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",rs.getString("no_rawat"));
                                 if(!datajam.equals("")){
                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"3",datajam})==true){
                                         parsedDate = dateFormat.parse(datajam);
