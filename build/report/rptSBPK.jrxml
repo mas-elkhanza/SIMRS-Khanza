@@ -26,6 +26,14 @@
 	<parameter name="icdx2" class="java.lang.String"/>
 	<parameter name="icdx3" class="java.lang.String"/>
 	<parameter name="icdx4" class="java.lang.String"/>
+	<parameter name="prosedur1" class="java.lang.String"/>
+	<parameter name="prosedur2" class="java.lang.String"/>
+	<parameter name="prosedur3" class="java.lang.String"/>
+	<parameter name="prosedur4" class="java.lang.String"/>
+	<parameter name="icd91" class="java.lang.String"/>
+	<parameter name="icd92" class="java.lang.String"/>
+	<parameter name="icd93" class="java.lang.String"/>
+	<parameter name="icd94" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg, reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,
 reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,
@@ -518,7 +526,7 @@ on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="51" y="572" width="133" height="19" uuid="f58f7f81-df65-4a03-9485-aec7d9ef1d5a"/>
+				<reportElement x="51" y="572" width="99" height="19" uuid="f58f7f81-df65-4a03-9485-aec7d9ef1d5a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -526,7 +534,7 @@ on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no
 				<text><![CDATA[TINDAKAN UTAMA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="51" y="592" width="133" height="19" uuid="037c22af-eccb-4ca4-bf1e-607e1e0300b4"/>
+				<reportElement x="51" y="592" width="99" height="19" uuid="037c22af-eccb-4ca4-bf1e-607e1e0300b4"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -777,6 +785,90 @@ on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{diagnosa3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="315" y="298" width="158" height="26" uuid="dc986e25-32b5-4afa-9206-9786c8cceca9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prosedur1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="315" y="329" width="158" height="26" uuid="f60d122b-dc3a-4227-bef8-f524083c5a7b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prosedur2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="315" y="359" width="158" height="26" uuid="d48a09e5-0dc1-4518-b235-33d087f9fea2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prosedur3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="315" y="389" width="158" height="26" uuid="6d4e6520-8b81-4597-9704-989b6543eb3b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prosedur4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="150" y="575" width="324" height="16" uuid="948a0d4a-55e5-4b67-a532-0b6aa30a1d28">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prosedur1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="150" y="595" width="324" height="16" uuid="a5d46fc0-45d8-48db-b048-95098cb06ad1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prosedur2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="480" y="575" width="69" height="16" uuid="524b2551-d646-4d3a-b6bf-827487f8f10c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{icd91}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
+				<reportElement x="480" y="595" width="69" height="16" uuid="003d7b85-8103-4e3f-8815-43e1e0fc04ef">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{icd92}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
