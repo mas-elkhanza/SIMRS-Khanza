@@ -599,7 +599,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 Valid.MyReportqry("rptPPNJualBebas.jasper","report","::[ PPN Obat Jual Bebas ]::",
                     "select penjualan.tgl_jual,penjualan.nota_jual, "+
                     " penjualan.no_rkm_medis,pasien.nm_pasien, "+
-                    " penjualan.nip,petugas.nama,penjualan.ongkir as ppn,sum(detailjual.total) as total "+
+                    " penjualan.nip,petugas.nama,penjualan.ppn as ppn,sum(detailjual.total) as total "+
                     " from penjualan inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                     " inner join petugas on penjualan.nip=petugas.nip inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
                     " where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
@@ -973,7 +973,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode4);
             ps=koneksi.prepareStatement("select penjualan.tgl_jual,penjualan.nota_jual, "+
                     " penjualan.no_rkm_medis,pasien.nm_pasien, "+
-                    " penjualan.nip,petugas.nama,penjualan.ongkir as ppn,sum(detailjual.total) as total "+
+                    " penjualan.nip,petugas.nama,round(penjualan.ppn) as ppn,sum(detailjual.total) as total "+
                     " from penjualan inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                     " inner join petugas on penjualan.nip=petugas.nip inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
                     " where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between ? and ? "+

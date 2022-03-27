@@ -599,9 +599,9 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
                             }
                         }
 
-                        all=all+rs.getDouble("jumlah_bayar");
+                        all=all+Math.round(rs.getDouble("jumlah_bayar"));
                         tabMode.addRow(new Object[]{
-                            i,rs.getString("tgl_bayar"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),petugas
+                            i,rs.getString("tgl_bayar"),nonota,rs.getString("nama_pasien"),Math.round(rs.getDouble("jumlah_bayar")),petugas
                         });
                         i++;
                     }                        

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5513f3e-e30e-472d-bf88-0b1f5d2514ea">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="248"/>
@@ -146,6 +146,26 @@
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="680" y="0" width="52" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="426cd62c-19ec-41dd-b935-f5212e71bdc6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ongkos Kirim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="732" y="0" width="68" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="01cf1760-b751-4e47-9f51-569ed2b10d76">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[  Akun Bayar]]></text>
+			</staticText>
+			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="55" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="b8de8126-2201-48b7-9fd8-f80a28bb4f94"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7"/>
@@ -206,7 +226,7 @@
 				<text><![CDATA[Jns.Jual]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="481" y="0" width="319" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="cb11fa69-1148-4830-b7f7-9ee418ba9adf">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="481" y="0" width="199" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="cb11fa69-1148-4830-b7f7-9ee418ba9adf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">

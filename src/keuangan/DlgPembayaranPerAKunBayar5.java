@@ -819,7 +819,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("jumlah_bayar"))+"</td>"+
                                 "<td valign='middle' align='left'>"+petugas+"</td>");
                         for(i=0;i<kolom;i++){
-                            bayar=Sequel.cariIsiAngka("select sum(detailjual.total) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+rs.getString("no_nota")+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
+                            bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+rs.getString("no_nota")+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                             totalbayar[i]=totalbayar[i]+bayar;
                         }
@@ -1174,7 +1174,7 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
                                 "<td valign='middle' align='right'>"+Math.round(rs.getDouble("jumlah_bayar"))+"</td>"+
                                 "<td valign='middle' align='left'>"+petugas+"</td>");
                         for(i=0;i<kolom;i++){
-                            bayar=Sequel.cariIsiAngka("select sum(detailjual.total) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+rs.getString("no_nota")+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
+                            bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+rs.getString("no_nota")+"' and penjualan.nama_bayar='"+namabayar[i]+"'");
                             htmlContent.append("<td valign='middle' align='right'>"+Math.round(bayar)+"</td>");
                             totalbayar[i]=totalbayar[i]+bayar;
                         }

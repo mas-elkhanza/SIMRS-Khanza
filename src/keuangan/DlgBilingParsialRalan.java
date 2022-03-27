@@ -5528,7 +5528,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     
                     if(subttl>0){
                         if(tampilkan_ppnobat_ralan.equals("Yes")){
-                            ppnobat=Valid.roundUp(subttl*0.1,100);
+                            ppnobat=Valid.roundUp(subttl*0.11,100);
                             tabModeBilling.addRow(new Object[]{
                                 "","PPN Obat",":",ppnobat,1,ppnobat,"Obat"
                             });   
