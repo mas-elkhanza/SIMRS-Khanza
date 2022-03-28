@@ -199,7 +199,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[J]Kategori Pemasukan Lain-lain","[H]Pembayaran Per Akun Bayar 5","[S]Ruang Operasi","[D]Telaah Resep & Obat","[H]Jasa Tindakan Pasien","[D]Permintaan Resep Pulang",
                 "[H]Rekap JM Dokter","[I]Status Data RM","[A]Ubah Petugas Lab PK","[A]Ubah Petugas Lab PA","[A]Ubah Petugas Radiologi","[A]Gabung Nomor Rawat","[L]Gabungkan Data RM",
                 "[D]Ringkasan Biaya Obat Pasien Per Tanggal","[L]Master Masalah Keperawatan IGD","[L]Penilaian Awal Keperawatan IGD","[K]Referensi DPHO Apotek BPJS",
-                "[K]Referensi Poli Apotek BPJS","[J]Bayar JM Dokter","[K]Referensi Faskes Apotek BPJS"
+                "[K]Referensi Poli Apotek BPJS","[J]Bayar JM Dokter","[K]Referensi Faskes Apotek BPJS","[K]Referensi Spesialistik Apotek BPJS"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -419,6 +419,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -432,7 +433,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 806;i++) {
+        for (i = 0; i < 807;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2304,6 +2305,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 805:
                     column.setPreferredWidth(168);
                     break;
+                case 806:
+                    column.setPreferredWidth(189);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2803,7 +2807,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3651,7 +3655,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_referensi_dpho_apotek='"+tbUser.getValueAt(i,802).toString()+"',"+
                     "bpjs_referensi_poli_apotek='"+tbUser.getValueAt(i,803).toString()+"',"+
                     "bayar_jm_dokter='"+tbUser.getValueAt(i,804).toString()+"',"+
-                    "bpjs_referensi_faskes_apotek='"+tbUser.getValueAt(i,805).toString()+"'");
+                    "bpjs_referensi_faskes_apotek='"+tbUser.getValueAt(i,805).toString()+"',"+
+                    "bpjs_referensi_spesialistik_apotek='"+tbUser.getValueAt(i,806).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4539,7 +4544,8 @@ public class DlgUser extends javax.swing.JDialog {
                                         "bpjs_referensi_dpho_apotek='"+tbUser.getValueAt(barisdicopy,802).toString()+"',"+
                                         "bpjs_referensi_poli_apotek='"+tbUser.getValueAt(barisdicopy,803).toString()+"',"+
                                         "bayar_jm_dokter='"+tbUser.getValueAt(barisdicopy,804).toString()+"',"+
-                                        "bpjs_referensi_faskes_apotek='"+tbUser.getValueAt(barisdicopy,805).toString()+"'");
+                                        "bpjs_referensi_faskes_apotek='"+tbUser.getValueAt(barisdicopy,805).toString()+"',"+
+                                        "bpjs_referensi_spesialistik_apotek='"+tbUser.getValueAt(barisdicopy,806).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -4898,7 +4904,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.kategori_pemasukan_lain,user.pembayaran_akun_bayar5,user.ruang_ok,user.telaah_resep,user.jasa_tindakan_pasien,user.permintaan_resep_pulang,"+
                 "user.rekap_jm_dokter,user.status_data_rm,user.ubah_petugas_lab_pk,user.ubah_petugas_lab_pa,user.ubah_petugas_radiologi,user.gabung_norawat,"+
                 "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd,"+
-                "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek,user.bayar_jm_dokter,user.bpjs_referensi_faskes_apotek from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek,user.bayar_jm_dokter,user.bpjs_referensi_faskes_apotek,user.bpjs_referensi_spesialistik_apotek from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5716,7 +5722,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_referensi_dpho_apotek"),
                                rs.getBoolean("bpjs_referensi_poli_apotek"),
                                rs.getBoolean("bayar_jm_dokter"),
-                               rs.getBoolean("bpjs_referensi_faskes_apotek")
+                               rs.getBoolean("bpjs_referensi_faskes_apotek"),
+                               rs.getBoolean("bpjs_referensi_spesialistik_apotek")
                             });
                         }   
                     } catch (Exception e) {
@@ -6523,7 +6530,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_referensi_dpho_apotek"),
                            rs.getBoolean("bpjs_referensi_poli_apotek"),
                            rs.getBoolean("bayar_jm_dokter"),
-                           rs.getBoolean("bpjs_referensi_faskes_apotek")
+                           rs.getBoolean("bpjs_referensi_faskes_apotek"),
+                           rs.getBoolean("bpjs_referensi_spesialistik_apotek")
                         });
                     }                                             
                  }
