@@ -885,7 +885,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             })==false){
                                 sukses=false;
                             }else{
-                                tabMode.setValueAt(false,i,0);
+                                Sequel.mengedit("inventaris_pemesanan","no_faktur=?","status='Titip Faktur'",1,new String[]{tbBangsal.getValueAt(i,1).toString()});
                             }
                         }
                     }
@@ -898,6 +898,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(sukses==true){
                     autoNomor();
                     Sequel.Commit();
+                    tampil();
                 }else{
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
@@ -1085,25 +1086,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "select inventaris_pemesanan.no_faktur,inventaris_pemesanan.no_order,inventaris_suplier.nama_suplier, "+
                     "petugas.nama,inventaris_pemesanan.tgl_tempo,inventaris_pemesanan.tgl_pesan,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tagihan,"+
                     "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_inventaris where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur) as bayar, "+
-                    "inventaris_suplier.nama_bank,inventaris_suplier.rekening from inventaris_pemesanan "+
-                    "inner join inventaris_suplier on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
-                    "inner join petugas on inventaris_pemesanan.nip=petugas.nip where "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.no_faktur like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.no_order like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.tgl_tempo like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_suplier.nama_suplier like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and petugas.nama like ? order by inventaris_pemesanan.tgl_tempo ");
+                    "inventaris_suplier.nama_bank,inventaris_suplier.rekening,inventaris_pemesanan.kd_rek_aset from inventaris_pemesanan inner join inventaris_suplier inner join petugas "+
+                    "on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
+                    "and inventaris_pemesanan.nip=petugas.nip where "+
+                    tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') and inventaris_suplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (inventaris_pemesanan.no_faktur like ? or inventaris_pemesanan.no_order like ? or inventaris_pemesanan.tgl_tempo like ? or "+
+                    "inventaris_suplier.nama_suplier like ? or petugas.nama like ?)")+" order by inventaris_pemesanan.tgl_tempo ");
             try {
                 ps.setString(1,"%"+nmsup.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmsup.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmsup.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                
                 rs=ps.executeQuery();
                 sisahutang=0;
                 cicilan=0;
