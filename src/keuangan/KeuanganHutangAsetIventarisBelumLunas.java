@@ -49,7 +49,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
     private InventarisCariSuplier suplier=new InventarisCariSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
-    private String koderekening="",tanggaldatang="",tanggaltempo="";
+    private String koderekening="",tanggaldatang="",tanggaltempo="",Kontra_Penerimaan_AsetInventaris=Sequel.cariIsi("select Kontra_Penerimaan_AsetInventaris from set_akun");
     private double sisahutang=0,cicilan=0,bayar=0;
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
@@ -1032,7 +1032,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             } 
                             Sequel.queryu("delete from tampjurnal");
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                tabMode.getValueAt(i,14).toString(),"HUTANG BARANG ASET/INVENTARIS",tabMode.getValueAt(i,10).toString(),"0"
+                                Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS",tabMode.getValueAt(i,10).toString(),"0"
                             });                     
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 koderekening,AkunBayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,10).toString()
