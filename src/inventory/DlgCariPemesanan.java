@@ -633,7 +633,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(48, 23));
         panelisi4.add(label24);
-        label24.setBounds(187, 10, 45, 23);
+        label24.setBounds(183, 10, 45, 23);
 
         kdjenis.setName("kdjenis"); // NOI18N
         kdjenis.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -674,7 +674,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         panelisi4.add(label21);
         label21.setBounds(0, 10, 53, 23);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Dibayar", "Belum Dibayar", "Belum Lunas" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Dibayar", "Belum Dibayar", "Belum Lunas", "Titip Faktur" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(40, 23));
         panelisi4.add(Status);

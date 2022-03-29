@@ -122,8 +122,8 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(140);
             }else if(i==12){
-                //column.setMinWidth(0);
-                //column.setMaxWidth(0);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==13){
                 column.setPreferredWidth(110);
             }else if(i==14){
@@ -1244,25 +1244,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "datasuplier.nama_bank,datasuplier.rekening from pemesanan inner join datasuplier inner join bangsal inner join petugas "+
                     "on pemesanan.kode_suplier=datasuplier.kode_suplier "+
                     "and pemesanan.nip=petugas.nip and pemesanan.kd_bangsal=bangsal.kd_bangsal where "+
-                    tanggaldatang+tanggaltempo+"pemesanan.status<>'Sudah Dibayar' and datasuplier.nama_suplier like ? and pemesanan.no_faktur like ? or "+
-                    tanggaldatang+tanggaltempo+"pemesanan.status<>'Sudah Dibayar' and datasuplier.nama_suplier like ? and pemesanan.no_order like ? or "+
-                    tanggaldatang+tanggaltempo+"pemesanan.status<>'Sudah Dibayar' and datasuplier.nama_suplier like ? and pemesanan.tgl_tempo like ? or "+
-                    tanggaldatang+tanggaltempo+"pemesanan.status<>'Sudah Dibayar' and datasuplier.nama_suplier like ? and datasuplier.nama_suplier like ? or "+
-                    tanggaldatang+tanggaltempo+"pemesanan.status<>'Sudah Dibayar' and datasuplier.nama_suplier like ? and bangsal.nm_bangsal like ? or "+
-                    tanggaldatang+tanggaltempo+"pemesanan.status<>'Sudah Dibayar' and datasuplier.nama_suplier like ? and petugas.nama like ? order by pemesanan.tgl_tempo ");
+                    tanggaldatang+tanggaltempo+"(pemesanan.status='Belum Dibayar' or pemesanan.status='Belum Lunas') and datasuplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (pemesanan.no_faktur like ? or pemesanan.no_order like ? or pemesanan.tgl_tempo like ? or "+
+                    "datasuplier.nama_suplier like ? or bangsal.nm_bangsal like ? or petugas.nama like ?) ")+"order by pemesanan.tgl_tempo ");
             try {
                 ps.setString(1,"%"+nmsup.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmsup.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmsup.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,"%"+nmsup.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 sisahutang=0;
                 cicilan=0;

@@ -108,7 +108,7 @@ public final class KeuanganHutangNonMedisBelumLunas extends javax.swing.JDialog 
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(95);
             }else if(i==3){
                 column.setPreferredWidth(140);
             }else if(i==4){
@@ -1277,22 +1277,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrspemesanan inner join ipsrssuplier inner join petugas "+
                     "on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
                     "and ipsrspemesanan.nip=petugas.nip where "+
-                    tanggaldatang+tanggaltempo+"ipsrspemesanan.status<>'Sudah Dibayar' and ipsrssuplier.nama_suplier like ? and ipsrspemesanan.no_faktur like ? or "+
-                    tanggaldatang+tanggaltempo+"ipsrspemesanan.status<>'Sudah Dibayar' and ipsrssuplier.nama_suplier like ? and ipsrspemesanan.no_order like ? or "+
-                    tanggaldatang+tanggaltempo+"ipsrspemesanan.status<>'Sudah Dibayar' and ipsrssuplier.nama_suplier like ? and ipsrspemesanan.tgl_tempo like ? or "+
-                    tanggaldatang+tanggaltempo+"ipsrspemesanan.status<>'Sudah Dibayar' and ipsrssuplier.nama_suplier like ? and ipsrssuplier.nama_suplier like ? or "+
-                    tanggaldatang+tanggaltempo+"ipsrspemesanan.status<>'Sudah Dibayar' and ipsrssuplier.nama_suplier like ? and petugas.nama like ? order by ipsrspemesanan.tgl_tempo ");
+                    tanggaldatang+tanggaltempo+"(ipsrspemesanan.status='Belum Dibayar' or ipsrspemesanan.status='Belum Lunas') and ipsrssuplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (ipsrspemesanan.no_faktur like ? or ipsrspemesanan.no_order like ? or ipsrspemesanan.tgl_tempo like ? or "+
+                    "ipsrssuplier.nama_suplier like ? or petugas.nama like ?)")+" order by ipsrspemesanan.tgl_tempo ");
             try {
                 ps.setString(1,"%"+nmsup.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmsup.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmsup.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 sisahutang=0;
                 cicilan=0;
