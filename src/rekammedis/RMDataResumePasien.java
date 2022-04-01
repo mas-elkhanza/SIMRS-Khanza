@@ -345,6 +345,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         MnInputDiagnosa = new javax.swing.JMenuItem();
         ppBerkasDigital = new javax.swing.JMenuItem();
         MnSPBK = new javax.swing.JMenuItem();
+        MnSPBK2 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -491,6 +492,22 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnSPBK);
+
+        MnSPBK2.setBackground(new java.awt.Color(255, 255, 254));
+        MnSPBK2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSPBK2.setForeground(new java.awt.Color(50, 50, 50));
+        MnSPBK2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSPBK2.setText("Surat Bukti Pelayanan Kesehatan (SBPK) 2");
+        MnSPBK2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSPBK2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSPBK2.setName("MnSPBK2"); // NOI18N
+        MnSPBK2.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnSPBK2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSPBK2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnSPBK2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1882,6 +1899,48 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnSPBKActionPerformed
 
+    private void MnSPBK2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSPBK2ActionPerformed
+        if(tbObat.getSelectedRow()>-1){
+            Map<String, Object> param = new HashMap<>();    
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            variabel="Atas Persetujuan Dokter";
+            if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0){
+                variabel="MRS";
+            }
+            if(Sequel.cariInteger("select count(rujuk.no_rawat) from rujuk where rujuk.no_rawat=?",TNoRw.getText())>0){
+                variabel="Dirujuk";
+            }
+            param.put("carapulang",variabel);
+            variabel=Sequel.cariIsi("select bridging_sep.tujuankunjungan from bridging_sep where bridging_sep.no_rawat=?",TNoRw.getText());
+            param.put("tujuankunjungan","- "+(variabel.equals("0")?"Konsultasi dokter(pertama)":"Kunjungan Kontrol(ulangan)"));
+            variabel=Sequel.cariIsi("select bridging_sep.flagprosedur from bridging_sep where bridging_sep.no_rawat=?",TNoRw.getText());
+            param.put("flagprosedur",variabel.replaceAll("0","- Prosedur Tidak Berkelanjutan").replaceAll("1","- Prosedur dan Terapi Berkelanjutan"));
+            
+            tanggal="";
+            if(Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",TNoRw.getText()).equals("Ralan")){
+                param.put("ruang",Sequel.cariIsi("select poliklinik.nm_poli from poliklinik inner join reg_periksa on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()));
+                tanggal=Sequel.cariIsi("select DATE_FORMAT(tgl_registrasi, '%d-%m-%Y') from reg_periksa where no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                param.put("tanggalkeluar",tanggal);
+            }else{
+                param.put("ruang",Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar inner join kamar_inap on bangsal.kd_bangsal=kamar.kd_bangsal and kamar_inap.kd_kamar=kamar.kd_kamar where no_rawat=? order by tgl_masuk desc limit 1 ",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()));
+                tanggal=Sequel.cariIsi("select DATE_FORMAT(tgl_keluar, '%d-%m-%Y') from kamar_inap where no_rawat=? order by tgl_keluar desc limit 1 ",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                param.put("tanggalkeluar",tanggal);
+            }
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NamaDokter.getText()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+tanggal); 
+            param.put("fingerpasien",Sequel.cariIsi("select sha1(sidikjaripasien.sidikjari) from sidikjaripasien where sidikjaripasien.no_rkm_medis=?",TNoRM.getText()));
+
+            Valid.MyReport("rptSBPK3.jasper","report","::[ Surat Bukti Pelayanan Kesehatan ]::",param);
+        }
+    }//GEN-LAST:event_MnSPBK2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1939,6 +1998,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnInputDiagnosa;
     private javax.swing.JMenuItem MnLaporanResume;
     private javax.swing.JMenuItem MnSPBK;
+    private javax.swing.JMenuItem MnSPBK2;
     private widget.TextBox NamaDokter;
     private widget.TextArea Obat2an;
     private javax.swing.JPanel PanelInput;
