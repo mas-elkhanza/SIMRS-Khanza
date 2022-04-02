@@ -1305,7 +1305,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(tampikan==true){
             try {
-                if(Valid.daysOld("./cache/penerimaanobat.iyem")<4){
+                if(Valid.daysOld("./cache/penerimaanobat.iyem")<8){
                     tampil2();
                 }else{
                     tampil();

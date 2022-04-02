@@ -206,7 +206,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?",
             sqlpstemporary="insert into temporary_bayar_ranap values('0',?,?,?,?,?,?,?,?,'','','','','','','','','')",
             sqlpsubahpenjab="select tgl_ubah,kd_pj1,kd_pj2 from ubah_penjab where no_rawat=?",
-            Host_to_Host_Bank_Jateng=Sequel.cariIsi("select kd_rek from set_akun_bankjateng");    
+            Host_to_Host_Bank_Jateng="",Akun_BRI_API="";    
     private double ttl=0,y=0,subttl=0,lab,ttl1,ttl2,ttlobat,ttlretur,ppnobat,piutang=0,kekurangan=0,itembayar=0,itempiutang=0, 
             tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,bayar=0,total=0,uangdeposit=0,sisadeposit=0,
             ttlLaborat=0,ttlRadiologi=0,ttlOperasi=0,ttlObat=0,ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlRalan_Dokter=0,
@@ -708,7 +708,13 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         }   
         
         try {
-            psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
+            psrekening=koneksi.prepareStatement(
+                    "select set_akun_ranap.Suspen_Piutang_Tindakan_Ranap,set_akun_ranap.Suspen_Piutang_Laborat_Ranap,"+
+                    "set_akun_ranap.Suspen_Piutang_Radiologi_Ranap,set_akun_ranap.Suspen_Piutang_Obat_Ranap,"+
+                    "set_akun_ranap.Obat_Ranap,set_akun_ranap.Registrasi_Ranap,set_akun_ranap.Tambahan_Ranap,"+
+                    "set_akun_ranap.Potongan_Ranap,set_akun_ranap.Retur_Obat_Ranap,set_akun_ranap.HPP_Obat_Rawat_Inap,"+
+                    "set_akun_ranap.Persediaan_Obat_Rawat_Inap,set_akun_ranap.Resep_Pulang_Ranap,set_akun_ranap.Kamar_Inap,"+
+                    "set_akun_ranap.Suspen_Piutang_Operasi_Ranap,set_akun_ranap.Service_Ranap from set_akun_ranap");
             try {
                 rsrekening=psrekening.executeQuery();
                 if(rsrekening.next()){
@@ -739,7 +745,8 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                 }
             }
             
-            psrekening=koneksi.prepareStatement("select * from set_akun_ranap2");
+            psrekening=koneksi.prepareStatement(
+                    "select set_akun_ranap2.Harian_Ranap,set_akun_ranap2.Uang_Muka_Ranap,set_akun_ranap2.Piutang_Pasien_Ranap,set_akun_ranap2.Sisa_Uang_Muka_Ranap from set_akun_ranap2");
             try {
                 rsrekening=psrekening.executeQuery();
                 if(rsrekening.next()){
@@ -761,9 +768,6 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println(e);
         }
-      
-        
-        
     }
    
     
@@ -4323,8 +4327,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnAll1KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampilAkunPiutang3();
-        tampilAkunBayar3();
+        try {
+            if(Valid.daysOld("./cache/akunpiutang.iyem")>6){
+                tampilAkunPiutang3();
+            }
+            
+            if(Valid.daysOld("./cache/akunbayar.iyem")>6){
+                tampilAkunBayar3();
+            }
+            
+            if(Valid.daysOld("./cache/akunbankjateng.iyem")>6){
+                tampilAkunBank();
+            }else{
+                tampilAkunBank2();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tbAkunPiutangPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbAkunPiutangPropertyChange
@@ -6328,6 +6346,54 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }            
+    }
+    
+    private void tampilAkunBank() { 
+        try{      
+             file=new File("./cache/akunbankjateng.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             Host_to_Host_Bank_Jateng=Sequel.cariIsi("select set_akun_bankjateng.kd_rek from set_akun_bankjateng");
+             fileWriter.write("{\"akunbankjateng\":\""+Host_to_Host_Bank_Jateng+"\"}");
+             fileWriter.flush();
+             fileWriter.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{      
+             file=new File("./cache/akunbankbri.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             Akun_BRI_API=Sequel.cariIsi("select set_akun_bankbri.kd_rek from set_akun_bankbri");
+             fileWriter.write("{\"akunbankbri\":\""+Akun_BRI_API+"\"}");
+             fileWriter.flush();
+             fileWriter.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilAkunBank2() { 
+        try{      
+             myObj = new FileReader("./cache/akunbankjateng.iyem");
+             root = mapper.readTree(myObj);
+             response = root.path("akunbankjateng");
+             Host_to_Host_Bank_Jateng=response.asText();
+             myObj.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{      
+             myObj = new FileReader("./cache/akunbankbri.iyem");
+             root = mapper.readTree(myObj);
+             response = root.path("akunbankbri");
+             Akun_BRI_API=response.asText();
+             myObj.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
     }
     
     private void tampilAkunBayar() {         

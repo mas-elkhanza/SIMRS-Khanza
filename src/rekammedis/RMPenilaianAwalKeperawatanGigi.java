@@ -3012,7 +3012,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/masalahkeperawatangigi.iyem")<4){
+            if(Valid.daysOld("./cache/masalahkeperawatangigi.iyem")<8){
                 tampilMasalah2();
             }else{
                 tampilMasalah();

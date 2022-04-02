@@ -358,7 +358,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/dokter.iyem")<4){
+            if(Valid.daysOld("./cache/dokter.iyem")<8){
                 tampil2();
             }else{
                 tampil();

@@ -1717,7 +1717,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/02/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/03/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6761,7 +6761,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("::[ Khanza SIMKES 2020 ]::");
+        setTitle("::[ Khanza SIMKES 2022 ]::");
         setBackground(new java.awt.Color(255, 254, 254));
         setIconImages(null);
         addComponentListener(new java.awt.event.ComponentAdapter() {

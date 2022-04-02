@@ -994,7 +994,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/penerimaanipsrs.iyem")<4){
+            if(Valid.daysOld("./cache/penerimaanipsrs.iyem")<8){
                 tampil2();
             }else{
                 tampil();

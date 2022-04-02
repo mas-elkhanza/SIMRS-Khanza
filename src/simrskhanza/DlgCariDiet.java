@@ -312,7 +312,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/diet.iyem")<4){
+            if(Valid.daysOld("./cache/diet.iyem")<8){
                 tampil2();
             }else{
                 tampil();
@@ -370,8 +370,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select kd_diet, nama_diet "+
-                " from diet order by nama_diet");
+            ps=koneksi.prepareStatement("select diet.kd_diet, diet.nama_diet from diet order by diet.nama_diet");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){

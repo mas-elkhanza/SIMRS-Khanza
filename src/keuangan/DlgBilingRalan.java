@@ -80,7 +80,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         "inner join kelurahan inner join kecamatan inner join kabupaten on pasien.kd_kel=kelurahan.kd_kel "+
                         "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
                         "where pasien.no_rkm_medis=?",
-            sqlpsrekening="select * from set_akun_ralan",
+            sqlpsrekening="select set_akun_ralan.Suspen_Piutang_Tindakan_Ralan,set_akun_ralan.Suspen_Piutang_Laborat_Ralan,set_akun_ralan.Suspen_Piutang_Radiologi_Ralan,set_akun_ralan.Suspen_Piutang_Obat_Ralan,set_akun_ralan.Obat_Ralan,set_akun_ralan.Registrasi_Ralan,set_akun_ralan.Tambahan_Ralan,set_akun_ralan.Potongan_Ralan,set_akun_ralan.Suspen_Piutang_Operasi_Ralan from set_akun_ralan",
             sqlpsdokterralan="select dokter.nm_dokter from reg_periksa "+
                             "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                             "where no_rawat=?",
@@ -174,7 +174,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     "on beri_obat_operasi.kd_obat=obatbhp_ok.kd_obat where "+
                     "beri_obat_operasi.no_rawat=? group by obatbhp_ok.nm_obat",
             sqlpstamkur="select biaya from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",
-            Host_to_Host_Bank_Jateng=Sequel.cariIsi("select kd_rek from set_akun_bankjateng");
+            Host_to_Host_Bank_Jateng="",Akun_BRI_API="";
     private String[] Nama_Akun_Piutang,Kode_Rek_Piutang,Kd_PJ,Besar_Piutang,Jatuh_Tempo,
             Nama_Akun_Bayar,Kode_Rek_Bayar,Bayar,PPN_Persen,PPN_Besar;
             
@@ -3675,6 +3675,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         if(status.equals("belum")){
             TCari.setText("");
             tampilAkunBayar();
+            tampilAkunBank();
         }else if(status.equals("sudah")){
             tampilAkunBayarTersimpan();
         }
@@ -3702,8 +3703,22 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }//GEN-LAST:event_BtnAll1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampilAkunPiutang3();
-        tampilAkunBayar3();
+        try {
+            if(Valid.daysOld("./cache/akunpiutang.iyem")>6){
+                tampilAkunPiutang3();
+            }
+            
+            if(Valid.daysOld("./cache/akunbayar.iyem")>6){
+                tampilAkunBayar3();
+            }
+            
+            if(Valid.daysOld("./cache/akunbankjateng.iyem")>6){
+                tampilAkunBank();
+            }else{
+                tampilAkunBank2();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnAll1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAll1KeyPressed
@@ -5045,8 +5060,56 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         chkLaborat.setSelected(true);
     }
     
+    private void tampilAkunBank() { 
+        try{      
+             file=new File("./cache/akunbankjateng.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             Host_to_Host_Bank_Jateng=Sequel.cariIsi("select set_akun_bankjateng.kd_rek from set_akun_bankjateng");
+             fileWriter.write("{\"akunbankjateng\":\""+Host_to_Host_Bank_Jateng+"\"}");
+             fileWriter.flush();
+             fileWriter.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{      
+             file=new File("./cache/akunbankbri.iyem");
+             file.createNewFile();
+             fileWriter = new FileWriter(file);
+             Akun_BRI_API=Sequel.cariIsi("select set_akun_bankbri.kd_rek from set_akun_bankbri");
+             fileWriter.write("{\"akunbankbri\":\""+Akun_BRI_API+"\"}");
+             fileWriter.flush();
+             fileWriter.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilAkunBank2() { 
+        try{      
+             myObj = new FileReader("./cache/akunbankjateng.iyem");
+             root = mapper.readTree(myObj);
+             response = root.path("akunbankjateng");
+             Host_to_Host_Bank_Jateng=response.asText();
+             myObj.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        try{      
+             myObj = new FileReader("./cache/akunbankbri.iyem");
+             root = mapper.readTree(myObj);
+             response = root.path("akunbankbri");
+             Akun_BRI_API=response.asText();
+             myObj.close();
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
     private void tampilAkunBayar() {         
-         try{      
+        try{      
              Valid.tabelKosong(tabModeAkunBayar);
              file=new File("./cache/akunbayar.iyem");
              file.createNewFile();

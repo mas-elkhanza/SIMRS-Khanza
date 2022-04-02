@@ -3159,7 +3159,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<4){
+            if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<8){
                 tampilMasalah2();
             }else{
                 tampilMasalah();

@@ -331,7 +331,7 @@ public final class DlgCariAturanPakai extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/aturanpakai.iyem")<4){
+            if(Valid.daysOld("./cache/aturanpakai.iyem")<8){
                 tampil2();
             }else{
                 tampil();

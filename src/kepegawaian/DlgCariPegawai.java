@@ -330,7 +330,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/pegawai.iyem")<4){
+            if(Valid.daysOld("./cache/pegawai.iyem")<8){
                 tampil2();
             }else{
                 tampil();
