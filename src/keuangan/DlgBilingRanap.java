@@ -90,10 +90,10 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpscekbilling="select count(billing.no_rawat) from billing where billing.no_rawat=?",
             sqlpsdokterranap="select dokter.nm_dokter from rawat_inap_dr "+
                     "inner join dokter on rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
-                    "where no_rawat=? group by rawat_inap_dr.kd_dokter",
+                    "where rawat_inap_dr.no_rawat=? group by rawat_inap_dr.kd_dokter",
             sqlpsdokterralan="select dokter.nm_dokter from rawat_jl_dr "+
                     "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
-                    "where no_rawat=? group by rawat_jl_dr.kd_dokter",
+                    "where rawat_jl_dr.no_rawat=? group by rawat_jl_dr.kd_dokter",
             sqlpsobatoperasi="select obatbhp_ok.nm_obat,beri_obat_operasi.hargasatuan,sum(beri_obat_operasi.jumlah) as jumlah, "+
                     "sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) as total "+
                     "from obatbhp_ok inner join beri_obat_operasi "+
@@ -104,7 +104,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "sum(detreturjual.subtotal * -1) as ttl from detreturjual inner join databarang inner join returjual "+
                     "on detreturjual.kode_brng=databarang.kode_brng "+
                     "and returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual like ? group by databarang.kode_brng",
-            sqlpsobatlangsung="select besar_tagihan from tagihan_obat_langsung where no_rawat=? ",
+            sqlpsobatlangsung="select tagihan_obat_langsung.besar_tagihan from tagihan_obat_langsung where tagihan_obat_langsung.no_rawat=? ",
             sqlpskamarin="select kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,"+
                     "kamar_inap.lama,kamar_inap.ttl_biaya as total,kamar_inap.tgl_masuk, "+
                     "kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,"+
@@ -113,17 +113,17 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "on kamar_inap.kd_kamar=kamar.kd_kamar "+
                     "and kamar.kd_bangsal=bangsal.kd_bangsal where "+
                     "kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk,kamar_inap.kd_kamar",
-            sqlpsbiayasekali="select nama_biaya,besar_biaya,(besar_biaya*1) as total from biaya_sekali "+
-                    " where kd_kamar=? order by nama_biaya",
-            sqlpsbiayaharian="select nama_biaya,besar_biaya,jml,(jml*besar_biaya*?) as total from biaya_harian "+
-                    " where kd_kamar=? order by nama_biaya",
+            sqlpsbiayasekali="select biaya_sekali.nama_biaya,biaya_sekali.besar_biaya,(biaya_sekali.besar_biaya*1) as total from biaya_sekali "+
+                    " where biaya_sekali.kd_kamar=? order by biaya_sekali.nama_biaya",
+            sqlpsbiayaharian="select biaya_harian.nama_biaya,biaya_harian.besar_biaya,biaya_harian.jml,(biaya_harian.jml*biaya_harian.besar_biaya*?) as total from biaya_harian "+
+                    " where biaya_harian.kd_kamar=? order by biaya_harian.nama_biaya",
             sqlpsreseppulang="select databarang.nama_brng,resep_pulang.harga,"+
                     "resep_pulang.jml_barang,resep_pulang.dosis,resep_pulang.total "+
                     "from resep_pulang inner join databarang "+
                     "on resep_pulang.kode_brng=databarang.kode_brng where "+
                     "resep_pulang.no_rawat=? order by databarang.nama_brng",
-            sqlpstambahanbiaya="select nama_biaya, besar_biaya from tambahan_biaya where no_rawat=?  ",
-            sqlpspotonganbiaya="select nama_pengurangan, besar_pengurangan from pengurangan_biaya where no_rawat=?  ",
+            sqlpstambahanbiaya="select tambahan_biaya.nama_biaya, tambahan_biaya.besar_biaya from tambahan_biaya where tambahan_biaya.no_rawat=?  ",
+            sqlpspotonganbiaya="select pengurangan_biaya.nama_pengurangan, pengurangan_biaya.besar_pengurangan from pengurangan_biaya where pengurangan_biaya.no_rawat=?  ",
             sqlpsralandokter="select jns_perawatan.nm_perawatan,rawat_jl_dr.biaya_rawat as total_byrdr,count(rawat_jl_dr.kd_jenis_prw) as jml, "+
                     "sum(rawat_jl_dr.biaya_rawat) as biaya,"+
                     "sum(rawat_jl_dr.bhp) as totalbhp,"+
@@ -197,11 +197,11 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                          "operasi.no_rawat=? and operasi.status like ?",
             sqlpsnota="insert into nota_inap values(?,?,?,?,?)",
             sqlpsbiling="insert into billing values(?,?,?,?,?,?,?,?,?,?,?)",
-            sqlpssudahmasuk="select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,"+
-                                           "if(tambahan<>0,tambahan,null) as tiga, if(totalbiaya<>0,totalbiaya,null) as empat,pemisah,status "+
-                                           "from billing where no_rawat=?  order by noindex",
-            sqlpskategori="SELECT kd_kategori, nm_kategori FROM kategori_perawatan",
-            sqlpstamkur="select biaya from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",
+            sqlpssudahmasuk="select billing.no,billing.nm_perawatan, if(billing.biaya<>0,billing.biaya,null) as satu, if(billing.jumlah<>0,billing.jumlah,null) as dua,"+
+                            "if(billing.tambahan<>0,billing.tambahan,null) as tiga, if(billing.totalbiaya<>0,billing.totalbiaya,null) as empat,billing.pemisah,billing.status "+
+                            "from billing where billing.no_rawat=?  order by billing.noindex",
+            sqlpskategori="SELECT kategori_perawatan.kd_kategori, kategori_perawatan.nm_kategori FROM kategori_perawatan",
+            sqlpstamkur="select temporary_tambahan_potongan.biaya from temporary_tambahan_potongan where temporary_tambahan_potongan.no_rawat=? and temporary_tambahan_potongan.nama_tambahan=? and temporary_tambahan_potongan.status=?",
             sqlpsanak="select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2 from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?",
             sqlpstemporary="insert into temporary_bayar_ranap values('0',?,?,?,?,?,?,?,?,'','','','','','','','','')",
@@ -215,7 +215,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             ranap_dokterserv=0,ranap_paramedisserv=0,ralan_dokterserv=0,
             ralan_paramedisserv=0,tambahanserv=0,potonganserv=0,
             kamarserv=0,registrasiserv=0,harianserv=0,retur_Obatserv=0,resep_Pulangserv=0,ttlService=0,
-            persenbayi=Sequel.cariInteger("select bayi from set_jam_minimal");
+            persenbayi=Sequel.cariInteger("select set_jam_minimal.bayi from set_jam_minimal");
     private int x=0,z=0,i=0,countbayar=0,jml=0,r=0,row2=0;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
