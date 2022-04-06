@@ -555,6 +555,41 @@ public class frmUtama extends javax.swing.JFrame {
                                         }
                                     }
                                 }
+                                
+                                datajam=Sequel.cariIsi("select now() from reg_periksa where reg_periksa.stts='Batal' and reg_periksa.no_rawat=?",rs.getString("no_rawat"));
+                                if(!datajam.equals("")){
+                                    if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"99",datajam})==true){
+                                        parsedDate = dateFormat.parse(datajam);
+                                        try {     
+                                            TeksArea.append("Menjalankan WS taskid batal pelayanan poli Mobile JKN Pasien BPJS\n");
+                                            headers = new HttpHeaders();
+                                            headers.setContentType(MediaType.APPLICATION_JSON);
+                                            headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
+                                            utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                            headers.add("x-timestamp",utc);
+                                            headers.add("x-signature",api.getHmac(utc));
+                                            headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
+                                            requestJson ="{" +
+                                                             "\"kodebooking\": \""+rs.getString("nobooking")+"\"," +
+                                                             "\"taskid\": \"99\"," +
+                                                             "\"waktu\": \""+parsedDate.getTime()+"\"" +
+                                                          "}";
+                                            TeksArea.append("JSON : "+requestJson+"\n");
+                                            requestEntity = new HttpEntity(requestJson,headers);
+                                            URL = link+"/antrean/updatewaktu";	
+                                            System.out.println("URL : "+URL);
+                                            //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                                            nameNode = root.path("metadata");
+                                            if(!nameNode.path("code").asText().equals("200")){
+                                                Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='99' and no_rawat='"+rs.getString("no_rawat")+"'");
+                                            }  
+                                            TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
+                                        }catch (Exception ex) {
+                                            System.out.println("Notifikasi Bridging : "+ex);
+                                        }
+                                    }
+                                }
                             }
                         } catch (Exception ex) {
                             System.out.println("Notif : "+ex);
