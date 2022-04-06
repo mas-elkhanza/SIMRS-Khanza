@@ -1064,7 +1064,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbBilling.setDefaultRenderer(Object.class, new WarnaTable());
         
         try {
-            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
+            psset_tarif=koneksi.prepareStatement(
+                    "select set_tarif.poli_ralan,set_tarif.cara_bayar_ralan,set_tarif.cara_bayar_radiologi,"+
+                    "set_tarif.kelas_radiologi,set_tarif.cara_bayar_lab,set_tarif.kelas_lab from set_tarif");
             try {
                 rsset_tarif=psset_tarif.executeQuery();
                 if(rsset_tarif.next()){
@@ -1097,10 +1099,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         } 
         
         try {
-            notaralan=Sequel.cariIsi("select cetaknotasimpanralan from set_nota"); 
-            centangdokterralan=Sequel.cariIsi("select centangdokterralan from set_nota"); 
-            rinciandokterralan=Sequel.cariIsi("select rinciandokterralan from set_nota"); 
-            tampilkan_ppnobat_ralan=Sequel.cariIsi("select tampilkan_ppnobat_ralan from set_nota"); 
+            notaralan=Sequel.cariIsi("select set_nota.cetaknotasimpanralan from set_nota"); 
+            centangdokterralan=Sequel.cariIsi("select set_nota.centangdokterralan from set_nota"); 
+            rinciandokterralan=Sequel.cariIsi("select set_nota.rinciandokterralan from set_nota"); 
+            tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota"); 
         } catch (Exception e) {
             notaralan="No"; 
             centangdokterralan="No";
@@ -7110,6 +7112,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     if(Sequel.cariIsiAngka("select sum(totalbiaya) from billing where no_rawat=?",TNoRw.getText())==0){
                         Sequel.queryu2("delete from billing where no_rawat=?",1,new String[]{TNoRw.getText()});
                         Sequel.queryu2("delete from nota_jalan where no_rawat=?",1,new String[]{TNoRw.getText()});
+                        Sequel.queryu2("update reg_periksa set status_bayar='Belum Bayar' where no_rawat=?",1,new String[]{TNoRw.getText()});
                     }
                     
                     Sequel.Commit();
