@@ -67,8 +67,8 @@ public class ApiSOFTMEDIX {
                     "if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,date_format(pasien.tgl_lahir,'%d.%m.%Y') as tgl_lahir,pasien.jk,pasien.alamat,"+
                     "if(permintaan_lab.tgl_sampel='0000-00-00','',permintaan_lab.tgl_sampel) as tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
                     "if(permintaan_lab.tgl_hasil='0000-00-00','',permintaan_lab.tgl_hasil) as tgl_hasil,if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
-                    "permintaan_lab.dokter_perujuk,dokter.nm_dokter,poliklinik.nm_poli,pasien.no_tlp,penjab.png_jawab,reg_periksa.kd_pj,pasien.pekerjaan,reg_periksa.kd_poli from permintaan_lab "+
-                    "inner join reg_periksa inner join pasien inner join dokter inner join poliklinik inner join penjab "+
+                    "permintaan_lab.dokter_perujuk,dokter.nm_dokter,poliklinik.nm_poli,pasien.no_tlp,penjab.png_jawab,reg_periksa.kd_pj,pasien.pekerjaan,reg_periksa.kd_poli,pasien.email,pasien.no_ktp "+
+                    "from permintaan_lab inner join reg_periksa inner join pasien inner join dokter inner join poliklinik inner join penjab "+
                     "on permintaan_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "+
                     "and permintaan_lab.dokter_perujuk=dokter.kd_dokter and reg_periksa.kd_poli=poliklinik.kd_poli where permintaan_lab.noorder=?");
              try {
@@ -78,18 +78,13 @@ public class ApiSOFTMEDIX {
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     ps2=koneksi.prepareStatement(
-                            "select permintaan_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,"+
-                            "template_laboratorium.urut from permintaan_detail_permintaan_lab "+
-                            "inner join template_laboratorium on permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
-                            "where permintaan_detail_permintaan_lab.noorder=? order by template_laboratorium.kd_jenis_prw,template_laboratorium.urut desc");
+                            "select permintaan_detail_permintaan_lab.id_template from permintaan_detail_permintaan_lab where permintaan_detail_permintaan_lab.noorder=? order by permintaan_detail_permintaan_lab.id_template desc");
                     try {
                         ps2.setString(1,rs.getString("noorder"));
                         rs2=ps2.executeQuery();
                         requestJson2="";
-                        i=0;
                         while(rs2.next()){
-                            requestJson2=requestJson2+"\""+i+"\": \""+rs2.getString("urut")+"\",";
-                            i++;
+                            requestJson2=requestJson2+"\""+rs2.getString("id_template")+"\",";
                         }
                         if(requestJson2.endsWith(",")){
                             requestJson2 = requestJson2.substring(0,requestJson2.length() - 1);
@@ -119,7 +114,10 @@ public class ApiSOFTMEDIX {
                                             "\"sex\": \""+rs.getString("jk")+"\"," +
                                             "\"birth_dt\": \""+rs.getString("tgl_lahir")+"\","+
                                             "\"address\": \""+rs.getString("alamat")+"\","+
-                                            "\"no_tlp\": \""+rs.getString("no_tlp")+"\"" +
+                                            "\"no_tlp\": \""+rs.getString("no_tlp")+"\"," +
+                                            "\"no_hp\": \""+rs.getString("no_tlp")+"\"," +
+                                            "\"email\": \""+rs.getString("email")+"\"," +
+                                            "\"nik\": \""+rs.getString("no_ktp")+"\"" +
                                         "}, "+
                                         "\"obr\": {" +
                                             "\"order_control\": \"N\"," +
@@ -140,9 +138,13 @@ public class ApiSOFTMEDIX {
                                             "\"cito\": \"N\"," +
                                             "\"med_legal\": \"N\","+
                                             "\"user_id\": \""+akses.getkode()+"\","+
-                                            "\"order_test\": {" +
+                                            "\"reserve1\": \"\","+
+                                            "\"reserve2\": \"\","+
+                                            "\"reserve3\": \"\","+
+                                            "\"reserve4\": \"\","+
+                                            "\"order_test\": [" +
                                                 requestJson2+
-                                            "}"+
+                                            "]"+
                                         "}" +
                                     "}"+
                                 "}"; 
@@ -181,7 +183,7 @@ public class ApiSOFTMEDIX {
                     "if(permintaan_lab.tgl_sampel='0000-00-00','',permintaan_lab.tgl_sampel) as tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
                     "if(permintaan_lab.tgl_hasil='0000-00-00','',permintaan_lab.tgl_hasil) as tgl_hasil,if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
                     "permintaan_lab.dokter_perujuk,dokter.nm_dokter,bangsal.nm_bangsal,pasien.no_tlp,penjab.png_jawab,date_format(pasien.tgl_lahir,'%d.%m.%Y') as tgl_lahir,reg_periksa.kd_pj,pasien.pekerjaan,kamar.kd_bangsal,"+
-                    "kamar_inap.kd_kamar,kamar.kelas from permintaan_lab "+
+                    "kamar_inap.kd_kamar,kamar.kelas,pasien.email,pasien.no_ktp from permintaan_lab "+
                     "inner join reg_periksa inner join pasien inner join dokter inner join bangsal inner join kamar inner join kamar_inap inner join penjab  "+
                     "on permintaan_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "+
                     "and permintaan_lab.dokter_perujuk=dokter.kd_dokter and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.no_rawat=kamar_inap.no_rawat and kamar_inap.kd_kamar=kamar.kd_kamar where "+
@@ -193,18 +195,13 @@ public class ApiSOFTMEDIX {
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     ps2=koneksi.prepareStatement(
-                            "select permintaan_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,"+
-                            "template_laboratorium.urut from permintaan_detail_permintaan_lab "+
-                            "inner join template_laboratorium on permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
-                            "where permintaan_detail_permintaan_lab.noorder=? order by template_laboratorium.kd_jenis_prw,template_laboratorium.urut desc");
+                            "select permintaan_detail_permintaan_lab.id_template from permintaan_detail_permintaan_lab where permintaan_detail_permintaan_lab.noorder=? order by permintaan_detail_permintaan_lab.id_template desc");
                     try {
                         ps2.setString(1,rs.getString("noorder"));
                         rs2=ps2.executeQuery();
                         requestJson2="";
-                        i=0;
                         while(rs2.next()){
-                            requestJson2=requestJson2+"\""+i+"\": \""+rs2.getString("urut")+"\",";
-                            i++;
+                            requestJson2=requestJson2+"\""+rs2.getString("id_template")+"\",";
                         }
                         if(requestJson2.endsWith(",")){
                             requestJson2 = requestJson2.substring(0,requestJson2.length() - 1);
@@ -235,6 +232,9 @@ public class ApiSOFTMEDIX {
                                             "\"birth_dt\": \""+rs.getString("tgl_lahir")+"\","+
                                             "\"address\": \""+rs.getString("alamat")+"\","+
                                             "\"no_tlp\": \""+rs.getString("no_tlp")+"\"" +
+                                            "\"no_hp\": \""+rs.getString("no_tlp")+"\"," +
+                                            "\"email\": \""+rs.getString("email")+"\"," +
+                                            "\"nik\": \""+rs.getString("no_ktp")+"\"" +
                                         "}, "+
                                         "\"obr\": {" +
                                             "\"order_control\": \"N\"," +
@@ -255,9 +255,13 @@ public class ApiSOFTMEDIX {
                                             "\"cito\": \"N\"," +
                                             "\"med_legal\": \"N\","+
                                             "\"user_id\": \""+akses.getkode()+"\","+
-                                            "\"order_test\": {" +
+                                            "\"reserve1\": \"\","+
+                                            "\"reserve2\": \"\","+
+                                            "\"reserve3\": \"\","+
+                                            "\"reserve4\": \"\","+
+                                            "\"order_test\": [" +
                                                 requestJson2+
-                                            "}"+
+                                            "]"+
                                         "}" +
                                     "}"+
                                 "}"; 
@@ -296,7 +300,7 @@ public class ApiSOFTMEDIX {
             stringbalik=getRest().exchange(URLAPISOFTMEDIX+"/result/"+USERIDSOFTMEDIX+"/"+KEYSOFTMEDIX+"/"+nopermintaan, HttpMethod.GET, requestEntity, String.class).getBody();
             System.out.println("JSON : "+stringbalik);
             root = mapper.readTree(stringbalik);
-            response = root.path("result").path("obx").path("result_test");
+            response = root.path("response").path("sampel").path("result_test");
             Sequel.queryu("truncate table temporary_permintaan_lab");
             if(response.isArray()){
                 for(JsonNode list:response){
