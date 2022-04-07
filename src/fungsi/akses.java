@@ -176,7 +176,7 @@ public final class akses {
             status_data_rm=false,ubah_petugas_lab_pk=false,ubah_petugas_lab_pa=false,ubah_petugas_radiologi=false,gabung_norawat=false,gabung_rm=false,
             ringkasan_biaya_obat_pasien_pertanggal=false,master_masalah_keperawatan_igd=false,penilaian_awal_keperawatan_igd=false,bpjs_referensi_dpho_apotek=false,
             bpjs_referensi_poli_apotek=false,bayar_jm_dokter=false,bpjs_referensi_faskes_apotek=false,bpjs_referensi_spesialistik_apotek=false,
-            pembayaran_briva=false;
+            pembayaran_briva=false,penilaian_awal_keperawatan_ranap=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1004,6 +1004,7 @@ public final class akses {
                         akses.bpjs_referensi_faskes_apotek=true;
                         akses.bpjs_referensi_spesialistik_apotek=true;
                         akses.pembayaran_briva=true;
+                        akses.penilaian_awal_keperawatan_ranap=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1815,6 +1816,7 @@ public final class akses {
                         akses.bpjs_referensi_faskes_apotek=rs2.getBoolean("bpjs_referensi_faskes_apotek");
                         akses.bpjs_referensi_spesialistik_apotek=rs2.getBoolean("bpjs_referensi_spesialistik_apotek");
                         akses.pembayaran_briva=rs2.getBoolean("pembayaran_briva");
+                        akses.penilaian_awal_keperawatan_ranap=rs2.getBoolean("penilaian_awal_keperawatan_ranap");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2624,6 +2626,7 @@ public final class akses {
                         akses.bpjs_referensi_faskes_apotek=false;
                         akses.bpjs_referensi_spesialistik_apotek=false;
                         akses.pembayaran_briva=false;
+                        akses.penilaian_awal_keperawatan_ranap=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3488,4 +3491,5 @@ public final class akses {
     public static boolean getbpjs_referensi_faskes_apotek(){return akses.bpjs_referensi_faskes_apotek;}
     public static boolean getbpjs_referensi_spesialistik_apotek(){return akses.bpjs_referensi_spesialistik_apotek;}
     public static boolean getpembayaran_briva(){return akses.pembayaran_briva;}
+    public static boolean getpenilaian_awal_keperawatan_ranap(){return akses.penilaian_awal_keperawatan_ranap;}
 }   
