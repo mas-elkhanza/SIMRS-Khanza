@@ -308,10 +308,11 @@ public final class DlgLhtBankJateng extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReportqry("rptHtHBankJateng.jasper","report","::[ Data Pembayaran Bank Jateng ]::",
-               "select * from tagihan_bpd_jateng where tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
-               (TCari.getText().equals("")?"":"and (no_rkm_medis like '%"+TCari.getText().trim()+"%' or nm_pasien like '%"+TCari.getText().trim()+"%' or no_nota like '%"+TCari.getText().trim()+"%' or referensi like '%"+TCari.getText().trim()+"%' "+
-               "or no_rawat like '%"+TCari.getText().trim()+"%' or status_lanjut like '%"+TCari.getText().trim()+"%' or status_bayar like '%"+TCari.getText().trim()+"%' or kasir like '%"+TCari.getText().trim()+"%' or keterangan like '%"+TCari.getText().trim()+"%') ")+
-               "order by tgl_closing",param);
+               "select * from tagihan_bpd_jateng where tagihan_bpd_jateng.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+               (TCari.getText().equals("")?"":"and (tagihan_bpd_jateng.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_bpd_jateng.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+               "tagihan_bpd_jateng.no_nota like '%"+TCari.getText().trim()+"%' or tagihan_bpd_jateng.referensi like '%"+TCari.getText().trim()+"%' or tagihan_bpd_jateng.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+               "tagihan_bpd_jateng.status_lanjut like '%"+TCari.getText().trim()+"%' or tagihan_bpd_jateng.status_bayar like '%"+TCari.getText().trim()+"%' or tagihan_bpd_jateng.kasir like '%"+TCari.getText().trim()+"%' or "+
+               "tagihan_bpd_jateng.keterangan like '%"+TCari.getText().trim()+"%') ")+"order by tagihan_bpd_jateng.tgl_closing",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -412,10 +413,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void tampil(){
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from tagihan_bpd_jateng where tgl_closing between ? and ? "+
-                   (TCari.getText().equals("")?"":"and (no_rkm_medis like ? or nm_pasien like ? or no_nota like ? or referensi like ? "+
-                   "or no_rawat like ? or status_lanjut like ? or status_bayar like ? or kasir like ? or keterangan like ?) ")+
-                   "order by tgl_closing");
+            ps=koneksi.prepareStatement("select * from tagihan_bpd_jateng where tagihan_bpd_jateng.tgl_closing between ? and ? "+
+                   (TCari.getText().equals("")?"":"and (tagihan_bpd_jateng.no_rkm_medis like ? or tagihan_bpd_jateng.nm_pasien like ? or "+
+                   "tagihan_bpd_jateng.no_nota like ? or tagihan_bpd_jateng.referensi like ? or tagihan_bpd_jateng.no_rawat like ? or "+
+                   "tagihan_bpd_jateng.status_lanjut like ? or tagihan_bpd_jateng.status_bayar like ? or tagihan_bpd_jateng.kasir like ? or "+
+                   "tagihan_bpd_jateng.keterangan like ?) ")+"order by tagihan_bpd_jateng.tgl_closing");
             try {
                 ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem()+""));

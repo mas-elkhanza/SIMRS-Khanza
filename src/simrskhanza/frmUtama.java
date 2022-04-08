@@ -615,6 +615,7 @@ import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgKategoriPemasukan;
 import keuangan.DlgKategoriPengeluaran;
+import keuangan.DlgLhtBRIVA;
 import keuangan.DlgLhtBankJateng;
 import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPembayaranPerAKunBayar4;
@@ -18245,6 +18246,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPembayaranBRIVAActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgLhtBRIVA form=new DlgLhtBRIVA(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18883,7 +18895,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
-            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek;
+            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
+            btnPembayaranBRIVA;
     
     public void isWall(){
         try{            
@@ -20841,6 +20854,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpembayaran_bank_jateng()==true){
                Panelmenu.add(btnPembayaranBankJateng); 
+               jmlmenu++;
+            }
+            
+            if(akses.getpembayaran_briva()==true){
+               Panelmenu.add(btnPembayaranBRIVA); 
                jmlmenu++;
             }
 
@@ -24840,6 +24858,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
            jmlmenu++;
         }
 
+        if(akses.getpembayaran_briva()==true){
+           Panelmenu.add(btnPembayaranBRIVA); 
+           jmlmenu++;
+        }
+        
         if(akses.gethutang_obat()==true){
             Panelmenu.add(btnHutangObat);
             jmlmenu++;
@@ -29559,6 +29582,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpembayaran_bank_jateng()==true){
             if(btnPembayaranBankJateng.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranBankJateng); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpembayaran_briva()==true){
+            if(btnPembayaranBRIVA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranBRIVA); 
                 jmlmenu++;
             }                
         }
@@ -35287,6 +35317,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiSpesialistikApotek.setName("btnBPJSReferensiSpesialistikApotek"); 
         btnBPJSReferensiSpesialistikApotek.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBPJSReferensiSpesialistikApotek.addActionListener(this::btnBPJSReferensiSpesialistikApotekActionPerformed);
+        
+        btnPembayaranBRIVA = new widget.ButtonBig();
+        btnPembayaranBRIVA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_wallet_3440917.png")));
+        btnPembayaranBRIVA.setText("Pembayaran BRIVA");
+        btnPembayaranBRIVA.setIconTextGap(0);
+        btnPembayaranBRIVA.setName("btnPembayaranBRIVA"); 
+        btnPembayaranBRIVA.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranBRIVA.addActionListener(this::btnPembayaranBRIVAActionPerformed);
     }
     
 }
