@@ -305,11 +305,12 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptHtHBankJateng.jasper","report","::[ Data Pembayaran Bank Jateng ]::",
-               "select * from  tagihan_briva where tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
-               (TCari.getText().equals("")?"":"and (no_rkm_medis like '%"+TCari.getText().trim()+"%' or nm_pasien like '%"+TCari.getText().trim()+"%' or no_tagihan like '%"+TCari.getText().trim()+"%' or referensi like '%"+TCari.getText().trim()+"%' "+
-               "or no_rawat like '%"+TCari.getText().trim()+"%' or status_tagihan like '%"+TCari.getText().trim()+"%' or status_bayar like '%"+TCari.getText().trim()+"%' or kasir like '%"+TCari.getText().trim()+"%' or keterangan like '%"+TCari.getText().trim()+"%') ")+
-               "order by tgl_closing",param);
+            Valid.MyReportqry("rptBRIVA.jasper","report","::[ Data Pembayaran BRI Virtual Account ]::",
+               "select * from tagihan_briva where tagihan_briva.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+               (TCari.getText().equals("")?"":"and (tagihan_briva.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_briva.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+               "tagihan_briva.no_tagihan like '%"+TCari.getText().trim()+"%' or tagihan_briva.referensi like '%"+TCari.getText().trim()+"%' or tagihan_briva.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+               "tagihan_briva.status_tagihan like '%"+TCari.getText().trim()+"%' or tagihan_briva.status_bayar like '%"+TCari.getText().trim()+"%' or tagihan_briva.kasir like '%"+TCari.getText().trim()+"%' or "+
+               "tagihan_briva.keterangan like '%"+TCari.getText().trim()+"%') ")+" order by tagihan_briva.tgl_closing",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
