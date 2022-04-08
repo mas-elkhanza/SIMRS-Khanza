@@ -417,7 +417,7 @@ public class AkunRekeningBankJateng extends javax.swing.JDialog {
             Valid.textKosong(TPass,"Password");
         }else{
             if(tbSpesialis.getSelectedRow()>-1){
-                Valid.hapusTable(tabMode,kdrek,"set_akun_bankjateng","kd_rek");
+                Sequel.queryu("delete from set_akun_bankjateng");
                 if(Sequel.menyimpantf("set_akun_bankjateng","?,aes_encrypt(?,'nur'),aes_encrypt(?,'windi')","Akun Rekening",3,new String[]{
                     kdrek.getText(),TKd.getText(),TPass.getText()
                 })==true){
@@ -437,7 +437,7 @@ public class AkunRekeningBankJateng extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,kdrek,"set_akun_bankjateng","kd_rek");
+        Sequel.queryu("delete from set_akun_bankjateng");
         tampil();
         emptTeks();
     }//GEN-LAST:event_BtnHapusActionPerformed

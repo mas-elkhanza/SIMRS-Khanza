@@ -2,9 +2,12 @@ package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
+import fungsi.validasi;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.security.GeneralSecurityException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -21,8 +24,12 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.swing.JOptionPane;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -51,11 +58,12 @@ public class ApiBRI {
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private JsonNode root;
-    private sekuel Sequel=new sekuel();
     private JsonNode response;
     private ObjectMapper mapper = new ObjectMapper();
     private Date date,date2;
     private SimpleDateFormat sdf,sdf2;
+    private boolean status=true;
+    private validasi Valid=new validasi();
     
     public ApiBRI(){
         try {
@@ -157,7 +165,14 @@ public class ApiBRI {
         return signature;
     }
     
-    public void buatVA(String norawat,String nama,String bayar,String keterangan){
+    public boolean buatVA(String norawat,String nama,String bayar,String keterangan){
+        status=false;
+        try {
+            bodyWithDeleteRequest(norawat);
+        }catch (Exception ex) {
+            System.out.println("Notifikasi Bridging Hapus : "+ex);
+        }
+        
         try{
             token=Token();
             date = new Date(System.currentTimeMillis()-25200000);
@@ -191,6 +206,88 @@ public class ApiBRI {
             System.out.println("Authorization : "+"Bearer "+token);
             requestEntity = new HttpEntity(json,headers);
             json = mapper.readTree(getRest().exchange(urlapi+"/v1/briva", HttpMethod.POST, requestEntity, String.class).getBody()).toString();
+            System.out.println("Respon : "+json);
+            root = mapper.readTree(json);
+            response = root.path("status");
+            status = response.asBoolean();
+            if(status==true){
+                JOptionPane.showMessageDialog(null,"Tagihan BRIVA "+norawat+" sebesar "+Valid.SetAngka(Double.parseDouble(bayar))+" berhasil dibuat..!");
+                Valid.panggilUrl("billing/LaporanBilling12.php?norawat="+norawat.replaceAll(" ","_")+"&pasien="+nama.replaceAll(" ","_")+"&bayar="+bayar+"&petugas="+akses.getkode().replaceAll(" ","_")+"&keterangan="+keterangan.replaceAll(" ","_"));
+            }else{
+                JOptionPane.showMessageDialog(null,"Tagihan BRIVA "+norawat+" sebesar "+Valid.SetAngka(Double.parseDouble(bayar))+" gagal dibuat..!");
+            }
+        } catch (Exception ex) {
+            status=false;
+            JOptionPane.showMessageDialog(null,"Tagihan BRIVA "+norawat+" sebesar "+Valid.SetAngka(Double.parseDouble(bayar))+" gagal dibuat..!");
+            System.out.println("Notifikasi : "+ex);
+        }
+        return status;
+    }
+    
+    public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
+        public HttpEntityEnclosingDeleteRequest(final URI uri) {
+            super();
+            setURI(uri);
+        }
+
+        @Override
+        public String getMethod() {
+            return "DELETE";
+        }
+    }
+
+    @Test
+    public void bodyWithDeleteRequest(String norawat) throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+        SSLContext sslContext = SSLContext.getInstance("SSL");
+        javax.net.ssl.TrustManager[] trustManagers= {
+            new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() {return null;}
+                public void checkServerTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+                public void checkClientTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+            }
+        };
+        sslContext.init(null,trustManagers , new SecureRandom());
+        SSLSocketFactory sslFactory=new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        Scheme scheme=new Scheme("https",443,sslFactory);
+    
+        HttpComponentsClientHttpRequestFactory factory=new HttpComponentsClientHttpRequestFactory(){
+            @Override
+            protected HttpUriRequest createHttpUriRequest(HttpMethod httpMethod, URI uri) {
+                if (HttpMethod.DELETE == httpMethod) {
+                    return new HttpEntityEnclosingDeleteRequest(uri);
+                }
+                return super.createHttpUriRequest(httpMethod, uri);
+            }
+        };
+        factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
+        restTemplate.setRequestFactory(factory);
+        
+        try{
+            token=Token();
+            date = new Date(System.currentTimeMillis()-25200000);
+            sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            timestamp=sdf.format(date);
+            date2 = new Date(System.currentTimeMillis()-25200000+86400000);
+            sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            timestamp2=sdf2.format(date2);
+            System.out.println("consumer_key : "+consumer_key);
+            System.out.println("consumer_secret : "+consumer_secret);
+            signature=Signature("/v1/briva","DELETE",token,timestamp,"institutionCode="+institution_code+"&brivaNo="+briva_no+"&custCode="+norawat);
+            
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.TEXT_PLAIN);
+            headers.add("BRI-Timestamp",timestamp);
+            headers.add("BRI-Signature",signature);
+            headers.add("Authorization","Bearer "+token); 
+            System.out.println("URL : "+urlapi+"/v1/briva");
+            System.out.println("BRI-Timestamp : "+timestamp);
+            System.out.println("BRI-Signature : "+signature);
+            System.out.println("Authorization : "+"Bearer "+token);
+            json="institutionCode="+institution_code+"&brivaNo="+briva_no+"&custCode="+norawat;
+            System.out.println("JSON : "+json);
+            requestEntity = new HttpEntity(json,headers);
+            json = mapper.readTree(restTemplate.exchange(urlapi+"/v1/briva", HttpMethod.DELETE, requestEntity, String.class).getBody()).toString();
             System.out.println("Respon : "+json);
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);

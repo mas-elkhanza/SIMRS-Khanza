@@ -3736,6 +3736,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 BtnNota.setVisible(false);
             }            
         }
+        BtnGudang.setEnabled(akses.getakses_depo_obat());
     }
     
     public void autoNomor(){

@@ -916,9 +916,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps=koneksi.prepareStatement(
                     "select nota_jalan.tanggal,nota_jalan.no_nota, "+
                     " pasien.no_rkm_medis,pasien.nm_pasien,nota_jalan.no_rawat from "+
-                    " nota_jalan inner join reg_periksa inner join pasien "+
-                    " inner join tagihan_sadewa on nota_jalan.no_rawat=reg_periksa.no_rawat and "+
-                    " reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=tagihan_sadewa.no_nota "+
+                    " nota_jalan inner join reg_periksa inner join pasien on nota_jalan.no_rawat=reg_periksa.no_rawat and "+
+                    " reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     " where nota_jalan.tanggal between ? and ? and nota_jalan.no_nota like ? or "+
                     " nota_jalan.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
                     " nota_jalan.tanggal between ? and ? and pasien.nm_pasien like ? order by nota_jalan.tanggal,nota_jalan.no_nota ");

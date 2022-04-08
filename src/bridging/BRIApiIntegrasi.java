@@ -484,7 +484,7 @@ public class BRIApiIntegrasi extends javax.swing.JDialog {
             Valid.textKosong(UrlApi,"URL API");
         }else{
             if(tbSpesialis.getSelectedRow()>-1){
-                Valid.hapusTable(tabMode,kdrek,"set_akun_bankbri","kd_rek");
+                Sequel.queryu("delete from set_akun_bankbri");
                 if(Sequel.menyimpantf("set_akun_bankbri","?,aes_encrypt(?,'nur'),aes_encrypt(?,'windi'),aes_encrypt(?,'nur'),aes_encrypt(?,'windi'),aes_encrypt(?,'dewi')","Akun Rekening",6,new String[]{
                     kdrek.getText(),ConsumerKey.getText(),ConsumerSecret.getText(),InstitutionCode.getText(),BrivaNo.getText(),UrlApi.getText()
                 })==true){
@@ -504,7 +504,7 @@ public class BRIApiIntegrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,kdrek,"set_akun_bankbri","kd_rek");
+        Sequel.queryu("delete from set_akun_bankbri");
         tampil();
         emptTeks();
     }//GEN-LAST:event_BtnHapusActionPerformed
