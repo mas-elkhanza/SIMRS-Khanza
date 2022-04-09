@@ -77,7 +77,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
         tabModePengaturanUmum=new DefaultTableModel(null,new Object[]{
-              "Pengaturan harga obat yang digunakan","Penggunaan harga dasar obat"
+              "Harga obat yang digunakan","Asal harga jual obat","Sertakan PPN Pembelian"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -86,12 +86,14 @@ public class DlgSetHarga extends javax.swing.JDialog {
         tbPengaturanUmum.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPengaturanUmum.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             TableColumn column = tbPengaturanUmum.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(250);
             }else if(i==1){
                 column.setPreferredWidth(250);
+            }else if(i==2){
+                column.setPreferredWidth(170);
             }
         }
 
@@ -270,6 +272,8 @@ public class DlgSetHarga extends javax.swing.JDialog {
         cmbPengaturan = new widget.ComboBox();
         jLabel6 = new widget.Label();
         cmbHargaDasar = new widget.ComboBox();
+        jLabel7 = new widget.Label();
+        cmbPPN = new widget.ComboBox();
         internalFrame4 = new widget.InternalFrame();
         panelisi3 = new widget.panelisi();
         label44 = new widget.Label();
@@ -565,13 +569,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
         internalFrame3.add(Scroll2, java.awt.BorderLayout.CENTER);
 
         panelGlass8.setName("panelGlass8"); // NOI18N
-        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 77));
+        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 47));
         panelGlass8.setLayout(null);
 
-        jLabel5.setText("Pengaturan harga obat yang digunakan :");
+        jLabel5.setText("Harga obat yang digunakan :");
         jLabel5.setName("jLabel5"); // NOI18N
         panelGlass8.add(jLabel5);
-        jLabel5.setBounds(0, 12, 230, 23);
+        jLabel5.setBounds(0, 12, 155, 23);
 
         cmbPengaturan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Umum", "Per Jenis", "Per Barang" }));
         cmbPengaturan.setName("cmbPengaturan"); // NOI18N
@@ -582,12 +586,12 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelGlass8.add(cmbPengaturan);
-        cmbPengaturan.setBounds(233, 12, 220, 23);
+        cmbPengaturan.setBounds(159, 12, 115, 23);
 
-        jLabel6.setText("Penggunaan harga dasar obat :");
+        jLabel6.setText("Asal harga jual obat :");
         jLabel6.setName("jLabel6"); // NOI18N
         panelGlass8.add(jLabel6);
-        jLabel6.setBounds(0, 42, 230, 23);
+        jLabel6.setBounds(270, 12, 120, 23);
 
         cmbHargaDasar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Harga Beli", "Harga Diskon" }));
         cmbHargaDasar.setName("cmbHargaDasar"); // NOI18N
@@ -598,7 +602,23 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
         panelGlass8.add(cmbHargaDasar);
-        cmbHargaDasar.setBounds(233, 42, 220, 23);
+        cmbHargaDasar.setBounds(394, 12, 120, 23);
+
+        jLabel7.setText("Sertakan PPN Pembelian :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        panelGlass8.add(jLabel7);
+        jLabel7.setBounds(525, 12, 130, 23);
+
+        cmbPPN.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        cmbPPN.setName("cmbPPN"); // NOI18N
+        cmbPPN.setPreferredSize(new java.awt.Dimension(55, 28));
+        cmbPPN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbPPNKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(cmbPPN);
+        cmbPPN.setBounds(659, 12, 70, 23);
 
         internalFrame3.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
@@ -1716,9 +1736,10 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu pengaturan ...!!!!");
                 cmbPengaturan.requestFocus();
             }else{
-                Sequel.menyimpan("set_harga_obat","?,?",2,new String[]{
+                Sequel.menyimpan("set_harga_obat","?,?,?",3,new String[]{
                     cmbPengaturan.getSelectedItem().toString(),
-                    cmbHargaDasar.getSelectedItem().toString()
+                    cmbHargaDasar.getSelectedItem().toString(),
+                    cmbPPN.getSelectedItem().toString()
                 });
                 tampilpengaturanumum();
                 emptTeks();
@@ -1827,7 +1848,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             BtnSimpanActionPerformed(null);
         }else{
             if(TabSetting.getSelectedIndex()==0){
-                Valid.pindah(evt,cmbHargaDasar,BtnBatal);
+                Valid.pindah(evt,cmbPPN,BtnBatal);
             }else if(TabSetting.getSelectedIndex()==1){
                 Valid.pindah(evt,karyawanumum,BtnBatal);
             }else if(TabSetting.getSelectedIndex()==2){
@@ -1980,9 +2001,10 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TabSetting.getSelectedIndex()==0){
             Sequel.queryu("delete from set_harga_obat");
-            Sequel.menyimpan("set_harga_obat","?,?",2,new String[]{
+            Sequel.menyimpan("set_harga_obat","?,?,?",3,new String[]{
                 cmbPengaturan.getSelectedItem().toString(),
-                cmbHargaDasar.getSelectedItem().toString()
+                cmbHargaDasar.getSelectedItem().toString(),
+                cmbPPN.getSelectedItem().toString()
             });
             tampilpengaturanumum();
             emptTeks();
@@ -2768,8 +2790,12 @@ public class DlgSetHarga extends javax.swing.JDialog {
     }//GEN-LAST:event_ppUPdate2ActionPerformed
 
     private void cmbHargaDasarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbHargaDasarKeyPressed
-        Valid.pindah(evt,cmbPengaturan,BtnSimpan);
+        Valid.pindah(evt,cmbPengaturan,cmbPPN);
     }//GEN-LAST:event_cmbHargaDasarKeyPressed
+
+    private void cmbPPNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbPPNKeyPressed
+        Valid.pindah(evt,cmbHargaDasar,BtnSimpan);
+    }//GEN-LAST:event_cmbPPNKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2815,6 +2841,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.TextBox beliluarperbarang;
     private widget.TextBox beliluarumum;
     private widget.ComboBox cmbHargaDasar;
+    private widget.ComboBox cmbPPN;
     private widget.ComboBox cmbPengaturan;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
@@ -2823,6 +2850,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame5;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
+    private widget.Label jLabel7;
     private widget.TextBox jualbebas;
     private widget.TextBox jualbebasperbarang;
     private widget.TextBox jualbebasumum;
@@ -2950,7 +2978,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabModePengaturanUmum.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2)
+                        rs.getString(1),rs.getString(2),rs.getString(3)
                     });
                 }
             } catch (Exception e) {
@@ -3095,6 +3123,9 @@ public class DlgSetHarga extends javax.swing.JDialog {
     
     public void emptTeks() {
         if(TabSetting.getSelectedIndex()==0){
+            cmbHargaDasar.setSelectedIndex(0);
+            cmbPengaturan.setSelectedIndex(0);
+            cmbPPN.setSelectedIndex(0);
             cmbPengaturan.requestFocus();
         }else if(TabSetting.getSelectedIndex()==1){
             ralanumum.setText("0");

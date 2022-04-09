@@ -1577,20 +1577,15 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_jalan.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) "+
+                       " order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
@@ -1620,25 +1615,20 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_inap.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) "+
+                       " order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
                             false,rs.getString("no_rawat"),rs.getString("tgl_piutang"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                            "Ralan",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
+                            "Ranap",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
                             rs.getString("nip"),rs.getString("no_nota")
                         });
                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang");
@@ -1663,20 +1653,15 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_jalan.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) "+
+                       " order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
@@ -1706,25 +1691,20 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_inap.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) "+
+                       " order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
                             false,rs.getString("no_rawat"),rs.getString("tgl_piutang"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                            "Ralan",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
+                            "Ranap",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
                             rs.getString("nip"),rs.getString("no_nota")
                         });
                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang");
@@ -1820,20 +1800,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_jalan.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
@@ -1863,25 +1837,19 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_inap.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
                             false,rs.getString("no_rawat"),rs.getString("tgl_piutang"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                            "Ralan",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
+                            "Ranap",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
                             rs.getString("nip"),rs.getString("no_nota")
                         });
                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang");
@@ -1906,20 +1874,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_jalan.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_jalan.no_nota like ?) order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
@@ -1949,25 +1911,19 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "inner join penjab on detail_piutang_pasien.kd_pj=penjab.kd_pj "+
                        "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                        "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "+
-                       "where "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? or "+ 
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
-                       "piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and nota_inap.no_nota like ? order by piutang_pasien.tgl_piutang");
+                       "where piutang_pasien.no_rawat not in(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang) and detail_piutang_pasien.sisapiutang>=1 and concat(detail_piutang_pasien.kd_pj,penjab.png_jawab) like ? and "+
+                       "(piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or nota_inap.no_nota like ?) order by piutang_pasien.tgl_piutang");
                 try {
                     ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                     ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode2.addRow(new Object[]{
                             false,rs.getString("no_rawat"),rs.getString("tgl_piutang"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                            "Ralan",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
+                            "Ranap",rs.getDouble("sisapiutang"),rs.getString("png_jawab"),rs.getString("no_peserta"),rs.getString("nama_perusahaan"),
                             rs.getString("nip"),rs.getString("no_nota")
                         });
                         sisapiutang=sisapiutang+rs.getDouble("sisapiutang");

@@ -6365,6 +6365,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 Sequel.queryu("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from prosedur_pasien where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from ranap_gabung where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rvp_klaim_bpjs where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from rujuk where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from rujuk_masuk where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from tambahan_biaya where no_rawat='"+TNoRw.getText()+"'");
@@ -6401,6 +6402,23 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 Sequel.queryu("delete from pcare_pendaftaran where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from detail_penagihan_piutang where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from permintaan_stok_obat_pasien where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_detail_periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_detail_periksa_lab_perujuk where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_operasi_dokter_anak where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_operasi_dokter_anestesi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_operasi_dokter_pjanak where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_operasi_dokter_umum where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_operasi_operator1 where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_operasi_operator2 where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_operasi_operator3 where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_periksa_lab_perujuk where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_periksa_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_periksa_radiologi_perujuk where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_rawat_inap_dr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_rawat_inap_drpr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_rawat_jl_dr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from bayar_rawat_jl_drpr where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
 
                 tampilkasir();

@@ -359,7 +359,7 @@
                   <Properties>
                     <Property name="name" type="java.lang.String" value="panelGlass8" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[44, 77]"/>
+                      <Dimension value="[44, 47]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -374,12 +374,12 @@
                   <SubComponents>
                     <Component class="widget.Label" name="jLabel5">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Pengaturan harga obat yang digunakan :"/>
+                        <Property name="text" type="java.lang.String" value="Harga obat yang digunakan :"/>
                         <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="0" y="12" width="230" height="23"/>
+                          <AbsoluteConstraints x="0" y="12" width="155" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -402,18 +402,18 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="233" y="12" width="220" height="23"/>
+                          <AbsoluteConstraints x="159" y="12" width="115" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel6">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Penggunaan harga dasar obat :"/>
+                        <Property name="text" type="java.lang.String" value="Asal harga jual obat :"/>
                         <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="0" y="42" width="230" height="23"/>
+                          <AbsoluteConstraints x="270" y="12" width="120" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -435,7 +435,40 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="233" y="42" width="220" height="23"/>
+                          <AbsoluteConstraints x="394" y="12" width="120" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Sertakan PPN Pembelian :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel7" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="525" y="12" width="130" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.ComboBox" name="cmbPPN">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="2">
+                            <StringItem index="0" value="Yes"/>
+                            <StringItem index="1" value="No"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="cmbPPN" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[55, 28]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbPPNKeyPressed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="659" y="12" width="70" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>

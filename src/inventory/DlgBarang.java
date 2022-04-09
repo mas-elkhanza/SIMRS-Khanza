@@ -55,7 +55,7 @@ public class DlgBarang extends javax.swing.JDialog {
     private PreparedStatement ps, ps2, ps3, ps4;
     private ResultSet rs, rs2, rs3;
     private int i = 0;
-    public String aktifkanbatch="no",pengaturanharga=Sequel.cariIsi("select setharga from set_harga_obat");;
+    public String aktifkanbatch="no",pengaturanharga=Sequel.cariIsi("select set_harga_obat.setharga from set_harga_obat");
     private String kdlokasi = "", nmlokasi = "", tanggal = "0000-00-00",qrystok="";
 
 
