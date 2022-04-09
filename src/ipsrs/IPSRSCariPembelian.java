@@ -37,7 +37,7 @@ public class IPSRSCariPembelian extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
-    private String akunpengadaan=Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun");
+    private String akunpengadaan=Sequel.cariIsi("select set_akun.Pengadaan_Ipsrs from set_akun"),PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun");
     private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
@@ -743,7 +743,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select ipsrsbarang.nama_brng from ipsrsbarang where ipsrsbarang.kode_brng=?", nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){  
             kdjenis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){    
@@ -856,14 +856,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"No.Faktur");
         }else{
            try {
-               pscaribeli=koneksi.prepareStatement("select no_faktur, tagihan,tgl_beli,kd_rek from ipsrspembelian where no_faktur=?");
+               pscaribeli=koneksi.prepareStatement("select ipsrspembelian.no_faktur,ipsrspembelian.tagihan,ipsrspembelian.tgl_beli,ipsrspembelian.kd_rek,ipsrspembelian.ppn,(ipsrspembelian.total+ipsrspembelian.meterai) as total from ipsrspembelian where ipsrspembelian.no_faktur=?");
                try {
                   pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
                   rs=pscaribeli.executeQuery();
                   if(rs.next()){
                       Sequel.AutoComitFalse();
                       sukses=true;
-                      psipsrsdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah from ipsrsdetailbeli where no_faktur=? ");
+                      psipsrsdetailbeli=koneksi.prepareStatement("select ipsrsdetailbeli.kode_brng,ipsrsdetailbeli.jumlah from ipsrsdetailbeli where ipsrsdetailbeli.no_faktur=? ");
                       try {
                           psipsrsdetailbeli.setString(1,rs.getString(1));
                           rs2=psipsrsdetailbeli.executeQuery();
@@ -886,8 +886,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
                       Sequel.queryu("delete from tampjurnal");
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          akunpengadaan,"PEMBELIAN","0",rs.getString("tagihan")
+                          akunpengadaan,"PEMBELIAN","0",rs.getString("total")
                       });    
+                      if(rs.getDouble("ppn")>0){
+                          Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            PPN_Masukan,"PPN Masukan IPSRS","0",rs.getString("ppn")
+                          }); 
+                      }
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                           rs.getString("kd_rek"),"KAS DI TANGAN",rs.getString("tagihan"),"0"
                       }); 

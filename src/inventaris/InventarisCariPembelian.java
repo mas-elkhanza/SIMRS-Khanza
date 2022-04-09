@@ -37,6 +37,7 @@ public class InventarisCariPembelian extends javax.swing.JDialog {
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
     private boolean sukses=false;
+    private String PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -794,7 +795,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"No.Faktur");
         }else{
            try {
-               pscaribeli=koneksi.prepareStatement("select no_faktur,tagihan,tgl_beli,kd_rek,kd_rek_aset from inventaris_pembelian where no_faktur=?");
+               pscaribeli=koneksi.prepareStatement(
+                       "select inventaris_pembelian.no_faktur,inventaris_pembelian.tagihan,inventaris_pembelian.tgl_beli,inventaris_pembelian.kd_rek,"+
+                       "inventaris_pembelian.kd_rek_aset,inventaris_pembelian.ppn,(inventaris_pembelian.meterai+inventaris_pembelian.total) as total "+
+                       "from inventaris_pembelian where inventaris_pembelian.no_faktur=?");
                try {
                   pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
                   rs=pscaribeli.executeQuery();
@@ -804,8 +808,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
                       Sequel.queryu("delete from tampjurnal");
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          rs.getString("kd_rek_aset"),"PEMBELIAN","0",rs.getString("tagihan")
+                          rs.getString("kd_rek_aset"),"PEMBELIAN","0",rs.getString("total")
                       });    
+                      if(rs.getDouble("ppn")>0){
+                          Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            PPN_Masukan,"PPN Masukan Inventaris","0",rs.getString("ppn")
+                          }); 
+                      }
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                           rs.getString("kd_rek"),"KAS DI TANGAN",rs.getString("tagihan"),"0"
                       }); 

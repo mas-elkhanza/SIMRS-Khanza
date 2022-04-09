@@ -43,7 +43,7 @@ public class InventarisPembelian extends javax.swing.JDialog {
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
     private WarnaTable2 warna=new WarnaTable2();
     private boolean sukses=true;
-    private String akunbayar,akunaset="";
+    private String akunbayar,akunaset="",PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun");
     private File file;
     private FileWriter fileWriter;
     private String iyem;
@@ -812,7 +812,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunaset,"PEMBELIAN",""+(ttl+ppn+meterai),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunaset,"PEMBELIAN",""+(ttl+meterai),"0"});
+                    if(ppn>0){
+                        Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{PPN_Masukan,"PPN Masukan Inventaris",""+ppn,"0"});
+                    }
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunbayar,"KAS KELUAR","0",""+(ttl+ppn+meterai)}); 
                     sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PEMBELIAN ASET/INVETARIS "+", OLEH "+akses.getkode());
                 }
@@ -1286,12 +1289,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getpengadaan_aset_inventaris());
             BtnTambah.setEnabled(akses.getinventaris_koleksi());
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
         }        
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from inventaris_pembelian where tgl_beli='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(inventaris_pembelian.no_faktur,3),signed)),0) from inventaris_pembelian where inventaris_pembelian.tgl_beli='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"' ",
                 "PA"+TglBeli.getSelectedItem().toString().substring(6,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
@@ -1301,7 +1304,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
              file.createNewFile();
              fileWriter = new FileWriter(file);
              iyem="";
-             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();

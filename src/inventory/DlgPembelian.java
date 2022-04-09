@@ -49,7 +49,8 @@ public class DlgPembelian extends javax.swing.JDialog {
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok,hpp,isi,jmlbesar,
                      ralan,kelas1,kelas2,kelas3,utama,vip,vvip,beliluar,jualbebas,karyawan,dasar;
     private WarnaTable2 warna=new WarnaTable2();
-    private String aktifkanbatch="no",pengaturanharga="",hargadasar="",Pengadaan_Obat=Sequel.cariIsi("select Pengadaan_Obat from set_akun"),kode_akun_bayar="",pakaippn="";
+    private String aktifkanbatch="no",pengaturanharga="",hargadasar="",Pengadaan_Obat=Sequel.cariIsi("select set_akun.Pengadaan_Obat from set_akun"),
+            PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),kode_akun_bayar="",pakaippn="";
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
@@ -998,7 +999,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }  
                         if(sukses==true){
                             Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Pengadaan_Obat,"PEMBELIAN",""+(ttl+ppn),"0"});
+                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Pengadaan_Obat,"PEMBELIAN",""+ttl,"0"});
+                            if(ppn>0){
+                                Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{PPN_Masukan,"PPN Masukan Obat",""+ppn,"0"});
+                            }
                             Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{kode_akun_bayar,AkunBayar.getSelectedItem().toString(),"0",""+(ttl+ppn)}); 
                             sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PEMBELIAN DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());  
                         }
@@ -1033,7 +1037,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tbDokter.setValueAt("",i,13);
                             }
                         }
-                        
+                        ppn=0;
+                        ttl=0;
                         LSubtotal.setText("0");
                         LPotongan.setText("0");
                         LTotal2.setText("0");

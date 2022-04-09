@@ -38,7 +38,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
     private riwayatobat Trackobat=new riwayatobat();
-    private String aktifkanbatch="no",akunpengadaan=Sequel.cariIsi("select Pengadaan_Obat from set_akun");
+    private String aktifkanbatch="no",akunpengadaan=Sequel.cariIsi("select set_akun.Pengadaan_Obat from set_akun"),PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun");
     private boolean sukses=true;
    
     /** Creates new form DlgProgramStudi
@@ -983,14 +983,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
           Valid.textKosong(TCari,"No.Faktur");
         }else{
             try {
-                pscaribeli=koneksi.prepareStatement("select no_faktur, tagihan, kd_bangsal,tgl_beli,kd_rek from pembelian where no_faktur=?");
+                pscaribeli=koneksi.prepareStatement(
+                        "select pembelian.no_faktur,pembelian.tagihan,pembelian.kd_bangsal,pembelian.tgl_beli,pembelian.kd_rek,pembelian.total2,pembelian.ppn from pembelian where pembelian.no_faktur=?");
                 try {
                    pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
                    rs=pscaribeli.executeQuery();
                    if(rs.next()){
                        Sequel.AutoComitFalse();
                        sukses=true;
-                       psdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah2,no_batch,no_faktur from detailbeli where no_faktur=? ");
+                       psdetailbeli=koneksi.prepareStatement("select detailbeli.kode_brng,detailbeli.jumlah2,detailbeli.no_batch,detailbeli.no_faktur from detailbeli where detailbeli.no_faktur=? ");
                        try {            
                            psdetailbeli.setString(1,rs.getString(1));
                            rs2=psdetailbeli.executeQuery();
@@ -1027,8 +1028,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                        if(sukses==true){
                            Sequel.queryu("delete from tampjurnal");
                            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                               akunpengadaan,"PENGADAAN OBAT","0",rs.getString("tagihan")
+                               akunpengadaan,"PENGADAAN OBAT","0",rs.getString("total2")
                            });    
+                           if(rs.getDouble("ppn")>0){
+                                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                    PPN_Masukan,"PPN Masukan Obat","0",rs.getString("ppn")
+                                }); 
+                           }
                            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                rs.getString("kd_rek"),"AKUN BAYAR",rs.getString("tagihan"),"0"
                            }); 

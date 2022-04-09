@@ -963,18 +963,26 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,"No.Faktur");
   }else{
      try {
-         pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, tgl_faktur,status,kd_rek_aset from inventaris_pemesanan where no_faktur=?");
+         pscaripesan=koneksi.prepareStatement(
+                 "select inventaris_pemesanan.no_faktur,inventaris_pemesanan.tagihan,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.status,"+
+                 "inventaris_pemesanan.kd_rek_aset,inventaris_pemesanan.ppn,(inventaris_pemesanan.meterai+inventaris_pemesanan.total2) as total "+
+                 "from inventaris_pemesanan where inventaris_pemesanan.no_faktur=?");
          try {
             pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
             rs=pscaripesan.executeQuery();
-            while(rs.next()){
+            if(rs.next()){
                 Sequel.AutoComitFalse();
                 sukses=true;
 
                 Sequel.queryu("delete from tampjurnal");
                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("tagihan")
+                    rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("total")
                 });    
+                if(rs.getDouble("ppn")>0){
+                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Aset Inventaris","0",rs.getString("ppn")
+                    }); 
+                }
                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                     Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS",rs.getString("tagihan"),"0"
                 }); 
@@ -1278,7 +1286,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select photo from inventaris_bukti_pemesanan where no_faktur=?");
+                ps=koneksi.prepareStatement("select inventaris_bukti_pemesanan.photo from inventaris_bukti_pemesanan where inventaris_bukti_pemesanan.no_faktur=?");
                 try {
                     ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();

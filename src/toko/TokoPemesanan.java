@@ -42,7 +42,8 @@ public class TokoPemesanan extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampikan=true;
     private boolean sukses=true;
-    private String Penerimaan_Toko=Sequel.cariIsi("select Penerimaan_Toko from set_akun"),Kontra_Penerimaan_Toko=Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun");
+    private String Penerimaan_Toko=Sequel.cariIsi("select set_akun.Penerimaan_Toko from set_akun"),Kontra_Penerimaan_Toko=Sequel.cariIsi("select set_akun.Kontra_Penerimaan_Toko from set_akun"),
+            PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -821,7 +822,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                    
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Penerimaan_Toko,"PERSEDIAAN BARANG TOKO",""+(ttl+ppn+meterai),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Penerimaan_Toko,"PERSEDIAAN BARANG TOKO",""+(ttl+meterai),"0"});
+                    if(ppn>0){
+                        Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{PPN_Masukan,"PPN Masukan Toko",""+ppn,"0"});
+                    }
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_Toko,"HUTANG BARANG TOKO","0",""+(ttl+ppn+meterai)}); 
                     sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG TOKO"+", OLEH "+akses.getkode());
                 }
@@ -1299,20 +1303,20 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gettoko_penerimaan_barang());
             BtnTambah.setEnabled(akses.gettoko_barang());
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
         }        
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from tokopemesanan where tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PNT"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(tokopemesanan.no_faktur,3),signed)),0) from tokopemesanan where tokopemesanan.tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PNT"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
     public void tampil(String noorder) {
         NoOrder.setText(noorder);
-        kdsup.setText(Sequel.cariIsi("select kode_suplier from toko_surat_pemesanan where no_pemesanan=?",noorder));
-        nmsup.setText(Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?",kdsup.getText()));
-        meterai=Sequel.cariIsiAngka("select meterai from toko_surat_pemesanan where no_pemesanan=?",noorder);
-        ppn=Sequel.cariIsiAngka("select ppn from toko_surat_pemesanan where no_pemesanan=?",noorder);
+        kdsup.setText(Sequel.cariIsi("select toko_surat_pemesanan.kode_suplier from toko_surat_pemesanan where toko_surat_pemesanan.no_pemesanan=?",noorder));
+        nmsup.setText(Sequel.cariIsi("select tokosuplier.nama_suplier from tokosuplier where tokosuplier.kode_suplier=?",kdsup.getText()));
+        meterai=Sequel.cariIsiAngka("select toko_surat_pemesanan.meterai from toko_surat_pemesanan where toko_surat_pemesanan.no_pemesanan=?",noorder);
+        ppn=Sequel.cariIsiAngka("select toko_surat_pemesanan.ppn from toko_surat_pemesanan where toko_surat_pemesanan.no_pemesanan=?",noorder);
         Meterai.setText(Valid.SetAngka2(meterai));
         try{
             Valid.tabelKosong(tabMode);

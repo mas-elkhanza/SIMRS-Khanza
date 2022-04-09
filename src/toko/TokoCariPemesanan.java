@@ -910,14 +910,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"No.Faktur");
         }else{
             try {
-                pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, tgl_faktur,status from tokopemesanan where no_faktur=?");
+                pscaripesan=koneksi.prepareStatement(
+                        "select tokopemesanan.no_faktur,tokopemesanan.tagihan,tokopemesanan.tgl_faktur,tokopemesanan.status,"+
+                        "tokopemesanan.ppn,(tokopemesanan.meterai+tokopemesanan.total2)as total from tokopemesanan where tokopemesanan.no_faktur=?");
                 try {
                     pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                     rs=pscaripesan.executeQuery();
                     if(rs.next()){
                           Sequel.AutoComitFalse();
                           sukses=true;
-                          pstoko_detail_pesan=koneksi.prepareStatement("select kode_brng,jumlah from toko_detail_pesan where no_faktur=? ");
+                          pstoko_detail_pesan=koneksi.prepareStatement("select toko_detail_pesan.kode_brng,toko_detail_pesan.jumlah from toko_detail_pesan where toko_detail_pesan.no_faktur=? ");
                           try {
                                pstoko_detail_pesan.setString(1,rs.getString(1));
                                rs2=pstoko_detail_pesan.executeQuery();
@@ -942,8 +944,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           if(sukses==true){
                               Sequel.queryu("delete from tampjurnal");
                               Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                  Sequel.cariIsi("select Penerimaan_Toko from set_akun"),"PERSEDIAAN BARANG TOKO","0",rs.getString("tagihan")
+                                  Sequel.cariIsi("select Penerimaan_Toko from set_akun"),"PERSEDIAAN BARANG TOKO","0",rs.getString("total")
                               });    
+                              if(rs.getDouble("ppn")>0){
+                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                        Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Toko","0",rs.getString("ppn")
+                                    }); 
+                              }
                               Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                   Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun"),"HUTANG BARANG TOKO",rs.getString("tagihan"),"0"
                               }); 
