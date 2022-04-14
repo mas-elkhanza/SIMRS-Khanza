@@ -3727,16 +3727,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 Valid.textKosong(TNoRw, "Pasien");
             }else if (NoKartu.getText().trim().equals("")) {
                 Valid.textKosong(NoKartu, "Nomor Kartu");
-            }else if (NoRujukan.getText().trim().equals("")) {
-                Valid.textKosong(NoRujukan, "Nomor Rujukan");
-            }else if (KdPpkRujukan.getText().trim().equals("")||NmPpkRujukan.getText().trim().equals("")) {
-                Valid.textKosong(KdPpkRujukan, "PPK Rujukan");
-            }else if (KdPPK.getText().trim().equals("")||NmPPK.getText().trim().equals("")) {
-                Valid.textKosong(KdPPK, "PPK Pelayanan");
-            }else if (KdPenyakit.getText().trim().equals("")||NmPenyakit.getText().trim().equals("")) {
-                Valid.textKosong(KdPenyakit, "Diagnosa");
-            }else if (Catatan.getText().trim().equals("")) {
-                Valid.textKosong(Catatan, "Catatan");
             }else{
                 try {
                     headers = new HttpHeaders();

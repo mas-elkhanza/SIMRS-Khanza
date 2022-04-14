@@ -402,7 +402,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
             myObj = new FileReader("./cache/diet.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
-            response = root.path("penjab");
+            response = root.path("diet");
             if(response.isArray()){
                 for(JsonNode list:response){
                     if(list.path("KodeDiet").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaDiet").asText().toLowerCase().contains(TCari.getText().toLowerCase())){

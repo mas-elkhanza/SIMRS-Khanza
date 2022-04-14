@@ -3727,15 +3727,20 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             kdptg.setText(akses.getkode());
             Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
         }    
-        if(Sequel.cariIsi("select set_nota.tampilkan_tombol_nota_penjualan from set_nota").equals("Yes")){
-            BtnNota.setVisible(true);
-        }else{
-            if(akses.getkode().equals("Admin Utama")){
+        try {
+            if(Sequel.cariIsi("select set_nota.tampilkan_tombol_nota_penjualan from set_nota").equals("Yes")){
                 BtnNota.setVisible(true);
             }else{
-                BtnNota.setVisible(false);
-            }            
+                if(akses.getkode().equals("Admin Utama")){
+                    BtnNota.setVisible(true);
+                }else{
+                    BtnNota.setVisible(false);
+                }            
+            }
+        } catch (Exception e) {
+            BtnNota.setVisible(false);
         }
+            
         BtnGudang.setEnabled(akses.getakses_depo_obat());
     }
     

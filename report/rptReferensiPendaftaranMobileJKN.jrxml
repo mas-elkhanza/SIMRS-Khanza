@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="184d9954-6dd7-467b-955a-45d2ef3b3941">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="800"/>
@@ -25,96 +25,234 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,
-referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter,referensi_mobilejkn_bpjs.jampraktek,
-referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi 
-FROM referensi_mobilejkn_bpjs INNER JOIN reg_periksa ON referensi_mobilejkn_bpjs.no_rawat=reg_periksa.no_rawat
-INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-INNER JOIN poliklinik ON reg_periksa.kd_poli=poliklinik.kd_poli 
-INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
+		<![CDATA[SELECT * FROM temporary]]>
 	</queryString>
-	<field name="no_rawat" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
-		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="no"/>
+		<property name="com.jaspersoft.studio.field.label" value="no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="no_rkm_medis" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
-		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
+	<field name="temp1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp1"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nm_pasien" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
-		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	<field name="temp2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp2"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nohp" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nohp"/>
-		<property name="com.jaspersoft.studio.field.label" value="nohp"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp3"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nomorkartu" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nomorkartu"/>
-		<property name="com.jaspersoft.studio.field.label" value="nomorkartu"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp4"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nik" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nik"/>
-		<property name="com.jaspersoft.studio.field.label" value="nik"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp5"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="tanggalperiksa" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.name" value="tanggalperiksa"/>
-		<property name="com.jaspersoft.studio.field.label" value="tanggalperiksa"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp6"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nm_poli" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nm_poli"/>
-		<property name="com.jaspersoft.studio.field.label" value="nm_poli"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="poliklinik"/>
+	<field name="temp7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp7"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nm_dokter" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
-		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
+	<field name="temp8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp8"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="jampraktek" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="jampraktek"/>
-		<property name="com.jaspersoft.studio.field.label" value="jampraktek"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp9"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="jeniskunjungan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="jeniskunjungan"/>
-		<property name="com.jaspersoft.studio.field.label" value="jeniskunjungan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp10"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nomorreferensi" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nomorreferensi"/>
-		<property name="com.jaspersoft.studio.field.label" value="nomorreferensi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp11"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="status" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="status"/>
-		<property name="com.jaspersoft.studio.field.label" value="status"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp12"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="validasi" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.name" value="validasi"/>
-		<property name="com.jaspersoft.studio.field.label" value="validasi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="referensi_mobilejkn_bpjs"/>
+	<field name="temp13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp13"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp14"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp15"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp16"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp17"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp17"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp18"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp18"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp19" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp19"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp19"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp20" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp20"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp20"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp21" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp21"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp21"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp22" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp22"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp22"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp23" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp23"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp23"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp24" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp24"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp24"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp25" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp25"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp25"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp26" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp26"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp26"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp27" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp27"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp27"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp28" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp28"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp28"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp29" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp29"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp29"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp30" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp30"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp30"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp31" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp31"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp31"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp32" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp32"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp32"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp33" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp33"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp33"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp34" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp34"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp34"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp35" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp35"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp35"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp36" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp36"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp36"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temp37" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="temp37"/>
+		<property name="com.jaspersoft.studio.field.label" value="temp37"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -317,7 +455,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_rawat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="76" y="0" width="38" height="10" uuid="5d9ac5e4-8103-4b5c-89f5-6493a0053fc6"/>
@@ -325,7 +463,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="214" y="0" width="66" height="10" uuid="59c0cb74-aedf-47a8-9829-c920bd1b5a56"/>
@@ -333,7 +471,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nohp}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="114" y="0" width="100" height="10" uuid="85e22899-81fb-4af1-88ec-1bd2dcab8984">
@@ -343,7 +481,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
 				<reportElement positionType="Float" x="280" y="0" width="60" height="10" uuid="6c75f93a-dc70-461d-9b6a-9f4f338ef602">
@@ -353,7 +491,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nomorkartu}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="340" y="0" width="75" height="10" uuid="c11e0179-8e8a-4c71-9976-f86103d9ba05"/>
@@ -361,7 +499,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nik}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="415" y="0" width="49" height="10" uuid="e37a10ea-f5b9-41dd-b3c0-35bf38d5ea07"/>
@@ -369,7 +507,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tanggalperiksa}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="HH:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="464" y="0" width="88" height="10" uuid="974981b0-9e47-43d1-86d1-c87332257cbe"/>
@@ -377,7 +515,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_poli}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp8}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
 				<reportElement positionType="Float" x="553" y="0" width="92" height="10" uuid="d6b23547-0af0-4b5d-9333-ff1d02d97df1"/>
@@ -385,7 +523,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="HH:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="645" y="0" width="55" height="10" uuid="9c143f4d-d318-4455-a93f-5eb1f0b589a8"/>
@@ -393,7 +531,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jampraktek}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp10}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="HH:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="700" y="0" width="82" height="10" uuid="0e9e5e37-f7ce-4aa2-9d17-cdc8d82805c6"/>
@@ -401,7 +539,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jeniskunjungan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp11}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="HH:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="782" y="0" width="88" height="10" uuid="ba679116-a4ad-4ba7-a726-5359e37b7f5f"/>
@@ -409,7 +547,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nomorreferensi}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp12}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="HH:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="870" y="0" width="30" height="10" uuid="f9bb84df-bbc4-440e-830d-0866306aa4d9"/>
@@ -417,7 +555,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp13}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="900" y="0" width="80" height="10" uuid="53182e58-6125-4dbc-b35b-81f467bc00db"/>
@@ -425,7 +563,7 @@ INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{validasi}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp14}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement positionType="Float" x="0" y="11" width="980" height="1" uuid="67695f26-1912-49af-9712-47ca04749212">

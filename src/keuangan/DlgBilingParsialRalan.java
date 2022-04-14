@@ -5530,7 +5530,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     
                     if(subttl>0){
                         if(tampilkan_ppnobat_ralan.equals("Yes")){
-                            ppnobat=Valid.roundUp(subttl*0.11,100);
+                            ppnobat=Math.round(subttl*0.11);
                             tabModeBilling.addRow(new Object[]{
                                 "","PPN Obat",":",ppnobat,1,ppnobat,"Obat"
                             });   
@@ -6328,7 +6328,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         } 
         if(ttlObat>0){
             if(tampilkan_ppnobat_ralan.equals("Yes")){
-                ppnobat=Valid.roundUp(ttlObat*0.1,100); 
+                ppnobat=Math.round(ttlObat*0.11); 
                 ttlObat=ttlObat+ppnobat;
                 ttl=ttl+ppnobat;
             }                        

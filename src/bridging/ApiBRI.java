@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.akses;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -294,4 +293,39 @@ public class ApiBRI {
         }
     }
 
+    public boolean sinkronVA(String tanggalawal,String tanggalakhir){
+        status=true;
+        try{
+            token=Token();
+            date = new Date(System.currentTimeMillis()-25200000);
+            sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            timestamp=sdf.format(date);
+            date2 = new Date(System.currentTimeMillis()-25200000+86400000);
+            sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            timestamp2=sdf2.format(date2);
+            System.out.println("consumer_key : "+consumer_key);
+            System.out.println("consumer_secret : "+consumer_secret);
+            signature=Signature("/v1/briva/report","GET",token,timestamp,json);
+            
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("BRI-Timestamp",timestamp);
+            headers.add("BRI-Signature",signature);
+            headers.add("Authorization","Bearer "+token); 
+            System.out.println("URL : "+urlapi+"/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""));
+            System.out.println("BRI-Timestamp : "+timestamp);
+            System.out.println("BRI-Signature : "+signature);
+            System.out.println("Authorization : "+"Bearer "+token);
+            requestEntity = new HttpEntity(headers);
+            json = mapper.readTree(getRest().exchange(urlapi+"/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""), HttpMethod.GET, requestEntity, String.class).getBody()).toString();
+            System.out.println("Respon : "+json);
+            root = mapper.readTree(json);
+            response = root.path("status");
+            status = response.asBoolean();
+        } catch (Exception ex) {
+            status=false;
+            System.out.println("Notifikasi : "+ex);
+        }
+        return status;
+    }
 }
