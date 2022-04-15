@@ -391,10 +391,10 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                 tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
@@ -409,7 +409,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian BulananDokter"); 
+                                tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian BulananDokter"); 
             }
             
             Map<String, Object> param = new HashMap<>();
@@ -420,7 +420,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptReferensiPendaftaranMobileJKN.jasper","report","::[ Data Referensi Pendaftaran Mobile JKN ]::",param);
+            Valid.MyReportqry("rptReferensiPendaftaranMobileJKN.jasper","report","::[ Data Referensi Pendaftaran Mobile JKN ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

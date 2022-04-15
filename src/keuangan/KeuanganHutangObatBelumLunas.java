@@ -1026,6 +1026,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             sukses=false;
                         }
                     }                        
+                }else{
+                    if(!notagihan.equals("")){
+                        Sequel.mengedit("pemesanan","no_faktur='"+tabMode.getValueAt(i,1).toString()+"'","status='Belum Lunas'");
+                    }
                 }
             }
             

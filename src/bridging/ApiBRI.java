@@ -305,7 +305,7 @@ public class ApiBRI {
             timestamp2=sdf2.format(date2);
             System.out.println("consumer_key : "+consumer_key);
             System.out.println("consumer_secret : "+consumer_secret);
-            signature=Signature("/v1/briva/report","GET",token,timestamp,json);
+            signature=Signature("/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""),"GET",token,timestamp,json);
             
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

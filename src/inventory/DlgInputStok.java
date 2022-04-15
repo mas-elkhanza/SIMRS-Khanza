@@ -1194,16 +1194,16 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
 
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 int row=tabMode.getRowCount();
                 for(int i=0;i<row;i++){  
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode.getValueAt(i,1).toString()+"','"+
                                     tabMode.getValueAt(i,2).toString()+"','"+
                                     tabMode.getValueAt(i,3).toString()+"','"+
                                     tabMode.getValueAt(i,4).toString()+"','"+
                                     tabMode.getValueAt(i,5).toString()+"','"+
-                                    tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penerimaan"); 
+                                    tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
                 }
 
                 Map<String, Object> param = new HashMap<>();    
@@ -1215,7 +1215,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 param.put("emailrs",akses.getemailrs());  
                 param.put("bangsal",nmgudang.getText());    
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptInputStokOpname.jasper","report","::[ Data Persediaan Stok Ruangan ]::",param);
+                Valid.MyReportqry("rptInputStokOpname.jasper","report","::[ Data Persediaan Stok Ruangan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }

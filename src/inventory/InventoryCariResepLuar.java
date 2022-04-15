@@ -688,12 +688,12 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-            Sequel.queryu("truncate table temporary_resep");
+            Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
             
             for(int i=0;i<tabMode.getRowCount();i++){  
                 Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                    "0",tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
-                    tabMode.getValueAt(i,3).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                    ""+i,tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
+                    tabMode.getValueAt(i,3).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",akses.getalamatip()
                 });
             }
             
@@ -705,7 +705,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport2("rptResepLuar.jasper","report","::[ Daftar Resep Obat Yang Ditebus Keluar Oleh Pasien ]::",param);
+            Valid.MyReportqry("rptResepLuar.jasper","report","::[ Daftar Resep Obat Yang Ditebus Keluar Oleh Pasien ]::","select * from temporary_resep where temporary_resep.temp37='"+akses.getalamatip()+"' order by temporary_resep.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -875,7 +875,8 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                         ps.setString(1,tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
-                            Sequel.queryu("truncate table temporary_resep");
+                            i=0;
+                            Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
                             ps2=koneksi.prepareStatement(
                                 "select databarang.kode_brng,databarang.nama_brng,resep_luar_obat.jml,kodesatuan.satuan,"+
                                 "resep_luar_obat.aturan_pakai from resep_luar_obat inner join databarang on resep_luar_obat.kode_brng=databarang.kode_brng "+
@@ -885,8 +886,9 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                                 rs2=ps2.executeQuery();
                                 while(rs2.next()){
                                     Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                                        "0",rs2.getString("nama_brng"),rs2.getString("aturan_pakai"),rs2.getString("jml"),rs2.getString("satuan"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                                        ""+i,rs2.getString("nama_brng"),rs2.getString("aturan_pakai"),rs2.getString("jml"),rs2.getString("satuan"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",akses.getalamatip()
                                     });
+                                    i++;
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
@@ -937,8 +939,9 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                                     rincianobat = rincianobat.substring(0,rincianobat.length() - 1);
                                     
                                     Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                                        "0",rsracikan.getString("no_racik")+". "+rsracikan.getString("nama_racik")+" ("+rincianobat+")",rsracikan.getString("aturan_pakai"),rsracikan.getString("jml_dr"),rsracikan.getString("metode"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                                        ""+i,rsracikan.getString("no_racik")+". "+rsracikan.getString("nama_racik")+" ("+rincianobat+")",rsracikan.getString("aturan_pakai"),rsracikan.getString("jml_dr"),rsracikan.getString("metode"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",akses.getalamatip()
                                     });
+                                    i++;
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif Racikan : "+e);
@@ -970,7 +973,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                             param.put("jam",rs.getString("jam"));
                             param.put("logo",Sequel.cariGambar("select logo from setting")); 
 
-                            Valid.MyReport("rptLembarResepLuar.jasper",param,"::[ Lembar Resep Obat Yang Ditebus Keluar Oleh Pasien ]::");
+                            Valid.MyReportqry("rptLembarResepLuar.jasper","report","::[ Lembar Resep Obat Yang Ditebus Keluar Oleh Pasien ]::","select * from temporary_resep where temporary_resep.temp37='"+akses.getalamatip()+"' order by temporary_resep.no",param);
                             this.setCursor(Cursor.getDefaultCursor());
                         }          
                     } catch(Exception ex){

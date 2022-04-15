@@ -904,11 +904,11 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
             param.put("laki",laki);   
             param.put("perempuan",per);   
             param.put("tanggal",Tgl2.getDate());   
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             if(TabRawat.getSelectedIndex()==0){
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!table1.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+r+"','"+
                                         tabMode.getValueAt(r,0).toString()+"','"+
                                         tabMode.getValueAt(r,1).toString()+"','"+
                                         tabMode.getValueAt(r,2).toString()+"','"+
@@ -918,13 +918,13 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,6).toString()+"','"+
                                         tabMode.getValueAt(r,7).toString()+"','"+
                                         tabMode.getValueAt(r,8).toString()+"','"+
-                                        tabMode.getValueAt(r,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                        tabMode.getValueAt(r,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                     }                    
                 }
             }else if(TabRawat.getSelectedIndex()==1){
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!table2.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+r+"','"+
                                         tabMode2.getValueAt(r,0).toString()+"','"+
                                         tabMode2.getValueAt(r,1).toString()+"','"+
                                         tabMode2.getValueAt(r,2).toString()+"','"+
@@ -934,12 +934,12 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                                         tabMode2.getValueAt(r,6).toString()+"','"+
                                         tabMode2.getValueAt(r,7).toString()+"','"+
                                         tabMode2.getValueAt(r,8).toString()+"','"+
-                                        tabMode2.getValueAt(r,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                        tabMode2.getValueAt(r,9).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                     }                    
                 }
             }
                
-            Valid.MyReport("rptKunjunganRalan.jasper","report","::[ Laporan Kunjungan Rawat Jalan ]::",param);
+            Valid.MyReportqry("rptKunjunganRalan.jasper","report","::[ Laporan Kunjungan Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1230,12 +1230,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "inner join kabupaten inner join kecamatan inner join kelurahan on reg_periksa.kd_dokter=dokter.kd_dokter " +
                         "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj " +
                         "and reg_periksa.kd_poli=poliklinik.kd_poli and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel " +
-                        "where reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and poliklinik.nm_poli like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and dokter.nm_dokter like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and reg_periksa.no_rkm_medis like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and pasien.nm_pasien like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and pasien.alamat like ? "+
-                        "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                        "where reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and "+
+                        "(poliklinik.nm_poli like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or pasien.alamat like ?) order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
             }
                 
             try {
@@ -1252,42 +1248,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(7,"%"+nmkecamatan.getText().trim()+"%");
                     ps.setString(8,"%"+nmkelurahan.getText().trim()+"%");
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
-                    ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(12,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(13,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(14,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(15,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(16,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(17,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
-                    ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(21,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(22,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(23,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(24,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(25,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(26,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(27,"%"+TCari.getText().trim()+"%");
-                    ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(30,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(31,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(32,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(33,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(34,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(35,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(36,"%"+TCari.getText().trim()+"%");
-                    ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(39,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(40,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(41,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(42,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(43,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(44,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(45,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -1386,12 +1350,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "inner join kabupaten inner join kecamatan inner join kelurahan on reg_periksa.kd_dokter=dokter.kd_dokter " +
                         "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj " +
                         "and reg_periksa.kd_poli=poliklinik.kd_poli and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel " +
-                        "where reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and poliklinik.nm_poli like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and dokter.nm_dokter like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and reg_periksa.no_rkm_medis like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and pasien.nm_pasien like ? or " +
-                        "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and pasien.alamat like ? "+
-                        "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                        "where reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? and kelurahan.nm_kel like ? and "+
+                        "(poliklinik.nm_poli like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or pasien.alamat like ?) order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
             }
                 
             try {
@@ -1408,42 +1368,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(7,"%"+nmkecamatan.getText().trim()+"%");
                     ps.setString(8,"%"+nmkelurahan.getText().trim()+"%");
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
-                    ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(12,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(13,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(14,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(15,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(16,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(17,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
-                    ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(21,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(22,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(23,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(24,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(25,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(26,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(27,"%"+TCari.getText().trim()+"%");
-                    ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(30,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(31,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(32,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(33,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(34,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(35,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(36,"%"+TCari.getText().trim()+"%");
-                    ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(39,"%"+nmpoli.getText().trim()+"%");
-                    ps.setString(40,"%"+nmdokter.getText().trim()+"%");
-                    ps.setString(41,"%"+nmpenjab.getText().trim()+"%");
-                    ps.setString(42,"%"+nmkabupaten.getText().trim()+"%");
-                    ps.setString(43,"%"+nmkecamatan.getText().trim()+"%");
-                    ps.setString(44,"%"+nmkelurahan.getText().trim()+"%");
-                    ps.setString(45,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();

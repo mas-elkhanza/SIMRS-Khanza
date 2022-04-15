@@ -308,11 +308,10 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','"+
@@ -337,7 +336,7 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,21).toString()+"','"+
                                 tabMode.getValueAt(r,22).toString()+"','"+
                                 tabMode.getValueAt(r,23).toString()+"','"+
-                                tabMode.getValueAt(r,24).toString()+"','','','','','','','','','','','',''","Data"); 
+                                tabMode.getValueAt(r,24).toString()+"','','','','','','','','','','','','"+akses.getalamatip()+"'","Data"); 
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -349,7 +348,7 @@ public final class BPJSCekDataSEPInternal extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJSSEPInternal.jasper","report","[ Data SEP Internal ]",param);
+            Valid.MyReportqry("rptCariBPJSSEPInternal.jasper","report","[ Data SEP Internal ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

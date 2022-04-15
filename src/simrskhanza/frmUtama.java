@@ -885,6 +885,7 @@ public class frmUtama extends javax.swing.JFrame {
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
             LblIP.setText(""+inetAddress.getHostAddress());
+            akses.setalamatip(""+inetAddress.getHostAddress());
         } catch (Exception e) {
             System.out.println("Notif IP : "+e);
         }
@@ -18257,6 +18258,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianAwalKeperawatanRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianAwalKeperawatanRalan aplikasi=new RMPenilaianAwalKeperawatanRalan(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18896,7 +18911,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
-            btnPembayaranBRIVA;
+            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap;
     
     public void isWall(){
         try{            
@@ -21776,6 +21791,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_keperawatan_ralan()==true){
                 Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_keperawatan_ranap()==true){
+                Panelmenu.add(btnPenilaianAwalKeperawatanRanap);
                 jmlmenu++;
             }
             
@@ -25778,6 +25798,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         } 
         
+        if(akses.getpenilaian_awal_keperawatan_ranap()==true){
+            Panelmenu.add(btnPenilaianAwalKeperawatanRanap);
+            jmlmenu++;
+        }
+
         if(akses.getpenilaian_awal_keperawatan_igd()==true){
             Panelmenu.add(btnPenilaianAwalKeperawatanIGD);
             jmlmenu++;
@@ -30871,6 +30896,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_awal_keperawatan_ranap()==true){
+            if(btnPenilaianAwalKeperawatanRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalKeperawatanRanap);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_keperawatan_igd()==true){
             if(btnPenilaianAwalKeperawatanIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalKeperawatanIGD);
@@ -35325,6 +35357,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPembayaranBRIVA.setName("btnPembayaranBRIVA"); 
         btnPembayaranBRIVA.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPembayaranBRIVA.addActionListener(this::btnPembayaranBRIVAActionPerformed);
+        
+        btnPenilaianAwalKeperawatanRanap= new widget.ButtonBig();
+        btnPenilaianAwalKeperawatanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_report-clipboard-medical-checklist-healthcare_5859123.png"))); 
+        btnPenilaianAwalKeperawatanRanap.setText("Awal Keperawatan Ranap Umum");
+        btnPenilaianAwalKeperawatanRanap.setIconTextGap(0);
+        btnPenilaianAwalKeperawatanRanap.setName("btnPenilaianAwalKeperawatanRanap"); 
+        btnPenilaianAwalKeperawatanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalKeperawatanRanap.addActionListener(this::btnPenilaianAwalKeperawatanRanapActionPerformed);
     }
     
 }

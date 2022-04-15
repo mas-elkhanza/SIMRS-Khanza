@@ -2077,10 +2077,10 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
             if (jml > 0) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 jml = Math.round(jml / 3);
                 for (int i = 0; i < jml; i++) {
-                    Sequel.menyimpan("temporary", "'0','" + Kd.getText() + "','" + Kd.getText() + "','" + Kd.getText() + "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Barcode");
+                    Sequel.menyimpan("temporary", "'"+i+"','" + Kd.getText() + "','" + Kd.getText() + "','" + Kd.getText() + "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'", "Barcode");
                 }
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars", akses.getnamars());
@@ -2090,7 +2090,7 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                 param.put("kontakrs", akses.getkontakrs());
                 param.put("emailrs", akses.getemailrs());
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
-                Valid.MyReport("rptBarcodeItem.jasper", "report", "::[ Barcode Perbarang ]::",param);
+                Valid.MyReportqry("rptBarcodeItem.jasper", "report", "::[ Barcode Perbarang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }

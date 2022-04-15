@@ -301,16 +301,18 @@ public class ApiSOFTMEDIX {
             System.out.println("JSON : "+stringbalik);
             root = mapper.readTree(stringbalik);
             response = root.path("response").path("sampel").path("result_test");
-            Sequel.queryu("truncate table temporary_permintaan_lab");
+            Sequel.queryu("delete from temporary_permintaan_lab where temp37='"+akses.getalamatip()+"'");
             if(response.isArray()){
+                i=0;
                 for(JsonNode list:response){
-                    Sequel.menyimpan("temporary_permintaan_lab","'0','"+root.path("result").path("obx").path("order_lab").asText()+"','"+
+                    Sequel.menyimpan("temporary_permintaan_lab","'"+i+"','"+root.path("result").path("obx").path("order_lab").asText()+"','"+
                             list.path("nama_test").asText()+"','"+
                             list.path("hasil").asText()+"','"+
                             list.path("nilai_normal").asText()+"','"+
                             list.path("satuan").asText()+"','"+
                             list.path("flag").asText().replaceAll("null","")+"','"+
-                            list.path("test_id").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                            list.path("test_id").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Periksa Lab"); 
+                    i++;
                 }
             }
         } catch (Exception ex) {

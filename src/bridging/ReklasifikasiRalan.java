@@ -431,10 +431,9 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary2");
+            Sequel.queryu("delete from temporary2 where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){  
-                    Sequel.menyimpan("temporary2","'0','"+
+                    Sequel.menyimpan("temporary2","'"+r+"','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
@@ -526,7 +525,7 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,89).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,90).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,91).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,92).toString().replaceAll("'","`")+"','','','','','','','',''","data");
+                                    tabMode.getValueAt(r,92).toString().replaceAll("'","`")+"','','','','','','','','"+akses.getalamatip()+"'","data");
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -537,7 +536,7 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptReklasifikasiRalan.jasper","report","::[ Reklasifikasi Ralan ]::",param);
+            Valid.MyReportqry("rptReklasifikasiRalan.jasper","report","::[ Reklasifikasi Ralan ]::","select * from temporary2 where temporary2.temp100='"+akses.getalamatip()+"' order by temporary2.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

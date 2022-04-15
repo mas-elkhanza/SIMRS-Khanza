@@ -615,10 +615,10 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,4).toString()+"','"+
@@ -653,7 +653,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,33).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,34).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,35).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','',''","Rekap Presensi"); 
+                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','','"+akses.getalamatip()+"'","Rekap Presensi"); 
             }
             
             Map<String, Object> param = new HashMap<>();   
@@ -697,10 +697,10 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
                 if(lokasi.equals("")){
-                    Valid.MyReport("rptObatPerTanggal.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::",param);            
+                    Valid.MyReportqry("rptObatPerTanggal.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                 }else if(!lokasi.equals("")){
                     param.put("bangsal",lokasi);  
-                    Valid.MyReport("rptObatPerTanggal2.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::",param);            
+                    Valid.MyReportqry("rptObatPerTanggal2.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                 }                                 
         }
         this.setCursor(Cursor.getDefaultCursor());

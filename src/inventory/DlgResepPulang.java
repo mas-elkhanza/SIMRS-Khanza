@@ -630,15 +630,15 @@ public final class DlgResepPulang extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             
             for(int i=0;i<tabMode.getRowCount();i++){  
                 Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                    "0",tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
+                    ""+i,tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
                     Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString())),Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString())),
                     tabMode.getValueAt(i,8).toString(),tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),"","","","","","","","","","",
-                    "","","","","","","","","","","","","","","","",""
+                    "","","","","","","","","","","","","","","",akses.getalamatip()
                 });
             }
             
@@ -651,7 +651,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptResepPulang.jasper","report","::[ Data Resep Pulang ]::",param);
+            Valid.MyReportqry("rptResepPulang.jasper","report","::[ Data Resep Pulang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

@@ -671,8 +671,29 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
                 Valid.textKosong(TCari,"pilihan data");
             }else{
-                Sequel.queryu("delete from titip_faktur where no_tagihan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-                tampil();
+                try {
+                    ps=koneksi.prepareStatement("select detail_titip_faktur.no_faktur from detail_titip_faktur where detail_titip_faktur.no_tagihan=?");
+                    try {
+                       ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                       rs=ps.executeQuery();
+                       while(rs.next()){
+                           Sequel.queryu("update pemesanan set status='Belum Lunas' where no_faktur=?",rs.getString("no_faktur"));
+                       }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    Sequel.queryu("delete from titip_faktur where no_tagihan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                    tampil();
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                }
             }  
         } 
     }//GEN-LAST:event_MnHapusTagihanActionPerformed

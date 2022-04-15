@@ -837,9 +837,9 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 pspasien.setString(1,TNoRw.getText());
                 rspasien=pspasien.executeQuery();
                 while(rspasien.next()){
-                    Sequel.queryu("truncate table temporary");
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                     for(i=0;i<tbObat.getRowCount();i++){
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                 tbObat.getValueAt(i,2).toString()+"','"+
                                 tbObat.getValueAt(i,3).toString()+"','"+
                                 tbObat.getValueAt(i,4).toString()+"','"+
@@ -850,7 +850,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                                 tbObat.getValueAt(i,9).toString()+"','"+
                                 tbObat.getValueAt(i,10).toString()+"','"+
                                 tbObat.getValueAt(i,11).toString()+"','"+
-                                tbObat.getValueAt(i,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User");
+                                tbObat.getValueAt(i,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Data User");
                     }
                     Map<String, Object> param = new HashMap<>();
                     param.put("norm",rspasien.getString("no_rkm_medis"));
@@ -864,7 +864,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptObatPasien.jasper","report","::[ Obat Keluar Masuk ]::",param);
+                    Valid.MyReportqry("rptObatPasien.jasper","report","::[ Obat Keluar Masuk ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 }                
             } catch (Exception ex) {
                 System.out.println(ex);

@@ -605,11 +605,9 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
-            int row=tabMode.getRowCount();
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,4).toString()+"','"+
@@ -644,7 +642,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,33).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,34).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,35).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','',''","Rekap Presensi"); 
+                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','','"+akses.getalamatip()+"'","Rekap Presensi"); 
             }
             
             Map<String, Object> param = new HashMap<>();   
@@ -688,10 +686,10 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
                 if(lokasi.equals("")){
-                    Valid.MyReport("rptPenjualanPerTanggal.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::",param);            
+                    Valid.MyReportqry("rptPenjualanPerTanggal.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                 }else if(!lokasi.equals("")){                    
                     param.put("bangsal",lokasi);
-                    Valid.MyReport("rptPenjualanPerTanggal2.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::",param);            
+                    Valid.MyReportqry("rptPenjualanPerTanggal2.jasper","report","::[ Penjualan Bebas Obat/Alkes/BHP Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                 }
                                          
         }
@@ -847,23 +845,16 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 + " inner join jenis inner join golongan_barang inner join kategori_barang "
                 + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
                 + " and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "
-                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.kode_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.nama_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and kodesatuan.satuan like ? "
+                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? "
+                + " and (databarang.kode_brng like ? or databarang.nama_brng like ? or kodesatuan.satuan like ?) "
                 + " order by databarang.nama_brng");
             try {
                 ps.setString(1,"%"+nmjns.getText().trim()+"%");
                 ps.setString(2,"%"+nmkategori.getText().trim()+"%");
                 ps.setString(3,"%"+nmgolongan.getText().trim()+"%");
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmjns.getText().trim()+"%");
-                ps.setString(6,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(7,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmjns.getText().trim()+"%");
-                ps.setString(10,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(11,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
@@ -1011,23 +1002,16 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
                 + " inner join jenis inner join golongan_barang inner join kategori_barang "
                 + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
                 + " and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "
-                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.kode_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.nama_brng like ? or "
-                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and kodesatuan.satuan like ? "
+                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? "
+                + " and (databarang.kode_brng like ? or databarang.nama_brng like ? or kodesatuan.satuan like ?) "
                 + " order by databarang.nama_brng");
             try {
                 ps.setString(1,"%"+nmjns.getText().trim()+"%");
                 ps.setString(2,"%"+nmkategori.getText().trim()+"%");
                 ps.setString(3,"%"+nmgolongan.getText().trim()+"%");
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmjns.getText().trim()+"%");
-                ps.setString(6,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(7,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmjns.getText().trim()+"%");
-                ps.setString(10,"%"+nmkategori.getText().trim()+"%");
-                ps.setString(11,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){

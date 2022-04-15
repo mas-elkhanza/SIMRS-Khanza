@@ -577,19 +577,19 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode3.getRowCount()!=0){
-                Sequel.queryu("truncate table temporary");
-                
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+            
                 for(int r=0;r<tabMode3.getRowCount();r++){ 
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode3.getValueAt(r,0).toString()+"','"+
                                     tabMode3.getValueAt(r,1).toString()+"','"+
                                     tabMode3.getValueAt(r,2).toString()+"','"+
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,3).toString()))+"','"+
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,4).toString()))+"','"+
-                                    Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                 }
                 
-                Valid.MyReport("rptPPNRalan.jasper","report","::[ Laporan PPN Obat Ralan ]::",param);
+                Valid.MyReportqry("rptPPNRalan.jasper","report","::[ Laporan PPN Obat Ralan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }                
         }else if(TabRawat.getSelectedIndex()==3){
             if(tabMode4.getRowCount()==0){

@@ -967,10 +967,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         break;
                     case "Laporan 4 (Jasper)":
                         System.out.println("tesss");
-                        Sequel.queryu("truncate table temporary");
+                        Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                         int row=tabMode.getRowCount();
                         for(i=0;i<row;i++){  
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                             tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"','"+
                                             tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
                                             tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
@@ -980,7 +980,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             tabMode.getValueAt(i,6).toString().replaceAll("'","`")+"','"+
                                             tabMode.getValueAt(i,7).toString().replaceAll("'","`")+"','"+
                                             Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()))+
-                                    "','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data"); 
+                                    "','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Data"); 
                         }
 
                         Map<String, Object> param = new HashMap<>();
@@ -991,7 +991,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptRingkasanBiayaObatPasienPertanggal.jasper","report","[ Ringkasan Biaya Obat Pasien Per Tanggal ]",param);
+                        Valid.MyReportqry("rptRingkasanBiayaObatPasienPertanggal.jasper","report","[ Ringkasan Biaya Obat Pasien Per Tanggal ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                         break;
                 }
             } catch (Exception e) {

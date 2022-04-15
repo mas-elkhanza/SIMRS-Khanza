@@ -19,7 +19,7 @@ public final class akses {
     private static PreparedStatement ps,ps2;
     private static ResultSet rs,rs2;
     
-    private static String kode="",kdbangsal="",namars="",alamatrs="",kabupatenrs="",propinsirs="",kontakrs="",emailrs="",form="",namauser=""; 
+    private static String kode="",kdbangsal="",alamatip="",namars="",alamatrs="",kabupatenrs="",propinsirs="",kontakrs="",emailrs="",form="",namauser=""; 
     private static int jml1=0,jml2=0,lebar=0,tinggi=0;
     private static boolean aktif=false,admin=false,user=false,vakum=false,aplikasi=false,penyakit=false,obat_penyakit=false,dokter=false,jadwal_praktek=false,petugas=false,pasien=false,registrasi=false,
             tindakan_ralan=false,kamar_inap=false,tindakan_ranap=false,operasi=false,rujukan_keluar=false,rujukan_masuk=false,beri_obat=false,
@@ -176,7 +176,7 @@ public final class akses {
             status_data_rm=false,ubah_petugas_lab_pk=false,ubah_petugas_lab_pa=false,ubah_petugas_radiologi=false,gabung_norawat=false,gabung_rm=false,
             ringkasan_biaya_obat_pasien_pertanggal=false,master_masalah_keperawatan_igd=false,penilaian_awal_keperawatan_igd=false,bpjs_referensi_dpho_apotek=false,
             bpjs_referensi_poli_apotek=false,bayar_jm_dokter=false,bpjs_referensi_faskes_apotek=false,bpjs_referensi_spesialistik_apotek=false,
-            pembayaran_briva=false,penilaian_awal_keperawatan_ranap=false;
+            pembayaran_briva=false,penilaian_awal_keperawatan_ranap=false,nilai_penerimaan_vendor_farmasi_perbulan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1005,6 +1005,7 @@ public final class akses {
                         akses.bpjs_referensi_spesialistik_apotek=true;
                         akses.pembayaran_briva=true;
                         akses.penilaian_awal_keperawatan_ranap=true;
+                        akses.nilai_penerimaan_vendor_farmasi_perbulan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1817,6 +1818,7 @@ public final class akses {
                         akses.bpjs_referensi_spesialistik_apotek=rs2.getBoolean("bpjs_referensi_spesialistik_apotek");
                         akses.pembayaran_briva=rs2.getBoolean("pembayaran_briva");
                         akses.penilaian_awal_keperawatan_ranap=rs2.getBoolean("penilaian_awal_keperawatan_ranap");
+                        akses.nilai_penerimaan_vendor_farmasi_perbulan=rs2.getBoolean("nilai_penerimaan_vendor_farmasi_perbulan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2627,6 +2629,7 @@ public final class akses {
                         akses.bpjs_referensi_spesialistik_apotek=false;
                         akses.pembayaran_briva=false;
                         akses.penilaian_awal_keperawatan_ranap=false;
+                        akses.nilai_penerimaan_vendor_farmasi_perbulan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2774,7 +2777,9 @@ public final class akses {
     public static boolean getbilling_ranap(){return akses.billing_ranap;}
     public static String getkode(){return akses.kode;}
     public static void setkdbangsal(String kdbangsal){akses.kdbangsal=kdbangsal;}
-    public static String getkdbangsal(){return akses.kdbangsal;}     
+    public static String getkdbangsal(){return akses.kdbangsal;} 
+    public static void setalamatip(String alamatip){akses.alamatip=alamatip;}
+    public static String getalamatip(){return akses.alamatip;}     
     public static void setform(String form){akses.form=form;}
     public static String getform(){return akses.form;}   
     public static void setnamauser(String namauser){akses.namauser=namauser;}
@@ -3492,4 +3497,5 @@ public final class akses {
     public static boolean getbpjs_referensi_spesialistik_apotek(){return akses.bpjs_referensi_spesialistik_apotek;}
     public static boolean getpembayaran_briva(){return akses.pembayaran_briva;}
     public static boolean getpenilaian_awal_keperawatan_ranap(){return akses.penilaian_awal_keperawatan_ranap;}
+    public static boolean getnilai_penerimaan_vendor_farmasi_perbulan(){return akses.nilai_penerimaan_vendor_farmasi_perbulan;}
 }   
