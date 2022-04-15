@@ -363,10 +363,9 @@ public final class DlgKehadiran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tbBangsal.getRowCount();r++){  
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+r+"','"+
                                     tbBangsal.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tbBangsal.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                     tbBangsal.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
@@ -379,7 +378,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                                     tbBangsal.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
                                     tbBangsal.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
                                     tbBangsal.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
-                                    tbBangsal.getValueAt(r,12).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tbBangsal.getValueAt(r,12).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -391,7 +390,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("tahun","BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptHadir.jasper","report","::[ Rekap Kehadiran Pegawai ]::",param);
+            Valid.MyReportqry("rptHadir.jasper","report","::[ Rekap Kehadiran Pegawai ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

@@ -968,16 +968,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                     tabMode.getValueAt(i,1).toString()+"','"+
                     tabMode.getValueAt(i,2).toString()+"','"+
                     tabMode.getValueAt(i,3).toString()+"','"+
                     tabMode.getValueAt(i,4).toString()+"','"+
                     tabMode.getValueAt(i,5).toString()+"','"+
-                    tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Stok Opname");
+                    tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Stok Opname");
             }
 
             Map<String, Object> param = new HashMap<>();
@@ -988,7 +988,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptInputStokOpnameNonMedis.jasper","report","::[ Data Persediaan Stok Barang Non Medis ]::",param);
+            Valid.MyReportqry("rptInputStokOpnameNonMedis.jasper","report","::[ Data Persediaan Stok Barang Non Medis ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

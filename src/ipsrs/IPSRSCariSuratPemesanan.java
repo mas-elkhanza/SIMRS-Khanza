@@ -35,7 +35,7 @@ public class IPSRSCariSuratPemesanan extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private IPSRSPemesanan aplikasi=new IPSRSPemesanan(null,false);
-    private int pilihan=1;
+    private int pilihan=1,i=0;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -1005,11 +1005,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+            for(i=0;i<row;i++){  
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
@@ -1018,10 +1017,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,5).toString()+"','"+
                                 tabMode.getValueAt(i,6).toString()+"','"+
                                 tabMode.getValueAt(i,7).toString()+"','"+
-                                tabMode.getValueAt(i,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penerimaan"); 
+                                tabMode.getValueAt(i,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
             }
-            Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penerimaan"); 
-            Sequel.menyimpan("temporary","'0','Jml.Total :','','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penerimaan"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
             
             
             Map<String, Object> param = new HashMap<>();    
@@ -1032,7 +1033,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDataPemesananNonMedis.jasper","report","::[ Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & Radiologi) ]::",param);
+            Valid.MyReportqry("rptDataPemesananNonMedis.jasper","report","::[ Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & Radiologi) ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1103,8 +1104,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             TCari.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             try {
+                i=0;
                 ps=koneksi.prepareStatement(
                     "select surat_pemesanan_non_medis.tanggal,surat_pemesanan_non_medis.no_pemesanan, "+
                     "surat_pemesanan_non_medis.kode_suplier,ipsrssuplier.nama_suplier, "+
@@ -1156,11 +1158,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             rs2=ps2.executeQuery();
                             while(rs2.next()){
                                 Sequel.menyimpan(
-                                    "temporary","'0','"+rs2.getString("jumlah")+"','"+rs2.getString("satuan")+"','"+rs2.getString("kode_brng")+"','"+
+                                    "temporary","'"+i+"','"+rs2.getString("jumlah")+"','"+rs2.getString("satuan")+"','"+rs2.getString("kode_brng")+"','"+
                                     rs2.getString("nama_brng")+"','"+Valid.SetAngka(rs2.getDouble("h_pesan"))+"','"+Valid.SetAngka(rs2.getDouble("subtotal"))+"','"+
                                     rs2.getDouble("dis")+"','"+Valid.SetAngka(rs2.getDouble("besardis"))+"','"+Valid.SetAngka(rs2.getDouble("total"))+
-                                    "','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pemesanan"
+                                    "','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pemesanan"
                                 );
+                                i++;
                             }                        
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -1172,7 +1175,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 ps2.close();
                             }
                         }
-                        Valid.MyReport("rptSuratPemesananNonMedis.jasper","report","::[ Transaksi Pemesanan Barang ]::",param);
+                        Valid.MyReportqry("rptSuratPemesananNonMedis.jasper","report","::[ Transaksi Pemesanan Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 } catch (Exception e) {

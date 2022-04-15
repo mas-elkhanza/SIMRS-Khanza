@@ -327,11 +327,10 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','"+
@@ -366,7 +365,7 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,33).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,34).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,35).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','',''","Rekap Presensi"); 
+                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,36).toString()))+"','','"+akses.getalamatip()+"'","Rekap Presensi"); 
             }
             
             Map<String, Object> param = new HashMap<>();   
@@ -409,7 +408,7 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
                 param.put("jd29","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")");
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
-                Valid.MyReport("rptStokKeluarIPSRSPerTanggal.jasper","report","::[ Pengadaan Barang Non Medis Per Tanggal ]::",param);            
+                Valid.MyReportqry("rptStokKeluarIPSRSPerTanggal.jasper","report","::[ Pengadaan Barang Non Medis Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                                  
         }
         this.setCursor(Cursor.getDefaultCursor());

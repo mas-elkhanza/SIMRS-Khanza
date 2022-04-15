@@ -1216,12 +1216,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pemesanan...!!!!");
             tbDokter.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
@@ -1230,7 +1229,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,5).toString()))+"','"+
                                 tabMode.getValueAt(i,6).toString()+"','"+
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString()))+"','"+
-                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pemesanan"); 
+                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pemesanan"); 
                 }                    
             }
             
@@ -1253,7 +1252,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 param.put("petugas",nmptg.getText()); 
                 param.put("kabidkeu",KabidKeu.getText()); 
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuratPemesananNonMedis.jasper","report","::[ Transaksi Pemesanan Barang ]::",param);
+            Valid.MyReportqry("rptSuratPemesananNonMedis.jasper","report","::[ Transaksi Pemesanan Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrint5ActionPerformed

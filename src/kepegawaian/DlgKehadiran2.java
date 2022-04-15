@@ -348,11 +348,10 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
@@ -386,7 +385,7 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,32).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','"+
                                 tabMode.getValueAt(r,33).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','"+
                                 tabMode.getValueAt(r,34).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','"+
-                                tabMode.getValueAt(r,35).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','','',''","Rekap Presensi"); 
+                                tabMode.getValueAt(r,35).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','','','"+akses.getalamatip()+"'","Rekap Presensi"); 
             }
             
             Map<String, Object> param = new HashMap<>();   
@@ -435,12 +434,12 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
                     switch (pilihan) {
                         case "Tampilkan Semua":
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            Valid.MyReport("rptRekapKehadiran.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
+                            Valid.MyReportqry("rptRekapKehadiran.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                             this.setCursor(Cursor.getDefaultCursor());
                             break;
                         case "Tanpa departemen & jabatan":
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            Valid.MyReport("rptRekapKehadiran2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
+                            Valid.MyReportqry("rptRekapKehadiran2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                             this.setCursor(Cursor.getDefaultCursor());
                             break;
                     }
