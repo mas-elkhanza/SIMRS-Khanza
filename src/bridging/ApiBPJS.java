@@ -84,6 +84,7 @@ public class ApiBPJS {
         mykey = ApiBPJSEnc.generateKey(Consid+Key+utc);
         data=ApiBPJSEnc.decrypt(data, mykey.getKey(), mykey.getIv());
         data=ApiBPJSLZString.decompressFromEncodedURIComponent(data);
+        System.out.println(data);
         return data;
     }
     
