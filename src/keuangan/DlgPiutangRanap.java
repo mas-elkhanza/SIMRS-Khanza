@@ -599,9 +599,9 @@ public final class DlgPiutangRanap extends javax.swing.JDialog {
                             Desktop.getDesktop().browse(f.toURI());
                         break; 
                     case "Laporan 4 (Jasper)":
-                            Sequel.queryu("truncate table temporary");
+                            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                             for(int r=0;r<tabMode.getRowCount();r++){  
-                                    Sequel.menyimpan("temporary","'0','"+
+                                    Sequel.menyimpan("temporary","'"+r+"','"+
                                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                                     tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                                     tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
@@ -624,7 +624,7 @@ public final class DlgPiutangRanap extends javax.swing.JDialog {
                                                     tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','"+
                                                     tabMode.getValueAt(r,20).toString().replaceAll("'","`")+"','"+
                                                     tabMode.getValueAt(r,21).toString().replaceAll("'","`")+"','"+
-                                                    tabMode.getValueAt(r,22).toString().replaceAll("'","`")+"','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                                    tabMode.getValueAt(r,22).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                             }
 
                             Map<String, Object> param = new HashMap<>();                 
@@ -635,7 +635,7 @@ public final class DlgPiutangRanap extends javax.swing.JDialog {
                             param.put("kontakrs",akses.getkontakrs());
                             param.put("emailrs",akses.getemailrs());   
                             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                            Valid.MyReport("rptRPiutangRanap.jasper","report","::[ Rekap Tagihan Ranap Masuk ]::",param);
+                            Valid.MyReportqry("rptRPiutangRanap.jasper","report","::[ Rekap Tagihan Ranap Masuk ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                         break; 
                 }                 
             } catch (Exception e) {
