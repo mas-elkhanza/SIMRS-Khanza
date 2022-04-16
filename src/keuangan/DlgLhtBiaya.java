@@ -253,7 +253,7 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 biaya="";
@@ -280,10 +280,10 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
                 }catch(Exception e){
                     jml="";
                 }
-                Sequel.menyimpan("temporary","'0','"+tabMode.getValueAt(r,0).toString()+"','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+tabMode.getValueAt(r,0).toString()+"','"+
                     tabMode.getValueAt(r,1).toString()+"','"+tabMode.getValueAt(r,2).toString()+"','"+
                     biaya+"','"+jml+"','"+tambahan+"','"+totalx+"','','','','','','','','','','','',"+
-                    "'','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran"
+                    "'','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran"
                 );         
             }
             
@@ -296,7 +296,7 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("tagihan",LCount.getText());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRTagihanMasuk.jasper","report","::[ Rekap Tagihan Masuk ]::",param);
+            Valid.MyReportqry("rptRTagihanMasuk.jasper","report","::[ Rekap Tagihan Masuk ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

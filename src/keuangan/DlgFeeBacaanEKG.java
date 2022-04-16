@@ -361,7 +361,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(i=0;i<tabMode.getRowCount();i++){  
                 try {
                     sjmlbacaan=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()));
@@ -381,7 +381,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     sjasa="";
                 }
                 
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString().replaceAll("'","`") +"','"+
                                 tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
@@ -390,7 +390,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"','"+
                                 sjmlbacaan+"','"+
                                 sfeebacaan+"','"+
-                                sjasa+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
+                                sjasa+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"); 
             }
             
             Map<String, Object> param = new HashMap<>();   
@@ -403,7 +403,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("dokter",nmdokter.getText());
                 param.put("periode",Tgl1.getSelectedItem()+" s/d "+Tgl2.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptFeeBacaanEkg.jasper","report","[ Rekap Fee Bacaan EKG ]",param);
+            Valid.MyReportqry("rptFeeBacaanEkg.jasper","report","[ Rekap Fee Bacaan EKG ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

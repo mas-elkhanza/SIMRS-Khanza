@@ -594,7 +594,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(i=0;i<tabMode.getRowCount();i++){  
                     try {
                         uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
@@ -626,7 +626,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     } catch (Exception e) {
                         tarif="";
                     }
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode.getValueAt(i,0).toString().replaceAll("'","`") +"','"+
                                     tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
@@ -638,7 +638,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     biaya+"','"+
                                     bhp+"','"+
                                     jm+"','"+
-                                    uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
+                                    uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"); 
                 }
 
                 Map<String, Object> param = new HashMap<>();   
@@ -649,7 +649,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptJMRanapDokter.jasper","report","[ Detail J.M. Dokter  ]",param);
+                Valid.MyReportqry("rptJMRanapDokter.jasper","report","[ Detail J.M. Dokter  ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             try {            
@@ -851,7 +851,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     //TCari.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
-                    Sequel.queryu("truncate table temporary");
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                     for(i=1;i<tabMode.getRowCount();i++){  
                         try {
                             uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
@@ -883,7 +883,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         } catch (Exception e) {
                             tarif="";
                         }
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                         tabMode.getValueAt(i,0).toString().replaceAll("'","`") +"','"+
                                         tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
                                         tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
@@ -895,7 +895,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         biaya+"','"+
                                         bhp+"','"+
                                         jm+"','"+
-                                        uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
+                                        uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"); 
                     }
 
                     Map<String, Object> param = new HashMap<>();   
@@ -908,7 +908,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     param.put("dokter",nmdokter.getText());   
                     param.put("bulan",Tgl1.getSelectedItem().toString().substring(3,10));   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
+                    Valid.MyReportqry("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 }
             }else if(TabRawat.getSelectedIndex()==1){
                 jasamedis();
@@ -1007,7 +1007,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     //TCari.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
-                    Sequel.queryu("truncate table temporary");
+                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                     for(i=1;i<tabMode.getRowCount();i++){  
                         try {
                             uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
@@ -1039,7 +1039,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         } catch (Exception e) {
                             tarif="";
                         }
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                         tabMode.getValueAt(i,0).toString().replaceAll("'","`") +"','"+
                                         tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
                                         tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
@@ -1051,7 +1051,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         biaya+"','"+
                                         bhp+"','"+
                                         jm+"','"+
-                                        uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
+                                        uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"); 
                     }
 
                     Map<String, Object> param = new HashMap<>();   
@@ -1064,7 +1064,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     param.put("dokter",nmdokter.getText());   
                     param.put("bulan",Tgl1.getSelectedItem().toString().substring(3,10));   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
+                    Valid.MyReportqry("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 }
             }else if(TabRawat.getSelectedIndex()==1){
                 jasamedis();

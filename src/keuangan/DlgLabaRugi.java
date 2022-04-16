@@ -9,9 +9,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +28,7 @@ public class DlgLabaRugi extends javax.swing.JDialog {
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
     private double pendapatan=0,biaya=0,modal=0,aktiva=0,pasiva=0,saldoawal,debkret,saldoakhir;
     private Connection koneksi=koneksiDB.condb();
+    private int no=0;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -340,38 +339,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Tgl1.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
+            no=0;
             for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+no+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
-                                tabMode.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+                                tabMode.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Keuangan"); 
+                no++;
             }
+            no++;
             int row2=tabMode2.getRowCount();
             for(int i=0;i<row2;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+no+"','"+
                                 tabMode2.getValueAt(i,0).toString()+"','"+
                                 tabMode2.getValueAt(i,1).toString()+"','"+
-                                tabMode2.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+                                tabMode2.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Keuangan"); 
+                no++;
             }
+            no++;
             int row3=tabMode3.getRowCount();
             for(int i=0;i<row3;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+no+"','"+
                                 tabMode3.getValueAt(i,0).toString()+"','"+
                                 tabMode3.getValueAt(i,1).toString()+"','"+
-                                tabMode3.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+                                tabMode3.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Keuangan"); 
+                no++;
             }
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptLabaRugi.jasper","report","::[ Laporan Keuangan ]::",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptLabaRugi.jasper","report","::[ Laporan Keuangan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

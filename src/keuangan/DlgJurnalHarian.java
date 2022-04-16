@@ -602,7 +602,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
@@ -624,15 +624,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 } catch (Exception e) {
                     tanggal2="";
                 } 
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
-                                tanggal1+"','"+tanggal2+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Posting Jurnal");             
+                                tanggal1+"','"+tanggal2+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Posting Jurnal");             
             }
             
-            Valid.MyReport("rptJurnalHarian.jasper","report","::[ Jurnal Harian ]::",param);
+            Valid.MyReportqry("rptJurnalHarian.jasper","report","::[ Jurnal Harian ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

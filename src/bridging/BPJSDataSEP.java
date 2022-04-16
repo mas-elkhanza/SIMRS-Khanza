@@ -4424,7 +4424,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         Keterangan.setText(response.path("lokasiKejadian").path("ketKejadian").asText());
                         Valid.SetTgl(TanggalKKL,response.path("lokasiKejadian").path("tglKejadian").asText());
                     }
-                    KdDPJPLayanan.setText(response.path("dpjp").path("kdDPJP").asText());
+                    KdDPJPLayanan.setText((response.path("dpjp").path("kdDPJP").asText().equals("0")?"":response.path("dpjp").path("kdDPJP").asText()));
                     NmDPJPLayanan.setText(response.path("dpjp").path("nmDPJP").asText());
                     JenisPeserta.setText(response.path("peserta").path("jnsPeserta").asText());
                     KdDPJP.setText(response.path("kontrol").path("kdDokter").asText());
