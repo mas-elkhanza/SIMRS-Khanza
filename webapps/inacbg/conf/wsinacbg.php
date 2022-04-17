@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "5c02a6235c3bbf015b913f10a67ef109e5921bdd80c53423e9f8e9653ffe054c";   
+       $keyRS = "ce63c756f987e1428e96c8ffe10a79c6e26946956aefe4220ae3edc7922d420a";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://25.11.80.203/E-Klaim/ws.php";
+        $UrlWS = "http://local.rssahabat.com:84/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "DP";
+        $kelasRS = "DS";
         return $kelasRS;
     }
 

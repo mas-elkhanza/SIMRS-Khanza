@@ -36,7 +36,7 @@
             </div>
             <div class="content">
                 <div class="text">KUNJUNGAN</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(no_rkm_medis) FROM reg_periksa WHERE no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");?>" data-speed="3000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");?>" data-speed="3000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="content">
                 <div class="text">RAWAT JALAN</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(no_rkm_medis) FROM reg_periksa WHERE no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' AND status_lanjut = 'Ralan'");?>" data-speed="2000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' AND reg_periksa.status_lanjut = 'Ralan'");?>" data-speed="2000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="content">
                 <div class="text">RAWAT INAP</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(no_rkm_medis) FROM reg_periksa WHERE no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' AND status_lanjut = 'Ranap'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' AND reg_periksa.status_lanjut = 'Ranap'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="content">
                 <div class="text">BULAN INI</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(no_rkm_medis) FROM reg_periksa WHERE tgl_registrasi LIKE '%".date('Y-m')."%' AND no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.tgl_registrasi LIKE '%".date('Y-m')."%' AND reg_periksa.no_rkm_medis = '".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>

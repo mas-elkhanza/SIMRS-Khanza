@@ -15,8 +15,9 @@
         reportsqlinjection();        
         $petugas        = str_replace("_"," ",$_GET['petugas']); 
         $norawat        = str_replace("_"," ",$_GET['norawat']); 
-        $deposit        = str_replace("_"," ",$_GET['deposit']);
+        $bayar          = str_replace("_"," ",$_GET['bayar']);
         $pasien         = str_replace("_"," ",$_GET['pasien']);
+        $keterangan     = str_replace("_"," ",$_GET['keterangan']);
         $PNG_TEMP_DIR   = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
         $PNG_WEB_DIR    = 'temp/';
         if (!file_exists($PNG_TEMP_DIR)) mkdir($PNG_TEMP_DIR);
@@ -50,27 +51,27 @@
                 <td padding='0'  width='90%' valign='top'>
                     <table width='100%' cellspacing='0' cellpadding='0'>
                         <tr>
-                           <td width='25%' colspan='3' align='center'><font color='333333' size='3'  face='Tahoma'>KWITANSI<br><br></font></td>
+                           <td width='25%' colspan='3' align='center'><font color='333333' size='3'  face='Tahoma'>KWITANSI BRI VIRTUAL ACCOUNT<br><br></font></td>
                         </tr>
                         <tr>
-                           <td width='25%'><font color='333333' size='3'  face='Tahoma'>No. Kwitansi</font></td>
+                           <td width='25%'><font color='333333' size='3'  face='Tahoma'>No. BRIVA</font></td>
                            <td width='1%'><font color='333333' size='3'  face='Tahoma'>:</font></td>
                            <td width='74%'><font color='333333' size='3'  face='Tahoma'>$norawat</font></td>
                         </tr>
                         <tr>
                            <td><font color='333333' size='3'  face='Tahoma'>Telah terima dari</font></td>
                            <td><font color='333333' size='3'  face='Tahoma'>:</font></td>
-                           <td><font color='333333' size='3'  face='Tahoma'>.............................</font></td>
+                           <td><font color='333333' size='3'  face='Tahoma'>Atas Nama Pasien $pasien</font></td>
                         </tr>
                         <tr valign='top'>
                            <td><font color='333333' size='3'  face='Tahoma'>Uang Sebanyak</font></td>
                            <td><font color='333333' size='3'  face='Tahoma'>:</font></td>
-                           <td><font color='333333' size='3'  face='Tahoma'>".Terbilang($deposit)." rupiah</font></td>
+                           <td><font color='333333' size='3'  face='Tahoma'>".Terbilang($bayar)." rupiah</font></td>
                         </tr>
                         <tr valign='top'>
                            <td><font color='333333' size='3'  face='Tahoma'>Untuk Pembayaran</font></td>
                            <td><font color='333333' size='3'  face='Tahoma'>:</font></td>
-                           <td><font color='333333' size='3'  face='Tahoma'>Deposit pasien kamar inap a/n $pasien</font></td>
+                           <td><font color='333333' size='3'  face='Tahoma'>Nomor Tagihan $keterangan</font></td>
                         </tr>                           
                         <tr>
                            <td>&nbsp;</td>
@@ -85,7 +86,7 @@
                         <tr>
                            <td align='right'><font color='333333' size='3'  face='Tahoma'>Terbilang</font></td>
                            <td><font color='333333' size='3'  face='Tahoma'></font></td>
-                           <td><font color='333333' size='3'  face='Tahoma'>Rp. ".formatDuit2($deposit)."</font></td>
+                           <td><font color='333333' size='3'  face='Tahoma'>Rp. ".formatDuit2($bayar)."</font></td>
                         </tr>  
                         <tr>
                            <td></td>

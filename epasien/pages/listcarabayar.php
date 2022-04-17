@@ -35,7 +35,7 @@
                                <?php 
                                   $asuransi      = trim(isset($_POST['asuransi']))?trim($_POST['asuransi']):NULL;
                                   $asuransi      = cleankar($asuransi);
-                                  $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where png_jawab <>'-' and png_jawab not like '%umum%' ".(isset($asuransi)?" and (png_jawab like '%$asuransi%' or nama_perusahaan like '%$asuransi%')":"")." order by png_jawab");
+                                  $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where status='1' and png_jawab <>'-' and png_jawab not like '%umum%' ".(isset($asuransi)?" and (png_jawab like '%$asuransi%' or nama_perusahaan like '%$asuransi%')":"")." order by png_jawab");
                                   while($rsqueryasuransi = mysqli_fetch_array($queryasuransi)) {
                                       echo "<tr>
                                               <td align='left'>".$rsqueryasuransi["png_jawab"]."</td>

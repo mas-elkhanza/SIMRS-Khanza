@@ -12,21 +12,22 @@
 
     <?php
     reportsqlinjection();      
-        $nonota    =str_replace("_"," ",$_GET['nonota']); 
-        $tanggal   =$_GET['tanggal']; 
-        $catatan = str_replace("_"," ",$_GET['catatan']); 
-        $petugas = str_replace("_"," ",$_GET['petugas']); 
-        $norm = str_replace("_"," ",$_GET['norm']);
-        $pasien = str_replace("_"," ",$_GET['pasien']); 
-        $besarppn = str_replace("_"," ",$_GET['besarppn']); 
-        $ongkir = str_replace("_"," ",$_GET['ongkir']); 
+        $nonota    = str_replace("_"," ",$_GET['nonota']); 
+        $tanggal   = $_GET['tanggal']; 
+        $catatan   = str_replace("_"," ",$_GET['catatan']); 
+        $petugas   = str_replace("_"," ",$_GET['petugas']); 
+        $norm      = str_replace("_"," ",$_GET['norm']);
+        $pasien    = str_replace("_"," ",$_GET['pasien']); 
+        $besarppn  = str_replace("_"," ",$_GET['besarppn']); 
+        $ongkir    = str_replace("_"," ",$_GET['ongkir']); 
+        $alamatip  = str_replace("_"," ",$_GET['alamatip']); 
 
-        $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13 from temporary order by no asc";            
+        $_sql = "SELECT temporary.no,temporary.temp1,temporary.temp2,temporary.temp3,temporary.temp4,temporary.temp5,temporary.temp6,temporary.temp7,temporary.temp8,temporary.temp9,temporary.temp10,temporary.temp11,temporary.temp12,temporary.temp13 from temporary where temporary.temp37='$alamatip' order by temporary.no";            
         $hasil=bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
-          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
-          echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
+          $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
+          echo "<table width='".getOne("select set_nota.notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>
                            <table width='100%' bgcolor='#ffffff' padding='0' align='left' border='0' class='tbl_form'>
@@ -124,7 +125,7 @@
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[1] $barispesan[5]</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[3] </font></td>
                                                 <td align=right><font color='000000' size='2'  face='Tahoma'>".formatDuit2($barispesan["temp13"])."</font></td>
-                                                    <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["temp12"]."</font></td>
+                                                <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["temp12"]."</font></td>
                                            </tr>";$i++;
                                       }    
                              echo " <tr class='isi14'>
