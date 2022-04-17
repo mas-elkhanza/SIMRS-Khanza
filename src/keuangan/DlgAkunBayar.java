@@ -168,15 +168,6 @@ public class DlgAkunBayar extends javax.swing.JDialog {
         });  
         
         emptTeks();
-        
-        try {
-            ps=koneksi.prepareStatement(
-                    "select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
-                    "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
-                    "where akun_bayar.nama_bayar like ? or rekening.nm_rek like ? order by akun_bayar.nama_bayar");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
     
 
@@ -233,7 +224,6 @@ public class DlgAkunBayar extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJadwal.setAutoCreateRowSorter(true);
         tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -778,21 +768,35 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{           
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{
-                    false,rs.getString(1),rs.getString(2),
-                    rs.getString(3),rs.getDouble(4)
-                });
+        try{
+            ps=koneksi.prepareStatement(
+                    "select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
+                    "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
+                    "where akun_bayar.nama_bayar like ? or rekening.nm_rek like ? order by akun_bayar.nama_bayar");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),
+                        rs.getString(3),rs.getDouble(4)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
 

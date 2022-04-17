@@ -657,9 +657,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             
                             koderekening="";
                             try {
-                                myObj = new FileReader("./cache/akunbayar.iyem");
+                                myObj = new FileReader("./cache/akunbayarhutang.iyem");
                                 root = mapper.readTree(myObj);
-                                response = root.path("akunbayar");
+                                response = root.path("akunbayarhutang");
                                 if(response.isArray()){
                                    for(JsonNode list:response){
                                        if(list.path("NamaAkun").asText().equals(rs.getString("nama_bayar"))){

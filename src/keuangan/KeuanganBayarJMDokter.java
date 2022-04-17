@@ -262,6 +262,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         label39 = new widget.Label();
         jLabel13 = new widget.Label();
         AkunBayar = new widget.ComboBox();
+        BtnAll1 = new widget.Button();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
@@ -631,7 +632,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label36);
-        label36.setBounds(363, 40, 70, 23);
+        label36.setBounds(0, 40, 74, 23);
 
         NoTagihan.setHighlighter(null);
         NoTagihan.setName("NoTagihan"); // NOI18N
@@ -701,7 +702,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Keterangan);
-        Keterangan.setBounds(437, 40, 313, 23);
+        Keterangan.setBounds(78, 40, 272, 23);
 
         label39.setText("Nomor J.M. :");
         label39.setName("label39"); // NOI18N
@@ -712,7 +713,7 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
         jLabel13.setText("Akun Bayar :");
         jLabel13.setName("jLabel13"); // NOI18N
         panelisi4.add(jLabel13);
-        jLabel13.setBounds(0, 40, 74, 23);
+        jLabel13.setBounds(363, 40, 70, 23);
 
         AkunBayar.setName("AkunBayar"); // NOI18N
         AkunBayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -721,7 +722,20 @@ public final class KeuanganBayarJMDokter extends javax.swing.JDialog {
             }
         });
         panelisi4.add(AkunBayar);
-        AkunBayar.setBounds(78, 40, 272, 23);
+        AkunBayar.setBounds(437, 40, 283, 23);
+
+        BtnAll1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnAll1.setMnemonic('M');
+        BtnAll1.setToolTipText("Alt+M");
+        BtnAll1.setName("BtnAll1"); // NOI18N
+        BtnAll1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAll1ActionPerformed(evt);
+            }
+        });
+        panelisi4.add(BtnAll1);
+        BtnAll1.setBounds(722, 40, 28, 23);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
@@ -778,7 +792,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampilAkunBayar();
+        try {
+            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+                tampilAkunBayar();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -802,9 +821,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 
                 form.koderekening="";
                 try {
-                    form.myObj = new FileReader("./cache/akunbayar.iyem");
+                    form.myObj = new FileReader("./cache/akunbayarhutang.iyem");
                     form.root = form.mapper.readTree(form.myObj);
-                    form.response = form.root.path("akunbayar");
+                    form.response = form.root.path("akunbayarhutang");
                     if(form.response.isArray()){
                        for(JsonNode list:form.response){
                            if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
@@ -1285,6 +1304,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnGajiKeyPressed
 
+    private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
+        tampilAkunBayar();
+    }//GEN-LAST:event_BtnAll1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1304,6 +1327,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AkunBayar;
     private widget.Button BtnAll;
+    private widget.Button BtnAll1;
     private widget.Button BtnCaraBayarRalanDokter;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
@@ -1413,17 +1437,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void tampilAkunBayar() {         
          try{      
-             form.file=new File("./cache/akunbayar.iyem");
+             form.file=new File("./cache/akunbayarhutang.iyem");
              form.file.createNewFile();
              form.fileWriter = new FileWriter(form.file);
              form.iyem="";
-             ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
+             ps=koneksi.prepareStatement("select * from akun_bayar_hutang order by akun_bayar_hutang.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     form.iyem=form.iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                     form.iyem=form.iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1436,7 +1460,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  } 
              }
 
-             form.fileWriter.write("{\"akunbayar\":["+form.iyem.substring(0,form.iyem.length()-1)+"]}");
+             form.fileWriter.write("{\"akunbayarhutang\":["+form.iyem.substring(0,form.iyem.length()-1)+"]}");
              form.fileWriter.flush();
              form.fileWriter.close();
              form.iyem=null;

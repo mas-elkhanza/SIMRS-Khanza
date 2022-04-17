@@ -610,6 +610,7 @@ import kepegawaian.K3RSPeristiwa;
 import kepegawaian.PengajuanCutiAdmin;
 import kepegawaian.PengajuanCutiPegawai;
 import keuangan.DlgAkunAsetInventaris;
+import keuangan.DlgAkunBayarHutang;
 import keuangan.DlgAkunPenagihanPiutang;
 import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
@@ -18272,6 +18273,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAkunBayarHutangActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAkunBayarHutang form=new DlgAkunBayarHutang(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }  
+    
     /**
     * @param args the command line arguments
     */
@@ -18911,7 +18923,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
-            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap;
+            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang;
     
     public void isWall(){
         try{            
@@ -20754,6 +20766,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getakun_bayar()==true){
                 Panelmenu.add(btnakun_bayar);  
+                jmlmenu++;
+            }
+            
+            if(akses.getakun_bayar_hutang()==true){
+                Panelmenu.add(btnAkunBayarHutang);  
                 jmlmenu++;
             }
 
@@ -24760,6 +24777,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getakun_bayar()==true){
             Panelmenu.add(btnakun_bayar);  
+            jmlmenu++;
+        }
+        
+        if(akses.getakun_bayar_hutang()==true){
+            Panelmenu.add(btnAkunBayarHutang);  
             jmlmenu++;
         }
 
@@ -29446,6 +29468,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getakun_bayar()==true){
             if(btnakun_bayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnakun_bayar);  
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getakun_bayar_hutang()==true){
+            if(btnAkunBayarHutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAkunBayarHutang);  
                 jmlmenu++;
             }                
         }
@@ -35365,6 +35394,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalKeperawatanRanap.setName("btnPenilaianAwalKeperawatanRanap"); 
         btnPenilaianAwalKeperawatanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalKeperawatanRanap.addActionListener(this::btnPenilaianAwalKeperawatanRanapActionPerformed);
+        
+        btnAkunBayarHutang = new widget.ButtonBig();
+        btnAkunBayarHutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/87482_wallet_icon.png"))); 
+        btnAkunBayarHutang.setText("Akun Bayar Hutang");
+        btnAkunBayarHutang.setIconTextGap(0);
+        btnAkunBayarHutang.setName("btnAkunBayarHutang"); 
+        btnAkunBayarHutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAkunBayarHutang.addActionListener(this::btnAkunBayarHutangActionPerformed);
     }
     
 }

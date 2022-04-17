@@ -256,13 +256,13 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
         nip = new widget.TextBox();
         nama_petugas = new widget.TextBox();
         tgl_bayar = new widget.Tanggal();
-        label38 = new widget.Label();
         sisa_hutang = new widget.TextBox();
         BtnPetugas = new widget.Button();
         jLabel10 = new widget.Label();
         AkunBayar = new widget.ComboBox();
         keterangan = new widget.TextBox();
         label39 = new widget.Label();
+        BtnAll1 = new widget.Button();
         jPanel1 = new javax.swing.JPanel();
         panelisi3 = new widget.panelisi();
         label9 = new widget.Label();
@@ -319,13 +319,13 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
         label34.setName("label34"); // NOI18N
         label34.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label34);
-        label34.setBounds(0, 10, 77, 23);
+        label34.setBounds(0, 10, 70, 23);
 
         label32.setText("Tgl.Bayar :");
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(0, 40, 77, 23);
+        label32.setBounds(0, 40, 70, 23);
 
         no_faktur.setEditable(false);
         no_faktur.setHighlighter(null);
@@ -336,13 +336,13 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             }
         });
         panelisi4.add(no_faktur);
-        no_faktur.setBounds(80, 10, 170, 23);
+        no_faktur.setBounds(74, 10, 191, 23);
 
         label36.setText("Keterangan :");
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label36);
-        label36.setBounds(285, 40, 90, 23);
+        label36.setBounds(294, 40, 90, 23);
 
         no_bukti.setHighlighter(null);
         no_bukti.setName("no_bukti"); // NOI18N
@@ -359,11 +359,11 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
         panelisi4.add(no_bukti);
         no_bukti.setBounds(610, 40, 100, 23);
 
-        label35.setText("Pembayaran :");
+        label35.setText("Bayar :");
         label35.setName("label35"); // NOI18N
         label35.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label35);
-        label35.setBounds(285, 70, 90, 23);
+        label35.setBounds(0, 70, 70, 23);
 
         besar_bayar.setText("0");
         besar_bayar.setHighlighter(null);
@@ -374,13 +374,13 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             }
         });
         panelisi4.add(besar_bayar);
-        besar_bayar.setBounds(378, 70, 100, 23);
+        besar_bayar.setBounds(74, 70, 94, 23);
 
         label16.setText("Petugas :");
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi4.add(label16);
-        label16.setBounds(285, 10, 90, 23);
+        label16.setBounds(294, 10, 90, 23);
 
         nip.setName("nip"); // NOI18N
         nip.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -390,13 +390,13 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             }
         });
         panelisi4.add(nip);
-        nip.setBounds(378, 10, 100, 23);
+        nip.setBounds(388, 10, 100, 23);
 
         nama_petugas.setEditable(false);
         nama_petugas.setName("nama_petugas"); // NOI18N
         nama_petugas.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi4.add(nama_petugas);
-        nama_petugas.setBounds(480, 10, 200, 23);
+        nama_petugas.setBounds(490, 10, 190, 23);
 
         tgl_bayar.setDisplayFormat("dd-MM-yyyy");
         tgl_bayar.setName("tgl_bayar"); // NOI18N
@@ -406,13 +406,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             }
         });
         panelisi4.add(tgl_bayar);
-        tgl_bayar.setBounds(80, 40, 100, 23);
-
-        label38.setText("Sisa Hutang :");
-        label38.setName("label38"); // NOI18N
-        label38.setPreferredSize(new java.awt.Dimension(35, 23));
-        panelisi4.add(label38);
-        label38.setBounds(530, 70, 77, 23);
+        tgl_bayar.setBounds(74, 40, 100, 23);
 
         sisa_hutang.setEditable(false);
         sisa_hutang.setText("0");
@@ -424,7 +418,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             }
         });
         panelisi4.add(sisa_hutang);
-        sisa_hutang.setBounds(610, 70, 100, 23);
+        sisa_hutang.setBounds(171, 70, 94, 23);
 
         BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPetugas.setMnemonic('1');
@@ -441,7 +435,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
         jLabel10.setText("Akun Bayar :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelisi4.add(jLabel10);
-        jLabel10.setBounds(0, 70, 77, 23);
+        jLabel10.setBounds(294, 70, 90, 23);
 
         AkunBayar.setName("AkunBayar"); // NOI18N
         AkunBayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -450,7 +444,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             }
         });
         panelisi4.add(AkunBayar);
-        AkunBayar.setBounds(80, 70, 200, 23);
+        AkunBayar.setBounds(388, 70, 292, 23);
 
         keterangan.setHighlighter(null);
         keterangan.setName("keterangan"); // NOI18N
@@ -465,13 +459,26 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
             }
         });
         panelisi4.add(keterangan);
-        keterangan.setBounds(378, 40, 160, 23);
+        keterangan.setBounds(388, 40, 160, 23);
 
         label39.setText("No.Bukti :");
         label39.setName("label39"); // NOI18N
         label39.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label39);
         label39.setBounds(530, 40, 77, 23);
+
+        BtnAll1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnAll1.setMnemonic('M');
+        BtnAll1.setToolTipText("Alt+M");
+        BtnAll1.setName("BtnAll1"); // NOI18N
+        BtnAll1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAll1ActionPerformed(evt);
+            }
+        });
+        panelisi4.add(BtnAll1);
+        BtnAll1.setBounds(682, 70, 28, 23);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
@@ -710,7 +717,6 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -754,9 +760,9 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     
                     koderekening="";
                     try {
-                        myObj = new FileReader("./cache/akunbayar.iyem");
+                        myObj = new FileReader("./cache/akunbayarhutang.iyem");
                         root = mapper.readTree(myObj);
-                        response = root.path("akunbayar");
+                        response = root.path("akunbayarhutang");
                         if(response.isArray()){
                            for(JsonNode list:response){
                                if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
@@ -805,7 +811,6 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     Sequel.AutoComitTrue();
                         
                 }else{
-                    //Sequel.mengedit("inventaris_pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
                     JOptionPane.showMessageDialog(rootPane,"Maaf sudah dilakukan pembayaran..!!!");
                     TCari.requestFocus();
                 }                   
@@ -846,9 +851,9 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                 
                 koderekening="";
                 try {
-                    myObj = new FileReader("./cache/akunbayar.iyem");
+                    myObj = new FileReader("./cache/akunbayarhutang.iyem");
                     root = mapper.readTree(myObj);
-                    response = root.path("akunbayar");
+                    response = root.path("akunbayarhutang");
                     if(response.isArray()){
                        for(JsonNode list:response){
                            if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
@@ -1123,8 +1128,17 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_BtnSeek2KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampilAkunBayar();
+        try {
+            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+                tampilAkunBayar();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
+        tampilAkunBayar();
+    }//GEN-LAST:event_BtnAll1ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1145,6 +1159,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AkunBayar;
     private widget.Button BtnAll;
+    private widget.Button BtnAll1;
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
@@ -1175,7 +1190,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Label label35;
     private widget.Label label36;
     private widget.Label label37;
-    private widget.Label label38;
     private widget.Label label39;
     private widget.Label label9;
     private widget.TextBox nama_petugas;
@@ -1324,17 +1338,17 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void tampilAkunBayar() {         
          try{      
-             file=new File("./cache/akunbayar.iyem");
+             file=new File("./cache/akunbayarhutang.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
              iyem="";
-             ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
+             ps=koneksi.prepareStatement("select * from akun_bayar_hutang order by akun_bayar_hutang.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1347,7 +1361,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                  } 
              }
 
-             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
+             fileWriter.write("{\"akunbayarhutang\":["+iyem.substring(0,iyem.length()-1)+"]}");
              fileWriter.flush();
              fileWriter.close();
              iyem=null;
