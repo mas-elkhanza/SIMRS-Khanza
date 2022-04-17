@@ -677,6 +677,16 @@ public class koneksiDB {
         return var;
     }
     
+    public static String VALIDASIULANGBERIOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("VALIDASIULANGBERIOBAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String URUTNOREG(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

@@ -69,7 +69,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri,kategori,golongan,no,nobatch,nofaktur,kadaluarsa;
     private String signa1="1",signa2="1",nokunjungan="",kdObatSK="",requestJson="",URL="",otorisasi,sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="",
-                   Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="",hppfarmasi="";
+                   Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="",hppfarmasi="",VALIDASIULANGBERIOBAT="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
     private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
@@ -427,6 +427,12 @@ public final class DlgCariObat extends javax.swing.JDialog {
             hppfarmasi=koneksiDB.HPPFARMASI();
         } catch (Exception e) {
             hppfarmasi="dasar";
+        }
+        
+        try {
+            VALIDASIULANGBERIOBAT=koneksiDB.VALIDASIULANGBERIOBAT();
+        } catch (Exception e) {
+            VALIDASIULANGBERIOBAT="no";
         }
         
         try {
@@ -1248,6 +1254,19 @@ public final class DlgCariObat extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahActionPerformed
 
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        if(VALIDASIULANGBERIOBAT.equals("yes")){
+            for(i=0;i<tbObat.getRowCount();i++){ 
+                if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){
+                    getDataobat(i);
+                } 
+            }   
+            for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
+                if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
+                    getDatadetailobatracikan(i);
+                }
+            }
+        }
+        
         if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TCari,"Data");
         }else if(kdgudang.getText().equals("")){

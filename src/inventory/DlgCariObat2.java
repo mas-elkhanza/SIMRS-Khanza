@@ -69,7 +69,8 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private String[] no,kodebarang,namabarang,kodesatuan,letakbarang,namajenis,industri,aturan,kategori,golongan,nobatch,nofaktur,kadaluarsa;
     private String signa1="1",signa2="1",kdObatSK="",requestJson="",nokunjungan="",URL="",otorisasi,sql="",no_batchcari="", tgl_kadaluarsacari="", 
                    no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",
-                   Persediaan_Obat_Rawat_Inap="",hppfarmasi="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+                   Persediaan_Obat_Rawat_Inap="",hppfarmasi="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),
+                   VALIDASIULANGBERIOBAT="";
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
@@ -424,6 +425,12 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
             hppfarmasi=koneksiDB.HPPFARMASI();
         } catch (Exception e) {
             hppfarmasi="dasar";
+        }
+        
+        try {
+            VALIDASIULANGBERIOBAT=koneksiDB.VALIDASIULANGBERIOBAT();
+        } catch (Exception e) {
+            VALIDASIULANGBERIOBAT="no";
         }
         
         try {
@@ -1144,6 +1151,18 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahActionPerformed
 
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        if(VALIDASIULANGBERIOBAT.equals("yes")){
+            for(i=0;i<tbObat.getRowCount();i++){ 
+                if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){
+                    getDataobat(i);
+                } 
+            }   
+            for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
+                if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
+                    getDatadetailobatracikan(i);
+                }
+            }
+        }
         if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TCari,"Data");
         }else if(kdgudang.getText().equals("")){
