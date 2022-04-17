@@ -272,10 +272,10 @@ public final class DlgRl32 extends javax.swing.JDialog {
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());  
             param.put("tanggal",Tgl2.getDate());  
             param.put("logo",Sequel.cariGambar("select logo from setting"));  
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                 if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+r+"','"+
                                     tabMode.getValueAt(r,0).toString()+"','"+
                                     tabMode.getValueAt(r,1).toString()+"','"+
                                     tabMode.getValueAt(r,2).toString()+"','"+
@@ -284,11 +284,11 @@ public final class DlgRl32 extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,5).toString()+"','"+
                                     tabMode.getValueAt(r,6).toString()+"','"+
                                     tabMode.getValueAt(r,7).toString()+"','"+
-                                    tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                 }                    
             }
                
-            Valid.MyReport("rptRl32.jasper","report","::[ Formulir RL 3.2 ]::",param);
+            Valid.MyReportqry("rptRl32.jasper","report","::[ Formulir RL 3.2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

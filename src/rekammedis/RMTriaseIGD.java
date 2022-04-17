@@ -4001,6 +4001,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         }else{
             if(tbTriase.getSelectedRow()> -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                i=0;
                 if(LoadHTML.getText().contains("#AA0000")){
                     Map<String, Object> param = new HashMap<>(); 
                     param.put("namars",akses.getnamars());
@@ -4051,7 +4052,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                     "master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 where data_triase_igddetail_skala1.no_rawat=? "+
                                     "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
                                 try {
-                                    Sequel.queryu("truncate table temporary");
+                                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                                     ps2.setString(1,rs.getString("no_rawat"));
                                     rs2=ps2.executeQuery();
                                     while(rs2.next()){
@@ -4082,7 +4083,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
-                                        Sequel.menyimpan2("temporary","'0','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Pengkajian");
+                                        Sequel.menyimpan2("temporary","'"+i+"','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
+                                        i++;
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notif : "+e);
@@ -4112,10 +4114,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lambar Triase Skala 1");
                     switch (pilihan) {
                         case "Lembar Triase Skala 1":
-                              Valid.MyReport("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::",param);
+                              Valid.MyReportqry("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                         case "PDF Triase Skala 1":
-                              Valid.MyReportPDF("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::",param);
+                              Valid.MyReportqrypdf("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                     } 
                 }else if(LoadHTML.getText().contains("#FF0000")){
@@ -4168,7 +4170,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                     "master_triase_skala2.kode_skala2=data_triase_igddetail_skala2.kode_skala2 where data_triase_igddetail_skala2.no_rawat=? "+
                                     "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
                                 try {
-                                    Sequel.queryu("truncate table temporary");
+                                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                                     ps2.setString(1,rs.getString("no_rawat"));
                                     rs2=ps2.executeQuery();
                                     while(rs2.next()){
@@ -4199,7 +4201,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
-                                        Sequel.menyimpan2("temporary","'0','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Pengkajian");
+                                        Sequel.menyimpan2("temporary","'"+i+"','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
+                                        i++;
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notif : "+e);
@@ -4229,10 +4232,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 2..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 2","PDF Triase Skala 2"},"Lambar Triase Skala 2");
                     switch (pilihan) {
                         case "Lembar Triase Skala 2":
-                              Valid.MyReport("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::",param);
+                              Valid.MyReportqry("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                         case "PDF Triase Skala 2":
-                              Valid.MyReportPDF("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::",param);
+                              Valid.MyReportqrypdf("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                     } 
                 }else if(LoadHTML.getText().contains("#C8C800")){
@@ -4284,7 +4287,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                     "master_triase_skala3.kode_skala3=data_triase_igddetail_skala3.kode_skala3 where data_triase_igddetail_skala3.no_rawat=? "+
                                     "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
                                 try {
-                                    Sequel.queryu("truncate table temporary");
+                                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                                     ps2.setString(1,rs.getString("no_rawat"));
                                     rs2=ps2.executeQuery();
                                     while(rs2.next()){
@@ -4315,7 +4318,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
-                                        Sequel.menyimpan2("temporary","'0','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Pengkajian");
+                                        Sequel.menyimpan2("temporary","'"+i+"','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
+                                        i++;
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notif : "+e);
@@ -4345,10 +4349,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 3..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 3","PDF Triase Skala 3"},"Lembar Triase Skala 3");
                     switch (pilihan) {
                         case "Lembar Triase Skala 3":
-                              Valid.MyReport("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::",param);
+                              Valid.MyReportqry("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                         case "PDF Triase Skala 3":
-                              Valid.MyReportPDF("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::",param);
+                              Valid.MyReportqrypdf("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                     }
                 }else if(LoadHTML.getText().contains("#00AA00")){
@@ -4400,7 +4404,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                     "master_triase_skala4.kode_skala4=data_triase_igddetail_skala4.kode_skala4 where data_triase_igddetail_skala4.no_rawat=? "+
                                     "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
                                 try {
-                                    Sequel.queryu("truncate table temporary");
+                                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                                     ps2.setString(1,rs.getString("no_rawat"));
                                     rs2=ps2.executeQuery();
                                     while(rs2.next()){
@@ -4431,7 +4435,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
-                                        Sequel.menyimpan2("temporary","'0','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Pengkajian");
+                                        Sequel.menyimpan2("temporary","'"+i+"','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
+                                        i++;
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notif : "+e);
@@ -4461,10 +4466,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 4..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 4","PDF Triase Skala 4"},"Lembar Triase Skala 4");
                     switch (pilihan) {
                         case "Lembar Triase Skala 4":
-                              Valid.MyReport("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::",param);
+                              Valid.MyReportqry("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                         case "PDF Triase Skala 4":
-                              Valid.MyReportPDF("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::",param);
+                              Valid.MyReportqrypdf("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                     }
                 }else if(LoadHTML.getText().contains("#969696")){
@@ -4516,7 +4521,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                     "master_triase_skala5.kode_skala5=data_triase_igddetail_skala5.kode_skala5 where data_triase_igddetail_skala5.no_rawat=? "+
                                     "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
                                 try {
-                                    Sequel.queryu("truncate table temporary");
+                                    Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                                     ps2.setString(1,rs.getString("no_rawat"));
                                     rs2=ps2.executeQuery();
                                     while(rs2.next()){
@@ -4547,7 +4552,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
-                                        Sequel.menyimpan2("temporary","'0','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Pengkajian");
+                                        Sequel.menyimpan2("temporary","'"+i+"','"+rs2.getString("nama_pemeriksaan")+"','"+datatriase+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
+                                        i++;
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notif : "+e);
@@ -4577,10 +4583,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 5..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 5","PDF Triase Skala 5"},"Lembar Triase Skala 5");
                     switch (pilihan) {
                         case "Lembar Triase Skala 5":
-                              Valid.MyReport("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::",param);
+                              Valid.MyReportqry("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                         case "PDF Triase Skala 5":
-                              Valid.MyReportPDF("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::",param);
+                              Valid.MyReportqry("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                               break;
                     }
                 }

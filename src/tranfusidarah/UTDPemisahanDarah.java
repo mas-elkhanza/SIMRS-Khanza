@@ -1149,10 +1149,10 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
            // BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             jml=tabMode.getRowCount();
             for(i=0;i<jml;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
@@ -1164,7 +1164,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,8).toString()+"','"+
                                 tabMode.getValueAt(i,9).toString()+"','"+
                                 tabMode.getValueAt(i,10).toString()+"','"+
-                                tabMode.getValueAt(i,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
+                                tabMode.getValueAt(i,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Pembelian"); 
             }           
             
             Map<String, Object> param = new HashMap<>();    
@@ -1175,7 +1175,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptUTDPemisahanKomponen.jasper","report","::[ Data Pemisahan Komponen Darah ]::",param);
+            Valid.MyReportqry("rptUTDPemisahanKomponen.jasper","report","::[ Data Pemisahan Komponen Darah ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
 }//GEN-LAST:event_BtnPrintActionPerformed

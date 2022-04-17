@@ -1877,10 +1877,10 @@ public final class UTDDonor extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabModeTranfusi.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             jml=tabModeTranfusi.getRowCount();
             for(i=0;i<jml;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabModeTranfusi.getValueAt(i,0).toString()+"','"+
                                 tabModeTranfusi.getValueAt(i,1).toString()+" "+tabModeTranfusi.getValueAt(i,2).toString()+"','"+
                                 tabModeTranfusi.getValueAt(i,3).toString()+"','"+
@@ -1902,7 +1902,7 @@ public final class UTDDonor extends javax.swing.JDialog {
                                 tabModeTranfusi.getValueAt(i,19).toString()+"','"+
                                 tabModeTranfusi.getValueAt(i,20).toString()+"','"+
                                 tabModeTranfusi.getValueAt(i,21).toString()+"','"+
-                                tabModeTranfusi.getValueAt(i,22).toString()+"','','','','','','','','','','','','','','',''","Transaksi Donor"); 
+                                tabModeTranfusi.getValueAt(i,22).toString()+"','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Donor"); 
             }           
             
             Map<String, Object> param = new HashMap<>();    
@@ -1913,7 +1913,7 @@ public final class UTDDonor extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDonorDarah.jasper","report","::[ Data Donor Darah ]::",param);
+            Valid.MyReportqry("rptDonorDarah.jasper","report","::[ Data Donor Darah ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

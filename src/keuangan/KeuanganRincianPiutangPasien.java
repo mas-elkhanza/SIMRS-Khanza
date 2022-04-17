@@ -624,10 +624,10 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             Desktop.getDesktop().browse(f.toURI());
                         break; 
                     case "Laporan 4 (Jasper)":
-                            Sequel.queryu("truncate table temporary");
+                            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                             int row=tabMode.getRowCount();
                             for(int i=0;i<row;i++){  
-                                    Sequel.menyimpan("temporary","'0','"+
+                                    Sequel.menyimpan("temporary","'"+i+"','"+
                                                 tabMode.getValueAt(i,0).toString()+"','"+
                                                 tabMode.getValueAt(i,1).toString()+"','"+
                                                 tabMode.getValueAt(i,2).toString()+"','"+
@@ -650,7 +650,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,19).toString()))+"','"+
                                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,20).toString()))+"','"+
                                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,21).toString()))+"','"+
-                                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,22).toString()))+"','','','','','','','','','','','','','',''","Piutang Pasien"); 
+                                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,22).toString()))+"','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Piutang Pasien"); 
                             }
 
 
@@ -662,7 +662,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                             param.put("kontakrs",akses.getkontakrs());
                             param.put("emailrs",akses.getemailrs());   
                             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                            Valid.MyReport("rptRincianPiutangPasien.jasper","report","::[ Rekap Piutang Masuk ]::",param);
+                            Valid.MyReportqry("rptRincianPiutangPasien.jasper","report","::[ Rekap Piutang Masuk ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                         break; 
                 }                 
             } catch (Exception e) {

@@ -511,10 +511,10 @@ public class LaporanKedatanganPasienPerJam extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,1).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,2).toString()))+"','"+
@@ -547,7 +547,7 @@ public class LaporanKedatanganPasienPerJam extends javax.swing.JDialog {
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,29).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,30).toString()))+"','"+
                                 Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,31).toString()))+"','"+
-                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,32).toString()))+"','','','',''","kedatangan pasien per jam"); 
+                                Valid.SetAngka3(Double.parseDouble(tabMode.getValueAt(r,32).toString()))+"','','','','"+akses.getalamatip()+"'","kedatangan pasien per jam"); 
             }
             
             Map<String, Object> param = new HashMap<>();   
@@ -590,7 +590,7 @@ public class LaporanKedatanganPasienPerJam extends javax.swing.JDialog {
                 param.put("jd29","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")");
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
-                Valid.MyReport("rptKedatanganPasienPerJam.jasper","report","::[ Kedatangan Pasien Per Jam ]::",param);   
+                Valid.MyReportqry("rptKedatanganPasienPerJam.jasper","report","::[ Kedatangan Pasien Per Jam ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);   
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

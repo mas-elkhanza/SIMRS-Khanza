@@ -32,6 +32,7 @@ public class KeuanganCariTagihanNonMedis extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private String notagihan="",tanggal="",status="",petugas="",cari="";
     private double nilaitagihan=0,totaltagihan=0;
+    private int i=0;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -49,7 +50,7 @@ public class KeuanganCariTagihanNonMedis extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(110);
@@ -621,18 +622,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             
             int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+            for(i=0;i<row;i++){  
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
-                                tabMode.getValueAt(i,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
+                                tabMode.getValueAt(i,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
             }
-            Sequel.menyimpan("temporary","'0','TOTAL TAGIHAN :','','','','"+Valid.SetAngka(totaltagihan)+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','TOTAL TAGIHAN :','','','','"+Valid.SetAngka(totaltagihan)+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
             Map<String, Object> param = new HashMap<>();    
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -641,7 +643,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptTagihanNonMedis.jasper","report","::[ Data Titip Faktur/Tagihan Barang Non Medis dan Penunjang ( Lab & RO ) ]::",param);
+            Valid.MyReportqry("rptTagihanNonMedis.jasper","report","::[ Data Titip Faktur/Tagihan Barang Non Medis dan Penunjang ( Lab & RO ) ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPrintActionPerformed

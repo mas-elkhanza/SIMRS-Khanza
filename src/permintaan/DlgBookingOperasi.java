@@ -1143,9 +1143,9 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(i=0;i<tabMode.getRowCount();i++){ 
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                     tabMode.getValueAt(i,0).toString()+"','"+
                     tabMode.getValueAt(i,1).toString()+"','"+
                     tabMode.getValueAt(i,2).toString()+"','"+
@@ -1163,10 +1163,10 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
                     tabMode.getValueAt(i,14).toString()+"','"+
                     tabMode.getValueAt(i,15).toString()+"','"+
                     tabMode.getValueAt(i,16).toString()+"','"+
-                    tabMode.getValueAt(i,17).toString()+"','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                    tabMode.getValueAt(i,17).toString()+"','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
             }
              
-            Valid.MyReport("rptJadwalOperasi.jasper","report","::[ Laporan Daftar Jadwal Operasi ]::",param);
+            Valid.MyReportqry("rptJadwalOperasi.jasper","report","::[ Laporan Daftar Jadwal Operasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

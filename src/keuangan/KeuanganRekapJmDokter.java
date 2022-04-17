@@ -630,14 +630,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             Desktop.getDesktop().browse(f.toURI());
                         break; 
                     case "Laporan 4 (Jasper)":
-                            Sequel.queryu("truncate table temporary");
+                            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                             for(int r=0;r<tabMode.getRowCount();r++){  
-                                    Sequel.menyimpan("temporary","'0','"+
+                                    Sequel.menyimpan("temporary","'"+r+"','"+
                                             tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                             tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                             tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
                                             Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(r,3).toString()))+
-                                            "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","data");
+                                            "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","data");
                             }
 
                             Map<String, Object> param = new HashMap<>();                 
@@ -648,7 +648,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             param.put("kontakrs",akses.getkontakrs());
                             param.put("emailrs",akses.getemailrs());   
                             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                            Valid.MyReport("rptRekapJasaMedisDokter.jasper","report","::[ Data Rekap Jasa Medis Dokter ]::",param);
+                            Valid.MyReportqry("rptRekapJasaMedisDokter.jasper","report","::[ Data Rekap Jasa Medis Dokter ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                         break; 
                 }                 
             } catch (Exception e) {

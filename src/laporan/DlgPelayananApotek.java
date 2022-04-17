@@ -314,17 +314,17 @@ public final class DlgPelayananApotek extends javax.swing.JDialog {
             param.put("satujam",""+satujam);  
             param.put("lebihsatujam",""+lebihsatujam);  
             
-            Sequel.queryu("truncate table temporary_resep");
+            Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
 
             for(int i=0;i<tabMode.getRowCount();i++){  
                 Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                    "0",tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
+                    ""+i,tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
                     tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),"","","","","","","","","","","","",
-                    "","","","","","","","","","","","","","","","","",""
+                    "","","","","","","","","","","","","","","","",akses.getalamatip()
                 });
             }
-            Valid.MyReport("rptPelayananApotek.jasper",param,"::[ Laporan Data Pelayanan Apotek ]::");
+            Valid.MyReportqry("rptPelayananApotek.jasper","report","::[ Laporan Data Pelayanan Apotek ]::","select * from temporary_resep where temporary_resep.temp37='"+akses.getalamatip()+"' order by temporary_resep.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -467,24 +467,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                 "and reg_periksa.kd_poli=poliklinik.kd_poli " +
                 "and reg_periksa.no_rawat=resep_obat.no_rawat "+
-                "where resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and poliklinik.nm_poli like ? or " +
-                "resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and dokter.nm_dokter like ? or " +
-                "resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
-                "resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? and pasien.nm_pasien like ?  "+
+                "where resep_obat.tgl_peresepan<>'0000-00-00' and resep_obat.tgl_perawatan<>'0000-00-00' and resep_obat.tgl_peresepan between ? and ? "+
+                "and (poliklinik.nm_poli like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?)  "+
                 "order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

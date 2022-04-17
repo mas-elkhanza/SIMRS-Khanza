@@ -271,9 +271,9 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){  
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+r+"','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tabMode.getValueAt(r,1).toString().replaceAll("'","`") +"','"+
                                     tabMode.getValueAt(r,2).toString().replaceAll("RUMAH SAKIT","                              RUMAH SAKIT")+"','"+
@@ -293,10 +293,10 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
             }
                
-            Valid.MyReport("rptDkkPenyakitTakMenularRalan.jasper","report","::[ Penyakit Tidak Menular Rawat Jalan ]::",param);
+            Valid.MyReportqry("rptDkkPenyakitTakMenularRalan.jasper","report","::[ Penyakit Tidak Menular Rawat Jalan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

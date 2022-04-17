@@ -801,10 +801,10 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
-                    Sequel.menyimpan("temporary","'0','"+
+            for(i=0;i<row;i++){  
+                    Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
@@ -816,10 +816,12 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()))+"','"+
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,10).toString()))+"','"+
                                 tabMode.getValueAt(i,13).toString()+"','"+
-                                tabMode.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Hutang"); 
+                                tabMode.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Hutang"); 
             }
-            Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Hutang"); 
-            Sequel.menyimpan("temporary","'0','','','','','','','TOTAL HUTANG :','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Hutang"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Hutang"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','','','','','','','TOTAL HUTANG :','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Hutang"); 
             
             
             Map<String, Object> param = new HashMap<>();                 
@@ -830,7 +832,7 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptHutangBelumLunas.jasper","report","::[ Data Hutang Obat, Alkes & BHP Medis ]::",param);
+            Valid.MyReportqry("rptHutangBelumLunas.jasper","report","::[ Data Hutang Obat, Alkes & BHP Medis ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

@@ -396,18 +396,19 @@ public final class KeuanganValidasiTagihanAset extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             
             int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+            for(i=0;i<row;i++){  
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
-                                tabMode.getValueAt(i,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
+                                tabMode.getValueAt(i,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
             }
-            Sequel.menyimpan("temporary","'0','TOTAL TAGIHAN :','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','TOTAL TAGIHAN :','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
             Map<String, Object> param = new HashMap<>();    
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -416,7 +417,7 @@ public final class KeuanganValidasiTagihanAset extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptValidasiTagihanAset.jasper","report","::[ Data Pegajuan Titip Faktur/Tagihan Aset/Inventaris ]::",param);
+            Valid.MyReportqry("rptValidasiTagihanAset.jasper","report","::[ Data Pegajuan Titip Faktur/Tagihan Aset/Inventaris ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
 }//GEN-LAST:event_BtnPrintActionPerformed

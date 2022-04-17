@@ -1085,9 +1085,9 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int i=0;i<tabMode.getRowCount();i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
@@ -1104,7 +1104,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,16).toString()+"','"+
                                 tabMode.getValueAt(i,17).toString()+"','"+
                                 tabMode.getValueAt(i,18).toString()+"','"+
-                                tabMode.getValueAt(i,19).toString()+"','','','','','','','','','','','','','','','','','','','',''","Rujukan Masuk"); 
+                                tabMode.getValueAt(i,19).toString()+"','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rujukan Masuk"); 
             }
             Map<String, Object> param = new HashMap<>(); 
                 param.put("namars",akses.getnamars());
@@ -1115,7 +1115,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReportqry("rptRujukMasuk.jasper","report","::[ Data Rujukan Yang Masuk ]::",
-                "select * from temporary order by no asc",param);
+               "select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

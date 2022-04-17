@@ -807,17 +807,17 @@ public final class DlgRekening extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(TCari.getText().trim().equals("")){
                 
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 int row=tabMode.getRowCount();
                 for(int i=0;i<row;i++){  
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode.getValueAt(i,2).toString()+"','"+
                                     tabMode.getValueAt(i,3).toString()+"','"+
                                     tabMode.getValueAt(i,4).toString()+"','"+
-                                    tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+                                    tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Keuangan"); 
                 }
                   
-                Valid.MyReport("rptRekening2.jasper","report","::[ Data Rekening ]::",param);
+                Valid.MyReportqry("rptRekening2.jasper","report","::[ Data Rekening ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }else{
                 Valid.MyReportqry("rptRekening.jasper","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
                     " from rekening where kd_rek like '%"+TCari.getText().trim()+"%' or "+

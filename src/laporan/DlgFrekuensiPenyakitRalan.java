@@ -850,10 +850,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tbDokter.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tbDokter.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                 tbDokter.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                 tbDokter.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
@@ -861,9 +861,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tbDokter.getValueAt(r,4).toString()+"','"+
                                 tbDokter.getValueAt(r,5).toString()+"','"+
                                 tbDokter.getValueAt(r,6).toString()+"','"+
-                                tbDokter.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
+                                tbDokter.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Frekuensi Penyakit"); 
             }
-            Valid.panggilUrl("billing/LaporanPenyakitRalan.php?tanggal1="+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"&tanggal2="+Valid.SetTgl(Tgl2.getSelectedItem()+""));                       
+            Valid.panggilUrl("billing/LaporanPenyakitRalan.php?tanggal1="+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"&tanggal2="+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"&alamatip="+akses.getalamatip());                       
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

@@ -1362,23 +1362,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 try {
                     if(tbDarah.getValueAt(i,0).toString().equals("true")){
-                           Sequel.menyimpan("temporary","'0','"+
+                           Sequel.menyimpan("temporary","'"+i+"','"+
                                    tabMode.getValueAt(i,1).toString()+"','"+
                                    tabMode.getValueAt(i,2).toString()+"','"+
                                    tabMode.getValueAt(i,3).toString()+"','"+
                                    tabMode.getValueAt(i,4).toString()+"','"+
-                                   tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan Darah"); 
+                                   tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penjualan Darah"); 
                     }
                 } catch (Exception e) {
                 }                
             }
             
-            Valid.panggilUrl("billing/NotaDarah.php?nopenyerahan="+nopenyerahan.getText()+"&besarppn="+besarppn+"&bayar="+Bayar.getText()+"&tanggal="+Valid.SetTgl(tanggal.getSelectedItem()+"")+"&catatan="+keterangan.getText().replaceAll(" ","_")+"&petugaspj="+nmptgpj.getText().replaceAll(" ","_")+"&pasien="+nmpengambil.getText().replaceAll(" ","_"));
+            Valid.panggilUrl("billing/NotaDarah.php?nopenyerahan="+nopenyerahan.getText()+"&besarppn="+besarppn+"&bayar="+Bayar.getText()+"&tanggal="+Valid.SetTgl(tanggal.getSelectedItem()+"")+"&catatan="+keterangan.getText().replaceAll(" ","_")+"&petugaspj="+nmptgpj.getText().replaceAll(" ","_")+"&pasien="+nmpengambil.getText().replaceAll(" ","_")+"&alamatip="+akses.getalamatip());
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnNotaActionPerformed

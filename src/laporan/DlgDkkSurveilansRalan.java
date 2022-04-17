@@ -235,12 +235,12 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             Map<String, Object> param = new HashMap<>();
             param.put("tanggal",Tgl2.getDate());
             param.put("jmltotal",jmltotal+"");
             for(int r=0;r<tabMode.getRowCount();r++){  
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+r+"','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
@@ -259,14 +259,14 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
             }
               
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
-            Valid.MyReport("rptSurveilansRalan.jasper","report","::[ Surveilans PD3I ]::",param);
+            Valid.MyReportqry("rptSurveilansRalan.jasper","report","::[ Surveilans PD3I ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

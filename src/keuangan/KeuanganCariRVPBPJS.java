@@ -686,10 +686,10 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             ttlpiutang=0;ttliur=0;ttlsudahdibayar=0;ttlsisapiutang=0;ttlinacbg=0;total=0;rugi=0;lebih=0;
-            for(int i=0;i<row;i++){  
+            for(i=0;i<row;i++){  
                 sisapiutang=0;
                 try {
                     sisapiutang=Double.parseDouble(tabMode.getValueAt(i,10).toString());
@@ -704,7 +704,7 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                 total=total+sisapiutang;
                 rugi=rugi+Double.parseDouble(tabMode.getValueAt(i,12).toString());
                 lebih=lebih+Double.parseDouble(tabMode.getValueAt(i,13).toString());
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                             tabMode.getValueAt(i,1).toString()+"','"+
                             tabMode.getValueAt(i,2).toString()+"','"+
                             tabMode.getValueAt(i,3).toString()+"','"+
@@ -717,9 +717,10 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
                             Valid.SetAngka(sisapiutang)+"','"+
                             Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()))+"','"+
                             Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,12).toString()))+"','"+
-                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,13).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','',''","RVP Piutang"); 
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,13).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","RVP Piutang"); 
             }
-            Sequel.menyimpan("temporary","'0','Total :','','','','"+Valid.SetAngka(ttlpiutang)+"','"+Valid.SetAngka(ttliur)+"','"+Valid.SetAngka(ttlsudahdibayar)+"','"+Valid.SetAngka(ttlsisapiutang)+"','"+Valid.SetAngka(ttlinacbg)+"','"+Valid.SetAngka(total)+"','','"+Valid.SetAngka(rugi)+"','"+Valid.SetAngka(lebih)+"','','','','','','','','','','','','','','','','','','','','','','','',''","RVP Piutangr"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','Total :','','','','"+Valid.SetAngka(ttlpiutang)+"','"+Valid.SetAngka(ttliur)+"','"+Valid.SetAngka(ttlsudahdibayar)+"','"+Valid.SetAngka(ttlsisapiutang)+"','"+Valid.SetAngka(ttlinacbg)+"','"+Valid.SetAngka(total)+"','','"+Valid.SetAngka(rugi)+"','"+Valid.SetAngka(lebih)+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","RVP Piutang"); 
             
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",akses.getnamars());
@@ -729,7 +730,7 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRVPPiutang2.jasper","report","::[ Data RVP Piutang BPJS ]::",param);
+            Valid.MyReportqry("rptRVPPiutang2.jasper","report","::[ Data RVP Piutang BPJS ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

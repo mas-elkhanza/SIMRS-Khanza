@@ -238,9 +238,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("periode","BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());  
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){ 
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                     tabMode.getValueAt(r,0).toString()+"','"+
                     tabMode.getValueAt(r,1).toString()+"','"+
                     tabMode.getValueAt(r,2).toString()+"','"+
@@ -248,11 +248,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     tabMode.getValueAt(r,4).toString()+"','"+
                     tabMode.getValueAt(r,5).toString()+"','"+
                     tabMode.getValueAt(r,6).toString()+"','"+
-                    tabMode.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Daftar Pasien"
+                    tabMode.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"',''","Daftar Pasien"
                 );
             }
                
-            Valid.MyReport("rptDaftarPasienRanap.jasper","report","::[ Laporan Daftar Nama Pasien Ranap ]::",param);
+            Valid.MyReportqry("rptDaftarPasienRanap.jasper","report","::[ Laporan Daftar Nama Pasien Ranap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

@@ -1956,10 +1956,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
@@ -1971,7 +1971,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,36).toString()+"','"+
                                 tabMode.getValueAt(i,37).toString()+"','"+
                                 tabMode.getValueAt(i,38).toString()+"','"+
-                                tabMode.getValueAt(i,39).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi operasi"); 
+                                tabMode.getValueAt(i,39).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi operasi"); 
             }
             
             
@@ -1983,7 +1983,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptOperasi.jasper","report","::[ Transaksi Operasi ]::",param);
+            Valid.MyReportqry("rptOperasi.jasper","report","::[ Transaksi Operasi ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2036,88 +2036,91 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
-                Sequel.AutoComitFalse();
-                sukses=true;
-                ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;status="";
-                status=Sequel.cariIsi("select status from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
-                ttljmdokter=Sequel.cariIsiAngka("select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+"+
-                        "biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
-                ttljmpetugas=Sequel.cariIsiAngka("select sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+"+
-                        "biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+"+
-                        "biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) "+
-                        "from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
-                ttlpendapatan=Sequel.cariIsiAngka("select sum(operasi.biayaoperator1+operasi.biayaoperator2+"+
-                        "operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+"+
-                        "operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+"+
-                        "operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+operasi.biayaasisten_anestesi+"+
-                        "operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"+
-                        "operasi.biayaperawat_luar+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+"+
-                        "operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+"+
-                        "operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biayasarpras+operasi.biaya_dokter_pjanak+"+
-                        "operasi.biaya_dokter_umum) from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
-                ttlbhp=Sequel.cariIsiAngka("select sum(jumlah*hargasatuan) from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
+                int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    Sequel.AutoComitFalse();
+                    sukses=true;
+                    ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;status="";
+                    status=Sequel.cariIsi("select status from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
+                    ttljmdokter=Sequel.cariIsiAngka("select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+"+
+                            "biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
+                    ttljmpetugas=Sequel.cariIsiAngka("select sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+"+
+                            "biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+"+
+                            "biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) "+
+                            "from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
+                    ttlpendapatan=Sequel.cariIsiAngka("select sum(operasi.biayaoperator1+operasi.biayaoperator2+"+
+                            "operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+"+
+                            "operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+"+
+                            "operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+operasi.biayaasisten_anestesi+"+
+                            "operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"+
+                            "operasi.biayaperawat_luar+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+"+
+                            "operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+"+
+                            "operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biayasarpras+operasi.biaya_dokter_pjanak+"+
+                            "operasi.biaya_dokter_umum) from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
+                    ttlbhp=Sequel.cariIsiAngka("select sum(jumlah*hargasatuan) from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
 
-                ttlpendapatan=ttlpendapatan+ttlbhp;
-                if(Sequel.queryutf("delete from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1)+"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +"'")==true){
-                    if(Sequel.queryutf("delete from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'")==false){
-                       ttlbhp=0;
-                       sukses=false;
+                    ttlpendapatan=ttlpendapatan+ttlbhp;
+                    if(Sequel.queryutf("delete from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1)+"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +"'")==true){
+                        if(Sequel.queryutf("delete from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'")==false){
+                           ttlbhp=0;
+                           sukses=false;
+                        }
+                    }else{
+                        sukses=false;
                     }
-                }else{
-                    sukses=false;
-                }
-                
-                if(sukses==true){
-                    Sequel.queryu("delete from laporan_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1)+"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +"'");
-                    if(status.equals("Ranap")){
-                        Sequel.queryu("delete from tampjurnal");    
-                        if(ttlpendapatan>0){
-                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ranap+"','Suspen Piutang Operasi Ranap','0','"+ttlpendapatan+"'","kredit=kredit+'"+ttlpendapatan+"'","kd_rek='"+Suspen_Piutang_Operasi_Ranap+"'");    
-                            Sequel.menyimpan("tampjurnal","'"+Operasi_Ranap+"','Pendapatan Operasi Rawat Inap','"+ttlpendapatan+"','0'","debet=debet+'"+ttlpendapatan+"'","kd_rek='"+Operasi_Ranap+"'");                             
+
+                    if(sukses==true){
+                        Sequel.queryu("delete from laporan_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1)+"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +"'");
+                        if(status.equals("Ranap")){
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttlpendapatan>0){
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ranap+"','Suspen Piutang Operasi Ranap','0','"+ttlpendapatan+"'","kredit=kredit+'"+ttlpendapatan+"'","kd_rek='"+Suspen_Piutang_Operasi_Ranap+"'");    
+                                Sequel.menyimpan("tampjurnal","'"+Operasi_Ranap+"','Pendapatan Operasi Rawat Inap','"+ttlpendapatan+"','0'","debet=debet+'"+ttlpendapatan+"'","kd_rek='"+Operasi_Ranap+"'");                             
+                            }
+                            if(ttljmdokter>0){
+                                Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"','Beban Jasa Medik Dokter Operasi Ranap','0','"+ttljmdokter+"'","kredit=kredit+'"+ttljmdokter+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"','Utang Jasa Medik Dokter Operasi Ranap','"+ttljmdokter+"','0'","debet=debet+'"+ttljmdokter+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"'");                             
+                            }
+                            if(ttljmpetugas>0){
+                                Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Operasi_Ranap+"','Beban Jasa Medik Petugas Operasi Ranap','0','"+ttljmpetugas+"'","kredit=kredit+'"+ttljmpetugas+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Operasi_Ranap+"'");      
+                                Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Operasi_Ranap+"','Utang Jasa Medik Petugas Operasi Ranap','"+ttljmpetugas+"','0'","debet=debet+'"+ttljmpetugas+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Operasi_Ranap+"'");                             
+                            }
+                            if(ttlbhp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ranap+"','HPP Persediaan Operasi Rawat Inap','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ranap+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ranap+"','Persediaan BHP Operasi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ranap+"'");                             
+                            }
+                            sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OPERASI RAWAT INAP PASIEN OLEH "+akses.getkode());                                              
+                        }else if(status.equals("Ralan")){
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttlpendapatan>0){
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ralan+"','Suspen Piutang Operasi Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+ttlpendapatan+"'","kd_rek='"+Suspen_Piutang_Operasi_Ralan+"'");    
+                                Sequel.menyimpan("tampjurnal","'"+Operasi_Ralan+"','Pendapatan Operasi Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+ttlpendapatan+"'","kd_rek='"+Operasi_Ralan+"'");                             
+                            }
+                            if(ttljmdokter>0){
+                                Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Operasi_Ralan+"','Beban Jasa Medik Dokter Operasi Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+ttljmdokter+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Operasi_Ralan+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Operasi_Ralan+"','Utang Jasa Medik Dokter Operasi Ralan','"+ttljmdokter+"','0'","debet=debet+'"+ttljmdokter+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Operasi_Ralan+"'");                             
+                            }
+                            if(ttljmpetugas>0){
+                                Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Operasi_Ralan+"','Beban Jasa Medik Petugas Operasi Ralan','0','"+ttljmpetugas+"'","kredit=kredit+'"+ttljmpetugas+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Operasi_Ralan+"'");      
+                                Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Operasi_Ralan+"','Utang Jasa Medik Petugas Operasi Ralan','"+ttljmpetugas+"','0'","debet=debet+'"+ttljmpetugas+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Operasi_Ralan+"'");                             
+                            }
+                            if(ttlbhp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ralan+"','HPP Persediaan Operasi Rawat Jalan','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ralan+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ralan+"','Persediaan BHP Operasi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ralan+"'");                             
+                            }
+                            sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OPERASI RAWAT JALAN PASIEN OLEH "+akses.getkode());                                              
                         }
-                        if(ttljmdokter>0){
-                            Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"','Beban Jasa Medik Dokter Operasi Ranap','0','"+ttljmdokter+"'","kredit=kredit+'"+ttljmdokter+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Operasi_Ranap+"'");     
-                            Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"','Utang Jasa Medik Dokter Operasi Ranap','"+ttljmdokter+"','0'","debet=debet+'"+ttljmdokter+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Operasi_Ranap+"'");                             
-                        }
-                        if(ttljmpetugas>0){
-                            Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Operasi_Ranap+"','Beban Jasa Medik Petugas Operasi Ranap','0','"+ttljmpetugas+"'","kredit=kredit+'"+ttljmpetugas+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Operasi_Ranap+"'");      
-                            Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Operasi_Ranap+"','Utang Jasa Medik Petugas Operasi Ranap','"+ttljmpetugas+"','0'","debet=debet+'"+ttljmpetugas+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Operasi_Ranap+"'");                             
-                        }
-                        if(ttlbhp>0){
-                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ranap+"','HPP Persediaan Operasi Rawat Inap','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ranap+"'");     
-                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ranap+"','Persediaan BHP Operasi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ranap+"'");                             
-                        }
-                        sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OPERASI RAWAT INAP PASIEN OLEH "+akses.getkode());                                              
-                    }else if(status.equals("Ralan")){
-                        Sequel.queryu("delete from tampjurnal");    
-                        if(ttlpendapatan>0){
-                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ralan+"','Suspen Piutang Operasi Ralan','0','"+ttlpendapatan+"'","kredit=kredit+'"+ttlpendapatan+"'","kd_rek='"+Suspen_Piutang_Operasi_Ralan+"'");    
-                            Sequel.menyimpan("tampjurnal","'"+Operasi_Ralan+"','Pendapatan Operasi Rawat Jalan','"+ttlpendapatan+"','0'","debet=debet+'"+ttlpendapatan+"'","kd_rek='"+Operasi_Ralan+"'");                             
-                        }
-                        if(ttljmdokter>0){
-                            Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Operasi_Ralan+"','Beban Jasa Medik Dokter Operasi Ralan','0','"+ttljmdokter+"'","kredit=kredit+'"+ttljmdokter+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Operasi_Ralan+"'");     
-                            Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Operasi_Ralan+"','Utang Jasa Medik Dokter Operasi Ralan','"+ttljmdokter+"','0'","debet=debet+'"+ttljmdokter+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Operasi_Ralan+"'");                             
-                        }
-                        if(ttljmpetugas>0){
-                            Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Paramedis_Operasi_Ralan+"','Beban Jasa Medik Petugas Operasi Ralan','0','"+ttljmpetugas+"'","kredit=kredit+'"+ttljmpetugas+"'","kd_rek='"+Beban_Jasa_Medik_Paramedis_Operasi_Ralan+"'");      
-                            Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Paramedis_Operasi_Ralan+"','Utang Jasa Medik Petugas Operasi Ralan','"+ttljmpetugas+"','0'","debet=debet+'"+ttljmpetugas+"'","kd_rek='"+Utang_Jasa_Medik_Paramedis_Operasi_Ralan+"'");                             
-                        }
-                        if(ttlbhp>0){
-                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ralan+"','HPP Persediaan Operasi Rawat Jalan','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ralan+"'");     
-                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ralan+"','Persediaan BHP Operasi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ralan+"'");                             
-                        }
-                        sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OPERASI RAWAT JALAN PASIEN OLEH "+akses.getkode());                                              
                     }
+
+                    if(sukses==true){
+                        Sequel.Commit();
+                        tampil();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }
+                    Sequel.AutoComitTrue();
                 }
-                
-                if(sukses==true){
-                    Sequel.Commit();
-                    tampil();
-                }else{
-                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                    Sequel.RollBack();
-                }
-                Sequel.AutoComitTrue();
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
@@ -2132,42 +2135,45 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
-                Sequel.AutoComitFalse();
-                sukses=true;
-                ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;
-                status=Sequel.cariIsi("select status from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
-                ttlbhp=Sequel.cariIsiAngka("select sum(jumlah*hargasatuan) from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
-                
-                if(Sequel.queryutf("delete from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'")==true){
-                    if(status.equals("Ranap")){
-                        if(ttlbhp>0){
-                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ranap+"','HPP Persediaan Operasi Rawat Inap','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ranap+"'");     
-                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ranap+"','Persediaan BHP Operasi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ranap+"'");                          
-                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ranap+"','Suspen Piutang Operasi Ranap','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+Suspen_Piutang_Operasi_Ranap+"'");    
-                            Sequel.menyimpan("tampjurnal","'"+Operasi_Ranap+"','Pendapatan Operasi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Operasi_Ranap+"'");                             
-                            sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OBAT OPERASI RAWAT INAP OLEH "+akses.getkode());                                                  
+                int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    Sequel.AutoComitFalse();
+                    sukses=true;
+                    ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;
+                    status=Sequel.cariIsi("select status from operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tgl_operasi='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
+                    ttlbhp=Sequel.cariIsiAngka("select sum(jumlah*hargasatuan) from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'");
+
+                    if(Sequel.queryutf("delete from beri_obat_operasi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1) +"' and tanggal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0)+"'")==true){
+                        if(status.equals("Ranap")){
+                            if(ttlbhp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ranap+"','HPP Persediaan Operasi Rawat Inap','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ranap+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ranap+"','Persediaan BHP Operasi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ranap+"'");                          
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ranap+"','Suspen Piutang Operasi Ranap','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+Suspen_Piutang_Operasi_Ranap+"'");    
+                                Sequel.menyimpan("tampjurnal","'"+Operasi_Ranap+"','Pendapatan Operasi Rawat Inap','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Operasi_Ranap+"'");                             
+                                sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OBAT OPERASI RAWAT INAP OLEH "+akses.getkode());                                                  
+                            }
+                        }else if(status.equals("Ralan")){
+                            if(ttlbhp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ralan+"','HPP Persediaan Operasi Rawat Jalan','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ralan+"'");     
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ralan+"','Persediaan BHP Operasi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ralan+"'");                          
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ralan+"','Suspen Piutang Operasi Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+Suspen_Piutang_Operasi_Ralan+"'");    
+                                Sequel.menyimpan("tampjurnal","'"+Operasi_Ralan+"','Pendapatan Operasi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Operasi_Ralan+"'");                             
+                                sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OBAT OPERASI RAWAT JALAN OLEH "+akses.getkode());                                                  
+                            }
                         }
-                    }else if(status.equals("Ralan")){
-                        if(ttlbhp>0){
-                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ralan+"','HPP Persediaan Operasi Rawat Jalan','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+HPP_Obat_Operasi_Ralan+"'");     
-                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ralan+"','Persediaan BHP Operasi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Persediaan_Obat_Kamar_Operasi_Ralan+"'");                          
-                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Operasi_Ralan+"','Suspen Piutang Operasi Ralan','0','"+ttlbhp+"'","kredit=kredit+'"+ttlbhp+"'","kd_rek='"+Suspen_Piutang_Operasi_Ralan+"'");    
-                            Sequel.menyimpan("tampjurnal","'"+Operasi_Ralan+"','Pendapatan Operasi Rawat Jalan','"+ttlbhp+"','0'","debet=debet+'"+ttlbhp+"'","kd_rek='"+Operasi_Ralan+"'");                             
-                            sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PEMBATALAN OBAT OPERASI RAWAT JALAN OLEH "+akses.getkode());                                                  
-                        }
+                    }else{
+                        sukses=false;
                     }
-                }else{
-                    sukses=false;
+
+                    if(sukses==true){
+                        Sequel.Commit();
+                        tampil();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }
+                    Sequel.AutoComitTrue();
                 }
-                
-                if(sukses==true){
-                    Sequel.Commit();
-                    tampil();
-                }else{
-                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                    Sequel.RollBack();
-                }
-                Sequel.AutoComitTrue();
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
