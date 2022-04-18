@@ -1892,17 +1892,21 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         for(i=0;i<tbBangsal.getRowCount();i++){
             tbBangsal.setValueAt(false,i,0);
             getdata(i);
         }
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         for(i=0;i<tbBangsal.getRowCount();i++){
             tbBangsal.setValueAt(true,i,0);
             getdata(i);
         }
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppPilihSemuaActionPerformed
 
     private void ppUmbalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUmbalActionPerformed
@@ -1910,6 +1914,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         jfc.addChoosableFileFilter(excelFilter);
         if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             String f = jfc.getSelectedFile().toString();
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             try {
                 Scanner sc = new Scanner(new File(f));  
                 sc.useDelimiter(";");
@@ -2162,6 +2167,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             }
+            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_ppUmbalActionPerformed
 

@@ -618,7 +618,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
             Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'"+i+"','"+
+                Sequel.menyimpan("temporary","'"+r+"','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,4).toString()+"','"+

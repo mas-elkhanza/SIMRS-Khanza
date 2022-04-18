@@ -566,6 +566,7 @@ import inventory.DlgSirkulasiBarang5;
 import inventory.DlgSisaStok;
 import inventory.InventoryCariResepLuar;
 import inventory.InventoryHibahObatBHP;
+import inventory.InventoryNilaiPenerimaanVendorFarmasiPerBulan;
 import inventory.InventoryPenggunaanBHPOK;
 import inventory.InventoryRingkasanBeriObat;
 import inventory.InventoryRingkasanHibahBarangMedis;
@@ -18284,6 +18285,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnNilaiPenerimaanVendorFarmasiPerBulanActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryNilaiPenerimaanVendorFarmasiPerBulan form=new InventoryNilaiPenerimaanVendorFarmasiPerBulan(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18923,7 +18935,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
-            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang;
+            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan;
     
     public void isWall(){
         try{            
@@ -19736,6 +19748,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getringkasan_biaya_obat_pasien_pertanggal()==true){
                 Panelmenu.add(btnRingkasanBiayaObatPasienPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getnilai_penerimaan_vendor_farmasi_perbulan()==true){
+                Panelmenu.add(btnNilaiPenerimaanVendorFarmasiPerBulan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -23758,6 +23775,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getringkasan_biaya_obat_pasien_pertanggal()==true){
             Panelmenu.add(btnRingkasanBiayaObatPasienPerTanggal);
+            jmlmenu++;
+        }
+        
+        if(akses.getnilai_penerimaan_vendor_farmasi_perbulan()==true){
+            Panelmenu.add(btnNilaiPenerimaanVendorFarmasiPerBulan);
             jmlmenu++;
         }
 
@@ -28041,6 +28063,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getringkasan_biaya_obat_pasien_pertanggal()==true){
             if(btnRingkasanBiayaObatPasienPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRingkasanBiayaObatPasienPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getnilai_penerimaan_vendor_farmasi_perbulan()==true){
+            if(btnNilaiPenerimaanVendorFarmasiPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnNilaiPenerimaanVendorFarmasiPerBulan);
                 jmlmenu++;
             }                
         }
@@ -35402,6 +35431,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAkunBayarHutang.setName("btnAkunBayarHutang"); 
         btnAkunBayarHutang.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAkunBayarHutang.addActionListener(this::btnAkunBayarHutangActionPerformed);
+        
+        btnNilaiPenerimaanVendorFarmasiPerBulan = new widget.ButtonBig();
+        btnNilaiPenerimaanVendorFarmasiPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_File_Files_Folder_Clipboard_Data_Confirm_3909329.png"))); 
+        btnNilaiPenerimaanVendorFarmasiPerBulan.setText("Nilai Penerimaan Vendor Farmasi Per Bulan");
+        btnNilaiPenerimaanVendorFarmasiPerBulan.setIconTextGap(0);
+        btnNilaiPenerimaanVendorFarmasiPerBulan.setName("btnNilaiPenerimaanVendorFarmasiPerBulan"); 
+        btnNilaiPenerimaanVendorFarmasiPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnNilaiPenerimaanVendorFarmasiPerBulan.addActionListener(this::btnNilaiPenerimaanVendorFarmasiPerBulanActionPerformed);
     }
     
 }

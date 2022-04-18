@@ -12,6 +12,7 @@
 package setting;
 
 import fungsi.WarnaTable;
+import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.Dimension;
@@ -59,6 +60,9 @@ public class DlgVakum extends javax.swing.JDialog {
              }
         };
 
+        
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        
         tbAdmin.setModel(tabMode);
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

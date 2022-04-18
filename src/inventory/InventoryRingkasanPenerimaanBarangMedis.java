@@ -1098,6 +1098,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmsup.setText("");
         kdptg.setText("");
         nmptg.setText("");
+        KdIF.setText("");
+        NmIF.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 

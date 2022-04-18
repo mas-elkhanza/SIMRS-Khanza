@@ -2223,7 +2223,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     (semua?"":"and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and "+
                     "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
                     "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                    "dokter.nm_dokter like ? or penjab.png_jawab like ?)")+" order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    "dokter.nm_dokter like ? or penjab.png_jawab like ?)")+" order by resep_obat.tgl_peresepan desc,resep_obat.jam_peresepan desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -2375,7 +2375,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     (semua?"":"and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and "+
                     "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
                     "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                    "dokter.nm_dokter like ? or penjab.png_jawab like ?) ")+"order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    "dokter.nm_dokter like ? or penjab.png_jawab like ?) ")+"order by resep_obat.tgl_peresepan desc,resep_obat.jam_peresepan desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -2709,7 +2709,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                     "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
                     "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " group by resep_obat.no_resep order by resep_obat.tgl_peresepan desc,resep_obat.jam_peresepan desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -2777,7 +2777,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                     "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
                     "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " group by resep_obat.no_resep order by resep_obat.tgl_peresepan desc,resep_obat.jam_peresepan desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -2849,7 +2849,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                     "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
                     "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " group by resep_obat.no_resep order by resep_obat.tgl_peresepan desc,resep_obat.jam_peresepan desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -3054,7 +3054,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                     "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
                     "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " group by resep_obat.no_resep order by resep_obat.tgl_peresepan desc,resep_obat.jam_peresepan desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));

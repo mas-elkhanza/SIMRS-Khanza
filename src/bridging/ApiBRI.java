@@ -267,9 +267,6 @@ public class ApiBRI {
             date = new Date(System.currentTimeMillis()-25200000);
             sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             timestamp=sdf.format(date);
-            date2 = new Date(System.currentTimeMillis()-25200000+86400000);
-            sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            timestamp2=sdf2.format(date2);
             System.out.println("consumer_key : "+consumer_key);
             System.out.println("consumer_secret : "+consumer_secret);
             signature=Signature("/v1/briva","DELETE",token,timestamp,"institutionCode="+institution_code+"&brivaNo="+briva_no+"&custCode="+norawat);
@@ -300,11 +297,9 @@ public class ApiBRI {
             date = new Date(System.currentTimeMillis()-25200000);
             sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             timestamp=sdf.format(date);
-            date2 = new Date(System.currentTimeMillis()-25200000+86400000);
-            sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            timestamp2=sdf2.format(date2);
             System.out.println("consumer_key : "+consumer_key);
             System.out.println("consumer_secret : "+consumer_secret);
+            json="";
             signature=Signature("/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""),"GET",token,timestamp,json);
             
             headers = new HttpHeaders();

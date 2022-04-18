@@ -427,6 +427,7 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        DlgSinkron.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 

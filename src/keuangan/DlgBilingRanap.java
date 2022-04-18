@@ -3206,6 +3206,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                  Sequel.queryu2("delete from nota_inap where no_rawat='"+TNoRw.getText()+"'");            
                  Sequel.queryu2("delete from detail_nota_inap where no_rawat='"+TNoRw.getText()+"'");     
                  Sequel.queryu2("delete from tagihan_bpd_jateng where no_rkm_medis='"+TNoRM.getText()+"' and no_rawat='"+TNoRw.getText()+"' and status_lanjut='Ranap' and status_bayar='Pending'");
+                 Sequel.queryu2("delete from tagihan_briva where no_rkm_medis='"+TNoRM.getText()+"' and no_tagihan='"+TNoRw.getText().replaceAll("/","").substring(2,8)+TNoRw.getText().replaceAll("/","").substring(10,14)+"' and status_tagihan='Ranap' and status_bayar='Pending'");
                  Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");
                  Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");
                  Sequel.Commit();

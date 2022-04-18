@@ -835,7 +835,7 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
             i++;
             Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Hutang"); 
             i++;
-            Sequel.menyimpan("temporary","'"+i+"','','','','','','','TOTAL HUTANG :','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Hutang"); 
+            Sequel.menyimpan("temporary","'"+i+"','TOTAL HUTANG :','','','','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Hutang"); 
             
             
             Map<String, Object> param = new HashMap<>();                 
