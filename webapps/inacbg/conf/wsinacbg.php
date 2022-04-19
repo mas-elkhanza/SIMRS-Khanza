@@ -160,7 +160,8 @@
                             $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure,
                             $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$no_rawat){	
         
-        $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis'");
+        $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis' and nm_perawatan not like '%terapi%'")+
+                            getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter Paramedis' and nm_perawatan not like '%terapi%'");
         if($prosedur_non_bedah==""){
             $prosedur_non_bedah="0";
         }
@@ -173,7 +174,7 @@
         if($konsultasi==""){
             $konsultasi="0";
         }
-        $tenaga_ahli=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter Paramedis'");
+        $tenaga_ahli=0;
         if($tenaga_ahli==""){
             $tenaga_ahli="0";
         }
@@ -217,6 +218,12 @@
         if($sewa_alat==""){
             $sewa_alat="0";
         }
+        $rehabilitasi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis' and nm_perawatan like '%terapi%'")+
+                            getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter Paramedis' and nm_perawatan like '%terapi%'");
+        if($rehabilitasi==""){
+            $rehabilitasi="0";
+        }
+        
         $hasilcorona=bukaquery(
                 "select pemulasaraan_jenazah,if(pemulasaraan_jenazah='Ya',1,0) as ytpemulasaraan_jenazah, 
                 kantong_jenazah,if(kantong_jenazah='Ya',1,0) as ytkantong_jenazah, 
@@ -275,7 +282,7 @@
                                     "radiologi": "'.$radiologi.'",
                                     "laboratorium": "'.$laboratorium.'",
                                     "pelayanan_darah": "0",
-                                    "rehabilitasi": "0",
+                                    "rehabilitasi": "'.$rehabilitasi.'",
                                     "kamar": "'.($kamar+$tarif_poli_eks).'",
                                     "rawat_intensif": "0",
                                     "obat": "'.$obat.'",
