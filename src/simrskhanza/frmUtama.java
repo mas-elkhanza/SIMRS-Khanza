@@ -703,6 +703,7 @@ import rekammedis.MasterMasalahKeperawatanAnak;
 import rekammedis.MasterMasalahKeperawatanGigi;
 import rekammedis.MasterMasalahKeperawatanIGD;
 import rekammedis.MasterMasalahKeperawatanMata;
+import rekammedis.MasterRencanaKeperawatan;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
 import rekammedis.MasterTriasePemeriksaan;
@@ -18297,6 +18298,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterRencanaKeperawatanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterRencanaKeperawatan form=new MasterRencanaKeperawatan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18936,7 +18949,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
-            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan;
+            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan;
     
     public void isWall(){
         try{            
@@ -21796,6 +21809,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_masalah_keperawatan()==true){
                 Panelmenu.add(btnMasterMasalahKeperawatan);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_rencana_keperawatan()==true){
+                Panelmenu.add(btnMasterRencanaKeperawatan);
                 jmlmenu++;
             }
             
@@ -25812,6 +25830,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnMasterMasalahKeperawatan);
             jmlmenu++;
         } 
+        
+        if(akses.getmaster_rencana_keperawatan()==true){
+            Panelmenu.add(btnMasterRencanaKeperawatan);
+            jmlmenu++;
+        }
         
         if(akses.getmaster_masalah_keperawatan_gigi()==true){
             Panelmenu.add(btnMasterMasalahKeperawatanGigi);
@@ -30913,6 +30936,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_rencana_keperawatan()==true){
+            if(btnMasterRencanaKeperawatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterRencanaKeperawatan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmaster_masalah_keperawatan_gigi()==true){
             if(btnMasterMasalahKeperawatanGigi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterMasalahKeperawatanGigi);
@@ -35440,6 +35470,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnNilaiPenerimaanVendorFarmasiPerBulan.setName("btnNilaiPenerimaanVendorFarmasiPerBulan"); 
         btnNilaiPenerimaanVendorFarmasiPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnNilaiPenerimaanVendorFarmasiPerBulan.addActionListener(this::btnNilaiPenerimaanVendorFarmasiPerBulanActionPerformed);
+        
+        btnMasterRencanaKeperawatan = new widget.ButtonBig();
+        btnMasterRencanaKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder__bed_rest_sleep_sick_patient_bed_rest_5928511.png"))); 
+        btnMasterRencanaKeperawatan.setText("Master Rencana Keperawatan");
+        btnMasterRencanaKeperawatan.setIconTextGap(0);
+        btnMasterRencanaKeperawatan.setName("btnMasterRencanaKeperawatan"); 
+        btnMasterRencanaKeperawatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterRencanaKeperawatan.addActionListener(this::btnMasterRencanaKeperawatanActionPerformed);
     }
     
 }
