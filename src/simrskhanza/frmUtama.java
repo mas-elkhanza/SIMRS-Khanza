@@ -675,6 +675,7 @@ import laporan.LaporanKedatanganPasienPerJam;
 import laporan.LaporanRegistrasiPoliPerTanggal;
 import laporan.LaporanRekapKunjunganRuangPerTahun;
 import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
+import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabPA;
@@ -18310,6 +18311,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLaporanTahunanIGDActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanTahunanIGD aplikasi=new LaporanTahunanIGD(this,true);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18949,7 +18962,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
-            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan;
+            btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
+            btnLaporanTahunanIGD;
     
     public void isWall(){
         try{            
@@ -20706,6 +20720,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlaporan_tahunan_irj()==true){  
                 Panelmenu.add(btnLaporanTahunanIRJ);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_tahunan_igd()==true){  
+                Panelmenu.add(btnLaporanTahunanIGD);                 
                 jmlmenu++;
             }
             
@@ -24728,6 +24747,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlaporan_tahunan_irj()==true){  
             Panelmenu.add(btnLaporanTahunanIRJ);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlaporan_tahunan_igd()==true){  
+            Panelmenu.add(btnLaporanTahunanIGD);                 
             jmlmenu++;
         }
         
@@ -29395,6 +29419,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getlaporan_tahunan_irj()==true){  
             if(btnLaporanTahunanIRJ.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLaporanTahunanIRJ);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlaporan_tahunan_igd()==true){  
+            if(btnLaporanTahunanIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaporanTahunanIGD);                 
                 jmlmenu++;
             }                
         }
@@ -35478,6 +35509,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterRencanaKeperawatan.setName("btnMasterRencanaKeperawatan"); 
         btnMasterRencanaKeperawatan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMasterRencanaKeperawatan.addActionListener(this::btnMasterRencanaKeperawatanActionPerformed);
+        
+        btnLaporanTahunanIGD = new widget.ButtonBig();
+        btnLaporanTahunanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laporantahunanIRJ.png"))); 
+        btnLaporanTahunanIGD.setText("Laporan Tahunan IGD");
+        btnLaporanTahunanIGD.setIconTextGap(0);
+        btnLaporanTahunanIGD.setName("btnLaporanTahunanIGD"); 
+        btnLaporanTahunanIGD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanTahunanIGD.addActionListener(this::btnLaporanTahunanIGDActionPerformed);
     }
     
 }
