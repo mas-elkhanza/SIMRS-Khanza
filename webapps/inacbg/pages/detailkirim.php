@@ -354,8 +354,8 @@
                 </td>
             </tr>
             <?php 
-                $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis' and nm_perawatan not like '%terapi%'")+
-                                    getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter Paramedis' and nm_perawatan not like '%terapi%'");
+                $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan not like '%terapi%'")+
+                                    getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan not like '%terapi%'");
                 if($prosedur_non_bedah==""){
                     $prosedur_non_bedah="0";
                 }
@@ -412,8 +412,8 @@
                 if($sewa_alat==""){
                     $sewa_alat="0";
                 }
-                $rehabilitasi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis' and nm_perawatan like '%terapi%'")+
-                              getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter Paramedis' and nm_perawatan like '%terapi%'");
+                $rehabilitasi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan like '%terapi%'")+
+                              getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan like '%terapi%'");
                 if($rehabilitasi==""){
                     $rehabilitasi="0";
                 }

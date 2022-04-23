@@ -1,5 +1,4 @@
 package laporan;
-import keuangan.Jurnal;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -22,10 +21,9 @@ import javax.swing.text.html.StyleSheet;
 public class LaporanTahunanIGD extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private final Jurnal jur=new Jurnal();
     private final Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2;
-    private ResultSet rs,rs2;
+    private PreparedStatement ps;
+    private ResultSet rs;
     private StringBuilder htmlContent;
     private int jan=0,feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0,
                 ttljan=0,ttlfeb=0,ttlmar=0,ttlapr=0,ttlmei=0,ttljun=0,ttljul=0,ttlagu=0,ttlsep=0,ttlokt=0,ttlnov=0,ttldes=0;

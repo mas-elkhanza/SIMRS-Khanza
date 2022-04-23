@@ -443,7 +443,6 @@ public final class DlgHarian extends javax.swing.JDialog {
         internalFrame2.add(label24);
         label24.setBounds(-7, 87, 69, 23);
 
-        catatan.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         catatan.setName("catatan"); // NOI18N
         internalFrame2.add(catatan);
         catatan.setBounds(65, 87, 663, 23);
