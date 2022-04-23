@@ -5904,16 +5904,20 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                         tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),11).toString(),norawatdipilih
                                     }
                                 );
-                                Sequel.queryu2("update rujuk set no_rawat=? where no_rawat=?",2,
+                                if(Sequel.queryu2tf("update rujuk set no_rawat=? where no_rawat=?",2,
                                     new String[]{
                                         tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),11).toString(),norawatdipilih
                                     }
-                                );
-                                Sequel.queryu2("update rujuk_masuk set no_rawat=? where no_rawat=?",2,
+                                )==false){
+                                    Sequel.meghapus("rujuk","no_rawat", norawatdipilih);
+                                }
+                                if(Sequel.queryu2tf("update rujuk_masuk set no_rawat=? where no_rawat=?",2,
                                     new String[]{
                                         tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),11).toString(),norawatdipilih
                                     }
-                                );
+                                )==false){
+                                    Sequel.meghapus("rujuk_masuk","no_rawat", norawatdipilih);
+                                }
                                 Sequel.queryu2("update rujukan_internal_poli set no_rawat=? where no_rawat=?",2,
                                     new String[]{
                                         tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),11).toString(),norawatdipilih
