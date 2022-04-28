@@ -44,7 +44,7 @@ public class frmUtama extends javax.swing.JFrame {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private String kdptg,nmptg,status="",signa1="1",signa2="1",kdObatSK="";
+    private String kdptg,nmptg,status="",signa1="1",signa2="1",kdObatSK="",utc="";
     private String[] arrSplit;
 
     /**
@@ -388,9 +388,11 @@ public class frmUtama extends javax.swing.JFrame {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
                                     headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                    headers.add("X-Signature",api.getHmac());
-                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                    headers.add("X-timestamp",utc);            
+                                    headers.add("X-signature",api.getHmac());
+                                    headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                     requestJson ="{" +
                                                     "\"kdProviderPeserta\": \""+rs.getString("kdProviderPeserta")+"\"," +
                                                     "\"tglDaftar\": \""+Valid.SetTgl3(rs.getString("tglDaftar"))+"\"," +
@@ -415,7 +417,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                     TeksArea.append("message : "+nameNode.path("message").asText()+"\n");
                                     if(nameNode.path("code").asText().equals("201")){
-                                        response = root.path("response").path("message");   
+                                        response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("message");   
                                         if(Sequel.cariInteger("select count(no_rawat) from pemeriksaan_ralan where no_rawat=?",rs.getString("no_rawat"))<=0){
                                             Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
                                                 rs.getString("no_rawat"),rs.getString("tglDaftar"),Sequel.cariIsi("select current_time()"),
@@ -492,10 +494,12 @@ public class frmUtama extends javax.swing.JFrame {
                                                     try {
                                                         headerscari = new HttpHeaders();
                                                         headerscari.setContentType(MediaType.APPLICATION_JSON);
-                                                        headerscari.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                        headerscari.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                        headerscari.add("X-Signature",api.getHmac());
-                                                        headerscari.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                        headers.add("X-timestamp",utc);            
+                                                        headers.add("X-signature",api.getHmac());
+                                                        headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                         if(ChkRujukLanjut.isSelected()==false){
                                                             diagnosa2="null";
                                                             if(!KdDiagnosa2.getText().equals("")){
@@ -539,7 +543,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                             TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                             TeksArea.append("message : "+nameNode.path("message").asText()+"\n");
                                                             if(nameNode.path("code").asText().equals("201")){
-                                                                response = root.path("response").path("message");
+                                                                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("message");
                                                                 Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",29,new String[]{
                                                                     TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                                                                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
@@ -626,10 +630,12 @@ public class frmUtama extends javax.swing.JFrame {
                                 TeksArea.append("No.Rawat : "+rs.getString("no_rawat")+" ditemukan, proses mengirim kunjungan ke server PCare BPJS.. "+"\n");
                                 headerscari = new HttpHeaders();
                                 headerscari.setContentType(MediaType.APPLICATION_JSON);
-                                headerscari.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                headerscari.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                headerscari.add("X-Signature",api.getHmac());
-                                headerscari.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                headers.add("X-timestamp",utc);            
+                                headers.add("X-signature",api.getHmac());
+                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                 requestJson ="{" +
                                                 "\"noKunjungan\": null," +
                                                 "\"noKartu\": \""+rs.getString("noKartu")+"\"," +
@@ -664,7 +670,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n");
                                 if(nameNode.path("code").asText().equals("201")){
-                                    response = root.path("response").path("message");
+                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("message");
                                     Sequel.mengedit("pcare_kunjungan_umum","no_rawat=?","noKunjungan=?,status='Terkirim'", 2,new String[]{
                                         response.asText(),rs.getString("no_rawat")
                                     });
@@ -742,9 +748,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                headers.add("X-Signature",api.getHmac());
-                                                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                headers.add("X-timestamp",utc);            
+                                                headers.add("X-signature",api.getHmac());
+                                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                 requestJson ="{" +
                                                     "\"kdObatSK\": 0," +
                                                     "\"noKunjungan\": \""+rs.getString("noKunjungan")+"\"," +
@@ -767,7 +775,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n"); 
                                                 if(nameNode.path("code").asText().equals("201")){
-                                                    response = root.path("response");
+                                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                                                     kdObatSK="";
                                                     if(response.isArray()){
                                                         for(JsonNode list:response){
@@ -827,9 +835,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                headers.add("X-Signature",api.getHmac());
-                                                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                headers.add("X-timestamp",utc);            
+                                                headers.add("X-signature",api.getHmac());
+                                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                 requestJson ="{" +
                                                     "\"kdTindakanSK\": 0," +
                                                     "\"noKunjungan\": \""+rs.getString("noKunjungan")+"\"," +
@@ -847,7 +857,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n"); 
                                                 if(nameNode.path("code").asText().equals("201")){
-                                                    response = root.path("response");
+                                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                                                     Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
                                                         rs.getString("no_rawat"),rs.getString("noKunjungan"), response.path("message").asText(),
                                                         rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
@@ -902,9 +912,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                headers.add("X-Signature",api.getHmac());
-                                                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                headers.add("X-timestamp",utc);            
+                                                headers.add("X-signature",api.getHmac());
+                                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                 requestJson ="{" +
                                                     "\"kdTindakanSK\": 0," +
                                                     "\"noKunjungan\": \""+rs.getString("noKunjungan")+"\"," +
@@ -922,7 +934,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n"); 
                                                 if(nameNode.path("code").asText().equals("201")){
-                                                    response = root.path("response");
+                                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                                                     Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
                                                         rs.getString("no_rawat"),rs.getString("noKunjungan"), response.path("message").asText(),
                                                         rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
@@ -977,9 +989,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                headers.add("X-Signature",api.getHmac());
-                                                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                headers.add("X-timestamp",utc);            
+                                                headers.add("X-signature",api.getHmac());
+                                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                 requestJson ="{" +
                                                     "\"kdTindakanSK\": 0," +
                                                     "\"noKunjungan\": \""+rs.getString("noKunjungan")+"\"," +
@@ -997,7 +1011,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n"); 
                                                 if(nameNode.path("code").asText().equals("201")){
-                                                    response = root.path("response");
+                                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                                                     Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
                                                         rs.getString("no_rawat"),rs.getString("noKunjungan"), response.path("message").asText(),
                                                         rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
@@ -1052,9 +1066,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                headers.add("X-Signature",api.getHmac());
-                                                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                headers.add("X-timestamp",utc);            
+                                                headers.add("X-signature",api.getHmac());
+                                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                 requestJson ="{" +
                                                     "\"kdTindakanSK\": 0," +
                                                     "\"noKunjungan\": \""+rs.getString("noKunjungan")+"\"," +
@@ -1072,7 +1088,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n"); 
                                                 if(nameNode.path("code").asText().equals("201")){
-                                                    response = root.path("response");
+                                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                                                     Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
                                                         rs.getString("no_rawat"),rs.getString("noKunjungan"), response.path("message").asText(),
                                                         rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
@@ -1127,9 +1143,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                headers.add("X-Signature",api.getHmac());
-                                                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                headers.add("X-timestamp",utc);            
+                                                headers.add("X-signature",api.getHmac());
+                                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                 requestJson ="{" +
                                                     "\"kdTindakanSK\": 0," +
                                                     "\"noKunjungan\": \""+rs.getString("noKunjungan")+"\"," +
@@ -1147,7 +1165,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n"); 
                                                 if(nameNode.path("code").asText().equals("201")){
-                                                    response = root.path("response");
+                                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                                                     Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
                                                         rs.getString("no_rawat"),rs.getString("noKunjungan"), response.path("message").asText(),
                                                         rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
@@ -1202,9 +1220,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                headers.add("X-Signature",api.getHmac());
-                                                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                headers.add("X-timestamp",utc);            
+                                                headers.add("X-signature",api.getHmac());
+                                                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                 requestJson ="{" +
                                                     "\"kdTindakanSK\": 0," +
                                                     "\"noKunjungan\": \""+rs.getString("noKunjungan")+"\"," +
@@ -1222,7 +1242,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n"); 
                                                 if(nameNode.path("code").asText().equals("201")){
-                                                    response = root.path("response");
+                                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                                                     Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
                                                         rs.getString("no_rawat"),rs.getString("noKunjungan"), response.path("message").asText(),
                                                         rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 

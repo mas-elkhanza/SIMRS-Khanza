@@ -36,6 +36,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 
 /**
  *
@@ -338,6 +339,7 @@ public final class PCareCekReferensiSpesialis extends javax.swing.JDialog {
             URL = link+"/spesialis";	
 
             headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-timestamp",utc);            

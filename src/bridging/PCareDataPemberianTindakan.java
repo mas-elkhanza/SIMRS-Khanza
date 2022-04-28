@@ -45,7 +45,7 @@ public class PCareDataPemberianTindakan extends javax.swing.JDialog {
             HPP_BHP_Tindakan_Ranap="",Persediaan_BHP_Tindakan_Ranap="",Suspen_Piutang_Tindakan_Ralan="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",
             Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="",Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="",Beban_KSO_Tindakan_Ralan="",
             Utang_KSO_Tindakan_Ralan="",Beban_Jasa_Sarana_Tindakan_Ralan="",Utang_Jasa_Sarana_Tindakan_Ralan="",HPP_BHP_Tindakan_Ralan="",Persediaan_BHP_Tindakan_Ralan="",
-            Beban_Jasa_Menejemen_Tindakan_Ralan="",Utang_Jasa_Menejemen_Tindakan_Ralan="";
+            Beban_Jasa_Menejemen_Tindakan_Ralan="",Utang_Jasa_Menejemen_Tindakan_Ralan="",utc="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -714,9 +714,11 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                        headers.add("X-Signature",api.getHmac());
-                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                        utc=String.valueOf(api.GetUTCdatetimeAsString());
+                        headers.add("X-timestamp",utc);            
+                        headers.add("X-signature",api.getHmac());
+                        headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                        headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                         requestEntity = new HttpEntity(headers);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
                         nameNode = root.path("metaData");
@@ -834,9 +836,11 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                        headers.add("X-Signature",api.getHmac());
-                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                        utc=String.valueOf(api.GetUTCdatetimeAsString());
+                        headers.add("X-timestamp",utc);            
+                        headers.add("X-signature",api.getHmac());
+                        headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                        headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                         requestEntity = new HttpEntity(headers);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
                         nameNode = root.path("metaData");

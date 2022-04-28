@@ -66,7 +66,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
             Suspen_Piutang_Tindakan_Ralan="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",
             Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="",Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="",Beban_KSO_Tindakan_Ralan="",Utang_KSO_Tindakan_Ralan="",
             Beban_Jasa_Sarana_Tindakan_Ralan="",Utang_Jasa_Sarana_Tindakan_Ralan="",HPP_BHP_Tindakan_Ralan="",Persediaan_BHP_Tindakan_Ralan="",
-            Beban_Jasa_Menejemen_Tindakan_Ralan="",Utang_Jasa_Menejemen_Tindakan_Ralan="";
+            Beban_Jasa_Menejemen_Tindakan_Ralan="",Utang_Jasa_Menejemen_Tindakan_Ralan="",utc="";
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
@@ -1511,11 +1511,13 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void simpanTindakanPCare(String noKunjungan,String kdTindakan,String no_rawat,String tgl_perawatan,String jam,String kd_jenis_prw,String material,String bhp,String tarif_tindakandr,String tarif_tindakanpr,String kso,String menejemen,String biaya_rawat){
         try {
             headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.setContentType(MediaType.TEXT_PLAIN);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
-            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+            headers.add("X-timestamp",utc);            
+            headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
             requestJson ="{" +
                 "\"kdTindakanSK\": 0," +
                 "\"noKunjungan\": \""+noKunjungan+"\"," +
@@ -1533,7 +1535,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText()); 
             if(nameNode.path("code").asText().equals("201")){
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
                     no_rawat, noKunjungan, response.path("message").asText(), tgl_perawatan, jam, kd_jenis_prw,
                     material, bhp, tarif_tindakandr, tarif_tindakanpr, kso, menejemen, biaya_rawat

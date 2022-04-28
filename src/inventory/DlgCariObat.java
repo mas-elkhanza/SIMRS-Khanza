@@ -69,7 +69,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri,kategori,golongan,no,nobatch,nofaktur,kadaluarsa;
     private String signa1="1",signa2="1",nokunjungan="",kdObatSK="",requestJson="",URL="",otorisasi,sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="",
-                   Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="",hppfarmasi="",VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="";
+                   Suspen_Piutang_Obat_Ralan="",Obat_Ralan="",HPP_Obat_Rawat_Jalan="",Persediaan_Obat_Rawat_Jalan="",hppfarmasi="",VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="",utc="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
     private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
@@ -4337,9 +4337,11 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
-            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+            headers.add("X-timestamp",utc);            
+            headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
             requestJson ="{" +
                 "\"kdObatSK\": 0," +
                 "\"noKunjungan\": \""+noKunjungan+"\"," +
@@ -4362,7 +4364,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText()); 
             if(nameNode.path("code").asText().equals("201")){
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 kdObatSK="";
                 if(response.isArray()){
                     for(JsonNode list:response){

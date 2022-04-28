@@ -70,7 +70,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private String signa1="1",signa2="1",kdObatSK="",requestJson="",nokunjungan="",URL="",otorisasi,sql="",no_batchcari="", tgl_kadaluarsacari="", 
                    no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",
                    Persediaan_Obat_Rawat_Inap="",hppfarmasi="",bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),
-                   VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="";
+                   VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="",utc="";
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
@@ -4565,9 +4565,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
-            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+            headers.add("X-timestamp",utc);            
+            headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
             requestJson ="{" +
                 "\"kdObatSK\": 0," +
                 "\"noKunjungan\": \""+noKunjungan+"\"," +
@@ -4590,7 +4592,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText()); 
             if(nameNode.path("code").asText().equals("201")){
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 kdObatSK="";
                 if(response.isArray()){
                     for(JsonNode list:response){

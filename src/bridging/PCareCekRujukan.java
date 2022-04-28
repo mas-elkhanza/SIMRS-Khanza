@@ -342,6 +342,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
         try {
             URL = link+"/kunjungan/rujukan/"+diagnosa;
             headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-timestamp",utc);            

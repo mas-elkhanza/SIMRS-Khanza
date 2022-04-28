@@ -4338,6 +4338,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     public void tampil(String nomorpeserta) {
         try {
             headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-timestamp",utc);            
@@ -5203,6 +5204,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private void SimpanPendaftaranPCare() {
         try {
             headers = new HttpHeaders();
+            headers.setContentType(MediaType.TEXT_PLAIN);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-timestamp",utc);            

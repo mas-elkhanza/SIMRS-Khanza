@@ -45,7 +45,7 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
     private int i,a;
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private String URL="",link="",otorisasi;
+    private String URL="",link="",otorisasi,utc="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -554,16 +554,17 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
-                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers.add("X-timestamp",utc);            
+                headers.add("X-signature",api.getHmac());
+                headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                 requestEntity = new HttpEntity(headers);
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("200")){
-                    System.out.println("Data ");
                     if(Sequel.queryu2tf("delete from pcare_peserta_kegiatan_kelompok where eduId=? and no_rkm_medis=?",2,new String[]{
                         tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString()
                     })==true){
