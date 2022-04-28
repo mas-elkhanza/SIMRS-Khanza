@@ -137,7 +137,6 @@ public class ApiBRI {
         token="";
         try{
             headers = new HttpHeaders();
-            HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
             map.add("client_id",consumer_key);
@@ -299,7 +298,7 @@ public class ApiBRI {
             timestamp=sdf.format(date);
             System.out.println("consumer_key : "+consumer_key);
             System.out.println("consumer_secret : "+consumer_secret);
-            json="";
+            json=null;
             signature=Signature("/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""),"GET",token,timestamp,json);
             
             headers = new HttpHeaders();
@@ -311,8 +310,42 @@ public class ApiBRI {
             System.out.println("BRI-Timestamp : "+timestamp);
             System.out.println("BRI-Signature : "+signature);
             System.out.println("Authorization : "+"Bearer "+token);
-            requestEntity = new HttpEntity(headers);
+            requestEntity = new HttpEntity(json,headers);
             json = mapper.readTree(getRest().exchange(urlapi+"/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""), HttpMethod.GET, requestEntity, String.class).getBody()).toString();
+            System.out.println("Respon : "+json);
+            root = mapper.readTree(json);
+            response = root.path("status");
+            status = response.asBoolean();
+        } catch (Exception ex) {
+            status=false;
+            System.out.println("Notifikasi : "+ex);
+        }
+        return status;
+    }
+    
+    public boolean statusVA(String nomorcustomer){
+        status=true;
+        try{
+            token=Token();
+            date = new Date(System.currentTimeMillis()-25200000);
+            sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            timestamp=sdf.format(date);
+            System.out.println("consumer_key : "+consumer_key);
+            System.out.println("consumer_secret : "+consumer_secret);
+            json="";
+            signature=Signature("/v1/briva/status/"+institution_code+"/"+briva_no+"/"+nomorcustomer,"GET",token,timestamp,json);
+            
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("BRI-Timestamp",timestamp);
+            headers.add("BRI-Signature",signature);
+            headers.add("Authorization","Bearer "+token); 
+            System.out.println("URL : "+urlapi+"/v1/briva/status/"+institution_code+"/"+briva_no+"/"+nomorcustomer);
+            System.out.println("BRI-Timestamp : "+timestamp);
+            System.out.println("BRI-Signature : "+signature);
+            System.out.println("Authorization : "+"Bearer "+token);
+            requestEntity = new HttpEntity(headers);
+            json = mapper.readTree(getRest().getForEntity(urlapi+"/v1/briva/status/"+institution_code+"/"+briva_no+"/"+nomorcustomer,String.class,requestEntity).getBody()).toString();
             System.out.println("Respon : "+json);
             root = mapper.readTree(json);
             response = root.path("status");

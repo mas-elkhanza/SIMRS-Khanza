@@ -177,7 +177,7 @@ public final class akses {
             ringkasan_biaya_obat_pasien_pertanggal=false,master_masalah_keperawatan_igd=false,penilaian_awal_keperawatan_igd=false,bpjs_referensi_dpho_apotek=false,
             bpjs_referensi_poli_apotek=false,bayar_jm_dokter=false,bpjs_referensi_faskes_apotek=false,bpjs_referensi_spesialistik_apotek=false,
             pembayaran_briva=false,penilaian_awal_keperawatan_ranap=false,nilai_penerimaan_vendor_farmasi_perbulan=false,akun_bayar_hutang=false,
-            master_rencana_keperawatan=false,laporan_tahunan_igd=false;
+            master_rencana_keperawatan=false,laporan_tahunan_igd=false,obat_bhp_tidakbergerak=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1010,6 +1010,7 @@ public final class akses {
                         akses.akun_bayar_hutang=true;
                         akses.master_rencana_keperawatan=true;
                         akses.laporan_tahunan_igd=true;
+                        akses.obat_bhp_tidakbergerak=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1826,6 +1827,7 @@ public final class akses {
                         akses.akun_bayar_hutang=rs2.getBoolean("akun_bayar_hutang");
                         akses.master_rencana_keperawatan=rs2.getBoolean("master_rencana_keperawatan");
                         akses.laporan_tahunan_igd=rs2.getBoolean("laporan_tahunan_igd");
+                        akses.obat_bhp_tidakbergerak=rs2.getBoolean("obat_bhp_tidakbergerak");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2640,6 +2642,7 @@ public final class akses {
                         akses.akun_bayar_hutang=false;
                         akses.master_rencana_keperawatan=false;
                         akses.laporan_tahunan_igd=false;
+                        akses.obat_bhp_tidakbergerak=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3511,4 +3514,5 @@ public final class akses {
     public static boolean getakun_bayar_hutang(){return akses.akun_bayar_hutang;}
     public static boolean getmaster_rencana_keperawatan(){return akses.master_rencana_keperawatan;}
     public static boolean getlaporan_tahunan_igd(){return akses.laporan_tahunan_igd;}
+    public static boolean getobat_bhp_tidakbergerak(){return akses.obat_bhp_tidakbergerak;}
 }   
