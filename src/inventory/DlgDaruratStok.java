@@ -19,7 +19,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 
 public class DlgDaruratStok extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

@@ -567,6 +567,7 @@ import inventory.DlgSisaStok;
 import inventory.InventoryCariResepLuar;
 import inventory.InventoryHibahObatBHP;
 import inventory.InventoryNilaiPenerimaanVendorFarmasiPerBulan;
+import inventory.InventoryObatBHPTidakBergerak;
 import inventory.InventoryPenggunaanBHPOK;
 import inventory.InventoryRingkasanBeriObat;
 import inventory.InventoryRingkasanHibahBarangMedis;
@@ -18323,6 +18324,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnObatBHPTidakBergerakActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryObatBHPTidakBergerak aplikasi=new InventoryObatBHPTidakBergerak(this,true);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18963,7 +18976,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
-            btnLaporanTahunanIGD;
+            btnLaporanTahunanIGD,btnObatBHPTidakBergerak;
     
     public void isWall(){
         try{            
@@ -19781,6 +19794,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getnilai_penerimaan_vendor_farmasi_perbulan()==true){
                 Panelmenu.add(btnNilaiPenerimaanVendorFarmasiPerBulan);
+                jmlmenu++;
+            }
+            
+            if(akses.getobat_bhp_tidakbergerak()==true){
+                Panelmenu.add(btnObatBHPTidakBergerak);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -23818,6 +23836,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getnilai_penerimaan_vendor_farmasi_perbulan()==true){
             Panelmenu.add(btnNilaiPenerimaanVendorFarmasiPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getobat_bhp_tidakbergerak()==true){
+            Panelmenu.add(btnObatBHPTidakBergerak);
             jmlmenu++;
         }
 
@@ -28118,6 +28141,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getnilai_penerimaan_vendor_farmasi_perbulan()==true){
             if(btnNilaiPenerimaanVendorFarmasiPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnNilaiPenerimaanVendorFarmasiPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getobat_bhp_tidakbergerak()==true){
+            if(btnObatBHPTidakBergerak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnObatBHPTidakBergerak);
                 jmlmenu++;
             }                
         }
@@ -35517,6 +35547,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLaporanTahunanIGD.setName("btnLaporanTahunanIGD"); 
         btnLaporanTahunanIGD.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLaporanTahunanIGD.addActionListener(this::btnLaporanTahunanIGDActionPerformed);
+        
+        btnObatBHPTidakBergerak = new widget.ButtonBig();
+        btnObatBHPTidakBergerak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_preferences-system-time_8810.png"))); 
+        btnObatBHPTidakBergerak.setText("Obat/Alkes/BHP Tidak Bergerak");
+        btnObatBHPTidakBergerak.setIconTextGap(0);
+        btnObatBHPTidakBergerak.setName("btnObatBHPTidakBergerak"); 
+        btnObatBHPTidakBergerak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatBHPTidakBergerak.addActionListener(this::btnObatBHPTidakBergerakActionPerformed);
     }
     
 }
