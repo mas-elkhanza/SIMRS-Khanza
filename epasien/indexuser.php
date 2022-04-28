@@ -42,7 +42,6 @@
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="plugins/node-waves/waves.css" rel="stylesheet" />
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
     <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     <link href="css/style2.css" rel="stylesheet">
@@ -436,7 +435,6 @@
     <script src="plugins/node-waves/waves.js"></script>
     <script src="plugins/jquery-countto/jquery.countTo.js"></script>
     <script src="plugins/raphael/raphael.min.js"></script>
-    <script src="plugins/morrisjs/morris.js"></script>
     <script src="plugins/chartjs/Chart.bundle.js"></script>
     <script src="plugins/flot-charts/jquery.flot.js"></script>
     <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
