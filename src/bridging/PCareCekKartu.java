@@ -70,7 +70,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",kdmediscari="",
             kabupatenpj="",requestJson,URL="",nosep="",link="",status="Baru",propinsi="",propinsipj="",
-            tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),otorisasi;
+            tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),otorisasi,utc="";
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
     private ResultSet rs,rs2;
     private double biaya=0;
@@ -945,8 +945,8 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         Diastole.setDocument(new batasInput((byte)3).getFilter(Diastole));
         
         try{
-            KdPPK.setText(Sequel.cariIsi("select kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));     
+            KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
+            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));     
             pssetalamat=koneksi.prepareStatement("select * from set_alamat_pasien");
             try {
                 rs=pssetalamat.executeQuery();
@@ -4339,15 +4339,19 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-timestamp",utc);            
+	    headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
 	    requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+URL);
+            
             root = mapper.readTree(api.getRest().exchange(link+"/peserta/"+nomorpeserta, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 tabMode.addRow(new Object[]{
                     "No.Kartu",": "+response.path("noKartu").asText()
                 });
@@ -5199,11 +5203,12 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private void SimpanPendaftaranPCare() {
         try {
             headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
-            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-timestamp",utc);            
+	    headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
             kunjungansakit="true";
             if(JenisKunjungan.getSelectedItem().toString().equals("Kunjungan Sehat")){
                 kunjungansakit="false";
@@ -5226,13 +5231,14 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                          "}";
             System.out.println(requestJson);
             requestEntity = new HttpEntity(requestJson,headers);
+            System.out.println("URL : "+URL);
             requestJson=api.getRest().exchange(link+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
             root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("201")){
-                response = root.path("response").path("message");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("message");
                 System.out.println("noUrut : "+response.asText());
                 if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",19,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),

@@ -48,7 +48,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String URL="",link="",otorisasi;
+    private String URL="",link="",otorisasi,utc="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -343,10 +343,13 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
             URL = link+"/kunjungan/rujukan/"+diagnosa;
             headers = new HttpHeaders();
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-timestamp",utc);            
+	    headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
 	    requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+URL);
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
