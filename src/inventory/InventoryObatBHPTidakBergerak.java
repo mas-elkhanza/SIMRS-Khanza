@@ -28,7 +28,7 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
     private PreparedStatement ps,psstok;
     private ResultSet rs,rsstok;
     private double stok=0;
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",hppfarmasi="",pilihan="";
 
     /** 
      * @param parent
@@ -37,7 +37,7 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Barang", "Nama Barang", "Satuan", "Jenis","Minimal","Saat Ini"};
+        Object[] row={"Kode Barang", "Nama Barang", "Satuan", "Jenis","Stok","Harga","Nilai Aset"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -46,18 +46,22 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(230);
             }else if(i==2){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==3){
-                column.setPreferredWidth(100);
-            }else{
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(130);
+            }else if(i==4){
+                column.setPreferredWidth(60);
+            }else if(i==5){
+                column.setPreferredWidth(85);
+            }else if(i==6){
+                column.setPreferredWidth(105);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());         
@@ -92,7 +96,12 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
         }
-     
+        
+        try {
+            hppfarmasi=koneksiDB.HPPFARMASI();
+        } catch (Exception e) {
+            hppfarmasi="dasar";
+        }
     }    
     /** This method is called from within the constructor to
      * initialize the form.
@@ -103,10 +112,14 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
         panelisi1 = new widget.panelisi();
+        R1 = new widget.RadioButton();
+        R2 = new widget.RadioButton();
+        R3 = new widget.RadioButton();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -118,11 +131,6 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Obat/Alkes/BHP Tidak Bergerak ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -151,13 +159,38 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        buttonGroup1.add(R1);
+        R1.setSelected(true);
+        R1.setText("1 Bulan");
+        R1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        R1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R1.setName("R1"); // NOI18N
+        R1.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi1.add(R1);
+
+        buttonGroup1.add(R2);
+        R2.setText("3 Bulan");
+        R2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        R2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R2.setName("R2"); // NOI18N
+        R2.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi1.add(R2);
+
+        buttonGroup1.add(R3);
+        R3.setText("6 Bulan");
+        R3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        R3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R3.setName("R3"); // NOI18N
+        R3.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi1.add(R3);
+
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(69, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -201,7 +234,7 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
 
         label9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(70, 30));
+        label9.setPreferredSize(new java.awt.Dimension(25, 30));
         panelisi1.add(label9);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -342,10 +375,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
-    }//GEN-LAST:event_formWindowOpened
-
     /**
     * @param args the command line arguments
     */
@@ -367,7 +396,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.RadioButton R1;
+    private widget.RadioButton R2;
+    private widget.RadioButton R3;
     private widget.TextBox TCari;
+    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label label10;
     private widget.Label label9;
@@ -379,12 +412,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void prosesCari() {
        Valid.tabelKosong(tabMode);      
        try{   
-            ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng, "
-                        + " kodesatuan.satuan,databarang.stokminimal, jenis.nama "
-                        + " from databarang inner join kodesatuan inner join jenis "
-                        + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
-                        + " where databarang.status='1' and databarang.kode_brng like ? or databarang.status='1' and databarang.nama_brng like ? or "
-                        + " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+            pilihan="";
+            if(R1.isSelected()==true){
+                pilihan="where riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 1 MONTH) and current_date()";
+            }else if(R2.isSelected()==true){
+                pilihan="where riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 3 MONTH) and current_date()";
+            }else if(R3.isSelected()==true){
+                pilihan="where riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date()";
+            }
+            System.out.println("select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+
+                    "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns where databarang.status='1' and "+
+                    "databarang.kode_brng not in (select riwayat_barang_medis.kode_brng from riwayat_barang_medis "+pilihan+") "+
+                    "and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");
+            ps=koneksi.prepareStatement(
+                    "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+
+                    "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns where databarang.status='1' and "+
+                    "databarang.kode_brng not in (select riwayat_barang_medis.kode_brng from riwayat_barang_medis "+pilihan+") "+
+                    "and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -411,11 +457,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             psstok.close();
                         }
                     }
-                    if(stok<=rs.getDouble("stokminimal")){
+                    
+                    if(stok>0){
                         tabMode.addRow(new Object[]{
-                            rs.getString("kode_brng"),rs.getString("nama_brng"),
-                            rs.getString("satuan"),rs.getString("nama"),
-                            rs.getDouble("stokminimal"),stok
+                            rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("nama"),
+                            stok,Valid.SetAngka(rs.getDouble("harga")),Valid.SetAngka(stok*rs.getDouble("harga"))
                         });
                     }
                 }                  
