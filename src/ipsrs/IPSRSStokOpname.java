@@ -670,7 +670,7 @@ public final class IPSRSStokOpname extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptOpnameIPSRS.jasper","report","::[ Stok Opname Non Medis, Penunjang Lab & Radiologi ]::","select ipsrsopname.kode_brng, ipsrsbarang.nama_brng,ipsrsopname.h_beli, ipsrsbarang.kode_sat, ipsrsopname.tanggal, ipsrsopname.stok, "+
                   "ipsrsopname.real, ipsrsopname.selisih,ipsrsopname.lebih, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal,ipsrsopname.nomihilang,ipsrsopname.nomilebih,ipsrsopname.keterangan "+
                   "from ipsrsopname inner join ipsrsbarang inner join ipsrsjenisbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng and ipsrsjenisbarang.kd_jenis=ipsrsbarang.jenis "+

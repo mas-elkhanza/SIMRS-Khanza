@@ -1647,7 +1647,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 if(Sequel.cariInteger(
                                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                                     Valid.MyReportqry("rptItemResepPenjualan.jasper","report","::[ Aturan Pakai Obat ]::",
                                         "select penjualan.nota_jual,penjualan.tgl_jual, "+
                                         "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
@@ -1660,7 +1660,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                                 if(Sequel.cariInteger(
                                         "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                                     Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
                                         "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
                                         "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
@@ -1675,7 +1675,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 if(Sequel.cariInteger(
                                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                                     Valid.MyReportqry("rptItemResepPenjualan3.jasper","report","::[ Aturan Pakai Obat ]::",
                                         "select penjualan.nota_jual,penjualan.tgl_jual, "+
                                         "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
@@ -1689,7 +1689,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                                 if(Sequel.cariInteger(
                                         "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                                     Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
                                         "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
                                         "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
@@ -1704,7 +1704,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 if(Sequel.cariInteger(
                                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                                     Valid.MyReportqry("rptItemResepPenjualan5.jasper","report","::[ Aturan Pakai Obat ]::",
                                         "select penjualan.nota_jual,penjualan.tgl_jual, "+
                                         "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
@@ -1717,7 +1717,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                                 if(Sequel.cariInteger(
                                         "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
-                                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                                     Valid.MyReportqry("rptItemResepPenjualan6.jasper","report","::[ Aturan Pakai Obat ]::",
                                         "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
                                         "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+

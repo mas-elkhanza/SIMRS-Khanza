@@ -515,7 +515,7 @@ public class DlgJamDietPasien extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptJamDietPasien.jasper","report","::[ Jam Diet Pasien ]::",
                         "select * from jam_diet_pasien where waktu like '%"+TCari.getText().trim()+"%' order by waktu",param);            
         }

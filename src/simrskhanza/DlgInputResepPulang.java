@@ -577,7 +577,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     if(Sequel.cariInteger(
                             "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
-                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                         Valid.MyReportqry("rptItemResepPulang.jasper","report","::[ Aturan Pakai Obat ]::",
                             "select resep_pulang.no_rawat,resep_pulang.tanggal, "+
                             "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
@@ -594,7 +594,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     if(Sequel.cariInteger(
                             "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
-                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                         Valid.MyReportqry("rptItemResepPulang2.jasper","report","::[ Aturan Pakai Obat ]::",
                             "select resep_pulang.no_rawat,resep_pulang.tanggal,jenis.nama,"+
                             "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
@@ -612,7 +612,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     if(Sequel.cariInteger(
                             "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
-                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                         Valid.MyReportqry("rptItemResepPulang3.jasper","report","::[ Aturan Pakai Obat ]::",
                             "select resep_pulang.no_rawat,resep_pulang.tanggal, "+
                             "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+

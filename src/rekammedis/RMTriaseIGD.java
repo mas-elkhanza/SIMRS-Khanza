@@ -2510,7 +2510,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     Valid.MyReportqry("rptDataTriaseIGD.jasper","report","::[ Data Triase IGD ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,data_triase_igd.tgl_kunjungan,"+
                         "data_triase_igd.cara_masuk,data_triase_igd.alat_transportasi,data_triase_igd.alasan_kedatangan,"+
@@ -4010,7 +4010,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
@@ -4128,7 +4128,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
@@ -4246,7 +4246,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
@@ -4363,7 +4363,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
@@ -4480,7 +4480,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+

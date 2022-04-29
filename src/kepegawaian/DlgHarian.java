@@ -898,7 +898,7 @@ public final class DlgHarian extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 String say=" rekap_presensi.jam_datang between '"+Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59' ";
                 try{
                       param.put("keterlambatan",Sequel.cariIsi("select concat(round((sum(TIME_TO_SEC(`keterlambatan`))-mod(sum(TIME_TO_SEC(`keterlambatan`)),3600))/3600),':',round((mod(sum(TIME_TO_SEC(`keterlambatan`)),3600)-mod(mod(sum(TIME_TO_SEC(`keterlambatan`)),3600),60))/60),':',round(mod(mod(sum(TIME_TO_SEC(`keterlambatan`)),3600),60)))"+

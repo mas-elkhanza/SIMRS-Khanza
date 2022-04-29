@@ -1044,7 +1044,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal1",Valid.SetTgl(TglBeli1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(TglBeli2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             carifaktur="";carisuplier="";caripetugas="";carijenis="";caribarang="";
             if(!NoFaktur.getText().equals("")){
                 carifaktur=" and ipsrsreturbeli.no_retur_beli like '%"+NoFaktur.getText()+"%' ";

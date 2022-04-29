@@ -1128,7 +1128,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptDataPemesanan.jasper","report","::[ Data Surat Pemesanan Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1274,7 +1274,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         param.put("apoteker",Apoteker.getText());
                         param.put("petugas",rs.getString("nama"));
                         param.put("kabidkeu",KabidKeu.getText());
-                        param.put("logo",Sequel.cariGambar("select logo from setting"));
+                        param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                         
                         ps2=koneksi.prepareStatement("select detail_surat_pemesanan_medis.kode_brng,databarang.nama_brng,databarang.kode_sat as satuan2, "+
                             "detail_surat_pemesanan_medis.kode_sat,kodesatuan.satuan,detail_surat_pemesanan_medis.jumlah,detail_surat_pemesanan_medis.h_pesan, "+

@@ -615,7 +615,7 @@ public class DlgAkunBayar extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptAkunBayar.jasper","report","::[ Akun Bayar ]::","select akun_bayar.nama_bayar,akun_bayar.kd_rek,rekening.nm_rek,akun_bayar.ppn "+
                     "from akun_bayar inner join rekening on akun_bayar.kd_rek=rekening.kd_rek "+
                     "where akun_bayar.nama_bayar like '%"+TCari.getText().trim()+"%' or "+

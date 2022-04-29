@@ -4886,7 +4886,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());                  
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdDokterRalanDokter.getText().equals("")&&NmDokterRalanDokter.getText().equals("")&&KdPoliRalanDokter.getText().equals("")&&NmPoliRalanDokter.getText().equals("")&&KdCaraBayarRalanDokter.getText().equals("")&&NmCaraBayarRalanDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanTindakanRalanDokter.jasper","report","::[ Ringkasan Tindakan Ralan Yang Ditangani Dokter ]::",
                    "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
@@ -4987,7 +4987,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdPetugasRalanParamedis.getText().equals("")&&NmPetugasRalanParamedis.getText().equals("")&&KdPoliRalanParamedis.getText().equals("")&&NmPoliRalanParamedis.getText().equals("")&&KdCaraBayarRalanParamedis.getText().equals("")&&NmCaraBayarRalanParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanTindakanRalanParamedis.jasper","report","::[ Ringkasan Tindakan Ralan Yang Ditangani Paramedis ]::",
                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
@@ -5088,7 +5088,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdDokterRalanDokterParamedis.getText().equals("")&&NmDokterRalanDokterParamedis.getText().equals("")&&KdPetugasRalanDokterParamedis.getText().equals("")&&NmPetugasRalanDokterParamedis.getText().equals("")&&KdPoliRalanDokterParamedis.getText().equals("")&&NmPoliRalanDokterParamedis.getText().equals("")&&KdCaraBayarRalanDokterParamedis.getText().equals("")&&NmCaraBayarRalanDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanTindakanRalanDokterParamedis.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Dokter & Petugas ]::",
                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan," +
@@ -5195,7 +5195,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+"")+" 00:00:00");
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+"")+" 23:59:59");
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdOperatorOperasi.getText().equals("")&&NmOperatorOperasi.getText().equals("")&&KdAsistenOperasi.getText().equals("")&&NmAsistenOperasi.getText().equals("")&&KdCaraBayarOperasi.getText().equals("")&&NmCaraBayarOperasi.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanTindakanOperasi.jasper","report","::[ Ringkasan Tindakan Operasi ]::",
                        "select operasi.kode_paket,paket_operasi.nm_perawatan,"+
@@ -5368,7 +5368,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(KdDokterRanapDokter.getText().equals("")&&NmDokterRanapDokter.getText().equals("")&&KdCaraBayarRanapDokter.getText().equals("")&&NmCaraBayarRanapDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanTindakanRanapDokter.jasper","report","::[ Ringkasan Tindakan Ranap Yang Ditangani Dokter ]::",
                        "select rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
@@ -5463,7 +5463,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdPetugasRanapParamedis.getText().equals("")&&NmPetugasRanapParamedis.getText().equals("")&&KdCaraBayarRanapParamedis.getText().equals("")&&NmCaraBayarRanapParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanTindakanRanapParamedis.jasper","report","::[ Ringkasan Tindakan Ranap Yang Ditangani Paramedis ]::",
                        "select rawat_inap_pr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
@@ -5558,7 +5558,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdDokterRanapDokterParamedis.getText().equals("")&&NmDokterRanapDokterParamedis.getText().equals("")&&KdPetugasRanapDokterParamedis.getText().equals("")&&NmPetugasRanapDokterParamedis.getText().equals("")&&KdCaraBayarRanapDokterParamedis.getText().equals("")&&NmCaraBayarRanapDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanTindakanRanapDokterParamedis.jasper","report","::[ Ringkasan Tindakan Ranap Yang Ditangani Dokter & Paramedis ]::",
                        "select rawat_inap_drpr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
@@ -5665,7 +5665,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdDokterPerujukRad.getText().equals("")&&NmDokterPerujukRad.getText().equals("")&&KdPetugasRad.getText().equals("")&&NmPetugasRad.getText().equals("")&&KdCaraBayarRad.getText().equals("")&&NmCaraBayarRad.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanRadiologi.jasper","report","::[ Ringkasan Pemeriksaan Radiologi ]::",
                        "select periksa_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan, "+
@@ -5779,7 +5779,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(KdDokterPerujukLab.getText().equals("")&&NmDokterPerujukLab.getText().equals("")&&KdPetugasLab.getText().equals("")&&NmPetugasLab.getText().equals("")&&KdCaraBayarLab.getText().equals("")&&NmCaraBayarLab.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanLaborat.jasper","report","::[ Ringkasan Pemeriksaan Laborat ]::",
                        "select periksa_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan, "+
@@ -5892,7 +5892,7 @@ public final class KeuanganRingkasanTindakan extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTglJam(Tgl1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTglJam(Tgl2.getSelectedItem()+""));
             param.put("cari","%"+TCari.getText().trim()+"%");                    
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             if(KdDokterPerujukDetailLab.getText().equals("")&&NmDokterPerujukDetailLab.getText().equals("")&&KdPetugasDetailLab.getText().equals("")&&NmPetugasDetailLab.getText().equals("")&&KdCaraBayarDetailLab.getText().equals("")&&NmCaraBayarDetailLab.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 Valid.MyReportqry("rptRingkasanDetailLaborat.jasper","report","::[ Ringkasan Detail Pemeriksaan Laborat ]::",
                         "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+

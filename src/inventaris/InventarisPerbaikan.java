@@ -909,7 +909,7 @@ public final class InventarisPerbaikan extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 semua=nm_ruangcari.getText().equals("")&&TCari.getText().equals("");
                 Valid.MyReportqry("rptPerbaikanInventaris.jasper","report","::[ Data Perbaikan Inventaris ]::",
                     "select perbaikan_inventaris.no_permintaan,permintaan_perbaikan_inventaris.no_inventaris,"+

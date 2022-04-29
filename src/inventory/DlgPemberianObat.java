@@ -1064,7 +1064,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs()); 
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(!TCariPasien.getText().equals("")){
                pas=" and reg_periksa.no_rkm_medis='"+TCariPasien.getText()+"' "; 
             }
@@ -1245,7 +1245,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs()); 
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(!TCariPasien.getText().equals("")){
                pas=" and reg_periksa.no_rkm_medis='"+TCariPasien.getText()+"' "; 
             }

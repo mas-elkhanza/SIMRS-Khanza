@@ -1120,7 +1120,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal1",Valid.SetTgl(TglBeli1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(TglBeli2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptRingkasanHibahObat.jasper","report","::[ Laporan Ringkasan Penerimaan Obat/Alkes/BHP Medis ]::",
                     "select detailhibah_obat_bhp.kode_brng,databarang.nama_brng,databarang.kode_sat,kodesatuan.satuan,"+
                     "jenis.nama as namajenis,sum(detailhibah_obat_bhp.jumlah2) as jumlah,sum(detailhibah_obat_bhp.subtotaldiakui) as total "+

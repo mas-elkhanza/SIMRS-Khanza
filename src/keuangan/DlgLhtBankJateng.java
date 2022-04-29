@@ -306,7 +306,7 @@ public final class DlgLhtBankJateng extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptHtHBankJateng.jasper","report","::[ Data Pembayaran Bank Jateng ]::",
                "select * from tagihan_bpd_jateng where tagihan_bpd_jateng.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
                (TCari.getText().equals("")?"":"and (tagihan_bpd_jateng.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_bpd_jateng.nm_pasien like '%"+TCari.getText().trim()+"%' or "+

@@ -700,7 +700,7 @@ public final class KeslingPemakaiaanAirTanah extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptPemakaianAirTanah.jasper","report","::[ Data Pemakaian Air Tanah ]::",
                    "select kesling_pemakaian_air_tanah.nip,petugas.nama,kesling_pemakaian_air_tanah.tanggal,"+
                    "kesling_pemakaian_air_tanah.meteran,kesling_pemakaian_air_tanah.jumlahharian,kesling_pemakaian_air_tanah.keterangan "+

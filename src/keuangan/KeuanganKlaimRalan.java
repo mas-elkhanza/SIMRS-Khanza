@@ -614,7 +614,7 @@ public final class KeuanganKlaimRalan extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             try {
                 pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih format cetakan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Model 1","Model 2"},"Model 1");
                 switch (pilihan) {

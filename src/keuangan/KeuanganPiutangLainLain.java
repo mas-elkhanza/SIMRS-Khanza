@@ -908,7 +908,7 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());        
-            param.put("logo",Sequel.cariGambar("select logo from setting"));   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));   
             Valid.MyReportqry("rptPiutangLainLain.jasper","report","::[ Data Piutang Perusahaan/Piutang Lain-Lain ]::",
                     "select piutang_lainlain.nota_piutang,piutang_lainlain.tgl_piutang,piutang_lainlain.nip,petugas.nama,piutang_lainlain.kode_peminjam,"+
                     "peminjampiutang.nama_peminjam,piutang_lainlain.kd_rek,piutang_lainlain.nama_bayar,piutang_lainlain.keterangan,piutang_lainlain.tgltempo,"+

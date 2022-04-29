@@ -379,7 +379,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptRiwayatBarangIPSRS.jasper","report","::[ Riwayat Barang Non Medis dan Penunjang ( Lab & RO ) ]::",
                     "select ipsrs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+

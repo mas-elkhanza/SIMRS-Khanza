@@ -577,7 +577,7 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReport("rptMasterBerkasPegawai.jasper",param,"::[ Master Berkas Pegawai ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());

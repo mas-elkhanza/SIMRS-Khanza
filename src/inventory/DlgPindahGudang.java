@@ -939,7 +939,7 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting"));      
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));      
             if(TCari.getText().trim().equals("")&&nmjns.getText().trim().equals("")&&nmkategori.getText().trim().equals("")&&nmgolongan.getText().trim().equals("")){
                 sql="select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal as dari,"+
                     "mutasibarang.kd_bangsalke,bangsalke.nm_bangsal as ke, "+

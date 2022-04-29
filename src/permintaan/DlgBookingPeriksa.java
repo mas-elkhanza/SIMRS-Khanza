@@ -1443,7 +1443,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             pilihtampil="";
             if(R1.isSelected()==true){
                 pilihtampil="booking_periksa.status='Belum Dibalas'";

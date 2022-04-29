@@ -447,7 +447,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
             param.put("shift",CmbStatus.getSelectedItem().toString());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReport("rptPaymentPoint.jasper","report","::[ Payment Point ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());

@@ -704,7 +704,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptResepLuar.jasper","report","::[ Daftar Resep Obat Yang Ditebus Keluar Oleh Pasien ]::","select * from temporary_resep where temporary_resep.temp37='"+akses.getalamatip()+"' order by temporary_resep.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -971,7 +971,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
                             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl(rs.getString("tgl_perawatan")+""));  
                             param.put("jam",rs.getString("jam"));
-                            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
 
                             Valid.MyReportqry("rptLembarResepLuar.jasper","report","::[ Lembar Resep Obat Yang Ditebus Keluar Oleh Pasien ]::","select * from temporary_resep where temporary_resep.temp37='"+akses.getalamatip()+"' order by temporary_resep.no",param);
                             this.setCursor(Cursor.getDefaultCursor());

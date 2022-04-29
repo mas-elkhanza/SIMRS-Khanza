@@ -1034,7 +1034,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             tanggal="  piutang.tgl_piutang between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
             nofak="";mem="";ptg="";sat="";bar="";
             if(!NoNota.getText().equals("")){

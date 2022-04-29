@@ -924,7 +924,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
-            param.put("logo",Sequel.cariGambar("select logo from setting"));   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));   
             Valid.MyReportqry("rptBayarPemesananAset.jasper","report","::[ Bayar Pemesanan Aset/Inventaris ]::",
                     "select bayar_pemesanan_inventaris.tgl_bayar,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tgl_pesan,"+
                     "inventaris_pemesanan.tgl_tempo, bayar_pemesanan_inventaris.no_faktur,"+

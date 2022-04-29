@@ -3199,7 +3199,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                     param.put("parameter","%"+TCari.getText()+"%"); 
@@ -3217,7 +3217,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     param.put("tanggal1",Valid.SetTgl(DTPCari3.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(DTPCari4.getSelectedItem()+""));
                     param.put("parameter","%"+TCari1.getText()+"%"); 
@@ -3898,7 +3898,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("parameter",TNoRM.getText()); 
             Valid.MyReport("rptBarcodeRM18.jasper","report","::[ Label Rekam Medis ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -3957,7 +3957,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("no_rawat",TNoRw.getText());
             Valid.MyReport("rptLabelTracker4.jasper","report","::[ Label Tracker ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -3976,7 +3976,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("no_rawat",TNoRw.getText());
             Valid.MyReport("rptLabelTracker3.jasper","report","::[ Label Tracker ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -3996,7 +3996,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("no_rawat",TNoRw.getText());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReport("rptLabelTracker2.jasper",param,"::[ Label Tracker ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -4015,7 +4015,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("no_rawat",TNoRw.getText());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReport("rptLabelTracker.jasper",param,"::[ Label Tracker ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -4038,7 +4038,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("parameter",TNoRM.getText()); 
             Valid.MyReport("rptBarcodeRM16.jasper","report","::[ Gelang Pasien ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -4062,7 +4062,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("parameter",TNoRM.getText()); 
             Valid.MyReport("rptBarcodeRM14.jasper","report","::[ Gelang Pasien ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -4086,7 +4086,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("parameter",TNoRM.getText()); 
             Valid.MyReport("rptBarcodeRM10.jasper","report","::[ Gelang Pasien ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -4110,7 +4110,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("parameter",TNoRM.getText()); 
             Valid.MyReport("rptBarcodeRM8.jasper","report","::[ Gelang Pasien ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -4134,7 +4134,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("parameter",TNoRM.getText()); 
             Valid.MyReport("rptBarcodeRM7.jasper","report","::[ Gelang Pasien ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -4158,7 +4158,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("parameter",TNoRM.getText()); 
             Valid.MyReport("rptBarcodeRM6.jasper","report","::[ Gelang Pasien ]::",param);
             this.setCursor(Cursor.getDefaultCursor());

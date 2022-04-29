@@ -874,7 +874,7 @@ public class InventoryRingkasanReturSuplierBarangMedis extends javax.swing.JDial
             param.put("tanggal1",Valid.SetTgl(TglRetur1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(TglRetur2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             sat="";bar="";nofak="";ptg="";
             tanggal=" returbeli.tgl_retur between '"+Valid.SetTgl(TglRetur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglRetur2.getSelectedItem()+"")+"' ";
             if(!NoRetur.getText().equals("")){

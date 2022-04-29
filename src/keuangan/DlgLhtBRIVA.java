@@ -407,7 +407,7 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptBRIVA.jasper","report","::[ Data Pembayaran BRI Virtual Account ]::",
                "select * from tagihan_briva where tagihan_briva.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
                (TCari.getText().equals("")?"":"and (tagihan_briva.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_briva.nm_pasien like '%"+TCari.getText().trim()+"%' or "+

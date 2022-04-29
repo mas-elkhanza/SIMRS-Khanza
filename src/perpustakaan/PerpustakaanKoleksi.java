@@ -940,7 +940,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());  
-                param.put("logo",Sequel.cariGambar("select logo from setting"));  
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
                 Valid.MyReportqry("rptKoleksiPerpustakaan.jasper","report","::[ Data Koleksi Perpustakaan ]::","select perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, perpustakaan_buku.jml_halaman, "+
                    "perpustakaan_penerbit.nama_penerbit, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn,"+
                    "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis from perpustakaan_buku inner join perpustakaan_penerbit "+

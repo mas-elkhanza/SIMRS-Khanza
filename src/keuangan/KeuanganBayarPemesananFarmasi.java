@@ -923,7 +923,7 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
-            param.put("logo",Sequel.cariGambar("select logo from setting"));   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));   
             Valid.MyReportqry("rptBayarPemesanan.jasper","report","::[ Bayar Pemesanan ]::",
                     "select bayar_pemesanan.tgl_bayar,pemesanan.tgl_faktur,pemesanan.tgl_pesan,"+
                     "pemesanan.tgl_tempo, bayar_pemesanan.no_faktur,"+

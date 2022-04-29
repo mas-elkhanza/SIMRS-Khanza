@@ -1227,7 +1227,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
+            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptDataBatch.jasper", "report", "::[ Data Batch ]::", 
                     "select data_batch.kode_brng, databarang.nama_brng,data_batch.no_faktur, "

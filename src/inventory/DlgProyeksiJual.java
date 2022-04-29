@@ -623,7 +623,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             if(Jenisjual.getSelectedItem().toString().equals("Semua")&nmasal.getText().equals("")&&nmjns.getText().equals("")&&nmkategori.getText().equals("")&&nmgolongan.getText().equals("")&&TCari.getText().equals("")){
                 Valid.MyReportqry("rptProyeksi.jasper","report","::[ Proyeksi Keuntungan Penjualan ]::",
                         "select penjualan.tgl_jual,penjualan.nota_jual,detailjual.kode_brng,databarang.nama_brng,kodesatuan.satuan,detailjual.h_jual,detailjual.jumlah, "+

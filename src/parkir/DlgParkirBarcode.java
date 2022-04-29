@@ -579,7 +579,7 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
                 param.put("propinsirs",var.getpropinsirs());
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());
-                param.put("logo",Sequel.cariGambar("select logo from setting"));
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                 Valid.MyReport("rptDokter.jasper","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                     "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
                     "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
@@ -594,7 +594,7 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
                 param.put("propinsirs",var.getpropinsirs());
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());
-                param.put("logo",Sequel.cariGambar("select logo from setting"));
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                 String sql=" dokter.kd_sps=spesialis.kd_sps ";
                 Valid.MyReport("rptDokter.jasper","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                     "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
@@ -647,7 +647,7 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
                     param.put("propinsirs",var.getpropinsirs());
                     param.put("kontakrs",var.getkontakrs());
                     param.put("emailrs",var.getemailrs());
-                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReport("rptDokter.jasper","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                         "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
                         "stts_nikah,nm_sps,alumni,no_ijn_praktek "+

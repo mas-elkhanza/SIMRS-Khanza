@@ -302,7 +302,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
                                 tabMode.getValueAt(i,4).toString()+"','"+
-                                tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Sirkulasi Barang Keluar Masuk"); 
+                                tabMode.getValueAt(i,5).toString()+"','"+
+                                tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Sirkulasi Barang Keluar Masuk"); 
             }
             
             Map<String, Object> param = new HashMap<>(); 
@@ -312,8 +313,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptDaruratStok.jasper","report","::[ Darurat Stok Obat/BHP/Alkes ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptObatBHPTidakBergerak.jasper","report","::[ Obat/Alkes/BHP Tidak Bergerak ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -420,11 +421,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }else if(R3.isSelected()==true){
                 pilihan="where riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date()";
             }
-            System.out.println("select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+
-                    "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
-                    "inner join jenis on databarang.kdjns=jenis.kdjns where databarang.status='1' and "+
-                    "databarang.kode_brng not in (select riwayat_barang_medis.kode_brng from riwayat_barang_medis "+pilihan+") "+
-                    "and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) order by databarang.nama_brng");
             ps=koneksi.prepareStatement(
                     "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+
                     "from databarang inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
@@ -482,7 +478,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-         BtnPrint.setEnabled(akses.getsirkulasi_obat());
+         BtnPrint.setEnabled(akses.getobat_bhp_tidakbergerak());
     }
     
 }

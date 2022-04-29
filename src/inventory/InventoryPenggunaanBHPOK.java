@@ -350,7 +350,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs()); 
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptPenggunaanBHPOK.jasper","report","::[ Penggunaan BHP OK/VK ]::",
                 "select beri_obat_operasi.tanggal,beri_obat_operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,beri_obat_operasi.kd_obat,obatbhp_ok.nm_obat,kodesatuan.satuan,"+
                 "beri_obat_operasi.hargasatuan,beri_obat_operasi.jumlah,(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) as total from beri_obat_operasi inner join obatbhp_ok "+

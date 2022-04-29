@@ -600,7 +600,7 @@ public class InventarisAsalHibah extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptAsalHibah.jasper","report","::[ Data Pemberi Hibah/Asal Hibah ]::","select pemberihibah.kode_pemberi, pemberihibah.nama_pemberi, "+
                     " pemberihibah.alamat,pemberihibah.kota, pemberihibah.no_telp from pemberihibah "+
                     " where pemberihibah.kode_pemberi like '%"+TCari.getText().trim()+"%' or "+

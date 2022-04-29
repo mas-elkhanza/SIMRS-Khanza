@@ -616,7 +616,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptBayarJmDokter.jasper","report","::[ Data Rekap Pembayaran Jasa Medis Dokter ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -1353,7 +1353,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("emailrs",akses.getemailrs());   
                     param.put("dokter",tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());   
                     param.put("bulan",Valid.SetTgl3(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()).substring(3,10));   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     Valid.MyReportqry("rptSlipBayarJMDokter.jasper","report","[ Slip J.M. Dokter  ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);

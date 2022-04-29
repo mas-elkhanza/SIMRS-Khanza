@@ -1118,7 +1118,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                     Valid.MyReportqry("rptOtoRalan.jasper","report","::[ Data Tindakan Otomatis Dokter Ralan ]::","select set_otomatis_tindakan_ralan.kd_dokter,dokter.nm_dokter, set_otomatis_tindakan_ralan.kd_jenis_prw,jns_perawatan.nm_perawatan "+
                    "from set_otomatis_tindakan_ralan inner join dokter inner join jns_perawatan on  "+
                    "set_otomatis_tindakan_ralan.kd_dokter=dokter.kd_dokter and "+

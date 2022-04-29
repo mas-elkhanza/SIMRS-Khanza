@@ -3425,7 +3425,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 param.put("parameter","%"+TCari.getText().trim()+"%");
@@ -3443,7 +3443,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 param.put("parameter","%"+TCariInternal.getText().trim()+"%");

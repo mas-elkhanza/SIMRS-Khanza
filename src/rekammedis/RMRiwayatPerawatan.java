@@ -1228,7 +1228,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             param.put("propinsirs",akses.getpropinsirs());
                             param.put("kontakrs",akses.getkontakrs());
                             param.put("emailrs",akses.getemailrs());   
-                            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                         Valid.MyReport2("rptRiwayatRegistrasi.jasper","report","::[ Riwayat Registrasi ]::",param);
                         this.setCursor(Cursor.getDefaultCursor());
                     }

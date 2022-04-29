@@ -2273,7 +2273,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());  
             param.put("periode",DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")); 
             param.put("parameter","%"+TCari.getText().trim()+"%"); 
