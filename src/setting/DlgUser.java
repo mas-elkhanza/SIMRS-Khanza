@@ -201,7 +201,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[D]Ringkasan Biaya Obat Pasien Per Tanggal","[L]Master Masalah Keperawatan IGD","[L]Penilaian Awal Keperawatan IGD","[K]Referensi DPHO Apotek BPJS",
                 "[K]Referensi Poli Apotek BPJS","[J]Bayar JM Dokter","[K]Referensi Faskes Apotek BPJS","[K]Referensi Spesialistik Apotek BPJS","[J]Pembayaran BRIVA",
                 "[L]Penilaian Awal Keperawatan Ranap Umum","[D]Nilai Penerimaan Vendor Farmasi Per Bulan","[J]Akun Bayar Hutang","[L]Master Rencana Keperawatan",
-                "[I]Laporan Tahunan IGD","[D]Obat/Alkes/BHP Tidak Bergerak","[D]Ringkasan Hutang Vendor Farmasi"
+                "[I]Laporan Tahunan IGD","[D]Obat/Alkes/BHP Tidak Bergerak","[J]Ringkasan Hutang Vendor Farmasi"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2336,7 +2336,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(175);
                     break;
                 case 814:
-                    column.setPreferredWidth(175);
+                    column.setPreferredWidth(188);
                     break;
                 default:
                     column.setPreferredWidth(135);

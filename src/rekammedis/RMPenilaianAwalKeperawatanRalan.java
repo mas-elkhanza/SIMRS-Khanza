@@ -839,7 +839,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 1183));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 1193));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -1978,13 +1978,13 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         Scroll6.setViewportView(tbMasalahKeperawatan);
 
         FormInput.add(Scroll6);
-        Scroll6.setBounds(10, 1010, 400, 133);
+        Scroll6.setBounds(10, 1010, 400, 143);
 
         label12.setText("Key Word :");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(60, 23));
         FormInput.add(label12);
-        label12.setBounds(16, 1150, 60, 23);
+        label12.setBounds(16, 1160, 60, 23);
 
         BtnTambahMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambahMasalah.setMnemonic('3');
@@ -1997,7 +1997,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnTambahMasalah);
-        BtnTambahMasalah.setBounds(363, 1150, 28, 23);
+        BtnTambahMasalah.setBounds(363, 1160, 28, 23);
 
         Bahasa.setEditable(false);
         Bahasa.setFocusTraversalPolicyProvider(true);
@@ -2047,7 +2047,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnAllMasalah);
-        BtnAllMasalah.setBounds(331, 1150, 28, 23);
+        BtnAllMasalah.setBounds(331, 1160, 28, 23);
 
         BtnCariMasalah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariMasalah.setMnemonic('1');
@@ -2065,7 +2065,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariMasalah);
-        BtnCariMasalah.setBounds(299, 1150, 28, 23);
+        BtnCariMasalah.setBounds(299, 1160, 28, 23);
 
         TabRencanaKeperawatan.setBackground(new java.awt.Color(255, 255, 254));
         TabRencanaKeperawatan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -2173,7 +2173,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         TabRencanaKeperawatan.addTab("Rencana Keperawatan Lainnya", scrollPane5);
 
         FormInput.add(TabRencanaKeperawatan);
-        TabRencanaKeperawatan.setBounds(434, 1010, 420, 163);
+        TabRencanaKeperawatan.setBounds(434, 1010, 420, 173);
 
         TCariMasalah.setToolTipText("Alt+C");
         TCariMasalah.setName("TCariMasalah"); // NOI18N
@@ -2184,7 +2184,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(TCariMasalah);
-        TCariMasalah.setBounds(80, 1150, 215, 23);
+        TCariMasalah.setBounds(80, 1160, 215, 23);
 
         scrollInput.setViewportView(FormInput);
 

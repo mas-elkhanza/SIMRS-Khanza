@@ -2317,6 +2317,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[J]Akun Bayar Hutang",rs.getBoolean("akun_bayar_hutang")});
                     }
                     
+                    if("[J]Ringkasan Hutang Vendor Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Ringkasan Hutang Vendor Farmasi",rs.getBoolean("ringkasan_hutang_vendor_farmasi")});
+                    }
+                    
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Cek NIK",rs.getBoolean("bpjs_cek_nik")});
                     }
@@ -5582,6 +5586,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[J]Akun Bayar Hutang".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","akun_bayar_hutang='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[J]Ringkasan Hutang Vendor Farmasi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_hutang_vendor_farmasi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }
