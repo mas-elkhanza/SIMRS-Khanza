@@ -640,6 +640,7 @@ import keuangan.KeuanganPiutangLainLain;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganPiutangObatBelumLunas;
 import keuangan.KeuanganRVPBPJS;
+import keuangan.KeuanganRingkasanHutangVendorFarmasi;
 import keuangan.KeuanganSetTarifOnline;
 import keuangan.KeuanganTagihanAset;
 import keuangan.KeuanganTagihanNonMedis;
@@ -18336,6 +18337,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRingkasanHutangVendorFarmasiActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganRingkasanHutangVendorFarmasi aplikasi=new KeuanganRingkasanHutangVendorFarmasi(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18976,7 +18988,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
-            btnLaporanTahunanIGD,btnObatBHPTidakBergerak;
+            btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi;
     
     public void isWall(){
         try{            
@@ -20959,6 +20971,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpembayaran_briva()==true){
                Panelmenu.add(btnPembayaranBRIVA); 
+               jmlmenu++;
+            }
+            
+            if(akses.getringkasan_hutang_vendor_farmasi()==true){
+               Panelmenu.add(btnRingkasanHutangVendorFarmasi); 
                jmlmenu++;
             }
 
@@ -24990,6 +25007,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpembayaran_briva()==true){
            Panelmenu.add(btnPembayaranBRIVA); 
+           jmlmenu++;
+        }
+        
+        if(akses.getringkasan_hutang_vendor_farmasi()==true){
+           Panelmenu.add(btnRingkasanHutangVendorFarmasi); 
            jmlmenu++;
         }
         
@@ -29757,6 +29779,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpembayaran_briva()==true){
             if(btnPembayaranBRIVA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranBRIVA); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_hutang_vendor_farmasi()==true){
+            if(btnRingkasanHutangVendorFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanHutangVendorFarmasi); 
                 jmlmenu++;
             }                
         }
@@ -35555,6 +35584,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnObatBHPTidakBergerak.setName("btnObatBHPTidakBergerak"); 
         btnObatBHPTidakBergerak.setPreferredSize(new java.awt.Dimension(200, 90));
         btnObatBHPTidakBergerak.addActionListener(this::btnObatBHPTidakBergerakActionPerformed);
+        
+        btnRingkasanHutangVendorFarmasi = new widget.ButtonBig();
+        btnRingkasanHutangVendorFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_mail-message-new_23443.png"))); 
+        btnRingkasanHutangVendorFarmasi.setText("Ringkasan Hutang Vendor Farmasi");
+        btnRingkasanHutangVendorFarmasi.setIconTextGap(0);
+        btnRingkasanHutangVendorFarmasi.setName("btnRingkasanHutangVendorFarmasi"); 
+        btnRingkasanHutangVendorFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanHutangVendorFarmasi.addActionListener(this::btnRingkasanHutangVendorFarmasiActionPerformed);
     }
     
 }

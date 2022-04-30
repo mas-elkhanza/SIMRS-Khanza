@@ -137,7 +137,8 @@ public final class KeuanganHutangObatBelumLunas extends javax.swing.JDialog {
 
         no_bukti.setDocument(new batasInput((byte)20).getKata(no_bukti));
         nip.setDocument(new batasInput((byte)20).getKata(nip));
-        keterangan.setDocument(new batasInput((byte)100).getKata(keterangan));        
+        keterangan.setDocument(new batasInput((byte)100).getKata(keterangan));  
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));        
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
