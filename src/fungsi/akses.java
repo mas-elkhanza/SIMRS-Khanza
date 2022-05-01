@@ -177,7 +177,8 @@ public final class akses {
             ringkasan_biaya_obat_pasien_pertanggal=false,master_masalah_keperawatan_igd=false,penilaian_awal_keperawatan_igd=false,bpjs_referensi_dpho_apotek=false,
             bpjs_referensi_poli_apotek=false,bayar_jm_dokter=false,bpjs_referensi_faskes_apotek=false,bpjs_referensi_spesialistik_apotek=false,
             pembayaran_briva=false,penilaian_awal_keperawatan_ranap=false,nilai_penerimaan_vendor_farmasi_perbulan=false,akun_bayar_hutang=false,
-            master_rencana_keperawatan=false,laporan_tahunan_igd=false,obat_bhp_tidakbergerak=false,ringkasan_hutang_vendor_farmasi=false;
+            master_rencana_keperawatan=false,laporan_tahunan_igd=false,obat_bhp_tidakbergerak=false,ringkasan_hutang_vendor_farmasi=false,
+            nilai_penerimaan_vendor_nonmedis_perbulan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1012,6 +1013,7 @@ public final class akses {
                         akses.laporan_tahunan_igd=true;
                         akses.obat_bhp_tidakbergerak=true;
                         akses.ringkasan_hutang_vendor_farmasi=true;
+                        akses.nilai_penerimaan_vendor_nonmedis_perbulan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1830,6 +1832,7 @@ public final class akses {
                         akses.laporan_tahunan_igd=rs2.getBoolean("laporan_tahunan_igd");
                         akses.obat_bhp_tidakbergerak=rs2.getBoolean("obat_bhp_tidakbergerak");
                         akses.ringkasan_hutang_vendor_farmasi=rs2.getBoolean("ringkasan_hutang_vendor_farmasi");
+                        akses.nilai_penerimaan_vendor_nonmedis_perbulan=rs2.getBoolean("nilai_penerimaan_vendor_nonmedis_perbulan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2646,6 +2649,7 @@ public final class akses {
                         akses.laporan_tahunan_igd=false;
                         akses.obat_bhp_tidakbergerak=false;
                         akses.ringkasan_hutang_vendor_farmasi=false;
+                        akses.nilai_penerimaan_vendor_nonmedis_perbulan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3519,4 +3523,5 @@ public final class akses {
     public static boolean getlaporan_tahunan_igd(){return akses.laporan_tahunan_igd;}
     public static boolean getobat_bhp_tidakbergerak(){return akses.obat_bhp_tidakbergerak;}
     public static boolean getringkasan_hutang_vendor_farmasi(){return akses.ringkasan_hutang_vendor_farmasi;}
+    public static boolean getnilai_penerimaan_vendor_nonmedis_perbulan(){return akses.nilai_penerimaan_vendor_nonmedis_perbulan;}
 }   

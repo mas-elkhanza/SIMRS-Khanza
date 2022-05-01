@@ -582,6 +582,7 @@ import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.IPSRSPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSHibah;
+import ipsrs.IPSRSNilaiPenerimaanVendorNonMedisPerBulan;
 import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRingkasanPemesananBarangNonMedis;
 import ipsrs.IPSRSRingkasanPenerimaanBarangNonMedis;
@@ -1726,7 +1727,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/03/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/04/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -3415,7 +3416,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnJenisIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
-        btnJenisIpsrs.setText("Jenis Barang IPSRS");
+        btnJenisIpsrs.setText("Jenis Barang Non Medis");
         btnJenisIpsrs.setIconTextGap(0);
         btnJenisIpsrs.setName("btnJenisIpsrs"); // NOI18N
         btnJenisIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -18348,6 +18349,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnNilaiPenerimaanVendorNonMedisPerBulanActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSNilaiPenerimaanVendorNonMedisPerBulan form=new IPSRSNilaiPenerimaanVendorNonMedisPerBulan(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18988,7 +19000,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
-            btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi;
+            btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan;
     
     public void isWall(){
         try{            
@@ -19967,6 +19979,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getverifikasi_penerimaan_logistik()==true){
                 Panelmenu.add(btnVerifikasiPenerimaanLogistik);
+                jmlmenu++;
+            }
+            
+            if(akses.getnilai_penerimaan_vendor_nonmedis_perbulan()==true){
+                Panelmenu.add(btnNilaiPenerimaanVendorNonMedisPerBulan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==5){ 
@@ -24013,6 +24030,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getverifikasi_penerimaan_logistik()==true){
             Panelmenu.add(btnVerifikasiPenerimaanLogistik);
+            jmlmenu++;
+        }
+
+        if(akses.getnilai_penerimaan_vendor_nonmedis_perbulan()==true){
+            Panelmenu.add(btnNilaiPenerimaanVendorNonMedisPerBulan);
             jmlmenu++;
         }
 
@@ -28387,6 +28409,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getverifikasi_penerimaan_logistik()==true){
             if(btnVerifikasiPenerimaanLogistik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnVerifikasiPenerimaanLogistik);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getnilai_penerimaan_vendor_nonmedis_perbulan()==true){
+            if(btnNilaiPenerimaanVendorNonMedisPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnNilaiPenerimaanVendorNonMedisPerBulan);
                 jmlmenu++;
             }                
         }
@@ -35592,6 +35621,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanHutangVendorFarmasi.setName("btnRingkasanHutangVendorFarmasi"); 
         btnRingkasanHutangVendorFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanHutangVendorFarmasi.addActionListener(this::btnRingkasanHutangVendorFarmasiActionPerformed);
+        
+        btnNilaiPenerimaanVendorNonMedisPerBulan = new widget.ButtonBig();
+        btnNilaiPenerimaanVendorNonMedisPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_File_Files_Folder_Clipboard_Data_Confirm_3909329.png"))); 
+        btnNilaiPenerimaanVendorNonMedisPerBulan.setText("Nilai Penerimaan Vendor Non Medis Per Bulan");
+        btnNilaiPenerimaanVendorNonMedisPerBulan.setIconTextGap(0);
+        btnNilaiPenerimaanVendorNonMedisPerBulan.setName("btnNilaiPenerimaanVendorNonMedisPerBulan"); 
+        btnNilaiPenerimaanVendorNonMedisPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnNilaiPenerimaanVendorNonMedisPerBulan.addActionListener(this::btnNilaiPenerimaanVendorNonMedisPerBulanActionPerformed);
     }
     
 }
