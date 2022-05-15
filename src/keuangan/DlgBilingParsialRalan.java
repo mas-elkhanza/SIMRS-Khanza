@@ -6149,7 +6149,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         
         for(i=0;i<tbTindakanPrBayar.getRowCount();i++){
             if(tbTindakanPrBayar.getValueAt(i,0).toString().equals("true")){
-                if(tbTindakanDrBayar.getValueAt(i,13).toString().equals("Suspen")){
+                if(tbTindakanPrBayar.getValueAt(i,13).toString().equals("Suspen")){
                     Suspen_Tindakan_Ralan=Suspen_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,4).toString());
                 }else{
                     Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,8).toString());
@@ -6163,7 +6163,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         
         for(i=0;i<tbTindakanDrPrBayar.getRowCount();i++){
             if(tbTindakanDrPrBayar.getValueAt(i,0).toString().equals("true")){
-                if(tbTindakanDrBayar.getValueAt(i,13).toString().equals("Suspen")){
+                if(tbTindakanDrPrBayar.getValueAt(i,13).toString().equals("Suspen")){
                     Suspen_Tindakan_Ralan=Suspen_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,4).toString());
                 }else{
                     Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,7).toString());

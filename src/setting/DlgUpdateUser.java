@@ -688,7 +688,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd,"+
                 "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek,user.bayar_jm_dokter,user.bpjs_referensi_faskes_apotek,user.bpjs_referensi_spesialistik_apotek,"+
                 "user.pembayaran_briva,user.penilaian_awal_keperawatan_ranap,user.nilai_penerimaan_vendor_farmasi_perbulan,user.akun_bayar_hutang,user.master_rencana_keperawatan,"+
-                "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan,"+
+                "user.ringkasan_hutang_vendor_nonmedis from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2323,6 +2324,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[J]Ringkasan Hutang Vendor Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Ringkasan Hutang Vendor Farmasi",rs.getBoolean("ringkasan_hutang_vendor_farmasi")});
+                    }
+                    
+                    if("[J]Ringkasan Hutang Vendor Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Ringkasan Hutang Vendor Non Medis",rs.getBoolean("ringkasan_hutang_vendor_nonmedis")});
                     }
                     
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5598,6 +5603,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[J]Ringkasan Hutang Vendor Farmasi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_hutang_vendor_farmasi='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[J]Ringkasan Hutang Vendor Non Medis".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_hutang_vendor_nonmedis='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }
