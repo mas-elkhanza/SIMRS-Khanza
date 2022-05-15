@@ -42,7 +42,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private int jml=0,i=0,row,kolom=0,reply,index;
     public DlgCariAturanPakai aturan_pakai=new DlgCariAturanPakai(null,false);
     private String verifikasi_penjualan_di_kasir="",Penjualan_Obat="",HPP_Obat_Jual_Bebas="",Persediaan_Obat_Jual_Bebas="",
-            status="Belum Dibayar",pilihanetiket="",hppfarmasi="",kode_akun_bayar="";
+            status="Belum Dibayar",pilihanetiket="",hppfarmasi="",kode_akun_bayar="",tampilkan_ppnobat_ralan="";
     private PreparedStatement ps,psstok,pscaribatch;
     private ResultSet rs,rsstok;
     private String[] no,kodebarang,kandungan,namabarang,kategori,satuan,aturanpakai,nobatch,nofaktur,kadaluarsa;
@@ -597,6 +597,13 @@ public class DlgPenjualan extends javax.swing.JDialog {
             hppfarmasi=koneksiDB.HPPFARMASI();
         } catch (Exception e) {
             hppfarmasi="dasar";
+        }
+        
+        tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota");
+        if(tampilkan_ppnobat_ralan.equals("Yes")){
+            PersenppnObat.setText("11");
+        }else{
+            PersenppnObat.setText("0");
         }
     }
     
@@ -1629,6 +1636,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ppn=0;
                     ongkir=0;
                     ppnobat=0;
+                    if(tampilkan_ppnobat_ralan.equals("Yes")){
+                        PersenppnObat.setText("11");
+                    }else{
+                        PersenppnObat.setText("0");
+                    }
                     LTotal.setText("0");
                     Bayar.setText("0");
                     Ongkir.setText("0");
