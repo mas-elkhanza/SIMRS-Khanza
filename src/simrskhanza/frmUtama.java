@@ -655,6 +655,7 @@ import laporan.DlgAnggotaPolriDirawat;
 import laporan.DlgAuditKepatuhanAPD;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
+import laporan.DlgDaftarPasienRanapPolri;
 import laporan.DlgDaftarPasienRanapTNI;
 import laporan.DlgDataKlasifikasiPasienRanap;
 import laporan.DlgDemografiUmurKunjungan;
@@ -18384,6 +18385,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnDaftarPasienRanapPolriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDaftarPasienRanapPolri form=new DlgDaftarPasienRanapPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19025,7 +19038,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
-            btnAnggotaPolriDirawat;
+            btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri;
     
     public void isWall(){
         try{            
@@ -20786,6 +20799,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 
                 if(akses.getanggota_polri_dirawat()==true){
                     Panelmenu.add(btnAnggotaPolriDirawat);
+                    jmlmenu++;
+                }
+                
+                if(akses.getdaftar_pasien_ranap_polri()==true){  
+                    Panelmenu.add(btnDaftarPasienRanapPolri);                 
                     jmlmenu++;
                 }
             }
@@ -24838,6 +24856,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getanggota_polri_dirawat()==true){
                 Panelmenu.add(btnAnggotaPolriDirawat);
+                jmlmenu++;
+            }
+            
+            if(akses.getdaftar_pasien_ranap_polri()==true){  
+                Panelmenu.add(btnDaftarPasienRanapPolri);                 
                 jmlmenu++;
             }
         }
@@ -29537,6 +29560,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getanggota_polri_dirawat()==true){
                 if(btnAnggotaPolriDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnAnggotaPolriDirawat);
+                    jmlmenu++;
+                }                
+            }
+            
+            if(akses.getdaftar_pasien_ranap_polri()==true){  
+                if(btnDaftarPasienRanapPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnDaftarPasienRanapPolri);                 
                     jmlmenu++;
                 }                
             }
@@ -35704,6 +35734,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAnggotaPolriDirawat.setName("btnAnggotaPolriDirawat"); 
         btnAnggotaPolriDirawat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAnggotaPolriDirawat.addActionListener(this::btnAnggotaPolriDirawatActionPerformed);
+        
+        btnDaftarPasienRanapPolri = new widget.ButtonBig();
+        btnDaftarPasienRanapPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_009_95869.png")));
+        btnDaftarPasienRanapPolri.setText("Daftar Pasien Ranap POLRI");
+        btnDaftarPasienRanapPolri.setIconTextGap(0);
+        btnDaftarPasienRanapPolri.setName("btnDaftarPasienRanapPolri"); 
+        btnDaftarPasienRanapPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDaftarPasienRanapPolri.addActionListener(this::btnDaftarPasienRanapPolriActionPerformed);
     }
     
 }
