@@ -651,6 +651,7 @@ import keuangan.KeuanganValidasiPenagihanPiutang;
 import keuangan.KeuanganValidasiTagihanAset;
 import keuangan.KeuanganValidasiTagihanNonMedis;
 import keuangan.KeuanganValidasiTagihanObatBHP;
+import laporan.DlgAnggotaPolriDirawat;
 import laporan.DlgAuditKepatuhanAPD;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -18372,6 +18373,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAnggotaPolriDirawatActionPerformed(java.awt.event.ActionEvent evt) {                                                         
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgAnggotaPolriDirawat form=new DlgAnggotaPolriDirawat(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }  
+    
     /**
     * @param args the command line arguments
     */
@@ -19012,7 +19024,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
-            btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis;
+            btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
+            btnAnggotaPolriDirawat;
     
     public void isWall(){
         try{            
@@ -20768,6 +20781,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 
                 if(akses.getdaftar_pasien_ranaptni()==true){  
                     Panelmenu.add(btnDaftarPasienRanapTNI);                 
+                    jmlmenu++;
+                }
+                
+                if(akses.getanggota_polri_dirawat()==true){
+                    Panelmenu.add(btnAnggotaPolriDirawat);
                     jmlmenu++;
                 }
             }
@@ -24815,6 +24833,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdaftar_pasien_ranaptni()==true){  
                 Panelmenu.add(btnDaftarPasienRanapTNI);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getanggota_polri_dirawat()==true){
+                Panelmenu.add(btnAnggotaPolriDirawat);
                 jmlmenu++;
             }
         }
@@ -29507,6 +29530,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getdaftar_pasien_ranaptni()==true){  
                 if(btnDaftarPasienRanapTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnDaftarPasienRanapTNI);                 
+                    jmlmenu++;
+                }                
+            }
+            
+            if(akses.getanggota_polri_dirawat()==true){
+                if(btnAnggotaPolriDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnAnggotaPolriDirawat);
                     jmlmenu++;
                 }                
             }
@@ -35666,6 +35696,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanHutangVendorBarangNonMedis.setName("btnRingkasanHutangVendorBarangNonMedis"); 
         btnRingkasanHutangVendorBarangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanHutangVendorBarangNonMedis.addActionListener(this::btnRingkasanHutangVendorBarangNonMedisActionPerformed);
+        
+        btnAnggotaPolriDirawat = new widget.ButtonBig();
+        btnAnggotaPolriDirawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/131492_policeman_police_police officer_police-officer_guard_icon.png"))); 
+        btnAnggotaPolriDirawat.setText("Anggota POLRI Dirawat");
+        btnAnggotaPolriDirawat.setIconTextGap(0);
+        btnAnggotaPolriDirawat.setName("btnAnggotaPolriDirawat"); 
+        btnAnggotaPolriDirawat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAnggotaPolriDirawat.addActionListener(this::btnAnggotaPolriDirawatActionPerformed);
     }
     
 }
