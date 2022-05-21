@@ -2499,8 +2499,8 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     tabMode.addRow(new Object[]{" Centang Dokter di Nota Ranap",rs.getString(14)});
                     tabMode.addRow(new Object[]{" Tampilkan Administrasi di Billing Ranap",rs.getString(15)});
                     tabMode.addRow(new Object[]{" Tampilkan Rincian Operasi",rs.getString(16)});
-                    tabMode.addRow(new Object[]{" Tampilkan PPN Obat 10 % di Nota Ralan",rs.getString(17)});
-                    tabMode.addRow(new Object[]{" Tampilkan PPN Obat 10 % di Nota Ranap",rs.getString(18)});
+                    tabMode.addRow(new Object[]{" Tampilkan PPN Obat 11 % di Nota Ralan",rs.getString(17)});
+                    tabMode.addRow(new Object[]{" Tampilkan PPN Obat 11 % di Nota Ranap",rs.getString(18)});
                     tabMode.addRow(new Object[]{" Tampilkan Tombol Nota di Billing Rawat Jalan",rs.getString(19)});
                     tabMode.addRow(new Object[]{" Tampilkan Tombol Nota di Billing Rawat Inap",rs.getString(20)});
                     tabMode.addRow(new Object[]{" Verifikasi Penjualan Obat Bebas di Kasir",rs.getString(21)});

@@ -1120,7 +1120,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal1",Valid.SetTgl(TglBeli1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(TglBeli2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptRingkasanPembelianObat.jasper","report","::[ Laporan Ringkasan Pengadaan Obat/Alkes/BHP Medis ]::",
                     "select detailbeli.kode_brng,databarang.nama_brng,jenis.nama as namajenis, "+
                     "databarang.kode_sat,kodesatuan.satuan,sum(detailbeli.jumlah2) as jumlah,sum(detailbeli.total) as total "+

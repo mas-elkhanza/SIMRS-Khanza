@@ -49,6 +49,7 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
     public JsonNode root;
     public JsonNode response;
     public FileReader myObj;
+    private int i=0;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -66,7 +67,7 @@ public class KeuanganCariBayarJMDokter extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 7; i++) {
+        for (i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -594,20 +595,20 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             BtnHapus.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             
             int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0','"+
+            for(i=0;i<row;i++){  
+                Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
                                 tabMode.getValueAt(i,4).toString()+"','"+
                                 tabMode.getValueAt(i,5).toString()+"','"+
-                                tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
+                                tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
             }
-            Sequel.menyimpan("temporary","'0','','','TOTAL PEMBAYARAN :','','','','"+Valid.SetAngka(totaltagihan)+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penagihan Piutang Pasien"); 
+            Sequel.menyimpan("temporary","'"+i+"','','','TOTAL PEMBAYARAN :','','','','"+Valid.SetAngka(totaltagihan)+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
             Map<String, Object> param = new HashMap<>();    
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -615,8 +616,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBayarJmDokter.jasper","report","::[ Data Rekap Pembayaran Jasa Medis Dokter ]::",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptBayarJmDokter.jasper","report","::[ Data Rekap Pembayaran Jasa Medis Dokter ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -656,9 +657,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             
                             koderekening="";
                             try {
-                                myObj = new FileReader("./cache/akunbayar.iyem");
+                                myObj = new FileReader("./cache/akunbayarhutang.iyem");
                                 root = mapper.readTree(myObj);
-                                response = root.path("akunbayar");
+                                response = root.path("akunbayarhutang");
                                 if(response.isArray()){
                                    for(JsonNode list:response){
                                        if(list.path("NamaAkun").asText().equals(rs.getString("nama_bayar"))){
@@ -756,7 +757,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
               Valid.textKosong(BtnAll,"Nomor J.M.");
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+                i=0;
                 try {
                     //rawat jalan dr
                     ps2=koneksi.prepareStatement(
@@ -770,7 +772,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -778,8 +780,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -803,7 +806,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -811,8 +814,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -836,7 +840,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -844,8 +848,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -869,7 +874,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -877,8 +882,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakandr"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -902,7 +908,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_operasi").substring(0,19)+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -910,8 +916,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayaoperator1"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -935,7 +942,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_operasi").substring(0,19)+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -943,8 +950,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayaoperator2"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -968,7 +976,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_operasi").substring(0,19)+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -976,8 +984,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayaoperator3"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1001,7 +1010,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_operasi").substring(0,19)+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1009,8 +1018,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayadokter_anak"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1034,7 +1044,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_operasi").substring(0,19)+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1042,8 +1052,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biaya_dokter_umum"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1067,7 +1078,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_operasi").substring(0,19)+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1075,8 +1086,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biaya_dokter_pjanak"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1100,7 +1112,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_operasi").substring(0,19)+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1108,8 +1120,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kode_paket")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("biayadokter_anestesi"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1133,7 +1146,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1141,8 +1154,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakan_dokter"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1167,7 +1181,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1175,8 +1189,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("Pemeriksaan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("bagian_dokter"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1200,7 +1215,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1208,8 +1223,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_perujuk"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1234,7 +1250,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1242,8 +1258,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("Pemeriksaan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("bagian_perujuk"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1267,7 +1284,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1275,8 +1292,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_tindakan_dokter"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1300,7 +1318,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            Sequel.menyimpan("temporary","'0','"+
+                            Sequel.menyimpan("temporary","'"+i+"','"+
                                 rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"','"+
                                 rs2.getString("no_rawat")+"','"+
                                 rs2.getString("no_rkm_medis")+"','"+
@@ -1308,8 +1326,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rs2.getString("kd_jenis_prw")+"','"+
                                 rs2.getString("nm_perawatan")+"','"+
                                 Valid.SetAngka(rs2.getDouble("tarif_perujuk"))+
-                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                                "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                             );
+                            i++;
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1321,8 +1340,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ps2.close();
                         }
                     }
-                    Sequel.menyimpan("temporary","'0','>> Jumlah :','','','','','','"+tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString()+
-                        "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"
+                    Sequel.menyimpan("temporary","'"+i+"','>> Jumlah :','','','','','','"+tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString()+
+                        "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","JM Dokter"
                     ); 
 
                     Map<String, Object> param = new HashMap<>();   
@@ -1334,8 +1353,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("emailrs",akses.getemailrs());   
                     param.put("dokter",tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());   
                     param.put("bulan",Valid.SetTgl3(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()).substring(3,10));   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptSlipBayarJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    Valid.MyReportqry("rptSlipBayarJMDokter.jasper","report","[ Slip J.M. Dokter  ]","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }

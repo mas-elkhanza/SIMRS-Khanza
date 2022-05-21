@@ -133,7 +133,7 @@
                         </tr>";
 
                         while($baris = mysqli_fetch_array($hasil)) {
-                            $_sql2         = "SELECT normal-$jumlahlibur,jmlhr,normal FROM set_tahun";
+                            $_sql2         = "SELECT set_tahun.normal-$jumlahlibur,set_tahun.jmlhr,set_tahun.normal FROM set_tahun";
                              $hasil2        = bukaquery($_sql2);
                              $baris2        = mysqli_fetch_row($hasil2);
                              $jmlmsk         = empty($baris2[0])?date("d"):$baris2[0];

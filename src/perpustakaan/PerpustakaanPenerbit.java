@@ -630,7 +630,7 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptPenerbitPerpustakaan.jasper","report","::[ Data Penerbit Perpustakaan ]::","select perpustakaan_penerbit.kode_penerbit, perpustakaan_penerbit.nama_penerbit, perpustakaan_penerbit.alamat_penerbit, perpustakaan_penerbit.no_telp,"+
                    "perpustakaan_penerbit.email, perpustakaan_penerbit.website_penerbit from perpustakaan_penerbit "+
                    "where perpustakaan_penerbit.kode_penerbit like '%"+TCari.getText().trim()+"%' "+

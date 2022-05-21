@@ -645,7 +645,7 @@ public class InventarisSuplier extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::","select inventaris_suplier.kode_suplier, inventaris_suplier.nama_suplier, "+
                     " inventaris_suplier.alamat,inventaris_suplier.kota, inventaris_suplier.no_telp,inventaris_suplier.nama_bank,inventaris_suplier.rekening from inventaris_suplier "+
                     " where inventaris_suplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+

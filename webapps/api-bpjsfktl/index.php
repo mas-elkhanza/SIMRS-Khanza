@@ -906,7 +906,7 @@
                                                 $jamselesai = substr($booking['jampraktek'],6,5);
                                                 $hari       = strtoupper(hariindo($booking['tanggalperiksa']));
                                                 $kodedokter = getOne2("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs='$booking[kodedokter]'");
-                                                $kdpoli     = getOne2("SELECT maping_poli_bpjs.kd_poli_rs FROM maping_poli_bpjs inner join jadwal on maping_poli_bpjs.kd_poli_rs=jadwal.kd_poli WHERE maping_poli_bpjs.kd_poli_bpjs='$booking[kodepoli]' and jadwal.kd_dokter='$kddokter' and jadwal.hari_kerja='$hari' and jadwal.jam_mulai='$jammulai:00' and jadwal.jam_selesai='$jamselesai:00' ");
+                                                $kodepoli   = getOne2("SELECT maping_poli_bpjs.kd_poli_rs FROM maping_poli_bpjs inner join jadwal on maping_poli_bpjs.kd_poli_rs=jadwal.kd_poli WHERE maping_poli_bpjs.kd_poli_bpjs='$booking[kodepoli]' and jadwal.kd_dokter='$kodedokter' and jadwal.hari_kerja='$hari' and jadwal.jam_mulai='$jammulai:00' and jadwal.jam_selesai='$jamselesai:00' ");
                                                 $noreg      = getOne2("select no_reg from reg_periksa where no_rawat='$booking[no_rawat]'");
                                                 $data = fetch_array(bukaquery("SELECT reg_periksa.kd_poli,poliklinik.nm_poli,dokter.nm_dokter,
                                                     reg_periksa.no_reg,COUNT(reg_periksa.no_rawat) as total_antrean,

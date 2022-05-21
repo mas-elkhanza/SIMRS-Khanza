@@ -753,7 +753,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/permintaanobat.iyem")<4){
+            if(Valid.daysOld("./cache/permintaanobat.iyem")<8){
                 tampil2();
             }else{
                 tampil();

@@ -577,19 +577,19 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode3.getRowCount()!=0){
-                Sequel.queryu("truncate table temporary");
-                
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+            
                 for(int r=0;r<tabMode3.getRowCount();r++){ 
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode3.getValueAt(r,0).toString()+"','"+
                                     tabMode3.getValueAt(r,1).toString()+"','"+
                                     tabMode3.getValueAt(r,2).toString()+"','"+
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,3).toString()))+"','"+
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,4).toString()))+"','"+
-                                    Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                 }
                 
-                Valid.MyReport("rptPPNRalan.jasper","report","::[ Laporan PPN Obat Ralan ]::",param);
+                Valid.MyReportqry("rptPPNRalan.jasper","report","::[ Laporan PPN Obat Ralan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }                
         }else if(TabRawat.getSelectedIndex()==3){
             if(tabMode4.getRowCount()==0){
@@ -599,7 +599,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 Valid.MyReportqry("rptPPNJualBebas.jasper","report","::[ PPN Obat Jual Bebas ]::",
                     "select penjualan.tgl_jual,penjualan.nota_jual, "+
                     " penjualan.no_rkm_medis,pasien.nm_pasien, "+
-                    " penjualan.nip,petugas.nama,penjualan.ongkir as ppn,sum(detailjual.total) as total "+
+                    " penjualan.nip,petugas.nama,penjualan.ppn as ppn,sum(detailjual.total) as total "+
                     " from penjualan inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                     " inner join petugas on penjualan.nip=petugas.nip inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
                     " where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
@@ -916,9 +916,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps=koneksi.prepareStatement(
                     "select nota_jalan.tanggal,nota_jalan.no_nota, "+
                     " pasien.no_rkm_medis,pasien.nm_pasien,nota_jalan.no_rawat from "+
-                    " nota_jalan inner join reg_periksa inner join pasien "+
-                    " inner join tagihan_sadewa on nota_jalan.no_rawat=reg_periksa.no_rawat and "+
-                    " reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=tagihan_sadewa.no_nota "+
+                    " nota_jalan inner join reg_periksa inner join pasien on nota_jalan.no_rawat=reg_periksa.no_rawat and "+
+                    " reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     " where nota_jalan.tanggal between ? and ? and nota_jalan.no_nota like ? or "+
                     " nota_jalan.tanggal between ? and ? and pasien.no_rkm_medis like ? or "+
                     " nota_jalan.tanggal between ? and ? and pasien.nm_pasien like ? order by nota_jalan.tanggal,nota_jalan.no_nota ");
@@ -973,7 +972,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode4);
             ps=koneksi.prepareStatement("select penjualan.tgl_jual,penjualan.nota_jual, "+
                     " penjualan.no_rkm_medis,pasien.nm_pasien, "+
-                    " penjualan.nip,petugas.nama,penjualan.ongkir as ppn,sum(detailjual.total) as total "+
+                    " penjualan.nip,petugas.nama,round(penjualan.ppn) as ppn,sum(detailjual.total) as total "+
                     " from penjualan inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                     " inner join petugas on penjualan.nip=petugas.nip inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
                     " where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between ? and ? "+

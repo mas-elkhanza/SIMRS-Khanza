@@ -834,26 +834,29 @@ public final class DlgKunjunganRadRanap extends javax.swing.JDialog {
             }
              
             param.put("tanggal",Tgl2.getDate());   
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){ 
-                Sequel.menyimpan("temporary","'0','"+
-                    tabMode.getValueAt(r,0).toString()+"','"+
-                    tabMode.getValueAt(r,1).toString()+"','"+
-                    tabMode.getValueAt(r,2).toString()+"','"+
-                    tabMode.getValueAt(r,3).toString()+"','"+
-                    tabMode.getValueAt(r,4).toString()+"','"+
-                    tabMode.getValueAt(r,5).toString()+"','"+
-                    tabMode.getValueAt(r,6).toString()+"','"+
-                    tabMode.getValueAt(r,7).toString()+"','"+
-                    tabMode.getValueAt(r,8).toString()+"','"+
-                    tabMode.getValueAt(r,9).toString()+"','"+
-                    tabMode.getValueAt(r,10).toString()+"','"+
-                    tabMode.getValueAt(r,11).toString()+"','"+
-                    tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran"
-                );
+                try {
+                    Sequel.menyimpan("temporary","'"+r+"','"+
+                        tabMode.getValueAt(r,0).toString()+"','"+
+                        tabMode.getValueAt(r,1).toString()+"','"+
+                        tabMode.getValueAt(r,2).toString()+"','"+
+                        tabMode.getValueAt(r,3).toString()+"','"+
+                        tabMode.getValueAt(r,4).toString()+"','"+
+                        tabMode.getValueAt(r,5).toString()+"','"+
+                        tabMode.getValueAt(r,6).toString()+"','"+
+                        tabMode.getValueAt(r,7).toString()+"','"+
+                        tabMode.getValueAt(r,8).toString()+"','"+
+                        tabMode.getValueAt(r,9).toString()+"','"+
+                        tabMode.getValueAt(r,10).toString()+"','"+
+                        tabMode.getValueAt(r,11).toString()+"','"+
+                        tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran"
+                    );
+                } catch (Exception e) {
+                }
             }
                
-            Valid.MyReport("rptKunjunganRadRanap.jasper","report","::[ Laporan Kunjungan Radiologi Rawat Inap ]::",param);
+            Valid.MyReportqry("rptKunjunganRadRanap.jasper","report","::[ Laporan Kunjungan Radiologi Rawat Inap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

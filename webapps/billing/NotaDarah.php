@@ -18,8 +18,9 @@
         $pasien = str_replace("_"," ",$_GET['pasien']); 
         $besarppn = str_replace("_"," ",$_GET['besarppn']); 
         $bayar = str_replace("_"," ",$_GET['bayar']); 
+        $alamatip  = str_replace("_"," ",$_GET['alamatip']); 
 
-        $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9 from temporary order by no asc";            
+        $_sql = "SELECT temporary.no,temporary.temp1,temporary.temp2,temporary.temp3,temporary.temp4,temporary.temp5,temporary.temp6,temporary.temp7,temporary.temp8,temporary.temp9,temporary.temp10,temporary.temp11,temporary.temp12,temporary.temp13 from temporary where temporary.temp37='$alamatip' order by temporary.no";            
         $hasil=bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
@@ -28,40 +29,40 @@
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>
                            <table width='100%' bgcolor='#ffffff' padding='0' align='left' border='0' class='tbl_form'>
-								<tr>
-									<td padding='0'>
-										<img width='60' height='60' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
-									</td>
-									<td>
-									<center>
-											<font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
-                                                                                        <font color='000000' size='2'  face='Tahoma'>
-                                                                                            ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
-                                                                                            ".$setting["kontak"].", E-mail : ".$setting["email"]."
-                                                                                        </font> 
-									</center>
-									</td>
-								</tr>
-						   </table>
+                                <tr>
+                                    <td padding='0'>
+                                        <img width='60' height='60' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+                                    </td>
+                                    <td>
+                                    <center>
+                                        <font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+                                        <font color='000000' size='2'  face='Tahoma'>
+                                            ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
+                                            ".$setting["kontak"].", E-mail : ".$setting["email"]."
+                                        </font> 
+                                    </center>
+                                    </td>
+                                </tr>
+                           </table>
                        </td>
                  </tr>
                  <tr>
-					 <td colspan='6'><hr/>
-						 <table width=100%>
-							 <tr class='isi14'>
-								<td width='25%'>
-								   <font color='000000' size='2' face='Tahoma'>No.Penyerahan</font>
-								</td>
-                                <td width='25%'>
-								   <font color='000000' size='2' face='Tahoma'>: $nopenyerahan</font>
-								</td>
-                                <td width='25%'>
-								   <font color='000000' size='2' face='Tahoma'>Tanggal</font>
-								</td>
-                                <td width='25%'>
-								   <font color='000000' size='2' face='Tahoma'>: $tanggal</font>
-								</td>                                                                
-							 </tr> 
+                     <td colspan='6'><hr/>
+                             <table width=100%>
+                                 <tr class='isi14'>
+                                    <td width='25%'>
+                                       <font color='000000' size='2' face='Tahoma'>No.Penyerahan</font>
+                                    </td>
+                                    <td width='25%'>
+                                       <font color='000000' size='2' face='Tahoma'>: $nopenyerahan</font>
+                                    </td>
+                                    <td width='25%'>
+                                       <font color='000000' size='2' face='Tahoma'>Tanggal</font>
+                                    </td>
+                                    <td width='25%'>
+                                   <font color='000000' size='2' face='Tahoma'>: $tanggal</font>
+                                </td>                                                                
+                                </tr> 
 							 <tr class='isi14'>
 								<td width='25%'>
 								   <font color='000000' size='2' face='Tahoma'>Petugas P.J.</font>

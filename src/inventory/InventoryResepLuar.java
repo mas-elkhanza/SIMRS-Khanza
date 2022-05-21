@@ -1012,7 +1012,7 @@ private void BtnSeek5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
     if(TabRawat.getSelectedIndex()==0){
         for(i=0;i<tbResep.getRowCount();i++){ 
-            tbResep.setValueAt("",i,1);
+            tbResep.setValueAt("",i,0);
             tbResep.setValueAt("",i,6);
         }
     }else if(TabRawat.getSelectedIndex()==1){

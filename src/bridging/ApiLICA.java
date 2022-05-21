@@ -7,6 +7,7 @@ package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import java.security.KeyManagementException;
@@ -44,6 +45,7 @@ public class ApiLICA {
     private sekuel Sequel=new sekuel();
     private JsonNode response;
     private ObjectMapper mapper = new ObjectMapper();
+    private int i=0;
     
     public ApiLICA(){
         super();
@@ -265,16 +267,18 @@ public class ApiLICA {
             System.out.println("JSON : "+stringbalik);
             root = mapper.readTree(stringbalik);
             response = root.path("tpas");
-            Sequel.queryu("truncate table temporary_permintaan_lab");
+            Sequel.queryu("delete from temporary_permintaan_lab where temp37='"+akses.getalamatip()+"'");
             if(response.isArray()){
+                i=0;
                 for(JsonNode list:response){
-                    Sequel.menyimpan("temporary_permintaan_lab","'0','"+root.path("id_kunjungan").asText()+"','"+
+                    Sequel.menyimpan("temporary_permintaan_lab","'"+i+"','"+root.path("id_kunjungan").asText()+"','"+
                             list.path("nmdisplay").asText()+"','"+
                             list.path("hasil").asText()+"','"+
                             list.path("nn").asText()+"','"+
                             list.path("satuan").asText()+"','"+
                             list.path("keterangan").asText()+"','"+
-                            list.path("tindakan_id").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                            list.path("tindakan_id").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Periksa Lab"); 
+                    i++;
                 }
             }
         } catch (Exception ex) {

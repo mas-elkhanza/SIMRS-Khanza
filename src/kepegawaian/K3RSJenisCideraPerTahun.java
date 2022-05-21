@@ -265,10 +265,10 @@ public final class K3RSJenisCideraPerTahun extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                 if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+r+"','"+
                                     tabMode.getValueAt(r,0).toString()+"','"+
                                     tabMode.getValueAt(r,1).toString()+"','"+
                                     tabMode.getValueAt(r,2).toString()+"','"+
@@ -283,11 +283,11 @@ public final class K3RSJenisCideraPerTahun extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,11).toString()+"','"+
                                     tabMode.getValueAt(r,12).toString()+"','"+
                                     tabMode.getValueAt(r,13).toString()+"','"+
-                                    tabMode.getValueAt(r,14).toString()+"','','','','','','','','','','','','','','','','','','','','','',''","Jenis Cidera");
+                                    tabMode.getValueAt(r,14).toString()+"','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Jenis Cidera");
                 }                    
             }
                
-            Valid.MyReport("rptPeristiwaK3RSJenisCideraPerTahun.jasper","report","::[ Laporan Rekap Jenis Cidera K3 Per Tahun ]::",param);
+            Valid.MyReportqry("rptPeristiwaK3RSJenisCideraPerTahun.jasper","report","::[ Laporan Rekap Jenis Cidera K3 Per Tahun ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

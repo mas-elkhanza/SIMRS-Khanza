@@ -49,7 +49,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
     private InventarisCariSuplier suplier=new InventarisCariSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
-    private String koderekening="",tanggaldatang="",tanggaltempo="";
+    private String koderekening="",tanggaldatang="",tanggaltempo="",Kontra_Penerimaan_AsetInventaris=Sequel.cariIsi("select Kontra_Penerimaan_AsetInventaris from set_akun");
     private double sisahutang=0,cicilan=0,bayar=0;
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
@@ -304,6 +304,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
         AkunBayar = new widget.ComboBox();
         keterangan = new widget.TextBox();
         label39 = new widget.Label();
+        BtnAll1 = new widget.Button();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         FormPhoto = new widget.PanelBiasa();
@@ -678,7 +679,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label36);
-        label36.setBounds(335, 40, 80, 23);
+        label36.setBounds(345, 40, 80, 23);
 
         no_bukti.setHighlighter(null);
         no_bukti.setName("no_bukti"); // NOI18N
@@ -694,7 +695,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi4.add(label16);
-        label16.setBounds(335, 10, 80, 23);
+        label16.setBounds(345, 10, 80, 23);
 
         nip.setName("nip"); // NOI18N
         nip.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -704,13 +705,13 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
             }
         });
         panelisi4.add(nip);
-        nip.setBounds(418, 10, 100, 23);
+        nip.setBounds(428, 10, 100, 23);
 
         nama_petugas.setEditable(false);
         nama_petugas.setName("nama_petugas"); // NOI18N
         nama_petugas.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi4.add(nama_petugas);
-        nama_petugas.setBounds(520, 10, 200, 23);
+        nama_petugas.setBounds(530, 10, 190, 23);
 
         tgl_bayar.setDisplayFormat("dd-MM-yyyy");
         tgl_bayar.setName("tgl_bayar"); // NOI18N
@@ -746,7 +747,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
             }
         });
         panelisi4.add(AkunBayar);
-        AkunBayar.setBounds(78, 40, 251, 23);
+        AkunBayar.setBounds(78, 40, 222, 23);
 
         keterangan.setHighlighter(null);
         keterangan.setName("keterangan"); // NOI18N
@@ -756,13 +757,26 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
             }
         });
         panelisi4.add(keterangan);
-        keterangan.setBounds(418, 40, 332, 23);
+        keterangan.setBounds(428, 40, 322, 23);
 
         label39.setText("No.Bukti :");
         label39.setName("label39"); // NOI18N
         label39.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label39);
         label39.setBounds(0, 10, 75, 23);
+
+        BtnAll1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnAll1.setMnemonic('M');
+        BtnAll1.setToolTipText("Alt+M");
+        BtnAll1.setName("BtnAll1"); // NOI18N
+        BtnAll1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAll1ActionPerformed(evt);
+            }
+        });
+        panelisi4.add(BtnAll1);
+        BtnAll1.setBounds(302, 40, 28, 23);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
@@ -822,10 +836,10 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
-            for(int i=0;i<row;i++){  
-                    Sequel.menyimpan("temporary","'0','"+
+            for(i=0;i<row;i++){  
+                    Sequel.menyimpan("temporary","'"+i+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
@@ -836,10 +850,12 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()))+"','"+
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()))+"','"+
                                 tabMode.getValueAt(i,12).toString()+"','"+
-                                tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Piutang Pasien"); 
+                                tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Piutang Pasien"); 
             }
-            Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.menyimpan("temporary","'0','TOTAL HUTANG :','','','','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Tindakan Dokter"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','TOTAL HUTANG :','','','','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Harian Tindakan Dokter"); 
             
             
             Map<String, Object> param = new HashMap<>();                 
@@ -849,8 +865,8 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptHutangAsetInventaris.jasper","report","::[ Data Hutang Aset/Inventaris ]::",param);
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptHutangAsetInventaris.jasper","report","::[ Data Hutang Aset/Inventaris ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -954,7 +970,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         no_bukti.requestFocus();
-        tampilAkunBayar();
+        try {
+            if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+                tampilAkunBayar();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
@@ -1001,9 +1022,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             koderekening="";
             try {
-                myObj = new FileReader("./cache/akunbayar.iyem");
+                myObj = new FileReader("./cache/akunbayarhutang.iyem");
                 root = mapper.readTree(myObj);
-                response = root.path("akunbayar");
+                response = root.path("akunbayarhutang");
                 if(response.isArray()){
                    for(JsonNode list:response){
                        if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
@@ -1032,7 +1053,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             } 
                             Sequel.queryu("delete from tampjurnal");
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                tabMode.getValueAt(i,14).toString(),"HUTANG BARANG ASET/INVENTARIS",tabMode.getValueAt(i,10).toString(),"0"
+                                Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS",tabMode.getValueAt(i,10).toString(),"0"
                             });                     
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 koderekening,AkunBayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,10).toString()
@@ -1044,6 +1065,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             sukses=false;
                         }
                     }                        
+                }else{
+                    if(!notagihan.equals("")){
+                        Sequel.mengedit("inventaris_pemesanan","no_faktur='"+tabMode.getValueAt(i,1).toString()+"'","status='Belum Lunas'");
+                    }
                 }
             }
             
@@ -1188,6 +1213,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
+    private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
+        tampilAkunBayar();
+    }//GEN-LAST:event_BtnAll1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1207,6 +1236,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AkunBayar;
     private widget.Button BtnAll;
+    private widget.Button BtnAll1;
     private widget.Button BtnBayar;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
@@ -1278,22 +1308,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "inventaris_suplier.nama_bank,inventaris_suplier.rekening,inventaris_pemesanan.kd_rek_aset from inventaris_pemesanan inner join inventaris_suplier inner join petugas "+
                     "on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
                     "and inventaris_pemesanan.nip=petugas.nip where "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.no_faktur like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.no_order like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.tgl_tempo like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_suplier.nama_suplier like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and petugas.nama like ? order by inventaris_pemesanan.tgl_tempo ");
+                    tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') and inventaris_suplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (inventaris_pemesanan.no_faktur like ? or inventaris_pemesanan.no_order like ? or inventaris_pemesanan.tgl_tempo like ? or "+
+                    "inventaris_suplier.nama_suplier like ? or petugas.nama like ?)")+" order by inventaris_pemesanan.tgl_tempo ");
             try {
                 ps.setString(1,"%"+nmsup.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmsup.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmsup.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 sisahutang=0;
                 cicilan=0;
@@ -1384,17 +1411,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void tampilAkunBayar() {         
          try{      
-             file=new File("./cache/akunbayar.iyem");
+             file=new File("./cache/akunbayarhutang.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
              iyem="";
-             ps=koneksi.prepareStatement("select * from akun_bayar order by nama_bayar");
+             ps=koneksi.prepareStatement("select * from akun_bayar_hutang order by akun_bayar_hutang.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1407,7 +1434,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                  } 
              }
 
-             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
+             fileWriter.write("{\"akunbayarhutang\":["+iyem.substring(0,iyem.length()-1)+"]}");
              fileWriter.flush();
              fileWriter.close();
              iyem=null;

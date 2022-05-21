@@ -821,7 +821,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptAuditKepatuhanAPD.jasper","report","::[ Data Audit Kepatuhan APD ]::",

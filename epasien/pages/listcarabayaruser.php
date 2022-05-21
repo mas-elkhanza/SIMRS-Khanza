@@ -22,7 +22,7 @@
                         </thead>
                         <tbody>
                         <?php 
-                           $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where png_jawab <>'-' and png_jawab not like '%umum%' order by png_jawab");
+                           $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where status='1' and png_jawab <>'-' and png_jawab not like '%umum%' order by png_jawab");
                            while($rsqueryasuransi = mysqli_fetch_array($queryasuransi)) {
                                echo "<tr>
                                        <td align='left'>".$rsqueryasuransi["png_jawab"]."</td>

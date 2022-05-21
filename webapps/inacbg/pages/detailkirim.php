@@ -35,10 +35,23 @@
             $tgl_registrasi = $baris["tgl_registrasi"];
             $jam_reg      = $baris["jam_reg"];
             $nm_poli      = $baris["nm_poli"];
-            $nm_dokter    = $baris["nm_dokter"];
-            $nm_dokter2   = getOne("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='$norawat'");
+            $nm_dokter2="";
+            $a=1;
+            $hasildokter=bukaquery("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='".$baris["no_rawat"]."'");
+            while($barisdokter = mysqli_fetch_array($hasildokter)) {
+                if($a==1){
+                    $nm_dokter2=$barisdokter["nm_dokter"];
+                }else{
+                    $nm_dokter2=$nm_dokter2."#".$barisdokter["nm_dokter"];
+                }                
+                $a++;
+            } 
+            
+            $nm_dokter    = "";
             if(!empty($nm_dokter2)){
                 $nm_dokter=$nm_dokter2;
+            }else{
+                $nm_dokter= $baris["nm_dokter"];
             }
             $status_lanjut  = $baris["status_lanjut"];
             $png_jawab    = $baris["png_jawab"];
@@ -61,6 +74,29 @@
                     $nosep= GenerateNomorCovid();
                     Tambah3("inacbg_noklaim_corona","'$norawat','$nosep'");
                 }
+            }
+            
+            $naikkelas=getOne("select klsnaik from bridging_sep where no_rawat='$norawat'");
+            if(empty($naikkelas)){
+                $naikkelas=getOne("select klsnaik from bridging_sep_internal where no_rawat='$norawat'");
+            }
+            
+            $upgrade_class_ind="0";
+            if(!empty($naikkelas)){
+                $upgrade_class_ind="1";
+                if($naikkelas=="1"){
+                    $naikkelas="Kelas VVIP";
+                }else if($naikkelas=="2"){
+                    $naikkelas="Kelas VIP";
+                }else if($naikkelas=="3"){
+                    $naikkelas="Kelas 1";
+                }else if($naikkelas=="4"){
+                    $naikkelas="Kelas 2";
+                }else{
+                    $naikkelas="";
+                }   
+            }else{
+                $naikkelas="";
             }
             
             echo "<input type=hidden name=no_rawat value='$norawat'>
@@ -204,6 +240,7 @@
                 <td width="41%" >Indikator Upgrade Kelas</td><td width="">:</td>
                 <td width="57%">
                     <select name="upgrade_class_ind" class="text3">
+                       <option value="<?php echo $upgrade_class_ind;?>"><?php echo $upgrade_class_ind;?></option>
                        <option value="0">0</option>
                        <option value="1">1</option>
                     </select> 
@@ -213,7 +250,7 @@
                 <td width="41%" >Naik ke Kelas</td><td width="">:</td>
                 <td width="57%">
                     <select name="upgrade_class_class" class="text2">
-                       <option value=""></option>
+                       <option value="<?php echo $naikkelas;?>"><?php echo $naikkelas;?></option>
                        <option value="kelas_1">Kelas 1</option>
                        <option value="kelas_2">Kelas 2</option>
                        <option value="vip">Kelas VIP</option>
@@ -317,7 +354,8 @@
                 </td>
             </tr>
             <?php 
-                $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis'");
+                $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan not like '%terapi%'")+
+                                    getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan not like '%terapi%'");
                 if($prosedur_non_bedah==""){
                     $prosedur_non_bedah="0";
                 }
@@ -330,7 +368,7 @@
                 if($konsultasi==""){
                     $konsultasi="0";
                 }
-                $tenaga_ahli=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis'");
+                $tenaga_ahli=0;
                 if($tenaga_ahli==""){
                     $tenaga_ahli="0";
                 }
@@ -373,6 +411,11 @@
                             getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Service'"));
                 if($sewa_alat==""){
                     $sewa_alat="0";
+                }
+                $rehabilitasi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan like '%terapi%'")+
+                              getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan like '%terapi%'");
+                if($rehabilitasi==""){
+                    $rehabilitasi="0";
                 }
             ?>
             <tr class="head">

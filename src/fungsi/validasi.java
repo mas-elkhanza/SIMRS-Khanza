@@ -476,6 +476,30 @@ public final class validasi {
         }
     }
     
+    public int hariAkhad(int month,int year){ 
+        j=0; 
+        Calendar calendar=Calendar.getInstance(); 
+        calendar.set(year, month-1,1); 
+        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); 
+        
+        for(i=1;i<=days;i++) { 
+            calendar.set(year, month-1, i); 
+            int day=calendar.get(Calendar.DAY_OF_WEEK); 
+            if(day==1){
+                j++ ;
+            }  
+        } 
+        
+        return j; 
+    } 
+    
+    public int jumlahHari(int month,int year){ 
+        Calendar calendar=Calendar.getInstance(); 
+        calendar.set(year, month-1,1); 
+        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); 
+        return days; 
+    } 
+    
     public void loadCombo(JComboBox cmb,String query){
         cmb.removeAllItems();
         try {

@@ -535,7 +535,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         this.kd_pj=penjab;
         this.kelas=kelasoperasi;
         try {
-            if(Valid.daysOld("./cache/paketoperasi.iyem")<4){
+            if(Valid.daysOld("./cache/paketoperasi.iyem")<8){
                 tampil2();
             }
         } catch (Exception e) {

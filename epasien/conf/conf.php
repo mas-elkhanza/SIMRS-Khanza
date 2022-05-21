@@ -30,39 +30,19 @@
      
     function cleankar($dirty){
          $konektor=bukakoneksi();
-	if (get_magic_quotes_gpc()) {
-            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
-	}else{
-            $clean = mysqli_real_escape_string($konektor,$dirty);	
-	} 
-         mysqli_close($konektor);
+	 $clean = mysqli_real_escape_string($konektor,$dirty);	
+	 mysqli_close($konektor);
 	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
     }
     
     function cleankar2($dirty){
          $konektor=bukakoneksi();
-	if (get_magic_quotes_gpc()) {
-            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
-	}else{
-            $clean = mysqli_real_escape_string($konektor,$dirty);	
-	} 
+	 $clean = mysqli_real_escape_string($konektor,$dirty);	
          mysqli_close($konektor);
 	return $clean;
     }
     
     function antisqlinjection(){
-       if(!get_magic_quotes_gpc()){
-            $_GET = array_map('mysqli_real_escape_string', $_GET); 
-            $_POST = array_map('mysqli_real_escape_string', $_POST); 
-            $_COOKIE = array_map('mysqli_real_escape_string', $_COOKIE);
-        }else{  
-            $_GET = array_map('stripslashes', $_GET); 
-            $_POST = array_map('stripslashes', $_POST); 
-            $_COOKIE = array_map('stripslashes', $_COOKIE);
-            $_GET = array_map('mysqli_real_escape_string', $_GET); 
-            $_POST = array_map('mysqli_real_escape_string', $_POST); 
-            $_COOKIE = array_map('mysqli_real_escape_string', $_COOKIE);
-        }
         if (strlen($_SERVER['REQUEST_URI']) > 255 || strpos($_SERVER['REQUEST_URI'], "concat") || 
                 strpos($_SERVER['REQUEST_URI'], "union") || strpos($_SERVER['REQUEST_URI'], "base64") || 
                 strpos($_SERVER['REQUEST_URI'], "'")||strpos($_SERVER['REQUEST_URI'], "/")||

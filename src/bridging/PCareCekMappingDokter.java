@@ -155,7 +155,7 @@ public final class PCareCekMappingDokter extends javax.swing.JDialog {
 
         jLabel16.setText("Kode/Nama Dokter :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(120, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass6.add(jLabel16);
 
         Poli.setName("Poli"); // NOI18N

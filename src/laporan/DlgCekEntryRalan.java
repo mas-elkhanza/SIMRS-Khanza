@@ -258,7 +258,6 @@ public final class DlgCekEntryRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
             Map<String, Object> param = new HashMap<>();         
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -267,10 +266,10 @@ public final class DlgCekEntryRalan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                 if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary","'"+r+"','"+
                                     tabMode.getValueAt(r,0).toString()+"','"+
                                     tabMode.getValueAt(r,1).toString()+"','"+
                                     tabMode.getValueAt(r,2).toString()+"','"+
@@ -284,11 +283,10 @@ public final class DlgCekEntryRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,10).toString()+"','"+
                                     tabMode.getValueAt(r,11).toString()+"','"+
                                     tabMode.getValueAt(r,12).toString()+"','"+
-                                    tabMode.getValueAt(r,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tabMode.getValueAt(r,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
                 }                    
             }
-               
-            Valid.MyReport("rptCekEntryRalan.jasper",param,"::[ Laporan Pengecekan Entry Ralan ]::");
+            Valid.MyReportqry("rptCekEntryRalan.jasper","report","::[ Laporan Pengecekan Entry Ralan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

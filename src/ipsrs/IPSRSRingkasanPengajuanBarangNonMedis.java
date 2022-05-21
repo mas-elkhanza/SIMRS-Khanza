@@ -903,7 +903,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("tanggal1",Valid.SetTgl(Tanggal1.getSelectedItem()+""));  
             param.put("tanggal2",Valid.SetTgl(Tanggal2.getSelectedItem()+""));  
             param.put("parameter","%"+TCari.getText().trim()+"%");   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptRingkasanPengajuanNonMedis.jasper","report","::[ Laporan Ringkasan Pengajuan Barang Non Medis ]::",
                     "select detail_pengajuan_barang_nonmedis.kode_brng,ipsrsbarang.nama_brng,detail_pengajuan_barang_nonmedis.kode_sat,kodesatuan.satuan,ipsrsjenisbarang.nm_jenis as namajenis,"+
                     "sum(detail_pengajuan_barang_nonmedis.jumlah) as jumlah,sum(detail_pengajuan_barang_nonmedis.total) as total "+

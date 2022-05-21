@@ -185,15 +185,53 @@
             }else{
                 $discharge_status="1";
             }
-                          
-            $nm_dokter    = getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'");
-            $nm_dokter2   = getOne("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='".$baris["no_rawat"]."'");
+             
+            
+            $nm_dokter2="";
+            $a=1;
+            $hasildokter=bukaquery("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='".$baris["no_rawat"]."'");
+            while($barisdokter = mysqli_fetch_array($hasildokter)) {
+                if($a==1){
+                    $nm_dokter2=$barisdokter["nm_dokter"];
+                }else{
+                    $nm_dokter2=$nm_dokter2."#".$barisdokter["nm_dokter"];
+                }                
+                $a++;
+            } 
+            
+            $nm_dokter    = "";
             if(!empty($nm_dokter2)){
                 $nm_dokter=$nm_dokter2;
+            }else{
+                $nm_dokter    = getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'");
             }
+            
+            $naikkelas=getOne("select klsnaik from bridging_sep where no_rawat='$norawat'");
+            if(empty($naikkelas)){
+                $naikkelas=getOne("select klsnaik from bridging_sep_internal where no_rawat='$norawat'");
+            }
+            
+            $upgrade_class_ind="0";
+            if(!empty($naikkelas)){
+                $upgrade_class_ind="1";
+                if($naikkelas=="1"){
+                    $naikkelas="Kelas VVIP";
+                }else if($naikkelas=="2"){
+                    $naikkelas="Kelas VIP";
+                }else if($naikkelas=="3"){
+                    $naikkelas="Kelas 1";
+                }else if($naikkelas=="4"){
+                    $naikkelas="Kelas 2";
+                }else{
+                    $naikkelas="";
+                }   
+            }else{
+                $naikkelas="";
+            }
+            
             BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
             EditUlangKlaim($baris["no_sep"]);
-            UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"],$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","","","","","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"]);
+            UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"],$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"]);
             
             echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&action=no&keyword=$keyword'>";
         }if($action=="InputDiagnosa") {

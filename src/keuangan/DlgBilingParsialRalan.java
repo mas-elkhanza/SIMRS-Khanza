@@ -1064,7 +1064,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbBilling.setDefaultRenderer(Object.class, new WarnaTable());
         
         try {
-            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
+            psset_tarif=koneksi.prepareStatement(
+                    "select set_tarif.poli_ralan,set_tarif.cara_bayar_ralan,set_tarif.cara_bayar_radiologi,"+
+                    "set_tarif.kelas_radiologi,set_tarif.cara_bayar_lab,set_tarif.kelas_lab from set_tarif");
             try {
                 rsset_tarif=psset_tarif.executeQuery();
                 if(rsset_tarif.next()){
@@ -1097,10 +1099,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         } 
         
         try {
-            notaralan=Sequel.cariIsi("select cetaknotasimpanralan from set_nota"); 
-            centangdokterralan=Sequel.cariIsi("select centangdokterralan from set_nota"); 
-            rinciandokterralan=Sequel.cariIsi("select rinciandokterralan from set_nota"); 
-            tampilkan_ppnobat_ralan=Sequel.cariIsi("select tampilkan_ppnobat_ralan from set_nota"); 
+            notaralan=Sequel.cariIsi("select set_nota.cetaknotasimpanralan from set_nota"); 
+            centangdokterralan=Sequel.cariIsi("select set_nota.centangdokterralan from set_nota"); 
+            rinciandokterralan=Sequel.cariIsi("select set_nota.rinciandokterralan from set_nota"); 
+            tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota"); 
         } catch (Exception e) {
             notaralan="No"; 
             centangdokterralan="No";
@@ -5528,7 +5530,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     
                     if(subttl>0){
                         if(tampilkan_ppnobat_ralan.equals("Yes")){
-                            ppnobat=Valid.roundUp(subttl*0.1,100);
+                            ppnobat=Math.round(subttl*0.11);
                             tabModeBilling.addRow(new Object[]{
                                 "","PPN Obat",":",ppnobat,1,ppnobat,"Obat"
                             });   
@@ -6147,7 +6149,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         
         for(i=0;i<tbTindakanPrBayar.getRowCount();i++){
             if(tbTindakanPrBayar.getValueAt(i,0).toString().equals("true")){
-                if(tbTindakanDrBayar.getValueAt(i,13).toString().equals("Suspen")){
+                if(tbTindakanPrBayar.getValueAt(i,13).toString().equals("Suspen")){
                     Suspen_Tindakan_Ralan=Suspen_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,4).toString());
                 }else{
                     Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,8).toString());
@@ -6161,7 +6163,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         
         for(i=0;i<tbTindakanDrPrBayar.getRowCount();i++){
             if(tbTindakanDrPrBayar.getValueAt(i,0).toString().equals("true")){
-                if(tbTindakanDrBayar.getValueAt(i,13).toString().equals("Suspen")){
+                if(tbTindakanDrPrBayar.getValueAt(i,13).toString().equals("Suspen")){
                     Suspen_Tindakan_Ralan=Suspen_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,4).toString());
                 }else{
                     Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,7).toString());
@@ -6326,7 +6328,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         } 
         if(ttlObat>0){
             if(tampilkan_ppnobat_ralan.equals("Yes")){
-                ppnobat=Valid.roundUp(ttlObat*0.1,100); 
+                ppnobat=Math.round(ttlObat*0.11); 
                 ttlObat=ttlObat+ppnobat;
                 ttl=ttl+ppnobat;
             }                        
@@ -7110,6 +7112,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     if(Sequel.cariIsiAngka("select sum(totalbiaya) from billing where no_rawat=?",TNoRw.getText())==0){
                         Sequel.queryu2("delete from billing where no_rawat=?",1,new String[]{TNoRw.getText()});
                         Sequel.queryu2("delete from nota_jalan where no_rawat=?",1,new String[]{TNoRw.getText()});
+                        Sequel.queryu2("update reg_periksa set status_bayar='Belum Bayar' where no_rawat=?",1,new String[]{TNoRw.getText()});
                     }
                     
                     Sequel.Commit();

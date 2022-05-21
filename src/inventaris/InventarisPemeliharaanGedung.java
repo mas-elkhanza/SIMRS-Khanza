@@ -748,7 +748,7 @@ public final class InventarisPemeliharaanGedung extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptPemeliharaanGedung.jasper","report","::[ Data Pemeliharaan Gedung ]::",
                     "select pemeliharaan_gedung.no_pemeliharaan,pemeliharaan_gedung.nip,petugas.nama,pemeliharaan_gedung.uraian_kegiatan,"+
                     "pemeliharaan_gedung.tanggal,pemeliharaan_gedung.pelaksana,pemeliharaan_gedung.biaya, "+

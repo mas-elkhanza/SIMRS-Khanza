@@ -2,6 +2,7 @@ package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import java.io.UnsupportedEncodingException;
@@ -41,6 +42,7 @@ public class ApiMEDQLAB {
     private sekuel Sequel=new sekuel();
     private JsonNode response,response2,response3,response4;
     private ObjectMapper mapper = new ObjectMapper();
+    private int i=0;
     
     public ApiMEDQLAB(){
         try {                   
@@ -367,9 +369,10 @@ public class ApiMEDQLAB {
             System.out.println("Result : "+requestJson);
             root = mapper.readTree(requestJson);
             if(root.path("metaData").path("code").asText().equals("200")){
-                Sequel.queryu("truncate table temporary_permintaan_lab");
+                Sequel.queryu("delete from temporary_permintaan_lab where temp37='"+akses.getalamatip()+"'");
                 response = root.path("response").path("data").path("pemeriksaan"); 
                 if(response.isArray()){
+                    i=0;
                     for(JsonNode list:response){
                         hasil="";
                         if(!list.path("value").asText().equals("")){
@@ -384,8 +387,9 @@ public class ApiMEDQLAB {
                         
                         System.out.println(" id : "+list.path("testid_simrs").asText()+", name : "+list.path("name").asText()+", value : "+list.path("value").asText()+", value_string : "+list.path("value_string").asText()+", value_memo : "+list.path("value_memo").asText()+", keterangan : "+list.path("flag").asText()+", nilai_normal : "+list.path("nilai_normal").asText());
                         Sequel.menyimpan(
-                            "temporary_permintaan_lab","'0','"+list.path("testid_simrs").asText()+"','"+list.path("name").asText()+"','"+hasil+"','"+list.path("flag").asText()+"','"+list.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                            "temporary_permintaan_lab","'"+i+"','"+list.path("testid_simrs").asText()+"','"+list.path("name").asText()+"','"+hasil+"','"+list.path("flag").asText()+"','"+list.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Periksa Lab"
                         ); 
+                        i++;
                         
                         response2 = list.path("childs");
                         if(response2.isArray()){
@@ -403,9 +407,9 @@ public class ApiMEDQLAB {
                                 
                                 System.out.println(" id : "+list2.path("testid_simrs").asText()+", name : "+list2.path("name").asText()+", value : "+list2.path("value").asText()+", value_string : "+list2.path("value_string").asText()+", value_memo : "+list2.path("value_memo").asText()+", keterangan : "+list2.path("flag").asText()+", nilai_normal : "+list2.path("nilai_normal").asText());
                                 Sequel.menyimpan(
-                                    "temporary_permintaan_lab","'0','"+list2.path("testid_simrs").asText()+"','"+list2.path("name").asText()+"','"+hasil+"','"+list2.path("flag").asText()+"','"+list2.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                                    "temporary_permintaan_lab","'"+i+"','"+list2.path("testid_simrs").asText()+"','"+list2.path("name").asText()+"','"+hasil+"','"+list2.path("flag").asText()+"','"+list2.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Periksa Lab"
                                 );
-                                
+                                i++;
                                 response3 = list2.path("childs");
                                 if(response3.isArray()){
                                     for(JsonNode list3:response3){
@@ -422,9 +426,9 @@ public class ApiMEDQLAB {
 
                                         System.out.println(" id : "+list3.path("testid_simrs").asText()+", name : "+list3.path("name").asText()+", value : "+list3.path("value").asText()+", value_string : "+list3.path("value_string").asText()+", value_memo : "+list3.path("value_memo").asText()+", keterangan : "+list3.path("flag").asText()+", nilai_normal : "+list3.path("nilai_normal").asText());
                                         Sequel.menyimpan(
-                                            "temporary_permintaan_lab","'0','"+list3.path("testid_simrs").asText()+"','"+list3.path("name").asText()+"','"+hasil+"','"+list3.path("flag").asText()+"','"+list3.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                                            "temporary_permintaan_lab","'"+i+"','"+list3.path("testid_simrs").asText()+"','"+list3.path("name").asText()+"','"+hasil+"','"+list3.path("flag").asText()+"','"+list3.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Periksa Lab"
                                         );
-                                        
+                                        i++;
                                         response4 = list3.path("childs");
                                         if(response4.isArray()){
                                             for(JsonNode list4:response4){
@@ -441,8 +445,9 @@ public class ApiMEDQLAB {
 
                                                 System.out.println(" id : "+list4.path("testid_simrs").asText()+", name : "+list4.path("name").asText()+", value : "+list4.path("value").asText()+", value_string : "+list4.path("value_string").asText()+", value_memo : "+list4.path("value_memo").asText()+", keterangan : "+list4.path("flag").asText()+", nilai_normal : "+list4.path("nilai_normal").asText());
                                                 Sequel.menyimpan(
-                                                    "temporary_permintaan_lab","'0','"+list4.path("testid_simrs").asText()+"','"+list4.path("name").asText()+"','"+hasil+"','"+list4.path("flag").asText()+"','"+list4.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"
+                                                    "temporary_permintaan_lab","'"+i+"','"+list4.path("testid_simrs").asText()+"','"+list4.path("name").asText()+"','"+hasil+"','"+list4.path("flag").asText()+"','"+list4.path("nilai_normal").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Periksa Lab"
                                                 );
+                                                i++;
                                             }
                                         }
                                     }

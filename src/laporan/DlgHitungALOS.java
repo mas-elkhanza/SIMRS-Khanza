@@ -409,10 +409,10 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
                 param.put("tanggal",Tgl2.getDate());   
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!Tabel1.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+r+"','"+
                                         tabMode.getValueAt(r,0).toString()+"','"+
                                         tabMode.getValueAt(r,1).toString()+"','"+
                                         tabMode.getValueAt(r,2).toString()+"','"+
@@ -421,11 +421,11 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,5).toString()+"','"+
                                         tabMode.getValueAt(r,6).toString()+"','"+
                                         tabMode.getValueAt(r,7).toString()+"','"+
-                                        tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                        tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
                     }                    
                 }
                    
-                Valid.MyReport("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::",param);
+                Valid.MyReportqry("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabMode2.getRowCount()==0){
@@ -442,10 +442,10 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
                 param.put("tanggal",Tgl2.getDate());   
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!Tabel2.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'0','"+
+                        Sequel.menyimpan("temporary","'"+r+"','"+
                                         tabMode2.getValueAt(r,0).toString()+"','"+
                                         tabMode2.getValueAt(r,1).toString()+"','"+
                                         tabMode2.getValueAt(r,2).toString()+"','"+
@@ -454,11 +454,11 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode2.getValueAt(r,5).toString()+"','"+
                                         tabMode2.getValueAt(r,6).toString()+"','"+
                                         tabMode2.getValueAt(r,7).toString()+"','"+
-                                        tabMode2.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                        tabMode2.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
                     }                    
                 }
                    
-                Valid.MyReport("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::",param);
+                Valid.MyReportqry("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
         }
             

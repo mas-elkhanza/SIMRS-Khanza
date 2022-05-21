@@ -1228,7 +1228,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             param.put("propinsirs",akses.getpropinsirs());
                             param.put("kontakrs",akses.getkontakrs());
                             param.put("emailrs",akses.getemailrs());   
-                            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                         Valid.MyReport2("rptRiwayatRegistrasi.jasper","report","::[ Riwayat Registrasi ]::",param);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
@@ -1957,7 +1957,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 
                                 try {
                                     rs3=koneksi.prepareStatement(
-                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "select master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala1 on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala1.kode_pemeriksaan "+
                                         "inner join data_triase_igddetail_skala1 on master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 "+
                                         "where data_triase_igddetail_skala1.no_rawat='"+rs.getString("no_rawat")+"' "+
@@ -2015,7 +2015,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
                                 try {
                                     rs3=koneksi.prepareStatement(
-                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "select master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala2 on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala2.kode_pemeriksaan "+
                                         "inner join data_triase_igddetail_skala2 on master_triase_skala2.kode_skala2=data_triase_igddetail_skala2.kode_skala2 where data_triase_igddetail_skala2.no_rawat='"+rs.getString("no_rawat")+"' "+
                                         "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan").executeQuery();
@@ -2153,7 +2153,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
                                 try {
                                     rs3=koneksi.prepareStatement(
-                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "select master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala3 on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala3.kode_pemeriksaan "+
                                         "inner join data_triase_igddetail_skala3 on master_triase_skala3.kode_skala3=data_triase_igddetail_skala3.kode_skala3 where data_triase_igddetail_skala3.no_rawat='"+rs.getString("no_rawat")+"' "+
                                         "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan").executeQuery();
@@ -2210,7 +2210,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
                                 try {
                                     rs3=koneksi.prepareStatement(
-                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "select master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala4 on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala4.kode_pemeriksaan "+
                                         "inner join data_triase_igddetail_skala4 on master_triase_skala4.kode_skala4=data_triase_igddetail_skala4.kode_skala4 where data_triase_igddetail_skala4.no_rawat='"+rs.getString("no_rawat")+"' "+
                                         "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan").executeQuery();
@@ -2267,7 +2267,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
                                 try {
                                     rs3=koneksi.prepareStatement(
-                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "select master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala5 on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala5.kode_pemeriksaan "+
                                         "inner join data_triase_igddetail_skala5 on master_triase_skala5.kode_skala5=data_triase_igddetail_skala5.kode_skala5 where data_triase_igddetail_skala5.no_rawat='"+rs.getString("no_rawat")+"' "+
                                         "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan").executeQuery();
@@ -2558,10 +2558,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
                                                   "</tr>"+
                                                   "<tr>"+
-                                                       "<td>");
+                                                       "<td valign='top'>");
                                     try {
                                         rs3=koneksi.prepareStatement(
-                                            "select master_masalah_keperawatan_igd.kode_masalah,master_masalah_keperawatan_igd.nama_masalah from master_masalah_keperawatan_igd "+
+                                            "select master_masalah_keperawatan_igd.nama_masalah from master_masalah_keperawatan_igd "+
                                             "inner join penilaian_awal_keperawatan_igd_masalah on penilaian_awal_keperawatan_igd_masalah.kode_masalah=master_masalah_keperawatan_igd.kode_masalah "+
                                             "where penilaian_awal_keperawatan_igd_masalah.no_rawat='"+rs.getString("no_rawat")+"' order by penilaian_awal_keperawatan_igd_masalah.kode_masalah").executeQuery();
                                         while(rs3.next()){
@@ -2575,7 +2575,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         }
                                     }
                                     htmlContent.append("</td>"+
-                                                       "<td>"+rs2.getString("rencana")+"</td>"+
+                                                       "<td valign='top'>"+rs2.getString("rencana")+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+
@@ -2812,10 +2812,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
                                                   "</tr>"+
                                                   "<tr>"+
-                                                       "<td>");
+                                                       "<td valign='top'>");
                                     try {
                                         rs3=koneksi.prepareStatement(
-                                            "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
+                                            "select master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
                                             "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
                                             "where penilaian_awal_keperawatan_ralan_masalah.no_rawat='"+rs.getString("no_rawat")+"' order by penilaian_awal_keperawatan_ralan_masalah.kode_masalah").executeQuery();
                                         while(rs3.next()){
@@ -2829,7 +2829,24 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         }
                                     }
                                     htmlContent.append("</td>"+
-                                                       "<td>"+rs2.getString("rencana")+"</td>"+
+                                                       "<td valign='top'>");
+                                    try {
+                                        rs3=koneksi.prepareStatement(
+                                            "select master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
+                                            "inner join penilaian_awal_keperawatan_ralan_rencana on penilaian_awal_keperawatan_ralan_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
+                                            "where penilaian_awal_keperawatan_ralan_rencana.no_rawat='"+rs.getString("no_rawat")+"' order by penilaian_awal_keperawatan_ralan_rencana.kode_rencana").executeQuery();
+                                        while(rs3.next()){
+                                            htmlContent.append(rs3.getString("rencana_keperawatan")+"<br>");
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs3!=null){
+                                            rs3.close();
+                                        }
+                                    }
+                                    htmlContent.append(rs2.getString("rencana")+
+                                                    "</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+
@@ -3057,10 +3074,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
                                                   "</tr>"+
                                                   "<tr>"+
-                                                       "<td>");
+                                                       "<td valign='top'>");
                                     try {
                                         rs3=koneksi.prepareStatement(
-                                            "select master_masalah_keperawatan_gigi.kode_masalah,master_masalah_keperawatan_gigi.nama_masalah from master_masalah_keperawatan_gigi "+
+                                            "select master_masalah_keperawatan_gigi.nama_masalah from master_masalah_keperawatan_gigi "+
                                             "inner join penilaian_awal_keperawatan_gigi_masalah on penilaian_awal_keperawatan_gigi_masalah.kode_masalah=master_masalah_keperawatan_gigi.kode_masalah "+
                                             "where penilaian_awal_keperawatan_gigi_masalah.no_rawat='"+rs.getString("no_rawat")+"' order by penilaian_awal_keperawatan_gigi_masalah.kode_masalah").executeQuery();
                                         while(rs3.next()){
@@ -3074,7 +3091,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         }
                                     }
                                     htmlContent.append("</td>"+
-                                                       "<td>"+rs2.getString("rencana")+"</td>"+
+                                                       "<td valign='top'>"+rs2.getString("rencana")+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+
@@ -3461,10 +3478,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
                                                   "</tr>"+
                                                   "<tr>"+
-                                                       "<td>");
+                                                       "<td valign='top'>");
                                     try {
                                         rs3=koneksi.prepareStatement(
-                                            "select master_masalah_keperawatan_anak.kode_masalah,master_masalah_keperawatan_anak.nama_masalah from master_masalah_keperawatan_anak "+
+                                            "select master_masalah_keperawatan_anak.nama_masalah from master_masalah_keperawatan_anak "+
                                             "inner join penilaian_awal_keperawatan_ralan_bayi_masalah on penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah=master_masalah_keperawatan_anak.kode_masalah "+
                                             "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat='"+rs.getString("no_rawat")+"' order by penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah").executeQuery();
                                         while(rs3.next()){
@@ -3478,7 +3495,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         }
                                     }
                                     htmlContent.append("</td>"+
-                                                       "<td>"+rs2.getString("rencana")+"</td>"+
+                                                       "<td valign='top'>"+rs2.getString("rencana")+"</td>"+
                                                   "</tr>"+
                                                "</table>"+
                                             "</td>"+
@@ -3659,7 +3676,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     try {
                                         w=1;
                                         rs3=koneksi.prepareStatement(
-                                            "select * from riwayat_persalinan_pasien where no_rkm_medis='"+NoRM.getText().trim()+"' order by tgl_thn").executeQuery();
+                                            "select * from riwayat_persalinan_pasien where riwayat_persalinan_pasien.no_rkm_medis='"+NoRM.getText().trim()+"' order by riwayat_persalinan_pasien.tgl_thn").executeQuery();
                                         while(rs3.next()){
                                             htmlContent.append(
                                                    "<tr>"+

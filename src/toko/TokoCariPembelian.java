@@ -37,7 +37,7 @@ public class TokoCariPembelian extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
-    private String akunpengadaan=Sequel.cariIsi("select Pengadaan_Toko from set_akun");
+    private String akunpengadaan=Sequel.cariIsi("select set_akun.Pengadaan_Toko from set_akun"),PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun");
     private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
@@ -853,14 +853,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
           JOptionPane.showMessageDialog(null,"Silahkan pilih No.Faktur");
         }else{
            try {
-               pscaribeli=koneksi.prepareStatement("select no_faktur, tagihan,tgl_beli from tokopembelian where no_faktur=?");
+               pscaribeli=koneksi.prepareStatement(
+                       "select tokopembelian.no_faktur,tokopembelian.tagihan,tokopembelian.tgl_beli,tokopembelian.ppn,(tokopembelian.meterai+tokopembelian.total) as total from tokopembelian where tokopembelian.no_faktur=?");
                try {
                   pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
                   rs=pscaribeli.executeQuery();
                   if(rs.next()){
                       Sequel.AutoComitFalse();
                       sukses=true;
-                      pstoko_detail_beli=koneksi.prepareStatement("select kode_brng,jumlah from toko_detail_beli where no_faktur=? ");
+                      pstoko_detail_beli=koneksi.prepareStatement("select toko_detail_beli.kode_brng,toko_detail_beli.jumlah from toko_detail_beli where toko_detail_beli.no_faktur=? ");
                       try {
                           pstoko_detail_beli.setString(1,rs.getString(1));
                           rs2=pstoko_detail_beli.executeQuery();
@@ -883,10 +884,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
                       Sequel.queryu("delete from tampjurnal");
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          akunpengadaan,"PEMBELIAN","0",rs.getString("tagihan")
+                          akunpengadaan,"PEMBELIAN","0",rs.getString("total")
                       });    
+                      if(rs.getDouble("ppn")>0){
+                          Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            PPN_Masukan,"PPN Masukan Toko","0",rs.getString("ppn")
+                          }); 
+                      }
                       Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          Sequel.cariIsi("select kd_rek from tokopembelian where no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
+                          Sequel.cariIsi("select tokopembelian.kd_rek from tokopembelian where tokopembelian.no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
                       }); 
                       sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PENGADAAN BARANG TOKO"+", OLEH "+akses.getkode());
                       if(sukses==true){
