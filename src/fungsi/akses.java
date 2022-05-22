@@ -179,7 +179,7 @@ public final class akses {
             pembayaran_briva=false,penilaian_awal_keperawatan_ranap=false,nilai_penerimaan_vendor_farmasi_perbulan=false,akun_bayar_hutang=false,
             master_rencana_keperawatan=false,laporan_tahunan_igd=false,obat_bhp_tidakbergerak=false,ringkasan_hutang_vendor_farmasi=false,
             nilai_penerimaan_vendor_nonmedis_perbulan=false,ringkasan_hutang_vendor_nonmedis=false,anggota_polri_dirawat=false,daftar_pasien_ranap_polri=false,
-            soap_ralan_polri=false,soap_ranap_polri=false;
+            soap_ralan_polri=false,soap_ranap_polri=false,laporan_penyakit_polri=false,master_rencana_keperawatan_anak=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1020,6 +1020,8 @@ public final class akses {
                         akses.daftar_pasien_ranap_polri=true;
                         akses.soap_ralan_polri=true;
                         akses.soap_ranap_polri=true;
+                        akses.laporan_penyakit_polri=true;
+                        akses.master_rencana_keperawatan_anak=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1844,6 +1846,8 @@ public final class akses {
                         akses.daftar_pasien_ranap_polri=rs2.getBoolean("daftar_pasien_ranap_polri");
                         akses.soap_ralan_polri=rs2.getBoolean("soap_ralan_polri");
                         akses.soap_ranap_polri=rs2.getBoolean("soap_ranap_polri");
+                        akses.laporan_penyakit_polri=rs2.getBoolean("laporan_penyakit_polri");
+                        akses.master_rencana_keperawatan_anak=rs2.getBoolean("master_rencana_keperawatan_anak");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2666,6 +2670,8 @@ public final class akses {
                         akses.daftar_pasien_ranap_polri=false;
                         akses.soap_ralan_polri=false;
                         akses.soap_ranap_polri=false;
+                        akses.laporan_penyakit_polri=false;
+                        akses.master_rencana_keperawatan_anak=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3545,4 +3551,6 @@ public final class akses {
     public static boolean getdaftar_pasien_ranap_polri(){return akses.daftar_pasien_ranap_polri;}
     public static boolean getsoap_ralan_polri(){return akses.soap_ralan_polri;}
     public static boolean getsoap_ranap_polri(){return akses.soap_ranap_polri;}
+    public static boolean getlaporan_penyakit_polri(){return akses.laporan_penyakit_polri;}
+    public static boolean getmaster_rencana_keperawatan_anak(){return akses.master_rencana_keperawatan_anak;}
 }   

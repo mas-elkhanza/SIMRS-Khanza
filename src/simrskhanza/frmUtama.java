@@ -667,6 +667,7 @@ import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgLamaPelayananPasien;
+import laporan.DlgLaporanPenyakitPolri;
 import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananOperasi;
 import laporan.DlgPelayananPoli;
@@ -713,6 +714,7 @@ import rekammedis.MasterMasalahKeperawatanGigi;
 import rekammedis.MasterMasalahKeperawatanIGD;
 import rekammedis.MasterMasalahKeperawatanMata;
 import rekammedis.MasterRencanaKeperawatan;
+import rekammedis.MasterRencanaKeperawatanAnak;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
 import rekammedis.MasterTriasePemeriksaan;
@@ -18423,6 +18425,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLaporanPenyakitPolriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgLaporanPenyakitPolri form=new DlgLaporanPenyakitPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnMasterRencanaKeperawatanAnakActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterRencanaKeperawatanAnak form=new MasterRencanaKeperawatanAnak(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19064,7 +19090,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
-            btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri;
+            btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak;
     
     public void isWall(){
         try{            
@@ -20832,6 +20858,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                     Panelmenu.add(btnDaftarPasienRanapPolri);                 
                     jmlmenu++;
                 }
+                
+                if(akses.getlaporan_penyakit_polri()==true){  
+                    Panelmenu.add(btnLaporanPenyakitPolri);                 
+                    jmlmenu++;
+                }
             }
             
             if(akses.getregistrasi_poli_per_tanggal()==true){  
@@ -21986,6 +22017,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_masalah_keperawatan_anak()==true){
                 Panelmenu.add(btnMasterMasalahKeperawatanAnak);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_rencana_keperawatan_anak()==true){
+                Panelmenu.add(btnMasterRencanaKeperawatanAnak);
                 jmlmenu++;
             }
             
@@ -24901,6 +24937,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnDaftarPasienRanapPolri);                 
                 jmlmenu++;
             }
+            
+            if(akses.getlaporan_penyakit_polri()==true){  
+                Panelmenu.add(btnLaporanPenyakitPolri);                 
+                jmlmenu++;
+            }
         }
 
         if(akses.getregistrasi_poli_per_tanggal()==true){  
@@ -26052,6 +26093,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmaster_masalah_keperawatan_anak()==true){
             Panelmenu.add(btnMasterMasalahKeperawatanAnak);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_rencana_keperawatan_anak()==true){
+            Panelmenu.add(btnMasterRencanaKeperawatanAnak);
             jmlmenu++;
         }
         
@@ -29620,6 +29666,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                     jmlmenu++;
                 }                
             }
+            
+            if(akses.getlaporan_penyakit_polri()==true){  
+                if(btnLaporanPenyakitPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnLaporanPenyakitPolri);                 
+                    jmlmenu++;
+                }                
+            }
         }
 
         if(akses.getregistrasi_poli_per_tanggal()==true){  
@@ -31227,6 +31280,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getmaster_masalah_keperawatan_anak()==true){
             if(btnMasterMasalahKeperawatanAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterMasalahKeperawatanAnak);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_rencana_keperawatan_anak()==true){
+            if(btnMasterRencanaKeperawatanAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterRencanaKeperawatanAnak);
                 jmlmenu++;
             }                
         }
@@ -35824,6 +35884,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSOAPRanapAnggotaPolri.setName("btnSOAPRanapAnggotaPolri"); 
         btnSOAPRanapAnggotaPolri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSOAPRanapAnggotaPolri.addActionListener(this::btnSOAPRanapAnggotaPolriActionPerformed);
+        
+        btnLaporanPenyakitPolri = new widget.ButtonBig();
+        btnLaporanPenyakitPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6008661_bacteria_coronavirus_covid_laboratory_microscope_icon.png")));
+        btnLaporanPenyakitPolri.setText("Laporan Penyakit POLRI");
+        btnLaporanPenyakitPolri.setIconTextGap(0);
+        btnLaporanPenyakitPolri.setName("btnLaporanPenyakitPolri"); 
+        btnLaporanPenyakitPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanPenyakitPolri.addActionListener(this::btnLaporanPenyakitPolriActionPerformed);
+        
+        btnMasterRencanaKeperawatanAnak = new widget.ButtonBig();
+        btnMasterRencanaKeperawatanAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-boy.png"))); 
+        btnMasterRencanaKeperawatanAnak.setText("Master Rencana Keperawatan Bayi/Anak");
+        btnMasterRencanaKeperawatanAnak.setIconTextGap(0);
+        btnMasterRencanaKeperawatanAnak.setName("btnMasterRencanaKeperawatanAnak"); 
+        btnMasterRencanaKeperawatanAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterRencanaKeperawatanAnak.addActionListener(this::btnMasterRencanaKeperawatanAnakActionPerformed);
     }
     
 }
