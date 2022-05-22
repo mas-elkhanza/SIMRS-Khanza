@@ -202,7 +202,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Referensi Poli Apotek BPJS","[J]Bayar JM Dokter","[K]Referensi Faskes Apotek BPJS","[K]Referensi Spesialistik Apotek BPJS","[J]Pembayaran BRIVA",
                 "[L]Penilaian Awal Keperawatan Ranap Umum","[D]Nilai Penerimaan Vendor Farmasi Per Bulan","[J]Akun Bayar Hutang","[L]Master Rencana Keperawatan",
                 "[I]Laporan Tahunan IGD","[D]Obat/Alkes/BHP Tidak Bergerak","[J]Ringkasan Hutang Vendor Farmasi","[E]Nilai Penerimaan Vendor Non Medis Per Bulan",
-                "[J]Ringkasan Hutang Vendor Non Medis","[L]Master Rencana Keperawatan Anak","[I]Anggota POLRI Dirawat","[I]Daftar Pasien Ranap POLRI"
+                "[J]Ringkasan Hutang Vendor Non Medis","[L]Master Rencana Keperawatan Anak","[I]Anggota POLRI Dirawat","[I]Daftar Pasien Ranap POLRI","[L]SOAP Ralan Anggota POLRI",
+                "[L]SOAP Ranap Anggota POLRI"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -442,7 +443,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 820;i++) {
+        for (i = 0; i < 822;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2356,6 +2357,12 @@ public class DlgUser extends javax.swing.JDialog {
                 case 819:
                     column.setPreferredWidth(152);
                     break;
+                case 820:
+                    column.setPreferredWidth(155);
+                    break;
+                case 821:
+                    column.setPreferredWidth(159);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2856,7 +2863,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3718,7 +3725,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "ringkasan_hutang_vendor_nonmedis='"+tbUser.getValueAt(i,816).toString()+"',"+
                     "master_rencana_keperawatan_anak='"+tbUser.getValueAt(i,817).toString()+"',"+
                     "anggota_polri_dirawat='"+tbUser.getValueAt(i,818).toString()+"',"+
-                    "daftar_pasien_ranap_polri='"+tbUser.getValueAt(i,819).toString()+"'");
+                    "daftar_pasien_ranap_polri='"+tbUser.getValueAt(i,819).toString()+"',"+
+                    "soap_ralan_polri='"+tbUser.getValueAt(i,820).toString()+"',"+
+                    "soap_ranap_polri='"+tbUser.getValueAt(i,821).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4620,7 +4629,9 @@ public class DlgUser extends javax.swing.JDialog {
                                         "ringkasan_hutang_vendor_nonmedis='"+tbUser.getValueAt(barisdicopy,816).toString()+"',"+
                                         "master_rencana_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,817).toString()+"',"+
                                         "anggota_polri_dirawat='"+tbUser.getValueAt(barisdicopy,818).toString()+"',"+
-                                        "daftar_pasien_ranap_polri='"+tbUser.getValueAt(barisdicopy,819).toString()+"'");
+                                        "daftar_pasien_ranap_polri='"+tbUser.getValueAt(barisdicopy,819).toString()+"',"+
+                                        "soap_ralan_polri='"+tbUser.getValueAt(barisdicopy,820).toString()+"',"+
+                                        "soap_ranap_polri='"+tbUser.getValueAt(barisdicopy,821).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -4982,7 +4993,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek,user.bayar_jm_dokter,user.bpjs_referensi_faskes_apotek,user.bpjs_referensi_spesialistik_apotek,"+
                 "user.pembayaran_briva,user.penilaian_awal_keperawatan_ranap,user.nilai_penerimaan_vendor_farmasi_perbulan,user.akun_bayar_hutang,user.master_rencana_keperawatan,"+
                 "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan,"+
-                "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri,user.soap_ralan_polri,"+
+                "user.soap_ranap_polri from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5814,7 +5826,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("ringkasan_hutang_vendor_nonmedis"),
                                rs.getBoolean("master_rencana_keperawatan_anak"),
                                rs.getBoolean("anggota_polri_dirawat"),
-                               rs.getBoolean("daftar_pasien_ranap_polri")
+                               rs.getBoolean("daftar_pasien_ranap_polri"),
+                               rs.getBoolean("soap_ralan_polri"),
+                               rs.getBoolean("soap_ranap_polri")
                             });
                         }   
                     } catch (Exception e) {
@@ -6635,7 +6649,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("ringkasan_hutang_vendor_nonmedis"),
                            rs.getBoolean("master_rencana_keperawatan_anak"),
                            rs.getBoolean("anggota_polri_dirawat"),
-                           rs.getBoolean("daftar_pasien_ranap_polri")
+                           rs.getBoolean("daftar_pasien_ranap_polri"),
+                           rs.getBoolean("soap_ralan_polri"),
+                           rs.getBoolean("soap_ranap_polri")
                         });
                     }                                             
                  }

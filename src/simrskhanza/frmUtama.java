@@ -675,6 +675,7 @@ import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
+import rekammedis.DlgSOAPRalanAggotaPolri;
 import laporan.DlgStatusDataRM;
 import rekammedis.DlgSOAPPerawatan;
 import laporan.LaporanKedatanganPasienPerJam;
@@ -703,6 +704,7 @@ import perpustakaan.PerpustakaanPengaturanPeminjaman;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
+import rekammedis.DlgSOAPRanapAggotaPolri;
 import rekammedis.RMHemodialisa;
 import rekammedis.MasterImunisasi;
 import rekammedis.MasterMasalahKeperawatan;
@@ -1730,7 +1732,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/04/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/05/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -18397,6 +18399,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSOAPRalanAnggotaPolriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSOAPRalanAggotaPolri form=new DlgSOAPRalanAggotaPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSOAPRanapAnggotaPolriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSOAPRanapAggotaPolri form=new DlgSOAPRanapAggotaPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19038,7 +19064,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
-            btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri;
+            btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri;
     
     public void isWall(){
         try{            
@@ -21827,6 +21853,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getsoap_perawatan()==true){
                 Panelmenu.add(btnSOAPPerawatan); 
                 jmlmenu++;
+            }
+            
+            if(tampilkantni.equals("Yes")){
+                if(akses.getsoap_ralan_polri()==true){  
+                    Panelmenu.add(btnSOAPRalanAnggotaPolri);                 
+                    jmlmenu++;
+                }
+                
+                if(akses.getsoap_ranap_polri()==true){  
+                    Panelmenu.add(btnSOAPRanapAnggotaPolri);                 
+                    jmlmenu++;
+                }
             }
             
             if(akses.getriwayat_kamar_pasien()==true){
@@ -25881,6 +25919,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsoap_perawatan()==true){
             Panelmenu.add(btnSOAPPerawatan); 
             jmlmenu++;
+        }
+        
+        if(tampilkantni.equals("Yes")){
+            if(akses.getsoap_ralan_polri()==true){  
+                Panelmenu.add(btnSOAPRalanAnggotaPolri);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getsoap_ranap_polri()==true){  
+                Panelmenu.add(btnSOAPRanapAnggotaPolri);                 
+                jmlmenu++;
+            }
         }
         
         if(akses.getriwayat_kamar_pasien()==true){
@@ -30995,6 +31045,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(tampilkantni.equals("Yes")){
+            if(akses.getsoap_ralan_polri()==true){  
+                if(btnSOAPRalanAnggotaPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnSOAPRalanAnggotaPolri); 
+                    jmlmenu++;
+                } 
+            }
+            
+            if(akses.getsoap_ranap_polri()==true){  
+                if(btnSOAPRanapAnggotaPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnSOAPRanapAnggotaPolri); 
+                    jmlmenu++;
+                } 
+            }
+        }
+        
         if(akses.getriwayat_kamar_pasien()==true){
             if(btnRiwayatKamarPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatKamarPasien); 
@@ -35742,6 +35808,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDaftarPasienRanapPolri.setName("btnDaftarPasienRanapPolri"); 
         btnDaftarPasienRanapPolri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnDaftarPasienRanapPolri.addActionListener(this::btnDaftarPasienRanapPolriActionPerformed);
+        
+        btnSOAPRalanAnggotaPolri = new widget.ButtonBig();
+        btnSOAPRalanAnggotaPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_patient-health_report-graph-coronavirus_6000116.png")));
+        btnSOAPRalanAnggotaPolri.setText("SOAP Ralan Anggota POLRI");
+        btnSOAPRalanAnggotaPolri.setIconTextGap(0);
+        btnSOAPRalanAnggotaPolri.setName("btnSOAPRalanAnggotaPolri"); 
+        btnSOAPRalanAnggotaPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSOAPRalanAnggotaPolri.addActionListener(this::btnSOAPRalanAnggotaPolriActionPerformed);
+        
+        btnSOAPRanapAnggotaPolri = new widget.ButtonBig();
+        btnSOAPRanapAnggotaPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_patient-health_report-graph-coronavirus_6000116.png")));
+        btnSOAPRanapAnggotaPolri.setText("SOAP Ranap Anggota POLRI");
+        btnSOAPRanapAnggotaPolri.setIconTextGap(0);
+        btnSOAPRanapAnggotaPolri.setName("btnSOAPRanapAnggotaPolri"); 
+        btnSOAPRanapAnggotaPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSOAPRanapAnggotaPolri.addActionListener(this::btnSOAPRanapAnggotaPolriActionPerformed);
     }
     
 }

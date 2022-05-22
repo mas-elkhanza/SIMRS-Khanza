@@ -73,7 +73,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoJur.setDocument(new batasInput((byte)8).getKata(NoJur));
+        NoJur.setDocument(new batasInput((byte)25).getKata(NoJur));
         kdrek.setDocument(new batasInput((byte)15).getKata(kdrek));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari)); 
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -441,7 +441,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 12, 75, 23);
+        label15.setBounds(0, 12, 65, 23);
 
         NoJur.setName("NoJur"); // NOI18N
         NoJur.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -451,13 +451,13 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoJur);
-        NoJur.setBounds(79, 12, 110, 23);
+        NoJur.setBounds(69, 12, 155, 23);
 
         label11.setText("Tgl.Jurnal :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(226, 12, 75, 23);
+        label11.setBounds(241, 12, 75, 23);
 
         TglJurnal2.setDisplayFormat("dd-MM-yyyy");
         TglJurnal2.setName("TglJurnal2"); // NOI18N
@@ -467,7 +467,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglJurnal2);
-        TglJurnal2.setBounds(430, 12, 95, 23);
+        TglJurnal2.setBounds(440, 12, 90, 23);
 
         label32.setText("Jenis Jurnal :");
         label32.setName("label32"); // NOI18N
@@ -491,7 +491,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label12);
-        label12.setBounds(402, 12, 27, 23);
+        label12.setBounds(412, 12, 27, 23);
 
         TglJurnal1.setDisplayFormat("dd-MM-yyyy");
         TglJurnal1.setName("TglJurnal1"); // NOI18N
@@ -501,7 +501,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglJurnal1);
-        TglJurnal1.setBounds(305, 12, 95, 23);
+        TglJurnal1.setBounds(320, 12, 90, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 

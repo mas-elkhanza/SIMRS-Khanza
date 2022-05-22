@@ -5422,7 +5422,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     
     private void isSimpan(){
         if(notaralan.equals("Yes")){
-            BtnNotaActionPerformed(null);
             chkLaborat.setSelected(true);
             chkRadiologi.setSelected(true);    
             chkPotongan.setSelected(true);  
@@ -5432,7 +5431,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             chkSarpras.setSelected(true);  
             chkTarifDokter.setSelected(true);  
             chkTarifPrm.setSelected(true);  
-            isRawat2();            
+            isRawat2();
+            BtnNotaActionPerformed(null);
         }
 
         if((chkLaborat.isSelected()==false)||(chkRadiologi.isSelected()==false)){

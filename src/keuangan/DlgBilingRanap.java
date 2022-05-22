@@ -6713,16 +6713,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 
     private void isSimpan() {
-        if(notaranap.equals("Yes")){
-            BtnNotaActionPerformed(null);
-        }
-        
         try {  
             try {
                 Sequel.meghapus("nota_inap","no_rawat",TNoRw.getText());    
                 psnota=koneksi.prepareStatement(sqlpsnota);
                 try {
                     no_nota=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_inap.no_nota,4),signed)),0) from nota_inap where nota_inap.tanggal='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10).replaceAll("-","/")+"/RI",4);
+                    tbBilling.setValueAt(": "+no_nota,0,2);
                     psnota.setString(1,TNoRw.getText());
                     psnota.setString(2,no_nota);
                     psnota.setString(3,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
@@ -6766,6 +6763,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 } finally{
                     psnota.close();
                 }
+            }
+            
+            if(notaranap.equals("Yes")){
+                BtnNotaActionPerformed(null);
             }
             
             Sequel.AutoComitFalse();
