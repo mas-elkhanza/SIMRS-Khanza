@@ -298,7 +298,7 @@ public class ApiBRI {
             timestamp=sdf.format(date);
             System.out.println("consumer_key : "+consumer_key);
             System.out.println("consumer_secret : "+consumer_secret);
-            json=null;
+            json="";
             signature=Signature("/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""),"GET",token,timestamp,json);
             
             headers = new HttpHeaders();
@@ -310,7 +310,7 @@ public class ApiBRI {
             System.out.println("BRI-Timestamp : "+timestamp);
             System.out.println("BRI-Signature : "+signature);
             System.out.println("Authorization : "+"Bearer "+token);
-            requestEntity = new HttpEntity(json,headers);
+            requestEntity = new HttpEntity(headers);
             json = mapper.readTree(getRest().exchange(urlapi+"/v1/briva/report/"+institution_code+"/"+briva_no+"/"+tanggalawal.replaceAll("-","")+"/"+tanggalakhir.replaceAll("-",""), HttpMethod.GET, requestEntity, String.class).getBody()).toString();
             System.out.println("Respon : "+json);
             root = mapper.readTree(json);
