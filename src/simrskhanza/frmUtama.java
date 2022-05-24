@@ -663,6 +663,7 @@ import laporan.DlgDosisRadiologi;
 import rekammedis.RMDataResumePasien;
 import laporan.DlgHarianHAIs2;
 import laporan.DlgHarianKlasifikasiPasienRanap;
+import laporan.DlgJumlahPengunjungRalanPolri;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgKlasifikasiPasienPerBangsal;
@@ -18449,6 +18450,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnJumlahPengunjungRalanPolriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgJumlahPengunjungRalanPolri form=new DlgJumlahPengunjungRalanPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19090,7 +19103,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
-            btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak;
+            btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
+            btnJumlahPengunjungRalanPolri;
     
     public void isWall(){
         try{            
@@ -20861,6 +20875,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 
                 if(akses.getlaporan_penyakit_polri()==true){  
                     Panelmenu.add(btnLaporanPenyakitPolri);                 
+                    jmlmenu++;
+                }
+                
+                if(akses.getjumlah_pengunjung_ralan_polri()==true){  
+                    Panelmenu.add(btnJumlahPengunjungRalanPolri);                 
                     jmlmenu++;
                 }
             }
@@ -24940,6 +24959,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlaporan_penyakit_polri()==true){  
                 Panelmenu.add(btnLaporanPenyakitPolri);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getjumlah_pengunjung_ralan_polri()==true){  
+                Panelmenu.add(btnJumlahPengunjungRalanPolri);                 
                 jmlmenu++;
             }
         }
@@ -29670,6 +29694,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getlaporan_penyakit_polri()==true){  
                 if(btnLaporanPenyakitPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnLaporanPenyakitPolri);                 
+                    jmlmenu++;
+                }                
+            }
+            
+            if(akses.getjumlah_pengunjung_ralan_polri()==true){  
+                if(btnJumlahPengunjungRalanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnJumlahPengunjungRalanPolri);                 
                     jmlmenu++;
                 }                
             }
@@ -35900,6 +35931,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterRencanaKeperawatanAnak.setName("btnMasterRencanaKeperawatanAnak"); 
         btnMasterRencanaKeperawatanAnak.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMasterRencanaKeperawatanAnak.addActionListener(this::btnMasterRencanaKeperawatanAnakActionPerformed);
+        
+        btnJumlahPengunjungRalanPolri = new widget.ButtonBig();
+        btnJumlahPengunjungRalanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5868974_paper_research_corona virus_coronavirus_file_icon.png"))); 
+        btnJumlahPengunjungRalanPolri.setText("Jumlah Pengunjung Ralan POLRI");
+        btnJumlahPengunjungRalanPolri.setIconTextGap(0);
+        btnJumlahPengunjungRalanPolri.setName("btnJumlahPengunjungRalanPolri"); 
+        btnJumlahPengunjungRalanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJumlahPengunjungRalanPolri.addActionListener(this::btnJumlahPengunjungRalanPolriActionPerformed);
     }
     
 }
