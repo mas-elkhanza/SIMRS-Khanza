@@ -1264,19 +1264,19 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         }
     }
     private void isRawat() {
-         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat='"+TNoRw.getText()+"' ",TNoRM);
+         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
     }
 
     private void isPsien() {
-        Sequel.cariIsi("select nm_dokter from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
-        Sequel.cariIsi("select jk from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",JK);
-        Sequel.cariIsi("select date_format(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",TglLahir,TNoRM.getText());
+        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
+        Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",JK);
+        Sequel.cariIsi("select date_format(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TglLahir,TNoRM.getText());
     }
     
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norwt+"'", DTPCari1);
+        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
         isPsien();
@@ -1305,7 +1305,7 @@ public final class RMUjiFungsiKFR extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getuji_fungsi_kfr()); 
         if(akses.getjml2()>=1){
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",NmDokter,KdDokter.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",NmDokter,KdDokter.getText());
             if(NmDokter.getText().equals("")){
                 JOptionPane.showMessageDialog(null,"User login buka dokter...!");
             }
