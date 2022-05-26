@@ -727,6 +727,7 @@ import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMDataCatatanObservasiRanap;
+import rekammedis.RMDataCatatanObservasiRanapKebidanan;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
@@ -18488,6 +18489,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnCatatanObservasiRanapKebidananActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataCatatanObservasiRanapKebidanan form=new RMDataCatatanObservasiRanapKebidanan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19130,7 +19143,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
-            btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap;
+            btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan;
     
     public void isWall(){
         try{            
@@ -22157,6 +22170,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getcatatan_observasi_ranap()==true){
                 Panelmenu.add(btnCatatanObservasiRanap);
+                jmlmenu++;
+            }
+            
+            if(akses.getcatatan_observasi_ranap_kebidanan()==true){
+                Panelmenu.add(btnCatatanObservasiRanapKebidanan);
                 jmlmenu++;
             }
             
@@ -26248,6 +26266,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getcatatan_observasi_ranap()==true){
             Panelmenu.add(btnCatatanObservasiRanap);
+            jmlmenu++;
+        }
+            
+        if(akses.getcatatan_observasi_ranap_kebidanan()==true){
+            Panelmenu.add(btnCatatanObservasiRanapKebidanan);
             jmlmenu++;
         }
             
@@ -31494,6 +31517,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getcatatan_observasi_ranap_kebidanan()==true){
+            if(btnCatatanObservasiRanapKebidanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanObservasiRanapKebidanan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gethemodialisa()==true){
             if(btnHemodialisa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHemodialisa);
@@ -36015,6 +36045,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCatatanObservasiRanap.setName("btnCatatanObservasiRanap"); 
         btnCatatanObservasiRanap.setPreferredSize(new java.awt.Dimension(200, 90));
         btnCatatanObservasiRanap.addActionListener(this::btnCatatanObservasiRanapActionPerformed);
+        
+        btnCatatanObservasiRanapKebidanan = new widget.ButtonBig();
+        btnCatatanObservasiRanapKebidanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4852562_education_files_school_icon.png"))); 
+        btnCatatanObservasiRanapKebidanan.setText("Catatan Observasi Ranap Kebidanan");
+        btnCatatanObservasiRanapKebidanan.setIconTextGap(0);
+        btnCatatanObservasiRanapKebidanan.setName("btnCatatanObservasiRanapKebidanan"); 
+        btnCatatanObservasiRanapKebidanan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanObservasiRanapKebidanan.addActionListener(this::btnCatatanObservasiRanapKebidananActionPerformed);
     }
     
 }

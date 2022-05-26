@@ -180,7 +180,7 @@ public final class akses {
             master_rencana_keperawatan=false,laporan_tahunan_igd=false,obat_bhp_tidakbergerak=false,ringkasan_hutang_vendor_farmasi=false,
             nilai_penerimaan_vendor_nonmedis_perbulan=false,ringkasan_hutang_vendor_nonmedis=false,anggota_polri_dirawat=false,daftar_pasien_ranap_polri=false,
             soap_ralan_polri=false,soap_ranap_polri=false,laporan_penyakit_polri=false,master_rencana_keperawatan_anak=false,jumlah_pengunjung_ralan_polri=false,
-            catatan_observasi_igd=false,catatan_observasi_ranap=false;
+            catatan_observasi_igd=false,catatan_observasi_ranap=false,catatan_observasi_ranap_kebidanan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1026,6 +1026,7 @@ public final class akses {
                         akses.jumlah_pengunjung_ralan_polri=true;
                         akses.catatan_observasi_igd=true;
                         akses.catatan_observasi_ranap=true;
+                        akses.catatan_observasi_ranap_kebidanan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1855,6 +1856,7 @@ public final class akses {
                         akses.jumlah_pengunjung_ralan_polri=rs2.getBoolean("jumlah_pengunjung_ralan_polri");
                         akses.catatan_observasi_igd=rs2.getBoolean("catatan_observasi_igd");
                         akses.catatan_observasi_ranap=rs2.getBoolean("catatan_observasi_ranap");
+                        akses.catatan_observasi_ranap_kebidanan=rs2.getBoolean("catatan_observasi_ranap_kebidanan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2682,6 +2684,7 @@ public final class akses {
                         akses.jumlah_pengunjung_ralan_polri=false;
                         akses.catatan_observasi_igd=false;
                         akses.catatan_observasi_ranap=false;
+                        akses.catatan_observasi_ranap_kebidanan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3566,4 +3569,5 @@ public final class akses {
     public static boolean getjumlah_pengunjung_ralan_polri(){return akses.jumlah_pengunjung_ralan_polri;}
     public static boolean getcatatan_observasi_igd(){return akses.catatan_observasi_igd;}
     public static boolean getcatatan_observasi_ranap(){return akses.catatan_observasi_ranap;}
+    public static boolean getcatatan_observasi_ranap_kebidanan(){return akses.catatan_observasi_ranap_kebidanan;}
 }   
