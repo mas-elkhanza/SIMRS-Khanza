@@ -726,6 +726,7 @@ import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataCatatanObservasiIGD;
+import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
@@ -18475,6 +18476,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnCatatanObservasiRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataCatatanObservasiRanap form=new RMDataCatatanObservasiRanap(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19117,7 +19130,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPembayaranBRIVA,btnPenilaianAwalKeperawatanRanap,btnAkunBayarHutang,btnNilaiPenerimaanVendorFarmasiPerBulan,btnMasterRencanaKeperawatan,
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
-            btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD;
+            btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap;
     
     public void isWall(){
         try{            
@@ -22087,11 +22100,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
-            if(akses.getcatatan_observasi_igd()==true){
-                Panelmenu.add(btnCatatanObservasiIGD);
-                jmlmenu++;
-            }
-            
             if(akses.getpenilaian_awal_keperawatan_gigi()==true){
                 Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
                 jmlmenu++;
@@ -22139,6 +22147,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
                 Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+                jmlmenu++;
+            }
+            
+            if(akses.getcatatan_observasi_igd()==true){
+                Panelmenu.add(btnCatatanObservasiIGD);
+                jmlmenu++;
+            }
+            
+            if(akses.getcatatan_observasi_ranap()==true){
+                Panelmenu.add(btnCatatanObservasiRanap);
                 jmlmenu++;
             }
             
@@ -26172,11 +26190,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPenilaianAwalKeperawatanIGD);
             jmlmenu++;
         }
-        
-        if(akses.getcatatan_observasi_igd()==true){
-            Panelmenu.add(btnCatatanObservasiIGD);
-            jmlmenu++;
-        }
 
         if(akses.getpenilaian_awal_keperawatan_gigi()==true){
             Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
@@ -26228,6 +26241,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getcatatan_observasi_igd()==true){
+            Panelmenu.add(btnCatatanObservasiIGD);
+            jmlmenu++;
+        }
+
+        if(akses.getcatatan_observasi_ranap()==true){
+            Panelmenu.add(btnCatatanObservasiRanap);
+            jmlmenu++;
+        }
+            
         if(akses.gethemodialisa()==true){
             Panelmenu.add(btnHemodialisa);
             jmlmenu++;
@@ -31387,13 +31410,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.getcatatan_observasi_igd()==true){
-            if(btnCatatanObservasiIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnCatatanObservasiIGD);
-                jmlmenu++;
-            }                
-        }
-        
         if(akses.getpenilaian_awal_keperawatan_gigi()==true){
             if(btnPenilaianAwalKeperawatanGigi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
@@ -31460,6 +31476,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
             if(btnPenilaianAwalMedisRanapKandungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getcatatan_observasi_igd()==true){
+            if(btnCatatanObservasiIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanObservasiIGD);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getcatatan_observasi_ranap()==true){
+            if(btnCatatanObservasiRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanObservasiRanap);
                 jmlmenu++;
             }                
         }
@@ -35977,6 +36007,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCatatanObservasiIGD.setName("btnCatatanObservasiIGD"); 
         btnCatatanObservasiIGD.setPreferredSize(new java.awt.Dimension(200, 90));
         btnCatatanObservasiIGD.addActionListener(this::btnCatatanObservasiIGDActionPerformed);
+        
+        btnCatatanObservasiRanap = new widget.ButtonBig();
+        btnCatatanObservasiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4852555_business_files_management_icon.png"))); 
+        btnCatatanObservasiRanap.setText("Catatan Observasi Ranap");
+        btnCatatanObservasiRanap.setIconTextGap(0);
+        btnCatatanObservasiRanap.setName("btnCatatanObservasiRanap"); 
+        btnCatatanObservasiRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanObservasiRanap.addActionListener(this::btnCatatanObservasiRanapActionPerformed);
     }
     
 }

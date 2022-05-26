@@ -54,7 +54,6 @@ public final class RMDataCatatanObservasiIGD extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private String finger="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
