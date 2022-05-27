@@ -410,7 +410,7 @@ inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pet
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="0" width="78" height="10" uuid="3a03eef0-2cec-459d-9013-737e40ef1349"/>
 				<textElement>

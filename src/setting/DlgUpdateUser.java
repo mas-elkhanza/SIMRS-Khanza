@@ -691,7 +691,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan,"+
                 "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri,user.soap_ralan_polri,"+
                 "user.soap_ranap_polri,user.laporan_penyakit_polri,user.jumlah_pengunjung_ralan_polri,user.catatan_observasi_igd,user.catatan_observasi_ranap,"+
-                "user.catatan_observasi_ranap_kebidanan from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3090,6 +3090,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Catatan Observasi Ranap Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Catatan Observasi Ranap Kebidanan",rs.getBoolean("catatan_observasi_ranap_kebidanan")});
+                    }
+                    
+                    if("[L]Catatan Observasi Ranap Post Partum".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Catatan Observasi Ranap Post Partum",rs.getBoolean("catatan_observasi_ranap_postpartum")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6413,6 +6417,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Catatan Observasi Ranap Kebidanan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_observasi_ranap_kebidanan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Catatan Observasi Ranap Post Partum".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

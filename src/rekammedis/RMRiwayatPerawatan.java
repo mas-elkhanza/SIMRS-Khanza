@@ -280,6 +280,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiIGD = new widget.CekBox();
         chkCatatanObservasiRanap = new widget.CekBox();
         chkCatatanObservasiRanapKebidanan = new widget.CekBox();
+        chkCatatanObservasiRanapPostPartum = new widget.CekBox();
         chkTriase = new widget.CekBox();
         chkAsuhanKeperawatanIGD = new widget.CekBox();
         chkAsuhanKeperawatanRalan = new widget.CekBox();
@@ -678,6 +679,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanapKebidanan.setOpaque(false);
         chkCatatanObservasiRanapKebidanan.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanObservasiRanapKebidanan);
+
+        chkCatatanObservasiRanapPostPartum.setSelected(true);
+        chkCatatanObservasiRanapPostPartum.setText("Catatan Observasi Ranap Post Partum");
+        chkCatatanObservasiRanapPostPartum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanObservasiRanapPostPartum.setName("chkCatatanObservasiRanapPostPartum"); // NOI18N
+        chkCatatanObservasiRanapPostPartum.setOpaque(false);
+        chkCatatanObservasiRanapPostPartum.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkCatatanObservasiRanapPostPartum);
 
         chkTriase.setSelected(true);
         chkTriase.setText("Triase IGD/UGD");
@@ -1380,6 +1389,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiIGD.setSelected(true);
             chkCatatanObservasiRanap.setSelected(true);
             chkCatatanObservasiRanapKebidanan.setSelected(true);
+            chkCatatanObservasiRanapPostPartum.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1426,6 +1436,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiIGD.setSelected(false);
             chkCatatanObservasiRanap.setSelected(false);
             chkCatatanObservasiRanapKebidanan.setSelected(false);
+            chkCatatanObservasiRanapPostPartum.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -1515,6 +1526,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkCatatanObservasiIGD;
     private widget.CekBox chkCatatanObservasiRanap;
     private widget.CekBox chkCatatanObservasiRanapKebidanan;
+    private widget.CekBox chkCatatanObservasiRanapPostPartum;
     private widget.CekBox chkDiagnosaPenyakit;
     private widget.CekBox chkHemodialisa;
     private widget.CekBox chkMonitoringGizi;
@@ -6300,7 +6312,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>"+
                                             "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>"+
                                             "<td valign='top' width='58%' bgcolor='#FFFAF8' colspan='6'>Monitoring</td>"+
-                                            "<td valign='middle' width='23%' bgcolor='#FFFAF8' rowspan='2'>Perawat/Paramedis</td>"+
+                                            "<td valign='middle' width='23%' bgcolor='#FFFAF8' rowspan='2'>Bidan</td>"+
                                          "</tr>"+
                                          "<tr align='center'>"+
                                             "<td valign='top' width='11%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
@@ -6337,6 +6349,83 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top' align='center'>"+rs2.getString("bjj")+"</td>"+
                                             "<td valign='top' align='center'>"+rs2.getString("ppv")+"</td>"+
                                             "<td valign='top' colspan='3'>"+rs2.getString("vt")+"</td>"+
+                                         "</tr>"
+                                    );                                        
+                                    w++;
+                                }
+                                htmlContent.append(
+                                      "</table>"+
+                                    "</td>"+
+                                  "</tr>");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                        }
+                    }
+                    
+                    //menampilkan catatan observasi rawat inap post partum
+                    if(chkCatatanObservasiRanapPostPartum.isSelected()==true){
+                        try {
+                            rs2=koneksi.prepareStatement(
+                                    "select catatan_observasi_ranap_postpartum.tgl_perawatan,catatan_observasi_ranap_postpartum.jam_rawat,catatan_observasi_ranap_postpartum.gcs,"+
+                                    "catatan_observasi_ranap_postpartum.td,catatan_observasi_ranap_postpartum.hr,catatan_observasi_ranap_postpartum.rr,catatan_observasi_ranap_postpartum.suhu,catatan_observasi_ranap_postpartum.spo2,"+
+                                    "catatan_observasi_ranap_postpartum.tfu,catatan_observasi_ranap_postpartum.kontraksi,catatan_observasi_ranap_postpartum.perdarahan,catatan_observasi_ranap_postpartum.keterangan,"+
+                                    "catatan_observasi_ranap_postpartum.nip,petugas.nama from catatan_observasi_ranap_postpartum "+
+                                    "inner join petugas on catatan_observasi_ranap_postpartum.nip=petugas.nip "+
+                                    "where catatan_observasi_ranap_postpartum.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
+                            if(rs2.next()){
+                                htmlContent.append(
+                                  "<tr class='isi'>"+ 
+                                    "<td valign='top' width='2%'></td>"+        
+                                    "<td valign='top' width='18%'>Catatan Observasi Rawat Inap Post Partum</td>"+
+                                    "<td valign='top' width='1%' align='center'>:</td>"+
+                                    "<td valign='top' width='79%'>"+
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>"+
+                                            "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>"+
+                                            "<td valign='top' width='58%' bgcolor='#FFFAF8' colspan='6'>Monitoring</td>"+
+                                            "<td valign='middle' width='23%' bgcolor='#FFFAF8' rowspan='2'>Bidan</td>"+
+                                         "</tr>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' width='11%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                            "<td valign='top' width='10%' bgcolor='#FFFAF8'>TD</td>"+
+                                            "<td valign='top' width='9%' bgcolor='#FFFAF8'>HR (/menit)</td>"+
+                                            "<td valign='top' width='9%' bgcolor='#FFFAF8'>RR (/menit)</td>"+
+                                            "<td valign='top' width='9%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                            "<td valign='top' width='9%' bgcolor='#FFFAF8'>SpO2(%)</td>"+
+                                         "</tr>"
+                                );
+                                rs2.beforeFirst();
+                                w=1;
+                                while(rs2.next()){
+                                    htmlContent.append(
+                                         "<tr>"+
+                                            "<td valign='top' align='center' rowspan='3'>"+w+"</td>"+
+                                            "<td valign='top' rowspan='3'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs2.getString("gcs")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs2.getString("td")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs2.getString("hr")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs2.getString("rr")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs2.getString("suhu")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs2.getString("spo2")+"</td>"+
+                                            "<td valign='top' rowspan='3'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                         "</tr>"+
+                                         "<tr align='center'>"+
+                                            "<td valign='top' bgcolor='#FFFAF8'>TFU</td>"+
+                                            "<td valign='top' bgcolor='#FFFAF8'>Kontraksi</td>"+
+                                            "<td valign='top' bgcolor='#FFFAF8' colspan='2'>Perdarahan</td>"+
+                                            "<td valign='top' bgcolor='#FFFAF8' colspan='2'>Keterangan</td>"+
+                                         "</tr>"+
+                                         "<tr>"+
+                                            "<td valign='top'>"+rs2.getString("tfu")+"</td>"+
+                                            "<td valign='top' align='center'>"+rs2.getString("kontraksi")+"</td>"+
+                                            "<td valign='top' colspan='2'>"+rs2.getString("perdarahan")+"</td>"+
+                                            "<td valign='top' colspan='2'>"+rs2.getString("keterangan")+"</td>"+
                                          "</tr>"
                                     );                                        
                                     w++;
