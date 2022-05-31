@@ -5749,6 +5749,14 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                     "       Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kode").asText()+". "+response.path("peserta").path("jenisPeserta").path("keterangan").asText()
                 });
                 Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
+                if(tampilkantni.equals("Yes")){
+                    if(Pekerjaan.getText().toLowerCase().contains("tni")){
+                        chkTNI.setSelected(true);
+                    }
+                    if(Pekerjaan.getText().toLowerCase().contains("polri")){
+                        chkPolri.setSelected(true);
+                    }
+                }
                 peserta=response.path("peserta").path("jenisPeserta").path("keterangan").asText();
                 tabMode.addRow(new Object[]{
                     "       Medical Record",": "

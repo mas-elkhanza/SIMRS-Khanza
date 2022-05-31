@@ -5918,6 +5918,14 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 nmpnj.setText("BPJS");
                 peserta=cekViaBPJSKartu.jenisPesertaketerangan;
                 Pekerjaan.setText(cekViaBPJSKartu.jenisPesertaketerangan);
+                if(tampilkantni.equals("Yes")){
+                    if(Pekerjaan.getText().toLowerCase().contains("tni")){
+                        chkTNI.setSelected(true);
+                    }
+                    if(Pekerjaan.getText().toLowerCase().contains("polri")){
+                        chkPolri.setSelected(true);
+                    }
+                }
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":"
                 });

@@ -204,7 +204,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[I]Laporan Tahunan IGD","[D]Obat/Alkes/BHP Tidak Bergerak","[J]Ringkasan Hutang Vendor Farmasi","[E]Nilai Penerimaan Vendor Non Medis Per Bulan",
                 "[J]Ringkasan Hutang Vendor Non Medis","[L]Master Rencana Keperawatan Bayi/Anak","[I]Anggota POLRI Dirawat","[I]Daftar Pasien Ranap POLRI","[L]SOAP Ralan Anggota POLRI",
                 "[L]SOAP Ranap Anggota POLRI","[I]Laporan Penyakit POLRI","[I]Jumlah Pengunjung Ralan POLRI","[L]Catatan Observasi IGD","[L]Catatan Observasi Ranap",
-                "[L]Catatan Observasi Ranap Kebidanan","[L]Catatan Observasi Ranap Post Partum"
+                "[L]Catatan Observasi Ranap Kebidanan","[L]Catatan Observasi Ranap Post Partum","[L]Penilaian Awal Medis Ralan THT"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -446,7 +446,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 828;i++) {
+        for (i = 0; i < 829;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2384,6 +2384,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 827:
                     column.setPreferredWidth(207);
                     break;
+                case 828:
+                    column.setPreferredWidth(177);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2884,7 +2887,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3754,7 +3757,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "catatan_observasi_igd='"+tbUser.getValueAt(i,824).toString()+"',"+
                     "catatan_observasi_ranap='"+tbUser.getValueAt(i,825).toString()+"',"+
                     "catatan_observasi_ranap_kebidanan='"+tbUser.getValueAt(i,826).toString()+"',"+
-                    "catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(i,827).toString()+"'");
+                    "catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(i,827).toString()+"',"+
+                    "penilaian_awal_medis_ralan_tht='"+tbUser.getValueAt(i,828).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4664,7 +4668,8 @@ public class DlgUser extends javax.swing.JDialog {
                                         "catatan_observasi_igd='"+tbUser.getValueAt(barisdicopy,824).toString()+"',"+
                                         "catatan_observasi_ranap='"+tbUser.getValueAt(barisdicopy,825).toString()+"',"+
                                         "catatan_observasi_ranap_kebidanan='"+tbUser.getValueAt(barisdicopy,826).toString()+"',"+
-                                        "catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(barisdicopy,827).toString()+"'");
+                                        "catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(barisdicopy,827).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_tht='"+tbUser.getValueAt(barisdicopy,828).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5028,7 +5033,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan,"+
                 "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri,user.soap_ralan_polri,"+
                 "user.soap_ranap_polri,user.laporan_penyakit_polri,user.jumlah_pengunjung_ralan_polri,user.catatan_observasi_igd,user.catatan_observasi_ranap,"+
-                "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5868,7 +5873,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("catatan_observasi_igd"),
                                rs.getBoolean("catatan_observasi_ranap"),
                                rs.getBoolean("catatan_observasi_ranap_kebidanan"),
-                               rs.getBoolean("catatan_observasi_ranap_postpartum")
+                               rs.getBoolean("catatan_observasi_ranap_postpartum"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_tht")
                             });
                         }   
                     } catch (Exception e) {
@@ -6697,7 +6703,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("catatan_observasi_igd"),
                            rs.getBoolean("catatan_observasi_ranap"),
                            rs.getBoolean("catatan_observasi_ranap_kebidanan"),
-                           rs.getBoolean("catatan_observasi_ranap_postpartum")
+                           rs.getBoolean("catatan_observasi_ranap_postpartum"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_tht")
                         });
                     }                                             
                  }

@@ -2073,7 +2073,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             "select proyeksi, kV, mAS, FFD, BSF, inak, jml_penyinaran, dosis,link_ris from order_out where kode_tindakan=? and no_rontgen=?");
                     try {
                         pspemeriksaan2.setString(1,rs.getString("kd_jenis_prw"));
-                        pspemeriksaan2.setString(2,order.replaceAll("PR",""));
+                        pspemeriksaan2.setString(2,order);
                         rs2=pspemeriksaan2.executeQuery();
                         if(rs2.next()){
                             tabMode.addRow(new Object[]{
@@ -2100,7 +2100,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 pspemeriksaan2=koneksiradiologi.prepareStatement(
                         "select expertise_finding, expertise_conclusion, expertise_bookmark from order_out where no_rontgen=?");
                 try {
-                    pspemeriksaan2.setString(1,order.replaceAll("PR",""));
+                    pspemeriksaan2.setString(1,order);
                     rs2=pspemeriksaan2.executeQuery();
                     if(rs2.next()){
                         HasilPeriksa.setText("Finding : "+rs2.getString("expertise_finding")+", Konklusi : "+rs2.getString("expertise_conclusion")+", Bookmark : "+rs2.getString("expertise_bookmark"));

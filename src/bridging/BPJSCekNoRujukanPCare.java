@@ -5747,6 +5747,14 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                 });
                 peserta=response.path("peserta").path("jenisPeserta").path("keterangan").asText();
                 Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
+                if(tampilkantni.equals("Yes")){
+                    if(Pekerjaan.getText().toLowerCase().contains("tni")){
+                        chkTNI.setSelected(true);
+                    }
+                    if(Pekerjaan.getText().toLowerCase().contains("polri")){
+                        chkPolri.setSelected(true);
+                    }
+                }
                 tabMode.addRow(new Object[]{
                     "       Medical Record",": "
                 });

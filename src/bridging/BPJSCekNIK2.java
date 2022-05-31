@@ -5911,6 +5911,14 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
                 Pekerjaan.setText(cekViaBPJS.jenisPesertaketerangan);
+                if(tampilkantni.equals("Yes")){
+                    if(Pekerjaan.getText().toLowerCase().contains("tni")){
+                        chkTNI.setSelected(true);
+                    }
+                    if(Pekerjaan.getText().toLowerCase().contains("polri")){
+                        chkPolri.setSelected(true);
+                    }
+                }
                 peserta=cekViaBPJS.jenisPesertaketerangan;
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":"

@@ -720,10 +720,10 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
         FormInput.add(TglLahir);
         TglLahir.setBounds(644, 10, 80, 23);
 
-        jLabel9.setText("Riwayat Pengunaan obat :");
+        jLabel9.setText("Riwayat Penggunaan Obat :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 190, 172, 23);
+        jLabel9.setBounds(0, 190, 180, 23);
 
         Jk.setEditable(false);
         Jk.setHighlighter(null);
@@ -973,7 +973,7 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
         scrollPane4.setViewportView(RPO);
 
         FormInput.add(scrollPane4);
-        scrollPane4.setBounds(176, 190, 263, 42);
+        scrollPane4.setBounds(184, 190, 255, 42);
 
         scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane5.setName("scrollPane5"); // NOI18N
@@ -1369,7 +1369,7 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021 20:46:22" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-05-2022 08:07:31" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1721,7 +1721,7 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-05-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1735,7 +1735,7 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-10-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-05-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2868,7 +2868,7 @@ public final class RMPenilaianAwalMedisRanapKandungan extends javax.swing.JDialo
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NmDokter,KdDokter.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?", NmDokter,KdDokter.getText());
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
