@@ -61,10 +61,11 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
-            "Riwayat Penggunakan Obat","Riwayat Alergi","Status","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu","Nyeri","BB(Kg)","TB(cm)",
-            "Ket.Pemeriksaan Fisik","Ket.Status Lokalis","Laboratorium","Radiologi",
-            "Penunjang Lainnya","Tes Pendengaran","Pemeriksaan Lain","Diagnosis/Asesmen","Diagnosis Banding","Permasalahan","Terapi/Pengobatan","Tindakan","Tatalaksana","Edukasi"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama",
+            "Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu","Riwayat Penggunaan Obat","Alergi","TD","Nadi","RR","Suhu","BB","TB",
+            "Nyeri","Status Nutrisi","Kondisi Umum","Keterangan Lokalis","Laboratorium","Radiolgi","Tes Pendengaran","Penunjang Lainnya",
+            "Diagnosis Kerja","Diagnosis Banding","Permasalahan","Terapi/Pengobatan","Tindakan/Rencana Pengobatan","Tatalaksana Lainnya",
+            "Edukasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -73,7 +74,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 37; i++) {
+        for (i = 0; i < 35; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -106,49 +107,15 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(120);
             }else if(i==15){
-                column.setPreferredWidth(90);
-            }else if(i==16){
-                column.setPreferredWidth(80);
-            }else if(i==17){
-                column.setPreferredWidth(75);
-            }else if(i==18){
                 column.setPreferredWidth(67);
+            }else if(i==16){
+                column.setPreferredWidth(40);
+            }else if(i==17){
+                column.setPreferredWidth(40);
+            }else if(i==18){
+                column.setPreferredWidth(40);
             }else if(i==19){
                 column.setPreferredWidth(40);
-            }else if(i==20){
-                column.setPreferredWidth(40);
-            }else if(i==21){
-                column.setPreferredWidth(40);
-            }else if(i==22){
-                column.setPreferredWidth(40);
-            }else if(i==23){
-                column.setPreferredWidth(300);
-            }else if(i==24){
-                column.setPreferredWidth(200);
-            }else if(i==25){
-                column.setPreferredWidth(170);
-            }else if(i==26){
-                column.setPreferredWidth(170);
-            }else if(i==27){
-                column.setPreferredWidth(170);
-            }else if(i==28){
-                column.setPreferredWidth(170);
-            }else if(i==29){
-                column.setPreferredWidth(170);
-            }else if(i==30){
-                column.setPreferredWidth(150);
-            }else if(i==31){
-                column.setPreferredWidth(300);
-            }else if(i==32){
-                column.setPreferredWidth(150);
-            }else if(i==33){
-                column.setPreferredWidth(150);
-            }else if(i==34){
-                column.setPreferredWidth(150);   
-            }else if(i==35){
-                column.setPreferredWidth(150);
-            }else if(i==36){
-                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1506,15 +1473,15 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         }else if(RPO.getText().trim().equals("")){
             Valid.textKosong(RPO,"Riwayat Pengunaan obat");
         }else{
-            if(Sequel.menyimpantf("penilaian_medis_ralan_tht","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",32,new String[]{
+            if(Sequel.menyimpantf("penilaian_medis_ralan_tht","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",31,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),StatusNutrisi.getText(),TD.getText(),
-                    Nadi.getText(),RR.getText(),Suhu.getText(),Nyeri.getText(),BB.getText(),TB.getText(),Kondisi.getText(),KetLokalis.getText(),Laborat.getText(),Radiologi.getText(),Penunjang.getText(),Tes.getText(),Diagnosis.getText(),DiagnosisBdg.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Tatalaksana.getText(),Edukasi.getText()
+                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),BB.getText(),TB.getText(),Nyeri.getText(),StatusNutrisi.getText(),
+                    Kondisi.getText(),KetLokalis.getText(),Laborat.getText(),Radiologi.getText(),Tes.getText(),Penunjang.getText(),Diagnosis.getText(),DiagnosisBdg.getText(),Permasalahan.getText(),Terapi.getText(),
+                    Tindakan.getText(),Tatalaksana.getText(),Edukasi.getText()
                 })==true){
                     emptTeks();
             }
         }
-    
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -2193,10 +2160,12 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_tht.tanggal,"+
-                        "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,"+
-                        "penilaian_medis_ralan_tht.status,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,"+
-                        "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.tes,penilaian_medis_ralan_tht.pemeriksaan,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbdg,"+
-                        "penilaian_medis_ralan_tht.permasalahan,penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tata,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,"+
+                        "penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,"+
+                        "penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.status_nutrisi,"+
+                        "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.tes_pendengaran,"+
+                        "penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbanding,penilaian_medis_ralan_tht.permasalahan,"+
+                        "penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tatalaksana,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_tht on reg_periksa.no_rawat=penilaian_medis_ralan_tht.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_tht.kd_dokter=dokter.kd_dokter where "+
@@ -2204,10 +2173,12 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_tht.tanggal,"+
-                        "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,"+
-                        "penilaian_medis_ralan_tht.status,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,"+
-                        "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.tes,penilaian_medis_ralan_tht.pemeriksaan,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbdg,"+
-                        "penilaian_medis_ralan_tht.permasalahan,penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tata,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,"+
+                        "penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,"+
+                        "penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.status_nutrisi,"+
+                        "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.tes_pendengaran,"+
+                        "penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbanding,penilaian_medis_ralan_tht.permasalahan,"+
+                        "penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tatalaksana,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_tht on reg_periksa.no_rawat=penilaian_medis_ralan_tht.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_tht.kd_dokter=dokter.kd_dokter where "+
@@ -2232,10 +2203,10 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),
-                        rs.getString("status"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),rs.getString("nyeri"),rs.getString("bb"),
-                        rs.getString("tb"),rs.getString("kondisi"),rs.getString("ket_lokalis"),rs.getString("lab"),rs.getString("rad"),rs.getString("penunjang"),rs.getString("tes"),rs.getString("pemeriksaan"),
-                        rs.getString("diagnosis"),rs.getString("diagnosisbdg"),rs.getString("permasalahan"),rs.getString("terapi"),rs.getString("tindakan"),rs.getString("tata"),rs.getString("edukasi")
+                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),rs.getString("td"),rs.getString("nadi"),
+                        rs.getString("rr"),rs.getString("suhu"),rs.getString("bb"),rs.getString("tb"),rs.getString("nyeri"),rs.getString("status_nutrisi"),rs.getString("kondisi"),rs.getString("ket_lokalis"),rs.getString("lab"),
+                        rs.getString("rad"),rs.getString("tes_pendengaran"),rs.getString("penunjang"),rs.getString("diagnosis"),rs.getString("diagnosisbanding"),rs.getString("permasalahan"),rs.getString("terapi"),
+                        rs.getString("tindakan"),rs.getString("tatalaksana"),rs.getString("edukasi")
                     });
                 }
             } catch (Exception e) {
@@ -2305,27 +2276,27 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             RPD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             RPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            StatusNutrisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Nyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Nyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            StatusNutrisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             Kondisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             KetLokalis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
             Laborat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
             Radiologi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            Penunjang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
-            Tes.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            DiagnosisBdg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            Permasalahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            Terapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
-            Tatalaksana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
-            Edukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            Tes.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            Penunjang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            DiagnosisBdg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            Permasalahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            Terapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            Tatalaksana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            Edukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
@@ -2402,12 +2373,12 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_medis_ralan_tht","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,rpo=?,alergi=?,status=?,td=?,nadi=?,rr=?,suhu=?,"+
-                "nyeri=?,bb=?,tb=?,kondisi=?,ket_lokalis=?,lab=?,rad=?,penunjang=?,tes=?,pemeriksaan=?,diagnosis=?,diagnosisbdg=?,permasalahan=?,terapi=?,tindakan=?,tata=?,edukasi=?",33,new String[]{
+        if(Sequel.mengedittf("penilaian_medis_ralan_tht","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,rpo=?,alergi=?,td=?,nadi=?,rr=?,suhu=?,bb=?,tb=?,nyeri=?,"+
+                "status_nutrisi=?,kondisi=?,ket_lokalis=?,lab=?,rad=?,tes_pendengaran=?,penunjang=?,diagnosis=?,diagnosisbanding=?,permasalahan=?,terapi=?,tindakan=?,tatalaksana=?,edukasi=?",32,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),StatusNutrisi.getText(),TD.getText(),
-                    Nadi.getText(),RR.getText(),Suhu.getText(),Nyeri.getText(),BB.getText(),TB.getText(),Kondisi.getText(),KetLokalis.getText(),Laborat.getText(),Radiologi.getText(),Penunjang.getText(),Tes.getText(),
-                    Diagnosis.getText(),DiagnosisBdg.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Tatalaksana.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),BB.getText(),TB.getText(),Nyeri.getText(),StatusNutrisi.getText(),
+                Kondisi.getText(),KetLokalis.getText(),Laborat.getText(),Radiologi.getText(),Tes.getText(),Penunjang.getText(),Diagnosis.getText(),DiagnosisBdg.getText(),Permasalahan.getText(),Terapi.getText(),
+                Tindakan.getText(),Tatalaksana.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();
