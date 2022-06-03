@@ -74,7 +74,7 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 35; i++) {
+        for (i = 0; i < 36; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -107,15 +107,47 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(120);
             }else if(i==15){
-                column.setPreferredWidth(67);
+                column.setPreferredWidth(60);
             }else if(i==16){
                 column.setPreferredWidth(40);
             }else if(i==17){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==18){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==19){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
+            }else if(i==20){
+                column.setPreferredWidth(35);
+            }else if(i==21){
+                column.setPreferredWidth(120);
+            }else if(i==22){
+                column.setPreferredWidth(120);
+            }else if(i==23){
+                column.setPreferredWidth(200);
+            }else if(i==24){
+                column.setPreferredWidth(200);
+            }else if(i==25){
+                column.setPreferredWidth(170);
+            }else if(i==26){
+                column.setPreferredWidth(170);
+            }else if(i==27){
+                column.setPreferredWidth(170);
+            }else if(i==28){
+                column.setPreferredWidth(170);
+            }else if(i==29){
+                column.setPreferredWidth(150);
+            }else if(i==30){
+                column.setPreferredWidth(150);
+            }else if(i==31){
+                column.setPreferredWidth(200);
+            }else if(i==32){
+                column.setPreferredWidth(200);
+            }else if(i==33){
+                column.setPreferredWidth(200);
+            }else if(i==34){
+                column.setPreferredWidth(200);
+            }else if(i==35){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1585,26 +1617,30 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_tht.tanggal,"+
-                        "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,"+
-                        "penilaian_medis_ralan_tht.status,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,"+
-                        "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.tes,penilaian_medis_ralan_tht.pemeriksaan,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbdg,"+
-                        "penilaian_medis_ralan_tht.permasalahan,penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tata,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,"+
+                        "penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,"+
+                        "penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.status_nutrisi,"+
+                        "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.tes_pendengaran,"+
+                        "penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbanding,penilaian_medis_ralan_tht.permasalahan,"+
+                        "penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tatalaksana,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_tht on reg_periksa.no_rawat=penilaian_medis_ralan_tht.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_tht.kd_dokter=dokter.kd_dokter where "+
                         "penilaian_medis_ralan_tht.tanggal between ? and ? order by penilaian_medis_ralan_tht.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_tht.tanggal,"+
-                        "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,"+
-                        "penilaian_medis_ralan_tht.status,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,"+
-                        "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.tes,penilaian_medis_ralan_tht.pemeriksaan,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbdg,"+
-                        "penilaian_medis_ralan_tht.permasalahan,penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tata,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_medis_ralan_tht on reg_periksa.no_rawat=penilaian_medis_ralan_tht.no_rawat "+
-                        "inner join dokter on penilaian_medis_ralan_tht.kd_dokter=dokter.kd_dokter where "+
-                        "penilaian_medis_ralan_tht.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_medis_ralan_tht.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_medis_ralan_tht.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_tht.tanggal,"+
+                            "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,"+
+                            "penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,"+
+                            "penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.status_nutrisi,"+
+                            "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.tes_pendengaran,"+
+                            "penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbanding,penilaian_medis_ralan_tht.permasalahan,"+
+                            "penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tatalaksana,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join penilaian_medis_ralan_tht on reg_periksa.no_rawat=penilaian_medis_ralan_tht.no_rawat "+
+                            "inner join dokter on penilaian_medis_ralan_tht.kd_dokter=dokter.kd_dokter where "+
+                            "penilaian_medis_ralan_tht.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                            "penilaian_medis_ralan_tht.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_medis_ralan_tht.tanggal");
                 }
 
                 try {
@@ -1624,43 +1660,42 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anamnesis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Hubungan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Keluhan Utama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Sekarang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Dahulu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penggunakan Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Riwayat Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Status</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>TD(mmHg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Nadi(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'><b>RR(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>BB(Kg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>TB(cm)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Ket.Pemeriksaan Fisik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ket.Status Lokalis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Laboratorium</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Radiologi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Penunjang Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tes Pendengaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Pemeriksaan Lain</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis/Asesmen</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis Banding</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Permasalahan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Terapi/Pengobatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tindakan/Rencana Pengobatan</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Tatalaksana</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Edukasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Anamnesis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>Hubungan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'>Keluhan Utama</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Riwayat Penyakit Sekarang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Riwayat Penyakit Dahulu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Riwayat Penggunaan Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'>Alergi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'>TD</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'>Nadi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35px'>RR</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35px'>Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35px'>BB</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35px'>TB</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'>Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'>Status Nutrisi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'>Kondisi Umum</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'>Keterangan Lokalis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'>Laboratorium</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'>Radiolgi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'>Tes Pendengaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'>Penunjang Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Diagnosis Kerja</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Diagnosis Banding</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'>Permasalahan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'>Terapi/Pengobatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'>Tindakan/Rencana Pengobatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'>Tatalaksana Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'>Edukasi</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1681,27 +1716,26 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("rpd")+"</td>"+
                                "<td valign='top'>"+rs.getString("rpo")+"</td>"+
                                "<td valign='top'>"+rs.getString("alergi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("status")+"</td>"+
                                "<td valign='top'>"+rs.getString("td")+"</td>"+
                                "<td valign='top'>"+rs.getString("nadi")+"</td>"+
                                "<td valign='top'>"+rs.getString("rr")+"</td>"+
                                "<td valign='top'>"+rs.getString("suhu")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nyeri")+"</td>"+
                                "<td valign='top'>"+rs.getString("bb")+"</td>"+
                                "<td valign='top'>"+rs.getString("tb")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nyeri")+"</td>"+
+                               "<td valign='top'>"+rs.getString("status_nutrisi")+"</td>"+
                                "<td valign='top'>"+rs.getString("kondisi")+"</td>"+
                                "<td valign='top'>"+rs.getString("ket_lokalis")+"</td>"+
                                "<td valign='top'>"+rs.getString("lab")+"</td>"+
                                "<td valign='top'>"+rs.getString("rad")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tes_pendengaran")+"</td>"+
                                "<td valign='top'>"+rs.getString("penunjang")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tes")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan")+"</td>"+
                                "<td valign='top'>"+rs.getString("diagnosis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("diagnosisbdg")+"</td>"+
+                               "<td valign='top'>"+rs.getString("diagnosisbanding")+"</td>"+
                                "<td valign='top'>"+rs.getString("permasalahan")+"</td>"+
                                "<td valign='top'>"+rs.getString("terapi")+"</td>"+
                                "<td valign='top'>"+rs.getString("tindakan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tata")+"</td>"+
+                               "<td valign='top'>"+rs.getString("tatalaksana")+"</td>"+
                                "<td valign='top'>"+rs.getString("edukasi")+"</td>"+
                             "</tr>");
                     }
@@ -1732,13 +1766,13 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='4600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='4650px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT INAP<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT JALAN<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")
@@ -1962,10 +1996,12 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
             
             Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanTHT.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan THT]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_tht.tanggal,"+
-                "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,"+
-                "penilaian_medis_ralan_tht.status,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,"+
-                "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.tes,penilaian_medis_ralan_tht.pemeriksaan,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbdg,"+
-                "penilaian_medis_ralan_tht.permasalahan,penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tata,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
+                "penilaian_medis_ralan_tht.kd_dokter,penilaian_medis_ralan_tht.anamnesis,penilaian_medis_ralan_tht.hubungan,penilaian_medis_ralan_tht.keluhan_utama,penilaian_medis_ralan_tht.rps,"+
+                "penilaian_medis_ralan_tht.rpd,penilaian_medis_ralan_tht.rpo,penilaian_medis_ralan_tht.alergi,penilaian_medis_ralan_tht.td,penilaian_medis_ralan_tht.nadi,penilaian_medis_ralan_tht.rr,"+
+                "penilaian_medis_ralan_tht.suhu,penilaian_medis_ralan_tht.bb,penilaian_medis_ralan_tht.tb,penilaian_medis_ralan_tht.nyeri,penilaian_medis_ralan_tht.status_nutrisi,"+
+                "penilaian_medis_ralan_tht.kondisi,penilaian_medis_ralan_tht.ket_lokalis,penilaian_medis_ralan_tht.lab,penilaian_medis_ralan_tht.rad,penilaian_medis_ralan_tht.tes_pendengaran,"+
+                "penilaian_medis_ralan_tht.penunjang,penilaian_medis_ralan_tht.diagnosis,penilaian_medis_ralan_tht.diagnosisbanding,penilaian_medis_ralan_tht.permasalahan,"+
+                "penilaian_medis_ralan_tht.terapi,penilaian_medis_ralan_tht.tindakan,penilaian_medis_ralan_tht.tatalaksana,penilaian_medis_ralan_tht.edukasi,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_medis_ralan_tht on reg_periksa.no_rawat=penilaian_medis_ralan_tht.no_rawat "+
                 "inner join dokter on penilaian_medis_ralan_tht.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_tht.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
