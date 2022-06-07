@@ -4,9 +4,9 @@
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
    
-   $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
-   $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
-   $hari      = empty($baristhn[2])?date("d"):$baristhn[2];
+   $tahun     = empty($baris[0])?date("Y"):$baris[0];
+   $blnini    = empty($baris[1])?date("m"):$baris[1];
+   $hari      = empty($baris[2])?date("d"):$baris[2];
    $bln_leng  = strlen($blnini);
    $bulan     = "0";
    if ($bln_leng==1){

@@ -406,7 +406,6 @@ public class frmUtama extends javax.swing.JFrame {
                                                     "\"tinggiBadan\": "+rs.getString("tinggiBadan")+"," +
                                                     "\"respRate\": "+rs.getString("respRate")+"," +
                                                     "\"lingkarPerut\": 0," +
-                                                    "\"rujukInternal\": 0," +
                                                     "\"heartRate\": "+rs.getString("heartRate")+"," +
                                                     "\"rujukBalik\": 0," +
                                                     "\"kdTkp\": \""+rs.getString("kdTkp")+"\"" +

@@ -5227,6 +5227,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                             "\"beratBadan\": "+BeratBadan.getText()+"," +
                             "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
                             "\"respRate\": "+Respiratory.getText()+"," +
+                            "\"lingkarPerut\": 0," +
                             "\"heartRate\": "+Heartrate.getText()+"," +
                             "\"rujukBalik\": 0," +
                             "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +

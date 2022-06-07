@@ -2731,7 +2731,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
                                     "\"respRate\": "+Respiratory.getText()+"," +
                                     "\"lingkarPerut\": 0," +
-                                    "\"rujukInternal\": 0," +
                                     "\"heartRate\": "+Heartrate.getText()+"," +
                                     "\"rujukBalik\": 0," +
                                     "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
@@ -2982,7 +2981,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
                                         "\"respRate\": "+Respiratory.getText()+"," +
                                         "\"lingkarPerut\": 0," +
-                                        "\"rujukInternal\": 0," +
                                         "\"heartRate\": "+Heartrate.getText()+"," +
                                         "\"rujukBalik\": 0," +
                                         "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
@@ -4369,7 +4367,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"tinggiBadan\": "+tbPendaftaran.getValueAt(i,13).toString()+"," +
                                     "\"respRate\": "+tbPendaftaran.getValueAt(i,14).toString()+","+ 
                                     "\"lingkarPerut\": 0," +
-                                    "\"rujukInternal\": 0," +
                                     "\"heartRate\": "+tbPendaftaran.getValueAt(i,15).toString()+"," +
                                     "\"rujukBalik\": 0," +
                                     "\"kdTkp\": \""+tbPendaftaran.getValueAt(i,17).toString().substring(0,2)+"\"" +
@@ -6775,7 +6772,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "\"tinggiBadan\": "+tbPendaftaran.getValueAt(i,13).toString()+"," +
                                                         "\"respRate\": "+tbPendaftaran.getValueAt(i,14).toString()+"," +
                                                         "\"lingkarPerut\": 0," +
-                                                        "\"rujukInternal\": 0," +
                                                         "\"heartRate\": "+tbPendaftaran.getValueAt(i,15).toString()+"," +
                                                         "\"rujukBalik\": 0," +
                                                         "\"kdTkp\": \""+tbPendaftaran.getValueAt(i,17).toString().substring(0,2)+"\"" +
