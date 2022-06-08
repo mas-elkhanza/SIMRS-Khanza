@@ -45,7 +45,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
-    private String pilihan="";
+    private String pilihan="",finger="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -5799,7 +5799,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             param.put("nyeri",Sequel.cariGambar("select nyeri from gambar")); 
-            param.put("finger",Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),63).toString()));
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString())); 
             try {
                 ps=koneksi.prepareStatement("select * from riwayat_persalinan_pasien where no_rkm_medis=? order by tgl_thn");
                 try {
@@ -7507,8 +7508,6 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()); 
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()); 
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()); 
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()); 
             KdPetugas2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()); 
             NmPetugas2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
             KdDPJP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 

@@ -7507,8 +7507,6 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()); 
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()); 
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()); 
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()); 
             KdPetugas2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()); 
             NmPetugas2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
             KdDPJP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 

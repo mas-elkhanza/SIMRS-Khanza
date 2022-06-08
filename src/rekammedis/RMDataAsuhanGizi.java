@@ -1408,13 +1408,14 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()>-1){
-            if(Sequel.queryu2tf("delete from asuhan_gizi where no_rawat=? and tanggal=?",2,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-            })==true){
-                tampil();
-                emptTeks();
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
             }else{
-                JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                }
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
@@ -1473,49 +1474,18 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
             if(tbObat.getSelectedRow()>-1){
-                alergi_telur="Tidak"; 
-                alergi_susu_sapi="Tidak";
-                alergi_kacang="Tidak";
-                alergi_gluten="Tidak";
-                alergi_udang="Tidak";
-                alergi_ikan="Tidak";
-                alergi_hazelnut="Tidak";
-                if(TelurYa.isSelected()==true){
-                    alergi_telur="Ya";
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else{
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                    }
                 }
-                if(SusuYa.isSelected()==true){
-                    alergi_susu_sapi="Ya";
-                }
-                if(KacangYa.isSelected()==true){
-                    alergi_kacang="Ya";
-                }
-                if(TelurYa.isSelected()==true){
-                    alergi_telur="Ya";
-                }
-                if(GlutenYa.isSelected()==true){
-                    alergi_gluten="Ya";
-                }
-                if(UdangYa.isSelected()==true){
-                    alergi_udang="Ya";
-                }
-                if(IkanYa.isSelected()==true){
-                    alergi_ikan="Ya";
-                }
-                if(HazelnutYa.isSelected()==true){
-                    alergi_hazelnut="Ya";
-                }
-                
-                if(Sequel.mengedittf("asuhan_gizi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,antropometri_bb=?,antropometri_tb=?,antropometri_imt=?,antropometri_lla=?,antropometri_tl=?,antropometri_ulna=?,antropometri_bbideal=?,antropometri_bbperu=?,antropometri_tbperu=?,antropometri_bbpertb=?,antropometri_llaperu=?,biokimia=?,fisik_klinis=?,alergi_telur=?,alergi_susu_sapi=?,alergi_kacang=?,alergi_gluten=?,alergi_udang=?,alergi_ikan=?,alergi_hazelnut=?,pola_makan=?,riwayat_personal=?,diagnosis=?,intervensi_gizi=?,monitoring_evaluasi=?,nip=?",30,new String[]{
-                        TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+""),BB.getText(),TB.getText(),IMT.getText(),LiLA.getText(), 
-                        TL.getText(),ULNA.getText(),BBIdeal.getText(),BBPerU.getText(),TBPerU.getText(),BBPerTB.getText(),LiLAPerU.getText(), 
-                        Biokimia.getText(),FisikKlinis.getText(), alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, 
-                        alergi_ikan, alergi_hazelnut, PolaMakan.getText(),RiwayatPersonal.getText(),DiagnosisGizi.getText(),IntervensiGizi.getText(),
-                        Monitoring.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-                    })==true){
-                        tampil();
-                        emptTeks();
-                }
-            }
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+            } 
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -2106,8 +2076,6 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             DiagnosisGizi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString()); 
             IntervensiGizi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()); 
             Monitoring.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
             Valid.SetTgl(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -2188,6 +2156,62 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                     TBPerU.setText("");
                 }   
             }
+        }
+    }
+
+    private void ganti() {
+        alergi_telur="Tidak"; 
+        alergi_susu_sapi="Tidak";
+        alergi_kacang="Tidak";
+        alergi_gluten="Tidak";
+        alergi_udang="Tidak";
+        alergi_ikan="Tidak";
+        alergi_hazelnut="Tidak";
+        if(TelurYa.isSelected()==true){
+            alergi_telur="Ya";
+        }
+        if(SusuYa.isSelected()==true){
+            alergi_susu_sapi="Ya";
+        }
+        if(KacangYa.isSelected()==true){
+            alergi_kacang="Ya";
+        }
+        if(TelurYa.isSelected()==true){
+            alergi_telur="Ya";
+        }
+        if(GlutenYa.isSelected()==true){
+            alergi_gluten="Ya";
+        }
+        if(UdangYa.isSelected()==true){
+            alergi_udang="Ya";
+        }
+        if(IkanYa.isSelected()==true){
+            alergi_ikan="Ya";
+        }
+        if(HazelnutYa.isSelected()==true){
+            alergi_hazelnut="Ya";
+        }
+
+        if(Sequel.mengedittf("asuhan_gizi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,antropometri_bb=?,antropometri_tb=?,antropometri_imt=?,antropometri_lla=?,antropometri_tl=?,antropometri_ulna=?,antropometri_bbideal=?,antropometri_bbperu=?,antropometri_tbperu=?,antropometri_bbpertb=?,antropometri_llaperu=?,biokimia=?,fisik_klinis=?,alergi_telur=?,alergi_susu_sapi=?,alergi_kacang=?,alergi_gluten=?,alergi_udang=?,alergi_ikan=?,alergi_hazelnut=?,pola_makan=?,riwayat_personal=?,diagnosis=?,intervensi_gizi=?,monitoring_evaluasi=?,nip=?",30,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+""),BB.getText(),TB.getText(),IMT.getText(),LiLA.getText(), 
+                TL.getText(),ULNA.getText(),BBIdeal.getText(),BBPerU.getText(),TBPerU.getText(),BBPerTB.getText(),LiLAPerU.getText(), 
+                Biokimia.getText(),FisikKlinis.getText(), alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, 
+                alergi_ikan, alergi_hazelnut, PolaMakan.getText(),RiwayatPersonal.getText(),DiagnosisGizi.getText(),IntervensiGizi.getText(),
+                Monitoring.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+            })==true){
+                tampil();
+                emptTeks();
+        }
+    }
+
+    private void hapus() {
+        if(Sequel.queryu2tf("delete from asuhan_gizi where no_rawat=? and tanggal=?",2,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+        })==true){
+            tampil();
+            emptTeks();
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
     }
 

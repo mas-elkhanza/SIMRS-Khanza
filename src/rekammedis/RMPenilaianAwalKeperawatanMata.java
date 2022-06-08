@@ -4617,8 +4617,6 @@ public final class RMPenilaianAwalKeperawatanMata extends javax.swing.JDialog {
             LensaKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),84).toString());
             OftalmoskopiKanan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),85).toString());
             OftalmoskopiKiri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString());
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),87).toString());
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),88).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             
             try {
