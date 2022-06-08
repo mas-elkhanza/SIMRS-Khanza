@@ -725,7 +725,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         jLabel17.setText("Dibayar Pasien : Rp.");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(430, 100, 177, 23);
+        jLabel17.setBounds(487, 100, 120, 23);
 
         DibayarPasien.setEditable(false);
         DibayarPasien.setText("0");

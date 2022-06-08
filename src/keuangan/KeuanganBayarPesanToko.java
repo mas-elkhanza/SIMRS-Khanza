@@ -1047,6 +1047,8 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+                tampilAkunBayar2();
+            }else{
                 tampilAkunBayar();
             }
         } catch (Exception e) {
@@ -1368,4 +1370,21 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
     }
+    
+    private void tampilAkunBayar2() {
+        try {
+            myObj = new FileReader("./cache/akunbayarhutang.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("akunbayarhutang");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    AkunBayar.addItem(list.path("NamaAkun").asText().replaceAll("\"",""));
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+    } 
 }

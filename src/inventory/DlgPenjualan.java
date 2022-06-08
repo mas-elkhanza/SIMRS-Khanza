@@ -654,6 +654,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
         jLabel13 = new widget.Label();
         Ongkir = new widget.TextBox();
         label23 = new widget.Label();
+        BtnAll1 = new widget.Button();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoNota = new widget.TextBox();
@@ -804,7 +805,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
         panelisi1.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(220, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(215, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -964,7 +965,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
             }
         });
         panelisi5.add(AkunBayar);
-        AkunBayar.setBounds(514, 10, 214, 23);
+        AkunBayar.setBounds(514, 10, 184, 23);
 
         jLabel12.setText("Tagihan + PPN :");
         jLabel12.setName("jLabel12"); // NOI18N
@@ -1044,6 +1045,19 @@ public class DlgPenjualan extends javax.swing.JDialog {
         label23.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi5.add(label23);
         label23.setBounds(200, 40, 80, 23);
+
+        BtnAll1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnAll1.setMnemonic('M');
+        BtnAll1.setToolTipText("Alt+M");
+        BtnAll1.setName("BtnAll1"); // NOI18N
+        BtnAll1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAll1ActionPerformed(evt);
+            }
+        });
+        panelisi5.add(BtnAll1);
+        BtnAll1.setBounds(700, 10, 27, 23);
 
         jPanel1.add(panelisi5, java.awt.BorderLayout.CENTER);
 
@@ -2023,7 +2037,14 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
-        tampilAkunBayar();
+        try {
+            if(Valid.daysOld("./cache/akunbayar.iyem")<8){
+                tampilAkunBayar2();
+            }else{
+                tampilAkunBayar();
+            }
+        } catch (Exception e) {
+        }
         cariPPN(); 
     }//GEN-LAST:event_formWindowOpened
 
@@ -2421,6 +2442,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }//GEN-LAST:event_OngkirKeyPressed
 
+    private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
+        tampilAkunBayar();
+        cariPPN(); 
+        isKembali();
+    }//GEN-LAST:event_BtnAll1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2442,6 +2469,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox Bayar;
     private widget.TextBox BesarPPN;
     private widget.TextBox BesarPPNObat;
+    private widget.Button BtnAll1;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnGudang;
@@ -4154,6 +4182,23 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             System.out.println("Notifikasi : "+e);
         }
     }
+    
+    private void tampilAkunBayar2() {
+        try {
+            myObj = new FileReader("./cache/akunbayar.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("akunbayar");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    AkunBayar.addItem(list.path("NamaAkun").asText().replaceAll("\"",""));
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+    } 
 
     private void cariPPN() {
         try {
