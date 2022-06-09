@@ -4392,7 +4392,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         try {
             myObj = new FileReader("./cache/akunbayar.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("akunbayar");
             if(response.isArray()){
                 for(JsonNode list:response){

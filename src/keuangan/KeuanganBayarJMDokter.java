@@ -1475,7 +1475,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try {
             form.myObj = new FileReader("./cache/akunbayarhutang.iyem");
             form.root = form.mapper.readTree(form.myObj);
-            Valid.tabelKosong(tabMode);
             form.response = form.root.path("akunbayarhutang");
             if(form.response.isArray()){
                 for(JsonNode list:form.response){

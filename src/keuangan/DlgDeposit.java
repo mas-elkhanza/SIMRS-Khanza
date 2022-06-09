@@ -1441,7 +1441,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         try {
             myObj = new FileReader("./cache/akunbayar.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("akunbayar");
             if(response.isArray()){
                 for(JsonNode list:response){

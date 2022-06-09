@@ -1449,7 +1449,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try {
             myObj = new FileReader("./cache/akunbayarhutang.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("akunbayarhutang");
             if(response.isArray()){
                 for(JsonNode list:response){

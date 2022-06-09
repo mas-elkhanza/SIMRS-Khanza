@@ -1376,7 +1376,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         try {
             myObj = new FileReader("./cache/akunbayarhutang.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("akunbayarhutang");
             if(response.isArray()){
                 for(JsonNode list:response){
