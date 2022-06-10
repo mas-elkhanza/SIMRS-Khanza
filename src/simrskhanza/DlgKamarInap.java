@@ -4971,24 +4971,28 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             "tgl_keluar='"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+
                             "',trf_kamar='"+TTarif.getText()+"',jam_keluar='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+
                             "',ttl_biaya='"+ttlbiaya.getText()+"',stts_pulang='"+cmbStatus.getSelectedItem()+"',diagnosa_akhir='"+diagnosaakhir.getText()+"',lama='"+TJmlHari.getText()+"'");                
-                    if(cmbStatus.getSelectedItem().equals("Meninggal")){
-                        DlgPasienMati dlgPasienMati=new DlgPasienMati(null,false);
-                        dlgPasienMati.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgPasienMati.setLocationRelativeTo(internalFrame1);
-                        dlgPasienMati.emptTeks();
-                        dlgPasienMati.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),2).toString()); 
-                        dlgPasienMati.isCek();
-                        dlgPasienMati.setVisible(true);
-                    }else if(cmbStatus.getSelectedItem().equals("Rujuk")){
-                        DlgRujuk dlgrjk=new DlgRujuk(null,false);
-                        dlgrjk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgrjk.setLocationRelativeTo(internalFrame1);
-                        dlgrjk.emptTeks();
-                        dlgrjk.isCek();
-                        dlgrjk.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
-                        dlgrjk.tampil();
-                        dlgrjk.setVisible(true);
+                    try {
+                        if(cmbStatus.getSelectedItem().equals("Meninggal")){
+                            DlgPasienMati dlgPasienMati=new DlgPasienMati(null,false);
+                            dlgPasienMati.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            dlgPasienMati.setLocationRelativeTo(internalFrame1);
+                            dlgPasienMati.emptTeks();
+                            dlgPasienMati.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),2).toString()); 
+                            dlgPasienMati.isCek();
+                            dlgPasienMati.setVisible(true);
+                        }else if(cmbStatus.getSelectedItem().equals("Rujuk")){
+                            DlgRujuk dlgrjk=new DlgRujuk(null,false);
+                            dlgrjk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            dlgrjk.setLocationRelativeTo(internalFrame1);
+                            dlgrjk.emptTeks();
+                            dlgrjk.isCek();
+                            dlgrjk.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
+                            dlgrjk.tampil();
+                            dlgrjk.setVisible(true);
+                        }
+                    } catch (Exception e) {
                     }
+                        
                     Sequel.mengedit("kamar","kd_kamar='"+kdkamar.getText()+"'","status='KOSONG'");
                     WindowInputKamar.dispose();
                     emptTeks();                    

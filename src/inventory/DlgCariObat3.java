@@ -1172,18 +1172,18 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     tabMode.addRow(new Object[]{
                         false,rstampilbarang.getString("kode_brng"),rstampilbarang.getString("nama_brng"),stokmasuk,pagi,siang,sore,malam,rstampilbarang.getDouble("jumlah"),
                         keluar,retur,returshs,hilang,rstampilbarang.getString("no_batch"),rstampilbarang.getString("no_faktur"),rstampilbarang.getString("aturan_pakai"),
-                        rstampilbarang.getString("jam00").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam01").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam02").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam03").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam04").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam05").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam06").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam07").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam08").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam09").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam10").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam11").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam12").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam13").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam14").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam15").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam16").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam17").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam18").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam19").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam20").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam21").replaceAll("true","✓").replaceAll("false","✕"),
-                        rstampilbarang.getString("jam22").replaceAll("true","✓").replaceAll("false","✕"),rstampilbarang.getString("jam23").replaceAll("true","✓").replaceAll("false","✕")
+                        rstampilbarang.getString("jam00").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam01").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam02").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam03").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam04").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam05").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam06").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam07").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam08").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam09").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam10").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam11").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam12").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam13").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam14").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam15").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam16").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam17").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam18").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam19").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam20").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam21").replaceAll("true","V").replaceAll("false","X"),
+                        rstampilbarang.getString("jam22").replaceAll("true","V").replaceAll("false","X"),rstampilbarang.getString("jam23").replaceAll("true","V").replaceAll("false","X")
                     });
                 }
             } catch (Exception e) {
