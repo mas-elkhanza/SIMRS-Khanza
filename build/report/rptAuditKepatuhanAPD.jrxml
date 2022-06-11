@@ -24,14 +24,15 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select audit_kepatuhan_apd.nip,pegawai.nama,pegawai.jbtn,audit_kepatuhan_apd.tindakan,audit_kepatuhan_apd.tanggal,audit_kepatuhan_apd.topi,
+		<![CDATA[select audit_kepatuhan_apd.nik,pegawai.nama,pegawai.jbtn,audit_kepatuhan_apd.tindakan,audit_kepatuhan_apd.tanggal,audit_kepatuhan_apd.topi,
 audit_kepatuhan_apd.masker,audit_kepatuhan_apd.kacamata,audit_kepatuhan_apd.sarungtangan,audit_kepatuhan_apd.apron,audit_kepatuhan_apd.sepatu 
-from audit_kepatuhan_apd inner join pegawai on audit_kepatuhan_apd.nip=pegawai.nik]]>
+from audit_kepatuhan_apd inner join pegawai on audit_kepatuhan_apd.nik=pegawai.nik]]>
 	</queryString>
-	<field name="nip" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nip"/>
-		<property name="com.jaspersoft.studio.field.label" value="nip"/>
+	<field name="nik" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nik"/>
+		<property name="com.jaspersoft.studio.field.label" value="nik"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="audit_kepatuhan_apd"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nama"/>
@@ -325,7 +326,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nip}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nik}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="359" y="0" width="99" height="10" uuid="7dd40592-503c-46e9-97ef-935c16e50183">

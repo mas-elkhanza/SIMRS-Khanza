@@ -593,6 +593,7 @@ import ipsrs.IPSRSRingkasanReturBeliBarangNonMedis;
 import ipsrs.IPSRSRiwayatBarang;
 import ipsrs.IPSRSVerifikasiPenerimaan;
 import java.net.InetAddress;
+import kepegawaian.DlgAuditCuciTanganMedis;
 import kepegawaian.DlgDokter;
 import kepegawaian.DlgPetugas;
 import kepegawaian.K3RSBagianTubuh;
@@ -652,7 +653,7 @@ import keuangan.KeuanganValidasiTagihanAset;
 import keuangan.KeuanganValidasiTagihanNonMedis;
 import keuangan.KeuanganValidasiTagihanObatBHP;
 import laporan.DlgAnggotaPolriDirawat;
-import laporan.DlgAuditKepatuhanAPD;
+import kepegawaian.DlgAuditKepatuhanAPD;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -18529,6 +18530,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAuditCuciTanganMedisActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditCuciTanganMedis aplikasi=new DlgAuditCuciTanganMedis(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -19172,7 +19185,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
-            btnPenilaianAwalMedisRalanTHT;
+            btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis;
     
     public void isWall(){
         try{            
@@ -19629,6 +19642,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_kepatuhan_apd()==true){  
                 Panelmenu.add(btnAuditKepatuhanAPD);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_cuci_tangan_medis()==true){  
+                Panelmenu.add(btnAuditCuciTanganMedis);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23749,6 +23767,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getaudit_kepatuhan_apd()==true){  
             Panelmenu.add(btnAuditKepatuhanAPD);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_cuci_tangan_medis()==true){  
+            Panelmenu.add(btnAuditCuciTanganMedis);                 
             jmlmenu++;
         }
 
@@ -27987,6 +28010,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_kepatuhan_apd()==true){  
             if(btnAuditKepatuhanAPD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditKepatuhanAPD);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_cuci_tangan_medis()==true){  
+            if(btnAuditCuciTanganMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditCuciTanganMedis);                 
                 jmlmenu++;
             }                
         }
@@ -36132,6 +36162,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRalanTHT.setName("btnPenilaianAwalMedisRalanTHT"); 
         btnPenilaianAwalMedisRalanTHT.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRalanTHT.addActionListener(this::btnPenilaianAwalMedisRalanTHTActionPerformed);
+        
+        btnAuditCuciTanganMedis = new widget.ButtonBig();
+        btnAuditCuciTanganMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5929226_clean_cleaning_hands_wash_washing_icon.png"))); 
+        btnAuditCuciTanganMedis.setText("Audit Cuci Tangan Medis");
+        btnAuditCuciTanganMedis.setIconTextGap(0);
+        btnAuditCuciTanganMedis.setName("btnAuditCuciTanganMedis");
+        btnAuditCuciTanganMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditCuciTanganMedis.addActionListener(this::btnAuditCuciTanganMedisActionPerformed);
     }
     
 }
