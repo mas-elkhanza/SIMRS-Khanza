@@ -235,22 +235,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         internalFrame2 = new widget.InternalFrame();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
-        TNoRw = new widget.TextBox();
-        TPasien = new widget.TextBox();
-        TNoRM = new widget.TextBox();
-        label14 = new widget.Label();
-        KdDokter = new widget.TextBox();
-        NmDokter = new widget.TextBox();
-        BtnDokter = new widget.Button();
-        jLabel8 = new widget.Label();
-        TglLahir = new widget.TextBox();
-        Jk = new widget.TextBox();
-        jLabel10 = new widget.Label();
-        jLabel11 = new widget.Label();
-        Anamnesis = new widget.ComboBox();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel38 = new widget.Label();
-        Hubungan = new widget.TextBox();
         jLabel99 = new widget.Label();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel100 = new widget.Label();
@@ -267,8 +251,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         jLabel103 = new widget.Label();
         scrollPane14 = new widget.ScrollPane();
         Kesimpulanpsikolog = new widget.TextArea();
-        label11 = new widget.Label();
-        TglAsuhan = new widget.Tanggal();
         jSeparator17 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
         scrollPane6 = new widget.ScrollPane();
@@ -296,6 +278,23 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         jSeparator18 = new javax.swing.JSeparator();
         scrollPane7 = new widget.ScrollPane();
         KetAlloAuto = new javax.swing.JTextArea();
+        TNoRw = new widget.TextBox();
+        TPasien = new widget.TextBox();
+        TNoRM = new widget.TextBox();
+        label14 = new widget.Label();
+        KdPetugas = new widget.TextBox();
+        NmPetugas = new widget.TextBox();
+        BtnDokter = new widget.Button();
+        jLabel8 = new widget.Label();
+        TglLahir = new widget.TextBox();
+        Jk = new widget.TextBox();
+        jLabel10 = new widget.Label();
+        label11 = new widget.Label();
+        jLabel11 = new widget.Label();
+        jLabel36 = new widget.Label();
+        Informasi = new widget.ComboBox();
+        TglAsuhan = new widget.Tanggal();
+        jSeparator3 = new javax.swing.JSeparator();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -504,133 +503,11 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(870, 1303));
         FormInput.setLayout(null);
 
-        TNoRw.setHighlighter(null);
-        TNoRw.setName("TNoRw"); // NOI18N
-        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRwKeyPressed(evt);
-            }
-        });
-        FormInput.add(TNoRw);
-        TNoRw.setBounds(74, 10, 131, 23);
-
-        TPasien.setEditable(false);
-        TPasien.setHighlighter(null);
-        TPasien.setName("TPasien"); // NOI18N
-        FormInput.add(TPasien);
-        TPasien.setBounds(309, 10, 260, 23);
-
-        TNoRM.setEditable(false);
-        TNoRM.setHighlighter(null);
-        TNoRM.setName("TNoRM"); // NOI18N
-        FormInput.add(TNoRM);
-        TNoRM.setBounds(207, 10, 100, 23);
-
-        label14.setText("Dokter :");
-        label14.setName("label14"); // NOI18N
-        label14.setPreferredSize(new java.awt.Dimension(70, 23));
-        FormInput.add(label14);
-        label14.setBounds(0, 40, 70, 23);
-
-        KdDokter.setEditable(false);
-        KdDokter.setName("KdDokter"); // NOI18N
-        KdDokter.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdDokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdDokterKeyPressed(evt);
-            }
-        });
-        FormInput.add(KdDokter);
-        KdDokter.setBounds(74, 40, 90, 23);
-
-        NmDokter.setEditable(false);
-        NmDokter.setName("NmDokter"); // NOI18N
-        NmDokter.setPreferredSize(new java.awt.Dimension(207, 23));
-        FormInput.add(NmDokter);
-        NmDokter.setBounds(166, 40, 180, 23);
-
-        BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnDokter.setMnemonic('2');
-        BtnDokter.setToolTipText("Alt+2");
-        BtnDokter.setName("BtnDokter"); // NOI18N
-        BtnDokter.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDokterActionPerformed(evt);
-            }
-        });
-        BtnDokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDokterKeyPressed(evt);
-            }
-        });
-        FormInput.add(BtnDokter);
-        BtnDokter.setBounds(348, 40, 28, 23);
-
-        jLabel8.setText("Tgl.Lahir :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        FormInput.add(jLabel8);
-        jLabel8.setBounds(580, 10, 60, 23);
-
-        TglLahir.setEditable(false);
-        TglLahir.setHighlighter(null);
-        TglLahir.setName("TglLahir"); // NOI18N
-        FormInput.add(TglLahir);
-        TglLahir.setBounds(644, 10, 80, 23);
-
-        Jk.setEditable(false);
-        Jk.setHighlighter(null);
-        Jk.setName("Jk"); // NOI18N
-        FormInput.add(Jk);
-        Jk.setBounds(644, 40, 80, 23);
-
-        jLabel10.setText("No.Rawat :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 10, 70, 23);
-
-        jLabel11.setText("J.K. :");
-        jLabel11.setName("jLabel11"); // NOI18N
-        FormInput.add(jLabel11);
-        jLabel11.setBounds(610, 40, 30, 23);
-
-        Anamnesis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Autoanamnesis", "Alloanamnesis" }));
-        Anamnesis.setName("Anamnesis"); // NOI18N
-        Anamnesis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AnamnesisKeyPressed(evt);
-            }
-        });
-        FormInput.add(Anamnesis);
-        Anamnesis.setBounds(518, 70, 120, 23);
-
-        jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator1.setName("jSeparator1"); // NOI18N
-        FormInput.add(jSeparator1);
-        jSeparator1.setBounds(0, 158, 720, 12);
-
-        jLabel38.setText("Anamnesis :");
-        jLabel38.setName("jLabel38"); // NOI18N
-        FormInput.add(jLabel38);
-        jLabel38.setBounds(450, 70, 60, 23);
-
-        Hubungan.setName("Hubungan"); // NOI18N
-        Hubungan.setPreferredSize(new java.awt.Dimension(207, 23));
-        Hubungan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HubunganKeyPressed(evt);
-            }
-        });
-        FormInput.add(Hubungan);
-        Hubungan.setBounds(644, 70, 80, 23);
-
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel99.setText("I. OBSERVASI");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
-        jLabel99.setBounds(20, 160, 180, 23);
+        jLabel99.setBounds(10, 130, 180, 23);
 
         jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
@@ -746,25 +623,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         FormInput.add(scrollPane14);
         scrollPane14.setBounds(50, 1050, 670, 240);
 
-        label11.setText("Tanggal :");
-        label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(70, 23));
-        FormInput.add(label11);
-        label11.setBounds(380, 40, 52, 23);
-
-        TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022 10:05:23" }));
-        TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
-        TglAsuhan.setName("TglAsuhan"); // NOI18N
-        TglAsuhan.setOpaque(false);
-        TglAsuhan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglAsuhanKeyPressed(evt);
-            }
-        });
-        FormInput.add(TglAsuhan);
-        TglAsuhan.setBounds(436, 40, 130, 23);
-
         jSeparator17.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator17.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
@@ -795,10 +653,10 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         FormInput.add(scrollPane6);
         scrollPane6.setBounds(50, 450, 670, 50);
 
-        jLabel34.setText("Ket. Anamnesis :");
+        jLabel34.setText("Keterangan Anamnesis :");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(320, 110, 90, 23);
+        jLabel34.setBounds(220, 70, 150, 23);
 
         Rupa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tampan", "Buruk", "Menarik", "Memuakkan", "Biasa" }));
         Rupa.setName("Rupa"); // NOI18N
@@ -813,7 +671,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Rupa);
-        Rupa.setBounds(130, 180, 230, 50);
+        Rupa.setBounds(130, 180, 230, 23);
 
         jLabel42.setText("Rupa / Wajah :");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -833,7 +691,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Bentuktubuh);
-        Bentuktubuh.setBounds(130, 240, 230, 50);
+        Bentuktubuh.setBounds(130, 240, 230, 23);
 
         jLabel43.setText("Bentuk Tubuh :");
         jLabel43.setName("jLabel43"); // NOI18N
@@ -853,7 +711,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(130, 300, 230, 50);
+        Tindakan.setBounds(130, 300, 230, 23);
 
         jLabel47.setText("Tindakan :");
         jLabel47.setName("jLabel47"); // NOI18N
@@ -873,7 +731,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Pakaian);
-        Pakaian.setBounds(130, 360, 230, 50);
+        Pakaian.setBounds(130, 360, 230, 23);
 
         jLabel48.setText("Pakaian / Aksesoris :");
         jLabel48.setName("jLabel48"); // NOI18N
@@ -893,7 +751,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Ekspresi);
-        Ekspresi.setBounds(500, 180, 220, 50);
+        Ekspresi.setBounds(500, 180, 220, 23);
 
         jLabel53.setText("Penyampaian / Ekspresi :");
         jLabel53.setName("jLabel53"); // NOI18N
@@ -913,7 +771,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Berbicara);
-        Berbicara.setBounds(500, 240, 220, 50);
+        Berbicara.setBounds(500, 240, 220, 23);
 
         jLabel54.setText("Berbicara :");
         jLabel54.setName("jLabel54"); // NOI18N
@@ -933,7 +791,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Penggunaankata);
-        Penggunaankata.setBounds(500, 300, 220, 50);
+        Penggunaankata.setBounds(500, 300, 220, 23);
 
         jLabel55.setText("Penggunaan Kata :");
         jLabel55.setName("jLabel55"); // NOI18N
@@ -953,14 +811,15 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Dikirimdari);
-        Dikirimdari.setBounds(75, 70, 118, 23);
+        Dikirimdari.setBounds(84, 100, 128, 23);
 
-        jLabel56.setText("Dikirim dari :");
+        jLabel56.setText("Dikirim Dari :");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
-        jLabel56.setBounds(-30, 70, 100, 23);
+        jLabel56.setBounds(0, 100, 80, 23);
 
         Tujuanpemeriksaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Klinik", "Bimbingan", "Forensik", " " }));
+        Tujuanpemeriksaan.setSelectedIndex(1);
         Tujuanpemeriksaan.setName("Tujuanpemeriksaan"); // NOI18N
         Tujuanpemeriksaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -973,12 +832,12 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tujuanpemeriksaan);
-        Tujuanpemeriksaan.setBounds(320, 70, 118, 23);
+        Tujuanpemeriksaan.setBounds(744, 40, 110, 23);
 
         jLabel57.setText("Tujuan Pemeriksaan :");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(200, 70, 110, 23);
+        jLabel57.setBounds(620, 40, 120, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -1003,7 +862,133 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         scrollPane7.setViewportView(KetAlloAuto);
 
         FormInput.add(scrollPane7);
-        scrollPane7.setBounds(420, 100, 300, 40);
+        scrollPane7.setBounds(374, 70, 480, 53);
+
+        TNoRw.setHighlighter(null);
+        TNoRw.setName("TNoRw"); // NOI18N
+        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoRwKeyPressed(evt);
+            }
+        });
+        FormInput.add(TNoRw);
+        TNoRw.setBounds(84, 10, 131, 23);
+
+        TPasien.setEditable(false);
+        TPasien.setHighlighter(null);
+        TPasien.setName("TPasien"); // NOI18N
+        FormInput.add(TPasien);
+        TPasien.setBounds(319, 10, 250, 23);
+
+        TNoRM.setEditable(false);
+        TNoRM.setHighlighter(null);
+        TNoRM.setName("TNoRM"); // NOI18N
+        FormInput.add(TNoRM);
+        TNoRM.setBounds(217, 10, 100, 23);
+
+        label14.setText("Petugas :");
+        label14.setName("label14"); // NOI18N
+        label14.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label14);
+        label14.setBounds(0, 40, 80, 23);
+
+        KdPetugas.setEditable(false);
+        KdPetugas.setName("KdPetugas"); // NOI18N
+        KdPetugas.setPreferredSize(new java.awt.Dimension(80, 23));
+        FormInput.add(KdPetugas);
+        KdPetugas.setBounds(84, 40, 100, 23);
+
+        NmPetugas.setEditable(false);
+        NmPetugas.setName("NmPetugas"); // NOI18N
+        NmPetugas.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(NmPetugas);
+        NmPetugas.setBounds(186, 40, 185, 23);
+
+        BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter.setMnemonic('2');
+        BtnDokter.setToolTipText("Alt+2");
+        BtnDokter.setName("BtnDokter"); // NOI18N
+        BtnDokter.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokterActionPerformed(evt);
+            }
+        });
+        BtnDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnDokterKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnDokter);
+        BtnDokter.setBounds(373, 40, 28, 23);
+
+        jLabel8.setText("Tgl.Lahir :");
+        jLabel8.setName("jLabel8"); // NOI18N
+        FormInput.add(jLabel8);
+        jLabel8.setBounds(580, 10, 60, 23);
+
+        TglLahir.setEditable(false);
+        TglLahir.setHighlighter(null);
+        TglLahir.setName("TglLahir"); // NOI18N
+        FormInput.add(TglLahir);
+        TglLahir.setBounds(644, 10, 80, 23);
+
+        Jk.setEditable(false);
+        Jk.setHighlighter(null);
+        Jk.setName("Jk"); // NOI18N
+        FormInput.add(Jk);
+        Jk.setBounds(774, 10, 80, 23);
+
+        jLabel10.setText("No.Rawat :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        FormInput.add(jLabel10);
+        jLabel10.setBounds(0, 10, 80, 23);
+
+        label11.setText("Tanggal :");
+        label11.setName("label11"); // NOI18N
+        label11.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormInput.add(label11);
+        label11.setBounds(415, 40, 57, 23);
+
+        jLabel11.setText("J.K. :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(740, 10, 30, 23);
+
+        jLabel36.setText("Anamnesis :");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(0, 70, 80, 23);
+
+        Informasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Autoanamnesis", "Alloanamnesis" }));
+        Informasi.setName("Informasi"); // NOI18N
+        Informasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InformasiKeyPressed(evt);
+            }
+        });
+        FormInput.add(Informasi);
+        Informasi.setBounds(84, 70, 128, 23);
+
+        TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022 23:53:44" }));
+        TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
+        TglAsuhan.setName("TglAsuhan"); // NOI18N
+        TglAsuhan.setOpaque(false);
+        TglAsuhan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglAsuhanKeyPressed(evt);
+            }
+        });
+        FormInput.add(TglAsuhan);
+        TglAsuhan.setBounds(476, 40, 130, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 130, 880, 1);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1119,14 +1104,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            isRawat();
-        }else{            
-            Valid.pindah(evt,TCari,BtnDokter);
-        }
-}//GEN-LAST:event_TNoRwKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRM.getText().trim().equals("")){
@@ -1482,26 +1459,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
-        
-    }//GEN-LAST:event_KdDokterKeyPressed
-
-    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setAlwaysOnTop(false);
-        dokter.setVisible(true);
-    }//GEN-LAST:event_BtnDokterActionPerformed
-
-    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Monitoring,BtnSimpan);
-    }//GEN-LAST:event_BtnDokterKeyPressed
-
-    private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
-        Valid.pindah(evt,TglAsuhan,Hubungan);
-    }//GEN-LAST:event_AnamnesisKeyPressed
-
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
             tampil();
@@ -1519,14 +1476,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private void KesimpulanpsikologKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanpsikologKeyPressed
         Valid.pindah2(evt,Psikodinamika,BtnSimpan);
     }//GEN-LAST:event_KesimpulanpsikologKeyPressed
-
-    private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
-        Valid.pindah(evt,Kesimpulanpsikolog,Anamnesis);
-    }//GEN-LAST:event_TglAsuhanKeyPressed
-
-    private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        Valid.pindah(evt,Anamnesis,Dikirimdari);
-    }//GEN-LAST:event_HubunganKeyPressed
 
     private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
         if(tbObat.getSelectedRow()>-1){
@@ -1636,6 +1585,34 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_CiriyangmenyolokKeyPressed
 
+    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isRawat();
+        }else{
+            Valid.pindah(evt,TCari,BtnDokter);
+        }
+    }//GEN-LAST:event_TNoRwKeyPressed
+
+    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
+    }//GEN-LAST:event_BtnDokterActionPerformed
+
+    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
+        Valid.pindah(evt,Rencana,Informasi);
+    }//GEN-LAST:event_BtnDokterKeyPressed
+
+    private void InformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiKeyPressed
+        Valid.pindah(evt,TglAsuhan,KeluhanUtama);
+    }//GEN-LAST:event_InformasiKeyPressed
+
+    private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
+        Valid.pindah(evt,Rencana,Informasi);
+    }//GEN-LAST:event_TglAsuhanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1653,7 +1630,6 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ComboBox Anamnesis;
     private widget.ComboBox Bentuktubuh;
     private widget.ComboBox Berbicara;
     private widget.Button BtnAll;
@@ -1672,9 +1648,9 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private widget.ComboBox Ekspresi;
     private widget.PanelBiasa FormInput;
     private widget.TextArea Hasilpsikotes;
-    private widget.TextBox Hubungan;
+    private widget.ComboBox Informasi;
     private widget.TextBox Jk;
-    private widget.TextBox KdDokter;
+    private widget.TextBox KdPetugas;
     private widget.TextArea Kepribadian;
     private widget.TextArea Kesimpulanpsikolog;
     private javax.swing.JTextArea KetAlloAuto;
@@ -1682,7 +1658,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnPenilaianMedis;
-    private widget.TextBox NmDokter;
+    private widget.TextBox NmPetugas;
     private widget.ComboBox Pakaian;
     private widget.ComboBox Penggunaankata;
     private widget.TextArea Psikodinamika;
@@ -1710,7 +1686,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel34;
-    private widget.Label jLabel38;
+    private widget.Label jLabel36;
     private widget.Label jLabel42;
     private widget.Label jLabel43;
     private widget.Label jLabel47;
@@ -1725,13 +1701,13 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel99;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;

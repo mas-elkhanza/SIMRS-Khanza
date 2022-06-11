@@ -750,6 +750,7 @@ import rekammedis.RMPenilaianAwalMedisRalanTHT;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMPenilaianFisioterapi;
+import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMUjiFungsiKFR;
@@ -18542,6 +18543,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnPenilaianPsikologiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianPsikologi aplikasi=new RMPenilaianPsikologi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19185,7 +19200,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
-            btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis;
+            btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi;
     
     public void isWall(){
         try{            
@@ -22242,6 +22257,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_fisioterapi()==true){
                 Panelmenu.add(btnFisioterapi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_psikologi()==true){
+                Panelmenu.add(btnPenilaianPsikologi);
                 jmlmenu++;
             }
             
@@ -26353,6 +26373,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_fisioterapi()==true){
             Panelmenu.add(btnFisioterapi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_psikologi()==true){
+            Panelmenu.add(btnPenilaianPsikologi);
             jmlmenu++;
         }
         
@@ -31631,6 +31656,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_psikologi()==true){
+            if(btnPenilaianPsikologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianPsikologi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getuji_fungsi_kfr()==true){
             if(btnUjiFungsiKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUjiFungsiKFR);
@@ -36170,6 +36202,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditCuciTanganMedis.setName("btnAuditCuciTanganMedis");
         btnAuditCuciTanganMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditCuciTanganMedis.addActionListener(this::btnAuditCuciTanganMedisActionPerformed);
+        
+        btnPenilaianPsikologi = new widget.ButtonBig();
+        btnPenilaianPsikologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1562689_creative_creative idea_idea_pencil_search_icon.png")));
+        btnPenilaianPsikologi.setText("Penilaian Psikologi");
+        btnPenilaianPsikologi.setIconTextGap(0);
+        btnPenilaianPsikologi.setName("btnPenilaianPsikologi"); 
+        btnPenilaianPsikologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianPsikologi.addActionListener(this::btnPenilaianPsikologiActionPerformed);
     }
     
 }
