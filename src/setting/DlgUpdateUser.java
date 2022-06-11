@@ -691,7 +691,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan,"+
                 "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri,user.soap_ralan_polri,"+
                 "user.soap_ranap_polri,user.laporan_penyakit_polri,user.jumlah_pengunjung_ralan_polri,user.catatan_observasi_igd,user.catatan_observasi_ranap,"+
-                "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht,user.penilaian_psikologi,"+
+                "user.audit_cuci_tangan_medis from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1014,6 +1015,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Audit Kepatuhan APD".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Audit Kepatuhan APD",rs.getBoolean("audit_kepatuhan_apd")});
+                    }
+                    
+                    if("[C]Audit Cuci Tangan Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Audit Cuci Tangan Medis",rs.getBoolean("audit_cuci_tangan_medis")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -3100,6 +3105,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Medis Ralan THT",rs.getBoolean("penilaian_awal_medis_ralan_tht")});
                     }
                     
+                    if("[L]Penilaian Psikologi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Psikologi",rs.getBoolean("penilaian_psikologi")});
+                    }
+                    
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[M]Pengambilan BHP Medis",rs.getBoolean("pengambilan_utd2")});
                     }
@@ -4341,6 +4350,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[C]Audit Kepatuhan APD".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_kepatuhan_apd='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[C]Audit Cuci Tangan Medis".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_cuci_tangan_medis='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){
@@ -6429,6 +6442,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Penilaian Awal Medis Ralan THT".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_ralan_tht='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Penilaian Psikologi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_psikologi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
