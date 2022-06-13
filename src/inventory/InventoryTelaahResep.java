@@ -1359,7 +1359,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
 
     private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",NamaPetugas,Nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NamaPetugas,Nip.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -1756,7 +1756,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
             Nip.setEditable(false);
             btnPetugas.setEnabled(false);
             Nip.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NamaPetugas,Nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NamaPetugas,Nip.getText());
             if(NamaPetugas.getText().equals("")){
                 Nip.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");

@@ -932,7 +932,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
 
     private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",NmPetugas,KdPetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPetugas,KdPetugas.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){

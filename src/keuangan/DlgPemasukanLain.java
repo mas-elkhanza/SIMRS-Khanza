@@ -990,7 +990,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void KdPtgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPtgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",NmPtg,KdPtg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",NmPtg,KdPtg.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }else{
@@ -1217,7 +1217,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             BtnSimpan.setEnabled(akses.getpemasukan_lain());
             BtnHapus.setEnabled(akses.getpemasukan_lain());
             BtnPrint.setEnabled(akses.getpemasukan_lain());
-            Sequel.cariIsi("select nama from petugas where nip=?", NmPtg,KdPtg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPtg,KdPtg.getText());
         }      
         
     }

@@ -225,7 +225,7 @@ public final class RMHemodialisa extends javax.swing.JDialog {
         isForm();
         
         kddok.setText(Sequel.cariIsi("select kd_dokterhemodialisa from set_pjlab"));
-        namadokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddok.getText()));
+        namadokter.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddok.getText()));
         
         jam();
     }
@@ -1318,7 +1318,7 @@ public final class RMHemodialisa extends javax.swing.JDialog {
 
     private void kddokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",namadokter,kddok.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",namadokter,kddok.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){

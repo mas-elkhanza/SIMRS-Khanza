@@ -1201,7 +1201,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             BtnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gettitip_faktur_aset());
-            Sequel.cariIsi("select nama from petugas where nip=?",nama_petugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nama_petugas,nip.getText());
         }        
     }
 }

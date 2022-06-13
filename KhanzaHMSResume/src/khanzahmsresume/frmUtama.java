@@ -954,55 +954,55 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "<td valign='top'>"+rs3.getString("kode_paket")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+" (");
                                         if(rs3.getDouble("biayaoperator1")>0){
-                                            htmlContent.append("Operator 1 : "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs3.getString("operator1"))+", ");
+                                            htmlContent.append("Operator 1 : "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs3.getString("operator1"))+", ");
                                         }
                                         if(rs3.getDouble("biayaoperator2")>0){
-                                            htmlContent.append("Operator 2 : "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs3.getString("operator2"))+", ");
+                                            htmlContent.append("Operator 2 : "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs3.getString("operator2"))+", ");
                                         }
                                         if(rs3.getDouble("biayaoperator3")>0){
-                                            htmlContent.append("Operator 3 : "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs3.getString("operator3"))+", ");
+                                            htmlContent.append("Operator 3 : "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs3.getString("operator3"))+", ");
                                         }
                                         if(rs3.getDouble("biayaasisten_operator1")>0){
-                                            htmlContent.append("Asisten Operator 1 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_operator1"))+", ");
+                                            htmlContent.append("Asisten Operator 1 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("asisten_operator1"))+", ");
                                         }
                                         if(rs3.getDouble("biayaasisten_operator2")>0){
-                                            htmlContent.append("Asisten Operator 2 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_operator2"))+", ");
+                                            htmlContent.append("Asisten Operator 2 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("asisten_operator2"))+", ");
                                         }
                                         if(rs3.getDouble("biayainstrumen")>0){
-                                            htmlContent.append("Instrumen : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("instrumen"))+", ");
+                                            htmlContent.append("Instrumen : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("instrumen"))+", ");
                                         }
                                         if(rs3.getDouble("biayadokter_anak")>0){
-                                            htmlContent.append("Dokter Anak : "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs3.getString("dokter_anak"))+", ");
+                                            htmlContent.append("Dokter Anak : "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs3.getString("dokter_anak"))+", ");
                                         }
                                         if(rs3.getDouble("biayaperawaat_resusitas")>0){
-                                            htmlContent.append("Perawat Resusitas : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("perawaat_resusitas"))+", ");
+                                            htmlContent.append("Perawat Resusitas : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("perawaat_resusitas"))+", ");
                                         }
                                         if(rs3.getDouble("biayadokter_anestesi")>0){
-                                            htmlContent.append("Dokter Anestesi : "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs3.getString("dokter_anestesi"))+", ");
+                                            htmlContent.append("Dokter Anestesi : "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs3.getString("dokter_anestesi"))+", ");
                                         }
                                         if(rs3.getDouble("biayaasisten_anestesi")>0){
-                                            htmlContent.append("Asisten Anestesi : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_anestesi"))+", ");
+                                            htmlContent.append("Asisten Anestesi : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("asisten_anestesi"))+", ");
                                         }
                                         if(rs3.getDouble("biayabidan")>0){
-                                            htmlContent.append("Bidan 1 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("bidan"))+", ");
+                                            htmlContent.append("Bidan 1 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("bidan"))+", ");
                                         }
                                         if(rs3.getDouble("biayabidan2")>0){
-                                            htmlContent.append("Bidan 2 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("bidan2"))+", ");
+                                            htmlContent.append("Bidan 2 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("bidan2"))+", ");
                                         }
                                         if(rs3.getDouble("biayabidan3")>0){
-                                            htmlContent.append("Bidan 3 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("bidan3"))+", ");
+                                            htmlContent.append("Bidan 3 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("bidan3"))+", ");
                                         }
                                         if(rs3.getDouble("biayaperawat_luar")>0){
-                                            htmlContent.append("Perawat Luar : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("perawat_luar"))+", ");
+                                            htmlContent.append("Perawat Luar : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("perawat_luar"))+", ");
                                         }
                                         if(rs3.getDouble("biaya_omloop")>0){
-                                            htmlContent.append("Onloop 1 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop"))+", ");
+                                            htmlContent.append("Onloop 1 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("omloop"))+", ");
                                         }
                                         if(rs3.getDouble("biaya_omloop2")>0){
-                                            htmlContent.append("Onloop 2 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop2"))+", ");
+                                            htmlContent.append("Onloop 2 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("omloop2"))+", ");
                                         }
                                         if(rs3.getDouble("biaya_omloop3")>0){
-                                            htmlContent.append("Onloop 3 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop3"))+", ");
+                                            htmlContent.append("Onloop 3 : "+Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs3.getString("omloop3"))+", ");
                                         }
                                         htmlContent.append(
                                                 ")</td>"+

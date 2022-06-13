@@ -1283,9 +1283,9 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
 private void TNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNIPKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select nama from petugas where nip=?",TNmPetugas,TNIP.getText());
+        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",TNmPetugas,TNIP.getText());
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select nama from petugas where nip=?",TNmPetugas,TNIP.getText());
+        Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",TNmPetugas,TNIP.getText());
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
@@ -1550,7 +1550,7 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
             BtnIn.setEnabled(akses.getpeminjaman_perpustakaan());
             BtnOut.setEnabled(akses.getpeminjaman_perpustakaan());
             TNIP.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", TNmPetugas,TNIP.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", TNmPetugas,TNIP.getText());
         } 
     }
     

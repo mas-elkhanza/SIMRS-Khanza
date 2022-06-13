@@ -2202,51 +2202,51 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                         no=1;
                         while(rs2.next()){
                             kdoperator1.setText(rs2.getString("operator1"));
-                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator1,rs2.getString("operator1"));
+                            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator1,rs2.getString("operator1"));
                             kdoperator2.setText(rs2.getString("operator2"));
-                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator2,rs2.getString("operator2"));
+                            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator2,rs2.getString("operator2"));
                             kdoperator3.setText(rs2.getString("operator3"));
-                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator3,rs2.getString("operator3"));
+                            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator3,rs2.getString("operator3"));
                             kdasistoperator1.setText(rs2.getString("asisten_operator1"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmasistoperator1,rs2.getString("asisten_operator1"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistoperator1,rs2.getString("asisten_operator1"));
                             kdasistoperator2.setText(rs2.getString("asisten_operator2"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmasistoperator2,rs2.getString("asisten_operator2"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistoperator2,rs2.getString("asisten_operator2"));
                             kdasistoperator3.setText(rs2.getString("asisten_operator3"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmasistoperator3,rs2.getString("asisten_operator3"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistoperator3,rs2.getString("asisten_operator3"));
                             kdInstrumen.setText(rs2.getString("instrumen"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nminstrumen,rs2.getString("instrumen"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nminstrumen,rs2.getString("instrumen"));
                             kddranak.setText(rs2.getString("dokter_anak"));
-                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdranak,rs2.getString("dokter_anak"));
+                            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdranak,rs2.getString("dokter_anak"));
                             kdprwresust.setText(rs2.getString("perawaat_resusitas"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmprwresust,rs2.getString("perawaat_resusitas"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmprwresust,rs2.getString("perawaat_resusitas"));
                             kdanestesi.setText(rs2.getString("dokter_anestesi"));
-                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmanestesi,rs2.getString("dokter_anestesi"));
+                            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmanestesi,rs2.getString("dokter_anestesi"));
                             kdasistanestesi.setText(rs2.getString("asisten_anestesi"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmasistanestesi,rs2.getString("asisten_anestesi"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistanestesi,rs2.getString("asisten_anestesi"));
                             kdasistanestesi2.setText(rs2.getString("asisten_anestesi2"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmasistanestesi2,rs2.getString("asisten_anestesi2"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistanestesi2,rs2.getString("asisten_anestesi2"));
                             kdbidan.setText(rs2.getString("bidan"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan,rs2.getString("bidan"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan,rs2.getString("bidan"));
                             kdbidan2.setText(rs2.getString("bidan2"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan2,rs2.getString("bidan2"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan2,rs2.getString("bidan2"));
                             kdbidan3.setText(rs2.getString("bidan3"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan3,rs2.getString("bidan3"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan3,rs2.getString("bidan3"));
                             kdprwluar.setText(rs2.getString("perawat_luar"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmprwluar,rs2.getString("perawat_luar"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmprwluar,rs2.getString("perawat_luar"));
                             kdonloop1.setText(rs2.getString("omloop"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop1,rs2.getString("omloop"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop1,rs2.getString("omloop"));
                             kdonloop2.setText(rs2.getString("omloop2"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop2,rs2.getString("omloop2"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop2,rs2.getString("omloop2"));
                             kdonloop3.setText(rs2.getString("omloop3"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop3,rs2.getString("omloop3"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop3,rs2.getString("omloop3"));
                             kdonloop4.setText(rs2.getString("omloop4"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop4,rs2.getString("omloop4"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop4,rs2.getString("omloop4"));
                             kdonloop5.setText(rs2.getString("omloop5"));
-                            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop5,rs2.getString("omloop5"));
+                            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop5,rs2.getString("omloop5"));
                             kdpjanak.setText(rs2.getString("dokter_pjanak"));
-                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmpjanak,rs2.getString("dokter_pjanak"));
+                            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmpjanak,rs2.getString("dokter_pjanak"));
                             kddrumum.setText(rs2.getString("dokter_umum"));
-                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdrumum,rs2.getString("dokter_umum"));
+                            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdrumum,rs2.getString("dokter_umum"));
                         }
                         if(rs2!=null){
                             rs2.close();
@@ -2458,7 +2458,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdoperator1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdoperator1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator1,kdoperator1.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator1,kdoperator1.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnOperator1ActionPerformed(null);
         }else{
@@ -2477,7 +2477,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdasistoperator1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdasistoperator1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmasistoperator1,kdasistoperator1.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistoperator1,kdasistoperator1.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnAsis1ActionPerformed(null);
         }else{
@@ -2497,7 +2497,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdoperator2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdoperator2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator2,kdoperator2.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator2,kdoperator2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnOperator2ActionPerformed(null);
         }else{
@@ -2516,7 +2516,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdoperator3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdoperator3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator3,kdoperator3.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator3,kdoperator3.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnInstrumenActionPerformed(null);
         }else{
@@ -2535,7 +2535,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdanestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdanestesiKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmanestesi,kdanestesi.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmanestesi,kdanestesi.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnAnastesiActionPerformed(null);
         }else{
@@ -2554,7 +2554,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kddranakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddranakKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdranak,kddranak.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdranak,kddranak.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnAnakActionPerformed(null);
         }else{
@@ -2582,7 +2582,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdasistoperator2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdasistoperator2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmasistoperator2,kdasistoperator2.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistoperator2,kdasistoperator2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnAsis2ActionPerformed(null);
         }else{
@@ -2620,7 +2620,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdprwresustKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdprwresustKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmprwresust,kdprwresust.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmprwresust,kdprwresust.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPrwResActionPerformed(null);
         }else{
@@ -2630,7 +2630,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdasistanestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdasistanestesiKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmasistanestesi,kdasistanestesi.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistanestesi,kdasistanestesi.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnAsnesActionPerformed(null);
         }else{
@@ -2649,7 +2649,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdbidanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbidanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan,kdbidan.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan,kdbidan.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBidanActionPerformed(null);
         }else{
@@ -2668,7 +2668,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdprwluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdprwluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmprwluar,kdprwluar.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmprwluar,kdprwluar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPrwLuarActionPerformed(null);
         }else{
@@ -2696,7 +2696,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdbidan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbidan2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan2,kdbidan2.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan2,kdbidan2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBidan2ActionPerformed(null);
         }else{
@@ -2706,7 +2706,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdbidan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbidan3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan3,kdbidan3.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan3,kdbidan3.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBidan3ActionPerformed(null);
         }else{
@@ -2725,7 +2725,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdonloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdonloop1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop1,kdonloop1.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop1,kdonloop1.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnOnloop1ActionPerformed(null);
         }else{
@@ -2753,7 +2753,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdonloop2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdonloop2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop2,kdonloop2.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop2,kdonloop2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnOnloop1ActionPerformed(null);
         }else{
@@ -2772,7 +2772,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdonloop3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdonloop3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmonloop3,kdonloop3.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmonloop3,kdonloop3.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnOnloop1ActionPerformed(null);
         }else{
@@ -2782,7 +2782,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kdpjanakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpjanakKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmpjanak,kdpjanak.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmpjanak,kdpjanak.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btndrpjanakActionPerformed(null);
         }else{
@@ -2801,7 +2801,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     private void kddrumumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddrumumKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdranak,kddranak.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdranak,kddranak.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btndrumumActionPerformed(null);
         }else{
@@ -3321,34 +3321,34 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 no=1;
                 while(rs2.next()){
                     tabMode.addRow(new Object[]{"","","","",no+". "+rs2.getString("nm_perawatan"),
-                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator1")),
-                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator2")),
-                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator3")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator1")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator2")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator3")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("instrumen")),
-                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anak")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("perawaat_resusitas")),
-                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anestesi")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi2")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan2")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan3")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("perawat_luar")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop2")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop3")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop4")),
-                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop5")),
+                           Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs2.getString("operator1")),
+                           Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs2.getString("operator2")),
+                           Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs2.getString("operator3")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("asisten_operator1")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("asisten_operator2")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("asisten_operator3")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("instrumen")),
+                           Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs2.getString("dokter_anak")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("perawaat_resusitas")),
+                           Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs2.getString("dokter_anestesi")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("asisten_anestesi")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("asisten_anestesi2")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("bidan")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("bidan2")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("bidan3")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("perawat_luar")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("omloop")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("omloop2")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("omloop3")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("omloop4")),
+                           Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",rs2.getString("omloop5")),
                            "",
                            "",
                            "",
                            "",
                            "",
-                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_pjanak")),
-                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_umum")),
+                           Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs2.getString("dokter_pjanak")),
+                           Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs2.getString("dokter_umum")),
                            "","","","","","",""
                     });  
                     tabMode.addRow(new Object[]{"","","","","",Valid.SetAngka(rs2.getDouble("biayaoperator1")),

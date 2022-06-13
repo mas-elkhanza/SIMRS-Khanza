@@ -1329,7 +1329,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(akses.getjml2()>=1){
             BtnSeekPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NamaPetugas,KodePetugas.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NamaPetugas,KodePetugas.getText());
         } 
     }
     

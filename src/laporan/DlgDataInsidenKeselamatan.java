@@ -1333,7 +1333,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
     private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",namapetugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",namapetugas,nip.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             DetikLapor.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1856,7 +1856,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getinsiden_keselamatan_pasien()); 
         if(akses.getjml2()>=1){
             nip.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?",namapetugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",namapetugas,nip.getText());
         }            
     }
 

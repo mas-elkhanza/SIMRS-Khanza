@@ -1013,13 +1013,13 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             switch (pilihtable) {
                 case "rawat_jl_dr":
-                    Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdokter,kddokter.getText());
+                    Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdokter,kddokter.getText());
                     break;
                 case "rawat_jl_pr":
-                    Sequel.cariIsi("select nama from petugas where nip=?",nmdokter,kddokter.getText());
+                    Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmdokter,kddokter.getText());
                     break;
                 case "rawat_jl_drpr":
-                    Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdokter,kddokter.getText());
+                    Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdokter,kddokter.getText());
                     break;
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){

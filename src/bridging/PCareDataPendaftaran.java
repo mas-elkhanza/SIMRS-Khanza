@@ -4233,7 +4233,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         if(kdptg.equals("")){
                             kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                         }
-                        nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
+                        nmptg=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kdptg);
                         perawatan.setNoRm(
                                 TNoRw.getText(),"rawat_inap_dr",tanggal.getDate(),tanggal.getSelectedItem().toString().substring(11,13),
                                 tanggal.getSelectedItem().toString().substring(14,16),tanggal.getSelectedItem().toString().substring(17,19),
@@ -4250,7 +4250,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }else {
                         DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
                         kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                        nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
+                        nmptg=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kdptg);
                         dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","-","-");
                         dlgrwjl.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
                         dlgrwjl.isCek();

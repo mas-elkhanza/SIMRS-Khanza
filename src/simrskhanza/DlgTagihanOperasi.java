@@ -2007,7 +2007,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void kdoperator1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdoperator1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator1,kdoperator1.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator1,kdoperator1.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnOperator1ActionPerformed(null);
         }else{
@@ -2050,7 +2050,7 @@ private void jenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jen
 
 private void kdasistoperator1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdasistoperator1KeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmasistoperator1,kdasistoperator1.getText());            
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistoperator1,kdasistoperator1.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnAsis1ActionPerformed(null);
         }else{
@@ -2227,7 +2227,7 @@ private void tbtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
 private void kdoperator2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdoperator2KeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator2,kdoperator2.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator2,kdoperator2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnOperator2ActionPerformed(null);
         }else{
@@ -2246,7 +2246,7 @@ private void BtnOperator2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
 private void kdoperator3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdoperator3KeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmoperator3,kdoperator3.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmoperator3,kdoperator3.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnOperator3ActionPerformed(null);
         }else{
@@ -2265,7 +2265,7 @@ private void btnOperator3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
 private void kdanestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdanestesiKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmanestesi,kdanestesi.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmanestesi,kdanestesi.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnAnastesiActionPerformed(null);
         }else{
@@ -2284,7 +2284,7 @@ private void BtnAnastesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
 private void kddranakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddranakKeyPressed
     if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdranak,kddranak.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdranak,kddranak.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnAnakActionPerformed(null);
         }else{
@@ -2312,7 +2312,7 @@ private void btnAsis2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void kdasistoperator2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdasistoperator2KeyPressed
      if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmasistoperator2,kdasistoperator2.getText());            
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistoperator2,kdasistoperator2.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnAsis2ActionPerformed(null);
         }else{
@@ -2354,7 +2354,7 @@ private void kdprwresustKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void kdasistanestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdasistanestesiKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmasistanestesi,kdasistanestesi.getText());            
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmasistanestesi,kdasistanestesi.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnAsnesActionPerformed(null);
         }else{
@@ -2373,7 +2373,7 @@ private void BtnAsnesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void kdbidanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbidanKeyPressed
        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan,kdbidan.getText());            
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan,kdbidan.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBidanActionPerformed(null);
         }else{
@@ -2392,7 +2392,7 @@ private void btnBidanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void kdprwluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdprwluarKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmprwluar,kdprwluar.getText());            
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmprwluar,kdprwluar.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPrwLuarActionPerformed(null);
         }else{
@@ -2428,7 +2428,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void kdbidan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbidan2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan2,kdbidan2.getText());            
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan2,kdbidan2.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBidan2ActionPerformed(null);
         }else{
@@ -2438,7 +2438,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void kdbidan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbidan3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmbidan3,kdbidan3.getText());            
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmbidan3,kdbidan3.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBidan3ActionPerformed(null);
         }else{
@@ -2496,7 +2496,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void kdpjanakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpjanakKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmpjanak,kdpjanak.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmpjanak,kdpjanak.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btndrpjanakActionPerformed(null);
         }else{
@@ -2515,7 +2515,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void kddrumumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddrumumKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",nmdranak,kddranak.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",nmdranak,kddranak.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btndrumumActionPerformed(null);
         }else{

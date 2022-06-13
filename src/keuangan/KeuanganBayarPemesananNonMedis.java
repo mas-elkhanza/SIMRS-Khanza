@@ -1040,7 +1040,7 @@ private void no_buktiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?", nama_petugas,nip.getText()); 
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nama_petugas,nip.getText()); 
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             AkunBayar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){

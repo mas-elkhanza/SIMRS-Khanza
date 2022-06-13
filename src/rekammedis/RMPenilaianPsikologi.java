@@ -34,7 +34,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -49,7 +49,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
     private String finger="";
     
@@ -61,9 +61,9 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Dikirim Dari","Tujuan Pemeriksaan","Ket. Anamnesis",
-            "Rupa/Wajah","Bentuk Tubuh","Tindakan","Pakaian/Aksesoris","Penyampaian/Ekspresi","Berbicara","Penggunaan Kata","Ciri Yang Menyolok","Hasil Psikotes","Kepribadian",
-            "Psikodinamika","Kesimpulan Psikolog"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Psikolog","Tanggal","Dikirim Dari","Tujuan","Informasi","Keterangan Informasi",
+            "Rupa/Wajah","Bentuk Tubuh","Tindakan","Pakaian/Aksesoris","Penyampaian/Ekspresi","Berbicara","Penggunaan Kata","Ciri Yang Menyolok","Hasil Psikotes",
+            "Kepribadian","Psikodinamika","Kesimpulan Psikolog"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -91,45 +91,42 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(72);
             }else if(i==9){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(62);
             }else if(i==10){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(85);
             }else if(i==11){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(165);
             }else if(i==12){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(71);
             }else if(i==13){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(79);
             }else if(i==14){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(103);
             }else if(i==15){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(99);
             }else if(i==16){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==17){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(196);
             }else if(i==18){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(185);
             }else if(i==19){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(200);
             }else if(i==20){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(200);
             }else if(i==21){
-                column.setPreferredWidth(67);
+                column.setPreferredWidth(200);
             }else if(i==22){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(200);
             }else if(i==23){
-                column.setPreferredWidth(40);
-            }else if(i==24){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Hubungan.setDocument(new batasInput((int)30).getKata(Hubungan));
         KetAlloAuto.setDocument(new batasInput((int)2000).getKata(KetAlloAuto));
         Ciriyangmenyolok.setDocument(new batasInput((int)1000).getKata(Ciriyangmenyolok));
         Hasilpsikotes.setDocument(new batasInput((int)2000).getKata(Hasilpsikotes));
@@ -166,17 +163,17 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             });
         }
         
-        dokter.addWindowListener(new WindowListener() {
+        petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){
-                    KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    KdDokter.requestFocus();
+                if(petugas.getTable().getSelectedRow()!= -1){
+                    KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    KdPetugas.requestFocus();
                 }
             }
             @Override
@@ -240,18 +237,15 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         jLabel100 = new widget.Label();
         scrollPane9 = new widget.ScrollPane();
         Hasilpsikotes = new widget.TextArea();
-        jSeparator15 = new javax.swing.JSeparator();
         jLabel101 = new widget.Label();
         scrollPane12 = new widget.ScrollPane();
         Kepribadian = new widget.TextArea();
-        jSeparator16 = new javax.swing.JSeparator();
         jLabel102 = new widget.Label();
         scrollPane13 = new widget.ScrollPane();
         Psikodinamika = new widget.TextArea();
         jLabel103 = new widget.Label();
         scrollPane14 = new widget.ScrollPane();
         Kesimpulanpsikolog = new widget.TextArea();
-        jSeparator17 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
         scrollPane6 = new widget.ScrollPane();
         Ciriyangmenyolok = new widget.TextArea();
@@ -272,10 +266,8 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         jLabel55 = new widget.Label();
         Dikirimdari = new widget.ComboBox();
         jLabel56 = new widget.Label();
-        Tujuanpemeriksaan = new widget.ComboBox();
+        TujuanPemeriksaan = new widget.ComboBox();
         jLabel57 = new widget.Label();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator18 = new javax.swing.JSeparator();
         scrollPane7 = new widget.ScrollPane();
         KetAlloAuto = new javax.swing.JTextArea();
         TNoRw = new widget.TextBox();
@@ -295,6 +287,13 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         Informasi = new widget.ComboBox();
         TglAsuhan = new widget.Tanggal();
         jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -318,7 +317,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Medis");
+        MnPenilaianMedis.setText("Laporan Penilaian Psikolog");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -500,7 +499,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 1303));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 883));
         FormInput.setLayout(null);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -520,7 +519,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         jLabel100.setText("VI. KESIMPULAN PSIKOLOG");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
-        jLabel100.setBounds(20, 1030, 180, 23);
+        jLabel100.setBounds(10, 700, 180, 23);
 
         scrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane9.setName("scrollPane9"); // NOI18N
@@ -538,20 +537,13 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         scrollPane9.setViewportView(Hasilpsikotes);
 
         FormInput.add(scrollPane9);
-        scrollPane9.setBounds(50, 540, 670, 90);
-
-        jSeparator15.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator15.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator15.setName("jSeparator15"); // NOI18N
-        FormInput.add(jSeparator15);
-        jSeparator15.setBounds(0, 640, 720, 12);
+        scrollPane9.setBounds(44, 330, 810, 83);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("II. CIRI YANG MENYOLOK");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 430, 190, 23);
+        jLabel101.setBounds(10, 240, 190, 23);
 
         scrollPane12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane12.setName("scrollPane12"); // NOI18N
@@ -568,20 +560,13 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         scrollPane12.setViewportView(Kepribadian);
 
         FormInput.add(scrollPane12);
-        scrollPane12.setBounds(50, 670, 670, 150);
-
-        jSeparator16.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator16.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator16.setName("jSeparator16"); // NOI18N
-        FormInput.add(jSeparator16);
-        jSeparator16.setBounds(0, 830, 720, 12);
+        scrollPane12.setBounds(44, 440, 810, 113);
 
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel102.setText("III. HASIL PSIKOTES");
         jLabel102.setName("jLabel102"); // NOI18N
         FormInput.add(jLabel102);
-        jLabel102.setBounds(10, 510, 190, 23);
+        jLabel102.setBounds(10, 310, 190, 23);
 
         scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane13.setName("scrollPane13"); // NOI18N
@@ -598,13 +583,13 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         scrollPane13.setViewportView(Psikodinamika);
 
         FormInput.add(scrollPane13);
-        scrollPane13.setBounds(50, 870, 670, 140);
+        scrollPane13.setBounds(44, 580, 810, 113);
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel103.setText("IV. KEPRIBADIAN DAN ASPEK-ASPEKNYA");
         jLabel103.setName("jLabel103"); // NOI18N
         FormInput.add(jLabel103);
-        jLabel103.setBounds(20, 640, 220, 23);
+        jLabel103.setBounds(10, 420, 220, 23);
 
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
@@ -621,20 +606,13 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         scrollPane14.setViewportView(Kesimpulanpsikolog);
 
         FormInput.add(scrollPane14);
-        scrollPane14.setBounds(50, 1050, 670, 240);
-
-        jSeparator17.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator17.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator17.setName("jSeparator17"); // NOI18N
-        FormInput.add(jSeparator17);
-        jSeparator17.setBounds(0, 1020, 720, 12);
+        scrollPane14.setBounds(44, 720, 810, 153);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel104.setText("V. PSIKODINAMIKA");
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
-        jLabel104.setBounds(20, 840, 190, 23);
+        jLabel104.setBounds(10, 560, 190, 23);
 
         scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane6.setName("scrollPane6"); // NOI18N
@@ -651,7 +629,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         scrollPane6.setViewportView(Ciriyangmenyolok);
 
         FormInput.add(scrollPane6);
-        scrollPane6.setBounds(50, 450, 670, 50);
+        scrollPane6.setBounds(44, 260, 810, 43);
 
         jLabel34.setText("Keterangan Anamnesis :");
         jLabel34.setName("jLabel34"); // NOI18N
@@ -660,151 +638,112 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
 
         Rupa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tampan", "Buruk", "Menarik", "Memuakkan", "Biasa" }));
         Rupa.setName("Rupa"); // NOI18N
-        Rupa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RupaActionPerformed(evt);
-            }
-        });
         Rupa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RupaKeyPressed(evt);
             }
         });
         FormInput.add(Rupa);
-        Rupa.setBounds(130, 180, 230, 23);
+        Rupa.setBounds(119, 150, 110, 23);
 
         jLabel42.setText("Rupa / Wajah :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(0, 190, 127, 23);
+        jLabel42.setBounds(0, 150, 115, 23);
 
         Bentuktubuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sangat Tinggi", "Sangat Pendek", "Sangat Kurus", "Sangat Gemuk", "Tinggi", "Sedang", "Atletik", "Pendek", "Langsing", "Gemuk", " ", " " }));
+        Bentuktubuh.setSelectedIndex(5);
         Bentuktubuh.setName("Bentuktubuh"); // NOI18N
-        Bentuktubuh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BentuktubuhActionPerformed(evt);
-            }
-        });
         Bentuktubuh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BentuktubuhKeyPressed(evt);
             }
         });
         FormInput.add(Bentuktubuh);
-        Bentuktubuh.setBounds(130, 240, 230, 23);
+        Bentuktubuh.setBounds(375, 180, 123, 23);
 
         jLabel43.setText("Bentuk Tubuh :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(0, 250, 127, 23);
+        jLabel43.setBounds(271, 180, 100, 23);
 
         Tindakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sopan", "Tidak Sopan", "Kurang Tahu Aturan", "Canggung", "Bebas", "Garang", "Percaya Diri", "Tertekan", "Ragu-Ragu", "Pasti", "Kaku", "Ceroboh", "Dingin", "Malu-Malu" }));
         Tindakan.setName("Tindakan"); // NOI18N
-        Tindakan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TindakanActionPerformed(evt);
-            }
-        });
         Tindakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TindakanKeyPressed(evt);
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(130, 300, 230, 23);
+        Tindakan.setBounds(119, 180, 150, 23);
 
         jLabel47.setText("Tindakan :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(18, 310, 110, 23);
+        jLabel47.setBounds(0, 180, 115, 23);
 
         Pakaian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rapi", "Serampangan", "Terpelihara", "Tidak Terpelihara", "Teratur", "Tidak Rapi", "Sederhana", "Biasa", "Bersih", "Kotor" }));
         Pakaian.setName("Pakaian"); // NOI18N
-        Pakaian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PakaianActionPerformed(evt);
-            }
-        });
         Pakaian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PakaianKeyPressed(evt);
             }
         });
         FormInput.add(Pakaian);
-        Pakaian.setBounds(130, 360, 230, 23);
+        Pakaian.setBounds(361, 150, 140, 23);
 
         jLabel48.setText("Pakaian / Aksesoris :");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(0, 370, 127, 23);
+        jLabel48.setBounds(237, 150, 120, 23);
 
         Ekspresi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sangat Mudah", "Hati-Hati Dan Membatasi Diri", "Sukar Mencari Kata-Kata", "Mudah", "Terbuka" }));
         Ekspresi.setName("Ekspresi"); // NOI18N
-        Ekspresi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EkspresiActionPerformed(evt);
-            }
-        });
         Ekspresi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EkspresiKeyPressed(evt);
             }
         });
         FormInput.add(Ekspresi);
-        Ekspresi.setBounds(500, 180, 220, 23);
+        Ekspresi.setBounds(659, 150, 195, 23);
 
         jLabel53.setText("Penyampaian / Ekspresi :");
         jLabel53.setName("jLabel53"); // NOI18N
         FormInput.add(jLabel53);
-        jLabel53.setBounds(370, 190, 127, 23);
+        jLabel53.setBounds(528, 150, 127, 23);
 
         Berbicara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenang", "Acuh Tak Acuh", "Gugup", "Lancar", "Ribut Dengan Banyak Gerak dan Isyarat" }));
         Berbicara.setName("Berbicara"); // NOI18N
-        Berbicara.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BerbicaraActionPerformed(evt);
-            }
-        });
         Berbicara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BerbicaraKeyPressed(evt);
             }
         });
         FormInput.add(Berbicara);
-        Berbicara.setBounds(500, 240, 220, 23);
+        Berbicara.setBounds(119, 210, 245, 23);
 
         jLabel54.setText("Berbicara :");
         jLabel54.setName("jLabel54"); // NOI18N
         FormInput.add(jLabel54);
-        jLabel54.setBounds(370, 250, 127, 23);
+        jLabel54.setBounds(0, 210, 115, 23);
 
         Penggunaankata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ramah", "Dibuat-Buat", "Dengan Tekanan Suara", "Terpengaruh Bahasa Daerah", "Disertai Dengan Istilah Bahasa Asing", " " }));
         Penggunaankata.setName("Penggunaankata"); // NOI18N
-        Penggunaankata.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PenggunaankataActionPerformed(evt);
-            }
-        });
         Penggunaankata.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PenggunaankataKeyPressed(evt);
             }
         });
         FormInput.add(Penggunaankata);
-        Penggunaankata.setBounds(500, 300, 220, 23);
+        Penggunaankata.setBounds(622, 180, 232, 23);
 
         jLabel55.setText("Penggunaan Kata :");
         jLabel55.setName("jLabel55"); // NOI18N
         FormInput.add(jLabel55);
-        jLabel55.setBounds(370, 310, 127, 23);
+        jLabel55.setBounds(508, 180, 110, 23);
 
         Dikirimdari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ruang Rawat", "Poliklinik", "Rehabilitasi", "After Care", "Dokter" }));
         Dikirimdari.setName("Dikirimdari"); // NOI18N
-        Dikirimdari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DikirimdariActionPerformed(evt);
-            }
-        });
         Dikirimdari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DikirimdariKeyPressed(evt);
@@ -818,47 +757,33 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         FormInput.add(jLabel56);
         jLabel56.setBounds(0, 100, 80, 23);
 
-        Tujuanpemeriksaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Klinik", "Bimbingan", "Forensik", " " }));
-        Tujuanpemeriksaan.setSelectedIndex(1);
-        Tujuanpemeriksaan.setName("Tujuanpemeriksaan"); // NOI18N
-        Tujuanpemeriksaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TujuanpemeriksaanActionPerformed(evt);
-            }
-        });
-        Tujuanpemeriksaan.addKeyListener(new java.awt.event.KeyAdapter() {
+        TujuanPemeriksaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Klinik", "Bimbingan", "Forensik", " " }));
+        TujuanPemeriksaan.setName("TujuanPemeriksaan"); // NOI18N
+        TujuanPemeriksaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TujuanpemeriksaanKeyPressed(evt);
+                TujuanPemeriksaanKeyPressed(evt);
             }
         });
-        FormInput.add(Tujuanpemeriksaan);
-        Tujuanpemeriksaan.setBounds(744, 40, 110, 23);
+        FormInput.add(TujuanPemeriksaan);
+        TujuanPemeriksaan.setBounds(744, 40, 110, 23);
 
         jLabel57.setText("Tujuan Pemeriksaan :");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
         jLabel57.setBounds(620, 40, 120, 23);
 
-        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 420, 720, 12);
-
-        jSeparator18.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator18.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator18.setName("jSeparator18"); // NOI18N
-        FormInput.add(jSeparator18);
-        jSeparator18.setBounds(0, 510, 720, 12);
-
         scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane7.setName("scrollPane7"); // NOI18N
 
         KetAlloAuto.setColumns(20);
+        KetAlloAuto.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         KetAlloAuto.setRows(5);
         KetAlloAuto.setName("KetAlloAuto"); // NOI18N
+        KetAlloAuto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KetAlloAutoKeyPressed(evt);
+            }
+        });
         scrollPane7.setViewportView(KetAlloAuto);
 
         FormInput.add(scrollPane7);
@@ -886,7 +811,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         FormInput.add(TNoRM);
         TNoRM.setBounds(217, 10, 100, 23);
 
-        label14.setText("Petugas :");
+        label14.setText("Psikolog :");
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label14);
@@ -989,6 +914,55 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
         jSeparator3.setBounds(0, 130, 880, 1);
+
+        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator4.setName("jSeparator4"); // NOI18N
+        FormInput.add(jSeparator4);
+        jSeparator4.setBounds(0, 240, 880, 1);
+
+        jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator5.setName("jSeparator5"); // NOI18N
+        FormInput.add(jSeparator5);
+        jSeparator5.setBounds(0, 310, 880, 1);
+
+        jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator6.setName("jSeparator6"); // NOI18N
+        FormInput.add(jSeparator6);
+        jSeparator6.setBounds(0, 420, 880, 1);
+
+        jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator7.setName("jSeparator7"); // NOI18N
+        FormInput.add(jSeparator7);
+        jSeparator7.setBounds(0, 560, 880, 1);
+
+        jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator8.setName("jSeparator8"); // NOI18N
+        FormInput.add(jSeparator8);
+        jSeparator8.setBounds(0, 560, 880, 1);
+
+        jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator9.setName("jSeparator9"); // NOI18N
+        FormInput.add(jSeparator9);
+        jSeparator9.setBounds(0, 700, 880, 1);
+
+        jSeparator10.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator10.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator10.setName("jSeparator10"); // NOI18N
+        FormInput.add(jSeparator10);
+        jSeparator10.setBounds(0, 700, 880, 1);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1108,7 +1082,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(NmDokter.getText().trim().equals("")){
+        }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(Ciriyangmenyolok.getText().trim().equals("")){
             Valid.textKosong(Ciriyangmenyolok,"CIRI YANG MENYOLOK");
@@ -1121,23 +1095,22 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         }else if(Kesimpulanpsikolog.getText().trim().equals("")){
             Valid.textKosong(Kesimpulanpsikolog,"KESIMPULAN PSIKOLOG");            
         }else{
-            if(Sequel.menyimpantf("penilaian_psikologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",20,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    Dikirimdari.getSelectedItem().toString(),Tujuanpemeriksaan.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),Bentuktubuh.getSelectedItem().toString(),Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),
-                    Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),
-                    Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),Kesimpulanpsikolog.getText()
+            if(Sequel.menyimpantf("penilaian_psikologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),Informasi.getSelectedItem().toString(),
+                    Dikirimdari.getSelectedItem().toString(),TujuanPemeriksaan.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),Bentuktubuh.getSelectedItem().toString(),
+                    Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),
+                    Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),Kesimpulanpsikolog.getText()
                 })==true){
                     emptTeks();
             }
         }
-    
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Ciriyangmenyolok,BtnBatal);
+            Valid.pindah(evt,Kesimpulanpsikolog,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1156,10 +1129,10 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
                     hapus();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh dokter yang bersangkutan..!!");
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh psikolog yang bersangkutan..!!");
                 }
             }
         }else{
@@ -1179,7 +1152,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(NmDokter.getText().trim().equals("")){
+        }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
         }else if(Ciriyangmenyolok.getText().trim().equals("")){
             Valid.textKosong(Ciriyangmenyolok,"CIRI YANG MENYOLOK");
@@ -1196,10 +1169,10 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
                         ganti();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh psikolog yang bersangkutan..!!");
                     }
                 }
             }else{
@@ -1236,22 +1209,22 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.kd_dokter,penilaian_psikologi.anamnesis,penilaian_psikologi.hubungan,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,dokter.nm_dokter "+
+                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
+                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join dokter on penilaian_psikologi.kd_dokter=dokter.kd_dokter where "+
+                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
                         "penilaian_psikologi.tanggal between ? and ? order by penilaian_psikologi.tanggal");
                 }else{
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.kd_dokter,penilaian_psikologi.anamnesis,penilaian_psikologi.hubungan,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,dokter.nm_dokter "+
+                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
+                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join dokter on penilaian_psikologi.kd_dokter=dokter.kd_dokter where "+
+                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
                         "penilaian_psikologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_psikologi.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_psikologi.tanggal");
+                        "penilaian_psikologi.nip like ? or petugas.nama like ?) order by penilaian_psikologi.tanggal");
                 }
 
                 try {
@@ -1279,23 +1252,22 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anamnesis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Hubungan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Dikirim Dari</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tujuan Pemeriksaan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Ket. Anamnesis</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Rupa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Bentuk Tubuh</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'><b>Pakaian</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Penyampaian/Ekspresi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Berbicara</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Penggunaan Kata</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Ciri Yang Menyolok</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'><b>Hasil Psikotes</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Kepribadian</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Psikodinamika</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Kesimpulan Psikolog</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Dikirim Dari</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='62px'><b>Tujuan Pemeriksaan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Informasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='165px'><b>Keterangan Informasi</b></td>"+
+			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='71px'><b>Rupa</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='79px'><b>Bentuk Tubuh</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='103px'><b>Tindakan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='99px'><b>Pakaian</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Penyampaian/Ekspresi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='196px'><b>Berbicara</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='185px'><b>Penggunaan Kata</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ciri Yang Menyolok</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Hasil Psikotes</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kepribadian</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Psikodinamika</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kesimpulan Psikolog</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1306,13 +1278,12 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                                "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
                                "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
                                "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kd_dokter")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_dokter")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nip")+"</td>"+
+                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
                                "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("anamnesis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hubungan")+"</td>"+
                                "<td valign='top'>"+rs.getString("dikirim_dari")+"</td>"+
                                "<td valign='top'>"+rs.getString("tujuan_pemeriksaan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("anamnesis")+"</td>"+
                                "<td valign='top'>"+rs.getString("ket_anamnesis")+"</td>"+
                                "<td valign='top'>"+rs.getString("rupa")+"</td>"+
                                "<td valign='top'>"+rs.getString("bentuk_tubuh")+"</td>"+
@@ -1330,7 +1301,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                     }
                     LoadHTML.setText(
                         "<html>"+
-                          "<table width='4400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='2900' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>"
@@ -1351,11 +1322,11 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                     );
                     bg.close();
 
-                    File f = new File("DataPenilaianAwalMedisRalan.html");            
+                    File f = new File("DataPenilaianPsikolog.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='4400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='2900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1491,90 +1462,54 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalan.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan ]::",
+            Valid.MyReportqry("rptCetakPenilaianPsikolog.jasper","report","::[ Laporan Penilaian Psikolog ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.kd_dokter,penilaian_psikologi.anamnesis,penilaian_psikologi.hubungan,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,dokter.nm_dokter "+
+                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
+                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join dokter on penilaian_psikologi.kd_dokter=dokter.kd_dokter where penilaian_psikologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where penilaian_psikologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
     private void RupaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RupaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Dikirimdari,Pakaian);
     }//GEN-LAST:event_RupaKeyPressed
 
-    private void RupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RupaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RupaActionPerformed
-
-    private void BentuktubuhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BentuktubuhActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BentuktubuhActionPerformed
-
     private void BentuktubuhKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BentuktubuhKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tindakan,Penggunaankata);
     }//GEN-LAST:event_BentuktubuhKeyPressed
 
-    private void TindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TindakanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TindakanActionPerformed
-
     private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Ekspresi,Bentuktubuh);
     }//GEN-LAST:event_TindakanKeyPressed
 
-    private void PakaianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PakaianActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PakaianActionPerformed
-
     private void PakaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PakaianKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Rupa,Ekspresi);
     }//GEN-LAST:event_PakaianKeyPressed
 
-    private void EkspresiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EkspresiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EkspresiActionPerformed
-
     private void EkspresiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkspresiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Pakaian,Tindakan);
     }//GEN-LAST:event_EkspresiKeyPressed
 
-    private void BerbicaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BerbicaraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BerbicaraActionPerformed
-
     private void BerbicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BerbicaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Penggunaankata,Ciriyangmenyolok);
     }//GEN-LAST:event_BerbicaraKeyPressed
 
-    private void PenggunaankataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PenggunaankataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PenggunaankataActionPerformed
-
     private void PenggunaankataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenggunaankataKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Bentuktubuh,Berbicara);
     }//GEN-LAST:event_PenggunaankataKeyPressed
 
-    private void DikirimdariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DikirimdariActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DikirimdariActionPerformed
-
     private void DikirimdariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DikirimdariKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetAlloAuto,Rupa);
     }//GEN-LAST:event_DikirimdariKeyPressed
 
-    private void TujuanpemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TujuanpemeriksaanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TujuanpemeriksaanActionPerformed
-
-    private void TujuanpemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanpemeriksaanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TujuanpemeriksaanKeyPressed
+    private void TujuanPemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanPemeriksaanKeyPressed
+        Valid.pindah(evt,TglAsuhan,Informasi);
+    }//GEN-LAST:event_TujuanPemeriksaanKeyPressed
 
     private void HasilpsikotesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilpsikotesKeyPressed
-        Valid.pindah2(evt,KetLokalis,Kepribadian);
+        Valid.pindah2(evt,Ciriyangmenyolok,Kepribadian);
     }//GEN-LAST:event_HasilpsikotesKeyPressed
 
     private void KepribadianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KepribadianKeyPressed
@@ -1582,7 +1517,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     }//GEN-LAST:event_KepribadianKeyPressed
 
     private void CiriyangmenyolokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CiriyangmenyolokKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,Berbicara,Hasilpsikotes);
     }//GEN-LAST:event_CiriyangmenyolokKeyPressed
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
@@ -1602,16 +1537,20 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        Valid.pindah(evt,Rencana,Informasi);
+        Valid.pindah(evt,Kesimpulanpsikolog,TglAsuhan);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void InformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiKeyPressed
-        Valid.pindah(evt,TglAsuhan,KeluhanUtama);
+        Valid.pindah(evt,TujuanPemeriksaan,KetAlloAuto);
     }//GEN-LAST:event_InformasiKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
-        Valid.pindah(evt,Rencana,Informasi);
+        Valid.pindah(evt,BtnDokter,Informasi);
     }//GEN-LAST:event_TglAsuhanKeyPressed
+
+    private void KetAlloAutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetAlloAutoKeyPressed
+        Valid.pindah2(evt,Informasi,Dikirimdari);
+    }//GEN-LAST:event_KetAlloAutoKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1672,7 +1611,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
     private widget.ComboBox Tindakan;
-    private widget.ComboBox Tujuanpemeriksaan;
+    private widget.ComboBox TujuanPemeriksaan;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -1701,13 +1640,15 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel99;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator14;
-    private javax.swing.JSeparator jSeparator15;
-    private javax.swing.JSeparator jSeparator16;
-    private javax.swing.JSeparator jSeparator17;
-    private javax.swing.JSeparator jSeparator18;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;
@@ -1728,22 +1669,22 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.kd_dokter,penilaian_psikologi.anamnesis,penilaian_psikologi.hubungan,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,dokter.nm_dokter "+
+                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
+                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join dokter on penilaian_psikologi.kd_dokter=dokter.kd_dokter where "+
+                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
                         "penilaian_psikologi.tanggal between ? and ? order by penilaian_psikologi.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi.tanggal,"+
-                        "penilaian_psikologi.kd_dokter,penilaian_psikologi.anamnesis,penilaian_psikologi.hubungan,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
-                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,dokter.nm_dokter "+
+                        "penilaian_psikologi.nip,penilaian_psikologi.anamnesis,penilaian_psikologi.dikirim_dari,penilaian_psikologi.tujuan_pemeriksaan,penilaian_psikologi.ket_anamnesis,penilaian_psikologi.rupa,penilaian_psikologi.bentuk_tubuh,penilaian_psikologi.tindakan,"+
+                        "penilaian_psikologi.pakaian,penilaian_psikologi.ekspresi,penilaian_psikologi.berbicara,penilaian_psikologi.penggunaan_kata,penilaian_psikologi.ciri_menyolok,penilaian_psikologi.hasil_psikotes,penilaian_psikologi.kepribadian,penilaian_psikologi.psikodinamika,penilaian_psikologi.kesimpulan_psikolog,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_psikologi on reg_periksa.no_rawat=penilaian_psikologi.no_rawat "+
-                        "inner join dokter on penilaian_psikologi.kd_dokter=dokter.kd_dokter where "+
+                        "inner join petugas on penilaian_psikologi.nip=petugas.nip where "+
                         "penilaian_psikologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_psikologi.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_psikologi.tanggal");
+                        "penilaian_psikologi.nip like ? or petugas.nama like ?) order by penilaian_psikologi.tanggal");
             }
                 
             try {
@@ -1762,8 +1703,8 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("ket_anamnesis"),rs.getString("rupa"),rs.getString("bentuk_tubuh"),rs.getString("tindakan"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("anamnesis"),rs.getString("ket_anamnesis"),rs.getString("rupa"),rs.getString("bentuk_tubuh"),rs.getString("tindakan"),
                         rs.getString("pakaian"),rs.getString("ekspresi"),rs.getString("berbicara"),rs.getString("penggunaan_kata"),rs.getString("ciri_menyolok"),rs.getString("hasil_psikotes"),rs.getString("kepribadian"),rs.getString("psikodinamika"),rs.getString("kesimpulan_psikolog")                     
                     });
                 }
@@ -1785,10 +1726,9 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        Anamnesis.setSelectedIndex(0);
-        Hubungan.setText("");
+        Informasi.setSelectedIndex(0);
         Dikirimdari.setSelectedIndex(0);
-        Tujuanpemeriksaan.setSelectedIndex(0);
+        TujuanPemeriksaan.setSelectedIndex(0);
         KetAlloAuto.setText("");
         Rupa.setSelectedIndex(0);
         Bentuktubuh.setSelectedIndex(0);
@@ -1804,7 +1744,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         Kesimpulanpsikolog.setText("");
         TglAsuhan.setDate(new Date());
         TabRawat.setSelectedIndex(0);
-        Anamnesis.requestFocus();
+        TujuanPemeriksaan.requestFocus();
     } 
 
     private void getData() {
@@ -1814,25 +1754,24 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Anamnesis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Hubungan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Dikirimdari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Tujuanpemeriksaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            KetAlloAuto.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Rupa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Bentuktubuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Tindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Pakaian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Ekspresi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Berbicara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Penggunaankata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Ciriyangmenyolok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Hasilpsikotes.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            Kepribadian.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Psikodinamika.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            Kesimpulanpsikolog.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            Dikirimdari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            TujuanPemeriksaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Informasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            KetAlloAuto.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Rupa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Bentuktubuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Tindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Pakaian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Ekspresi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Berbicara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Penggunaankata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Ciriyangmenyolok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Hasilpsikotes.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Kepribadian.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Psikodinamika.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Kesimpulanpsikolog.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
@@ -1876,18 +1815,18 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_psikologi());
+        BtnHapus.setEnabled(akses.getpenilaian_psikologi());
+        BtnEdit.setEnabled(akses.getpenilaian_psikologi());
+        BtnEdit.setEnabled(akses.getpenilaian_psikologi());
         if(akses.getjml2()>=1){
-            KdDokter.setEditable(false);
+            KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);
-            KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NmDokter,KdDokter.getText());
-            if(NmDokter.getText().equals("")){
-                KdDokter.setText("");
-                JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
+            KdPetugas.setText(akses.getkode());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", NmPetugas,KdPetugas.getText());
+            if(NmPetugas.getText().equals("")){
+                KdPetugas.setText("");
+                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
         }            
     }
@@ -1909,10 +1848,10 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_psikologi","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,dikirim_dari=?,tujuan_pemeriksaan=?,ket_anamnesis=?,rupa=?,bentuk_tubuh=?,tindakan=?,pakaian=?,ekspresi=?,berbicara=?,penggunaan_kata=?,ciri_menyolok=?,hasil_psikotes=?,kepribadian=?,psikodinamika=?,kesimpulan_psikolog=?",21,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),Dikirimdari.getSelectedItem().toString(),Tujuanpemeriksaan.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),Bentuktubuh.getSelectedItem().toString(),Tindakan.getSelectedItem().toString(),
-                Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),
-                Kepribadian.getText(),Psikodinamika.getText(),Kesimpulanpsikolog.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("penilaian_psikologi","no_rawat=?","no_rawat=?,tanggal=?,nip=?,anamnesis=?,dikirim_dari=?,tujuan_pemeriksaan=?,ket_anamnesis=?,rupa=?,bentuk_tubuh=?,tindakan=?,pakaian=?,ekspresi=?,berbicara=?,penggunaan_kata=?,ciri_menyolok=?,hasil_psikotes=?,kepribadian=?,psikodinamika=?,kesimpulan_psikolog=?",20,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdPetugas.getText(),Informasi.getSelectedItem().toString(),Dikirimdari.getSelectedItem().toString(),TujuanPemeriksaan.getSelectedItem().toString(),KetAlloAuto.getText(),Rupa.getSelectedItem().toString(),
+                Bentuktubuh.getSelectedItem().toString(),Tindakan.getSelectedItem().toString(),Pakaian.getSelectedItem().toString(),Ekspresi.getSelectedItem().toString(),Berbicara.getSelectedItem().toString(),Penggunaankata.getSelectedItem().toString(),Ciriyangmenyolok.getText(),Hasilpsikotes.getText(),Kepribadian.getText(),Psikodinamika.getText(),
+                Kesimpulanpsikolog.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();

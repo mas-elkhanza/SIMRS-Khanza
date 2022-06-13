@@ -597,7 +597,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter,kddokter.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,kddokter.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }else{
@@ -616,7 +616,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter2,kddokter2.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter2,kddokter2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter2ActionPerformed(null);
         }else{
@@ -635,7 +635,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter3,kddokter3.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter3,kddokter3.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter3ActionPerformed(null);
         }else{
@@ -654,7 +654,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter4KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter4,kddokter4.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter4,kddokter4.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter4ActionPerformed(null);
         }else{
@@ -673,7 +673,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
 
     private void kddokter5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokter5KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter5,kddokter5.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter5,kddokter5.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokter5ActionPerformed(null);
         }else{
@@ -745,11 +745,11 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             ResultSet rs=koneksi.prepareStatement("select * from set_pjlab").executeQuery();
             while(rs.next()){
                 tabMode.addRow(new Object[]{
-                    rs.getString(1)+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString(1)),
-                    rs.getString(2)+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString(2)),
-                    rs.getString(3)+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString(3)),
-                    rs.getString(4)+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString(4)),
-                    rs.getString(5)+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString(5))
+                    rs.getString(1)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(1)),
+                    rs.getString(2)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(2)),
+                    rs.getString(3)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(3)),
+                    rs.getString(4)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(4)),
+                    rs.getString(5)+" "+Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",rs.getString(5))
                 });
             }
         }catch(SQLException e){
@@ -765,11 +765,11 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             kddokter3.setText(Sequel.cariIsi("select kd_dokterhemodialisa from set_pjlab"));
             kddokter4.setText(Sequel.cariIsi("select kd_dokterutd from set_pjlab"));
             kddokter5.setText(Sequel.cariIsi("select kd_dokterlabpa from set_pjlab"));
-            TDokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter.getText()));
-            TDokter2.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter2.getText()));
-            TDokter3.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter3.getText()));
-            TDokter4.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter4.getText()));
-            TDokter5.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter5.getText()));
+            TDokter.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter.getText()));
+            TDokter2.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter2.getText()));
+            TDokter3.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter3.getText()));
+            TDokter4.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter4.getText()));
+            TDokter5.setText(Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter5.getText()));
         }
     }
 

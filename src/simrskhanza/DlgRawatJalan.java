@@ -72,6 +72,7 @@ import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
 import rekammedis.RMPenilaianFisioterapi;
+import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMTriaseIGD;
 import rekammedis.RMUjiFungsiKFR;
@@ -1460,14 +1461,15 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalKeperawatanGigi = new widget.Button();
         BtnAwalKeperawatanKandungan = new widget.Button();
         BtnAwalKeperawatanAnak = new widget.Button();
+        BtnAwalFisioterapi = new widget.Button();
         BtnAwalMedisIGD = new widget.Button();
         BtnAwalMedis = new widget.Button();
         BtnAwalMedisKandungan = new widget.Button();
         BtnAwalMedisAnak = new widget.Button();
         BtnAwalMedisTHT = new widget.Button();
-        BtnAwalFisioterapi = new widget.Button();
         BtnUjiFungsiKFR = new widget.Button();
         BtnMedicalCheckUp = new widget.Button();
+        BtnPenilaianPsikolog = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1635,7 +1637,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1649,7 +1651,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3356,7 +3358,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2022" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3844,6 +3846,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         FormMenu.add(BtnAwalKeperawatanAnak);
 
+        BtnAwalFisioterapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalFisioterapi.setText("Awal Fisioterapi");
+        BtnAwalFisioterapi.setFocusPainted(false);
+        BtnAwalFisioterapi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalFisioterapi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalFisioterapi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalFisioterapi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalFisioterapi.setName("BtnAwalFisioterapi"); // NOI18N
+        BtnAwalFisioterapi.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnAwalFisioterapi.setRoundRect(false);
+        BtnAwalFisioterapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalFisioterapiActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalFisioterapi);
+
         BtnAwalMedisIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnAwalMedisIGD.setText("Awal Medis IGD");
         BtnAwalMedisIGD.setFocusPainted(false);
@@ -3929,23 +3948,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         FormMenu.add(BtnAwalMedisTHT);
 
-        BtnAwalFisioterapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnAwalFisioterapi.setText("Awal Fisioterapi");
-        BtnAwalFisioterapi.setFocusPainted(false);
-        BtnAwalFisioterapi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnAwalFisioterapi.setGlassColor(new java.awt.Color(255, 255, 255));
-        BtnAwalFisioterapi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnAwalFisioterapi.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnAwalFisioterapi.setName("BtnAwalFisioterapi"); // NOI18N
-        BtnAwalFisioterapi.setPreferredSize(new java.awt.Dimension(180, 23));
-        BtnAwalFisioterapi.setRoundRect(false);
-        BtnAwalFisioterapi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAwalFisioterapiActionPerformed(evt);
-            }
-        });
-        FormMenu.add(BtnAwalFisioterapi);
-
         BtnUjiFungsiKFR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnUjiFungsiKFR.setText("Uji Fungsi/Prosedur KFR");
         BtnUjiFungsiKFR.setFocusPainted(false);
@@ -3979,6 +3981,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnMedicalCheckUp);
+
+        BtnPenilaianPsikolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPenilaianPsikolog.setText("Penilaian Psikolog");
+        BtnPenilaianPsikolog.setFocusPainted(false);
+        BtnPenilaianPsikolog.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPenilaianPsikolog.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianPsikolog.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianPsikolog.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianPsikolog.setName("BtnPenilaianPsikolog"); // NOI18N
+        BtnPenilaianPsikolog.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnPenilaianPsikolog.setRoundRect(false);
+        BtnPenilaianPsikolog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPenilaianPsikologActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPenilaianPsikolog);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -5054,7 +5073,7 @@ private void BtnSeekDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",TPerawat,kdptg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",TPerawat,kdptg.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekPetugasActionPerformed(null);
         }else{
@@ -5246,7 +5265,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void kdptg2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptg2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",TPerawat2,kdptg2.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",TPerawat2,kdptg2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekPetugas2ActionPerformed(null);
         }else{
@@ -5265,7 +5284,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void KdDok2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDok2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter2,KdDok2.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter2,KdDok2.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekDokter2ActionPerformed(null);
         }else{            
@@ -5984,7 +6003,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void KdDok3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDok3KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter3,KdDok3.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter3,KdDok3.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekDokter3ActionPerformed(null);
         }else{            
@@ -6403,6 +6422,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalMedisTHTActionPerformed
 
+    private void BtnPenilaianPsikologActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianPsikologActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianPsikologi form=new RMPenilaianPsikologi(null,false);
+            form.isCek();
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPenilaianPsikologActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6446,6 +6482,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnKeluar;
     private widget.Button BtnMedicalCheckUp;
     private widget.Button BtnObatBhp;
+    private widget.Button BtnPenilaianPsikolog;
     private widget.Button BtnPermintaanLab;
     private widget.Button BtnPermintaanRad;
     private widget.Button BtnPrint;
@@ -7165,6 +7202,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalMedisTHT.setVisible(akses.getpenilaian_awal_medis_ralan_tht()); 
         if(akses.getpenilaian_awal_medis_ralan_tht()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianPsikolog.setVisible(akses.getpenilaian_psikologi()); 
+        if(akses.getpenilaian_psikologi()==true){
             tinggi=tinggi+24;
         }
         

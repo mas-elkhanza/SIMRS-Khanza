@@ -36204,7 +36204,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditCuciTanganMedis.addActionListener(this::btnAuditCuciTanganMedisActionPerformed);
         
         btnPenilaianPsikologi = new widget.ButtonBig();
-        btnPenilaianPsikologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1562689_creative_creative idea_idea_pencil_search_icon.png")));
+        btnPenilaianPsikologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2890565_ai_artificial intelligence_automaton_brain_electronics_icon.png")));
         btnPenilaianPsikologi.setText("Penilaian Psikologi");
         btnPenilaianPsikologi.setIconTextGap(0);
         btnPenilaianPsikologi.setName("btnPenilaianPsikologi"); 

@@ -805,12 +805,12 @@ public class InventoryRingkasanReturJualBarangMedis extends javax.swing.JDialog 
 
     private void KdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdptgKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?", Nmptg,Kdptg.getText());         
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama from petugas where nip=?", Nmptg,Kdptg.getText());  
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());  
             TglRetur1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama from petugas where nip=?", Nmptg,Kdptg.getText());  
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", Nmptg,Kdptg.getText());  
             NoNota.requestFocus();   
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
