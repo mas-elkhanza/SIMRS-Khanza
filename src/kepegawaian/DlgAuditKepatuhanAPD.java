@@ -1100,14 +1100,16 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new String[]{
+                        "Jumlah Ya",":","","","",""+ttltopi,""+ttlmasker,""+ttlkacamata,""+ttlsarungtangan,""+ttlapron,""+ttlsepatu,
+                        ""+(ttltopi+ttlmasker+ttlkacamata+ttlsarungtangan+ttlapron+ttlsepatu)
+                    });
+                    tabMode.addRow(new String[]{
+                        "Jumlah Tidak",":","","","",""+(i-ttltopi),""+(i-ttlmasker),""+(i-ttlkacamata),""+(i-ttlsarungtangan),""+(i-ttlapron),""+(i-ttlsepatu),
+                        ""+((i-ttltopi)+(i-ttlmasker)+(i-ttlkacamata)+(i-ttlsarungtangan)+(i-ttlapron)+(i-ttlsepatu))
+                    });
+                    tabMode.addRow(new String[]{
                         "Rata-rata Penilaian",":","","","",Math.round((ttltopi/i)*100)+" %",Math.round((ttlmasker/i)*100)+" %",Math.round((ttlkacamata/i)*100)+" %",
                         Math.round((ttlsarungtangan/i)*100)+" %",Math.round((ttlapron/i)*100)+" %",Math.round((ttlsepatu/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
-                    });
-                    tabMode.addRow(new String[]{
-                        "Jumlah Ya",":","","","",""+ttltopi,""+ttlmasker,""+ttlkacamata,""+ttlsarungtangan,""+ttlapron,""+ttlsepatu,""
-                    });
-                    tabMode.addRow(new String[]{
-                        "Jumlah Tidak",":","","","",""+(i-ttltopi),""+(i-ttlmasker),""+(i-ttlkacamata),""+(i-ttlsarungtangan),""+(i-ttlapron),""+(i-ttlsepatu),""
                     });
                 }
             } catch (Exception e) {

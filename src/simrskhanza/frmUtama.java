@@ -655,6 +655,7 @@ import keuangan.KeuanganValidasiTagihanObatBHP;
 import laporan.DlgAnggotaPolriDirawat;
 import kepegawaian.DlgAuditKepatuhanAPD;
 import kepegawaian.DlgRuangAuditKepatuhan;
+import kepegawaian.DlgAuditPembuanganLimbah;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -18571,6 +18572,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnAuditPembuanganLimbahActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditPembuanganLimbah aplikasi=new DlgAuditPembuanganLimbah(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -19214,7 +19227,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
-            btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan;
+            btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah;
     
     public void isWall(){
         try{            
@@ -19681,6 +19694,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getruang_audit_kepatuhan()==true){  
                 Panelmenu.add(btnRuangAuditKepatuhan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_pembuangan_limbah()==true){  
+                Panelmenu.add(btnAuditPembuanganLimbah);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23816,6 +23834,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getruang_audit_kepatuhan()==true){  
             Panelmenu.add(btnRuangAuditKepatuhan);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_pembuangan_limbah()==true){  
+            Panelmenu.add(btnAuditPembuanganLimbah);                 
             jmlmenu++;
         }
         
@@ -28073,6 +28096,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getruang_audit_kepatuhan()==true){  
             if(btnRuangAuditKepatuhan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangAuditKepatuhan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_pembuangan_limbah()==true){  
+            if(btnAuditPembuanganLimbah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditPembuanganLimbah);                 
                 jmlmenu++;
             }                
         }
@@ -36249,6 +36279,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRuangAuditKepatuhan.setName("btnRuangAuditKepatuhan"); 
         btnRuangAuditKepatuhan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRuangAuditKepatuhan.addActionListener(this::btnRuangAuditKepatuhanActionPerformed);
+        
+        btnAuditPembuanganLimbah = new widget.ButtonBig();
+        btnAuditPembuanganLimbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2992441_ecology_recycle_recyclingwaste_icon.png"))); 
+        btnAuditPembuanganLimbah.setText("Audit Pembuangan Limbah");
+        btnAuditPembuanganLimbah.setIconTextGap(0);
+        btnAuditPembuanganLimbah.setName("btnAuditPembuanganLimbah");
+        btnAuditPembuanganLimbah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditPembuanganLimbah.addActionListener(this::btnAuditPembuanganLimbahActionPerformed);
     }
     
 }
