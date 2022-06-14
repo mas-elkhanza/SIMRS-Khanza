@@ -181,7 +181,7 @@ public final class akses {
             nilai_penerimaan_vendor_nonmedis_perbulan=false,ringkasan_hutang_vendor_nonmedis=false,anggota_polri_dirawat=false,daftar_pasien_ranap_polri=false,
             soap_ralan_polri=false,soap_ranap_polri=false,laporan_penyakit_polri=false,master_rencana_keperawatan_anak=false,jumlah_pengunjung_ralan_polri=false,
             catatan_observasi_igd=false,catatan_observasi_ranap=false,catatan_observasi_ranap_kebidanan=false,catatan_observasi_ranap_postpartum=false,
-            penilaian_awal_medis_ralan_tht=false,penilaian_psikologi=false,audit_cuci_tangan_medis=false;
+            penilaian_awal_medis_ralan_tht=false,penilaian_psikologi=false,audit_cuci_tangan_medis=false,audit_pembuangan_limbah=false,ruang_audit_kepatuhan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1032,6 +1032,8 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_tht=true;
                         akses.penilaian_psikologi=true;
                         akses.audit_cuci_tangan_medis=true;
+                        akses.audit_pembuangan_limbah=true;
+                        akses.ruang_audit_kepatuhan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1866,6 +1868,8 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_tht=rs2.getBoolean("penilaian_awal_medis_ralan_tht");
                         akses.penilaian_psikologi=rs2.getBoolean("penilaian_psikologi");
                         akses.audit_cuci_tangan_medis=rs2.getBoolean("audit_cuci_tangan_medis");
+                        akses.audit_pembuangan_limbah=rs2.getBoolean("audit_pembuangan_limbah");
+                        akses.ruang_audit_kepatuhan=rs2.getBoolean("ruang_audit_kepatuhan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2698,6 +2702,8 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_tht=false;
                         akses.penilaian_psikologi=false;
                         akses.audit_cuci_tangan_medis=false;
+                        akses.audit_pembuangan_limbah=false;
+                        akses.ruang_audit_kepatuhan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3587,4 +3593,6 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ralan_tht(){return akses.penilaian_awal_medis_ralan_tht;}
     public static boolean getpenilaian_psikologi(){return akses.penilaian_psikologi;}
     public static boolean getaudit_cuci_tangan_medis(){return akses.audit_cuci_tangan_medis;}
+    public static boolean getaudit_pembuangan_limbah(){return akses.audit_pembuangan_limbah;}
+    public static boolean getruang_audit_kepatuhan(){return akses.ruang_audit_kepatuhan;}
 }   

@@ -62,7 +62,8 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "Tanggal Audit","NIP/Kode","Dokter/Paramedis","Sebelum Menyentuh Pasien","Sebelum Tehnik Aseptik",
-            "Setelah Terpapar Cairan Tubuh Pasien","Setelah Kontak Dengan Pasien","Setelah Kontak Dengan Lingkungan Pasien"
+            "Setelah Terpapar Cairan Tubuh Pasien","Setelah Kontak Dengan Pasien","Setelah Kontak Dengan Lingkungan Pasien",
+            "Ttl.Nilai(%)"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +73,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(118);
@@ -90,6 +91,8 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                 column.setPreferredWidth(156);
             }else if(i==7){
                 column.setPreferredWidth(215);
+            }else if(i==8){
+                column.setPreferredWidth(68);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1037,8 +1040,16 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new String[]{
-                        "Rata-rata Penilaian :","","",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
+                        "Rata-rata Penilaian",":","",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
                         Math.round((ttlsetelah_kontak_dengan_pasien/i)*100)+" %",Math.round((ttlsetelah_kontak_dengan_lingkungan_pasien/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                    });
+                    tabMode.addRow(new String[]{
+                        "Jumlah Ya",":","",""+ttlsebelum_menyentuh_pasien,""+ttlsebelum_tehnik_aseptik,""+ttlsetelah_terpapar_cairan_tubuh_pasien,
+                        ""+ttlsetelah_kontak_dengan_pasien,""+ttlsetelah_kontak_dengan_lingkungan_pasien,""
+                    });
+                    tabMode.addRow(new String[]{
+                        "Jumlah Tidak",":","",""+(i-ttlsebelum_menyentuh_pasien),""+(i-ttlsebelum_tehnik_aseptik),""+(i-ttlsetelah_terpapar_cairan_tubuh_pasien),
+                        ""+(i-ttlsetelah_kontak_dengan_pasien),""+(i-ttlsetelah_kontak_dengan_lingkungan_pasien),""
                     });
                 }
             } catch (Exception e) {

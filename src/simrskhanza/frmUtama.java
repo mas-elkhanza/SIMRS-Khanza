@@ -654,6 +654,7 @@ import keuangan.KeuanganValidasiTagihanNonMedis;
 import keuangan.KeuanganValidasiTagihanObatBHP;
 import laporan.DlgAnggotaPolriDirawat;
 import kepegawaian.DlgAuditKepatuhanAPD;
+import kepegawaian.DlgRuangAuditKepatuhan;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -18557,6 +18558,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRuangAuditKepatuhanActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRuangAuditKepatuhan ktginventaris=new DlgRuangAuditKepatuhan(this,false);
+        ktginventaris.isCek();
+        ktginventaris.emptTeks();
+        ktginventaris.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        ktginventaris.setLocationRelativeTo(PanelUtama);
+        ktginventaris.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -19200,7 +19214,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLaporanTahunanIGD,btnObatBHPTidakBergerak,btnRingkasanHutangVendorFarmasi,btnNilaiPenerimaanVendorNonMedisPerBulan,btnRingkasanHutangVendorBarangNonMedis,
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
-            btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi;
+            btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan;
     
     public void isWall(){
         try{            
@@ -19662,6 +19676,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_cuci_tangan_medis()==true){  
                 Panelmenu.add(btnAuditCuciTanganMedis);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getruang_audit_kepatuhan()==true){  
+                Panelmenu.add(btnRuangAuditKepatuhan);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23795,6 +23814,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
 
+        if(akses.getruang_audit_kepatuhan()==true){  
+            Panelmenu.add(btnRuangAuditKepatuhan);                 
+            jmlmenu++;
+        }
+        
         if(akses.getindustrifarmasi()==true){
             Panelmenu.add(btnIndustriFarmasi); 
             jmlmenu++;
@@ -28042,6 +28066,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_cuci_tangan_medis()==true){  
             if(btnAuditCuciTanganMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditCuciTanganMedis);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getruang_audit_kepatuhan()==true){  
+            if(btnRuangAuditKepatuhan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRuangAuditKepatuhan);                 
                 jmlmenu++;
             }                
         }
@@ -36210,6 +36241,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPsikologi.setName("btnPenilaianPsikologi"); 
         btnPenilaianPsikologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianPsikologi.addActionListener(this::btnPenilaianPsikologiActionPerformed);
+        
+        btnRuangAuditKepatuhan = new widget.ButtonBig();
+        btnRuangAuditKepatuhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8961095_home_monitoring_electricity_thermal_humidity_icon.png")));
+        btnRuangAuditKepatuhan.setText("Ruang/Unit Audit Kepatuhan");
+        btnRuangAuditKepatuhan.setIconTextGap(0);
+        btnRuangAuditKepatuhan.setName("btnRuangAuditKepatuhan"); 
+        btnRuangAuditKepatuhan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRuangAuditKepatuhan.addActionListener(this::btnRuangAuditKepatuhanActionPerformed);
     }
     
 }
