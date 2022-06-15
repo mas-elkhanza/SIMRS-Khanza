@@ -5973,7 +5973,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void KdPegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPegKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from pegawai where nik=?",TPegawai,KdPeg.getText());
+            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekPegawaiActionPerformed(null);
         }else{
@@ -6857,9 +6857,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,KdDok.getText());
         KdDok2.setText(KdDok.getText());
         TDokter2.setText(TDokter.getText()); 
-        KdPeg.setText(akses.getkode());
-        Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText());
-        Sequel.cariIsi("select jbtn from pegawai where nik=?",Jabatan,KdPeg.getText());
         
         isRawat();
         isPsien();
@@ -7001,6 +6998,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(150,(tinggi+10)));
+        
+        if(akses.getjml2()>=1){
+            KdPeg.setText(akses.getkode());
+            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText()); 
+            Sequel.cariIsi("select pegawai.jbtn from pegawai where pegawai.nik=?",Jabatan,KdPeg.getText());
+        }
     }
     
     private void jam(){
@@ -7140,9 +7143,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TindakLanjut.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),19).toString()); 
             TInstruksi.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),20).toString());  
             TEvaluasi.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),21).toString()); 
-            KdPeg.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),22).toString()); 
-            TPegawai.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),23).toString()); 
-            Jabatan.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),24).toString()); 
             cmbJam.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(0,2));
             cmbMnt.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(3,5));
             cmbDtk.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(6,8));

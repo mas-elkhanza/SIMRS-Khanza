@@ -1129,28 +1129,29 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("pemisahan_limbah_oleh_penghasil_limbah"),rs.getString("limbah_infeksius_dimasukkan_kantong_kuning"),
                         rs.getString("limbah_noninfeksius_dimasukkan_kantong_hitam"),rs.getString("limbah_tigaperempat_diikat"),rs.getString("limbah_segera_dibawa_kepembuangan_sementara"),
                         rs.getString("kotak_sampah_dalam_kondisi_bersih"),rs.getString("pembersihan_tempat_sampah_dengan_desinfekten"),rs.getString("pembersihan_penampungan_sementara_dengan_desinfekten"),
-                        Math.round(((pemisahan_limbah_oleh_penghasil_limbah+limbah_infeksius_dimasukkan_kantong_kuning+limbah_noninfeksius_dimasukkan_kantong_hitam+limbah_tigaperempat_diikat+limbah_segera_dibawa_kepembuangan_sementara)/5)*100)+" %"
+                        Math.round(((pemisahan_limbah_oleh_penghasil_limbah+limbah_infeksius_dimasukkan_kantong_kuning+limbah_noninfeksius_dimasukkan_kantong_hitam+limbah_tigaperempat_diikat+
+                        limbah_segera_dibawa_kepembuangan_sementara+kotak_sampah_dalam_kondisi_bersih+pembersihan_tempat_sampah_dengan_desinfekten+pembersihan_penampungan_sementara_dengan_desinfekten)/8)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new String[]{
-                        "Jumlah Ya",":","",""+ttlpemisahan_limbah_oleh_penghasil_limbah,""+ttllimbah_infeksius_dimasukkan_kantong_kuning,""+ttllimbah_noninfeksius_dimasukkan_kantong_hitam,
+                        "","Ya",":",""+ttlpemisahan_limbah_oleh_penghasil_limbah,""+ttllimbah_infeksius_dimasukkan_kantong_kuning,""+ttllimbah_noninfeksius_dimasukkan_kantong_hitam,
                         ""+ttllimbah_tigaperempat_diikat,""+ttllimbah_segera_dibawa_kepembuangan_sementara,""+ttlkotak_sampah_dalam_kondisi_bersih,""+ttlpembersihan_tempat_sampah_dengan_desinfekten,
                         ""+ttlpembersihan_penampungan_sementara_dengan_desinfekten,""+(ttlpemisahan_limbah_oleh_penghasil_limbah+ttllimbah_infeksius_dimasukkan_kantong_kuning+
                         ttllimbah_noninfeksius_dimasukkan_kantong_hitam+ttllimbah_tigaperempat_diikat+ttllimbah_segera_dibawa_kepembuangan_sementara+ttlkotak_sampah_dalam_kondisi_bersih+
                         ttlpembersihan_tempat_sampah_dengan_desinfekten+ttlpembersihan_penampungan_sementara_dengan_desinfekten)
                     });
                     tabMode.addRow(new String[]{
-                        "Jumlah Tidak",":","",""+(i-ttlpemisahan_limbah_oleh_penghasil_limbah),""+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning),""+(i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam),
+                        "","Tidak",":",""+(i-ttlpemisahan_limbah_oleh_penghasil_limbah),""+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning),""+(i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam),
                         ""+(i-ttllimbah_tigaperempat_diikat),""+(i-ttllimbah_segera_dibawa_kepembuangan_sementara),""+(i-ttlkotak_sampah_dalam_kondisi_bersih),""+(i-ttlpembersihan_tempat_sampah_dengan_desinfekten),
                         ""+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten),""+((i-ttlpemisahan_limbah_oleh_penghasil_limbah)+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning)+
                         (i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam)+(i-ttllimbah_tigaperempat_diikat)+(i-ttllimbah_segera_dibawa_kepembuangan_sementara)+(i-ttlkotak_sampah_dalam_kondisi_bersih)+
                         (i-ttlpembersihan_tempat_sampah_dengan_desinfekten)+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten))
                     });
                     tabMode.addRow(new String[]{
-                        "Rata-rata Penilaian",":","",Math.round((ttlpemisahan_limbah_oleh_penghasil_limbah/i)*100)+" %",Math.round((ttllimbah_infeksius_dimasukkan_kantong_kuning/i)*100)+" %",Math.round((ttllimbah_noninfeksius_dimasukkan_kantong_hitam/i)*100)+" %",
+                        "","Rata-rata",":",Math.round((ttlpemisahan_limbah_oleh_penghasil_limbah/i)*100)+" %",Math.round((ttllimbah_infeksius_dimasukkan_kantong_kuning/i)*100)+" %",Math.round((ttllimbah_noninfeksius_dimasukkan_kantong_hitam/i)*100)+" %",
                         Math.round((ttllimbah_tigaperempat_diikat/i)*100)+" %",Math.round((ttllimbah_segera_dibawa_kepembuangan_sementara/i)*100)+" %",Math.round((ttlkotak_sampah_dalam_kondisi_bersih/i)*100)+" %",
                         Math.round((ttlpembersihan_tempat_sampah_dengan_desinfekten/i)*100)+" %",Math.round((ttlpembersihan_penampungan_sementara_dengan_desinfekten/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

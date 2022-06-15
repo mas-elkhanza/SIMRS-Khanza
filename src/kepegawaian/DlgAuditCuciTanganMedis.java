@@ -1040,17 +1040,17 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new String[]{
-                        "Jumlah Ya",":","",""+ttlsebelum_menyentuh_pasien,""+ttlsebelum_tehnik_aseptik,""+ttlsetelah_terpapar_cairan_tubuh_pasien,
+                        "","Jumlah Ya",":",""+ttlsebelum_menyentuh_pasien,""+ttlsebelum_tehnik_aseptik,""+ttlsetelah_terpapar_cairan_tubuh_pasien,
                         ""+ttlsetelah_kontak_dengan_pasien,""+ttlsetelah_kontak_dengan_lingkungan_pasien,""+(ttlsebelum_menyentuh_pasien+ttlsebelum_tehnik_aseptik+
                         ttlsetelah_terpapar_cairan_tubuh_pasien+ttlsetelah_kontak_dengan_pasien+ttlsetelah_kontak_dengan_lingkungan_pasien)
                     });
                     tabMode.addRow(new String[]{
-                        "Jumlah Tidak",":","",""+(i-ttlsebelum_menyentuh_pasien),""+(i-ttlsebelum_tehnik_aseptik),""+(i-ttlsetelah_terpapar_cairan_tubuh_pasien),
+                        "","Jumlah Tidak",":",""+(i-ttlsebelum_menyentuh_pasien),""+(i-ttlsebelum_tehnik_aseptik),""+(i-ttlsetelah_terpapar_cairan_tubuh_pasien),
                         ""+(i-ttlsetelah_kontak_dengan_pasien),""+(i-ttlsetelah_kontak_dengan_lingkungan_pasien),""+((i-ttlsebelum_menyentuh_pasien)+(i-ttlsebelum_tehnik_aseptik)+
                         (i-ttlsetelah_terpapar_cairan_tubuh_pasien)+(i-ttlsetelah_kontak_dengan_pasien)+(i-ttlsetelah_kontak_dengan_lingkungan_pasien))
                     });
                     tabMode.addRow(new String[]{
-                        "Rata-rata Penilaian",":","",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
+                        "","Rata-rata Penilaian",":",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
                         Math.round((ttlsetelah_kontak_dengan_pasien/i)*100)+" %",Math.round((ttlsetelah_kontak_dengan_lingkungan_pasien/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }

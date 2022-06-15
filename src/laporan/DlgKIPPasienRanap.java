@@ -486,14 +486,16 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent.append(                             
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='3'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>NO.R.M.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%' rowspan='3'>NO.R.M.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='3'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>NIK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='3'>TGL.MASUK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='3'>TGL.KELUAR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='3'>LAMA RAWAT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='52%' colspan='18'>GOLONGAN UMUR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='3'>LAMA</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%' colspan='18'>GOLONGAN UMUR</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2' colspan='4'>KETERANGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%' rowspan='2' colspan='2'>MENINGGAL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' rowspan='2' colspan='2'>MENINGGAL</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>0-6 hr</td>"+
@@ -534,8 +536,9 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"
             );   
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk "+
-                    "from reg_periksa inner join diagnosa_pasien inner join pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk "+
+                    "from reg_periksa inner join diagnosa_pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut='Ranap' and diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and "+
                     "diagnosa_pasien.kd_penyakit=? order by reg_periksa.tgl_registrasi");
             try {
@@ -637,7 +640,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     }
                     
                     diagnosa="";
-                    ps2=koneksi.prepareStatement("select 	kd_penyakit from diagnosa_pasien where status='Ranap' and prioritas>1 and no_rawat=?");    
+                    ps2=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas>1 and diagnosa_pasien.no_rawat=?");    
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
@@ -664,7 +667,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     
                     jamdiff=0;
                     stmatilb48="";stmatikr48="";stpulang="";staps="";stlari="";strujuk="";tglkeluar="";lamainap="";
-                    ps2=koneksi.prepareStatement("select tgl_keluar,jam_keluar,stts_pulang,sum(lama) as lama from kamar_inap where no_rawat=? order by tgl_keluar desc limit 1");    
+                    ps2=koneksi.prepareStatement("select kamar_inap.tgl_keluar,kamar_inap.jam_keluar,kamar_inap.stts_pulang,sum(kamar_inap.lama) as lama from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar desc limit 1");    
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
@@ -736,6 +739,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("no_ktp")+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
                             "<td valign='middle' align='center'>"+tglkeluar+"</td>"+
                             "<td valign='middle' align='center'>"+lamainap+"</td>"+
@@ -782,7 +787,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             if((i-1)>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                        "<td valign='middle' align='right' colspan='5'>Total :</td>"+
+                        "<td valign='middle' align='right' colspan='7'>Total :</td>"+
                         "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
                         "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
                         "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
@@ -830,14 +835,16 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent.append(                             
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='3'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>NO.R.M.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%' rowspan='3'>NO.R.M.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='3'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>NIK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='3'>TGL.MASUK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='3'>TGL.KELUAR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='3'>LAMA RAWAT</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='52%' colspan='18'>GOLONGAN UMUR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='3'>LAMA</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%' colspan='18'>GOLONGAN UMUR</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2' colspan='4'>KETERANGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%' rowspan='2' colspan='2'>MENINGGAL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' rowspan='2' colspan='2'>MENINGGAL</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>0-6 hr</td>"+
@@ -878,9 +885,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"
             );   
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk "+
-                    "from reg_periksa inner join diagnosa_pasien inner join pasien inner join kamar_inap on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and "+
-                    "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where kamar_inap.tgl_keluar between ? and ? and "+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk "+
+                    "from reg_periksa inner join diagnosa_pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                    "where kamar_inap.tgl_keluar between ? and ? and "+
                     "kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.status_lanjut='Ranap' and diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and "+
                     "diagnosa_pasien.kd_penyakit=? order by reg_periksa.tgl_registrasi");
             try {
@@ -983,7 +992,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     
                     diagnosa="";
                     
-                    ps2=koneksi.prepareStatement("select 	kd_penyakit from diagnosa_pasien where status='Ranap' and prioritas>1 and no_rawat=?");    
+                    ps2=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas>1 and diagnosa_pasien.no_rawat=?");    
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
@@ -1011,7 +1020,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     
                     jamdiff=0;
                     stmatilb48="";stmatikr48="";stpulang="";staps="";stlari="";strujuk="";tglkeluar="";lamainap="";
-                    ps2=koneksi.prepareStatement("select tgl_keluar,jam_keluar,stts_pulang,sum(lama) as lama from kamar_inap where no_rawat=? order by tgl_keluar desc limit 1");    
+                    ps2=koneksi.prepareStatement("select kamar_inap.tgl_keluar,kamar_inap.jam_keluar,kamar_inap.stts_pulang,sum(kamar_inap.lama) as lama from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_keluar desc limit 1");    
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         rs2=ps2.executeQuery();
@@ -1083,6 +1092,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("no_ktp")+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
                             "<td valign='middle' align='center'>"+tglkeluar+"</td>"+
                             "<td valign='middle' align='center'>"+lamainap+"</td>"+
@@ -1129,7 +1140,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             if((i-1)>0){
                 htmlContent.append(
                     "<tr class='isi'>"+
-                        "<td valign='middle' align='right' colspan='5'>Total :</td>"+
+                        "<td valign='middle' align='right' colspan='7'>Total :</td>"+
                         "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
                         "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
                         "<td valign='middle' align='center'>"+hr7s28l+"</td>"+

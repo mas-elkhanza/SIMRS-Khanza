@@ -97,30 +97,38 @@ from audit_pembuangan_limbah inner join ruang_audit_kepatuhan on audit_pembuanga
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="ttlpenilaian" class="java.lang.String" calculation="Sum">
-		<variableExpression><![CDATA[(((Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)]]></variableExpression>
+		<variableExpression><![CDATA[(((Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0")))/8)*100)]]></variableExpression>
 	</variable>
-	<variable name="topi" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	<variable name="pemisahan_limbah_oleh_penghasil_limbah" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
-	<variable name="masker" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	<variable name="limbah_infeksius_dimasukkan_kantong_kuning" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
-	<variable name="kacamata" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	<variable name="limbah_noninfeksius_dimasukkan_kantong_hitam" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
-	<variable name="sarungtangan" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	<variable name="limbah_tigaperempat_diikat" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
-	<variable name="apron" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	<variable name="limbah_segera_dibawa_kepembuangan_sementara" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
-	<variable name="sepatu" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	<variable name="kotak_sampah_dalam_kondisi_bersih" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	</variable>
+	<variable name="pembersihan_tempat_sampah_dengan_desinfekten" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
+	</variable>
+	<variable name="pembersihan_penampungan_sementara_dengan_desinfekten" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -183,7 +191,23 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="19" splitType="Stretch">
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="640" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="8c7a0e9b-3402-4306-ace7-bb212d54da0c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Penilaian 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="690" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="9d9a6f90-7201-4785-a267-c1b8ef1f6626"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Penilaian 8]]></text>
+			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="740" y="0" width="58" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="649510c3-2064-4fea-9031-87b7a296ee9d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -193,31 +217,33 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				<text><![CDATA[Ttl.Nilai(%)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="710" y="0" width="30" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="8bc0091e-8004-4bfc-8fe1-216c1be25653"/>
+				<reportElement mode="Opaque" x="590" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="8bc0091e-8004-4bfc-8fe1-216c1be25653"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Sepatu]]></text>
+				<text><![CDATA[Penilaian 6]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="680" y="0" width="30" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f0fdfa3c-8499-4237-b978-bdc8d6daaa68"/>
+				<reportElement mode="Opaque" x="541" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f0fdfa3c-8499-4237-b978-bdc8d6daaa68"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Apron]]></text>
+				<text><![CDATA[Penilaian 5]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="580" y="0" width="40" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="a56328d9-7d64-4a48-b154-39b68b4c0c0a"/>
+				<reportElement mode="Opaque" x="441" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="a56328d9-7d64-4a48-b154-39b68b4c0c0a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Kacamata]]></text>
+				<text><![CDATA[Penilaian 3]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="310" y="0" width="40" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f24b606f-5ee8-4085-89ab-d71ce3951409"/>
+				<reportElement mode="Opaque" x="341" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f24b606f-5ee8-4085-89ab-d71ce3951409"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -225,12 +251,12 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				<text><![CDATA[Penilaian 1]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="550" y="0" width="30" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="450e4797-8923-4859-afe9-b0a8c3058fb5"/>
+				<reportElement mode="Opaque" x="391" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="450e4797-8923-4859-afe9-b0a8c3058fb5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Masker]]></text>
+				<text><![CDATA[Penilaian 2]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="68bcaa43-e99e-46fc-9eb7-856eac917548">
@@ -243,7 +269,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				<text><![CDATA[Tanggal Audit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="78" y="0" width="232" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="3236cf36-103e-46d4-9899-59f27cdde081">
+				<reportElement mode="Opaque" x="78" y="0" width="263" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="3236cf36-103e-46d4-9899-59f27cdde081">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -259,12 +285,12 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="620" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="62ae8bd5-4ca8-4651-a768-e0c96e3cfba9"/>
+				<reportElement mode="Opaque" x="491" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="62ae8bd5-4ca8-4651-a768-e0c96e3cfba9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Sarung Tangan]]></text>
+				<text><![CDATA[Penilaian 4]]></text>
 			</staticText>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="799" height="1" uuid="b9df08be-712d-4d7a-8167-33f136e9b181"/>
@@ -275,7 +301,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="12" splitType="Stretch">
+		<band height="15" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="0" width="78" height="10" uuid="3a03eef0-2cec-459d-9013-737e40ef1349"/>
 				<textElement>
@@ -285,7 +311,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="78" y="0" width="232" height="10" uuid="e895e828-344b-4070-a63d-9a55d5c6707e"/>
+				<reportElement positionType="Float" x="78" y="0" width="263" height="10" uuid="e895e828-344b-4070-a63d-9a55d5c6707e"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -293,7 +319,7 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				<textFieldExpression><![CDATA[$F{nama_ruang}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="310" y="0" width="40" height="10" uuid="e45c241b-0ddf-46c8-9c14-441abf008377">
+				<reportElement positionType="Float" x="341" y="0" width="50" height="10" uuid="e45c241b-0ddf-46c8-9c14-441abf008377">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -303,14 +329,14 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				<textFieldExpression><![CDATA[$F{pemisahan_limbah_oleh_penghasil_limbah}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="550" y="0" width="30" height="10" uuid="8ccda384-6ed4-4843-8596-bf675bb62e18">
+				<reportElement positionType="Float" x="391" y="0" width="50" height="10" uuid="8ccda384-6ed4-4843-8596-bf675bb62e18">
 					<property name="com.jaspersoft.studio.unit.width" value="cm"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{masker}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{limbah_infeksius_dimasukkan_kantong_kuning}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement positionType="Float" x="0" y="11" width="799" height="1" uuid="0d957b63-991b-4cfa-9c0f-c30d7460e5db">
@@ -321,40 +347,40 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="580" y="0" width="40" height="10" uuid="f9616262-8fd7-4c76-a12a-14e5d94b431f">
+				<reportElement positionType="Float" x="441" y="0" width="50" height="10" uuid="f9616262-8fd7-4c76-a12a-14e5d94b431f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{limbah_noninfeksius_dimasukkan_kantong_hitam}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="491" y="0" width="50" height="10" uuid="765e0c41-baa7-4cad-9249-7a7220f6cb3f">
 					<property name="com.jaspersoft.studio.unit.width" value="cm"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{kacamata}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{limbah_tigaperempat_diikat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="620" y="0" width="60" height="10" uuid="765e0c41-baa7-4cad-9249-7a7220f6cb3f">
-					<property name="com.jaspersoft.studio.unit.width" value="cm"/>
-				</reportElement>
+				<reportElement positionType="Float" x="541" y="0" width="50" height="10" uuid="b90baa70-34df-4bc6-b173-70cfe1c5e72c"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sarungtangan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{limbah_segera_dibawa_kepembuangan_sementara}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="680" y="0" width="30" height="10" uuid="b90baa70-34df-4bc6-b173-70cfe1c5e72c"/>
+				<reportElement positionType="Float" x="590" y="0" width="50" height="10" uuid="e2e014a1-f497-4d53-81e3-2dd064fb6ff8"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{apron}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="710" y="0" width="30" height="10" uuid="e2e014a1-f497-4d53-81e3-2dd064fb6ff8"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="8"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sepatu}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{kotak_sampah_dalam_kondisi_bersih}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="58" height="10" uuid="ae4b4a09-ea3e-4fa6-bf3c-fc4a84658a44"/>
@@ -362,12 +388,30 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{topi}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{masker}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{kacamata}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sarungtangan}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{apron}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round(((Double.parseDouble($F{pemisahan_limbah_oleh_penghasil_limbah}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_infeksius_dimasukkan_kantong_kuning}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_noninfeksius_dimasukkan_kantong_hitam}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_tigaperempat_diikat}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{limbah_segera_dibawa_kepembuangan_sementara}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{kotak_sampah_dalam_kondisi_bersih}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{pembersihan_tempat_sampah_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.replaceAll("Ya","1").replaceAll("Tidak","0")))/8)*100)+" %"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="640" y="0" width="50" height="10" uuid="7a297b05-45c7-4d2b-97d2-2db7eb863c9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembersihan_tempat_sampah_dengan_desinfekten}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="690" y="0" width="50" height="10" uuid="cdc060b0-ccdb-4d7a-9ac9-a870f9eb16d2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembersihan_penampungan_sementara_dengan_desinfekten}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -436,64 +480,64 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 		<band height="15" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="311" y="0" width="29" height="10" uuid="640eb084-913c-45fe-b6d9-500594f2a5b3">
+				<reportElement positionType="Float" x="342" y="0" width="50" height="10" uuid="640eb084-913c-45fe-b6d9-500594f2a5b3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{topi}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round($V{pemisahan_limbah_oleh_penghasil_limbah}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="550" y="0" width="30" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
+				<reportElement positionType="Float" x="391" y="0" width="50" height="10" uuid="4055e148-280f-476a-9b86-4050455c4d2c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{masker}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round($V{limbah_infeksius_dimasukkan_kantong_kuning}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="580" y="0" width="40" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
+				<reportElement positionType="Float" x="441" y="0" width="50" height="10" uuid="21682df1-d485-40c7-8020-e751ef9bc6d9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{kacamata}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round($V{limbah_noninfeksius_dimasukkan_kantong_hitam}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="620" y="0" width="60" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
+				<reportElement positionType="Float" x="491" y="0" width="50" height="10" uuid="d18467a9-d1b7-4649-ad01-2b6346979b2f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sarungtangan}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round($V{limbah_tigaperempat_diikat}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="680" y="0" width="30" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d">
+				<reportElement positionType="Float" x="541" y="0" width="50" height="10" uuid="476a21ed-3e42-48ce-8ec2-089ef2c9229d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{apron}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round($V{limbah_segera_dibawa_kepembuangan_sementara}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="710" y="0" width="30" height="10" uuid="b5d2b4fb-fece-411e-9974-61de5a4b3047">
+				<reportElement positionType="Float" x="590" y="0" width="50" height="10" uuid="b5d2b4fb-fece-411e-9974-61de5a4b3047">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round($V{sepatu}*100)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round($V{kotak_sampah_dalam_kondisi_bersih}*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="740" y="0" width="59" height="10" uuid="b05f9985-6442-4992-94a2-b6a58eec536c">
@@ -503,13 +547,15 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Math.round((($V{topi}*100)+
-	($V{masker}*100)+
-	($V{kacamata}*100)+
-	($V{sarungtangan}*100)+
-	($V{apron}*100)+
-	($V{sepatu}*100)
-)/6)+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Math.round((($V{pemisahan_limbah_oleh_penghasil_limbah}*100)+
+	($V{limbah_infeksius_dimasukkan_kantong_kuning}*100)+
+	($V{limbah_noninfeksius_dimasukkan_kantong_hitam}*100)+
+	($V{limbah_tigaperempat_diikat}*100)+
+	($V{limbah_segera_dibawa_kepembuangan_sementara}*100)+
+	($V{kotak_sampah_dalam_kondisi_bersih}*100)+
+	($V{pembersihan_tempat_sampah_dengan_desinfekten}*100)+
+	($V{pembersihan_penampungan_sementara_dengan_desinfekten}*100)
+)/8)+" %"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="0" width="145" height="10" uuid="09888425-967b-48f7-b721-d07cc1ecb2dd">
@@ -521,6 +567,26 @@ Double.parseDouble($F{sepatu}.replaceAll("Ya","1").replaceAll("Tidak","0")))/6)*
 				</textElement>
 				<text><![CDATA[Rata-rata Penilaian :]]></text>
 			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="640" y="0" width="50" height="10" uuid="062da514-1189-48bf-82e2-6e228ade994f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Math.round($V{pembersihan_tempat_sampah_dengan_desinfekten}*100)+" %"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="690" y="0" width="50" height="10" uuid="71c26853-ee02-4284-a500-dff1827129b3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Math.round($V{pembersihan_penampungan_sementara_dengan_desinfekten}*100)+" %"]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

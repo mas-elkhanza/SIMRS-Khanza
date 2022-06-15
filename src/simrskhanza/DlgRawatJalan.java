@@ -6103,7 +6103,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void KdPegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPegKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from pegawai where nik=?",TPegawai,KdPeg.getText());
+            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekPegawaiActionPerformed(null);
         }else{
@@ -7023,9 +7023,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         KdDok3.setText(KdDok.getText());
         TDokter2.setText(TDokter.getText()); 
         TDokter3.setText(TDokter.getText()); 
-        KdPeg.setText(akses.getkode());
-        Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText());
-        Sequel.cariIsi("select pegawai.jbtn from pegawai where pegawai.nik=?",Jabatan,KdPeg.getText());
         ChkInput.setSelected(true);
         isForm();
         ChkInput1.setSelected(true);
@@ -7211,6 +7208,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         FormMenu.setPreferredSize(new Dimension(150,(tinggi+10)));
         TCari.setPreferredSize(new Dimension(207,23));
+        
+        if(akses.getjml2()>=1){
+            KdPeg.setText(akses.getkode());
+            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText()); 
+            Sequel.cariIsi("select pegawai.jbtn from pegawai where pegawai.nik=?",Jabatan,KdPeg.getText());
+        }
     }
 
     private void tampilPemeriksaan() {
@@ -7361,9 +7364,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TPenilaian.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),20).toString()); 
             TInstruksi.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),21).toString()); 
             TEvaluasi.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),22).toString()); 
-            KdPeg.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),23).toString()); 
-            TPegawai.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),24).toString()); 
-            Jabatan.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),25).toString()); 
             cmbJam.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(0,2));
             cmbMnt.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(3,5));
             cmbDtk.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(6,8));
@@ -7566,9 +7566,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         TDokter.setText(namadokter);
         TDokter2.setText(namadokter); 
         TDokter3.setText(namadokter); 
-        KdPeg.setText(akses.getkode());
-        Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",TPegawai,KdPeg.getText()); 
-        Sequel.cariIsi("select pegawai.jbtn from pegawai where pegawai.nik=?",Jabatan,KdPeg.getText());
     }
     
     public void SetPoli(String KodePoli){
