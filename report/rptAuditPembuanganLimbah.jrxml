@@ -191,7 +191,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="21" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Opaque" x="640" y="0" width="50" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="8c7a0e9b-3402-4306-ace7-bb212d54da0c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -301,7 +301,7 @@ Double.parseDouble($F{pembersihan_penampungan_sementara_dengan_desinfekten}.repl
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy hh:mm:ss" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="0" width="78" height="10" uuid="3a03eef0-2cec-459d-9013-737e40ef1349"/>
 				<textElement>

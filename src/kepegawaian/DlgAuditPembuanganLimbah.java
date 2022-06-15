@@ -105,7 +105,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Nip.setDocument(new batasInput((byte)20).getKata(Nip));
+        KdRuang.setDocument(new batasInput((byte)20).getKata(KdRuang));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -139,10 +139,10 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(ruang.getTable().getSelectedRow()!= -1){                   
-                    Nip.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),1).toString());
+                    KdRuang.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),0).toString());
+                    NmRuang.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),1).toString());
                 }  
-                Nip.requestFocus();
+                KdRuang.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -200,7 +200,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         Detik = new widget.ComboBox();
         ChkKejadian = new widget.CekBox();
         jLabel18 = new widget.Label();
-        Nip = new widget.TextBox();
+        KdRuang = new widget.TextBox();
         btnPetugas = new widget.Button();
         jLabel14 = new widget.Label();
         PemisahanLimbahOlehPenghasilLimbah = new widget.ComboBox();
@@ -208,7 +208,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         LimbahInfeksiusDimasukkanKantongKuning = new widget.ComboBox();
         jLabel23 = new widget.Label();
         LimbahNoninfeksiusDimasukkanKantongHitam = new widget.ComboBox();
-        NamaPetugas = new widget.TextBox();
+        NmRuang = new widget.TextBox();
         jLabel15 = new widget.Label();
         jLabel20 = new widget.Label();
         LimbahTigaperempatDiikat = new widget.ComboBox();
@@ -390,7 +390,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -404,7 +404,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -474,7 +474,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -536,16 +536,16 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(430, 10, 130, 23);
 
-        Nip.setEditable(false);
-        Nip.setHighlighter(null);
-        Nip.setName("Nip"); // NOI18N
-        Nip.addKeyListener(new java.awt.event.KeyAdapter() {
+        KdRuang.setEditable(false);
+        KdRuang.setHighlighter(null);
+        KdRuang.setName("KdRuang"); // NOI18N
+        KdRuang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NipKeyPressed(evt);
+                KdRuangKeyPressed(evt);
             }
         });
-        FormInput.add(Nip);
-        Nip.setBounds(564, 10, 80, 23);
+        FormInput.add(KdRuang);
+        KdRuang.setBounds(564, 10, 80, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -612,10 +612,10 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         FormInput.add(LimbahNoninfeksiusDimasukkanKantongHitam);
         LimbahNoninfeksiusDimasukkanKantongHitam.setBounds(370, 70, 78, 23);
 
-        NamaPetugas.setEditable(false);
-        NamaPetugas.setName("NamaPetugas"); // NOI18N
-        FormInput.add(NamaPetugas);
-        NamaPetugas.setBounds(647, 10, 200, 23);
+        NmRuang.setEditable(false);
+        NmRuang.setName("NmRuang"); // NOI18N
+        FormInput.add(NmRuang);
+        NmRuang.setBounds(647, 10, 200, 23);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText("8.  Pembersihan Penampungan Sementara Menggunakan Disinfektan");
@@ -728,11 +728,11 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Nip.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnPetugas,"Petugas");
+        if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
+            Valid.textKosong(btnPetugas,"Ruang/Unit");
         }else{
             if(Sequel.menyimpantf("audit_pembuangan_limbah","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
-                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Nip.getText(),PemisahanLimbahOlehPenghasilLimbah.getSelectedItem().toString(),
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdRuang.getText(),PemisahanLimbahOlehPenghasilLimbah.getSelectedItem().toString(),
                 LimbahInfeksiusDimasukkanKantongKuning.getSelectedItem().toString(),LimbahNoninfeksiusDimasukkanKantongHitam.getSelectedItem().toString(),LimbahTigaperempatDiikat.getSelectedItem().toString(),
                 LimbahSegeraDibawaKepembuanganSementara.getSelectedItem().toString(),KotakSampahDalamKondisiBersih.getSelectedItem().toString(),PembersihanTempatSampahDenganDesinfekten.getSelectedItem().toString(),
                 PembersihanPenampunganSementaraDenganDesinfekten.getSelectedItem().toString()
@@ -747,7 +747,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,LimbahSegeraDibawaKepembuanganSementara,BtnBatal);
+            Valid.pindah(evt,PembersihanPenampunganSementaraDenganDesinfekten,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -786,12 +786,12 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Nip.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnPetugas,"Petugas");
+        if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
+            Valid.textKosong(btnPetugas,"Ruang/Unit");
         }else{    
             Sequel.mengedit("audit_pembuangan_limbah","id_ruang=? and tanggal=?","tanggal=?,id_ruang=?,pemisahan_limbah_oleh_penghasil_limbah=?,limbah_infeksius_dimasukkan_kantong_kuning=?,limbah_noninfeksius_dimasukkan_kantong_hitam=?,"+
                 "limbah_tigaperempat_diikat=?,limbah_segera_dibawa_kepembuangan_sementara=?,kotak_sampah_dalam_kondisi_bersih=?,pembersihan_tempat_sampah_dengan_desinfekten=?,pembersihan_penampungan_sementara_dengan_desinfekten=?",12,new String[]{
-                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Nip.getText(),PemisahanLimbahOlehPenghasilLimbah.getSelectedItem().toString(),
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdRuang.getText(),PemisahanLimbahOlehPenghasilLimbah.getSelectedItem().toString(),
                 LimbahInfeksiusDimasukkanKantongKuning.getSelectedItem().toString(),LimbahNoninfeksiusDimasukkanKantongHitam.getSelectedItem().toString(),LimbahTigaperempatDiikat.getSelectedItem().toString(),
                 LimbahSegeraDibawaKepembuanganSementara.getSelectedItem().toString(),KotakSampahDalamKondisiBersih.getSelectedItem().toString(),PembersihanTempatSampahDenganDesinfekten.getSelectedItem().toString(),
                 PembersihanPenampunganSementaraDenganDesinfekten.getSelectedItem().toString(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
@@ -943,7 +943,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         Valid.pindah(evt,Menit,btnPetugas);
     }//GEN-LAST:event_DetikKeyPressed
 
-    private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKeyPressed
+    private void KdRuangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdRuangKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -951,7 +951,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
-    }//GEN-LAST:event_NipKeyPressed
+    }//GEN-LAST:event_KdRuangKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         ruang.emptTeks();
@@ -981,19 +981,19 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     }//GEN-LAST:event_LimbahTigaperempatDiikatKeyPressed
 
     private void LimbahSegeraDibawaKepembuanganSementaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LimbahSegeraDibawaKepembuanganSementaraKeyPressed
-        Valid.pindah(evt, LimbahTigaperempatDiikat,BtnSimpan);
+        Valid.pindah(evt, LimbahTigaperempatDiikat,KotakSampahDalamKondisiBersih);
     }//GEN-LAST:event_LimbahSegeraDibawaKepembuanganSementaraKeyPressed
 
     private void PembersihanTempatSampahDenganDesinfektenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembersihanTempatSampahDenganDesinfektenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, KotakSampahDalamKondisiBersih,PembersihanPenampunganSementaraDenganDesinfekten);
     }//GEN-LAST:event_PembersihanTempatSampahDenganDesinfektenKeyPressed
 
     private void KotakSampahDalamKondisiBersihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotakSampahDalamKondisiBersihKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, LimbahSegeraDibawaKepembuanganSementara,PembersihanTempatSampahDenganDesinfekten);
     }//GEN-LAST:event_KotakSampahDalamKondisiBersihKeyPressed
 
     private void PembersihanPenampunganSementaraDenganDesinfektenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembersihanPenampunganSementaraDenganDesinfektenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, PembersihanTempatSampahDenganDesinfekten,BtnSimpan);
     }//GEN-LAST:event_PembersihanPenampunganSementaraDenganDesinfektenKeyPressed
 
     /**
@@ -1028,6 +1028,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Jam;
+    private widget.TextBox KdRuang;
     private widget.ComboBox KotakSampahDalamKondisiBersih;
     private widget.Label LCount;
     private widget.ComboBox LimbahInfeksiusDimasukkanKantongKuning;
@@ -1035,8 +1036,7 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     private widget.ComboBox LimbahSegeraDibawaKepembuanganSementara;
     private widget.ComboBox LimbahTigaperempatDiikat;
     private widget.ComboBox Menit;
-    private widget.TextBox NamaPetugas;
-    private widget.TextBox Nip;
+    private widget.TextBox NmRuang;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PembersihanPenampunganSementaraDenganDesinfekten;
     private widget.ComboBox PembersihanTempatSampahDenganDesinfekten;
@@ -1173,8 +1173,8 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        Nip.setText("");
-        NamaPetugas.setText("");
+        KdRuang.setText("");
+        NmRuang.setText("");
         Tanggal.setDate(new Date());
         PemisahanLimbahOlehPenghasilLimbah.setSelectedIndex(0);
         LimbahInfeksiusDimasukkanKantongKuning.setSelectedIndex(0);
@@ -1189,8 +1189,8 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            NmRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             PemisahanLimbahOlehPenghasilLimbah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             LimbahInfeksiusDimasukkanKantongKuning.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             LimbahNoninfeksiusDimasukkanKantongHitam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
