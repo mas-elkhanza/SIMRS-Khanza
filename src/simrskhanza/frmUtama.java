@@ -657,6 +657,7 @@ import kepegawaian.DlgAuditKepatuhanAPD;
 import kepegawaian.DlgAuditPembuanganBendaTajam;
 import kepegawaian.DlgRuangAuditKepatuhan;
 import kepegawaian.DlgAuditPembuanganLimbah;
+import kepegawaian.DlgAuditPenangananDarah;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -18597,6 +18598,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnAuditPenangananDarahActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditPenangananDarah aplikasi=new DlgAuditPenangananDarah(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -19241,7 +19254,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
-            btnAuditPembuanganBendaTajam;
+            btnAuditPembuanganBendaTajam,btnAuditPenangananDarah;
     
     public void isWall(){
         try{            
@@ -19718,6 +19731,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_pembuangan_benda_tajam()==true){  
                 Panelmenu.add(btnAuditPembuanganBendaTajam);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_penanganan_darah()==true){  
+                Panelmenu.add(btnAuditPenangananDarah);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23863,6 +23881,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getaudit_pembuangan_benda_tajam()==true){  
             Panelmenu.add(btnAuditPembuanganBendaTajam);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_penanganan_darah()==true){  
+            Panelmenu.add(btnAuditPenangananDarah);                 
             jmlmenu++;
         }
         
@@ -28134,6 +28157,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_pembuangan_benda_tajam()==true){  
             if(btnAuditPembuanganBendaTajam.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditPembuanganBendaTajam);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_penanganan_darah()==true){  
+            if(btnAuditPenangananDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditPenangananDarah);                 
                 jmlmenu++;
             }                
         }
@@ -36326,6 +36356,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditPembuanganBendaTajam.setName("btnAuditPembuanganBendaTajam");
         btnAuditPembuanganBendaTajam.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditPembuanganBendaTajam.addActionListener(this::btnAuditPembuanganBendaTajamActionPerformed);
+        
+        btnAuditPenangananDarah = new widget.ButtonBig();
+        btnAuditPenangananDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088722_blood_bottle_packet_icon.png"))); 
+        btnAuditPenangananDarah.setText("Audit Penanganan Darah");
+        btnAuditPenangananDarah.setIconTextGap(0);
+        btnAuditPenangananDarah.setName("btnAuditPenangananDarah");
+        btnAuditPenangananDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditPenangananDarah.addActionListener(this::btnAuditPenangananDarahActionPerformed);
     }
     
 }

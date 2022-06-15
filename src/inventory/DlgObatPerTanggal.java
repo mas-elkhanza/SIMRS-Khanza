@@ -615,7 +615,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'"+r+"','"+
