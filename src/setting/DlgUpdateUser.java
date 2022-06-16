@@ -692,7 +692,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri,user.soap_ralan_polri,"+
                 "user.soap_ranap_polri,user.laporan_penyakit_polri,user.jumlah_pengunjung_ralan_polri,user.catatan_observasi_igd,user.catatan_observasi_ranap,"+
                 "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht,user.penilaian_psikologi,"+
-                "user.audit_cuci_tangan_medis,user.audit_pembuangan_limbah,user.ruang_audit_kepatuhan,user.audit_pembuangan_benda_tajam,user.audit_penanganan_darah from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.audit_cuci_tangan_medis,user.audit_pembuangan_limbah,user.ruang_audit_kepatuhan,user.audit_pembuangan_benda_tajam,user.audit_penanganan_darah,"+
+                "user.audit_pengelolaan_linen_kotor from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1035,6 +1036,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Audit Penanganan Darah".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Audit Penanganan Darah",rs.getBoolean("audit_penanganan_darah")});
+                    }
+                    
+                    if("[C]Audit Pengelolaan Linen Kotor".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Audit Pengelolaan Linen Kotor",rs.getBoolean("audit_pengelolaan_linen_kotor")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4386,6 +4391,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[C]Audit Penanganan Darah".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_penanganan_darah='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[C]Audit Pengelolaan Linen Kotor".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_pengelolaan_linen_kotor='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){
