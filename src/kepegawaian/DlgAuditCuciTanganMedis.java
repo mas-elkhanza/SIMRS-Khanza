@@ -1084,14 +1084,16 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            SebelumMenyentuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            SebelumTehnik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            SetelahTerpapar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            SetelahKontak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            SetelahLingkungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("")){
+                Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                SebelumMenyentuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                SebelumTehnik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+                SetelahTerpapar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                SetelahKontak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                SetelahLingkungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+                Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            }
         }
     }
     

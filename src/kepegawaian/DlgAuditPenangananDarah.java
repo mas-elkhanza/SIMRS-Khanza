@@ -1117,15 +1117,17 @@ public final class DlgAuditPenangananDarah extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            NmRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            MenggunakanApdWaktuMembuangDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            KomponenDarahTidakAdaDilantai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            MembuangDarahPadaTempatDitentukan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            PembersihanArealTumbahanDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            ApdDibuangdiLimbahInfeksius.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            MelakukanKebersihanTanganSetelahProsedur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("")){
+                KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                NmRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                MenggunakanApdWaktuMembuangDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                KomponenDarahTidakAdaDilantai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+                MembuangDarahPadaTempatDitentukan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                PembersihanArealTumbahanDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                ApdDibuangdiLimbahInfeksius.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+                MelakukanKebersihanTanganSetelahProsedur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            }
         }
     }
     

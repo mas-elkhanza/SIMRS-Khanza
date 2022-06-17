@@ -46,11 +46,11 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;    
     private DlgCariRuangAuditKepatuhan ruang=new DlgCariRuangAuditKepatuhan(null,false);
-    private double pemisahan_limbah_oleh_penghasil_limbah=0,limbah_infeksius_dimasukkan_kantong_kuning=0,limbah_noninfeksius_dimasukkan_kantong_hitam=0,
-                limbah_tigaperempat_diikat=0,limbah_segera_dibawa_kepembuangan_sementara=0,ttlpemisahan_limbah_oleh_penghasil_limbah=0,kotak_sampah_dalam_kondisi_bersih=0,
-                pembersihan_tempat_sampah_dengan_desinfekten=0,pembersihan_penampungan_sementara_dengan_desinfekten=0,ttllimbah_infeksius_dimasukkan_kantong_kuning=0,
-                ttllimbah_noninfeksius_dimasukkan_kantong_hitam=0,ttllimbah_tigaperempat_diikat=0,ttllimbah_segera_dibawa_kepembuangan_sementara=0,
-                ttlkotak_sampah_dalam_kondisi_bersih=0,ttlpembersihan_tempat_sampah_dengan_desinfekten=0,ttlpembersihan_penampungan_sementara_dengan_desinfekten=0,ttlpenilaian=0;
+    private double audit1=0,audit2=0,audit3=0,
+                audit4=0,audit5=0,ttlaudit1=0,audit6=0,
+                audit7=0,audit8=0,ttlaudit2=0,
+                ttlaudit3=0,ttlaudit4=0,ttlaudit5=0,
+                ttlaudit6=0,ttlaudit7=0,ttlaudit8=0,ttlpenilaian=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -62,10 +62,12 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Tanggal Audit","ID Ruang","Ruang/Unit","1.Pemisahan Limbah Dilakukan Segera Oleh Penghasilan Limbah",
-            "2.Limbah Infeksius Dimasukkan Ke Dalam Kantong Plastik Kuning","3.Limbah Non Infeksius Dimasukkan Ke Dalam Kantong Plastik Hitam",
-            "4.Limbah 3/4 Penuh Diikat","5.Limbah Segera Dibawa Ke Tempat Pembuangan Sampah Sementara","6.Kotak Sampah Dalam Kondisi Bersih",
-            "7.Pembersihan Tempat Sampah Menggunakan Disinkektan","8.Pembersihan Penampungan Sementara Menggunakan Disinfektan","Ttl.Nilai(%)"
+            "Tanggal Audit","ID Ruang","Ruang/Unit","1.Petugas Ruangan Segera Mengambil Linen Kotor Untuk Dimasukkan Ke Dalam Bak Setelah Pasien Pulang",
+            "2.Petugas Laundry Mengambil Linen Kotor Untuk Dimasukkan Ke Dalam Bak Linen Kotor Dengan Cara Yang Benar",
+            "3.Petugas Ruangan menempatkan Linen Kotor Sesuai Dengan Wadah Yang Ditentukan",
+            "4.Petugas Memasukkan Linen Kotor Ke Dalam Bak Linen Kotor Dengan Benar",
+            "5.Fasilitas Bak Penampung Linen Kotor Tersedia Dengan Baik Di Ruangan","6.Plastik Untuk Linen Kotor Tersedia Dengan Baik Di Ruangan",
+            "7.Petugas Linen Laundry Mengambil Linen Kotor Sesuai Jadwal","8.Sudah Tersedia Trolli Khusus Untuk Linen Infeksius Dan Non Infeksius","Ttl.Nilai(%)"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -192,6 +194,8 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         PanelInput = new javax.swing.JPanel();
+        ChkInput = new widget.CekBox();
+        scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
         Tanggal = new widget.Tanggal();
         jLabel16 = new widget.Label();
@@ -203,29 +207,29 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         KdRuang = new widget.TextBox();
         btnPetugas = new widget.Button();
         jLabel14 = new widget.Label();
-        PemisahanLimbahOlehPenghasilLimbah = new widget.ComboBox();
+        Audit1 = new widget.ComboBox();
         jLabel17 = new widget.Label();
-        LimbahInfeksiusDimasukkanKantongKuning = new widget.ComboBox();
+        Audit2 = new widget.ComboBox();
         jLabel23 = new widget.Label();
-        LimbahNoninfeksiusDimasukkanKantongHitam = new widget.ComboBox();
+        Audit3 = new widget.ComboBox();
         NmRuang = new widget.TextBox();
         jLabel15 = new widget.Label();
         jLabel20 = new widget.Label();
-        LimbahTigaperempatDiikat = new widget.ComboBox();
-        LimbahSegeraDibawaKepembuanganSementara = new widget.ComboBox();
+        Audit4 = new widget.ComboBox();
+        Audit5 = new widget.ComboBox();
         jLabel22 = new widget.Label();
         jLabel24 = new widget.Label();
         jLabel25 = new widget.Label();
-        PembersihanTempatSampahDenganDesinfekten = new widget.ComboBox();
-        KotakSampahDalamKondisiBersih = new widget.ComboBox();
-        PembersihanPenampunganSementaraDenganDesinfekten = new widget.ComboBox();
-        ChkInput = new widget.CekBox();
+        Audit7 = new widget.ComboBox();
+        Audit6 = new widget.ComboBox();
+        Audit8 = new widget.ComboBox();
+        jLabel26 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Audit Pembuangan Limbah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Audit Pengelolaan Linen Kotor ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -390,7 +394,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -404,7 +408,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -465,16 +469,40 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 184));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 305));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
+        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setMnemonic('I');
+        ChkInput.setText(".: Input Data");
+        ChkInput.setToolTipText("Alt+I");
+        ChkInput.setBorderPainted(true);
+        ChkInput.setBorderPaintedFlat(true);
+        ChkInput.setFocusable(false);
+        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput.setName("ChkInput"); // NOI18N
+        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkInputActionPerformed(evt);
+            }
+        });
+        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
+
+        scrollInput.setName("scrollInput"); // NOI18N
+
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
+        FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 225));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 282));
         FormInput.setLayout(null);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -534,7 +562,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         jLabel18.setText("Ruang/Unit Diaudit :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(430, 10, 130, 23);
+        jLabel18.setBounds(380, 10, 110, 23);
 
         KdRuang.setEditable(false);
         KdRuang.setHighlighter(null);
@@ -545,7 +573,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
             }
         });
         FormInput.add(KdRuang);
-        KdRuang.setBounds(564, 10, 80, 23);
+        KdRuang.setBounds(494, 10, 80, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -562,163 +590,150 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPetugas);
-        btnPetugas.setBounds(850, 10, 28, 23);
+        btnPetugas.setBounds(760, 10, 28, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("1.  Pemisahan Limbah Dilakukan Segera Oleh Penghasilan Limbah");
+        jLabel14.setText("1.  Petugas Ruangan Segera Mengambil Linen Kotor Untuk Dimasukkan Ke Dalam Bak Setelah Pasien Pulang");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(14, 40, 355, 23);
+        jLabel14.setBounds(64, 40, 600, 23);
 
-        PemisahanLimbahOlehPenghasilLimbah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        PemisahanLimbahOlehPenghasilLimbah.setName("PemisahanLimbahOlehPenghasilLimbah"); // NOI18N
-        PemisahanLimbahOlehPenghasilLimbah.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit1.setName("Audit1"); // NOI18N
+        Audit1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PemisahanLimbahOlehPenghasilLimbahKeyPressed(evt);
+                Audit1KeyPressed(evt);
             }
         });
-        FormInput.add(PemisahanLimbahOlehPenghasilLimbah);
-        PemisahanLimbahOlehPenghasilLimbah.setBounds(370, 40, 78, 23);
+        FormInput.add(Audit1);
+        Audit1.setBounds(710, 40, 78, 23);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText("2.  Limbah Infeksius Dimasukkan Ke Dalam Kantong Plastik Kuning");
+        jLabel17.setText("2.  Petugas Laundry Mengambil Linen Kotor Untuk Dimasukkan Ke Dalam Bak Linen Kotor Dengan Cara Yang Benar");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(460, 40, 340, 23);
+        jLabel17.setBounds(64, 70, 600, 23);
 
-        LimbahInfeksiusDimasukkanKantongKuning.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        LimbahInfeksiusDimasukkanKantongKuning.setName("LimbahInfeksiusDimasukkanKantongKuning"); // NOI18N
-        LimbahInfeksiusDimasukkanKantongKuning.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit2.setName("Audit2"); // NOI18N
+        Audit2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LimbahInfeksiusDimasukkanKantongKuningKeyPressed(evt);
+                Audit2KeyPressed(evt);
             }
         });
-        FormInput.add(LimbahInfeksiusDimasukkanKantongKuning);
-        LimbahInfeksiusDimasukkanKantongKuning.setBounds(800, 40, 78, 23);
+        FormInput.add(Audit2);
+        Audit2.setBounds(710, 70, 78, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel23.setText("3.  Limbah Non Infeksius Dimasukkan Ke Dalam Kantong Plastik Hitam");
+        jLabel23.setText("3.  Petugas Ruangan menempatkan Linen Kotor Sesuai Dengan Wadah Yang Ditentukan ");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(14, 70, 355, 23);
+        jLabel23.setBounds(64, 100, 600, 23);
 
-        LimbahNoninfeksiusDimasukkanKantongHitam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        LimbahNoninfeksiusDimasukkanKantongHitam.setName("LimbahNoninfeksiusDimasukkanKantongHitam"); // NOI18N
-        LimbahNoninfeksiusDimasukkanKantongHitam.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit3.setName("Audit3"); // NOI18N
+        Audit3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LimbahNoninfeksiusDimasukkanKantongHitamKeyPressed(evt);
+                Audit3KeyPressed(evt);
             }
         });
-        FormInput.add(LimbahNoninfeksiusDimasukkanKantongHitam);
-        LimbahNoninfeksiusDimasukkanKantongHitam.setBounds(370, 70, 78, 23);
+        FormInput.add(Audit3);
+        Audit3.setBounds(710, 100, 78, 23);
 
         NmRuang.setEditable(false);
         NmRuang.setName("NmRuang"); // NOI18N
         FormInput.add(NmRuang);
-        NmRuang.setBounds(647, 10, 200, 23);
+        NmRuang.setBounds(577, 10, 180, 23);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("8.  Pembersihan Penampungan Sementara Menggunakan Disinfektan");
+        jLabel15.setText("8.  Sudah Tersedia Trolli Khusus Untuk Linen Infeksius Dan Non Infeksius");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(460, 130, 340, 23);
+        jLabel15.setBounds(64, 250, 600, 23);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel20.setText("7.  Pembersihan Tempat Sampah Menggunakan Disinkektan");
+        jLabel20.setText("7.  Petugas Linen Laundry Mengambil Linen Kotor Sesuai Jadwal");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(14, 130, 355, 23);
+        jLabel20.setBounds(64, 220, 600, 23);
 
-        LimbahTigaperempatDiikat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        LimbahTigaperempatDiikat.setName("LimbahTigaperempatDiikat"); // NOI18N
-        LimbahTigaperempatDiikat.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit4.setName("Audit4"); // NOI18N
+        Audit4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LimbahTigaperempatDiikatKeyPressed(evt);
+                Audit4KeyPressed(evt);
             }
         });
-        FormInput.add(LimbahTigaperempatDiikat);
-        LimbahTigaperempatDiikat.setBounds(800, 70, 78, 23);
+        FormInput.add(Audit4);
+        Audit4.setBounds(710, 130, 78, 23);
 
-        LimbahSegeraDibawaKepembuanganSementara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        LimbahSegeraDibawaKepembuanganSementara.setName("LimbahSegeraDibawaKepembuanganSementara"); // NOI18N
-        LimbahSegeraDibawaKepembuanganSementara.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit5.setName("Audit5"); // NOI18N
+        Audit5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LimbahSegeraDibawaKepembuanganSementaraKeyPressed(evt);
+                Audit5KeyPressed(evt);
             }
         });
-        FormInput.add(LimbahSegeraDibawaKepembuanganSementara);
-        LimbahSegeraDibawaKepembuanganSementara.setBounds(370, 100, 78, 23);
+        FormInput.add(Audit5);
+        Audit5.setBounds(710, 160, 78, 23);
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel22.setText("4.  Limbah 3/4 Penuh Diikat");
+        jLabel22.setText("4.  Petugas Memasukkan Linen Kotor Ke Dalam Bak Linen Kotor Dengan Benar");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(460, 70, 340, 23);
+        jLabel22.setBounds(64, 130, 600, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText("5.  Limbah Segera Dibawa Ke Tempat Pembuangan Sampah Sementara");
+        jLabel24.setText("5.  Fasilitas Bak Penampung Linen Kotor Tersedia Dengan Baik Di Ruangan");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(14, 100, 355, 23);
+        jLabel24.setBounds(64, 160, 600, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel25.setText("6.  Kotak Sampah Dalam Kondisi Bersih");
+        jLabel25.setText("6.  Plastik Untuk Linen Kotor Tersedia Dengan Baik Di Ruangan");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(460, 100, 340, 23);
+        jLabel25.setBounds(64, 190, 600, 23);
 
-        PembersihanTempatSampahDenganDesinfekten.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        PembersihanTempatSampahDenganDesinfekten.setName("PembersihanTempatSampahDenganDesinfekten"); // NOI18N
-        PembersihanTempatSampahDenganDesinfekten.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit7.setName("Audit7"); // NOI18N
+        Audit7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PembersihanTempatSampahDenganDesinfektenKeyPressed(evt);
+                Audit7KeyPressed(evt);
             }
         });
-        FormInput.add(PembersihanTempatSampahDenganDesinfekten);
-        PembersihanTempatSampahDenganDesinfekten.setBounds(370, 130, 78, 23);
+        FormInput.add(Audit7);
+        Audit7.setBounds(710, 220, 78, 23);
 
-        KotakSampahDalamKondisiBersih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        KotakSampahDalamKondisiBersih.setName("KotakSampahDalamKondisiBersih"); // NOI18N
-        KotakSampahDalamKondisiBersih.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit6.setName("Audit6"); // NOI18N
+        Audit6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KotakSampahDalamKondisiBersihKeyPressed(evt);
+                Audit6KeyPressed(evt);
             }
         });
-        FormInput.add(KotakSampahDalamKondisiBersih);
-        KotakSampahDalamKondisiBersih.setBounds(800, 100, 78, 23);
+        FormInput.add(Audit6);
+        Audit6.setBounds(710, 190, 78, 23);
 
-        PembersihanPenampunganSementaraDenganDesinfekten.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        PembersihanPenampunganSementaraDenganDesinfekten.setName("PembersihanPenampunganSementaraDenganDesinfekten"); // NOI18N
-        PembersihanPenampunganSementaraDenganDesinfekten.addKeyListener(new java.awt.event.KeyAdapter() {
+        Audit8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Audit8.setName("Audit8"); // NOI18N
+        Audit8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PembersihanPenampunganSementaraDenganDesinfektenKeyPressed(evt);
+                Audit8KeyPressed(evt);
             }
         });
-        FormInput.add(PembersihanPenampunganSementaraDenganDesinfekten);
-        PembersihanPenampunganSementaraDenganDesinfekten.setBounds(800, 130, 78, 23);
+        FormInput.add(Audit8);
+        Audit8.setBounds(710, 250, 78, 23);
 
-        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
+        jLabel26.setText("Audit :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        jLabel26.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(0, 40, 60, 23);
 
-        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
-        ChkInput.setMnemonic('I');
-        ChkInput.setText(".: Input Data");
-        ChkInput.setToolTipText("Alt+I");
-        ChkInput.setBorderPainted(true);
-        ChkInput.setBorderPaintedFlat(true);
-        ChkInput.setFocusable(false);
-        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ChkInput.setName("ChkInput"); // NOI18N
-        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
-        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
-        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        ChkInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkInputActionPerformed(evt);
-            }
-        });
-        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
+        scrollInput.setViewportView(FormInput);
+
+        PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
@@ -731,11 +746,11 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
             Valid.textKosong(btnPetugas,"Ruang/Unit");
         }else{
-            if(Sequel.menyimpantf("audit_pembuangan_limbah","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
-                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdRuang.getText(),PemisahanLimbahOlehPenghasilLimbah.getSelectedItem().toString(),
-                LimbahInfeksiusDimasukkanKantongKuning.getSelectedItem().toString(),LimbahNoninfeksiusDimasukkanKantongHitam.getSelectedItem().toString(),LimbahTigaperempatDiikat.getSelectedItem().toString(),
-                LimbahSegeraDibawaKepembuanganSementara.getSelectedItem().toString(),KotakSampahDalamKondisiBersih.getSelectedItem().toString(),PembersihanTempatSampahDenganDesinfekten.getSelectedItem().toString(),
-                PembersihanPenampunganSementaraDenganDesinfekten.getSelectedItem().toString()
+            if(Sequel.menyimpantf("audit_pengelolaan_linen_kotor","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdRuang.getText(),Audit1.getSelectedItem().toString(),
+                Audit2.getSelectedItem().toString(),Audit3.getSelectedItem().toString(),Audit4.getSelectedItem().toString(),
+                Audit5.getSelectedItem().toString(),Audit6.getSelectedItem().toString(),Audit7.getSelectedItem().toString(),
+                Audit8.getSelectedItem().toString()
             })==true){
                 tampil();
                 emptTeks();
@@ -747,7 +762,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,PembersihanPenampunganSementaraDenganDesinfekten,BtnBatal);
+            Valid.pindah(evt,Audit8,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -765,7 +780,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()!= -1){
-            if(Sequel.queryu2tf("delete from audit_pembuangan_limbah where id_ruang=? and tanggal=?",2,new String[]{
+            if(Sequel.queryu2tf("delete from audit_pengelolaan_linen_kotor where id_ruang=? and tanggal=?",2,new String[]{
                 tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tampil();
@@ -789,12 +804,12 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
             Valid.textKosong(btnPetugas,"Ruang/Unit");
         }else{    
-            Sequel.mengedit("audit_pembuangan_limbah","id_ruang=? and tanggal=?","tanggal=?,id_ruang=?,pemisahan_limbah_oleh_penghasil_limbah=?,limbah_infeksius_dimasukkan_kantong_kuning=?,limbah_noninfeksius_dimasukkan_kantong_hitam=?,"+
-                "limbah_tigaperempat_diikat=?,limbah_segera_dibawa_kepembuangan_sementara=?,kotak_sampah_dalam_kondisi_bersih=?,pembersihan_tempat_sampah_dengan_desinfekten=?,pembersihan_penampungan_sementara_dengan_desinfekten=?",12,new String[]{
-                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdRuang.getText(),PemisahanLimbahOlehPenghasilLimbah.getSelectedItem().toString(),
-                LimbahInfeksiusDimasukkanKantongKuning.getSelectedItem().toString(),LimbahNoninfeksiusDimasukkanKantongHitam.getSelectedItem().toString(),LimbahTigaperempatDiikat.getSelectedItem().toString(),
-                LimbahSegeraDibawaKepembuanganSementara.getSelectedItem().toString(),KotakSampahDalamKondisiBersih.getSelectedItem().toString(),PembersihanTempatSampahDenganDesinfekten.getSelectedItem().toString(),
-                PembersihanPenampunganSementaraDenganDesinfekten.getSelectedItem().toString(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            Sequel.mengedit("audit_pengelolaan_linen_kotor","id_ruang=? and tanggal=?","tanggal=?,id_ruang=?,audit1=?,audit2=?,audit3=?,"+
+                "audit4=?,audit5=?,audit6=?,audit7=?,audit8=?",12,new String[]{
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdRuang.getText(),Audit1.getSelectedItem().toString(),
+                Audit2.getSelectedItem().toString(),Audit3.getSelectedItem().toString(),Audit4.getSelectedItem().toString(),
+                Audit5.getSelectedItem().toString(),Audit6.getSelectedItem().toString(),Audit7.getSelectedItem().toString(),
+                Audit8.getSelectedItem().toString(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             });
             if(tabMode.getRowCount()!=0){tampil();}
             emptTeks();
@@ -836,24 +851,24 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptAuditPembuanganLimbah.jasper","report","::[ Data Audit Pembuangan Limbah ]::",
-                    "select audit_pembuangan_limbah.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pembuangan_limbah.tanggal,audit_pembuangan_limbah.pemisahan_limbah_oleh_penghasil_limbah,"+
-                    "audit_pembuangan_limbah.limbah_infeksius_dimasukkan_kantong_kuning,audit_pembuangan_limbah.limbah_noninfeksius_dimasukkan_kantong_hitam,"+
-                    "audit_pembuangan_limbah.limbah_tigaperempat_diikat,audit_pembuangan_limbah.limbah_segera_dibawa_kepembuangan_sementara,"+
-                    "audit_pembuangan_limbah.kotak_sampah_dalam_kondisi_bersih,audit_pembuangan_limbah.pembersihan_tempat_sampah_dengan_desinfekten,"+
-                    "audit_pembuangan_limbah.pembersihan_penampungan_sementara_dengan_desinfekten from audit_pembuangan_limbah "+
-                    "inner join ruang_audit_kepatuhan on audit_pembuangan_limbah.id_ruang=ruang_audit_kepatuhan.id_ruang where audit_pembuangan_limbah.tanggal between "+
-                    "'"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by audit_pembuangan_limbah.tanggal",param);
+                Valid.MyReportqry("rptAuditPengelolaanLinenKotor.jasper","report","::[ Data Audit Pengelolaan Linen Kotor ]::",
+                    "select audit_pengelolaan_linen_kotor.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pengelolaan_linen_kotor.tanggal,audit_pengelolaan_linen_kotor.audit1,"+
+                    "audit_pengelolaan_linen_kotor.audit2,audit_pengelolaan_linen_kotor.audit3,"+
+                    "audit_pengelolaan_linen_kotor.audit4,audit_pengelolaan_linen_kotor.audit5,"+
+                    "audit_pengelolaan_linen_kotor.audit6,audit_pengelolaan_linen_kotor.audit7,"+
+                    "audit_pengelolaan_linen_kotor.audit8 from audit_pengelolaan_linen_kotor "+
+                    "inner join ruang_audit_kepatuhan on audit_pengelolaan_linen_kotor.id_ruang=ruang_audit_kepatuhan.id_ruang where audit_pengelolaan_linen_kotor.tanggal between "+
+                    "'"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by audit_pengelolaan_linen_kotor.tanggal",param);
             }else{
-                Valid.MyReportqry("rptAuditPembuanganLimbah.jasper","report","::[ Data Audit Pembuangan Limbah ]::",
-                    "select audit_pembuangan_limbah.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pembuangan_limbah.tanggal,audit_pembuangan_limbah.pemisahan_limbah_oleh_penghasil_limbah,"+
-                    "audit_pembuangan_limbah.limbah_infeksius_dimasukkan_kantong_kuning,audit_pembuangan_limbah.limbah_noninfeksius_dimasukkan_kantong_hitam,"+
-                    "audit_pembuangan_limbah.limbah_tigaperempat_diikat,audit_pembuangan_limbah.limbah_segera_dibawa_kepembuangan_sementara,"+
-                    "audit_pembuangan_limbah.kotak_sampah_dalam_kondisi_bersih,audit_pembuangan_limbah.pembersihan_tempat_sampah_dengan_desinfekten,"+
-                    "audit_pembuangan_limbah.pembersihan_penampungan_sementara_dengan_desinfekten from audit_pembuangan_limbah "+
-                    "inner join ruang_audit_kepatuhan on audit_pembuangan_limbah.id_ruang=ruang_audit_kepatuhan.id_ruang where audit_pembuangan_limbah.tanggal between "+
+                Valid.MyReportqry("rptAuditPengelolaanLinenKotor.jasper","report","::[ Data Audit Pengelolaan Linen Kotor ]::",
+                    "select audit_pengelolaan_linen_kotor.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pengelolaan_linen_kotor.tanggal,audit_pengelolaan_linen_kotor.audit1,"+
+                    "audit_pengelolaan_linen_kotor.audit2,audit_pengelolaan_linen_kotor.audit3,"+
+                    "audit_pengelolaan_linen_kotor.audit4,audit_pengelolaan_linen_kotor.audit5,"+
+                    "audit_pengelolaan_linen_kotor.audit6,audit_pengelolaan_linen_kotor.audit7,"+
+                    "audit_pengelolaan_linen_kotor.audit8 from audit_pengelolaan_linen_kotor "+
+                    "inner join ruang_audit_kepatuhan on audit_pengelolaan_linen_kotor.id_ruang=ruang_audit_kepatuhan.id_ruang where audit_pengelolaan_linen_kotor.tanggal between "+
                     "'"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "and (audit_pembuangan_limbah.id_ruang like '%"+TCari.getText().trim()+"%' or ruang_audit_kepatuhan.nama_ruang like '%"+TCari.getText().trim()+"%') order by audit_pembuangan_limbah.tanggal",param);
+                    "and (audit_pengelolaan_linen_kotor.id_ruang like '%"+TCari.getText().trim()+"%' or ruang_audit_kepatuhan.nama_ruang like '%"+TCari.getText().trim()+"%') order by audit_pengelolaan_linen_kotor.tanggal",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -899,7 +914,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
             TCari.setText("");
             tampil();
         }else{
-            //Valid.pindah(evt, BtnCari, TPasien);
+            Valid.pindah(evt, BtnCari, btnPetugas);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -947,7 +962,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            PemisahanLimbahOlehPenghasilLimbah.requestFocus();
+            Audit1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -964,37 +979,37 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         //Valid.pindah(evt,Detik,BB);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void PemisahanLimbahOlehPenghasilLimbahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemisahanLimbahOlehPenghasilLimbahKeyPressed
-        Valid.pindah(evt,btnPetugas,LimbahInfeksiusDimasukkanKantongKuning);
-    }//GEN-LAST:event_PemisahanLimbahOlehPenghasilLimbahKeyPressed
+    private void Audit1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit1KeyPressed
+        Valid.pindah(evt,btnPetugas,Audit2);
+    }//GEN-LAST:event_Audit1KeyPressed
 
-    private void LimbahInfeksiusDimasukkanKantongKuningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LimbahInfeksiusDimasukkanKantongKuningKeyPressed
-        Valid.pindah(evt, PemisahanLimbahOlehPenghasilLimbah, LimbahNoninfeksiusDimasukkanKantongHitam);
-    }//GEN-LAST:event_LimbahInfeksiusDimasukkanKantongKuningKeyPressed
+    private void Audit2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit2KeyPressed
+        Valid.pindah(evt, Audit1, Audit3);
+    }//GEN-LAST:event_Audit2KeyPressed
 
-    private void LimbahNoninfeksiusDimasukkanKantongHitamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LimbahNoninfeksiusDimasukkanKantongHitamKeyPressed
-        Valid.pindah(evt, LimbahInfeksiusDimasukkanKantongKuning,LimbahTigaperempatDiikat);
-    }//GEN-LAST:event_LimbahNoninfeksiusDimasukkanKantongHitamKeyPressed
+    private void Audit3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit3KeyPressed
+        Valid.pindah(evt, Audit2,Audit4);
+    }//GEN-LAST:event_Audit3KeyPressed
 
-    private void LimbahTigaperempatDiikatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LimbahTigaperempatDiikatKeyPressed
-        Valid.pindah(evt, LimbahNoninfeksiusDimasukkanKantongHitam,LimbahSegeraDibawaKepembuanganSementara);
-    }//GEN-LAST:event_LimbahTigaperempatDiikatKeyPressed
+    private void Audit4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit4KeyPressed
+        Valid.pindah(evt, Audit3,Audit5);
+    }//GEN-LAST:event_Audit4KeyPressed
 
-    private void LimbahSegeraDibawaKepembuanganSementaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LimbahSegeraDibawaKepembuanganSementaraKeyPressed
-        Valid.pindah(evt, LimbahTigaperempatDiikat,KotakSampahDalamKondisiBersih);
-    }//GEN-LAST:event_LimbahSegeraDibawaKepembuanganSementaraKeyPressed
+    private void Audit5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit5KeyPressed
+        Valid.pindah(evt, Audit4,Audit6);
+    }//GEN-LAST:event_Audit5KeyPressed
 
-    private void PembersihanTempatSampahDenganDesinfektenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembersihanTempatSampahDenganDesinfektenKeyPressed
-        Valid.pindah(evt, KotakSampahDalamKondisiBersih,PembersihanPenampunganSementaraDenganDesinfekten);
-    }//GEN-LAST:event_PembersihanTempatSampahDenganDesinfektenKeyPressed
+    private void Audit7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit7KeyPressed
+        Valid.pindah(evt, Audit6,Audit8);
+    }//GEN-LAST:event_Audit7KeyPressed
 
-    private void KotakSampahDalamKondisiBersihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotakSampahDalamKondisiBersihKeyPressed
-        Valid.pindah(evt, LimbahSegeraDibawaKepembuanganSementara,PembersihanTempatSampahDenganDesinfekten);
-    }//GEN-LAST:event_KotakSampahDalamKondisiBersihKeyPressed
+    private void Audit6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit6KeyPressed
+        Valid.pindah(evt, Audit5,Audit7);
+    }//GEN-LAST:event_Audit6KeyPressed
 
-    private void PembersihanPenampunganSementaraDenganDesinfektenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembersihanPenampunganSementaraDenganDesinfektenKeyPressed
-        Valid.pindah(evt, PembersihanTempatSampahDenganDesinfekten,BtnSimpan);
-    }//GEN-LAST:event_PembersihanPenampunganSementaraDenganDesinfektenKeyPressed
+    private void Audit8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Audit8KeyPressed
+        Valid.pindah(evt, Audit7,BtnSimpan);
+    }//GEN-LAST:event_Audit8KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1013,6 +1028,14 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox Audit1;
+    private widget.ComboBox Audit2;
+    private widget.ComboBox Audit3;
+    private widget.ComboBox Audit4;
+    private widget.ComboBox Audit5;
+    private widget.ComboBox Audit6;
+    private widget.ComboBox Audit7;
+    private widget.ComboBox Audit8;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1029,18 +1052,10 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Jam;
     private widget.TextBox KdRuang;
-    private widget.ComboBox KotakSampahDalamKondisiBersih;
     private widget.Label LCount;
-    private widget.ComboBox LimbahInfeksiusDimasukkanKantongKuning;
-    private widget.ComboBox LimbahNoninfeksiusDimasukkanKantongHitam;
-    private widget.ComboBox LimbahSegeraDibawaKepembuanganSementara;
-    private widget.ComboBox LimbahTigaperempatDiikat;
     private widget.ComboBox Menit;
     private widget.TextBox NmRuang;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox PembersihanPenampunganSementaraDenganDesinfekten;
-    private widget.ComboBox PembersihanTempatSampahDenganDesinfekten;
-    private widget.ComboBox PemisahanLimbahOlehPenghasilLimbah;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
@@ -1058,11 +1073,13 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
     private widget.Label jLabel23;
     private widget.Label jLabel24;
     private widget.Label jLabel25;
+    private widget.Label jLabel26;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private widget.ScrollPane scrollInput;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
@@ -1071,23 +1088,23 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select audit_pembuangan_limbah.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pembuangan_limbah.tanggal,audit_pembuangan_limbah.pemisahan_limbah_oleh_penghasil_limbah,"+
-                    "audit_pembuangan_limbah.limbah_infeksius_dimasukkan_kantong_kuning,audit_pembuangan_limbah.limbah_noninfeksius_dimasukkan_kantong_hitam,"+
-                    "audit_pembuangan_limbah.limbah_tigaperempat_diikat,audit_pembuangan_limbah.limbah_segera_dibawa_kepembuangan_sementara,"+
-                    "audit_pembuangan_limbah.kotak_sampah_dalam_kondisi_bersih,audit_pembuangan_limbah.pembersihan_tempat_sampah_dengan_desinfekten,"+
-                    "audit_pembuangan_limbah.pembersihan_penampungan_sementara_dengan_desinfekten from audit_pembuangan_limbah "+
-                    "inner join ruang_audit_kepatuhan on audit_pembuangan_limbah.id_ruang=ruang_audit_kepatuhan.id_ruang "+
-                    "where audit_pembuangan_limbah.tanggal between ? and ? order by audit_pembuangan_limbah.tanggal");
+                    "select audit_pengelolaan_linen_kotor.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pengelolaan_linen_kotor.tanggal,audit_pengelolaan_linen_kotor.audit1,"+
+                    "audit_pengelolaan_linen_kotor.audit2,audit_pengelolaan_linen_kotor.audit3,"+
+                    "audit_pengelolaan_linen_kotor.audit4,audit_pengelolaan_linen_kotor.audit5,"+
+                    "audit_pengelolaan_linen_kotor.audit6,audit_pengelolaan_linen_kotor.audit7,"+
+                    "audit_pengelolaan_linen_kotor.audit8 from audit_pengelolaan_linen_kotor "+
+                    "inner join ruang_audit_kepatuhan on audit_pengelolaan_linen_kotor.id_ruang=ruang_audit_kepatuhan.id_ruang "+
+                    "where audit_pengelolaan_linen_kotor.tanggal between ? and ? order by audit_pengelolaan_linen_kotor.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select audit_pembuangan_limbah.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pembuangan_limbah.tanggal,audit_pembuangan_limbah.pemisahan_limbah_oleh_penghasil_limbah,"+
-                    "audit_pembuangan_limbah.limbah_infeksius_dimasukkan_kantong_kuning,audit_pembuangan_limbah.limbah_noninfeksius_dimasukkan_kantong_hitam,"+
-                    "audit_pembuangan_limbah.limbah_tigaperempat_diikat,audit_pembuangan_limbah.limbah_segera_dibawa_kepembuangan_sementara,"+
-                    "audit_pembuangan_limbah.kotak_sampah_dalam_kondisi_bersih,audit_pembuangan_limbah.pembersihan_tempat_sampah_dengan_desinfekten,"+
-                    "audit_pembuangan_limbah.pembersihan_penampungan_sementara_dengan_desinfekten from audit_pembuangan_limbah "+
-                    "inner join ruang_audit_kepatuhan on audit_pembuangan_limbah.id_ruang=ruang_audit_kepatuhan.id_ruang "+
-                    "where audit_pembuangan_limbah.tanggal between ? and ? "+
-                    "and (audit_pembuangan_limbah.id_ruang like ? or ruang_audit_kepatuhan.nama_ruang like ?) order by audit_pembuangan_limbah.tanggal");
+                    "select audit_pengelolaan_linen_kotor.id_ruang,ruang_audit_kepatuhan.nama_ruang,audit_pengelolaan_linen_kotor.tanggal,audit_pengelolaan_linen_kotor.audit1,"+
+                    "audit_pengelolaan_linen_kotor.audit2,audit_pengelolaan_linen_kotor.audit3,"+
+                    "audit_pengelolaan_linen_kotor.audit4,audit_pengelolaan_linen_kotor.audit5,"+
+                    "audit_pengelolaan_linen_kotor.audit6,audit_pengelolaan_linen_kotor.audit7,"+
+                    "audit_pengelolaan_linen_kotor.audit8 from audit_pengelolaan_linen_kotor "+
+                    "inner join ruang_audit_kepatuhan on audit_pengelolaan_linen_kotor.id_ruang=ruang_audit_kepatuhan.id_ruang "+
+                    "where audit_pengelolaan_linen_kotor.tanggal between ? and ? "+
+                    "and (audit_pengelolaan_linen_kotor.id_ruang like ? or ruang_audit_kepatuhan.nama_ruang like ?) order by audit_pengelolaan_linen_kotor.tanggal");
             }
                 
             try {
@@ -1102,58 +1119,58 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
                 }
                     
                 rs=ps.executeQuery();
-                ttlpemisahan_limbah_oleh_penghasil_limbah=0;ttllimbah_infeksius_dimasukkan_kantong_kuning=0;ttllimbah_noninfeksius_dimasukkan_kantong_hitam=0;ttllimbah_tigaperempat_diikat=0;ttllimbah_segera_dibawa_kepembuangan_sementara=0;
-                ttlkotak_sampah_dalam_kondisi_bersih=0;ttlpembersihan_tempat_sampah_dengan_desinfekten=0;ttlpembersihan_penampungan_sementara_dengan_desinfekten=0;ttlpenilaian=0;
+                ttlaudit1=0;ttlaudit2=0;ttlaudit3=0;ttlaudit4=0;ttlaudit5=0;
+                ttlaudit6=0;ttlaudit7=0;ttlaudit8=0;ttlpenilaian=0;
                 i=1;
                 while(rs.next()){
-                    pemisahan_limbah_oleh_penghasil_limbah=Double.parseDouble(rs.getString("pemisahan_limbah_oleh_penghasil_limbah").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttlpemisahan_limbah_oleh_penghasil_limbah=ttlpemisahan_limbah_oleh_penghasil_limbah+pemisahan_limbah_oleh_penghasil_limbah;
-                    limbah_infeksius_dimasukkan_kantong_kuning=Double.parseDouble(rs.getString("limbah_infeksius_dimasukkan_kantong_kuning").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_infeksius_dimasukkan_kantong_kuning=ttllimbah_infeksius_dimasukkan_kantong_kuning+limbah_infeksius_dimasukkan_kantong_kuning;
-                    limbah_noninfeksius_dimasukkan_kantong_hitam=Double.parseDouble(rs.getString("limbah_noninfeksius_dimasukkan_kantong_hitam").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_noninfeksius_dimasukkan_kantong_hitam=ttllimbah_noninfeksius_dimasukkan_kantong_hitam+limbah_noninfeksius_dimasukkan_kantong_hitam;
-                    limbah_tigaperempat_diikat=Double.parseDouble(rs.getString("limbah_tigaperempat_diikat").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_tigaperempat_diikat=ttllimbah_tigaperempat_diikat+limbah_tigaperempat_diikat;
-                    limbah_segera_dibawa_kepembuangan_sementara=Double.parseDouble(rs.getString("limbah_segera_dibawa_kepembuangan_sementara").replaceAll("Ya","1").replaceAll("Tidak","0"));
-                    ttllimbah_segera_dibawa_kepembuangan_sementara=ttllimbah_segera_dibawa_kepembuangan_sementara+limbah_segera_dibawa_kepembuangan_sementara;
-                    kotak_sampah_dalam_kondisi_bersih=Double.parseDouble(rs.getString("kotak_sampah_dalam_kondisi_bersih").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlkotak_sampah_dalam_kondisi_bersih=ttlkotak_sampah_dalam_kondisi_bersih+kotak_sampah_dalam_kondisi_bersih;
-                    pembersihan_tempat_sampah_dengan_desinfekten=Double.parseDouble(rs.getString("pembersihan_tempat_sampah_dengan_desinfekten").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlpembersihan_tempat_sampah_dengan_desinfekten=ttlpembersihan_tempat_sampah_dengan_desinfekten+pembersihan_tempat_sampah_dengan_desinfekten;
-                    pembersihan_penampungan_sementara_dengan_desinfekten=Double.parseDouble(rs.getString("pembersihan_penampungan_sementara_dengan_desinfekten").replaceAll("Ya","1").replaceAll("Tidak","0"));;
-                    ttlpembersihan_penampungan_sementara_dengan_desinfekten=ttlpembersihan_penampungan_sementara_dengan_desinfekten+pembersihan_penampungan_sementara_dengan_desinfekten;
-                    ttlpenilaian=ttlpenilaian+(((pemisahan_limbah_oleh_penghasil_limbah+limbah_infeksius_dimasukkan_kantong_kuning+limbah_noninfeksius_dimasukkan_kantong_hitam+
-                            limbah_tigaperempat_diikat+limbah_segera_dibawa_kepembuangan_sementara+kotak_sampah_dalam_kondisi_bersih+pembersihan_tempat_sampah_dengan_desinfekten+
-                            pembersihan_penampungan_sementara_dengan_desinfekten)/8)*100);
+                    audit1=Double.parseDouble(rs.getString("audit1").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                    ttlaudit1=ttlaudit1+audit1;
+                    audit2=Double.parseDouble(rs.getString("audit2").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                    ttlaudit2=ttlaudit2+audit2;
+                    audit3=Double.parseDouble(rs.getString("audit3").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                    ttlaudit3=ttlaudit3+audit3;
+                    audit4=Double.parseDouble(rs.getString("audit4").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                    ttlaudit4=ttlaudit4+audit4;
+                    audit5=Double.parseDouble(rs.getString("audit5").replaceAll("Ya","1").replaceAll("Tidak","0"));
+                    ttlaudit5=ttlaudit5+audit5;
+                    audit6=Double.parseDouble(rs.getString("audit6").replaceAll("Ya","1").replaceAll("Tidak","0"));;
+                    ttlaudit6=ttlaudit6+audit6;
+                    audit7=Double.parseDouble(rs.getString("audit7").replaceAll("Ya","1").replaceAll("Tidak","0"));;
+                    ttlaudit7=ttlaudit7+audit7;
+                    audit8=Double.parseDouble(rs.getString("audit8").replaceAll("Ya","1").replaceAll("Tidak","0"));;
+                    ttlaudit8=ttlaudit8+audit8;
+                    ttlpenilaian=ttlpenilaian+(((audit1+audit2+audit3+
+                            audit4+audit5+audit6+audit7+
+                            audit8)/8)*100);
                     tabMode.addRow(new String[]{
-                        rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("pemisahan_limbah_oleh_penghasil_limbah"),rs.getString("limbah_infeksius_dimasukkan_kantong_kuning"),
-                        rs.getString("limbah_noninfeksius_dimasukkan_kantong_hitam"),rs.getString("limbah_tigaperempat_diikat"),rs.getString("limbah_segera_dibawa_kepembuangan_sementara"),
-                        rs.getString("kotak_sampah_dalam_kondisi_bersih"),rs.getString("pembersihan_tempat_sampah_dengan_desinfekten"),rs.getString("pembersihan_penampungan_sementara_dengan_desinfekten"),
-                        Math.round(((pemisahan_limbah_oleh_penghasil_limbah+limbah_infeksius_dimasukkan_kantong_kuning+limbah_noninfeksius_dimasukkan_kantong_hitam+limbah_tigaperempat_diikat+
-                        limbah_segera_dibawa_kepembuangan_sementara+kotak_sampah_dalam_kondisi_bersih+pembersihan_tempat_sampah_dengan_desinfekten+pembersihan_penampungan_sementara_dengan_desinfekten)/8)*100)+" %"
+                        rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("audit1"),rs.getString("audit2"),
+                        rs.getString("audit3"),rs.getString("audit4"),rs.getString("audit5"),
+                        rs.getString("audit6"),rs.getString("audit7"),rs.getString("audit8"),
+                        Math.round(((audit1+audit2+audit3+audit4+
+                        audit5+audit6+audit7+audit8)/8)*100)+" %"
                     });
                     i++;
                 }
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new String[]{
-                        "","Ya",":",""+ttlpemisahan_limbah_oleh_penghasil_limbah,""+ttllimbah_infeksius_dimasukkan_kantong_kuning,""+ttllimbah_noninfeksius_dimasukkan_kantong_hitam,
-                        ""+ttllimbah_tigaperempat_diikat,""+ttllimbah_segera_dibawa_kepembuangan_sementara,""+ttlkotak_sampah_dalam_kondisi_bersih,""+ttlpembersihan_tempat_sampah_dengan_desinfekten,
-                        ""+ttlpembersihan_penampungan_sementara_dengan_desinfekten,""+(ttlpemisahan_limbah_oleh_penghasil_limbah+ttllimbah_infeksius_dimasukkan_kantong_kuning+
-                        ttllimbah_noninfeksius_dimasukkan_kantong_hitam+ttllimbah_tigaperempat_diikat+ttllimbah_segera_dibawa_kepembuangan_sementara+ttlkotak_sampah_dalam_kondisi_bersih+
-                        ttlpembersihan_tempat_sampah_dengan_desinfekten+ttlpembersihan_penampungan_sementara_dengan_desinfekten)
+                        "","Ya",":",""+ttlaudit1,""+ttlaudit2,""+ttlaudit3,
+                        ""+ttlaudit4,""+ttlaudit5,""+ttlaudit6,""+ttlaudit7,
+                        ""+ttlaudit8,""+(ttlaudit1+ttlaudit2+
+                        ttlaudit3+ttlaudit4+ttlaudit5+ttlaudit6+
+                        ttlaudit7+ttlaudit8)
                     });
                     tabMode.addRow(new String[]{
-                        "","Tidak",":",""+(i-ttlpemisahan_limbah_oleh_penghasil_limbah),""+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning),""+(i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam),
-                        ""+(i-ttllimbah_tigaperempat_diikat),""+(i-ttllimbah_segera_dibawa_kepembuangan_sementara),""+(i-ttlkotak_sampah_dalam_kondisi_bersih),""+(i-ttlpembersihan_tempat_sampah_dengan_desinfekten),
-                        ""+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten),""+((i-ttlpemisahan_limbah_oleh_penghasil_limbah)+(i-ttllimbah_infeksius_dimasukkan_kantong_kuning)+
-                        (i-ttllimbah_noninfeksius_dimasukkan_kantong_hitam)+(i-ttllimbah_tigaperempat_diikat)+(i-ttllimbah_segera_dibawa_kepembuangan_sementara)+(i-ttlkotak_sampah_dalam_kondisi_bersih)+
-                        (i-ttlpembersihan_tempat_sampah_dengan_desinfekten)+(i-ttlpembersihan_penampungan_sementara_dengan_desinfekten))
+                        "","Tidak",":",""+(i-ttlaudit1),""+(i-ttlaudit2),""+(i-ttlaudit3),
+                        ""+(i-ttlaudit4),""+(i-ttlaudit5),""+(i-ttlaudit6),""+(i-ttlaudit7),
+                        ""+(i-ttlaudit8),""+((i-ttlaudit1)+(i-ttlaudit2)+
+                        (i-ttlaudit3)+(i-ttlaudit4)+(i-ttlaudit5)+(i-ttlaudit6)+
+                        (i-ttlaudit7)+(i-ttlaudit8))
                     });
                     tabMode.addRow(new String[]{
-                        "","Rata-rata",":",Math.round((ttlpemisahan_limbah_oleh_penghasil_limbah/i)*100)+" %",Math.round((ttllimbah_infeksius_dimasukkan_kantong_kuning/i)*100)+" %",Math.round((ttllimbah_noninfeksius_dimasukkan_kantong_hitam/i)*100)+" %",
-                        Math.round((ttllimbah_tigaperempat_diikat/i)*100)+" %",Math.round((ttllimbah_segera_dibawa_kepembuangan_sementara/i)*100)+" %",Math.round((ttlkotak_sampah_dalam_kondisi_bersih/i)*100)+" %",
-                        Math.round((ttlpembersihan_tempat_sampah_dengan_desinfekten/i)*100)+" %",Math.round((ttlpembersihan_penampungan_sementara_dengan_desinfekten/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
+                        "","Rata-rata",":",Math.round((ttlaudit1/i)*100)+" %",Math.round((ttlaudit2/i)*100)+" %",Math.round((ttlaudit3/i)*100)+" %",
+                        Math.round((ttlaudit4/i)*100)+" %",Math.round((ttlaudit5/i)*100)+" %",Math.round((ttlaudit6/i)*100)+" %",
+                        Math.round((ttlaudit7/i)*100)+" %",Math.round((ttlaudit8/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
             } catch (Exception e) {
@@ -1176,37 +1193,43 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         KdRuang.setText("");
         NmRuang.setText("");
         Tanggal.setDate(new Date());
-        PemisahanLimbahOlehPenghasilLimbah.setSelectedIndex(0);
-        LimbahInfeksiusDimasukkanKantongKuning.setSelectedIndex(0);
-        LimbahNoninfeksiusDimasukkanKantongHitam.setSelectedIndex(0);
-        LimbahTigaperempatDiikat.setSelectedIndex(0);
-        LimbahSegeraDibawaKepembuanganSementara.setSelectedIndex(0);
-        KotakSampahDalamKondisiBersih.setSelectedIndex(0);
-        PembersihanTempatSampahDenganDesinfekten.setSelectedIndex(0);
-        PembersihanPenampunganSementaraDenganDesinfekten.setSelectedIndex(0);
-        PemisahanLimbahOlehPenghasilLimbah.requestFocus();
+        Audit1.setSelectedIndex(0);
+        Audit2.setSelectedIndex(0);
+        Audit3.setSelectedIndex(0);
+        Audit4.setSelectedIndex(0);
+        Audit5.setSelectedIndex(0);
+        Audit6.setSelectedIndex(0);
+        Audit7.setSelectedIndex(0);
+        Audit8.setSelectedIndex(0);
+        Audit1.requestFocus();
     } 
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            NmRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            PemisahanLimbahOlehPenghasilLimbah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            LimbahInfeksiusDimasukkanKantongKuning.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            LimbahNoninfeksiusDimasukkanKantongHitam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            LimbahTigaperempatDiikat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            LimbahSegeraDibawaKepembuanganSementara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            KotakSampahDalamKondisiBersih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            PembersihanTempatSampahDenganDesinfekten.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            PembersihanPenampunganSementaraDenganDesinfekten.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("")){
+                KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                NmRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                Audit1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                Audit2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+                Audit3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                Audit4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                Audit5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+                Audit6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                Audit7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+                Audit8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+                Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            }
         }
     }
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,184));
+            if(this.getHeight()>440){
+                PanelInput.setPreferredSize(new Dimension(WIDTH,305));
+            }else{
+                PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-122));
+            }
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1218,10 +1241,10 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getaudit_pembuangan_limbah());
-        BtnHapus.setEnabled(akses.getaudit_pembuangan_limbah());
-        BtnEdit.setEnabled(akses.getaudit_pembuangan_limbah());
-        BtnPrint.setEnabled(akses.getaudit_pembuangan_limbah());         
+        BtnSimpan.setEnabled(akses.getaudit_pengelolaan_linen_kotor());
+        BtnHapus.setEnabled(akses.getaudit_pengelolaan_linen_kotor());
+        BtnEdit.setEnabled(akses.getaudit_pengelolaan_linen_kotor());
+        BtnPrint.setEnabled(akses.getaudit_pengelolaan_linen_kotor());         
     }
 
     private void jam(){

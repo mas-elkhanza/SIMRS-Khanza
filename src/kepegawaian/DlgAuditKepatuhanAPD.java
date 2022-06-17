@@ -1147,17 +1147,19 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Departemen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Topi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            Masker.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            KacaMata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            SarungTangan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Apron.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Sepatu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("")){
+                Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                Departemen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+                Topi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                Masker.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                KacaMata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+                SarungTangan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                Apron.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+                Sepatu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+                Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            }
         }
     }
     

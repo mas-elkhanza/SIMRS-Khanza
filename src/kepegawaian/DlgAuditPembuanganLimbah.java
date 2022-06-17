@@ -1189,17 +1189,19 @@ public final class DlgAuditPembuanganLimbah extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            NmRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            PemisahanLimbahOlehPenghasilLimbah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            LimbahInfeksiusDimasukkanKantongKuning.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            LimbahNoninfeksiusDimasukkanKantongHitam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            LimbahTigaperempatDiikat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            LimbahSegeraDibawaKepembuanganSementara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            KotakSampahDalamKondisiBersih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            PembersihanTempatSampahDenganDesinfekten.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            PembersihanPenampunganSementaraDenganDesinfekten.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("")){
+                KdRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                NmRuang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                PemisahanLimbahOlehPenghasilLimbah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                LimbahInfeksiusDimasukkanKantongKuning.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+                LimbahNoninfeksiusDimasukkanKantongHitam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                LimbahTigaperempatDiikat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                LimbahSegeraDibawaKepembuanganSementara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+                KotakSampahDalamKondisiBersih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                PembersihanTempatSampahDenganDesinfekten.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+                PembersihanPenampunganSementaraDenganDesinfekten.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+                Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            }
         }
     }
     
