@@ -658,6 +658,7 @@ import kepegawaian.DlgAuditPembuanganBendaTajam;
 import kepegawaian.DlgRuangAuditKepatuhan;
 import kepegawaian.DlgAuditPembuanganLimbah;
 import kepegawaian.DlgAuditPenangananDarah;
+import kepegawaian.DlgAuditPenempatanPasien;
 import kepegawaian.DlgAuditPengelolaanLinenKotor;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -18623,6 +18624,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnAuditPenempatanPasienActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditPenempatanPasien aplikasi=new DlgAuditPenempatanPasien(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -19267,7 +19280,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
-            btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor;
+            btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien;
     
     public void isWall(){
         try{            
@@ -19754,6 +19767,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_pengelolaan_linen_kotor()==true){  
                 Panelmenu.add(btnAuditPengelolaanLinenKotor);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_penempatan_pasien()==true){  
+                Panelmenu.add(btnAuditPenempatanPasien);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23909,6 +23927,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getaudit_pengelolaan_linen_kotor()==true){  
             Panelmenu.add(btnAuditPengelolaanLinenKotor);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_penempatan_pasien()==true){  
+            Panelmenu.add(btnAuditPenempatanPasien);                 
             jmlmenu++;
         }
         
@@ -28194,6 +28217,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_pengelolaan_linen_kotor()==true){  
             if(btnAuditPengelolaanLinenKotor.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditPengelolaanLinenKotor);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_penempatan_pasien()==true){  
+            if(btnAuditPenempatanPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditPenempatanPasien);                 
                 jmlmenu++;
             }                
         }
@@ -36402,6 +36432,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditPengelolaanLinenKotor.setName("btnAuditPengelolaanLinenKotor");
         btnAuditPengelolaanLinenKotor.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditPengelolaanLinenKotor.addActionListener(this::btnAuditPengelolaanLinenKotorActionPerformed);
+        
+        btnAuditPenempatanPasien = new widget.ButtonBig();
+        btnAuditPenempatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088155_head_headache_infection_pain_sick_icon.png"))); 
+        btnAuditPenempatanPasien.setText("Audit Penempatan Pasien");
+        btnAuditPenempatanPasien.setIconTextGap(0);
+        btnAuditPenempatanPasien.setName("btnAuditPenempatanPasien");
+        btnAuditPenempatanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditPenempatanPasien.addActionListener(this::btnAuditPenempatanPasienActionPerformed);
     }
     
 }

@@ -182,7 +182,7 @@ public final class akses {
             soap_ralan_polri=false,soap_ranap_polri=false,laporan_penyakit_polri=false,master_rencana_keperawatan_anak=false,jumlah_pengunjung_ralan_polri=false,
             catatan_observasi_igd=false,catatan_observasi_ranap=false,catatan_observasi_ranap_kebidanan=false,catatan_observasi_ranap_postpartum=false,
             penilaian_awal_medis_ralan_tht=false,penilaian_psikologi=false,audit_cuci_tangan_medis=false,audit_pembuangan_limbah=false,ruang_audit_kepatuhan=false,
-            audit_pembuangan_benda_tajam=false,audit_penanganan_darah=false,audit_pengelolaan_linen_kotor=false;
+            audit_pembuangan_benda_tajam=false,audit_penanganan_darah=false,audit_pengelolaan_linen_kotor=false,audit_penempatan_pasien=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1038,6 +1038,7 @@ public final class akses {
                         akses.audit_pembuangan_benda_tajam=true;
                         akses.audit_penanganan_darah=true;
                         akses.audit_pengelolaan_linen_kotor=true;
+                        akses.audit_penempatan_pasien=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1877,6 +1878,7 @@ public final class akses {
                         akses.audit_pembuangan_benda_tajam=rs2.getBoolean("audit_pembuangan_benda_tajam");
                         akses.audit_penanganan_darah=rs2.getBoolean("audit_penanganan_darah");
                         akses.audit_pengelolaan_linen_kotor=rs2.getBoolean("audit_pengelolaan_linen_kotor");
+                        akses.audit_penempatan_pasien=rs2.getBoolean("audit_penempatan_pasien");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2714,6 +2716,7 @@ public final class akses {
                         akses.audit_pembuangan_benda_tajam=false;
                         akses.audit_penanganan_darah=false;
                         akses.audit_pengelolaan_linen_kotor=false;
+                        akses.audit_penempatan_pasien=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3608,4 +3611,5 @@ public final class akses {
     public static boolean getaudit_pembuangan_benda_tajam(){return akses.audit_pembuangan_benda_tajam;}
     public static boolean getaudit_penanganan_darah(){return akses.audit_penanganan_darah;}
     public static boolean getaudit_pengelolaan_linen_kotor(){return akses.audit_pengelolaan_linen_kotor;}
+    public static boolean getaudit_penempatan_pasien(){return akses.audit_penempatan_pasien;}
 }   
