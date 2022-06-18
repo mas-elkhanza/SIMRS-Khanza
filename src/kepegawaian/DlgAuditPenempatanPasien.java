@@ -687,7 +687,7 @@ public final class DlgAuditPenempatanPasien extends javax.swing.JDialog {
         jLabel22.setText("4.  Petugas Menempatkan Pasien Dengan Sesuai Kecurigaan Penularan Udara Di Ruang Isolasi Dengan Ventilasi Negatif (-)");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(64, 130, 620, 23);
+        jLabel22.setBounds(64, 130, 630, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel24.setText("5.  Petugas Memberi Informasi Kepada Penunggu Pasien Pintu Ruang Isolasi Harus Selalu Tertutup");
@@ -699,7 +699,7 @@ public final class DlgAuditPenempatanPasien extends javax.swing.JDialog {
         jLabel25.setText("6.  Petugas Konsultasi Terlebih Dahulu Dengan Komite PPI Untuk Menentukan Pasien Yang Dapat Disatukan Dalam 1 Ruangan");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(64, 190, 600, 23);
+        jLabel25.setBounds(64, 190, 630, 23);
 
         Audit7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Audit7.setName("Audit7"); // NOI18N
