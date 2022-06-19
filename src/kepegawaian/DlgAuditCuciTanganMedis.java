@@ -377,7 +377,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -391,7 +391,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -461,7 +461,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -599,7 +599,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.add(SetelahTerpapar);
         SetelahTerpapar.setBounds(330, 70, 78, 23);
 
-        jLabel28.setText("Moment :");
+        jLabel28.setText("Audit :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(0, 40, 60, 23);
@@ -1067,7 +1067,8 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        
+        LCount.setText(""+i);
     }
     
     public void emptTeks() {

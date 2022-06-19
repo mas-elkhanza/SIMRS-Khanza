@@ -594,6 +594,7 @@ import ipsrs.IPSRSRiwayatBarang;
 import ipsrs.IPSRSVerifikasiPenerimaan;
 import java.net.InetAddress;
 import kepegawaian.DlgAuditCuciTanganMedis;
+import kepegawaian.DlgAuditKamarJenazah;
 import kepegawaian.DlgDokter;
 import kepegawaian.DlgPetugas;
 import kepegawaian.K3RSBagianTubuh;
@@ -18636,6 +18637,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnAuditKamarJenazahActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditKamarJenazah aplikasi=new DlgAuditKamarJenazah(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19280,7 +19293,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
-            btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien;
+            btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah;
     
     public void isWall(){
         try{            
@@ -19772,6 +19785,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_penempatan_pasien()==true){  
                 Panelmenu.add(btnAuditPenempatanPasien);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_kamar_jenazah()==true){  
+                Panelmenu.add(btnAuditKamarJenazah);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23932,6 +23950,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getaudit_penempatan_pasien()==true){  
             Panelmenu.add(btnAuditPenempatanPasien);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_kamar_jenazah()==true){  
+            Panelmenu.add(btnAuditKamarJenazah);                 
             jmlmenu++;
         }
         
@@ -28224,6 +28247,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_penempatan_pasien()==true){  
             if(btnAuditPenempatanPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditPenempatanPasien);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_kamar_jenazah()==true){  
+            if(btnAuditKamarJenazah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditKamarJenazah);                 
                 jmlmenu++;
             }                
         }
@@ -36440,6 +36470,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditPenempatanPasien.setName("btnAuditPenempatanPasien");
         btnAuditPenempatanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditPenempatanPasien.addActionListener(this::btnAuditPenempatanPasienActionPerformed);
+        
+        btnAuditKamarJenazah = new widget.ButtonBig();
+        btnAuditKamarJenazah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kerandajenazah.png"))); 
+        btnAuditKamarJenazah.setText("Audit Kamar Jenazah");
+        btnAuditKamarJenazah.setIconTextGap(0);
+        btnAuditKamarJenazah.setName("btnAuditKamarJenazah");
+        btnAuditKamarJenazah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditKamarJenazah.addActionListener(this::btnAuditKamarJenazahActionPerformed);
     }
     
 }

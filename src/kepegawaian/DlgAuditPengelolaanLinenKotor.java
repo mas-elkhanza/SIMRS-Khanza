@@ -1186,7 +1186,7 @@ public final class DlgAuditPengelolaanLinenKotor extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        LCount.setText(""+i);
     }
     
     public void emptTeks() {
