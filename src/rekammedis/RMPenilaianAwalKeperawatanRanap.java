@@ -794,6 +794,9 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         KebiasaanMerokok45 = new widget.ComboBox();
         KebiasaanMerokok46 = new widget.ComboBox();
         KebiasaanMerokok47 = new widget.ComboBox();
+        jLabel55 = new widget.Label();
+        jLabel121 = new widget.Label();
+        BAB1 = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2830,15 +2833,15 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel169);
         jLabel169.setBounds(10, 1080, 490, 23);
 
-        jLabel54.setText("a. Pola Aktifitas (Makan/Minum, Mandi, Eliminasi, Berpakaian & Verpindah) :");
+        jLabel54.setText("b. Pola Nutrisi :");
         jLabel54.setName("jLabel54"); // NOI18N
         FormInput.add(jLabel54);
-        jLabel54.setBounds(0, 1100, 414, 23);
+        jLabel54.setBounds(0, 1180, 119, 23);
 
         jLabel170.setText("Mandi :");
         jLabel170.setName("jLabel170"); // NOI18N
         FormInput.add(jLabel170);
-        jLabel170.setBounds(0, 1120, 109, 23);
+        jLabel170.setBounds(0, 1120, 139, 23);
 
         KebiasaanMerokok39.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Bantuan Orang Lain" }));
         KebiasaanMerokok39.setSelectedIndex(1);
@@ -2849,27 +2852,27 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(KebiasaanMerokok39);
-        KebiasaanMerokok39.setBounds(113, 1150, 164, 23);
+        KebiasaanMerokok39.setBounds(143, 1150, 164, 23);
 
         jLabel171.setText("Makan/Minum :");
         jLabel171.setName("jLabel171"); // NOI18N
         FormInput.add(jLabel171);
-        jLabel171.setBounds(290, 1120, 110, 23);
+        jLabel171.setBounds(318, 1120, 100, 23);
 
         jLabel172.setText("Berpakaian :");
         jLabel172.setName("jLabel172"); // NOI18N
         FormInput.add(jLabel172);
-        jLabel172.setBounds(586, 1120, 100, 23);
+        jLabel172.setBounds(606, 1120, 80, 23);
 
         jLabel173.setText("Eliminasi :");
         jLabel173.setName("jLabel173"); // NOI18N
         FormInput.add(jLabel173);
-        jLabel173.setBounds(0, 1150, 109, 23);
+        jLabel173.setBounds(0, 1150, 139, 23);
 
         jLabel174.setText("Berpindah :");
         jLabel174.setName("jLabel174"); // NOI18N
         FormInput.add(jLabel174);
-        jLabel174.setBounds(290, 1150, 110, 23);
+        jLabel174.setBounds(318, 1150, 100, 23);
 
         KebiasaanMerokok44.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Bantuan Orang Lain" }));
         KebiasaanMerokok44.setSelectedIndex(1);
@@ -2880,7 +2883,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(KebiasaanMerokok44);
-        KebiasaanMerokok44.setBounds(113, 1120, 164, 23);
+        KebiasaanMerokok44.setBounds(143, 1120, 164, 23);
 
         KebiasaanMerokok45.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Bantuan Orang Lain" }));
         KebiasaanMerokok45.setSelectedIndex(1);
@@ -2891,7 +2894,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(KebiasaanMerokok45);
-        KebiasaanMerokok45.setBounds(404, 1120, 164, 23);
+        KebiasaanMerokok45.setBounds(422, 1120, 164, 23);
 
         KebiasaanMerokok46.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Bantuan Orang Lain" }));
         KebiasaanMerokok46.setSelectedIndex(1);
@@ -2913,7 +2916,27 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(KebiasaanMerokok47);
-        KebiasaanMerokok47.setBounds(404, 1150, 164, 23);
+        KebiasaanMerokok47.setBounds(422, 1150, 164, 23);
+
+        jLabel55.setText("a. Pola Aktifitas :");
+        jLabel55.setName("jLabel55"); // NOI18N
+        FormInput.add(jLabel55);
+        jLabel55.setBounds(0, 1100, 128, 23);
+
+        jLabel121.setText("Porsi makan :");
+        jLabel121.setName("jLabel121"); // NOI18N
+        FormInput.add(jLabel121);
+        jLabel121.setBounds(0, 1200, 139, 23);
+
+        BAB1.setHighlighter(null);
+        BAB1.setName("BAB1"); // NOI18N
+        BAB1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BAB1KeyPressed(evt);
+            }
+        });
+        FormInput.add(BAB1);
+        BAB1.setBounds(143, 1200, 50, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -4853,6 +4876,10 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_KebiasaanMerokok47KeyPressed
 
+    private void BAB1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BAB1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BAB1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -4876,6 +4903,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.ComboBox Anamnesis1;
     private widget.ComboBox Anamnesis2;
     private widget.TextBox BAB;
+    private widget.TextBox BAB1;
     private widget.TextBox BAK;
     private widget.TextBox BB;
     private widget.TextBox BBPB;
@@ -5043,6 +5071,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.Label jLabel119;
     private widget.Label jLabel12;
     private widget.Label jLabel120;
+    private widget.Label jLabel121;
     private widget.Label jLabel124;
     private widget.Label jLabel125;
     private widget.Label jLabel126;
@@ -5135,6 +5164,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.Label jLabel52;
     private widget.Label jLabel53;
     private widget.Label jLabel54;
+    private widget.Label jLabel55;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
