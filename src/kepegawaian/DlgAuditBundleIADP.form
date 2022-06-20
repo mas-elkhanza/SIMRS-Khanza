@@ -811,7 +811,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel28">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Audit :"/>
+                    <Property name="text" type="java.lang.String" value="Bundles :"/>
                     <Property name="name" type="java.lang.String" value="jLabel28" noResource="true"/>
                   </Properties>
                   <Constraints>

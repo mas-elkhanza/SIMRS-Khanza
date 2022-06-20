@@ -36511,7 +36511,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditKamarJenazah.addActionListener(this::btnAuditKamarJenazahActionPerformed);
         
         btnAuditBundleIADP = new widget.ButtonBig();
-        btnAuditBundleIADP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960613_iv_iv pole_blood_transfusion_infusion_icon.png"))); 
+        btnAuditBundleIADP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5856663_blood_laboratory_medical_research_science_icon.png"))); 
         btnAuditBundleIADP.setText("Audit Bundle IADP");
         btnAuditBundleIADP.setIconTextGap(0);
         btnAuditBundleIADP.setName("btnAuditBundleIADP");

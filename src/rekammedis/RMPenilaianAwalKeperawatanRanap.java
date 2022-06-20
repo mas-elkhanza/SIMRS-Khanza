@@ -1065,63 +1065,63 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         jLabel58 = new widget.Label();
         jLabel236 = new widget.Label();
         jLabel237 = new widget.Label();
-        SkalaResiko7 = new widget.ComboBox();
+        SkalaSydney1 = new widget.ComboBox();
         jLabel238 = new widget.Label();
-        NilaiResiko7 = new widget.TextBox();
+        NilaiSydney1 = new widget.TextBox();
         jLabel239 = new widget.Label();
         jLabel240 = new widget.Label();
-        SkalaResiko8 = new widget.ComboBox();
+        SkalaSydney2 = new widget.ComboBox();
         jLabel241 = new widget.Label();
-        NilaiResiko8 = new widget.TextBox();
+        NilaiSydney2 = new widget.TextBox();
         jLabel242 = new widget.Label();
         jLabel243 = new widget.Label();
-        SkalaResiko9 = new widget.ComboBox();
+        SkalaSydney3 = new widget.ComboBox();
         jLabel244 = new widget.Label();
-        NilaiResiko9 = new widget.TextBox();
+        NilaiSydney3 = new widget.TextBox();
         jLabel245 = new widget.Label();
         jLabel246 = new widget.Label();
-        SkalaResiko10 = new widget.ComboBox();
+        SkalaSydney4 = new widget.ComboBox();
         jLabel247 = new widget.Label();
-        NilaiResiko10 = new widget.TextBox();
+        NilaiSydney4 = new widget.TextBox();
         jLabel248 = new widget.Label();
         jLabel249 = new widget.Label();
-        SkalaResiko11 = new widget.ComboBox();
+        SkalaSydney5 = new widget.ComboBox();
         jLabel250 = new widget.Label();
-        NilaiResiko11 = new widget.TextBox();
+        NilaiSydney5 = new widget.TextBox();
         jLabel251 = new widget.Label();
         jLabel252 = new widget.Label();
-        SkalaResiko12 = new widget.ComboBox();
+        SkalaSydney6 = new widget.ComboBox();
         jLabel253 = new widget.Label();
-        NilaiResiko12 = new widget.TextBox();
+        NilaiSydney6 = new widget.TextBox();
         jLabel254 = new widget.Label();
         jLabel255 = new widget.Label();
-        SkalaResiko13 = new widget.ComboBox();
+        SkalaSydney7 = new widget.ComboBox();
         jLabel256 = new widget.Label();
-        NilaiResiko13 = new widget.TextBox();
+        NilaiSydney7 = new widget.TextBox();
         jLabel257 = new widget.Label();
         jLabel258 = new widget.Label();
         jLabel259 = new widget.Label();
-        SkalaResiko14 = new widget.ComboBox();
+        SkalaSydney8 = new widget.ComboBox();
         jLabel260 = new widget.Label();
-        NilaiResiko14 = new widget.TextBox();
+        NilaiSydney8 = new widget.TextBox();
         jLabel261 = new widget.Label();
         jLabel262 = new widget.Label();
-        SkalaResiko15 = new widget.ComboBox();
+        SkalaSydney9 = new widget.ComboBox();
         jLabel263 = new widget.Label();
-        NilaiResiko15 = new widget.TextBox();
+        NilaiSydney9 = new widget.TextBox();
         jLabel264 = new widget.Label();
         jLabel265 = new widget.Label();
-        SkalaResiko16 = new widget.ComboBox();
+        SkalaSydney10 = new widget.ComboBox();
         jLabel266 = new widget.Label();
-        NilaiResiko16 = new widget.TextBox();
+        NilaiSydney10 = new widget.TextBox();
         jLabel267 = new widget.Label();
         jLabel268 = new widget.Label();
-        SkalaResiko17 = new widget.ComboBox();
+        SkalaSydney11 = new widget.ComboBox();
         jLabel269 = new widget.Label();
-        NilaiResiko17 = new widget.TextBox();
-        NilaiResikoTotal1 = new widget.TextBox();
+        NilaiSydney11 = new widget.TextBox();
+        NilaiSydneyTotal = new widget.TextBox();
         jLabel270 = new widget.Label();
-        TingkatResiko1 = new widget.Label();
+        TingkatSydney = new widget.Label();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel271 = new widget.Label();
         jLabel272 = new widget.Label();
@@ -1159,6 +1159,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         BtnCariRencana = new widget.Button();
         label13 = new widget.Label();
         TCariRencana = new widget.TextBox();
+        label12 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1200,7 +1201,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2022" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1644,7 +1645,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         Anamnesis.setBounds(74, 100, 130, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022 21:05:17" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2022 22:36:06" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -4308,31 +4309,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel237);
         jLabel237.setBounds(530, 2010, 80, 23);
 
-        SkalaResiko7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko7.setName("SkalaResiko7"); // NOI18N
-        SkalaResiko7.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney1.setName("SkalaSydney1"); // NOI18N
+        SkalaSydney1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko7ItemStateChanged(evt);
+                SkalaSydney1ItemStateChanged(evt);
             }
         });
-        SkalaResiko7.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko7KeyPressed(evt);
+                SkalaSydney1KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko7);
-        SkalaResiko7.setBounds(614, 2010, 90, 23);
+        FormInput.add(SkalaSydney1);
+        SkalaSydney1.setBounds(614, 2010, 90, 23);
 
         jLabel238.setText("Nilai :");
         jLabel238.setName("jLabel238"); // NOI18N
         FormInput.add(jLabel238);
         jLabel238.setBounds(715, 2010, 75, 23);
 
-        NilaiResiko7.setEditable(false);
-        NilaiResiko7.setFocusTraversalPolicyProvider(true);
-        NilaiResiko7.setName("NilaiResiko7"); // NOI18N
-        FormInput.add(NilaiResiko7);
-        NilaiResiko7.setBounds(794, 2010, 60, 23);
+        NilaiSydney1.setEditable(false);
+        NilaiSydney1.setFocusTraversalPolicyProvider(true);
+        NilaiSydney1.setName("NilaiSydney1"); // NOI18N
+        FormInput.add(NilaiSydney1);
+        NilaiSydney1.setBounds(794, 2010, 60, 23);
 
         jLabel239.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel239.setText("2. Pusing / Pingsan Pada Posisi Tegak");
@@ -4345,31 +4346,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel240);
         jLabel240.setBounds(530, 2040, 80, 23);
 
-        SkalaResiko8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko8.setName("SkalaResiko8"); // NOI18N
-        SkalaResiko8.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney2.setName("SkalaSydney2"); // NOI18N
+        SkalaSydney2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko8ItemStateChanged(evt);
+                SkalaSydney2ItemStateChanged(evt);
             }
         });
-        SkalaResiko8.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko8KeyPressed(evt);
+                SkalaSydney2KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko8);
-        SkalaResiko8.setBounds(614, 2040, 90, 23);
+        FormInput.add(SkalaSydney2);
+        SkalaSydney2.setBounds(614, 2040, 90, 23);
 
         jLabel241.setText("Nilai :");
         jLabel241.setName("jLabel241"); // NOI18N
         FormInput.add(jLabel241);
         jLabel241.setBounds(715, 2040, 75, 23);
 
-        NilaiResiko8.setEditable(false);
-        NilaiResiko8.setFocusTraversalPolicyProvider(true);
-        NilaiResiko8.setName("NilaiResiko8"); // NOI18N
-        FormInput.add(NilaiResiko8);
-        NilaiResiko8.setBounds(794, 2040, 60, 23);
+        NilaiSydney2.setEditable(false);
+        NilaiSydney2.setFocusTraversalPolicyProvider(true);
+        NilaiSydney2.setName("NilaiSydney2"); // NOI18N
+        FormInput.add(NilaiSydney2);
+        NilaiSydney2.setBounds(794, 2040, 60, 23);
 
         jLabel242.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel242.setText("3. Kebigungan Setiap Saat");
@@ -4382,31 +4383,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel243);
         jLabel243.setBounds(530, 2070, 80, 23);
 
-        SkalaResiko9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko9.setName("SkalaResiko9"); // NOI18N
-        SkalaResiko9.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney3.setName("SkalaSydney3"); // NOI18N
+        SkalaSydney3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko9ItemStateChanged(evt);
+                SkalaSydney3ItemStateChanged(evt);
             }
         });
-        SkalaResiko9.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko9KeyPressed(evt);
+                SkalaSydney3KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko9);
-        SkalaResiko9.setBounds(614, 2070, 90, 23);
+        FormInput.add(SkalaSydney3);
+        SkalaSydney3.setBounds(614, 2070, 90, 23);
 
         jLabel244.setText("Nilai :");
         jLabel244.setName("jLabel244"); // NOI18N
         FormInput.add(jLabel244);
         jLabel244.setBounds(715, 2070, 75, 23);
 
-        NilaiResiko9.setEditable(false);
-        NilaiResiko9.setFocusTraversalPolicyProvider(true);
-        NilaiResiko9.setName("NilaiResiko9"); // NOI18N
-        FormInput.add(NilaiResiko9);
-        NilaiResiko9.setBounds(794, 2070, 60, 23);
+        NilaiSydney3.setEditable(false);
+        NilaiSydney3.setFocusTraversalPolicyProvider(true);
+        NilaiSydney3.setName("NilaiSydney3"); // NOI18N
+        FormInput.add(NilaiSydney3);
+        NilaiSydney3.setBounds(794, 2070, 60, 23);
 
         jLabel245.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel245.setText("4. Nokturia / Inkontinen");
@@ -4419,31 +4420,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel246);
         jLabel246.setBounds(530, 2100, 80, 23);
 
-        SkalaResiko10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko10.setName("SkalaResiko10"); // NOI18N
-        SkalaResiko10.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney4.setName("SkalaSydney4"); // NOI18N
+        SkalaSydney4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko10ItemStateChanged(evt);
+                SkalaSydney4ItemStateChanged(evt);
             }
         });
-        SkalaResiko10.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko10KeyPressed(evt);
+                SkalaSydney4KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko10);
-        SkalaResiko10.setBounds(614, 2100, 90, 23);
+        FormInput.add(SkalaSydney4);
+        SkalaSydney4.setBounds(614, 2100, 90, 23);
 
         jLabel247.setText("Nilai :");
         jLabel247.setName("jLabel247"); // NOI18N
         FormInput.add(jLabel247);
         jLabel247.setBounds(715, 2100, 75, 23);
 
-        NilaiResiko10.setEditable(false);
-        NilaiResiko10.setFocusTraversalPolicyProvider(true);
-        NilaiResiko10.setName("NilaiResiko10"); // NOI18N
-        FormInput.add(NilaiResiko10);
-        NilaiResiko10.setBounds(794, 2100, 60, 23);
+        NilaiSydney4.setEditable(false);
+        NilaiSydney4.setFocusTraversalPolicyProvider(true);
+        NilaiSydney4.setName("NilaiSydney4"); // NOI18N
+        FormInput.add(NilaiSydney4);
+        NilaiSydney4.setBounds(794, 2100, 60, 23);
 
         jLabel248.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel248.setText("5. Kebingungan Intermiten");
@@ -4456,31 +4457,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel249);
         jLabel249.setBounds(530, 2130, 80, 23);
 
-        SkalaResiko11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko11.setName("SkalaResiko11"); // NOI18N
-        SkalaResiko11.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney5.setName("SkalaSydney5"); // NOI18N
+        SkalaSydney5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko11ItemStateChanged(evt);
+                SkalaSydney5ItemStateChanged(evt);
             }
         });
-        SkalaResiko11.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko11KeyPressed(evt);
+                SkalaSydney5KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko11);
-        SkalaResiko11.setBounds(614, 2130, 90, 23);
+        FormInput.add(SkalaSydney5);
+        SkalaSydney5.setBounds(614, 2130, 90, 23);
 
         jLabel250.setText("Nilai :");
         jLabel250.setName("jLabel250"); // NOI18N
         FormInput.add(jLabel250);
         jLabel250.setBounds(715, 2130, 75, 23);
 
-        NilaiResiko11.setEditable(false);
-        NilaiResiko11.setFocusTraversalPolicyProvider(true);
-        NilaiResiko11.setName("NilaiResiko11"); // NOI18N
-        FormInput.add(NilaiResiko11);
-        NilaiResiko11.setBounds(794, 2130, 60, 23);
+        NilaiSydney5.setEditable(false);
+        NilaiSydney5.setFocusTraversalPolicyProvider(true);
+        NilaiSydney5.setName("NilaiSydney5"); // NOI18N
+        FormInput.add(NilaiSydney5);
+        NilaiSydney5.setBounds(794, 2130, 60, 23);
 
         jLabel251.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel251.setText("6. Kelemahan Umum");
@@ -4493,31 +4494,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel252);
         jLabel252.setBounds(530, 2160, 80, 23);
 
-        SkalaResiko12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko12.setName("SkalaResiko12"); // NOI18N
-        SkalaResiko12.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney6.setName("SkalaSydney6"); // NOI18N
+        SkalaSydney6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko12ItemStateChanged(evt);
+                SkalaSydney6ItemStateChanged(evt);
             }
         });
-        SkalaResiko12.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko12KeyPressed(evt);
+                SkalaSydney6KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko12);
-        SkalaResiko12.setBounds(614, 2160, 90, 23);
+        FormInput.add(SkalaSydney6);
+        SkalaSydney6.setBounds(614, 2160, 90, 23);
 
         jLabel253.setText("Nilai :");
         jLabel253.setName("jLabel253"); // NOI18N
         FormInput.add(jLabel253);
         jLabel253.setBounds(715, 2160, 75, 23);
 
-        NilaiResiko12.setEditable(false);
-        NilaiResiko12.setFocusTraversalPolicyProvider(true);
-        NilaiResiko12.setName("NilaiResiko12"); // NOI18N
-        FormInput.add(NilaiResiko12);
-        NilaiResiko12.setBounds(794, 2160, 60, 23);
+        NilaiSydney6.setEditable(false);
+        NilaiSydney6.setFocusTraversalPolicyProvider(true);
+        NilaiSydney6.setName("NilaiSydney6"); // NOI18N
+        FormInput.add(NilaiSydney6);
+        NilaiSydney6.setBounds(794, 2160, 60, 23);
 
         jLabel254.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel254.setText("7. Obat-obat Beresiko Tinggi (Diuretic, Narkotik, Sedativ, Anti Psikotik, Laksatif, Vasodilator");
@@ -4530,31 +4531,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel255);
         jLabel255.setBounds(530, 2190, 80, 23);
 
-        SkalaResiko13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko13.setName("SkalaResiko13"); // NOI18N
-        SkalaResiko13.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney7.setName("SkalaSydney7"); // NOI18N
+        SkalaSydney7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko13ItemStateChanged(evt);
+                SkalaSydney7ItemStateChanged(evt);
             }
         });
-        SkalaResiko13.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko13KeyPressed(evt);
+                SkalaSydney7KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko13);
-        SkalaResiko13.setBounds(614, 2190, 90, 23);
+        FormInput.add(SkalaSydney7);
+        SkalaSydney7.setBounds(614, 2190, 90, 23);
 
         jLabel256.setText("Nilai :");
         jLabel256.setName("jLabel256"); // NOI18N
         FormInput.add(jLabel256);
         jLabel256.setBounds(715, 2190, 75, 23);
 
-        NilaiResiko13.setEditable(false);
-        NilaiResiko13.setFocusTraversalPolicyProvider(true);
-        NilaiResiko13.setName("NilaiResiko13"); // NOI18N
-        FormInput.add(NilaiResiko13);
-        NilaiResiko13.setBounds(794, 2190, 60, 23);
+        NilaiSydney7.setEditable(false);
+        NilaiSydney7.setFocusTraversalPolicyProvider(true);
+        NilaiSydney7.setName("NilaiSydney7"); // NOI18N
+        FormInput.add(NilaiSydney7);
+        NilaiSydney7.setBounds(794, 2190, 60, 23);
 
         jLabel257.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel257.setText("Antiaritmia, Antihipertensi, Obat Hipoglikemik, Anti Depresan, Neuroleptik, NSAID)");
@@ -4573,31 +4574,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel259);
         jLabel259.setBounds(530, 2240, 80, 23);
 
-        SkalaResiko14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko14.setName("SkalaResiko14"); // NOI18N
-        SkalaResiko14.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney8.setName("SkalaSydney8"); // NOI18N
+        SkalaSydney8.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko14ItemStateChanged(evt);
+                SkalaSydney8ItemStateChanged(evt);
             }
         });
-        SkalaResiko14.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko14KeyPressed(evt);
+                SkalaSydney8KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko14);
-        SkalaResiko14.setBounds(614, 2240, 90, 23);
+        FormInput.add(SkalaSydney8);
+        SkalaSydney8.setBounds(614, 2240, 90, 23);
 
         jLabel260.setText("Nilai :");
         jLabel260.setName("jLabel260"); // NOI18N
         FormInput.add(jLabel260);
         jLabel260.setBounds(715, 2240, 75, 23);
 
-        NilaiResiko14.setEditable(false);
-        NilaiResiko14.setFocusTraversalPolicyProvider(true);
-        NilaiResiko14.setName("NilaiResiko14"); // NOI18N
-        FormInput.add(NilaiResiko14);
-        NilaiResiko14.setBounds(794, 2240, 60, 23);
+        NilaiSydney8.setEditable(false);
+        NilaiSydney8.setFocusTraversalPolicyProvider(true);
+        NilaiSydney8.setName("NilaiSydney8"); // NOI18N
+        FormInput.add(NilaiSydney8);
+        NilaiSydney8.setBounds(794, 2240, 60, 23);
 
         jLabel261.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel261.setText("9. Osteoporosis");
@@ -4610,31 +4611,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel262);
         jLabel262.setBounds(530, 2270, 80, 23);
 
-        SkalaResiko15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko15.setName("SkalaResiko15"); // NOI18N
-        SkalaResiko15.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney9.setName("SkalaSydney9"); // NOI18N
+        SkalaSydney9.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko15ItemStateChanged(evt);
+                SkalaSydney9ItemStateChanged(evt);
             }
         });
-        SkalaResiko15.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko15KeyPressed(evt);
+                SkalaSydney9KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko15);
-        SkalaResiko15.setBounds(614, 2270, 90, 23);
+        FormInput.add(SkalaSydney9);
+        SkalaSydney9.setBounds(614, 2270, 90, 23);
 
         jLabel263.setText("Nilai :");
         jLabel263.setName("jLabel263"); // NOI18N
         FormInput.add(jLabel263);
         jLabel263.setBounds(715, 2270, 75, 23);
 
-        NilaiResiko15.setEditable(false);
-        NilaiResiko15.setFocusTraversalPolicyProvider(true);
-        NilaiResiko15.setName("NilaiResiko15"); // NOI18N
-        FormInput.add(NilaiResiko15);
-        NilaiResiko15.setBounds(794, 2270, 60, 23);
+        NilaiSydney9.setEditable(false);
+        NilaiSydney9.setFocusTraversalPolicyProvider(true);
+        NilaiSydney9.setName("NilaiSydney9"); // NOI18N
+        FormInput.add(NilaiSydney9);
+        NilaiSydney9.setBounds(794, 2270, 60, 23);
 
         jLabel264.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel264.setText("10. Gangguan Pendengaran Dan Atau Penglihatan");
@@ -4647,31 +4648,31 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel265);
         jLabel265.setBounds(530, 2300, 80, 23);
 
-        SkalaResiko16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko16.setName("SkalaResiko16"); // NOI18N
-        SkalaResiko16.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney10.setName("SkalaSydney10"); // NOI18N
+        SkalaSydney10.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko16ItemStateChanged(evt);
+                SkalaSydney10ItemStateChanged(evt);
             }
         });
-        SkalaResiko16.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko16KeyPressed(evt);
+                SkalaSydney10KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko16);
-        SkalaResiko16.setBounds(614, 2300, 90, 23);
+        FormInput.add(SkalaSydney10);
+        SkalaSydney10.setBounds(614, 2300, 90, 23);
 
         jLabel266.setText("Nilai :");
         jLabel266.setName("jLabel266"); // NOI18N
         FormInput.add(jLabel266);
         jLabel266.setBounds(715, 2300, 75, 23);
 
-        NilaiResiko16.setEditable(false);
-        NilaiResiko16.setFocusTraversalPolicyProvider(true);
-        NilaiResiko16.setName("NilaiResiko16"); // NOI18N
-        FormInput.add(NilaiResiko16);
-        NilaiResiko16.setBounds(794, 2300, 60, 23);
+        NilaiSydney10.setEditable(false);
+        NilaiSydney10.setFocusTraversalPolicyProvider(true);
+        NilaiSydney10.setName("NilaiSydney10"); // NOI18N
+        FormInput.add(NilaiSydney10);
+        NilaiSydney10.setBounds(794, 2300, 60, 23);
 
         jLabel267.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel267.setText("11. Usia 70 Tahun Ke Atas");
@@ -4684,48 +4685,48 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel268);
         jLabel268.setBounds(530, 2330, 80, 23);
 
-        SkalaResiko17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SkalaResiko17.setName("SkalaResiko17"); // NOI18N
-        SkalaResiko17.addItemListener(new java.awt.event.ItemListener() {
+        SkalaSydney11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaSydney11.setName("SkalaSydney11"); // NOI18N
+        SkalaSydney11.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko17ItemStateChanged(evt);
+                SkalaSydney11ItemStateChanged(evt);
             }
         });
-        SkalaResiko17.addKeyListener(new java.awt.event.KeyAdapter() {
+        SkalaSydney11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko17KeyPressed(evt);
+                SkalaSydney11KeyPressed(evt);
             }
         });
-        FormInput.add(SkalaResiko17);
-        SkalaResiko17.setBounds(614, 2330, 90, 23);
+        FormInput.add(SkalaSydney11);
+        SkalaSydney11.setBounds(614, 2330, 90, 23);
 
         jLabel269.setText("Nilai :");
         jLabel269.setName("jLabel269"); // NOI18N
         FormInput.add(jLabel269);
         jLabel269.setBounds(715, 2330, 75, 23);
 
-        NilaiResiko17.setEditable(false);
-        NilaiResiko17.setFocusTraversalPolicyProvider(true);
-        NilaiResiko17.setName("NilaiResiko17"); // NOI18N
-        FormInput.add(NilaiResiko17);
-        NilaiResiko17.setBounds(794, 2330, 60, 23);
+        NilaiSydney11.setEditable(false);
+        NilaiSydney11.setFocusTraversalPolicyProvider(true);
+        NilaiSydney11.setName("NilaiSydney11"); // NOI18N
+        FormInput.add(NilaiSydney11);
+        NilaiSydney11.setBounds(794, 2330, 60, 23);
 
-        NilaiResikoTotal1.setEditable(false);
-        NilaiResikoTotal1.setFocusTraversalPolicyProvider(true);
-        NilaiResikoTotal1.setName("NilaiResikoTotal1"); // NOI18N
-        FormInput.add(NilaiResikoTotal1);
-        NilaiResikoTotal1.setBounds(794, 2360, 60, 23);
+        NilaiSydneyTotal.setEditable(false);
+        NilaiSydneyTotal.setFocusTraversalPolicyProvider(true);
+        NilaiSydneyTotal.setName("NilaiSydneyTotal"); // NOI18N
+        FormInput.add(NilaiSydneyTotal);
+        NilaiSydneyTotal.setBounds(794, 2360, 60, 23);
 
         jLabel270.setText("Total :");
         jLabel270.setName("jLabel270"); // NOI18N
         FormInput.add(jLabel270);
         jLabel270.setBounds(715, 2360, 75, 23);
 
-        TingkatResiko1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko1.setText("Tingkat Resiko : Risiko Rendah (1-3), Tindakan : Intervensi pencegahan risiko jatuh standar");
-        TingkatResiko1.setName("TingkatResiko1"); // NOI18N
-        FormInput.add(TingkatResiko1);
-        TingkatResiko1.setBounds(64, 2360, 650, 23);
+        TingkatSydney.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TingkatSydney.setText("Tingkat Resiko : Risiko Rendah (1-3), Tindakan : Intervensi pencegahan risiko jatuh standar");
+        TingkatSydney.setName("TingkatSydney"); // NOI18N
+        FormInput.add(TingkatSydney);
+        TingkatSydney.setBounds(64, 2360, 650, 23);
 
         jSeparator11.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator11.setForeground(new java.awt.Color(239, 244, 234));
@@ -5066,6 +5067,12 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(TCariRencana);
         TCariRencana.setBounds(503, 2690, 235, 23);
 
+        label12.setText("Key Word :");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(60, 23));
+        FormInput.add(label12);
+        label12.setBounds(16, 2690, 60, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -5106,7 +5113,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5120,7 +5127,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5304,7 +5311,11 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnSimpanActionPerformed(null);
+        }else{
+            Valid.pindah(evt,Rencana,BtnBatal);
+        }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
@@ -5314,7 +5325,9 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             emptTeks();
-        }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
+        }else{
+            Valid.pindah(evt, BtnSimpan, BtnHapus);
+        }
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
@@ -6999,47 +7012,47 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_LBAKKeyPressed
 
     private void PolaAktifitasEliminasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaAktifitasEliminasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaAktifitasBerpakaian,PolaAktifitasBerpindah);
     }//GEN-LAST:event_PolaAktifitasEliminasiKeyPressed
 
     private void PolaAktifitasMandiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaAktifitasMandiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LBAK,PolaAktifitasMakan);
     }//GEN-LAST:event_PolaAktifitasMandiKeyPressed
 
     private void PolaAktifitasMakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaAktifitasMakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaAktifitasMandi,PolaAktifitasBerpakaian);
     }//GEN-LAST:event_PolaAktifitasMakanKeyPressed
 
     private void PolaAktifitasBerpakaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaAktifitasBerpakaianKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaAktifitasMakan,PolaAktifitasEliminasi);
     }//GEN-LAST:event_PolaAktifitasBerpakaianKeyPressed
 
     private void PolaAktifitasBerpindahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaAktifitasBerpindahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaAktifitasEliminasi,PolaNutrisiPorsi);
     }//GEN-LAST:event_PolaAktifitasBerpindahKeyPressed
 
     private void PolaNutrisiPorsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaNutrisiPorsiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaAktifitasBerpindah,PolaNutrisiFrekuensi);
     }//GEN-LAST:event_PolaNutrisiPorsiKeyPressed
 
     private void PolaNutrisiFrekuensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaNutrisiFrekuensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaNutrisiPorsi,PolaNutrisiJenis);
     }//GEN-LAST:event_PolaNutrisiFrekuensiKeyPressed
 
     private void PolaNutrisiJenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaNutrisiJenisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaNutrisiFrekuensi,PolaTidurLama);
     }//GEN-LAST:event_PolaNutrisiJenisKeyPressed
 
     private void PolaTidurLamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaTidurLamaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaNutrisiJenis,PolaTidurGangguan);
     }//GEN-LAST:event_PolaTidurLamaKeyPressed
 
     private void PolaTidurGangguanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolaTidurGangguanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PolaTidurLama,AktifitasSehari2);
     }//GEN-LAST:event_PolaTidurGangguanKeyPressed
 
     private void AktifitasSehari2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AktifitasSehari2KeyPressed
-        //Valid.pindah(evt,PemeriksaanEkstrimitas,Berjalan);
+        Valid.pindah(evt,PolaTidurGangguan,Berjalan);
     }//GEN-LAST:event_AktifitasSehari2KeyPressed
 
     private void BerjalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BerjalanKeyPressed
@@ -7091,7 +7104,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_KeteranganKemampuanKoordinasiKeyPressed
 
     private void KesimpulanGangguanFungsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanGangguanFungsiKeyPressed
-        //Valid.pindah(evt,KeteranganKemampuanKoordinasi,KondisiPsikologis);
+        Valid.pindah(evt,KeteranganKemampuanKoordinasi,KondisiPsikologis);
     }//GEN-LAST:event_KesimpulanGangguanFungsiKeyPressed
 
     private void KondisiPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiPsikologisKeyPressed
@@ -7139,7 +7152,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_EdukasiPsikolgisKeyPressed
 
     private void KeteranganEdukasiPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganEdukasiPsikologisKeyPressed
-        //Valid.pindah(evt,EdukasiPsikolgis,Nyeri);
+        Valid.pindah(evt,EdukasiPsikolgis,Nyeri);
     }//GEN-LAST:event_KeteranganEdukasiPsikologisKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
@@ -7191,7 +7204,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_PadaDokterKeyPressed
 
     private void KetPadaDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetPadaDokterKeyPressed
-        //Valid.pindah(evt,PadaDokter,SkalaResiko1);
+        Valid.pindah(evt,PadaDokter,SkalaResiko1);
     }//GEN-LAST:event_KetPadaDokterKeyPressed
 
     private void SkalaResiko1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko1ItemStateChanged
@@ -7273,96 +7286,151 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_SkalaResiko6ItemStateChanged
 
     private void SkalaResiko6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko6KeyPressed
-        //Valid.pindah(evt,SkalaResiko5,SkalaGizi1);
+        Valid.pindah(evt,SkalaResiko5,SkalaSydney1);
     }//GEN-LAST:event_SkalaResiko6KeyPressed
 
-    private void SkalaResiko7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko7ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko7ItemStateChanged
+    private void SkalaSydney1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney1ItemStateChanged
+        if(SkalaSydney1.getSelectedIndex()==0){
+            NilaiSydney1.setText("0");
+        }else{
+            NilaiSydney1.setText("4");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney1ItemStateChanged
 
-    private void SkalaResiko7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko7KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko7KeyPressed
+    private void SkalaSydney1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney1KeyPressed
+        Valid.pindah(evt,SkalaResiko6,SkalaSydney2);
+    }//GEN-LAST:event_SkalaSydney1KeyPressed
 
-    private void SkalaResiko8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko8ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko8ItemStateChanged
+    private void SkalaSydney2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney2ItemStateChanged
+        if(SkalaSydney2.getSelectedIndex()==0){
+            NilaiSydney2.setText("0");
+        }else{
+            NilaiSydney2.setText("3");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney2ItemStateChanged
 
-    private void SkalaResiko8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko8KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko8KeyPressed
+    private void SkalaSydney2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney2KeyPressed
+        Valid.pindah(evt,SkalaSydney1,SkalaSydney3);
+    }//GEN-LAST:event_SkalaSydney2KeyPressed
 
-    private void SkalaResiko9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko9ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko9ItemStateChanged
+    private void SkalaSydney3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney3ItemStateChanged
+        if(SkalaSydney3.getSelectedIndex()==0){
+            NilaiSydney3.setText("0");
+        }else{
+            NilaiSydney3.setText("3");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney3ItemStateChanged
 
-    private void SkalaResiko9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko9KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko9KeyPressed
+    private void SkalaSydney3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney3KeyPressed
+        Valid.pindah(evt,SkalaSydney2,SkalaSydney4);
+    }//GEN-LAST:event_SkalaSydney3KeyPressed
 
-    private void SkalaResiko10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko10ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko10ItemStateChanged
+    private void SkalaSydney4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney4ItemStateChanged
+        if(SkalaSydney4.getSelectedIndex()==0){
+            NilaiSydney4.setText("0");
+        }else{
+            NilaiSydney4.setText("3");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney4ItemStateChanged
 
-    private void SkalaResiko10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko10KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko10KeyPressed
+    private void SkalaSydney4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney4KeyPressed
+        Valid.pindah(evt,SkalaSydney3,SkalaSydney5);
+    }//GEN-LAST:event_SkalaSydney4KeyPressed
 
-    private void SkalaResiko11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko11ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko11ItemStateChanged
+    private void SkalaSydney5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney5ItemStateChanged
+        if(SkalaSydney5.getSelectedIndex()==0){
+            NilaiSydney5.setText("0");
+        }else{
+            NilaiSydney5.setText("2");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney5ItemStateChanged
 
-    private void SkalaResiko11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko11KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko11KeyPressed
+    private void SkalaSydney5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney5KeyPressed
+        Valid.pindah(evt,SkalaSydney4,SkalaSydney6);
+    }//GEN-LAST:event_SkalaSydney5KeyPressed
 
-    private void SkalaResiko12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko12ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko12ItemStateChanged
+    private void SkalaSydney6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney6ItemStateChanged
+        if(SkalaSydney6.getSelectedIndex()==0){
+            NilaiSydney6.setText("0");
+        }else{
+            NilaiSydney6.setText("2");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney6ItemStateChanged
 
-    private void SkalaResiko12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko12KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko12KeyPressed
+    private void SkalaSydney6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney6KeyPressed
+        Valid.pindah(evt,SkalaSydney5,SkalaSydney7);
+    }//GEN-LAST:event_SkalaSydney6KeyPressed
 
-    private void SkalaResiko13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko13ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko13ItemStateChanged
+    private void SkalaSydney7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney7ItemStateChanged
+        if(SkalaSydney7.getSelectedIndex()==0){
+            NilaiSydney7.setText("0");
+        }else{
+            NilaiSydney7.setText("2");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney7ItemStateChanged
 
-    private void SkalaResiko13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko13KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko13KeyPressed
+    private void SkalaSydney7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney7KeyPressed
+        Valid.pindah(evt,SkalaSydney6,SkalaSydney8);
+    }//GEN-LAST:event_SkalaSydney7KeyPressed
 
-    private void SkalaResiko14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko14ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko14ItemStateChanged
+    private void SkalaSydney8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney8ItemStateChanged
+        if(SkalaSydney8.getSelectedIndex()==0){
+            NilaiSydney8.setText("0");
+        }else{
+            NilaiSydney8.setText("2");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney8ItemStateChanged
 
-    private void SkalaResiko14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko14KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko14KeyPressed
+    private void SkalaSydney8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney8KeyPressed
+        Valid.pindah(evt,SkalaSydney7,SkalaSydney9);
+    }//GEN-LAST:event_SkalaSydney8KeyPressed
 
-    private void SkalaResiko15ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko15ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko15ItemStateChanged
+    private void SkalaSydney9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney9ItemStateChanged
+        if(SkalaSydney9.getSelectedIndex()==0){
+            NilaiSydney9.setText("0");
+        }else{
+            NilaiSydney9.setText("1");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney9ItemStateChanged
 
-    private void SkalaResiko15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko15KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko15KeyPressed
+    private void SkalaSydney9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney9KeyPressed
+        Valid.pindah(evt,SkalaSydney8,SkalaSydney10);
+    }//GEN-LAST:event_SkalaSydney9KeyPressed
 
-    private void SkalaResiko16ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko16ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko16ItemStateChanged
+    private void SkalaSydney10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney10ItemStateChanged
+        if(SkalaSydney10.getSelectedIndex()==0){
+            NilaiSydney10.setText("0");
+        }else{
+            NilaiSydney10.setText("1");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney10ItemStateChanged
 
-    private void SkalaResiko16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko16KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko16KeyPressed
+    private void SkalaSydney10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney10KeyPressed
+        Valid.pindah(evt,SkalaSydney9,SkalaSydney11);
+    }//GEN-LAST:event_SkalaSydney10KeyPressed
 
-    private void SkalaResiko17ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko17ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko17ItemStateChanged
+    private void SkalaSydney11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaSydney11ItemStateChanged
+        if(SkalaSydney11.getSelectedIndex()==0){
+            NilaiSydney11.setText("0");
+        }else{
+            NilaiSydney11.setText("1");
+        }
+        isTotalResikoSydney();
+    }//GEN-LAST:event_SkalaSydney11ItemStateChanged
 
-    private void SkalaResiko17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko17KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaResiko17KeyPressed
+    private void SkalaSydney11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaSydney11KeyPressed
+        Valid.pindah(evt,SkalaSydney10,SkalaGizi1);
+    }//GEN-LAST:event_SkalaSydney11KeyPressed
 
     private void SkalaGizi1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaGizi1ItemStateChanged
         if(SkalaGizi1.getSelectedIndex()==0){
@@ -7382,7 +7450,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_SkalaGizi1ItemStateChanged
 
     private void SkalaGizi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaGizi1KeyPressed
-        Valid.pindah(evt,SkalaResiko6,SkalaGizi2);
+        Valid.pindah(evt,SkalaSydney11,SkalaGizi2);
     }//GEN-LAST:event_SkalaGizi1KeyPressed
 
     private void SkalaGizi2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaGizi2ItemStateChanged
@@ -7411,36 +7479,36 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_DiketahuiDietisenKeyPressed
 
     private void KeteranganDiketahuiDietisenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganDiketahuiDietisenKeyPressed
-        //Valid.pindah(evt,DiketahuiDietisen,Masalah);
+        Valid.pindah(evt,DiketahuiDietisen,TCariMasalah);
     }//GEN-LAST:event_KeteranganDiketahuiDietisenKeyPressed
 
     private void tbMasalahKeperawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanMouseClicked
-        /*if(tabModeMasalah.getRowCount()!=0){
+        if(tabModeMasalah.getRowCount()!=0){
             try {
                 tampilRencana2();
             } catch (java.lang.NullPointerException e) {
             }
-        }*/
+        }
     }//GEN-LAST:event_tbMasalahKeperawatanMouseClicked
 
     private void tbMasalahKeperawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanKeyPressed
-        /*if(tabModeMasalah.getRowCount()!=0){
+        if(tabModeMasalah.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCariMasalah.setText("");
                 TCariMasalah.requestFocus();
             }
-        }*/
+        }
     }//GEN-LAST:event_tbMasalahKeperawatanKeyPressed
 
     private void tbMasalahKeperawatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanKeyReleased
-        /*if(tabModeMasalah.getRowCount()!=0){
+        if(tabModeMasalah.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
                     tampilRencana2();
                 } catch (java.lang.NullPointerException e) {
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_tbMasalahKeperawatanKeyReleased
 
     private void RencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaKeyPressed
@@ -7471,27 +7539,27 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnAllMasalahKeyPressed
 
     private void BtnCariMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariMasalahActionPerformed
-        //tampilMasalah2();
+        tampilMasalah2();
     }//GEN-LAST:event_BtnCariMasalahActionPerformed
 
     private void BtnCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariMasalahKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilMasalah2();
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KetDokter.requestFocus();
-        }*/
+            KeteranganDiketahuiDietisen.requestFocus();
+        }
     }//GEN-LAST:event_BtnCariMasalahKeyPressed
 
     private void TCariMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariMasalahKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilMasalah2();
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KetDokter.requestFocus();
-        }*/
+            KeteranganDiketahuiDietisen.requestFocus();
+        }
     }//GEN-LAST:event_TCariMasalahKeyPressed
 
     private void BtnTambahRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRencanaActionPerformed
@@ -7506,8 +7574,8 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
 
     private void BtnAllRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllRencanaActionPerformed
         TCariRencana.setText("");
-        //tampilRencana();
-        //tampilRencana2();
+        tampilRencana();
+        tampilRencana2();
     }//GEN-LAST:event_BtnAllRencanaActionPerformed
 
     private void BtnAllRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllRencanaKeyPressed
@@ -7519,12 +7587,12 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnAllRencanaKeyPressed
 
     private void BtnCariRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariRencanaActionPerformed
-        //tampilRencana2();
+        tampilRencana2();
     }//GEN-LAST:event_BtnCariRencanaActionPerformed
 
     private void BtnCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariRencanaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            //tampilRencana2();
+            tampilRencana2();
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             BtnSimpan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -7534,7 +7602,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
 
     private void TCariRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariRencanaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            //tampilRencana2();
+            tampilRencana2();
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             BtnCariRencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -7700,24 +7768,24 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.TextBox NilaiGiziTotal;
     private widget.ComboBox NilaiKepercayaan;
     private widget.TextBox NilaiResiko1;
-    private widget.TextBox NilaiResiko10;
-    private widget.TextBox NilaiResiko11;
-    private widget.TextBox NilaiResiko12;
-    private widget.TextBox NilaiResiko13;
-    private widget.TextBox NilaiResiko14;
-    private widget.TextBox NilaiResiko15;
-    private widget.TextBox NilaiResiko16;
-    private widget.TextBox NilaiResiko17;
     private widget.TextBox NilaiResiko2;
     private widget.TextBox NilaiResiko3;
     private widget.TextBox NilaiResiko4;
     private widget.TextBox NilaiResiko5;
     private widget.TextBox NilaiResiko6;
-    private widget.TextBox NilaiResiko7;
-    private widget.TextBox NilaiResiko8;
-    private widget.TextBox NilaiResiko9;
     private widget.TextBox NilaiResikoTotal;
-    private widget.TextBox NilaiResikoTotal1;
+    private widget.TextBox NilaiSydney1;
+    private widget.TextBox NilaiSydney10;
+    private widget.TextBox NilaiSydney11;
+    private widget.TextBox NilaiSydney2;
+    private widget.TextBox NilaiSydney3;
+    private widget.TextBox NilaiSydney4;
+    private widget.TextBox NilaiSydney5;
+    private widget.TextBox NilaiSydney6;
+    private widget.TextBox NilaiSydney7;
+    private widget.TextBox NilaiSydney8;
+    private widget.TextBox NilaiSydney9;
+    private widget.TextBox NilaiSydneyTotal;
     private widget.TextBox NmDPJP;
     private widget.TextBox NmPetugas;
     private widget.TextBox NmPetugas2;
@@ -7775,22 +7843,22 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.ComboBox SkalaGizi2;
     private widget.ComboBox SkalaNyeri;
     private widget.ComboBox SkalaResiko1;
-    private widget.ComboBox SkalaResiko10;
-    private widget.ComboBox SkalaResiko11;
-    private widget.ComboBox SkalaResiko12;
-    private widget.ComboBox SkalaResiko13;
-    private widget.ComboBox SkalaResiko14;
-    private widget.ComboBox SkalaResiko15;
-    private widget.ComboBox SkalaResiko16;
-    private widget.ComboBox SkalaResiko17;
     private widget.ComboBox SkalaResiko2;
     private widget.ComboBox SkalaResiko3;
     private widget.ComboBox SkalaResiko4;
     private widget.ComboBox SkalaResiko5;
     private widget.ComboBox SkalaResiko6;
-    private widget.ComboBox SkalaResiko7;
-    private widget.ComboBox SkalaResiko8;
-    private widget.ComboBox SkalaResiko9;
+    private widget.ComboBox SkalaSydney1;
+    private widget.ComboBox SkalaSydney10;
+    private widget.ComboBox SkalaSydney11;
+    private widget.ComboBox SkalaSydney2;
+    private widget.ComboBox SkalaSydney3;
+    private widget.ComboBox SkalaSydney4;
+    private widget.ComboBox SkalaSydney5;
+    private widget.ComboBox SkalaSydney6;
+    private widget.ComboBox SkalaSydney7;
+    private widget.ComboBox SkalaSydney8;
+    private widget.ComboBox SkalaSydney9;
     private widget.TextBox SpO2;
     private widget.TextBox Suhu;
     private widget.TextBox TB;
@@ -7812,7 +7880,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.ComboBox TibadiRuang;
     private widget.ComboBox TinggalDengan;
     private widget.Label TingkatResiko;
-    private widget.Label TingkatResiko1;
+    private widget.Label TingkatSydney;
     private widget.TextBox UsiaHamil;
     private widget.TextBox WBAB;
     private widget.TextBox WBAK;
@@ -8063,6 +8131,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private widget.Label label11;
+    private widget.Label label12;
     private widget.Label label13;
     private widget.Label label14;
     private widget.Label label15;
@@ -8506,6 +8575,77 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             iyem=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilRencana2() {
+        try{
+            jml=0;
+            for(i=0;i<tbRencanaKeperawatan.getRowCount();i++){
+                if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=null;
+            pilih=new boolean[jml]; 
+            kode=null;
+            kode=new String[jml];
+            masalah=null;
+            masalah=new String[jml];
+
+            index=0;        
+            for(i=0;i<tbRencanaKeperawatan.getRowCount();i++){
+                if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    kode[index]=tbRencanaKeperawatan.getValueAt(i,1).toString();
+                    masalah[index]=tbRencanaKeperawatan.getValueAt(i,2).toString();
+                    index++;
+                }
+            } 
+
+            Valid.tabelKosong(tabModeRencana);
+
+            for(i=0;i<jml;i++){
+                tabModeRencana.addRow(new Object[] {
+                    pilih[i],kode[i],masalah[i]
+                });
+            }
+
+            myObj = new FileReader("./cache/rencanakeperawatan.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("rencanakeperawatan");
+            if(response.isArray()){
+                for(i=0;i<tbMasalahKeperawatan.getRowCount();i++){
+                    if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
+                        for(JsonNode list:response){
+                            if(list.path("KodeMasalah").asText().toLowerCase().equals(tbMasalahKeperawatan.getValueAt(i,1).toString())&&
+                                    list.path("NamaRencana").asText().toLowerCase().contains(TCariRencana.getText().toLowerCase())){
+                                tabModeRencana.addRow(new Object[]{
+                                    false,list.path("KodeRencana").asText(),list.path("NamaRencana").asText()
+                                });                    
+                            }
+                        }
+                    }
+                }
+            }
+            myObj.close();
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+
+    private void isTotalResikoSydney() {
+        try {
+            NilaiSydneyTotal.setText((Integer.parseInt(NilaiSydney1.getText())+Integer.parseInt(NilaiSydney2.getText())+Integer.parseInt(NilaiSydney3.getText())+Integer.parseInt(NilaiSydney4.getText())+Integer.parseInt(NilaiSydney5.getText())+Integer.parseInt(NilaiSydney6.getText())+Integer.parseInt(NilaiSydney7.getText())+Integer.parseInt(NilaiSydney8.getText())+Integer.parseInt(NilaiSydney9.getText())+Integer.parseInt(NilaiSydney10.getText())+Integer.parseInt(NilaiSydney11.getText()))+"");
+            if(Integer.parseInt(NilaiSydneyTotal.getText())<4){
+                TingkatSydney.setText("Tingkat Resiko : Risiko Rendah (1-3), Tindakan : Intervensi pencegahan risiko standar");
+            }else if(Integer.parseInt(NilaiSydneyTotal.getText())>=4){
+                TingkatSydney.setText("Tingkat Resiko : Risiko Sedang (> 4), Tindakan : Intervensi pencegahan risiko tinggi");
+            }
+        } catch (Exception e) {
+            NilaiSydneyTotal.setText("0");
+            TingkatSydney.setText("Tingkat Resiko : Risiko Rendah (1-3), Tindakan : Intervensi pencegahan risiko standar");
         }
     }
 }

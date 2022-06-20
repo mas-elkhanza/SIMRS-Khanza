@@ -599,7 +599,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
         FormInput.add(SkinAntiSeptik);
         SkinAntiSeptik.setBounds(710, 40, 78, 23);
 
-        jLabel28.setText("Audit :");
+        jLabel28.setText("Bundles :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(0, 40, 60, 23);
