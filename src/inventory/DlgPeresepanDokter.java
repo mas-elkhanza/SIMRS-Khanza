@@ -1487,7 +1487,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 kodebarang[z]=tbResep.getValueAt(i,2).toString();
                 namabarang[z]=tbResep.getValueAt(i,3).toString();
                 kodesatuan[z]=tbResep.getValueAt(i,4).toString();
-                letakbarang[z]=tbResep.getValueAt(i,5).toString();
+                try {
+                    letakbarang[z]=tbResep.getValueAt(i,5).toString();
+                } catch (Exception e) {
+                    letakbarang[z]="";
+                }
+                    
                 try {
                     harga[z]=Double.parseDouble(tbResep.getValueAt(i,6).toString());
                 } catch (Exception e) {

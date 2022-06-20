@@ -53,6 +53,7 @@ import rekammedis.RMDataCatatanObservasiRanapPostPartum;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMPenilaianAwalKeperawatanKebidananRanap;
+import rekammedis.RMPenilaianAwalKeperawatanRanap;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMPenilaianFisioterapi;
@@ -1221,6 +1222,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnAsuhanGizi = new widget.Button();
         BtnMonitoringAsuhanGizi = new widget.Button();
         BtnResume = new widget.Button();
+        BtnAwalKeperawatanUmum = new widget.Button();
         BtnAwalKeperawatanKandungan = new widget.Button();
         BtnAwalFisioterapi = new widget.Button();
         BtnAwalMedis = new widget.Button();
@@ -1429,7 +1431,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1443,7 +1445,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3079,7 +3081,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TPasien.setBounds(283, 10, 260, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2022" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2022" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3536,6 +3538,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnResume);
+
+        BtnAwalKeperawatanUmum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalKeperawatanUmum.setText("Awal Keperawatan Umum");
+        BtnAwalKeperawatanUmum.setFocusPainted(false);
+        BtnAwalKeperawatanUmum.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalKeperawatanUmum.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalKeperawatanUmum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalKeperawatanUmum.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalKeperawatanUmum.setName("BtnAwalKeperawatanUmum"); // NOI18N
+        BtnAwalKeperawatanUmum.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnAwalKeperawatanUmum.setRoundRect(false);
+        BtnAwalKeperawatanUmum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalKeperawatanUmumActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalKeperawatanUmum);
 
         BtnAwalKeperawatanKandungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnAwalKeperawatanKandungan.setText("Awal Keperawatan Kandungan");
@@ -6181,6 +6200,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnPenilaianPsikologActionPerformed
 
+    private void BtnAwalKeperawatanUmumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalKeperawatanUmumActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianAwalKeperawatanRanap form=new RMPenilaianAwalKeperawatanRanap(null,false);
+            form.isCek();
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate(),jenisbayar,TNoRM.getText());
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAwalKeperawatanUmumActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6204,6 +6240,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAsuhanGizi;
     private widget.Button BtnAwalFisioterapi;
     private widget.Button BtnAwalKeperawatanKandungan;
+    private widget.Button BtnAwalKeperawatanUmum;
     private widget.Button BtnAwalMedis;
     private widget.Button BtnAwalMedisKandungan;
     private widget.Button BtnBatal;
@@ -6963,6 +7000,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalKeperawatanKandungan.setVisible(akses.getpenilaian_awal_keperawatan_ranapkebidanan());   
         if(akses.getpenilaian_awal_keperawatan_ranapkebidanan()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalKeperawatanUmum.setVisible(akses.getpenilaian_awal_keperawatan_ranap());   
+        if(akses.getpenilaian_awal_keperawatan_ranap()==true){
             tinggi=tinggi+24;
         }
         BtnAwalMedis.setVisible(akses.getpenilaian_awal_medis_ranap());   

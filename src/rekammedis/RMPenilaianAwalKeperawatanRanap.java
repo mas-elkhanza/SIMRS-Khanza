@@ -1,5 +1,7 @@
 package rekammedis;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -14,6 +16,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,17 +38,27 @@ import kepegawaian.DlgCariPetugas;
  * @author perpustakaan
  */
 public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode,tabModeMasalah,tabModeDetailMasalah,tabModeRencana,tabModeDetailRencana;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;
+    private int i=0,jml=0,index=0;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
     private String pilihan="";
+    private boolean[] pilih; 
+    private String[] kode,masalah;
+    private String masalahkeperawatan="",finger=""; 
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -516,6 +529,125 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
+        
+        tabModeMasalah=new DefaultTableModel(null,new Object[]{
+                "P","KODE","MASALAH KEPERAWATAN"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbMasalahKeperawatan.setModel(tabModeMasalah);
+
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tbMasalahKeperawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbMasalahKeperawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        for (i = 0; i < 3; i++) {
+            TableColumn column = tbMasalahKeperawatan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==2){
+                column.setPreferredWidth(350);
+            }
+        }
+        tbMasalahKeperawatan.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeRencana=new DefaultTableModel(null,new Object[]{
+                "P","KODE","RENCANA KEPERAWATAN"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbRencanaKeperawatan.setModel(tabModeRencana);
+
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tbRencanaKeperawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbRencanaKeperawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        for (i = 0; i < 3; i++) {
+            TableColumn column = tbRencanaKeperawatan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==2){
+                column.setPreferredWidth(350);
+            }
+        }
+        tbRencanaKeperawatan.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDetailMasalah=new DefaultTableModel(null,new Object[]{
+                "Kode","Masalah Keperawatan"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbMasalahDetail.setModel(tabModeDetailMasalah);
+
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tbMasalahDetail.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbMasalahDetail.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 2; i++) {
+            TableColumn column = tbMasalahDetail.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==1){
+                column.setPreferredWidth(420);
+            }
+        }
+        tbMasalahDetail.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDetailRencana=new DefaultTableModel(null,new Object[]{
+                "Kode","Rencana Keperawatan"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbRencanaDetail.setModel(tabModeDetailRencana);
+
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tbRencanaDetail.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbRencanaDetail.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 2; i++) {
+            TableColumn column = tbRencanaDetail.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==1){
+                column.setPreferredWidth(420);
+            }
+        }
+        tbRencanaDetail.setDefaultRenderer(Object.class, new WarnaTable());
+        
         ChkAccor.setSelected(false);
         isMenu();
     }
@@ -1397,7 +1529,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 3203));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 2723));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -6236,7 +6368,21 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //tampilMasalah();
+        try {
+            if(Valid.daysOld("./cache/masalahkeperawatan.iyem")<8){
+                tampilMasalah2();
+            }else{
+                tampilMasalah();
+            }
+        } catch (Exception e) {
+        }
+        
+        try {
+            if(Valid.daysOld("./cache/rencanakeperawatan.iyem")>=7){
+                tampilRencana();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
@@ -8244,6 +8390,122 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             NilaiGiziTotal.setText((Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText()))+"");
         } catch (Exception e) {
             NilaiGiziTotal.setText("0");
+        }
+    }
+    
+    private void tampilMasalah() {
+        try{
+            Valid.tabelKosong(tabModeMasalah);
+            file=new File("./cache/masalahkeperawatan.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
+            ps=koneksi.prepareStatement("select * from master_masalah_keperawatan order by master_masalah_keperawatan.kode_masalah");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModeMasalah.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+                    iyem=iyem+"{\"KodeMasalah\":\""+rs.getString(1)+"\",\"NamaMasalah\":\""+rs.getString(2)+"\"},";
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            fileWriter.write("{\"masalahkeperawatan\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilMasalah2() {
+        try{
+            jml=0;
+            for(i=0;i<tbMasalahKeperawatan.getRowCount();i++){
+                if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=null;
+            pilih=new boolean[jml]; 
+            kode=null;
+            kode=new String[jml];
+            masalah=null;
+            masalah=new String[jml];
+
+            index=0;        
+            for(i=0;i<tbMasalahKeperawatan.getRowCount();i++){
+                if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    kode[index]=tbMasalahKeperawatan.getValueAt(i,1).toString();
+                    masalah[index]=tbMasalahKeperawatan.getValueAt(i,2).toString();
+                    index++;
+                }
+            } 
+
+            Valid.tabelKosong(tabModeMasalah);
+
+            for(i=0;i<jml;i++){
+                tabModeMasalah.addRow(new Object[] {
+                    pilih[i],kode[i],masalah[i]
+                });
+            }
+            
+            myObj = new FileReader("./cache/masalahkeperawatan.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("masalahkeperawatan");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("KodeMasalah").asText().toLowerCase().contains(TCariMasalah.getText().toLowerCase())||list.path("NamaMasalah").asText().toLowerCase().contains(TCariMasalah.getText().toLowerCase())){
+                        tabModeMasalah.addRow(new Object[]{
+                            false,list.path("KodeMasalah").asText(),list.path("NamaMasalah").asText()
+                        });                    
+                    }
+                }
+            }
+            myObj.close();
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilRencana() {
+        try{
+            file=new File("./cache/rencanakeperawatan.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
+            ps=koneksi.prepareStatement("select * from master_rencana_keperawatan order by master_rencana_keperawatan.kode_rencana");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    iyem=iyem+"{\"KodeMasalah\":\""+rs.getString(1)+"\",\"KodeRencana\":\""+rs.getString(2)+"\",\"NamaRencana\":\""+rs.getString(3)+"\"},";
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            fileWriter.write("{\"rencanakeperawatan\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
     }
 }
