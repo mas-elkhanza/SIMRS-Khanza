@@ -593,6 +593,7 @@ import ipsrs.IPSRSRingkasanReturBeliBarangNonMedis;
 import ipsrs.IPSRSRiwayatBarang;
 import ipsrs.IPSRSVerifikasiPenerimaan;
 import java.net.InetAddress;
+import kepegawaian.DlgAuditBundleIADP;
 import kepegawaian.DlgAuditCuciTanganMedis;
 import kepegawaian.DlgAuditKamarJenazah;
 import kepegawaian.DlgDokter;
@@ -18649,6 +18650,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAuditBundleIADPActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditBundleIADP aplikasi=new DlgAuditBundleIADP(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19293,7 +19306,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAnggotaPolriDirawat,btnDaftarPasienRanapPolri,btnSOAPRalanAnggotaPolri,btnSOAPRanapAnggotaPolri,btnLaporanPenyakitPolri,btnMasterRencanaKeperawatanAnak,
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
-            btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah;
+            btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah,
+            btnAuditBundleIADP;
     
     public void isWall(){
         try{            
@@ -19790,6 +19804,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_kamar_jenazah()==true){  
                 Panelmenu.add(btnAuditKamarJenazah);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_bundle_iadp()==true){  
+                Panelmenu.add(btnAuditBundleIADP);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23955,6 +23974,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getaudit_kamar_jenazah()==true){  
             Panelmenu.add(btnAuditKamarJenazah);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_bundle_iadp()==true){  
+            Panelmenu.add(btnAuditBundleIADP);                 
             jmlmenu++;
         }
         
@@ -28254,6 +28278,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_kamar_jenazah()==true){  
             if(btnAuditKamarJenazah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditKamarJenazah);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_bundle_iadp()==true){  
+            if(btnAuditBundleIADP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditBundleIADP);                 
                 jmlmenu++;
             }                
         }
@@ -36478,6 +36509,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditKamarJenazah.setName("btnAuditKamarJenazah");
         btnAuditKamarJenazah.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditKamarJenazah.addActionListener(this::btnAuditKamarJenazahActionPerformed);
+        
+        btnAuditBundleIADP = new widget.ButtonBig();
+        btnAuditBundleIADP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960613_iv_iv pole_blood_transfusion_infusion_icon.png"))); 
+        btnAuditBundleIADP.setText("Audit Bundle IADP");
+        btnAuditBundleIADP.setIconTextGap(0);
+        btnAuditBundleIADP.setName("btnAuditBundleIADP");
+        btnAuditBundleIADP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditBundleIADP.addActionListener(this::btnAuditBundleIADPActionPerformed);
     }
     
 }

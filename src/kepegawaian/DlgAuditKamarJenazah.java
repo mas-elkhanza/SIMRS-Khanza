@@ -78,7 +78,7 @@ public final class DlgAuditKamarJenazah extends javax.swing.JDialog {
         for (i = 0; i < 10; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(120);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
