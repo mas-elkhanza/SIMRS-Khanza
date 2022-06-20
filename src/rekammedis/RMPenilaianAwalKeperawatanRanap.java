@@ -838,24 +838,24 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         RespirasiBatuk = new widget.ComboBox();
         jLabel49 = new widget.Label();
         jLabel146 = new widget.Label();
-        KebiasaanMerokok16 = new widget.ComboBox();
-        KebiasaanJumlahRokok6 = new widget.TextBox();
-        KebiasaanMerokok18 = new widget.ComboBox();
+        GastrointestinalMulut = new widget.ComboBox();
+        KetGastrointestinalMulut = new widget.TextBox();
+        GastrointestinalGigi = new widget.ComboBox();
         jLabel148 = new widget.Label();
-        KebiasaanJumlahRokok8 = new widget.TextBox();
+        KetGastrointestinalGigi = new widget.TextBox();
         jLabel149 = new widget.Label();
-        KebiasaanMerokok19 = new widget.ComboBox();
+        GastrointestinalAnus = new widget.ComboBox();
         jLabel147 = new widget.Label();
-        KebiasaanMerokok17 = new widget.ComboBox();
-        KebiasaanJumlahRokok7 = new widget.TextBox();
+        GastrointestinalLidah = new widget.ComboBox();
+        KetGastrointestinalLidah = new widget.TextBox();
         jLabel150 = new widget.Label();
-        KebiasaanMerokok20 = new widget.ComboBox();
-        KebiasaanJumlahRokok9 = new widget.TextBox();
+        GastrointestinalTenggorakan = new widget.ComboBox();
+        KetGastrointestinalTenggorakan = new widget.TextBox();
         jLabel151 = new widget.Label();
-        KebiasaanMerokok21 = new widget.ComboBox();
-        KebiasaanJumlahRokok10 = new widget.TextBox();
+        GastrointestinalAbdomen = new widget.ComboBox();
+        KetGastrointestinalAbdomen = new widget.TextBox();
         jLabel152 = new widget.Label();
-        KebiasaanMerokok22 = new widget.ComboBox();
+        GastrointestinalUsus = new widget.ComboBox();
         jLabel50 = new widget.Label();
         jLabel153 = new widget.Label();
         KebiasaanMerokok23 = new widget.ComboBox();
@@ -2603,155 +2603,155 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel146);
         jLabel146.setBounds(0, 700, 109, 23);
 
-        KebiasaanMerokok16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Stomatitis", "Mukosa Kering", "Bibir Pucat", "Lain-lain" }));
-        KebiasaanMerokok16.setName("KebiasaanMerokok16"); // NOI18N
-        KebiasaanMerokok16.addKeyListener(new java.awt.event.KeyAdapter() {
+        GastrointestinalMulut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Stomatitis", "Mukosa Kering", "Bibir Pucat", "Lain-lain" }));
+        GastrointestinalMulut.setName("GastrointestinalMulut"); // NOI18N
+        GastrointestinalMulut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok16KeyPressed(evt);
+                GastrointestinalMulutKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok16);
-        KebiasaanMerokok16.setBounds(113, 700, 120, 23);
+        FormInput.add(GastrointestinalMulut);
+        GastrointestinalMulut.setBounds(113, 700, 120, 23);
 
-        KebiasaanJumlahRokok6.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok6.setName("KebiasaanJumlahRokok6"); // NOI18N
-        KebiasaanJumlahRokok6.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetGastrointestinalMulut.setFocusTraversalPolicyProvider(true);
+        KetGastrointestinalMulut.setName("KetGastrointestinalMulut"); // NOI18N
+        KetGastrointestinalMulut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok6KeyPressed(evt);
+                KetGastrointestinalMulutKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok6);
-        KebiasaanJumlahRokok6.setBounds(237, 700, 190, 23);
+        FormInput.add(KetGastrointestinalMulut);
+        KetGastrointestinalMulut.setBounds(237, 700, 190, 23);
 
-        KebiasaanMerokok18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Karies", "Goyang", "Lain-lain" }));
-        KebiasaanMerokok18.setName("KebiasaanMerokok18"); // NOI18N
-        KebiasaanMerokok18.addKeyListener(new java.awt.event.KeyAdapter() {
+        GastrointestinalGigi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Karies", "Goyang", "Lain-lain" }));
+        GastrointestinalGigi.setName("GastrointestinalGigi"); // NOI18N
+        GastrointestinalGigi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok18KeyPressed(evt);
+                GastrointestinalGigiKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok18);
-        KebiasaanMerokok18.setBounds(113, 760, 95, 23);
+        FormInput.add(GastrointestinalGigi);
+        GastrointestinalGigi.setBounds(113, 760, 95, 23);
 
         jLabel148.setText("Gigi :");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
         jLabel148.setBounds(0, 760, 109, 23);
 
-        KebiasaanJumlahRokok8.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok8.setName("KebiasaanJumlahRokok8"); // NOI18N
-        KebiasaanJumlahRokok8.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetGastrointestinalGigi.setFocusTraversalPolicyProvider(true);
+        KetGastrointestinalGigi.setName("KetGastrointestinalGigi"); // NOI18N
+        KetGastrointestinalGigi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok8KeyPressed(evt);
+                KetGastrointestinalGigiKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok8);
-        KebiasaanJumlahRokok8.setBounds(210, 760, 170, 23);
+        FormInput.add(KetGastrointestinalGigi);
+        KetGastrointestinalGigi.setBounds(210, 760, 170, 23);
 
         jLabel149.setText("Anus :");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
         jLabel149.setBounds(405, 760, 50, 23);
 
-        KebiasaanMerokok19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Atresia Ani" }));
-        KebiasaanMerokok19.setName("KebiasaanMerokok19"); // NOI18N
-        KebiasaanMerokok19.addKeyListener(new java.awt.event.KeyAdapter() {
+        GastrointestinalAnus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Atresia Ani" }));
+        GastrointestinalAnus.setName("GastrointestinalAnus"); // NOI18N
+        GastrointestinalAnus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok19KeyPressed(evt);
+                GastrointestinalAnusKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok19);
-        KebiasaanMerokok19.setBounds(459, 760, 108, 23);
+        FormInput.add(GastrointestinalAnus);
+        GastrointestinalAnus.setBounds(459, 760, 108, 23);
 
         jLabel147.setText("Lidah :");
         jLabel147.setName("jLabel147"); // NOI18N
         FormInput.add(jLabel147);
         jLabel147.setBounds(0, 730, 109, 23);
 
-        KebiasaanMerokok17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Kotor", "Gerak Asimetris", "Lain-lain" }));
-        KebiasaanMerokok17.setName("KebiasaanMerokok17"); // NOI18N
-        KebiasaanMerokok17.addKeyListener(new java.awt.event.KeyAdapter() {
+        GastrointestinalLidah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Kotor", "Gerak Asimetris", "Lain-lain" }));
+        GastrointestinalLidah.setName("GastrointestinalLidah"); // NOI18N
+        GastrointestinalLidah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok17KeyPressed(evt);
+                GastrointestinalLidahKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok17);
-        KebiasaanMerokok17.setBounds(113, 730, 130, 23);
+        FormInput.add(GastrointestinalLidah);
+        GastrointestinalLidah.setBounds(113, 730, 130, 23);
 
-        KebiasaanJumlahRokok7.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok7.setName("KebiasaanJumlahRokok7"); // NOI18N
-        KebiasaanJumlahRokok7.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetGastrointestinalLidah.setFocusTraversalPolicyProvider(true);
+        KetGastrointestinalLidah.setName("KetGastrointestinalLidah"); // NOI18N
+        KetGastrointestinalLidah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok7KeyPressed(evt);
+                KetGastrointestinalLidahKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok7);
-        KebiasaanJumlahRokok7.setBounds(247, 730, 164, 23);
+        FormInput.add(KetGastrointestinalLidah);
+        KetGastrointestinalLidah.setBounds(247, 730, 164, 23);
 
         jLabel150.setText("Tenggorokan :");
         jLabel150.setName("jLabel150"); // NOI18N
         FormInput.add(jLabel150);
         jLabel150.setBounds(452, 730, 80, 23);
 
-        KebiasaanMerokok20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Gangguan Menelan", "Sakit Menelan", "Lain-lain" }));
-        KebiasaanMerokok20.setName("KebiasaanMerokok20"); // NOI18N
-        KebiasaanMerokok20.addKeyListener(new java.awt.event.KeyAdapter() {
+        GastrointestinalTenggorakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Gangguan Menelan", "Sakit Menelan", "Lain-lain" }));
+        GastrointestinalTenggorakan.setName("GastrointestinalTenggorakan"); // NOI18N
+        GastrointestinalTenggorakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok20KeyPressed(evt);
+                GastrointestinalTenggorakanKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok20);
-        KebiasaanMerokok20.setBounds(536, 730, 150, 23);
+        FormInput.add(GastrointestinalTenggorakan);
+        GastrointestinalTenggorakan.setBounds(536, 730, 150, 23);
 
-        KebiasaanJumlahRokok9.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok9.setName("KebiasaanJumlahRokok9"); // NOI18N
-        KebiasaanJumlahRokok9.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetGastrointestinalTenggorakan.setFocusTraversalPolicyProvider(true);
+        KetGastrointestinalTenggorakan.setName("KetGastrointestinalTenggorakan"); // NOI18N
+        KetGastrointestinalTenggorakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok9KeyPressed(evt);
+                KetGastrointestinalTenggorakanKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok9);
-        KebiasaanJumlahRokok9.setBounds(690, 730, 164, 23);
+        FormInput.add(KetGastrointestinalTenggorakan);
+        KetGastrointestinalTenggorakan.setBounds(690, 730, 164, 23);
 
         jLabel151.setText("Abdomen :");
         jLabel151.setName("jLabel151"); // NOI18N
         FormInput.add(jLabel151);
         jLabel151.setBounds(452, 700, 80, 23);
 
-        KebiasaanMerokok21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Supel", "Asictes", "Tegang", "Nyeri Tekan/Lepas", "Lain-lain" }));
-        KebiasaanMerokok21.setName("KebiasaanMerokok21"); // NOI18N
-        KebiasaanMerokok21.addKeyListener(new java.awt.event.KeyAdapter() {
+        GastrointestinalAbdomen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Supel", "Asictes", "Tegang", "Nyeri Tekan/Lepas", "Lain-lain" }));
+        GastrointestinalAbdomen.setName("GastrointestinalAbdomen"); // NOI18N
+        GastrointestinalAbdomen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok21KeyPressed(evt);
+                GastrointestinalAbdomenKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok21);
-        KebiasaanMerokok21.setBounds(536, 700, 150, 23);
+        FormInput.add(GastrointestinalAbdomen);
+        GastrointestinalAbdomen.setBounds(536, 700, 150, 23);
 
-        KebiasaanJumlahRokok10.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok10.setName("KebiasaanJumlahRokok10"); // NOI18N
-        KebiasaanJumlahRokok10.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetGastrointestinalAbdomen.setFocusTraversalPolicyProvider(true);
+        KetGastrointestinalAbdomen.setName("KetGastrointestinalAbdomen"); // NOI18N
+        KetGastrointestinalAbdomen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok10KeyPressed(evt);
+                KetGastrointestinalAbdomenKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok10);
-        KebiasaanJumlahRokok10.setBounds(690, 700, 164, 23);
+        FormInput.add(KetGastrointestinalAbdomen);
+        KetGastrointestinalAbdomen.setBounds(690, 700, 164, 23);
 
         jLabel152.setText("Peistatik Usus :");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
         jLabel152.setBounds(586, 760, 100, 23);
 
-        KebiasaanMerokok22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Tidak Ada Bising Usus", "Hiperistaltik" }));
-        KebiasaanMerokok22.setName("KebiasaanMerokok22"); // NOI18N
-        KebiasaanMerokok22.addKeyListener(new java.awt.event.KeyAdapter() {
+        GastrointestinalUsus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Tidak Ada Bising Usus", "Hiperistaltik" }));
+        GastrointestinalUsus.setName("GastrointestinalUsus"); // NOI18N
+        GastrointestinalUsus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok22KeyPressed(evt);
+                GastrointestinalUsusKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok22);
-        KebiasaanMerokok22.setBounds(690, 760, 164, 23);
+        FormInput.add(GastrointestinalUsus);
+        GastrointestinalUsus.setBounds(690, 760, 164, 23);
 
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel50.setText("Neurologi :");
@@ -6799,88 +6799,88 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_KetKardiovaskularSirkulasiKeyPressed
 
     private void KardiovaskularDenyutNadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KardiovaskularDenyutNadiKeyPressed
-        Valid.pindah(evt,KetKardiovaskularSirkulasi,RespirasiRetraksi;
+        Valid.pindah(evt,KetKardiovaskularSirkulasi,RespirasiRetraksi);
     }//GEN-LAST:event_KardiovaskularDenyutNadiKeyPressed
 
     private void RespirasiRetraksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespirasiRetraksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KardiovaskularDenyutNadi,RespirasiPolaNafas);
     }//GEN-LAST:event_RespirasiRetraksiKeyPressed
 
     private void RespirasiPolaNafasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespirasiPolaNafasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RespirasiRetraksi,RespirasiSuaraNafas);
     }//GEN-LAST:event_RespirasiPolaNafasKeyPressed
 
     private void RespirasiSuaraNafasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespirasiSuaraNafasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RespirasiPolaNafas,RespirasiBatuk);
     }//GEN-LAST:event_RespirasiSuaraNafasKeyPressed
 
     private void RespirasiIramaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespirasiIramaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetRespirasiJenisPernafasan,GastrointestinalMulut);
     }//GEN-LAST:event_RespirasiIramaKeyPressed
 
     private void RespirasiVolumeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespirasiVolumeKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RespirasiBatuk,RespirasiJenisPernafasan);
     }//GEN-LAST:event_RespirasiVolumeKeyPressed
 
     private void RespirasiJenisPernafasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespirasiJenisPernafasanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RespirasiVolume,KetRespirasiJenisPernafasan);
     }//GEN-LAST:event_RespirasiJenisPernafasanKeyPressed
 
     private void KetRespirasiJenisPernafasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetRespirasiJenisPernafasanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RespirasiJenisPernafasan,RespirasiIrama);
     }//GEN-LAST:event_KetRespirasiJenisPernafasanKeyPressed
 
     private void RespirasiBatukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespirasiBatukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RespirasiSuaraNafas,RespirasiVolume);
     }//GEN-LAST:event_RespirasiBatukKeyPressed
 
-    private void KebiasaanMerokok16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok16KeyPressed
+    private void GastrointestinalMulutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalMulutKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok16KeyPressed
+    }//GEN-LAST:event_GastrointestinalMulutKeyPressed
 
-    private void KebiasaanJumlahRokok8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok8KeyPressed
+    private void KetGastrointestinalGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalGigiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok8KeyPressed
+    }//GEN-LAST:event_KetGastrointestinalGigiKeyPressed
 
-    private void KebiasaanMerokok19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok19KeyPressed
+    private void GastrointestinalAnusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalAnusKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok19KeyPressed
+    }//GEN-LAST:event_GastrointestinalAnusKeyPressed
 
-    private void KebiasaanMerokok18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok18KeyPressed
+    private void GastrointestinalGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalGigiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok18KeyPressed
+    }//GEN-LAST:event_GastrointestinalGigiKeyPressed
 
-    private void KebiasaanJumlahRokok6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok6KeyPressed
+    private void KetGastrointestinalMulutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalMulutKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok6KeyPressed
+    }//GEN-LAST:event_KetGastrointestinalMulutKeyPressed
 
-    private void KebiasaanMerokok17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok17KeyPressed
+    private void GastrointestinalLidahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalLidahKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok17KeyPressed
+    }//GEN-LAST:event_GastrointestinalLidahKeyPressed
 
-    private void KebiasaanJumlahRokok7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok7KeyPressed
+    private void KetGastrointestinalLidahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalLidahKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok7KeyPressed
+    }//GEN-LAST:event_KetGastrointestinalLidahKeyPressed
 
-    private void KebiasaanMerokok20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok20KeyPressed
+    private void GastrointestinalTenggorakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalTenggorakanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok20KeyPressed
+    }//GEN-LAST:event_GastrointestinalTenggorakanKeyPressed
 
-    private void KebiasaanJumlahRokok9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok9KeyPressed
+    private void KetGastrointestinalTenggorakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalTenggorakanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok9KeyPressed
+    }//GEN-LAST:event_KetGastrointestinalTenggorakanKeyPressed
 
-    private void KebiasaanMerokok21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok21KeyPressed
+    private void GastrointestinalAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalAbdomenKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok21KeyPressed
+    }//GEN-LAST:event_GastrointestinalAbdomenKeyPressed
 
-    private void KebiasaanJumlahRokok10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok10KeyPressed
+    private void KetGastrointestinalAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalAbdomenKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok10KeyPressed
+    }//GEN-LAST:event_KetGastrointestinalAbdomenKeyPressed
 
-    private void KebiasaanMerokok22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok22KeyPressed
+    private void GastrointestinalUsusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalUsusKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok22KeyPressed
+    }//GEN-LAST:event_GastrointestinalUsusKeyPressed
 
     private void KebiasaanMerokok23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok23KeyPressed
         // TODO add your handling code here:
@@ -7615,6 +7615,13 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.PanelBiasa FormMenu;
     private widget.TextBox GCS;
     private widget.ComboBox GangguanJiwa;
+    private widget.ComboBox GastrointestinalAbdomen;
+    private widget.ComboBox GastrointestinalAnus;
+    private widget.ComboBox GastrointestinalGigi;
+    private widget.ComboBox GastrointestinalLidah;
+    private widget.ComboBox GastrointestinalMulut;
+    private widget.ComboBox GastrointestinalTenggorakan;
+    private widget.ComboBox GastrointestinalUsus;
     private widget.ComboBox HubunganAnggotaKeluarga;
     private widget.ComboBox JK;
     private widget.TextBox JenisPersalinan;
@@ -7631,24 +7638,12 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.ComboBox KebiasaanAlkohol;
     private widget.TextBox KebiasaanJumlahAlkohol;
     private widget.TextBox KebiasaanJumlahRokok;
-    private widget.TextBox KebiasaanJumlahRokok10;
     private widget.TextBox KebiasaanJumlahRokok11;
     private widget.TextBox KebiasaanJumlahRokok12;
     private widget.TextBox KebiasaanJumlahRokok13;
     private widget.TextBox KebiasaanJumlahRokok14;
     private widget.TextBox KebiasaanJumlahRokok15;
-    private widget.TextBox KebiasaanJumlahRokok6;
-    private widget.TextBox KebiasaanJumlahRokok7;
-    private widget.TextBox KebiasaanJumlahRokok8;
-    private widget.TextBox KebiasaanJumlahRokok9;
     private widget.ComboBox KebiasaanMerokok;
-    private widget.ComboBox KebiasaanMerokok16;
-    private widget.ComboBox KebiasaanMerokok17;
-    private widget.ComboBox KebiasaanMerokok18;
-    private widget.ComboBox KebiasaanMerokok19;
-    private widget.ComboBox KebiasaanMerokok20;
-    private widget.ComboBox KebiasaanMerokok21;
-    private widget.ComboBox KebiasaanMerokok22;
     private widget.ComboBox KebiasaanMerokok23;
     private widget.ComboBox KebiasaanMerokok24;
     private widget.ComboBox KebiasaanMerokok25;
@@ -7677,6 +7672,11 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.TextBox KesadaranMental;
     private widget.ComboBox KesimpulanGangguanFungsi;
     private widget.TextBox KetAnamnesis;
+    private widget.TextBox KetGastrointestinalAbdomen;
+    private widget.TextBox KetGastrointestinalGigi;
+    private widget.TextBox KetGastrointestinalLidah;
+    private widget.TextBox KetGastrointestinalMulut;
+    private widget.TextBox KetGastrointestinalTenggorakan;
     private widget.TextBox KetKardiovaskularSirkulasi;
     private widget.TextBox KetNyeri;
     private widget.TextBox KetPadaDokter;
