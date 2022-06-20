@@ -693,7 +693,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.soap_ranap_polri,user.laporan_penyakit_polri,user.jumlah_pengunjung_ralan_polri,user.catatan_observasi_igd,user.catatan_observasi_ranap,"+
                 "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht,user.penilaian_psikologi,"+
                 "user.audit_cuci_tangan_medis,user.audit_pembuangan_limbah,user.ruang_audit_kepatuhan,user.audit_pembuangan_benda_tajam,user.audit_penanganan_darah,"+
-                "user.audit_pengelolaan_linen_kotor,user.audit_penempatan_pasien,user.audit_kamar_jenazah from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.audit_pengelolaan_linen_kotor,user.audit_penempatan_pasien,user.audit_kamar_jenazah,user.audit_bundle_iadp from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1048,6 +1048,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Audit Kamar Jenazah".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Audit Kamar Jenazah",rs.getBoolean("audit_kamar_jenazah")});
+                    }
+                    
+                    if("[C]Audit Bundle IADP".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Audit Bundle IADP",rs.getBoolean("audit_bundle_iadp")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4411,6 +4415,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[C]Audit Kamar Jenazah".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_kamar_jenazah='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[C]Audit Bundle IADP".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_bundle_iadp='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){

@@ -875,26 +875,26 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         KetNeurologiBicara = new widget.TextBox();
         jLabel51 = new widget.Label();
         jLabel160 = new widget.Label();
-        KebiasaanMerokok30 = new widget.ComboBox();
+        IntegumentKulit = new widget.ComboBox();
         jLabel161 = new widget.Label();
-        KebiasaanMerokok31 = new widget.ComboBox();
+        IntegumentWarnaKulit = new widget.ComboBox();
         jLabel162 = new widget.Label();
-        KebiasaanMerokok32 = new widget.ComboBox();
-        KebiasaanMerokok33 = new widget.ComboBox();
+        IntegumentTurgor = new widget.ComboBox();
+        IntegumentDecubitus = new widget.ComboBox();
         jLabel163 = new widget.Label();
         jLabel52 = new widget.Label();
         jLabel164 = new widget.Label();
-        KebiasaanMerokok34 = new widget.ComboBox();
-        KebiasaanJumlahRokok13 = new widget.TextBox();
-        KebiasaanJumlahRokok14 = new widget.TextBox();
-        KebiasaanMerokok35 = new widget.ComboBox();
+        MuskuloskletalOedema = new widget.ComboBox();
+        KetMuskuloskletalOedema = new widget.TextBox();
+        KetMuskuloskletalFraktur = new widget.TextBox();
+        MuskuloskletalFraktur = new widget.ComboBox();
         jLabel165 = new widget.Label();
         jLabel166 = new widget.Label();
-        KebiasaanMerokok36 = new widget.ComboBox();
-        KebiasaanJumlahRokok15 = new widget.TextBox();
+        MuskuloskletalNyeriSendi = new widget.ComboBox();
+        KetMuskuloskletalNyeriSendi = new widget.TextBox();
         jLabel167 = new widget.Label();
-        KebiasaanMerokok37 = new widget.ComboBox();
-        KebiasaanMerokok38 = new widget.ComboBox();
+        MuskuloskletalPegerakanSendi = new widget.ComboBox();
+        MuskuloskletalKekuatanOtot = new widget.ComboBox();
         jLabel168 = new widget.Label();
         jLabel53 = new widget.Label();
         jLabel113 = new widget.Label();
@@ -2895,55 +2895,55 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel160);
         jLabel160.setBounds(0, 890, 109, 23);
 
-        KebiasaanMerokok30.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Rash/Kemerahan", "Luka", "Memar", "Ptekie", "Bula" }));
-        KebiasaanMerokok30.setName("KebiasaanMerokok30"); // NOI18N
-        KebiasaanMerokok30.addKeyListener(new java.awt.event.KeyAdapter() {
+        IntegumentKulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Rash/Kemerahan", "Luka", "Memar", "Ptekie", "Bula" }));
+        IntegumentKulit.setName("IntegumentKulit"); // NOI18N
+        IntegumentKulit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok30KeyPressed(evt);
+                IntegumentKulitKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok30);
-        KebiasaanMerokok30.setBounds(113, 890, 134, 23);
+        FormInput.add(IntegumentKulit);
+        IntegumentKulit.setBounds(113, 890, 134, 23);
 
         jLabel161.setText("Warna Kulit :");
         jLabel161.setName("jLabel161"); // NOI18N
         FormInput.add(jLabel161);
         jLabel161.setBounds(251, 890, 70, 23);
 
-        KebiasaanMerokok31.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Pucat", "Sianosis", "Lain-lain" }));
-        KebiasaanMerokok31.setName("KebiasaanMerokok31"); // NOI18N
-        KebiasaanMerokok31.addKeyListener(new java.awt.event.KeyAdapter() {
+        IntegumentWarnaKulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Pucat", "Sianosis", "Lain-lain" }));
+        IntegumentWarnaKulit.setName("IntegumentWarnaKulit"); // NOI18N
+        IntegumentWarnaKulit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok31KeyPressed(evt);
+                IntegumentWarnaKulitKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok31);
-        KebiasaanMerokok31.setBounds(325, 890, 92, 23);
+        FormInput.add(IntegumentWarnaKulit);
+        IntegumentWarnaKulit.setBounds(325, 890, 92, 23);
 
         jLabel162.setText("Turgor :");
         jLabel162.setName("jLabel162"); // NOI18N
         FormInput.add(jLabel162);
         jLabel162.setBounds(420, 890, 48, 23);
 
-        KebiasaanMerokok32.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Sedang", "Buruk" }));
-        KebiasaanMerokok32.setName("KebiasaanMerokok32"); // NOI18N
-        KebiasaanMerokok32.addKeyListener(new java.awt.event.KeyAdapter() {
+        IntegumentTurgor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Sedang", "Buruk" }));
+        IntegumentTurgor.setName("IntegumentTurgor"); // NOI18N
+        IntegumentTurgor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok32KeyPressed(evt);
+                IntegumentTurgorKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok32);
-        KebiasaanMerokok32.setBounds(472, 890, 86, 23);
+        FormInput.add(IntegumentTurgor);
+        IntegumentTurgor.setBounds(472, 890, 86, 23);
 
-        KebiasaanMerokok33.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Usia > 65 tahun", "Obesitas", "Imobilisasi", "Paraplegi/Vegetative State ", "Dirawat Di HCU", "Penyakit Kronis (DM, CHF, CKD)", "Inkontinentia Uri/Alvi" }));
-        KebiasaanMerokok33.setName("KebiasaanMerokok33"); // NOI18N
-        KebiasaanMerokok33.addKeyListener(new java.awt.event.KeyAdapter() {
+        IntegumentDecubitus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Usia > 65 tahun", "Obesitas", "Imobilisasi", "Paraplegi/Vegetative State ", "Dirawat Di HCU", "Penyakit Kronis (DM, CHF, CKD)", "Inkontinentia Uri/Alvi" }));
+        IntegumentDecubitus.setName("IntegumentDecubitus"); // NOI18N
+        IntegumentDecubitus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok33KeyPressed(evt);
+                IntegumentDecubitusKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok33);
-        KebiasaanMerokok33.setBounds(652, 890, 202, 23);
+        FormInput.add(IntegumentDecubitus);
+        IntegumentDecubitus.setBounds(652, 890, 202, 23);
 
         jLabel163.setText("Resiko Decubi :");
         jLabel163.setName("jLabel163"); // NOI18N
@@ -2961,45 +2961,45 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel164);
         jLabel164.setBounds(0, 940, 109, 23);
 
-        KebiasaanMerokok34.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
-        KebiasaanMerokok34.setName("KebiasaanMerokok34"); // NOI18N
-        KebiasaanMerokok34.addKeyListener(new java.awt.event.KeyAdapter() {
+        MuskuloskletalOedema.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        MuskuloskletalOedema.setName("MuskuloskletalOedema"); // NOI18N
+        MuskuloskletalOedema.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok34KeyPressed(evt);
+                MuskuloskletalOedemaKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok34);
-        KebiasaanMerokok34.setBounds(113, 940, 100, 23);
+        FormInput.add(MuskuloskletalOedema);
+        MuskuloskletalOedema.setBounds(113, 940, 100, 23);
 
-        KebiasaanJumlahRokok13.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok13.setName("KebiasaanJumlahRokok13"); // NOI18N
-        KebiasaanJumlahRokok13.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetMuskuloskletalOedema.setFocusTraversalPolicyProvider(true);
+        KetMuskuloskletalOedema.setName("KetMuskuloskletalOedema"); // NOI18N
+        KetMuskuloskletalOedema.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok13KeyPressed(evt);
+                KetMuskuloskletalOedemaKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok13);
-        KebiasaanJumlahRokok13.setBounds(217, 940, 220, 23);
+        FormInput.add(KetMuskuloskletalOedema);
+        KetMuskuloskletalOedema.setBounds(217, 940, 220, 23);
 
-        KebiasaanJumlahRokok14.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok14.setName("KebiasaanJumlahRokok14"); // NOI18N
-        KebiasaanJumlahRokok14.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetMuskuloskletalFraktur.setFocusTraversalPolicyProvider(true);
+        KetMuskuloskletalFraktur.setName("KetMuskuloskletalFraktur"); // NOI18N
+        KetMuskuloskletalFraktur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok14KeyPressed(evt);
+                KetMuskuloskletalFrakturKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok14);
-        KebiasaanJumlahRokok14.setBounds(217, 970, 220, 23);
+        FormInput.add(KetMuskuloskletalFraktur);
+        KetMuskuloskletalFraktur.setBounds(217, 970, 220, 23);
 
-        KebiasaanMerokok35.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
-        KebiasaanMerokok35.setName("KebiasaanMerokok35"); // NOI18N
-        KebiasaanMerokok35.addKeyListener(new java.awt.event.KeyAdapter() {
+        MuskuloskletalFraktur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        MuskuloskletalFraktur.setName("MuskuloskletalFraktur"); // NOI18N
+        MuskuloskletalFraktur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok35KeyPressed(evt);
+                MuskuloskletalFrakturKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok35);
-        KebiasaanMerokok35.setBounds(113, 970, 100, 23);
+        FormInput.add(MuskuloskletalFraktur);
+        MuskuloskletalFraktur.setBounds(113, 970, 100, 23);
 
         jLabel165.setText("Fraktur :");
         jLabel165.setName("jLabel165"); // NOI18N
@@ -3011,50 +3011,50 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel166);
         jLabel166.setBounds(446, 970, 80, 23);
 
-        KebiasaanMerokok36.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
-        KebiasaanMerokok36.setName("KebiasaanMerokok36"); // NOI18N
-        KebiasaanMerokok36.addKeyListener(new java.awt.event.KeyAdapter() {
+        MuskuloskletalNyeriSendi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        MuskuloskletalNyeriSendi.setName("MuskuloskletalNyeriSendi"); // NOI18N
+        MuskuloskletalNyeriSendi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok36KeyPressed(evt);
+                MuskuloskletalNyeriSendiKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok36);
-        KebiasaanMerokok36.setBounds(530, 970, 100, 23);
+        FormInput.add(MuskuloskletalNyeriSendi);
+        MuskuloskletalNyeriSendi.setBounds(530, 970, 100, 23);
 
-        KebiasaanJumlahRokok15.setFocusTraversalPolicyProvider(true);
-        KebiasaanJumlahRokok15.setName("KebiasaanJumlahRokok15"); // NOI18N
-        KebiasaanJumlahRokok15.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetMuskuloskletalNyeriSendi.setFocusTraversalPolicyProvider(true);
+        KetMuskuloskletalNyeriSendi.setName("KetMuskuloskletalNyeriSendi"); // NOI18N
+        KetMuskuloskletalNyeriSendi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanJumlahRokok15KeyPressed(evt);
+                KetMuskuloskletalNyeriSendiKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanJumlahRokok15);
-        KebiasaanJumlahRokok15.setBounds(634, 970, 220, 23);
+        FormInput.add(KetMuskuloskletalNyeriSendi);
+        KetMuskuloskletalNyeriSendi.setBounds(634, 970, 220, 23);
 
         jLabel167.setText("Pergerakan Sendi :");
         jLabel167.setName("jLabel167"); // NOI18N
         FormInput.add(jLabel167);
         jLabel167.setBounds(452, 940, 109, 23);
 
-        KebiasaanMerokok37.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bebas", "Terbatas" }));
-        KebiasaanMerokok37.setName("KebiasaanMerokok37"); // NOI18N
-        KebiasaanMerokok37.addKeyListener(new java.awt.event.KeyAdapter() {
+        MuskuloskletalPegerakanSendi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bebas", "Terbatas" }));
+        MuskuloskletalPegerakanSendi.setName("MuskuloskletalPegerakanSendi"); // NOI18N
+        MuskuloskletalPegerakanSendi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok37KeyPressed(evt);
+                MuskuloskletalPegerakanSendiKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok37);
-        KebiasaanMerokok37.setBounds(565, 940, 93, 23);
+        FormInput.add(MuskuloskletalPegerakanSendi);
+        MuskuloskletalPegerakanSendi.setBounds(565, 940, 93, 23);
 
-        KebiasaanMerokok38.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Lemah", "Tremor" }));
-        KebiasaanMerokok38.setName("KebiasaanMerokok38"); // NOI18N
-        KebiasaanMerokok38.addKeyListener(new java.awt.event.KeyAdapter() {
+        MuskuloskletalKekuatanOtot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Lemah", "Tremor" }));
+        MuskuloskletalKekuatanOtot.setName("MuskuloskletalKekuatanOtot"); // NOI18N
+        MuskuloskletalKekuatanOtot.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KebiasaanMerokok38KeyPressed(evt);
+                MuskuloskletalKekuatanOtotKeyPressed(evt);
             }
         });
-        FormInput.add(KebiasaanMerokok38);
-        KebiasaanMerokok38.setBounds(769, 940, 85, 23);
+        FormInput.add(MuskuloskletalKekuatanOtot);
+        MuskuloskletalKekuatanOtot.setBounds(769, 940, 85, 23);
 
         jLabel168.setText("Kekuatan Otot :");
         jLabel168.setName("jLabel168"); // NOI18N
@@ -6879,92 +6879,92 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_KetGastrointestinalAbdomenKeyPressed
 
     private void GastrointestinalUsusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalUsusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GastrointestinalAnus,NeurologiSensorik);
     }//GEN-LAST:event_GastrointestinalUsusKeyPressed
 
     private void NeurologiSensorikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiSensorikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GastrointestinalUsus,NeurologiPenglihatan);
     }//GEN-LAST:event_NeurologiSensorikKeyPressed
 
     private void NeurologiMotorikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiMotorikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NeurologiAlatBantuPenglihatan,NeurologiPendengaran);
     }//GEN-LAST:event_NeurologiMotorikKeyPressed
 
     private void NeurologiOtotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiOtotKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetNeurologiBicara,IntegumentKulit);
     }//GEN-LAST:event_NeurologiOtotKeyPressed
 
     private void NeurologiPenglihatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiPenglihatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NeurologiSensorik,KetNeurologiPenglihatan);
     }//GEN-LAST:event_NeurologiPenglihatanKeyPressed
 
     private void KetNeurologiPenglihatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetNeurologiPenglihatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NeurologiPenglihatan,NeurologiAlatBantuPenglihatan);
     }//GEN-LAST:event_KetNeurologiPenglihatanKeyPressed
 
     private void NeurologiAlatBantuPenglihatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiAlatBantuPenglihatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetNeurologiPenglihatan,NeurologiMotorik);
     }//GEN-LAST:event_NeurologiAlatBantuPenglihatanKeyPressed
 
     private void NeurologiPendengaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiPendengaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NeurologiMotorik,NeurologiBicara);
     }//GEN-LAST:event_NeurologiPendengaranKeyPressed
 
     private void NeurologiBicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiBicaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NeurologiPendengaran,KetNeurologiBicara);
     }//GEN-LAST:event_NeurologiBicaraKeyPressed
 
     private void KetNeurologiBicaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetNeurologiBicaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NeurologiBicara,NeurologiOtot);
     }//GEN-LAST:event_KetNeurologiBicaraKeyPressed
 
-    private void KebiasaanMerokok30KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok30KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok30KeyPressed
+    private void IntegumentKulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntegumentKulitKeyPressed
+        Valid.pindah(evt,NeurologiOtot,IntegumentWarnaKulit);
+    }//GEN-LAST:event_IntegumentKulitKeyPressed
 
-    private void KebiasaanMerokok31KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok31KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok31KeyPressed
+    private void IntegumentWarnaKulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntegumentWarnaKulitKeyPressed
+        Valid.pindah(evt,IntegumentKulit,IntegumentTurgor);
+    }//GEN-LAST:event_IntegumentWarnaKulitKeyPressed
 
-    private void KebiasaanMerokok32KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok32KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok32KeyPressed
+    private void IntegumentTurgorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntegumentTurgorKeyPressed
+        Valid.pindah(evt,IntegumentWarnaKulit,IntegumentDecubitus);
+    }//GEN-LAST:event_IntegumentTurgorKeyPressed
 
-    private void KebiasaanMerokok33KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok33KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok33KeyPressed
+    private void IntegumentDecubitusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IntegumentDecubitusKeyPressed
+        Valid.pindah(evt,IntegumentTurgor,MuskuloskletalOedema);
+    }//GEN-LAST:event_IntegumentDecubitusKeyPressed
 
-    private void KebiasaanMerokok34KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok34KeyPressed
+    private void MuskuloskletalOedemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuskuloskletalOedemaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok34KeyPressed
+    }//GEN-LAST:event_MuskuloskletalOedemaKeyPressed
 
-    private void KebiasaanJumlahRokok13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok13KeyPressed
+    private void KetMuskuloskletalOedemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetMuskuloskletalOedemaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok13KeyPressed
+    }//GEN-LAST:event_KetMuskuloskletalOedemaKeyPressed
 
-    private void KebiasaanJumlahRokok14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok14KeyPressed
+    private void KetMuskuloskletalFrakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetMuskuloskletalFrakturKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok14KeyPressed
+    }//GEN-LAST:event_KetMuskuloskletalFrakturKeyPressed
 
-    private void KebiasaanMerokok35KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok35KeyPressed
+    private void MuskuloskletalFrakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuskuloskletalFrakturKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok35KeyPressed
+    }//GEN-LAST:event_MuskuloskletalFrakturKeyPressed
 
-    private void KebiasaanMerokok36KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok36KeyPressed
+    private void MuskuloskletalNyeriSendiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuskuloskletalNyeriSendiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok36KeyPressed
+    }//GEN-LAST:event_MuskuloskletalNyeriSendiKeyPressed
 
-    private void KebiasaanJumlahRokok15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanJumlahRokok15KeyPressed
+    private void KetMuskuloskletalNyeriSendiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetMuskuloskletalNyeriSendiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanJumlahRokok15KeyPressed
+    }//GEN-LAST:event_KetMuskuloskletalNyeriSendiKeyPressed
 
-    private void KebiasaanMerokok37KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok37KeyPressed
+    private void MuskuloskletalPegerakanSendiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuskuloskletalPegerakanSendiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok37KeyPressed
+    }//GEN-LAST:event_MuskuloskletalPegerakanSendiKeyPressed
 
-    private void KebiasaanMerokok38KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMerokok38KeyPressed
+    private void MuskuloskletalKekuatanOtotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuskuloskletalKekuatanOtotKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KebiasaanMerokok38KeyPressed
+    }//GEN-LAST:event_MuskuloskletalKekuatanOtotKeyPressed
 
     private void KBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KBABKeyPressed
         Valid.pindah(evt,XBAB,WBAB);
@@ -7623,6 +7623,10 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.ComboBox GastrointestinalTenggorakan;
     private widget.ComboBox GastrointestinalUsus;
     private widget.ComboBox HubunganAnggotaKeluarga;
+    private widget.ComboBox IntegumentDecubitus;
+    private widget.ComboBox IntegumentKulit;
+    private widget.ComboBox IntegumentTurgor;
+    private widget.ComboBox IntegumentWarnaKulit;
     private widget.ComboBox JK;
     private widget.TextBox JenisPersalinan;
     private widget.TextBox Jk;
@@ -7638,19 +7642,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.ComboBox KebiasaanAlkohol;
     private widget.TextBox KebiasaanJumlahAlkohol;
     private widget.TextBox KebiasaanJumlahRokok;
-    private widget.TextBox KebiasaanJumlahRokok13;
-    private widget.TextBox KebiasaanJumlahRokok14;
-    private widget.TextBox KebiasaanJumlahRokok15;
     private widget.ComboBox KebiasaanMerokok;
-    private widget.ComboBox KebiasaanMerokok30;
-    private widget.ComboBox KebiasaanMerokok31;
-    private widget.ComboBox KebiasaanMerokok32;
-    private widget.ComboBox KebiasaanMerokok33;
-    private widget.ComboBox KebiasaanMerokok34;
-    private widget.ComboBox KebiasaanMerokok35;
-    private widget.ComboBox KebiasaanMerokok36;
-    private widget.ComboBox KebiasaanMerokok37;
-    private widget.ComboBox KebiasaanMerokok38;
     private widget.ComboBox KebiasaanMerokok39;
     private widget.ComboBox KebiasaanMerokok44;
     private widget.ComboBox KebiasaanMerokok45;
@@ -7669,6 +7661,9 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.TextBox KetGastrointestinalMulut;
     private widget.TextBox KetGastrointestinalTenggorakan;
     private widget.TextBox KetKardiovaskularSirkulasi;
+    private widget.TextBox KetMuskuloskletalFraktur;
+    private widget.TextBox KetMuskuloskletalNyeriSendi;
+    private widget.TextBox KetMuskuloskletalOedema;
     private widget.TextBox KetNeurologiBicara;
     private widget.TextBox KetNeurologiPenglihatan;
     private widget.TextBox KetNyeri;
@@ -7697,6 +7692,11 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     private widget.TextBox Lokasi;
     private widget.ComboBox MacamKasus;
     private widget.ComboBox Menyebar;
+    private widget.ComboBox MuskuloskletalFraktur;
+    private widget.ComboBox MuskuloskletalKekuatanOtot;
+    private widget.ComboBox MuskuloskletalNyeriSendi;
+    private widget.ComboBox MuskuloskletalOedema;
+    private widget.ComboBox MuskuloskletalPegerakanSendi;
     private widget.TextBox Nadi;
     private widget.ComboBox NeurologiAlatBantuPenglihatan;
     private widget.ComboBox NeurologiBicara;
