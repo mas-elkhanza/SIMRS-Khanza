@@ -1000,8 +1000,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                     "audit_cuci_tangan_medis.sebelum_tehnik_aseptik,audit_cuci_tangan_medis.setelah_terpapar_cairan_tubuh_pasien,"+
                     "audit_cuci_tangan_medis.setelah_kontak_dengan_pasien,audit_cuci_tangan_medis.setelah_kontak_dengan_lingkungan_pasien "+
                     "from audit_cuci_tangan_medis inner join pegawai on audit_cuci_tangan_medis.nik=pegawai.nik "+
-                    "where audit_cuci_tangan_medis.tanggal between ? and ? "+
-                    "and (audit_cuci_tangan_medis.nik like ? or pegawai.nama like ?) order by audit_cuci_tangan_medis.tanggal");
+                    "where audit_cuci_tangan_medis.tanggal between ? and ? and (audit_cuci_tangan_medis.nik like ? or pegawai.nama like ?) order by audit_cuci_tangan_medis.tanggal");
             }
                 
             try {

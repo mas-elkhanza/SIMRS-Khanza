@@ -1749,7 +1749,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(TibadiRuang);
         TibadiRuang.setBounds(516, 100, 155, 23);
 
-        jLabel37.setText("Tiba di Ruang Rawat :");
+        jLabel37.setText("Tiba Di Ruang Rawat :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
         jLabel37.setBounds(392, 100, 120, 23);
@@ -2652,7 +2652,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         jLabel149.setText("Anus :");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(405, 760, 50, 23);
+        jLabel149.setBounds(692, 760, 50, 23);
 
         GastrointestinalAnus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Atresia Ani" }));
         GastrointestinalAnus.setName("GastrointestinalAnus"); // NOI18N
@@ -2662,7 +2662,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(GastrointestinalAnus);
-        GastrointestinalAnus.setBounds(459, 760, 108, 23);
+        GastrointestinalAnus.setBounds(746, 760, 108, 23);
 
         jLabel147.setText("Lidah :");
         jLabel147.setName("jLabel147"); // NOI18N
@@ -2742,7 +2742,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         jLabel152.setText("Peistatik Usus :");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
-        jLabel152.setBounds(586, 760, 100, 23);
+        jLabel152.setBounds(396, 760, 100, 23);
 
         GastrointestinalUsus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Tidak Ada Bising Usus", "Hiperistaltik" }));
         GastrointestinalUsus.setName("GastrointestinalUsus"); // NOI18N
@@ -2752,7 +2752,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(GastrointestinalUsus);
-        GastrointestinalUsus.setBounds(690, 760, 164, 23);
+        GastrointestinalUsus.setBounds(500, 760, 164, 23);
 
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel50.setText("Neurologi :");
@@ -6852,11 +6852,11 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_GastrointestinalMulutKeyPressed
 
     private void KetGastrointestinalGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalGigiKeyPressed
-        Valid.pindah(evt,GastrointestinalGigi,GastrointestinalTenggorakan);
+        Valid.pindah(evt,GastrointestinalGigi,GastrointestinalUsus);
     }//GEN-LAST:event_KetGastrointestinalGigiKeyPressed
 
     private void GastrointestinalAnusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalAnusKeyPressed
-        Valid.pindah(evt,KetGastrointestinalAbdomen,GastrointestinalUsus);
+        Valid.pindah(evt,GastrointestinalUsus,NeurologiSensorik);
     }//GEN-LAST:event_GastrointestinalAnusKeyPressed
 
     private void GastrointestinalGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalGigiKeyPressed
@@ -6892,11 +6892,11 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_KetGastrointestinalAbdomenKeyPressed
 
     private void GastrointestinalUsusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalUsusKeyPressed
-        Valid.pindah(evt,GastrointestinalAnus,NeurologiSensorik);
+        Valid.pindah(evt,KetGastrointestinalGigi,GastrointestinalAnus);
     }//GEN-LAST:event_GastrointestinalUsusKeyPressed
 
     private void NeurologiSensorikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiSensorikKeyPressed
-        Valid.pindah(evt,GastrointestinalUsus,NeurologiPenglihatan);
+        Valid.pindah(evt,GastrointestinalAnus,NeurologiPenglihatan);
     }//GEN-LAST:event_NeurologiSensorikKeyPressed
 
     private void NeurologiMotorikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NeurologiMotorikKeyPressed
@@ -8292,14 +8292,204 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     public void emptTeks() {
         TglAsuhan.setDate(new Date());
         Anamnesis.setSelectedIndex(0);
+        KetAnamnesis.setText("");
         TibadiRuang.setSelectedIndex(0);
         CaraMasuk.setSelectedIndex(0);
+        MacamKasus.setSelectedIndex(0);
         RPS.setText("");
         RPD.setText("");
         RPK.setText("");
         RPO.setText("");
+        RPembedahan.setText("");
+        RDirawatRS.setText("");
+        AlatBantuDipakai.setSelectedIndex(0);
+        SedangMenyusui.setSelectedIndex(0);
+        KetSedangMenyusui.setText("");
+        RTranfusi.setText("");
         Alergi.setText("");
-        
+        KebiasaanMerokok.setSelectedIndex(0);
+        KebiasaanJumlahRokok.setText("");
+        KebiasaanAlkohol.setSelectedIndex(0);
+        KebiasaanJumlahAlkohol.setText("");
+        KebiasaanNarkoba.setSelectedIndex(0);
+        OlahRaga.setSelectedIndex(0);
+        KesadaranMental.setText("");
+        KeadaanMentalUmum.setSelectedIndex(0);
+        GCS.setText("");
+        TD.setText("");
+        Nadi.setText("");
+        RR.setText("");
+        Suhu.setText("");
+        SpO2.setText("");
+        BB.setText("");
+        TB.setText("");
+        SistemSarafKepala.setSelectedIndex(0);
+        KetSistemSarafKepala.setText("");
+        SistemSarafWajah.setSelectedIndex(0);
+        KetSistemSarafWajah.setText("");
+        SistemSarafLeher.setSelectedIndex(0);
+        SistemSarafKejang.setSelectedIndex(0);
+        KetSistemSarafKejang.setText("");
+        SistemSarafSensorik.setSelectedIndex(0);
+        KardiovaskularPulsasi.setSelectedIndex(0);
+        KardiovaskularSirkulasi.setSelectedIndex(0);
+        KetKardiovaskularSirkulasi.setText("");
+        KardiovaskularDenyutNadi.setSelectedIndex(0);
+        RespirasiRetraksi.setSelectedIndex(0);
+        RespirasiPolaNafas.setSelectedIndex(0);
+        RespirasiSuaraNafas.setSelectedIndex(0);
+        RespirasiBatuk.setSelectedIndex(0);
+        RespirasiVolume.setSelectedIndex(0);
+        RespirasiJenisPernafasan.setSelectedIndex(0);
+        KetRespirasiJenisPernafasan.setText("");
+        RespirasiIrama.setSelectedIndex(0);
+        GastrointestinalMulut.setSelectedIndex(0);
+        KetGastrointestinalMulut.setText("");
+        GastrointestinalLidah.setSelectedIndex(0);
+        KetGastrointestinalLidah.setText("");
+        GastrointestinalGigi.setSelectedIndex(0);
+        KetGastrointestinalGigi.setText("");
+        GastrointestinalTenggorakan.setSelectedIndex(0);
+        KetGastrointestinalTenggorakan.setText("");
+        GastrointestinalAbdomen.setSelectedIndex(0);
+        KetGastrointestinalAbdomen.setText("");
+        GastrointestinalUsus.setSelectedIndex(0);
+        GastrointestinalAnus.setSelectedIndex(0);
+        NeurologiSensorik.setSelectedIndex(0);
+        NeurologiPenglihatan.setSelectedIndex(0);
+        KetNeurologiPenglihatan.setText("");
+        NeurologiAlatBantuPenglihatan.setSelectedIndex(0);
+        NeurologiMotorik.setSelectedIndex(0);
+        NeurologiPendengaran.setSelectedIndex(0);
+        NeurologiBicara.setSelectedIndex(0);
+        KetNeurologiBicara.setText("");
+        NeurologiOtot.setSelectedIndex(0);
+        IntegumentKulit.setSelectedIndex(0);
+        IntegumentWarnaKulit.setSelectedIndex(0);
+        IntegumentTurgor.setSelectedIndex(0);
+        IntegumentDecubitus.setSelectedIndex(0);
+        MuskuloskletalOedema.setSelectedIndex(0);
+        KetMuskuloskletalOedema.setText("");
+        MuskuloskletalPegerakanSendi.setSelectedIndex(0);
+        MuskuloskletalKekuatanOtot.setSelectedIndex(0);
+        MuskuloskletalFraktur.setSelectedIndex(0);
+        KetMuskuloskletalFraktur.setText("");
+        MuskuloskletalNyeriSendi.setSelectedIndex(0);
+        KetMuskuloskletalNyeriSendi.setText("");
+        BAB.setText("");
+        XBAB.setText("");
+        KBAB.setText("");
+        WBAB.setText("");
+        BAK.setText("");
+        XBAK.setText("");
+        WBAK.setText("");
+        PolaAktifitasMandi.setSelectedIndex(0);
+        PolaAktifitasMakan.setSelectedIndex(0);
+        PolaAktifitasBerpakaian.setSelectedIndex(0);
+        PolaAktifitasEliminasi.setSelectedIndex(0);
+        PolaAktifitasBerpindah.setSelectedIndex(0);
+        PolaNutrisiPorsi.setText("");
+        PolaNutrisiFrekuensi.setText("");
+        PolaNutrisiJenis.setText("");
+        PolaTidurLama.setText("");
+        PolaTidurGangguan.setSelectedIndex(0);
+        AktifitasSehari2.setSelectedIndex(0);
+        Berjalan.setSelectedIndex(0);
+        KeteranganBerjalan.setText("");
+        Aktifitas.setSelectedIndex(0);
+        AlatAmbulasi.setSelectedIndex(0);
+        EkstrimitasAtas.setSelectedIndex(0);
+        KeteranganEkstrimitasAtas.setText("");
+        EkstrimitasBawah.setSelectedIndex(0);
+        KeteranganEkstrimitasBawah.setText("");
+        KemampuanMenggenggam.setSelectedIndex(0);
+        KeteranganKemampuanMenggenggam.setText("");
+        KemampuanKoordinasi.setSelectedIndex(0);
+        KeteranganKemampuanKoordinasi.setText("");
+        KesimpulanGangguanFungsi.setSelectedIndex(0);
+        KondisiPsikologis.setSelectedIndex(0);
+        AdakahPerilaku.setSelectedIndex(0);
+        KeteranganAdakahPerilaku.setText("");
+        GangguanJiwa.setSelectedIndex(0);
+        HubunganAnggotaKeluarga.setSelectedIndex(0);
+        Agama.setText("");
+        TinggalDengan.setSelectedIndex(0);
+        KeteranganTinggalDengan.setText("");
+        PekerjaanPasien.setText("");
+        CaraBayar.setText("");
+        NilaiKepercayaan.setSelectedIndex(0);
+        KeteranganNilaiKepercayaan.setText("");
+        Bahasa.setText("");
+        PendidikanPasien.setText("");
+        PendidikanPJ.setSelectedIndex(0);
+        EdukasiPsikolgis.setSelectedIndex(0);
+        KeteranganEdukasiPsikologis.setText("");
+        Nyeri.setSelectedIndex(0);
+        Provokes.setSelectedIndex(0);
+        KetProvokes.setText("");
+        Quality.setSelectedIndex(0);
+        KetQuality.setText("");
+        Lokasi.setText("");
+        Menyebar.setSelectedIndex(0);
+        SkalaNyeri.setSelectedIndex(0);
+        Durasi.setText("");
+        NyeriHilang.setSelectedIndex(0);
+        KetNyeri.setText("");
+        PadaDokter.setSelectedIndex(0);
+        KetPadaDokter.setText("");
+        SkalaResiko1.setSelectedIndex(0);
+        NilaiResiko1.setText("0");
+        SkalaResiko2.setSelectedIndex(0);
+        NilaiResiko2.setText("0");
+        SkalaResiko3.setSelectedIndex(0);
+        NilaiResiko3.setText("0");
+        SkalaResiko4.setSelectedIndex(0);
+        NilaiResiko4.setText("0");
+        SkalaResiko5.setSelectedIndex(0);
+        NilaiResiko5.setText("0");
+        SkalaResiko6.setSelectedIndex(0);
+        NilaiResiko6.setText("0");
+        NilaiResikoTotal.setText("0");
+        TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
+        SkalaSydney1.setSelectedIndex(0);
+        NilaiSydney1.setText("0");
+        SkalaSydney2.setSelectedIndex(0);
+        NilaiSydney2.setText("0");
+        SkalaSydney3.setSelectedIndex(0);
+        NilaiSydney3.setText("0");
+        SkalaSydney4.setSelectedIndex(0);
+        NilaiSydney4.setText("0");
+        SkalaSydney5.setSelectedIndex(0);
+        NilaiSydney5.setText("0");
+        SkalaSydney6.setSelectedIndex(0);
+        NilaiSydney6.setText("0");
+        SkalaSydney7.setSelectedIndex(0);
+        NilaiSydney7.setText("0");
+        SkalaSydney8.setSelectedIndex(0);
+        NilaiSydney8.setText("0");
+        SkalaSydney9.setSelectedIndex(0);
+        NilaiSydney9.setText("0");
+        SkalaSydney10.setSelectedIndex(0);
+        NilaiSydney10.setText("0");
+        SkalaSydney11.setSelectedIndex(0);
+        NilaiSydney11.setText("0");
+        NilaiSydneyTotal.setText("0");
+        TingkatSydney.setText("Tingkat Resiko : Risiko Rendah (1-3), Tindakan : Intervensi pencegahan risiko jatuh standar");
+        SkalaGizi1.setSelectedIndex(0);
+        NilaiGizi1.setText("0");
+        SkalaGizi2.setSelectedIndex(0);
+        NilaiGizi2.setText("0");
+        NilaiGiziTotal.setText("0");
+        DiagnosaKhususGizi.setSelectedIndex(0);
+        KeteranganDiagnosaKhususGizi.setText("");
+        DiketahuiDietisen.setSelectedIndex(0);
+        KeteranganDiketahuiDietisen.setText("");
+        Rencana.setText("");
+        for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
+            tabModeMasalah.setValueAt(false,i,0);
+        }
+        Valid.tabelKosong(tabModeRencana);
+        TabRawat.setSelectedIndex(0);
         TabRawat.setSelectedIndex(0);
         MacamKasus.requestFocus();
     } 
