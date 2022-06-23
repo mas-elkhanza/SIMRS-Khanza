@@ -7720,7 +7720,7 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         TNoRw.setText(norwt);
         TNoRM.setText(norm);
         TCari.setText(norwt);
-        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norwt+"'", DTPCari1);
+        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         CaraBayar.setText(carabayar);
         DTPCari2.setDate(tgl2);    
         isRawat(); 

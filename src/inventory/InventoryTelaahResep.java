@@ -1721,7 +1721,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
         TNoRw.setText(norwt);
         NoResep.setText(noresep);
         TCari.setText(noresep);
-        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norwt+"'", DTPCari1);
+        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
         isPsien();

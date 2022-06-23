@@ -456,75 +456,71 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KetAnamnesis.setDocument(new batasInput((byte)30).getKata(KetAnamnesis));
-        RPS.setDocument(new batasInput((byte)300).getKata(RPS));
-        RPD.setDocument(new batasInput((byte)100).getKata(RPD));
-        RPK.setDocument(new batasInput((byte)100).getKata(RPK));
-        RPO.setDocument(new batasInput((byte)100).getKata(RPO));
+        RPS.setDocument(new batasInput((int)300).getKata(RPS));
+        RPD.setDocument(new batasInput((int)100).getKata(RPD));
+        RPK.setDocument(new batasInput((int)100).getKata(RPK));
+        RPO.setDocument(new batasInput((int)100).getKata(RPO));
         RPembedahan.setDocument(new batasInput((byte)40).getKata(RPembedahan));
         RDirawatRS.setDocument(new batasInput((byte)40).getKata(RDirawatRS));
         RTranfusi.setDocument(new batasInput((byte)40).getKata(RTranfusi));
         Alergi.setDocument(new batasInput((byte)40).getKata(Alergi));
         KetSedangMenyusui.setDocument(new batasInput((byte)30).getKata(KetSedangMenyusui));
-        KebiasaanJumlahRokok.setDocument(new batasInput((byte)30).getKata(KebiasaanJumlahRokok));
-        KebiasaanJumlahAlkohol.setDocument(new batasInput((byte)30).getKata(KebiasaanJumlahAlkohol));
-        KesadaranMental.setDocument(new batasInput((byte)30).getKata(KesadaranMental));
-        GCS.setDocument(new batasInput((byte)30).getKata(GCS));
-        TD.setDocument(new batasInput((byte)30).getKata(TD));
-        Nadi.setDocument(new batasInput((byte)30).getKata(Nadi));
-        RR.setDocument(new batasInput((byte)30).getKata(RR));
-        Suhu.setDocument(new batasInput((byte)30).getKata(Suhu));
-        SpO2.setDocument(new batasInput((byte)30).getKata(SpO2));
-        BB.setDocument(new batasInput((byte)30).getKata(BB));
-        TB.setDocument(new batasInput((byte)30).getKata(TB));
-        KetSistemSarafKepala.setDocument(new batasInput((byte)30).getKata(KetSistemSarafKepala));
-        KetSistemSarafWajah.setDocument(new batasInput((byte)30).getKata(KetSistemSarafWajah));
-        KetSistemSarafKejang.setDocument(new batasInput((byte)30).getKata(KetSistemSarafKejang));
-        KetKardiovaskularSirkulasi.setDocument(new batasInput((byte)30).getKata(KetKardiovaskularSirkulasi));
-        KetRespirasiJenisPernafasan.setDocument(new batasInput((byte)30).getKata(KetRespirasiJenisPernafasan));
-        KetGastrointestinalMulut.setDocument(new batasInput((byte)30).getKata(KetGastrointestinalMulut));
-        KetGastrointestinalLidah.setDocument(new batasInput((byte)30).getKata(KetGastrointestinalLidah));
-        KetGastrointestinalGigi.setDocument(new batasInput((byte)30).getKata(KetGastrointestinalGigi));
-        KetGastrointestinalTenggorakan.setDocument(new batasInput((byte)30).getKata(KetGastrointestinalTenggorakan));
-        KetGastrointestinalAbdomen.setDocument(new batasInput((byte)30).getKata(KetGastrointestinalAbdomen));
-        KetNeurologiPenglihatan.setDocument(new batasInput((byte)30).getKata(KetNeurologiPenglihatan));
-        KetNeurologiBicara.setDocument(new batasInput((byte)30).getKata(KetNeurologiBicara));
-        KetMuskuloskletalOedema.setDocument(new batasInput((byte)30).getKata(KetMuskuloskletalOedema));
-        KetMuskuloskletalFraktur.setDocument(new batasInput((byte)30).getKata(KetMuskuloskletalFraktur));
-        KetMuskuloskletalNyeriSendi.setDocument(new batasInput((byte)30).getKata(KetMuskuloskletalNyeriSendi));
-        BAB.setDocument(new batasInput((byte)30).getKata(BAB));
-        XBAB.setDocument(new batasInput((byte)30).getKata(XBAB));
+        KebiasaanJumlahRokok.setDocument(new batasInput((byte)5).getKata(KebiasaanJumlahRokok));
+        KebiasaanJumlahAlkohol.setDocument(new batasInput((byte)5).getKata(KebiasaanJumlahAlkohol));
+        KesadaranMental.setDocument(new batasInput((byte)40).getKata(KesadaranMental));
+        GCS.setDocument(new batasInput((byte)10).getKata(GCS));
+        TD.setDocument(new batasInput((byte)8).getKata(TD));
+        Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
+        RR.setDocument(new batasInput((byte)5).getKata(RR));
+        Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
+        SpO2.setDocument(new batasInput((byte)5).getKata(SpO2));
+        BB.setDocument(new batasInput((byte)5).getKata(BB));
+        TB.setDocument(new batasInput((byte)5).getKata(TB));
+        KetSistemSarafKepala.setDocument(new batasInput((byte)50).getKata(KetSistemSarafKepala));
+        KetSistemSarafWajah.setDocument(new batasInput((byte)50).getKata(KetSistemSarafWajah));
+        KetSistemSarafKejang.setDocument(new batasInput((byte)50).getKata(KetSistemSarafKejang));
+        KetKardiovaskularSirkulasi.setDocument(new batasInput((byte)50).getKata(KetKardiovaskularSirkulasi));
+        KetRespirasiJenisPernafasan.setDocument(new batasInput((byte)50).getKata(KetRespirasiJenisPernafasan));
+        KetGastrointestinalMulut.setDocument(new batasInput((byte)50).getKata(KetGastrointestinalMulut));
+        KetGastrointestinalLidah.setDocument(new batasInput((byte)50).getKata(KetGastrointestinalLidah));
+        KetGastrointestinalGigi.setDocument(new batasInput((byte)50).getKata(KetGastrointestinalGigi));
+        KetGastrointestinalTenggorakan.setDocument(new batasInput((byte)50).getKata(KetGastrointestinalTenggorakan));
+        KetGastrointestinalAbdomen.setDocument(new batasInput((byte)50).getKata(KetGastrointestinalAbdomen));
+        KetNeurologiPenglihatan.setDocument(new batasInput((byte)50).getKata(KetNeurologiPenglihatan));
+        KetNeurologiBicara.setDocument(new batasInput((byte)50).getKata(KetNeurologiBicara));
+        KetMuskuloskletalOedema.setDocument(new batasInput((byte)50).getKata(KetMuskuloskletalOedema));
+        KetMuskuloskletalFraktur.setDocument(new batasInput((byte)50).getKata(KetMuskuloskletalFraktur));
+        KetMuskuloskletalNyeriSendi.setDocument(new batasInput((byte)50).getKata(KetMuskuloskletalNyeriSendi));
+        BAB.setDocument(new batasInput((byte)5).getKata(BAB));
+        XBAB.setDocument(new batasInput((byte)10).getKata(XBAB));
         KBAB.setDocument(new batasInput((byte)30).getKata(KBAB));
         WBAB.setDocument(new batasInput((byte)30).getKata(WBAB));
-        BAK.setDocument(new batasInput((byte)30).getKata(BAK));
-        XBAK.setDocument(new batasInput((byte)30).getKata(XBAK));
+        BAK.setDocument(new batasInput((byte)5).getKata(BAK));
+        XBAK.setDocument(new batasInput((byte)10).getKata(XBAK));
         WBAK.setDocument(new batasInput((byte)30).getKata(WBAK));
-        PolaNutrisiPorsi.setDocument(new batasInput((byte)30).getKata(PolaNutrisiPorsi));
-        PolaNutrisiFrekuensi.setDocument(new batasInput((byte)30).getKata(PolaNutrisiFrekuensi));
-        PolaNutrisiJenis.setDocument(new batasInput((byte)30).getKata(PolaNutrisiJenis));
-        PolaTidurLama.setDocument(new batasInput((byte)30).getKata(PolaTidurLama));
-        KeteranganBerjalan.setDocument(new batasInput((byte)30).getKata(KeteranganBerjalan));
-        KeteranganEkstrimitasAtas.setDocument(new batasInput((byte)30).getKata(KeteranganEkstrimitasAtas));
-        KeteranganEkstrimitasBawah.setDocument(new batasInput((byte)30).getKata(KeteranganEkstrimitasBawah));
-        KeteranganKemampuanMenggenggam.setDocument(new batasInput((byte)30).getKata(KeteranganKemampuanMenggenggam));
-        KeteranganKemampuanKoordinasi.setDocument(new batasInput((byte)30).getKata(KeteranganKemampuanKoordinasi));
-        KeteranganAdakahPerilaku.setDocument(new batasInput((byte)30).getKata(KeteranganAdakahPerilaku));
-        Agama.setDocument(new batasInput((byte)30).getKata(Agama));
-        KeteranganTinggalDengan.setDocument(new batasInput((byte)30).getKata(KeteranganTinggalDengan));
-        PekerjaanPasien.setDocument(new batasInput((byte)30).getKata(PekerjaanPasien));
-        CaraBayar.setDocument(new batasInput((byte)30).getKata(CaraBayar));
-        KeteranganNilaiKepercayaan.setDocument(new batasInput((byte)30).getKata(KeteranganNilaiKepercayaan));
-        Bahasa.setDocument(new batasInput((byte)30).getKata(Bahasa));
-        PendidikanPasien.setDocument(new batasInput((byte)30).getKata(PendidikanPasien));
-        KeteranganEdukasiPsikologis.setDocument(new batasInput((byte)30).getKata(KeteranganEdukasiPsikologis));
-        KetProvokes.setDocument(new batasInput((byte)30).getKata(KetProvokes));
-        KetQuality.setDocument(new batasInput((byte)30).getKata(KetQuality));
-        Lokasi.setDocument(new batasInput((byte)30).getKata(Lokasi));
-        Durasi.setDocument(new batasInput((byte)30).getKata(Durasi));
-        KetNyeri.setDocument(new batasInput((byte)30).getKata(KetNyeri));
-        KetPadaDokter.setDocument(new batasInput((byte)30).getKata(KetPadaDokter));
-        KeteranganDiagnosaKhususGizi.setDocument(new batasInput((byte)30).getKata(KeteranganDiagnosaKhususGizi));
-        KeteranganDiketahuiDietisen.setDocument(new batasInput((byte)30).getKata(KeteranganDiketahuiDietisen));
-        Rencana.setDocument(new batasInput((byte)30).getKata(Rencana));
+        LBAK.setDocument(new batasInput((byte)30).getKata(LBAK));
+        PolaNutrisiPorsi.setDocument(new batasInput((byte)3).getKata(PolaNutrisiPorsi));
+        PolaNutrisiFrekuensi.setDocument(new batasInput((byte)3).getKata(PolaNutrisiFrekuensi));
+        PolaNutrisiJenis.setDocument(new batasInput((byte)20).getKata(PolaNutrisiJenis));
+        PolaTidurLama.setDocument(new batasInput((byte)3).getKata(PolaTidurLama));
+        KeteranganBerjalan.setDocument(new batasInput((byte)40).getKata(KeteranganBerjalan));
+        KeteranganEkstrimitasAtas.setDocument(new batasInput((byte)40).getKata(KeteranganEkstrimitasAtas));
+        KeteranganEkstrimitasBawah.setDocument(new batasInput((byte)40).getKata(KeteranganEkstrimitasBawah));
+        KeteranganKemampuanMenggenggam.setDocument(new batasInput((byte)40).getKata(KeteranganKemampuanMenggenggam));
+        KeteranganKemampuanKoordinasi.setDocument(new batasInput((byte)40).getKata(KeteranganKemampuanKoordinasi));
+        KeteranganAdakahPerilaku.setDocument(new batasInput((byte)40).getKata(KeteranganAdakahPerilaku));
+        KeteranganTinggalDengan.setDocument(new batasInput((byte)40).getKata(KeteranganTinggalDengan));
+        KeteranganNilaiKepercayaan.setDocument(new batasInput((byte)40).getKata(KeteranganNilaiKepercayaan));
+        KeteranganEdukasiPsikologis.setDocument(new batasInput((byte)40).getKata(KeteranganEdukasiPsikologis));
+        KetProvokes.setDocument(new batasInput((byte)50).getKata(KetProvokes));
+        KetQuality.setDocument(new batasInput((byte)50).getKata(KetQuality));
+        Lokasi.setDocument(new batasInput((byte)50).getKata(Lokasi));
+        Durasi.setDocument(new batasInput((byte)5).getKata(Durasi));
+        KetNyeri.setDocument(new batasInput((byte)50).getKata(KetNyeri));
+        KetPadaDokter.setDocument(new batasInput((byte)10).getKata(KetPadaDokter));
+        KeteranganDiagnosaKhususGizi.setDocument(new batasInput((byte)50).getKata(KeteranganDiagnosaKhususGizi));
+        KeteranganDiketahuiDietisen.setDocument(new batasInput((byte)10).getKata(KeteranganDiketahuiDietisen));
+        Rencana.setDocument(new batasInput((int)200).getKata(Rencana));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -1270,7 +1266,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-06-2022" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1714,7 +1710,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         Anamnesis.setBounds(74, 100, 130, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-06-2022 10:33:41" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022 17:14:30" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2438,12 +2434,12 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(SistemSarafLeher);
-        SistemSarafLeher.setBounds(113, 520, 150, 23);
+        SistemSarafLeher.setBounds(113, 520, 155, 23);
 
         jLabel134.setText("Sensorik :");
         jLabel134.setName("jLabel134"); // NOI18N
         FormInput.add(jLabel134);
-        jLabel134.setBounds(660, 520, 80, 23);
+        jLabel134.setBounds(655, 520, 80, 23);
 
         SistemSarafSensorik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Sakit Nyeri", "Rasa Kebas" }));
         SistemSarafSensorik.setName("SistemSarafSensorik"); // NOI18N
@@ -2453,14 +2449,14 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(SistemSarafSensorik);
-        SistemSarafSensorik.setBounds(744, 520, 110, 23);
+        SistemSarafSensorik.setBounds(739, 520, 115, 23);
 
         jLabel135.setText("Kejang :");
         jLabel135.setName("jLabel135"); // NOI18N
         FormInput.add(jLabel135);
-        jLabel135.setBounds(292, 520, 60, 23);
+        jLabel135.setBounds(302, 520, 60, 23);
 
-        SistemSarafKejang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Kuat", "Ada" }));
+        SistemSarafKejang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Kuat", "Ada" }));
         SistemSarafKejang.setName("SistemSarafKejang"); // NOI18N
         SistemSarafKejang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2468,7 +2464,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(SistemSarafKejang);
-        SistemSarafKejang.setBounds(356, 520, 100, 23);
+        SistemSarafKejang.setBounds(366, 520, 80, 23);
 
         KetSistemSarafKejang.setFocusTraversalPolicyProvider(true);
         KetSistemSarafKejang.setName("KetSistemSarafKejang"); // NOI18N
@@ -2478,7 +2474,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(KetSistemSarafKejang);
-        KetSistemSarafKejang.setBounds(460, 520, 184, 23);
+        KetSistemSarafKejang.setBounds(450, 520, 184, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel33.setText("Kardiovaskuler :");
@@ -2849,7 +2845,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         FormInput.add(jLabel154);
         jLabel154.setBounds(0, 840, 109, 23);
 
-        NeurologiMotorik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Karies", "Goyang", "Lain-lain" }));
+        NeurologiMotorik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Hemiparese", "Tetraparese", "Tremor", "Lain-lain" }));
         NeurologiMotorik.setName("NeurologiMotorik"); // NOI18N
         NeurologiMotorik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2857,14 +2853,14 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(NeurologiMotorik);
-        NeurologiMotorik.setBounds(113, 840, 92, 23);
+        NeurologiMotorik.setBounds(113, 840, 108, 23);
 
         jLabel155.setText("Otot :");
         jLabel155.setName("jLabel155"); // NOI18N
         FormInput.add(jLabel155);
-        jLabel155.setBounds(715, 840, 40, 23);
+        jLabel155.setBounds(728, 840, 40, 23);
 
-        NeurologiOtot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Karies", "Goyang", "Lain-lain" }));
+        NeurologiOtot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kuat", "Lemah" }));
         NeurologiOtot.setName("NeurologiOtot"); // NOI18N
         NeurologiOtot.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2872,7 +2868,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(NeurologiOtot);
-        NeurologiOtot.setBounds(759, 840, 95, 23);
+        NeurologiOtot.setBounds(772, 840, 82, 23);
 
         jLabel156.setText("Penglihatan :");
         jLabel156.setName("jLabel156"); // NOI18N
@@ -2917,7 +2913,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         jLabel158.setText("Pendengaran :");
         jLabel158.setName("jLabel158"); // NOI18N
         FormInput.add(jLabel158);
-        jLabel158.setBounds(214, 840, 80, 23);
+        jLabel158.setBounds(229, 840, 80, 23);
 
         NeurologiPendengaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TAK", "Berdengung", "Nyeri", "Tuli", "Keluar Cairan", "Lain-lain" }));
         NeurologiPendengaran.setName("NeurologiPendengaran"); // NOI18N
@@ -2927,12 +2923,12 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(NeurologiPendengaran);
-        NeurologiPendengaran.setBounds(298, 840, 117, 23);
+        NeurologiPendengaran.setBounds(313, 840, 117, 23);
 
         jLabel159.setText("Bicara :");
         jLabel159.setName("jLabel159"); // NOI18N
         FormInput.add(jLabel159);
-        jLabel159.setBounds(419, 840, 50, 23);
+        jLabel159.setBounds(433, 840, 50, 23);
 
         NeurologiBicara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jelas", "Tidak Jelas" }));
         NeurologiBicara.setName("NeurologiBicara"); // NOI18N
@@ -2942,7 +2938,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(NeurologiBicara);
-        NeurologiBicara.setBounds(473, 840, 105, 23);
+        NeurologiBicara.setBounds(487, 840, 105, 23);
 
         KetNeurologiBicara.setFocusTraversalPolicyProvider(true);
         KetNeurologiBicara.setName("KetNeurologiBicara"); // NOI18N
@@ -2952,7 +2948,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(KetNeurologiBicara);
-        KetNeurologiBicara.setBounds(582, 840, 127, 23);
+        KetNeurologiBicara.setBounds(596, 840, 127, 23);
 
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel51.setText("Integument :");
@@ -5182,7 +5178,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5196,7 +5192,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5377,13 +5373,32 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         }else if(RPO.getText().trim().equals("")){
             Valid.textKosong(RPO,"Riwayat Pembedahan");
         }else{
-            if(Sequel.menyimpantf("penilaian_awal_keperawatan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",148,new String[]{
+            if(Sequel.menyimpantf("penilaian_awal_keperawatan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",193,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),KetAnamnesis.getText(),TibadiRuang.getSelectedItem().toString(),MacamKasus.getSelectedItem().toString(), 
                     CaraMasuk.getSelectedItem().toString(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),RPembedahan.getText(),RDirawatRS.getText(),AlatBantuDipakai.getSelectedItem().toString(),SedangMenyusui.getSelectedItem().toString(),KetSedangMenyusui.getText(),RTranfusi.getText(), 
                     Alergi.getText(),KebiasaanMerokok.getSelectedItem().toString(),KebiasaanJumlahRokok.getText(),KebiasaanAlkohol.getSelectedItem().toString(),KebiasaanJumlahAlkohol.getText(),KebiasaanNarkoba.getSelectedItem().toString(),OlahRaga.getSelectedItem().toString(),KesadaranMental.getText(), 
                     KeadaanMentalUmum.getSelectedItem().toString(),GCS.getText(),TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),SpO2.getText(),BB.getText(),TB.getText(),SistemSarafKepala.getSelectedItem().toString(),KetSistemSarafKepala.getText(),SistemSarafWajah.getSelectedItem().toString(), 
                     KetSistemSarafWajah.getText(),SistemSarafLeher.getSelectedItem().toString(),SistemSarafKejang.getSelectedItem().toString(),KetSistemSarafKejang.getText(),SistemSarafSensorik.getSelectedItem().toString(),KardiovaskularDenyutNadi.getSelectedItem().toString(),KardiovaskularSirkulasi.getSelectedItem().toString(), 
-                    KetKardiovaskularSirkulasi.getText(),KardiovaskularPulsasi.getSelectedItem(), pemeriksaan_respirasi_pola_nafas, pemeriksaan_respirasi_retraksi, pemeriksaan_respirasi_suara_nafas, pemeriksaan_respirasi_volume_pernafasan, pemeriksaan_respirasi_jenis_pernafasan, pemeriksaan_respirasi_jenis_pernafasan_keterangan, pemeriksaan_respirasi_irama_nafas, pemeriksaan_respirasi_batuk, pemeriksaan_gastrointestinal_mulut, pemeriksaan_gastrointestinal_mulut_keterangan, pemeriksaan_gastrointestinal_gigi, pemeriksaan_gastrointestinal_gigi_keterangan, pemeriksaan_gastrointestinal_lidah, pemeriksaan_gastrointestinal_lidah_keterangan, pemeriksaan_gastrointestinal_tenggorokan, pemeriksaan_gastrointestinal_tenggorokan_keterangan, pemeriksaan_gastrointestinal_abdomen, pemeriksaan_gastrointestinal_abdomen_keterangan, pemeriksaan_gastrointestinal_peistatik_usus, pemeriksaan_gastrointestinal_anus, pemeriksaan_neurologi_pengelihatan, pemeriksaan_neurologi_pengelihatan_keterangan, pemeriksaan_neurologi_alat_bantu_penglihatan, pemeriksaan_neurologi_pendengaran, pemeriksaan_neurologi_bicara, pemeriksaan_neurologi_bicara_keterangan, pemeriksaan_neurologi_neurologi_sensorik, pemeriksaan_neurologi_motorik, pemeriksaan_neurologi_kekuatan_otot, pemeriksaan_integument_warankulit, pemeriksaan_integument_turgor, pemeriksaan_integument_kulit, pemeriksaan_integument_dekubitas, pemeriksaan_muskuloskletal_pergerakan_sendi, pemeriksaan_muskuloskletal_kekauatan_otot, pemeriksaan_muskuloskletal_nyeri_sendi, pemeriksaan_muskuloskletal_nyeri_sendi_keterangan, pemeriksaan_muskuloskletal_oedema, pemeriksaan_muskuloskletal_oedema_keterangan, pemeriksaan_muskuloskletal_fraktur, pemeriksaan_muskuloskletal_fraktur_keterangan, pemeriksaan_eliminasi_bab_frekuensi_jumlah, pemeriksaan_eliminasi_bab_frekuensi_durasi, pemeriksaan_eliminasi_bab_konsistensi, pemeriksaan_eliminasi_bab_warna, pemeriksaan_eliminasi_bak_frekuensi, pemeriksaan_eliminasi_bak_warna, pemeriksaan_eliminasi_bak_lainlain, pola_aktifitas_makanminum, pola_aktifitas_mandi, pola_aktifitas_eliminasi, pola_aktifitas_berpakaian, pola_aktifitas_berpindah, pola_nutrisi_frekuesi_maka, pula_nnutrisi_jenis_makanan, pola_nutrisi_porsi_makan, pola_tidur_lama_tidur, pola_tidur_gangguan, pengkajian_fungsi_kemampuan_sehari, pengkajian_fungsi_aktifitas, pengkajian_fungsi_berjalan, pengkajian_fungsi_berjalan_keterangan, pengkajian_fungsi_ambulasi, pengkajian_fungsi_ekstrimitas_atas, pengkajian_fungsi_ekstrimitas_atas_keterangan, pengkajian_fungsi_ekstrimitas_bawah, pengkajian_fungsi_ekstrimitas_bawah_keterangan, pengkajian_fungsi_menggenggam, pengkajian_fungsi_menggenggam_keterangan, pengkajian_fungsi_koordinasi, pengkajian_fungsi_koordinasi_keterangan, pengkajian_fungsi_kesimpulan, riwayat_psiko_kondisi_psiko, riwayat_psiko_gangguan_jiwa, riwayat_psiko_perilaku, riwayat_psiko_perilaku_keterangan, riwayat_psiko_hubungan_keluarga, riwayat_psiko_status_pernikahan, riwayat_psiko_tinggal, riwayat_psiko_tinggal_keterangan, riwayat_psiko_nilai_kepercayaan, riwayat_psiko_nilai_kepercayaan_keterangan, riwayat_psiko_pendidikan_pj, riwayat_psiko_pendidikan_pj_keterangan, riwayat_psiko_edukasi_diberikan, riwayat_psiko_edukasi_diberikan_keterangan, penilaian_nyeri, penilaian_nyeri_penyebab, penilaian_nyeri_ket_penyebab, penilaian_nyeri_kualitas, penilaian_nyeri_ket_kualitas, penilaian_nyeri_lokasi, penilaian_nyeri_menyebar, penilaian_nyeri_skala, penilaian_nyeri_waktu, penilaian_nyeri_hilang, penilaian_nyeri_ket_hilang, penilaian_nyeri_diberitahukan_dokter, penilaian_nyeri_jam_diberitahukan_dokter, nip1, nip2, kd_dokter
+                    KetKardiovaskularSirkulasi.getText(),KardiovaskularPulsasi.getSelectedItem().toString(),RespirasiPolaNafas.getSelectedItem().toString(),RespirasiRetraksi.getSelectedItem().toString(),RespirasiSuaraNafas.getSelectedItem().toString(),RespirasiVolume.getSelectedItem().toString(),
+                    RespirasiJenisPernafasan.getSelectedItem().toString(),KetRespirasiJenisPernafasan.getText(),RespirasiIrama.getSelectedItem().toString(),RespirasiBatuk.getSelectedItem().toString(),GastrointestinalMulut.getSelectedItem().toString(),KetGastrointestinalMulut.getText(),
+                    GastrointestinalGigi.getSelectedItem().toString(),KetGastrointestinalGigi.getText(),GastrointestinalLidah.getSelectedItem().toString(),KetGastrointestinalLidah.getText(),GastrointestinalTenggorakan.getSelectedItem().toString(),KetGastrointestinalTenggorakan.getText(), 
+                    GastrointestinalAbdomen.getSelectedItem().toString(),KetGastrointestinalAbdomen.getText(),GastrointestinalUsus.getSelectedItem().toString(),GastrointestinalAnus.getSelectedItem().toString(),NeurologiPenglihatan.getSelectedItem().toString(),KetNeurologiPenglihatan.getText(), 
+                    NeurologiAlatBantuPenglihatan.getSelectedItem().toString(),NeurologiPendengaran.getSelectedItem().toString(),NeurologiBicara.getSelectedItem().toString(),KetNeurologiBicara.getText(),NeurologiSensorik.getSelectedItem().toString(),NeurologiMotorik.getSelectedItem().toString(), 
+                    NeurologiOtot.getSelectedItem().toString(),IntegumentWarnaKulit.getSelectedItem().toString(),IntegumentTurgor.getSelectedItem().toString(),IntegumentKulit.getSelectedItem().toString(),IntegumentDecubitus.getSelectedItem().toString(),MuskuloskletalPegerakanSendi.getSelectedItem().toString(), 
+                    MuskuloskletalKekuatanOtot.getSelectedItem().toString(),MuskuloskletalNyeriSendi.getSelectedItem().toString(),KetMuskuloskletalNyeriSendi.getText(),MuskuloskletalOedema.getSelectedItem().toString(),KetMuskuloskletalOedema.getText(),MuskuloskletalFraktur.getSelectedItem().toString(), 
+                    KetMuskuloskletalFraktur.getText(),BAB.getText(),XBAB.getText(),KBAB.getText(),WBAB.getText(),BAK.getText(),XBAK.getText(),WBAK.getText(),LBAK.getText(),PolaAktifitasMakan.getSelectedItem().toString(),PolaAktifitasMandi.getSelectedItem().toString(),PolaAktifitasEliminasi.getSelectedItem().toString(), 
+                    PolaAktifitasBerpakaian.getSelectedItem().toString(),PolaAktifitasBerpindah.getSelectedItem().toString(),PolaNutrisiFrekuensi.getText(),PolaNutrisiJenis.getText(),PolaNutrisiPorsi.getText(),PolaTidurLama.getText(),PolaTidurGangguan.getSelectedItem().toString(),AktifitasSehari2.getSelectedItem().toString(), 
+                    Aktifitas.getSelectedItem().toString(),Berjalan.getSelectedItem().toString(),KeteranganBerjalan.getText(),AlatAmbulasi.getSelectedItem().toString(),EkstrimitasAtas.getSelectedItem().toString(),KeteranganEkstrimitasAtas.getText(),EkstrimitasBawah.getSelectedItem().toString(),
+                    KeteranganEkstrimitasBawah.getText(),KemampuanMenggenggam.getSelectedItem().toString(),KeteranganKemampuanMenggenggam.getText(),KemampuanKoordinasi.getSelectedItem().toString(),KeteranganKemampuanKoordinasi.getText(),KesimpulanGangguanFungsi.getSelectedItem().toString(),
+                    KondisiPsikologis.getSelectedItem().toString(),GangguanJiwa.getSelectedItem().toString(),AdakahPerilaku.getSelectedItem().toString(),KeteranganAdakahPerilaku.getText(),HubunganAnggotaKeluarga.getSelectedItem().toString(),TinggalDengan.getSelectedItem().toString(),KeteranganTinggalDengan.getText(),
+                    NilaiKepercayaan.getSelectedItem().toString(),KeteranganNilaiKepercayaan.getText(),PendidikanPJ.getSelectedItem().toString(),EdukasiPsikolgis.getSelectedItem().toString(),KeteranganEdukasiPsikologis.getText(),Nyeri.getSelectedItem().toString(),Provokes.getSelectedItem().toString(),KetProvokes.getText(), 
+                    Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(), 
+                    KetPadaDokter.getText(),SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
+                    SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),NilaiResikoTotal.getText(),SkalaSydney1.getSelectedItem().toString(),NilaiSydney1.getText(),SkalaSydney2.getSelectedItem().toString(),NilaiSydney2.getText(),
+                    SkalaSydney3.getSelectedItem().toString(),NilaiSydney3.getText(),SkalaSydney4.getSelectedItem().toString(),NilaiSydney4.getText(),SkalaSydney5.getSelectedItem().toString(),NilaiSydney5.getText(),SkalaSydney6.getSelectedItem().toString(),NilaiSydney6.getText(), 
+                    SkalaSydney7.getSelectedItem().toString(),NilaiSydney7.getText(),SkalaSydney8.getSelectedItem().toString(),NilaiSydney8.getText(),SkalaSydney9.getSelectedItem().toString(),NilaiSydney9.getText(),SkalaSydney10.getSelectedItem().toString(),NilaiSydney10.getText(), 
+                    SkalaSydney11.getSelectedItem().toString(),NilaiSydney11.getText(),NilaiSydneyTotal.getText(),SkalaGizi1.getSelectedItem().toString(),NilaiGizi1.getText(),SkalaGizi2.getSelectedItem().toString(),NilaiGizi2.getText(),NilaiGiziTotal.getText(),DiagnosaKhususGizi.getSelectedItem().toString(),
+                    KeteranganDiagnosaKhususGizi.getText(),DiketahuiDietisen.getSelectedItem().toString(),KeteranganDiketahuiDietisen.getText(),Rencana.getText(),KdPetugas.getText(),KdPetugas2.getText(),KdDPJP.getText()
                 })==true){
                     for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                         if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
@@ -6942,7 +6957,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_GastrointestinalMulutKeyPressed
 
     private void KetGastrointestinalGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalGigiKeyPressed
-        Valid.pindah(evt,GastrointestinalGigi,GastrointestinalUsus);
+        Valid.pindah(evt,GastrointestinalGigi,GastrointestinalTenggorakan);
     }//GEN-LAST:event_KetGastrointestinalGigiKeyPressed
 
     private void GastrointestinalAnusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalAnusKeyPressed
@@ -6978,7 +6993,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_GastrointestinalAbdomenKeyPressed
 
     private void KetGastrointestinalAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGastrointestinalAbdomenKeyPressed
-        Valid.pindah(evt,GastrointestinalAbdomen,GastrointestinalAnus);
+        Valid.pindah(evt,GastrointestinalAbdomen,GastrointestinalUsus);
     }//GEN-LAST:event_KetGastrointestinalAbdomenKeyPressed
 
     private void GastrointestinalUsusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GastrointestinalUsusKeyPressed
@@ -8473,6 +8488,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         BAK.setText("");
         XBAK.setText("");
         WBAK.setText("");
+        LBAK.setText("");
         PolaAktifitasMandi.setSelectedIndex(0);
         PolaAktifitasMakan.setSelectedIndex(0);
         PolaAktifitasBerpakaian.setSelectedIndex(0);
@@ -8619,11 +8635,11 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
-                    /*Agama.setText(rs.getString("agama"));
+                    Agama.setText(rs.getString("agama"));
                     Bahasa.setText(rs.getString("nama_bahasa"));
                     PendidikanPasien.setText(rs.getString("pnd"));
                     PekerjaanPasien.setText(rs.getString("pekerjaan"));
-                    GD.setText(rs.getString("gol_darah"));*/
+                    //GD.setText(rs.getString("gol_darah"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -8644,8 +8660,8 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         TNoRw.setText(norwt);
         TNoRM.setText(norm);
         TCari.setText(norwt);
-        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norwt+"'", DTPCari1);
-        //CaraBayar.setText(carabayar);
+        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
+        CaraBayar.setText(carabayar);
         DTPCari2.setDate(tgl2);    
         isRawat(); 
     }

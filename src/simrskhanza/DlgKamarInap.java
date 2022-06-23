@@ -10642,7 +10642,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
                             rs2=psanak.executeQuery();
                             if(rs2.next()){
-                                ps=koneksi.prepareStatement("select * from bridging_sep where no_rawat=?");
+                                ps=koneksi.prepareStatement("select * from bridging_sep where bridging_sep.no_rawat=? order by bridging_sep.tglsep desc limit 1");
                                 try {
                                     ps.setString(1,rs2.getString("no_rawat2"));
                                     rs=ps.executeQuery();
@@ -10687,7 +10687,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     } 
                 }else{
                     try {
-                        ps=koneksi.prepareStatement("select * from bridging_sep where no_rawat=?");
+                        ps=koneksi.prepareStatement("select * from bridging_sep where bridging_sep.no_rawat=? order by bridging_sep.tglsep desc limit 1");
                         try {
                             ps.setString(1,norawat.getText());
                             rs=ps.executeQuery();
@@ -10785,7 +10785,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else{
             if(tbKamIn.getSelectedRow()!= -1){
                 try {
-                    ps=koneksi.prepareStatement("select no_peserta,tgl_lahir,jk from pasien where no_rkm_medis=?");
+                    ps=koneksi.prepareStatement("select pasien.no_peserta,pasien.tgl_lahir,pasien.jk from pasien where pasien.no_rkm_medis=?");
                     try {
                         ps.setString(1,TNoRMCari.getText());
                         rs=ps.executeQuery();
@@ -11081,7 +11081,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else{
             if(tbKamIn.getSelectedRow()!= -1){
                 try {
-                    ps=koneksi.prepareStatement("select no_kartu,nama_pasien,tglsep from bridging_sep where no_rawat=?");
+                    ps=koneksi.prepareStatement("select bridging_sep.no_kartu,bridging_sep.nama_pasien,bridging_sep.tglsep from bridging_sep where bridging_sep.no_rawat=? order by bridging_sep.tglsep desc limit 1");
                     try {
                         ps.setString(1,TNoRwCari.getText());
                         rs=ps.executeQuery();
@@ -11124,7 +11124,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else{
             if(tbKamIn.getSelectedRow()!= -1){
                 try {
-                    ps=koneksi.prepareStatement("select no_kartu,nama_pasien from bridging_sep where no_rawat=?");
+                    ps=koneksi.prepareStatement("select bridging_sep.no_kartu,bridging_sep.nama_pasien from bridging_sep where bridging_sep.no_rawat=? order by bridging_sep.tglsep desc limit 1");
                     try {
                         ps.setString(1,TNoRwCari.getText());
                         rs=ps.executeQuery();
