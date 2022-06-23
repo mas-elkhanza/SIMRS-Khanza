@@ -8518,15 +8518,10 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         KeteranganAdakahPerilaku.setText("");
         GangguanJiwa.setSelectedIndex(0);
         HubunganAnggotaKeluarga.setSelectedIndex(0);
-        Agama.setText("");
         TinggalDengan.setSelectedIndex(0);
         KeteranganTinggalDengan.setText("");
-        PekerjaanPasien.setText("");
-        CaraBayar.setText("");
         NilaiKepercayaan.setSelectedIndex(0);
         KeteranganNilaiKepercayaan.setText("");
-        Bahasa.setText("");
-        PendidikanPasien.setText("");
         PendidikanPJ.setSelectedIndex(0);
         EdukasiPsikolgis.setSelectedIndex(0);
         KeteranganEdukasiPsikologis.setText("");

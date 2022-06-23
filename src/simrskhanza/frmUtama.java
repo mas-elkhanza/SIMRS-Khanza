@@ -594,6 +594,7 @@ import ipsrs.IPSRSRiwayatBarang;
 import ipsrs.IPSRSVerifikasiPenerimaan;
 import java.net.InetAddress;
 import kepegawaian.DlgAuditBundleIADP;
+import kepegawaian.DlgAuditBundleIDO;
 import kepegawaian.DlgAuditCuciTanganMedis;
 import kepegawaian.DlgAuditKamarJenazah;
 import kepegawaian.DlgDokter;
@@ -18662,6 +18663,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAuditBundleIDOActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditBundleIDO aplikasi=new DlgAuditBundleIDO(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19307,7 +19320,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
             btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah,
-            btnAuditBundleIADP;
+            btnAuditBundleIADP,btnAuditBundleIDO;
     
     public void isWall(){
         try{            
@@ -19809,6 +19822,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_bundle_iadp()==true){  
                 Panelmenu.add(btnAuditBundleIADP);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_bundle_ido()==true){  
+                Panelmenu.add(btnAuditBundleIDO);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -23982,6 +24000,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getaudit_bundle_ido()==true){  
+            Panelmenu.add(btnAuditBundleIDO);                 
+            jmlmenu++;
+        }
+
         if(akses.getindustrifarmasi()==true){
             Panelmenu.add(btnIndustriFarmasi); 
             jmlmenu++;
@@ -28285,6 +28308,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_bundle_iadp()==true){  
             if(btnAuditBundleIADP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditBundleIADP);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_bundle_ido()==true){  
+            if(btnAuditBundleIDO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditBundleIDO);                 
                 jmlmenu++;
             }                
         }
@@ -36517,6 +36547,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditBundleIADP.setName("btnAuditBundleIADP");
         btnAuditBundleIADP.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditBundleIADP.addActionListener(this::btnAuditBundleIADPActionPerformed);
+        
+        btnAuditBundleIDO = new widget.ButtonBig();
+        btnAuditBundleIDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6123156_avatar_doctor_frontliner_medical staff_surgeon_icon.png"))); 
+        btnAuditBundleIDO.setText("Audit Bundle IDO");
+        btnAuditBundleIDO.setIconTextGap(0);
+        btnAuditBundleIDO.setName("btnAuditBundleIDO");
+        btnAuditBundleIDO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditBundleIDO.addActionListener(this::btnAuditBundleIDOActionPerformed);
     }
     
 }
