@@ -8656,6 +8656,21 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td align='right' colspan='2'>Total :</td>"+
                                               "<td align='center'>"+rs2.getString("penilaian_jatuh_totalnilai")+"</td>"+
                                           "</tr>"+
+                                          "</tr>"+
+                                              "<td align='center' colspan='3'>"
+                            );
+                                        
+                            if(rs2.getInt("penilaian_jatuh_totalnilai")<25){
+                                htmlContent.append("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
+                            }else if(rs2.getInt("penilaian_jatuh_totalnilai")<45){
+                                htmlContent.append("Tingkat Resiko : Risiko Sedang (25-44), Tindakan : Intervensi pencegahan risiko jatuh standar");
+                            }else if(rs2.getInt("penilaian_jatuh_totalnilai")>=45){
+                                htmlContent.append("Tingkat Resiko : Risiko Tinggi (> 45), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
+                            }
+                                        
+                            htmlContent.append(
+                                              "</td>"+
+                                          "</tr>"+
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"+

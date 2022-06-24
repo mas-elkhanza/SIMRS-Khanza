@@ -71,24 +71,8 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
-            "Tgl.Asuhan","Anamnesis","Tiba di Ruang Rawat","Cara Masuk","Keluhan Utama","Penyakit Selama Kehamilan","Riwayat Penyakit Keluarga","Riwayat Pembedahan",
-            "Riwayat Alergi","Komplikasi Kehamilan Sebelumnya","Keterangan Komplikasi Sebelumnya","Umur Menarche","Lamanya Mens","Banyaknya Pembalut","Siklus Haid","Ket.Siklus Haid","Dirasakan Saat Menstruasi",
-            "Status Menikah","Jml.Nikah","Usia Perkawinan 1","Status Perkawinan 1","Usia Perkawinan 2","Status Perkawinan 2","Usia Perkawinan 3","Status Perkawinan 3",
-            "G","P","A","Hidup","HPHT","Usia Hamil","Tg.Perkiraan","Riwayat Imunisasi","ANC","ANC Ke","Ket. ANC","Keluhan Hamil Muda","Keluhan Hamil Tua","Riwayat Keluarga Berencana",
-            "Lamanya KB","Komplikasi KB","Ket Komplikasi KB","Berhenti KB","Alasan Berhenti KB","Riwayat Genekologi","Obat/Vitamin","Keterangan Obat/Vitamin","Merokok","Rokok/Hari",
-            "Alkohol","Alkohol/Hari","Obat Tidur/Narkoba","Kesadaran Mental","Keadaan Umum","GCS(E,V,M)","TD","Nadi","RR","Suhu","SpO2","BB","TB","LILA","TFU","TBJ","GD","Letak",
-            "Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","DJJ","Keterangan DJJ","Portio","Serviks","Ketuban","Hodge","Panggul","Inspekulo","Keterangan Inspekulo",
-            "Lakmus","Keterangan Lakmus","CTG","Keterangan CTG","Kepala","Muka","Mata","Hidung","Telinga","Mulut","Leher","Dada","Perut","Genitalia","Ekstremitas",
-            "a. Aktivitas Sehari-hari","b. Berjalan","Ket. Berjalan","c. Aktifitas","d. Alat Ambulasi","e. Ekstrimitas Atas","Ket. Ekstrimitas Atas","f. Ekstrimitas Bawah",
-            "Ket. Ekstrimitas Bawah","g. Kemampuan Menggenggam","Ket. Kemampuan Menggenggam","h. Kemampuan Koordinasi","Ket. Kemampuan Koordinasi","i. Kesimpulan Gangguan Fungsi",
-            "a. Kondisi Psikologis","b. Adakah Perilaku","Keterangan Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan dengan Anggota Keluarga","e. Agama","f. Tinggal Dengan",
-            "Keterangan Tinggal","g. Pekerjaan","h. Pembayaran","i. Nilai-nilai Kepercayaan","Ket. Nilai-nilai Kepercayaan","j. Bahasa Sehari-hari","k. Pendidikan Pasien",
-            "l. Pendidikan P.J.","m. Edukasi Diberikan Kepada","Keterangan Edukasi","Penilaian Nyeri","Penyebab","Keterangan Penyebab","Kualitas","Keterangan Kualitas",
-            "Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri hilang bila","Keterangan Nyeri Hilang","Diberitahukan Dokter","Pada Jam","1. Riwayat Jatuh","Nilai 1",
-            "2. Diagnosis Sekunder (≥ 2 Diagnosis Medis)","Nilai 2","3. Alat Bantu","Nilai 3","4. Terpasang Infuse","Nilai 4","5. Gaya Berjalan","Nilai 5","6. Status Mental",
-            "Nilai 6","Total Nilai","1. Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?","Skor 1","2. Apakah asupan makan berkurang karena tidak nafsu makan ?",
-            "Skor 2","Total Skor","Pasien dengan diagnosis khusus","Keterangan Diagnosa Khusus","Sudah dibaca dan diketahui oleh Dietisen","Jam Dibaca Dietisen","Asesmen/Penilaian Kebidanan",
-            "Rencana Kebidanan"
+            "Tgl.Asuhan","Macam Kasus","Anamnesis","Tiba Di Ruang Rawat","Cara Masuk","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
+            "Riwayat Penggunaan Obat","Riwayat Pembedahan","Riwayat Dirawat Di RS","Alat Bantu Yang Dipakai","Dalam Keadaan Hamil/Sedang Menyusui"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -98,7 +82,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 175; i++) {
+        for (i = 0; i < 24; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -125,331 +109,29 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(117);
             }else if(i==12){
-                column.setPreferredWidth(90);
-            }else if(i==13){
-                column.setPreferredWidth(110);
-            }else if(i==14){
-                column.setPreferredWidth(70);
-            }else if(i==15){
-                column.setPreferredWidth(250);
-            }else if(i==16){
-                column.setPreferredWidth(150);
-            }else if(i==17){
-                column.setPreferredWidth(150);
-            }else if(i==18){
-                column.setPreferredWidth(150);
-            }else if(i==19){
-                column.setPreferredWidth(100);
-            }else if(i==20){
-                column.setPreferredWidth(175);
-            }else if(i==21){
-                column.setPreferredWidth(180);
-            }else if(i==22){
-                column.setPreferredWidth(84);
-            }else if(i==23){
                 column.setPreferredWidth(78);
-            }else if(i==24){
-                column.setPreferredWidth(108);
-            }else if(i==25){
-                column.setPreferredWidth(60);
-            }else if(i==26){
-                column.setPreferredWidth(80);
-            }else if(i==27){
-                column.setPreferredWidth(136);
-            }else if(i==28){
-                column.setPreferredWidth(81);
-            }else if(i==29){
-                column.setPreferredWidth(54);
-            }else if(i==30){
-                column.setPreferredWidth(96);
-            }else if(i==31){
-                column.setPreferredWidth(106);
-            }else if(i==32){
-                column.setPreferredWidth(96);
-            }else if(i==33){
-                column.setPreferredWidth(106);
-            }else if(i==34){
-                column.setPreferredWidth(96);
-            }else if(i==35){
-                column.setPreferredWidth(106);
-            }else if(i==36){
-                column.setPreferredWidth(22);
-            }else if(i==37){
-                column.setPreferredWidth(22);
-            }else if(i==38){
-                column.setPreferredWidth(22);
-            }else if(i==39){
-                column.setPreferredWidth(37);
-            }else if(i==40){
-                column.setPreferredWidth(65);
-            }else if(i==41){
-                column.setPreferredWidth(59);
-            }else if(i==42){
-                column.setPreferredWidth(70);
-            }else if(i==43){
-                column.setPreferredWidth(97);
-            }else if(i==44){
-                column.setPreferredWidth(35);
-            }else if(i==45){
-                column.setPreferredWidth(45);
-            }else if(i==46){
-                column.setPreferredWidth(70);
-            }else if(i==47){
-                column.setPreferredWidth(105);
-            }else if(i==48){
-                column.setPreferredWidth(98);
-            }else if(i==49){
+            }else if(i==13){
                 column.setPreferredWidth(150);
-            }else if(i==50){
+            }else if(i==14){
+                column.setPreferredWidth(110);
+            }else if(i==15){
                 column.setPreferredWidth(70);
-            }else if(i==51){
-                column.setPreferredWidth(90);
-            }else if(i==52){
-                column.setPreferredWidth(120);
-            }else if(i==53){
-                column.setPreferredWidth(90);
-            }else if(i==54){
-                column.setPreferredWidth(120);
-            }else if(i==55){
-                column.setPreferredWidth(104);
-            }else if(i==56){
-                column.setPreferredWidth(100);
-            }else if(i==57){
+            }else if(i==16){
+                column.setPreferredWidth(220);
+            }else if(i==17){
+                column.setPreferredWidth(170);
+            }else if(i==18){
+                column.setPreferredWidth(170);
+            }else if(i==19){
+                column.setPreferredWidth(170);
+            }else if(i==20){
                 column.setPreferredWidth(150);
-            }else if(i==58){
-                column.setPreferredWidth(50);
-            }else if(i==59){
-                column.setPreferredWidth(60);
-            }else if(i==60){
-                column.setPreferredWidth(45);
-            }else if(i==61){
-                column.setPreferredWidth(68);
-            }else if(i==62){
-                column.setPreferredWidth(103);
-            }else if(i==63){
-                column.setPreferredWidth(105);
-            }else if(i==64){
-                column.setPreferredWidth(84);
-            }else if(i==65){
-                column.setPreferredWidth(63);
-            }else if(i==66){
-                column.setPreferredWidth(50);
-            }else if(i==67){
-                column.setPreferredWidth(35);
-            }else if(i==68){
-                column.setPreferredWidth(35);
-            }else if(i==69){
-                column.setPreferredWidth(35);
-            }else if(i==70){
-                column.setPreferredWidth(35);
-            }else if(i==71){
-                column.setPreferredWidth(35);
-            }else if(i==72){
-                column.setPreferredWidth(35);
-            }else if(i==73){
-                column.setPreferredWidth(35);
-            }else if(i==74){
-                column.setPreferredWidth(55);
-            }else if(i==75){
-                column.setPreferredWidth(55);
-            }else if(i==76){
-                column.setPreferredWidth(27);
-            }else if(i==77){
-                column.setPreferredWidth(55);
-            }else if(i==78){
-                column.setPreferredWidth(65);
-            }else if(i==79){
-                column.setPreferredWidth(65);
-            }else if(i==80){
-                column.setPreferredWidth(75);
-            }else if(i==81){
-                column.setPreferredWidth(65);
-            }else if(i==82){
-                column.setPreferredWidth(50);
-            }else if(i==83){
-                column.setPreferredWidth(40);
-            }else if(i==84){
-                column.setPreferredWidth(85);
-            }else if(i==85){
-                column.setPreferredWidth(50);
-            }else if(i==86){
-                column.setPreferredWidth(45);
-            }else if(i==87){
-                column.setPreferredWidth(53);
-            }else if(i==88){
-                column.setPreferredWidth(53);
-            }else if(i==89){
-                column.setPreferredWidth(145);
-            }else if(i==90){
-                column.setPreferredWidth(60);
-            }else if(i==91){
-                column.setPreferredWidth(115);
-            }else if(i==92){
-                column.setPreferredWidth(60);
-            }else if(i==93){
-                column.setPreferredWidth(115);
-            }else if(i==94){
-                column.setPreferredWidth(60);
-            }else if(i==95){
-                column.setPreferredWidth(115);
-            }else if(i==96){
-                column.setPreferredWidth(80);
-            }else if(i==97){
-                column.setPreferredWidth(50);
-            }else if(i==98){
-                column.setPreferredWidth(128);
-            }else if(i==99){
-                column.setPreferredWidth(50);
-            }else if(i==100){
-                column.setPreferredWidth(50);
-            }else if(i==101){
-                column.setPreferredWidth(50);
-            }else if(i==102){
-                column.setPreferredWidth(140);
-            }else if(i==103){
-                column.setPreferredWidth(87);
-            }else if(i==104){
-                column.setPreferredWidth(100);
-            }else if(i==105){
-                column.setPreferredWidth(60);
-            }else if(i==106){
-                column.setPreferredWidth(100);
-            }else if(i==107){
-                column.setPreferredWidth(120);
-            }else if(i==108){
-                column.setPreferredWidth(140);
-            }else if(i==109){
-                column.setPreferredWidth(140);
-            }else if(i==110){
-                column.setPreferredWidth(68);
-            }else if(i==111){
-                column.setPreferredWidth(101);
-            }else if(i==112){
-                column.setPreferredWidth(100);
-            }else if(i==113){
-                column.setPreferredWidth(110);
-            }else if(i==114){
-                column.setPreferredWidth(107);
-            }else if(i==115){
-                column.setPreferredWidth(118);
-            }else if(i==116){
-                column.setPreferredWidth(154);
-            }else if(i==117){
-                column.setPreferredWidth(164);
-            }else if(i==118){
-                column.setPreferredWidth(133);
-            }else if(i==119){
-                column.setPreferredWidth(143);
-            }else if(i==120){
-                column.setPreferredWidth(160);
-            }else if(i==121){
-                column.setPreferredWidth(106);
-            }else if(i==122){
-                column.setPreferredWidth(98);
-            }else if(i==123){
-                column.setPreferredWidth(107);
-            }else if(i==124){
-                column.setPreferredWidth(156);
-            }else if(i==125){
-                column.setPreferredWidth(198);
-            }else if(i==126){
-                column.setPreferredWidth(70);
-            }else if(i==127){
-                column.setPreferredWidth(95);
-            }else if(i==128){
-                column.setPreferredWidth(103);
-            }else if(i==129){
-                column.setPreferredWidth(110);
-            }else if(i==130){
+            }else if(i==21){
+                column.setPreferredWidth(150);
+            }else if(i==22){
                 column.setPreferredWidth(130);
-            }else if(i==131){
-                column.setPreferredWidth(130);
-            }else if(i==132){
-                column.setPreferredWidth(142);
-            }else if(i==133){
-                column.setPreferredWidth(110);
-            }else if(i==134){
-                column.setPreferredWidth(108);
-            }else if(i==135){
-                column.setPreferredWidth(100);
-            }else if(i==136){
-                column.setPreferredWidth(148);
-            }else if(i==137){
-                column.setPreferredWidth(148);
-            }else if(i==138){
-                column.setPreferredWidth(83);
-            }else if(i==139){
-                column.setPreferredWidth(83);
-            }else if(i==140){
-                column.setPreferredWidth(115);
-            }else if(i==141){
-                column.setPreferredWidth(87);
-            }else if(i==142){
-                column.setPreferredWidth(107);
-            }else if(i==143){
-                column.setPreferredWidth(100);
-            }else if(i==144){
-                column.setPreferredWidth(55);
-            }else if(i==145){
-                column.setPreferredWidth(63);
-            }else if(i==146){
-                column.setPreferredWidth(60);
-            }else if(i==147){
-                column.setPreferredWidth(87);
-            }else if(i==148){
-                column.setPreferredWidth(126);
-            }else if(i==149){
-                column.setPreferredWidth(110);
-            }else if(i==150){
-                column.setPreferredWidth(60);
-            }else if(i==151){
-                column.setPreferredWidth(90);
-            }else if(i==152){
-                column.setPreferredWidth(40);
-            }else if(i==153){
-                column.setPreferredWidth(225);
-            }else if(i==154){
-                column.setPreferredWidth(40);
-            }else if(i==155){
-                column.setPreferredWidth(218);
-            }else if(i==156){
-                column.setPreferredWidth(40);
-            }else if(i==157){
-                column.setPreferredWidth(105);
-            }else if(i==158){
-                column.setPreferredWidth(40);
-            }else if(i==159){
+            }else if(i==23){
                 column.setPreferredWidth(160);
-            }else if(i==160){
-                column.setPreferredWidth(40);
-            }else if(i==161){
-                column.setPreferredWidth(225);
-            }else if(i==162){
-                column.setPreferredWidth(40);
-            }else if(i==163){
-                column.setPreferredWidth(58);
-            }else if(i==164){
-                column.setPreferredWidth(380);
-            }else if(i==165){
-                column.setPreferredWidth(40);
-            }else if(i==166){
-                column.setPreferredWidth(317);
-            }else if(i==167){
-                column.setPreferredWidth(40);
-            }else if(i==168){
-                column.setPreferredWidth(58);
-            }else if(i==169){
-                column.setPreferredWidth(165);
-            }else if(i==170){
-                column.setPreferredWidth(149);
-            }else if(i==171){
-                column.setPreferredWidth(209);
-            }else if(i==172){
-                column.setPreferredWidth(107);
-            }else if(i==173){
-                column.setPreferredWidth(200);
-            }else if(i==174){
-                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -8263,61 +7945,65 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select penilaian_awal_keperawatan_ranap.no_rawat,penilaian_awal_keperawatan_ranap.tanggal,penilaian_awal_keperawatan_ranap.informasi,"+
-                "penilaian_awal_keperawatan_ranap.tiba_diruang_rawat,penilaian_awal_keperawatan_ranap.cara_masuk,penilaian_awal_keperawatan_ranap.keluhan,"+
-                "penilaian_awal_keperawatan_ranap.rpk,penilaian_awal_keperawatan_ranap.psk,penilaian_awal_keperawatan_ranap.rp,penilaian_awal_keperawatan_ranap.alergi,"+
-                "penilaian_awal_keperawatan_ranap.komplikasi_sebelumnya,penilaian_awal_keperawatan_ranap.keterangan_komplikasi_sebelumnya,penilaian_awal_keperawatan_ranap.riwayat_mens_umur,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_mens_lamanya,penilaian_awal_keperawatan_ranap.riwayat_mens_banyaknya,penilaian_awal_keperawatan_ranap.riwayat_mens_siklus,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_mens_ket_siklus,penilaian_awal_keperawatan_ranap.riwayat_mens_dirasakan,penilaian_awal_keperawatan_ranap.riwayat_perkawinan_status,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_perkawinan_ket_status,penilaian_awal_keperawatan_ranap.riwayat_perkawinan_usia1,penilaian_awal_keperawatan_ranap.riwayat_perkawinan_ket_usia1,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_perkawinan_usia2,penilaian_awal_keperawatan_ranap.riwayat_perkawinan_ket_usia2,penilaian_awal_keperawatan_ranap.riwayat_perkawinan_usia3,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_perkawinan_ket_usia3,penilaian_awal_keperawatan_ranap.riwayat_persalinan_g,penilaian_awal_keperawatan_ranap.riwayat_persalinan_p,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_persalinan_a,penilaian_awal_keperawatan_ranap.riwayat_persalinan_hidup,penilaian_awal_keperawatan_ranap.riwayat_hamil_hpht,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_hamil_usiahamil,penilaian_awal_keperawatan_ranap.riwayat_hamil_tp,penilaian_awal_keperawatan_ranap.riwayat_hamil_imunisasi,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_hamil_anc,penilaian_awal_keperawatan_ranap.riwayat_hamil_ancke,penilaian_awal_keperawatan_ranap.riwayat_hamil_ket_ancke,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_hamil_keluhan_hamil_muda,penilaian_awal_keperawatan_ranap.riwayat_hamil_keluhan_hamil_tua,penilaian_awal_keperawatan_ranap.riwayat_kb,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kb_lamanya,penilaian_awal_keperawatan_ranap.riwayat_kb_komplikasi,penilaian_awal_keperawatan_ranap.riwayat_kb_ket_komplikasi,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kb_kapaberhenti,penilaian_awal_keperawatan_ranap.riwayat_kb_alasanberhenti,penilaian_awal_keperawatan_ranap.riwayat_genekologi,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kebiasaan_obat,penilaian_awal_keperawatan_ranap.riwayat_kebiasaan_ket_obat,penilaian_awal_keperawatan_ranap.riwayat_kebiasaan_merokok,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kebiasaan_ket_merokok,penilaian_awal_keperawatan_ranap.riwayat_kebiasaan_alkohol,penilaian_awal_keperawatan_ranap.riwayat_kebiasaan_ket_alkohol,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kebiasaan_narkoba,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_mental,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_keadaan_umum,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_gcs,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_td,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_nadi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_rr,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_suhu,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_spo2,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_bb,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_tb,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_lila,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_tfu,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_tbj,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_letak,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_presentasi,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_penurunan,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_his,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_kekuatan,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_lamanya,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_djj,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_ket_djj,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_portio,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_pembukaan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_ketuban,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_hodge,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_panggul,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_inspekulo,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_ket_inspekulo,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_lakmus,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_ket_lakmus,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_ctg,penilaian_awal_keperawatan_ranap.pemeriksaan_kebidanan_ket_ctg,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_umum_kepala,penilaian_awal_keperawatan_ranap.pemeriksaan_umum_muka,penilaian_awal_keperawatan_ranap.pemeriksaan_umum_mata,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_umum_hidung,penilaian_awal_keperawatan_ranap.pemeriksaan_umum_telinga,penilaian_awal_keperawatan_ranap.pemeriksaan_umum_mulut,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_umum_leher,penilaian_awal_keperawatan_ranap.pemeriksaan_umum_dada,penilaian_awal_keperawatan_ranap.pemeriksaan_umum_perut,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_umum_genitalia,penilaian_awal_keperawatan_ranap.pemeriksaan_umum_ekstrimitas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_aktifitas,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ket_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_aktivitas,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ambulasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ket_ekstrimitas_atas,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ket_ekstrimitas_bawah,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_menggenggam,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ket_kemampuan_menggenggam,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ket_koordinasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_gangguan_fungsi,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_kondisipsiko,penilaian_awal_keperawatan_ranap.riwayat_psiko_adakah_prilaku,penilaian_awal_keperawatan_ranap.riwayat_psiko_ket_adakah_prilaku,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap.riwayat_psiko_hubungan_pasien,penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal_dengan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_ket_tinggal_dengan,penilaian_awal_keperawatan_ranap.riwayat_psiko_budaya,penilaian_awal_keperawatan_ranap.riwayat_psiko_ket_budaya,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_pend_pj,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_pada,penilaian_awal_keperawatan_ranap.riwayat_psiko_ket_edukasi_pada,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri,penilaian_awal_keperawatan_ranap.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_penyebab,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_kualitas,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap.penilaian_nyeri_lokasi,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap.penilaian_nyeri_skala,penilaian_awal_keperawatan_ranap.penilaian_nyeri_waktu,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_diberitahukan_dokter,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap.penilaian_jatuh_skala1,penilaian_awal_keperawatan_ranap.penilaian_jatuh_nilai1,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuh_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuh_nilai2,penilaian_awal_keperawatan_ranap.penilaian_jatuh_skala3,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuh_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuh_skala4,penilaian_awal_keperawatan_ranap.penilaian_jatuh_nilai4,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuh_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuh_nilai5,penilaian_awal_keperawatan_ranap.penilaian_jatuh_skala6,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuh_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuh_totalnilai,penilaian_awal_keperawatan_ranap.skrining_gizi1,"+
-                "penilaian_awal_keperawatan_ranap.nilai_gizi1,penilaian_awal_keperawatan_ranap.skrining_gizi2,penilaian_awal_keperawatan_ranap.nilai_gizi2,bahasa_pasien.nama_bahasa,"+
-                "penilaian_awal_keperawatan_ranap.nilai_total_gizi,penilaian_awal_keperawatan_ranap.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,"+
-                "penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.masalah,"+
-                "penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.nip1,penilaian_awal_keperawatan_ranap.nip2,penilaian_awal_keperawatan_ranap.kd_dokter, "+
-                "pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.agama,pasien.pekerjaan,pasien.pnd,penjab.png_jawab "+
+                "select penilaian_awal_keperawatan_ranap.no_rawat,penilaian_awal_keperawatan_ranap.tanggal,penilaian_awal_keperawatan_ranap.informasi,penilaian_awal_keperawatan_ranap.ket_informasi,penilaian_awal_keperawatan_ranap.tiba_diruang_rawat,"+
+                "penilaian_awal_keperawatan_ranap.kasus_trauma,penilaian_awal_keperawatan_ranap.cara_masuk,penilaian_awal_keperawatan_ranap.rps,penilaian_awal_keperawatan_ranap.rpd,penilaian_awal_keperawatan_ranap.rpk,penilaian_awal_keperawatan_ranap.rpo,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_pembedahan,penilaian_awal_keperawatan_ranap.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap.riwayat_kehamilan,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap.riwayat_tranfusi,penilaian_awal_keperawatan_ranap.riwayat_alergi,penilaian_awal_keperawatan_ranap.riwayat_merokok,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap.riwayat_alkohol,penilaian_awal_keperawatan_ranap.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap.riwayat_narkoba,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_olahraga,penilaian_awal_keperawatan_ranap.pemeriksaan_mental,penilaian_awal_keperawatan_ranap.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap.pemeriksaan_gcs,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_td,penilaian_awal_keperawatan_ranap.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_rr,penilaian_awal_keperawatan_ranap.pemeriksaan_suhu,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap.pemeriksaan_bb,penilaian_awal_keperawatan_ranap.pemeriksaan_tb,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_pola_nafas,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_volume_pernafasan,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_irama_nafas,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_peistatik_usus,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_neurologi_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_motorik,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_warankulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_turgor,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
+                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_lainlain,"+
+                "penilaian_awal_keperawatan_ranap.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap.pola_aktifitas_berpakaian,"+
+                "penilaian_awal_keperawatan_ranap.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap.pula_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap.pola_nutrisi_porsi_makan,"+
+                "penilaian_awal_keperawatan_ranap.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_aktifitas,"+
+                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ambulasi,"+
+                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah,"+
+                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kesimpulan,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_nyeri,penilaian_awal_keperawatan_ranap.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_kualitas,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap.penilaian_nyeri_skala,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_diberitahukan_dokter,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai1,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala3,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai4,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala6,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala1,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai2,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala4,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai5,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala7,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai8,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala10,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai11,"+
+                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap.skrining_gizi1,penilaian_awal_keperawatan_ranap.nilai_gizi1,penilaian_awal_keperawatan_ranap.skrining_gizi2,"+
+                "penilaian_awal_keperawatan_ranap.nilai_gizi2,penilaian_awal_keperawatan_ranap.nilai_total_gizi,penilaian_awal_keperawatan_ranap.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,"+
+                "penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.nip1,"+
+                "penilaian_awal_keperawatan_ranap.nip2,penilaian_awal_keperawatan_ranap.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
+                "reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.agama,pasien.pekerjaan,pasien.pnd,penjab.png_jawab "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_awal_keperawatan_ranap on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap.no_rawat "+
                 "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap.nip1=pengkaji1.nip "+
@@ -8326,8 +8012,9 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                 "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                 "inner join penjab on penjab.kd_pj=reg_periksa.kd_pj where "+
                 "penilaian_awal_keperawatan_ranap.tanggal between ? and ? "+
-                 (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_awal_keperawatan_ranap.nip1 like ? or pengkaji1.nama like ? or penilaian_awal_keperawatan_ranap.kd_dokter like ? or dokter.nm_dokter like ?)")+
-                 " order by penilaian_awal_keperawatan_ranap.tanggal");
+                (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_awal_keperawatan_ranap.nip1 like ? or "+
+                "pengkaji1.nama like ? or penilaian_awal_keperawatan_ranap.kd_dokter like ? or dokter.nm_dokter like ?)")+
+                " order by penilaian_awal_keperawatan_ranap.tanggal");
             
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -8345,36 +8032,9 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
-                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("tiba_diruang_rawat"),rs.getString("cara_masuk"),rs.getString("keluhan"),rs.getString("psk"),rs.getString("rpk"),
-                        rs.getString("rp"),rs.getString("alergi"),rs.getString("komplikasi_sebelumnya"),rs.getString("keterangan_komplikasi_sebelumnya"),rs.getString("riwayat_mens_umur"),rs.getString("riwayat_mens_lamanya"),rs.getString("riwayat_mens_banyaknya"),
-                        rs.getString("riwayat_mens_siklus"),rs.getString("riwayat_mens_ket_siklus"),rs.getString("riwayat_mens_dirasakan"),rs.getString("riwayat_perkawinan_status"),rs.getString("riwayat_perkawinan_ket_status"),rs.getString("riwayat_perkawinan_usia1"),
-                        rs.getString("riwayat_perkawinan_ket_usia1"),rs.getString("riwayat_perkawinan_usia2"),rs.getString("riwayat_perkawinan_ket_usia2"),rs.getString("riwayat_perkawinan_usia3"),rs.getString("riwayat_perkawinan_ket_usia3"),
-                        rs.getString("riwayat_persalinan_g"),rs.getString("riwayat_persalinan_p"),rs.getString("riwayat_persalinan_a"),rs.getString("riwayat_persalinan_hidup"),rs.getString("riwayat_hamil_hpht"),rs.getString("riwayat_hamil_usiahamil"),
-                        rs.getString("riwayat_hamil_tp"),rs.getString("riwayat_hamil_imunisasi"),rs.getString("riwayat_hamil_anc"),rs.getString("riwayat_hamil_ancke"),rs.getString("riwayat_hamil_ket_ancke"),rs.getString("riwayat_hamil_keluhan_hamil_muda"),
-                        rs.getString("riwayat_hamil_keluhan_hamil_tua"),rs.getString("riwayat_kb"),rs.getString("riwayat_kb_lamanya"),rs.getString("riwayat_kb_komplikasi"),rs.getString("riwayat_kb_ket_komplikasi"),rs.getString("riwayat_kb_kapaberhenti"),
-                        rs.getString("riwayat_kb_alasanberhenti"),rs.getString("riwayat_genekologi"),rs.getString("riwayat_kebiasaan_obat"),rs.getString("riwayat_kebiasaan_ket_obat"),rs.getString("riwayat_kebiasaan_merokok"),rs.getString("riwayat_kebiasaan_ket_merokok"),
-                        rs.getString("riwayat_kebiasaan_alkohol"),rs.getString("riwayat_kebiasaan_ket_alkohol"),rs.getString("riwayat_kebiasaan_narkoba"),rs.getString("pemeriksaan_kebidanan_mental"),rs.getString("pemeriksaan_kebidanan_keadaan_umum"),
-                        rs.getString("pemeriksaan_kebidanan_gcs"),rs.getString("pemeriksaan_kebidanan_td"),rs.getString("pemeriksaan_kebidanan_nadi"),rs.getString("pemeriksaan_kebidanan_rr"),rs.getString("pemeriksaan_kebidanan_suhu"),
-                        rs.getString("pemeriksaan_kebidanan_spo2"),rs.getString("pemeriksaan_kebidanan_bb"),rs.getString("pemeriksaan_kebidanan_tb"),rs.getString("pemeriksaan_kebidanan_lila"),rs.getString("pemeriksaan_kebidanan_tfu"),
-                        rs.getString("pemeriksaan_kebidanan_tbj"),rs.getString("pemeriksaan_kebidanan_letak"),rs.getString("pemeriksaan_kebidanan_presentasi"),rs.getString("pemeriksaan_kebidanan_penurunan"),rs.getString("pemeriksaan_kebidanan_penurunan"),
-                        rs.getString("pemeriksaan_kebidanan_his"),rs.getString("pemeriksaan_kebidanan_kekuatan"),rs.getString("pemeriksaan_kebidanan_lamanya"),rs.getString("pemeriksaan_kebidanan_djj"),rs.getString("pemeriksaan_kebidanan_ket_djj"),
-                        rs.getString("pemeriksaan_kebidanan_portio"),rs.getString("pemeriksaan_kebidanan_pembukaan"),rs.getString("pemeriksaan_kebidanan_ketuban"),rs.getString("pemeriksaan_kebidanan_hodge"),rs.getString("pemeriksaan_kebidanan_panggul"),
-                        rs.getString("pemeriksaan_kebidanan_inspekulo"),rs.getString("pemeriksaan_kebidanan_ket_inspekulo"),rs.getString("pemeriksaan_kebidanan_lakmus"),rs.getString("pemeriksaan_kebidanan_ket_lakmus"),rs.getString("pemeriksaan_kebidanan_ctg"),
-                        rs.getString("pemeriksaan_kebidanan_ket_ctg"),rs.getString("pemeriksaan_umum_kepala"),rs.getString("pemeriksaan_umum_muka"),rs.getString("pemeriksaan_umum_mata"),rs.getString("pemeriksaan_umum_hidung"),rs.getString("pemeriksaan_umum_telinga"),
-                        rs.getString("pemeriksaan_umum_mulut"),rs.getString("pemeriksaan_umum_leher"),rs.getString("pemeriksaan_umum_dada"),rs.getString("pemeriksaan_umum_perut"),rs.getString("pemeriksaan_umum_genitalia"),rs.getString("pemeriksaan_umum_ekstrimitas"),
-                        rs.getString("pengkajian_fungsi_kemampuan_aktifitas"),rs.getString("pengkajian_fungsi_berjalan"),rs.getString("pengkajian_fungsi_ket_berjalan"),rs.getString("pengkajian_fungsi_aktivitas"),rs.getString("pengkajian_fungsi_ambulasi"),
-                        rs.getString("pengkajian_fungsi_ekstrimitas_atas"),rs.getString("pengkajian_fungsi_ket_ekstrimitas_atas"),rs.getString("pengkajian_fungsi_ekstrimitas_bawah"),rs.getString("pengkajian_fungsi_ket_ekstrimitas_bawah"),
-                        rs.getString("pengkajian_fungsi_kemampuan_menggenggam"),rs.getString("pengkajian_fungsi_ket_kemampuan_menggenggam"),rs.getString("pengkajian_fungsi_koordinasi"),rs.getString("pengkajian_fungsi_ket_koordinasi"),
-                        rs.getString("pengkajian_fungsi_gangguan_fungsi"),rs.getString("riwayat_psiko_kondisipsiko"),rs.getString("riwayat_psiko_adakah_prilaku"),rs.getString("riwayat_psiko_ket_adakah_prilaku"),rs.getString("riwayat_psiko_gangguan_jiwa"),
-                        rs.getString("riwayat_psiko_hubungan_pasien"),rs.getString("agama"),rs.getString("riwayat_psiko_tinggal_dengan"),rs.getString("riwayat_psiko_ket_tinggal_dengan"),rs.getString("pekerjaan"),rs.getString("png_jawab"),
-                        rs.getString("riwayat_psiko_budaya"),rs.getString("riwayat_psiko_ket_budaya"),rs.getString("nama_bahasa"),rs.getString("pnd"),rs.getString("riwayat_psiko_pend_pj"),rs.getString("riwayat_psiko_edukasi_pada"),
-                        rs.getString("riwayat_psiko_ket_edukasi_pada"),rs.getString("penilaian_nyeri"),rs.getString("penilaian_nyeri_penyebab"),rs.getString("penilaian_nyeri_ket_penyebab"),rs.getString("penilaian_nyeri_kualitas"),
-                        rs.getString("penilaian_nyeri_ket_kualitas"),rs.getString("penilaian_nyeri_lokasi"),rs.getString("penilaian_nyeri_menyebar"),rs.getString("penilaian_nyeri_skala"),rs.getString("penilaian_nyeri_waktu"),rs.getString("penilaian_nyeri_hilang"),
-                        rs.getString("penilaian_nyeri_ket_hilang"),rs.getString("penilaian_nyeri_diberitahukan_dokter"),rs.getString("penilaian_nyeri_jam_diberitahukan_dokter"),rs.getString("penilaian_jatuh_skala1"),rs.getString("penilaian_jatuh_nilai1"),
-                        rs.getString("penilaian_jatuh_skala2"),rs.getString("penilaian_jatuh_nilai2"),rs.getString("penilaian_jatuh_skala3"),rs.getString("penilaian_jatuh_nilai3"),rs.getString("penilaian_jatuh_skala4"),rs.getString("penilaian_jatuh_nilai4"),
-                        rs.getString("penilaian_jatuh_skala5"),rs.getString("penilaian_jatuh_nilai5"),rs.getString("penilaian_jatuh_skala6"),rs.getString("penilaian_jatuh_nilai6"),rs.getString("penilaian_jatuh_totalnilai"),rs.getString("skrining_gizi1"),
-                        rs.getString("nilai_gizi1"),rs.getString("skrining_gizi2"),rs.getString("nilai_gizi2"),rs.getString("nilai_total_gizi"),rs.getString("skrining_gizi_diagnosa_khusus"),rs.getString("skrining_gizi_ket_diagnosa_khusus"),
-                        rs.getString("skrining_gizi_diketahui_dietisen"),rs.getString("skrining_gizi_jam_diketahui_dietisen"),rs.getString("masalah"),rs.getString("rencana")
+                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("kasus_trauma"),rs.getString("informasi")+", "+rs.getString("ket_informasi"),rs.getString("tiba_diruang_rawat"),rs.getString("cara_masuk"),
+                        rs.getString("rps"),rs.getString("rpd"),rs.getString("rpk"),rs.getString("rpo"),rs.getString("riwayat_pembedahan"),rs.getString("riwayat_dirawat_dirs"),rs.getString("alat_bantu_dipakai"),
+                        rs.getString("riwayat_kehamilan")+", "+rs.getString("riwayat_kehamilan_perkiraan")
                     });
                 }
             } catch (Exception e) {
@@ -8620,7 +8280,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         try {
             ps=koneksi.prepareStatement(
                     "select pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,"+
-                    "bahasa_pasien.nama_bahasa,pasien.pnd,pasien.pekerjaan,pasien.gol_darah "+
+                    "bahasa_pasien.nama_bahasa,pasien.pnd,pasien.pekerjaan "+
                     "from pasien inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "where pasien.no_rkm_medis=?");
             try {
@@ -8634,7 +8294,6 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                     Bahasa.setText(rs.getString("nama_bahasa"));
                     PendidikanPasien.setText(rs.getString("pnd"));
                     PekerjaanPasien.setText(rs.getString("pekerjaan"));
-                    //GD.setText(rs.getString("gol_darah"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
