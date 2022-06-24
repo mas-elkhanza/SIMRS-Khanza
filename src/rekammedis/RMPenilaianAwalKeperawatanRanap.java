@@ -72,7 +72,9 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
             "Tgl.Asuhan","Macam Kasus","Anamnesis","Tiba Di Ruang Rawat","Cara Masuk","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
-            "Riwayat Penggunaan Obat","Riwayat Pembedahan","Riwayat Dirawat Di RS","Alat Bantu Yang Dipakai","Dalam Keadaan Hamil/Sedang Menyusui"
+            "Riwayat Penggunaan Obat","Riwayat Pembedahan","Riwayat Dirawat Di RS","Alat Bantu Yang Dipakai","Dalam Keadaan Hamil/Sedang Menyusui","Riwayat Transfusi Darah",
+            "Riwayat Alergi","Merokok","Batang/Hari","Alkohol","Gelas/Hari","Obat Tidur","Olah Raga","Kesadaran Mental","Keadaan Umum","GCS(E,V,M)","TD(mmHg)",
+            "Nadi(x/menit)"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -82,7 +84,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 37; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -129,9 +131,35 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }else if(i==21){
                 column.setPreferredWidth(150);
             }else if(i==22){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(125);
             }else if(i==23){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(210);
+            }else if(i==24){
+                column.setPreferredWidth(130);
+            }else if(i==25){
+                column.setPreferredWidth(130);
+            }else if(i==26){
+                column.setPreferredWidth(48);
+            }else if(i==27){
+                column.setPreferredWidth(65);
+            }else if(i==28){
+                column.setPreferredWidth(44);
+            }else if(i==29){
+                column.setPreferredWidth(59);
+            }else if(i==30){
+                column.setPreferredWidth(61);
+            }else if(i==31){
+                column.setPreferredWidth(59);
+            }else if(i==32){
+                column.setPreferredWidth(120);
+            }else if(i==33){
+                column.setPreferredWidth(85);
+            }else if(i==34){
+                column.setPreferredWidth(64);
+            }else if(i==35){
+                column.setPreferredWidth(64);
+            }else if(i==36){
+                column.setPreferredWidth(74);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -8034,7 +8062,9 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
                         rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("kasus_trauma"),rs.getString("informasi")+", "+rs.getString("ket_informasi"),rs.getString("tiba_diruang_rawat"),rs.getString("cara_masuk"),
                         rs.getString("rps"),rs.getString("rpd"),rs.getString("rpk"),rs.getString("rpo"),rs.getString("riwayat_pembedahan"),rs.getString("riwayat_dirawat_dirs"),rs.getString("alat_bantu_dipakai"),
-                        rs.getString("riwayat_kehamilan")+", "+rs.getString("riwayat_kehamilan_perkiraan")
+                        rs.getString("riwayat_kehamilan")+", "+rs.getString("riwayat_kehamilan_perkiraan"),rs.getString("riwayat_tranfusi"),rs.getString("riwayat_alergi"),rs.getString("riwayat_merokok"),rs.getString("riwayat_merokok_jumlah"),
+                        rs.getString("riwayat_alkohol"),rs.getString("riwayat_alkohol_jumlah"),rs.getString("riwayat_narkoba"),rs.getString("riwayat_olahraga"),rs.getString("pemeriksaan_mental"),rs.getString("pemeriksaan_keadaan_umum"),
+                        rs.getString("pemeriksaan_gcs"),rs.getString("pemeriksaan_td"),rs.getString("pemeriksaan_nadi")
                     });
                 }
             } catch (Exception e) {
