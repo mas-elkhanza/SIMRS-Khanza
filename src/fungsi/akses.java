@@ -183,7 +183,7 @@ public final class akses {
             catatan_observasi_igd=false,catatan_observasi_ranap=false,catatan_observasi_ranap_kebidanan=false,catatan_observasi_ranap_postpartum=false,
             penilaian_awal_medis_ralan_tht=false,penilaian_psikologi=false,audit_cuci_tangan_medis=false,audit_pembuangan_limbah=false,ruang_audit_kepatuhan=false,
             audit_pembuangan_benda_tajam=false,audit_penanganan_darah=false,audit_pengelolaan_linen_kotor=false,audit_penempatan_pasien=false,
-            audit_kamar_jenazah=false,audit_bundle_iadp=false,audit_bundle_ido=false;
+            audit_kamar_jenazah=false,audit_bundle_iadp=false,audit_bundle_ido=false,audit_fasilitas_kebersihan_tangan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1043,6 +1043,7 @@ public final class akses {
                         akses.audit_kamar_jenazah=true;
                         akses.audit_bundle_iadp=true;
                         akses.audit_bundle_ido=true;
+                        akses.audit_fasilitas_kebersihan_tangan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1886,6 +1887,7 @@ public final class akses {
                         akses.audit_kamar_jenazah=rs2.getBoolean("audit_kamar_jenazah");
                         akses.audit_bundle_iadp=rs2.getBoolean("audit_bundle_iadp");
                         akses.audit_bundle_ido=rs2.getBoolean("audit_bundle_ido");
+                        akses.audit_fasilitas_kebersihan_tangan=rs2.getBoolean("audit_fasilitas_kebersihan_tangan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2727,6 +2729,7 @@ public final class akses {
                         akses.audit_kamar_jenazah=false;
                         akses.audit_bundle_iadp=false;
                         akses.audit_bundle_ido=false;
+                        akses.audit_fasilitas_kebersihan_tangan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3625,4 +3628,5 @@ public final class akses {
     public static boolean getaudit_kamar_jenazah(){return akses.audit_kamar_jenazah;}
     public static boolean getaudit_bundle_iadp(){return akses.audit_bundle_iadp;}
     public static boolean getaudit_bundle_ido(){return akses.audit_bundle_ido;}
+    public static boolean getaudit_fasilitas_kebersihan_tangan(){return akses.audit_fasilitas_kebersihan_tangan;}
 }   
