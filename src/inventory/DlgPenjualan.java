@@ -1537,6 +1537,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(kdptg,"Petugas");
         }else if(nmgudang.getText().trim().equals("")||kdgudang.getText().trim().equals("")){
             Valid.textKosong(kdgudang,"Gudang");
+        }else if(AkunBayar.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(AkunBayar,"Akun Bayar");
         }else if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             tbObat.requestFocus();
