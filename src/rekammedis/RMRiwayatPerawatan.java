@@ -10338,6 +10338,56 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                  "</table>"+
                                               "</td>"+
                                           "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Gastrointestinal : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Mulut : "+rs2.getString("pemeriksaan_gastrointestinal_mulut")+(rs2.getString("pemeriksaan_gastrointestinal_mulut_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_gastrointestinal_mulut_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Lidah : "+rs2.getString("pemeriksaan_gastrointestinal_lidah")+(rs2.getString("pemeriksaan_gastrointestinal_lidah_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_gastrointestinal_lidah_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Gigi : "+rs2.getString("pemeriksaan_gastrointestinal_gigi")+(rs2.getString("pemeriksaan_gastrointestinal_gigi_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_gastrointestinal_gigi_keterangan"))+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Tenggorokan : "+rs2.getString("pemeriksaan_gastrointestinal_tenggorokan")+(rs2.getString("pemeriksaan_gastrointestinal_tenggorokan_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_gastrointestinal_tenggorokan_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Abdomen : "+rs2.getString("pemeriksaan_gastrointestinal_abdomen")+(rs2.getString("pemeriksaan_gastrointestinal_abdomen_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_gastrointestinal_abdomen_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Peistatik Usus : "+rs2.getString("pemeriksaan_gastrointestinal_peistatik_usus")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='100%' border='0' colspan='3'>"+
+                                                            "Anus : "+rs2.getString("pemeriksaan_gastrointestinal_anus")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Neurologi : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Sensorik : "+rs2.getString("pemeriksaan_neurologi_sensorik")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Penglihatan : "+rs2.getString("pemeriksaan_neurologi_pengelihatan")+(rs2.getString("pemeriksaan_neurologi_pengelihatan_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_neurologi_pengelihatan_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Alat Bantu Penglihatan : "+rs2.getString("pemeriksaan_neurologi_alat_bantu_penglihatan")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"   
