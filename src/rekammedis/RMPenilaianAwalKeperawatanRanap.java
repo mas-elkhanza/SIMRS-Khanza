@@ -78,7 +78,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             "Retraksi","Pola Nafas","Suara Nafas","Batuk & Sekresi","Volume","Jenis Pernafasaan","Irama","Mulut","Lidah","Gigi","Tenggorokan","Abdomen","Peistatik Usus",
             "Anus","Sensorik","Penglihatan","Alat Bantu Penglihatan","Motorik","Pendengaran","Bicara","Otot","Kulit","Warna Kulit","Turgor","Resiko Decubitas",
             "Oedema","Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
-            "Lain-lain BAK",
+            "Lain-lain BAK","Mandi","Makan/Minum"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -88,7 +88,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 87; i++) {
+        for (i = 0; i < 90; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -264,6 +264,12 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==86){
                 column.setPreferredWidth(80);
+            }else if(i==87){
+                column.setPreferredWidth(80);
+            }else if(i==88){
+                column.setPreferredWidth(120);
+            }else if(i==89){
+                column.setPreferredWidth(120);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -8184,7 +8190,8 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                         rs.getString("pemeriksaan_muskuloskletal_kekauatan_otot"),rs.getString("pemeriksaan_muskuloskletal_fraktur")+", "+rs.getString("pemeriksaan_muskuloskletal_fraktur_keterangan"),
                         rs.getString("pemeriksaan_muskuloskletal_nyeri_sendi")+", "+rs.getString("pemeriksaan_muskuloskletal_nyeri_sendi_keterangan"),rs.getString("pemeriksaan_eliminasi_bab_frekuensi_jumlah"),
                         rs.getString("pemeriksaan_eliminasi_bab_frekuensi_durasi"),rs.getString("pemeriksaan_eliminasi_bab_konsistensi"),rs.getString("pemeriksaan_eliminasi_bab_warna"),rs.getString("pemeriksaan_eliminasi_bak_frekuensi_jumlah"),
-                        rs.getString("pemeriksaan_eliminasi_bak_frekuensi_durasi"),rs.getString("pemeriksaan_eliminasi_bak_warna"),rs.getString("pemeriksaan_eliminasi_bak_lainlain")
+                        rs.getString("pemeriksaan_eliminasi_bak_frekuensi_durasi"),rs.getString("pemeriksaan_eliminasi_bak_warna"),rs.getString("pemeriksaan_eliminasi_bak_lainlain"),rs.getString("pola_aktifitas_mandi"),
+                        rs.getString("pola_aktifitas_makanminum")
                     });
                 }
             } catch (Exception e) {

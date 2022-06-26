@@ -10232,15 +10232,115 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='100%' colspan='2'>Kebiasaan : "+
-                                                 "<p>"+
-                                                    "Merokok : "+rs2.getString("riwayat_merokok")+(rs2.getString("riwayat_merokok_jumlah").equals("")?"":", "+rs2.getString("riwayat_merokok_jumlah")+" batang/hari")+"    "+
-                                                    "Alkohol : "+rs2.getString("riwayat_alkohol")+(rs2.getString("riwayat_alkohol_jumlah").equals("")?"":", "+rs2.getString("riwayat_alkohol_jumlah")+" gelas/hari")+"    "+
-                                                 "</p>"+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'"+
+                                                    "<tr>"+
+                                                         "<td border='0'>"+
+                                                            "Merokok : "+rs2.getString("riwayat_merokok")+(rs2.getString("riwayat_merokok_jumlah").equals("")?"":", "+rs2.getString("riwayat_merokok_jumlah")+" batang/hari")+"&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                            "Alkohol : "+rs2.getString("riwayat_alkohol")+(rs2.getString("riwayat_alkohol_jumlah").equals("")?"":", "+rs2.getString("riwayat_alkohol_jumlah")+" gelas/hari")+"&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                            "Obat Tidur : "+rs2.getString("riwayat_narkoba")+"&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                            "Olah Raga : "+rs2.getString("riwayat_olahraga")+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
                                               "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"        
+                                 "</tr>"+  
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. PEMERIKSAAN FISIK"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>"+
+                                                   "Kesadaran Mental : "+rs2.getString("pemeriksaan_mental")+"&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "Keadaan Umum : "+rs2.getString("pemeriksaan_keadaan_umum")+"&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "GCS(E,V,M) : "+rs2.getString("pemeriksaan_gcs")+"&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "TD : "+rs2.getString("pemeriksaan_td")+" mmHg&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "Nadi : "+rs2.getString("pemeriksaan_nadi")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "RR : "+rs2.getString("pemeriksaan_rr")+" x/menit&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "Suhu : "+rs2.getString("pemeriksaan_suhu")+" °C&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "SpO2 : "+rs2.getString("pemeriksaan_spo2")+" %&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "BB : "+rs2.getString("pemeriksaan_bb")+" Kg&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                                   "TB : "+rs2.getString("pemeriksaan_tb")+" cm&nbsp;&nbsp;&nbsp;&nbsp;"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Sistem Susunan Saraf Pusat : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='35%' border='0'>"+
+                                                            "Kepala : "+rs2.getString("pemeriksaan_susunan_kepala")+(rs2.getString("pemeriksaan_susunan_kepala_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_susunan_kepala_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='35%' border='0'>"+
+                                                            "Wajah : "+rs2.getString("pemeriksaan_susunan_wajah")+(rs2.getString("pemeriksaan_susunan_wajah_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_susunan_wajah_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Leher : "+rs2.getString("pemeriksaan_susunan_leher")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='35%' border='0'>"+        
+                                                            "Kejang : "+rs2.getString("pemeriksaan_susunan_kejang")+(rs2.getString("pemeriksaan_susunan_kejang_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_susunan_kejang_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='65%' border='0' colspan='2'>"+
+                                                            "Leher : "+rs2.getString("pemeriksaan_susunan_sensorik")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Kardiovaskuler : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Pulsasi : "+rs2.getString("pemeriksaan_kardiovaskuler_pulsasi")+
+                                                         "</td>"+
+                                                         "<td width='40%' border='0'>"+
+                                                            "Sirkulasi : "+rs2.getString("pemeriksaan_kardiovaskuler_sirkulasi")+(rs2.getString("pemeriksaan_kardiovaskuler_sirkulasi_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_kardiovaskuler_sirkulasi_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Denyut Nadi : "+rs2.getString("pemeriksaan_kardiovaskuler_denyut_nadi")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Respirasi : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='25%' border='0'>"+
+                                                            "Retraksi : "+rs2.getString("pemeriksaan_respirasi_retraksi")+
+                                                         "</td>"+
+                                                         "<td width='25%' border='0'>"+
+                                                            "Pola Nafas : "+rs2.getString("pemeriksaan_respirasi_pola_nafas")+
+                                                         "</td>"+
+                                                         "<td width='25%' border='0'>"+
+                                                            "Suara Nafas : "+rs2.getString("pemeriksaan_respirasi_suara_nafas")+
+                                                         "</td>"+
+                                                         "<td width='25%' border='0'>"+
+                                                            "Batuk & Sekresi : "+rs2.getString("pemeriksaan_respirasi_batuk")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='25%' border='0'>"+
+                                                            "Volume : "+rs2.getString("pemeriksaan_respirasi_volume_pernafasan")+
+                                                         "</td>"+
+                                                         "<td width='50%' border='0' colspan='2'>"+
+                                                            "Jenis Pernafasaan : "+rs2.getString("pemeriksaan_respirasi_jenis_pernafasan")+(rs2.getString("pemeriksaan_respirasi_jenis_pernafasan_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_respirasi_jenis_pernafasan_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='25%' border='0'>"+
+                                                            "Irama : "+rs2.getString("pemeriksaan_respirasi_irama_nafas")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"   
                             );   
                         }
                         htmlContent.append(
