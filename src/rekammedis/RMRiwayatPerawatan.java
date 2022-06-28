@@ -10385,12 +10385,133 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                             "Alat Bantu Penglihatan : "+rs2.getString("pemeriksaan_neurologi_alat_bantu_penglihatan")+
                                                          "</td>"+
                                                     "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Motorik : "+rs2.getString("pemeriksaan_neurologi_motorik")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Bicara : "+rs2.getString("pemeriksaan_neurologi_pendengaran")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Pendengaran : "+rs2.getString("pemeriksaan_neurologi_bicara")+(rs2.getString("pemeriksaan_neurologi_bicara_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_neurologi_bicara_keterangan"))+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td border='99%' colspan='3'>"+
+                                                            "Kekuatan Otot : "+rs2.getString("pemeriksaan_neurologi_kekuatan_otot")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Integument : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='24%' border='0'>"+
+                                                            "Kulit : "+rs2.getString("pemeriksaan_integument_kulit")+
+                                                         "</td>"+
+                                                         "<td width='23%' border='0'>"+
+                                                            "Warna Kulit : "+rs2.getString("pemeriksaan_integument_warnakulit")+
+                                                         "</td>"+
+                                                         "<td width='23%' border='0'>"+
+                                                            "Turgor : "+rs2.getString("pemeriksaan_integument_turgor")+
+                                                         "</td>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Resiko Decubitus : "+rs2.getString("pemeriksaan_integument_dekubitas")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Muskuloskletal : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='40%' border='0'>"+
+                                                            "Oedema : "+rs2.getString("pemeriksaan_muskuloskletal_oedema")+(rs2.getString("pemeriksaan_muskuloskletal_oedema_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_muskuloskletal_oedema_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Pergerakan Sendi : "+rs2.getString("pemeriksaan_muskuloskletal_pergerakan_sendi")+
+                                                         "</td>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Kekuatan Otot : "+rs2.getString("pemeriksaan_muskuloskletal_kekauatan_otot")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='40%' border='0'>"+
+                                                            "Fraktur : "+rs2.getString("pemeriksaan_muskuloskletal_fraktur")+(rs2.getString("pemeriksaan_muskuloskletal_fraktur_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_muskuloskletal_fraktur_keterangan"))+
+                                                         "</td>"+
+                                                         "<td width='60%' border='0' colspan='2'>"+
+                                                            "Nyeri Sendi : "+rs2.getString("pemeriksaan_muskuloskletal_nyeri_sendi")+(rs2.getString("pemeriksaan_muskuloskletal_nyeri_sendi_keterangan").equals("")?"":", "+rs2.getString("pemeriksaan_muskuloskletal_nyeri_sendi_keterangan"))+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Eliminasi : "+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "BAB : Frekuensi : "+rs2.getString("pemeriksaan_eliminasi_bab_frekuensi_jumlah")+" X/ "+rs2.getString("pemeriksaan_eliminasi_bab_frekuensi_durasi")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Konsistensi : "+rs2.getString("pemeriksaan_eliminasi_bab_konsistensi")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Warna : "+rs2.getString("pemeriksaan_eliminasi_bab_warna")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "BAK : Frekuensi : "+rs2.getString("pemeriksaan_eliminasi_bak_frekuensi_jumlah")+" X/ "+rs2.getString("pemeriksaan_eliminasi_bak_frekuensi_durasi")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Warna : "+rs2.getString("pemeriksaan_eliminasi_bak_warna")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Lain-lain : "+rs2.getString("pemeriksaan_eliminasi_bak_lainlain")+
+                                                         "</td>"+
+                                                    "</tr>"+
                                                  "</table>"+
                                               "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"   
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. POLA KEHIDUPAN SEHARI - HARI "+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>a. Pola Aktifitas :"+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Mandi : "+rs2.getString("pola_aktifitas_mandi")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Makan/Minum : "+rs2.getString("pola_aktifitas_makanminum")+
+                                                         "</td>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Berpakaian : "+rs2.getString("pola_aktifitas_berpakaian")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                         "<td width='33%' border='0'>"+
+                                                            "Eliminasi : "+rs2.getString("pola_aktifitas_eliminasi")+
+                                                         "</td>"+
+                                                         "<td width='66%' border='0' colspan='2'>"+
+                                                            "Berpindah : "+rs2.getString("pola_aktifitas_berpindah")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
                             );   
                         }
                         htmlContent.append(
