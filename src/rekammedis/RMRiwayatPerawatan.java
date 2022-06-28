@@ -10541,6 +10541,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='33%' border='0'>b. Berjalan : "+rs2.getString("pengkajian_fungsi_berjalan")+(rs2.getString("pengkajian_fungsi_berjalan_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_berjalan_keterangan"))+"</td>"+
                                               "<td width='33%' border='0'>c. Aktifitas : "+rs2.getString("pengkajian_fungsi_aktifitas")+"</td>"+
                                           "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>d. Alat Ambulasi : "+rs2.getString("pengkajian_fungsi_ambulasi")+"</td>"+
+                                              "<td width='33%' border='0'>e. Ekstremitas Atas : "+rs2.getString("pengkajian_fungsi_ekstrimitas_atas")+(rs2.getString("pengkajian_fungsi_ekstrimitas_atas_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ekstrimitas_atas_keterangan"))+"</td>"+
+                                              "<td width='33%' border='0'>f. Ekstremitas Bawah : "+rs2.getString("pengkajian_fungsi_ekstrimitas_bawah")+(rs2.getString("pengkajian_fungsi_ekstrimitas_bawah_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ekstrimitas_bawah_keterangan"))+"</td>"+
+                                          "</tr>"+
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"

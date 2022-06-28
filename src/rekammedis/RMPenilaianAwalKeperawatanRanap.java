@@ -79,7 +79,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             "Anus","Sensorik","Penglihatan","Alat Bantu Penglihatan","Motorik","Pendengaran","Bicara","Otot","Kulit","Warna Kulit","Turgor","Resiko Decubitas",
             "Oedema","Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
             "Lain-lain BAK","Mandi","Makan/Minum","Berpakaian","Eliminasi","Berpindah","Porsi Makan","Frekuensi Makan","Jenis Makanan","Lama Tidur","Gangguan Tidur",
-            "a. Aktifitas Sehari-hari","b. Berjalan","c. Aktifitas"
+            "a. Aktifitas Sehari-hari","b. Berjalan","c. Aktifitas","d. Alat Ambulasi","e. Ekstremitas Atas","f. Ekstremitas Bawah"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -89,7 +89,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 101; i++) {
+        for (i = 0; i < 104; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -293,6 +293,12 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(180);
             }else if(i==100){
                 column.setPreferredWidth(67);
+            }else if(i==101){
+                column.setPreferredWidth(104);
+            }else if(i==102){
+                column.setPreferredWidth(140);
+            }else if(i==103){
+                column.setPreferredWidth(140);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -8216,7 +8222,8 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                         rs.getString("pemeriksaan_eliminasi_bak_frekuensi_durasi"),rs.getString("pemeriksaan_eliminasi_bak_warna"),rs.getString("pemeriksaan_eliminasi_bak_lainlain"),rs.getString("pola_aktifitas_mandi"),
                         rs.getString("pola_aktifitas_makanminum"),rs.getString("pola_aktifitas_berpakaian"),rs.getString("pola_aktifitas_eliminasi"),rs.getString("pola_aktifitas_berpindah"),rs.getString("pola_nutrisi_porsi_makan"),
                         rs.getString("pola_nutrisi_frekuesi_makan"),rs.getString("pola_nutrisi_jenis_makanan"),rs.getString("pola_tidur_lama_tidur"),rs.getString("pola_tidur_gangguan"),rs.getString("pengkajian_fungsi_kemampuan_sehari"),
-                        rs.getString("pengkajian_fungsi_berjalan")+", "+rs.getString("pengkajian_fungsi_berjalan_keterangan"),rs.getString("pengkajian_fungsi_aktifitas")
+                        rs.getString("pengkajian_fungsi_berjalan")+", "+rs.getString("pengkajian_fungsi_berjalan_keterangan"),rs.getString("pengkajian_fungsi_aktifitas"),rs.getString("pengkajian_fungsi_ambulasi"),
+                        rs.getString("pengkajian_fungsi_ekstrimitas_atas")+", "+rs.getString("pengkajian_fungsi_ekstrimitas_atas_keterangan"),rs.getString("pengkajian_fungsi_ekstrimitas_bawah")+", "+rs.getString("pengkajian_fungsi_ekstrimitas_bawah_keterangan")
                     });
                 }
             } catch (Exception e) {
