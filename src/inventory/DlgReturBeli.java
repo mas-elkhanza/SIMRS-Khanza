@@ -880,7 +880,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
             try {
                 stokobat=0;   
                 if(aktifkanbatch.equals("yes")){
-                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                    ps=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch=? and gudangbarang.no_faktur=?");
                     try {
                         ps.setString(1,kdgudang.getText());
                         ps.setString(2,Kdbar.getText());
@@ -901,7 +901,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
                         }
                     }  
                 }else{
-                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch='' and no_faktur=''");
+                    ps=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''");
                     try {
                         ps.setString(1,kdgudang.getText());
                         ps.setString(2,Kdbar.getText());

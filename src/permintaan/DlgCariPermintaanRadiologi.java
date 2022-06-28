@@ -1783,7 +1783,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     param.put("norm",norm);
                     param.put("pekerjaan",Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",norm));
                     param.put("noktp",Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",norm));
-                    param.put("namapasien",Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",norm));
+                    param.put("namapasien",Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     param.put("jkel",Sequel.cariIsi("select jk from pasien where no_rkm_medis=? ",norm));
                     param.put("umur",Sequel.cariIsi("select umur from pasien where no_rkm_medis=?",norm));
                     param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",norm));
@@ -1859,7 +1859,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     param.put("norm",norm);
                     param.put("pekerjaan",Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",norm));
                     param.put("noktp",Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",norm));
-                    param.put("namapasien",Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",norm));
+                    param.put("namapasien",Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     param.put("jkel",Sequel.cariIsi("select jk from pasien where no_rkm_medis=? ",norm));
                     param.put("umur",Sequel.cariIsi("select umur from pasien where no_rkm_medis=?",norm));
                     param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",norm));
@@ -1904,7 +1904,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     Map<String, Object> param = new HashMap<>();
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),1).toString());
-                    param.put("nama",Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",norm));
+                    param.put("nama",Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     
@@ -1930,7 +1930,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     Map<String, Object> param = new HashMap<>();
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),1).toString());
-                    param.put("nama",Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",norm));
+                    param.put("nama",Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     
@@ -1960,7 +1960,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     Map<String, Object> param = new HashMap<>();
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),1).toString());
-                    param.put("nama",Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",norm));
+                    param.put("nama",Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     
@@ -1986,7 +1986,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     Map<String, Object> param = new HashMap<>();
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),1).toString());
-                    param.put("nama",Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",norm));
+                    param.put("nama",Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",norm));
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     

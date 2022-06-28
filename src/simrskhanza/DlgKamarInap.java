@@ -7432,7 +7432,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
     private void NoRmBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmBayiKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmBayi,NoRmBayi.getText());            
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",NmBayi,NoRmBayi.getText());            
         }
     }//GEN-LAST:event_NoRmBayiKeyPressed
 
@@ -7470,7 +7470,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     NoRawatGabung.setText("");
                     Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",NoRawatGabung,norawat.getText());
                     Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",NoRmBayi,NoRawatGabung.getText());
-                    Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmBayi,NoRmBayi.getText());
+                    Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",NmBayi,NoRmBayi.getText());
                     WindowRanapGabung.setLocationRelativeTo(internalFrame1);
                     WindowRanapGabung.setVisible(true);
                 }

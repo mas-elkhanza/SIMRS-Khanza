@@ -1550,7 +1550,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     if(Double.parseDouble(tabModeObat.getValueAt(row,1).toString())>0){
                         stokbarang=0;   
                         if(aktifkanbatch.equals("yes")){
-                            psobat=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                            psobat=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch=? and gudangbarang.no_faktur=?");
                             try {
                                 psobat.setString(1,lokasistok);
                                 psobat.setString(2,tbObat.getValueAt(row,2).toString());
@@ -1571,7 +1571,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                                 }
                             }  
                         }else{
-                            psobat=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch='' and no_faktur=''");
+                            psobat=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''");
                             try {
                                 psobat.setString(1,lokasistok);
                                 psobat.setString(2,tbObat.getValueAt(row,2).toString());

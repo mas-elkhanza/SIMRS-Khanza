@@ -1164,12 +1164,12 @@ private void JmlreturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void kdmemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdmemKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());      
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmmem,kdmem.getText());      
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());  
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmmem,kdmem.getText());  
             TglRetur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());  
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmmem,kdmem.getText());  
             Kdptg.requestFocus();      
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnMmbActionPerformed(null);
@@ -1425,7 +1425,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.norawat=norawat;
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,2),signed)),0) from returjual where no_retur_jual like '%"+norawat+"%' ",norawat,2,NoRetur); 
         formvalid="No";
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",nmmem,kdmem.getText());
+        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",nmmem,kdmem.getText());
         kdgudang.setText(akses.getkdbangsal());
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
     }
@@ -1433,7 +1433,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void cariBatch() {
         try {
             ps=koneksi.prepareStatement(
-                    "select * from data_batch where no_batch=? and kode_brng=? and no_faktur=?");
+                    "select * from data_batch where data_batch.no_batch=? and data_batch.kode_brng=? and data_batch.no_faktur=?");
             try {
                 ps.setString(1,NoBatch.getText());
                 ps.setString(2,Kdbar.getText());

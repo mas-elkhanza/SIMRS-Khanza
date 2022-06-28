@@ -995,7 +995,7 @@ private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void KdmemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdmemKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", Nmmem,Kdmem.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", Nmmem,Kdmem.getText());
             sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang_pasien.sisapiutang),0) FROM piutang_pasien where piutang_pasien.no_rkm_medis=?",Kdmem.getText())
                          +
                         Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.no_rkm_medis=?",Kdmem.getText())
@@ -1007,7 +1007,7 @@ private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }
             Sequel.cariIsi("select no_rawat from reg_periksa where no_rkm_medis=? order by tgl_registrasi desc limit 1", NoRawat,Kdmem.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", Nmmem,Kdmem.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", Nmmem,Kdmem.getText());
             sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang_pasien.sisapiutang),0) FROM piutang_pasien where piutang_pasien.no_rkm_medis=?",Kdmem.getText())
                          +
                         Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.no_rkm_medis=?",Kdmem.getText())
@@ -1020,7 +1020,7 @@ private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             Sequel.cariIsi("select no_rawat from reg_periksa where no_rkm_medis=? order by tgl_registrasi desc limit 1", NoRawat,Kdmem.getText());
             Keterangan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", Nmmem,Kdmem.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", Nmmem,Kdmem.getText());
             sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang_pasien.sisapiutang),0) FROM piutang_pasien where piutang_pasien.no_rkm_medis=?",Kdmem.getText())
                          +
                         Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.no_rkm_medis=?",Kdmem.getText())
@@ -1120,7 +1120,7 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     NoRawat.requestFocus();
                 }else{
                     Kdmem.setText(Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",NoRawat.getText()));
-                    Nmmem.setText(Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",Kdmem.getText()));
+                    Nmmem.setText(Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",Kdmem.getText()));
                     kontraakun=Sequel.cariIsi("select kd_rek from akun_piutang where nama_bayar=?",AkunPiutang.getSelectedItem().toString());
                     sisapiutang=Sequel.cariIsiAngka("select sisapiutang from detail_piutang_pasien where no_rawat='"+NoRawat.getText()+"' and nama_bayar='"+AkunPiutang.getSelectedItem().toString()+"'");
                     Sisa.setText(Valid.SetAngka(Valid.roundUp(sisapiutang,100)));

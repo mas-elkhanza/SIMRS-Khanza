@@ -368,7 +368,7 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
         try {
             TNoRw.setText(norwt);
             Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",TPasien,TNoRM.getText());
             this.tanggal=tanggal;
             this.jam=jam;
             ps=koneksi.prepareStatement(

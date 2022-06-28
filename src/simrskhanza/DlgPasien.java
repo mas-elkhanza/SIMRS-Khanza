@@ -7637,7 +7637,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void NoRmTujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmTujuanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(!NoRmTujuan.getText().trim().equals("")){
-                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
+                Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
                 if(NmPasienTujuan.getText().trim().equals("")){
                     JOptionPane.showMessageDialog(rootPane,"Data pasien tidak ditemukan..!!");
                 }
@@ -7647,7 +7647,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_NoRmTujuanKeyPressed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
+        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
         if(NmPasienTujuan.getText().trim().equals("")){
             JOptionPane.showMessageDialog(rootPane,"Data pasien tidak ditemukan..!!");
         }

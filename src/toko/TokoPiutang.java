@@ -967,14 +967,14 @@ private void NoNotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_No
 private void kdmemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdmemKeyPressed
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_PAGE_DOWN:
-                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
+                Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmmem,kdmem.getText());
                 break;
             case KeyEvent.VK_PAGE_UP:
-                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
+                Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmmem,kdmem.getText());
                 Tgl.requestFocus();
                 break;
             case KeyEvent.VK_ENTER:
-                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
+                Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmmem,kdmem.getText());
                 catatan.requestFocus();
                 break;
             case KeyEvent.VK_UP:

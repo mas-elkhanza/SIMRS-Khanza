@@ -10546,6 +10546,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='33%' border='0'>e. Ekstremitas Atas : "+rs2.getString("pengkajian_fungsi_ekstrimitas_atas")+(rs2.getString("pengkajian_fungsi_ekstrimitas_atas_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ekstrimitas_atas_keterangan"))+"</td>"+
                                               "<td width='33%' border='0'>f. Ekstremitas Bawah : "+rs2.getString("pengkajian_fungsi_ekstrimitas_bawah")+(rs2.getString("pengkajian_fungsi_ekstrimitas_bawah_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_ekstrimitas_bawah_keterangan"))+"</td>"+
                                           "</tr>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>g. Kemampuan Menggenggam : "+rs2.getString("pengkajian_fungsi_menggenggam")+(rs2.getString("pengkajian_fungsi_menggenggam_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_menggenggam_keterangan"))+"</td>"+
+                                              "<td width='33%' border='0'>h. Kemampuan Koordinasi : "+rs2.getString("pengkajian_fungsi_koordinasi")+(rs2.getString("pengkajian_fungsi_koordinasi_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_koordinasi_keterangan"))+"</td>"+
+                                              "<td width='33%' border='0'>i. Kesimpulan Gangguan Fungsi : "+rs2.getString("pengkajian_fungsi_kesimpulan")+"</td>"+
+                                          "</tr>"+
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"

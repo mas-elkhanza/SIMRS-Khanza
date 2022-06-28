@@ -1452,7 +1452,7 @@ public class frmUtama extends javax.swing.JFrame {
 
     public  void setNoRm() {
         KdRw.setText(Sequel.cariIsi("select no_rkm_medis from temppanggilrm"));
-        TPasien.setText(Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",KdRw.getText()));
+        TPasien.setText(Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",KdRw.getText()));
         tampil();
     }
 }

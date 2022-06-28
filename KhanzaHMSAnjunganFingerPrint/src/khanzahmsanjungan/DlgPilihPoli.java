@@ -434,7 +434,7 @@ public class DlgPilihPoli extends javax.swing.JDialog {
     
     public void setPasien(){
         LblNoRm.setText(Sequel.cariIsi("select no_rkm_medis from temppanggilrm"));
-        LblNama.setText(Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",LblNoRm.getText()));
+        LblNama.setText(Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",LblNoRm.getText()));
         tampil();
     }
 }
