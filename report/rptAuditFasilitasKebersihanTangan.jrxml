@@ -414,7 +414,8 @@ Double.parseDouble($F{audit4}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
 Double.parseDouble($F{audit5}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
 Double.parseDouble($F{audit6}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
 Double.parseDouble($F{audit7}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
-Double.parseDouble($F{audit8}.replaceAll("Ya","1").replaceAll("Tidak","0")))/8)*100)+" %"]]></textFieldExpression>
+Double.parseDouble($F{audit8}.replaceAll("Ya","1").replaceAll("Tidak","0"))+
+Double.parseDouble($F{audit9}.replaceAll("Ya","1").replaceAll("Tidak","0")))/9)*100)+" %"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="590" y="0" width="50" height="10" uuid="7a297b05-45c7-4d2b-97d2-2db7eb863c9b"/>

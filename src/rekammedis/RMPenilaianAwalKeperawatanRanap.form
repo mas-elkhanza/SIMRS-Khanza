@@ -4068,12 +4068,12 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel177">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Jenis Makanan :"/>
+                            <Property name="text" type="java.lang.String" value="Jenis Makanan"/>
                             <Property name="name" type="java.lang.String" value="jLabel177" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="430" y="1180" width="97" height="23"/>
+                              <AbsoluteConstraints x="430" y="1180" width="92" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4089,7 +4089,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="531" y="1180" width="323" height="23"/>
+                              <AbsoluteConstraints x="526" y="1180" width="328" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4200,12 +4200,12 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel179">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="a. Kemampuan Aktifitas Sehari-hari  :"/>
+                            <Property name="text" type="java.lang.String" value="a. Kemampuan Aktifitas Sehari-hari :"/>
                             <Property name="name" type="java.lang.String" value="jLabel179" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="0" y="1260" width="227" height="23"/>
+                              <AbsoluteConstraints x="0" y="1260" width="224" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4226,7 +4226,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="231" y="1260" width="158" height="23"/>
+                              <AbsoluteConstraints x="228" y="1260" width="158" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4237,7 +4237,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="399" y="1260" width="70" height="23"/>
+                              <AbsoluteConstraints x="395" y="1260" width="70" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4262,7 +4262,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="473" y="1260" width="178" height="23"/>
+                              <AbsoluteConstraints x="469" y="1260" width="178" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4276,7 +4276,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="654" y="1260" width="200" height="23"/>
+                              <AbsoluteConstraints x="650" y="1260" width="204" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>

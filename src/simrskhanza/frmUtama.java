@@ -596,6 +596,7 @@ import java.net.InetAddress;
 import kepegawaian.DlgAuditBundleIADP;
 import kepegawaian.DlgAuditBundleIDO;
 import kepegawaian.DlgAuditCuciTanganMedis;
+import kepegawaian.DlgAuditFasilitasAPD;
 import kepegawaian.DlgAuditFasilitasKebersihanTangan;
 import kepegawaian.DlgAuditKamarJenazah;
 import kepegawaian.DlgDokter;
@@ -18688,6 +18689,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAuditFasilitasAPDActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditFasilitasAPD aplikasi=new DlgAuditFasilitasAPD(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19333,7 +19346,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
             btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah,
-            btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan;
+            btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan,btnAuditFasilitasAPD;
     
     public void isWall(){
         try{            
@@ -19845,6 +19858,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_fasilitas_kebersihan_tangan()==true){  
                 Panelmenu.add(btnAuditFasilitasKebersihanTangan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_fasilitas_apd()==true){  
+                Panelmenu.add(btnAuditFasilitasAPD);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -24025,6 +24043,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getaudit_fasilitas_kebersihan_tangan()==true){  
             Panelmenu.add(btnAuditFasilitasKebersihanTangan);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_fasilitas_apd()==true){  
+            Panelmenu.add(btnAuditFasilitasAPD);                 
             jmlmenu++;
         }
 
@@ -28345,6 +28368,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_fasilitas_kebersihan_tangan()==true){  
             if(btnAuditFasilitasKebersihanTangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditFasilitasKebersihanTangan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_fasilitas_apd()==true){  
+            if(btnAuditFasilitasAPD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditFasilitasAPD);                 
                 jmlmenu++;
             }                
         }
@@ -36593,6 +36623,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditFasilitasKebersihanTangan.setName("btnAuditFasilitasKebersihanTangan");
         btnAuditFasilitasKebersihanTangan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditFasilitasKebersihanTangan.addActionListener(this::btnAuditFasilitasKebersihanTanganActionPerformed);
+        
+        btnAuditFasilitasAPD = new widget.ButtonBig();
+        btnAuditFasilitasAPD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1626354_apron_home_kitchen_restaurant_room_icon.png"))); 
+        btnAuditFasilitasAPD.setText("Audit Fasilitas APD");
+        btnAuditFasilitasAPD.setIconTextGap(0);
+        btnAuditFasilitasAPD.setName("btnAuditFasilitasAPD");
+        btnAuditFasilitasAPD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditFasilitasAPD.addActionListener(this::btnAuditFasilitasAPDActionPerformed);
     }
     
 }

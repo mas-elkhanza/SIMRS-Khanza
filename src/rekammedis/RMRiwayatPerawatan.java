@@ -10131,7 +10131,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
                             "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_lainlain,"+
                             "penilaian_awal_keperawatan_ranap.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap.pola_aktifitas_berpakaian,"+
-                            "penilaian_awal_keperawatan_ranap.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap.pula_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap.pola_nutrisi_porsi_makan,"+
+                            "penilaian_awal_keperawatan_ranap.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap.pola_nutrisi_porsi_makan,"+
                             "penilaian_awal_keperawatan_ranap.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_aktifitas,"+
                             "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ambulasi,"+
                             "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah,"+
@@ -10508,6 +10508,38 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     "</tr>"+
                                                  "</table>"+
                                               "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>b. Pola Nutrisi :"+
+                                                 "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                    "<tr>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Porsi Makan : "+rs2.getString("pola_nutrisi_porsi_makan")+" porsi"+
+                                                         "</td>"+
+                                                         "<td width='30%' border='0'>"+
+                                                            "Frekuensi Makan : "+rs2.getString("pola_nutrisi_frekuesi_makan")+"x/hari"+
+                                                         "</td>"+
+                                                         "<td width='40%' border='0'>"+
+                                                            "Jenis Makanan : "+rs2.getString("pola_nutrisi_jenis_makanan")+
+                                                         "</td>"+
+                                                    "</tr>"+
+                                                 "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>c. Pola Tidur : Lama Tidur "+rs2.getString("pola_tidur_lama_tidur")+" jam/hari, "+rs2.getString("pola_tidur_gangguan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "IV. PENGKAJIAN FUNGSI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>a. Kemampuan Aktifitas Sehari-hari : "+rs2.getString("pengkajian_fungsi_kemampuan_sehari")+"</td>"+
+                                              "<td width='33%' border='0'>b. Berjalan : "+rs2.getString("pengkajian_fungsi_berjalan")+(rs2.getString("pengkajian_fungsi_berjalan_keterangan").equals("")?"":", "+rs2.getString("pengkajian_fungsi_berjalan_keterangan"))+"</td>"+
+                                              "<td width='33%' border='0'>c. Aktifitas : "+rs2.getString("pengkajian_fungsi_aktifitas")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
