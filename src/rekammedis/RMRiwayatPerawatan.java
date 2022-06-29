@@ -8646,7 +8646,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "VII. PENILAIAN RESIKO JATUH"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                          "<tr class='isi'>"+
-                                              "<td width='40%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>"+
+                                              "<td width='50%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>"+
                                               "<td width='40%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
                                               "<td width='10%' bgcolor='#FFFAF8' align='center'>Poin</td>"+
                                           "</tr>"+
@@ -10649,6 +10649,237 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "<tr>"+
                                               "<td width='50%' border='0'>Nyeri hilang bila : "+rs2.getString("penilaian_nyeri_hilang")+(rs2.getString("penilaian_nyeri_ket_hilang").equals("")?"":", "+rs2.getString("penilaian_nyeri_ket_hilang"))+"</td>"+
                                               "<td width='50%' border='0'>Diberitahukan pada dokter ? "+rs2.getString("penilaian_nyeri_diberitahukan_dokter")+(rs2.getString("penilaian_nyeri_jam_diberitahukan_dokter").equals("")?"":", Jam : "+rs2.getString("penilaian_nyeri_jam_diberitahukan_dokter"))+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VII. PENILAIAN RESIKO JATUH"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Skala Morse :"+
+                                                    "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr class='isi'>"+
+                                                           "<td width='50%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>"+
+                                                           "<td width='40%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
+                                                           "<td width='10%' bgcolor='#FFFAF8' align='center'>Poin</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>1. Riwayat Jatuh</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_skala1")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_nilai1")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>2. Diagnosis Sekunder (≥ 2 Diagnosis Medis)</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_skala2")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_nilai2")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>3. Alat Bantu</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_skala3")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_nilai3")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>4. Terpasang Infuse</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_skala4")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_nilai4")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>5. Gaya Berjalan</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_skala5")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_nilai5")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>6. Status Mental</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_skala6")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_nilai6")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td align='right' colspan='2'>Total :</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhmorse_totalnilai")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td align='center' colspan='3'>"
+                                         );
+
+                                         if(rs2.getInt("penilaian_jatuhmorse_totalnilai")<25){
+                                             htmlContent.append("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
+                                         }else if(rs2.getInt("penilaian_jatuhmorse_totalnilai")<45){
+                                             htmlContent.append("Tingkat Resiko : Risiko Sedang (25-44), Tindakan : Intervensi pencegahan risiko jatuh standar");
+                                         }else if(rs2.getInt("penilaian_jatuhmorse_totalnilai")>=45){
+                                             htmlContent.append("Tingkat Resiko : Risiko Tinggi (> 45), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
+                                         }
+
+                                         htmlContent.append(
+                                                           "</td>"+
+                                                       "</tr>"+
+                                                    "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Skala Sydney :"+
+                                                    "<table width='99%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr class='isi'>"+
+                                                           "<td width='60%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>"+
+                                                           "<td width='30%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
+                                                           "<td width='10%' bgcolor='#FFFAF8' align='center'>Poin</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>1. Gangguan Gaya Berjalan (Diseret, Menghentak, Diayun)</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala1")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai1")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>2. Pusing / Pingsan Pada Posisi Tegak</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala2")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai2")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>3. Kebigungan Setiap Saat</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala3")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai3")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>4. Nokturia / Inkontinen</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala4")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai4")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>5. Kebingungan Intermiten</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala5")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai5")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>6. Kelemahan Umum</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala6")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai6")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td valign='middle'>7. Obat-obat Beresiko Tinggi (Diuretic, Narkotik, Sedativ, Anti Psikotik, Laksatif, Vasodilator Antiaritmia, Antihipertensi, Obat Hipoglikemik, Anti Depresan, Neuroleptik, NSAID)</td>"+
+                                                           "<td align='center' valign='middle'>"+rs2.getString("penilaian_jatuhsydney_skala7")+"</td>"+
+                                                           "<td align='center' valign='middle'>"+rs2.getString("penilaian_jatuhsydney_nilai7")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>8. Riwayat Jatuh Dalam Waktu 12 Bulan Sebelumnya</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala8")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai8")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>9. Osteoporosis</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala9")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai9")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>10. Gangguan Pendengaran Dan Atau Penglihatan</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala10")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai10")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td>11. Usia 70 Tahun Ke Atas</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_skala11")+"</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai11")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td align='right' colspan='2'>Total :</td>"+
+                                                           "<td align='center'>"+rs2.getString("penilaian_jatuhsydney_nilai11")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td align='center' colspan='3'>"
+                                         );
+
+                                         if(rs2.getInt("penilaian_jatuhsydney_totalnilai")<4){
+                                             htmlContent.append("Tingkat Resiko : Risiko Rendah (1-3), Tindakan : Intervensi pencegahan risiko standar");
+                                         }else if(rs2.getInt("penilaian_jatuhsydney_totalnilai")>=4){
+                                             htmlContent.append("Tingkat Resiko : Risiko Sedang (> 4), Tindakan : Intervensi pencegahan risiko tinggi");
+                                         }
+
+                                         htmlContent.append(
+                                                           "</td>"+
+                                                       "</tr>"+
+                                                    "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VIII. SKRINING GIZI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>No</td>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55%'>Parameter</td>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%' colspan='2'>Nilai</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>1</td>"+
+                                              "<td valign='top'>Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?</td>"+
+                                              "<td valign='top' align='center' width='35%'>"+rs2.getString("skrining_gizi1")+"</td>"+
+                                              "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi1")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top'>2</td>"+
+                                              "<td valign='top'>Apakah asupan makan berkurang karena tidak nafsu makan ?</td>"+
+                                              "<td valign='top' align='center' width='35%'>"+rs2.getString("skrining_gizi2")+"</td>"+
+                                              "<td valign='top' align='right' width='5%'>"+rs2.getString("nilai_gizi2")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='left' colspan='2'>Total Skor : </td>"+
+                                              "<td valign='top' align='right' colspan='2'>"+rs2.getString("nilai_total_gizi")+"&nbsp;&nbsp;</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='left' colspan='4' border='0'>Pasien dengan diagnosis khusus : "+rs2.getString("skrining_gizi_diagnosa_khusus")+(rs2.getString("skrining_gizi_ket_diagnosa_khusus").equals("")?"":", "+rs2.getString("skrining_gizi_ket_diagnosa_khusus"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' align='left' colspan='4' border='0'>Sudah dibaca dan diketahui oleh Dietisen : "+rs2.getString("skrining_gizi_diketahui_dietisen")+(rs2.getString("skrining_gizi_jam_diketahui_dietisen").equals("")?"":", "+rs2.getString("skrining_gizi_jam_diketahui_dietisen"))+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>MASALAH KEPERAWATAN :</td>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td valign='top'>");
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
+                                    "inner join penilaian_awal_keperawatan_ranap_masalah on penilaian_awal_keperawatan_ranap_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
+                                    "where penilaian_awal_keperawatan_ranap_masalah.no_rawat='"+norawat+"' order by penilaian_awal_keperawatan_ranap_masalah.kode_masalah").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(rs3.getString("nama_masalah")+"<br>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append("</td>"+
+                                               "<td valign='top'>");
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
+                                    "inner join penilaian_awal_keperawatan_ranap_rencana on penilaian_awal_keperawatan_ranap_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
+                                    "where penilaian_awal_keperawatan_ranap_rencana.no_rawat='"+norawat+"' order by penilaian_awal_keperawatan_ranap_rencana.kode_rencana").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(rs3.getString("rencana_keperawatan")+"<br>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append(rs2.getString("rencana")+
+                                            "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
