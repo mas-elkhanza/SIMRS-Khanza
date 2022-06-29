@@ -1427,7 +1427,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 param.put("emailrs",akses.getemailrs());   
 
                 if(Sequel.cariInteger(
-                        "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                        "select count(*) from detailjual where detailjual.nota_jual=? and detailjual.aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan.jasper","report","::[ Aturan Pakai Obat ]::",
                         "select penjualan.nota_jual,penjualan.tgl_jual, "+
@@ -1440,7 +1440,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
 
                 if(Sequel.cariInteger(
-                        "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                        "select count(*) from obat_racikan_jual where obat_racikan_jual.nota_jual=? and obat_racikan_jual.aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
                         "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
@@ -1475,7 +1475,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 param.put("emailrs",akses.getemailrs());   
                 
                 if(Sequel.cariInteger(
-                        "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                        "select count(*) from detailjual where detailjual.nota_jual=? and detailjual.aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan3.jasper","report","::[ Aturan Pakai Obat ]::",
                         "select penjualan.nota_jual,penjualan.tgl_jual, "+
@@ -1489,7 +1489,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
 
                 if(Sequel.cariInteger(
-                        "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                        "select count(*) from obat_racikan_jual where obat_racikan_jual.nota_jual=? and obat_racikan_jual.aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
                         "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
@@ -1524,7 +1524,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 if(Sequel.cariInteger(
-                        "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                        "select count(*) from detailjual where detailjual.nota_jual=? and detailjual.aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan5.jasper","report","::[ Aturan Pakai Obat ]::",
                         "select penjualan.nota_jual,penjualan.tgl_jual, "+
@@ -1537,7 +1537,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
 
                 if(Sequel.cariInteger(
-                        "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                        "select count(*) from obat_racikan_jual where obat_racikan_jual.nota_jual=? and obat_racikan_jual.aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan6.jasper","report","::[ Aturan Pakai Obat ]::",
                         "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+

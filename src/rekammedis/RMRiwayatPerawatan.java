@@ -10553,6 +10553,79 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
+                                 "</tr>"+
+                                 
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "V. RIWAYAT PSIKOLOGIS – SOSIAL – EKONOMI – BUDAYA – SPIRITUAL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>a. Kondisi Psikologis</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_kondisi_psiko")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>b. Adakah Perilaku</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_perilaku")+(rs2.getString("riwayat_psiko_perilaku_keterangan").equals("")?"":", "+rs2.getString("riwayat_psiko_perilaku_keterangan"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>c. Gangguan Jiwa di Masa Lalu</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_gangguan_jiwa")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>d. Hubungan Pasien dengan Anggota Keluarga</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_hubungan_keluarga")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>e. Agama</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+Agama.getText()+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>f. Tinggal Dengan</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_tinggal")+(rs2.getString("riwayat_psiko_tinggal_keterangan").equals("")?"":", "+rs2.getString("riwayat_psiko_tinggal_keterangan"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>g. Pekerjaan</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+Pekerjaan.getText()+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>h. Pembayaran</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs.getString("png_jawab")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>i. Nilai-nilai Kepercayaan/Budaya Yang Perlu Diperhatikan</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_nilai_kepercayaan")+(rs2.getString("riwayat_psiko_nilai_kepercayaan_keterangan").equals("")?"":", "+rs2.getString("riwayat_psiko_nilai_kepercayaan_keterangan"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>j. Bahasa Sehari-hari</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+Bahasa.getText()+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>k. Pendidikan Pasien</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+Pendidikan.getText()+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>l. Pendidikan P.J.</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_pendidikan_pj")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                               "<td width='49%' border='0'>m. Edukasi Diberikan Kepada</td>"+
+                                               "<td width='1%' border='0'>:</td>"+
+                                               "<td width='50%' border='0'>"+rs2.getString("riwayat_psiko_edukasi_diberikan")+(rs2.getString("riwayat_psiko_edukasi_diberikan_keterangan").equals("")?"":", "+rs2.getString("riwayat_psiko_edukasi_diberikan_keterangan"))+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"
                             );   
                         }
