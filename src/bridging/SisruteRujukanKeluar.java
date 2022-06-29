@@ -2935,7 +2935,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         if(TNoRw.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih data rujukan terlebih dahulu");
         }else{
-            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+            if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0){
                 setPasien2(TNoRw.getText());
             }else {
                 setPasien(TNoRw.getText());

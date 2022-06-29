@@ -1015,7 +1015,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
         bangsal=Sequel.cariIsi("select kd_bangsal from set_depo_ralan where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));
         if(bangsal.equals("")){
-            bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+            bangsal=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1");
         }
     }
     

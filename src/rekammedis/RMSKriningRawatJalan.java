@@ -54,7 +54,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCatatan catatan=new DlgCatatan(null,false);
     private String pilihan="",nokartu="",finger="",validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
-            validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
+            validasicatatan=Sequel.cariIsi("select set_validasi_catatan.tampilkan_catatan from set_validasi_catatan");
     
 
     /** Creates new form DlgPemberianInfus

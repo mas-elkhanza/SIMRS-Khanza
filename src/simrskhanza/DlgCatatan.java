@@ -320,7 +320,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void setNoRm(String norm) {
         TNoRM.setText(norm);  
         isPsien();   
-        Sequel.cariIsi("select catatan from catatan_pasien where no_rkm_medis=?",TCatatan,TNoRM.getText());       
+        Sequel.cariIsi("select catatan_pasien.catatan from catatan_pasien where catatan_pasien.no_rkm_medis=?",TCatatan,TNoRM.getText());       
     }
     
     
