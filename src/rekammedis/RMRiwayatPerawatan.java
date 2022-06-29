@@ -10626,6 +10626,32 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VI. PENILAIAN TINGKAT NYERI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Tingkat Nyeri : "+rs2.getString("penilaian_nyeri")+", Waktu / Durasi : "+rs2.getString("penilaian_nyeri_waktu")+" Menit</td>"+
+                                              "<td width='50%' border='0'>Penyebab : "+rs2.getString("penilaian_nyeri_penyebab")+(rs2.getString("penilaian_nyeri_ket_penyebab").equals("")?"":", "+rs2.getString("penilaian_nyeri_ket_penyebab"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Kualitas : "+rs2.getString("penilaian_nyeri_kualitas")+(rs2.getString("penilaian_nyeri_ket_kualitas").equals("")?"":", "+rs2.getString("penilaian_nyeri_ket_kualitas"))+"</td>"+
+                                              "<td width='50%' border='0'>Severity : Skala Nyeri "+rs2.getString("penilaian_nyeri_skala")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='0' border='0'>Wilayah :</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;Lokasi : "+rs2.getString("penilaian_nyeri_lokasi")+"</td>"+
+                                              "<td width='50%' border='0'>Menyebar : "+rs2.getString("penilaian_nyeri_menyebar")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Nyeri hilang bila : "+rs2.getString("penilaian_nyeri_hilang")+(rs2.getString("penilaian_nyeri_ket_hilang").equals("")?"":", "+rs2.getString("penilaian_nyeri_ket_hilang"))+"</td>"+
+                                              "<td width='50%' border='0'>Diberitahukan pada dokter ? "+rs2.getString("penilaian_nyeri_diberitahukan_dokter")+(rs2.getString("penilaian_nyeri_jam_diberitahukan_dokter").equals("")?"":", Jam : "+rs2.getString("penilaian_nyeri_jam_diberitahukan_dokter"))+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"
                             );   
                         }
