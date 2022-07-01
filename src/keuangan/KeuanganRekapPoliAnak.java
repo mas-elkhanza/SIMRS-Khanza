@@ -660,7 +660,7 @@ public final class KeuanganRekapPoliAnak extends javax.swing.JDialog {
                                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='1%' rowspan='2'>L/B</td>"+
                                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%' colspan='10'>USIA</td>"+
                                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%' rowspan='2'>TINDAKAN & HARGA</td>"+
-                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>IMUN KE</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>L.P.</td>"+
                                         "</tr>"+
                                         "<tr class='isi3'>"+
                                             "<td valign='middle' bgcolor='#FFFAF8' align='center'>DIMANA</td>"+
@@ -836,7 +836,7 @@ public final class KeuanganRekapPoliAnak extends javax.swing.JDialog {
                                     htmlContent.append(
                                                 "</table>"+
                                             "</td>"+                                                        
-                                            "<td valign='top' align='center'>"+Sequel.cariIsi("select imun_ke  from pemeriksaan_ralan where no_rawat=?",rsreg.getString("no_rawat"))+"</td>"+
+                                            "<td valign='top' align='center'>"+Sequel.cariIsi("select lingkar_perut  from pemeriksaan_ralan where no_rawat=?",rsreg.getString("no_rawat"))+"</td>"+
                                         "</tr>");
                                     i++;
                                 }

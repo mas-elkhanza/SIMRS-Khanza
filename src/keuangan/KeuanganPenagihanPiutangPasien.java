@@ -974,7 +974,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }else{
          if(tbBelumLunas.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            status=Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",tbBelumLunas.getValueAt(tbBelumLunas.getSelectedRow(),1).toString());   
+            status=Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",tbBelumLunas.getValueAt(tbBelumLunas.getSelectedRow(),1).toString());   
             if(status.equals("Ralan")){
                 DlgBilingRalan billing=new DlgBilingRalan(null,false);
                 billing.TNoRw.setText(tbBelumLunas.getValueAt(tbBelumLunas.getSelectedRow(),1).toString());

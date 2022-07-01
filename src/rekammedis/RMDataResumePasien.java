@@ -1706,7 +1706,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             tanggal="";
-            if(Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",TNoRw.getText()).equals("Ralan")){
+            if(Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()).equals("Ralan")){
                 param.put("ruang",Sequel.cariIsi("select poliklinik.nm_poli from poliklinik inner join reg_periksa on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()));
                 tanggal=Sequel.cariIsi("select DATE_FORMAT(tgl_registrasi, '%d-%m-%Y') from reg_periksa where no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
                 param.put("tanggalkeluar",tanggal);
@@ -1766,7 +1766,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             penyakit.setLocationRelativeTo(internalFrame1);
             penyakit.isCek();
-            penyakit.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",TNoRw.getText()));
+            penyakit.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
             penyakit.panelDiagnosa1.tampil();
             penyakit.setVisible(true);
         }
@@ -1923,7 +1923,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             param.put("flagprosedur",variabel.replaceAll("0","- Prosedur Tidak Berkelanjutan").replaceAll("1","- Prosedur dan Terapi Berkelanjutan"));
             
             tanggal="";
-            if(Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",TNoRw.getText()).equals("Ralan")){
+            if(Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()).equals("Ralan")){
                 param.put("ruang",Sequel.cariIsi("select poliklinik.nm_poli from poliklinik inner join reg_periksa on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()));
                 tanggal=Sequel.cariIsi("select DATE_FORMAT(tgl_registrasi, '%d-%m-%Y') from reg_periksa where no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
                 param.put("tanggalkeluar",tanggal);

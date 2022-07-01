@@ -3593,7 +3593,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     
                     ps2=koneksi.prepareStatement(
                         "select suhu_tubuh, tensi, nadi, respirasi, tinggi, berat, gcs,keluhan, pemeriksaan, "+
-                        "alergi, imun_ke, rtl from pemeriksaan_ralan where no_rawat=? order by tgl_perawatan desc limit 1");
+                        "alergi, lingkar_perut, rtl from pemeriksaan_ralan where no_rawat=? order by tgl_perawatan desc limit 1");
                     try {
                         ps2.setString(1,NoRawat);
                         rs2=ps2.executeQuery();

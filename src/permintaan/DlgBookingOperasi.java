@@ -1436,7 +1436,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.emptTeks();
                 dlgro.isCek();
-                dlgro.setNoRm(TNoRw.getText(),Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",TNoRw.getText()));
+                dlgro.setNoRm(TNoRw.getText(),Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
                 dlgro.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }else{

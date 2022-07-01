@@ -725,7 +725,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                     }                        
                 }else if(kolom==0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    status=Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());   
+                    status=Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());   
                     if(status.equals("Ralan")){
                         DlgBilingRalan billing=new DlgBilingRalan(null,false);
                         billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
@@ -772,7 +772,7 @@ public final class KeuanganRincianPiutangPasien extends javax.swing.JDialog {
                     }                        
                 }else if(kolom==0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    status=Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());   
+                    status=Sequel.cariIsi("select reg_periksa.status_lanjut from reg_periksa where reg_periksa.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());   
                     if(status.equals("Ralan")){
                         DlgBilingRalan billing=new DlgBilingRalan(null,false);
                         billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
