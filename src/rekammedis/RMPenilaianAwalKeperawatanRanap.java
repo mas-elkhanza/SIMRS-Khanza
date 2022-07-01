@@ -8074,7 +8074,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
             
         }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            System.out.println("Notifikasi Data : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
