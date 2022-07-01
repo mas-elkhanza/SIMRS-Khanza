@@ -941,6 +941,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         Heartrate.setDocument(new batasInput((byte)3).getFilter(Heartrate));
         TinggiBadan.setDocument(new batasInput((byte)3).getFilter(TinggiBadan));
         BeratBadan.setDocument(new batasInput((byte)3).getFilter(BeratBadan));
+        LingkarPerut.setDocument(new batasInput((byte)3).getFilter(LingkarPerut));
         Sistole.setDocument(new batasInput((byte)3).getFilter(Sistole));
         Diastole.setDocument(new batasInput((byte)3).getFilter(Diastole));
         
@@ -1307,6 +1308,9 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         jLabel7 = new widget.Label();
         TSuhu = new widget.TextBox();
         jLabel8 = new widget.Label();
+        jLabel50 = new widget.Label();
+        LingkarPerut = new widget.TextBox();
+        jLabel51 = new widget.Label();
         ChkCari = new widget.CekBox();
         panelGlass6 = new widget.panelisi();
         jLabel16 = new widget.Label();
@@ -1337,7 +1341,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2021" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1663,7 +1667,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 160, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2021" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2535,7 +2539,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         jLabel23.setBounds(3, 85, 100, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2021 21:08:46" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022 20:07:25" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -2649,10 +2653,10 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         FormKelengkapanSEP.add(LabelPoli2);
         LabelPoli2.setBounds(486, 55, 110, 23);
 
-        jLabel32.setText("Tinggi Badan :");
+        jLabel32.setText("T.B. :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormKelengkapanSEP.add(jLabel32);
-        jLabel32.setBounds(37, 165, 110, 23);
+        jLabel32.setBounds(3, 165, 100, 23);
 
         TinggiBadan.setText("0");
         TinggiBadan.setHighlighter(null);
@@ -2663,7 +2667,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(TinggiBadan);
-        TinggiBadan.setBounds(151, 165, 60, 23);
+        TinggiBadan.setBounds(107, 165, 60, 23);
 
         BeratBadan.setText("0");
         BeratBadan.setHighlighter(null);
@@ -2674,12 +2678,12 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(BeratBadan);
-        BeratBadan.setBounds(354, 165, 60, 23);
+        BeratBadan.setBounds(244, 165, 60, 23);
 
-        jLabel33.setText("Berat Badan :");
+        jLabel33.setText("B.B. :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormKelengkapanSEP.add(jLabel33);
-        jLabel33.setBounds(260, 165, 90, 23);
+        jLabel33.setBounds(200, 165, 40, 23);
 
         LabelPoli3.setText("Tekanan Darah :");
         LabelPoli3.setName("LabelPoli3"); // NOI18N
@@ -2728,13 +2732,13 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         jLabel37.setText("cm");
         jLabel37.setName("jLabel37"); // NOI18N
         FormKelengkapanSEP.add(jLabel37);
-        jLabel37.setBounds(213, 165, 30, 23);
+        jLabel37.setBounds(169, 165, 30, 23);
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel38.setText("kg");
         jLabel38.setName("jLabel38"); // NOI18N
         FormKelengkapanSEP.add(jLabel38);
-        jLabel38.setBounds(416, 165, 30, 23);
+        jLabel38.setBounds(306, 165, 30, 23);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel39.setText("mmHg");
@@ -2847,6 +2851,28 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         jLabel8.setName("jLabel8"); // NOI18N
         FormKelengkapanSEP.add(jLabel8);
         jLabel8.setBounds(441, 115, 40, 23);
+
+        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel50.setText("cm");
+        jLabel50.setName("jLabel50"); // NOI18N
+        FormKelengkapanSEP.add(jLabel50);
+        jLabel50.setBounds(436, 165, 30, 23);
+
+        LingkarPerut.setText("0");
+        LingkarPerut.setHighlighter(null);
+        LingkarPerut.setName("LingkarPerut"); // NOI18N
+        LingkarPerut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LingkarPerutKeyPressed(evt);
+            }
+        });
+        FormKelengkapanSEP.add(LingkarPerut);
+        LingkarPerut.setBounds(374, 165, 60, 23);
+
+        jLabel51.setText("L.P. :");
+        jLabel51.setName("jLabel51"); // NOI18N
+        FormKelengkapanSEP.add(jLabel51);
+        jLabel51.setBounds(330, 165, 40, 23);
 
         FormInput.add(FormKelengkapanSEP);
 
@@ -4076,11 +4102,11 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_TinggiBadanKeyPressed
 
     private void BeratBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BeratBadanKeyPressed
-        Valid.pindah(evt,TinggiBadan,Sistole);
+        Valid.pindah(evt,TinggiBadan,LingkarPerut);
     }//GEN-LAST:event_BeratBadanKeyPressed
 
     private void SistoleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistoleKeyPressed
-        Valid.pindah(evt,BeratBadan,Diastole);
+        Valid.pindah(evt,LingkarPerut,Diastole);
     }//GEN-LAST:event_SistoleKeyPressed
 
     private void DiastoleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiastoleKeyPressed
@@ -4124,6 +4150,10 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private void TSuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TSuhuKeyPressed
         Valid.pindah(evt,Keluhan,Respiratory);
     }//GEN-LAST:event_TSuhuKeyPressed
+
+    private void LingkarPerutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LingkarPerutKeyPressed
+        Valid.pindah(evt,BeratBadan,Sistole);
+    }//GEN-LAST:event_LingkarPerutKeyPressed
 
     /**
     * @param args the command line arguments
@@ -4209,6 +4239,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private widget.Label LabelPoli6;
     private widget.Label LabelSatuanPolri;
     private widget.Label LabelSatuanTNI;
+    private widget.TextBox LingkarPerut;
     private javax.swing.JMenuItem MnDocument;
     private widget.TextBox NIP;
     private widget.TextBox NmIbu;
@@ -4299,6 +4330,8 @@ public final class PCareCekKartu extends javax.swing.JDialog {
     private widget.Label jLabel48;
     private widget.Label jLabel49;
     private widget.Label jLabel5;
+    private widget.Label jLabel50;
+    private widget.Label jLabel51;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
@@ -4982,7 +5015,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
         status="Baru";
-        if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+TNo.getText()+"' and kd_poli='"+kdpoli.getText()+"'")>0){
+        if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where reg_periksa.no_rkm_medis='"+TNo.getText()+"' and reg_periksa.kd_poli='"+kdpoli.getText()+"'")>0){
             status="Lama";
         }
         
@@ -5227,7 +5260,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                             "\"beratBadan\": "+BeratBadan.getText()+"," +
                             "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
                             "\"respRate\": "+Respiratory.getText()+"," +
-                            "\"lingkarPerut\": 0," +
+                            "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
                             "\"heartRate\": "+Heartrate.getText()+"," +
                             "\"rujukBalik\": 0," +
                             "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
@@ -5243,28 +5276,28 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             if(nameNode.path("code").asText().equals("201")){
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("message");
                 System.out.println("noUrut : "+response.asText());
-                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",19,new String[]{
+                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",20,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
-                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
-                    Perawatan.getSelectedItem().toString(),response.asText()
+                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),LingkarPerut.getText(),
+                    Heartrate.getText(),"0",Perawatan.getSelectedItem().toString(),response.asText()
                 })==true){  
                     if((!Keluhan.getText().trim().equals(""))||(!Respiratory.getText().trim().equals(""))||
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
                         if(Perawatan.getSelectedIndex()==0){
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
+                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",21,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                 TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","","","",KdTenagaMedis.getText()
-                            });     
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","",LingkarPerut.getText(),"","","","",KdTenagaMedis.getText()
+                            });    
                         }else{
-                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
+                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",20,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                 TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","","","",KdTenagaMedis.getText()
-                            });     
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","","","","","",KdTenagaMedis.getText()
+                            });    
                         }     
                     }          
                     emptTeks();
@@ -5273,90 +5306,90 @@ public final class PCareCekKartu extends javax.swing.JDialog {
         }catch (Exception ex) {
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")||ex.toString().contains("unreachable")){
-                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",19,new String[]{
+                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",20,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
-                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
-                    Perawatan.getSelectedItem().toString(),""
-                })==true){
+                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),LingkarPerut.getText(),
+                    Heartrate.getText(),"0",Perawatan.getSelectedItem().toString(),response.asText()
+                })==true){  
                     if((!Keluhan.getText().trim().equals(""))||(!Respiratory.getText().trim().equals(""))||
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
                         if(Perawatan.getSelectedIndex()==0){
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
+                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",21,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                 TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","","","",KdTenagaMedis.getText()
-                            });     
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","",LingkarPerut.getText(),"","","","",KdTenagaMedis.getText()
+                            });    
                         }else{
-                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
+                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",20,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                 TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","","","",KdTenagaMedis.getText()
-                            }); 
-                        }         
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","","","","","",KdTenagaMedis.getText()
+                            });    
+                        }     
                     }          
                     emptTeks();
-                }
+                }  
                 JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!");
             }else if(ex.toString().contains("500")){
-                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",19,new String[]{
+                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",20,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
-                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
-                    Perawatan.getSelectedItem().toString(),""
-                })==true){
+                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),LingkarPerut.getText(),
+                    Heartrate.getText(),"0",Perawatan.getSelectedItem().toString(),response.asText()
+                })==true){  
                     if((!Keluhan.getText().trim().equals(""))||(!Respiratory.getText().trim().equals(""))||
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
                         if(Perawatan.getSelectedIndex()==0){
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
+                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",21,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                 TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","","","",KdTenagaMedis.getText()
-                            });     
-                        }else{
-                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                                TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","","","",KdTenagaMedis.getText()
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","",LingkarPerut.getText(),"","","","",KdTenagaMedis.getText()
                             });    
-                        }        
+                        }else{
+                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",20,new String[]{
+                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","","","","","",KdTenagaMedis.getText()
+                            });    
+                        }     
                     }          
                     emptTeks();
-                }
+                } 
                 JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!");
             }else if(ex.toString().contains("401")){
                 JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
             }else if(ex.toString().contains("408")){
-                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",19,new String[]{
+                if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",20,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNo.getText(),TNm.getText(),ProviderPeserta.getText(),
                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
-                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
-                    Perawatan.getSelectedItem().toString(),""
-                })==true){
+                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),LingkarPerut.getText(),
+                    Heartrate.getText(),"0",Perawatan.getSelectedItem().toString(),response.asText()
+                })==true){  
                     if((!Keluhan.getText().trim().equals(""))||(!Respiratory.getText().trim().equals(""))||
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
                         if(Perawatan.getSelectedIndex()==0){
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
+                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",21,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                 TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","","","",KdTenagaMedis.getText()
-                            });      
-                        }else{
-                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",18,new String[]{
-                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                                TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","","","",KdTenagaMedis.getText()
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","",LingkarPerut.getText(),"","","","",KdTenagaMedis.getText()
                             });    
-                        }       
+                        }else{
+                            Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",20,new String[]{
+                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                TSuhu.getText(),Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                BeratBadan.getText(),"","","Compos Mentis", Keluhan.getText(),"","","","","","",KdTenagaMedis.getText()
+                            });    
+                        }     
                     }          
                     emptTeks();
-                }
+                } 
                 JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!");
             }else if(ex.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
