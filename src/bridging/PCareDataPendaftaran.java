@@ -1187,7 +1187,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022 15:01:38" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022 16:55:40" }));
         tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -1511,7 +1511,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel15.setText("T.B. :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(27, 182, 40, 23);
+        jLabel15.setBounds(50, 182, 40, 23);
 
         TinggiBadan.setText("0");
         TinggiBadan.setHighlighter(null);
@@ -1522,7 +1522,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
         FormInput.add(TinggiBadan);
-        TinggiBadan.setBounds(70, 182, 50, 23);
+        TinggiBadan.setBounds(93, 182, 50, 23);
 
         BeratBadan.setText("0");
         BeratBadan.setHighlighter(null);
@@ -1533,22 +1533,22 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
         FormInput.add(BeratBadan);
-        BeratBadan.setBounds(70, 212, 50, 23);
+        BeratBadan.setBounds(93, 212, 50, 23);
 
         jLabel16.setText("B.B. :");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
-        jLabel16.setBounds(27, 212, 40, 23);
+        jLabel16.setBounds(50, 212, 40, 23);
 
         LabelPoli3.setText("Tekanan Darah :");
         LabelPoli3.setName("LabelPoli3"); // NOI18N
         FormInput.add(LabelPoli3);
-        LabelPoli3.setBounds(255, 162, 110, 23);
+        LabelPoli3.setBounds(275, 162, 110, 23);
 
         jLabel17.setText("Sistole :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(282, 182, 90, 23);
+        jLabel17.setBounds(302, 182, 90, 23);
 
         Sistole.setText("0");
         Sistole.setHighlighter(null);
@@ -1559,7 +1559,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sistole);
-        Sistole.setBounds(375, 182, 50, 23);
+        Sistole.setBounds(395, 182, 50, 23);
 
         Diastole.setText("0");
         Diastole.setHighlighter(null);
@@ -1570,36 +1570,36 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diastole);
-        Diastole.setBounds(375, 212, 50, 23);
+        Diastole.setBounds(395, 212, 50, 23);
 
         jLabel20.setText("Diastole :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(282, 212, 90, 23);
+        jLabel20.setBounds(302, 212, 90, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel23.setText("mmHg");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(428, 212, 40, 23);
+        jLabel23.setBounds(448, 212, 40, 23);
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel29.setText("cm");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(123, 182, 30, 23);
+        jLabel29.setBounds(146, 182, 30, 23);
 
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel36.setText("kg");
         jLabel36.setName("jLabel36"); // NOI18N
         FormInput.add(jLabel36);
-        jLabel36.setBounds(123, 212, 30, 23);
+        jLabel36.setBounds(146, 212, 30, 23);
 
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel37.setText("mmHg");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(428, 182, 40, 23);
+        jLabel37.setBounds(448, 182, 40, 23);
 
         jLabel38.setText("Respiratory Rate :");
         jLabel38.setName("jLabel38"); // NOI18N
@@ -2327,7 +2327,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel34.setText("cm");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(231, 182, 30, 23);
+        jLabel34.setBounds(261, 182, 30, 23);
 
         LingkarPerut.setText("0");
         LingkarPerut.setHighlighter(null);
@@ -2338,12 +2338,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
         FormInput.add(LingkarPerut);
-        LingkarPerut.setBounds(178, 182, 50, 23);
+        LingkarPerut.setBounds(208, 182, 50, 23);
 
         jLabel35.setText("L.P. :");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(135, 182, 40, 23);
+        jLabel35.setBounds(165, 182, 40, 23);
 
         Scroll1.setViewportView(FormInput);
 
