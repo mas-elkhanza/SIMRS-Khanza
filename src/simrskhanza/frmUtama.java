@@ -1532,6 +1532,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator12 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir9 = new javax.swing.JMenuItem();
         MnRekapHadir3 = new javax.swing.JMenuItem();
+        MnRekapHadir10 = new javax.swing.JMenuItem();
         MnRekapHadir4 = new javax.swing.JMenuItem();
         MnInfoBed4 = new javax.swing.JMenuItem();
         MnRekapHadir5 = new javax.swing.JMenuItem();
@@ -1755,7 +1756,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/06/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/07/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7792,6 +7793,20 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu7.add(MnRekapHadir3);
+
+        MnRekapHadir10.setBackground(new java.awt.Color(255, 255, 254));
+        MnRekapHadir10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRekapHadir10.setForeground(new java.awt.Color(50, 90, 40));
+        MnRekapHadir10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnRekapHadir10.setText("Antrian Loket 2");
+        MnRekapHadir10.setName("MnRekapHadir10"); // NOI18N
+        MnRekapHadir10.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRekapHadir10ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnRekapHadir10);
 
         MnRekapHadir4.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapHadir4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -14265,6 +14280,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         } 
     }//GEN-LAST:event_MnRekapHadir9ActionPerformed
 
+    private void MnRekapHadir10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHadir10ActionPerformed
+        try {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Runtime.getRuntime().exec("java -jar KhanzaAntrianLoket2.jar");
+            this.setCursor(Cursor.getDefaultCursor());
+        } catch (Exception e) {
+            System.out.print("Notifikasi : "+e);
+        } 
+    }//GEN-LAST:event_MnRekapHadir10ActionPerformed
+
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -18792,6 +18817,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnRekapBulanan4;
     private javax.swing.JMenuItem MnRekapHadir;
     private javax.swing.JMenuItem MnRekapHadir1;
+    private javax.swing.JMenuItem MnRekapHadir10;
     private javax.swing.JMenuItem MnRekapHadir3;
     private javax.swing.JMenuItem MnRekapHadir4;
     private javax.swing.JMenuItem MnRekapHadir5;
