@@ -8486,9 +8486,19 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             KetGastrointestinalAbdomen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString().replaceAll(GastrointestinalAbdomen.getSelectedItem().toString()+", ",""));
             GastrointestinalUsus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
             GastrointestinalAnus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
+            NeurologiSensorik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString().contains("TAK")){
+                NeurologiPenglihatan.setSelectedItem("TAK");
+            }else{
+                NeurologiPenglihatan.setSelectedItem("Ada Kelainan");
+            }
+            KetNeurologiPenglihatan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString().replaceAll(NeurologiPenglihatan.getSelectedItem().toString()+", ",""));
+            NeurologiAlatBantuPenglihatan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
+            NeurologiMotorik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
+            NeurologiPendengaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
             
             
-            /*"Sensorik","Penglihatan","Alat Bantu Penglihatan","Motorik","Pendengaran","Bicara","Otot","Kulit","Warna Kulit","Turgor","Resiko Decubitas",
+            /*"Bicara","Otot","Kulit","Warna Kulit","Turgor","Resiko Decubitas",
             "Oedema","Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
             "Lain-lain BAK","Mandi","Makan/Minum","Berpakaian","Eliminasi","Berpindah","Porsi Makan","Frekuensi Makan","Jenis Makanan","Lama Tidur","Gangguan Tidur",
             "a. Aktifitas Sehari-hari","b. Berjalan","c. Aktifitas","d. Alat Ambulasi","e. Ekstremitas Atas","f. Ekstremitas Bawah","g. Kemampuan Menggenggam",

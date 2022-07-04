@@ -6156,9 +6156,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             headers2 = new HttpHeaders();
             headers2.setContentType(MediaType.TEXT_PLAIN);
             headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-            headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers2.add("X-Signature",api.getHmac());
-            headers2.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+            headers2.add("X-timestamp",utc);            
+            headers2.add("X-signature",api.getHmac());
+            headers2.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers2.add("user_key",koneksiDB.USERKEYAPIPCARE());
             if(chkKunjungan.isSelected()==true){
                 if(Keluhan.getText().trim().equals("")){
                     Valid.textKosong(Keluhan,"Keluhan");
@@ -6404,9 +6406,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 headers2 = new HttpHeaders();
                 headers2.setContentType(MediaType.TEXT_PLAIN);
                 headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers2.add("X-Signature",api.getHmac());
-                headers2.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                utc=String.valueOf(api.GetUTCdatetimeAsString());
+                headers2.add("X-timestamp",utc);            
+                headers2.add("X-signature",api.getHmac());
+                headers2.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                headers2.add("user_key",koneksiDB.USERKEYAPIPCARE());
                 if(ChkRujukLanjut.isSelected()==false){
                     diagnosa2="null";
                     if(!KdDiagnosa2.getText().equals("")){
@@ -6901,9 +6905,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         headers2 = new HttpHeaders();
                                                         headers2.setContentType(MediaType.TEXT_PLAIN);
                                                         headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                                                        headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                                                        headers2.add("X-Signature",api.getHmac());
-                                                        headers2.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        utc=String.valueOf(api.GetUTCdatetimeAsString());
+                                                        headers2.add("X-timestamp",utc);            
+                                                        headers2.add("X-signature",api.getHmac());
+                                                        headers2.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        headers2.add("user_key",koneksiDB.USERKEYAPIPCARE());
                                                         if(ChkRujukLanjut.isSelected()==false){
                                                             diagnosa2="null";
                                                             if(!KdDiagnosa2.getText().equals("")){
