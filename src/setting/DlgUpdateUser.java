@@ -694,7 +694,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht,user.penilaian_psikologi,"+
                 "user.audit_cuci_tangan_medis,user.audit_pembuangan_limbah,user.ruang_audit_kepatuhan,user.audit_pembuangan_benda_tajam,user.audit_penanganan_darah,"+
                 "user.audit_pengelolaan_linen_kotor,user.audit_penempatan_pasien,user.audit_kamar_jenazah,user.audit_bundle_iadp,user.audit_bundle_ido,"+
-                "user.audit_fasilitas_kebersihan_tangan,user.audit_fasilitas_apd,user.audit_pembuangan_limbah_cair_infeksius from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.audit_fasilitas_kebersihan_tangan,user.audit_fasilitas_apd,user.audit_pembuangan_limbah_cair_infeksius,user.audit_sterilisasi_alat from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1069,6 +1069,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Audit Pembuangan Limbah Cair Infeksius".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Audit Pembuangan Limbah Cair Infeksius",rs.getBoolean("audit_pembuangan_limbah_cair_infeksius")});
+                    }
+                    
+                    if("[C]Audit Sterilisasi Alat".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Audit Sterilisasi Alat",rs.getBoolean("audit_sterilisasi_alat")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4452,6 +4456,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[C]Audit Pembuangan Limbah Cair Infeksius".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_pembuangan_limbah_cair_infeksius='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[C]Audit Sterilisasi Alat".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_sterilisasi_alat='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){

@@ -666,6 +666,7 @@ import kepegawaian.DlgAuditPembuanganLimbahCairInfeksius;
 import kepegawaian.DlgAuditPenangananDarah;
 import kepegawaian.DlgAuditPenempatanPasien;
 import kepegawaian.DlgAuditPengelolaanLinenKotor;
+import kepegawaian.DlgAuditSterilisasiAlat;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -18764,6 +18765,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAuditSterilisasiAlatActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditSterilisasiAlat aplikasi=new DlgAuditSterilisasiAlat(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19411,7 +19424,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnJumlahPengunjungRalanPolri,btnCatatanObservasiIGD,btnCatatanObservasiRanap,btnCatatanObservasiRanapKebidanan,btnCatatanObservasiRanapPostPartum,
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
             btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah,
-            btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan,btnAuditFasilitasAPD,btnAuditPembuanganLimbahCairInfeksius;
+            btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan,btnAuditFasilitasAPD,btnAuditPembuanganLimbahCairInfeksius,
+            btnAuditSterilisasiAlat;
     
     public void isWall(){
         try{            
@@ -19933,6 +19947,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_pembuangan_limbah_cair_infeksius()==true){  
                 Panelmenu.add(btnAuditPembuanganLimbahCairInfeksius);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_sterilisasi_alat()==true){  
+                Panelmenu.add(btnAuditSterilisasiAlat);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -24123,6 +24142,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getaudit_pembuangan_limbah_cair_infeksius()==true){  
             Panelmenu.add(btnAuditPembuanganLimbahCairInfeksius);                 
+            jmlmenu++;
+        }
+
+        if(akses.getaudit_sterilisasi_alat()==true){  
+            Panelmenu.add(btnAuditSterilisasiAlat);                 
             jmlmenu++;
         }
 
@@ -28457,6 +28481,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_pembuangan_limbah_cair_infeksius()==true){  
             if(btnAuditPembuanganLimbahCairInfeksius.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditPembuanganLimbahCairInfeksius);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_sterilisasi_alat()==true){  
+            if(btnAuditSterilisasiAlat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditSterilisasiAlat);                 
                 jmlmenu++;
             }                
         }
@@ -36721,6 +36752,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditPembuanganLimbahCairInfeksius.setName("btnAuditPembuanganLimbahCairInfeksius");
         btnAuditPembuanganLimbahCairInfeksius.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditPembuanganLimbahCairInfeksius.addActionListener(this::btnAuditPembuanganLimbahCairInfeksiusActionPerformed);
+        
+        btnAuditSterilisasiAlat = new widget.ButtonBig();
+        btnAuditSterilisasiAlat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960613_iv_iv pole_blood_transfusion_infusion_icon.png"))); 
+        btnAuditSterilisasiAlat.setText("Audit Sterilisasi Alat");
+        btnAuditSterilisasiAlat.setIconTextGap(0);
+        btnAuditSterilisasiAlat.setName("btnAuditSterilisasiAlat");
+        btnAuditSterilisasiAlat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditSterilisasiAlat.addActionListener(this::btnAuditSterilisasiAlatActionPerformed);
     }
     
 }

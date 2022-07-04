@@ -8496,10 +8496,26 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             NeurologiAlatBantuPenglihatan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
             NeurologiMotorik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
             NeurologiPendengaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString().contains("Jelas")){
+                NeurologiBicara.setSelectedItem("Jelas");
+            }else{
+                NeurologiBicara.setSelectedItem("Tidak Jelas");
+            }
+            KetNeurologiBicara.setText(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString().replaceAll(NeurologiBicara.getSelectedItem().toString()+", ",""));
+            NeurologiOtot.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+            IntegumentKulit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+            IntegumentWarnaKulit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString());
+            IntegumentTurgor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
+            IntegumentDecubitus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),74).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString().contains("Tidak Ada")){
+                MuskuloskletalOedema.setSelectedItem("Tidak Ada");
+            }else{
+                MuskuloskletalOedema.setSelectedItem("Ada");
+            }
+            KetMuskuloskletalOedema.setText(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString().replaceAll(MuskuloskletalOedema.getSelectedItem().toString()+", ",""));
             
             
-            /*"Bicara","Otot","Kulit","Warna Kulit","Turgor","Resiko Decubitas",
-            "Oedema","Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
+            /*"Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
             "Lain-lain BAK","Mandi","Makan/Minum","Berpakaian","Eliminasi","Berpindah","Porsi Makan","Frekuensi Makan","Jenis Makanan","Lama Tidur","Gangguan Tidur",
             "a. Aktifitas Sehari-hari","b. Berjalan","c. Aktifitas","d. Alat Ambulasi","e. Ekstremitas Atas","f. Ekstremitas Bawah","g. Kemampuan Menggenggam",
             "h. Kemampuan Koordinasi","i. Kesimpulan Gangguan Fungsi","a. Kondisi Psikologis","b. Adakah Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan Pasien",
