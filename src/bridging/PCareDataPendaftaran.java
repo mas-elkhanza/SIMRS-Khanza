@@ -2737,7 +2737,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 }
                 try {
                     headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.setContentType(MediaType.TEXT_PLAIN);
                     headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                     headers.add("X-timestamp",utc);            
@@ -2987,7 +2987,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     try {
                         bodyWithDeleteRequest2();                    
                         headers = new HttpHeaders();
-                        headers.setContentType(MediaType.APPLICATION_JSON);
+                        headers.setContentType(MediaType.TEXT_PLAIN);
                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                         utc=String.valueOf(api.GetUTCdatetimeAsString());
                         headers.add("X-timestamp",utc);            
@@ -3101,7 +3101,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 }else{
                     try {
                         headers = new HttpHeaders();
-                        headers.setContentType(MediaType.APPLICATION_JSON);
+                        headers.setContentType(MediaType.TEXT_PLAIN);
                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                         utc=String.valueOf(api.GetUTCdatetimeAsString());
                         headers.add("X-timestamp",utc);            
@@ -4378,7 +4378,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             if(tbPendaftaran.getValueAt(i,19).toString().equals("Gagal")){
                 try {
                     headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.setContentType(MediaType.TEXT_PLAIN);
                     headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                     headers.add("X-timestamp",utc);            
@@ -4497,7 +4497,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 
                                 try {
                                     headers = new HttpHeaders();
-                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.setContentType(MediaType.TEXT_PLAIN);
                                     headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                                     headers.add("X-timestamp",utc);            
@@ -6154,7 +6154,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void simpanKunjungan() {
         try {
             headers2 = new HttpHeaders();
-            headers2.setContentType(MediaType.APPLICATION_JSON);
+            headers2.setContentType(MediaType.TEXT_PLAIN);
             headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers2.add("X-Signature",api.getHmac());
@@ -6402,7 +6402,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             System.out.println("No.Rawat : "+norawat+" ditemukan, proses mengirim ke server PCare BPJS.. ");
             try {
                 headers2 = new HttpHeaders();
-                headers2.setContentType(MediaType.APPLICATION_JSON);
+                headers2.setContentType(MediaType.TEXT_PLAIN);
                 headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers2.add("X-Signature",api.getHmac());
@@ -6819,7 +6819,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 if(tbPendaftaran.getValueAt(i,19).toString().equals("Gagal")){
                                     try {
                                         headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                        headers.setContentType(MediaType.TEXT_PLAIN);
                                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                         utc=String.valueOf(api.GetUTCdatetimeAsString());
                                         headers.add("X-timestamp",utc);            
@@ -6899,7 +6899,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                     PesanKirim.append("No.Rawat : "+tbPendaftaran.getValueAt(i,0).toString()+" ditemukan, proses mengirim kunjungan ke server PCare BPJS.. "+"\n");
                                                     try {
                                                         headers2 = new HttpHeaders();
-                                                        headers2.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers2.setContentType(MediaType.TEXT_PLAIN);
                                                         headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                                         headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                                                         headers2.add("X-Signature",api.getHmac());
@@ -7044,7 +7044,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
                                                     try {
                                                         headers = new HttpHeaders();
-                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.setContentType(MediaType.TEXT_PLAIN);
                                                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                                         utc=String.valueOf(api.GetUTCdatetimeAsString());
                                                         headers.add("X-timestamp",utc);            

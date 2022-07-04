@@ -392,7 +392,7 @@ public class frmUtama extends javax.swing.JFrame {
                             while(rs.next()){
                                 try {
                                     headers = new HttpHeaders();
-                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.setContentType(MediaType.TEXT_PLAIN);
                                     headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                                     headers.add("X-timestamp",utc);            
@@ -500,7 +500,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     TeksArea.append("No.Rawat : "+rs.getString("no_rawat")+" ditemukan, proses mengirim kunjungan ke server PCare BPJS.. "+"\n");
                                                     try {
                                                         headerscari = new HttpHeaders();
-                                                        headerscari.setContentType(MediaType.APPLICATION_JSON);
+                                                        headerscari.setContentType(MediaType.TEXT_PLAIN);
                                                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                                         utc=String.valueOf(api.GetUTCdatetimeAsString());
                                                         headers.add("X-timestamp",utc);            
@@ -641,7 +641,7 @@ public class frmUtama extends javax.swing.JFrame {
                             while(rs.next()){
                                 TeksArea.append("No.Rawat : "+rs.getString("no_rawat")+" ditemukan, proses mengirim kunjungan ke server PCare BPJS.. "+"\n");
                                 headerscari = new HttpHeaders();
-                                headerscari.setContentType(MediaType.APPLICATION_JSON);
+                                headerscari.setContentType(MediaType.TEXT_PLAIN);
                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                                 headers.add("X-timestamp",utc);            
@@ -763,7 +763,7 @@ public class frmUtama extends javax.swing.JFrame {
 
                                             try {
                                                 headers = new HttpHeaders();
-                                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                                headers.setContentType(MediaType.TEXT_PLAIN);
                                                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                                                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                                                 headers.add("X-timestamp",utc);            

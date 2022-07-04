@@ -442,8 +442,27 @@ public class DlgAntrian extends javax.swing.JDialog{
                 }
                 
                 detik = nol_detik + Integer.toString(nilai_detik);
-                System.out.println("detik : "+detik);
                 if(detik.equals("05")||detik.equals("10")||detik.equals("15")||detik.equals("20")||detik.equals("25")||detik.equals("30")||detik.equals("35")||detik.equals("40")||detik.equals("45")||detik.equals("50")||detik.equals("55")||detik.equals("00")){                    
+                    try {
+                        pscari=koneksi.prepareStatement("select antriloket.antrian from antriloket order by antriloket.antrian desc limit 1");
+                        try {
+                            rs=pscari.executeQuery();
+                            if(rs.next()){
+                                Antrian.setText(rs.getString("antrian"));
+                            }
+                        } catch (Exception z) {
+                            System.out.println("Notif : "+z);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(pscari!=null){
+                                pscari.close();
+                            }
+                        }  
+                    } catch (Exception ez) {
+                        System.out.println(ez);
+                    }
                     antri="";
                     try {
                         pscari=koneksi.prepareStatement("select antriloket.antrian,antriloket.loket from antriloket where antriloket.loket=?");
@@ -466,8 +485,8 @@ public class DlgAntrian extends javax.swing.JDialog{
                     } catch (Exception ez) {
                         System.out.println(ez);
                     }
-                    if(!antri.equals("")){
-                        Antrian.setText(antri);    
+                    
+                    if(!antri.equals("")){   
                         labelantri1.setText(antri);
                         if(prop.getProperty("ANTRIAN").equals("player")){
                             try {
@@ -482,10 +501,7 @@ public class DlgAntrian extends javax.swing.JDialog{
                             } catch (InterruptedException ex) {
                                System.out.println(e);
                             }
-                        }                               
-
-                        i=Integer.parseInt(antri)+1;
-                        Antrian.setText(""+i);
+                        }                      
                     }                          
                 }
             }
