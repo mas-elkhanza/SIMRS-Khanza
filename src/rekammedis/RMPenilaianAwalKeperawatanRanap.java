@@ -1509,7 +1509,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         Anamnesis.setBounds(74, 100, 130, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-06-2022 18:48:13" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2022 08:02:31" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -4977,7 +4977,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4991,7 +4991,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -8598,10 +8598,64 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                 KemampuanMenggenggam.setSelectedItem("Lain-lain");
             }
             KeteranganKemampuanMenggenggam.setText(tbObat.getValueAt(tbObat.getSelectedRow(),104).toString().replaceAll(KemampuanMenggenggam.getSelectedItem().toString()+", ",""));
-            
-            /*"h. Kemampuan Koordinasi","i. Kesimpulan Gangguan Fungsi","a. Kondisi Psikologis","b. Adakah Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan Pasien",
-            "e. Agama","f. Tinggal Dengan","g. Pekerjaan","h. Pembayaran","i. Nilai-nilai Kepercayaan","j. Bahasa Sehari-hari","k. Pendidikan Pasien","l. Pendidikan P.J.",
-            "m. Edukasi Diberikan Kepada","Nyeri","Penyebab Nyeri","Kualitas Nyeri","Lokasi Nyeri","Nyeri Menyebar","Skala Nyeri","Waktu / Durasi","Nyeri Hilang Bila",
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),105).toString().contains("Tidak Ada Kesulitan")){
+                KemampuanKoordinasi.setSelectedItem("Tidak Ada Kesulitan");
+            }else{
+                KemampuanKoordinasi.setSelectedItem("Ada Masalah");
+            }
+            KeteranganKemampuanKoordinasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),105).toString().replaceAll(KemampuanKoordinasi.getSelectedItem().toString()+", ",""));
+            KesimpulanGangguanFungsi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),106).toString());
+            KondisiPsikologis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),107).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString().contains("Tidak Ada Masalah")){
+                AdakahPerilaku.setSelectedItem("Tidak Ada Masalah");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString().contains("Perilaku Kekerasan")){
+                AdakahPerilaku.setSelectedItem("Perilaku Kekerasan");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString().contains("Gangguan Efek")){
+                AdakahPerilaku.setSelectedItem("Gangguan Efek");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString().contains("Gangguan Memori")){
+                AdakahPerilaku.setSelectedItem("Gangguan Memori");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString().contains("Halusinasi")){
+                AdakahPerilaku.setSelectedItem("Halusinasi");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString().contains("Kecenderungan Percobaan Bunuh Diri")){
+                AdakahPerilaku.setSelectedItem("Kecenderungan Percobaan Bunuh Diri");
+            }else{
+                AdakahPerilaku.setSelectedItem("Lain-lain");
+            }
+            KeteranganAdakahPerilaku.setText(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString().replaceAll(AdakahPerilaku.getSelectedItem().toString()+", ",""));
+            GangguanJiwa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),109).toString());
+            HubunganAnggotaKeluarga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),110).toString());
+            Agama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),111).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),112).toString().contains("Sendiri")){
+                TinggalDengan.setSelectedItem("Sendiri");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),112).toString().contains("Orang Tua")){
+                TinggalDengan.setSelectedItem("Orang Tua");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),112).toString().contains("Suami/Istri")){
+                TinggalDengan.setSelectedItem("Suami/Istri");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),112).toString().contains("Keluarga")){
+                TinggalDengan.setSelectedItem("Keluarga");
+            }else{
+                TinggalDengan.setSelectedItem("Lain-lain");
+            }
+            KeteranganTinggalDengan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),112).toString().replaceAll(TinggalDengan.getSelectedItem().toString()+", ",""));
+            PekerjaanPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),113).toString());
+            CaraBayar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),114).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),115).toString().contains("Tidak Ada")){
+                NilaiKepercayaan.setSelectedItem("Tidak Ada");
+            }else{
+                NilaiKepercayaan.setSelectedItem("Ada");
+            }
+            KeteranganNilaiKepercayaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),115).toString().replaceAll(NilaiKepercayaan.getSelectedItem().toString()+", ",""));
+            Bahasa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),116).toString());
+            PendidikanPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),117).toString());
+            PendidikanPJ.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),118).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),119).toString().contains("Pasien")){
+                EdukasiPsikolgis.setSelectedItem("Pasien");
+            }else{
+                EdukasiPsikolgis.setSelectedItem("Keluarga");
+            }
+            KeteranganEdukasiPsikologis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),119).toString().replaceAll(EdukasiPsikolgis.getSelectedItem().toString()+", ",""));
+            Nyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),120).toString());
+            /*"Nyeri","Penyebab Nyeri","Kualitas Nyeri","Lokasi Nyeri","Nyeri Menyebar","Skala Nyeri","Waktu / Durasi","Nyeri Hilang Bila",
             "Diberitahukan Pada Dokter","Skala Morse 1","N.M. 1","Skala Morse 2","N.M. 2","Skala Morse 3","N.M. 3","Skala Morse 4","N.M. 4","Skala Morse 5","N.M. 5",
             "Skala Morse 6","N.M. 6","T.M.","Skala Sydney 1","N.S. 1","Skala Sydney 2","N.S. 2","Skala Sydney 3","N.S. 3","Skala Sydney 4","N.S. 4",
             "Skala Sydney 5","N.S. 5","Skala Sydney 6","N.S. 6","Skala Sydney 7","N.S. 7","Skala Sydney 8","N.S. 8","Skala Sydney 9","N.S. 9","Skala Sydney 10","N.S. 10",
