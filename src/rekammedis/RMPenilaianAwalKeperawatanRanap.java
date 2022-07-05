@@ -8513,12 +8513,93 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
                 MuskuloskletalOedema.setSelectedItem("Ada");
             }
             KetMuskuloskletalOedema.setText(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString().replaceAll(MuskuloskletalOedema.getSelectedItem().toString()+", ",""));
+            MuskuloskletalPegerakanSendi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),76).toString());
+            MuskuloskletalKekuatanOtot.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),77).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString().contains("Tidak Ada")){
+                MuskuloskletalFraktur.setSelectedItem("Tidak Ada");
+            }else{
+                MuskuloskletalFraktur.setSelectedItem("Ada");
+            }
+            KetMuskuloskletalFraktur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString().replaceAll(MuskuloskletalFraktur.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString().contains("Tidak Ada")){
+                MuskuloskletalNyeriSendi.setSelectedItem("Tidak Ada");
+            }else{
+                MuskuloskletalNyeriSendi.setSelectedItem("Ada");
+            }
+            KetMuskuloskletalNyeriSendi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString().replaceAll(MuskuloskletalNyeriSendi.getSelectedItem().toString()+", ",""));
+            BAB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),80).toString());
+            XBAB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),81).toString());
+            KBAB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),82).toString());
+            WBAB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),83).toString());
+            BAK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),84).toString());
+            XBAK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),85).toString());
+            WBAK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString());
+            LBAK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),87).toString());
+            PolaAktifitasMandi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),88).toString());
+            PolaAktifitasMakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),89).toString());
+            PolaAktifitasBerpakaian.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),90).toString());
+            PolaAktifitasEliminasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),91).toString());
+            PolaAktifitasBerpindah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),92).toString());
+            PolaNutrisiPorsi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),93).toString());
+            PolaNutrisiFrekuensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),94).toString());
+            PolaNutrisiJenis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),95).toString());
+            PolaTidurLama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),96).toString());
+            PolaTidurGangguan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),97).toString());
+            AktifitasSehari2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),98).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().contains("TAK")){
+                Berjalan.setSelectedItem("TAK");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().contains("Penurunan Kekuatan/ROM")){
+                Berjalan.setSelectedItem("Penurunan Kekuatan/ROM");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().contains("Paralisis")){
+                Berjalan.setSelectedItem("Paralisis");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().contains("Sering Jatuh")){
+                Berjalan.setSelectedItem("Sering Jatuh");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().contains("Deformitas")){
+                Berjalan.setSelectedItem("Deformitas");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().contains("Hilang keseimbangan")){
+                Berjalan.setSelectedItem("Hilang keseimbangan");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().contains("Riwayat Patah Tulang")){
+                Berjalan.setSelectedItem("Riwayat Patah Tulang");
+            }else{
+                Berjalan.setSelectedItem("Lain-lain");
+            }
+            KeteranganBerjalan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString().replaceAll(Berjalan.getSelectedItem().toString()+", ",""));
+            Aktifitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),100).toString());
+            AlatAmbulasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),101).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),102).toString().contains("TAK")){
+                EkstrimitasAtas.setSelectedItem("TAK");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),102).toString().contains("Lemah")){
+                EkstrimitasAtas.setSelectedItem("Lemah");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),102).toString().contains("Oedema")){
+                EkstrimitasAtas.setSelectedItem("Oedema");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),102).toString().contains("Tidak Simetris")){
+                EkstrimitasAtas.setSelectedItem("Tidak Simetris");
+            }else{
+                EkstrimitasAtas.setSelectedItem("Lain-lain");
+            }
+            KeteranganEkstrimitasAtas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),102).toString().replaceAll(EkstrimitasAtas.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),103).toString().contains("TAK")){
+                EkstrimitasBawah.setSelectedItem("TAK");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),103).toString().contains("Varises")){
+                EkstrimitasBawah.setSelectedItem("Varises");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),103).toString().contains("Oedema")){
+                EkstrimitasBawah.setSelectedItem("Oedema");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),103).toString().contains("Tidak Simetris")){
+                EkstrimitasBawah.setSelectedItem("Tidak Simetris");
+            }else{
+                EkstrimitasBawah.setSelectedItem("Lain-lain");
+            }
+            KeteranganEkstrimitasBawah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),103).toString().replaceAll(EkstrimitasBawah.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),104).toString().contains("Tidak Ada Kesulitan")){
+                KemampuanMenggenggam.setSelectedItem("Tidak Ada Kesulitan");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),104).toString().contains("Terakhir")){
+                KemampuanMenggenggam.setSelectedItem("Terakhir");
+            }else{
+                KemampuanMenggenggam.setSelectedItem("Lain-lain");
+            }
+            KeteranganKemampuanMenggenggam.setText(tbObat.getValueAt(tbObat.getSelectedRow(),104).toString().replaceAll(KemampuanMenggenggam.getSelectedItem().toString()+", ",""));
             
-            
-            /*"Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
-            "Lain-lain BAK","Mandi","Makan/Minum","Berpakaian","Eliminasi","Berpindah","Porsi Makan","Frekuensi Makan","Jenis Makanan","Lama Tidur","Gangguan Tidur",
-            "a. Aktifitas Sehari-hari","b. Berjalan","c. Aktifitas","d. Alat Ambulasi","e. Ekstremitas Atas","f. Ekstremitas Bawah","g. Kemampuan Menggenggam",
-            "h. Kemampuan Koordinasi","i. Kesimpulan Gangguan Fungsi","a. Kondisi Psikologis","b. Adakah Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan Pasien",
+            /*"h. Kemampuan Koordinasi","i. Kesimpulan Gangguan Fungsi","a. Kondisi Psikologis","b. Adakah Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan Pasien",
             "e. Agama","f. Tinggal Dengan","g. Pekerjaan","h. Pembayaran","i. Nilai-nilai Kepercayaan","j. Bahasa Sehari-hari","k. Pendidikan Pasien","l. Pendidikan P.J.",
             "m. Edukasi Diberikan Kepada","Nyeri","Penyebab Nyeri","Kualitas Nyeri","Lokasi Nyeri","Nyeri Menyebar","Skala Nyeri","Waktu / Durasi","Nyeri Hilang Bila",
             "Diberitahukan Pada Dokter","Skala Morse 1","N.M. 1","Skala Morse 2","N.M. 2","Skala Morse 3","N.M. 3","Skala Morse 4","N.M. 4","Skala Morse 5","N.M. 5",
