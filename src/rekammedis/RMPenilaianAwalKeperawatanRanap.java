@@ -8655,7 +8655,33 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
             }
             KeteranganEdukasiPsikologis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),119).toString().replaceAll(EdukasiPsikolgis.getSelectedItem().toString()+", ",""));
             Nyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),120).toString());
-            /*"Nyeri","Penyebab Nyeri","Kualitas Nyeri","Lokasi Nyeri","Nyeri Menyebar","Skala Nyeri","Waktu / Durasi","Nyeri Hilang Bila",
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),121).toString().contains("Proses Penyakit")){
+                Provokes.setSelectedItem("Proses Penyakit");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),121).toString().contains("Benturan")){
+                Provokes.setSelectedItem("Benturan");
+            }else{
+                Provokes.setSelectedItem("Lain-lain");
+            }
+            KetProvokes.setText(tbObat.getValueAt(tbObat.getSelectedRow(),121).toString().replaceAll(Provokes.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),122).toString().contains("Seperti Tertusuk")){
+                Quality.setSelectedItem("Seperti Tertusuk");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),122).toString().contains("Berdenyut")){
+                Quality.setSelectedItem("Berdenyut");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),122).toString().contains("Teriris")){
+                Quality.setSelectedItem("Teriris");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),122).toString().contains("Tertindih")){
+                Quality.setSelectedItem("Tertindih");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),122).toString().contains("Tertiban")){
+                Quality.setSelectedItem("Tertiban");
+            }else{
+                Quality.setSelectedItem("Lain-lain");
+            }
+            KetQuality.setText(tbObat.getValueAt(tbObat.getSelectedRow(),122).toString().replaceAll(Quality.getSelectedItem().toString()+", ",""));
+            Lokasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),123).toString());
+            Menyebar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),124).toString());
+            SkalaNyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),125).toString());
+            Durasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),126).toString());
+            /*"Nyeri Hilang Bila",
             "Diberitahukan Pada Dokter","Skala Morse 1","N.M. 1","Skala Morse 2","N.M. 2","Skala Morse 3","N.M. 3","Skala Morse 4","N.M. 4","Skala Morse 5","N.M. 5",
             "Skala Morse 6","N.M. 6","T.M.","Skala Sydney 1","N.S. 1","Skala Sydney 2","N.S. 2","Skala Sydney 3","N.S. 3","Skala Sydney 4","N.S. 4",
             "Skala Sydney 5","N.S. 5","Skala Sydney 6","N.S. 6","Skala Sydney 7","N.S. 7","Skala Sydney 8","N.S. 8","Skala Sydney 9","N.S. 9","Skala Sydney 10","N.S. 10",
