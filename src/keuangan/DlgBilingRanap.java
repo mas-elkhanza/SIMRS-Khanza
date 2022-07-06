@@ -214,9 +214,10 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             + "operasi.biayainstrumen,operasi.biayadokter_anak,operasi.biayaperawaat_resusitas,"
             + "operasi.biayadokter_anestesi,operasi.biayaasisten_anestesi,operasi.biayaasisten_anestesi2,operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3,operasi.biayaperawat_luar,"
             + "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,operasi.biaya_omloop3,operasi.biaya_omloop4,operasi.biaya_omloop5,"
-            + "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum "
+            + "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum,dokter.nm_dokter "
             + "from operasi inner join paket_operasi "
-            + "on operasi.kode_paket=paket_operasi.kode_paket where "
+            + "on operasi.kode_paket=paket_operasi.kode_paket "
+            + "inner join dokter on dokter.kd_dokter=operasi.operator1 where "
             + "operasi.no_rawat=? and operasi.status like ?",
             sqlpsnota = "insert into nota_inap values(?,?,?,?,?)",
             sqlpsbiling = "insert into billing values(?,?,?,?,?,?,?,?,?,?,?)",
@@ -5291,11 +5292,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 if (rinciandokterranap.equals("Yes")) {
                                     detailbhp = detailbhp + rsralandokter.getDouble("totalbhp");
                                     detailjs = detailjs + rsralandokter.getDouble("totalmaterial");
-                                    tabModeRwJlDr.addRow(new Object[]{true, "", rsralandokter.getString("nm_perawatan"), ":",
+                                    tabModeRwJlDr.addRow(new Object[]{true, "", rsralandokter.getString("nm_perawatan")+" ("+rsralandokter.getString("operator1")+")", ":",
                                         rsralandokter.getDouble("tarif_tindakandr"), rsralandokter.getDouble("jml"), tamkur, (rsralandokter.getDouble("totaltarif_tindakandr") + tamkur), "Ralan Dokter"});
                                     subttl = subttl + rsralandokter.getDouble("totaltarif_tindakandr") + tamkur;
                                 } else {
-                                    tabModeRwJlDr.addRow(new Object[]{true, "                           ", rsralandokter.getString("nm_perawatan"), ":",
+                                    tabModeRwJlDr.addRow(new Object[]{true, "                           ", rsralandokter.getString("nm_perawatan")+" ("+rsralandokter.getString("operator1")+")", ":",
                                         rsralandokter.getDouble("total_byrdr"), rsralandokter.getDouble("jml"), tamkur, (tamkur + rsralandokter.getDouble("biaya")), "Ralan Dokter"});
                                     subttl = subttl + rsralandokter.getDouble("biaya") + tamkur;
                                 }
@@ -5698,7 +5699,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 rsoperasi.beforeFirst();
                 if (rincianoperasi.equals("Yes")) {
                     while (rsoperasi.next()) {
-                        tabModeRwJlDr.addRow(new Object[]{true, "                           ", rsoperasi.getString("nm_perawatan"), ":", null, null, null, null, "Operasi"});
+                        tabModeRwJlDr.addRow(new Object[]{true, "                           ", rsoperasi.getString("nm_perawatan")+" ("+rsoperasi.getString("nm_dokter")+")", ":", null, null, null, null, "Operasi"});
                         if (rsoperasi.getDouble("biayaoperator1") > 0) {
                             tabModeRwJlDr.addRow(new Object[]{true, "                           ", "  Biaya Operator 1", ":", rsoperasi.getDouble("biayaoperator1"), 1, 0, rsoperasi.getDouble("biayaoperator1"), "Operasi"});
                         }
@@ -5814,7 +5815,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                 } else {
                     while (rsoperasi.next()) {
-                        tabModeRwJlDr.addRow(new Object[]{true, "                           ", rsoperasi.getString("nm_perawatan"), ":", rsoperasi.getDouble("biaya"), 1, 0, rsoperasi.getDouble("biaya"), "Operasi"});
+                        tabModeRwJlDr.addRow(new Object[]{true, "                           ", rsoperasi.getString("nm_perawatan")+" ("+rsoperasi.getString("nm_dokter")+")", ":", rsoperasi.getDouble("biaya"), 1, 0, rsoperasi.getDouble("biaya"), "Operasi"});
                         subttl = subttl + rsoperasi.getDouble("biaya");
                     }
                 }
