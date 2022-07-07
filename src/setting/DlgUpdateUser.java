@@ -3756,8 +3756,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[O]Surat Kewaspadaan Kesehatan",rs.getBoolean("surat_kewaspadaan_kesehatan")});
                     }
                     
-                    if("[O]Pernyataan Persetujuan/Penolakan Tindakan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[O]Pernyataan Persetujuan/Penolakan Tindakan",rs.getBoolean("persetujuan_penolakan_tindakan")});
+                    if("[O]Persetujuan/Penolakan Tindakan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[O]Persetujuan/Penolakan Tindakan",rs.getBoolean("persetujuan_penolakan_tindakan")});
                     }
                     
                     if("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7155,7 +7155,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_kewaspadaan_kesehatan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[O]Pernyataan Persetujuan/Penolakan Tindakan".equals(tbUser.getValueAt(i,1).toString())){
+            if("[O]Persetujuan/Penolakan Tindakan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","persetujuan_penolakan_tindakan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 

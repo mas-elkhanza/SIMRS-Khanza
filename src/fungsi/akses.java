@@ -184,7 +184,7 @@ public final class akses {
             penilaian_awal_medis_ralan_tht=false,penilaian_psikologi=false,audit_cuci_tangan_medis=false,audit_pembuangan_limbah=false,ruang_audit_kepatuhan=false,
             audit_pembuangan_benda_tajam=false,audit_penanganan_darah=false,audit_pengelolaan_linen_kotor=false,audit_penempatan_pasien=false,
             audit_kamar_jenazah=false,audit_bundle_iadp=false,audit_bundle_ido=false,audit_fasilitas_kebersihan_tangan=false,audit_fasilitas_apd=false,
-            audit_pembuangan_limbah_cair_infeksius=false,audit_sterilisasi_alat=false;
+            audit_pembuangan_limbah_cair_infeksius=false,audit_sterilisasi_alat=false,penilaian_awal_medis_ralan_psikiatri=false,persetujuan_penolakan_tindakan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1048,6 +1048,8 @@ public final class akses {
                         akses.audit_fasilitas_apd=true;
                         akses.audit_pembuangan_limbah_cair_infeksius=true;
                         akses.audit_sterilisasi_alat=true;
+                        akses.penilaian_awal_medis_ralan_psikiatri=true;
+                        akses.persetujuan_penolakan_tindakan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1895,6 +1897,8 @@ public final class akses {
                         akses.audit_fasilitas_apd=rs2.getBoolean("audit_fasilitas_apd");
                         akses.audit_pembuangan_limbah_cair_infeksius=rs2.getBoolean("audit_pembuangan_limbah_cair_infeksius");
                         akses.audit_sterilisasi_alat=rs2.getBoolean("audit_sterilisasi_alat");
+                        akses.penilaian_awal_medis_ralan_psikiatri=rs2.getBoolean("penilaian_awal_medis_ralan_psikiatri");
+                        akses.persetujuan_penolakan_tindakan=rs2.getBoolean("persetujuan_penolakan_tindakan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2740,6 +2744,8 @@ public final class akses {
                         akses.audit_fasilitas_apd=false;
                         akses.audit_pembuangan_limbah_cair_infeksius=false;
                         akses.audit_sterilisasi_alat=false;
+                        akses.penilaian_awal_medis_ralan_psikiatri=false;
+                        akses.persetujuan_penolakan_tindakan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3642,4 +3648,6 @@ public final class akses {
     public static boolean getaudit_fasilitas_apd(){return akses.audit_fasilitas_apd;}
     public static boolean getaudit_pembuangan_limbah_cair_infeksius(){return akses.audit_pembuangan_limbah_cair_infeksius;}
     public static boolean getaudit_sterilisasi_alat(){return akses.audit_sterilisasi_alat;}
+    public static boolean getpenilaian_awal_medis_ralan_psikiatri(){return akses.penilaian_awal_medis_ralan_psikiatri;}
+    public static boolean getpersetujuan_penolakan_tindakan(){return akses.persetujuan_penolakan_tindakan;}
 }   

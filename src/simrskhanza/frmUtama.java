@@ -18777,6 +18777,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPersetujuanPenolakanTindakanActionPerformed(java.awt.event.ActionEvent evt) {  
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19425,7 +19429,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
             btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah,
             btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan,btnAuditFasilitasAPD,btnAuditPembuanganLimbahCairInfeksius,
-            btnAuditSterilisasiAlat;
+            btnAuditSterilisasiAlat,btnPersetujuanPenolakanTindakan;
     
     public void isWall(){
         try{            
@@ -23300,6 +23304,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpengumuman_epasien()==true){
                 Panelmenu.add(btnPengumumanEPasien);
+                jmlmenu++;
+            }
+            
+            if(akses.getpersetujuan_penolakan_tindakan()==true){
+                Panelmenu.add(btnPersetujuanPenolakanTindakan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==15){ 
@@ -27481,6 +27490,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getpersetujuan_penolakan_tindakan()==true){
+            Panelmenu.add(btnPersetujuanPenolakanTindakan);
+            jmlmenu++;
+        }
+
         if(akses.getruang_perpustakaan()==true){
             Panelmenu.add(btnRuangPerpustakaan);
             jmlmenu++;
@@ -33152,6 +33166,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpersetujuan_penolakan_tindakan()==true){
+            if(btnPersetujuanPenolakanTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPersetujuanPenolakanTindakan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -36760,6 +36781,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditSterilisasiAlat.setName("btnAuditSterilisasiAlat");
         btnAuditSterilisasiAlat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditSterilisasiAlat.addActionListener(this::btnAuditSterilisasiAlatActionPerformed);
+        
+        btnPersetujuanPenolakanTindakan = new widget.ButtonBig();
+        btnPersetujuanPenolakanTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6771569_education_learning_pencil_school_signature_icon.png"))); 
+        btnPersetujuanPenolakanTindakan.setText("Persetujuan/Penolakan Tindakan");
+        btnPersetujuanPenolakanTindakan.setIconTextGap(0);
+        btnPersetujuanPenolakanTindakan.setName("btnPersetujuanPenolakanTindakan");
+        btnPersetujuanPenolakanTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPersetujuanPenolakanTindakan.addActionListener(this::btnPersetujuanPenolakanTindakanActionPerformed);
     }
     
 }

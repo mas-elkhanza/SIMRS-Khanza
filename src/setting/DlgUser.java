@@ -208,7 +208,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[C]Audit Cuci Tangan Medis","[C]Audit Pembuangan Limbah","[C]Ruang/Unit Audit Kepatuhan","[C]Audit Pembuangan Benda Tajam & Jarum",
                 "[C]Audit Penanganan Darah","[C]Audit Pengelolaan Linen Kotor","[C]Audit Penempatan Pasien","[C]Audit Kamar Jenazah","[C]Audit Bundle IADP",
                 "[C]Audit Bundle IDO","[C]Audit Fasilitas Kebersihan Tangan","[C]Audit Fasilitas APD","[C]Audit Pembuangan Limbah Cair Infeksius","[C]Audit Sterilisasi Alat",
-                "[L]Penilaian Awal Medis Ralan Psikiatri","[O]Pernyataan Persetujuan/Penolakan Tindakan"
+                "[L]Penilaian Awal Medis Ralan Psikiatri","[O]Persetujuan/Penolakan Tindakan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2445,7 +2445,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(197);
                     break;
                 case 845:
-                    column.setPreferredWidth(240);
+                    column.setPreferredWidth(183);
                     break;
                 default:
                     column.setPreferredWidth(135);
