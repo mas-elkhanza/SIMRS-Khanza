@@ -913,10 +913,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsuplier_penunjang());
-        BtnHapus.setEnabled(akses.getsuplier_penunjang());
-        BtnEdit.setEnabled(akses.getsuplier_penunjang());
-        BtnPrint.setEnabled(akses.getsuplier_penunjang());
+        BtnSimpan.setEnabled(akses.getsuplier_inventaris());
+        BtnHapus.setEnabled(akses.getsuplier_inventaris());
+        BtnEdit.setEnabled(akses.getsuplier_inventaris());
+        BtnPrint.setEnabled(akses.getsuplier_inventaris());
     }
     
     private void isForm(){
