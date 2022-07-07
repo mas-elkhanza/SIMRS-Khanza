@@ -207,7 +207,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Catatan Observasi Ranap Kebidanan","[L]Catatan Observasi Ranap Post Partum","[L]Penilaian Awal Medis Ralan THT","[L]Penilaian Psikologi",
                 "[C]Audit Cuci Tangan Medis","[C]Audit Pembuangan Limbah","[C]Ruang/Unit Audit Kepatuhan","[C]Audit Pembuangan Benda Tajam & Jarum",
                 "[C]Audit Penanganan Darah","[C]Audit Pengelolaan Linen Kotor","[C]Audit Penempatan Pasien","[C]Audit Kamar Jenazah","[C]Audit Bundle IADP",
-                "[C]Audit Bundle IDO","[C]Audit Fasilitas Kebersihan Tangan","[C]Audit Fasilitas APD","[C]Audit Pembuangan Limbah Cair Infeksius","[C]Audit Sterilisasi Alat"
+                "[C]Audit Bundle IDO","[C]Audit Fasilitas Kebersihan Tangan","[C]Audit Fasilitas APD","[C]Audit Pembuangan Limbah Cair Infeksius","[C]Audit Sterilisasi Alat",
+                "[L]Penilaian Awal Medis Ralan Psikiatri","[O]Pernyataan Persetujuan/Penolakan Tindakan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -440,6 +441,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -453,7 +455,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 844;i++) {
+        for (i = 0; i < 846;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2439,6 +2441,12 @@ public class DlgUser extends javax.swing.JDialog {
                 case 843:
                     column.setPreferredWidth(123);
                     break;
+                case 844:
+                    column.setPreferredWidth(197);
+                    break;
+                case 845:
+                    column.setPreferredWidth(240);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2939,7 +2947,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3825,7 +3833,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "audit_fasilitas_kebersihan_tangan='"+tbUser.getValueAt(i,840).toString()+"',"+
                     "audit_fasilitas_apd='"+tbUser.getValueAt(i,841).toString()+"',"+
                     "audit_pembuangan_limbah_cair_infeksius='"+tbUser.getValueAt(i,842).toString()+"',"+
-                    "audit_sterilisasi_alat='"+tbUser.getValueAt(i,843).toString()+"'");
+                    "audit_sterilisasi_alat='"+tbUser.getValueAt(i,843).toString()+"',"+
+                    "penilaian_awal_medis_ralan_psikiatri='"+tbUser.getValueAt(i,844).toString()+"',"+
+                    "persetujuan_penolakan_tindakan='"+tbUser.getValueAt(i,845).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4751,7 +4761,9 @@ public class DlgUser extends javax.swing.JDialog {
                                         "audit_fasilitas_kebersihan_tangan='"+tbUser.getValueAt(barisdicopy,840).toString()+"',"+
                                         "audit_fasilitas_apd='"+tbUser.getValueAt(barisdicopy,841).toString()+"',"+
                                         "audit_pembuangan_limbah_cair_infeksius='"+tbUser.getValueAt(barisdicopy,842).toString()+"',"+
-                                        "audit_sterilisasi_alat='"+tbUser.getValueAt(barisdicopy,843).toString()+"'");
+                                        "audit_sterilisasi_alat='"+tbUser.getValueAt(barisdicopy,843).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_psikiatri='"+tbUser.getValueAt(barisdicopy,844).toString()+"',"+
+                                        "persetujuan_penolakan_tindakan='"+tbUser.getValueAt(barisdicopy,845).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5118,7 +5130,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht,user.penilaian_psikologi,"+
                 "user.audit_cuci_tangan_medis,user.audit_pembuangan_limbah,user.ruang_audit_kepatuhan,user.audit_pembuangan_benda_tajam,user.audit_penanganan_darah,"+
                 "user.audit_pengelolaan_linen_kotor,user.audit_penempatan_pasien,user.audit_kamar_jenazah,user.audit_bundle_iadp,user.audit_bundle_ido,"+
-                "user.audit_fasilitas_kebersihan_tangan,user.audit_fasilitas_apd,user.audit_pembuangan_limbah_cair_infeksius,user.audit_sterilisasi_alat from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.audit_fasilitas_kebersihan_tangan,user.audit_fasilitas_apd,user.audit_pembuangan_limbah_cair_infeksius,user.audit_sterilisasi_alat,"+
+                "user.penilaian_awal_medis_ralan_psikiatri,user.persetujuan_penolakan_tindakan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5974,7 +5987,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("audit_fasilitas_kebersihan_tangan"),
                                rs.getBoolean("audit_fasilitas_apd"),
                                rs.getBoolean("audit_pembuangan_limbah_cair_infeksius"),
-                               rs.getBoolean("audit_sterilisasi_alat")
+                               rs.getBoolean("audit_sterilisasi_alat"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_psikiatri"),
+                               rs.getBoolean("persetujuan_penolakan_tindakan")
                             });
                         }   
                     } catch (Exception e) {
@@ -6819,7 +6834,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("audit_fasilitas_kebersihan_tangan"),
                            rs.getBoolean("audit_fasilitas_apd"),
                            rs.getBoolean("audit_pembuangan_limbah_cair_infeksius"),
-                           rs.getBoolean("audit_sterilisasi_alat")
+                           rs.getBoolean("audit_sterilisasi_alat"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_psikiatri"),
+                           rs.getBoolean("persetujuan_penolakan_tindakan")
                         });
                     }                                             
                  }
