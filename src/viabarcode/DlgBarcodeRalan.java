@@ -1196,7 +1196,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
         this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt);
         this.kd_poli=Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norwt);
         this.kd_dokter=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",norwt);
-        this.norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",norwt);
+        this.norm=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",norwt);
         kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?",this.kd_pj);
         TCariTindakan.requestFocus();
         try {

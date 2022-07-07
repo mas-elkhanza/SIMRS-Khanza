@@ -3976,7 +3976,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             DlgReturJual returjual=new DlgReturJual(null,false);
             returjual.emptTeks();
             returjual.isCek();
-            returjual.setPasien(Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",norawatbayi),norawatbayi);
+            returjual.setPasien(Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",norawatbayi),norawatbayi);
             returjual.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             returjual.setLocationRelativeTo(internalFrame1);
             returjual.setVisible(true);
@@ -4548,7 +4548,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }         
             
-            pscarirm=koneksi.prepareStatement("select no_rkm_medis from reg_periksa where no_rawat=?");
+            pscarirm=koneksi.prepareStatement("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?");
             try {
                 pscarirm.setString(1,TNoRw.getText());
                 rscarirm=pscarirm.executeQuery();

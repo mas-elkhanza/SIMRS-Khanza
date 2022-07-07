@@ -4620,7 +4620,7 @@ public final class AsesmenAwalMedisRanapNeonatus extends javax.swing.JDialog {
     }
 
     private void isRawat() {
-        Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
+        Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",TNoRM,TNoRw.getText());
         try {
             ps=koneksi.prepareStatement(
                     "select nm_pasien, if(jk='L','Laki-Laki','Perempuan') as jk,tgl_lahir,agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat "+

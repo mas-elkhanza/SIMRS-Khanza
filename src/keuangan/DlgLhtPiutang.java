@@ -532,7 +532,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                         DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,false);
                         bayarpiutang.emptTeks();
                         String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString() +"'");
-                        String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'"); 
+                        String nama=Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+norm+"'"); 
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
                         bayarpiutang.tampil();  
                         bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
@@ -557,7 +557,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                         DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,false);
                         bayarpiutang.emptTeks();
                         String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"'");
-                        String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'");
+                        String nama=Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+norm+"'");
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);
                         bayarpiutang.tampil();  
                         bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
@@ -638,7 +638,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
             DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,true);
             bayarpiutang.emptTeks();
             String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"'");
-            String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'"); 
+            String nama=Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+norm+"'"); 
             bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
             bayarpiutang.tampil(); 
             bayarpiutang.isCek();

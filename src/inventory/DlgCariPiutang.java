@@ -1186,7 +1186,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,false);
                 bayarpiutang.emptTeks();
                 String norm=Sequel.cariIsi("select no_rkm_medis from piutang where nota_piutang='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"'");
-                String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'");
+                String nama=Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+norm+"'");
                 bayarpiutang.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),norm,nama);
                 bayarpiutang.tampil();
                 bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);

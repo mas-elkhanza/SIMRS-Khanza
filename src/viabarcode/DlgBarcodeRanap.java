@@ -1174,7 +1174,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
     
     public void setNoRm(String norwt) {
         this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt);
-        this.norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",norwt);
+        this.norm=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",norwt);
         this.kd_bangsal=Sequel.cariIsi(
                 "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
                 "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+

@@ -1119,7 +1119,7 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     JOptionPane.showMessageDialog(null,"Nomor tagihan tidak ditemukan...!!");
                     NoRawat.requestFocus();
                 }else{
-                    Kdmem.setText(Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",NoRawat.getText()));
+                    Kdmem.setText(Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",NoRawat.getText()));
                     Nmmem.setText(Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",Kdmem.getText()));
                     kontraakun=Sequel.cariIsi("select kd_rek from akun_piutang where nama_bayar=?",AkunPiutang.getSelectedItem().toString());
                     sisapiutang=Sequel.cariIsiAngka("select sisapiutang from detail_piutang_pasien where no_rawat='"+NoRawat.getText()+"' and nama_bayar='"+AkunPiutang.getSelectedItem().toString()+"'");

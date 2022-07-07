@@ -1008,7 +1008,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         PenyakitCari.setText(penyakit);
         tampil();
         TNoRw.setText(norwt);
-        Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",Kd2,TNoRw.getText());
+        Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=? ",Kd2,TNoRw.getText());
         Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",TPasien,Kd2.getText());
         
         kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj='"+Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt)+"'");

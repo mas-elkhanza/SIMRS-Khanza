@@ -789,6 +789,7 @@ import surat.SuratKewaspadaanKesehatan;
 import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratMasuk;
+import surat.SuratPersetujuanPenolakanTindakan;
 import surat.SuratRak;
 import surat.SuratRuang;
 import surat.SuratSakit;
@@ -18778,7 +18779,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPersetujuanPenolakanTindakanActionPerformed(java.awt.event.ActionEvent evt) {  
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratPersetujuanPenolakanTindakan aplikasi=new SuratPersetujuanPenolakanTindakan(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**

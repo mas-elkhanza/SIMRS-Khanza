@@ -7751,7 +7751,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>SpO2(%)</td>"+
                                         "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>GCS(E,V,M)</td>"+
                                         "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>Kesadaran</td>"+
-                                        "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>L.P.</td>"+
+                                        "<td valign='top' width='8%' bgcolor='#FFFAF8' align='center'>L.P.(Cm)</td>"+
                                     "</tr>"+
                                     "<tr>"+
                                         "<td valign='top' align='center'></td>"+

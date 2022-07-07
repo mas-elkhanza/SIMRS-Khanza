@@ -859,7 +859,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgCariPermintaanStokPasien opname=new DlgCariPermintaanStokPasien(null,false);
         opname.isCek();
-        opname.setRM(Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",TNoRw.getText()),KdDokter.getText());
+        opname.setRM(Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()),KdDokter.getText());
         opname.tampil();
         opname.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         opname.setLocationRelativeTo(internalFrame1);
