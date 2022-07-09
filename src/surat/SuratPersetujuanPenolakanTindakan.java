@@ -65,27 +65,125 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Pernyataan","No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Diagnosa","Ya/Tidak","Tindakan Kedokteran","Ya/Tidak",
             "Indikasi Tindakan","Ya/Tidak","Tata Cara","Ya/Tidak","Tujuan","Ya/Tidak","Risiko","Ya/Tidak","Komplikasi","Ya/Tidak","Prognosis","Ya/Tidak",
-            "Alternatif & Resikonya","Ya/Tidak","biaya_konfirmasi","Lain-lain","Ya/Tidak","Biaya","Ya/Tidak","Kode Dokter","Nama Dokter","Nip","Saksi II Perawat",
+            "Alternatif & Resikonya","Ya/Tidak","Lain-lain","Ya/Tidak","Biaya","Ya/Tidak","Kode Dokter","Nama Dokter","Nip","Saksi II Perawat",
             "Penerima Informasi","Alasan Jika Diwakilkan","J.K. P.I","Tgl.Lahir P.I.","Umur P.I.","Alamat Penerima Informasi", "No.H.P. P.I",
             "Hubungan Dengan Pasien","Pernyataan","Saksi I Keluarga"
         }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+          @Override 
+              public boolean isCellEditable(int rowIndex, int colIndex){
+                  return false;
+              }              
+              Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, 
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, 
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, 
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, 
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, 
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
         };
         
         tbObat.setModel(tabMode);
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 43; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(95);
             }else if(i==1){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(105);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(70);
             }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
                 column.setPreferredWidth(65);
+            }else if(i==5){
+                column.setPreferredWidth(25);
+            }else if(i==6){
+                column.setPreferredWidth(65);
+            }else if(i==7){
+                column.setPreferredWidth(200);
+            }else if(i==8){
+                column.setPreferredWidth(50);
+            }else if(i==9){
+                column.setPreferredWidth(200);
+            }else if(i==10){
+                column.setPreferredWidth(50);
+            }else if(i==11){
+                column.setPreferredWidth(200);
+            }else if(i==12){
+                column.setPreferredWidth(50);
+            }else if(i==13){
+                column.setPreferredWidth(200);
+            }else if(i==14){
+                column.setPreferredWidth(50);
+            }else if(i==15){
+                column.setPreferredWidth(200);
+            }else if(i==16){
+                column.setPreferredWidth(50);
+            }else if(i==17){
+                column.setPreferredWidth(200);
+            }else if(i==18){
+                column.setPreferredWidth(50);
+            }else if(i==19){
+                column.setPreferredWidth(200);
+            }else if(i==20){
+                column.setPreferredWidth(50);
+            }else if(i==21){
+                column.setPreferredWidth(200);
+            }else if(i==22){
+                column.setPreferredWidth(50);
+            }else if(i==23){
+                column.setPreferredWidth(200);
+            }else if(i==24){
+                column.setPreferredWidth(50);
+            }else if(i==25){
+                column.setPreferredWidth(200);
+            }else if(i==26){
+                column.setPreferredWidth(50);
+            }else if(i==27){
+                column.setPreferredWidth(90);
+            }else if(i==28){
+                column.setPreferredWidth(50);
+            }else if(i==29){
+                column.setPreferredWidth(90);
+            }else if(i==30){
+                column.setPreferredWidth(150);
+            }else if(i==31){
+                column.setPreferredWidth(90);
+            }else if(i==32){
+                column.setPreferredWidth(150);
+            }else if(i==33){
+                column.setPreferredWidth(150);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(45);
+            }else if(i==36){
+                column.setPreferredWidth(70);
+            }else if(i==37){
+                column.setPreferredWidth(55);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(100);
+            }else if(i==40){
+                column.setPreferredWidth(130);
+            }else if(i==41){
+                column.setPreferredWidth(100);
+            }else if(i==42){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1941,13 +2039,13 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_pernyataan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("diagnosa"),rs.getString("diagnosa_konfirmasi"),rs.getString("tindakan"),rs.getString("tindakan_konfirmasi"),rs.getString("indikasi_tindakan"),
-                        rs.getString("indikasi_tindakan_konfirmasi"),rs.getString("tata_cara"),rs.getString("tata_cara_konfirmasi"),rs.getString("tujuan"),rs.getString("tujuan_konfirmasi"),
-                        rs.getString("risiko"),rs.getString("risiko_konfirmasi"),rs.getString("komplikasi"),rs.getString("komplikasi_konfirmasi"),rs.getString("prognosis"),rs.getString("prognosis_konfirmasi"),
-                        rs.getString("alternatif_dan_risikonya"),rs.getString("alternatif_konfirmasi"),rs.getString("lain_lain"),rs.getString("lain_lain_konfirmasi"),
-                        rs.getString("biaya"),rs.getString("biaya_konfirmasi"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
+                        rs.getString("diagnosa"),rs.getBoolean("diagnosa_konfirmasi"),rs.getString("tindakan"),rs.getBoolean("tindakan_konfirmasi"),rs.getString("indikasi_tindakan"),
+                        rs.getBoolean("indikasi_tindakan_konfirmasi"),rs.getString("tata_cara"),rs.getBoolean("tata_cara_konfirmasi"),rs.getString("tujuan"),rs.getBoolean("tujuan_konfirmasi"),
+                        rs.getString("risiko"),rs.getBoolean("risiko_konfirmasi"),rs.getString("komplikasi"),rs.getBoolean("komplikasi_konfirmasi"),rs.getString("prognosis"),rs.getBoolean("prognosis_konfirmasi"),
+                        rs.getString("alternatif_dan_risikonya"),rs.getBoolean("alternatif_konfirmasi"),rs.getString("lain_lain"),rs.getBoolean("lain_lain_konfirmasi"),
+                        rs.getString("biaya"),rs.getBoolean("biaya_konfirmasi"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
                         rs.getString("penerima_informasi"),rs.getString("alasan_diwakilkan_penerima_informasi"),rs.getString("jk_penerima_informasi"),rs.getString("tanggal_lahir_penerima_informasi"),
                         rs.getString("umur_penerima_informasi"),rs.getString("alamat_penerima_informasi"),rs.getString("no_hp"),rs.getString("hubungan_penerima_informasi"),rs.getString("pernyataan"),
                         rs.getString("saksi_keluarga")                  
@@ -1998,19 +2096,39 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         SaksiKeluarga.setText("");
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(persetujuan_penolakan_tindakan.no_pernyataan,3),signed)),0) from persetujuan_penolakan_tindakan where persetujuan_penolakan_tindakan.tanggal='"+Valid.SetTgl(TglPernyataan.getSelectedItem()+"")+"' ",
                 "PM"+TglPernyataan.getSelectedItem().toString().substring(6,10)+TglPernyataan.getSelectedItem().toString().substring(3,5)+TglPernyataan.getSelectedItem().toString().substring(0,2),3,NoPenyataan);
+        TabRawat.setSelectedIndex(0);
         NoPenyataan.requestFocus();
     } 
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Valid.SetTgl2(TglPernyataan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            /*
+            ""Ya/Tidak","Tindakan Kedokteran","Ya/Tidak",
+            "Indikasi Tindakan","Ya/Tidak","Tata Cara","Ya/Tidak","Tujuan","Ya/Tidak","Risiko","Ya/Tidak","Komplikasi","Ya/Tidak","Prognosis","Ya/Tidak",
+            "Alternatif & Resikonya","Ya/Tidak","Lain-lain","Ya/Tidak","Biaya","Ya/Tidak","Kode Dokter","Nama Dokter","Nip","Saksi II Perawat",
+            "Penerima Informasi","Alasan Jika Diwakilkan","J.K. P.I","Tgl.Lahir P.I.","Umur P.I.","Alamat Penerima Informasi", "No.H.P. P.I",
+            "Hubungan Dengan Pasien","Pernyataan","Saksi I Keluarga"
+            */
+            NoPenyataan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()); 
+            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()); 
+            Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            TindakanKedokteran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            IndikasiTindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            TataCara.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Tujuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Risiko.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Komplikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Prognosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            AlternatifResiko.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            LainLain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            Biaya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            Valid.SetTgl2(TglPernyataan,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
 
