@@ -63,9 +63,11 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Psikolog","Tanggal","Dikirim Dari","Tujuan","Informasi","Keterangan Informasi",
-            "Rupa/Wajah","Bentuk Tubuh","Tindakan","Pakaian/Aksesoris","Penyampaian/Ekspresi","Berbicara","Penggunaan Kata","Ciri Yang Menyolok","Hasil Psikotes",
-            "Kepribadian","Psikodinamika","Kesimpulan Psikolog"
+            "No.Pernyataan","No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Diagnosa","Ya/Tidak","Tindakan Kedokteran","Ya/Tidak",
+            "Indikasi Tindakan","Ya/Tidak","Tata Cara","Ya/Tidak","Tujuan","Ya/Tidak","Risiko","Ya/Tidak","Komplikasi","Ya/Tidak","Prognosis","Ya/Tidak",
+            "Alternatif & Resikonya","Ya/Tidak","biaya_konfirmasi","Lain-lain","Ya/Tidak","Biaya","Ya/Tidak","Kode Dokter","Nama Dokter","Nip","Saksi II Perawat",
+            "Penerima Informasi","Alasan Jika Diwakilkan","J.K. P.I","Tgl.Lahir P.I.","Umur P.I.","Alamat Penerima Informasi", "No.H.P. P.I",
+            "Hubungan Dengan Pasien","Pernyataan","Saksi I Keluarga"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -84,46 +86,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 column.setPreferredWidth(150);
             }else if(i==3){
                 column.setPreferredWidth(65);
-            }else if(i==4){
-                column.setPreferredWidth(55);
-            }else if(i==5){
-                column.setPreferredWidth(80);
-            }else if(i==6){
-                column.setPreferredWidth(150);
-            }else if(i==7){
-                column.setPreferredWidth(115);
-            }else if(i==8){
-                column.setPreferredWidth(72);
-            }else if(i==9){
-                column.setPreferredWidth(62);
-            }else if(i==10){
-                column.setPreferredWidth(85);
-            }else if(i==11){
-                column.setPreferredWidth(165);
-            }else if(i==12){
-                column.setPreferredWidth(71);
-            }else if(i==13){
-                column.setPreferredWidth(79);
-            }else if(i==14){
-                column.setPreferredWidth(103);
-            }else if(i==15){
-                column.setPreferredWidth(99);
-            }else if(i==16){
-                column.setPreferredWidth(150);
-            }else if(i==17){
-                column.setPreferredWidth(196);
-            }else if(i==18){
-                column.setPreferredWidth(185);
-            }else if(i==19){
-                column.setPreferredWidth(200);
-            }else if(i==20){
-                column.setPreferredWidth(200);
-            }else if(i==21){
-                column.setPreferredWidth(200);
-            }else if(i==22){
-                column.setPreferredWidth(200);
-            }else if(i==23){
-                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1269,7 +1231,16 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         }else if(SaksiKeluarga.getText().trim().equals("")){
             Valid.textKosong(SaksiKeluarga,"Saksi I Keluarga");
         }else{
-            
+            if(Sequel.menyimpantf("persetujuan_penolakan_tindakan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Pernyataan",37,new String[]{
+                    NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+""),Diagnosa.getText(),"false",TindakanKedokteran.getText(),"false",
+                    IndikasiTindakan.getText(),"false",TataCara.getText(),"false",Tujuan.getText(),"false",Risiko.getText(),"false",Komplikasi.getText(),"false",Prognosis.getText(), 
+                    "false",AlternatifResiko.getText(),"false",Biaya.getText(),"false",LainLain.getText(),"false",KdDokter.getText(),KdPerawat.getText(),PenerimaInformasi.getText(),
+                    AlasanDiwakilkan.getText(),JKPenerima.getSelectedItem().toString().substring(0,1),Valid.SetTgl(TglLahirPenerima.getSelectedItem()+""),UmurPenerima.getText(),
+                    AlamatPenerima.getText(),NoHPPenerima.getText(),HubunganDenganPasien.getSelectedItem().toString(),"Belum Dikonfirmasi",SaksiKeluarga.getText()
+                })==true){
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1745,7 +1716,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         if(HubunganDenganPasien.getSelectedIndex()==0){
             try {
                 ps=koneksi.prepareStatement("select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
-                            "TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,pasien.tgl_lahir,pasien.no_hp,pasien.umur "+
+                            "TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,pasien.tgl_lahir,pasien.no_tlp,pasien.umur "+
                             "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                             "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                             "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
@@ -1758,7 +1729,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                         PenerimaInformasi.setText(TPasien.getText());
                         AlamatPenerima.setText(rs.getString("asal"));
                         TglLahirPenerima.setDate(rs.getDate("tgl_lahir"));
-                        NoHPPenerima.setText(rs.getString("no_hp"));
+                        NoHPPenerima.setText(rs.getString("no_tlp"));
                         JKPenerima.setSelectedItem(Jk.getText());
                         UmurPenerima.setText(rs.getString("umur"));
                     }
@@ -1917,23 +1888,41 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,persetujuan_penolakan_tindakan.tanggal,"+
-                        "persetujuan_penolakan_tindakan.nip,persetujuan_penolakan_tindakan.anamnesis,persetujuan_penolakan_tindakan.dikirim_dari,persetujuan_penolakan_tindakan.tujuan_pemeriksaan,persetujuan_penolakan_tindakan.ket_anamnesis,persetujuan_penolakan_tindakan.rupa,persetujuan_penolakan_tindakan.bentuk_tubuh,persetujuan_penolakan_tindakan.tindakan,"+
-                        "persetujuan_penolakan_tindakan.pakaian,persetujuan_penolakan_tindakan.ekspresi,persetujuan_penolakan_tindakan.berbicara,persetujuan_penolakan_tindakan.penggunaan_kata,persetujuan_penolakan_tindakan.ciri_menyolok,persetujuan_penolakan_tindakan.hasil_psikotes,persetujuan_penolakan_tindakan.kepribadian,persetujuan_penolakan_tindakan.psikodinamika,persetujuan_penolakan_tindakan.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join persetujuan_penolakan_tindakan on reg_periksa.no_rawat=persetujuan_penolakan_tindakan.no_rawat "+
-                        "inner join petugas on persetujuan_penolakan_tindakan.nip=petugas.nip where "+
+                        "select persetujuan_penolakan_tindakan.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
+                        "persetujuan_penolakan_tindakan.tanggal,persetujuan_penolakan_tindakan.diagnosa,persetujuan_penolakan_tindakan.diagnosa_konfirmasi,persetujuan_penolakan_tindakan.tindakan,"+
+                        "persetujuan_penolakan_tindakan.tindakan_konfirmasi,persetujuan_penolakan_tindakan.indikasi_tindakan,persetujuan_penolakan_tindakan.indikasi_tindakan_konfirmasi,"+
+                        "persetujuan_penolakan_tindakan.tata_cara,persetujuan_penolakan_tindakan.tata_cara_konfirmasi,persetujuan_penolakan_tindakan.tujuan,persetujuan_penolakan_tindakan.tujuan_konfirmasi,"+
+                        "persetujuan_penolakan_tindakan.risiko,persetujuan_penolakan_tindakan.risiko_konfirmasi,persetujuan_penolakan_tindakan.komplikasi,persetujuan_penolakan_tindakan.komplikasi_konfirmasi,"+
+                        "persetujuan_penolakan_tindakan.prognosis,persetujuan_penolakan_tindakan.prognosis_konfirmasi,persetujuan_penolakan_tindakan.alternatif_dan_risikonya,"+
+                        "persetujuan_penolakan_tindakan.alternatif_konfirmasi,persetujuan_penolakan_tindakan.biaya,persetujuan_penolakan_tindakan.biaya_konfirmasi,persetujuan_penolakan_tindakan.lain_lain,"+
+                        "persetujuan_penolakan_tindakan.lain_lain_konfirmasi,persetujuan_penolakan_tindakan.kd_dokter,dokter.nm_dokter,persetujuan_penolakan_tindakan.nip,petugas.nama,"+
+                        "persetujuan_penolakan_tindakan.penerima_informasi,persetujuan_penolakan_tindakan.alasan_diwakilkan_penerima_informasi,persetujuan_penolakan_tindakan.jk_penerima_informasi,"+
+                        "persetujuan_penolakan_tindakan.tanggal_lahir_penerima_informasi,persetujuan_penolakan_tindakan.umur_penerima_informasi,persetujuan_penolakan_tindakan.alamat_penerima_informasi,"+
+                        "persetujuan_penolakan_tindakan.no_hp,persetujuan_penolakan_tindakan.hubungan_penerima_informasi,persetujuan_penolakan_tindakan.pernyataan,persetujuan_penolakan_tindakan.saksi_keluarga "+
+                        "from persetujuan_penolakan_tindakan inner join reg_periksa on persetujuan_penolakan_tindakan.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                        "inner join dokter on dokter.kd_dokter=persetujuan_penolakan_tindakan.kd_dokter "+
+                        "inner join petugas on petugas.nip=persetujuan_penolakan_tindakan.nip where "+
                         "persetujuan_penolakan_tindakan.tanggal between ? and ? order by persetujuan_penolakan_tindakan.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,persetujuan_penolakan_tindakan.tanggal,"+
-                        "persetujuan_penolakan_tindakan.nip,persetujuan_penolakan_tindakan.anamnesis,persetujuan_penolakan_tindakan.dikirim_dari,persetujuan_penolakan_tindakan.tujuan_pemeriksaan,persetujuan_penolakan_tindakan.ket_anamnesis,persetujuan_penolakan_tindakan.rupa,persetujuan_penolakan_tindakan.bentuk_tubuh,persetujuan_penolakan_tindakan.tindakan,"+
-                        "persetujuan_penolakan_tindakan.pakaian,persetujuan_penolakan_tindakan.ekspresi,persetujuan_penolakan_tindakan.berbicara,persetujuan_penolakan_tindakan.penggunaan_kata,persetujuan_penolakan_tindakan.ciri_menyolok,persetujuan_penolakan_tindakan.hasil_psikotes,persetujuan_penolakan_tindakan.kepribadian,persetujuan_penolakan_tindakan.psikodinamika,persetujuan_penolakan_tindakan.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join persetujuan_penolakan_tindakan on reg_periksa.no_rawat=persetujuan_penolakan_tindakan.no_rawat "+
-                        "inner join petugas on persetujuan_penolakan_tindakan.nip=petugas.nip where "+
-                        "persetujuan_penolakan_tindakan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "persetujuan_penolakan_tindakan.nip like ? or petugas.nama like ?) order by persetujuan_penolakan_tindakan.tanggal");
+                        "select persetujuan_penolakan_tindakan.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
+                        "persetujuan_penolakan_tindakan.tanggal,persetujuan_penolakan_tindakan.diagnosa,persetujuan_penolakan_tindakan.diagnosa_konfirmasi,persetujuan_penolakan_tindakan.tindakan,"+
+                        "persetujuan_penolakan_tindakan.tindakan_konfirmasi,persetujuan_penolakan_tindakan.indikasi_tindakan,persetujuan_penolakan_tindakan.indikasi_tindakan_konfirmasi,"+
+                        "persetujuan_penolakan_tindakan.tata_cara,persetujuan_penolakan_tindakan.tata_cara_konfirmasi,persetujuan_penolakan_tindakan.tujuan,persetujuan_penolakan_tindakan.tujuan_konfirmasi,"+
+                        "persetujuan_penolakan_tindakan.risiko,persetujuan_penolakan_tindakan.risiko_konfirmasi,persetujuan_penolakan_tindakan.komplikasi,persetujuan_penolakan_tindakan.komplikasi_konfirmasi,"+
+                        "persetujuan_penolakan_tindakan.prognosis,persetujuan_penolakan_tindakan.prognosis_konfirmasi,persetujuan_penolakan_tindakan.alternatif_dan_risikonya,"+
+                        "persetujuan_penolakan_tindakan.alternatif_konfirmasi,persetujuan_penolakan_tindakan.biaya,persetujuan_penolakan_tindakan.biaya_konfirmasi,persetujuan_penolakan_tindakan.lain_lain,"+
+                        "persetujuan_penolakan_tindakan.lain_lain_konfirmasi,persetujuan_penolakan_tindakan.kd_dokter,dokter.nm_dokter,persetujuan_penolakan_tindakan.nip,petugas.nama,"+
+                        "persetujuan_penolakan_tindakan.penerima_informasi,persetujuan_penolakan_tindakan.alasan_diwakilkan_penerima_informasi,persetujuan_penolakan_tindakan.jk_penerima_informasi,"+
+                        "persetujuan_penolakan_tindakan.tanggal_lahir_penerima_informasi,persetujuan_penolakan_tindakan.umur_penerima_informasi,persetujuan_penolakan_tindakan.alamat_penerima_informasi,"+
+                        "persetujuan_penolakan_tindakan.no_hp,persetujuan_penolakan_tindakan.hubungan_penerima_informasi,persetujuan_penolakan_tindakan.pernyataan,persetujuan_penolakan_tindakan.saksi_keluarga "+
+                        "from persetujuan_penolakan_tindakan inner join reg_periksa on persetujuan_penolakan_tindakan.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                        "inner join dokter on dokter.kd_dokter=persetujuan_penolakan_tindakan.kd_dokter "+
+                        "inner join petugas on petugas.nip=persetujuan_penolakan_tindakan.nip where "+
+                        "persetujuan_penolakan_tindakan.tanggal between ? and ? and (persetujuan_penolakan_tindakan.no_pernyataan like ? or reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "persetujuan_penolakan_tindakan.kd_dokter like ? or dokter.nm_dokter like ?) order by persetujuan_penolakan_tindakan.tanggal");
             }
                 
             try {
@@ -1948,13 +1937,20 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("anamnesis"),rs.getString("ket_anamnesis"),rs.getString("rupa"),rs.getString("bentuk_tubuh"),rs.getString("tindakan"),
-                        rs.getString("pakaian"),rs.getString("ekspresi"),rs.getString("berbicara"),rs.getString("penggunaan_kata"),rs.getString("ciri_menyolok"),rs.getString("hasil_psikotes"),rs.getString("kepribadian"),rs.getString("psikodinamika"),rs.getString("kesimpulan_psikolog")                     
+                        rs.getString("no_pernyataan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("diagnosa"),rs.getString("diagnosa_konfirmasi"),rs.getString("tindakan"),rs.getString("tindakan_konfirmasi"),rs.getString("indikasi_tindakan"),
+                        rs.getString("indikasi_tindakan_konfirmasi"),rs.getString("tata_cara"),rs.getString("tata_cara_konfirmasi"),rs.getString("tujuan"),rs.getString("tujuan_konfirmasi"),
+                        rs.getString("risiko"),rs.getString("risiko_konfirmasi"),rs.getString("komplikasi"),rs.getString("komplikasi_konfirmasi"),rs.getString("prognosis"),rs.getString("prognosis_konfirmasi"),
+                        rs.getString("alternatif_dan_risikonya"),rs.getString("alternatif_konfirmasi"),rs.getString("lain_lain"),rs.getString("lain_lain_konfirmasi"),
+                        rs.getString("biaya"),rs.getString("biaya_konfirmasi"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
+                        rs.getString("penerima_informasi"),rs.getString("alasan_diwakilkan_penerima_informasi"),rs.getString("jk_penerima_informasi"),rs.getString("tanggal_lahir_penerima_informasi"),
+                        rs.getString("umur_penerima_informasi"),rs.getString("alamat_penerima_informasi"),rs.getString("no_hp"),rs.getString("hubungan_penerima_informasi"),rs.getString("pernyataan"),
+                        rs.getString("saksi_keluarga")                  
                     });
                 }
             } catch (Exception e) {
@@ -2023,7 +2019,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','LAKI-LAKI','PEREMPUAN') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi, "+
                     "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,"+
-                    "pasien.no_hp,pasien.umur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "pasien.no_tlp,pasien.umur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                     "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
@@ -2040,7 +2036,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                     PenerimaInformasi.setText(rs.getString("nm_pasien"));
                     AlamatPenerima.setText(rs.getString("asal"));
                     TglLahirPenerima.setDate(rs.getDate("tgl_lahir"));
-                    NoHPPenerima.setText(rs.getString("no_hp"));
+                    NoHPPenerima.setText(rs.getString("no_tlp"));
                     JKPenerima.setSelectedItem(rs.getString("jk"));
                     UmurPenerima.setText(rs.getString("umur"));
                 }

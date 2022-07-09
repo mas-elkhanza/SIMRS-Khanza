@@ -70,6 +70,7 @@ import rekammedis.RMPenilaianAwalMedisIGD;
 import rekammedis.RMPenilaianAwalMedisRalanAnak;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
+import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
 import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianPsikologi;
@@ -1468,6 +1469,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalMedisKandungan = new widget.Button();
         BtnAwalMedisAnak = new widget.Button();
         BtnAwalMedisTHT = new widget.Button();
+        BtnAwalMedisPsikiatri = new widget.Button();
         BtnUjiFungsiKFR = new widget.Button();
         BtnMedicalCheckUp = new widget.Button();
         BtnPenilaianPsikolog = new widget.Button();
@@ -3947,6 +3949,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalMedisTHT);
+
+        BtnAwalMedisPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalMedisPsikiatri.setText("Awal Medis Psikiatri");
+        BtnAwalMedisPsikiatri.setFocusPainted(false);
+        BtnAwalMedisPsikiatri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalMedisPsikiatri.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalMedisPsikiatri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalMedisPsikiatri.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalMedisPsikiatri.setName("BtnAwalMedisPsikiatri"); // NOI18N
+        BtnAwalMedisPsikiatri.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnAwalMedisPsikiatri.setRoundRect(false);
+        BtnAwalMedisPsikiatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalMedisPsikiatriActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalMedisPsikiatri);
 
         BtnUjiFungsiKFR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnUjiFungsiKFR.setText("Uji Fungsi/Prosedur KFR");
@@ -6439,6 +6458,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.pindah(evt,cmbKesadaran,TAlergi); 
     }//GEN-LAST:event_LingkarPerutKeyPressed
 
+    private void BtnAwalMedisPsikiatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalMedisPsikiatriActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianAwalMedisRalanPsikiatrik form=new RMPenilaianAwalMedisRalanPsikiatrik(null,false);
+            form.isCek();
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAwalMedisPsikiatriActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6467,6 +6503,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAwalMedisAnak;
     private widget.Button BtnAwalMedisIGD;
     private widget.Button BtnAwalMedisKandungan;
+    private widget.Button BtnAwalMedisPsikiatri;
     private widget.Button BtnAwalMedisTHT;
     private widget.Button BtnBatal;
     private widget.Button BtnBerkasDigital;
@@ -7199,6 +7236,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalMedisTHT.setVisible(akses.getpenilaian_awal_medis_ralan_tht()); 
         if(akses.getpenilaian_awal_medis_ralan_tht()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalMedisPsikiatri.setVisible(akses.getpenilaian_awal_medis_ralan_psikiatri()); 
+        if(akses.getpenilaian_awal_medis_ralan_psikiatri()==true){
             tinggi=tinggi+24;
         }
         BtnPenilaianPsikolog.setVisible(akses.getpenilaian_psikologi()); 

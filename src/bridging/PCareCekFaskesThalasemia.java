@@ -558,12 +558,12 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
             System.out.println("URL : "+URL);
 	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            nameNode = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+            nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                response = root.path("response");
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
