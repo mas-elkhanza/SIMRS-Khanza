@@ -2131,7 +2131,18 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             KdPerawat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             NmPerawat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
             PenerimaInformasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            AlasanDiwakilkan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString().equals("L")){
+                JKPenerima.setSelectedIndex(0);
+            }else{
+                JKPenerima.setSelectedIndex(1);
+            }
+            UmurPenerima.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            AlamatPenerima.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            
+            
             Valid.SetTgl2(TglPernyataan,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            Valid.SetTgl2(TglLahirPenerima,tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
         }
     }
 
