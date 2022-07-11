@@ -1196,7 +1196,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
         this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt);
         this.kd_poli=Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norwt);
         this.kd_dokter=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",norwt);
-        this.norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",norwt);
+        this.norm=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",norwt);
         kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?",this.kd_pj);
         TCariTindakan.requestFocus();
         try {
@@ -1225,7 +1225,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
         } 
         bangsal=Sequel.cariIsi("select kd_bangsal from set_depo_ralan where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norwt));
         if(bangsal.equals("")){
-            bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+            bangsal=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1");
         }
     }
     
@@ -1463,7 +1463,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                     if(Double.parseDouble(tabModeObat.getValueAt(row,1).toString())>0){
                         stokbarang=0;   
                         if(aktifkanbatch.equals("yes")){
-                            psobat=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                            psobat=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch=? and gudangbarang.no_faktur=?");
                             try {
                                 psobat.setString(1,bangsal);
                                 psobat.setString(2,tbObat.getValueAt(row,2).toString());
@@ -1484,7 +1484,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                                 }
                             }  
                         }else{
-                            psobat=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch='' and no_faktur=''");
+                            psobat=koneksi.prepareStatement("select ifnull(gudangbarang.stok,'0') from gudangbarang where gudangbarang.kd_bangsal=? and gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''");
                             try {
                                 psobat.setString(1,bangsal);
                                 psobat.setString(2,tbObat.getValueAt(row,2).toString());

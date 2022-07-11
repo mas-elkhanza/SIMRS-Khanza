@@ -933,20 +933,23 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                 Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode.getValueAt(r,0).toString()+"','"+
-                                    tabMode.getValueAt(r,1).toString()+"','"+
-                                    tabMode.getValueAt(r,2).toString()+"','"+
-                                    tabMode.getValueAt(r,3).toString()+"','"+
-                                    tabMode.getValueAt(r,4).toString()+"','"+
-                                    tabMode.getValueAt(r,5).toString()+"','"+
-                                    tabMode.getValueAt(r,6).toString()+"','"+
-                                    tabMode.getValueAt(r,7).toString()+"','"+
-                                    tabMode.getValueAt(r,8).toString()+"','"+
-                                    tabMode.getValueAt(r,9).toString()+"','"+
-                                    tabMode.getValueAt(r,10).toString()+"','"+
-                                    tabMode.getValueAt(r,11).toString()+"','"+
-                                    tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                        try {
+                            Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode.getValueAt(r,0).toString()+"','"+
+                                        tabMode.getValueAt(r,1).toString()+"','"+
+                                        tabMode.getValueAt(r,2).toString()+"','"+
+                                        tabMode.getValueAt(r,3).toString()+"','"+
+                                        tabMode.getValueAt(r,4).toString()+"','"+
+                                        tabMode.getValueAt(r,5).toString()+"','"+
+                                        tabMode.getValueAt(r,6).toString()+"','"+
+                                        tabMode.getValueAt(r,7).toString()+"','"+
+                                        tabMode.getValueAt(r,8).toString()+"','"+
+                                        tabMode.getValueAt(r,9).toString()+"','"+
+                                        tabMode.getValueAt(r,10).toString()+"','"+
+                                        tabMode.getValueAt(r,11).toString()+"','"+
+                                        tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                        } catch (Exception e) {
+                        }   
                     }                    
                 }
                  
@@ -960,20 +963,23 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                 Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
-                                    tabMode2.getValueAt(r,0).toString()+"','"+
-                                    tabMode2.getValueAt(r,1).toString()+"','"+
-                                    tabMode2.getValueAt(r,2).toString()+"','"+
-                                    tabMode2.getValueAt(r,3).toString()+"','"+
-                                    tabMode2.getValueAt(r,4).toString()+"','"+
-                                    tabMode2.getValueAt(r,5).toString()+"','"+
-                                    tabMode2.getValueAt(r,6).toString()+"','"+
-                                    tabMode2.getValueAt(r,7).toString()+"','"+
-                                    tabMode2.getValueAt(r,8).toString()+"','"+
-                                    tabMode2.getValueAt(r,9).toString()+"','"+
-                                    tabMode2.getValueAt(r,10).toString()+"','"+
-                                    tabMode2.getValueAt(r,11).toString()+"','"+
-                                    tabMode2.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                        try{
+                            Sequel.menyimpan("temporary","'"+r+"','"+
+                                        tabMode2.getValueAt(r,0).toString()+"','"+
+                                        tabMode2.getValueAt(r,1).toString()+"','"+
+                                        tabMode2.getValueAt(r,2).toString()+"','"+
+                                        tabMode2.getValueAt(r,3).toString()+"','"+
+                                        tabMode2.getValueAt(r,4).toString()+"','"+
+                                        tabMode2.getValueAt(r,5).toString()+"','"+
+                                        tabMode2.getValueAt(r,6).toString()+"','"+
+                                        tabMode2.getValueAt(r,7).toString()+"','"+
+                                        tabMode2.getValueAt(r,8).toString()+"','"+
+                                        tabMode2.getValueAt(r,9).toString()+"','"+
+                                        tabMode2.getValueAt(r,10).toString()+"','"+
+                                        tabMode2.getValueAt(r,11).toString()+"','"+
+                                        tabMode2.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Rekap Nota Pembayaran");
+                        } catch (Exception e) {
+                        }  
                     }                    
                 }
                  

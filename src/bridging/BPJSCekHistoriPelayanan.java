@@ -153,7 +153,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
         
         
         Calendar cal = Calendar.getInstance();
-        cal.set(cal.get(Calendar.YEAR)-3,1,1); // to get previous year add -1
+        cal.set(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH)-2,1); // to get previous year add -1
         Date Year = cal.getTime();
         DTPCari1.setDate(Year);
     }

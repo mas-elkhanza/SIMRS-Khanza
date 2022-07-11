@@ -1417,7 +1417,7 @@ private void nopenyerahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
 private void kdptgcrossKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgcrossKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmptgcross,kdptgcross.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptgcross,kdptgcross.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPtgCrossActionPerformed(null);
         }else{
@@ -1427,7 +1427,7 @@ private void kdptgcrossKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
 private void kdptgpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgpjKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",nmptgpj,kdptgpj.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nmptgpj,kdptgpj.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPtgPJActionPerformed(null);
         }else{
@@ -2111,7 +2111,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kdptgpj.setEditable(false);
             btnPtgPJ.setEnabled(false);
             kdptgpj.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptgpj,kdptgpj.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptgpj,kdptgpj.getText());
         }      
     }
     

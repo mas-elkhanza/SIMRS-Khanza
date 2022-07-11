@@ -356,30 +356,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         while(rs2.next()){
                             tabMode.addRow(new String[]{
                                 "",rs2.getString("jml"),rs2.getString("kode_sat"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),
-                                "00 : "+rs2.getString("jam00").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "01 : "+rs2.getString("jam01").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "02 : "+rs2.getString("jam02").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "03 : "+rs2.getString("jam03").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "04 : "+rs2.getString("jam04").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "05 : "+rs2.getString("jam05").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "06 : "+rs2.getString("jam06").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "07 : "+rs2.getString("jam07").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "08 : "+rs2.getString("jam08").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "09 : "+rs2.getString("jam09").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "10 : "+rs2.getString("jam10").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "11 : "+rs2.getString("jam11").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "12 : "+rs2.getString("jam12").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "13 : "+rs2.getString("jam13").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "14 : "+rs2.getString("jam14").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "15 : "+rs2.getString("jam15").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "16 : "+rs2.getString("jam16").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "17 : "+rs2.getString("jam17").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "18 : "+rs2.getString("jam18").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "19 : "+rs2.getString("jam19").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "20 : "+rs2.getString("jam20").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "21 : "+rs2.getString("jam21").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "22 : "+rs2.getString("jam22").replaceAll("true","✓").replaceAll("false","✕")+"  "+
-                                "23 : "+rs2.getString("jam23").replaceAll("true","✓").replaceAll("false","✕")+"  |  "+
+                                "00 : "+rs2.getString("jam00").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "01 : "+rs2.getString("jam01").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "02 : "+rs2.getString("jam02").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "03 : "+rs2.getString("jam03").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "04 : "+rs2.getString("jam04").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "05 : "+rs2.getString("jam05").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "06 : "+rs2.getString("jam06").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "07 : "+rs2.getString("jam07").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "08 : "+rs2.getString("jam08").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "09 : "+rs2.getString("jam09").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "10 : "+rs2.getString("jam10").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "11 : "+rs2.getString("jam11").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "12 : "+rs2.getString("jam12").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "13 : "+rs2.getString("jam13").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "14 : "+rs2.getString("jam14").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "15 : "+rs2.getString("jam15").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "16 : "+rs2.getString("jam16").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "17 : "+rs2.getString("jam17").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "18 : "+rs2.getString("jam18").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "19 : "+rs2.getString("jam19").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "20 : "+rs2.getString("jam20").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "21 : "+rs2.getString("jam21").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "22 : "+rs2.getString("jam22").replaceAll("true","V").replaceAll("false","X")+"  "+
+                                "23 : "+rs2.getString("jam23").replaceAll("true","V").replaceAll("false","X")+"  |  "+
                                 rs2.getString("aturan_pakai"),"",""
                             });
                         }

@@ -969,6 +969,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         no_bukti.requestFocus();
         try {
             if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+                tampilAkunBayar2();
+            }else{
                 tampilAkunBayar();
             }
         } catch (Exception e) {
@@ -1098,7 +1100,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?", nama_petugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nama_petugas,nip.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             AkunBayar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1442,13 +1444,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void tampilAkunBayar2() {
+        try {
+            myObj = new FileReader("./cache/akunbayarhutang.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("akunbayarhutang");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    AkunBayar.addItem(list.path("NamaAkun").asText().replaceAll("\"",""));
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+    } 
+    
     public void isCek(){
         BtnBayar.setEnabled(akses.getbayar_pesan_non_medis());
         if(akses.getjml2()>=1){
             nip.setEditable(false);
             BtnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?",nama_petugas,nip.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nama_petugas,nip.getText());
         }  
     }
     

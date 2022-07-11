@@ -165,6 +165,7 @@ public final class KeuanganPiutangObatBelumLunas extends javax.swing.JDialog {
         Tanggal = new widget.Tanggal();
         jLabel11 = new widget.Label();
         AkunBayar = new widget.ComboBox();
+        BtnAll1 = new widget.Button();
         jPanel1 = new javax.swing.JPanel();
         panelisi3 = new widget.panelisi();
         label17 = new widget.Label();
@@ -264,13 +265,25 @@ public final class KeuanganPiutangObatBelumLunas extends javax.swing.JDialog {
         panelisi4.add(jLabel11);
 
         AkunBayar.setName("AkunBayar"); // NOI18N
-        AkunBayar.setPreferredSize(new java.awt.Dimension(350, 23));
+        AkunBayar.setPreferredSize(new java.awt.Dimension(320, 23));
         AkunBayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AkunBayarKeyPressed(evt);
             }
         });
         panelisi4.add(AkunBayar);
+
+        BtnAll1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnAll1.setMnemonic('M');
+        BtnAll1.setToolTipText("Alt+M");
+        BtnAll1.setName("BtnAll1"); // NOI18N
+        BtnAll1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAll1ActionPerformed(evt);
+            }
+        });
+        panelisi4.add(BtnAll1);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
@@ -692,8 +705,19 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }//GEN-LAST:event_tbBangsalPropertyChange
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampilAkunBayar();
+        try {
+            if(Valid.daysOld("./cache/akunbayar.iyem")<8){
+                tampilAkunBayar2();
+            }else{
+                tampilAkunBayar();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
+        tampilAkunBayar();
+    }//GEN-LAST:event_BtnAll1ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -714,6 +738,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AkunBayar;
     private widget.Button BtnAll;
+    private widget.Button BtnAll1;
     private widget.Button BtnBayar;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
@@ -863,4 +888,20 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             System.out.println("Notifikasi : "+e);
         }
     }
+    
+    private void tampilAkunBayar2() {
+        try {
+            myObj = new FileReader("./cache/akunbayar.iyem");
+            root = mapper.readTree(myObj);
+            response = root.path("akunbayar");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    AkunBayar.addItem(list.path("NamaAkun").asText().replaceAll("\"",""));
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+    } 
 }

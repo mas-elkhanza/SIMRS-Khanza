@@ -880,7 +880,7 @@ public class koneksiDB {
     public static String AKTIFKANTRACKSQL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("AKTIFKANTRACKSQL");
+            var=EnkripsiAES.decrypt(prop.getProperty("AKTIFKANTRACKSQL"));
         }catch(Exception e){
             var=""; 
         }

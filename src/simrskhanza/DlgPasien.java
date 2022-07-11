@@ -527,6 +527,14 @@ public class DlgPasien extends javax.swing.JDialog {
                     if(penjab.getTable().getSelectedRow()!= -1){
                         Kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
                         nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                        if(tampilkantni.equals("Yes")){
+                            if(nmpnj.getText().toLowerCase().contains("tni")){
+                                chkTNI.setSelected(true);
+                            }
+                            if(nmpnj.getText().toLowerCase().contains("polri")){
+                                chkPolri.setSelected(true);
+                            }
+                        }
                     }  
                     Kdpnj.requestFocus();
                 }
@@ -5712,7 +5720,25 @@ private void CmbSttsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_C
 }//GEN-LAST:event_CmbSttsKeyPressed
 
 private void PekerjaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PekerjaanKeyPressed
-   Valid.pindah(evt,TTlp,TKtp);
+   if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+       if(tampilkantni.equals("Yes")){
+           if(Pekerjaan.getText().toLowerCase().contains("tni")){
+               chkTNI.setSelected(true);
+           }
+           if(nmpnj.getText().toLowerCase().contains("tni")){
+               chkTNI.setSelected(true);
+           }
+           if(Pekerjaan.getText().toLowerCase().contains("polri")){
+               chkPolri.setSelected(true);
+           }
+           if(nmpnj.getText().toLowerCase().contains("polri")){
+               chkPolri.setSelected(true);
+           }
+       }
+       TKtp.requestFocus();
+   }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+       TTlp.requestFocus();
+   }
 }//GEN-LAST:event_PekerjaanKeyPressed
 
 private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
@@ -7611,7 +7637,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void NoRmTujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmTujuanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(!NoRmTujuan.getText().trim().equals("")){
-                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
+                Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
                 if(NmPasienTujuan.getText().trim().equals("")){
                     JOptionPane.showMessageDialog(rootPane,"Data pasien tidak ditemukan..!!");
                 }
@@ -7621,7 +7647,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_NoRmTujuanKeyPressed
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
+        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
         if(NmPasienTujuan.getText().trim().equals("")){
             JOptionPane.showMessageDialog(rootPane,"Data pasien tidak ditemukan..!!");
         }

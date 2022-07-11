@@ -794,6 +794,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             if(Valid.daysOld("./cache/akunbayarhutang.iyem")<8){
+                tampilAkunBayar2();
+            }else{
                 tampilAkunBayar();
             }
         } catch (Exception e) {
@@ -1468,6 +1470,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Notifikasi : "+e);
         }
     }
+    
+    private void tampilAkunBayar2() {
+        try {
+            form.myObj = new FileReader("./cache/akunbayarhutang.iyem");
+            form.root = form.mapper.readTree(form.myObj);
+            form.response = form.root.path("akunbayarhutang");
+            if(form.response.isArray()){
+                for(JsonNode list:form.response){
+                    AkunBayar.addItem(list.path("NamaAkun").asText().replaceAll("\"",""));
+                }
+            }
+            form.myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+    } 
     
     private void prosesCariSemua() {
          try{         

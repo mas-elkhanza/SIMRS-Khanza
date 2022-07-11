@@ -336,6 +336,60 @@ public final class PCareCekReferensiStatusPulang extends javax.swing.JDialog {
 
     public void tampil(String diagnosa) {
         try {
+            URL = link+"/statuspulang/rawatInap/false";	
+
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+	    headers.add("X-timestamp",utc);            
+	    headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
+	    requestEntity = new HttpEntity(headers);
+            System.out.println("URL : "+URL);
+	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            //System.out.println("code : "+nameNode.path("code").asText());
+            //System.out.println("message : "+nameNode.path("message").asText());
+            if(nameNode.path("message").asText().equals("OK")){
+                Valid.tabelKosong(tabMode);
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                if(response.path("list").isArray()){
+                    i=1;
+                    for(JsonNode list:response.path("list")){
+                        if(list.path("kdStatusPulang").asText().toLowerCase().contains(diagnosa.toLowerCase())||
+                                list.path("nmStatusPulang").asText().toLowerCase().contains(diagnosa.toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                i+".",list.path("kdStatusPulang").asText(),list.path("nmStatusPulang").asText()
+                            });
+                            i++;
+                        }
+                    }
+                }
+            }else {
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+            }  
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+            }else if(ex.toString().contains("401")){
+                JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+            }else if(ex.toString().contains("408")){
+                JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+            }else if(ex.toString().contains("424")){
+                JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+            }else if(ex.toString().contains("412")){
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+            }else if(ex.toString().contains("204")){
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }
+        }
+        try {
             URL = link+"/statuspulang/rawatInap/true";	
 
             headers = new HttpHeaders();

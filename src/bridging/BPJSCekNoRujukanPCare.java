@@ -5033,7 +5033,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isNumber();
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",TDokter,kddokter.getText());
+            Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",TDokter,kddokter.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }else{
@@ -5747,6 +5747,14 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                 });
                 peserta=response.path("peserta").path("jenisPeserta").path("keterangan").asText();
                 Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
+                if(tampilkantni.equals("Yes")){
+                    if(Pekerjaan.getText().toLowerCase().contains("tni")){
+                        chkTNI.setSelected(true);
+                    }
+                    if(Pekerjaan.getText().toLowerCase().contains("polri")){
+                        chkPolri.setSelected(true);
+                    }
+                }
                 tabMode.addRow(new Object[]{
                     "       Medical Record",": "
                 });

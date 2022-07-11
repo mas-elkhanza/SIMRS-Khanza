@@ -1014,7 +1014,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.gethibah_aset_inventaris());
             BtnTambah.setEnabled(akses.getinventaris_koleksi());
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+            Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?", nmptg,kdptg.getText());
         }        
     }
     

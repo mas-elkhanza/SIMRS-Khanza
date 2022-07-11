@@ -1281,7 +1281,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NoRM.setText(norm);
         NamaPasien.setText(namapasien);
         Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",NoJaminan,norm);
-        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norawat+"'", DTPCari1);
+        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norawat+"'", DTPCari1);
         TCari.setText(norawat);
         ChkInput.setSelected(true);
         isForm(); 

@@ -50,23 +50,23 @@
 		//hapusinput("delete from  indekref");
 		while($baris = mysqli_fetch_array($hasilcari)) {
 			$masa_kerja=0;
-                          if($baris["masker"]<1){
-                             $masa_kerja=0;
-                          }else if(($baris["masker"]>=1)&&($baris["masker"]<2)){
-                             $masa_kerja=2;
-                          }else if(($baris["masker"]>=2)&&($baris["masker"]<3)){
-                             $masa_kerja=4;
-                          }else if(($baris["masker"]>=3)&&($baris["masker"]<4)){
-                             $masa_kerja=6;
-                          }else if(($baris["masker"]>=4)&&($baris["masker"]<5)){
-                             $masa_kerja=8;
-                          }else if(($baris["masker"]>=5)&&($baris["masker"]<6)){
-                             $masa_kerja=10;
-                          }else if(($baris["masker"]>=6)&&($baris["masker"]<7)){
-                             $masa_kerja=12;
-                          }else if($baris["masker"]>=7){
-                             $masa_kerja=14;
-                          }
+                        if(validangka($baris["masker"])<1){
+                            $masa_kerja=0;
+                        }else if((validangka($baris["masker"])>=1)&&(validangka($baris["masker"])<2)){
+                            $masa_kerja=2;
+                        }else if((validangka($baris["masker"])>=2)&&(validangka($baris["masker"])<3)){
+                            $masa_kerja=4;
+                        }else if((validangka($baris["masker"])>=3)&&(validangka($baris["masker"])<4)){
+                            $masa_kerja=6;
+                        }else if((validangka($baris["masker"])>=4)&&(validangka($baris["masker"])<5)){
+                            $masa_kerja=8;
+                        }else if((validangka($baris["masker"])>=5)&&(validangka($baris["masker"])<6)){
+                            $masa_kerja=10;
+                        }else if((validangka($baris["masker"])>=6)&&(validangka($baris["masker"])<7)){
+                            $masa_kerja=12;
+                        }else if(validangka($baris["masker"])>=7){
+                            $masa_kerja=14;
+                        }
                           
                           $indexevaluasi= getOne("select evaluasi_kinerja.indek from evaluasi_kinerja inner join evaluasi_kinerja_pegawai 
                                         on evaluasi_kinerja_pegawai.kode_evaluasi=evaluasi_kinerja.kode_evaluasi where 
@@ -246,23 +246,23 @@
                           }
 
                           $masa_kerja=0;
-                          if($baris["masker"]<1){
-                             $masa_kerja=0;
-                          }else if(($baris["masker"]>=1)&&($baris["masker"]<2)){
-                             $masa_kerja=2;
-                          }else if(($baris["masker"]>=2)&&($baris["masker"]<3)){
-                             $masa_kerja=4;
-                          }else if(($baris["masker"]>=3)&&($baris["masker"]<4)){
-                             $masa_kerja=6;
-                          }else if(($baris["masker"]>=4)&&($baris["masker"]<5)){
-                             $masa_kerja=8;
-                          }else if(($baris["masker"]>=5)&&($baris["masker"]<6)){
-                             $masa_kerja=10;
-                          }else if(($baris["masker"]>=6)&&($baris["masker"]<7)){
-                             $masa_kerja=12;
-                          }else if($baris["masker"]>=7){
-                             $masa_kerja=14;
-                          }
+                            if(validangka($baris["masker"])<1){
+                                $masa_kerja=0;
+                            }else if((validangka($baris["masker"])>=1)&&(validangka($baris["masker"])<2)){
+                                $masa_kerja=2;
+                            }else if((validangka($baris["masker"])>=2)&&(validangka($baris["masker"])<3)){
+                                $masa_kerja=4;
+                            }else if((validangka($baris["masker"])>=3)&&(validangka($baris["masker"])<4)){
+                                $masa_kerja=6;
+                            }else if((validangka($baris["masker"])>=4)&&(validangka($baris["masker"])<5)){
+                                $masa_kerja=8;
+                            }else if((validangka($baris["masker"])>=5)&&(validangka($baris["masker"])<6)){
+                                $masa_kerja=10;
+                            }else if((validangka($baris["masker"])>=6)&&(validangka($baris["masker"])<7)){
+                                $masa_kerja=12;
+                            }else if(validangka($baris["masker"])>=7){
+                                $masa_kerja=14;
+                            }
                           
                           $indexevaluasi= getOne("select evaluasi_kinerja.indek from evaluasi_kinerja inner join evaluasi_kinerja_pegawai 
                                         on evaluasi_kinerja_pegawai.kode_evaluasi=evaluasi_kinerja.kode_evaluasi where 
@@ -454,12 +454,8 @@
                 $lemburhr=$hr*(isset($baris21[0])?$baris21[0]:0);
                             $ttllemburhr=$ttllemburhr+$lemburhr;
 
-                            $_sql22="";
-                            if($baris["indexins"]!="DIR"){
-                                $_sql22  ="SELECT ($ttln/sum(n))*100 from indekref where kdindex='".$baris["indexins"]."'";
-                            }else if($baris["indexins"]=="DIR"){
-                                $_sql22  ="SELECT ($ttln/sum(n))*100 from indekref where kdindex='MNJ'";
-                            }
+                            $_sql22  ="SELECT ($ttln/sum(n))*100 from indekref where kdindex='".$baris["indexins"]."'";
+                            
                             
 			    $hasil22 =bukaquery($_sql22);
 			    $baris22 = mysqli_fetch_array($hasil22);
@@ -684,29 +680,12 @@
 					 <TD>$indexjaga&nbsp;</TD>
 					 <TD>$ttlindex&nbsp;</TD>
                                          <TD width='100px'>";
-                                            $_sql23="";
-                                            if($baris["indexins"]!="DIR"){
-                                                $_sql23="SELECT ($ttlindex/sum(indextotal.ttl))*((indexins.persen/100)*total_insentif)
+                                           $_sql23="SELECT ($ttlindex/sum(indextotal.ttl))*((indexins.persen/100)*total_insentif)
                                                     from indextotal,indexins,set_insentif where
                                                     set_insentif.tahun='$tahun' and set_insentif.bulan='$bulanindex' and
                                                     indextotal.kdindex=indexins.dep_id and
                                                     indextotal.kdindex='".$baris["indexins"]."'";
 
-                                            }else if($baris["indexins"]=="DIR"){
-                                                $_sql23="SELECT ($ttlindex/sum(indextotal.ttl))*((indexins.persen/100)*total_insentif)*2.3
-                                                    from indextotal,indexins,set_insentif where
-                                                    set_insentif.tahun='$tahun' and set_insentif.bulan='$bulanindex' and
-                                                    indextotal.kdindex=indexins.dep_id and
-                                                    indextotal.kdindex='MNJ'";
-                                                if($baris[0]=="43"){
-                                                    $_sql23="SELECT ($ttlindex/sum(indextotal.ttl))*((indexins.persen/100)*total_insentif)*1.80
-                                                    from indextotal,indexins,set_insentif where
-                                                    set_insentif.tahun='$tahun' and set_insentif.bulan='$bulanindex' and
-                                                    indextotal.kdindex=indexins.dep_id and
-                                                    indextotal.kdindex='MNJ'";                                                    
-                                                }
-
-                                            }
                                             $hasil23=bukaquery($_sql23);
                                             $baris23 = mysqli_fetch_array($hasil23);
                                             $ttlinsentif=$baris23[0];

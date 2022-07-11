@@ -1,10 +1,10 @@
 
 <?php
-    $_sql         = "SELECT * FROM set_tahun";
-    $hasil        = bukaquery($_sql);
-    $baris        = mysqli_fetch_row($hasil);
-    $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
-    $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
+    $_sql      = "SELECT * FROM set_tahun";
+    $hasil     = bukaquery($_sql);
+    $baris     = mysqli_fetch_row($hasil);
+    $tahun     = empty($baris[0])?date("Y"):$baris[0];
+    $blnini    = empty($baris[1])?date("m"):$baris[1];
     $bln_leng  = strlen($blnini);
     $bulan     = "0";
     if ($bln_leng==1){
@@ -12,6 +12,8 @@
     }else{
         $bulan=$blnini;
     }
+    
+    echo $tahun." ".$bulan;
 ?>
 <div id="post">
     <div class="entry">

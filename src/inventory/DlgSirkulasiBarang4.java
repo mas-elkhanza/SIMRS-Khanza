@@ -44,7 +44,7 @@ public class DlgSirkulasiBarang4 extends javax.swing.JDialog {
                    totalretpiut=0,totalpasin=0,totalrespulang=0,totalhibah=0,totalstok=0,totalstokawal=0,totalstokakhir=0,
                    ttltotaljual=0,ttltotalbeli=0,ttltotalpesan=0,ttltotalpiutang=0,ttltotalutd=0,ttltotalkeluar=0,ttltotalmutasikeluar=0,
                    ttltotalmutasimasuk=0,ttltotalretbeli=0,ttltotalretjual=0,ttltotalretpiut=0,ttltotalpasin=0,ttltotalrespulang=0,
-                   ttltotalhibah=0,ttltotalstok=0,ttltotalstokawal=0,ttltotalstokakhir=0;
+                   ttltotalhibah=0,ttltotalstok=0,ttltotalstokawal=0,ttltotalstokakhir=0,rowstokawal=0;
     private DlgCariJenis jenis = new DlgCariJenis(null, false);
     private DlgCariKategori kategori = new DlgCariKategori(null, false);
     private DlgCariGolongan golongan = new DlgCariGolongan(null, false);private PreparedStatement ps,ps2;
@@ -998,7 +998,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 
                 while(rs.next()){
-                    jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;jumlahretjual=0;
+                    jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;jumlahretjual=0;rowstokawal=0;
                     jumlahretpiut=0;jumlahpasin=0;stok=0;stokawal=0;jumlahutd=0;jumlahkeluar=0;jumlahrespulang=0;
                     jumlahmutasikeluar=0;jumlahmutasimasuk=0;jumlahhibah=0;stokakhir=0;tglopname="0000-00-00";
                     totaljual=0;totalbeli=0;totalpesan=0;totalpiutang=0;totalutd=0;totalkeluar=0;totalmutasikeluar=0;
@@ -1395,11 +1395,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(ps2!=null){
                             ps2.close();
                         }
-                    }                        
+                    } 
+                    
+                    ps2=koneksi.prepareStatement("select count(opname.real) from opname where kode_brng=? and tanggal=?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname);
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){
+                            rowstokawal=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Note : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
 
                     if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||(jumlahhibah>0)||
                             (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stok>0)||(jumlahrespulang>0)){
-                        if(stokawal<=0){
+                        if(rowstokawal<=0){
                             stokawal=stok-jumlahbeli-jumlahpesan-jumlahmutasimasuk+jumlahmutasikeluar+jumlahjual+jumlahpasin+jumlahpiutang-jumlahhibah+jumlahretbeli-jumlahretjual-jumlahretpiut+jumlahutd+jumlahkeluar+jumlahrespulang;
                             stokakhir=stok;
                             totalstokawal=totalstok-totalbeli-totalpesan-totalmutasimasuk+totalmutasikeluar+totaljual+totalpasin+totalpiutang-totalhibah+totalretbeli-totalretjual-totalretpiut+totalutd+totalkeluar+totalrespulang;
@@ -1494,7 +1513,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 
                 while(rs.next()){
-                    jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;
+                    jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;rowstokawal=0;
                     jumlahretjual=0;jumlahretpiut=0;jumlahpasin=0;stok=0;stokawal=0;jumlahutd=0;
                     jumlahkeluar=0;jumlahrespulang=0;jumlahmutasimasuk=0;jumlahmutasikeluar=0;
                     jumlahhibah=0;tglopname="0000-00-00";totaljual=0;totalbeli=0;totalpesan=0;
@@ -1910,11 +1929,31 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(ps2!=null){
                             ps2.close();
                         }
-                    }                        
+                    }    
+
+                    ps2=koneksi.prepareStatement("select count(opname.real) from opname where kode_brng=? and tanggal=? and kd_bangsal=?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname);
+                        ps2.setString(3,lokasi);
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){
+                            rowstokawal=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Note : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
 
                     if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||(jumlahhibah>0)||(jumlahmutasimasuk>0)||(jumlahmutasikeluar>0)||
                             (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stok>0)||(jumlahrespulang>0)){
-                        if(stokawal<=0){
+                        if(rowstokawal<=0){
                             stokawal=stok-jumlahbeli-jumlahpesan-jumlahmutasimasuk+jumlahmutasikeluar+jumlahjual+jumlahpasin+jumlahpiutang-jumlahhibah+jumlahretbeli-jumlahretjual-jumlahretpiut+jumlahutd+jumlahkeluar+jumlahrespulang;
                             stokakhir=stok;
                             totalstokawal=totalstok-totalbeli-totalpesan-totalmutasimasuk+totalmutasikeluar+totaljual+totalpasin+totalpiutang-totalhibah+totalretbeli-totalretjual-totalretpiut+totalutd+totalkeluar+totalrespulang;

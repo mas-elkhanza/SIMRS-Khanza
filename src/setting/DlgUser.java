@@ -202,7 +202,13 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Referensi Poli Apotek BPJS","[J]Bayar JM Dokter","[K]Referensi Faskes Apotek BPJS","[K]Referensi Spesialistik Apotek BPJS","[J]Pembayaran BRIVA",
                 "[L]Penilaian Awal Keperawatan Ranap Umum","[D]Nilai Penerimaan Vendor Farmasi Per Bulan","[J]Akun Bayar Hutang","[L]Master Rencana Keperawatan",
                 "[I]Laporan Tahunan IGD","[D]Obat/Alkes/BHP Tidak Bergerak","[J]Ringkasan Hutang Vendor Farmasi","[E]Nilai Penerimaan Vendor Non Medis Per Bulan",
-                "[J]Ringkasan Hutang Vendor Non Medis","[L]Master Rencana Keperawatan Anak","[I]Anggota POLRI Dirawat","[I]Daftar Pasien Ranap POLRI"
+                "[J]Ringkasan Hutang Vendor Non Medis","[L]Master Rencana Keperawatan Bayi/Anak","[I]Anggota POLRI Dirawat","[I]Daftar Pasien Ranap POLRI","[L]SOAP Ralan Anggota POLRI",
+                "[L]SOAP Ranap Anggota POLRI","[I]Laporan Penyakit POLRI","[I]Jumlah Pengunjung Ralan POLRI","[L]Catatan Observasi IGD","[L]Catatan Observasi Ranap",
+                "[L]Catatan Observasi Ranap Kebidanan","[L]Catatan Observasi Ranap Post Partum","[L]Penilaian Awal Medis Ralan THT","[L]Penilaian Psikologi",
+                "[C]Audit Cuci Tangan Medis","[C]Audit Pembuangan Limbah","[C]Ruang/Unit Audit Kepatuhan","[C]Audit Pembuangan Benda Tajam & Jarum",
+                "[C]Audit Penanganan Darah","[C]Audit Pengelolaan Linen Kotor","[C]Audit Penempatan Pasien","[C]Audit Kamar Jenazah","[C]Audit Bundle IADP",
+                "[C]Audit Bundle IDO","[C]Audit Fasilitas Kebersihan Tangan","[C]Audit Fasilitas APD","[C]Audit Pembuangan Limbah Cair Infeksius","[C]Audit Sterilisasi Alat",
+                "[L]Penilaian Awal Medis Ralan Psikiatri","[O]Persetujuan/Penolakan Tindakan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -429,6 +435,13 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -442,7 +455,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 820;i++) {
+        for (i = 0; i < 846;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2348,13 +2361,91 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(199);
                     break;
                 case 817:
-                    column.setPreferredWidth(193);
+                    column.setPreferredWidth(218);
                     break;
                 case 818:
                     column.setPreferredWidth(133);
                     break;
                 case 819:
                     column.setPreferredWidth(152);
+                    break;
+                case 820:
+                    column.setPreferredWidth(155);
+                    break;
+                case 821:
+                    column.setPreferredWidth(159);
+                    break;
+                case 822:
+                    column.setPreferredWidth(136);
+                    break;
+                case 823:
+                    column.setPreferredWidth(179);
+                    break;
+                case 824:
+                    column.setPreferredWidth(132);
+                    break;
+                case 825:
+                    column.setPreferredWidth(145);
+                    break;
+                case 826:
+                    column.setPreferredWidth(198);
+                    break;
+                case 827:
+                    column.setPreferredWidth(207);
+                    break;
+                case 828:
+                    column.setPreferredWidth(177);
+                    break;
+                case 829:
+                    column.setPreferredWidth(111);
+                    break;
+                case 830:
+                    column.setPreferredWidth(142);
+                    break;
+                case 831:
+                    column.setPreferredWidth(153);
+                    break;
+                case 832:
+                    column.setPreferredWidth(162);
+                    break;
+                case 833:
+                    column.setPreferredWidth(224);
+                    break;
+                case 834:
+                    column.setPreferredWidth(143);
+                    break;
+                case 835:
+                    column.setPreferredWidth(170);
+                    break;
+                case 836:
+                    column.setPreferredWidth(147);
+                    break;
+                case 837:
+                    column.setPreferredWidth(125);
+                    break;
+                case 838:
+                    column.setPreferredWidth(112);
+                    break;
+                case 839:
+                    column.setPreferredWidth(106);
+                    break;
+                case 840:
+                    column.setPreferredWidth(189);
+                    break;
+                case 841:
+                    column.setPreferredWidth(117);
+                    break;
+                case 842:
+                    column.setPreferredWidth(227);
+                    break;
+                case 843:
+                    column.setPreferredWidth(123);
+                    break;
+                case 844:
+                    column.setPreferredWidth(197);
+                    break;
+                case 845:
+                    column.setPreferredWidth(183);
                     break;
                 default:
                     column.setPreferredWidth(135);
@@ -2856,7 +2947,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3718,7 +3809,33 @@ public class DlgUser extends javax.swing.JDialog {
                     "ringkasan_hutang_vendor_nonmedis='"+tbUser.getValueAt(i,816).toString()+"',"+
                     "master_rencana_keperawatan_anak='"+tbUser.getValueAt(i,817).toString()+"',"+
                     "anggota_polri_dirawat='"+tbUser.getValueAt(i,818).toString()+"',"+
-                    "daftar_pasien_ranap_polri='"+tbUser.getValueAt(i,819).toString()+"'");
+                    "daftar_pasien_ranap_polri='"+tbUser.getValueAt(i,819).toString()+"',"+
+                    "soap_ralan_polri='"+tbUser.getValueAt(i,820).toString()+"',"+
+                    "soap_ranap_polri='"+tbUser.getValueAt(i,821).toString()+"',"+
+                    "laporan_penyakit_polri='"+tbUser.getValueAt(i,822).toString()+"',"+
+                    "jumlah_pengunjung_ralan_polri='"+tbUser.getValueAt(i,823).toString()+"',"+
+                    "catatan_observasi_igd='"+tbUser.getValueAt(i,824).toString()+"',"+
+                    "catatan_observasi_ranap='"+tbUser.getValueAt(i,825).toString()+"',"+
+                    "catatan_observasi_ranap_kebidanan='"+tbUser.getValueAt(i,826).toString()+"',"+
+                    "catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(i,827).toString()+"',"+
+                    "penilaian_awal_medis_ralan_tht='"+tbUser.getValueAt(i,828).toString()+"',"+
+                    "penilaian_psikologi='"+tbUser.getValueAt(i,829).toString()+"',"+
+                    "audit_cuci_tangan_medis='"+tbUser.getValueAt(i,830).toString()+"',"+
+                    "audit_pembuangan_limbah='"+tbUser.getValueAt(i,831).toString()+"',"+
+                    "ruang_audit_kepatuhan='"+tbUser.getValueAt(i,832).toString()+"',"+
+                    "audit_pembuangan_benda_tajam='"+tbUser.getValueAt(i,833).toString()+"',"+
+                    "audit_penanganan_darah='"+tbUser.getValueAt(i,834).toString()+"',"+
+                    "audit_pengelolaan_linen_kotor='"+tbUser.getValueAt(i,835).toString()+"',"+
+                    "audit_penempatan_pasien='"+tbUser.getValueAt(i,836).toString()+"',"+
+                    "audit_kamar_jenazah='"+tbUser.getValueAt(i,837).toString()+"',"+
+                    "audit_bundle_iadp='"+tbUser.getValueAt(i,838).toString()+"',"+
+                    "audit_bundle_ido='"+tbUser.getValueAt(i,839).toString()+"',"+
+                    "audit_fasilitas_kebersihan_tangan='"+tbUser.getValueAt(i,840).toString()+"',"+
+                    "audit_fasilitas_apd='"+tbUser.getValueAt(i,841).toString()+"',"+
+                    "audit_pembuangan_limbah_cair_infeksius='"+tbUser.getValueAt(i,842).toString()+"',"+
+                    "audit_sterilisasi_alat='"+tbUser.getValueAt(i,843).toString()+"',"+
+                    "penilaian_awal_medis_ralan_psikiatri='"+tbUser.getValueAt(i,844).toString()+"',"+
+                    "persetujuan_penolakan_tindakan='"+tbUser.getValueAt(i,845).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4620,7 +4737,33 @@ public class DlgUser extends javax.swing.JDialog {
                                         "ringkasan_hutang_vendor_nonmedis='"+tbUser.getValueAt(barisdicopy,816).toString()+"',"+
                                         "master_rencana_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,817).toString()+"',"+
                                         "anggota_polri_dirawat='"+tbUser.getValueAt(barisdicopy,818).toString()+"',"+
-                                        "daftar_pasien_ranap_polri='"+tbUser.getValueAt(barisdicopy,819).toString()+"'");
+                                        "daftar_pasien_ranap_polri='"+tbUser.getValueAt(barisdicopy,819).toString()+"',"+
+                                        "soap_ralan_polri='"+tbUser.getValueAt(barisdicopy,820).toString()+"',"+
+                                        "soap_ranap_polri='"+tbUser.getValueAt(barisdicopy,821).toString()+"',"+
+                                        "laporan_penyakit_polri='"+tbUser.getValueAt(barisdicopy,822).toString()+"',"+
+                                        "jumlah_pengunjung_ralan_polri='"+tbUser.getValueAt(barisdicopy,823).toString()+"',"+
+                                        "catatan_observasi_igd='"+tbUser.getValueAt(barisdicopy,824).toString()+"',"+
+                                        "catatan_observasi_ranap='"+tbUser.getValueAt(barisdicopy,825).toString()+"',"+
+                                        "catatan_observasi_ranap_kebidanan='"+tbUser.getValueAt(barisdicopy,826).toString()+"',"+
+                                        "catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(barisdicopy,827).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_tht='"+tbUser.getValueAt(barisdicopy,828).toString()+"',"+
+                                        "penilaian_psikologi='"+tbUser.getValueAt(barisdicopy,829).toString()+"',"+
+                                        "audit_cuci_tangan_medis='"+tbUser.getValueAt(barisdicopy,830).toString()+"',"+
+                                        "audit_pembuangan_limbah='"+tbUser.getValueAt(barisdicopy,831).toString()+"',"+
+                                        "ruang_audit_kepatuhan='"+tbUser.getValueAt(barisdicopy,832).toString()+"',"+
+                                        "audit_pembuangan_benda_tajam='"+tbUser.getValueAt(barisdicopy,833).toString()+"',"+
+                                        "audit_penanganan_darah='"+tbUser.getValueAt(barisdicopy,834).toString()+"',"+
+                                        "audit_pengelolaan_linen_kotor='"+tbUser.getValueAt(barisdicopy,835).toString()+"',"+
+                                        "audit_penempatan_pasien='"+tbUser.getValueAt(barisdicopy,836).toString()+"',"+
+                                        "audit_kamar_jenazah='"+tbUser.getValueAt(barisdicopy,837).toString()+"',"+
+                                        "audit_bundle_iadp='"+tbUser.getValueAt(barisdicopy,838).toString()+"',"+
+                                        "audit_bundle_ido='"+tbUser.getValueAt(barisdicopy,839).toString()+"',"+
+                                        "audit_fasilitas_kebersihan_tangan='"+tbUser.getValueAt(barisdicopy,840).toString()+"',"+
+                                        "audit_fasilitas_apd='"+tbUser.getValueAt(barisdicopy,841).toString()+"',"+
+                                        "audit_pembuangan_limbah_cair_infeksius='"+tbUser.getValueAt(barisdicopy,842).toString()+"',"+
+                                        "audit_sterilisasi_alat='"+tbUser.getValueAt(barisdicopy,843).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_psikiatri='"+tbUser.getValueAt(barisdicopy,844).toString()+"',"+
+                                        "persetujuan_penolakan_tindakan='"+tbUser.getValueAt(barisdicopy,845).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -4982,7 +5125,13 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek,user.bayar_jm_dokter,user.bpjs_referensi_faskes_apotek,user.bpjs_referensi_spesialistik_apotek,"+
                 "user.pembayaran_briva,user.penilaian_awal_keperawatan_ranap,user.nilai_penerimaan_vendor_farmasi_perbulan,user.akun_bayar_hutang,user.master_rencana_keperawatan,"+
                 "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan,"+
-                "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri,user.soap_ralan_polri,"+
+                "user.soap_ranap_polri,user.laporan_penyakit_polri,user.jumlah_pengunjung_ralan_polri,user.catatan_observasi_igd,user.catatan_observasi_ranap,"+
+                "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht,user.penilaian_psikologi,"+
+                "user.audit_cuci_tangan_medis,user.audit_pembuangan_limbah,user.ruang_audit_kepatuhan,user.audit_pembuangan_benda_tajam,user.audit_penanganan_darah,"+
+                "user.audit_pengelolaan_linen_kotor,user.audit_penempatan_pasien,user.audit_kamar_jenazah,user.audit_bundle_iadp,user.audit_bundle_ido,"+
+                "user.audit_fasilitas_kebersihan_tangan,user.audit_fasilitas_apd,user.audit_pembuangan_limbah_cair_infeksius,user.audit_sterilisasi_alat,"+
+                "user.penilaian_awal_medis_ralan_psikiatri,user.persetujuan_penolakan_tindakan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -5814,7 +5963,33 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("ringkasan_hutang_vendor_nonmedis"),
                                rs.getBoolean("master_rencana_keperawatan_anak"),
                                rs.getBoolean("anggota_polri_dirawat"),
-                               rs.getBoolean("daftar_pasien_ranap_polri")
+                               rs.getBoolean("daftar_pasien_ranap_polri"),
+                               rs.getBoolean("soap_ralan_polri"),
+                               rs.getBoolean("soap_ranap_polri"),
+                               rs.getBoolean("laporan_penyakit_polri"),
+                               rs.getBoolean("jumlah_pengunjung_ralan_polri"),
+                               rs.getBoolean("catatan_observasi_igd"),
+                               rs.getBoolean("catatan_observasi_ranap"),
+                               rs.getBoolean("catatan_observasi_ranap_kebidanan"),
+                               rs.getBoolean("catatan_observasi_ranap_postpartum"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_tht"),
+                               rs.getBoolean("penilaian_psikologi"),
+                               rs.getBoolean("audit_cuci_tangan_medis"),
+                               rs.getBoolean("audit_pembuangan_limbah"),
+                               rs.getBoolean("ruang_audit_kepatuhan"),
+                               rs.getBoolean("audit_pembuangan_benda_tajam"),
+                               rs.getBoolean("audit_penanganan_darah"),
+                               rs.getBoolean("audit_pengelolaan_linen_kotor"),
+                               rs.getBoolean("audit_penempatan_pasien"),
+                               rs.getBoolean("audit_kamar_jenazah"),
+                               rs.getBoolean("audit_bundle_iadp"),
+                               rs.getBoolean("audit_bundle_ido"),
+                               rs.getBoolean("audit_fasilitas_kebersihan_tangan"),
+                               rs.getBoolean("audit_fasilitas_apd"),
+                               rs.getBoolean("audit_pembuangan_limbah_cair_infeksius"),
+                               rs.getBoolean("audit_sterilisasi_alat"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_psikiatri"),
+                               rs.getBoolean("persetujuan_penolakan_tindakan")
                             });
                         }   
                     } catch (Exception e) {
@@ -6635,7 +6810,33 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("ringkasan_hutang_vendor_nonmedis"),
                            rs.getBoolean("master_rencana_keperawatan_anak"),
                            rs.getBoolean("anggota_polri_dirawat"),
-                           rs.getBoolean("daftar_pasien_ranap_polri")
+                           rs.getBoolean("daftar_pasien_ranap_polri"),
+                           rs.getBoolean("soap_ralan_polri"),
+                           rs.getBoolean("soap_ranap_polri"),
+                           rs.getBoolean("laporan_penyakit_polri"),
+                           rs.getBoolean("jumlah_pengunjung_ralan_polri"),
+                           rs.getBoolean("catatan_observasi_igd"),
+                           rs.getBoolean("catatan_observasi_ranap"),
+                           rs.getBoolean("catatan_observasi_ranap_kebidanan"),
+                           rs.getBoolean("catatan_observasi_ranap_postpartum"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_tht"),
+                           rs.getBoolean("penilaian_psikologi"),
+                           rs.getBoolean("audit_cuci_tangan_medis"),
+                           rs.getBoolean("audit_pembuangan_limbah"),
+                           rs.getBoolean("ruang_audit_kepatuhan"),
+                           rs.getBoolean("audit_pembuangan_benda_tajam"),
+                           rs.getBoolean("audit_penanganan_darah"),
+                           rs.getBoolean("audit_pengelolaan_linen_kotor"),
+                           rs.getBoolean("audit_penempatan_pasien"),
+                           rs.getBoolean("audit_kamar_jenazah"),
+                           rs.getBoolean("audit_bundle_iadp"),
+                           rs.getBoolean("audit_bundle_ido"),
+                           rs.getBoolean("audit_fasilitas_kebersihan_tangan"),
+                           rs.getBoolean("audit_fasilitas_apd"),
+                           rs.getBoolean("audit_pembuangan_limbah_cair_infeksius"),
+                           rs.getBoolean("audit_sterilisasi_alat"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_psikiatri"),
+                           rs.getBoolean("persetujuan_penolakan_tindakan")
                         });
                     }                                             
                  }

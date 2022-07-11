@@ -695,10 +695,18 @@
                                                 http_response_code(201);
                                             }else if($booking['status']=='Belum'){
                                                 $interval  = getOne2("select TIMESTAMPDIFF(MINUTE,'$booking[tanggalperiksa] $booking[jampraktek]:00','$tanggalchekcin') AS difference");
-                                                if($interval>=0){
+                                                if($interval>=60){
                                                     $response = array(
                                                         'metadata' => array(
                                                             'message' => 'Chekin Anda sudah expired. Silahkan konfirmasi ke loket pendaftaran',
+                                                            'code' => 201
+                                                        )
+                                                    );  
+                                                    http_response_code(201);
+                                                }else if($interval<=-60){
+                                                    $response = array(
+                                                        'metadata' => array(
+                                                            'message' => 'Chekin Anda masih harus menunggu lagi. Silahkan konfirmasi ke loket pendaftaran',
                                                             'code' => 201
                                                         )
                                                     );  
