@@ -921,7 +921,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         isForm2();
         ChkInput2.setSelected(false);
         isForm3(); 
-        ChkAccor.setSelected(false);
+        ChkAccor.setSelected(true);
         isMenu();
         jam();
         
