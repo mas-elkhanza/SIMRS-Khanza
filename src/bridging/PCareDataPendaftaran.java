@@ -6257,7 +6257,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                 "\"noKunjungan\": null," +
                                                 "\"noKartu\": \""+NoKartu.getText()+"\"," +
                                                 "\"tglDaftar\": \""+TanggalKunjungan.getSelectedItem()+"\"," +
-                                                "\"kdPoli\": null," +
+                                                "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
                                                 "\"keluhan\": \""+Keluhan.getText()+"\"," +
                                                 "\"kdSadar\": \""+KdSadar.getText()+"\"," +
                                                 "\"sistole\": "+Sistole.getText()+"," +
@@ -6316,7 +6316,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                 "\"noKunjungan\": null," +
                                                 "\"noKartu\": \""+NoKartu.getText()+"\"," +
                                                 "\"tglDaftar\": \""+TanggalKunjungan.getSelectedItem()+"\"," +
-                                                "\"kdPoli\": null," +
+                                                "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
                                                 "\"keluhan\": \""+Keluhan.getText()+"\"," +
                                                 "\"kdSadar\": \""+KdSadar.getText()+"\"," +
                                                 "\"sistole\": "+Sistole.getText()+"," +

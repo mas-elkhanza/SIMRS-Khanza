@@ -421,7 +421,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         ChkAccor = new widget.CekBox();
         FormPhoto = new widget.PanelBiasa();
         FormPass3 = new widget.PanelBiasa();
-        BtnTelaah = new widget.Button();
+        btnAmbil = new widget.Button();
         BtnRefreshPhoto1 = new widget.Button();
         TabData = new javax.swing.JTabbedPane();
         Scroll5 = new widget.ScrollPane();
@@ -438,7 +438,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Psikolog");
+        MnPenilaianMedis.setText("Laporan Persetujuan/Penolakan Tindakan");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -1320,7 +1320,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
 
         PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
         PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
+        PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
@@ -1352,18 +1352,18 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         FormPass3.setName("FormPass3"); // NOI18N
         FormPass3.setPreferredSize(new java.awt.Dimension(115, 40));
 
-        BtnTelaah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
-        BtnTelaah.setMnemonic('U');
-        BtnTelaah.setText("Ambil");
-        BtnTelaah.setToolTipText("Alt+U");
-        BtnTelaah.setName("BtnTelaah"); // NOI18N
-        BtnTelaah.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnTelaah.addActionListener(new java.awt.event.ActionListener() {
+        btnAmbil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        btnAmbil.setMnemonic('U');
+        btnAmbil.setText("Ambil");
+        btnAmbil.setToolTipText("Alt+U");
+        btnAmbil.setName("btnAmbil"); // NOI18N
+        btnAmbil.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnAmbil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTelaahActionPerformed(evt);
+                btnAmbilActionPerformed(evt);
             }
         });
-        FormPass3.add(BtnTelaah);
+        FormPass3.add(btnAmbil);
 
         BtnRefreshPhoto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
         BtnRefreshPhoto1.setMnemonic('U');
@@ -2172,9 +2172,21 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
-    private void BtnTelaahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTelaahActionPerformed
-        
-    }//GEN-LAST:event_BtnTelaahActionPerformed
+    private void btnAmbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbObat.getSelectedRow()>-1){
+                Sequel.queryu("delete from antripersetujuan");
+                Sequel.queryu("insert into antripersetujuan values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                Sequel.queryu("delete from bukti_persetujuan_penolakan_tindakan_penerimainformasi where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from bukti_persetujuan_penolakan_tindakan_saksikeluarga where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+            }   
+        }
+    }//GEN-LAST:event_btnAmbilActionPerformed
 
     private void BtnRefreshPhoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRefreshPhoto1ActionPerformed
        
@@ -2220,7 +2232,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.Button BtnPrint;
     private widget.Button BtnRefreshPhoto1;
     private widget.Button BtnSimpan;
-    private widget.Button BtnTelaah;
     private widget.CekBox ChkAccor;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
@@ -2267,6 +2278,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private javax.swing.JTextArea TindakanKedokteran;
     private javax.swing.JTextArea Tujuan;
     private widget.TextBox UmurPenerima;
+    private widget.Button btnAmbil;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -2581,7 +2593,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(500,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(430,HEIGHT));
             TabData.setVisible(true);  
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){    

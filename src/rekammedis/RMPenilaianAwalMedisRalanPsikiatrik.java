@@ -64,7 +64,7 @@ public final class RMPenilaianAwalMedisRalanPsikiatrik extends javax.swing.JDial
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
             "Riwayat Penyakit Keluarga","Riwayat Napza","Riwayat Alergi","Penampilan","Pembicaraan","Psikomotor","Sikap","Mood","Fungsi Kognitif","Gangguan Persepsi","Proses Pikir",
             "Pengendalian Impuls","Tilikan","Reality Testing Ability","Keadaan Umum","GCS","Kesadaran","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu","SpO2","BB(Kg)",
-            "TB(cm)","Kepala","Gigi & Mulut","THT","Thoraks","Abdomen","Genital & Anus","Ekstremitas","Kulit","Ket.Pemeriksaan Fisik","Pemeriksaan Penunjang","Diagnosis/Asesmen",
+            "TB(cm)","Kepala","Gigi & Mulut","THT","Thoraks","Abdomen","Genital & Anus","Ekstremitas","Kulit","Keterangan Pemeriksaan Fisik","Pemeriksaan Penunjang","Diagnosis/Asesmen",
             "Tatalaksana","Konsul/Rujuk"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -85,13 +85,13 @@ public final class RMPenilaianAwalMedisRalanPsikiatrik extends javax.swing.JDial
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(155);
             }else if(i==7){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(117);
             }else if(i==8){
                 column.setPreferredWidth(80);
             }else if(i==9){
@@ -116,6 +116,56 @@ public final class RMPenilaianAwalMedisRalanPsikiatrik extends javax.swing.JDial
                 column.setPreferredWidth(150);
             }else if(i==19){
                 column.setPreferredWidth(150);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(150);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(150);
+            }else if(i==24){
+                column.setPreferredWidth(150);
+            }else if(i==25){
+                column.setPreferredWidth(150);
+            }else if(i==26){
+                column.setPreferredWidth(150);
+            }else if(i==27){
+                column.setPreferredWidth(90);
+            }else if(i==28){
+                column.setPreferredWidth(40);
+            }else if(i==29){
+                column.setPreferredWidth(80);
+            }else if(i==30){
+                column.setPreferredWidth(60);
+            }else if(i==31){
+                column.setPreferredWidth(75);
+            }else if(i==32){
+                column.setPreferredWidth(68);
+            }else if(i==33){
+                column.setPreferredWidth(40);
+            }else if(i==34){
+                column.setPreferredWidth(40);
+            }else if(i==35){
+                column.setPreferredWidth(40);
+            }else if(i==36){
+                column.setPreferredWidth(40);
+            }else if(i==37){
+                column.setPreferredWidth(82);
+            }else if(i==38){
+                column.setPreferredWidth(82);
+            }else if(i==39){
+                column.setPreferredWidth(82);
+            }else if(i==40){
+                column.setPreferredWidth(82);
+            }else if(i==41){
+                column.setPreferredWidth(82);
+            }else if(i==42){
+                column.setPreferredWidth(82);
+            }else if(i==43){
+                column.setPreferredWidth(82);
+            }else if(i==44){
+                column.setPreferredWidth(82);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
