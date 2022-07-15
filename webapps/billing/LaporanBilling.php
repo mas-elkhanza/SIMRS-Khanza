@@ -30,26 +30,26 @@
             echo "   
             <table width='".getOne("select notaralan from set_nota")."' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' cellspacing='0' cellpadding='0'>
             <tr class='isi12' padding='0'>
-				<td colspan='7' padding='0'>
-					   <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
-							<tr>
-							  <td  width='20%'>
-                                                                    <img width='45' height='45' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
-                                                                </td>
-                                                                <td>
-                                                                    <center>
-                                                                        <font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
-                                                                        <font color='000000' size='1'  face='Tahoma'>
-                                                                            ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
-                                                                            ".$setting["kontak"].", E-mail : ".$setting["email"]."
-                                                                             <br>BILLING
-                                                                        </font> 
-                                                                    </center>
-                                                                </td>
-                                                                <td  width='20%'><font color='000000' size='2'  face='Tahoma' align='right'>$carabayar</font></td>
-							</tr>
-					  </table>
-				</td>
+                <td colspan='7' padding='0'>
+                    <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
+                        <tr>
+                            <td  width='20%'>
+                                <img width='45' height='45' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+                            </td>
+                            <td>
+                                <center>
+                                    <font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+                                    <font color='000000' size='1'  face='Tahoma'>
+                                        ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
+                                        ".$setting["kontak"].", E-mail : ".$setting["email"]."
+                                         <br>BILLING
+                                    </font> 
+                                </center>
+                            </td>
+                            <td  width='20%'><font color='000000' size='2'  face='Tahoma' align='right'>$carabayar</font></td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
             ";  $z=1;
                 while($inapdrpasien = mysqli_fetch_array($hasil)) {
@@ -107,8 +107,7 @@
                     echo "<tr class='isi12' padding='0'>
                            <td padding='0' width='30%' valign='top'><font color='000000' size='1'  face='Tahoma'>Operasi / VK</td> 
                            <td padding='0' width='40%' colspan='6'>
-                           <table border='0' width='100%' padding='0' cellspacing='0' cellpadding='0'>
-                                 ";                      
+                           <table border='0' width='100%' padding='0' cellspacing='0' cellpadding='0'>";                      
                            while($inapdrpasien = mysqli_fetch_array($hasil3)) {
                                if(!empty($inapdrpasien[3])){
                                     echo "<tr class='isi12' padding='0'> 
@@ -163,21 +162,21 @@
                 $hasil6=bukaquery("select temp1,temp2,temp3,temp7,temp5 from temporary_bayar_ralan where temp9='$petugas' and temp8='Tambahan'  order by no asc");
                 while($inapdrpasien = mysqli_fetch_array($hasil6)) {
                     echo "<tr class='isi12' padding='0'>
-                       <td padding='0' width='30%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[0]</td> 
-                       <td padding='0' width='55%' colspan='4'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[1]</font></td>   
-                       <td padding='0' width='1%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[4]</font></td>     
-                       <td padding='0' width='14%' align='right'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[3]</font></td>              
-                      </tr>"; 			                    
+                            <td padding='0' width='30%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[0]</td> 
+                            <td padding='0' width='55%' colspan='4'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[1]</font></td>   
+                            <td padding='0' width='1%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[4]</font></td>     
+                            <td padding='0' width='14%' align='right'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[3]</font></td>              
+                          </tr>"; 			                    
                 } 
                 
                 $hasil7=bukaquery("select temp1,temp2,temp3,temp7,temp5 from temporary_bayar_ralan where temp9='$petugas' and temp8='-' and temp7<>'' group by temp2 order by no asc");
                 while($inapdrpasien = mysqli_fetch_array($hasil7)) {
                     echo "<tr class='isi12' padding='0'>
-                       <td padding='0' width='30%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[0]</td> 
-                       <td padding='0' width='55%' colspan='4'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[1]</font></td>   
-                       <td padding='0' width='1%'><font color='000000' size='1'  face='Tahoma'></font></td>     
-                       <td padding='0' width='14%' align='right'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[3]</font></td>              
-                      </tr>"; 			                    
+                            <td padding='0' width='30%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[0]</td> 
+                            <td padding='0' width='55%' colspan='4'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[1]</font></td>   
+                            <td padding='0' width='1%'><font color='000000' size='1'  face='Tahoma'></font></td>     
+                            <td padding='0' width='14%' align='right'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[3]</font></td>              
+                          </tr>"; 			                    
                 } 
                 
                 $hasil7=bukaquery("select temp1,temp2,temp3,temp7 from temporary_bayar_ralan where temp9='$petugas' and temp8='Tagihan' and temp7<>'' order by no asc");

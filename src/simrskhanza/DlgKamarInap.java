@@ -46,6 +46,7 @@ import inventory.DlgResepPulang;
 import inventory.DlgReturJual;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -59,6 +60,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -4467,7 +4469,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4490,7 +4492,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4517,7 +4519,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -4540,7 +4542,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2022" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -4596,6 +4598,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         TNoRwCari.setHighlighter(null);
         TNoRwCari.setName("TNoRwCari"); // NOI18N
         TNoRwCari.setPreferredSize(new java.awt.Dimension(130, 23));
+        TNoRwCari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TNoRwCariMouseClicked(evt);
+            }
+        });
         panelGlass9.add(TNoRwCari);
 
         TNoRMCari.setEditable(false);
@@ -8239,9 +8246,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 
                                 try {
                                     if(akses.gethapus_berkas_digital_perawatan()==true){
-                                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+rs2.getString("no_rawat2"));
+                                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+rs2.getString("no_rawat2"));
                                     }else{
-                                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+rs2.getString("no_rawat2"));
+                                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+rs2.getString("no_rawat2"));
                                     }   
                                 } catch (Exception ex) {
                                     System.out.println("Notifikasi : "+ex);
@@ -8275,9 +8282,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     
                     try {
                         if(akses.gethapus_berkas_digital_perawatan()==true){
-                            berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+norawat.getText());
+                            berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+norawat.getText());
                         }else{
-                            berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+norawat.getText());
+                            berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+norawat.getText());
                         }   
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
@@ -11427,6 +11434,16 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }
         } 
     }//GEN-LAST:event_MnPersetujuanPenolakanTindakanActionPerformed
+
+    private void TNoRwCariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TNoRwCariMouseClicked
+        Window[] wins = Window.getWindows();
+        for (Window win : wins) {
+            if (win instanceof JDialog) {
+                win.setLocationRelativeTo(internalFrame1);
+                win.toFront();
+            }
+        }
+    }//GEN-LAST:event_TNoRwCariMouseClicked
 
     /**
     * @param args the command line arguments

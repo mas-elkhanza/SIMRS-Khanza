@@ -895,7 +895,7 @@ public class frmUtama extends javax.swing.JFrame {
                         isTutup();
                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         try {
-                            inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page="+pilihpage+"&codernik="+coder_nik);                    
+                            inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&page="+pilihpage+"&codernik="+coder_nik);                    
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : "+ex);
                         }
@@ -1545,7 +1545,8 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoLaborat2 = new javax.swing.JMenuItem();
         jSeparator13 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir6 = new javax.swing.JMenuItem();
-        MnRekapHadir8 = new javax.swing.JMenuItem();
+        MnPenyerahanResep = new javax.swing.JMenuItem();
+        MnPersetujuanPenolakanTindakan = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         DlgLogin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -1562,8 +1563,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
-        internalFrame3.setWarnaAtas(new java.awt.Color(255, 206, 205));
-        internalFrame3.setWarnaBawah(new java.awt.Color(255, 244, 243));
+        internalFrame3.setWarnaAtas(new java.awt.Color(255, 206, 206));
+        internalFrame3.setWarnaBawah(new java.awt.Color(255, 244, 244));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
@@ -1671,7 +1672,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi2.setBackground(new java.awt.Color(255, 253, 253));
-        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 247, 225)));
+        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 250, 228)));
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
         panelisi2.setWarnaAtas(new java.awt.Color(255, 252, 252));
@@ -1742,7 +1743,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
         scrollPane2.setBackground(new java.awt.Color(255, 252, 252));
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(229, 247, 225)));
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 250, 228)));
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
@@ -1759,7 +1760,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/07/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/07/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6829,8 +6830,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 42));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 242, 247));
-        internalFrame1.setWarnaBawah(new java.awt.Color(255, 202, 207));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 250, 250));
+        internalFrame1.setWarnaBawah(new java.awt.Color(255, 210, 210));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -7110,8 +7111,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(255, 202, 212));
-        internalFrame4.setWarnaBawah(new java.awt.Color(255, 242, 252));
+        internalFrame4.setWarnaAtas(new java.awt.Color(255, 215, 215));
+        internalFrame4.setWarnaBawah(new java.awt.Color(255, 250, 250));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7930,19 +7931,33 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnRekapHadir6);
 
-        MnRekapHadir8.setBackground(new java.awt.Color(255, 255, 254));
-        MnRekapHadir8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRekapHadir8.setForeground(new java.awt.Color(50, 90, 40));
-        MnRekapHadir8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
-        MnRekapHadir8.setText("Penyerahan Resep Rawat Jalan");
-        MnRekapHadir8.setName("MnRekapHadir8"); // NOI18N
-        MnRekapHadir8.setPreferredSize(new java.awt.Dimension(210, 30));
-        MnRekapHadir8.addActionListener(new java.awt.event.ActionListener() {
+        MnPenyerahanResep.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenyerahanResep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenyerahanResep.setForeground(new java.awt.Color(50, 90, 40));
+        MnPenyerahanResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
+        MnPenyerahanResep.setText("Penyerahan Resep Rawat Jalan");
+        MnPenyerahanResep.setName("MnPenyerahanResep"); // NOI18N
+        MnPenyerahanResep.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnPenyerahanResep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnRekapHadir8ActionPerformed(evt);
+                MnPenyerahanResepActionPerformed(evt);
             }
         });
-        jMenu7.add(MnRekapHadir8);
+        jMenu7.add(MnPenyerahanResep);
+
+        MnPersetujuanPenolakanTindakan.setBackground(new java.awt.Color(255, 255, 254));
+        MnPersetujuanPenolakanTindakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPersetujuanPenolakanTindakan.setForeground(new java.awt.Color(50, 90, 40));
+        MnPersetujuanPenolakanTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
+        MnPersetujuanPenolakanTindakan.setText("Persetujuan/Penolakan Tindakan");
+        MnPersetujuanPenolakanTindakan.setName("MnPersetujuanPenolakanTindakan"); // NOI18N
+        MnPersetujuanPenolakanTindakan.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnPersetujuanPenolakanTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPersetujuanPenolakanTindakanActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnPersetujuanPenolakanTindakan);
 
         MenuBar.add(jMenu7);
 
@@ -8211,7 +8226,7 @@ private void edPwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edP
 private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
     isTutup();
-    DlgHome.setSize(PanelUtama.getWidth()-30, PanelUtama.getHeight()-30);
+    DlgHome.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
     DlgHome.setLocationRelativeTo(PanelUtama);
     DlgHome.setVisible(true);
     if(menuawal==0){
@@ -9400,7 +9415,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgPenggajian penggajian=new DlgPenggajian(this,false);
         try {
             if(akses.getpegawai_admin()==true){
-                penggajian.loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
+                penggajian.loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");
             }else if(akses.getpegawai_user()==true){
                 penggajian.loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=paijo&passwordte=mumet");
             }            
@@ -9411,18 +9426,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         penggajian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         penggajian.setLocationRelativeTo(PanelUtama);
         penggajian.setVisible(true);
-        
-        
-        /*try {
-            if(var.getpegawai_admin()==true){
-                Valid.panggilUrl("penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
-            }else if(var.getpegawai_user()==true){
-                Valid.panggilUrl("penggajian/login.php?act=login&usere=paijo&passwordte=mumet");                
-            }            
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }  */
-                
         
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
@@ -10609,7 +10612,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRetensi retensi=new DlgRetensi(this,false);
         try {
-            retensi.loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            retensi.loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -10617,13 +10620,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         retensi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         retensi.setLocationRelativeTo(PanelUtama);
         retensi.setVisible(true);        
-        
-        
-        /*try {
-            Valid.panggilUrl("medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                       
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }  */
         
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
@@ -11210,7 +11206,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruOtomatis&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&page=KlaimBaruOtomatis&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -11244,7 +11240,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&page=KlaimBaruManual&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -11282,7 +11278,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgMutasiBerkas mutasiberkas=new DlgMutasiBerkas(this,false);
         mutasiberkas.setJudul("::[ Mutasi Berkas Rekam Medis ]::","monitoringberkas/pages");
         try {
-            mutasiberkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            mutasiberkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -11699,9 +11695,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
         try {
             if(akses.gethapus_berkas_digital_perawatan()==true){
-                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");   
+                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");   
             }else{
-                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/loginnonhapus.php?act=login&usere=admin&passwordte=akusayangsamakamu");  
+                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/loginnonhapus.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");  
             }                  
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
@@ -12075,7 +12071,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual2&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&page=KlaimBaruManual2&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -12490,7 +12486,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatJabatan form=new DlgRiwayatJabatan(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatjabatan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatjabatan.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -12507,7 +12503,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatPendidikan form=new DlgRiwayatPendidikan(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpendidikan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpendidikan.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -12524,7 +12520,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatNaikGaji form=new DlgRiwayatNaikGaji(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatgaji.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatgaji.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -12541,7 +12537,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgKegiatanIlmiah form=new DlgKegiatanIlmiah(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatseminar.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatseminar.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -12558,7 +12554,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatPenghargaan form=new DlgRiwayatPenghargaan(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenghargaan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenghargaan.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -12575,7 +12571,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatPenelitian form=new DlgRiwayatPenelitian(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenelitian.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenelitian.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -14267,11 +14263,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnRekapHadir7ActionPerformed
 
-    private void MnRekapHadir8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHadir8ActionPerformed
+    private void MnPenyerahanResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenyerahanResepActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        Valid.panggilUrl("penyerahanresep/login.php");
+        Valid.panggilUrl("penyerahanresep/login.php?usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_MnRekapHadir8ActionPerformed
+    }//GEN-LAST:event_MnPenyerahanResepActionPerformed
 
     private void MnRekapHadir9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHadir9ActionPerformed
         try {
@@ -14292,6 +14288,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             System.out.print("Notifikasi : "+e);
         } 
     }//GEN-LAST:event_MnRekapHadir10ActionPerformed
+
+    private void MnPersetujuanPenolakanTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPersetujuanPenolakanTindakanActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("persetujuantindakan/login.php?usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnPersetujuanPenolakanTindakanActionPerformed
 
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
@@ -14454,7 +14456,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PerpustakaanPenelitian form=new PerpustakaanPenelitian(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginperpustakaanpenelitian.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginperpustakaanpenelitian.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -14471,7 +14473,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PerpustakaanEbook form=new PerpustakaanEbook(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"ebook/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"ebook/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -14488,7 +14490,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PerpustakaanCariEbook form=new PerpustakaanCariEbook(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"ebook/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"ebook/login2.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -18852,6 +18854,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnKoleksiPenelitian;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnPengajuanCutiPegawai;
+    private javax.swing.JMenuItem MnPenyerahanResep;
+    private javax.swing.JMenuItem MnPersetujuanPenolakanTindakan;
     private javax.swing.JMenuItem MnRekapBulanan;
     private javax.swing.JMenuItem MnRekapBulanan1;
     private javax.swing.JMenuItem MnRekapBulanan2;
@@ -18865,7 +18869,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnRekapHadir5;
     private javax.swing.JMenuItem MnRekapHadir6;
     private javax.swing.JMenuItem MnRekapHadir7;
-    private javax.swing.JMenuItem MnRekapHadir8;
     private javax.swing.JMenuItem MnRekapHadir9;
     private javax.swing.JMenuItem MnSudahPulang;
     private javax.swing.JMenuItem MnSudahPulang1;

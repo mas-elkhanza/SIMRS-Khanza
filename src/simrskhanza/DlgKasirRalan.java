@@ -4806,7 +4806,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2022" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -4853,7 +4853,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2022" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -5125,7 +5125,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5138,7 +5138,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass8.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5241,6 +5241,11 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         TNoRwCari.setHighlighter(null);
         TNoRwCari.setName("TNoRwCari"); // NOI18N
         TNoRwCari.setPreferredSize(new java.awt.Dimension(140, 23));
+        TNoRwCari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TNoRwCariMouseClicked(evt);
+            }
+        });
         panelGlass9.add(TNoRwCari);
 
         jLabel5.setText("No. Reg. :");
@@ -8296,9 +8301,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
             try {
                 if(akses.gethapus_berkas_digital_perawatan()==true){
-                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());
+                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+TNoRw.getText());
                 }else{
-                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());
+                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+TNoRw.getText());
                 }   
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
@@ -8323,9 +8328,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 
                 try {
                     if(akses.gethapus_berkas_digital_perawatan()==true){
-                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());
+                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());
                     }else{
-                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());
+                        berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());
                     }   
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
@@ -10707,6 +10712,16 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
         }
     }//GEN-LAST:event_MnPenilaianAwalMedisRalanPsikiatriActionPerformed
+
+    private void TNoRwCariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TNoRwCariMouseClicked
+        Window[] wins = Window.getWindows();
+        for (Window win : wins) {
+            if (win instanceof JDialog) {
+                win.setLocationRelativeTo(internalFrame1);
+                win.toFront();
+            }
+        }
+    }//GEN-LAST:event_TNoRwCariMouseClicked
 
     /**
     * @param args the command line arguments

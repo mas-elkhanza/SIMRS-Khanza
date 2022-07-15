@@ -105,7 +105,7 @@
 
 		while ($data = mysqli_fetch_array ($hasil)){
 			echo "<tr class='isi7' >
-                                <td align='left'><font size='5' color='#BB00BB' face='Tahoma'><a href='antrian.php?kd_poli=".str_replace(" ","_",$data['kd_poli'])."&kd_dokter=".str_replace(" ","_",$data['kd_dokter'])."'>".$data['nm_dokter']."</a></font></td>
+                                <td align='left'><font size='5' color='#BB00BB' face='Tahoma'><a href='antrian.php?iyem=".encrypt_decrypt("{\"kd_poli\":\"".$data['kd_poli']."\",\"kd_dokter\":\"".$data['kd_dokter']."\"}","e")."'>".$data['nm_dokter']."</a></font></td>
                                 <td align='center'><font size='5' color='gray' face='Tahoma'>".$data['nm_poli']."</font></td>
                                 <td align='center'><font color='#DDDD00' size='5'  face='Tahoma'>".$data['jam_mulai']."</font></td>
                                 <td align='center'><font color='gren' size='5'  face='Tahoma'>".$data['jam_selesai']."</font></td>

@@ -5549,9 +5549,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
             try {
                 if(akses.gethapus_berkas_digital_perawatan()==true){
-                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 }else{
-                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2nonhapus.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 }   
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);

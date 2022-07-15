@@ -2606,6 +2606,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }
 
     private void panggilPhoto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 }
