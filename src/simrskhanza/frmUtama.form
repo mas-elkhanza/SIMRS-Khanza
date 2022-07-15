@@ -9204,7 +9204,7 @@
           <Color blue="fa" green="fa" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d2" green="d2" red="ff" type="rgb"/>
+          <Color blue="cd" green="cd" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -9657,7 +9657,7 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="d7" red="ff" type="rgb"/>
+          <Color blue="d2" green="d2" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fa" green="fa" red="ff" type="rgb"/>
