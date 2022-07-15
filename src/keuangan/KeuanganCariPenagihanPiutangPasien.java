@@ -1029,7 +1029,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Sequel.meghapus("bukti_penagihan_piutang", "no_tagihan",tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
                 Sequel.menyimpan2("bukti_penagihan_piutang","?,''",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString()});
-                Valid.panggilUrl("penagihanpiutang/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&notagihan="+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                Valid.panggilUrl("penagihanpiutang/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&notagihan="+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }

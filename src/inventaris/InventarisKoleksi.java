@@ -1337,7 +1337,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
         if(tbJnsPerawatan.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             System.out.println(""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString().replaceAll(" ","_"));
-            Valid.panggilUrl("inventaris/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_inventaris="+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString().replaceAll(" ","_"));
+            Valid.panggilUrl("inventaris/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_inventaris="+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString().replaceAll(" ","_"));
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_btnAmbilPhotoActionPerformed

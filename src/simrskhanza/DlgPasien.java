@@ -8444,7 +8444,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Sequel.menyimpan2("personal_pasien","?,'',''",1,new String[]{NoRekamMedisDipilih.getText()});
-            Valid.panggilUrl("photopasien/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&norm="+NoRekamMedisDipilih.getText());
+            Valid.panggilUrl("photopasien/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&norm="+NoRekamMedisDipilih.getText());
             this.setCursor(Cursor.getDefaultCursor()); 
         }   
         this.setCursor(Cursor.getDefaultCursor());
