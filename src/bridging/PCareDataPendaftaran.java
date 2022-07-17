@@ -87,6 +87,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PCareCekReferensiSubspesialis subspesialis=new PCareCekReferensiSubspesialis(null,false);
     private PCareCekReferensiProvider provider=new PCareCekReferensiProvider(null,false);
     private PCareCekReferensiKhusus khusus=new PCareCekReferensiKhusus(null,false);
+    private PCareCekReferensiTACC tacc=new PCareCekReferensiTACC(null,false);
     private ApiPcare api=new ApiPcare();
     private String URL="",bangsal="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi,kamar="",divreg="",kacab="",userpcare="",kdtacc="",namatacc="",alasantacc="",utc="";
     private HttpHeaders headers,headers2;
@@ -627,6 +628,43 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
                     khusus.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        tacc.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(tacc.getTable().getSelectedRow()!= -1){   
+                    KdTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),1).toString());
+                    NmTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),2).toString());
+                    AlasanTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),3).toString());
+                    KdKhusus.requestFocus();                      
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        tacc.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    tacc.dispose();
                 }
             }
             @Override
@@ -1187,7 +1225,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022 16:55:40" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022 17:33:52" }));
         tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -1349,7 +1387,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel22.setBounds(0, 102, 90, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1665,7 +1703,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel26.setBounds(30, 270, 97, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1770,7 +1808,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnStatusPulang.setBounds(354, 360, 28, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1977,7 +2015,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel32.setBounds(90, 410, 95, 23);
 
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -2278,11 +2316,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         KdTACC.setBackground(new java.awt.Color(245, 250, 240));
         KdTACC.setHighlighter(null);
         KdTACC.setName("KdTACC"); // NOI18N
-        KdTACC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KdTACCKdPoliTujuanActionPerformed(evt);
-            }
-        });
         FormInput.add(KdTACC);
         KdTACC.setBounds(130, 530, 50, 23);
 
@@ -2290,11 +2323,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         AlasanTACC.setBackground(new java.awt.Color(245, 250, 240));
         AlasanTACC.setHighlighter(null);
         AlasanTACC.setName("AlasanTACC"); // NOI18N
-        AlasanTACC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlasanTACCKdPoliTujuanActionPerformed(evt);
-            }
-        });
         FormInput.add(AlasanTACC);
         AlasanTACC.setBounds(354, 530, 344, 23);
 
@@ -2388,7 +2416,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2402,7 +2430,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2492,7 +2520,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel42);
 
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2506,7 +2534,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel43);
 
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-07-2022" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-07-2022" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -5045,16 +5073,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         Valid.pindah(evt,Heartrate,chkKunjungan);
     }//GEN-LAST:event_TSuhuKeyPressed
 
-    private void KdTACCKdPoliTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KdTACCKdPoliTujuanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdTACCKdPoliTujuanActionPerformed
-
-    private void AlasanTACCKdPoliTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlasanTACCKdPoliTujuanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AlasanTACCKdPoliTujuanActionPerformed
-
     private void BtnTACCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTACCActionPerformed
-        // TODO add your handling code here:
+        tacc.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        tacc.setLocationRelativeTo(internalFrame1);
+        tacc.setVisible(true);
     }//GEN-LAST:event_BtnTACCActionPerformed
 
     private void BtnTACCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTACCKeyPressed
