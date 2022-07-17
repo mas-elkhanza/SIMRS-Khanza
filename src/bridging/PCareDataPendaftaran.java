@@ -6335,8 +6335,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                 "\"kdDiag3\": "+diagnosa3+"," +
                                                 "\"kdPoliRujukInternal\": null," +
                                                 "\"rujukLanjut\": {" +
+                                                    "\"kdppk\":\""+KdPPKRujukan.getText()+"\"," +
                                                     "\"tglEstRujuk\":\""+TanggalEstRujuk.getSelectedItem()+"\"," +
-                                                    "\"kdppk\": \""+KdPPKRujukan.getText()+"\"," +
                                                     "\"subSpesialis\": {" +
                                                         "\"kdSubSpesialis1\": \""+KdSubSpesialis.getText()+"\"," +
                                                         "\"kdSarana\": "+kodesarana +
