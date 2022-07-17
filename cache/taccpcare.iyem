@@ -1,7 +1,6 @@
 {
     "referensiTACC":[
         {"kdTacc":"-1","nmTacc":"Tanpa TACC","alasanTacc":""},
-        {"kdTacc":"0","nmTacc":"Tidak ada TACC","alasanTacc":""},
         {"kdTacc":"1","nmTacc":"Time","alasanTacc":"< 3 Hari"},
         {"kdTacc":"1","nmTacc":"Time","alasanTacc":">= 3 - 7 Hari"},
         {"kdTacc":"1","nmTacc":"Time","alasanTacc":">= 7 Hari"},

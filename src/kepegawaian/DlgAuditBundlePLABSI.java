@@ -1279,10 +1279,10 @@ if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
     }
     
     public void isCek(){
-        /*BtnSimpan.setEnabled(akses.getaudit_bundle_plabsi());
+        BtnSimpan.setEnabled(akses.getaudit_bundle_plabsi());
         BtnHapus.setEnabled(akses.getaudit_bundle_plabsi());
         BtnEdit.setEnabled(akses.getaudit_bundle_plabsi());
-        BtnPrint.setEnabled(akses.getaudit_bundle_plabsi());    */     
+        BtnPrint.setEnabled(akses.getaudit_bundle_plabsi());       
     }
 
     private void jam(){

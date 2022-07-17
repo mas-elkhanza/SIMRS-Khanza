@@ -597,6 +597,7 @@ import kepegawaian.DlgAuditBundleIADP;
 import kepegawaian.DlgAuditBundleIDO;
 import kepegawaian.DlgAuditBundleISK;
 import kepegawaian.DlgAuditBundlePLABSI;
+import kepegawaian.DlgAuditBundleVAP;
 import kepegawaian.DlgAuditCuciTanganMedis;
 import kepegawaian.DlgAuditFasilitasAPD;
 import kepegawaian.DlgAuditFasilitasKebersihanTangan;
@@ -18776,6 +18777,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAuditBundleVAPActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAuditBundleVAP aplikasi=new DlgAuditBundleVAP(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19423,7 +19436,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanTHT,btnAuditCuciTanganMedis,btnPenilaianPsikologi,btnRuangAuditKepatuhan,btnAuditPembuanganLimbah,
             btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah,
             btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan,btnAuditFasilitasAPD,btnAuditPembuanganLimbahCairInfeksius,
-            btnAuditSterilisasiAlat,btnPersetujuanPenolakanTindakan,btnPenilaianAwalMedisRalanPsikiatri,btnAuditBundleISK,btnAuditBundlePLABSI;
+            btnAuditSterilisasiAlat,btnPersetujuanPenolakanTindakan,btnPenilaianAwalMedisRalanPsikiatri,btnAuditBundleISK,btnAuditBundlePLABSI,
+            btnAuditBundleVAP;
     
     public void isWall(){
         try{            
@@ -19959,6 +19973,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getaudit_bundle_plabsi()==true){  
                 Panelmenu.add(btnAuditBundlePLABSI);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getaudit_bundle_vap()==true){  
+                Panelmenu.add(btnAuditBundleVAP);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -24174,6 +24193,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getaudit_bundle_plabsi()==true){  
             Panelmenu.add(btnAuditBundlePLABSI);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getaudit_bundle_vap()==true){  
+            Panelmenu.add(btnAuditBundleVAP);                 
             jmlmenu++;
         }
 
@@ -28539,6 +28563,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getaudit_bundle_plabsi()==true){  
             if(btnAuditBundlePLABSI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAuditBundlePLABSI);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaudit_bundle_vap()==true){  
+            if(btnAuditBundleVAP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAuditBundleVAP);                 
                 jmlmenu++;
             }                
         }
@@ -36857,6 +36888,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditBundlePLABSI.setName("btnAuditBundlePLABSI");
         btnAuditBundlePLABSI.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditBundlePLABSI.addActionListener(this::btnAuditBundlePLABSIActionPerformed);
+        
+        btnAuditBundleVAP = new widget.ButtonBig();
+        btnAuditBundleVAP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5856684_disease_lung_outbreak_pneumonia_virus_icon.png"))); 
+        btnAuditBundleVAP.setText("Audit Bundle VAP");
+        btnAuditBundleVAP.setIconTextGap(0);
+        btnAuditBundleVAP.setName("btnAuditBundleVAP");
+        btnAuditBundleVAP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAuditBundleVAP.addActionListener(this::btnAuditBundleVAPActionPerformed);
     }
     
 }
