@@ -85,7 +85,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PCareCekReferensiPenyakit penyakit=new PCareCekReferensiPenyakit(null,false);
     private PCareCekReferensiSarana sarana=new PCareCekReferensiSarana(null,false);
     private PCareCekReferensiSubspesialis subspesialis=new PCareCekReferensiSubspesialis(null,false);
-    private PCareCekReferensiProvider provider=new PCareCekReferensiProvider(null,false);
+    private PCareCekFaskesSubspesialis provider=new PCareCekFaskesSubspesialis(null,false);
     private PCareCekReferensiKhusus khusus=new PCareCekReferensiKhusus(null,false);
     private PCareCekReferensiTACC tacc=new PCareCekReferensiTACC(null,false);
     private ApiPcare api=new ApiPcare();
@@ -642,9 +642,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(tacc.getTable().getSelectedRow()!= -1){   
-                    KdTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),1).toString());
-                    NmTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),2).toString());
-                    AlasanTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),3).toString());
+                    KdTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),0).toString());
+                    NmTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),1).toString());
+                    AlasanTACC.setText(tacc.getTable().getValueAt(tacc.getTable().getSelectedRow(),2).toString());
                     KdKhusus.requestFocus();                      
                 }                  
             }
@@ -3584,6 +3584,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalEstRujukKeyPressed
 
     private void BtnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPPKRujukanActionPerformed
+        if(chkSubspesialis.isSelected()==true){
+            provider.setCari(KdSubSpesialis.getText(),NmSubSpesialis.getText(),KdSarana.getText(),NmSarana.getText(),TanggalEstRujuk.getDate());
+        }else if(chkKhusus.isSelected()==true){
+            provider.setCari(KdSubKhusus.getText(),NmSubKhusus.getText(),"","",TanggalEstRujuk.getDate());
+        }
+        
         provider.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         provider.setLocationRelativeTo(internalFrame1);
         provider.setVisible(true);
@@ -6203,15 +6209,18 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 }else if(NmSadar.getText().equals("")){
                     Valid.textKosong(BtnKesadaran,"Kesadaran");
                 }else{
+                    diagnosa2="null";
+                    if(!KdDiagnosa2.getText().equals("")){
+                        diagnosa2="\""+KdDiagnosa2.getText()+"\"";
+                    }
+                    diagnosa3="null";
+                    if(!KdDiagnosa3.getText().equals("")){
+                        diagnosa3="\""+KdDiagnosa3.getText()+"\"";
+                    }
+                    kdtacc="-1";
+                    namatacc="null";
+                    alasantacc="null";
                     if(ChkRujukLanjut.isSelected()==false){
-                        diagnosa2="null";
-                        if(!KdDiagnosa2.getText().equals("")){
-                            diagnosa2="\""+KdDiagnosa2.getText()+"\"";
-                        }
-                        diagnosa3="null";
-                        if(!KdDiagnosa3.getText().equals("")){
-                            diagnosa3="\""+KdDiagnosa3.getText()+"\"";
-                        }
                         requestJson ="{" +
                                         "\"noKunjungan\": null," +
                                         "\"noKartu\": \""+NoKartu.getText()+"\"," +
@@ -6262,13 +6271,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             }
                         }
                     }else if(ChkRujukLanjut.isSelected()==true){
-                        kdtacc="0";
-                        namatacc="null";
-                        alasantacc="null";
                         if(!KdTACC.getText().equals("")){
-                            kdtacc=KdTACC.getText();
-                            namatacc=NmTACC.getText();
-                            alasantacc="\""+AlasanTACC.getText()+"\"";
+                            if(!KdTACC.getText().equals("-1")){
+                                kdtacc=KdTACC.getText();
+                                namatacc=NmTACC.getText();
+                                alasantacc="\""+AlasanTACC.getText()+"\"";
+                            }
                         }
                         
                         if(ChkInternal.isSelected()==true){

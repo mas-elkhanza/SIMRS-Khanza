@@ -29,6 +29,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -571,11 +572,12 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
         }
     } 
     
-    public void setCari(String kodespesialis,String namaspesialis,String kodesarana, String namasarana){
+    public void setCari(String kodespesialis,String namaspesialis,String kodesarana, String namasarana,Date tanggal){
         KdSpesialis.setText(kodespesialis);
         NmSpesialis.setText(namaspesialis);
         KdSarana.setText(kodesarana);
         NmSarana.setText(namasarana);
+        Tanggal.setDate(tanggal);
     }
 
     public JTable getTable(){
