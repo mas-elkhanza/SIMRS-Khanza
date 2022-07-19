@@ -3178,7 +3178,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "\"kdDiag3\": "+diagnosa3+"," +
                                         "\"kdPoliRujukInternal\":null," +
                                         "\"rujukLanjut\": null," +
-                                        "\"kdTacc\": 0," +
+                                        "\"kdTacc\": -1," +
                                         "\"alasanTacc\": null" +
                                       "}";
                         System.out.println(requestJson);
@@ -6254,7 +6254,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "\"kdDiag3\": "+diagnosa3+"," +
                                         "\"kdPoliRujukInternal\":null," +
                                         "\"rujukLanjut\": null," +
-                                        "\"kdTacc\": 0," +
+                                        "\"kdTacc\": -1," +
                                         "\"alasanTacc\": null" +
                                       "}";
                         System.out.println(requestJson);
@@ -6266,7 +6266,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         System.out.println("code : "+nameNode.path("code").asText());
                         System.out.println("message : "+nameNode.path("message").asText());
                         if(nameNode.path("code").asText().equals("201")){
-                            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc).replaceAll("[","").replaceAll("]","")).path("message");
+                            for(JsonNode list:mapper.readTree(api.Decrypt(root.path("response").asText(),utc))){
+                                response=list.path("message");
+                            }
                             if(Sequel.menyimpantf2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",30,new String[]{
                                 TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                                 NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
@@ -6328,7 +6330,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 System.out.println("code : "+nameNode.path("code").asText());
                                 System.out.println("message : "+nameNode.path("message").asText());
                                 if(nameNode.path("code").asText().equals("201")){
-                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc).replaceAll("[","").replaceAll("]","")).path("message");
+                                    for(JsonNode list:mapper.readTree(api.Decrypt(root.path("response").asText(),utc))){
+                                        response=list.path("message");
+                                    }
                                     if(Sequel.menyimpantf2("pcare_rujuk_internal","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",35,new String[]{
                                         TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                                         NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
@@ -6395,7 +6399,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 System.out.println("code : "+nameNode.path("code").asText());
                                 System.out.println("message : "+nameNode.path("message").asText());
                                 if(nameNode.path("code").asText().equals("201")){
-                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc).replaceAll("[","").replaceAll("]","")).path("message");
+                                    for(JsonNode list:mapper.readTree(api.Decrypt(root.path("response").asText(),utc))){
+                                        response=list.path("message");
+                                    }
                                     if(Sequel.menyimpantf2("pcare_rujuk_subspesialis","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",40,new String[]{
                                         TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(), 
                                         NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
@@ -6495,7 +6501,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("201")){
-                        response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc).replaceAll("[","").replaceAll("]","")).path("message");
+                        for(JsonNode list:mapper.readTree(api.Decrypt(root.path("response").asText(),utc))){
+                            response=list.path("message");
+                        }
                         Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",30,new String[]{
                             TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                             NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
@@ -6994,7 +7002,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                             PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
                                                             PesanKirim.append("message : "+nameNode.path("message").asText()+"\n");
                                                             if(nameNode.path("code").asText().equals("201")){
-                                                                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc).replaceAll("[","").replaceAll("]","")).path("message");
+                                                                for(JsonNode list:mapper.readTree(api.Decrypt(root.path("response").asText(),utc))){
+                                                                    response=list.path("message");
+                                                                }
                                                                 Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",30,new String[]{
                                                                     TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                                                                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),

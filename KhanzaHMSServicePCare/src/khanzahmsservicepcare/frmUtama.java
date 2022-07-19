@@ -551,7 +551,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                                             TeksArea.append("message : "+nameNode.path("message").asText()+"\n");
                                                             if(nameNode.path("code").asText().equals("201")){
-                                                                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc).replaceAll("[","").replaceAll("]","")).path("message");
+                                                                for(JsonNode list:mapper.readTree(api.Decrypt(root.path("response").asText(),utc))){
+                                                                    response=list.path("message");
+                                                                }
                                                                 Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",30,new String[]{
                                                                     TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                                                                     NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
@@ -683,7 +685,9 @@ public class frmUtama extends javax.swing.JFrame {
                                 TeksArea.append("code : "+nameNode.path("code").asText()+"\n");
                                 TeksArea.append("message : "+nameNode.path("message").asText()+"\n");
                                 if(nameNode.path("code").asText().equals("201")){
-                                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc).replaceAll("[","").replaceAll("]","")).path("message");
+                                    for(JsonNode list:mapper.readTree(api.Decrypt(root.path("response").asText(),utc))){
+                                        response=list.path("message");
+                                    }
                                     Sequel.mengedit("pcare_kunjungan_umum","no_rawat=?","noKunjungan=?,status='Terkirim'", 2,new String[]{
                                         response.asText(),rs.getString("no_rawat")
                                     });
