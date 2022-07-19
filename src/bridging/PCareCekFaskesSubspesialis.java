@@ -582,5 +582,25 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbKamar;
-    }    
+    }   
+    
+    public String KodeSpesialis(){
+        return KdSpesialis.getText();
+    }
+    
+    public String NamaSpesialis(){
+        return NmSpesialis.getText();
+    }
+    
+    public String KodeSarana(){
+        return KdSarana.getText();
+    }
+    
+    public String NamaSarana(){
+        return NmSarana.getText();
+    }
+    
+    public Date TanggalRujuk(){
+        return Tanggal.getDate();
+    }
 }
