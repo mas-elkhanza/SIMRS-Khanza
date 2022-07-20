@@ -307,7 +307,7 @@ public final class DlgLhtBankPapua extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptHtHBankJateng.jasper","report","::[ Data Pembayaran Bank Jateng ]::",
+            Valid.MyReportqry("rptHtHBankPapua.jasper","report","::[ Data Pembayaran Bank Papua ]::",
                "select * from tagihan_bpd_papua where tagihan_bpd_papua.tgl_closing between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
                (TCari.getText().equals("")?"":"and (tagihan_bpd_papua.no_rkm_medis like '%"+TCari.getText().trim()+"%' or tagihan_bpd_papua.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                "tagihan_bpd_papua.no_nota like '%"+TCari.getText().trim()+"%' or tagihan_bpd_papua.referensi like '%"+TCari.getText().trim()+"%' or tagihan_bpd_papua.no_rawat like '%"+TCari.getText().trim()+"%' or "+
