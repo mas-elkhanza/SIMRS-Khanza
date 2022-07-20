@@ -5694,7 +5694,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps.setString(8,"%"+TCari.getText().trim()+"%");
                 ps.setString(9,"%"+TCari.getText().trim()+"%");
                 ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
