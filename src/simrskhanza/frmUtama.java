@@ -13,6 +13,7 @@
 package simrskhanza;
 
 import bridging.AkunRekeningBankJateng;
+import bridging.AkunRekeningBankPapua;
 import rekammedis.RMRiwayatPerawatan;
 import setting.DlgPenelusuranLogin;
 import inventory.DlgObatPenyakit;
@@ -670,6 +671,7 @@ import kepegawaian.DlgAuditPenangananDarah;
 import kepegawaian.DlgAuditPenempatanPasien;
 import kepegawaian.DlgAuditPengelolaanLinenKotor;
 import kepegawaian.DlgAuditSterilisasiAlat;
+import keuangan.DlgLhtBankPapua;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -1761,7 +1763,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/07/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/07/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -18789,6 +18791,28 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAkunRekeningHtHBankPapuaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        AkunRekeningBankPapua form=new AkunRekeningBankPapua(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPembayaranBankPapuaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgLhtBankPapua form=new DlgLhtBankPapua(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19437,7 +19461,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAuditPembuanganBendaTajam,btnAuditPenangananDarah,btnAuditPengelolaanLinenKotor,btnAuditPenempatanPasien,btnAuditKamarJenazah,
             btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan,btnAuditFasilitasAPD,btnAuditPembuanganLimbahCairInfeksius,
             btnAuditSterilisasiAlat,btnPersetujuanPenolakanTindakan,btnPenilaianAwalMedisRalanPsikiatri,btnAuditBundleISK,btnAuditBundlePLABSI,
-            btnAuditBundleVAP;
+            btnAuditBundleVAP,btnAkunRekeningHtHBankPapua,btnPembayaranBankPapua;
     
     public void isWall(){
         try{            
@@ -21532,6 +21556,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                jmlmenu++;
             }
             
+            if(akses.getpembayaran_bank_papua()==true){
+               Panelmenu.add(btnPembayaranBankPapua); 
+               jmlmenu++;
+            }
+            
             if(akses.getringkasan_hutang_vendor_farmasi()==true){
                Panelmenu.add(btnRingkasanHutangVendorFarmasi); 
                jmlmenu++;
@@ -22211,6 +22240,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getintegrasi_briapi()==true){
                 Panelmenu.add(btnIntegrasiBRIApi);
+                jmlmenu++;
+            }
+            
+            if(akses.getakun_host_to_host_bank_papua()==true){
+                Panelmenu.add(btnAkunRekeningHtHBankPapua);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -25740,6 +25774,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
            jmlmenu++;
         }
         
+        if(akses.getpembayaran_bank_papua()==true){
+           Panelmenu.add(btnPembayaranBankPapua); 
+           jmlmenu++;
+        }
+        
         if(akses.getringkasan_hutang_vendor_farmasi()==true){
            Panelmenu.add(btnRingkasanHutangVendorFarmasi); 
            jmlmenu++;
@@ -26418,6 +26457,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getintegrasi_briapi()==true){
             Panelmenu.add(btnIntegrasiBRIApi);
+            jmlmenu++;
+        }
+        
+        if(akses.getakun_host_to_host_bank_papua()==true){
+            Panelmenu.add(btnAkunRekeningHtHBankPapua);
             jmlmenu++;
         }
 
@@ -30729,6 +30773,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpembayaran_bank_papua()==true){
+            if(btnPembayaranBankPapua.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranBankPapua); 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getringkasan_hutang_vendor_farmasi()==true){
             if(btnRingkasanHutangVendorFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRingkasanHutangVendorFarmasi); 
@@ -31677,6 +31728,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getintegrasi_briapi()==true){
             if(btnIntegrasiBRIApi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnIntegrasiBRIApi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getakun_host_to_host_bank_papua()==true){
+            if(btnAkunRekeningHtHBankPapua.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAkunRekeningHtHBankPapua);
                 jmlmenu++;
             }                
         }
@@ -36896,6 +36954,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAuditBundleVAP.setName("btnAuditBundleVAP");
         btnAuditBundleVAP.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAuditBundleVAP.addActionListener(this::btnAuditBundleVAPActionPerformed);
+        
+        btnAkunRekeningHtHBankPapua = new widget.ButtonBig();
+        btnAkunRekeningHtHBankPapua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bankpapua.jpg")));
+        btnAkunRekeningHtHBankPapua.setText("Host To Host Bank Papua");
+        btnAkunRekeningHtHBankPapua.setIconTextGap(0);
+        btnAkunRekeningHtHBankPapua.setName("btnAkunRekeningHtHBankPapua"); 
+        btnAkunRekeningHtHBankPapua.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAkunRekeningHtHBankPapua.addActionListener(this::btnAkunRekeningHtHBankPapuaActionPerformed);
+        
+        btnPembayaranBankPapua = new widget.ButtonBig();
+        btnPembayaranBankPapua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_wallet_3440917.png")));
+        btnPembayaranBankPapua.setText("Pembayaran Bank Papua");
+        btnPembayaranBankPapua.setIconTextGap(0);
+        btnPembayaranBankPapua.setName("btnPembayaranBankPapua"); 
+        btnPembayaranBankPapua.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranBankPapua.addActionListener(this::btnPembayaranBankPapuaActionPerformed);
     }
     
 }

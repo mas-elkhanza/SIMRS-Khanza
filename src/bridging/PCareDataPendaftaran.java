@@ -842,6 +842,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ppFilterGagal = new javax.swing.JMenuItem();
         ppSinkronGagal = new javax.swing.JMenuItem();
         ppJadikanKunjungan = new javax.swing.JMenuItem();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
+        ppRujukanPCare = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         TabRawat = new javax.swing.JTabbedPane();
         internalFrame2 = new widget.InternalFrame();
@@ -1357,7 +1359,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022 21:35:14" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022 20:44:27" }));
         tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -1428,6 +1430,24 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
         jPopupMenu2.add(ppJadikanKunjungan);
+
+        jPopupMenu3.setName("jPopupMenu3"); // NOI18N
+
+        ppRujukanPCare.setBackground(new java.awt.Color(255, 255, 254));
+        ppRujukanPCare.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRujukanPCare.setForeground(new java.awt.Color(50, 50, 50));
+        ppRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppRujukanPCare.setText("Cetak Rujukan Spesialis PCare");
+        ppRujukanPCare.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRujukanPCare.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRujukanPCare.setName("ppRujukanPCare"); // NOI18N
+        ppRujukanPCare.setPreferredSize(new java.awt.Dimension(210, 26));
+        ppRujukanPCare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRujukanPCareBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu3.add(ppRujukanPCare);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1519,7 +1539,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel22.setBounds(0, 102, 90, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1835,7 +1855,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel26.setBounds(30, 270, 97, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1940,7 +1960,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnStatusPulang.setBounds(354, 360, 28, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -2142,7 +2162,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel32.setBounds(90, 410, 95, 23);
 
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -2508,7 +2528,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2522,7 +2542,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2612,7 +2632,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel42);
 
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2626,7 +2646,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel43);
 
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -2684,12 +2704,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        Scroll4.setComponentPopupMenu(jPopupMenu1);
+        Scroll4.setComponentPopupMenu(jPopupMenu3);
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
         tbSpesialis.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbSpesialis.setComponentPopupMenu(jPopupMenu1);
+        tbSpesialis.setComponentPopupMenu(jPopupMenu3);
         tbSpesialis.setName("tbSpesialis"); // NOI18N
         tbSpesialis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2716,7 +2736,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass11.add(jLabel45);
 
         DTPCari5.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        DTPCari5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         DTPCari5.setDisplayFormat("dd-MM-yyyy");
         DTPCari5.setName("DTPCari5"); // NOI18N
         DTPCari5.setOpaque(false);
@@ -2730,7 +2750,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass11.add(jLabel46);
 
         DTPCari6.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2022" }));
+        DTPCari6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2022" }));
         DTPCari6.setDisplayFormat("dd-MM-yyyy");
         DTPCari6.setName("DTPCari6"); // NOI18N
         DTPCari6.setOpaque(false);
@@ -3620,6 +3640,24 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     param.put("tanggal2",Valid.SetTgl(DTPCari4.getSelectedItem()+""));
                     param.put("parameter","%"+TCari1.getText()+"%"); 
                 Valid.MyReport("rptPCareKunjungan.jasper","report","::[ Data Kunjungan PCare ]::",param);
+            }
+        }else if(TabRawat.getSelectedIndex()==3){
+            if(tabMode2.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari1.requestFocus();
+            }else if(tabMode2.getRowCount()!=0){            
+                Map<String, Object> param = new HashMap<>(); 
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                    param.put("tanggal1",Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                    param.put("tanggal2",Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                    param.put("parameter","%"+TCari1.getText()+"%"); 
+                Valid.MyReport("rptPCareRujukSpesialis.jasper","report","::[ Data Rujukan Spesialis PCare ]::",param);
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -5449,6 +5487,36 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCari2KeyPressed
 
+    private void ppRujukanPCareBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRujukanPCareBtnPrintActionPerformed
+        if(tabMode3.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
+            TCari2.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            TCari2.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("divreg",divreg);
+            param.put("kacab",kacab);
+            param.put("userpcare",userpcare);
+            param.put("lahir",Sequel.cariIsi2("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis='"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString()+"'"));
+            param.put("jk",Sequel.cariIsi("select jk from pasien where no_rkm_medis='"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString()+"'"));
+            param.put("umur",Sequel.cariIsi("select concat(umurdaftar,' ',sttsumur) from reg_periksa where no_rawat='"+TNoRw.getText()+"'").replaceAll("Th","Tahun").replaceAll("Bl","Bulan").replaceAll("Hr","Hari"));
+            param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
+            param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("no_rawat",TNoRw.getText()); 
+            Valid.MyReport("rptRujukanPCare.jasper","report","::[ Cetak Rujukan PCare ]::",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ppRujukanPCareBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5652,6 +5720,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.Label jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass11;
     private widget.panelisi panelGlass8;
@@ -5662,6 +5731,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppJadikanKunjungan;
     private javax.swing.JMenuItem ppKirimTindakanObat;
     private javax.swing.JMenuItem ppRiwayat;
+    private javax.swing.JMenuItem ppRujukanPCare;
     private javax.swing.JMenuItem ppSinkronGagal;
     private widget.Tanggal tanggal;
     private widget.Table tbKunjungan;
