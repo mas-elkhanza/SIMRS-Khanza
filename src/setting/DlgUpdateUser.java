@@ -695,7 +695,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.audit_cuci_tangan_medis,user.audit_pembuangan_limbah,user.ruang_audit_kepatuhan,user.audit_pembuangan_benda_tajam,user.audit_penanganan_darah,"+
                 "user.audit_pengelolaan_linen_kotor,user.audit_penempatan_pasien,user.audit_kamar_jenazah,user.audit_bundle_iadp,user.audit_bundle_ido,"+
                 "user.audit_fasilitas_kebersihan_tangan,user.audit_fasilitas_apd,user.audit_pembuangan_limbah_cair_infeksius,user.audit_sterilisasi_alat,"+
-                "user.penilaian_awal_medis_ralan_psikiatri,user.persetujuan_penolakan_tindakan from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.penilaian_awal_medis_ralan_psikiatri,user.persetujuan_penolakan_tindakan,user.audit_bundle_isk,user.audit_bundle_plabsi,user.audit_bundle_vap,"+
+                "user.akun_host_to_host_bank_papua,user.pembayaran_bank_papua from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1074,6 +1075,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Audit Sterilisasi Alat".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Audit Sterilisasi Alat",rs.getBoolean("audit_sterilisasi_alat")});
+                    }
+                    
+                    if("[C]Audit Bundle ISK".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Audit Bundle ISK",rs.getBoolean("audit_bundle_isk")});
+                    }
+                    
+                    if("[C]Audit Bundle PLABSI".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Audit Bundle PLABSI",rs.getBoolean("audit_bundle_plabsi")});
+                    }
+                    
+                    if("[C]Audit Bundle VAP".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Audit Bundle VAP",rs.getBoolean("audit_bundle_vap")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -2408,6 +2421,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[J]Ringkasan Hutang Vendor Non Medis",rs.getBoolean("ringkasan_hutang_vendor_nonmedis")});
                     }
                     
+                    if("[J]Pembayaran Bank Papua".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Pembayaran Bank Papua",rs.getBoolean("pembayaran_bank_papua")});
+                    }
+                    
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Cek NIK",rs.getBoolean("bpjs_cek_nik")});
                     }
@@ -2858,6 +2875,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Referensi Spesialistik Apotek BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Referensi Spesialistik Apotek BPJS",rs.getBoolean("bpjs_referensi_spesialistik_apotek")});
+                    }
+                    
+                    if("[K]Host To Host Bank Papua".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Host To Host Bank Papua",rs.getBoolean("akun_host_to_host_bank_papua")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4470,7 +4491,19 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             if("[C]Audit Sterilisasi Alat".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_sterilisasi_alat='"+tbUser.getValueAt(i,2).toString()+"'");
             }
+            
+            if("[C]Audit Bundle ISK".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_bundle_isk='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[C]Audit Bundle PLABSI".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_bundle_plabsi='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
 
+            if("[C]Audit Bundle VAP".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","audit_bundle_vap='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
             if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","suplier='"+tbUser.getValueAt(i,2).toString()+"'");
             }
@@ -5802,6 +5835,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             if("[J]Ringkasan Hutang Vendor Non Medis".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_hutang_vendor_nonmedis='"+tbUser.getValueAt(i,2).toString()+"'");
             }
+            
+            if("[J]Pembayaran Bank Papua".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pembayaran_bank_papua='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
         }
     }
     
@@ -6257,6 +6294,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[K]Referensi Spesialistik Apotek BPJS".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_referensi_spesialistik_apotek='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Host To Host Bank Papua".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","akun_host_to_host_bank_papua='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){

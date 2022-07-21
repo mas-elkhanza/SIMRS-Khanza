@@ -1476,7 +1476,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Sequel.meghapus("bukti_pemesanan", "no_faktur",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 Sequel.menyimpan2("bukti_pemesanan","?,''",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-                Valid.panggilUrl("penerimaanapotek/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&nofaktur="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                Valid.panggilUrl("penerimaanapotek/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&nofaktur="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }

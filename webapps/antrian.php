@@ -39,33 +39,40 @@
        </object>
      </noscript>
      <?php
-            $kd_poli   = str_replace("_"," ",isset($_GET['kd_poli']))?str_replace("_"," ",$_GET['kd_poli']):NULL;
-            $kd_dokter = str_replace("_"," ",isset($_GET['kd_dokter']))?str_replace("_"," ",$_GET['kd_dokter']):NULL;
-            $setting   = mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
-            echo "   
-               <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
-                      <tr>
-                            <td  width='10%' align='right' valign='center'>
-                                    <img width='90' height='90' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
-                            </td>
-                            <td>
-                               <center>
-                                      <font size='6' color='#AA00AA' face='Tahoma'>".$setting["nama_instansi"]."</font><br>
-                                      <font size='5' color='#AA00AA' face='Tahoma'>
-                                              ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br>   
-                                      </font> 
-                                      <font size='5' color='#AAAA00' face='Tahoma' >Antrian Poli ".getOne("select nm_poli from poliklinik where kd_poli='".$kd_poli."'").", Dokter ".getOne("select nm_dokter from dokter where kd_dokter='".$kd_dokter."'")."<br> ".date("d-M-Y", $tanggal)."  ". $jam."</font>
-                                      <br><br>
-                               </center>
-                            </td>   
-                            <td  width='10%' align='left'>
-                                    &nbsp;
-                            </td>  
-                            <td  width='10%' align='left' valign='top'>
-                                    <img width='180' height='130' src='header-kanan.jpg'/>
-                            </td>                                                          
-                     </tr>
-              </table> "; 
+        $token      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+        $token      = json_decode(encrypt_decrypt($token,"d"),true);
+        $kd_poli    = "";
+        $kd_dokter  = "";
+        if (isset($token["kd_poli"])) {
+            $kd_poli    = $token["kd_poli"];
+            $kd_dokter  = $token["kd_dokter"];
+        }
+            
+        $setting    = mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+        echo "   
+           <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
+                  <tr>
+                        <td  width='10%' align='right' valign='center'>
+                                <img width='90' height='90' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+                        </td>
+                        <td>
+                           <center>
+                                  <font size='6' color='#AA00AA' face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+                                  <font size='5' color='#AA00AA' face='Tahoma'>
+                                          ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br>   
+                                  </font> 
+                                  <font size='5' color='#AAAA00' face='Tahoma' >Antrian Poli ".getOne("select nm_poli from poliklinik where kd_poli='".$kd_poli."'").", Dokter ".getOne("select nm_dokter from dokter where kd_dokter='".$kd_dokter."'")."<br> ".date("d-M-Y", $tanggal)."  ". $jam."</font>
+                                  <br><br>
+                           </center>
+                        </td>   
+                        <td  width='10%' align='left'>
+                                &nbsp;
+                        </td>  
+                        <td  width='10%' align='left' valign='top'>
+                                <img width='180' height='130' src='header-kanan.jpg'/>
+                        </td>                                                          
+                 </tr>
+          </table> "; 
 	?>
 	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
 	     <tr class='head5'>
@@ -121,5 +128,5 @@
 	<img src="ft-2.jpg" alt="bar-pic" width="100%" height="83">
 </body>
 <?php 
-  echo "<meta http-equiv='refresh' content='10;URL=?kd_dokter=".str_replace(" ","_",$kd_dokter)."&kd_poli=".str_replace(" ","_",$kd_poli)."'>";
+  echo "<meta http-equiv='refresh' content='10;URL=?iyem=".encrypt_decrypt("{\"kd_poli\":\"".$kd_poli."\",\"kd_dokter\":\"".$kd_dokter."\"}","e")."'>";
 ?>

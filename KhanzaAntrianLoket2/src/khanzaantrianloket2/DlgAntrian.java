@@ -291,6 +291,19 @@ public class DlgAntrian extends javax.swing.JDialog{
 
     private void BtnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal1ActionPerformed
         Antrian.setText("1");
+        try {
+            pshapus=koneksi.prepareStatement("delete from antriloket");
+            try {
+                pshapus.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(pshapus!=null){
+                    pshapus.close();
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_BtnBatal1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -444,7 +457,7 @@ public class DlgAntrian extends javax.swing.JDialog{
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")||detik.equals("10")||detik.equals("15")||detik.equals("20")||detik.equals("25")||detik.equals("30")||detik.equals("35")||detik.equals("40")||detik.equals("45")||detik.equals("50")||detik.equals("55")||detik.equals("00")){                    
                     try {
-                        pscari=koneksi.prepareStatement("select antriloket.antrian from antriloket order by antriloket.antrian desc limit 1");
+                        pscari=koneksi.prepareStatement("select (antriloket.antrian+1) as antrian from antriloket order by antriloket.antrian desc limit 1");
                         try {
                             rs=pscari.executeQuery();
                             if(rs.next()){

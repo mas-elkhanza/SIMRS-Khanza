@@ -121,7 +121,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                     JenjangJabatan.setText(Sequel.cariIsi("select nama from jnj_jabatan where kode=?",pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),4).toString()));
  
                     try {
-                        loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
+                        loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"penggajian/loginberkaspegawai.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
                     }
@@ -902,7 +902,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private void CmbKategoriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbKategoriItemStateChanged
         if(!TKd.getText().equals("")){
             try {
-                loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
+                loadURL("http://" +koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"penggajian/loginberkaspegawai.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
             }

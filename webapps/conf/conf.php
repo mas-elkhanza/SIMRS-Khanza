@@ -4,6 +4,8 @@
     $db_username    = "root";
     $db_password    = "";
     $db_name        = "sik";
+    define('USERHYBRIDWEB', 'yanghack');
+    define('PASHYBRIDWEB', 'sialselamanya');
 
     function host(){
         global $db_hostname;
@@ -533,6 +535,32 @@
     function validation_errors($error) {
         $errors = '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$error.'</div>';
         return $errors;
+    }
+    
+    function encrypt_decrypt($string,$action){
+        $secret_key     = 'Bar12345Bar12345'; 
+        $secret_iv      = 'sayangsamakhanza';
+        $output         = FALSE;
+        $encrypt_method = "AES-256-CBC";
+        $key            = hash('sha256', $secret_key);
+        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+ 
+        switch ($action){
+             case "e":
+                $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+                break;
+             case "d":
+                $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+                break;
+        }
+        
+        return $output;
+    }
+    
+    function decrypt($input){
+        $secret_key     = 'Bar12345Bar12345'; 
+        $secret_iv      = 'sayangsamakhanza';
+        return openssl_decrypt(base64_decode($input), 'AES-128-CBC', $secret_key, OPENSSL_RAW_DATA, $secret_iv);
     }
     
     function Terbilang($x){

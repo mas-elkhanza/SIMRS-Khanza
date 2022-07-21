@@ -89,7 +89,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==1){
                             try {
-                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
                             }
@@ -101,7 +101,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==1){
                             try {
-                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
                             }
@@ -113,7 +113,7 @@ public final class SuratKeluar extends javax.swing.JDialog {
                     if(TCari.getText().length()>2){
                         if(TabRawat.getSelectedIndex()==1){
                             try {
-                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                                loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
                             }
@@ -765,14 +765,14 @@ public final class SuratKeluar extends javax.swing.JDialog {
         switch (TabRawat.getSelectedIndex()) {
             case 0:                
                 try {
-                    loadURLInput("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login4.php?act=login&usere=admin&passwordte=akusayangsamakamu");  
+                    loadURLInput("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login4.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"");  
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }               
                 break;
             case 1:
                 try {
-                    loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                    loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }

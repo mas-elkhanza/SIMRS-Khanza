@@ -1935,32 +1935,35 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         Valid.SetTgl(TanggalPulang.getSelectedItem()+""),TanggalPulang.getSelectedItem().toString().substring(11,19),NoPermintaan
                         })==true){
                             WindowAmbilSampel.dispose();
-                            pilihan = (String)JOptionPane.showInputDialog(null,"Waktu pengambilan sampel berhasil disimpan, apakah ada yang ingin dicetak..?","Konfirmasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tidak Ada","Barcode No.Permintaan 1","Barcode No.Permintaan 2","Lembar Permintaan Lab","Lembar Permintaan Lab & Barcode No.Permintaan 1","Lembar Permintaan Lab & Barcode No.Permintaan 2"},"Tidak Ada");
-                            switch (pilihan) {
-                                case "Tidak Ada":
-                                    break;
-                                case "Barcode No.Permintaan 1":
-                                    BtnBarcodePermintaanActionPerformed(evt);
-                                    break;
-                                case "Barcode No.Permintaan 2":
-                                    BtnBarcodePermintaan2ActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab":
-                                    BtnCetakHasilLabActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
-                                    BtnBarcodePermintaanActionPerformed(evt);
-                                    getData();
-                                    getData2();
-                                    BtnCetakHasilLabActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
-                                    BtnBarcodePermintaan2ActionPerformed(evt);
-                                    getData();
-                                    getData2();
-                                    BtnCetakHasilLabActionPerformed(evt);
-                                    break;
-                            }  
+                            try {
+                                pilihan = (String)JOptionPane.showInputDialog(null,"Waktu pengambilan sampel berhasil disimpan, apakah ada yang ingin dicetak..?","Konfirmasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tidak Ada","Barcode No.Permintaan 1","Barcode No.Permintaan 2","Lembar Permintaan Lab","Lembar Permintaan Lab & Barcode No.Permintaan 1","Lembar Permintaan Lab & Barcode No.Permintaan 2"},"Tidak Ada");
+                                switch (pilihan) {
+                                    case "Tidak Ada":
+                                        break;
+                                    case "Barcode No.Permintaan 1":
+                                        BtnBarcodePermintaanActionPerformed(evt);
+                                        break;
+                                    case "Barcode No.Permintaan 2":
+                                        BtnBarcodePermintaan2ActionPerformed(evt);
+                                        break;
+                                    case "Lembar Permintaan Lab":
+                                        BtnCetakHasilLabActionPerformed(evt);
+                                        break;
+                                    case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
+                                        BtnBarcodePermintaanActionPerformed(evt);
+                                        getData();
+                                        getData2();
+                                        BtnCetakHasilLabActionPerformed(evt);
+                                        break;
+                                    case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
+                                        BtnBarcodePermintaan2ActionPerformed(evt);
+                                        getData();
+                                        getData2();
+                                        BtnCetakHasilLabActionPerformed(evt);
+                                        break;
+                                }  
+                            } catch (Exception e) {
+                            }   
                             Sequel.queryu("delete from antrilabpk");
                             Sequel.queryu("insert into antrilabpk values('1')");
                             TeksKosong();
@@ -1980,25 +1983,28 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         Valid.SetTgl(TanggalPulang.getSelectedItem()+""),TanggalPulang.getSelectedItem().toString().substring(11,19),NoPermintaan
                         })==true){
                             WindowAmbilSampel.dispose();
-                            pilihan = (String)JOptionPane.showInputDialog(null,"Waktu pengambilan sampel berhasil disimpan, Apakah ada yang ingin dicetak..?","Konfirmasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tidak Ada","Barcode No.Permintaan 1","Barcode No.Permintaan 2","Lembar Permintaan Lab & Barcode No.Permintaan 1","Lembar Permintaan Lab & Barcode No.Permintaan 2"},"Tidak Ada");
-                            switch (pilihan) {
-                                case "Tidak Ada":
-                                    break;
-                                case "Barcode No.Permintaan 1":
-                                    BtnBarcodePermintaanActionPerformed(evt);
-                                    break;
-                                case "Barcode No.Permintaan 2":
-                                    BtnBarcodePermintaan2ActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
-                                    BtnBarcodePermintaanActionPerformed(evt);
-                                    BtnCetakHasilLabActionPerformed(null);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
-                                    BtnBarcodePermintaan2ActionPerformed(evt);
-                                    BtnCetakHasilLabActionPerformed(null);
-                                    break;
-                            }  
+                            try {
+                                pilihan = (String)JOptionPane.showInputDialog(null,"Waktu pengambilan sampel berhasil disimpan, Apakah ada yang ingin dicetak..?","Konfirmasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tidak Ada","Barcode No.Permintaan 1","Barcode No.Permintaan 2","Lembar Permintaan Lab & Barcode No.Permintaan 1","Lembar Permintaan Lab & Barcode No.Permintaan 2"},"Tidak Ada");
+                                switch (pilihan) {
+                                    case "Tidak Ada":
+                                        break;
+                                    case "Barcode No.Permintaan 1":
+                                        BtnBarcodePermintaanActionPerformed(evt);
+                                        break;
+                                    case "Barcode No.Permintaan 2":
+                                        BtnBarcodePermintaan2ActionPerformed(evt);
+                                        break;
+                                    case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
+                                        BtnBarcodePermintaanActionPerformed(evt);
+                                        BtnCetakHasilLabActionPerformed(null);
+                                        break;
+                                    case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
+                                        BtnBarcodePermintaan2ActionPerformed(evt);
+                                        BtnCetakHasilLabActionPerformed(null);
+                                        break;
+                                }  
+                            } catch (Exception e) {
+                            }
                             TeksKosong();
                             tampil3();
                     }
