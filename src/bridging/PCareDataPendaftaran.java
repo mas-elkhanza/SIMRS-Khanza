@@ -3654,9 +3654,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                    param.put("tanggal1",Valid.SetTgl(DTPCari3.getSelectedItem()+""));
-                    param.put("tanggal2",Valid.SetTgl(DTPCari4.getSelectedItem()+""));
-                    param.put("parameter","%"+TCari1.getText()+"%"); 
+                    param.put("tanggal1",Valid.SetTgl(DTPCari5.getSelectedItem()+""));
+                    param.put("tanggal2",Valid.SetTgl(DTPCari6.getSelectedItem()+""));
+                    param.put("parameter","%"+TCari2.getText()+"%"); 
                 Valid.MyReport("rptPCareRujukSpesialis.jasper","report","::[ Data Rujukan Spesialis PCare ]::",param);
             }
         }
