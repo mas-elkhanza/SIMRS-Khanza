@@ -3642,10 +3642,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 Valid.MyReport("rptPCareKunjungan.jasper","report","::[ Data Kunjungan PCare ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==3){
-            if(tabMode2.getRowCount()==0){
+            if(tabMode3.getRowCount()==0){
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 TCari1.requestFocus();
-            }else if(tabMode2.getRowCount()!=0){            
+            }else if(tabMode3.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>(); 
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
@@ -5488,13 +5488,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCari2KeyPressed
 
     private void ppRujukanPCareBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRujukanPCareBtnPrintActionPerformed
-        if(tabMode3.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
-            TCari2.requestFocus();
-        }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
-            TCari2.requestFocus();
-        }else{
+        if(tbSpesialis.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -5511,9 +5505,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("umur",Sequel.cariIsi("select concat(umurdaftar,' ',sttsumur) from reg_periksa where no_rawat='"+TNoRw.getText()+"'").replaceAll("Th","Tahun").replaceAll("Bl","Bulan").replaceAll("Hr","Hari"));
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
             param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
-            param.put("no_rawat",TNoRw.getText()); 
+            param.put("no_rawat",tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()); 
             Valid.MyReport("rptRujukanPCare.jasper","report","::[ Cetak Rujukan PCare ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu rujukan yang mau dicetak..!!");
         }
     }//GEN-LAST:event_ppRujukanPCareBtnPrintActionPerformed
 
