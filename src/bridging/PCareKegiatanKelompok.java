@@ -666,7 +666,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -680,7 +680,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -803,7 +803,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel22.setBounds(526, 10, 90, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -979,7 +979,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             try {
                 URL = link+"/kelompok/kegiatan";
                 headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setContentType(MediaType.TEXT_PLAIN);
                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-timestamp",utc);            
@@ -1160,7 +1160,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             try {
                 URL = link+"/kelompok/kegiatan";
                 headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setContentType(MediaType.TEXT_PLAIN);
                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-timestamp",utc);            
@@ -1383,7 +1383,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             try {
                 URL = link+"/kelompok/peserta";
                 headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setContentType(MediaType.TEXT_PLAIN);
                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-timestamp",utc);            
