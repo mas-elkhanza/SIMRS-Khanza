@@ -6964,9 +6964,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     if(!KdDiagnosa3.getText().equals("")){
                         diagnosa3="\""+KdDiagnosa3.getText()+"\"";
                     }
-                    kdtacc="-1";
-                    namatacc="null";
-                    alasantacc="null";
                     requestJson ="{" +
                                     "\"noKunjungan\": null," +
                                     "\"noKartu\": \""+NoKartu.getText()+"\"," +
