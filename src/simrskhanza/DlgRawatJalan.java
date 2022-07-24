@@ -4146,16 +4146,34 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         if(KdPeg.getText().trim().equals("")||TPegawai.getText().trim().equals("")){
                             Valid.textKosong(KdPeg,"Dokter/Paramedis masih kosong...!!");
                         }else{
-                            if(Sequel.menyimpantf("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
-                                TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                                TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),TBerat.getText(),
-                                SpO2.getText(),TGCS.getText(),cmbKesadaran.getSelectedItem().toString(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
-                                LingkarPerut.getText(),TindakLanjut.getText(),TPenilaian.getText(),TInstruksi.getText(),TEvaluasi.getText(),KdPeg.getText()})==true){
-                                    TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
-                                    TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
-                                    TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
-                                    TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");SpO2.setText("");
-                                    TEvaluasi.setText("");cmbKesadaran.setSelectedIndex(0);tampilPemeriksaan();
+                            if(akses.getkode().equals("Admin Utama")){
+                                if(Sequel.menyimpantf("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                    TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),TBerat.getText(),
+                                    SpO2.getText(),TGCS.getText(),cmbKesadaran.getSelectedItem().toString(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
+                                    LingkarPerut.getText(),TindakLanjut.getText(),TPenilaian.getText(),TInstruksi.getText(),TEvaluasi.getText(),KdPeg.getText()})==true){
+                                        TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
+                                        TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
+                                        TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
+                                        TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");SpO2.setText("");
+                                        TEvaluasi.setText("");cmbKesadaran.setSelectedIndex(0);tampilPemeriksaan();
+                                }
+                            }else{
+                                if(akses.getkode().equals(KdPeg.getText())){
+                                    if(Sequel.menyimpantf("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
+                                        TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                        TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),TBerat.getText(),
+                                        SpO2.getText(),TGCS.getText(),cmbKesadaran.getSelectedItem().toString(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
+                                        LingkarPerut.getText(),TindakLanjut.getText(),TPenilaian.getText(),TInstruksi.getText(),TEvaluasi.getText(),KdPeg.getText()})==true){
+                                            TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
+                                            TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
+                                            TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
+                                            TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");SpO2.setText("");
+                                            TEvaluasi.setText("");cmbKesadaran.setSelectedIndex(0);tampilPemeriksaan();
+                                    }
+                                }else{
+                                    JOptionPane.showMessageDialog(null,"Hanya bisa disimpan oleh dokter/petugas yang bersangkutan..!!");
+                                }
                             }
                         }
                     }
