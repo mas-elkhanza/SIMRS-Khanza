@@ -878,7 +878,7 @@ public final class TokoBarang extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 if(TCari.getText().trim().equals("")){
                     Valid.MyReportqry("rptBarangToko.jasper","report","::[ Data Barang Toko / Minimarket / Koperasi ]::",
                        "select tokobarang.kode_brng,tokobarang.nama_brng,kodesatuan.satuan,tokojenisbarang.nm_jenis, "+

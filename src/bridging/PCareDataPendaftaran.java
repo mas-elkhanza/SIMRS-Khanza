@@ -4648,9 +4648,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 }else{
                     if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0){
                         DlgCariPerawatanRanap perawatan=new DlgCariPerawatanRanap(null,false);
-                        kdptg=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",TNoRw.getText());
+                        kdptg=Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",TNoRw.getText());
                         if(kdptg.equals("")){
-                            kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
+                            kdptg=Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
                         }
                         nmptg=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kdptg);
                         perawatan.setNoRm(
@@ -4668,7 +4668,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         perawatan.setVisible(true);
                     }else {
                         DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
-                        kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
+                        kdptg=Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
                         nmptg=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kdptg);
                         dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","-","-");
                         dlgrwjl.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
@@ -4741,10 +4741,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kacab",kacab);
             param.put("userpcare",userpcare);
             param.put("lahir",Sequel.cariIsi2("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis='"+tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),3).toString()+"'"));
-            param.put("jk",Sequel.cariIsi("select jk from pasien where no_rkm_medis='"+tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),3).toString()+"'"));
+            param.put("jk",Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis='"+tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),3).toString()+"'"));
             param.put("umur",Sequel.cariIsi("select concat(umurdaftar,' ',sttsumur) from reg_periksa where no_rawat='"+TNoRw.getText()+"'").replaceAll("Th","Tahun").replaceAll("Bl","Bulan").replaceAll("Hr","Hari"));
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
             param.put("no_rawat",TNoRw.getText()); 
             Valid.MyReport("rptBuktiKunjunganPCare.jasper","report","::[ Bukti Kunjungan PCare ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -5200,7 +5200,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                         rscari=pscari.executeQuery();
                         while(rscari.next()){
-                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                            if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_tindakan_ranap_diberikan.jam='"+rscari.getString("jam")+"' and pcare_tindakan_ranap_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_tindakan_ranap_diberikan.kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                 try {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5277,7 +5277,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                         rscari=pscari.executeQuery();
                         while(rscari.next()){
-                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                            if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_tindakan_ranap_diberikan.jam='"+rscari.getString("jam")+"' and pcare_tindakan_ranap_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_tindakan_ranap_diberikan.kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                 try {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5354,7 +5354,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                         rscari=pscari.executeQuery();
                         while(rscari.next()){
-                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                            if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_tindakan_ranap_diberikan.jam='"+rscari.getString("jam")+"' and pcare_tindakan_ranap_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_tindakan_ranap_diberikan.kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                 try {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5501,10 +5501,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             param.put("kacab",kacab);
             param.put("userpcare",userpcare);
             param.put("lahir",Sequel.cariIsi2("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis='"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString()+"'"));
-            param.put("jk",Sequel.cariIsi("select jk from pasien where no_rkm_medis='"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString()+"'"));
+            param.put("jk",Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis='"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString()+"'"));
             param.put("umur",Sequel.cariIsi("select concat(umurdaftar,' ',sttsumur) from reg_periksa where no_rawat='"+TNoRw.getText()+"'").replaceAll("Th","Tahun").replaceAll("Bl","Bulan").replaceAll("Hr","Hari"));
             param.put("tanggal",TanggalDaftar.getSelectedItem().toString());
-            param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
             param.put("no_rawat",tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()); 
             Valid.MyReport("rptRujukanPCare.jasper","report","::[ Cetak Rujukan PCare ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -6583,7 +6583,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             TNoRM.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),2).toString());
             TPasien.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),3).toString());
             TglLahir.setText(Sequel.cariIsi("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
-            JK.setText(Sequel.cariIsi("select jk from pasien where no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
+            JK.setText(Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
             JenisPeserta.setText(Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
             ProviderPeserta.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),4).toString());
             NoKartu.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString());
@@ -6609,7 +6609,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             Valid.SetTgl(TanggalDaftar,tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),2).toString());
             TNoRM.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),3).toString());
             TPasien.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),4).toString());
-            JK.setText(Sequel.cariIsi("select jk from pasien where no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
+            JK.setText(Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
             JenisPeserta.setText(Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
             NoKartu.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),5).toString());
             KdPoliTujuan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),6).toString());
@@ -6646,7 +6646,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             Valid.SetTgl(TanggalDaftar,tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),2).toString());
             TNoRM.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString());
             TPasien.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),4).toString());
-            JK.setText(Sequel.cariIsi("select jk from pasien where no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
+            JK.setText(Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
             JenisPeserta.setText(Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
             NoKartu.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),5).toString());
             KdPoliTujuan.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),6).toString());
@@ -7981,7 +7981,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                             pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                                             rscari=pscari.executeQuery();
                                             while(rscari.next()){
-                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_tindakan_ranap_diberikan.jam='"+rscari.getString("jam")+"' and pcare_tindakan_ranap_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_tindakan_ranap_diberikan.kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                                     try {
                                                         headers = new HttpHeaders();
                                                         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -8058,7 +8058,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                             pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                                             rscari=pscari.executeQuery();
                                             while(rscari.next()){
-                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_tindakan_ranap_diberikan.jam='"+rscari.getString("jam")+"' and pcare_tindakan_ranap_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_tindakan_ranap_diberikan.kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                                     try {
                                                         headers = new HttpHeaders();
                                                         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -8135,7 +8135,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                             pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                                             rscari=pscari.executeQuery();
                                             while(rscari.next()){
-                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_tindakan_ranap_diberikan.jam='"+rscari.getString("jam")+"' and pcare_tindakan_ranap_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_tindakan_ranap_diberikan.kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                                     try {
                                                         headers = new HttpHeaders();
                                                         headers.setContentType(MediaType.APPLICATION_JSON);

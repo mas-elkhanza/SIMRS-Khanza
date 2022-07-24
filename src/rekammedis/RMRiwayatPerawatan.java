@@ -1798,7 +1798,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     kddpjp="";
                     dpjp="";
                     if(rs.getString("status_lanjut").equals("Ranap")){
-                        kddpjp=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",rs.getString("no_rawat"));
+                        kddpjp=Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",rs.getString("no_rawat"));
                         if(!kddpjp.equals("")){
                             dpjp=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddpjp);
                         }else{

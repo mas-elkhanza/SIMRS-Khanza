@@ -1082,7 +1082,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     pscari.setString(1,rs.getString("no_rawat"));
                                     rscari=pscari.executeQuery();
                                     while(rscari.next()){
-                                        if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                        if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                             try {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
@@ -1159,7 +1159,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     pscari.setString(1,rs.getString("no_rawat"));
                                     rscari=pscari.executeQuery();
                                     while(rscari.next()){
-                                        if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                        if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                             try {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);
@@ -1236,7 +1236,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     pscari.setString(1,rs.getString("no_rawat"));
                                     rscari=pscari.executeQuery();
                                     while(rscari.next()){
-                                        if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                        if(Sequel.cariInteger("select count(pcare_tindakan_ranap_diberikan.kd_jenis_prw) from pcare_tindakan_ranap_diberikan where pcare_tindakan_ranap_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
                                             try {
                                                 headers = new HttpHeaders();
                                                 headers.setContentType(MediaType.APPLICATION_JSON);

@@ -855,7 +855,7 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
-            param.put("logo",Sequel.cariGambar("select logo from setting"));   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));   
             Valid.MyReportqry("rptBayarToko.jasper","report","::[ Bayar Piutang Toko ]::",
                 "select toko_bayar_piutang.tgl_bayar, toko_bayar_piutang.no_member,tokomember.nama, toko_bayar_piutang.besar_cicilan,"+
                 "toko_bayar_piutang.catatan, toko_bayar_piutang.nota_piutang from toko_bayar_piutang "+

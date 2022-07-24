@@ -309,7 +309,7 @@ public final class TokoPiutangHarian extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptPiutangHarianToko.jasper","report","::[ Data Piutang Harian Toko ]::",
                     "select tokopiutang.nota_piutang,tokopiutang.tgl_piutang,tokopiutang.nip,petugas.nama,"+
                     "tokopiutang.ongkir,(tokopiutang.ongkir+tokopiutang.uangmuka+tokopiutang.sisapiutang) as total, "+

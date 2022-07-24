@@ -1266,7 +1266,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 pskamar.close();
                             } 
                         }
-                        dpjp=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",rsreg.getString("no_rawat"));
+                        dpjp=Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",rsreg.getString("no_rawat"));
                         if(dpjp.equals("")){
                             dpjp=rsreg.getString("nm_dokter");
                         }

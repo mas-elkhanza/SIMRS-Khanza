@@ -856,7 +856,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting"));                 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting"));                 
             if(panelCari.isVisible()==false){
                 Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
