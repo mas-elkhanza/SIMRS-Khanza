@@ -1687,6 +1687,12 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
             requestEntity = new HttpEntity(headers);
+            System.out.println("X-cons-id : "+koneksiDB.CONSIDAPIPCARE());
+            System.out.println("X-timestamp : "+utc);            
+            System.out.println("X-signature : "+api.getHmac());
+            System.out.println("X-authorization : Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            System.out.println("user_key : "+koneksiDB.USERKEYAPIPCARE());
+            System.out.println("URL : "+URL);
             root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
