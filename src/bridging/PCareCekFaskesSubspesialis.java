@@ -453,9 +453,6 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
         if(KdSpesialis.getText().trim().equals("")||NmSpesialis.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih subspesialis dulu..!!");
             BtnPropinsi.requestFocus();
-        }else if(KdSarana.getText().trim().equals("")||NmSarana.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih sarana dulu..!!");
-            BtnPropinsi.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             tampil(KdSpesialis.getText(),KdSarana.getText(),Tanggal.getSelectedItem().toString());

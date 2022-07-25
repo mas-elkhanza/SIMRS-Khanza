@@ -406,7 +406,7 @@ public final class TokoKeuntunganBarang extends javax.swing.JDialog {
         param.put("kontakrs",akses.getkontakrs());
         param.put("emailrs",akses.getemailrs());   
         param.put("periode",Tgl1.getSelectedItem()+" S.D. "+Tgl2.getSelectedItem()); 
-        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+        param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
         if(TabRawat.getSelectedIndex()==0){
             if(tabMode.getRowCount()==0){
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");

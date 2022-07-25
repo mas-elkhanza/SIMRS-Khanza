@@ -966,7 +966,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptUTDMedisRusak.jasper","report","::[ Daa BHP Medis Rusak Unit Tranfusi Darah ]::",
                     "select utd_medis_rusak.kode_brng,databarang.nama_brng,utd_medis_rusak.jml,utd_medis_rusak.hargabeli,"+
                     "utd_medis_rusak.total,utd_medis_rusak.nip,petugas.nama,utd_medis_rusak.tanggal,"+

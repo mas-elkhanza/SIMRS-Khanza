@@ -1213,7 +1213,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 param.put("apoteker",Apoteker.getText()); 
                 param.put("petugas",nmptg.getText()); 
                 param.put("kabidkeu",KabidKeu.getText()); 
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReport("rptSuratPemesananToko.jasper","report","::[ Transaksi Pemesanan Barang Toko ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());

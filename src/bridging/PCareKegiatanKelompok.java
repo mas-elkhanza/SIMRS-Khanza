@@ -25,6 +25,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
+import java.net.URI;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,16 +36,25 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 import simrskhanza.DlgPasien;
 
 /**
@@ -666,7 +679,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -680,7 +693,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -803,7 +816,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel22.setBounds(526, 10, 90, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -979,7 +992,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             try {
                 URL = link+"/kelompok/kegiatan";
                 headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setContentType(MediaType.TEXT_PLAIN);
                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-timestamp",utc);            
@@ -1062,45 +1075,10 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         }else{
             if(tbJnsPerawatan.getSelectedRow()!= -1){
                 try {
-                    URL = link+"/kelompok/kegiatan/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString();
-                    headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-                    utc=String.valueOf(api.GetUTCdatetimeAsString());
-                    headers.add("X-timestamp",utc);            
-                    headers.add("X-signature",api.getHmac());
-                    headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                    headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
-                    requestEntity = new HttpEntity(headers);
-                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
-                    nameNode = root.path("metaData");
-                    System.out.println("code : "+nameNode.path("code").asText());
-                    System.out.println("message : "+nameNode.path("message").asText());
-                    if(nameNode.path("code").asText().equals("200")){
-                        Sequel.meghapus("pcare_kegiatan_kelompok","eduId",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
-                        emptTeks();
-                        tampil();
-                    }else{
-                        JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                    }
+                    bodyWithDeleteRequest();
                 }catch (Exception ex) {
-                    System.out.println("Notifikasi Bridging : "+ex);
-                    if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
-                    }else if(ex.toString().contains("500")){
-                        JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
-                    }else if(ex.toString().contains("401")){
-                        JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
-                    }else if(ex.toString().contains("408")){
-                        JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
-                    }else if(ex.toString().contains("424")){
-                        JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
-                    }else if(ex.toString().contains("412")){
-                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
-                    }else if(ex.toString().contains("204")){
-                        JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
-                    }
-                }    
+                    System.out.println("Notifikasi Bridging : "+ex);                    
+                }
             }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -1160,7 +1138,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             try {
                 URL = link+"/kelompok/kegiatan";
                 headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setContentType(MediaType.TEXT_PLAIN);
                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-timestamp",utc);            
@@ -1383,7 +1361,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             try {
                 URL = link+"/kelompok/peserta";
                 headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setContentType(MediaType.TEXT_PLAIN);
                 headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                 utc=String.valueOf(api.GetUTCdatetimeAsString());
                 headers.add("X-timestamp",utc);            
@@ -1657,5 +1635,92 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             FormInput.setVisible(false);      
             ChkInput.setVisible(true);
         }
+    }
+    
+    public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
+        public HttpEntityEnclosingDeleteRequest(final URI uri) {
+            super();
+            setURI(uri);
+        }
+
+        @Override
+        public String getMethod() {
+            return "DELETE";
+        }
+    }
+
+    @Test
+    public void bodyWithDeleteRequest() throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+        SSLContext sslContext = SSLContext.getInstance("SSL");
+        javax.net.ssl.TrustManager[] trustManagers= {
+            new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() {return null;}
+                public void checkServerTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+                public void checkClientTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+            }
+        };
+        sslContext.init(null,trustManagers , new SecureRandom());
+        SSLSocketFactory sslFactory=new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        Scheme scheme=new Scheme("https",443,sslFactory);
+    
+        HttpComponentsClientHttpRequestFactory factory=new HttpComponentsClientHttpRequestFactory(){
+            @Override
+            protected HttpUriRequest createHttpUriRequest(HttpMethod httpMethod, URI uri) {
+                if (HttpMethod.DELETE == httpMethod) {
+                    return new HttpEntityEnclosingDeleteRequest(uri);
+                }
+                return super.createHttpUriRequest(httpMethod, uri);
+            }
+        };
+        factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
+        restTemplate.setRequestFactory(factory);
+        
+        try {
+            URL = link+"/kelompok/kegiatan/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString();
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+            headers.add("X-timestamp",utc);            
+            headers.add("X-signature",api.getHmac());
+            headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
+            requestEntity = new HttpEntity(headers);
+            System.out.println("X-cons-id : "+koneksiDB.CONSIDAPIPCARE());
+            System.out.println("X-timestamp : "+utc);            
+            System.out.println("X-signature : "+api.getHmac());
+            System.out.println("X-authorization : Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            System.out.println("user_key : "+koneksiDB.USERKEYAPIPCARE());
+            System.out.println("URL : "+URL);
+            root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
+            System.out.println("code : "+nameNode.path("code").asText());
+            System.out.println("message : "+nameNode.path("message").asText());
+            if(nameNode.path("code").asText().equals("200")){
+                Sequel.meghapus("pcare_kegiatan_kelompok","eduId",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+                emptTeks();
+                tampil();
+            }else{
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+            }
+        }catch (Exception ex) {
+            System.out.println("Notifikasi Bridging : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+            }else if(ex.toString().contains("401")){
+                JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+            }else if(ex.toString().contains("408")){
+                JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+            }else if(ex.toString().contains("424")){
+                JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+            }else if(ex.toString().contains("412")){
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+            }else if(ex.toString().contains("204")){
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }
+        }  
     }
 }

@@ -646,7 +646,7 @@ public class TokoSuplier extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::","select tokosuplier.kode_suplier, tokosuplier.nama_suplier, "+
                     " tokosuplier.alamat,tokosuplier.kota, tokosuplier.no_telp,tokosuplier.nama_bank,tokosuplier.rekening from tokosuplier "+
                     " where tokosuplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+
