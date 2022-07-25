@@ -1004,7 +1004,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     totaljual=0;totalbeli=0;totalpesan=0;totalpiutang=0;totalutd=0;totalkeluar=0;totalmutasikeluar=0;
                     totalmutasimasuk=0;totalretbeli=0;totalretjual=0;totalretpiut=0;totalpasin=0;totalrespulang=0;
                     totalhibah=0;totalstok=0;totalstokawal=0;totalstokakhir=0;
-                    tglopname=Sequel.cariIsi("select tanggal from opname where kode_brng='"+rs.getString(1)+"' and tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by tanggal asc limit 1");
+                    tglopname=Sequel.cariIsi("select opname.tanggal from opname where opname.kode_brng='"+rs.getString(1)+"' and opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by opname.tanggal asc limit 1");
 
                     if(tglopname.equals("")){
                         tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
@@ -1520,7 +1520,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     totalpiutang=0;totalutd=0;totalkeluar=0;totalmutasikeluar=0;
                     totalmutasimasuk=0;totalretbeli=0;totalretjual=0;totalretpiut=0;totalpasin=0;totalrespulang=0;
                     totalhibah=0;totalstok=0;totalstokawal=0;totalstokakhir=0;
-                    tglopname=Sequel.cariIsi("select tanggal from opname where tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and kode_brng='"+rs.getString(1)+"' and kd_bangsal='"+lokasi+"'  order by tanggal asc limit 1");
+                    tglopname=Sequel.cariIsi("select opname.tanggal from opname where opname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and opname.kode_brng='"+rs.getString(1)+"' and opname.kd_bangsal='"+lokasi+"'  order by opname.tanggal asc limit 1");
 
                     if(tglopname.equals("")){
                         tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
