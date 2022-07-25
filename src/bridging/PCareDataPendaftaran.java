@@ -4763,7 +4763,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void ppSinkronGagalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSinkronGagalBtnPrintActionPerformed
         for(i=0;i<tbPendaftaran.getRowCount();i++){
-            if(tbPendaftaran.getValueAt(i,19).toString().equals("Gagal")){
+            if(tbPendaftaran.getValueAt(i,20).toString().equals("Gagal")){
                 try {
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.TEXT_PLAIN);
@@ -4785,10 +4785,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"beratBadan\": "+tbPendaftaran.getValueAt(i,12).toString()+"," +
                                     "\"tinggiBadan\": "+tbPendaftaran.getValueAt(i,13).toString()+"," +
                                     "\"respRate\": "+tbPendaftaran.getValueAt(i,14).toString()+","+ 
-                                    "\"lingkarPerut\": 0," +
-                                    "\"heartRate\": "+tbPendaftaran.getValueAt(i,15).toString()+"," +
+                                    "\"lingkarPerut\": "+tbPendaftaran.getValueAt(i,15).toString()+"," +
+                                    "\"heartRate\": "+tbPendaftaran.getValueAt(i,16).toString()+"," +
                                     "\"rujukBalik\": 0," +
-                                    "\"kdTkp\": \""+tbPendaftaran.getValueAt(i,17).toString().substring(0,2)+"\"" +
+                                    "\"kdTkp\": \""+tbPendaftaran.getValueAt(i,18).toString().substring(0,2)+"\"" +
                                  "}";
                     System.out.println(requestJson);
                     requestEntity = new HttpEntity(requestJson,headers);
@@ -4828,7 +4828,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void ppJadikanKunjunganBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppJadikanKunjunganBtnPrintActionPerformed
         for(i=0;i<tbPendaftaran.getRowCount();i++){
-            if(tbPendaftaran.getValueAt(i,19).toString().equals("Terkirim")){
+            if(tbPendaftaran.getValueAt(i,20).toString().equals("Terkirim")){
                 NoKartu.setText(tbPendaftaran.getValueAt(i,5).toString());
                 TPasien.setText(tbPendaftaran.getValueAt(i,3).toString());
                 setNoRm2(tbPendaftaran.getValueAt(i,0).toString());  
@@ -4853,7 +4853,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void ppKirimTindakanObatBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppKirimTindakanObatBtnPrintActionPerformed
         for(i=0;i<tbKunjungan.getRowCount();i++){
-            if(tbKunjungan.getValueAt(i,29).toString().equals("Terkirim")){
+            if(tbKunjungan.getValueAt(i,30).toString().equals("Terkirim")){
                 try {
                     System.out.println("Mencoba mencari data mapping obat No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
                     pscari=koneksi.prepareStatement(
@@ -7434,7 +7434,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             tampil();
                             PesanKirim.append("Pengiriman data pendaftaran PCare dimulai\n");
                             for(i=0;i<tbPendaftaran.getRowCount();i++){
-                                if(tbPendaftaran.getValueAt(i,19).toString().equals("Gagal")){
+                                if(tbPendaftaran.getValueAt(i,20).toString().equals("Gagal")){
                                     try {
                                         headers = new HttpHeaders();
                                         headers.setContentType(MediaType.TEXT_PLAIN);
@@ -7497,7 +7497,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             PesanKirim.append("Pengiriman data pendaftaran PCare selesai\n");
                             PesanKirim.append("Pengiriman data kunjungan PCare dimulai\n");
                             for(i=0;i<tbPendaftaran.getRowCount();i++){
-                                if(tbPendaftaran.getValueAt(i,19).toString().equals("Terkirim")){
+                                if(tbPendaftaran.getValueAt(i,20).toString().equals("Terkirim")){
                                     NoKartu.setText(tbPendaftaran.getValueAt(i,5).toString());
                                     TPasien.setText(tbPendaftaran.getValueAt(i,3).toString());
                                     setNoRm2(tbPendaftaran.getValueAt(i,0).toString());  
@@ -7634,7 +7634,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             PesanKirim.append("Pengiriman data kunjungan PCare selesai\n");
                             PesanKirim.append("Pengiriman data obat & tindakan PCare dimulai\n");
                             for(i=0;i<tbKunjungan.getRowCount();i++){
-                                if(tbKunjungan.getValueAt(i,29).toString().equals("Terkirim")){
+                                if(tbKunjungan.getValueAt(i,30).toString().equals("Terkirim")){
                                     try {
                                         PesanKirim.append("Mencoba mencari data mapping obat No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
                                         pscari=koneksi.prepareStatement(
