@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -494,17 +494,6 @@
 	</field>
 	<title>
 		<band height="804">
-			<textField>
-				<reportElement x="334" y="213" width="221" height="11" uuid="7290d86f-85c1-49d3-83ee-138e693593e8">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{perdarahan}+($F{jumlah_perdarahan}.equals("")?"":", Jumlah : "+$F{jumlah_perdarahan})+($F{warna_perdarahan}.equals("")?"":", Warna : "+$F{warna_perdarahan})]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="0" y="44" width="555" height="14" uuid="2c2c779f-b976-4237-b015-6090c3225557"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1662,6 +1651,17 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA["a. Kemampuan aktifitas sehari-hari : "+$F{kemampuan}+"   b. Aktifitas : "+$F{aktifitas}+"   c. Alat bantu : "+$F{alat_bantu}+($F{ket_bantu}.equals("")?"":", "+$F{ket_bantu})+"   d. Cacat tubuh : "+$F{nama_cacat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="213" width="221" height="11" uuid="300b6492-a8a4-4c81-a14f-00963271dc1e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{perdarahan}+($F{jumlah_perdarahan}.equals("")?"":", Jumlah : "+$F{jumlah_perdarahan})+($F{warna_perdarahan}.equals("")?"":", Warna : "+$F{warna_perdarahan})]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

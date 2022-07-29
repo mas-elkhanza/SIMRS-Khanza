@@ -51,7 +51,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     private int i=0;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
-    private String finger="",finger1="",dbkepala="",dbthoraks="",dbabdomen="",dbekstremitas="";
+    private String finger="",finger1="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -83,7 +83,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
@@ -103,53 +103,53 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
             }else if(i==13){
                 column.setPreferredWidth(150);
             }else if(i==14){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(110);
             }else if(i==15){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
             }else if(i==16){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(100);
             }else if(i==17){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(65);
             }else if(i==18){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(78);
             }else if(i==19){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(40);
             }else if(i==20){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(70);
             }else if(i==21){
-                column.setPreferredWidth(67);
+                column.setPreferredWidth(40);
             }else if(i==22){
                 column.setPreferredWidth(40);
             }else if(i==23){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(45);
             }else if(i==24){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(150);
             }else if(i==25){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(150);
             }else if(i==26){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==27){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==28){
-                column.setPreferredWidth(300);
-            }else if(i==29){
-                column.setPreferredWidth(300);
-            }else if(i==30){
-                column.setPreferredWidth(300);
-            }else if(i==31){
-                column.setPreferredWidth(300);
-            }else if(i==32){
-                column.setPreferredWidth(300);
-            }else if(i==33){
                 column.setPreferredWidth(200);
+            }else if(i==29){
+                column.setPreferredWidth(200);
+            }else if(i==30){
+                column.setPreferredWidth(200);
+            }else if(i==31){
+                column.setPreferredWidth(200);
+            }else if(i==32){
+                column.setPreferredWidth(150);
+            }else if(i==33){
+                column.setPreferredWidth(150);
             }else if(i==34){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(200);
             }else if(i==35){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==36){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
             }else if(i==37){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -161,8 +161,8 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         RPD.setDocument(new batasInput((int)1000).getKata(RPD));
         RPO.setDocument(new batasInput((int)1000).getKata(RPO));
         Alergi.setDocument(new batasInput((int)50).getKata(Alergi));
-        Kondisi.setDocument(new batasInput((int)500).getKata(Kondisi));
-        Status.setDocument(new batasInput((byte)100).getKata(Status));
+        KondisiUmum.setDocument(new batasInput((int)500).getKata(KondisiUmum));
+        StatusNutrisi.setDocument(new batasInput((int)100).getKata(StatusNutrisi));
         TD.setDocument(new batasInput((byte)8).getKata(TD));
         Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
@@ -181,8 +181,8 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         Diagnosis.setDocument(new batasInput((int)500).getKata(Diagnosis));
         Diagnosis2.setDocument(new batasInput((int)500).getKata(Diagnosis2));
         Permasalahan.setDocument(new batasInput((int)500).getKata(Permasalahan));
-        Tindakan.setDocument(new batasInput((byte)200).getKata(Tindakan));
-        Terapi.setDocument(new batasInput((byte)500).getKata(Terapi));
+        Tindakan.setDocument(new batasInput((int)200).getKata(Tindakan));
+        Terapi.setDocument(new batasInput((int)500).getKata(Terapi));
         Edukasi.setDocument(new batasInput((int)500).getKata(Edukasi));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -348,9 +348,9 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         jLabel41 = new widget.Label();
         jLabel105 = new widget.Label();
         jLabel95 = new widget.Label();
-        Status = new widget.TextBox();
+        StatusNutrisi = new widget.TextBox();
         scrollPane3 = new widget.ScrollPane();
-        Kondisi = new widget.TextArea();
+        KondisiUmum = new widget.TextArea();
         jSeparator14 = new javax.swing.JSeparator();
         KeteranganKepala = new widget.TextBox();
         KeteranganThoraks = new widget.TextBox();
@@ -618,11 +618,6 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         KdDokter.setEditable(false);
         KdDokter.setName("KdDokter"); // NOI18N
         KdDokter.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdDokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdDokterKeyPressed(evt);
-            }
-        });
         FormInput.add(KdDokter);
         KdDokter.setBounds(74, 40, 90, 23);
 
@@ -1078,7 +1073,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-07-2022 13:38:26" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022 13:55:21" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1107,29 +1102,29 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         FormInput.add(jLabel95);
         jLabel95.setBounds(10, 220, 180, 23);
 
-        Status.setFocusTraversalPolicyProvider(true);
-        Status.setName("Status"); // NOI18N
-        Status.addKeyListener(new java.awt.event.KeyAdapter() {
+        StatusNutrisi.setFocusTraversalPolicyProvider(true);
+        StatusNutrisi.setName("StatusNutrisi"); // NOI18N
+        StatusNutrisi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                StatusKeyPressed(evt);
+                StatusNutrisiKeyPressed(evt);
             }
         });
-        FormInput.add(Status);
-        Status.setBounds(121, 240, 210, 23);
+        FormInput.add(StatusNutrisi);
+        StatusNutrisi.setBounds(121, 240, 210, 23);
 
         scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane3.setName("scrollPane3"); // NOI18N
 
-        Kondisi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Kondisi.setColumns(20);
-        Kondisi.setRows(5);
-        Kondisi.setName("Kondisi"); // NOI18N
-        Kondisi.addKeyListener(new java.awt.event.KeyAdapter() {
+        KondisiUmum.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        KondisiUmum.setColumns(20);
+        KondisiUmum.setRows(5);
+        KondisiUmum.setName("KondisiUmum"); // NOI18N
+        KondisiUmum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KondisiKeyPressed(evt);
+                KondisiUmumKeyPressed(evt);
             }
         });
-        scrollPane3.setViewportView(Kondisi);
+        scrollPane3.setViewportView(KondisiUmum);
 
         FormInput.add(scrollPane3);
         scrollPane3.setBounds(594, 240, 260, 83);
@@ -1458,7 +1453,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1472,7 +1467,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1554,13 +1549,12 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         }else if(RPO.getText().trim().equals("")){
             Valid.textKosong(RPO,"Riwayat Pengunaan obat");
         }else{
-            
-            
-            if(Sequel.menyimpantf("penilaian_medis_ralan_penyakit_dalam","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",33,new String[]{
+            if(Sequel.menyimpantf("penilaian_medis_ralan_penyakit_dalam","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",37,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),Kondisi.getText(),Status.getText(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),
-                    dbkepala,dbthoraks,dbabdomen,dbekstremitas,Lainnya.getText(),
-                    Lab.getText(),Rad.getText(),PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
+                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),KondisiUmum.getText(),StatusNutrisi.getText(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),
+                    Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),
+                    Ekstremitas.getSelectedItem().toString(),KeteranganEkstremitas.getText(),Lainnya.getText(),Lab.getText(),Rad.getText(),PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),
+                    Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
                 })==true){
                     emptTeks();
             }
@@ -1625,27 +1619,6 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         }else if(RPO.getText().trim().equals("")){
             Valid.textKosong(RPO,"Riwayat Pengunaan obat");
         }else{
-            if(Kepala.getSelectedItem()=="YA"){
-               dbkepala=KeteranganKepala.getText();
-            }else {
-                dbkepala=Kepala.getSelectedItem().toString();
-            }
-            if(Thoraks.getSelectedItem()=="YA"){
-               dbthoraks=KeteranganThoraks.getText();
-            }else {
-                dbthoraks=Thoraks.getSelectedItem().toString();
-            }
-            if(Abdomen.getSelectedItem()=="YA"){
-               dbabdomen=KeteranganAbdomen.getText();
-            }else {
-                dbabdomen=Abdomen.getSelectedItem().toString();
-            }
-            if(Ekstremitas.getSelectedItem()=="YA"){
-               dbekstremitas=KeteranganEkstremitas.getText();
-            }else {
-                dbekstremitas=Ekstremitas.getSelectedItem().toString();
-            }
-            
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
@@ -1690,10 +1663,15 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_penyakit_dalam.tanggal,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,penilaian_medis_ralan_penyakit_dalam.lainnya,"+
-                        "penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.pemeriksaan,penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,"+
+                        "penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,"+
+                        "penilaian_medis_ralan_penyakit_dalam.lainnya,penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.penunjanglain,"+
+                        "penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_medis_ralan_penyakit_dalam.keterangan_thorak,"+
+                        "penilaian_medis_ralan_penyakit_dalam.keterangan_abdomen,penilaian_medis_ralan_penyakit_dalam.keterangan_ekstremitas "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_penyakit_dalam on reg_periksa.no_rawat=penilaian_medis_ralan_penyakit_dalam.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_penyakit_dalam.kd_dokter=dokter.kd_dokter where "+
@@ -1701,10 +1679,15 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
                 }else{
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_penyakit_dalam.tanggal,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,penilaian_medis_ralan_penyakit_dalam.lainnya,"+
-                        "penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.pemeriksaan,penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,"+
+                        "penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,"+
+                        "penilaian_medis_ralan_penyakit_dalam.lainnya,penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.penunjanglain,"+
+                        "penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_medis_ralan_penyakit_dalam.keterangan_thorak,"+
+                        "penilaian_medis_ralan_penyakit_dalam.keterangan_abdomen,penilaian_medis_ralan_penyakit_dalam.keterangan_ekstremitas "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_penyakit_dalam on reg_periksa.no_rawat=penilaian_medis_ralan_penyakit_dalam.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_penyakit_dalam.kd_dokter=dokter.kd_dokter where "+
@@ -1753,19 +1736,19 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>BB(Kg)</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Nyeri</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>GCS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kepala</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Thoraks</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Abdomen</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Ekstremitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='180px'><b>Kepala</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='180px'><b>Thoraks</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='180px'><b>Abdomen</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='180px'><b>Ekstremitas</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Lab</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Lab</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Rad</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Pemeriksaan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Penunjang Lainnya</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis2</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Permasalahan</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Terapi</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Tindakan</b></td>"+
+			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tindakan</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Edukasi</b></td>"+
                         "</tr>"
                     );
@@ -1796,14 +1779,14 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
                                "<td valign='top'>"+rs.getString("bb")+"</td>"+
                                "<td valign='top'>"+rs.getString("nyeri")+"</td>"+
                                "<td valign='top'>"+rs.getString("gcs")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kepala")+"</td>"+
-                               "<td valign='top'>"+rs.getString("thoraks")+"</td>"+
-                               "<td valign='top'>"+rs.getString("abdomen")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ekstremitas")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kepala")+", "+rs.getString("keterangan_kepala")+"</td>"+
+                               "<td valign='top'>"+rs.getString("thoraks")+", "+rs.getString("keterangan_thorak")+"</td>"+
+                               "<td valign='top'>"+rs.getString("abdomen")+", "+rs.getString("keterangan_abdomen")+"</td>"+
+                               "<td valign='top'>"+rs.getString("ekstremitas")+", "+rs.getString("keterangan_ekstremitas")+"</td>"+
                                "<td valign='top'>"+rs.getString("lainnya")+"</td>"+
                                "<td valign='top'>"+rs.getString("lab")+"</td>"+
                                "<td valign='top'>"+rs.getString("rad")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("penunjanglain")+"</td>"+
                                "<td valign='top'>"+rs.getString("diagnosis")+"</td>"+
                                "<td valign='top'>"+rs.getString("diagnosis2")+"</td>"+
                                "<td valign='top'>"+rs.getString("permasalahan")+"</td>"+
@@ -1943,10 +1926,6 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
-        
-    }//GEN-LAST:event_KdDokterKeyPressed
-
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1972,7 +1951,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Status,Nadi);
+        Valid.pindah(evt,StatusNutrisi,Nadi);
     }//GEN-LAST:event_TDKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
@@ -1980,7 +1959,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     }//GEN-LAST:event_RRKeyPressed
 
     private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
-        //Valid.pindah(evt,RPO,Kondisi);
+        Valid.pindah(evt,RPO,StatusNutrisi);
     }//GEN-LAST:event_AlergiKeyPressed
 
     private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
@@ -2000,7 +1979,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     }//GEN-LAST:event_RPOKeyPressed
 
     private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        Valid.pindah(evt,Nyeri,Kepala);
+        Valid.pindah(evt,Nyeri,KondisiUmum);
     }//GEN-LAST:event_GCSKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
@@ -2018,19 +1997,19 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     }//GEN-LAST:event_NyeriKeyPressed
 
     private void KepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KepalaKeyPressed
-        //Valid.pindah(evt,GCS,Thoraks);
+        Valid.pindah(evt,KondisiUmum,KeteranganKepala);
     }//GEN-LAST:event_KepalaKeyPressed
 
     private void ThoraksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ThoraksKeyPressed
-       // Valid.pindah(evt,Kepala,Abdomen);
+        Valid.pindah(evt,KeteranganKepala,KeteranganThoraks);
     }//GEN-LAST:event_ThoraksKeyPressed
 
     private void AbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AbdomenKeyPressed
-        //Valid.pindah(evt,Thoraks,Ekstremitas);
+        Valid.pindah(evt,KeteranganThoraks,KeteranganAbdomen);
     }//GEN-LAST:event_AbdomenKeyPressed
 
     private void EkstremitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkstremitasKeyPressed
-        //Valid.pindah(evt,Abdomen,Columna);
+        Valid.pindah(evt,KeteranganAbdomen,KeteranganEkstremitas);
     }//GEN-LAST:event_EkstremitasKeyPressed
 
     private void PenunjangLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenunjangLainKeyPressed
@@ -2054,18 +2033,25 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             param.put("lokalis",Sequel.cariGambar("select lokalis from gambar")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
-            finger1=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger1","Pasien \n"+tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()+"\nNO RM "+(finger1.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),1).toString():finger1)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
             Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanPenyakitDalam.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Penyakit Dalam ]::",
-                "SELECT reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,DATE(penilaian_medis_ralan_penyakit_dalam.tanggal) AS tanggal, TIME(penilaian_medis_ralan_penyakit_dalam.tanggal) AS jam,penilaian_medis_ralan_penyakit_dalam.alergi,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,penilaian_medis_ralan_penyakit_dalam.lainnya,penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.pemeriksaan,penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,penilaian_medis_ralan_penyakit_dalam.kd_dokter,dokter.nm_dokter " +
-"FROM reg_periksa INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-"INNER JOIN penilaian_medis_ralan_penyakit_dalam ON reg_periksa.no_rawat=penilaian_medis_ralan_penyakit_dalam.no_rawat " +
-"INNER JOIN dokter ON penilaian_medis_ralan_penyakit_dalam.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_penyakit_dalam.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_penyakit_dalam.tanggal,"+
+                "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,"+
+                "penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
+                "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,"+
+                "penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
+                "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,"+
+                "penilaian_medis_ralan_penyakit_dalam.lainnya,penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.penunjanglain,"+
+                "penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,"+
+                "penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_medis_ralan_penyakit_dalam.keterangan_thorak,"+
+                "penilaian_medis_ralan_penyakit_dalam.keterangan_abdomen,penilaian_medis_ralan_penyakit_dalam.keterangan_ekstremitas "+
+                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join penilaian_medis_ralan_penyakit_dalam on reg_periksa.no_rawat=penilaian_medis_ralan_penyakit_dalam.no_rawat "+
+                "inner join dokter on penilaian_medis_ralan_penyakit_dalam.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_penyakit_dalam.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -2073,32 +2059,32 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         // TODO add your handling code here:
     }//GEN-LAST:event_ThoraksActionPerformed
 
-    private void StatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StatusKeyPressed
+    private void StatusNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusNutrisiKeyPressed
+        Valid.pindah(evt,Alergi,TD);
+    }//GEN-LAST:event_StatusNutrisiKeyPressed
 
-    private void KondisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KondisiKeyPressed
+    private void KondisiUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiUmumKeyPressed
+        Valid.pindah2(evt,GCS,Kepala);
+    }//GEN-LAST:event_KondisiUmumKeyPressed
 
     private void KeteranganKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKepalaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kepala,Thoraks);
     }//GEN-LAST:event_KeteranganKepalaKeyPressed
 
     private void KeteranganThoraksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganThoraksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Thoraks,Abdomen);
     }//GEN-LAST:event_KeteranganThoraksKeyPressed
 
     private void KeteranganEkstremitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganEkstremitasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Ekstremitas,Lainnya);
     }//GEN-LAST:event_KeteranganEkstremitasKeyPressed
 
     private void KeteranganAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganAbdomenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Abdomen,Ekstremitas);
     }//GEN-LAST:event_KeteranganAbdomenKeyPressed
 
     private void LainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganEkstremitas,Lab);
     }//GEN-LAST:event_LainnyaKeyPressed
 
     private void LabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabKeyPressed
@@ -2180,7 +2166,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     private widget.TextBox KeteranganEkstremitas;
     private widget.TextBox KeteranganKepala;
     private widget.TextBox KeteranganThoraks;
-    private widget.TextArea Kondisi;
+    private widget.TextArea KondisiUmum;
     private widget.Label LCount;
     private widget.TextArea Lab;
     private widget.TextArea Lainnya;
@@ -2197,7 +2183,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     private widget.TextBox RR;
     private widget.TextArea Rad;
     private widget.ScrollPane Scroll;
-    private widget.TextBox Status;
+    private widget.TextBox StatusNutrisi;
     private widget.TextBox Suhu;
     private widget.TextBox TCari;
     private widget.TextBox TD;
@@ -2297,10 +2283,15 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_penyakit_dalam.tanggal,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,penilaian_medis_ralan_penyakit_dalam.lainnya,"+
-                        "penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.pemeriksaan,penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,"+
+                        "penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,"+
+                        "penilaian_medis_ralan_penyakit_dalam.lainnya,penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.penunjanglain,"+
+                        "penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_medis_ralan_penyakit_dalam.keterangan_thorak,"+
+                        "penilaian_medis_ralan_penyakit_dalam.keterangan_abdomen,penilaian_medis_ralan_penyakit_dalam.keterangan_ekstremitas "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_penyakit_dalam on reg_periksa.no_rawat=penilaian_medis_ralan_penyakit_dalam.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_penyakit_dalam.kd_dokter=dokter.kd_dokter where "+
@@ -2308,10 +2299,15 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_penyakit_dalam.tanggal,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
-                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,penilaian_medis_ralan_penyakit_dalam.lainnya,"+
-                        "penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.pemeriksaan,penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_penyakit_dalam.kd_dokter,penilaian_medis_ralan_penyakit_dalam.anamnesis,penilaian_medis_ralan_penyakit_dalam.hubungan,penilaian_medis_ralan_penyakit_dalam.keluhan_utama,"+
+                        "penilaian_medis_ralan_penyakit_dalam.rps,penilaian_medis_ralan_penyakit_dalam.rpd,penilaian_medis_ralan_penyakit_dalam.rpo,penilaian_medis_ralan_penyakit_dalam.alergi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kondisi,penilaian_medis_ralan_penyakit_dalam.status,penilaian_medis_ralan_penyakit_dalam.td,penilaian_medis_ralan_penyakit_dalam.nadi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.suhu,penilaian_medis_ralan_penyakit_dalam.rr,penilaian_medis_ralan_penyakit_dalam.bb,penilaian_medis_ralan_penyakit_dalam.nyeri,penilaian_medis_ralan_penyakit_dalam.gcs,"+
+                        "penilaian_medis_ralan_penyakit_dalam.kepala,penilaian_medis_ralan_penyakit_dalam.thoraks,penilaian_medis_ralan_penyakit_dalam.abdomen,penilaian_medis_ralan_penyakit_dalam.ekstremitas,"+
+                        "penilaian_medis_ralan_penyakit_dalam.lainnya,penilaian_medis_ralan_penyakit_dalam.lab,penilaian_medis_ralan_penyakit_dalam.rad,penilaian_medis_ralan_penyakit_dalam.penunjanglain,"+
+                        "penilaian_medis_ralan_penyakit_dalam.diagnosis,penilaian_medis_ralan_penyakit_dalam.diagnosis2,penilaian_medis_ralan_penyakit_dalam.permasalahan,penilaian_medis_ralan_penyakit_dalam.terapi,"+
+                        "penilaian_medis_ralan_penyakit_dalam.tindakan,penilaian_medis_ralan_penyakit_dalam.edukasi,dokter.nm_dokter,keterangan_kepala,penilaian_medis_ralan_penyakit_dalam.keterangan_thorak,"+
+                        "penilaian_medis_ralan_penyakit_dalam.keterangan_abdomen,penilaian_medis_ralan_penyakit_dalam.keterangan_ekstremitas "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_penyakit_dalam on reg_periksa.no_rawat=penilaian_medis_ralan_penyakit_dalam.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_penyakit_dalam.kd_dokter=dokter.kd_dokter where "+
@@ -2337,9 +2333,10 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),rs.getString("kondisi"),rs.getString("status"),
-                        rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("bb"),rs.getString("nyeri"),rs.getString("gcs"),
-                        rs.getString("kepala"),rs.getString("thoraks"),rs.getString("abdomen"),rs.getString("ekstremitas"),rs.getString("lainnya"),rs.getString("lab"),rs.getString("rad"),
-                        rs.getString("pemeriksaan"),rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),rs.getString("tindakan"),rs.getString("edukasi")
+                        rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("bb"),rs.getString("nyeri"),rs.getString("gcs"),rs.getString("kepala")+", "+rs.getString("keterangan_kepala"),
+                        rs.getString("thoraks")+", "+rs.getString("keterangan_thorak"),rs.getString("abdomen")+", "+rs.getString("keterangan_abdomen"),rs.getString("ekstremitas")+", "+rs.getString("keterangan_ekstremitas"),
+                        rs.getString("lainnya"),rs.getString("lab"),rs.getString("rad"),rs.getString("penunjanglain"),rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),
+                        rs.getString("tindakan"),rs.getString("edukasi")
                     });
                 }
             } catch (Exception e) {
@@ -2367,8 +2364,8 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         RPD.setText("");
         RPO.setText("");
         Alergi.setText("");
-        Kondisi.setText("");
-        Status.setText("");
+        KondisiUmum.setText("");
+        StatusNutrisi.setText("");
         TD.setText("");
         Nadi.setText("");
         Suhu.setText("");
@@ -2380,6 +2377,10 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         Thoraks.setSelectedIndex(0);
         Abdomen.setSelectedIndex(0);
         Ekstremitas.setSelectedIndex(0);
+        KeteranganKepala.setText("");
+        KeteranganThoraks.setText("");
+        KeteranganAbdomen.setText("");
+        KeteranganEkstremitas.setText("");
         Lainnya.setText("");
         Lab.setText("");
         Rad.setText("");
@@ -2411,8 +2412,8 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
             RPD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             RPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Kondisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Status.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            KondisiUmum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            StatusNutrisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
@@ -2420,34 +2421,38 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
             BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             Nyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            if("TIDAK".equals(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString())){
-                Kepala.setSelectedItem("TIDAK");
-                KeteranganKepala.setText("");
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString().contains("Normal")){
+                Kepala.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString().contains("Abnormal")){
+                Kepala.setSelectedItem("Abnormal");
             }else{
-                Kepala.setSelectedItem("YA");
-                KeteranganKepala.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+                Kepala.setSelectedItem("Tidak Diperiksa");
             }
-            if("TIDAK".equals(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString())){
-                Thoraks.setSelectedItem("TIDAK");
-                KeteranganThoraks.setText("");
+            KeteranganKepala.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString().replaceAll(Kepala.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString().contains("Normal")){
+                Thoraks.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString().contains("Abnormal")){
+                Thoraks.setSelectedItem("Abnormal");
             }else{
-                Thoraks.setSelectedItem("YA");
-                KeteranganThoraks.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+                Thoraks.setSelectedItem("Tidak Diperiksa");
             }
-            if("TIDAK".equals(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString())){
-                Abdomen.setSelectedItem("TIDAK");
-                KeteranganAbdomen.setText("");
+            KeteranganThoraks.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString().replaceAll(Thoraks.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString().contains("Normal")){
+                Abdomen.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString().contains("Abnormal")){
+                Abdomen.setSelectedItem("Abnormal");
             }else{
-                Abdomen.setSelectedItem("YA");
-                KeteranganAbdomen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+                Abdomen.setSelectedItem("Tidak Diperiksa");
             }
-            if("TIDAK".equals(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString())){
-                Ekstremitas.setSelectedItem("TIDAK");
-                KeteranganEkstremitas.setText("");
+            KeteranganAbdomen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString().replaceAll(Abdomen.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString().contains("Normal")){
+                Ekstremitas.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString().contains("Abnormal")){
+                Ekstremitas.setSelectedItem("Abnormal");
             }else{
-                Ekstremitas.setSelectedItem("YA");
-                KeteranganEkstremitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+                Ekstremitas.setSelectedItem("Tidak Diperiksa");
             }
+            KeteranganEkstremitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString().replaceAll(Ekstremitas.getSelectedItem().toString()+", ",""));
             Lainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
             Lab.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
             Rad.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
@@ -2534,10 +2539,14 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_medis_ralan_penyakit_dalam","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,rpo=?,alergi=?,kondisi=?,status=?,td=?,nadi=?,suhu=?,rr=?,bb=?,nyeri=?,gcs=?,kepala=?,thoraks=?,abdomen=?,ekstremitas=?,lainnya=?,lab=?,rad=?,pemeriksaan=?,diagnosis=?,diagnosis2=?,permasalahan=?,terapi=?,tindakan=?,edukasi=?",34,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),Kondisi.getText(),Status.getText(),TD.getText(),Nadi.getText(),
-                Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),dbkepala,dbthoraks,dbabdomen,dbekstremitas,Lainnya.getText(),Lab.getText(),Rad.getText(),
-                PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("penilaian_medis_ralan_penyakit_dalam","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,rpo=?,alergi=?,kondisi=?,status=?,td=?,nadi=?,suhu=?,"+
+                "rr=?,bb=?,nyeri=?,gcs=?,kepala=?,keterangan_kepala=?,thoraks=?,keterangan_thorak=?,abdomen=?,keterangan_abdomen=?,ekstremitas=?,keterangan_ekstremitas=?,lainnya=?,lab=?,rad=?,penunjanglain=?,diagnosis=?,"+
+                "diagnosis2=?,permasalahan=?,terapi=?,tindakan=?,edukasi=?",38,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
+                KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),KondisiUmum.getText(),StatusNutrisi.getText(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),
+                Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),
+                Ekstremitas.getSelectedItem().toString(),KeteranganEkstremitas.getText(),Lainnya.getText(),Lab.getText(),Rad.getText(),PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),
+                Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();
