@@ -1700,7 +1700,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if(TabPilihRawat.getSelectedIndex()==0){
         if(TabRawatJalan.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{
                     if(Sampel.equals("")||akses.getkode().equals("Admin Utama")){
@@ -1728,7 +1728,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }else if(TabPilihRawat.getSelectedIndex()==1){
         if(TabRawatInap.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{
                     if(Sampel.equals("")||akses.getkode().equals("Admin Utama")){
@@ -1805,7 +1805,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         if(Sampel.equals("")){
@@ -1836,7 +1836,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         if(Sampel.equals("")){
@@ -1875,7 +1875,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         TanggalPulang.setDate(new Date());
@@ -1896,7 +1896,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         TanggalPulang.setDate(new Date());
@@ -1928,7 +1928,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnSimpan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan4ActionPerformed
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TanggalPulang,"No.Permintaan");
                 }else{
                     if(Sequel.mengedittf("permintaan_lab","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
@@ -1976,7 +1976,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }  
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TanggalPulang,"No.Permintaan");
                 }else{
                     if(Sequel.mengedittf("permintaan_lab","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
@@ -2102,7 +2102,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{  
                     Sequel.queryu("truncate table temporary_permintaan_lab");
@@ -2214,7 +2214,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     
@@ -2331,7 +2331,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnBarcodePermintaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBarcodePermintaanActionPerformed
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{ 
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2358,7 +2358,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             } 
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{ 
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2389,7 +2389,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnBarcodePermintaan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBarcodePermintaan2ActionPerformed
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{ 
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2416,7 +2416,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             } 
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{ 
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2448,7 +2448,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     lica.kirimRalan(NoPermintaan);
@@ -2462,7 +2462,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     lica.kirimRanap(NoPermintaan);
@@ -2480,7 +2480,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2508,7 +2508,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2540,7 +2540,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     try {
@@ -2648,7 +2648,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     try {
@@ -2761,7 +2761,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         if(Sampel.equals("")){
@@ -2792,7 +2792,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         if(Sampel.equals("")){
@@ -2827,7 +2827,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     try {
@@ -2901,7 +2901,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     try {
@@ -2982,7 +2982,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         if(Sampel.equals("")){
@@ -3013,7 +3013,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         if(Sampel.equals("")){
@@ -3048,7 +3048,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"apiteras.php?nopermintaan="+NoPermintaan);
@@ -3062,7 +3062,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"apiteras.php?nopermintaan="+NoPermintaan);
@@ -3080,7 +3080,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3099,7 +3099,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3151,7 +3151,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     medqlab.kirimRalan(NoPermintaan);
@@ -3165,7 +3165,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     medqlab.kirimRanap(NoPermintaan);
@@ -3183,7 +3183,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3211,7 +3211,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3247,7 +3247,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     try {
@@ -3335,7 +3335,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     try {
@@ -3433,7 +3433,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     softmedix.kirimRalan(NoPermintaan);
@@ -3447,7 +3447,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(NoPermintaan.trim().equals("")){
+                if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     softmedix.kirimRanap(NoPermintaan);
@@ -3465,7 +3465,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(TabPilihRawat.getSelectedIndex()==0){
             if(TabRawatJalan.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3493,7 +3493,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }else if(TabPilihRawat.getSelectedIndex()==1){
             if(TabRawatInap.getSelectedIndex()==0){
                 if(!NoRawat.equals("")){
-                    if(NoPermintaan.trim().equals("")){
+                    if(NoPermintaan.trim().equals("")||DiagnosaKlinis.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3819,17 +3819,17 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             NoPermintaan=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),0).toString();
             NoRawat=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),1).toString();
             Pasien=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),2).toString();
+            KodeDokter=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),9).toString();
+            DokterPerujuk=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),10).toString();
+            Ruang=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),11).toString();
+            InformasiTambahan=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),12).toString();
+            DiagnosaKlinis=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),13).toString();
             Permintaan=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),3).toString();
             JamPermintaan=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),4).toString();
             Sampel=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),5).toString();
             JamSampel=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),6).toString();
             Hasil=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),7).toString();
             JamHasil=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),8).toString();
-            KodeDokter=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),9).toString();
-            DokterPerujuk=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),10).toString();
-            Ruang=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),11).toString();
-            InformasiTambahan=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),12).toString();
-            DiagnosaKlinis=tbLabRalan.getValueAt(tbLabRalan.getSelectedRow(),13).toString();
         }
     }
     
@@ -3838,17 +3838,17 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             NoPermintaan=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),0).toString();
             NoRawat=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),1).toString();
             Pasien=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),2).toString();
+            KodeDokter=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),9).toString();
+            DokterPerujuk=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),10).toString();
+            Ruang=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),11).toString();
+            InformasiTambahan=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),12).toString();
+            DiagnosaKlinis=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),13).toString();
             Permintaan=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),3).toString();
             JamPermintaan=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),4).toString();
             Sampel=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),5).toString();
             JamSampel=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),6).toString();
             Hasil=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),7).toString();
             JamHasil=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),8).toString();
-            KodeDokter=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),9).toString();
-            DokterPerujuk=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),10).toString();
-            Ruang=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),11).toString();
-            InformasiTambahan=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),12).toString();
-            DiagnosaKlinis=tbLabRanap.getValueAt(tbLabRanap.getSelectedRow(),13).toString();
         }
     }
     

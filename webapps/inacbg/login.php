@@ -4,6 +4,7 @@
     
     $usere      = trim(isset($_GET['usere']))?trim($_GET['usere']):NULL;
     $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
+    $url        = "index.php?act=HomeAdmin";
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
@@ -17,15 +18,13 @@
                 $url = "index.php?act=KlaimBaruManual2&action=no&codernik=".$codernik;	
             }                 		
         }else{
-                session_start();
-                session_destroy();
-                if (cekSessiAdmin()){
-                    session_unregister("ses_admin");
-                }
-                $url = "index.php?act=HomeAdmin";
+            session_start();
+            session_destroy();
+            if (cekSessiAdmin()){
+                session_unregister("ses_admin");
+            }
+            $url = "index.php?act=HomeAdmin";
         }
-        header("Location:".$url);
-
     }
-    
+    header("Location:".$url);
 ?>
