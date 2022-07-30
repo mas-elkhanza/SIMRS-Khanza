@@ -1361,7 +1361,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         jSeparator25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator25.setName("jSeparator25"); // NOI18N
         FormInput.add(jSeparator25);
-        jSeparator25.setBounds(40, 707, 780, 1);
+        jSeparator25.setBounds(40, 670, 780, 1);
 
         jSeparator26.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator26.setForeground(new java.awt.Color(239, 244, 234));
