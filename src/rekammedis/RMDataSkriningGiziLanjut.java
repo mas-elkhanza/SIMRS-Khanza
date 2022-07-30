@@ -1553,11 +1553,11 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
         Sequel.cariIsi("select date_format(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",TglLahir,TNoRM.getText());
     }
     
-    public void setNoRm(String norwt, Date tgl2) {
+    public void setNoRm(String norwt, Date tgl1) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
         Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
-        DTPCari2.setDate(tgl2);
+        DTPCari1.setDate(tgl1);
         isRawat();
         isPsien();
         ChkInput.setSelected(true);

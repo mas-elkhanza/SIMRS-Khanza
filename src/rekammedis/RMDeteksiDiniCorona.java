@@ -1811,7 +1811,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
-    public void setNoRm(String norawat,Date tgl2){
+    public void setNoRm(String norawat,Date tgl1){
         NoRawat.setText(norawat);
         TCari.setText(norawat);
         try {
@@ -1848,7 +1848,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
-        DTPCari2.setDate(tgl2);  
+        DTPCari1.setDate(tgl1);  
         isLabRad(norawat);
     }
     

@@ -2420,10 +2420,10 @@ public final class RMPenilaianAwalMedisIGD extends javax.swing.JDialog {
         }
     }
  
-    public void setNoRm(String norwt,Date tgl2) {
+    public void setNoRm(String norwt,Date tgl1) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        DTPCari2.setDate(tgl2);    
+        DTPCari1.setDate(tgl1);    
         isRawat(); 
     }
     

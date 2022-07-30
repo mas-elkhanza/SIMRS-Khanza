@@ -3153,18 +3153,18 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         }
     }
  
-    public void setNoRm(String norwt,Date tgl2) {
+    public void setNoRm(String norwt,Date tgl1) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        DTPCari2.setDate(tgl2);    
+        DTPCari1.setDate(tgl1);    
         isRawat(); 
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_mata());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_mata());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_mata());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_mata());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
