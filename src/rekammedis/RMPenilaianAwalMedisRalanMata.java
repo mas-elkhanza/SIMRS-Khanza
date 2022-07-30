@@ -1347,14 +1347,14 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         jSeparator23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator23.setName("jSeparator23"); // NOI18N
         FormInput.add(jSeparator23);
-        jSeparator23.setBounds(40, 629, 780, 1);
+        jSeparator23.setBounds(40, 590, 780, 1);
 
         jSeparator24.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator24.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator24.setName("jSeparator24"); // NOI18N
         FormInput.add(jSeparator24);
-        jSeparator24.setBounds(40, 667, 780, 1);
+        jSeparator24.setBounds(40, 630, 780, 1);
 
         jSeparator25.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator25.setForeground(new java.awt.Color(239, 244, 234));
@@ -1476,7 +1476,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Conkanan);
-        Conkanan.setBounds(40, 600, 300, 23);
+        Conkanan.setBounds(40, 560, 300, 23);
 
         Conkiri.setFocusTraversalPolicyProvider(true);
         Conkiri.setName("Conkiri"); // NOI18N
@@ -1486,7 +1486,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Conkiri);
-        Conkiri.setBounds(520, 600, 300, 23);
+        Conkiri.setBounds(520, 560, 300, 23);
 
         Corneakanan.setFocusTraversalPolicyProvider(true);
         Corneakanan.setName("Corneakanan"); // NOI18N
@@ -1496,7 +1496,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Corneakanan);
-        Corneakanan.setBounds(40, 640, 300, 23);
+        Corneakanan.setBounds(40, 600, 300, 23);
 
         Corneakiri.setFocusTraversalPolicyProvider(true);
         Corneakiri.setName("Corneakiri"); // NOI18N
@@ -1506,7 +1506,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Corneakiri);
-        Corneakiri.setBounds(520, 640, 300, 23);
+        Corneakiri.setBounds(520, 600, 300, 23);
 
         COAkanan.setFocusTraversalPolicyProvider(true);
         COAkanan.setName("COAkanan"); // NOI18N
@@ -1516,7 +1516,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(COAkanan);
-        COAkanan.setBounds(40, 680, 300, 23);
+        COAkanan.setBounds(40, 640, 300, 23);
 
         COAkiri.setFocusTraversalPolicyProvider(true);
         COAkiri.setName("COAkiri"); // NOI18N
@@ -1526,7 +1526,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(COAkiri);
-        COAkiri.setBounds(520, 680, 300, 23);
+        COAkiri.setBounds(520, 640, 300, 23);
 
         Pupilkanan.setFocusTraversalPolicyProvider(true);
         Pupilkanan.setName("Pupilkanan"); // NOI18N
@@ -1699,19 +1699,19 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         jLabel46.setText("Conjungtiva");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(340, 600, 180, 23);
+        jLabel46.setBounds(340, 560, 180, 23);
 
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel47.setText("Cornea");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(340, 640, 180, 23);
+        jLabel47.setBounds(340, 600, 180, 23);
 
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setText("COA");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(340, 680, 180, 23);
+        jLabel48.setBounds(340, 640, 180, 23);
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("Pupil");
