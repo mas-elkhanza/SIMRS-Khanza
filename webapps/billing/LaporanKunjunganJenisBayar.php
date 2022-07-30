@@ -11,8 +11,8 @@
         
     <?php
     reportsqlinjection();      
-        $tanggal1      = $_GET['tanggal1']; 
-        $tanggal2      = $_GET['tanggal2']; 
+        $tanggal1      = validTeks($_GET['tanggal1']); 
+        $tanggal2      = validTeks($_GET['tanggal2']); 
 
         $_sql = "select kd_pj,png_jawab from penjab ";            
         $hasil=bukaquery($_sql);

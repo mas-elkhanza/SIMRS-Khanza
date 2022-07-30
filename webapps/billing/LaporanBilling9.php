@@ -13,8 +13,8 @@
 
     <?php
         reportsqlinjection();    
-        $petugas = str_replace("_"," ",$_GET['petugas']); 
-        $tanggal = str_replace("_"," ",$_GET['tanggal']);
+        $petugas = validTeks(str_replace("_"," ",$_GET['petugas'])); 
+        $tanggal = validTeks(str_replace("_"," ",$_GET['tanggal']));
         
         $nonota= str_replace(": ","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='No.Nota'"));
         $norawat=getOne("select no_rawat from nota_inap where no_nota='$nonota'");

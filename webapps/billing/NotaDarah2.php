@@ -11,7 +11,7 @@
         </script>
     <?php
     reportsqlinjection();      
-        $nopenyerahan    =str_replace("_"," ",$_GET['nopenyerahan']); 
+        $nopenyerahan    = validTeks(str_replace("_"," ",$_GET['nopenyerahan'])); 
         
         $_sql = "SELECT tanggal,nip_cross,pengambil_darah,keterangan,besarppn from utd_penyerahan_darah where no_penyerahan='$nopenyerahan'";            
         $hasil=mysqli_fetch_array(bukaquery($_sql));

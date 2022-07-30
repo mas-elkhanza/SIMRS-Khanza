@@ -12,7 +12,7 @@
 
     <?php
     reportsqlinjection();      
-        $nonota    =str_replace("_"," ",$_GET['nonota']);  
+        $nonota    =validTeks(str_replace("_"," ",$_GET['nonota']));  
 
         $_sql = "select piutang.nota_piutang, piutang.tgl_piutang, 
                     piutang.nip,petugas.nama, 

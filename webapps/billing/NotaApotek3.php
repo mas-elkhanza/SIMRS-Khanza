@@ -12,14 +12,14 @@
 
     <?php
     reportsqlinjection();      
-        $nonota    =str_replace("_"," ",$_GET['nonota']);  
-        $kdptg     =str_replace("_"," ",$_GET['kdptg']); 
-        $muka      = $_GET['muka']; 
-        $ongkir    = $_GET['ongkir']; 
-        $tanggal   = $_GET['tanggal']; 
-        $nm_member = str_replace("_"," ",$_GET['nm_member']); 
-        $tgltempo  = $_GET['tgltempo']; 
-        $catatan = str_replace("_"," ",$_GET['catatan']); 
+        $nonota    = validTeks(str_replace("_"," ",$_GET['nonota']));  
+        $kdptg     = validTeks(str_replace("_"," ",$_GET['kdptg'])); 
+        $muka      = validTeks($_GET['muka']); 
+        $ongkir    = validTeks($_GET['ongkir']); 
+        $tanggal   = validTeks($_GET['tanggal']); 
+        $nm_member = validTeks(str_replace("_"," ",$_GET['nm_member'])); 
+        $tgltempo  = validTeks($_GET['tgltempo']); 
+        $catatan   = validTeks(str_replace("_"," ",$_GET['catatan'])); 
 
         $_sql = "SELECT kode_brng, nama_brng, satuan, h_jual,jumlah, subtotal, dis, bsr_dis, total from tamppiutang";            
         $hasil=bukaquery($_sql);

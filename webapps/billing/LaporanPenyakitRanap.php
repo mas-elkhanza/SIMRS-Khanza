@@ -20,9 +20,9 @@
 
     <?php
     reportsqlinjection();      
-        $tanggal1      = $_GET['tanggal1']; 
-        $tanggal2      = $_GET['tanggal2']; 
-        $alamatip      = str_replace("_"," ",$_GET['alamatip']); 
+        $tanggal1      = validTeks($_GET['tanggal1']); 
+        $tanggal2      = validTeks($_GET['tanggal2']); 
+        $alamatip      = validTeks(str_replace("_"," ",$_GET['alamatip'])); 
 
         $_sql = "select * from temporary where temporary.temp37='$alamatip' order by temporary.no";                
         $hasil=bukaquery($_sql);

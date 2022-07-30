@@ -20,9 +20,9 @@
 
     <?php
     reportsqlinjection();      
-        $tanggal1      = $_GET['tanggal1']; 
-        $tanggal2      = $_GET['tanggal2']; 
-        $kamar         = $_GET['kamar']; 
+        $tanggal1      = validTeks($_GET['tanggal1']); 
+        $tanggal2      = validTeks($_GET['tanggal2']); 
+        $kamar         = validTeks($_GET['kamar']); 
 
 
           echo "<table width='100%'  border='1' align='left' cellpadding='0' cellspacing='0'>

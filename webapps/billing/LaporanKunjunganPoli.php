@@ -20,8 +20,8 @@
 
     <?php
     reportsqlinjection();      
-        $tanggal1      = $_GET['tanggal1']; 
-        $tanggal2      = $_GET['tanggal2']; 
+        $tanggal1      = validTeks($_GET['tanggal1']); 
+        $tanggal2      = validTeks($_GET['tanggal2']); 
 
         $_sql = "select kd_poli,nm_poli from poliklinik ";            
         $hasil=bukaquery($_sql);

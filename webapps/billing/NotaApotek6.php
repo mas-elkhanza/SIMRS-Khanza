@@ -11,11 +11,11 @@
         </script>
     <?php
     reportsqlinjection();      
-        $noretur    = str_replace("_"," ",isset($_GET['noretur'])?$_GET['noretur']:NULL);  
-        $petugas    = str_replace("_"," ",isset($_GET['petugas'])?$_GET['petugas']:NULL); 
-        $tanggal    = isset($_GET['tanggal'])?$_GET['tanggal']:NULL; 
-        $nm_member  = str_replace("_"," ",isset($_GET['nm_member'])?$_GET['nm_member']:NULL); 
-        $catatan    = str_replace("_"," ",isset($_GET['catatan'])?$_GET['catatan']:NULL);
+        $noretur    = validTeks(str_replace("_"," ",isset($_GET['noretur'])?$_GET['noretur']:NULL));  
+        $petugas    = validTeks(str_replace("_"," ",isset($_GET['petugas'])?$_GET['petugas']:NULL)); 
+        $tanggal    = validTeks(isset($_GET['tanggal'])?$_GET['tanggal']:NULL); 
+        $nm_member  = validTeks(str_replace("_"," ",isset($_GET['nm_member'])?$_GET['nm_member']:NULL)); 
+        $catatan    = validTeks(str_replace("_"," ",isset($_GET['catatan'])?$_GET['catatan']:NULL));
 
         $_sql = "select  nama_brng, h_retur, jml_retur, subtotal from  tampreturpiutang ";            
         $hasil=bukaquery($_sql);

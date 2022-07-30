@@ -11,17 +11,17 @@
 
     <?php
     reportsqlinjection();      
-        $petugasp   =str_replace("_"," ",$_GET['petugasp']); 
-        $petugass   =str_replace("_"," ",$_GET['petugass']); 
-        $petugasm   =str_replace("_"," ",$_GET['petugasm']); 
-        $cari       =str_replace("_"," ",$_GET['cari']); 
-        $jamp1      = $_GET['jamp1']; 
-        $jamp2      = $_GET['jamp2']; 
-        $jams1      = $_GET['jams1']; 
-        $jams2      = $_GET['jams2']; 
-        $jamm1      = $_GET['jamm1']; 
-        $jamm2      = $_GET['jamm2']; 
-        $tanggal   = $_GET['tanggal']; 
+        $petugasp   =validTeks(str_replace("_"," ",$_GET['petugasp'])); 
+        $petugass   =validTeks(str_replace("_"," ",$_GET['petugass'])); 
+        $petugasm   =validTeks(str_replace("_"," ",$_GET['petugasm'])); 
+        $cari       =validTeks(str_replace("_"," ",$_GET['cari'])); 
+        $jamp1      = validTeks($_GET['jamp1']); 
+        $jamp2      = validTeks($_GET['jamp2']); 
+        $jams1      = validTeks($_GET['jams1']); 
+        $jams2      = validTeks($_GET['jams2']); 
+        $jamm1      = validTeks($_GET['jamm1']); 
+        $jamm2      = validTeks($_GET['jamm2']); 
+        $tanggal   = validTeks($_GET['tanggal']); 
 
         $_sql = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                    reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,pasien.alamat,

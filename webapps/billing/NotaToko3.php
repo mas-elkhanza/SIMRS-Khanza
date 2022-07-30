@@ -12,15 +12,15 @@
 
     <?php
     reportsqlinjection();      
-        $nonota    =str_replace("_"," ",$_GET['nonota']);  
-        $petugas   =str_replace("_"," ",$_GET['petugas']); 
-        $muka      = $_GET['muka']; 
-        $ongkir    = $_GET['ongkir']; 
-        $tanggal   = $_GET['tanggal']; 
-        $nomember  = str_replace("_"," ",$_GET['nomember']); 
-        $member    = str_replace("_"," ",$_GET['member']); 
-        $tgltempo  = $_GET['tgltempo']; 
-        $catatan = str_replace("_"," ",$_GET['catatan']); 
+        $nonota    = validTeks(str_replace("_"," ",$_GET['nonota']));  
+        $petugas   = validTeks(str_replace("_"," ",$_GET['petugas'])); 
+        $muka      = validTeks($_GET['muka']); 
+        $ongkir    = validTeks($_GET['ongkir']); 
+        $tanggal   = validTeks($_GET['tanggal']); 
+        $nomember  = validTeks(str_replace("_"," ",$_GET['nomember'])); 
+        $member    = validTeks(str_replace("_"," ",$_GET['member'])); 
+        $tgltempo  = validTeks($_GET['tgltempo']); 
+        $catatan   = validTeks(str_replace("_"," ",$_GET['catatan'])); 
 
         $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13 from temporary_toko order by no asc";            
         $hasil=bukaquery($_sql);

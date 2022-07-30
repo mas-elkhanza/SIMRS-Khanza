@@ -12,7 +12,7 @@
 
     <?php
     reportsqlinjection();      
-        $nonota    = str_replace("_"," ",$_GET['nonota']); 
+        $nonota    = validTeks(str_replace("_"," ",$_GET['nonota'])); 
         
         $_sql      = "SELECT penjualan.tgl_jual,penjualan.nip,penjualan.no_rkm_medis,penjualan.nm_pasien,penjualan.keterangan,penjualan.ongkir,penjualan.ppn,penjualan.nama_bayar from penjualan where penjualan.nota_jual='$nonota'";            
         $hasil     = mysqli_fetch_array(bukaquery($_sql));

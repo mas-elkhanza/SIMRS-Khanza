@@ -11,14 +11,13 @@
             window.onload = function() { window.print(); }
         </script>
     <?php
-        $petugas = str_replace("_"," ",$_GET['petugas']); 
-        $tanggal = str_replace("_"," ",$_GET['tanggal']); 
-        reportsqlinjection();   
+        $petugas = validTeks(str_replace("_"," ",$_GET['petugas'])); 
+        $tanggal = validTeks(str_replace("_"," ",$_GET['tanggal'])); 
         $nonota     = str_replace(": ","",getOne("select temp2 from temporary where temp1='No.Nota'"));
         $norawat    = getOne("select no_rawat from nota_jalan where no_nota='$nonota'");
         $kodecarabayar= getOne("select kd_pj from reg_periksa where no_rawat='$norawat'");
         $carabayar  = getOne("select png_jawab from penjab where kd_pj='$kodecarabayar'");
-        $alamatip   = str_replace("_"," ",$_GET['alamatip']); 
+        $alamatip   = str_replace("_"," ", validTeks($_GET['alamatip'])); 
         $PNG_TEMP_DIR = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
         $PNG_WEB_DIR  = 'temp/';
         if (!file_exists($PNG_TEMP_DIR)) mkdir($PNG_TEMP_DIR); 

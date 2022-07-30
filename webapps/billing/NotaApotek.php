@@ -12,15 +12,15 @@
 
     <?php
     reportsqlinjection();      
-        $nonota    = str_replace("_"," ",$_GET['nonota']); 
-        $tanggal   = $_GET['tanggal']; 
-        $catatan   = str_replace("_"," ",$_GET['catatan']); 
-        $petugas   = str_replace("_"," ",$_GET['petugas']); 
-        $norm      = str_replace("_"," ",$_GET['norm']);
-        $pasien    = str_replace("_"," ",$_GET['pasien']); 
-        $besarppn  = str_replace("_"," ",$_GET['besarppn']); 
-        $ongkir    = str_replace("_"," ",$_GET['ongkir']); 
-        $alamatip  = str_replace("_"," ",$_GET['alamatip']); 
+        $nonota    = validTeks(str_replace("_"," ",$_GET['nonota'])); 
+        $tanggal   = validTeks($_GET['tanggal']); 
+        $catatan   = validTeks(str_replace("_"," ",$_GET['catatan'])); 
+        $petugas   = validTeks(str_replace("_"," ",$_GET['petugas'])); 
+        $norm      = validTeks(str_replace("_"," ",$_GET['norm']));
+        $pasien    = validTeks(str_replace("_"," ",$_GET['pasien'])); 
+        $besarppn  = validTeks(str_replace("_"," ",$_GET['besarppn'])); 
+        $ongkir    = validTeks(str_replace("_"," ",$_GET['ongkir'])); 
+        $alamatip  = validTeks(str_replace("_"," ",$_GET['alamatip'])); 
 
         $_sql = "SELECT temporary.no,temporary.temp1,temporary.temp2,temporary.temp3,temporary.temp4,temporary.temp5,temporary.temp6,temporary.temp7,temporary.temp8,temporary.temp9,temporary.temp10,temporary.temp11,temporary.temp12,temporary.temp13 from temporary where temporary.temp37='$alamatip' order by temporary.no";            
         $hasil=bukaquery($_sql);

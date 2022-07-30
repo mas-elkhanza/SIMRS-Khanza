@@ -12,9 +12,9 @@
 
     <?php
     reportsqlinjection();      
-        $nonota    =str_replace("_"," ",$_GET['nonota']);  
-        $_sql = "SELECT tgl_piutang,nip,no_member,nm_member,catatan,ongkir,uangmuka,tgltempo from tokopiutang where nota_piutang='$nonota'";  
-        $hasil=mysqli_fetch_array(bukaquery($_sql));
+        $nonota    = validTeks(str_replace("_"," ",$_GET['nonota']));  
+        $_sql      = "SELECT tgl_piutang,nip,no_member,nm_member,catatan,ongkir,uangmuka,tgltempo from tokopiutang where nota_piutang='$nonota'";  
+        $hasil     = mysqli_fetch_array(bukaquery($_sql));
         $tanggal   = $hasil["tgl_piutang"]; 
         $catatan   = $hasil["catatan"];
         $nomember  = $hasil["no_member"];
