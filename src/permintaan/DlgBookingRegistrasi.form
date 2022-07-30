@@ -415,9 +415,6 @@
               <SubComponents>
                 <Component class="widget.RadioButton" name="R2">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e6" green="fa" red="f0" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
@@ -433,6 +430,7 @@
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="R2" noResource="true"/>
+                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[125, 23]"/>
                     </Property>
@@ -442,7 +440,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-09-2021"/>
+                        <StringItem index="0" value="31-07-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -471,7 +469,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-09-2021"/>
+                        <StringItem index="0" value="31-07-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -487,9 +485,6 @@
                 </Component>
                 <Component class="widget.RadioButton" name="R3">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e6" green="fa" red="f0" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
@@ -504,6 +499,7 @@
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="R3" noResource="true"/>
+                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[135, 23]"/>
                     </Property>
@@ -513,7 +509,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-09-2021"/>
+                        <StringItem index="0" value="31-07-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -542,7 +538,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-09-2021"/>
+                        <StringItem index="0" value="31-07-2022"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -706,7 +702,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-09-2021 20:38:54"/>
+                        <StringItem index="0" value="31-07-2022 01:07:29"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -842,7 +838,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="25-09-2021 20:38:54"/>
+                        <StringItem index="0" value="31-07-2022 01:07:29"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>

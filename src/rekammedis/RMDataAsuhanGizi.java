@@ -2091,13 +2091,13 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         Sequel.cariIsi("select tgl_lahir from pasien where no_rkm_medis=? ",TglLahir,TNoRM.getText());
     }
     
-    public void setNoRm(String norwt, Date tgl1) {
+    public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
         Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         umur=Sequel.cariInteger("select umurdaftar from reg_periksa where no_rawat=?",norwt);
         sttsumur=Sequel.cariIsi("select sttsumur from reg_periksa where no_rawat=?",norwt);
-        DTPCari1.setDate(tgl1);    
+        DTPCari2.setDate(tgl2);    
         isRawat();
         isPsien();              
         ChkInput.setSelected(true);

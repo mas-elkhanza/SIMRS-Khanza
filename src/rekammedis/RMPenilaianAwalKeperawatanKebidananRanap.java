@@ -7716,13 +7716,13 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
         }
     }
     
-    public void setNoRm(String norwt, Date tgl1,String carabayar,String norm) {
+    public void setNoRm(String norwt, Date tgl2,String carabayar,String norm) {
         TNoRw.setText(norwt);
         TNoRM.setText(norm);
         TCari.setText(norwt);
         Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         CaraBayar.setText(carabayar);
-        DTPCari1.setDate(tgl1);    
+        DTPCari2.setDate(tgl2);    
         isRawat(); 
         tampilPersalinan();
     }

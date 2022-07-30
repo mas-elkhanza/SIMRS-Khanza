@@ -3801,10 +3801,10 @@ public final class RMMCU extends javax.swing.JDialog {
         }
     }
     
-    public void setNoRm(String norwt, Date tgl1) {
+    public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        DTPCari1.setDate(tgl1);    
+        DTPCari2.setDate(tgl2);    
         isRawat(); 
     }
     

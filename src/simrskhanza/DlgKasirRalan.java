@@ -79,6 +79,7 @@ import rekammedis.RMPenilaianAwalMedisIGD;
 import rekammedis.RMPenilaianAwalMedisRalanAnak;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
+import rekammedis.RMPenilaianAwalMedisRalanMata;
 import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
@@ -539,6 +540,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPenilaianAwalMedisRalanTHT = new javax.swing.JMenuItem();
         MnPenilaianAwalMedisRalanPsikiatri = new javax.swing.JMenuItem();
         MnPenilaianAwalMedisRalanPenyakitDalam = new javax.swing.JMenuItem();
+        MnPenilaianAwalMedisRalanMata = new javax.swing.JMenuItem();
         MnPenilaianFisioterapi = new javax.swing.JMenuItem();
         MnPenilaianPsikolog = new javax.swing.JMenuItem();
         MnUjiFungsiKFR = new javax.swing.JMenuItem();
@@ -1117,6 +1119,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnRMRawatJalan.add(MnPenilaianAwalMedisRalanPenyakitDalam);
+
+        MnPenilaianAwalMedisRalanMata.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianAwalMedisRalanMata.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianAwalMedisRalanMata.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianAwalMedisRalanMata.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianAwalMedisRalanMata.setText("Penilaian Awal Medis Mata");
+        MnPenilaianAwalMedisRalanMata.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianAwalMedisRalanMata.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianAwalMedisRalanMata.setName("MnPenilaianAwalMedisRalanMata"); // NOI18N
+        MnPenilaianAwalMedisRalanMata.setPreferredSize(new java.awt.Dimension(310, 26));
+        MnPenilaianAwalMedisRalanMata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPenilaianAwalMedisRalanMataActionPerformed(evt);
+            }
+        });
+        MnRMRawatJalan.add(MnPenilaianAwalMedisRalanMata);
 
         MnDataRM.add(MnRMRawatJalan);
 
@@ -4841,7 +4859,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-07-2022" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -4888,7 +4906,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-07-2022" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -5160,7 +5178,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5173,7 +5191,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass8.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -9598,7 +9616,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianAwalKeperawatanRalan form=new RMPenilaianAwalKeperawatanRalan(null,false);
                 form.isCek();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.emptTeks();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -9660,7 +9678,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianAwalKeperawatanGigi form=new RMPenilaianAwalKeperawatanGigi(null,false);
                 form.isCek();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.emptTeks();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -9685,7 +9703,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.tampil();
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
@@ -9729,7 +9747,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalKeperawatanKebidanan form=new RMPenilaianAwalKeperawatanKebidanan(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -9750,7 +9768,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianAwalKeperawatanBayiAnak form=new RMPenilaianAwalKeperawatanBayiAnak(null,false);
                 form.isCek();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.emptTeks();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -10177,7 +10195,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalMedisRalanDewasa form=new RMPenilaianAwalMedisRalanDewasa(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10232,7 +10250,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalMedisRalanKandungan form=new RMPenilaianAwalMedisRalanKandungan(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10254,7 +10272,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalMedisIGD form=new RMPenilaianAwalMedisIGD(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10276,7 +10294,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalMedisRalanAnak form=new RMPenilaianAwalMedisRalanAnak(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10298,7 +10316,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianFisioterapi form=new RMPenilaianFisioterapi(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10459,7 +10477,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMMCU form=new RMMCU(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10481,7 +10499,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMUjiFungsiKFR form=new RMUjiFungsiKFR(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10517,7 +10535,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianAwalKeperawatanIGD form=new RMPenilaianAwalKeperawatanIGD(null,false);
                 form.isCek();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.emptTeks();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -10560,7 +10578,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMDataCatatanObservasiIGD form=new RMDataCatatanObservasiIGD(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.tampil();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -10669,7 +10687,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalMedisRalanTHT form=new RMPenilaianAwalMedisRalanTHT(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10691,7 +10709,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianPsikologi form=new RMPenilaianPsikologi(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10739,7 +10757,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalMedisRalanPsikiatrik form=new RMPenilaianAwalMedisRalanPsikiatrik(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10792,7 +10810,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 RMPenilaianAwalMedisRalanPenyakitDalam form=new RMPenilaianAwalMedisRalanPenyakitDalam(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10800,6 +10818,28 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
         }
     }//GEN-LAST:event_MnPenilaianAwalMedisRalanPenyakitDalamActionPerformed
+
+    private void MnPenilaianAwalMedisRalanMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianAwalMedisRalanMataActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            //TNoReg.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianAwalMedisRalanMata form=new RMPenilaianAwalMedisRalanMata(null,false);
+                form.isCek();
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPenilaianAwalMedisRalanMataActionPerformed
 
     /**
     * @param args the command line arguments
@@ -10960,6 +11000,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenu MnPemeriksaan;
     private javax.swing.JMenuItem MnPenilaianAwalKeperawatanIGD;
     private javax.swing.JMenuItem MnPenilaianAwalMedisIGD;
+    private javax.swing.JMenuItem MnPenilaianAwalMedisRalanMata;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanPenyakitDalam;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanPsikiatri;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanTHT;
@@ -11407,6 +11448,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnPenilaianAwalMedisRalanTHT.setEnabled(akses.getpenilaian_awal_medis_ralan_tht());
         MnPenilaianAwalMedisRalanPsikiatri.setEnabled(akses.getpenilaian_awal_medis_ralan_psikiatri());
         MnPenilaianAwalMedisRalanPenyakitDalam.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
+        MnPenilaianAwalMedisRalanMata.setEnabled(akses.getpenilaian_awal_medis_ralan_mata());
         MnCopyResep.setEnabled(akses.getresep_dokter());
         MnCopyResep2.setEnabled(akses.getresep_dokter());
         MnPenilaianPsikolog.setEnabled(akses.getpenilaian_psikologi());

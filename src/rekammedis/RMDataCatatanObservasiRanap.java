@@ -1305,11 +1305,11 @@ public final class RMDataCatatanObservasiRanap extends javax.swing.JDialog {
         Sequel.cariIsi("select date_format(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TglLahir,TNoRM.getText());
     }
     
-    public void setNoRm(String norwt, Date tgl1) {
+    public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
         Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
-        DTPCari1.setDate(tgl1);
+        DTPCari2.setDate(tgl2);
         isRawat();
         isPsien();
         ChkInput.setSelected(true);

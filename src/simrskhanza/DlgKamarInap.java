@@ -4465,7 +4465,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        R1.setBackground(new java.awt.Color(240, 250, 230));
         R1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R1);
         R1.setSelected(true);
@@ -4476,7 +4475,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelCari.add(R1);
 
-        R2.setBackground(new java.awt.Color(240, 250, 230));
         R2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R2);
         R2.setText("Tgl.Masuk :");
@@ -4526,7 +4524,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         panelCari.add(DTPCari2);
 
-        R3.setBackground(new java.awt.Color(240, 250, 230));
         R3.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R3);
         R3.setText("Pulang :");

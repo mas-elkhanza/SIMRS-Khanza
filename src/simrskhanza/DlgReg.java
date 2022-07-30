@@ -108,6 +108,7 @@ import rekammedis.RMPenilaianAwalKeperawatanRalan;
 import rekammedis.RMPenilaianAwalMedisIGD;
 import rekammedis.RMPenilaianAwalMedisRalanAnak;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
+import rekammedis.RMPenilaianAwalMedisRalanMata;
 import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
@@ -867,6 +868,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnPenilaianAwalMedisRalanTHT = new javax.swing.JMenuItem();
         MnPenilaianAwalMedisRalanPsikiatri = new javax.swing.JMenuItem();
         MnPenilaianAwalMedisRalanPenyakitDalam = new javax.swing.JMenuItem();
+        MnPenilaianAwalMedisRalanMata = new javax.swing.JMenuItem();
         MnPenilaianFisioterapi = new javax.swing.JMenuItem();
         MnPenilaianPsikolog = new javax.swing.JMenuItem();
         MnUjiFungsiKFR = new javax.swing.JMenuItem();
@@ -1439,6 +1441,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         MnRMRawatJalan.add(MnPenilaianAwalMedisRalanPenyakitDalam);
+
+        MnPenilaianAwalMedisRalanMata.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianAwalMedisRalanMata.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianAwalMedisRalanMata.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianAwalMedisRalanMata.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianAwalMedisRalanMata.setText("Penilaian Awal Medis Mata");
+        MnPenilaianAwalMedisRalanMata.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianAwalMedisRalanMata.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianAwalMedisRalanMata.setName("MnPenilaianAwalMedisRalanMata"); // NOI18N
+        MnPenilaianAwalMedisRalanMata.setPreferredSize(new java.awt.Dimension(310, 26));
+        MnPenilaianAwalMedisRalanMata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPenilaianAwalMedisRalanMataActionPerformed(evt);
+            }
+        });
+        MnRMRawatJalan.add(MnPenilaianAwalMedisRalanMata);
 
         MnDataRM.add(MnRMRawatJalan);
 
@@ -5058,7 +5076,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5071,7 +5089,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5211,7 +5229,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2022" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -10209,7 +10227,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianAwalKeperawatanRalan form=new RMPenilaianAwalKeperawatanRalan(null,false);
                 form.isCek();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.emptTeks();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -10272,7 +10290,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalKeperawatanGigi form=new RMPenilaianAwalKeperawatanGigi(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10296,7 +10314,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.tampil();
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
@@ -10340,7 +10358,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalKeperawatanKebidanan form=new RMPenilaianAwalKeperawatanKebidanan(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10361,7 +10379,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianAwalKeperawatanBayiAnak form=new RMPenilaianAwalKeperawatanBayiAnak(null,false);
                 form.isCek();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.emptTeks();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -10829,7 +10847,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalMedisRalanDewasa form=new RMPenilaianAwalMedisRalanDewasa(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10884,7 +10902,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalMedisRalanKandungan form=new RMPenilaianAwalMedisRalanKandungan(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10906,7 +10924,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalMedisIGD form=new RMPenilaianAwalMedisIGD(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10928,7 +10946,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalMedisRalanAnak form=new RMPenilaianAwalMedisRalanAnak(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -10950,7 +10968,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianFisioterapi form=new RMPenilaianFisioterapi(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -11106,7 +11124,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMMCU form=new RMMCU(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -11128,7 +11146,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMUjiFungsiKFR form=new RMUjiFungsiKFR(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -11149,7 +11167,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 RMPenilaianAwalKeperawatanIGD form=new RMPenilaianAwalKeperawatanIGD(null,false);
                 form.isCek();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.emptTeks();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -11172,7 +11190,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMDataCatatanObservasiIGD form=new RMDataCatatanObservasiIGD(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.tampil();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
@@ -11218,7 +11236,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalMedisRalanTHT form=new RMPenilaianAwalMedisRalanTHT(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -11240,7 +11258,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianPsikologi form=new RMPenilaianPsikologi(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -11285,7 +11303,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalMedisRalanPsikiatrik form=new RMPenilaianAwalMedisRalanPsikiatrik(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -11307,7 +11325,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 RMPenilaianAwalMedisRalanPenyakitDalam form=new RMPenilaianAwalMedisRalanPenyakitDalam(null,false);
                 form.isCek();
                 form.emptTeks();
-                form.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -11315,6 +11333,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }
         }
     }//GEN-LAST:event_MnPenilaianAwalMedisRalanPenyakitDalamActionPerformed
+
+    private void MnPenilaianAwalMedisRalanMataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianAwalMedisRalanMataActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianAwalMedisRalanMata form=new RMPenilaianAwalMedisRalanMata(null,false);
+                form.isCek();
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPenilaianAwalMedisRalanMataActionPerformed
 
     /**
     * @param args the command line arguments
@@ -11474,6 +11514,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalan;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanBayi;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanKebidanan;
+    private javax.swing.JMenuItem MnPenilaianAwalMedisRalanMata;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanPenyakitDalam;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanPsikiatri;
     private javax.swing.JMenuItem MnPenilaianAwalMedisRalanTHT;
@@ -12126,6 +12167,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianAwalMedisRalanTHT.setEnabled(akses.getpenilaian_awal_medis_ralan_tht());
         MnPenilaianAwalMedisRalanPsikiatri.setEnabled(akses.getpenilaian_awal_medis_ralan_psikiatri());
         MnPenilaianAwalMedisRalanPenyakitDalam.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
+        MnPenilaianAwalMedisRalanMata.setEnabled(akses.getpenilaian_awal_medis_ralan_mata());
         MnCopyResep.setEnabled(akses.getresep_dokter());
         MnPenilaianPsikolog.setEnabled(akses.getpenilaian_psikologi());
         MnPersetujuanPenolakanTindakan.setEnabled(akses.getpersetujuan_penolakan_tindakan());

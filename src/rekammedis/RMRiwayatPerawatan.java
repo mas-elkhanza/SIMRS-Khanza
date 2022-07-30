@@ -373,7 +373,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         panelGlass5.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        R1.setBackground(new java.awt.Color(240, 250, 230));
         R1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R1);
         R1.setSelected(true);
@@ -384,7 +383,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         R1.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass5.add(R1);
 
-        R2.setBackground(new java.awt.Color(240, 250, 230));
         R2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R2);
         R2.setText("Semua Riwayat");
@@ -394,7 +392,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(104, 23));
         panelGlass5.add(R2);
 
-        R3.setBackground(new java.awt.Color(240, 250, 230));
         R3.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R3);
         R3.setText("Tanggal :");
@@ -430,7 +427,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         });
         panelGlass5.add(Tgl2);
 
-        R4.setBackground(new java.awt.Color(240, 250, 230));
         R4.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R4);
         R4.setText("Nomor :");
