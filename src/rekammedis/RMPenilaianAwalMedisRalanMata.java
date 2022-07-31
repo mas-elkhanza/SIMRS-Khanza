@@ -62,10 +62,10 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
-            "Riwayat Penggunakan Obat","Riwayat Alergi","Status","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu","Nyeri","BB(Kg)","Visus kanan","Visus Kiri","CC Kanan","CC Kiri","Palpebra Kanan","Palpebra Kiri",
+            "Riwayat Penggunakan Obat","Riwayat Alergi","Status Nutrisi","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu","Nyeri","BB(Kg)","Visus kanan","Visus Kiri","CC Kanan","CC Kiri","Palpebra Kanan","Palpebra Kiri",
             "Conjungtiva Kanan","Conjungtiva Kiri","Cornea Kanan","Cornea Kiri","COA Kanan","COA kiri","Pupil Kanan","Pupil Kiri","Lensa Kanan","Lensa Kiri","Fundus Kanan","Fundus Kiri","Papil Kanan","Papil Kiri","Retina Kanan","Retina Kiri",
-            "Makula Kanan","Makula Kiri","TIO Kanan","TIO Kiri","MBO Kanan","MBO Kiri",
-            "Laboratorium","Radiologi","Penunjang Lainnya","Tes Penglihatan","Pemeriksaan Lain","Diagnosis/Asesmen","Diagnosis Banding","Permasalahan","Terapi/Pengobatan","Tindakan","Edukasi"
+            "Makula Kanan","Makula Kiri","TIO Kanan","TIO Kiri","MBO Kanan","MBO Kiri","Laboratorium","Radiologi","Penunjang Lainnya","Tes Penglihatan","Pemeriksaan Lain","Diagnosis/Asesmen","Diagnosis Banding","Permasalahan",
+            "Terapi/Pengobatan","Tindakan","Edukasi"
             
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -86,7 +86,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(63);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
@@ -104,23 +104,23 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }else if(i==12){
                 column.setPreferredWidth(150);
             }else if(i==13){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
             }else if(i==14){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(100);
             }else if(i==15){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(90);
             }else if(i==16){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(61);
             }else if(i==17){
-                column.setPreferredWidth(67);
+                column.setPreferredWidth(75);
             }else if(i==18){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(69);
             }else if(i==19){
                 column.setPreferredWidth(40);
             }else if(i==20){
                 column.setPreferredWidth(40);
             }else if(i==21){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(40);
             }else if(i==22){
                 column.setPreferredWidth(100);
             }else if(i==23){
@@ -176,7 +176,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }else if(i==48){
                 column.setPreferredWidth(100);
             }else if(i==49){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(100);
             }else if(i==50){
                 column.setPreferredWidth(170);
             }else if(i==51){
@@ -190,15 +190,15 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }else if(i==55){
                 column.setPreferredWidth(150);
             }else if(i==56){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(150);
             }else if(i==57){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==58){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==59){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==60){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
