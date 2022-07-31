@@ -1935,7 +1935,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Monitoring,BtnSimpan);
+        Valid.pindah(evt,Edukasi,Hubungan);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
