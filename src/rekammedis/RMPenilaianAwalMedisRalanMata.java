@@ -51,7 +51,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
     private int i=0;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
-    private String finger="",finger1="";
+    private String finger="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -455,8 +455,6 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         jLabel12 = new widget.Label();
         BB = new widget.TextBox();
         jLabel13 = new widget.Label();
-        TB = new widget.TextBox();
-        jLabel15 = new widget.Label();
         jLabel16 = new widget.Label();
         Nadi = new widget.TextBox();
         jLabel17 = new widget.Label();
@@ -466,7 +464,6 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         TD = new widget.TextBox();
         jLabel20 = new widget.Label();
         jLabel23 = new widget.Label();
-        jLabel24 = new widget.Label();
         jLabel25 = new widget.Label();
         RR = new widget.TextBox();
         jLabel26 = new widget.Label();
@@ -507,6 +504,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         jLabel113 = new widget.Label();
         scrollPane14 = new widget.ScrollPane();
         Edukasi = new widget.TextArea();
+        jSeparator35 = new javax.swing.JSeparator();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -958,7 +956,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         PanelWall.setWarna(new java.awt.Color(110, 110, 110));
         PanelWall.setLayout(null);
         FormInput.add(PanelWall);
-        PanelWall.setBounds(570, 340, 200, 83);
+        PanelWall.setBounds(570, 340, 200, 80);
 
         jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
@@ -986,7 +984,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2022 03:37:42" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2022 09:01:30" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -999,7 +997,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         TglAsuhan.setBounds(436, 40, 130, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel82.setText("Pemeriksaan lain :");
+        jLabel82.setText("Pemeriksaan Lain :");
         jLabel82.setName("jLabel82"); // NOI18N
         FormInput.add(jLabel82);
         jLabel82.setBounds(454, 1090, 150, 23);
@@ -1060,7 +1058,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         PanelWall1.setWarna(new java.awt.Color(110, 110, 110));
         PanelWall1.setLayout(null);
         FormInput.add(PanelWall1);
-        PanelWall1.setBounds(90, 340, 200, 83);
+        PanelWall1.setBounds(100, 340, 200, 80);
 
         jLabel32.setText("OD : Mata Kanan");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -1083,84 +1081,84 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         jLabel35.setText("Visus SC");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(340, 430, 180, 23);
+        jLabel35.setBounds(350, 430, 170, 23);
 
         jSeparator20.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator20.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator20.setName("jSeparator20"); // NOI18N
         FormInput.add(jSeparator20);
-        jSeparator20.setBounds(40, 460, 780, 1);
+        jSeparator20.setBounds(45, 460, 780, 1);
 
         jSeparator21.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator21.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator21.setName("jSeparator21"); // NOI18N
         FormInput.add(jSeparator21);
-        jSeparator21.setBounds(40, 500, 780, 1);
+        jSeparator21.setBounds(45, 500, 780, 1);
 
         jSeparator22.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator22.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator22.setName("jSeparator22"); // NOI18N
         FormInput.add(jSeparator22);
-        jSeparator22.setBounds(40, 540, 780, 1);
+        jSeparator22.setBounds(45, 540, 780, 1);
 
         jSeparator23.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator23.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator23.setName("jSeparator23"); // NOI18N
         FormInput.add(jSeparator23);
-        jSeparator23.setBounds(40, 580, 780, 1);
+        jSeparator23.setBounds(45, 580, 780, 1);
 
         jSeparator24.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator24.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator24.setName("jSeparator24"); // NOI18N
         FormInput.add(jSeparator24);
-        jSeparator24.setBounds(40, 620, 780, 1);
+        jSeparator24.setBounds(45, 620, 780, 1);
 
         jSeparator25.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator25.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator25.setName("jSeparator25"); // NOI18N
         FormInput.add(jSeparator25);
-        jSeparator25.setBounds(40, 660, 780, 1);
+        jSeparator25.setBounds(45, 660, 780, 1);
 
         jSeparator26.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator26.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator26.setName("jSeparator26"); // NOI18N
         FormInput.add(jSeparator26);
-        jSeparator26.setBounds(40, 700, 780, 1);
+        jSeparator26.setBounds(45, 700, 780, 1);
 
         jSeparator27.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator27.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator27.setName("jSeparator27"); // NOI18N
         FormInput.add(jSeparator27);
-        jSeparator27.setBounds(40, 740, 780, 1);
+        jSeparator27.setBounds(45, 740, 780, 1);
 
         jSeparator28.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator28.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator28.setName("jSeparator28"); // NOI18N
         FormInput.add(jSeparator28);
-        jSeparator28.setBounds(40, 780, 780, 1);
+        jSeparator28.setBounds(45, 780, 780, 1);
 
         jSeparator29.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator29.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator29.setName("jSeparator29"); // NOI18N
         FormInput.add(jSeparator29);
-        jSeparator29.setBounds(40, 820, 780, 1);
+        jSeparator29.setBounds(45, 820, 780, 1);
 
         jSeparator30.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator30.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator30.setName("jSeparator30"); // NOI18N
         FormInput.add(jSeparator30);
-        jSeparator30.setBounds(40, 860, 780, 1);
+        jSeparator30.setBounds(45, 860, 780, 1);
 
         MBOkiri.setFocusTraversalPolicyProvider(true);
         MBOkiri.setName("MBOkiri"); // NOI18N
@@ -1180,7 +1178,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Visuskanan);
-        Visuskanan.setBounds(40, 430, 300, 23);
+        Visuskanan.setBounds(50, 430, 300, 23);
 
         Visuskiri.setFocusTraversalPolicyProvider(true);
         Visuskiri.setName("Visuskiri"); // NOI18N
@@ -1200,7 +1198,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(CCkanan);
-        CCkanan.setBounds(40, 470, 300, 23);
+        CCkanan.setBounds(50, 470, 300, 23);
 
         CCkiri.setFocusTraversalPolicyProvider(true);
         CCkiri.setName("CCkiri"); // NOI18N
@@ -1220,7 +1218,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Palkanan);
-        Palkanan.setBounds(40, 510, 300, 23);
+        Palkanan.setBounds(50, 510, 300, 23);
 
         Palkiri.setFocusTraversalPolicyProvider(true);
         Palkiri.setName("Palkiri"); // NOI18N
@@ -1240,7 +1238,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Conkanan);
-        Conkanan.setBounds(40, 550, 300, 23);
+        Conkanan.setBounds(50, 550, 300, 23);
 
         Conkiri.setFocusTraversalPolicyProvider(true);
         Conkiri.setName("Conkiri"); // NOI18N
@@ -1260,7 +1258,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Corneakanan);
-        Corneakanan.setBounds(40, 590, 300, 23);
+        Corneakanan.setBounds(50, 590, 300, 23);
 
         Corneakiri.setFocusTraversalPolicyProvider(true);
         Corneakiri.setName("Corneakiri"); // NOI18N
@@ -1280,7 +1278,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(COAkanan);
-        COAkanan.setBounds(40, 630, 300, 23);
+        COAkanan.setBounds(50, 630, 300, 23);
 
         COAkiri.setFocusTraversalPolicyProvider(true);
         COAkiri.setName("COAkiri"); // NOI18N
@@ -1300,7 +1298,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Pupilkanan);
-        Pupilkanan.setBounds(40, 670, 300, 23);
+        Pupilkanan.setBounds(50, 670, 300, 23);
 
         Pupilkiri.setFocusTraversalPolicyProvider(true);
         Pupilkiri.setName("Pupilkiri"); // NOI18N
@@ -1320,7 +1318,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Lensakanan);
-        Lensakanan.setBounds(40, 710, 300, 23);
+        Lensakanan.setBounds(50, 710, 300, 23);
 
         Lensakiri.setFocusTraversalPolicyProvider(true);
         Lensakiri.setName("Lensakiri"); // NOI18N
@@ -1340,7 +1338,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Funduskanan);
-        Funduskanan.setBounds(40, 750, 300, 23);
+        Funduskanan.setBounds(50, 750, 300, 23);
 
         Funduskiri.setFocusTraversalPolicyProvider(true);
         Funduskiri.setName("Funduskiri"); // NOI18N
@@ -1360,7 +1358,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Papilkanan);
-        Papilkanan.setBounds(40, 790, 300, 23);
+        Papilkanan.setBounds(50, 790, 300, 23);
 
         Papilkiri.setFocusTraversalPolicyProvider(true);
         Papilkiri.setName("Papilkiri"); // NOI18N
@@ -1385,7 +1383,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Retinakanan);
-        Retinakanan.setBounds(40, 830, 300, 23);
+        Retinakanan.setBounds(50, 830, 300, 23);
 
         Retinakiri.setFocusTraversalPolicyProvider(true);
         Retinakiri.setName("Retinakiri"); // NOI18N
@@ -1405,7 +1403,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Makulakanan);
-        Makulakanan.setBounds(40, 870, 300, 23);
+        Makulakanan.setBounds(50, 870, 300, 23);
 
         Makulakiri.setFocusTraversalPolicyProvider(true);
         Makulakiri.setName("Makulakiri"); // NOI18N
@@ -1425,7 +1423,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(TIOkanan);
-        TIOkanan.setBounds(40, 910, 300, 23);
+        TIOkanan.setBounds(50, 910, 300, 23);
 
         TIOkiri.setFocusTraversalPolicyProvider(true);
         TIOkiri.setName("TIOkiri"); // NOI18N
@@ -1445,90 +1443,90 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(MBOkanan);
-        MBOkanan.setBounds(40, 950, 300, 23);
+        MBOkanan.setBounds(50, 950, 300, 23);
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel44.setText("CC");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(340, 470, 180, 23);
+        jLabel44.setBounds(350, 470, 170, 23);
 
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel45.setText("Palpebra");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
-        jLabel45.setBounds(340, 510, 180, 23);
+        jLabel45.setBounds(350, 510, 170, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("Conjungtiva");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(340, 550, 180, 23);
+        jLabel46.setBounds(350, 550, 170, 23);
 
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel47.setText("Cornea");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(340, 590, 180, 23);
+        jLabel47.setBounds(350, 590, 170, 23);
 
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setText("COA");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(340, 630, 180, 23);
+        jLabel48.setBounds(350, 630, 170, 23);
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("Pupil");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(340, 670, 180, 23);
+        jLabel49.setBounds(350, 670, 170, 23);
 
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel50.setText("Lensa");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
-        jLabel50.setBounds(340, 710, 180, 23);
+        jLabel50.setBounds(350, 710, 170, 23);
 
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel51.setText("Fundus Media");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(340, 750, 180, 23);
+        jLabel51.setBounds(350, 750, 170, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel52.setText("Papil");
         jLabel52.setName("jLabel52"); // NOI18N
         FormInput.add(jLabel52);
-        jLabel52.setBounds(340, 790, 180, 23);
+        jLabel52.setBounds(350, 790, 170, 23);
 
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel53.setText("Retina");
         jLabel53.setName("jLabel53"); // NOI18N
         FormInput.add(jLabel53);
-        jLabel53.setBounds(340, 830, 180, 23);
+        jLabel53.setBounds(350, 830, 170, 23);
 
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel54.setText("Makula");
         jLabel54.setName("jLabel54"); // NOI18N
         FormInput.add(jLabel54);
-        jLabel54.setBounds(340, 870, 180, 23);
+        jLabel54.setBounds(350, 870, 170, 23);
 
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel55.setText("TIO");
         jLabel55.setName("jLabel55"); // NOI18N
         FormInput.add(jLabel55);
-        jLabel55.setBounds(340, 910, 180, 23);
+        jLabel55.setBounds(350, 910, 170, 23);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel56.setText("MBO");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
-        jLabel56.setBounds(340, 950, 180, 23);
+        jLabel56.setBounds(350, 950, 170, 23);
 
         jLabel12.setText("BB :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(325, 240, 30, 23);
+        jLabel12.setBounds(225, 240, 30, 23);
 
         BB.setFocusTraversalPolicyProvider(true);
         BB.setName("BB"); // NOI18N
@@ -1538,34 +1536,19 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(BB);
-        BB.setBounds(359, 240, 45, 23);
+        BB.setBounds(259, 240, 55, 23);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Kg");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(407, 240, 30, 23);
-
-        TB.setFocusTraversalPolicyProvider(true);
-        TB.setName("TB"); // NOI18N
-        TB.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TBKeyPressed(evt);
-            }
-        });
-        FormInput.add(TB);
-        TB.setBounds(234, 240, 45, 23);
-
-        jLabel15.setText("TB :");
-        jLabel15.setName("jLabel15"); // NOI18N
-        FormInput.add(jLabel15);
-        jLabel15.setBounds(200, 240, 30, 23);
+        jLabel13.setBounds(317, 240, 30, 23);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText("x/menit");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
-        jLabel16.setBounds(670, 240, 50, 23);
+        jLabel16.setBounds(640, 240, 50, 23);
 
         Nadi.setFocusTraversalPolicyProvider(true);
         Nadi.setName("Nadi"); // NOI18N
@@ -1575,17 +1558,17 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Nadi);
-        Nadi.setBounds(622, 240, 45, 23);
+        Nadi.setBounds(582, 240, 55, 23);
 
         jLabel17.setText("Nadi :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(578, 240, 40, 23);
+        jLabel17.setBounds(538, 240, 40, 23);
 
         jLabel18.setText("Suhu :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(448, 240, 40, 23);
+        jLabel18.setBounds(378, 240, 40, 23);
 
         Suhu.setFocusTraversalPolicyProvider(true);
         Suhu.setName("Suhu"); // NOI18N
@@ -1595,7 +1578,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(Suhu);
-        Suhu.setBounds(492, 240, 45, 23);
+        Suhu.setBounds(422, 240, 55, 23);
 
         jLabel22.setText("TD :");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -1616,19 +1599,13 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
         jLabel20.setText("°C");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(540, 240, 30, 23);
+        jLabel20.setBounds(480, 240, 30, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel23.setText("mmHg");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
         jLabel23.setBounds(147, 240, 50, 23);
-
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText("cm");
-        jLabel24.setName("jLabel24"); // NOI18N
-        FormInput.add(jLabel24);
-        jLabel24.setBounds(282, 240, 30, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("x/menit");
@@ -1644,12 +1621,12 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             }
         });
         FormInput.add(RR);
-        RR.setBounds(767, 240, 45, 23);
+        RR.setBounds(757, 240, 55, 23);
 
         jLabel26.setText("RR :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(698, 240, 65, 23);
+        jLabel26.setBounds(688, 240, 65, 23);
 
         jLabel28.setText("Status Nutrisi :");
         jLabel28.setName("jLabel28"); // NOI18N
@@ -1929,6 +1906,13 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
 
         FormInput.add(scrollPane14);
         scrollPane14.setBounds(44, 1430, 810, 63);
+
+        jSeparator35.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator35.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator35.setName("jSeparator35"); // NOI18N
+        FormInput.add(jSeparator35);
+        jSeparator35.setBounds(45, 420, 780, 1);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2226,67 +2210,67 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anamnesis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Hubungan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Keluhan Utama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Sekarang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Dahulu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penggunakan Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Riwayat Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Status</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>TD(mmHg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Nadi(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'><b>RR(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>BB(Kg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Visuskanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Visuskiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>CCkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>CCkiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Palkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Palkiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Conkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Conkiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Corneakanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Corneakiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>COAkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>COAkiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Pupilkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Pupilkiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Lensakanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Lensakiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Funduskanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Funduskiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Papilkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Papilkiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Retinakanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Retinakiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Makulakanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Makulakiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>TIOkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>TIOkiri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>MBOkanan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>MBOkiri</b></td>"+ 
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Laboratorium</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Radiologi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='170px'><b>Penunjang Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tes Penglihatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Pemeriksaan Lain</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis/Asesmen</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis Banding</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Permasalahan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Terapi/Pengobatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tindakan/Rencana Pengobatan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Edukasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hubungan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keluhan Utama</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Sekarang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Dahulu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penggunakan Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Alergi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB(Kg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Visuskanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Visuskiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CCkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CCkiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Palkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Palkiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Conkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Conkiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Corneakanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Corneakiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>COAkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>COAkiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pupilkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pupilkiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lensakanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lensakiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Funduskanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Funduskiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Papilkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Papilkiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Retinakanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Retinakiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Makulakanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Makulakiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TIOkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TIOkiri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>MBOkanan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>MBOkiri</b></td>"+ 
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Laboratorium</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Radiologi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penunjang Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tes Penglihatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Lain</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis/Asesmen</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis Banding</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Permasalahan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Terapi/Pengobatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tindakan/Rencana Pengobatan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Edukasi</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -2357,7 +2341,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
                     }
                     LoadHTML.setText(
                         "<html>"+
-                          "<table width='4600px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='5000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>"
@@ -2382,13 +2366,13 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                     bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                 "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='4600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<table width='5000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr class='isi2'>"+
                                         "<td valign='top' align='center'>"+
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT INAP<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT JALAN<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")
@@ -2549,22 +2533,24 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            param.put("lokalis",Sequel.cariGambar("select lokalis from gambar")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            param.put("lokalis",Sequel.cariGambar("select gambar.lokalismata from gambar")); 
+            param.put("lokalis2",Sequel.cariGambar("select gambar.lokalismata from gambar")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
-            finger1=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger1","Pasien \n"+tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()+"\nNO RM "+(finger1.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),1).toString():finger1)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanMata.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Mata]::",
-                "SELECT reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,DATE(penilaian_medis_ralan_mata.tanggal) AS tanggal, TIME(penilaian_medis_ralan_mata.tanggal) AS jam, penilaian_medis_ralan_mata.alergi, " +
-"penilaian_medis_ralan_mata.td,penilaian_medis_ralan_mata.nadi,penilaian_medis_ralan_mata.suhu,penilaian_medis_ralan_mata.rr,penilaian_medis_ralan_mata.bb,penilaian_medis_ralan_mata.nyeri,penilaian_medis_ralan_mata.status,penilaian_medis_ralan_mata.anamnesis,penilaian_medis_ralan_mata.hubungan,penilaian_medis_ralan_mata.keluhan_utama, penilaian_medis_ralan_mata.rps, penilaian_medis_ralan_mata.rpd,penilaian_medis_ralan_mata.rpo,penilaian_medis_ralan_mata.visuskanan, penilaian_medis_ralan_mata.visuskiri,penilaian_medis_ralan_mata.cckanan,penilaian_medis_ralan_mata.cckiri,penilaian_medis_ralan_mata.palkanan,penilaian_medis_ralan_mata.palkiri,penilaian_medis_ralan_mata.conkanan,penilaian_medis_ralan_mata.conkiri, " +
-"penilaian_medis_ralan_mata.corneakanan,penilaian_medis_ralan_mata.corneakiri,penilaian_medis_ralan_mata.coakanan,penilaian_medis_ralan_mata.coakiri,penilaian_medis_ralan_mata.pupilkanan,penilaian_medis_ralan_mata.pupilkiri,penilaian_medis_ralan_mata.lensakanan,penilaian_medis_ralan_mata.lensakiri, " +
-"penilaian_medis_ralan_mata.funduskanan,penilaian_medis_ralan_mata.funduskiri,penilaian_medis_ralan_mata.papilkanan,penilaian_medis_ralan_mata.papilkiri,penilaian_medis_ralan_mata.retinakanan,penilaian_medis_ralan_mata.retinakiri,penilaian_medis_ralan_mata.makulakanan,penilaian_medis_ralan_mata.makulakiri, " +
-"penilaian_medis_ralan_mata.tiokanan,penilaian_medis_ralan_mata.tiokiri,penilaian_medis_ralan_mata.mbokanan,penilaian_medis_ralan_mata.mbokiri,penilaian_medis_ralan_mata.lab,penilaian_medis_ralan_mata.rad,penilaian_medis_ralan_mata.penunjang,penilaian_medis_ralan_mata.tes,penilaian_medis_ralan_mata.pemeriksaan,penilaian_medis_ralan_mata.diagnosis,penilaian_medis_ralan_mata.diagnosisbdg,penilaian_medis_ralan_mata.permasalahan,penilaian_medis_ralan_mata.terapi,penilaian_medis_ralan_mata.tindakan,penilaian_medis_ralan_mata.edukasi,penilaian_medis_ralan_mata.kd_dokter, dokter.nm_dokter " +
-"FROM reg_periksa INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-"INNER JOIN penilaian_medis_ralan_mata ON reg_periksa.no_rawat=penilaian_medis_ralan_mata.no_rawat " +
-"INNER JOIN dokter ON penilaian_medis_ralan_mata.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_mata.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanMata.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Mata ]::",
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_mata.tanggal,"+
+                "penilaian_medis_ralan_mata.kd_dokter,penilaian_medis_ralan_mata.anamnesis,penilaian_medis_ralan_mata.hubungan,penilaian_medis_ralan_mata.keluhan_utama,penilaian_medis_ralan_mata.rps,penilaian_medis_ralan_mata.rpd,penilaian_medis_ralan_mata.rpo,penilaian_medis_ralan_mata.alergi,"+
+                "penilaian_medis_ralan_mata.status,penilaian_medis_ralan_mata.td,penilaian_medis_ralan_mata.nadi,penilaian_medis_ralan_mata.rr,penilaian_medis_ralan_mata.suhu,penilaian_medis_ralan_mata.nyeri,penilaian_medis_ralan_mata.bb,"+
+                "penilaian_medis_ralan_mata.visuskanan,penilaian_medis_ralan_mata.visuskiri,penilaian_medis_ralan_mata.cckanan,penilaian_medis_ralan_mata.cckiri,penilaian_medis_ralan_mata.palkanan,penilaian_medis_ralan_mata.palkiri,penilaian_medis_ralan_mata.conkanan,penilaian_medis_ralan_mata.conkiri,"+
+                "penilaian_medis_ralan_mata.corneakanan,penilaian_medis_ralan_mata.corneakiri,penilaian_medis_ralan_mata.coakanan,penilaian_medis_ralan_mata.coakiri,penilaian_medis_ralan_mata.pupilkanan,penilaian_medis_ralan_mata.pupilkiri,penilaian_medis_ralan_mata.lensakanan,penilaian_medis_ralan_mata.lensakiri,"+
+                "penilaian_medis_ralan_mata.funduskanan,penilaian_medis_ralan_mata.funduskiri,penilaian_medis_ralan_mata.papilkanan,penilaian_medis_ralan_mata.papilkiri,penilaian_medis_ralan_mata.retinakanan,penilaian_medis_ralan_mata.retinakiri,penilaian_medis_ralan_mata.makulakanan,penilaian_medis_ralan_mata.makulakiri,"+
+                "penilaian_medis_ralan_mata.tiokanan,penilaian_medis_ralan_mata.tiokiri,penilaian_medis_ralan_mata.mbokanan,penilaian_medis_ralan_mata.mbokiri,penilaian_medis_ralan_mata.lab,penilaian_medis_ralan_mata.rad,penilaian_medis_ralan_mata.penunjang,penilaian_medis_ralan_mata.tes,penilaian_medis_ralan_mata.pemeriksaan,"+
+                "penilaian_medis_ralan_mata.diagnosis,penilaian_medis_ralan_mata.diagnosisbdg,penilaian_medis_ralan_mata.permasalahan,penilaian_medis_ralan_mata.terapi,penilaian_medis_ralan_mata.tindakan,penilaian_medis_ralan_mata.edukasi,dokter.nm_dokter "+
+                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join penilaian_medis_ralan_mata on reg_periksa.no_rawat=penilaian_medis_ralan_mata.no_rawat "+
+                "inner join dokter on penilaian_medis_ralan_mata.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_mata.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -2693,12 +2679,8 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
     }//GEN-LAST:event_PapilkiriActionPerformed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        Valid.pindah(evt,TB,Suhu);
+        Valid.pindah(evt,TD,Suhu);
     }//GEN-LAST:event_BBKeyPressed
-
-    private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
-        Valid.pindah(evt,TD,BB);
-    }//GEN-LAST:event_TBKeyPressed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
         Valid.pindah(evt,Suhu,RR);
@@ -2709,7 +2691,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Alergi,TB);
+        Valid.pindah(evt,Alergi,BB);
     }//GEN-LAST:event_TDKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
@@ -2843,7 +2825,6 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
     private widget.ScrollPane Scroll;
     private widget.TextBox StatusNutrisi;
     private widget.TextBox Suhu;
-    private widget.TextBox TB;
     private widget.TextBox TCari;
     private widget.TextBox TD;
     private widget.TextBox TIOkanan;
@@ -2875,7 +2856,6 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
     private widget.Label jLabel113;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
-    private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
@@ -2884,7 +2864,6 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
-    private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
     private widget.Label jLabel28;
@@ -2943,6 +2922,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator32;
     private javax.swing.JSeparator jSeparator33;
     private javax.swing.JSeparator jSeparator34;
+    private javax.swing.JSeparator jSeparator35;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;
