@@ -105,55 +105,55 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
             }else if(i==14){
                 column.setPreferredWidth(150);
             }else if(i==15){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(84);
             }else if(i==16){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(76);
             }else if(i==17){
-                column.setPreferredWidth(50);
-            }else if(i==18){
-                column.setPreferredWidth(80);
-            }else if(i==19){
                 column.setPreferredWidth(60);
+            }else if(i==18){
+                column.setPreferredWidth(76);
+            }else if(i==19){
+                column.setPreferredWidth(45);
             }else if(i==20){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(69);
             }else if(i==21){
-                column.setPreferredWidth(67);
+                column.setPreferredWidth(40);
             }else if(i==22){
                 column.setPreferredWidth(40);
             }else if(i==23){
                 column.setPreferredWidth(40);
             }else if(i==24){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(150);
             }else if(i==25){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(150);
             }else if(i==26){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==27){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==28){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==29){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==30){
-                column.setPreferredWidth(300);
-            }else if(i==31){
-                column.setPreferredWidth(300);
-            }else if(i==32){
-                column.setPreferredWidth(300);
-            }else if(i==33){
-                column.setPreferredWidth(300);
-            }else if(i==34){
-                column.setPreferredWidth(300);
-            }else if(i==35){
                 column.setPreferredWidth(200);
+            }else if(i==31){
+                column.setPreferredWidth(200);
+            }else if(i==32){
+                column.setPreferredWidth(200);
+            }else if(i==33){
+                column.setPreferredWidth(200);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(150);
             }else if(i==36){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(200);
             }else if(i==37){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==38){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
             }else if(i==39){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2395,11 +2395,10 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),rs.getString("kesadaran"),
-                        rs.getString("status"),rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("bb"),rs.getString("nyeri"),rs.getString("gcs"),rs.getString("kepala"),
-                        rs.getString("keterangan_kepala"),rs.getString("thoraks"),rs.getString("keterangan_thoraks"),rs.getString("abdomen")+", "+rs.getString("keterangan_abdomen"),rs.getString("ekstremitas")+
-                        ", "+rs.getString("keterangan_ekstremitas"),rs.getString("columna")+", "+rs.getString("keterangan_columna"),rs.getString("muskulos")+", "+rs.getString("keterangan_muskulos"),rs.getString("lainnya"),
-                        rs.getString("lab"),rs.getString("rad"),rs.getString("penunjanglain"),rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),
-                        rs.getString("tindakan"),rs.getString("edukasi")
+                        rs.getString("status"),rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("bb"),rs.getString("nyeri"),rs.getString("gcs"),rs.getString("kepala")+", "+rs.getString("keterangan_kepala"),
+                        rs.getString("thoraks")+", "+rs.getString("keterangan_thoraks"),rs.getString("abdomen")+", "+rs.getString("keterangan_abdomen"),rs.getString("ekstremitas")+", "+rs.getString("keterangan_ekstremitas"),
+                        rs.getString("columna")+", "+rs.getString("keterangan_columna"),rs.getString("muskulos")+", "+rs.getString("keterangan_muskulos"),rs.getString("lainnya"),rs.getString("lab"),rs.getString("rad"),
+                        rs.getString("penunjanglain"),rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),rs.getString("tindakan"),rs.getString("edukasi")
                     });
                 }
             } catch (Exception e) {
@@ -2488,7 +2487,55 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
             BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             Nyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString().contains("Normal")){
+                Kepala.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString().contains("Abnormal")){
+                Kepala.setSelectedItem("Abnormal");
+            }else{
+                Kepala.setSelectedItem("Tidak Diperiksa");
+            }
+            KeteranganKepala.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString().replaceAll(Kepala.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString().contains("Normal")){
+                Thoraks.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString().contains("Abnormal")){
+                Thoraks.setSelectedItem("Abnormal");
+            }else{
+                Thoraks.setSelectedItem("Tidak Diperiksa");
+            }
+            KeteranganThoraks.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString().replaceAll(Kepala.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString().contains("Normal")){
+                Abdomen.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString().contains("Abnormal")){
+                Abdomen.setSelectedItem("Abnormal");
+            }else{
+                Abdomen.setSelectedItem("Tidak Diperiksa");
+            }
+            KeteranganAbdomen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString().replaceAll(Kepala.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString().contains("Normal")){
+                Ekstremitas.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString().contains("Abnormal")){
+                Ekstremitas.setSelectedItem("Abnormal");
+            }else{
+                Ekstremitas.setSelectedItem("Tidak Diperiksa");
+            }
+            KeteranganEkstremitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString().replaceAll(Kepala.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString().contains("Normal")){
+                Columna.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString().contains("Abnormal")){
+                Columna.setSelectedItem("Abnormal");
+            }else{
+                Columna.setSelectedItem("Tidak Diperiksa");
+            }
+            KeteranganColumna.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString().replaceAll(Kepala.getSelectedItem().toString()+", ",""));
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString().contains("Normal")){
+                Muskulos.setSelectedItem("Normal");
+            }else if(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString().contains("Abnormal")){
+                Muskulos.setSelectedItem("Abnormal");
+            }else{
+                Muskulos.setSelectedItem("Tidak Diperiksa");
+            }
+            KeteranganMusku.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString().replaceAll(Kepala.getSelectedItem().toString()+", ",""));
+            Lainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
             Lab.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             Rad.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
             PenunjangLain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
@@ -2580,7 +2627,7 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
                 KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),Kesadaran.getSelectedItem().toString(),Status.getSelectedItem().toString(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),
                 Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),Ekstremitas.getSelectedItem().toString(),KeteranganEkstremitas.getText(),
                 Columna.getSelectedItem().toString(),KeteranganColumna.getText(),Muskulos.getSelectedItem().toString(),KeteranganMusku.getText(),Lainnya.getText(),Lab.getText(),Rad.getText(),PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),
-                Terapi.getText(),Tindakan.getText(),Edukasi.getText()
+                Terapi.getText(),Tindakan.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tampil();
                emptTeks();
