@@ -987,11 +987,6 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
 
         Thoraks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
         Thoraks.setName("Thoraks"); // NOI18N
-        Thoraks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ThoraksActionPerformed(evt);
-            }
-        });
         Thoraks.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ThoraksKeyPressed(evt);
@@ -1073,7 +1068,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022 01:32:13" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2022 13:11:15" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1453,7 +1448,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1467,7 +1462,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2026,10 +2021,6 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
-    private void ThoraksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThoraksActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ThoraksActionPerformed
-
     private void KeteranganKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKepalaKeyPressed
         Valid.pindah(evt,Kepala,Thoraks);
     }//GEN-LAST:event_KeteranganKepalaKeyPressed
@@ -2047,7 +2038,7 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
     }//GEN-LAST:event_KeteranganAbdomenKeyPressed
 
     private void LainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainnyaKeyPressed
-        Valid.pindah(evt,KeteranganEkstremitas,Lab);
+        Valid.pindah2(evt,KeteranganEkstremitas,Lab);
     }//GEN-LAST:event_LainnyaKeyPressed
 
     private void LabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabKeyPressed

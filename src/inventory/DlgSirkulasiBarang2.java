@@ -975,10 +975,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();    
                 
                 if(aktifkanbatch.equals("yes")){
-                    qrystok="select sum(stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                    qrystok="select sum(gudangbarang.stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
                 }else{
-                    qrystok="select sum(stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                    qrystok="select sum(gudangbarang.stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
                 }
                 while(rs.next()){
@@ -1437,10 +1437,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();   
                 
                 if(aktifkanbatch.equals("yes")){
-                    qrystok="select sum(stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                    qrystok="select sum(gudangbarang.stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
                 }else{
-                    qrystok="select sum(stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                    qrystok="select sum(gudangbarang.stok) from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
                 }
                 

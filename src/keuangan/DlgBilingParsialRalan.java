@@ -5739,7 +5739,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                         if(Sequel.menyimpantf("permintaan_radiologi","?,?,?,?,?,?,?,?,?,'ralan',?,?","No.Permintaan",11,new String[]{
                             noorderradiologi,TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                             DTPTgl.getSelectedItem().toString().substring(11,19), 
-                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukRad.getText(),"",""
+                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukRad.getText(),"-","-"
                         })==false){
                             sukses=false;
                         }
@@ -5777,7 +5777,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                         if(Sequel.menyimpantf("permintaan_lab","?,?,?,?,?,?,?,?,?,'ralan',?,?","No.Permintaan",11,new String[]{
                             noorderlaborat,TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                             DTPTgl.getSelectedItem().toString().substring(11,19), 
-                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukLab.getText(),"",""
+                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukLab.getText(),"-","-"
                         })==false){
                             sukses=false;
                         }
