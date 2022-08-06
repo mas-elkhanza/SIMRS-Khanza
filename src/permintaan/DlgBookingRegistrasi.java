@@ -7,11 +7,15 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,6 +52,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
     private DlgCariPoli2 poli2=new DlgCariPoli2(null,false);
     private DlgPasien pasien=new DlgPasien(null,false);
     private String aktifjadwal="",URUTNOREG="",status="",no_rawat="",umur="",sttsumur="";
+    private StringBuilder htmlContent;
     
     
 
@@ -425,6 +430,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         Popup = new javax.swing.JPopupMenu();
         ppBersihkan = new javax.swing.JMenuItem();
         ppSemua = new javax.swing.JMenuItem();
+        ppCSVWARocket = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -513,6 +519,22 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
             }
         });
         Popup.add(ppSemua);
+
+        ppCSVWARocket.setBackground(new java.awt.Color(255, 255, 254));
+        ppCSVWARocket.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppCSVWARocket.setForeground(new java.awt.Color(50, 50, 50));
+        ppCSVWARocket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppCSVWARocket.setText("CSV WA Rocket");
+        ppCSVWARocket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppCSVWARocket.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppCSVWARocket.setName("ppCSVWARocket"); // NOI18N
+        ppCSVWARocket.setPreferredSize(new java.awt.Dimension(170, 25));
+        ppCSVWARocket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppCSVWARocketActionPerformed(evt);
+            }
+        });
+        Popup.add(ppCSVWARocket);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1512,6 +1534,33 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
+    private void ppCSVWARocketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppCSVWARocketActionPerformed
+        try {
+            File f;            
+            BufferedWriter bw; 
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "\"No.HP\";\"Isi Pesan\"\n"
+            ); 
+            
+            for(i=0;i<tabMode.getRowCount();i++){  
+                htmlContent.append(
+                    "\""+tabMode.getValueAt(i,26)+"\";\""+"Mengingatkan kembali kepada saudara "+tabMode.getValueAt(i,4)+" dengan No.RM "+tabMode.getValueAt(i,3)+", berdasarkan booking pada tanggal "+tabMode.getValueAt(i,1)+" "+tabMode.getValueAt(i,2)+" dengan tujuan pemeriksaan di Unit/Poli "+tabMode.getValueAt(i,9)+" pada tanggal "+tabMode.getValueAt(i,5)+" agar bisa datang dengan nomor antrian "+tabMode.getValueAt(i,10)+". Customer Service "+akses.getnamars()+"\"\n"
+                );
+            }
+            
+                                
+                                
+            f = new File("WARocket.csv");            
+            bw = new BufferedWriter(new FileWriter(f));            
+            bw.write(htmlContent.toString());
+
+            bw.close();                         
+            Desktop.getDesktop().browse(f.toURI());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_ppCSVWARocketActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1585,6 +1634,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass8;
     private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppCSVWARocket;
     private javax.swing.JMenuItem ppSemua;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables

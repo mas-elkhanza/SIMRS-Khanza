@@ -1716,10 +1716,15 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_neurologi.tanggal,"+
-                        "penilaian_medis_ralan_neurologi.kd_dokter,penilaian_medis_ralan_neurologi.anamnesis,penilaian_medis_ralan_neurologi.hubungan,penilaian_medis_ralan_neurologi.keluhan_utama,penilaian_medis_ralan_neurologi.rps,penilaian_medis_ralan_neurologi.rpd,penilaian_medis_ralan_neurologi.rpo,penilaian_medis_ralan_neurologi.alergi,"+
-                        "penilaian_medis_ralan_neurologi.kesadaran,penilaian_medis_ralan_neurologi.status,penilaian_medis_ralan_neurologi.td,penilaian_medis_ralan_neurologi.nadi,penilaian_medis_ralan_neurologi.suhu,penilaian_medis_ralan_neurologi.rr,penilaian_medis_ralan_neurologi.bb,penilaian_medis_ralan_neurologi.nyeri,penilaian_medis_ralan_neurologi.gcs,"+
-                        "penilaian_medis_ralan_neurologi.kepala,penilaian_medis_ralan_neurologi.thoraks,penilaian_medis_ralan_neurologi.abdomen,penilaian_medis_ralan_neurologi.ekstremitas,penilaian_medis_ralan_neurologi.columna,penilaian_medis_ralan_neurologi.muskulos,penilaian_medis_ralan_neurologi.lainnya,"+
-                        "penilaian_medis_ralan_neurologi.lab,penilaian_medis_ralan_neurologi.rad,penilaian_medis_ralan_neurologi.pemeriksaan,penilaian_medis_ralan_neurologi.diagnosis,penilaian_medis_ralan_neurologi.diagnosis2,penilaian_medis_ralan_neurologi.permasalahan,penilaian_medis_ralan_neurologi.terapi,penilaian_medis_ralan_neurologi.tindakan,penilaian_medis_ralan_neurologi.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_neurologi.kd_dokter,penilaian_medis_ralan_neurologi.anamnesis,penilaian_medis_ralan_neurologi.hubungan,penilaian_medis_ralan_neurologi.keluhan_utama,"+
+                        "penilaian_medis_ralan_neurologi.rps,penilaian_medis_ralan_neurologi.rpd,penilaian_medis_ralan_neurologi.rpo,penilaian_medis_ralan_neurologi.alergi,penilaian_medis_ralan_neurologi.kesadaran,"+
+                        "penilaian_medis_ralan_neurologi.status,penilaian_medis_ralan_neurologi.td,penilaian_medis_ralan_neurologi.nadi,penilaian_medis_ralan_neurologi.suhu,penilaian_medis_ralan_neurologi.rr,"+
+                        "penilaian_medis_ralan_neurologi.bb,penilaian_medis_ralan_neurologi.nyeri,penilaian_medis_ralan_neurologi.gcs,penilaian_medis_ralan_neurologi.kepala,penilaian_medis_ralan_neurologi.keterangan_kepala,"+
+                        "penilaian_medis_ralan_neurologi.thoraks,penilaian_medis_ralan_neurologi.keterangan_thoraks,penilaian_medis_ralan_neurologi.abdomen,penilaian_medis_ralan_neurologi.keterangan_abdomen,"+
+                        "penilaian_medis_ralan_neurologi.ekstremitas,penilaian_medis_ralan_neurologi.keterangan_ekstremitas,penilaian_medis_ralan_neurologi.columna,penilaian_medis_ralan_neurologi.keterangan_columna,"+
+                        "penilaian_medis_ralan_neurologi.muskulos,penilaian_medis_ralan_neurologi.keterangan_muskulos,penilaian_medis_ralan_neurologi.lainnya,penilaian_medis_ralan_neurologi.lab,"+
+                        "penilaian_medis_ralan_neurologi.rad,penilaian_medis_ralan_neurologi.penunjanglain,penilaian_medis_ralan_neurologi.diagnosis,penilaian_medis_ralan_neurologi.diagnosis2,"+
+                        "penilaian_medis_ralan_neurologi.permasalahan,penilaian_medis_ralan_neurologi.terapi,penilaian_medis_ralan_neurologi.tindakan,penilaian_medis_ralan_neurologi.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_neurologi on reg_periksa.no_rawat=penilaian_medis_ralan_neurologi.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_neurologi.kd_dokter=dokter.kd_dokter where "+
@@ -1727,10 +1732,15 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
                 }else{
                     ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_neurologi.tanggal,"+
-                        "penilaian_medis_ralan_neurologi.kd_dokter,penilaian_medis_ralan_neurologi.anamnesis,penilaian_medis_ralan_neurologi.hubungan,penilaian_medis_ralan_neurologi.keluhan_utama,penilaian_medis_ralan_neurologi.rps,penilaian_medis_ralan_neurologi.rpd,penilaian_medis_ralan_neurologi.rpo,penilaian_medis_ralan_neurologi.alergi,"+
-                        "penilaian_medis_ralan_neurologi.kesadaran,penilaian_medis_ralan_neurologi.status,penilaian_medis_ralan_neurologi.td,penilaian_medis_ralan_neurologi.nadi,penilaian_medis_ralan_neurologi.suhu,penilaian_medis_ralan_neurologi.rr,penilaian_medis_ralan_neurologi.bb,penilaian_medis_ralan_neurologi.nyeri,penilaian_medis_ralan_neurologi.gcs,"+
-                        "penilaian_medis_ralan_neurologi.kepala,penilaian_medis_ralan_neurologi.thoraks,penilaian_medis_ralan_neurologi.abdomen,penilaian_medis_ralan_neurologi.ekstremitas,penilaian_medis_ralan_neurologi.columna,penilaian_medis_ralan_neurologi.muskulos,penilaian_medis_ralan_neurologi.lainnya,"+
-                        "penilaian_medis_ralan_neurologi.lab,penilaian_medis_ralan_neurologi.rad,penilaian_medis_ralan_neurologi.pemeriksaan,penilaian_medis_ralan_neurologi.diagnosis,penilaian_medis_ralan_neurologi.diagnosis2,penilaian_medis_ralan_neurologi.permasalahan,penilaian_medis_ralan_neurologi.terapi,penilaian_medis_ralan_neurologi.tindakan,penilaian_medis_ralan_neurologi.edukasi,dokter.nm_dokter "+
+                        "penilaian_medis_ralan_neurologi.kd_dokter,penilaian_medis_ralan_neurologi.anamnesis,penilaian_medis_ralan_neurologi.hubungan,penilaian_medis_ralan_neurologi.keluhan_utama,"+
+                        "penilaian_medis_ralan_neurologi.rps,penilaian_medis_ralan_neurologi.rpd,penilaian_medis_ralan_neurologi.rpo,penilaian_medis_ralan_neurologi.alergi,penilaian_medis_ralan_neurologi.kesadaran,"+
+                        "penilaian_medis_ralan_neurologi.status,penilaian_medis_ralan_neurologi.td,penilaian_medis_ralan_neurologi.nadi,penilaian_medis_ralan_neurologi.suhu,penilaian_medis_ralan_neurologi.rr,"+
+                        "penilaian_medis_ralan_neurologi.bb,penilaian_medis_ralan_neurologi.nyeri,penilaian_medis_ralan_neurologi.gcs,penilaian_medis_ralan_neurologi.kepala,penilaian_medis_ralan_neurologi.keterangan_kepala,"+
+                        "penilaian_medis_ralan_neurologi.thoraks,penilaian_medis_ralan_neurologi.keterangan_thoraks,penilaian_medis_ralan_neurologi.abdomen,penilaian_medis_ralan_neurologi.keterangan_abdomen,"+
+                        "penilaian_medis_ralan_neurologi.ekstremitas,penilaian_medis_ralan_neurologi.keterangan_ekstremitas,penilaian_medis_ralan_neurologi.columna,penilaian_medis_ralan_neurologi.keterangan_columna,"+
+                        "penilaian_medis_ralan_neurologi.muskulos,penilaian_medis_ralan_neurologi.keterangan_muskulos,penilaian_medis_ralan_neurologi.lainnya,penilaian_medis_ralan_neurologi.lab,"+
+                        "penilaian_medis_ralan_neurologi.rad,penilaian_medis_ralan_neurologi.penunjanglain,penilaian_medis_ralan_neurologi.diagnosis,penilaian_medis_ralan_neurologi.diagnosis2,"+
+                        "penilaian_medis_ralan_neurologi.permasalahan,penilaian_medis_ralan_neurologi.terapi,penilaian_medis_ralan_neurologi.tindakan,penilaian_medis_ralan_neurologi.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_medis_ralan_neurologi on reg_periksa.no_rawat=penilaian_medis_ralan_neurologi.no_rawat "+
                         "inner join dokter on penilaian_medis_ralan_neurologi.kd_dokter=dokter.kd_dokter where "+
@@ -1755,46 +1765,46 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anamnesis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Hubungan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Keluhan Utama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Sekarang</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penyakit Dahulu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Riwayat Penggunakan Obat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Riwayat Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kesadaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Status</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>TD(mmHg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Nadi(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'><b>RR(x/menit)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>BB(Kg)</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>GCS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kepala</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Thoraks</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Abdomen</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Ekstremitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Columna</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Muskulos</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Lainnya</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Lab</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Rad</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Pemeriksaan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Diagnosis2</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Permasalahan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Terapi</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Edukasi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hubungan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keluhan Utama</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Sekarang</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit Dahulu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penggunakan Obat</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Alergi</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesadaran</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>RR(x/menit)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB(Kg)</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nyeri</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>GCS</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kepala</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Thoraks</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Abdomen</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ekstremitas</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Columna</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Muskulos</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lainnya</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lab</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rad</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis2</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Permasalahan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Terapi</b></td>"+
+			    "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tindakan</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Edukasi</b></td>"+
                         "</tr>"
                     );
                     while(rs.next()){
@@ -1824,16 +1834,16 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
                                "<td valign='top'>"+rs.getString("bb")+"</td>"+
                                "<td valign='top'>"+rs.getString("nyeri")+"</td>"+
                                "<td valign='top'>"+rs.getString("gcs")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kepala")+"</td>"+
-                               "<td valign='top'>"+rs.getString("thoraks")+"</td>"+
-                               "<td valign='top'>"+rs.getString("abdomen")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ekstremitas")+"</td>"+
-                               "<td valign='top'>"+rs.getString("columna")+"</td>"+
-                               "<td valign='top'>"+rs.getString("muskulos")+"</td>"+
+                               "<td valign='top'>"+rs.getString("kepala")+", "+rs.getString("keterangan_kepala")+"</td>"+
+                               "<td valign='top'>"+rs.getString("thoraks")+", "+rs.getString("keterangan_thoraks")+"</td>"+
+                               "<td valign='top'>"+rs.getString("abdomen")+", "+rs.getString("keterangan_abdomen")+"</td>"+
+                               "<td valign='top'>"+rs.getString("ekstremitas")+", "+rs.getString("keterangan_ekstremitas")+"</td>"+
+                               "<td valign='top'>"+rs.getString("columna")+", "+rs.getString("keterangan_columna")+"</td>"+
+                               "<td valign='top'>"+rs.getString("muskulos")+", "+rs.getString("keterangan_muskulos")+"</td>"+
                                "<td valign='top'>"+rs.getString("lainnya")+"</td>"+
                                "<td valign='top'>"+rs.getString("lab")+"</td>"+
                                "<td valign='top'>"+rs.getString("rad")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan")+"</td>"+
+                               "<td valign='top'>"+rs.getString("penunjanglain")+"</td>"+
                                "<td valign='top'>"+rs.getString("diagnosis")+"</td>"+
                                "<td valign='top'>"+rs.getString("diagnosis2")+"</td>"+
                                "<td valign='top'>"+rs.getString("permasalahan")+"</td>"+
@@ -2056,16 +2066,21 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            //param.put("lokalis",Sequel.cariGambar("select lokalis from gambar")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
+            
             Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanNeurologi.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Neurologi ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_neurologi.tanggal,"+
-                "penilaian_medis_ralan_neurologi.kd_dokter,penilaian_medis_ralan_neurologi.anamnesis,penilaian_medis_ralan_neurologi.hubungan,penilaian_medis_ralan_neurologi.keluhan_utama,penilaian_medis_ralan_neurologi.rps,penilaian_medis_ralan_neurologi.rpd,penilaian_medis_ralan_neurologi.rpo,penilaian_medis_ralan_neurologi.alergi,"+
-                "penilaian_medis_ralan_neurologi.kesadaran,penilaian_medis_ralan_neurologi.status,penilaian_medis_ralan_neurologi.td,penilaian_medis_ralan_neurologi.nadi,penilaian_medis_ralan_neurologi.suhu,penilaian_medis_ralan_neurologi.rr,penilaian_medis_ralan_neurologi.bb,penilaian_medis_ralan_neurologi.nyeri,penilaian_medis_ralan_neurologi.gcs,"+
-                "penilaian_medis_ralan_neurologi.kepala,penilaian_medis_ralan_neurologi.thoraks,penilaian_medis_ralan_neurologi.abdomen,penilaian_medis_ralan_neurologi.ekstremitas,penilaian_medis_ralan_neurologi.columna,penilaian_medis_ralan_neurologi.muskulos,penilaian_medis_ralan_neurologi.lainnya,"+
-                "penilaian_medis_ralan_neurologi.lab,penilaian_medis_ralan_neurologi.rad,penilaian_medis_ralan_neurologi.pemeriksaan,penilaian_medis_ralan_neurologi.diagnosis,penilaian_medis_ralan_neurologi.diagnosis2,penilaian_medis_ralan_neurologi.permasalahan,penilaian_medis_ralan_neurologi.terapi,penilaian_medis_ralan_neurologi.tindakan,penilaian_medis_ralan_neurologi.edukasi,dokter.nm_dokter "+
+                "penilaian_medis_ralan_neurologi.kd_dokter,penilaian_medis_ralan_neurologi.anamnesis,penilaian_medis_ralan_neurologi.hubungan,penilaian_medis_ralan_neurologi.keluhan_utama,"+
+                "penilaian_medis_ralan_neurologi.rps,penilaian_medis_ralan_neurologi.rpd,penilaian_medis_ralan_neurologi.rpo,penilaian_medis_ralan_neurologi.alergi,penilaian_medis_ralan_neurologi.kesadaran,"+
+                "penilaian_medis_ralan_neurologi.status,penilaian_medis_ralan_neurologi.td,penilaian_medis_ralan_neurologi.nadi,penilaian_medis_ralan_neurologi.suhu,penilaian_medis_ralan_neurologi.rr,"+
+                "penilaian_medis_ralan_neurologi.bb,penilaian_medis_ralan_neurologi.nyeri,penilaian_medis_ralan_neurologi.gcs,penilaian_medis_ralan_neurologi.kepala,penilaian_medis_ralan_neurologi.keterangan_kepala,"+
+                "penilaian_medis_ralan_neurologi.thoraks,penilaian_medis_ralan_neurologi.keterangan_thoraks,penilaian_medis_ralan_neurologi.abdomen,penilaian_medis_ralan_neurologi.keterangan_abdomen,"+
+                "penilaian_medis_ralan_neurologi.ekstremitas,penilaian_medis_ralan_neurologi.keterangan_ekstremitas,penilaian_medis_ralan_neurologi.columna,penilaian_medis_ralan_neurologi.keterangan_columna,"+
+                "penilaian_medis_ralan_neurologi.muskulos,penilaian_medis_ralan_neurologi.keterangan_muskulos,penilaian_medis_ralan_neurologi.lainnya,penilaian_medis_ralan_neurologi.lab,"+
+                "penilaian_medis_ralan_neurologi.rad,penilaian_medis_ralan_neurologi.penunjanglain,penilaian_medis_ralan_neurologi.diagnosis,penilaian_medis_ralan_neurologi.diagnosis2,"+
+                "penilaian_medis_ralan_neurologi.permasalahan,penilaian_medis_ralan_neurologi.terapi,penilaian_medis_ralan_neurologi.tindakan,penilaian_medis_ralan_neurologi.edukasi,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_medis_ralan_neurologi on reg_periksa.no_rawat=penilaian_medis_ralan_neurologi.no_rawat "+
                 "inner join dokter on penilaian_medis_ralan_neurologi.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_neurologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
