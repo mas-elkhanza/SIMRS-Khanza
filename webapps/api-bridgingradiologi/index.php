@@ -110,12 +110,12 @@
                                         order_out.link_ris,order_out.link_synapse,order_out.link_mobility,order_out.kode_tindakan,order_out.tindakan_radiologi,
                                         order_out.proyeksi,order_out.kV,order_out.mAS,order_out.FFD,order_out.BSF,order_out.inak,order_out.jml_penyinaran,
                                         order_out.dosis,order_out.statusupdate FROM order_out 
-                                        WHERE order_out.tanggal_order between '$decode[periodeawal] 00:00:00' and '$decode[periodeakhir] 23:59:59' 
-                                        and (order_out.no_rm like '%$decode[keyword]%' or order_out.no_rontgen like '%$decode[keyword]%' or 
-                                        order_out.no_register like '%$decode[keyword]%' or order_out.nama_pasien like '%$decode[keyword]%' or 
-                                        order_out.expertise_finding like '%$decode[keyword]%' or order_out.expertise_conclusion like '%$decode[keyword]%' or 
-                                        order_out.dokter_radiolog like '%$decode[keyword]%' or order_out.kode_tindakan like '%$decode[keyword]%' or 
-                                        order_out.tindakan_radiologi like '%$decode[keyword]%') order by order_out.tanggal_order";
+                                        WHERE order_out.tanggal_order between '".validTeks($decode['periodeawal'])." 00:00:00' and '".validTeks($decode['periodeakhir'])." 23:59:59' 
+                                        and (order_out.no_rm like '%".validTeks($decode['keyword'])."%' or order_out.no_rontgen like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.no_register like '%".validTeks($decode['keyword'])."%' or order_out.nama_pasien like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.expertise_finding like '%".validTeks($decode['keyword'])."%' or order_out.expertise_conclusion like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.dokter_radiolog like '%".validTeks($decode['keyword'])."%' or order_out.kode_tindakan like '%".validTeks($decode['keyword'])."%' or 
+                                        order_out.tindakan_radiologi like '%".validTeks($decode['keyword'])."%') order by order_out.tanggal_order";
                                 $result2 = bukaquery($sql2);
                                 if (mysqli_num_rows($result2) !== 0) {
                                     while ($data = fetch_array($result2)) {
@@ -191,7 +191,7 @@
                                         order_out.link_ris,order_out.link_synapse,order_out.link_mobility,order_out.kode_tindakan,order_out.tindakan_radiologi,
                                         order_out.proyeksi,order_out.kV,order_out.mAS,order_out.FFD,order_out.BSF,order_out.inak,order_out.jml_penyinaran,
                                         order_out.dosis,order_out.statusupdate FROM order_out 
-                                        WHERE order_out.no_rontgen='$decode[no_rontgen]'";
+                                        WHERE order_out.no_rontgen='".validTeks($decode['no_rontgen'])."'";
                                 $result2 = bukaquery($sql2);
                                 if ($data = fetch_array($result2)) {
                                     $response = array(
@@ -255,7 +255,7 @@
                                 );
                                 http_response_code(201);
                             }else{
-                                $query = bukaquery2("delete from order_out where order_out.no_rontgen='$decode[no_rontgen]'");
+                                $query = bukaquery2("delete from order_out where order_out.no_rontgen='".validTeks($decode['no_rontgen'])."'");
                                 if ($query) {
                                     $response = array(
                                         'response' => array(
@@ -632,7 +632,7 @@
                                 );
                                 http_response_code(201);
                             }else{
-                                $query = bukaquery2("insert into order_out values('$decode[tanggal_order]','$decode[no_rm]','$decode[no_rontgen]','$decode[no_register]','$decode[nama_pasien]','$decode[expertise_finding]','$decode[expertise_conclusion]','$decode[expertise_bookmark]','$decode[dokter_radiolog]','$decode[link_ris]','$decode[link_synapse]','$decode[link_mobility]','$decode[kode_tindakan]','$decode[tindakan_radiologi]','$decode[proyeksi]','$decode[kV]','$decode[mAS]','$decode[FFD]','$decode[BSF]','$decode[inak]','$decode[jml_penyinaran]','$decode[dosis]','0')");
+                                $query = bukaquery2("insert into order_out values('".validTeks($decode['tanggal_order'])."','".validTeks($decode['no_rm'])."','".validTeks($decode['no_rontgen'])."','".validTeks($decode['no_register'])."','".validTeks($decode['nama_pasien'])."','".validTeks($decode['expertise_finding'])."','".validTeks($decode['expertise_conclusion'])."','".validTeks($decode['expertise_bookmark'])."','".validTeks($decode['dokter_radiolog'])."','".validTeks($decode['link_ris'])."','".validTeks($decode['link_synapse'])."','".validTeks($decode['link_mobility'])."','".validTeks($decode['kode_tindakan'])."','".validTeks($decode['tindakan_radiologi'])."','".validTeks($decode['proyeksi'])."','".validTeks($decode['kV'])."','".validTeks($decode['mAS'])."','".validTeks($decode['FFD'])."','".validTeks($decode['BSF'])."','".validTeks($decode['inak'])."','".validTeks($decode['jml_penyinaran'])."','".validTeks($decode['dosis'])."','0')");
                                 if ($query) {
                                     $response = array(
                                         'response' => array(
@@ -1030,14 +1030,14 @@
                                 );
                                 http_response_code(201);
                             }else{
-                                if(getOne2("select count(order_out.no_rontgen) from order_out where order_out.no_rontgen='$decode[no_rontgen]'")>0){
-                                    $query = bukaquery2("update order_out set tanggal_order='$decode[tanggal_order]',no_rm='$decode[no_rm]',no_register='$decode[no_register]',
-                                            nama_pasien='$decode[nama_pasien]',expertise_finding='$decode[expertise_finding]',expertise_conclusion='$decode[expertise_conclusion]',
-                                            expertise_bookmark='$decode[expertise_bookmark]',dokter_radiolog='$decode[dokter_radiolog]',link_ris='$decode[link_ris]',
-                                            link_synapse='$decode[link_synapse]',link_mobility='$decode[link_mobility]',kode_tindakan='$decode[kode_tindakan]',
-                                            tindakan_radiologi='$decode[tindakan_radiologi]',proyeksi='$decode[proyeksi]',kV='$decode[kV]',mAS='$decode[mAS]',FFD='$decode[FFD]',
-                                            BSF='$decode[BSF]',inak='$decode[inak]',jml_penyinaran='$decode[jml_penyinaran]',dosis='$decode[dosis]',statusupdate='1' 
-                                            where no_rontgen='$decode[no_rontgen]'");
+                                if(getOne2("select count(order_out.no_rontgen) from order_out where order_out.no_rontgen='".validTeks($decode['no_rontgen'])."'")>0){
+                                    $query = bukaquery2("update order_out set tanggal_order='".validTeks($decode['tanggal_order'])."',no_rm='".validTeks($decode['no_rm'])."',no_register='".validTeks($decode['no_register'])."',
+                                            nama_pasien='".validTeks($decode['nama_pasien'])."',expertise_finding='".validTeks($decode['expertise_finding'])."',expertise_conclusion='".validTeks($decode['expertise_conclusion'])."',
+                                            expertise_bookmark='".validTeks($decode['expertise_bookmark'])."',dokter_radiolog='".validTeks($decode['dokter_radiolog'])."',link_ris='".validTeks($decode['link_ris'])."',
+                                            link_synapse='".validTeks($decode['link_synapse'])."',link_mobility='".validTeks($decode['link_mobility'])."',kode_tindakan='".validTeks($decode['kode_tindakan'])."',
+                                            tindakan_radiologi='".validTeks($decode['tindakan_radiologi'])."',proyeksi='".validTeks($decode['proyeksi'])."',kV='".validTeks($decode['kV'])."',mAS='".validTeks($decode['mAS'])."',FFD='".validTeks($decode['FFD'])."',
+                                            BSF='".validTeks($decode['BSF'])."',inak='".validTeks($decode['inak'])."',jml_penyinaran='".validTeks($decode['jml_penyinaran'])."',dosis='".validTeks($decode['dosis'])."',statusupdate='1' 
+                                            where no_rontgen='".validTeks($decode['no_rontgen'])."'");
                                     if ($query) {
                                         $response = array(
                                             'response' => array(

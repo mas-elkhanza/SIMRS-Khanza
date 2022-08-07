@@ -2,7 +2,7 @@
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
             $action             = isset($_GET['action'])?$_GET['action']:NULL;
-            $keyword            = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
+            $keyword            = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
         ?>
     <div style="width: 100%; height: 96%; overflow: auto;">
     <?php

@@ -7,10 +7,10 @@
     </head>
     <body>
    <?php
-        $keyword=$_GET['keyword'];
-        $_sql = "SELECT nama FROM bidang where nama  like '%".$keyword."%' ORDER BY nama ASC ";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysqli_num_rows($hasil);
+        $keyword = validTeks($_GET['keyword']);
+        $_sql    = "SELECT bidang.nama FROM bidang where bidang.nama like '%".$keyword."%' ORDER BY bidang.nama ASC ";
+        $hasil   = bukaquery($_sql);
+        $jumlah  = mysqli_num_rows($hasil);
         $no=1;
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -21,7 +21,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-								<td>$no</td>  
+				<td>$no</td>  
                                 <td>$baris[0]</td>  
                              </tr>";$no++;
                     }

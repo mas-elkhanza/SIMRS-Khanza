@@ -51,7 +51,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariPoli2 poli2=new DlgCariPoli2(null,false);
     private DlgPasien pasien=new DlgPasien(null,false);
-    private String aktifjadwal="",URUTNOREG="",status="",no_rawat="",umur="",sttsumur="";
+    private String aktifjadwal="",URUTNOREG="",status="",no_rawat="",umur="",sttsumur="",nohp="";
     private StringBuilder htmlContent;
     
     
@@ -1544,17 +1544,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ); 
             
             for(i=0;i<tabMode.getRowCount();i++){  
-                htmlContent.append(
-                    "\""+tabMode.getValueAt(i,26)+"\";\""+"Mengingatkan kembali kepada saudara "+tabMode.getValueAt(i,4)+" dengan No.RM "+tabMode.getValueAt(i,3)+", berdasarkan booking pada tanggal "+tabMode.getValueAt(i,1)+" "+tabMode.getValueAt(i,2)+" dengan tujuan pemeriksaan di Unit/Poli "+tabMode.getValueAt(i,9)+" pada tanggal "+tabMode.getValueAt(i,5)+" agar bisa datang dengan nomor antrian "+tabMode.getValueAt(i,10)+". Customer Service "+akses.getnamars()+"\"\n"
-                );
-            }
-            
-                                
+                try {
+                    nohp="";
+                    if(tabMode.getValueAt(i,26).toString().substring(0,1).equals("0")){
+                        nohp="62"+tabMode.getValueAt(i,26).toString().substring(1,tabMode.getValueAt(i,26).toString().length());
+                    }else{
+                        nohp=tabMode.getValueAt(i,26).toString();
+                    }
+                    htmlContent.append(
+                        "\" "+nohp+"\";\""+"Mengingatkan kembali kepada saudara "+tabMode.getValueAt(i,4)+" dengan No.RM "+tabMode.getValueAt(i,3)+", berdasarkan booking pada tanggal "+tabMode.getValueAt(i,1)+" "+tabMode.getValueAt(i,2)+" dengan tujuan pemeriksaan di "+tabMode.getValueAt(i,9)+" pada tanggal "+tabMode.getValueAt(i,5)+" agar bisa datang dengan nomor antrian "+tabMode.getValueAt(i,10)+". Customer Service "+akses.getnamars()+"\"\n"
+                    );
+                } catch (Exception e) {
+                }
+            }                   
                                 
             f = new File("WARocket.csv");            
             bw = new BufferedWriter(new FileWriter(f));            
             bw.write(htmlContent.toString());
-
             bw.close();                         
             Desktop.getDesktop().browse(f.toURI());
         } catch (Exception e) {

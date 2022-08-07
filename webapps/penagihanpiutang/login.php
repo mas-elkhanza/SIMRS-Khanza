@@ -8,8 +8,8 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
-            $_SESSION['ses_admin']="admin";
-            $_SESSION['notagihan']=$_GET['notagihan'];
+            $_SESSION['ses_admin']= "admin";
+            $_SESSION['notagihan']= validTeks($_GET['notagihan']);
             $url = "index.php?act=Kamera";			
         }else{
             session_start();

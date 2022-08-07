@@ -5,10 +5,10 @@
             <?php
                 echo "";
                 $action             = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat           = isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
-                $tanggal            = isset($_GET['tanggal'])?$_GET['tanggal']:NULL;
-                $jam                = isset($_GET['jam'])?$_GET['jam']:NULL;
-                $kd_jenis_prw       = isset($_GET['kd_jenis_prw'])?$_GET['kd_jenis_prw']:NULL;
+                $no_rawat           = validTeks(isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL);
+                $tanggal            = validTeks(isset($_GET['tanggal'])?$_GET['tanggal']:NULL);
+                $jam                = validTeks(isset($_GET['jam'])?$_GET['jam']:NULL);
+                $kd_jenis_prw       = validTeks(isset($_GET['kd_jenis_prw'])?$_GET['kd_jenis_prw']:NULL);
                 $no_rm              = getOne("select no_rkm_medis from reg_periksa where no_rawat='$no_rawat'");
                 $nama_pasien        = getOne("select nm_pasien from pasien where no_rkm_medis='$no_rm'");
                 $nm_perawatan       = getOne("select nm_perawatan from jns_perawatan_lab where kd_jenis_prw='$kd_jenis_prw'");
@@ -49,11 +49,11 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_rawat     = trim($_POST['no_rawat']);
-                    $tanggal      = trim($_POST['tanggal']);
-                    $jam          = trim($_POST['jam']);
-                    $kd_jenis_prw = trim($_POST['kd_jenis_prw']);
-                    $gambar       = str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']);
+                    $no_rawat     = validTeks(trim($_POST['no_rawat']));
+                    $tanggal      = validTeks(trim($_POST['tanggal']));
+                    $jam          = validTeks(trim($_POST['jam']));
+                    $kd_jenis_prw = validTeks(trim($_POST['kd_jenis_prw']));
+                    $gambar       = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
                     move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
                     
                     if ((!empty($no_rawat))&&(!empty($kd_jenis_prw))&&(!empty($gambar))) {
@@ -66,7 +66,7 @@
             ?>
             <div style="width: 100%; height: 78%; overflow: auto;">
             <?php
-                $_sql = "SELECT * from detail_periksa_labpa_gambar where no_rawat='$no_rawat' and tgl_periksa='$tanggal' and jam='$jam' and kd_jenis_prw='$kd_jenis_prw'";
+                $_sql = "SELECT * from detail_periksa_labpa_gambar where detail_periksa_labpa_gambar.no_rawat='$no_rawat' and detail_periksa_labpa_gambar.tgl_periksa='$tanggal' and detail_periksa_labpa_gambar.jam='$jam' and detail_periksa_labpa_gambar.kd_jenis_prw='$kd_jenis_prw'";
                 $hasil=bukaquery($_sql);
 
                 if(mysqli_num_rows($hasil)!=0) {
@@ -95,7 +95,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['gambar']);
-                Hapus(" detail_periksa_labpa_gambar "," no_rawat ='".$_GET['no_rawat']."' and tgl_periksa ='".$_GET['tanggal']."' and jam ='".$_GET['jam']."' and photo ='".$_GET['gambar']."' and kd_jenis_prw ='".$_GET['kd_jenis_prw']."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw");
+                Hapus(" detail_periksa_labpa_gambar "," no_rawat ='".validTeks($_GET['no_rawat'])."' and tgl_periksa ='".validTeks($_GET['tanggal'])."' and jam ='".validTeks($_GET['jam'])."' and photo ='".validTeks($_GET['gambar'])."' and kd_jenis_prw ='".validTeks($_GET['kd_jenis_prw'])."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam&kd_jenis_prw=$kd_jenis_prw");
             }
         
         ?>

@@ -1,5 +1,3 @@
-
-
 <div id="post">
 <div class="entry"> 
     <div align="center" class="link">
@@ -37,8 +35,8 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-								<td>
-                                    <center>";?>
+				<td>
+                                 <center>";?>
                                         <a href="?act=ListBidang&action=HAPUS&nama=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
@@ -59,7 +57,7 @@
          
         $hapus = isset($_GET['action'])?$_GET['action']:NULL;
         if ($hapus=="HAPUS") {
-            Hapus(" bidang "," nama ='".$_GET['nama']."' ","?act=ListBidang");
+            Hapus(" bidang "," nama ='".validTeks($_GET['nama'])."' ","?act=ListBidang");
         }
     ?>
     </div>

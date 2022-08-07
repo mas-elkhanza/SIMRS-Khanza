@@ -3,26 +3,26 @@
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
                 echo "";
-                $tahunawal      =isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL;
-                $bulanawal      =isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL;
-                $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
-                $tahunakhir     =isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL;
-                $bulanakhir     =isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL;
-                $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;     
-                $codernik       =isset($_GET['codernik'])?$_GET['codernik']:NULL;
+                $tahunawal      = validTeks(isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL);
+                $bulanawal      = validTeks(isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL);
+                $tanggalawal    = validTeks(isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL);
+                $tahunakhir     = validTeks(isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL);
+                $bulanakhir     = validTeks(isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL);
+                $tanggalakhir   = validTeks(isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL);     
+                $codernik       = validTeks(isset($_GET['codernik'])?$_GET['codernik']:NULL);
                 echo "<input type=hidden name=codernik  value=$codernik>";           
         ?>
     <div style="width: 100%; height: 90%; overflow: auto;">
     <?php
         $BtnCari=isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
         if (isset($BtnCari)) {      
-                $tahunawal      =trim($_POST['tahunawal']);
-                $bulanawal      =trim($_POST['bulanawal']);
-                $tanggalawal    =trim($_POST['tanggalawal']);
-                $tahunakhir     =trim($_POST['tahunakhir']);
-                $bulanakhir     =trim($_POST['bulanakhir']);
-                $tanggalakhir   =trim($_POST['tanggalakhir']);
-                $codernik       =trim($_POST['codernik']);
+                $tahunawal      = validTeks(trim($_POST['tahunawal']));
+                $bulanawal      = validTeks(trim($_POST['bulanawal']));
+                $tanggalawal    = validTeks(trim($_POST['tanggalawal']));
+                $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
+                $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
+                $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));
+                $codernik       = validTeks(trim($_POST['codernik'])); 
         }
 if(empty($tahunawal)){
             $tahunawal=date('Y');
@@ -69,7 +69,7 @@ if(empty($tahunawal)){
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         $status="";
-                        if(getOne("select count(no_sep) from inacbg_data_terkirim where no_sep='".$baris["no_sep"]."'")>0){
+                        if(getOne("select count(inacbg_data_terkirim.no_sep) from inacbg_data_terkirim where inacbg_data_terkirim.no_sep='".$baris["no_sep"]."'")>0){
                             $status="Terkirim INACBG";
                         }
                         $gender = "";
@@ -81,7 +81,7 @@ if(empty($tahunawal)){
 
                         $prosedur="";
                         $a=1;
-                        $hasilprosedur=bukaquery("select kode from prosedur_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
+                        $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
                         while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                             if($a==1){
                                 $prosedur=$barisprosedur["kode"];
@@ -93,7 +93,7 @@ if(empty($tahunawal)){
 
                         $penyakit="";
                         $a=1;
-                        $hasilpenyakit=bukaquery("select kd_penyakit from diagnosa_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
+                        $hasilpenyakit=bukaquery("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat='".$baris["no_rawat"]."' order by diagnosa_pasien.prioritas asc");
                         while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
                             if($a==1){
                                 $penyakit=$barispenyakit["kd_penyakit"];
@@ -104,25 +104,25 @@ if(empty($tahunawal)){
                         } 
 
                         $discharge_status="5";
-                        if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sembuh' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Sembuh' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="1";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sehat' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Sehat' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="1";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Rujuk' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Rujuk' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="2";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='APS' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='APS' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="3";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Pulang Paksa' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Pulang Paksa' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="3";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Meninggal' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Meninggal' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="4";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='+' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='+' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="4";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Persetujuan Dokter' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Atas Persetujuan Dokter' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="1";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Permintaan Sendiri' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Atas Permintaan Sendiri' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="3";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Lain-lain' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Lain-lain' and kamar_inap.no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="5";
                         }else{
                             $discharge_status="1";

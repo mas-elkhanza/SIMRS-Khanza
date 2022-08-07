@@ -7,7 +7,7 @@
     </head>
     <body>
    <?php
-        $keyword = $_GET['keyword'];
+        $keyword = validTeks($_GET['keyword']);
         $_sql    = "SELECT namabank FROM bank where namabank like '%".$keyword."%' ORDER BY namabank ";
         $hasil   = bukaquery($_sql);
         $jumlah  = mysqli_num_rows($hasil);
@@ -21,7 +21,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-				                <td>$no</td>  
+				<td>$no</td>  
                                 <td>$baris[0] &nbsp;</td>
                              </tr>";$no++;
                     }
@@ -29,8 +29,8 @@
         }else {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td width='10%'><div align='center'>Proses</div></td>
-                        <td width='88%'><div align='center'>Bank</div></td>
+                        <td width='10%'><div align='center'>No.</strong></div></td>
+                        <td width='88%'><div align='center'>Nama Bank</div></td>
                     </tr>
                   </table>";
         } 

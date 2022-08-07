@@ -3,8 +3,8 @@
         <?php
             echo "<br>";
             $action             = isset($_GET['action'])?$_GET['action']:NULL;
-            $keyword            = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-            $kode_ebook         = str_replace("_"," ",isset($_GET['kode_ebook']))?str_replace("_"," ",$_GET['kode_ebook']):NULL;
+            $keyword            = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
+            $kode_ebook         = validTeks(str_replace("_"," ",isset($_GET['kode_ebook']))?str_replace("_"," ",$_GET['kode_ebook']):NULL);
             $kode_ebook2        ="";
             $judul_ebook        = "";
             $jml_halaman        = "";
@@ -15,7 +15,7 @@
             $berkas             = "";
             $thn_terbit         = "";
             if($action == "TAMBAH"){
-                $max                = getOne("select ifnull(MAX(CONVERT(RIGHT(kode_ebook,7),signed)),0)+1 from perpustakaan_ebook");
+                $max                = getOne("select ifnull(MAX(CONVERT(RIGHT(perpustakaan_ebook.kode_ebook,7),signed)),0)+1 from perpustakaan_ebook");
                 $kode_ebook         = "E".sprintf("%07s", $max);
                 $kode_ebook2        ="";
                 $judul_ebook        = "";
@@ -27,7 +27,7 @@
                 $berkas             = "";
                 $thn_terbit         = "";
             }else if($action == "UBAH"){
-                $_sql               = "SELECT * FROM perpustakaan_ebook WHERE kode_ebook='$kode_ebook'";
+                $_sql               = "SELECT * FROM perpustakaan_ebook WHERE perpustakaan_ebook.kode_ebook='$kode_ebook'";
                 $hasil              = bukaquery($_sql);
                 while($baris = mysqli_fetch_array($hasil)) {
                     $kode_ebook         = $baris["kode_ebook"];
@@ -57,10 +57,10 @@
                 <td width="35%">
                     :&nbsp;<select name="kode_pengarang" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" id="TxtIsi5">
                         <?php
-                            $_sql = "SELECT kode_pengarang,nama_pengarang FROM perpustakaan_pengarang ORDER BY nama_pengarang";
+                            $_sql = "SELECT perpustakaan_pengarang.kode_pengarang,perpustakaan_pengarang.nama_pengarang FROM perpustakaan_pengarang ORDER BY perpustakaan_pengarang.nama_pengarang";
                             $hasil=bukaquery($_sql);
                             if($action == "UBAH"){
-                                echo "<option id='TxtIsi5' value='$kode_pengarang'>$kode_pengarang ".getOne("select nama_pengarang FROM perpustakaan_pengarang where kode_pengarang='$kode_pengarang'")."</option>";
+                                echo "<option id='TxtIsi5' value='$kode_pengarang'>$kode_pengarang ".getOne("select perpustakaan_pengarang.nama_pengarang FROM perpustakaan_pengarang where perpustakaan_pengarang.kode_pengarang='$kode_pengarang'")."</option>";
                             }
                             while($baris = mysqli_fetch_array($hasil)) {
                                 echo "<option id='TxtIsi5' value='$baris[0]'>$baris[0] $baris[1]</option>";
@@ -98,10 +98,10 @@
                 <td width="35%">
                     :&nbsp;<select name="kode_penerbit" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
                         <?php
-                            $_sql = "SELECT kode_penerbit,nama_penerbit FROM perpustakaan_penerbit ORDER BY nama_penerbit";
+                            $_sql = "SELECT perpustakaan_penerbit.kode_penerbit,perpustakaan_penerbit.nama_penerbit FROM perpustakaan_penerbit ORDER BY perpustakaan_penerbit.nama_penerbit";
                             $hasil=bukaquery($_sql);
                             if($action == "UBAH"){
-                                echo "<option id='TxtIsi3' value='$kode_penerbit'>$kode_penerbit ".getOne("select nama_penerbit FROM perpustakaan_penerbit where kode_penerbit='$kode_penerbit'")."</option>";
+                                echo "<option id='TxtIsi3' value='$kode_penerbit'>$kode_penerbit ".getOne("select perpustakaan_penerbit.nama_penerbit FROM perpustakaan_penerbit where perpustakaan_penerbit.kode_penerbit='$kode_penerbit'")."</option>";
                             }
                             while($baris = mysqli_fetch_array($hasil)) {
                                 echo "<option id='TxtIsi3' value='$baris[0]'>$baris[0] $baris[1]</option>";
@@ -114,10 +114,10 @@
                 <td width="35%">
                     :&nbsp;<select name="id_kategori" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" id="TxtIsi8">
                         <?php
-                            $_sql = "SELECT id_kategori,nama_kategori FROM perpustakaan_kategori ORDER BY nama_kategori";
+                            $_sql = "SELECT perpustakaan_kategori.id_kategori,perpustakaan_kategori.nama_kategori FROM perpustakaan_kategori ORDER BY perpustakaan_kategori.nama_kategori";
                             $hasil=bukaquery($_sql);
                             if($action == "UBAH"){
-                                echo "<option id='TxtIsi8' value='$id_kategori'>$id_kategori ".getOne("select nama_kategori FROM perpustakaan_kategori where id_kategori='$id_kategori'")."</option>";
+                                echo "<option id='TxtIsi8' value='$id_kategori'>$id_kategori ".getOne("select perpustakaan_kategori.nama_kategori FROM perpustakaan_kategori where perpustakaan_kategori.id_kategori='$id_kategori'")."</option>";
                             }
                             while($baris = mysqli_fetch_array($hasil)) {
                                 echo "<option id='TxtIsi8' value='$baris[0]'>$baris[0] $baris[1]</option>";
@@ -132,10 +132,10 @@
                 <td width="35%">
                     :&nbsp;<select name="id_jenis" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                         <?php
-                            $_sql = "SELECT id_jenis,nama_jenis FROM perpustakaan_jenis_buku ORDER BY nama_jenis";
+                            $_sql = "SELECT perpustakaan_jenis_buku.id_jenis,perpustakaan_jenis_buku.nama_jenis FROM perpustakaan_jenis_buku ORDER BY perpustakaan_jenis_buku.nama_jenis";
                             $hasil=bukaquery($_sql);
                             if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value='$id_jenis'>$id_jenis ".getOne("select nama_jenis FROM perpustakaan_jenis_buku where id_jenis='$id_jenis'")."</option>";
+                                echo "<option id='TxtIsi4' value='$id_jenis'>$id_jenis ".getOne("select perpustakaan_jenis_buku.nama_jenis FROM perpustakaan_jenis_buku where perpustakaan_jenis_buku.id_jenis='$id_jenis'")."</option>";
                             }
                             while($baris = mysqli_fetch_array($hasil)) {
                                 echo "<option id='TxtIsi4' value='$baris[0]'>$baris[0] $baris[1]</option>";
@@ -159,16 +159,16 @@
         <?php
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
-                $kode_ebook         =trim($_POST['kode_ebook']);
-                $kode_ebook2        =trim($_POST['kode_ebook2']);
-                $judul_ebook        =trim($_POST['judul_ebook']);
-                $jml_halaman        =trim($_POST['jml_halaman']);
-                $kode_penerbit      =trim($_POST['kode_penerbit']);
-                $kode_pengarang     =trim($_POST['kode_pengarang']);
-                $id_jenis           =trim($_POST['id_jenis']);
-                $id_kategori        =trim($_POST['id_kategori']);
-                $thn_terbit         =trim($_POST['thn_terbit']);
-                $berkas             =str_replace(" ","_","pages/upload/".$_FILES['berkas']['name']);
+                $kode_ebook         = validTeks(trim($_POST['kode_ebook']));
+                $kode_ebook2        = validTeks(trim($_POST['kode_ebook2']));
+                $judul_ebook        = validTeks(trim($_POST['judul_ebook']));
+                $jml_halaman        = validTeks(trim($_POST['jml_halaman']));
+                $kode_penerbit      = validTeks(trim($_POST['kode_penerbit']));
+                $kode_pengarang     = validTeks(trim($_POST['kode_pengarang']));
+                $id_jenis           = validTeks(trim($_POST['id_jenis']));
+                $id_kategori        = validTeks(trim($_POST['id_kategori']));
+                $thn_terbit         = validTeks(trim($_POST['thn_terbit']));
+                $berkas             = validTeks(str_replace(" ","_","pages/upload/".$_FILES['berkas']['name']));
                 move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
 
                 if ((!empty($kode_ebook))&&(!empty($judul_ebook))&&(!empty($jml_halaman))&&(!empty($kode_penerbit))&&(!empty($kode_pengarang))&&(!empty($id_jenis))&&(!empty($id_kategori))&&(!empty($berkas))) {
@@ -271,7 +271,7 @@
     <?php
         if ($action=="HAPUS") {
             unlink($_GET['berkas']);
-            Hapus(" perpustakaan_ebook ","  kode_ebook='".$_GET['kode_ebook']."'","?act=List&action=TAMBAH");
+            Hapus(" perpustakaan_ebook ","  kode_ebook='".validTeks($_GET['kode_ebook'])."'","?act=List&action=TAMBAH");
         }
         
         echo("<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

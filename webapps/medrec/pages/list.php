@@ -18,8 +18,8 @@
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $action      = isset($_GET['action'])?$_GET['action']:NULL;
+                $keyword     = validTeks(isset($_GET['keyword'])?$_GET['keyword']:NULL);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
     <div style="width: 100%; height: 91%; overflow: auto;">
@@ -28,8 +28,8 @@
         $keyword= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;   
         $keyword= validTeks($keyword);
 
-        $_sql = "SELECT no_rkm_medis, nm_pasien, jk, tgl_lahir, nm_ibu from pasien where no_rkm_medis like '%".$keyword."%' or 
-		       nm_pasien like '%".$keyword."%' or tgl_lahir like '%".$keyword."%' or nm_ibu like '%".$keyword."%' order by no_rkm_medis DESC limit 1000";
+        $_sql = "SELECT pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,pasien.nm_ibu from pasien where pasien.no_rkm_medis like '%".$keyword."%' or 
+		       pasien.nm_pasien like '%".$keyword."%' or pasien.tgl_lahir like '%".$keyword."%' or pasien.nm_ibu like '%".$keyword."%' order by pasien.no_rkm_medis DESC limit 1000";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         if(mysqli_num_rows($hasil)!=0) {
@@ -57,7 +57,7 @@
                                 <td valign='top'><a href=?act=Detail&action=TAMBAH&id=$baris[0]>$baris[4]</a></td>
                                 <td  valign='top'>
                                    <table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
-                                        $_sql2 = "SELECT terakhir_daftar, tgl_retensi, lokasi_pdf from retensi_pasien where no_rkm_medis='$baris[0]' ORDER BY tgl_retensi ASC ";
+                                        $_sql2 = "SELECT retensi_pasien.terakhir_daftar,retensi_pasien.tgl_retensi,retensi_pasien.lokasi_pdf from retensi_pasien where retensi_pasien.no_rkm_medis='$baris[0]' ORDER BY retensi_pasien.tgl_retensi ASC ";
                                         $hasil2=bukaquery($_sql2);
                                         if(mysqli_num_rows($hasil2)!=0) {
                                             echo "<tr class='isi4'>
@@ -90,10 +90,10 @@
 
     ?>
     </div>
-			<table width="100%" align="center" border="0" align="center" cellpadding="0" cellspacing="0">
+            <table width="100%" align="center" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr class="head3">					
-					<td width="430px">
-					   Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="250" autofocus />
+                    <td width="430px">
+                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="250" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />
                     </td>
                     <td width="140px" >Record : <?php echo $jumlah; ?> </td>

@@ -2,13 +2,13 @@
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-            $tgl1     =isset($_GET['tgl1'])?$_GET['tgl1']:NULL;
-            $tgl2     =isset($_GET['tgl2'])?$_GET['tgl2']:NULL;
-            $action   =isset($_GET['action'])?$_GET['action']:NULL;
-            $keyword  =str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-            $ruang    =str_replace("_"," ",isset($_GET['ruang']))?str_replace("_"," ",$_GET['ruang']):NULL;
-            $sttssurat=str_replace("_"," ",isset($_GET['sttssurat']))?str_replace("_"," ",$_GET['sttssurat']):NULL;
-            $sttsbalas=str_replace("_"," ",isset($_GET['sttsbalas']))?str_replace("_"," ",$_GET['sttsbalas']):NULL;
+            $tgl1     = validTeks(isset($_GET['tgl1'])?$_GET['tgl1']:NULL);
+            $tgl2     = validTeks(isset($_GET['tgl2'])?$_GET['tgl2']:NULL);
+            $action   = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
+            $keyword  = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
+            $ruang    = validTeks(str_replace("_"," ",isset($_GET['ruang']))?str_replace("_"," ",$_GET['ruang']):NULL);
+            $sttssurat= validTeks(str_replace("_"," ",isset($_GET['sttssurat']))?str_replace("_"," ",$_GET['sttssurat']):NULL);
+            $sttsbalas= validTeks(str_replace("_"," ",isset($_GET['sttsbalas']))?str_replace("_"," ",$_GET['sttsbalas']):NULL);
         ?>
     <div style="width: 100%; height: 99.9%; overflow: auto;">
     <?php        

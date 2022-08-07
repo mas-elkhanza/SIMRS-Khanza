@@ -5,7 +5,7 @@
             <?php
                 echo "";
                 $action       = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat     = isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
+                $no_rawat     = validTeks(isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL);
                 
                 $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                                 reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
@@ -50,7 +50,7 @@
                     <td width="75%" valign="top">
                         <select name="kode" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
                             <?php
-                                $_sql = "SELECT kode,nama FROM master_berkas_digital ORDER BY nama";
+                                $_sql = "SELECT master_berkas_digital.kode,master_berkas_digital.nama FROM master_berkas_digital ORDER BY master_berkas_digital.nama";
                                 $hasil=bukaquery($_sql);
 
                                 while($baris = mysqli_fetch_array($hasil)) {
@@ -72,9 +72,9 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_rawat           = trim($_POST['no_rawat']);
-                    $kode               = trim($_POST['kode']);
-                    $dokumen            = str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']);
+                    $no_rawat           = validTeks(trim($_POST['no_rawat']));
+                    $kode               = validTeks(trim($_POST['kode']));
+                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
                     move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                     
                     if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
@@ -133,7 +133,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['lokasi_file']);
-                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' and lokasi_file='".$_GET['lokasi_file']."'","?act=Detail2&action=TAMBAH&no_rawat=$no_rawat");
+                Hapus(" berkas_digital_perawatan "," no_rawat ='". validTeks($_GET['no_rawat'])."' and kode ='".validTeks($_GET['kode'])."' and lokasi_file='".validTeks($_GET['lokasi_file'])."'","?act=Detail2&action=TAMBAH&no_rawat=$no_rawat");
             }
             
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

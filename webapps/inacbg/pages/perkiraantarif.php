@@ -2,9 +2,9 @@
     require_once '../conf/wsinacbg2.php';
     require_once '../../conf/conf.php';
     $prosedur           = "";
-    $penyakit           = isset($_GET["penyakit"])?$_GET["penyakit"]:NULL;
+    $penyakit           = validTeks(isset($_GET["penyakit"])?$_GET["penyakit"]:NULL);
     $discharge_status   = "5";               
-    $norawat            = isset($_GET["norawat"])?$_GET["norawat"]:NULL;
+    $norawat            = validTeks(isset($_GET["norawat"])?$_GET["norawat"]:NULL);
     $_sql               = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                             reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.no_peserta,
                             pasien.umur,pasien.tgl_lahir,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,

@@ -4,8 +4,8 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 $action             = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_inventaris      = str_replace("_"," ",$_GET['no_inventaris']);
-                $gambar             = str_replace("_"," ",isset($_GET['gambar']))?str_replace("_"," ",isset($_GET['gambar'])):NULL;
+                $no_inventaris      = validTeks(str_replace("_"," ",$_GET['no_inventaris']));
+                $gambar             = validTeks(str_replace("_"," ",isset($_GET['gambar']))?str_replace("_"," ",isset($_GET['gambar'])):NULL);
                 echo "<input type=hidden name=no_inventaris value=$no_inventaris>
                       <input type=hidden name=action value=$action>";
             ?>
@@ -28,8 +28,8 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_inventaris = trim($_POST['no_inventaris']);
-                    $gambar        = str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']);
+                    $no_inventaris = validTeks(trim($_POST['no_inventaris']));
+                    $gambar        = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
                     move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
                     
                     if ((!empty($no_inventaris))&&(!empty($gambar))) {
@@ -71,7 +71,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['gambar']);
-                Hapus(" inventaris_gambar "," no_inventaris ='".$_GET['no_inventaris']."' ","?act=List&action=TAMBAH&no_inventaris=$no_inventaris");
+                Hapus(" inventaris_gambar "," no_inventaris ='".validTeks($_GET['no_inventaris'])."' ","?act=List&action=TAMBAH&no_inventaris=$no_inventaris");
             }
         
         ?>

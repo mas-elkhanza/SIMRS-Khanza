@@ -7,7 +7,7 @@
     ini_set('display_errors', 0);
     error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-    require_once('../conf/conf.php');
+    require_once ('conf.php');
     $method             = $_SERVER['REQUEST_METHOD'];
     $action             = isset($_GET["act"]) ? $_GET["act"] : null;
     $bpj                = fetch_assoc("SELECT AES_DECRYPT(usere,'nur') as username, AES_DECRYPT(passworde,'windi') as password FROM set_akun_bankjateng");
@@ -69,9 +69,9 @@
                                 );
                             }
                         } else {
-                            $result = bukaquery("SELECT count(*) FROM pasien WHERE no_rkm_medis = '$decode[no_rkm_medis]'");
+                            $result = bukaquery("SELECT count(*) FROM pasien WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."'");
                             if (JumlahBaris($result) !== 0) {
-                                $sql2 = "SELECT * FROM tagihan_bpd_jateng WHERE no_rkm_medis = '$decode[no_rkm_medis]' AND status_bayar = 'Pending'";
+                                $sql2 = "SELECT * FROM tagihan_bpd_jateng WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."' AND status_bayar = 'Pending'";
                                 $result2 = bukaquery($sql2);
                                 if (JumlahBaris($result2) !== 0) {
                                     while ($data = fetch_array($result2)) {
@@ -163,7 +163,7 @@
                                 );
                             }
                         } else{
-                            $sql = "UPDATE tagihan_bpd_jateng SET status_bayar='Sudah',diupdatebank=current_time(),referensi='$decode[referensi]' WHERE no_rkm_medis = '$decode[no_rkm_medis]' AND no_nota = '$decode[no_nota]'";
+                            $sql = "UPDATE tagihan_bpd_jateng SET status_bayar='Sudah',diupdatebank=current_time(),referensi='".validTeks($decode['referensi'])."' WHERE no_rkm_medis = '".validTeks($decode['no_rkm_medis'])."' AND no_nota = '".validTeks($decode['no_nota'])."'";
                             if(bukaquery($sql)){
                                 $response = array(
                                     'metadata' => array(

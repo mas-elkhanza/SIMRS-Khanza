@@ -15,7 +15,7 @@
 <body>
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tbl_form">
     <?php
-        $no_rawat=isset($_GET['norawat'])?$_GET['norawat']:NULL;
+        $no_rawat= validTeks(isset($_GET['norawat'])?$_GET['norawat']:NULL);
         $_sql2 = "SELECT berkas_digital_perawatan.no_rawat,berkas_digital_perawatan.kode, 
                   master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file 
                   from berkas_digital_perawatan inner join master_berkas_digital 

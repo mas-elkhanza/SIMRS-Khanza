@@ -213,7 +213,7 @@
                                          <?php
                                             if(!isset($_SESSION["poli"])){
                                                 $datapoli   = "";
-                                                $querypoli  = bukaquery("SELECT * from poliklinik order by nm_poli");
+                                                $querypoli  = bukaquery("SELECT * from poliklinik where poliklinik.status='1' order by poliklinik.nm_poli");
                                                 while($rsquerypoli = mysqli_fetch_array($querypoli)) {
                                                     $datapoli=$datapoli."<option value='$rsquerypoli[0]'>$rsquerypoli[1]</option>";
                                                 }

@@ -9,7 +9,7 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
             $_SESSION['ses_admin']="admin";
-            $url = "index.php?act=List&no_rawat=".$_GET['no_rawat']."&tanggal=".$_GET['tanggal']."&jam=".$_GET['jam']."&kd_jenis_prw=".$_GET['kd_jenis_prw'];			
+            $url = "index.php?act=List&no_rawat=".validTeks($_GET['no_rawat'])."&tanggal=".validTeks($_GET['tanggal'])."&jam=".validTeks($_GET['jam'])."&kd_jenis_prw=".validTeks($_GET['kd_jenis_prw']);			
         }else{
             session_start();
             session_destroy();

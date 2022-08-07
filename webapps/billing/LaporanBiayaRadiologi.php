@@ -9,13 +9,13 @@
 
     <?php
     reportsqlinjection();      
-        $norm       =$_GET['norm'];
-        $pasien     =$_GET['pasien'];
-        $tanggal    =$_GET['tanggal'];
-        $jam        =$_GET['jam'];
-        $pjlab      =$_GET['pjlab'];
-        $petugas    =$_GET['petugas'];
-        $kasir      =$_GET['kasir'];
+        $norm       = validTeks($_GET['norm']);
+        $pasien     = validTeks($_GET['pasien']);
+        $tanggal    = validTeks($_GET['tanggal']);
+        $jam        = validTeks($_GET['jam']);
+        $pjlab      = validTeks($_GET['pjlab']);
+        $petugas    = validTeks($_GET['petugas']);
+        $kasir      = validTeks($_GET['kasir']);
 
         $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_radiologi order by no asc";   
         $hasil=bukaquery($_sql);

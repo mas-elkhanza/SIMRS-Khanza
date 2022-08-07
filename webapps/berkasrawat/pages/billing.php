@@ -14,11 +14,9 @@
     <body bgcolor='#ffffff'>
 
     <?php
-        reportsqlinjection();    
-        $no_rawat=isset($_GET['norawat'])?$_GET['norawat']:NULL;
-         
-        $_sql = "select no,nm_perawatan,pemisah,if(biaya=0,'',biaya),if(jumlah=0,'',jumlah),if(tambahan=0,'',tambahan),if(totalbiaya=0,'',totalbiaya),totalbiaya from billing where no_rawat='$no_rawat' ";   
-        $hasil=bukaquery($_sql);
+        $no_rawat = validTeks(isset($_GET['norawat'])?$_GET['norawat']:NULL);
+        $_sql     = "select totalbiaya.no,totalbiaya.nm_perawatan,totalbiaya.pemisah,if(totalbiaya.biaya=0,'',totalbiaya.biaya),if(totalbiaya.jumlah=0,'',totalbiaya.jumlah),if(totalbiaya.tambahan=0,'',totalbiaya.tambahan),if(totalbiaya.totalbiaya=0,'',totalbiaya.totalbiaya),totalbiaya.totalbiaya from billing where totalbiaya.no_rawat='$no_rawat' ";   
+        $hasil    = bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
             $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));

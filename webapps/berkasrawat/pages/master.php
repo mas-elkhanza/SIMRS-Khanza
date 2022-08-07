@@ -4,9 +4,9 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode               =isset($_GET['kode'])?$_GET['kode']:NULL;
-                $nama               =isset($_GET['nama'])?$_GET['nama']:NULL;
+                $action             = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode               = validTeks(isset($_GET['kode'])?$_GET['kode']:NULL);
+                $nama               = validTeks(isset($_GET['nama'])?$_GET['nama']:NULL);
                 echo "<input type=hidden name=kode  value=$kode><input type=hidden name=action value=$action>";
                 echo "<div align='center' class='link'>
                           <a href=?act=List>| List Berkas |</a>
@@ -52,7 +52,7 @@
             ?>
             <div style="width: 100%; height: 67%; overflow: auto;">
             <?php
-                $_sql = "SELECT * from master_berkas_digital ORDER BY kode ASC ";
+                $_sql = "SELECT * from master_berkas_digital ORDER BY master_berkas_digital.kode ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
@@ -93,7 +93,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" master_berkas_digital "," kode ='".$_GET['kode']."' ","?act=MasterBerkas&action=TAMBAH");
+                Hapus(" master_berkas_digital "," kode ='".validTeks($_GET['kode'])."' ","?act=MasterBerkas&action=TAMBAH");
             }
 
         

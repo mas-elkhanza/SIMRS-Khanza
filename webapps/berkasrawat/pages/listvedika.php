@@ -3,35 +3,35 @@
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                     echo "";
-                    $tahunawal      =isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL;
-                    $bulanawal      =isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL;
-                    $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
-                    $tahunakhir     =isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL;
-                    $bulanakhir     =isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL;
-                    $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;  
-                    $status         =isset($_GET['status'])?$_GET['status']:NULL;  
-                    $action         =isset($_GET['action'])?$_GET['action']:NULL;
-                    $no_rawat       =isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
-                    $keyword        =str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-                    $carabayar      =str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL;
-                    $poli           =str_replace("_"," ",isset($_GET['poli']))?str_replace("_"," ",$_GET['poli']):NULL;
+                    $tahunawal      = validTeks(isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL);
+                    $bulanawal      = validTeks(isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL);
+                    $tanggalawal    = validTeks(isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL);
+                    $tahunakhir     = validTeks(isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL);
+                    $bulanakhir     = validTeks(isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL);
+                    $tanggalakhir   = validTeks(isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL);  
+                    $status         = validTeks(isset($_GET['status'])?$_GET['status']:NULL);  
+                    $action         = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
+                    $no_rawat       = validTeks(isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL);
+                    $keyword        = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
+                    $carabayar      = validTeks(str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL);
+                    $poli           = validTeks(str_replace("_"," ",isset($_GET['poli']))?str_replace("_"," ",$_GET['poli']):NULL);
                     echo "<input type=hidden name=carabayar value=$carabayar><input type=hidden name=poli value=$poli><input type=hidden name=keyword value=$keyword>";
             ?>
             <div style="width: 100%; height: 87.4%; overflow: auto;">
             <?php        
                 $BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
                 if (isset($BtnCari)) {      
-                        $tahunawal      =trim($_POST['tahunawal']);
-                        $bulanawal      =trim($_POST['bulanawal']);
-                        $tanggalawal    =trim($_POST['tanggalawal']);
-                        $tahunakhir     =trim($_POST['tahunakhir']);
-                        $bulanakhir     =trim($_POST['bulanakhir']);
-                        $tanggalakhir   =trim($_POST['tanggalakhir']);    
-                        $carabayar      =trim($_POST['carabayar']);
-                        $keyword        =trim($_POST['keyword']);
-                        $status         =trim($_POST['status']);
-                        $poli           =trim($_POST['poli']);
-                        $action         ="no";
+                        $tahunawal      = validTeks(trim($_POST['tahunawal']));
+                        $bulanawal      = validTeks(trim($_POST['bulanawal']));
+                        $tanggalawal    = validTeks(trim($_POST['tanggalawal']));
+                        $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
+                        $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
+                        $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));    
+                        $carabayar      = validTeks(trim($_POST['carabayar']));
+                        $keyword        = validTeks(trim($_POST['keyword']));
+                        $status         = validTeks(trim($_POST['status']));
+                        $poli           = validTeks(trim($_POST['poli']));
+                        $action         = "no";
                 }
                 if(empty($tahunawal)){
                     $tahunawal=date('Y');
@@ -51,10 +51,6 @@
                 if(empty($tanggalakhir)){
                     $tanggalakhir=date('d');
                 }     
-
-                $keyword    = validTeks($keyword);
-                $poli       = validTeks($poli);
-                $carabayar  = validTeks($carabayar);
 
                 $_sql = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                         reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
@@ -234,7 +230,7 @@
                         Unit/Poli : 
                         <select name="poli" class="text5">
                             <?php
-                                $_sql = "SELECT nm_poli FROM poliklinik  ORDER BY nm_poli";
+                                $_sql = "SELECT poliklinik.nm_poli FROM poliklinik ORDER BY poliklinik.nm_poli";
                                 $hasil=bukaquery($_sql);
                                 if(!empty($poli)){
                                     echo "<option value='$poli'>$poli</option>";

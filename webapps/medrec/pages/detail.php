@@ -4,8 +4,8 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
+                $action  = isset($_GET['action'])?$_GET['action']:NULL;
+                $id      = validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
                 echo "<div align='center' class='link'>
                           <a href=?act=List>| List Retensi |</a>
@@ -19,19 +19,19 @@
                 </tr>
 		        <tr class="head">
                     <td width="31%">Nama Pasien</td><td width="">:</td>
-                    <td width="67%"><?php echo getOne("select nm_pasien from pasien where no_rkm_medis='$id'");?></td>
+                    <td width="67%"><?php echo getOne("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='$id'");?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%">Jenis Kelamin</td><td width="">:</td>
-                    <td width="67%"><?php echo getOne("select if(jk='L','Laki-Laki','Perempuan') from pasien where no_rkm_medis='$id'");?></td>
+                    <td width="67%"><?php echo getOne("select if(pasien.jk='L','Laki-Laki','Perempuan') from pasien where pasien.no_rkm_medis='$id'");?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%">Tanggal Lahir</td><td width="">:</td>
-                    <td width="67%"><?php echo getOne("select tgl_lahir from pasien where no_rkm_medis='$id'");?></td>
+                    <td width="67%"><?php echo getOne("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis='$id'");?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%">Nama Ibu</td><td width="">:</td>
-                    <td width="67%"><?php echo getOne("select nm_ibu from pasien where no_rkm_medis='$id'");?></td>
+                    <td width="67%"><?php echo getOne("select pasien.nm_ibu from pasien where pasien.no_rkm_medis='$id'");?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Terakhir Daftar</td><td width="">:</td>
@@ -105,10 +105,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
-                    $terakhir_daftar    =trim($_POST['ThnTerakhir'])."-".trim($_POST['BlnTerakhir'])."-".trim($_POST['TglTerakhir']);
-                    $tgl_retensi        =trim($_POST['ThnRetensi'])."-".trim($_POST['BlnRetensi'])."-".trim($_POST['TglRetensi']);
-                    $dokumen            =str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']);
+                    $id                 = validTeks(trim($_POST['id']));
+                    $terakhir_daftar    = validTeks(trim($_POST['ThnTerakhir'])."-".trim($_POST['BlnTerakhir'])."-".trim($_POST['TglTerakhir']));
+                    $tgl_retensi        = validTeks(trim($_POST['ThnRetensi'])."-".trim($_POST['BlnRetensi'])."-".trim($_POST['TglRetensi']));
+                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
                     move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                     
                     if ((!empty($id))&&(!empty($dokumen))) {
@@ -125,7 +125,7 @@
             ?>
             <div style="width: 100%; height: 42%; overflow: auto;">
             <?php
-                $_sql = "SELECT * from retensi_pasien where no_rkm_medis='$id' ORDER BY tgl_retensi ASC ";
+                $_sql = "SELECT * from retensi_pasien where retensi_pasien.no_rkm_medis='$id' ORDER BY retensi_pasien.tgl_retensi ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
@@ -168,7 +168,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['lokasi_pdf']);
-                Hapus(" retensi_pasien "," no_rkm_medis ='".$_GET['id']."' and tgl_retensi ='".$_GET['tgl_retensi']."' ","?act=Detail&action=TAMBAH&id=$id");
+                Hapus(" retensi_pasien "," no_rkm_medis ='".validTeks($_GET['id'])."' and tgl_retensi ='".validTeks($_GET['tgl_retensi'])."' ","?act=Detail&action=TAMBAH&id=$id");
             }
 
         

@@ -3,18 +3,18 @@
     <div class="entry">        
         <?php
             echo "";
-            $codernik       =isset($_GET['codernik'])?$_GET['codernik']:NULL;
-            $corona         =isset($_GET['corona'])?$_GET['corona']:NULL;
-            $norawat        =isset($_GET['norawat'])?$_GET['norawat']:NULL;
-            $tahunawal      =isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL;
-            $bulanawal      =isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL;
-            $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
-            $tahunakhir     =isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL;
-            $bulanakhir     =isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL;
-            $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;  
-            $action         =isset($_GET['action'])?$_GET['action']:NULL;
-            $codernik       =isset($_GET['codernik'])?$_GET['codernik']:NULL;
-            $carabayar      =str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL;
+            $codernik       = validTeks(isset($_GET['codernik'])?$_GET['codernik']:NULL);
+            $corona         = validTeks(isset($_GET['corona'])?$_GET['corona']:NULL);
+            $norawat        = validTeks(isset($_GET['norawat'])?$_GET['norawat']:NULL);
+            $tahunawal      = validTeks(isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL);
+            $bulanawal      = validTeks(isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL);
+            $tanggalawal    = validTeks(isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL);
+            $tahunakhir     = validTeks(isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL);
+            $bulanakhir     = validTeks(isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL);
+            $tanggalakhir   = validTeks(isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL);  
+            $action         = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
+            $codernik       = validTeks(isset($_GET['codernik'])?$_GET['codernik']:NULL);
+            $carabayar      = validTeks(str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL);
             $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                             reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,
                             pasien.umur,pasien.tgl_lahir,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,
@@ -168,7 +168,7 @@
                         value="<?php if($status_lanjut=="Ralan"){
                                          echo $tgl_registrasi;
                                      }else{
-                                         echo getOne("select tgl_keluar from kamar_inap where no_rawat='".$norawat."'order by tgl_keluar desc limit 1");
+                                         echo getOne("select kamar_inap.tgl_keluar from kamar_inap where kamar_inap.no_rawat='".$norawat."'order by kamar_inap.tgl_keluar desc limit 1");
                                      }
                                 ?>" size="15" maxlength="10">
                 </td>
@@ -281,25 +281,25 @@
                 <td width="57%">
                     <select name="discharge_status" class="text2">
                         <?php 
-                            if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sembuh' and no_rawat='".$norawat."'")>0){
+                            if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Sembuh' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='1'>Atas persetujuan dokter</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sehat' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Sehat' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='1'>Atas persetujuan dokter</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Rujuk' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Rujuk' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='2'>Dirujuk</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='APS' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='APS' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='3'>Atas permintaan sendiri</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Pulang Paksa' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Pulang Paksa' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='3'>Atas permintaan sendiri</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Meninggal' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Meninggal' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='4'>Meninggal</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='+' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='+' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='4'>Meninggal</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Persetujuan Dokter' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Atas Persetujuan Dokter' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='1'>Atas persetujuan dokter</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Permintaan Sendiri' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Atas Permintaan Sendiri' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='3'>Atas permintaan sendiri</option>";
-                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Lain-lain' and no_rawat='".$norawat."'")>0){
+                            }else if(getOne("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.stts_pulang='Lain-lain' and kamar_inap.no_rawat='".$norawat."'")>0){
                                 echo "<option value='5'>Lain-lain</option>";
                             }else{
                                 echo "<option value='1'>Atas persetujuan dokter</option>";
@@ -320,7 +320,7 @@
                            value="<?php  
                                         $penyakit="";
                                         $a=1;
-                                        $hasilpenyakit=bukaquery("select kd_penyakit from diagnosa_pasien where no_rawat='".$norawat."' order by prioritas asc");
+                                        $hasilpenyakit=bukaquery("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat='".$norawat."' order by diagnosa_pasien.prioritas asc");
                                         while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
                                             if($a==1){
                                                 $penyakit=$barispenyakit["kd_penyakit"];
@@ -340,7 +340,7 @@
                         value="<?php  
                                     $prosedur="";
                                     $a=1;
-                                    $hasilprosedur=bukaquery("select kode from prosedur_pasien where no_rawat='".$norawat."' order by prioritas asc");
+                                    $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$norawat."' order by prosedur_pasien.prioritas asc");
                                     while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                                         if($a==1){
                                             $prosedur=$barisprosedur["kode"];
@@ -354,17 +354,17 @@
                 </td>
             </tr>
             <?php 
-                $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan not like '%terapi%'")+
-                                    getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan not like '%terapi%'");
+                $prosedur_non_bedah=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ralan Dokter Paramedis' and billing.nm_perawatan not like '%terapi%'")+
+                                    getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ranap Dokter Paramedis' and billing.nm_perawatan not like '%terapi%'");
                 if($prosedur_non_bedah==""){
                     $prosedur_non_bedah="0";
                 }
-                $prosedur_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Operasi'");
+                $prosedur_bedah=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Operasi'");
                 if($prosedur_bedah==""){
                     $prosedur_bedah="0";
                 }
-                $konsultasi=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter'")+
-                             getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter'"));
+                $konsultasi=(getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ranap Dokter'")+
+                             getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ralan Dokter'"));
                 if($konsultasi==""){
                     $konsultasi="0";
                 }
@@ -372,28 +372,28 @@
                 if($tenaga_ahli==""){
                     $tenaga_ahli="0";
                 }
-                $keperawatan=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Paramedis'")+
-                              getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Paramedis'"));
+                $keperawatan=(getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ranap Paramedis'")+
+                              getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ralan Paramedis'"));
                 if($keperawatan==""){
                     $keperawatan="0";
                 }
-                $radiologi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Radiologi'");
+                $radiologi=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Radiologi'");
                 if($radiologi==""){
                     $radiologi="0";
                 }
-                $laboratorium=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Laborat'");
+                $laboratorium=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Laborat'");
                 if($laboratorium==""){
                     $laboratorium="0";
                 }
-                $kamar=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Kamar'")+getOne("select biaya_reg from reg_periksa where no_rawat='".$norawat."'"));
+                $kamar=(getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Kamar'")+getOne("select biaya_reg from reg_periksa where no_rawat='".$norawat."'"));
                 if($kamar==""){
                     $kamar="0";
                 }
-                $obat_kronis=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where nm_perawatan like '%kronis%' and no_rawat='".$norawat."' and status='Obat'");
-                $obat_kemoterapi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where nm_perawatan like '%kemo%' and no_rawat='".$norawat."' and status='Obat'");
-                $obat=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Obat'")+
-                       getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Retur Obat'")+
-                       getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Resep Pulang'")-$obat_kronis-$obat_kemoterapi);
+                $obat_kronis=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.nm_perawatan like '%kronis%' and billing.no_rawat='".$norawat."' and billing.status='Obat'");
+                $obat_kemoterapi=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.nm_perawatan like '%kemo%' and billing.no_rawat='".$norawat."' and billing.status='Obat'");
+                $obat=(getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Obat'")+
+                       getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Retur Obat'")+
+                       getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Resep Pulang'")-$obat_kronis-$obat_kemoterapi);
                 if($obat==""){
                     $obat="0";
                 }
@@ -403,17 +403,17 @@
                 if($obat_kronis==""){
                     $obat_kronis="0";
                 }
-                $bmhp=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Tambahan'");
+                $bmhp=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Tambahan'");
                 if($bmhp==""){
                     $bmhp="0";
                 }
-                $sewa_alat=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Harian'")+
-                            getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Service'"));
+                $sewa_alat=(getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Harian'")+
+                            getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Service'"));
                 if($sewa_alat==""){
                     $sewa_alat="0";
                 }
-                $rehabilitasi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ralan Dokter Paramedis' and nm_perawatan like '%terapi%'")+
-                              getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Ranap Dokter Paramedis' and nm_perawatan like '%terapi%'");
+                $rehabilitasi=getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ralan Dokter Paramedis' and billing.nm_perawatan like '%terapi%'")+
+                              getOne("select if(sum(billing.totalbiaya)='','0',sum(billing.totalbiaya)) from billing where billing.no_rawat='".$norawat."' and billing.status='Ranap Dokter Paramedis' and billing.nm_perawatan like '%terapi%'");
                 if($rehabilitasi==""){
                     $rehabilitasi="0";
                 }
@@ -538,7 +538,7 @@
                     <select name="nama_dokter" class="text2">
                        <option value="<?php echo $nm_dokter;?>"><?php echo $nm_dokter;?></option>
                        <?php        
-                            $hasildokter=bukaquery("select nm_dokter from dokter order by nm_dokter asc");
+                            $hasildokter=bukaquery("select dokter.nm_dokter from dokter order by dokter.nm_dokter asc");
                             while($barisdokter = mysqli_fetch_array($hasildokter)) {
                                 echo "<option value=".$barisdokter["nm_dokter"].">".$barisdokter["nm_dokter"]."</option>";
                             }
@@ -703,50 +703,50 @@
         <?php
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
-                $norawat           = trim($_POST['no_rawat']);
-                $tgl_registrasi    = trim($_POST['tgl_registrasi']);
-                $codernik          = trim($_POST['codernik']);
-                $nosep             = trim($_POST['nosep']);
-                $nokartu           = trim($_POST['nokartu']);
-                $nm_pasien         = trim($_POST['nm_pasien']);
-                $keluar            = trim($_POST['keluar']);
-                $kelas_rawat       = trim($_POST['kelas_rawat']);
-                $adl_sub_acute     = trim($_POST['adl_sub_acute']);
-                $adl_chronic       = trim($_POST['adl_chronic']);
-                $icu_indikator     = trim($_POST['icu_indikator']);
-                $icu_los           = trim($_POST['icu_los']);
-                $ventilator_hour   = trim($_POST['ventilator_hour']);
-                $upgrade_class_ind = trim($_POST['upgrade_class_ind']);
-                $upgrade_class_class = trim($_POST['upgrade_class_class']);
-                $upgrade_class_los = trim($_POST['upgrade_class_los']);
-                $add_payment_pct   = trim($_POST['add_payment_pct']);
-                $birth_weight      = trim($_POST['birth_weight']);
-                $discharge_status  = trim($_POST['discharge_status']);
-                $diagnosa          = trim($_POST['diagnosa']);
-                $procedure         = trim($_POST['procedure']);
-                $prosedur_non_bedah = trim($_POST['prosedur_non_bedah']);
-                $prosedur_bedah    = trim($_POST['prosedur_bedah']);
-                $konsultasi        = trim($_POST['konsultasi']);
-                $tenaga_ahli       = trim($_POST['tenaga_ahli']);
-                $keperawatan       = trim($_POST['keperawatan']);
-                $penunjang         = trim($_POST['penunjang']);
-                $radiologi         = trim($_POST['radiologi']);
-                $laboratorium      = trim($_POST['laboratorium']);
-                $pelayanan_darah   = trim($_POST['pelayanan_darah']);
-                $rehabilitasi      = trim($_POST['rehabilitasi']);
-                $kamar             = trim($_POST['kamar']);
-                $rawat_intensif    = trim($_POST['rawat_intensif']);
-                $obat              = trim($_POST['obat']);
-                $obat_kronis       = trim($_POST['obat_kronis']);
-                $obat_kemoterapi   = trim($_POST['obat_kemoterapi']);
-                $alkes             = trim($_POST['alkes']);
-                $bmhp              = trim($_POST['bmhp']);
-                $sewa_alat         = trim($_POST['sewa_alat']);
-                $tarif_poli_eks    = trim($_POST['tarif_poli_eks']);
-                $nama_dokter       = trim($_POST['nama_dokter']);
-                $jk                = trim($_POST['jk']);
-                $tgl_lahir         = trim($_POST['tgl_lahir']);
-                $jnsrawat          = trim($_POST['jnsrawat']);
+                $norawat           = validTeks(trim($_POST['no_rawat']));
+                $tgl_registrasi    = validTeks(trim($_POST['tgl_registrasi']));
+                $codernik          = validTeks(trim($_POST['codernik']));
+                $nosep             = validTeks(trim($_POST['nosep']));
+                $nokartu           = validTeks(trim($_POST['nokartu']));
+                $nm_pasien         = validTeks(trim($_POST['nm_pasien']));
+                $keluar            = validTeks(trim($_POST['keluar']));
+                $kelas_rawat       = validTeks(trim($_POST['kelas_rawat']));
+                $adl_sub_acute     = validTeks(trim($_POST['adl_sub_acute']));
+                $adl_chronic       = validTeks(trim($_POST['adl_chronic']));
+                $icu_indikator     = validTeks(trim($_POST['icu_indikator']));
+                $icu_los           = validTeks(trim($_POST['icu_los']));
+                $ventilator_hour   = validTeks(trim($_POST['ventilator_hour']));
+                $upgrade_class_ind = validTeks(trim($_POST['upgrade_class_ind']));
+                $upgrade_class_class = validTeks(trim($_POST['upgrade_class_class']));
+                $upgrade_class_los = validTeks(trim($_POST['upgrade_class_los']));
+                $add_payment_pct   = validTeks(trim($_POST['add_payment_pct']));
+                $birth_weight      = validTeks(trim($_POST['birth_weight']));
+                $discharge_status  = validTeks(trim($_POST['discharge_status']));
+                $diagnosa          = validTeks(trim($_POST['diagnosa']));
+                $procedure         = validTeks(trim($_POST['procedure']));
+                $prosedur_non_bedah = validTeks(trim($_POST['prosedur_non_bedah']));
+                $prosedur_bedah    = validTeks(trim($_POST['prosedur_bedah']));
+                $konsultasi        = validTeks(trim($_POST['konsultasi']));
+                $tenaga_ahli       = validTeks(trim($_POST['tenaga_ahli']));
+                $keperawatan       = validTeks(trim($_POST['keperawatan']));
+                $penunjang         = validTeks(trim($_POST['penunjang']));
+                $radiologi         = validTeks(trim($_POST['radiologi']));
+                $laboratorium      = validTeks(trim($_POST['laboratorium']));
+                $pelayanan_darah   = validTeks(trim($_POST['pelayanan_darah']));
+                $rehabilitasi      = validTeks(trim($_POST['rehabilitasi']));
+                $kamar             = validTeks(trim($_POST['kamar']));
+                $rawat_intensif    = validTeks(trim($_POST['rawat_intensif']));
+                $obat              = validTeks(trim($_POST['obat']));
+                $obat_kronis       = validTeks(trim($_POST['obat_kronis']));
+                $obat_kemoterapi   = validTeks(trim($_POST['obat_kemoterapi']));
+                $alkes             = validTeks(trim($_POST['alkes']));
+                $bmhp              = validTeks(trim($_POST['bmhp']));
+                $sewa_alat         = validTeks(trim($_POST['sewa_alat']));
+                $tarif_poli_eks    = validTeks(trim($_POST['tarif_poli_eks']));
+                $nama_dokter       = validTeks(trim($_POST['nama_dokter']));
+                $jk                = validTeks(trim($_POST['jk']));
+                $tgl_lahir         = validTeks(trim($_POST['tgl_lahir']));
+                $jnsrawat          = validTeks(trim($_POST['jnsrawat']));
                 $gender            = "";
                 if($jk=="L"){
                     $gender="1";
@@ -755,22 +755,22 @@
                 }
                 
                 if($corona=="PasienCorona"){
-                    $pemulasaraan_jenazah       = trim($_POST['pemulasaraan_jenazah']);
-                    $kantong_jenazah            = trim($_POST['kantong_jenazah']);
-                    $peti_jenazah               = trim($_POST['peti_jenazah']);
-                    $plastik_erat               = trim($_POST['plastik_erat']);
-                    $desinfektan_jenazah        = trim($_POST['desinfektan_jenazah']);
-                    $mobil_jenazah              = trim($_POST['mobil_jenazah']);
-                    $desinfektan_mobil_jenazah  = trim($_POST['desinfektan_mobil_jenazah']);
-                    $covid19_status_cd          = trim($_POST['covid19_status_cd']);
-                    $nomor_kartu_t              = trim($_POST['nomor_kartu_t']);
-                    $episodes1                  = trim($_POST['episodes1']);
-                    $episodes2                  = trim($_POST['episodes2']);
-                    $episodes3                  = trim($_POST['episodes3']);
-                    $episodes4                  = trim($_POST['episodes4']);
-                    $episodes5                  = trim($_POST['episodes5']);
-                    $episodes6                  = trim($_POST['episodes6']);
-                    $covid19_cc_ind             = trim($_POST['covid19_cc_ind']);
+                    $pemulasaraan_jenazah       = validTeks(trim($_POST['pemulasaraan_jenazah']));
+                    $kantong_jenazah            = validTeks(trim($_POST['kantong_jenazah']));
+                    $peti_jenazah               = validTeks(trim($_POST['peti_jenazah']));
+                    $plastik_erat               = validTeks(trim($_POST['plastik_erat']));
+                    $desinfektan_jenazah        = validTeks(trim($_POST['desinfektan_jenazah']));
+                    $mobil_jenazah              = validTeks(trim($_POST['mobil_jenazah']));
+                    $desinfektan_mobil_jenazah  = validTeks(trim($_POST['desinfektan_mobil_jenazah']));
+                    $covid19_status_cd          = validTeks(trim($_POST['covid19_status_cd']));
+                    $nomor_kartu_t              = validTeks(trim($_POST['nomor_kartu_t']));
+                    $episodes1                  = validTeks(trim($_POST['episodes1']));
+                    $episodes2                  = validTeks(trim($_POST['episodes2']));
+                    $episodes3                  = validTeks(trim($_POST['episodes3']));
+                    $episodes4                  = validTeks(trim($_POST['episodes4']));
+                    $episodes5                  = validTeks(trim($_POST['episodes5']));
+                    $episodes6                  = validTeks(trim($_POST['episodes6']));
+                    $covid19_cc_ind             = validTeks(trim($_POST['covid19_cc_ind']));
                     $episodes                   = ($episodes1==0?"":"1;$episodes1#").($episodes2==0?"":"2;$episodes2#").($episodes3==0?"":"3;$episodes3#").($episodes4==0?"":"4;$episodes4#").($episodes5==0?"":"5;$episodes5#").($episodes6==0?"":"6;$episodes6#");  
                     $episodes                   = substr($episodes, 0, -1); 
                     

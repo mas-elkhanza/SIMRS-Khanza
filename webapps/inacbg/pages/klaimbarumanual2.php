@@ -3,17 +3,17 @@
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
                 echo "";
-                $tahunawal      =isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL;
-                $bulanawal      =isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL;
-                $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
-                $tahunakhir     =isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL;
-                $bulanakhir     =isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL;
-                $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;  
-                $action         =isset($_GET['action'])?$_GET['action']:NULL;
-                $norawat        =isset($_GET['norawat'])?$_GET['norawat']:NULL;
-                $codernik       =isset($_GET['codernik'])?$_GET['codernik']:NULL;
-                $carabayar      =str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL;
-                $keyword        =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $tahunawal      = validTeks(isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL);
+                $bulanawal      = validTeks(isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL);
+                $tanggalawal    = validTeks(isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL);
+                $tahunakhir     = validTeks(isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL);
+                $bulanakhir     = validTeks(isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL);
+                $tanggalakhir   = validTeks(isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL);  
+                $action         = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
+                $norawat        = validTeks(isset($_GET['norawat'])?$_GET['norawat']:NULL);
+                $codernik       = validTeks(isset($_GET['codernik'])?$_GET['codernik']:NULL);
+                $carabayar      = validTeks(str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL);
+                $keyword        = validTeks(isset($_GET['keyword'])?$_GET['keyword']:NULL);
                 echo "<input type=hidden name=codernik  value=$codernik><input type=hidden name=keyword value=$keyword>";
         ?>
     <div style="width: 100%; height: 85%; overflow: auto;">
@@ -22,14 +22,14 @@
         $keyword  =isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
         $keyword  = validTeks($keyword);
         if (isset($BtnCari)) {      
-                $tahunawal      =trim($_POST['tahunawal']);
-                $bulanawal      =trim($_POST['bulanawal']);
-                $tanggalawal    =trim($_POST['tanggalawal']);
-                $tahunakhir     =trim($_POST['tahunakhir']);
-                $bulanakhir     =trim($_POST['bulanakhir']);
-                $tanggalakhir   =trim($_POST['tanggalakhir']);
-                $codernik       =trim($_POST['codernik']);
-                $carabayar      =isset($_POST['carabayar'])?trim($_POST['carabayar']):NULL;
+                $tahunawal      = validTeks(trim($_POST['tahunawal']));
+                $bulanawal      = validTeks(trim($_POST['bulanawal']));
+                $tanggalawal    = validTeks(trim($_POST['tanggalawal']));
+                $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
+                $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
+                $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));
+                $codernik       = validTeks(trim($_POST['codernik'])); 
+                $carabayar      = validTeks(isset($_POST['carabayar'])?trim($_POST['carabayar']):NULL);
         }
         if(empty($tahunawal)){
             $tahunawal=date('Y');
@@ -79,14 +79,14 @@
                     while($baris = mysqli_fetch_array($hasil)) {
                         $statuscovid="Bukan Corona";
                         $aksi="BukanCorona";
-                        if(getOne("select count(no_rawat) from perawatan_corona where no_rawat='".$baris["no_rawat"]."'")>0){
+                        if(getOne("select count(perawatan_corona.no_rawat) from perawatan_corona where perawatan_corona.no_rawat='".$baris["no_rawat"]."'")>0){
                             $statuscovid="Pasien Corona";
                             $aksi="PasienCorona";
                         }
                         
                         $carabayar =str_replace(" ","_",$carabayar)?str_replace(" ","_",$carabayar):NULL;
                         $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim]</a>";
-                        if(getOne("select count(no_rawat) from inacbg_klaim_baru2 where no_rawat='".$baris["no_rawat"]."'")>0){
+                        if(getOne("select count(inacbg_klaim_baru2.no_rawat) from inacbg_klaim_baru2 where inacbg_klaim_baru2.no_rawat='".$baris["no_rawat"]."'")>0){
                             $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim Ulang]</a>";
                         }
                         echo "<tr class='isi' title='".$baris["no_rawat"].", ".$baris["no_rkm_medis"].", ".$baris["nm_pasien"]."'>
@@ -96,7 +96,7 @@
                                 <td valign='top'>";
                                 $penyakit="";
                                 $a=1;
-                                $hasilpenyakit=bukaquery("select kd_penyakit from diagnosa_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
+                                $hasilpenyakit=bukaquery("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat='".$baris["no_rawat"]."' order by diagnosa_pasien.prioritas asc");
                                 while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
                                     if($a==1){
                                         $penyakit=$barispenyakit["kd_penyakit"];
@@ -109,7 +109,7 @@
                                 
                                 $prosedur="";
                                 $a=1;
-                                $hasilprosedur=bukaquery("select kode from prosedur_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
+                                $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
                                 while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                                     if($a==1){
                                         $prosedur=$barisprosedur["kode"];
@@ -214,7 +214,7 @@
                         Cara Bayar : 
                         <select name="carabayar" class="text4">
                             <?php
-                                $_sql = "SELECT png_jawab FROM penjab  ORDER BY png_jawab";
+                                $_sql = "SELECT penjab.png_jawab FROM penjab  ORDER BY penjab.png_jawab";
                                 $hasil=bukaquery($_sql);
                                 if(!empty($carabayar)){
                                     echo "<option value='$carabayar'>$carabayar</option>";

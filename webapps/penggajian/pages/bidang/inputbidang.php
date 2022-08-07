@@ -1,5 +1,3 @@
-
-
 <div id="post">
    <div align="center" class="link">
         <a href=?act=InputBidang&action=TAMBAH>| Input Data |</a>
@@ -11,11 +9,11 @@
             <?php
                 echo "";
                 $action      = isset($_GET['action'])?$_GET['action']:NULL;
-                $nama        = isset($_GET['nama'])?$_GET['nama']:NULL;
+                $nama        = validTeks(isset($_GET['nama'])?$_GET['nama']:NULL);
                 if($action == "TAMBAH"){
-                    $nama      = isset($_GET['nama'])?$_GET['nama']:NULL;
+                    $nama      = validTeks(isset($_GET['nama'])?$_GET['nama']:NULL);
                 }else if($action == "UBAH"){
-                    $_sql      = "SELECT nama FROM bidang WHERE nama='$nama'";
+                    $_sql      = "SELECT bidang.nama FROM bidang WHERE bidang.nama='$nama'";
                     $hasil     = bukaquery($_sql);
                     $baris     = mysqli_fetch_row($hasil);
                     $nama      = $baris[0];

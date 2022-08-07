@@ -386,6 +386,18 @@
         }
     }
     
+    function validTeks($data){
+        $save=str_replace("'","",$data);
+        $save=str_replace("\\","",$save);
+        $save=str_replace(";","",$save);
+        $save=str_replace("`","",$save);
+        $save=str_replace("--","",$save);
+        $save=str_replace("/*","",$save);
+        $save=str_replace("*/","",$save);
+        $save=str_replace("#","",$save);
+        return $save;
+    }
+    
     date_default_timezone_set('Asia/Jakarta');
     $month      = date('Y-m');
     $date       = date('Y-m-d');
