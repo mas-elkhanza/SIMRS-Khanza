@@ -74,6 +74,7 @@ import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
 import rekammedis.RMPenilaianAwalMedisRalanMata;
 import rekammedis.RMPenilaianAwalMedisRalanNeurologi;
+import rekammedis.RMPenilaianAwalMedisRalanOrthopedi;
 import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
@@ -1484,6 +1485,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalMedisPenyakitDalam = new widget.Button();
         BtnAwalMedisMata = new widget.Button();
         BtnAwalMedisNeurologi = new widget.Button();
+        BtnAwalMedisOrthopedi = new widget.Button();
         BtnUjiFungsiKFR = new widget.Button();
         BtnMedicalCheckUp = new widget.Button();
         BtnPenilaianPsikolog = new widget.Button();
@@ -1654,7 +1656,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1668,7 +1670,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3379,7 +3381,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2022" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2022" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -4036,6 +4038,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalMedisNeurologi);
+
+        BtnAwalMedisOrthopedi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalMedisOrthopedi.setText("Awal Medis Orthopedi");
+        BtnAwalMedisOrthopedi.setFocusPainted(false);
+        BtnAwalMedisOrthopedi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalMedisOrthopedi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalMedisOrthopedi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalMedisOrthopedi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalMedisOrthopedi.setName("BtnAwalMedisOrthopedi"); // NOI18N
+        BtnAwalMedisOrthopedi.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnAwalMedisOrthopedi.setRoundRect(false);
+        BtnAwalMedisOrthopedi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalMedisOrthopediActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalMedisOrthopedi);
 
         BtnUjiFungsiKFR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnUjiFungsiKFR.setText("Uji Fungsi/Prosedur KFR");
@@ -6620,6 +6639,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalMedisNeurologiActionPerformed
 
+    private void BtnAwalMedisOrthopediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalMedisOrthopediActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianAwalMedisRalanOrthopedi form=new RMPenilaianAwalMedisRalanOrthopedi(null,false);
+            form.isCek();
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAwalMedisOrthopediActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6650,6 +6686,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAwalMedisKandungan;
     private widget.Button BtnAwalMedisMata;
     private widget.Button BtnAwalMedisNeurologi;
+    private widget.Button BtnAwalMedisOrthopedi;
     private widget.Button BtnAwalMedisPenyakitDalam;
     private widget.Button BtnAwalMedisPsikiatri;
     private widget.Button BtnAwalMedisTHT;
@@ -7400,6 +7437,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalMedisNeurologi.setVisible(akses.getpenilaian_awal_medis_ralan_neurologi()); 
         if(akses.getpenilaian_awal_medis_ralan_neurologi()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalMedisOrthopedi.setVisible(akses.getpenilaian_awal_medis_ralan_orthopedi()); 
+        if(akses.getpenilaian_awal_medis_ralan_orthopedi()==true){
             tinggi=tinggi+24;
         }
         BtnPenilaianPsikolog.setVisible(akses.getpenilaian_psikologi()); 

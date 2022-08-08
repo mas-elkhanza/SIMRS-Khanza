@@ -1184,7 +1184,7 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
 
         Lainnya.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Lainnya.setColumns(20);
-        Lainnya.setRows(5);
+        Lainnya.setRows(13);
         Lainnya.setName("Lainnya"); // NOI18N
         Lainnya.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1228,7 +1228,7 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
 
         PenunjangLain.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         PenunjangLain.setColumns(20);
-        PenunjangLain.setRows(3);
+        PenunjangLain.setRows(5);
         PenunjangLain.setName("PenunjangLain"); // NOI18N
         PenunjangLain.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2188,7 +2188,7 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
     }//GEN-LAST:event_EdukasiKeyPressed
 
     private void StatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusKeyPressed
-        Valid.pindah2(evt,RR,BB);
+        Valid.pindah(evt,RR,BB);
     }//GEN-LAST:event_StatusKeyPressed
 
     /**

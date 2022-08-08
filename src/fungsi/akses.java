@@ -3692,5 +3692,5 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ralan_mata(){return akses.penilaian_awal_medis_ralan_mata;}
     public static boolean getpenilaian_awal_medis_ralan_neurologi(){return akses.penilaian_awal_medis_ralan_neurologi;}
     public static boolean getsirkulasi_obat6(){return akses.sirkulasi_obat6;}
-    public static boolean gpenilaian_awal_medis_ralan_orthopedi(){return akses.penilaian_awal_medis_ralan_orthopedi;}
+    public static boolean getpenilaian_awal_medis_ralan_orthopedi(){return akses.penilaian_awal_medis_ralan_orthopedi;}
 }   
