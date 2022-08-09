@@ -7,8 +7,8 @@
     </head>
     <body>
    <?php
-        $keyword = $_GET['keyword'];
-        $_sql    = "SELECT kode,nama,tnj,indek FROM jnj_jabatan where kode like '%".$keyword."%' or nama like '%".$keyword."%' ORDER BY tnj DESC";
+        $keyword = validTeks($_GET['keyword']);
+        $_sql    = "SELECT jnj_jabatan.kode,jnj_jabatan.nama,jnj_jabatan.tnj,jnj_jabatan.indek FROM jnj_jabatan where jnj_jabatan.kode like '%".$keyword."%' or jnj_jabatan.nama like '%".$keyword."%' ORDER BY jnj_jabatan.tnj DESC";
         $hasil   = bukaquery($_sql);
         $jumlah  = mysqli_num_rows($hasil);
         $no      = 1;

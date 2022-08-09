@@ -1,4 +1,3 @@
-
 <div id="post">
     <div class="entry">
     <div align="center" class="link">
@@ -7,8 +6,8 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action            =isset($_GET['action'])?$_GET['action']:NULL;
-                $no_id             =isset($_GET['no_id'])?$_GET['no_id']:NULL;
+                $action = isset($_GET['action'])?$_GET['action']:NULL;
+                $no_id  = validTeks(isset($_GET['no_id'])?$_GET['no_id']:NULL);
                 echo "<input type=hidden name=no_id  value=$no_id><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
@@ -18,7 +17,7 @@
                         <select name="dep_id" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                             <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
-                                $_sql = "SELECT dep_id,nama FROM departemen ORDER BY dep_id";
+                                $_sql = "SELECT departemen.dep_id,departemen.nama FROM departemen ORDER BY departemen.dep_id";
                                 $hasil=bukaquery($_sql);
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[0] $baris[1]</option>";
@@ -104,7 +103,7 @@
                                 loadJam();
                              ?>
                         </select>
-			            <select name="menit_masuk" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
+			<select name="menit_masuk" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
                              <?php
                                 loadMenit();
                              ?>
@@ -120,7 +119,7 @@
                                 loadJam();
                              ?>
                         </select>
-			            <select name="menit_pulang" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
+			<select name="menit_pulang" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                              <?php
                                 loadMenit();
                              ?>
@@ -133,13 +132,13 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_id              =trim($_POST['no_id']);
-                    $dep_id             =trim($_POST['dep_id']);
-                    $shift              =trim($_POST['shift']);
-                    $jam_masuk          =trim($_POST['jam_masuk']);
-                    $menit_masuk        =trim($_POST['menit_masuk']);
-                    $jam_pulang         =trim($_POST['jam_pulang']);
-                    $menit_pulang       =trim($_POST['menit_pulang']);
+                    $no_id              = validTeks(trim($_POST['no_id']));
+                    $dep_id             = validTeks(trim($_POST['dep_id']));
+                    $shift              = validTeks(trim($_POST['shift']));
+                    $jam_masuk          = validTeks(trim($_POST['jam_masuk']));
+                    $menit_masuk        = validTeks(trim($_POST['menit_masuk']));
+                    $jam_pulang         = validTeks(trim($_POST['jam_pulang']));
+                    $menit_pulang       = validTeks(trim($_POST['menit_pulang']));
                     
                     if (!empty($dep_id)) {
                         switch($action) {
@@ -156,12 +155,11 @@
             ?>
             <div style="width: 100%; height: 57%; overflow: auto;">
             <?php
-                $_sql = "SELECT  jam_jaga.no_id,jam_jaga.dep_id,jam_jaga.shift,
-                    jam_jaga.jam_masuk,jam_jaga.jam_pulang from jam_jaga
-                    ORDER BY jam_jaga.dep_id ";
+                $_sql = "SELECT jam_jaga.no_id,jam_jaga.dep_id,jam_jaga.shift,
+                        jam_jaga.jam_masuk,jam_jaga.jam_pulang from jam_jaga
+                        ORDER BY jam_jaga.dep_id ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
-
                 if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
@@ -185,35 +183,30 @@
                                 <td>$baris[4]</td>
                            </tr>";
                     }
-                echo "</table>";
+                    echo "</table>";
+                } else {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                                <tr class='head'>
+                                    <td width='10%'><div align='center'>Proses</div></td>
+                                    <td width='20%'><div align='center'>Departemen</div></td>
+                                    <td width='24%'><div align='center'>Shift</div></td>
+                                    <td width='23%'><div align='center'>Jam Datang</div></td>
+                                    <td width='23%'><div align='center'>Jam Pulang</div></td>
+                                </tr>
+                         </table>";
+                }
+                
+                if ($action=="HAPUS") {
+                    Hapus("  jam_jaga "," no_id ='".$no_id."' ","?act=ListJam&action=TAMBAH");
+                }
 
-            } else {
                 echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                            <tr class='head'>
-                                <td width='10%'><div align='center'>Proses</div></td>
-                                <td width='20%'><div align='center'>Departemen</div></td>
-                                <td width='24%'><div align='center'>Shift</div></td>
-                                <td width='23%'><div align='center'>Jam Datang</div></td>
-                                <td width='23%'><div align='center'>Jam Pulang</div></td>
-                            </tr>
-                            </table>";
-            }
-        ?>
-        </div>
+                        <tr class='head'>
+                            <td><div align='left'>Data : $jumlah</div></td>                        
+                        </tr>     
+                     </table>";
+            ?>
+            </div>
         </form>
-        <?php
-            if ($action=="HAPUS") {
-                Hapus("  jam_jaga "," no_id ='".$no_id."' ","?act=ListJam&action=TAMBAH");
-            }
-
-        if(mysqli_num_rows($hasil)!=0) {
-                echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                    <tr class='head'>
-                        <td><div align='left'>Data : $jumlah</div></td>                        
-                    </tr>     
-                 </table>");
-        }
-        ?>
     </div>
-
 </div>

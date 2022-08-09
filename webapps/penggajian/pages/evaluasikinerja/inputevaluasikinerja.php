@@ -10,10 +10,10 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode_evaluasi     =str_replace("_"," ",isset($_GET['kode_evaluasi'])?$_GET['kode_evaluasi']:NULL);
+                $action             = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode_evaluasi      = validTeks(str_replace("_"," ",isset($_GET['kode_evaluasi'])?$_GET['kode_evaluasi']:NULL));
                 if($action == "TAMBAH"){
-                    $kode_evaluasi  = str_replace("_"," ",isset($_GET['kode_evaluasi']))?str_replace("_"," ",$_GET['kode_evaluasi']):NULL;
+                    $kode_evaluasi  = validTeks(str_replace("_"," ",isset($_GET['kode_evaluasi']))?str_replace("_"," ",$_GET['kode_evaluasi']):NULL);
                     $nama_evaluasi  = "";
                     $indek          = "";
                 }else if($action == "UBAH"){

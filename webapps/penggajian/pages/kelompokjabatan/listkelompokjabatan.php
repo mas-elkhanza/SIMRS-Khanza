@@ -1,5 +1,3 @@
-
-
 <div id="post">
 	<div class="entry"> 
     <div align="center" class="link">
@@ -26,10 +24,9 @@
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-        $_sql = "SELECT kode_kelompok,nama_kelompok,indek FROM kelompok_jabatan where kode_kelompok like '%".$keyword."%' or nama_kelompok like '%".$keyword."%' ORDER BY indek desc ";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysqli_num_rows($hasil);
-        
+        $_sql   = "SELECT kelompok_jabatan.kode_kelompok,kelompok_jabatan.nama_kelompok,kelompok_jabatan.indek FROM kelompok_jabatan where kelompok_jabatan.kode_kelompok like '%".$keyword."%' or kelompok_jabatan.nama_kelompok like '%".$keyword."%' ORDER BY kelompok_jabatan.indek desc ";
+        $hasil  = bukaquery($_sql);
+        $jumlah = mysqli_num_rows($hasil);
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>					   
@@ -63,17 +60,15 @@
                     </tr>
                   </table>";
         }
-    ?>
-    
-    <?php
-       $aksi=isset($_GET['action'])?$_GET['action']:NULL;
-       if ($aksi=="HAPUS") {
-            Hapus(" kelompok_jabatan "," kode_kelompok ='".$_GET['kode_kelompok']."' ","?act=ListKelompokJabatan");
-       }
+        
+        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
+        if ($aksi=="HAPUS") {
+            Hapus(" kelompok_jabatan "," kode_kelompok ='".validTeks($_GET['kode_kelompok'])."' ","?act=ListKelompokJabatan");
+        }
     ?>
     </div>
     <?php
-        if(mysqli_num_rows($hasil)!=0) {
+        if($jumlah!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/kelompokjabatan/LaporanKelompokJabatan.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/kelompokjabatan/LaporanKelompokJabatanExel.php?&keyword=$keyword>Excel</a> |</div></td>                        

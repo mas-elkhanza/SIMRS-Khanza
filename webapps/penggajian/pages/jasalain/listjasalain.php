@@ -14,11 +14,10 @@
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-                echo "";
-                $action  = isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
-                $keyword = validTeks($keyword);
-                echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
+            $action  = isset($_GET['action'])?$_GET['action']:NULL;
+            $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
+            $keyword = validTeks($keyword);
+            echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -28,7 +27,7 @@
                     </td>
                 </tr>
             </table><br>
-    <div style="width: 100%; height: 80%; overflow: auto;">
+            <div style="width: 100%; height: 80%; overflow: auto;">
     <?php
          $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
                 pegawai.departemen,sum(bsr_jasa)
@@ -79,8 +78,8 @@
         }
 
     ?>
-    </div>
-	</form>
+            </div>
+        </form>
     <?php
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

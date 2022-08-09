@@ -12087,5 +12087,4 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             tbKasirRalan.requestFocus();
         } 
     }
-    
 }

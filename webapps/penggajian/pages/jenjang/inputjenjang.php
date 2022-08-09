@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputJenjang&action=TAMBAH>| Input Data |</a>
@@ -11,20 +9,20 @@
             <?php
                 echo "";
                 $action      = isset($_GET['action'])?$_GET['action']:NULL;
-                $kode        = str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL;
+                $kode        = validTeks(str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL);
                 if($action == "TAMBAH"){
-                    $kode      = str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL;
+                    $kode      = validTeks(str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL);
                     $nama      = "";
                     $tnj       = "";
                     $indek     = "";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT * FROM jnj_jabatan WHERE kode='$kode'";
-                    $hasil        = bukaquery($_sql);
-                    $baris        = mysqli_fetch_row($hasil);
-                    $kode         = $baris[0];
-                    $nama         = $baris[1];
-                    $tnj          = $baris[2];
-                    $indek        = $baris[3];
+                    $_sql      = "SELECT * FROM jnj_jabatan WHERE jnj_jabatan.kode='$kode'";
+                    $hasil     = bukaquery($_sql);
+                    $baris     = mysqli_fetch_row($hasil);
+                    $kode      = $baris[0];
+                    $nama      = $baris[1];
+                    $tnj       = $baris[2];
+                    $indek     = $baris[3];
                 }
                 echo"<input type=hidden name=kode value=$kode><input type=hidden name=action value=$action>";
             ?>

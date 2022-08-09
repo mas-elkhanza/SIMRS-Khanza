@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputKelompokJabatan&action=TAMBAH>| Input Data |</a>
@@ -10,14 +8,14 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode_kelompok     =str_replace("_"," ",isset($_GET['kode_kelompok'])?$_GET['kode_kelompok']:NULL);
+                $action         = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode_kelompok  = validTeks(str_replace("_"," ",isset($_GET['kode_kelompok'])?$_GET['kode_kelompok']:NULL));
                 if($action == "TAMBAH"){
-                    $kode_kelompok  = str_replace("_"," ",isset($_GET['kode_kelompok']))?str_replace("_"," ",$_GET['kode_kelompok']):NULL;
+                    $kode_kelompok  = validTeks(str_replace("_"," ",isset($_GET['kode_kelompok'])?$_GET['kode_kelompok']:NULL));
                     $nama_kelompok  = "";
                     $indek          = "";
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT * FROM kelompok_jabatan WHERE kode_kelompok='$kode_kelompok'";
+                    $_sql           = "SELECT * FROM kelompok_jabatan WHERE kelompok_jabatan.kode_kelompok='$kode_kelompok'";
                     $hasil          = bukaquery($_sql);
                     $baris          = mysqli_fetch_row($hasil);
                     $kode_kelompok  = $baris[0];
