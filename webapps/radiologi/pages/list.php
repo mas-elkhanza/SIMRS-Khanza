@@ -58,7 +58,7 @@
             ?>
             <div style="width: 100%; height: 72%; overflow: auto;">
             <?php
-                $_sql = "SELECT * from gambar_radiologi where no_rawat='$no_rawat' and tgl_periksa='$tanggal' and jam='$jam' ";
+                $_sql = "SELECT * from gambar_radiologi where gambar_radiologi.no_rawat='$no_rawat' and gambar_radiologi.tgl_periksa='$tanggal' and gambar_radiologi.jam='$jam' ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;

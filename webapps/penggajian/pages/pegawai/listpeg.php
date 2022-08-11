@@ -28,7 +28,7 @@
         <?php
                 echo "";
                 $action      =$_GET['action'];
-                $keyword     =$_GET['keyword'];
+                $keyword     =validTeks($_GET['keyword']);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
@@ -42,7 +42,6 @@
             <div align="center"><input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;"></div><br>
         <div style="width: 598px; height: 400px; overflow: auto;">
     <?php
-        $awal=$_GET['awal'];
         $keyword=trim($_POST['keyword']);
         $keyword= validTeks($keyword);
         if (empty($awal)) $awal=0;

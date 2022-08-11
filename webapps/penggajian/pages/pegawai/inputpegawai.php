@@ -3,13 +3,13 @@
         <form name="frm_unit" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $id          =isset($_GET['id'])?$_GET['id']:NULL;
-                $nik2        =isset($_GET['nik'])?$_GET['nik']:NULL;
+                $id          =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
+                $nik2        =validTeks(isset($_GET['nik'])?$_GET['nik']:NULL);
 
                 if($action == "TAMBAH"){
-                    $id    	= isset($_GET['id'])?$_GET['id']:NULL;
+                    $id    	= validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                     $nik        ='';
-                    $goto       =isset($_GET['id'])?$_GET['id']:NULL;
+                    $goto       =validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 }else if($action == "UBAH"){
                     $_sql           = "SELECT `id`, `nik`, `nama`, `jk`, `jbtn`, `jnj_jabatan`, `departemen`, `bidang`, `stts_wp`, `stts_kerja`, `npwp`, `pendidikan`, `gapok`, `tmp_lahir`, `tgl_lahir`, `alamat`, `kota`, `mulai_kerja`, `ms_kerja`, `indexins`, `bpd`, `rekening`, `stts_aktif`, `wajibmasuk`, `pengurang`, `indek`, `mulai_kontrak`, `cuti_diambil`,`photo`,no_ktp,`kode_kelompok`, `kode_resiko`, `kode_emergency` FROM pegawai WHERE id='$id'";
                     $hasil          = bukaquery($_sql);
@@ -601,37 +601,37 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id             = str_replace("'","`",trim($_POST['id']));
-                    $nik            = str_replace("'","`",trim($_POST['nik']));
-                    $nik2           = str_replace("'","`",trim($_POST['nik2']));
-                    $nama           = str_replace("'","`",trim($_POST['nama']));
-                    $jk             = str_replace("'","`",trim($_POST['jk']));
-                    $jbtn           = str_replace("'","`",trim($_POST['jbtn']));
-                    $jnj_jabatan    = str_replace("'","`",trim($_POST['jnj_jabatan']));
-                    $departemen     = str_replace("'","`",trim($_POST['departemen']));
-                    $bidang         = str_replace("'","`", trim($_POST['bidang']));
-                    $stts_wp        = trim($_POST['stts_wp']);
-                    $stts_kerja     = trim($_POST['stts_kerja']);
-                    $npwp           = trim($_POST['npwp']);
-                    $pendidikan     = str_replace("'","`",trim($_POST['pendidikan']));
-                    $tmp_lahir      = str_replace("'","`",trim($_POST['tmp_lahir']));
-                    $tgl_lahir      = trim($_POST['Thnlahir'])."-".trim($_POST['Blnlahir'])."-".trim($_POST['Tgllahir']);
-                    $alamat         = str_replace("'","`",trim($_POST['alamat']));
-                    $kota           = str_replace("'","`",trim($_POST['kota']));
-                    $mulai_kerja    = trim($_POST['ThnMulai'])."-".trim($_POST['BlnMulai'])."-".trim($_POST['TglMulai']);
-                    $ms_kerja       = str_replace("'","`",trim($_POST['ms_kerja']));
-                    $indexins       = trim($_POST['indexins']);
-                    $bpd            = str_replace("'","`",trim($_POST['bpd']));
-                    $rekening       = str_replace("'","`",trim($_POST['rekening']));
-                    $stts_aktif     = trim($_POST['stts_aktif']);
+                    $id             = validTeks(str_replace("'","`",trim($_POST['id'])));
+                    $nik            = validTeks(str_replace("'","`",trim($_POST['nik'])));
+                    $nik2           = validTeks(str_replace("'","`",trim($_POST['nik2'])));
+                    $nama           = validTeks(str_replace("'","`",trim($_POST['nama'])));
+                    $jk             = validTeks(str_replace("'","`",trim($_POST['jk'])));
+                    $jbtn           = validTeks(str_replace("'","`",trim($_POST['jbtn'])));
+                    $jnj_jabatan    = validTeks(str_replace("'","`",trim($_POST['jnj_jabatan'])));
+                    $departemen     = validTeks(str_replace("'","`",trim($_POST['departemen'])));
+                    $bidang         = validTeks(str_replace("'","`", trim($_POST['bidang'])));
+                    $stts_wp        = validTeks(trim($_POST['stts_wp']));
+                    $stts_kerja     = validTeks(trim($_POST['stts_kerja']));
+                    $npwp           = validTeks(trim($_POST['npwp']));
+                    $pendidikan     = validTeks(str_replace("'","`",trim($_POST['pendidikan'])));
+                    $tmp_lahir      = validTeks(str_replace("'","`",trim($_POST['tmp_lahir'])));
+                    $tgl_lahir      = validTeks(trim($_POST['Thnlahir'])."-".trim($_POST['Blnlahir'])."-".trim($_POST['Tgllahir']));
+                    $alamat         = validTeks(str_replace("'","`",trim($_POST['alamat'])));
+                    $kota           = validTeks(str_replace("'","`",trim($_POST['kota'])));
+                    $mulai_kerja    = validTeks(trim($_POST['ThnMulai'])."-".trim($_POST['BlnMulai'])."-".trim($_POST['TglMulai']));
+                    $ms_kerja       = validTeks(str_replace("'","`",trim($_POST['ms_kerja'])));
+                    $indexins       = validTeks(trim($_POST['indexins']));
+                    $bpd            = validTeks(str_replace("'","`",trim($_POST['bpd'])));
+                    $rekening       = validTeks(str_replace("'","`",trim($_POST['rekening'])));
+                    $stts_aktif     = validTeks(trim($_POST['stts_aktif']));
                     $wajibmasuk     = validangka(trim($_POST['wajibmasuk']));
-                    $kode_kelompok  = trim($_POST['kode_kelompok']);
-                    $kode_resiko    = trim($_POST['kode_resiko']);
-                    $kode_emergency = trim($_POST['kode_emergency']);
+                    $kode_kelompok  = validTeks(trim($_POST['kode_kelompok']));
+                    $kode_resiko    = validTeks(trim($_POST['kode_resiko']));
+                    $kode_emergency = validTeks(trim($_POST['kode_emergency']));
 
-                    $mulai_kontrak  = trim($_POST['ThnKontrak'])."-".trim($_POST['BlnKontrak'])."-".trim($_POST['TglKontrak']);
+                    $mulai_kontrak  = validTeks(trim($_POST['ThnKontrak'])."-".trim($_POST['BlnKontrak'])."-".trim($_POST['TglKontrak']));
                     $photo          = "pages/pegawai/photo/".validTeks($_FILES['photo']['name']);
-                    $no_ktp         = trim($_POST['no_ktp']);
+                    $no_ktp         = validTeks(trim($_POST['no_ktp']));
                     move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
 
                     if ((!empty($nik))&&(!empty($jnj_jabatan))&&(!empty($departemen))&&(!empty($bidang))&&(!empty($stts_wp))&&(!empty($stts_kerja))&&

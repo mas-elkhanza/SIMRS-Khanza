@@ -933,7 +933,7 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
         FormPhotoPass.setLayout(new java.awt.BorderLayout());
 
         FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
-        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Photo : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Photo : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormPhoto.setName("FormPhoto"); // NOI18N
         FormPhoto.setPreferredSize(new java.awt.Dimension(400, 400));
         FormPhoto.setLayout(new java.awt.BorderLayout());
@@ -985,7 +985,7 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
         FormPhotoPass.add(FormPhoto, java.awt.BorderLayout.PAGE_START);
 
         FormPass.setBackground(new java.awt.Color(255, 255, 255));
-        FormPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Hasil Pemeriksaan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Hasil Pemeriksaan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormPass.setName("FormPass"); // NOI18N
         FormPass.setPreferredSize(new java.awt.Dimension(115, 73));
         FormPass.setLayout(null);
@@ -2587,7 +2587,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(ScrollMenu.isVisible()==true){
             if(tbDokter.getSelectedRow()!= -1){
                 try {
-                    ps=koneksi.prepareStatement("select photo from detail_periksa_labpa_gambar where no_rawat=? and tgl_periksa=? and jam=? and kd_jenis_prw=?");
+                    ps=koneksi.prepareStatement("select detail_periksa_labpa_gambar.photo from detail_periksa_labpa_gambar where detail_periksa_labpa_gambar.no_rawat=? and detail_periksa_labpa_gambar.tgl_periksa=? and detail_periksa_labpa_gambar.jam=? and detail_periksa_labpa_gambar.kd_jenis_prw=?");
                     try {
                         ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         ps.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());

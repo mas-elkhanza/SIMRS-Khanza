@@ -170,7 +170,7 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (/*mysqli_error($konektor).*/"hmmmmmmm.....??????????");
+        or die (mysqli_error($konektor)."hmmmmmmm.....??????????");
         mysqli_close($konektor);
         return $result;
     }
