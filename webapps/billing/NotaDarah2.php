@@ -18,7 +18,7 @@
         
         $tanggal   = $hasil["tanggal"]; 
         $catatan   = $hasil["keterangan"];
-        $petugaspj = getOne("select nama from petugas where nip='".$hasil["nip_cross"]."'"); 
+        $petugaspj = getOne("select petugas.nama from petugas where petugas.nip='".$hasil["nip_cross"]."'"); 
         $pasien    = $hasil["pengambil_darah"]; 
         $besarppn  = $hasil["besarppn"]; 
         
@@ -31,7 +31,7 @@
         $hasil=bukaquery($_sql);
         
         
-          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+          $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>

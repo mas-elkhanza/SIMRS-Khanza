@@ -25,7 +25,7 @@
         $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13 from temporary_toko order by no asc";            
         $hasil=bukaquery($_sql);
         
-        $_sqlins = "SELECT nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting";            
+        $_sqlins = "select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting";            
         $hasilins=bukaquery($_sqlins);
         $setting = mysqli_fetch_array($hasilins);
         

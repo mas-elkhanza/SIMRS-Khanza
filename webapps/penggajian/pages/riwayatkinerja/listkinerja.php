@@ -4,12 +4,12 @@
     </div>   
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
-        <?php
+            <?php
                 $action  = isset($_GET['action'])?$_GET['action']:NULL;
                 $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
                 $keyword = validTeks($keyword);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
-        ?>
+            ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
@@ -18,48 +18,38 @@
                     </td>
                 </tr>
             </table><br>
-    <div style="width: 100%; height: 80%; overflow: auto;">
-    <?php
-        $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
-                pegawai.departemen FROM  pegawai
-                where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
-                pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' or
-                pegawai.stts_aktif<>'KELUAR' and pegawai.departemen like '%".$keyword."%' 
-                group by pegawai.id order by pegawai.id ASC ";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysqli_num_rows($hasil);
-        $ttljm=0;
-        if(mysqli_num_rows($hasil)!=0) {
-            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                    <tr class='head'>
-                        <td width='9%'><div align='center'>Proses</div></td>
-                        <td width='10%'><div align='center'>NIP</div></td>
-                        <td width='25%'><div align='center'>Nama</div></td>
-                        <td width='8%'><div align='center'>Depart</div></td>
-                        <td width='48%'><div align='center'>Riwayat Evaluasi</div></td>
-                    </tr>";
-                    while($baris = mysqli_fetch_array($hasil)) {
-                        echo "<tr class='isi' title='$baris[1] $baris[2]'>
-                                <td>
-                                    <center>
-                                        <a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>[Detail]</a>
-                                    </center>
-                               </td>
-                                <td><a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
-                                <td><a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
-                                <td><a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>$baris[3]</a></td>
-                                <td>
-                                    <a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>";
-
-                                $_sqlkinerja  = "Select evaluasi_kinerja_pegawai.tahun,evaluasi_kinerja_pegawai.bulan,
-                                                evaluasi_kinerja.nama_evaluasi,evaluasi_kinerja_pegawai.keterangan 
-                                                from evaluasi_kinerja_pegawai inner join evaluasi_kinerja on
-                                                evaluasi_kinerja_pegawai.kode_evaluasi=evaluasi_kinerja.kode_evaluasi 
-                                                where evaluasi_kinerja_pegawai.id='$baris[0]' order by 
-                                                evaluasi_kinerja_pegawai.tahun,evaluasi_kinerja_pegawai.bulan ASC ";
+            <div style="width: 100%; height: 80%; overflow: auto;">
+            <?php
+                $_sql   = "SELECT pegawai.id,pegawai.nik,pegawai.nama,pegawai.departemen FROM pegawai where pegawai.stts_aktif<>'KELUAR' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen like '%".$keyword."%') group by pegawai.id order by pegawai.id ASC ";
+                $hasil  = bukaquery($_sql);
+                $jumlah = mysqli_num_rows($hasil);
+                if(mysqli_num_rows($hasil)!=0) {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='9%'><div align='center'>Proses</div></td>
+                                <td width='10%'><div align='center'>NIP</div></td>
+                                <td width='25%'><div align='center'>Nama</div></td>
+                                <td width='8%'><div align='center'>Depart</div></td>
+                                <td width='48%'><div align='center'>Riwayat Evaluasi</div></td>
+                            </tr>";
+                            while($baris = mysqli_fetch_array($hasil)) {
+                                echo "<tr class='isi' title='$baris[1] $baris[2]'>
+                                        <td>
+                                            <center>
+                                                <a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>[Detail]</a>
+                                            </center>
+                                        </td>
+                                        <td><a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
+                                        <td><a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
+                                        <td><a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>$baris[3]</a></td>
+                                        <td>
+                                            <a href=?act=InputRiwayatKinerja&action=TAMBAH&id=$baris[0]>";
+                                $_sqlkinerja  = "Select evaluasi_kinerja_pegawai.tahun,evaluasi_kinerja_pegawai.bulan,evaluasi_kinerja.nama_evaluasi,evaluasi_kinerja_pegawai.keterangan 
+                                                 from evaluasi_kinerja_pegawai inner join evaluasi_kinerja on evaluasi_kinerja_pegawai.kode_evaluasi=evaluasi_kinerja.kode_evaluasi 
+                                                 where evaluasi_kinerja_pegawai.id='$baris[0]' order by evaluasi_kinerja_pegawai.tahun,evaluasi_kinerja_pegawai.bulan ASC ";
                                 $hasilkinerja = bukaquery($_sqlkinerja);
                                 if(mysqli_num_rows($hasilkinerja)!=0) {
-                                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                                    echo "  <table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                                                 <tr class='head'>
                                                     <td width='5%' align='center'>Tahun</td>
                                                     <td width='5%' align='center'>Bulan</td>
@@ -68,42 +58,40 @@
                                                 </tr>";
                                         while($bariskinerja = mysqli_fetch_array($hasilkinerja)) {                        
                                             echo "<tr class='isi'>
-                                                        <td>".$bariskinerja["tahun"]."</td>
-                                                        <td>".$bariskinerja["bulan"]."</td>
+                                                        <td align='center'>".$bariskinerja["tahun"]."</td>
+                                                        <td align='center'>".$bariskinerja["bulan"]."</td>
                                                         <td>".$bariskinerja["nama_evaluasi"]."</td>
                                                         <td>".$bariskinerja["keterangan"]."</td>
                                                  </tr>";
                                         }
-                                    echo "</table>";
+                                    echo "  </table>";
                                 }
-
-                        echo "     </a>
-                                </td>
-                             </tr>";
-                    }
-            echo "</table>";           
-        } else {
-            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                    <tr class='head'>
-                        <td width='9%'><div align='center'>Proses</div></td>
-                        <td width='10%'><div align='center'>NIP</div></td>
-                        <td width='25%'><div align='center'>Nama</div></td>
-                        <td width='8%'><div align='center'>Depart</div></td>
-                        <td width='48%'><div align='center'>Riwayat Evaluasi</div></td>
-                    </tr>
-                  </table>";
-        }
-
-    ?>
-    </div>
+                                echo "     </a>
+                                        </td>
+                                     </tr>";
+                            }
+                    echo "</table>";           
+                } else {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='9%'><div align='center'>Proses</div></td>
+                                <td width='10%'><div align='center'>NIP</div></td>
+                                <td width='25%'><div align='center'>Nama</div></td>
+                                <td width='8%'><div align='center'>Depart</div></td>
+                                <td width='48%'><div align='center'>Riwayat Evaluasi</div></td>
+                            </tr>
+                          </table>";
+                }
+            ?>
+            </div>
 	</form>
-    <?php
+        <?php
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah</div></td>                        
                     </tr>     
                  </table>");
-        
-    ?>
+
+        ?>
     </div>
 </div>

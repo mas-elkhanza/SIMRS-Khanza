@@ -25,7 +25,7 @@
         $hasil=bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
-          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+          $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
           echo "<table width='".getOne("select notatoko from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                    <td width=50% colspan=4 align=left>

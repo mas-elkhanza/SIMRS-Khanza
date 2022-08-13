@@ -798,7 +798,7 @@
                                          <TD width='130px' colspan='3'>&nbsp;&nbsp;&nbsp;<i>". Terbilang($ttlditerima)."</i></td>
 				      </TR>
 				      <TR class='isi6'>
-                                         <TD width='130px'></TD><td></td><td><center>".getOne("select kabupaten from setting").", ".date('d-m-Y')."</center> </td>
+                                         <TD width='130px'></TD><td></td><td><center>".getOne("select setting.kabupaten from setting").", ".date('d-m-Y')."</center> </td>
 				      </TR>
 				      <TR class='isi6'>
                                          <TD width='130px'><center>Penerima</center></TD>

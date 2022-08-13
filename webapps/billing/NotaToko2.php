@@ -23,7 +23,7 @@
         $member    = $hasil["nm_member"]; 
         $ongkir    = $hasil["ongkir"];
         $besarppn  = $hasil["ppn"];
-        $petugas   = getOne("select nama from petugas where nip='".$hasil["nip"]."'"); 
+        $petugas   = getOne("select petugas.nama from petugas where petugas.nip='".$hasil["nip"]."'"); 
 
         $_sql = "select toko_detail_jual.kode_brng,tokobarang.nama_brng, toko_detail_jual.kode_sat,
                  kodesatuan.satuan,toko_detail_jual.h_jual, toko_detail_jual.jumlah, 
@@ -36,7 +36,7 @@
         $hasil=bukaquery($_sql);
         
         
-          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+          $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
           echo "<table width='".getOne("select notatoko from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>

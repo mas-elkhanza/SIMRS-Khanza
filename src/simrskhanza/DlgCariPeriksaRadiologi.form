@@ -1147,7 +1147,7 @@
                                   <Border info="null"/>
                                 </Property>
                                 <Property name="columns" type="int" value="25"/>
-                                <Property name="rows" type="int" value="10"/>
+                                <Property name="rows" type="int" value="20"/>
                                 <Property name="name" type="java.lang.String" value="HasilPeriksa" noResource="true"/>
                               </Properties>
                             </Component>

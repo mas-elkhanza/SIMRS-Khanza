@@ -993,7 +993,7 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
 
         HasilPeriksa.setBorder(null);
         HasilPeriksa.setColumns(25);
-        HasilPeriksa.setRows(10);
+        HasilPeriksa.setRows(20);
         HasilPeriksa.setName("HasilPeriksa"); // NOI18N
         Scroll3.setViewportView(HasilPeriksa);
 

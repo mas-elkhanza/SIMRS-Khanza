@@ -19,7 +19,7 @@
         
         $tanggal   = $hasil["tgl_jual"]; 
         $catatan   = $hasil["keterangan"];
-        $petugas   = getOne("select nama from petugas where nip='".$hasil["nip"]."'"); 
+        $petugas   = getOne("select petugas.nama from petugas where petugas.nip='".$hasil["nip"]."'"); 
         $norm      = $hasil["no_rkm_medis"];
         $pasien    = $hasil["nm_pasien"]; 
         $ongkir    = $hasil["ongkir"];

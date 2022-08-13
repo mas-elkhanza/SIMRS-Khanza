@@ -20,7 +20,7 @@
         $_sql = "select  nama_brng, h_retur, jml_retur, subtotal from  tampreturpiutang ";            
         $hasil=bukaquery($_sql);
         
-        $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+        $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
         
         if(mysqli_num_rows($hasil)!=0) { 
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>

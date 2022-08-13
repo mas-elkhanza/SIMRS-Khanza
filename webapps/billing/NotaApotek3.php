@@ -24,11 +24,11 @@
         $_sql = "SELECT kode_brng, nama_brng, satuan, h_jual,jumlah, subtotal, dis, bsr_dis, total from tamppiutang";            
         $hasil=bukaquery($_sql);
         
-        $_sqluser = "SELECT nama from petugas where  nip='$kdptg'";            
+        $_sqluser = "select petugas.nama from petugas where  nip='$kdptg'";            
         $hasiluser=bukaquery($_sqluser);
         $barisuser = mysqli_fetch_array($hasiluser);
         
-        $_sqlins = "SELECT nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting";            
+        $_sqlins = "select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting";            
         $hasilins=bukaquery($_sqlins);
         $setting = mysqli_fetch_array($hasilins);
         

@@ -44,7 +44,7 @@
         
         $hasil2=bukaquery($_sql);
         
-        $_sqlins = "SELECT nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting";            
+        $_sqlins = "select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting";            
         $hasilins=bukaquery($_sqlins);
         $setting = mysqli_fetch_array($hasilins);
         

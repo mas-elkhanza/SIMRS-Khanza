@@ -47,7 +47,7 @@ $tanggal=date('Y-m-d', strtotime($_POST["tanggal"]));
 				//mencari nama dokter
 				$nm_dokter=getone("SELECT dokter.nm_dokter FROM dokter WHERE dokter.kd_dokter='$kd_dokter'");
 				//mengambil kop rumah sakit
-				$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+				$setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
 				//mencari no rawat terakhir
 				$no_rawat_akhir = getone("SELECT max(reg_periksa.no_rawat) as maxno_rawat FROM reg_periksa WHERE no_rawat LIKE '%$tgl_registrasi%'");
 				$no_urut_rawat = (int) substr($no_rawat_akhir, 11, 6);
