@@ -1,5 +1,5 @@
 <?php
- include '../../../conf/conf.php';
+    include '../../../conf/conf.php';
 ?>
 <html>
     <head>
@@ -9,8 +9,7 @@
    <?php
         $keyword=$_GET['keyword'];
         $keyword= validTeks($keyword);
-        $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,
-                keanggotaan.koperasi, keanggotaan.jamsostek
+        $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,keanggotaan.koperasi,keanggotaan.jamsostek
                 from keanggotaan right OUTER JOIN pegawai
                 on keanggotaan.id=pegawai.id
 				where pegawai.nik like '%".$keyword."%' or 

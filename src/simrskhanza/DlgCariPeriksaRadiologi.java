@@ -8,6 +8,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -21,6 +22,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.HyperlinkEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
@@ -317,6 +319,17 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        LoadHTML.setEditable(false);
+        LoadHTML.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
      
         ChkAccor.setSelected(false);
         isPhoto();
@@ -926,13 +939,13 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         FormPhotoPass.setBackground(new java.awt.Color(255, 255, 255));
         FormPhotoPass.setBorder(null);
         FormPhotoPass.setName("FormPhotoPass"); // NOI18N
-        FormPhotoPass.setPreferredSize(new java.awt.Dimension(405, 750));
+        FormPhotoPass.setPreferredSize(new java.awt.Dimension(405, 1250));
         FormPhotoPass.setLayout(new java.awt.BorderLayout());
 
         FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
-        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Photo Radiologi : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Photo Radiologi : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormPhoto.setName("FormPhoto"); // NOI18N
-        FormPhoto.setPreferredSize(new java.awt.Dimension(400, 400));
+        FormPhoto.setPreferredSize(new java.awt.Dimension(400, 700));
         FormPhoto.setLayout(new java.awt.BorderLayout());
 
         FormPass2.setBackground(new java.awt.Color(255, 255, 255));
@@ -982,7 +995,7 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         FormPhotoPass.add(FormPhoto, java.awt.BorderLayout.PAGE_START);
 
         FormPass.setBackground(new java.awt.Color(255, 255, 255));
-        FormPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Hasil Bacaan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Hasil Bacaan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormPass.setName("FormPass"); // NOI18N
         FormPass.setPreferredSize(new java.awt.Dimension(115, 73));
         FormPass.setLayout(new java.awt.BorderLayout(1, 1));
@@ -993,7 +1006,7 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
 
         HasilPeriksa.setBorder(null);
         HasilPeriksa.setColumns(25);
-        HasilPeriksa.setRows(20);
+        HasilPeriksa.setRows(40);
         HasilPeriksa.setName("HasilPeriksa"); // NOI18N
         Scroll3.setViewportView(HasilPeriksa);
 
@@ -2097,7 +2110,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(445,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(internalFrame1.getWidth()-300,HEIGHT));
             ScrollMenu.setVisible(true);  
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){    
@@ -2121,7 +2134,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             rs=ps.executeQuery();
                             htmlContent = new StringBuilder();
                             while(rs.next()){
-                                htmlContent.append("<tr><td border='1'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs.getString("lokasi_gambar")+"' alt='photo' width='375' height='335'/></td></tr>");
+                                htmlContent.append("<tr><td border='0' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs.getString("lokasi_gambar")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs.getString("lokasi_gambar")+"' alt='photo' width='"+(internalFrame1.getWidth()-375)+"' height='"+(FormPhotoPass.getHeight()-40)+"'/></a></td></tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
