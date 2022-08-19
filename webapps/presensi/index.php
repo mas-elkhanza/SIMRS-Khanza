@@ -59,7 +59,7 @@ Flash-Templates-Today.com - Gives a possibility to obtain a ready free flash tem
         <div class="tr">
         <div class="y">
         <?php
-           $halaman=isset($_GET["page"])?$_GET["page"]:NULL;
+           $halaman= validTeks(isset($_GET["page"])?$_GET["page"]:NULL);
            if($halaman=="Input"){
                include "inputdata.php";
            }elseif($halaman=="TampilDatang"){

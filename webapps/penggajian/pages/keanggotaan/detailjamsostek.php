@@ -40,7 +40,7 @@
                                 Tambah(" jamsostek "," '$stts','$biaya'", " Status Keanggotaan Jamsostek " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailJamsostek&action=TAMBAH&stts='$stts'>";
                                 break;
-							              case "UBAH":
+			    case "UBAH":
                                 Ubah(" jamsostek ","biaya='$biaya' WHERE stts='$stts'  ", " Status Keanggotaan Jamsostek   ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailJamsostek&action=TAMBAH&stts='$stts'></head><body></body></html>";
                                 break;

@@ -60,7 +60,7 @@
             $urut="temporary_presensi.durasi desc";
         }
         
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
         $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift,
                 temporary_presensi.jam_datang, temporary_presensi.jam_pulang, temporary_presensi.status, 

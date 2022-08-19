@@ -32,15 +32,15 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $stts                 = validTeks(trim($_POST['stts']));
-                    $wajib                = validangka(trim($_POST['wajib']));
+                    $stts    = validTeks(trim($_POST['stts']));
+                    $wajib   = validangka(trim($_POST['wajib']));
                     if ((isset($stts))&&(isset($wajib))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" koperasi "," '$stts','$wajib'", " Status Keanggotaan Koperasi " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailKoperasi&action=TAMBAH&stts='$stts'>";
                                 break;
-							              case "UBAH":
+			    case "UBAH":
                                 Ubah(" koperasi ","wajib='$wajib' WHERE stts='$stts'", " Status Keanggotaan Koperasi ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailKoperasi&action=TAMBAH&stts='$stts'></head><body></body></html>";
                                 break;

@@ -12,15 +12,15 @@
                 $keyword = validTeks($keyword);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
-            <table width="100%" align="center">
-                <tr class="head">
-                    <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%">
-                        <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
-                        <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
-                    </td>
-                </tr>
-            </table><br>
+        <table width="100%" align="center">
+            <tr class="head">
+                <td width="25%" >Keyword</td><td width="">:</td>
+                <td width="82%">
+                    <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                    <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
+                </td>
+            </tr>
+        </table><br>
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php

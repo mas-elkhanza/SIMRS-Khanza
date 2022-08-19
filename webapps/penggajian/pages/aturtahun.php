@@ -1,4 +1,3 @@
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=HomeAdmin>| Menu Utama |</a>
@@ -8,8 +7,8 @@
             <?php
                 echo "";
                 $action    = isset($_GET['action']) ? $_GET['action']:NULL ;
-                $tahun     = isset($_GET['tahun']) ? $_GET['tahun']:date("y");
-                $bulan     = isset($_GET['bulan']) ? $_GET['bulan']:date("m");
+                $tahun     = validTeks(isset($_GET['tahun']) ? $_GET['tahun']:date("y"));
+                $bulan     = validTeks(isset($_GET['bulan']) ? $_GET['bulan']:date("m"));
                 echo "<input type=hidden name=tahun value=$tahun><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
@@ -17,7 +16,6 @@
                     <td width="31%" >Tahun Gaji</td><td width="">:</td>
                     <td width="67%">
                         <select name="tahun" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 loadThn4();
                             ?>
@@ -27,14 +25,13 @@
                 </tr>
                 <tr class="head">
                     <td width="31%" >Bulan Gaji</td><td width="">:</td>
-					<td width="67%">
+		    <td width="67%">
                        <select name="bulan" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 loadBln2();
                             ?>
                         </select>
-                    <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
+                        <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>       
             </table>
@@ -42,17 +39,15 @@
             <?php
                 $BtnSimpan = isset($_POST['BtnSimpan'])? $_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {                    
-                    $bulan    = trim(isset($_POST['bulan'])) ? trim($_POST['bulan']):"01";
-                    $bln_leng = strlen(trim($_POST['bulan']));
+                    $bulan     = validTeks(trim(isset($_POST['bulan'])) ? trim($_POST['bulan']):"01");
+                    $bln_leng  = validTeks(strlen(trim($_POST['bulan'])));
                     if ($bln_leng==1){
                         $bulan="0".$bulan;
                     }
-                    
-                    $tahun   = trim(isset($_POST['tahun']))?trim($_POST['tahun']):"2015";
-                    $jumHari = cal_days_in_month(CAL_GREGORIAN,$bulan,$tahun);
-                    $date1   = "01-".$bulan."-".$tahun;
-                    $date2   = $jumHari."-".$bulan."-".$tahun;
-
+                    $tahun     = validTeks(trim(isset($_POST['tahun']))?trim($_POST['tahun']):"2022");
+                    $jumHari   = cal_days_in_month(CAL_GREGORIAN,$bulan,$tahun);
+                    $date1     = "01-".$bulan."-".$tahun;
+                    $date2     = $jumHari."-".$bulan."-".$tahun;
                     $pecahTgl1 = explode("-", $date1);
                     $tgl1      = $pecahTgl1[0];
                     $bln1      = $pecahTgl1[1];
@@ -67,7 +62,6 @@
                         $i++;
                     }while ($tanggal != $date2);
                     $selisihhari=$jumHari-$sum;
-                    
                     if ((isset($tahun))&&(isset($bulan))) {
                         $action      =isset($_GET['action']) ? $_GET['action']:"TAMBAH" ;
                         switch($action) {
@@ -83,7 +77,7 @@
             ?>
             <div style="width: 100%; height: 100px; overflow: auto;">
             <?php
-                $_sql   = "SELECT * FROM set_tahun ORDER BY tahun";
+                $_sql   = "SELECT * FROM set_tahun ORDER BY set_tahun.tahun";
                 $hasil  = bukaquery($_sql);
                 $jumlah = mysqli_num_rows($hasil);
                 $masuk  = 0;
@@ -154,7 +148,7 @@
                 }
 
                 if (isset($BtnSimpan2)) {                   
-                    $tanggal2    = trim($_POST['tanggal2']);
+                    $tanggal2    = validTeks(trim($_POST['tanggal2']));
                     $tgl         = $tahun2."-".$bulan2."-".$tanggal2;
                     $ktg         = ValidTeks(trim($_POST['ktg']));
                     if ((isset($tahun2))&&(isset($bulan2))&&(isset($tanggal2))) {
@@ -229,7 +223,7 @@
                     Hapus(" set_tahun "," tahun ='".$tahun."' and bulan ='".$bulan."' ","?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun");
             }
             if ($hapus=="HAPUS2") {
-                    Hapus(" set_hari_libur "," tanggal ='".$_GET['tanggal3']."' ","?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun");
+                    Hapus(" set_hari_libur "," tanggal ='".validTeks($_GET['tanggal3'])."' ","?act=InputTahun&action=TAMBAH&bulan=$bulan&tahun=$tahun");
             }
         ?>
     </div>

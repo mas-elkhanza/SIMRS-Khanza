@@ -1,4 +1,3 @@
-
 <div id="post">
     <div align="center" class="link">
 	<a href=?act=DetailTunjanganBulanan&action=TAMBAH>| Ms.Tunj Bulanan |</a>
@@ -11,9 +10,9 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action         = isset($_GET['action'])?$_GET['action']:NULL;
-                @$tnj           = $_GET['tnj'];
-                @$tnj2          = $_GET['tnj2'];
+                $action   = isset($_GET['action'])?$_GET['action']:NULL;
+                @$tnj     = validTeks($_GET['tnj']);
+                @$tnj2    = validTeks($_GET['tnj2']);
                 echo "<input type=hidden name=tnj  value=$tnj><input type=hidden name=tnj2  value=$tnj2><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
@@ -21,9 +20,8 @@
                     <td width="31%" >Tunjangan Harian</td><td width="">:</td>
                     <td width="67%">
                         <select name="tnj" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
-                                $_sql = "SELECT id,nama,tnj FROM master_tunjangan_harian ORDER BY nama";
+                                $_sql = "SELECT master_tunjangan_harian.id,master_tunjangan_harian.nama,master_tunjangan_harian.tnj FROM master_tunjangan_harian ORDER BY master_tunjangan_harian.nama";
                                 $hasil=bukaquery($_sql);
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[1]  ".formatDuit($baris[2])."</option>";
@@ -37,9 +35,8 @@
                     <td width="31%" >Tunjangan Bulanan</td><td width="">:</td>
                     <td width="67%">
                         <select name="tnj2" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
-                            <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
-                                $_sql = "SELECT id,nama,tnj FROM master_tunjangan_bulanan ORDER BY nama";
+                                $_sql = "SELECT master_tunjangan_bulanan.id,master_tunjangan_bulanan.nama,master_tunjangan_bulanan.tnj FROM master_tunjangan_bulanan ORDER BY master_tunjangan_bulanan.nama";
                                 $hasil=bukaquery($_sql);
                                 while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[1]  ".formatDuit($baris[2])."</option>";
@@ -54,8 +51,8 @@
             <?php
                 @$BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    @$tnj                = validTeks(trim($_POST['tnj']));
-                    @$tnj2               = validTeks(trim($_POST['tnj2']));
+                    @$tnj     = validTeks(trim($_POST['tnj']));
+                    @$tnj2    = validTeks(trim($_POST['tnj2']));
                     if ((isset($tnj))&&(isset($tnj2))) {
                         switch($action) {
                             case "TAMBAH":
@@ -70,16 +67,11 @@
             ?>
             <div style="width: 100%; height: 69%; overflow: auto;">
             <?php
-                
-                $_sql = "SELECT master_tunjangan_harian.nama,master_tunjangan_bulanan.nama,
-                        master_tunjangan_harian.id,master_tunjangan_bulanan.id 
-						from harian_kurangi_bulanan inner join master_tunjangan_harian 
-						inner join master_tunjangan_bulanan on harian_kurangi_bulanan.harian=master_tunjangan_harian.id and
-						harian_kurangi_bulanan.bulanan=master_tunjangan_bulanan.id 
-						ORDER BY master_tunjangan_harian.nama ASC ";
-                $hasil=bukaquery($_sql);
-                $jumlah=mysqli_num_rows($hasil);
-
+                $_sql   = "SELECT master_tunjangan_harian.nama,master_tunjangan_bulanan.nama,master_tunjangan_harian.id,master_tunjangan_bulanan.id 
+                           from harian_kurangi_bulanan inner join master_tunjangan_harian on harian_kurangi_bulanan.harian=master_tunjangan_harian.id
+			   inner join master_tunjangan_bulanan on harian_kurangi_bulanan.bulanan=master_tunjangan_bulanan.id ORDER BY master_tunjangan_harian.nama ASC ";
+                $hasil  = bukaquery($_sql);
+                $jumlah = mysqli_num_rows($hasil);
                 if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
@@ -90,34 +82,31 @@
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
                                 <td>
-                                    <center>";?>
-                                    <a href="?act=DetailHarianBulanan&action=HAPUS&tnj=<?php print $baris[2]?>&tnj2=<?php print $baris[3]?>">[hapus]</a>
-                            <?php
-                            echo "</center>
+                                    <center>
+                                      <a href=?act=DetailHarianBulanan&action=HAPUS&tnj=".$baris[2]."&tnj2=".$baris[3].">[hapus]</a>
+                                    </center>
                                 </td>
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                            </tr>";
                     }
-                echo "</table>";
-
-            } else {
-                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    echo "</table>";
+                } else {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='12%'><div align='center'>Proses</div></td>
                                 <td width='44%'><div align='center'>Harian</div></td>
                                 <td width='44%'><div align='center'>Bulanan</div></td>
                             </tr>
-                        </table>";
-            }
-        ?>
-        </div>
+                          </table>";
+                }
+            ?>
+            </div>
         </form>
         <?php
             if ($action=="HAPUS") {
                 Hapus("harian_kurangi_bulanan"," harian='".$tnj."' and bulanan='".$tnj2."' ","?act=DetailHarianBulanan&action=TAMBAH");
             }
-
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah</div></td>                        
@@ -125,6 +114,5 @@
                  </table>");
         ?>
     </div>
-
 </div>
 

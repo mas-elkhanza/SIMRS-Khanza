@@ -9,7 +9,7 @@
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
             $_SESSION['ses_admin']="admin";
-            $_SESSION['pasien']=$_GET['norm'];
+            $_SESSION['pasien']= validTeks($_GET['norm']);
             $url = "index.php?act=Kamera";			
         }else{
             session_start();

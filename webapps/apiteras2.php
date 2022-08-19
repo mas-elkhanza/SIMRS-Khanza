@@ -21,7 +21,7 @@
 
     $token        = json_decode(curl_exec($curl),true);
     curl_close($curl);
-    $nopermintaan = isset($_GET["nopermintaan"])?$_GET["nopermintaan"]:NULL;
+    $nopermintaan = validTeks(isset($_GET["nopermintaan"])?$_GET["nopermintaan"]:NULL);
     $nopermintaan = str_replace("PL","",$nopermintaan);
     
     echo "no_lab=$nopermintaan";

@@ -8,14 +8,8 @@
     <body>
    <?php
         $keyword = validTeks($_GET['keyword']);
-        $_sql    = "select pegawai.id,pegawai.nik,pegawai.nama,keanggotaan.koperasi,keanggotaan.jamsostek,keanggotaan.bpjs
-                    from keanggotaan right OUTER JOIN pegawai on keanggotaan.id=pegawai.id
-		    where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
-		    pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' or
-		    pegawai.stts_aktif<>'KELUAR' and keanggotaan.koperasi like '%".$keyword."%' or
-		    pegawai.stts_aktif<>'KELUAR' and keanggotaan.bpjs like '%".$keyword."%' or
-		    pegawai.stts_aktif<>'KELUAR' and keanggotaan.jamsostek like '%".$keyword."%'
-		    order by pegawai.id ASC ";
+        $_sql    = "select pegawai.id,pegawai.nik,pegawai.nama,keanggotaan.koperasi,keanggotaan.jamsostek,keanggotaan.bpjs from keanggotaan right OUTER JOIN pegawai on keanggotaan.id=pegawai.id where pegawai.stts_aktif<>'KELUAR' and 
+                    (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or keanggotaan.koperasi like '%".$keyword."%' or keanggotaan.bpjs like '%".$keyword."%' or keanggotaan.jamsostek like '%".$keyword."%') order by pegawai.id ASC ";
         $hasil   = bukaquery($_sql);
         $jumlah  = mysqli_num_rows($hasil);
         if(mysqli_num_rows($hasil)!=0) {

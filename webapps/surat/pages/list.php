@@ -62,7 +62,7 @@
                     while($baris = mysqli_fetch_array($hasil)) {                        
                         echo "<tr class='isi'>
                                 <td align='center'>
-                                   <a href=?act=List&action=HAPUS&no_urut=".$baris["no_urut"]."&file_url=".$baris["file_url"]."&tgl1=".$_GET["tgl1"]."&tgl2=".$_GET["tgl2"]."&ruang=".$_GET["ruang"]."&sttssurat=".$_GET["sttssurat"]."&sttsbalas=".$_GET["sttsbalas"]."&keyword=".$_GET["keyword"].">[Hapus]</a>
+                                   <a href=?act=List&action=HAPUS&no_urut=".$baris["no_urut"]."&file_url=".$baris["file_url"]."&tgl1=".validTeks($_GET["tgl1"])."&tgl2=".validTeks($_GET["tgl2"])."&ruang=".validTeks($_GET["ruang"])."&sttssurat=".validTeks($_GET["sttssurat"])."&sttsbalas=".validTeks($_GET["sttsbalas"])."&keyword=".validTeks($_GET["keyword"]).">[Hapus]</a>
                                    <a target=_blank href=../surat/pages/upload/".$baris["file_url"].">[Berkas]</a>
                                 </td>
                                 <td align='left'>".$baris["no_urut"]."</td>
@@ -115,7 +115,7 @@
         
         if ($action=="HAPUS") {                
             unlink($_GET['file_url']);
-            Hapus(" surat_masuk "," no_urut ='".$_GET['no_urut']."' ","?act=List&tgl1=".$_GET['tgl1']."&tgl2=".$_GET['tgl2']."&ruang=".$_GET['ruang']."&sttssurat=".$_GET['sttssurat']."&sttsbalas=".$_GET['sttsbalas']."&keyword=".$_GET['keyword']);
+            Hapus(" surat_masuk "," no_urut ='".validTeks($_GET['no_urut'])."' ","?act=List&tgl1=".validTeks($_GET['tgl1'])."&tgl2=".validTeks($_GET['tgl2'])."&ruang=".validTeks($_GET['ruang'])."&sttssurat=".validTeks($_GET['sttssurat'])."&sttsbalas=".validTeks($_GET['sttsbalas'])."&keyword=".validTeks($_GET['keyword']));
         }
     ?>
     </div>

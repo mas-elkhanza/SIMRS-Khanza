@@ -40,7 +40,7 @@
                                 Tambah(" bpjs "," '$stts','$biaya'", " Status Keanggotaan BPJS " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBpjs&action=TAMBAH&stts='$stts'>";
                                 break;
-							              case "UBAH":
+			    case "UBAH":
                                 Ubah(" bpjs ","biaya='$biaya' WHERE stts='$stts'  ", " Status Keanggotaan BPJS   ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailBpjs&action=TAMBAH&stts='$stts'></head><body></body></html>";
                                 break;

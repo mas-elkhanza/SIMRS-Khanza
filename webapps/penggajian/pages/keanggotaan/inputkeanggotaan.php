@@ -22,12 +22,12 @@
                 $baris2     = mysqli_fetch_row($hasil2);
                 echo"<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 
-                $_sqlnext   = "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
+                $_sqlnext   = "SELECT pegawai.id FROM pegawai WHERE pegawai.id>'$id' order by pegawai.id asc limit 1";
                 $hasilnext  = bukaquery($_sqlnext);
                 $barisnext  = mysqli_fetch_row($hasilnext);
                 @$next      = $barisnext[0];
 
-                $_sqlprev   = "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
+                $_sqlprev   = "SELECT pegawai.id FROM pegawai WHERE pegawai.id<'$id' order by pegawai.id desc limit 1";
                 $hasilprev  = bukaquery($_sqlprev);
                 $barisprev  = mysqli_fetch_row($hasilprev);
                 @$prev      = $barisprev[0];
@@ -120,7 +120,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputKeanggotaan&id=$id'></head><body></body></html>";
                                 break;
                             case "UBAH":
-                                Ubah(" keanggotaan "," koperasi='$koperasi',jamsostek='$jamsostek',bpjs='$bpjs' WHERE id='".$_GET['id']."' ", " Keanggotaan ");
+                                Ubah(" keanggotaan "," koperasi='$koperasi',jamsostek='$jamsostek',bpjs='$bpjs' WHERE id='".validTeks($_GET['id'])."' ", " Keanggotaan ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=InputKeanggotaan&id=$id'></head><body></body></html>";
                                 break;
                         }
