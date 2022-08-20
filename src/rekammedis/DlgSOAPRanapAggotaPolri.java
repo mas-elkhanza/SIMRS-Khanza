@@ -1044,7 +1044,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(akses.getharian_klasifikasi_pasien_ranap());
+        BtnPrint.setEnabled(akses.getsoap_ranap_polri());
     }
     
     private void isForm(){

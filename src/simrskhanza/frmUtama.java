@@ -726,7 +726,9 @@ import perpustakaan.PerpustakaanPengaturanPeminjaman;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
+import rekammedis.DlgSOAPRalanAggotaTNI;
 import rekammedis.DlgSOAPRanapAggotaPolri;
+import rekammedis.DlgSOAPRanapAggotaTNI;
 import rekammedis.RMHemodialisa;
 import rekammedis.MasterImunisasi;
 import rekammedis.MasterMasalahKeperawatan;
@@ -18880,6 +18882,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSOAPRalanAnggotaTNIActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSOAPRalanAggotaTNI form=new DlgSOAPRalanAggotaTNI(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSOAPRanapAnggotaTNIActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSOAPRanapAggotaTNI form=new DlgSOAPRanapAggotaTNI(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19529,7 +19555,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAuditBundleIADP,btnAuditBundleIDO,btnAuditFasilitasKebersihanTangan,btnAuditFasilitasAPD,btnAuditPembuanganLimbahCairInfeksius,
             btnAuditSterilisasiAlat,btnPersetujuanPenolakanTindakan,btnPenilaianAwalMedisRalanPsikiatri,btnAuditBundleISK,btnAuditBundlePLABSI,
             btnAuditBundleVAP,btnAkunRekeningHtHBankPapua,btnPembayaranBankPapua,btnPenilaianAwalMedisRalanPenyakitDalam,btnPenilaianAwalMedisRalanMata,
-            btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah;
+            btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI;
     
     public void isWall(){
         try{            
@@ -22437,6 +22463,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 
                 if(akses.getsoap_ranap_polri()==true){  
                     Panelmenu.add(btnSOAPRanapAnggotaPolri);                 
+                    jmlmenu++;
+                }
+                
+                if(akses.getsoap_ralan_tni()==true){  
+                    Panelmenu.add(btnSOAPRalanAnggotaTNI);                 
+                    jmlmenu++;
+                }
+                
+                if(akses.getsoap_ranap_tni()==true){  
+                    Panelmenu.add(btnSOAPRanapAnggotaTNI);                 
                     jmlmenu++;
                 }
             }
@@ -26683,6 +26719,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsoap_ranap_polri()==true){  
                 Panelmenu.add(btnSOAPRanapAnggotaPolri);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getsoap_ralan_tni()==true){  
+                Panelmenu.add(btnSOAPRalanAnggotaTNI);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getsoap_ranap_tni()==true){  
+                Panelmenu.add(btnSOAPRanapAnggotaTNI);                 
                 jmlmenu++;
             }
         }
@@ -32037,6 +32083,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                     jmlmenu++;
                 } 
             }
+            
+            if(akses.getsoap_ralan_tni()==true){  
+                if(btnSOAPRalanAnggotaTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnSOAPRalanAnggotaTNI); 
+                    jmlmenu++;
+                } 
+            }
+            
+            if(akses.getsoap_ranap_tni()==true){  
+                if(btnSOAPRanapAnggotaTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnSOAPRanapAnggotaTNI); 
+                    jmlmenu++;
+                } 
+            }
         }
         
         if(akses.getriwayat_kamar_pasien()==true){
@@ -37188,6 +37248,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRalanBedah.setName("btnPenilaianAwalMedisRalanBedah"); 
         btnPenilaianAwalMedisRalanBedah.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRalanBedah.addActionListener(this::btnPenilaianAwalMedisRalanBedahActionPerformed);
+        
+        btnSOAPRalanAnggotaTNI = new widget.ButtonBig();
+        btnSOAPRalanAnggotaTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_patient-health_report-graph-coronavirus_6000116.png")));
+        btnSOAPRalanAnggotaTNI.setText("SOAP Ralan Anggota TNI");
+        btnSOAPRalanAnggotaTNI.setIconTextGap(0);
+        btnSOAPRalanAnggotaTNI.setName("btnSOAPRalanAnggotaTNI"); 
+        btnSOAPRalanAnggotaTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSOAPRalanAnggotaTNI.addActionListener(this::btnSOAPRalanAnggotaTNIActionPerformed);
+        
+        btnSOAPRanapAnggotaTNI = new widget.ButtonBig();
+        btnSOAPRanapAnggotaTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_patient-health_report-graph-coronavirus_6000116.png")));
+        btnSOAPRanapAnggotaTNI.setText("SOAP Ranap Anggota TNI");
+        btnSOAPRanapAnggotaTNI.setIconTextGap(0);
+        btnSOAPRanapAnggotaTNI.setName("btnSOAPRanapAnggotaTNI"); 
+        btnSOAPRanapAnggotaTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSOAPRanapAnggotaTNI.addActionListener(this::btnSOAPRanapAnggotaTNIActionPerformed);
     }
     
 }
