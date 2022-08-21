@@ -188,7 +188,7 @@ public final class akses {
             audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false,
             penilaian_awal_medis_ralan_penyakit_dalam=false,penilaian_awal_medis_ralan_mata=false,penilaian_awal_medis_ralan_neurologi=false,sirkulasi_obat6=false,
             penilaian_awal_medis_ralan_orthopedi=false,penilaian_awal_medis_ralan_bedah=false,integrasi_khanza_health_services=false,soap_ralan_tni=false,
-            soap_ranap_tni=false,jumlah_pengunjung_ralan_tni=false;
+            soap_ranap_tni=false,jumlah_pengunjung_ralan_tni=false,laporan_penyakit_tni=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1069,6 +1069,7 @@ public final class akses {
                         akses.soap_ralan_tni=true;
                         akses.soap_ranap_tni=true;
                         akses.jumlah_pengunjung_ralan_tni=true;
+                        akses.laporan_penyakit_tni=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1933,6 +1934,7 @@ public final class akses {
                         akses.soap_ralan_tni=rs2.getBoolean("soap_ralan_tni");
                         akses.soap_ranap_tni=rs2.getBoolean("soap_ranap_tni");
                         akses.jumlah_pengunjung_ralan_tni=rs2.getBoolean("jumlah_pengunjung_ralan_tni");
+                        akses.laporan_penyakit_tni=rs2.getBoolean("laporan_penyakit_tni");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2795,6 +2797,7 @@ public final class akses {
                         akses.soap_ralan_tni=false;
                         akses.soap_ranap_tni=false;
                         akses.jumlah_pengunjung_ralan_tni=false;
+                        akses.laporan_penyakit_tni=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3714,4 +3717,5 @@ public final class akses {
     public static boolean getsoap_ralan_tni(){return akses.soap_ralan_tni;}
     public static boolean getsoap_ranap_tni(){return akses.soap_ranap_tni;}
     public static boolean getjumlah_pengunjung_ralan_tni(){return akses.jumlah_pengunjung_ralan_tni;}
+    public static boolean getlaporan_penyakit_tni(){return akses.laporan_penyakit_tni;}
 }   

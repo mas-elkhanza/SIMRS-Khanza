@@ -690,6 +690,7 @@ import laporan.DlgKIPPasienRanap;
 import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgLamaPelayananPasien;
 import laporan.DlgLaporanPenyakitPolri;
+import laporan.DlgLaporanPenyakitTNI;
 import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananOperasi;
 import laporan.DlgPelayananPoli;
@@ -18459,6 +18460,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLaporanPenyakitTNIActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgLaporanPenyakitTNI form=new DlgLaporanPenyakitTNI(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnMasterRencanaKeperawatanAnakActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -19569,7 +19582,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAuditSterilisasiAlat,btnPersetujuanPenolakanTindakan,btnPenilaianAwalMedisRalanPsikiatri,btnAuditBundleISK,btnAuditBundlePLABSI,
             btnAuditBundleVAP,btnAkunRekeningHtHBankPapua,btnPembayaranBankPapua,btnPenilaianAwalMedisRalanPenyakitDalam,btnPenilaianAwalMedisRalanMata,
             btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI,
-            btnJumlahPengunjungRalanTNI;
+            btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI;
     
     public void isWall(){
         try{            
@@ -21429,6 +21442,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 
                 if(akses.getlaporan_penyakit_polri()==true){  
                     Panelmenu.add(btnLaporanPenyakitPolri);                 
+                    jmlmenu++;
+                }
+                
+                if(akses.getlaporan_penyakit_tni()==true){  
+                    Panelmenu.add(btnLaporanPenyakitTNI);                 
                     jmlmenu++;
                 }
                 
@@ -25693,6 +25711,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlaporan_penyakit_polri()==true){  
                 Panelmenu.add(btnLaporanPenyakitPolri);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_penyakit_tni()==true){  
+                Panelmenu.add(btnLaporanPenyakitTNI);                 
                 jmlmenu++;
             }
             
@@ -30644,6 +30667,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getlaporan_penyakit_polri()==true){  
                 if(btnLaporanPenyakitPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnLaporanPenyakitPolri);                 
+                    jmlmenu++;
+                }                
+            }
+            
+            if(akses.getlaporan_penyakit_tni()==true){  
+                if(btnLaporanPenyakitTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnLaporanPenyakitTNI);                 
                     jmlmenu++;
                 }                
             }
@@ -37303,6 +37333,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJumlahPengunjungRalanTNI.setName("btnJumlahPengunjungRalanTNI"); 
         btnJumlahPengunjungRalanTNI.setPreferredSize(new java.awt.Dimension(200, 90));
         btnJumlahPengunjungRalanTNI.addActionListener(this::btnJumlahPengunjungRalanTNIActionPerformed);
+        
+        btnLaporanPenyakitTNI = new widget.ButtonBig();
+        btnLaporanPenyakitTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6008661_bacteria_coronavirus_covid_laboratory_microscope_icon.png")));
+        btnLaporanPenyakitTNI.setText("Laporan Penyakit TNI");
+        btnLaporanPenyakitTNI.setIconTextGap(0);
+        btnLaporanPenyakitTNI.setName("btnLaporanPenyakitTNI"); 
+        btnLaporanPenyakitTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanPenyakitTNI.addActionListener(this::btnLaporanPenyakitTNIActionPerformed);
     }
     
 }
