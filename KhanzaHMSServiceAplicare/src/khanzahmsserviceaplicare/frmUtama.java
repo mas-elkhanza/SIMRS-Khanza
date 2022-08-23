@@ -32,7 +32,7 @@ import org.springframework.http.MediaType;
 public class frmUtama extends javax.swing.JFrame {
     private  Connection koneksi=koneksiDB.condb();
     private  sekuel Sequel=new sekuel();
-    private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select kode_ppk from setting");
+    private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select setting.kode_ppk from setting");
     private  BPJSApiAplicare api=new BPJSApiAplicare();
     private  HttpHeaders headers;
     private  HttpEntity requestEntity;

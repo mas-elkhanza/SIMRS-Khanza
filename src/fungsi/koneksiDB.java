@@ -1064,4 +1064,24 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String RESEPRAJALKEPLAN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("RESEPRAJALKEPLAN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String DIAGNOSARUJUKANMASUKAPIBPJS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("DIAGNOSARUJUKANMASUKAPIBPJS");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }

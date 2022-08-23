@@ -33,7 +33,7 @@ public class frmUtama extends javax.swing.JFrame {
     private  Properties prop = new Properties();
     private  Connection koneksi=koneksiDB.condb();
     private  sekuel Sequel=new sekuel();
-    private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select kode_ppk from setting"),utc="",link="",datajam="",
+    private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select setting.kode_ppk from setting"),utc="",link="",datajam="",
               nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",hari="";
     private  ApiMobileJKN api=new ApiMobileJKN();
     private  HttpHeaders headers;

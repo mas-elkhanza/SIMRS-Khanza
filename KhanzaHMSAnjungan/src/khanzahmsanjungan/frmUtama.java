@@ -186,13 +186,13 @@ public class frmUtama extends javax.swing.JFrame {
                      }
                 }else if(Sequel.cariInteger("select count(no_peserta) from pasien where no_peserta=?",TCari.getText().trim())>0){
                      if(validasiregistrasi.equals("Yes")){
-                         if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' and stts<>'Batal'",Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",TCari.getText().trim()))>0){
+                         if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' and stts<>'Batal'",Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta=?",TCari.getText().trim()))>0){
                              JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
                          }else{
                              DlgPilihPoli pilih=new DlgPilihPoli(this,true);
                              pilih.setSize(this.getWidth()-20,this.getHeight()-70);
                              pilih.setLocationRelativeTo(this);
-                             pilih.setPasien(Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",TCari.getText().trim()));
+                             pilih.setPasien(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta=?",TCari.getText().trim()));
                              pilih.tampil();
                              pilih.setVisible(true);
                          }
@@ -200,7 +200,7 @@ public class frmUtama extends javax.swing.JFrame {
                          DlgPilihPoli pilih=new DlgPilihPoli(this,true);
                          pilih.setSize(this.getWidth()-20,this.getHeight()-70);
                          pilih.setLocationRelativeTo(this);
-                         pilih.setPasien(Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",TCari.getText().trim()));
+                         pilih.setPasien(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta=?",TCari.getText().trim()));
                          pilih.tampil();
                          pilih.setVisible(true); 
                      }

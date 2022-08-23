@@ -4719,7 +4719,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         btnKamar.setEnabled(true);
         emptTeks();
         lama=Sequel.cariIsiAngka("select lamajam from set_jam_minimal");
-        hariawal=Sequel.cariIsi("select hariawal from set_jam_minimal");
+        hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
         
         WindowInputKamar.setLocationRelativeTo(internalFrame1);
         WindowInputKamar.setVisible(true);
@@ -4757,7 +4757,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 cmbStatus.setVisible(true);
                 jLabel26.setVisible(true);
                 lama=Sequel.cariIsiAngka("select lamajam from set_jam_minimal");
-                hariawal=Sequel.cariIsi("select hariawal from set_jam_minimal");
+                hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
                 LblStts.setText("Pulang/Check Out");
 
                 btnReg.setEnabled(false);

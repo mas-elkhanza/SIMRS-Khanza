@@ -359,7 +359,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         
         try{
             KdPPK.setText(Sequel.cariIsi("select kode_ppkinhealth from setting")); 
-            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));           
+            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));           
         }catch(Exception e){
             System.out.println(e);
         }

@@ -590,10 +590,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TLetak.setDocument(new batasInput((byte)50).getKata(TLetak));
         TTensi.setDocument(new batasInput((byte)8).getKata(TTensi));
         TCariPasien.setDocument(new batasInput((byte)20).getKata(TCariPasien));
-        TKeluhan.setDocument(new batasInput((int)400).getKata(TKeluhan));      
-        TPenilaian.setDocument(new batasInput((int)400).getKata(TPenilaian));  
-        TEvaluasi.setDocument(new batasInput((int)400).getKata(TEvaluasi));
-        TindakLanjut.setDocument(new batasInput((int)400).getKata(TindakLanjut));        
+        TKeluhan.setDocument(new batasInput((int)2000).getKata(TKeluhan));  
+        TPemeriksaan.setDocument(new batasInput((int)2000).getKata(TPemeriksaan));    
+        TPenilaian.setDocument(new batasInput((int)2000).getKata(TPenilaian));  
+        TEvaluasi.setDocument(new batasInput((int)2000).getKata(TEvaluasi));
+        TindakLanjut.setDocument(new batasInput((int)2000).getKata(TindakLanjut));  
+        TInstruksi.setDocument(new batasInput((int)2000).getKata(TInstruksi));      
         TTinggi.setDocument(new batasInput((byte)5).getKata(TTinggi));
         TBerat.setDocument(new batasInput((byte)5).getKata(TBerat));
         SpO2.setDocument(new batasInput((byte)3).getOnlyAngka(SpO2));
@@ -601,7 +603,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TRespirasi.setDocument(new batasInput((byte)3).getOnlyAngka(TRespirasi));      
         TGCS.setDocument(new batasInput((byte)10).getKata(TGCS)); 
         TAlergi.setDocument(new batasInput((int)50).getKata(TAlergi));        
-        TPemeriksaan.setDocument(new batasInput((int)400).getKata(TPemeriksaan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));       
         TInspeksi.setDocument(new batasInput((byte)50).getKata(TInspeksi));
         TInspeksiVulva.setDocument(new batasInput((byte)50).getKata(TInspeksiVulva));
