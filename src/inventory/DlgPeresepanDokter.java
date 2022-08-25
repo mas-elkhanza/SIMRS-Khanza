@@ -64,7 +64,8 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private WarnaTable2 warna3=new WarnaTable2();
     private DlgCariMetodeRacik metoderacik=new DlgCariMetodeRacik(null,false);
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",kamar="",norawatibu="",kelas,bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1");
+    private String noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",resep="",
+            kamar="",norawatibu="",kelas,bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),RESEPRAJALKEPLAN="no";
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -373,6 +374,12 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
             STOKKOSONGRESEP="no";
+        }
+        
+        try {
+            RESEPRAJALKEPLAN=koneksiDB.RESEPRAJALKEPLAN();
+        } catch (Exception e) {
+            RESEPRAJALKEPLAN="no";
         }
     }    
     
@@ -1102,6 +1109,99 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }                                                      
                 
                 if(sukses==true){
+                    if(RESEPRAJALKEPLAN.equals("yes")&&status.equals("ralan")&&(ubah==false)){
+                        try {
+                            ps2=koneksi.prepareStatement(
+                                "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? and pemeriksaan_ralan.nip=? order by pemeriksaan_ralan.tgl_perawatan desc,pemeriksaan_ralan.jam_rawat desc limit 1");
+                            try {
+                                ps2.setString(1,TNoRw.getText());
+                                ps2.setString(2,KdDokter.getText());
+                                rs2=ps2.executeQuery();
+                                if(rs2.next()){
+                                    resep="Resep : \n";
+                                    psresep=koneksi.prepareStatement(
+                                           "select databarang.nama_brng,resep_dokter.jml,resep_dokter.aturan_pakai from databarang inner join resep_dokter on databarang.kode_brng=resep_dokter.kode_brng where resep_dokter.no_resep=?");
+                                    try {
+                                        psresep.setString(1,NoResep.getText());
+                                        rsobat=psresep.executeQuery();
+                                        while(rsobat.next()){
+                                            resep=resep+rsobat.getString("nama_brng")+" Jumlah "+rsobat.getString("jml")+" Aturan Pakai "+rsobat.getString("aturan_pakai")+"\n";
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rsobat != null){
+                                            rsobat.close();
+                                        }
+
+                                        if(psresep != null){
+                                            psresep.close();
+                                        }
+                                    }
+                                    
+                                    psresep=koneksi.prepareStatement(
+                                            "select resep_dokter_racikan.no_racik,resep_dokter_racikan.nama_racik,metode_racik.nm_racik as metode,resep_dokter_racikan.jml_dr,resep_dokter_racikan.aturan_pakai "+
+                                            "from resep_dokter_racikan inner join metode_racik on resep_dokter_racikan.kd_racik=metode_racik.kd_racik where resep_dokter_racikan.no_resep=?");
+                                    try {
+                                        psresep.setString(1,NoResep.getText());
+                                        rsobat=psresep.executeQuery();
+                                        while(rsobat.next()){
+                                            resep=resep+rsobat.getString("no_racik")+". "+rsobat.getString("nama_racik")+" Jumlah "+rsobat.getString("jml_dr")+" "+rsobat.getString("metode")+" Aturan Pakai "+rsobat.getString("aturan_pakai")+"\n";
+                                            pscarikapasitas=koneksi.prepareStatement(
+                                                    "select databarang.nama_brng,resep_dokter_racikan_detail.jml from resep_dokter_racikan_detail inner join databarang "+
+                                                    "on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng where resep_dokter_racikan_detail.no_resep=? and "+
+                                                    "resep_dokter_racikan_detail.no_racik=?");
+                                            try {
+                                                pscarikapasitas.setString(1,NoResep.getText());
+                                                pscarikapasitas.setString(2,rsobat.getString("no_racik"));
+                                                carikapasitas=pscarikapasitas.executeQuery();
+                                                while(carikapasitas.next()){
+                                                    resep=resep+"-- "+carikapasitas.getString("nama_brng")+" "+carikapasitas.getString("jml")+"\n";
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif : "+e);
+                                            } finally{
+                                                if(carikapasitas != null){
+                                                    carikapasitas.close();
+                                                }
+
+                                                if(pscarikapasitas != null){
+                                                    pscarikapasitas.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rsobat != null){
+                                            rsobat.close();
+                                        }
+
+                                        if(psresep != null){
+                                            psresep.close();
+                                        }
+                                    }
+                                    
+                                    Sequel.queryu2("update pemeriksaan_ralan set rtl=concat(rtl,' ',?) where no_rawat=? and tgl_perawatan=? and jam_rawat=? and nip=?",5,new String[]{
+                                        resep,TNoRw.getText(),rs2.getString("tgl_perawatan"),rs2.getString("jam_rawat"),KdDokter.getText()
+                                    });
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs2 != null){
+                                    rs2.close();
+                                }
+
+                                if(ps2 != null){
+                                    ps2.close();
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        }
+                    }
+                    
                     Sequel.Commit();
                     for(i=0;i<tbResep.getRowCount();i++){
                         tbResep.setValueAt("",i,1);

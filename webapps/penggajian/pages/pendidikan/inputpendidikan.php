@@ -11,7 +11,7 @@
                 $tingkat     = validTeks(str_replace("_"," ",isset($_GET['tingkat']))?str_replace("_"," ",$_GET['tingkat']):NULL);
                 $tingkatx    = "";
                 if($action == "TAMBAH"){
-                    $tingkat      = ivalidTeks(str_replace("_"," ",isset($_GET['tingkat']))?str_replace("_"," ",$_GET['tingkat']):NULL);
+                    $tingkat      = validTeks(str_replace("_"," ",isset($_GET['tingkat']))?str_replace("_"," ",$_GET['tingkat']):NULL);
                     $indek        = "";
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT pendidikan.tingkat,pendidikan.indek,pendidikan.gapok1,pendidikan.kenaikan,pendidikan.maksimal FROM pendidikan WHERE pendidikan.tingkat='$tingkat'";

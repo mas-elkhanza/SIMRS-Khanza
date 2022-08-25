@@ -208,7 +208,7 @@
             
             $naikkelas=getOne("select bridging_sep.klsnaik from bridging_sep where bridging_sep.no_rawat='$norawat'");
             if(empty($naikkelas)){
-                $naikkelas=getOne("select bridging_sep.klsnaik from bridging_sep_internal where bridging_sep.no_rawat='$norawat'");
+                $naikkelas=getOne("select bridging_sep_internal.klsnaik from bridging_sep_internal where bridging_sep_internal.no_rawat='$norawat'");
             }
             
             $upgrade_class_ind="0";

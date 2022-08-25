@@ -15,12 +15,12 @@
         $tahun        = empty($baris[0])?date("Y"):$baris[0];
         $bulan        = empty($baris[1])?date("m"):$baris[1];
         $_sql         = "SELECT pegawai.id,pegawai.nik,pegawai.nama,pegawai.departemen,keanggotaan.koperasi,keanggotaan.jamsostek,keanggotaan.bpjs,
-                         potongan.bpjs,potongan.jamsostek,potongan.dansos,potongan.simwajib,potongan.angkop,potongan.angla,potongan.telpri,potongan.pajak, 
-                         potongan.pribadi,potongan.lain,potongan.ktg FROM keanggotaan inner join potongan on keanggotaan.id=potongan.id 
-                         right outer join pegawai ON potongan.id = keanggotaan.id WHERE potongan.tahun like '%".$tahun."%' and potongan.bulan like '%".$bulan."%' 
-                         and pegawai.stts_aktif<>'KELUAR' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen 
-                         like '%".$keyword."%' or keanggotaan.koperasi like '%".$keyword."%' or keanggotaan.bpjs like '%".$keyword."%' or 
-                         keanggotaan.jamsostek like '%".$keyword."%') order by pegawai.id ASC ";
+                        potongan.bpjs,potongan.jamsostek,potongan.dansos,potongan.simwajib,potongan.angkop,potongan.angla,potongan.telpri,potongan.pajak, 
+                        potongan.pribadi,potongan.lain,potongan.ktg FROM keanggotaan inner join pegawai on keanggotaan.id=pegawai.id 
+                        inner join potongan on pegawai.id=potongan.id WHERE potongan.tahun like '%".$tahun."%' and potongan.bulan like '%".$bulan."%' 
+                        and pegawai.stts_aktif<>'KELUAR' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen 
+                        like '%".$keyword."%' or keanggotaan.koperasi like '%".$keyword."%' or keanggotaan.bpjs like '%".$keyword."%' or 
+                        keanggotaan.jamsostek like '%".$keyword."%') order by pegawai.id ASC ";
         $hasil        = bukaquery($_sql);
         $jumlah       = mysqli_num_rows($hasil);
         $bpjs         = 0;
