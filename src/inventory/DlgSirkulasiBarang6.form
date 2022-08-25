@@ -258,6 +258,17 @@
         </MenuItem>
       </SubComponents>
     </Container>
+    <Component class="widget.TextBox" name="KdGudang">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="KdGudang" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[80, 23]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KdGudangKeyPressed"/>
+      </Events>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -281,7 +292,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,74,0,0,3,62"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,74,0,0,3,14"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -316,7 +327,7 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="scrollPane1">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok Opname pada tanggal terdekat pencarian di tanggal pertama. &lt;br&gt;&#xa;Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari &lt;br&gt;&#xa;Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok pada riwayat obat/alkes/bhp pada tanggal terdekat pencarian di tanggal pertama. &#xa;&lt;br&gt;Sirkulasi 6 ini ditujukan untuk tracking seluruh data berdasarkan nomor faktur dan nomor batch.&lt;/html&gt;"/>
             <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jPopupMenu1"/>
             </Property>
@@ -336,7 +347,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok Opname pada tanggal terdekat pencarian di tanggal pertama. &lt;br&gt;Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari &lt;br&gt;Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok pada riwayat obat/alkes/bhp pada tanggal terdekat pencarian di tanggal pertama. &#xa;&lt;br&gt;Sirkulasi 6 ini ditujukan untuk tracking seluruh data berdasarkan nomor faktur dan nomor batch.&lt;/html&gt;"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
@@ -366,6 +377,40 @@
             <Property name="verticalGap" type="int" value="9"/>
           </Layout>
           <SubComponents>
+            <Component class="widget.Label" name="label19">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lokasi :"/>
+                <Property name="name" type="java.lang.String" value="label19" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[45, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.TextBox" name="NmGudang">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="NmGudang" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[150, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.Button" name="btnBarang1">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/190.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="49"/>
+                <Property name="toolTipText" type="java.lang.String" value="Alt+1"/>
+                <Property name="name" type="java.lang.String" value="btnBarang1" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[28, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBarang1ActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="widget.Label" name="label10">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Key Word :"/>
@@ -379,7 +424,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="TCari" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[290, 23]"/>
+                  <Dimension value="[150, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -403,6 +448,23 @@
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnCariKeyPressed"/>
               </Events>
             </Component>
+            <Component class="widget.Button" name="BtnAll">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/Search-16x16.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="65"/>
+                <Property name="toolTipText" type="java.lang.String" value="Alt+A"/>
+                <Property name="name" type="java.lang.String" value="BtnAll" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[28, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAllActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnAllKeyPressed"/>
+              </Events>
+            </Component>
             <Component class="widget.Label" name="label9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -410,27 +472,9 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="label9" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[39, 30]"/>
+                  <Dimension value="[15, 30]"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="widget.Button" name="BtnAll">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/picture/Search-16x16.png"/>
-                </Property>
-                <Property name="mnemonic" type="int" value="65"/>
-                <Property name="text" type="java.lang.String" value="Semua"/>
-                <Property name="toolTipText" type="java.lang.String" value="Alt+A"/>
-                <Property name="name" type="java.lang.String" value="BtnAll" noResource="true"/>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[100, 30]"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAllActionPerformed"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnAllKeyPressed"/>
-              </Events>
             </Component>
             <Component class="widget.Button" name="BtnPrint">
               <Properties>

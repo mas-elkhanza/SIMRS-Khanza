@@ -1038,8 +1038,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-       Valid.tabelKosong(tabMode);      
-       try{   
+        Valid.tabelKosong(tabMode);      
+        try{   
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             ttltotaljual=0;ttltotalbeli=0;ttltotalpesan=0;ttltotalpiutang=0;ttltotalutd=0;ttltotalkeluar=0;ttltotalmutasikeluar=0;
             ttltotalmutasimasuk=0;ttltotalretbeli=0;ttltotalretjual=0;ttltotalretpiut=0;ttltotalpasin=0;ttltotalrespulang=0;
             ttltotalhibah=0;ttltotalstok=0;ttltotalstokawal=0;ttltotalstokakhir=0;
@@ -1544,10 +1545,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "",Valid.SetAngka(ttltotalretpiut),"",Valid.SetAngka(ttltotalutd),"",Valid.SetAngka(ttltotalkeluar),"",Valid.SetAngka(ttltotalrespulang),
                 "",Valid.SetAngka(ttltotalmutasimasuk),"",Valid.SetAngka(ttltotalmutasikeluar),"",Valid.SetAngka(ttltotalhibah),"",Valid.SetAngka(ttltotalstokakhir)
             }); 
+            this.setCursor(Cursor.getDefaultCursor());
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
     
     private void prosesCari2(String lokasi) {
