@@ -749,6 +749,7 @@ import rekammedis.MasterTriaseSkala3;
 import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMDataAsuhanGizi;
+import rekammedis.RMDataCatatanKeperawatanRanap;
 import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
@@ -18932,6 +18933,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnCatatanKeperawatanRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataCatatanKeperawatanRanap form=new RMDataCatatanKeperawatanRanap(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19582,7 +19595,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAuditSterilisasiAlat,btnPersetujuanPenolakanTindakan,btnPenilaianAwalMedisRalanPsikiatri,btnAuditBundleISK,btnAuditBundlePLABSI,
             btnAuditBundleVAP,btnAkunRekeningHtHBankPapua,btnPembayaranBankPapua,btnPenilaianAwalMedisRalanPenyakitDalam,btnPenilaianAwalMedisRalanMata,
             btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI,
-            btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI;
+            btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap;
     
     public void isWall(){
         try{            
@@ -22773,6 +22786,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getcatatan_observasi_ranap_postpartum()==true){
                 Panelmenu.add(btnCatatanObservasiRanapPostPartum);
+                jmlmenu++;
+            }
+            
+            if(akses.getcatatan_keperawatan_ranap()==true){
+                Panelmenu.add(btnCatatanKeperawatanRanap);
                 jmlmenu++;
             }
             
@@ -27039,6 +27057,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getcatatan_observasi_ranap_postpartum()==true){
             Panelmenu.add(btnCatatanObservasiRanapPostPartum);
+            jmlmenu++;
+        }
+        
+        if(akses.getcatatan_keperawatan_ranap()==true){
+            Panelmenu.add(btnCatatanKeperawatanRanap);
             jmlmenu++;
         }
             
@@ -32526,6 +32549,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getcatatan_keperawatan_ranap()==true){
+            if(btnCatatanKeperawatanRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanKeperawatanRanap);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gethemodialisa()==true){
             if(btnHemodialisa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHemodialisa);
@@ -37341,6 +37371,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLaporanPenyakitTNI.setName("btnLaporanPenyakitTNI"); 
         btnLaporanPenyakitTNI.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLaporanPenyakitTNI.addActionListener(this::btnLaporanPenyakitTNIActionPerformed);
+        
+        btnCatatanKeperawatanRanap = new widget.ButtonBig();
+        btnCatatanKeperawatanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6123164_avatar_frontliner_male_medical staff_nurse_icon.png")));
+        btnCatatanKeperawatanRanap.setText("Catatan Keperawatan Ranap");
+        btnCatatanKeperawatanRanap.setIconTextGap(0);
+        btnCatatanKeperawatanRanap.setName("btnCatatanKeperawatanRanap"); 
+        btnCatatanKeperawatanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanKeperawatanRanap.addActionListener(this::btnCatatanKeperawatanRanapActionPerformed);
     }
     
 }

@@ -3232,8 +3232,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[L]SOAP Ranap Anggota TNI",rs.getBoolean("soap_ranap_tni")});
                     }
                     
-                    if("[L]Catatan Keperawatan Rawat Inap".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[L]Catatan Keperawatan Rawat Inap",rs.getBoolean("catatan_keperawatan_ranap")});
+                    if("[L]Catatan Keperawatan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Catatan Keperawatan Ranap",rs.getBoolean("catatan_keperawatan_ranap")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6699,7 +6699,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","soap_ranap_tni='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Catatan Keperawatan Rawat Inap".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Catatan Keperawatan Ranap".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_keperawatan_ranap='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             

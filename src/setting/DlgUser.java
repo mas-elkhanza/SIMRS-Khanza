@@ -212,7 +212,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Host To Host Bank Papua","[J]Pembayaran Bank Papua","[L]Penilaian Awal Medis Ralan Penyakit Dalam","[L]Penilaian Awal Medis Ralan Mata",
                 "[L]Penilaian Awal Medis Ralan Neurologi","[D]Sirkulasi Obat, Alkes & BHP 6","[L]Penilaian Awal Medis Ralan Orthopedi","[L]Penilaian Awal Medis Ralan Bedah",
                 "[S]Integrasi Khanza Health Services","[L]SOAP Ralan Anggota TNI","[L]SOAP Ranap Anggota TNI","[I]Jumlah Pengunjung Ralan TNI","[I]Laporan Penyakit TNI",
-                "[L]Catatan Keperawatan Rawat Inap"
+                "[L]Catatan Keperawatan Ranap"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2503,7 +2503,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(123);
                     break;
                 case 862:
-                    column.setPreferredWidth(185);
+                    column.setPreferredWidth(161);
                     break;
                 default:
                     column.setPreferredWidth(135);
