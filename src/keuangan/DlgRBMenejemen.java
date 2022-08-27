@@ -948,7 +948,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
            }
               
             if(totaljm>0){
-                   tabMode.addRow(new Object[]{">> ","Total KSO :"," ","",Valid.SetAngka(totaljm)});
+                   tabMode.addRow(new Object[]{">> ","Total Menejemen :"," ","",Valid.SetAngka(totaljm)});
             }             
         }catch(SQLException e){
             System.out.println("Catatan  "+e);

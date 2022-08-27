@@ -281,6 +281,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanap = new widget.CekBox();
         chkCatatanObservasiRanapKebidanan = new widget.CekBox();
         chkCatatanObservasiRanapPostPartum = new widget.CekBox();
+        chkCatatanKeperawatanRanap = new widget.CekBox();
         chkTriase = new widget.CekBox();
         chkAsuhanKeperawatanIGD = new widget.CekBox();
         chkAsuhanKeperawatanRalan = new widget.CekBox();
@@ -577,7 +578,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1357));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 1387));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -696,6 +697,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanapPostPartum.setOpaque(false);
         chkCatatanObservasiRanapPostPartum.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanObservasiRanapPostPartum);
+
+        chkCatatanKeperawatanRanap.setSelected(true);
+        chkCatatanKeperawatanRanap.setText("Catatan Keperawatan Ranap");
+        chkCatatanKeperawatanRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanKeperawatanRanap.setName("chkCatatanKeperawatanRanap"); // NOI18N
+        chkCatatanKeperawatanRanap.setOpaque(false);
+        chkCatatanKeperawatanRanap.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkCatatanKeperawatanRanap);
 
         chkTriase.setSelected(true);
         chkTriase.setText("Triase IGD/UGD");
@@ -1504,6 +1513,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiRanap.setSelected(true);
             chkCatatanObservasiRanapKebidanan.setSelected(true);
             chkCatatanObservasiRanapPostPartum.setSelected(true);
+            chkCatatanKeperawatanRanap.setSelected(true);
             chkAsuhanFisioterapi.setSelected(true);
             chkAsuhanPsikolog.setSelected(true);
             chkAsuhanMedisRalanPsikiatri.setSelected(true);
@@ -1563,6 +1573,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiRanap.setSelected(false);
             chkCatatanObservasiRanapKebidanan.setSelected(false);
             chkCatatanObservasiRanapPostPartum.setSelected(false);
+            chkCatatanKeperawatanRanap.setSelected(false);
             chkAsuhanFisioterapi.setSelected(false);
             chkAsuhanPsikolog.setSelected(false);
             chkAsuhanMedisRalanPsikiatri.setSelected(false);
@@ -1664,6 +1675,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanPsikolog;
     private widget.CekBox chkBerkasDigital;
     private widget.CekBox chkCatatanDokter;
+    private widget.CekBox chkCatatanKeperawatanRanap;
     private widget.CekBox chkCatatanObservasiIGD;
     private widget.CekBox chkCatatanObservasiRanap;
     private widget.CekBox chkCatatanObservasiRanapKebidanan;
@@ -9765,8 +9777,56 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     }
                 }
             }
+            
+            //menampilkan catatan Keperawatan Rawat Inap
+            if(chkCatatanKeperawatanRanap.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select catatan_keperawatan_ranap.tanggal,catatan_keperawatan_ranap.jam,catatan_keperawatan_ranap.uraian,catatan_keperawatan_ranap.nip,petugas.nama from catatan_keperawatan_ranap "+
+                            "inner join petugas on catatan_keperawatan_ranap.nip=petugas.nip where catatan_keperawatan_ranap.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Catatan Keperawatan Rawat Inap</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='middle' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                    "<td valign='middle' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                    "<td valign='top' width='58%' bgcolor='#FFFAF8'>Uraian</td>"+
+                                    "<td valign='middle' width='23%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center' valign='top'>"+w+"</td>"+
+                                    "<td valign='top' valign='top'>"+rs2.getString("tanggal")+" "+rs2.getString("jam")+"</td>"+
+                                    "<td valign='top' valign='top'>"+rs2.getString("uraian")+"</td>"+
+                                    "<td valign='top' valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                 "</tr>"
+                            );                                        
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
         } catch (Exception e) {
-            System.out.println("Notif Pemeriksaan Rawat Inap : "+e);
+            System.out.println("Notif Catatan : "+e);
         }
     }
 
