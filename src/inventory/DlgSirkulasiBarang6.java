@@ -1424,6 +1424,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     }
                                 }  
                                 
+                                //resep pulang
                                 ps3=koneksi.prepareStatement(
                                     "select sum(resep_pulang.jml_barang),sum(resep_pulang.total) from resep_pulang where resep_pulang.kode_brng=? and resep_pulang.no_batch=? and resep_pulang.no_faktur=? and resep_pulang.tanggal between ? and ? and resep_pulang.kd_bangsal=?");
                                 try {
@@ -1448,6 +1449,85 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps3.close();
                                     }
                                 }
+                                
+                                //mutasi
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(mutasibarang.jml),sum(mutasibarang.jml*mutasibarang.harga) from mutasibarang where mutasibarang.kode_brng=? and mutasibarang.no_batch=? and mutasibarang.no_faktur=? and mutasibarang.tanggal between ? and ? and mutasibarang.kd_bangsalke=?");
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahmutasimasuk=rs3.getDouble(1);
+                                        totalmutasimasuk=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikas Mutasi Masuk : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
+
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(mutasibarang.jml), sum(mutasibarang.jml*mutasibarang.harga) from mutasibarang where mutasibarang.kode_brng=? and mutasibarang.no_batch=? and mutasibarang.no_faktur=? and mutasibarang.tanggal between ? and ? and mutasibarang.kd_bangsaldari=?");
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahmutasikeluar=rs3.getDouble(1);
+                                        totalmutasikeluar=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikas Mutasi Keluar : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
+                                
+                                //hibah
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(detailhibah_obat_bhp.jumlah2),sum(detailhibah_obat_bhp.subtotaldiakui) from hibah_obat_bhp inner join detailhibah_obat_bhp on hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah "+
+                                    "where detailhibah_obat_bhp.kode_brng=? and detailhibah_obat_bhp.no_batch=? and detailhibah_obat_bhp.no_faktur=? and hibah_obat_bhp.tgl_hibah between ? and ? and hibah_obat_bhp.kd_bangsal=?");
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahhibah=rs3.getDouble(1);
+                                        totalhibah=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Note : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
+                    
                                 tabMode.addRow(new String[]{
                                     rs.getString("kode_brng"),rs2.getString("no_batch"),rs2.getString("no_faktur"),rs.getString("nama_brng"),rs.getString("satuan"),
                                     tglopname,Valid.SetAngka(stokawal),Valid.SetAngka(totalstokawal),Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
@@ -1456,7 +1536,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     Valid.SetAngka(jumlahretbeli),Valid.SetAngka(totalretbeli),Valid.SetAngka(jumlahretjual),Valid.SetAngka(totalretjual),
                                     Valid.SetAngka(jumlahretpiut),Valid.SetAngka(totalretpiut),Valid.SetAngka(jumlahutd),Valid.SetAngka(totalutd),
                                     Valid.SetAngka(jumlahkeluar),Valid.SetAngka(totalkeluar),Valid.SetAngka(jumlahrespulang),Valid.SetAngka(totalrespulang),
-                                    "Mutasi Masuk","Mutasi Masuk(Rp)","Mutasi Keluar","Mutasi Keluar(Rp)","Hibah","Hibah(Rp)","Stok Akhir","Stok Akhir(Rp)"
+                                    Valid.SetAngka(jumlahmutasimasuk),Valid.SetAngka(totalmutasimasuk),Valid.SetAngka(jumlahmutasikeluar),Valid.SetAngka(totalmutasikeluar),
+                                    Valid.SetAngka(jumlahhibah),Valid.SetAngka(totalhibah),"Stok Akhir","Stok Akhir(Rp)"
                                 });
                             }
                         } catch (Exception e) {
