@@ -1287,13 +1287,122 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps3.close();
                                     }
                                 }
+                                
+                                //returbeli
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(detreturbeli.jml_retur2), sum(detreturbeli.total) from returbeli inner join detreturbeli on returbeli.no_retur_beli=detreturbeli.no_retur_beli "+
+                                    "where detreturbeli.kode_brng=? and detreturbeli.no_batch=? and detreturbeli.no_faktur=? and returbeli.tgl_retur between ? and ? and returbeli.kd_bangsal=?");            
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahretbeli=rs3.getDouble(1);
+                                        totalretbeli=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Note : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
+                                
+                                //returjual
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(detreturjual.jml_retur),sum(detreturjual.subtotal) from returjual inner join detreturjual on returjual.no_retur_jual=detreturjual.no_retur_jual "+
+                                    "where detreturjual.kode_brng=? and detreturjual.no_batch=? and detreturjual.no_faktur=? and returjual.tgl_retur between ? and ? and returjual.kd_bangsal=?");            
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahretjual=rs3.getDouble(1);
+                                        totalretjual=rs3.getDouble(2);
+                                    } 
+                                } catch (Exception e) {
+                                    System.out.println("Note : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
+                                
+                                //retur piutang
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(detreturpiutang.jml_retur),sum(detreturpiutang.subtotal) from returpiutang inner join detreturpiutang on returpiutang.no_retur_piutang=detreturpiutang.no_retur_piutang "+
+                                    "where detreturpiutang.kode_brng=? and detreturpiutang.no_batch=? and detreturpiutang.no_faktur=? and returpiutang.tgl_retur between ? and ? and returpiutang.kd_bangsal=?");            
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahretpiut=rs3.getDouble(1);
+                                        totalretpiut=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Note : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
+                                
+                                //utd
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(utd_pengambilan_medis.jml) as jumlah,sum(utd_pengambilan_medis.total) as jumpas from utd_pengambilan_medis "+
+                                    "where utd_pengambilan_medis.kode_brng=? and utd_pengambilan_medis.no_batch=? and utd_pengambilan_medis.no_faktur=? and "+
+                                    "utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kd_bangsal_dr=?");            
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahutd=rs3.getDouble(1);
+                                        totalutd=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Note : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
                                 tabMode.addRow(new String[]{
                                     rs.getString("kode_brng"),rs2.getString("no_batch"),rs2.getString("no_faktur"),rs.getString("nama_brng"),rs.getString("satuan"),
                                     tglopname,Valid.SetAngka(stokawal),Valid.SetAngka(totalstokawal),Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
                                     Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),Valid.SetAngka(jumlahjual),Valid.SetAngka(totaljual),
                                     Valid.SetAngka(jumlahpasin),Valid.SetAngka(totalpasin),Valid.SetAngka(jumlahpiutang),Valid.SetAngka(totalpiutang),
-                                    "Retur Beli","Retur Beli(Rp)","Retur Jual","Retur Jual(Rp)","Retur Piutang","Retur Piutang(Rp)",
-                                    "Pengambilan UTD","Pengambilan UTD(Rp)","Stok Keluar Medis","Stok Keluar Medis(Rp)","Resep Pulang","Resep Pulang(Rp)",
+                                    Valid.SetAngka(jumlahretbeli),Valid.SetAngka(totalretbeli),Valid.SetAngka(jumlahretjual),Valid.SetAngka(totalretjual),
+                                    Valid.SetAngka(jumlahretpiut),Valid.SetAngka(totalretpiut),"Pengambilan UTD","Pengambilan UTD(Rp)","Stok Keluar Medis","Stok Keluar Medis(Rp)","Resep Pulang","Resep Pulang(Rp)",
                                     "Mutasi Masuk","Mutasi Masuk(Rp)","Mutasi Keluar","Mutasi Keluar(Rp)","Hibah","Hibah(Rp)","Stok Akhir","Stok Akhir(Rp)"
                                 });
                             }
