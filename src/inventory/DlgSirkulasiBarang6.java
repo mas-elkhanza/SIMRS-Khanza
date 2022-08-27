@@ -1396,13 +1396,66 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps3.close();
                                     }
                                 }
+                                
+                                //stok keluar
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(detail_pengeluaran_obat_bhp.jumlah),sum(detail_pengeluaran_obat_bhp.total) from pengeluaran_obat_bhp inner join detail_pengeluaran_obat_bhp on pengeluaran_obat_bhp.no_keluar=detail_pengeluaran_obat_bhp.no_keluar "+
+                                    " where detail_pengeluaran_obat_bhp.kode_brng=? and detail_pengeluaran_obat_bhp.no_batch=? and detail_pengeluaran_obat_bhp.no_faktur=? and pengeluaran_obat_bhp.tanggal between ? and ? and pengeluaran_obat_bhp.kd_bangsal=?");
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahkeluar=rs3.getDouble(1);
+                                        totalkeluar=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Note : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }  
+                                
+                                ps3=koneksi.prepareStatement(
+                                    "select sum(resep_pulang.jml_barang),sum(resep_pulang.total) from resep_pulang where resep_pulang.kode_brng=? and resep_pulang.no_batch=? and resep_pulang.no_faktur=? and resep_pulang.tanggal between ? and ? and resep_pulang.kd_bangsal=?");
+                                try {
+                                    ps3.setString(1,rs.getString("kode_brng"));
+                                    ps3.setString(2,rs2.getString("no_batch"));
+                                    ps3.setString(3,rs2.getString("no_faktur"));
+                                    ps3.setString(4,tglopname);
+                                    ps3.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(6,KdGudang.getText());
+                                    rs3=ps3.executeQuery();
+                                    if(rs3.next()){                    
+                                        jumlahrespulang=rs3.getDouble(1);
+                                        totalrespulang=rs3.getDouble(2);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikas Resep Pulang : "+e);
+                                } finally{
+                                    if(rs3!=null){
+                                        rs3.close();
+                                    }
+                                    if(ps3!=null){
+                                        ps3.close();
+                                    }
+                                }
                                 tabMode.addRow(new String[]{
                                     rs.getString("kode_brng"),rs2.getString("no_batch"),rs2.getString("no_faktur"),rs.getString("nama_brng"),rs.getString("satuan"),
                                     tglopname,Valid.SetAngka(stokawal),Valid.SetAngka(totalstokawal),Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
                                     Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),Valid.SetAngka(jumlahjual),Valid.SetAngka(totaljual),
                                     Valid.SetAngka(jumlahpasin),Valid.SetAngka(totalpasin),Valid.SetAngka(jumlahpiutang),Valid.SetAngka(totalpiutang),
                                     Valid.SetAngka(jumlahretbeli),Valid.SetAngka(totalretbeli),Valid.SetAngka(jumlahretjual),Valid.SetAngka(totalretjual),
-                                    Valid.SetAngka(jumlahretpiut),Valid.SetAngka(totalretpiut),"Pengambilan UTD","Pengambilan UTD(Rp)","Stok Keluar Medis","Stok Keluar Medis(Rp)","Resep Pulang","Resep Pulang(Rp)",
+                                    Valid.SetAngka(jumlahretpiut),Valid.SetAngka(totalretpiut),Valid.SetAngka(jumlahutd),Valid.SetAngka(totalutd),
+                                    Valid.SetAngka(jumlahkeluar),Valid.SetAngka(totalkeluar),Valid.SetAngka(jumlahrespulang),Valid.SetAngka(totalrespulang),
                                     "Mutasi Masuk","Mutasi Masuk(Rp)","Mutasi Keluar","Mutasi Keluar(Rp)","Hibah","Hibah(Rp)","Stok Akhir","Stok Akhir(Rp)"
                                 });
                             }
