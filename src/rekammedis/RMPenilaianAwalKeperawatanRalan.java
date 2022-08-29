@@ -1780,7 +1780,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         TotalHasil.setBounds(774, 770, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2022 19:03:48" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022 22:08:59" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2247,7 +2247,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2261,7 +2261,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2402,11 +2402,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         DetailRencana.setColumns(20);
         DetailRencana.setRows(5);
         DetailRencana.setName("DetailRencana"); // NOI18N
-        DetailRencana.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DetailRencanaKeyPressed(evt);
-            }
-        });
         scrollPane6.setViewportView(DetailRencana);
 
         FormMasalahRencana.add(scrollPane6);
@@ -3446,6 +3441,32 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
                 System.out.println("Notif : "+e);
             }
             param.put("rencana",masalahkeperawatan); 
+            try {
+                masalahkeperawatan="";
+                ps2=koneksi.prepareStatement(
+                    "select master_rencana_keperawatan_anak.kode_rencana,master_rencana_keperawatan_anak.rencana_keperawatan from master_rencana_keperawatan_anak "+
+                    "inner join penilaian_awal_keperawatan_ralan_rencana_anak on penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana=master_rencana_keperawatan_anak.kode_rencana "+
+                    "where penilaian_awal_keperawatan_ralan_rencana_anak.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana");
+                try {
+                    ps2.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        masalahkeperawatan=rs2.getString("rencana_keperawatan")+", "+masalahkeperawatan;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                    if(ps2!=null){
+                        ps2.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
+            param.put("rencana",masalahkeperawatan); 
             Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalan.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan.tanggal,"+
                         "penilaian_awal_keperawatan_ralan.informasi,penilaian_awal_keperawatan_ralan.td,penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.bb,penilaian_awal_keperawatan_ralan.tb,"+
@@ -3466,10 +3487,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
         }  
     }//GEN-LAST:event_BtnPrint1ActionPerformed
-
-    private void DetailRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetailRencanaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DetailRencanaKeyPressed
 
     private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
         TCari.setText("");

@@ -2011,7 +2011,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="24-08-2022 02:35:43"/>
+                                <StringItem index="0" value="29-08-2022 22:08:59"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2957,7 +2957,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="24-08-2022"/>
+                            <StringItem index="0" value="29-08-2022"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2985,7 +2985,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="24-08-2022"/>
+                            <StringItem index="0" value="29-08-2022"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3288,9 +3288,6 @@
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="DetailRencana" noResource="true"/>
                               </Properties>
-                              <Events>
-                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DetailRencanaKeyPressed"/>
-                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
