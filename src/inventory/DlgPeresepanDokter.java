@@ -1287,29 +1287,29 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             sukses = true;
             if (ubah == false) {
                 emptTeksobat();
-                if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?", "Nomer Resep", 9, new String[]{
+                if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?,?", "Nomer Resep", 10, new String[]{
                     NoResep.getText(), Valid.SetDateToString(DTPBeri.getDate()),
                     cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                     TNoRw.getText(), KdDokter.getText(), Valid.SetDateToString(DTPBeri.getDate()),
-                    cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText()
+                    cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText(),"belum"
                 }) == true) {
                     simpandata();
                 } else {
                     emptTeksobat();
-                    if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?", "Nomer Resep", 9, new String[]{
+                    if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?,?", "Nomer Resep", 10, new String[]{
                         NoResep.getText(), Valid.SetDateToString(DTPBeri.getDate()),
                         cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                         TNoRw.getText(), KdDokter.getText(), Valid.SetDateToString(DTPBeri.getDate()),
-                        cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText()
+                        cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText(),"belum"
                     }) == true) {
                         simpandata();
                     } else {
                         emptTeksobat();
-                        if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?", "Nomer Resep", 9, new String[]{
+                        if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?,?", "Nomer Resep", 10, new String[]{
                             NoResep.getText(), Valid.SetDateToString(DTPBeri.getDate()),
                             cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                             TNoRw.getText(), KdDokter.getText(), Valid.SetDateToString(DTPBeri.getDate()),
-                            cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText()
+                            cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText(),"belum"
                         }) == true) {
                             simpandata();
                         } else {
