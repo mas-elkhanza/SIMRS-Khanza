@@ -5815,10 +5815,10 @@ public final class DlgReg extends javax.swing.JDialog {
         for(i=0;i<tbPetugas.getRowCount();i++){ 
             if(tbPetugas.getValueAt(i,0).toString().equals("true")){
                 Sequel.meghapus("reg_periksa","no_rawat",tbPetugas.getValueAt(i,2).toString());
-                if(akses.getkode().equals("Admin Utama")){
+                /*if(akses.getkode().equals("Admin Utama")){
                     Sequel.meghapus("nota_inap","no_rawat",tbPetugas.getValueAt(i,2).toString());
                     Sequel.meghapus("nota_jalan","no_rawat",tbPetugas.getValueAt(i,2).toString());
-                }
+                }*/
             }
         } 
         

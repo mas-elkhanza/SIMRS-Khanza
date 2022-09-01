@@ -3304,38 +3304,16 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(TD.getText().trim().equals("")){
-            Valid.textKosong(TD,"TD(mmHg)");
-        }else if(Nadi.getText().trim().equals("")){
-            Valid.textKosong(Nadi,"Nadi(x/menit)");
-        }else if(RR.getText().trim().equals("")){
-            Valid.textKosong(RR,"RR(x/menit)");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu(C)");
-        }else if(GCS.getText().trim().equals("")){
-            Valid.textKosong(GCS,"GCS");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"BB(Kg)");
-        }else if(TB.getText().trim().equals("")){
-            Valid.textKosong(TB,"TB(Cm)");
-        }else if(LP.getText().trim().equals("")){
-            Valid.textKosong(LP,"LP(Cm)");
-        }else if(LK.getText().trim().equals("")){
-            Valid.textKosong(LK,"LK(Cm)");
-        }else if(LD.getText().trim().equals("")){
-            Valid.textKosong(LD,"LD(Cm)");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(RPD.getText().trim().equals("")){
             Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
-        }else if(RPK.getText().trim().equals("")){
-            Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
         }else if(RPO.getText().trim().equals("")){
-            Valid.textKosong(RPO,"Riwayat Pengobatan");
-        }else if(Alergi.getText().trim().equals("")){
-            Valid.textKosong(Alergi,"Alergi");
-        }else if(Rencana.getText().trim().equals("")){
-            Valid.textKosong(Rencana,"Rencana");
+            Valid.textKosong(RPO,"Riwayat Penggunaan Obat");
+        }else if(Lokasi.getText().trim().equals("")){
+            Valid.textKosong(Lokasi,"Lokasi");
+        }else if(Durasi.getText().trim().equals("")){
+            Valid.textKosong(Durasi,"Durasi");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
@@ -3415,38 +3393,12 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(TD.getText().trim().equals("")){
-            Valid.textKosong(TD,"TD(mmHg)");
-        }else if(Nadi.getText().trim().equals("")){
-            Valid.textKosong(Nadi,"Nadi(x/menit)");
-        }else if(RR.getText().trim().equals("")){
-            Valid.textKosong(RR,"RR(x/menit)");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu(C)");
-        }else if(GCS.getText().trim().equals("")){
-            Valid.textKosong(GCS,"GCS");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"BB(Kg)");
-        }else if(TB.getText().trim().equals("")){
-            Valid.textKosong(TB,"TB(Cm)");
-        }else if(LP.getText().trim().equals("")){
-            Valid.textKosong(LP,"LP(Cm)");
-        }else if(LK.getText().trim().equals("")){
-            Valid.textKosong(LK,"LK(Cm)");
-        }else if(LD.getText().trim().equals("")){
-            Valid.textKosong(LD,"LD(Cm)");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(RPD.getText().trim().equals("")){
             Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
-        }else if(RPK.getText().trim().equals("")){
-            Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
         }else if(RPO.getText().trim().equals("")){
-            Valid.textKosong(RPO,"Riwayat Pengobatan");
-        }else if(Alergi.getText().trim().equals("")){
-            Valid.textKosong(Alergi,"Alergi");
-        }else if(Rencana.getText().trim().equals("")){
-            Valid.textKosong(Rencana,"Rencana");
+            Valid.textKosong(RPO,"Riwayat Penggunaan Obat");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
@@ -4163,6 +4115,32 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 System.out.println("Notif : "+e);
             }
             param.put("masalah",masalahkeperawatan);  
+            try {
+                masalahkeperawatan="";
+                ps2=koneksi.prepareStatement(
+                    "select master_rencana_keperawatan_anak.kode_rencana,master_rencana_keperawatan_anak.rencana_keperawatan from master_rencana_keperawatan_anak "+
+                    "inner join penilaian_awal_keperawatan_ralan_rencana_anak on penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana=master_rencana_keperawatan_anak.kode_rencana "+
+                    "where penilaian_awal_keperawatan_ralan_rencana_anak.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana");
+                try {
+                    ps2.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        masalahkeperawatan=rs2.getString("rencana_keperawatan")+", "+masalahkeperawatan;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                    if(ps2!=null){
+                        ps2.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
+            param.put("rencana",masalahkeperawatan); 
             Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanAnak.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan Bayi/Anak ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_bayi.tanggal,"+
                         "penilaian_awal_keperawatan_ralan_bayi.informasi,penilaian_awal_keperawatan_ralan_bayi.td,penilaian_awal_keperawatan_ralan_bayi.nadi,penilaian_awal_keperawatan_ralan_bayi.rr,penilaian_awal_keperawatan_ralan_bayi.suhu,penilaian_awal_keperawatan_ralan_bayi.gcs,"+
@@ -5371,6 +5349,32 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 System.out.println("Notif : "+e);
             }
             
+            try {
+                Valid.tabelKosong(tabModeRencana);
+                ps=koneksi.prepareStatement(
+                        "select master_rencana_keperawatan_anak.kode_rencana,master_rencana_keperawatan_anak.rencana_keperawatan from master_rencana_keperawatan_anak "+
+                        "inner join penilaian_awal_keperawatan_ralan_rencana_anak on penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana=master_rencana_keperawatan_anak.kode_rencana "+
+                        "where penilaian_awal_keperawatan_ralan_rencana_anak.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana");
+                try {
+                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabModeRencana.addRow(new Object[]{true,rs.getString(1),rs.getString(2)});
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
+            
             tampilImunisasi();
         }
     }
@@ -5637,7 +5641,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         if(tbObat.getSelectedRow()!= -1){
             TNoRM1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()); 
-            DetailRencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            DetailRencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),90).toString());
             try {
                 Valid.tabelKosong(tabModeDetailMasalah);
                 ps=koneksi.prepareStatement(
