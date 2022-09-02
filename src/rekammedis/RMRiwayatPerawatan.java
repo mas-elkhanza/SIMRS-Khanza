@@ -5139,7 +5139,24 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 }
                             }
                             htmlContent.append("</td>"+
-                                               "<td valign='top'>"+rs2.getString("rencana")+"</td>"+
+                                               "<td valign='top'>");
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select master_rencana_keperawatan_igd.rencana_keperawatan from master_rencana_keperawatan_igd "+
+                                    "inner join penilaian_awal_keperawatan_ralan_rencana_igd on penilaian_awal_keperawatan_ralan_rencana_igd.kode_rencana=master_rencana_keperawatan_igd.kode_rencana "+
+                                    "where penilaian_awal_keperawatan_ralan_rencana_igd.no_rawat='"+norawat+"' order by penilaian_awal_keperawatan_ralan_rencana_igd.kode_rencana").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(rs3.getString("rencana_keperawatan")+"<br>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append(rs2.getString("rencana")+
+                                            "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -5665,12 +5682,29 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 }
                             }
                             htmlContent.append("</td>"+
-                                               "<td valign='top'>"+rs2.getString("rencana")+"</td>"+
+                                               "<td valign='top'>");
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select master_rencana_keperawatan_gigi.rencana_keperawatan from master_rencana_keperawatan_gigi "+
+                                    "inner join penilaian_awal_keperawatan_ralan_rencana_gigi on penilaian_awal_keperawatan_ralan_rencana_gigi.kode_rencana=master_rencana_keperawatan_gigi.kode_rencana "+
+                                    "where penilaian_awal_keperawatan_ralan_rencana_gigi.no_rawat='"+norawat+"' order by penilaian_awal_keperawatan_ralan_rencana_gigi.kode_rencana").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(rs3.getString("rencana_keperawatan")+"<br>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append(rs2.getString("rencana")+
+                                            "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );    
+                            );     
                         }
                         htmlContent.append(
                               "</table>"+
@@ -6074,11 +6108,29 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 }
                             }
                             htmlContent.append("</td>"+
-                                               "<td valign='top'>"+rs2.getString("rencana")+"</td>"+
+                                               "<td valign='top'>");
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select master_rencana_keperawatan_anak.rencana_keperawatan from master_rencana_keperawatan_anak "+
+                                    "inner join penilaian_awal_keperawatan_ralan_rencana_anak on penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana=master_rencana_keperawatan_anak.kode_rencana "+
+                                    "where penilaian_awal_keperawatan_ralan_rencana_anak.no_rawat='"+norawat+"' order by penilaian_awal_keperawatan_ralan_rencana_anak.kode_rencana").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(rs3.getString("rencana_keperawatan")+"<br>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append(rs2.getString("rencana")+
+                                            "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>");
+                                 "</tr>"
+                            ); 
                         }
                         htmlContent.append(
                               "</table>"+

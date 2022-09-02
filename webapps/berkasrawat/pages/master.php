@@ -1,4 +1,8 @@
-
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div class="entry">        
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
@@ -16,13 +20,13 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="25%" >Kode Berkas Digital</td><td width="">:</td>
-                    <td width="74%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="30" maxlength="10">
+                    <td width="74%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="30" maxlength="10" pattern="[A-Z0-9-]{1,10}" title=" A-Z0-9- (Maksimal 10 karakter)" autocomplete="off" required autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
                 <tr class="head">
                     <td width="25%" >Nama Berkas Digital</td><td width="">:</td>
-                    <td width="74%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="70" maxlength="100">
+                    <td width="74%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="70" maxlength="100" pattern="[A-Z0-9-]{1,100}" title=" A-Z0-9- (Maksimal 100 karakter)" autocomplete="off" required>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -95,8 +99,7 @@
             if ($action=="HAPUS") {
                 Hapus(" master_berkas_digital "," kode ='".validTeks($_GET['kode'])."' ","?act=MasterBerkas&action=TAMBAH");
             }
-
-        
+            
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah</div></td>                        

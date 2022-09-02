@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div align="center" class="link">
             <a href=?act=MasterBerkas&action=TAMBAH>| Master Berkas |</a>
@@ -263,7 +268,7 @@
                             ?>
                         </select>
                         &nbsp;&nbsp;
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="30" maxlength="200" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="30" maxlength="200" pattern="[A-Z0-9-]{1,200}" title=" A-Z0-9- (Maksimal 200 karakter)" autocomplete="off" autofocus />
                         &nbsp;&nbsp;
                         Status : 
                         <select name="status" class="text">

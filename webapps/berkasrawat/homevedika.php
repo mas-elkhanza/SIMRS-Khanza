@@ -40,13 +40,13 @@
                 <form class="login100-form validate-form" action="loginvedika.php?act=login"  method='post'  onSubmit="return validasiLogin();">
                     <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                         <span class="label-input100">ID User</span>
-                        <input class="input100" type="password" name="usere" placeholder="Enter username">
+                        <input class="input100" type="password" name="usere" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" autocomplete="off" required placeholder="Enter username">
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
                         <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="passwordte" placeholder="Enter password">
+                        <input class="input100" type="password" name="passwordte" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" autocomplete="off" required placeholder="Enter password">
                         <span class="focus-input100"></span>
                     </div>
 
