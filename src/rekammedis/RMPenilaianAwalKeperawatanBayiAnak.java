@@ -5431,6 +5431,8 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_anak());
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_anak());
         BtnTambahImunisasi.setEnabled(akses.getmaster_masalah_keperawatan_anak());  
+        BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan_anak()); 
+        BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan_anak()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);

@@ -4341,6 +4341,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_igd());
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_igd());
         BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan_igd());  
+        BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan_igd()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnDokter.setEnabled(false);

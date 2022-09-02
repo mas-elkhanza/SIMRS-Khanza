@@ -8893,6 +8893,8 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
         BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap()); 
+        BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan()); 
+        BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
