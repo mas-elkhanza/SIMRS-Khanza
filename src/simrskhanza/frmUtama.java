@@ -738,11 +738,13 @@ import rekammedis.MasterMasalahKeperawatanAnak;
 import rekammedis.MasterMasalahKeperawatanGigi;
 import rekammedis.MasterMasalahKeperawatanIGD;
 import rekammedis.MasterMasalahKeperawatanMata;
+import rekammedis.MasterMasalahKeperawatanPsikiatri;
 import rekammedis.MasterRencanaKeperawatan;
 import rekammedis.MasterRencanaKeperawatanAnak;
 import rekammedis.MasterRencanaKeperawatanGigi;
 import rekammedis.MasterRencanaKeperawatanIGD;
 import rekammedis.MasterRencanaKeperawatanMata;
+import rekammedis.MasterRencanaKeperawatanPsikiatri;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
 import rekammedis.MasterTriasePemeriksaan;
@@ -18984,6 +18986,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterMasalahKeperawatanPsikiatriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMasalahKeperawatanPsikiatri form=new MasterMasalahKeperawatanPsikiatri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnMasterRencanaKeperawatanPsikiatriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterRencanaKeperawatanPsikiatri form=new MasterRencanaKeperawatanPsikiatri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19635,7 +19661,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAuditBundleVAP,btnAkunRekeningHtHBankPapua,btnPembayaranBankPapua,btnPenilaianAwalMedisRalanPenyakitDalam,btnPenilaianAwalMedisRalanMata,
             btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI,
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
-            btnMasterRencanaKeperawatanIGD;
+            btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri;
     
     public void isWall(){
         try{            
@@ -22716,6 +22742,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_rencana_keperawatan_igd()==true){
                 Panelmenu.add(btnMasterRencanaKeperawatanIGD);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_masalah_keperawatan_psikiatri()==true){
+                Panelmenu.add(btnMasterMasalahKeperawatanPsikiatri);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_rencana_keperawatan_psikiatri()==true){
+                Panelmenu.add(btnMasterRencanaKeperawatanPsikiatri);
                 jmlmenu++;
             }
             
@@ -27002,6 +27038,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmaster_rencana_keperawatan_igd()==true){
             Panelmenu.add(btnMasterRencanaKeperawatanIGD);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_masalah_keperawatan_psikiatri()==true){
+            Panelmenu.add(btnMasterMasalahKeperawatanPsikiatri);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_rencana_keperawatan_psikiatri()==true){
+            Panelmenu.add(btnMasterRencanaKeperawatanPsikiatri);
             jmlmenu++;
         }
 
@@ -32465,6 +32511,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_masalah_keperawatan_psikiatri()==true){
+            if(btnMasterMasalahKeperawatanPsikiatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMasalahKeperawatanPsikiatri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_rencana_keperawatan_psikiatri()==true){
+            if(btnMasterRencanaKeperawatanPsikiatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterRencanaKeperawatanPsikiatri);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmaster_imunisasi()==true){
             if(btnMasterImunisasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterImunisasi);
@@ -37494,6 +37554,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterRencanaKeperawatanIGD.setName("btnMasterRencanaKeperawatanIGD"); 
         btnMasterRencanaKeperawatanIGD.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMasterRencanaKeperawatanIGD.addActionListener(this::btnMasterRencanaKeperawatanIGDActionPerformed);
+        
+        btnMasterMasalahKeperawatanPsikiatri = new widget.ButtonBig();
+        btnMasterMasalahKeperawatanPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3380376_analytical_brain_creative_intelligence_mindset_icon.png"))); 
+        btnMasterMasalahKeperawatanPsikiatri.setText("Master Masalah Keperawatan Psikiatri");
+        btnMasterMasalahKeperawatanPsikiatri.setIconTextGap(0);
+        btnMasterMasalahKeperawatanPsikiatri.setName("btnMasterMasalahKeperawatanPsikiatri"); 
+        btnMasterMasalahKeperawatanPsikiatri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterMasalahKeperawatanPsikiatri.addActionListener(this::btnMasterMasalahKeperawatanPsikiatriActionPerformed);
+        
+        btnMasterRencanaKeperawatanPsikiatri = new widget.ButtonBig();
+        btnMasterRencanaKeperawatanPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3380376_analytical_brain_creative_intelligence_mindset_icon.png"))); 
+        btnMasterRencanaKeperawatanPsikiatri.setText("Master Rencana Keperawatan Psikiatri");
+        btnMasterRencanaKeperawatanPsikiatri.setIconTextGap(0);
+        btnMasterRencanaKeperawatanPsikiatri.setName("btnMasterRencanaKeperawatanPsikiatri"); 
+        btnMasterRencanaKeperawatanPsikiatri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterRencanaKeperawatanPsikiatri.addActionListener(this::btnMasterRencanaKeperawatanPsikiatriActionPerformed);
     }
     
 }

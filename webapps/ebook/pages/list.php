@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">        
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
@@ -50,7 +55,7 @@
             <tr class="isi2">
                 <td width="15%" >Kode Ebook</td>
                 <td width="35%">
-                    :&nbsp;<input name="kode_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_ebook;?>" size="20" maxlength="10">
+                    :&nbsp;<input name="kode_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_ebook;?>" size="20" maxlength="10" pattern="[A-Z0-9-]{1,10}" title=" A-Z0-9- (Maksimal 10 karakter)" autocomplete="off" required autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                 </td>
                 <td width="15%" >Pengarang</td>
@@ -73,7 +78,7 @@
             <tr class="isi2">
                 <td width="15%" >Judul Ebook</td>
                 <td width="35%">
-                    :&nbsp;<input name="judul_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $judul_ebook;?>" size="50" maxlength="200">
+                    :&nbsp;<input name="judul_ebook" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $judul_ebook;?>" size="50" maxlength="200" pattern="[A-Z0-9-]{1,200}" title=" A-Z0-9- (Maksimal 200 karakter)" autocomplete="off" required>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                 </td>
                 <td width="15%" >Tahun Terbit</td>
@@ -89,7 +94,7 @@
                     </select>
                     <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
                     &nbsp;&nbsp;
-                    Jml.Halaman :&nbsp;<input name="jml_halaman" class="text5" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" type="number" id="TxtIsi7" class="inputbox" value="<?php echo $jml_halaman;?>" size="5" maxlength="7">
+                    Jml.Halaman :&nbsp;<input name="jml_halaman" class="text5" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" type="number" id="TxtIsi7" class="inputbox" value="<?php echo $jml_halaman;?>" size="5" maxlength="7" pattern="[0-9]{1,7}" title=" 0-9 (Maksimal 7 karakter)" autocomplete="off" required>
                     <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>

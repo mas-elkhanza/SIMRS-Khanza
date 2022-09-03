@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
     <div class="entry">        
@@ -151,14 +156,14 @@
             <tr class="head">
                 <td width="41%" >No.SEP</td><td width="">:</td>
                 <td width="57%">
-                    <input name="nosep" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $nosep;?>" size="40" maxlength="40">
+                    <input name="nosep" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $nosep;?>" size="40" maxlength="40" pattern="[A-Z0-9-]{1,40}" title=" A-Z0-9- (Maksimal 40 karakter)" autocomplete="off" required>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >No.Kartu</td><td width="">:</td>
                 <td width="57%">
-                    <input name="nokartu" class="text" type=text class="inputbox" value="<?php echo getOne("select no_peserta from pasien where no_rkm_medis='$no_rkm_medis'");?>" size="40" maxlength="40">
+                    <input name="nokartu" class="text" type=text class="inputbox" value="<?php echo getOne("select no_peserta from pasien where no_rkm_medis='$no_rkm_medis'");?>" size="40" maxlength="40" pattern="[A-Z0-9-]{1,40}" title=" A-Z0-9- (Maksimal 40 karakter)" autocomplete="off" required>
                 </td>
             </tr>
             <tr class="head">
@@ -227,13 +232,13 @@
             <tr class="head">
                 <td width="41%" >ICU Los</td><td width="">:</td>
                 <td width="57%">
-                    <input name="icu_los" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5">
+                    <input name="icu_los" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Jumlah Jam Penggunaan Ventilator di ICU</td><td width="">:</td>
                 <td width="57%">
-                    <input name="ventilator_hour" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5">
+                    <input name="ventilator_hour" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
@@ -261,19 +266,19 @@
             <tr class="head">
                 <td width="41%" >Lama Hari Naik Kelas</td><td width="">:</td>
                 <td width="57%">
-                    <input name="upgrade_class_los" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5">
+                    <input name="upgrade_class_los" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Tambahan</td><td width="">:</td>
                 <td width="57%">
-                    <input name="add_payment_pct" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
+                    <input name="add_payment_pct" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Berat Saat Lahir</td><td width="">:</td>
                 <td width="57%">
-                    <input name="birth_weight" class="text" type="text" class="inputbox" value="" size="5" maxlength="5">
+                    <input name="birth_weight" class="text" type="text" class="inputbox" value="" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
@@ -421,115 +426,115 @@
             <tr class="head">
                 <td width="41%" >Biaya Prosedur Non Bedah</td><td width="">:</td>
                 <td width="57%">
-                    <input name="prosedur_non_bedah" class="text" type="text" class="inputbox" value="<?php echo $prosedur_non_bedah; ?>" size="20" maxlength="15">
+                    <input name="prosedur_non_bedah" class="text" type="text" class="inputbox" value="<?php echo $prosedur_non_bedah; ?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Prosedur Bedah</td><td width="">:</td>
                 <td width="57%">
-                    <input name="prosedur_bedah" class="text" type="text" class="inputbox" value="<?php echo $prosedur_bedah; ?>" size="20" maxlength="15">
+                    <input name="prosedur_bedah" class="text" type="text" class="inputbox" value="<?php echo $prosedur_bedah; ?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Konsultasi</td><td width="">:</td>
                 <td width="57%">
-                    <input name="konsultasi" class="text" type="text" class="inputbox" value="<?php echo $konsultasi; ?>" size="20" maxlength="15">
+                    <input name="konsultasi" class="text" type="text" class="inputbox" value="<?php echo $konsultasi; ?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Tenaga Ahli</td><td width="">:</td>
                 <td width="57%">
-                    <input name="tenaga_ahli" class="text" type="text" class="inputbox" value="<?php echo $tenaga_ahli; ?>" size="20" maxlength="15">
+                    <input name="tenaga_ahli" class="text" type="text" class="inputbox" value="<?php echo $tenaga_ahli; ?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Keperawatan</td><td width="">:</td>
                 <td width="57%">
-                    <input name="keperawatan" class="text" type="text" class="inputbox" value="<?php echo $keperawatan; ?>" size="20" maxlength="15">
+                    <input name="keperawatan" class="text" type="text" class="inputbox" value="<?php echo $keperawatan; ?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Penunjang</td><td width="">:</td>
                 <td width="57%">
-                    <input name="penunjang" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
+                    <input name="penunjang" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Radiologi</td><td width="">:</td>
                 <td width="57%">
-                    <input name="radiologi" class="text" type="text" class="inputbox" value="<?php echo $radiologi;?>" size="20" maxlength="15">
+                    <input name="radiologi" class="text" type="text" class="inputbox" value="<?php echo $radiologi;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Laboratorium</td><td width="">:</td>
                 <td width="57%">
-                    <input name="laboratorium" class="text" type="text" class="inputbox" value="<?php echo $laboratorium;?>" size="20" maxlength="15">
+                    <input name="laboratorium" class="text" type="text" class="inputbox" value="<?php echo $laboratorium;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Pelayanan Darah</td><td width="">:</td>
                 <td width="57%">
-                    <input name="pelayanan_darah" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
+                    <input name="pelayanan_darah" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Rehabilitasi</td><td width="">:</td>
                 <td width="57%">
-                    <input name="rehabilitasi" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
+                    <input name="rehabilitasi" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Kamar</td><td width="">:</td>
                 <td width="57%">
-                    <input name="kamar" class="text" type="text" class="inputbox" value="<?php echo $kamar;?>" size="20" maxlength="15">
+                    <input name="kamar" class="text" type="text" class="inputbox" value="<?php echo $kamar;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Rawat Intensif</td><td width="">:</td>
                 <td width="57%">
-                    <input name="rawat_intensif" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
+                    <input name="rawat_intensif" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Obat</td><td width="">:</td>
                 <td width="57%">
-                    <input name="obat" class="text" type="text" class="inputbox" value="<?php echo $obat;?>" size="20" maxlength="15">
+                    <input name="obat" class="text" type="text" class="inputbox" value="<?php echo $obat;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Obat Kronis</td><td width="">:</td>
                 <td width="57%">
-                    <input name="obat_kronis" class="text" type="text" class="inputbox" value="<?php echo $obat_kronis;?>" size="20" maxlength="15">
+                    <input name="obat_kronis" class="text" type="text" class="inputbox" value="<?php echo $obat_kronis;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Obat Kemoterapi</td><td width="">:</td>
                 <td width="57%">
-                    <input name="obat_kemoterapi" class="text" type="text" class="inputbox" value="<?php echo $obat_kemoterapi;?>" size="20" maxlength="15">
+                    <input name="obat_kemoterapi" class="text" type="text" class="inputbox" value="<?php echo $obat_kemoterapi;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Alkes</td><td width="">:</td>
                 <td width="57%">
-                    <input name="alkes" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
+                    <input name="alkes" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya BMHP</td><td width="">:</td>
                 <td width="57%">
-                    <input name="bmhp" class="text" type="text" class="inputbox" value="<?php echo $bmhp;?>" size="20" maxlength="15">
+                    <input name="bmhp" class="text" type="text" class="inputbox" value="<?php echo $bmhp;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Biaya Sewa Alat</td><td width="">:</td>
                 <td width="57%">
-                    <input name="sewa_alat" class="text" type="text" class="inputbox" value="<?php echo $sewa_alat;?>" size="20" maxlength="15">
+                    <input name="sewa_alat" class="text" type="text" class="inputbox" value="<?php echo $sewa_alat;?>" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
                 <td width="41%" >Tarif Poli Eksekutif</td><td width="">:</td>
                 <td width="57%">
-                    <input name="tarif_poli_eks" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
+                    <input name="tarif_poli_eks" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15" pattern="[0-9]{1,15}" title=" 0-9 (Maksimal 15 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
@@ -645,43 +650,43 @@
                             <tr class='head'>
                                 <td width='41%' >No.Jaminan/NIK/KITAS/KITAP/PASPOR/JKN</td><td width=''>:</td>
                                 <td width='57%'>
-                                    <input name='nomor_kartu_t' class='text' type='text' class='inputbox' value='".$bariscorona["nomor_kartu_t"]."' size='40' maxlength='40'>
+                                    <input name='nomor_kartu_t' class='text' type='text' class='inputbox' value='".$bariscorona["nomor_kartu_t"]."' size='40' maxlength='40' pattern='[A-Z0-9-]{1,40}' title=' A-Z0-9- (Maksimal 40 karakter)' autocomplete='off'>
                                 </td>
                             </tr>
                             <tr class='head'>
                                 <td width='41%' >Jumlah Hari Penggunaan Ruang ICU Dengan Ventilator</td><td width=''>:</td>
                                 <td width='57%'>
-                                    <input name='episodes1' class='text' type='text' class='inputbox' value='".$bariscorona["episodes1"]."' size='7' maxlength='3'>
+                                    <input name='episodes1' class='text' type='text' class='inputbox' value='".$bariscorona["episodes1"]."' size='7' maxlength='3' pattern='[0-9]{1,3}' title=' 0-9 (Maksimal 3 karakter)' autocomplete='off'>
                                 </td>
                             </tr>
                             <tr class='head'>
                                 <td width='41%' >Jumlah Hari Penggunaan Ruang ICU Tanpa Ventilator</td><td width=''>:</td>
                                 <td width='57%'>
-                                    <input name='episodes2' class='text' type='text' class='inputbox' value='".$bariscorona["episodes2"]."' size='7' maxlength='3'>
+                                    <input name='episodes2' class='text' type='text' class='inputbox' value='".$bariscorona["episodes2"]."' size='7' maxlength='3' pattern='[0-9]{1,3}' title=' 0-9 (Maksimal 3 karakter)' autocomplete='off'>
                                 </td>
                             </tr>
                             <tr class='head'>
                                 <td width='41%' >Jumlah Hari Penggunaan Ruang Isolasi Tekanan Negatif Dengan Ventilator</td><td width=''>:</td>
                                 <td width='57%'>
-                                    <input name='episodes3' class='text' type='text' class='inputbox' value='".$bariscorona["episodes3"]."' size='7' maxlength='3'>
+                                    <input name='episodes3' class='text' type='text' class='inputbox' value='".$bariscorona["episodes3"]."' size='7' maxlength='3' pattern='[0-9]{1,3}' title=' 0-9 (Maksimal 3 karakter)' autocomplete='off'>
                                 </td>
                             </tr>
                             <tr class='head'>
                                 <td width='41%' >Jumlah Hari Penggunaan Ruang Isolasi Tekanan Negatif Tanpa Ventilator</td><td width=''>:</td>
                                 <td width='57%'>
-                                    <input name='episodes4' class='text' type='text' class='inputbox' value='".$bariscorona["episodes4"]."' size='7' maxlength='3'>
+                                    <input name='episodes4' class='text' type='text' class='inputbox' value='".$bariscorona["episodes4"]."' size='7' maxlength='3' pattern='[0-9]{1,3}' title=' 0-9 (Maksimal 3 karakter)' autocomplete='off'>
                                 </td>
                             </tr>
                             <tr class='head'>
                                 <td width='41%' >Jumlah Hari Penggunaan Ruang Isolasi Non Tekanan Negatif Dengan Ventilator</td><td width=''>:</td>
                                 <td width='57%'>
-                                    <input name='episodes5' class='text' type='text' class='inputbox' value='".$bariscorona["episodes5"]."' size='7' maxlength='3'>
+                                    <input name='episodes5' class='text' type='text' class='inputbox' value='".$bariscorona["episodes5"]."' size='7' maxlength='3' pattern='[0-9]{1,3}' title=' 0-9 (Maksimal 3 karakter)' autocomplete='off'>
                                 </td>
                             </tr>
                             <tr class='head'>
                                 <td width='41%' >Jumlah Hari Penggunaan Ruang Isolasi Non Tekanan Negatif Tanpa Ventilator</td><td width=''>:</td>
                                 <td width='57%'>
-                                    <input name='episodes6' class='text' type='text' class='inputbox' value='".$bariscorona["episodes6"]."' size='7' maxlength='3'>
+                                    <input name='episodes6' class='text' type='text' class='inputbox' value='".$bariscorona["episodes6"]."' size='7' maxlength='3' pattern='[0-9]{1,3}' title=' 0-9 (Maksimal 3 karakter)' autocomplete='off'>
                                 </td>
                             </tr>
                             <tr class='head'>
