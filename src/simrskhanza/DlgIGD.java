@@ -6840,7 +6840,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 form.isCek();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(internalFrame1);
-                form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TDokter.getText(),TPngJwb.getText(),"UGD/IGD",tbPetugas.getValueAt(tbPetugas.getSelectedRow(),16).toString());
+                form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TDokter.getText(),TPngJwb.getText(),"UGD/IGD",Sequel.cariIsi("select pasien.no_tlp from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -6900,7 +6900,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{
             if(tbPetugas.getSelectedRow()!= -1){
                 try {
-                    ps=koneksi.prepareStatement("select no_peserta,tgl_lahir,jk from pasien where no_rkm_medis=?");
+                    ps=koneksi.prepareStatement("select pasien.no_peserta,pasien.tgl_lahir,pasien.jk from pasien where pasien.no_rkm_medis=?");
                     try {
                         ps.setString(1,TNoRM.getText());
                         rs=ps.executeQuery();

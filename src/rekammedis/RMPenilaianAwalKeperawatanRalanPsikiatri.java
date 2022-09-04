@@ -1506,7 +1506,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         jLabel30.setText("Keluhan Utama :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(30, 100, 80, 20);
+        jLabel30.setBounds(0, 100, 110, 20);
 
         jLabel31.setText("Sakit Sejak :");
         jLabel31.setName("jLabel31"); // NOI18N
@@ -3027,7 +3027,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         jLabel69.setText("Makan/Minum :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(375, 1265, 72, 23);
+        jLabel69.setBounds(375, 1265, 74, 23);
 
         ADLBab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Bantuan Minimal", "Bantuan Total" }));
         ADLBab.setName("ADLBab"); // NOI18N

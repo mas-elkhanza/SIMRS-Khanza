@@ -700,7 +700,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.penilaian_awal_medis_ralan_neurologi,user.sirkulasi_obat6,user.penilaian_awal_medis_ralan_orthopedi,user.penilaian_awal_medis_ralan_bedah,"+
                 "user.integrasi_khanza_health_services,user.soap_ralan_tni,user.soap_ranap_tni,user.jumlah_pengunjung_ralan_tni,user.laporan_penyakit_tni,"+
                 "user.catatan_keperawatan_ranap,user.master_rencana_keperawatan_gigi,user.master_rencana_keperawatan_mata,user.master_rencana_keperawatan_igd,"+
-                "user.master_masalah_keperawatan_psikiatri,user.master_rencana_keperawatan_psikiatri from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.master_masalah_keperawatan_psikiatri,user.master_rencana_keperawatan_psikiatri,user.penilaian_awal_keperawatan_psikiatri from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3255,6 +3255,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Master Rencana Keperawatan Psikiatri".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Master Rencana Keperawatan Psikiatri",rs.getBoolean("master_rencana_keperawatan_psikiatri")});
+                    }
+                    
+                    if("[L]Penilaian Awal Keperawatan Ralan Psikiatri".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Keperawatan Ralan Psikiatri",rs.getBoolean("penilaian_awal_keperawatan_psikiatri")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6742,6 +6746,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Master Rencana Keperawatan Psikiatri".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_rencana_keperawatan_psikiatri='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Penilaian Awal Keperawatan Ralan Psikiatri".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_keperawatan_psikiatri='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

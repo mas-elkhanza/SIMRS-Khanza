@@ -10091,7 +10091,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             if(tbKasirRalan.getSelectedRow()!= -1){
                 try {
-                    pskasir=koneksi.prepareStatement("select no_peserta,tgl_lahir,jk from pasien where no_rkm_medis=?");
+                    pskasir=koneksi.prepareStatement("select pasien.no_peserta,pasien.tgl_lahir,pasien.jk from pasien where pasien.no_rkm_medis=?");
                     try {
                         pskasir.setString(1,TNoRMCari.getText());
                         rskasir=pskasir.executeQuery();
