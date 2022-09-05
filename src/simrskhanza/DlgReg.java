@@ -6238,11 +6238,11 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_TCariKeyPressed
 
-    private void TBiayaKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TBiayaKeyPressed
+    private void TBiayaKeyPressed(java.awt.event.KeyEvent evt) {
         Valid.pindah(evt, kdpoli, BtnSimpan);
-    }// GEN-LAST:event_TBiayaKeyPressed
+    }
 
-    private void tbPetugasMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbPetugasMouseClicked
+    private void tbPetugasMouseClicked(java.awt.event.MouseEvent evt) {
         if (tabMode.getRowCount() != 0) {
             try {
                 getData();
@@ -6290,9 +6290,7 @@ public final class DlgReg extends javax.swing.JDialog {
                     MnCetakRegisterActionPerformed(null);
                 }
             }
-
         }
-
     }// GEN-LAST:event_tbPetugasMouseClicked
 
     private void tbPetugasKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_tbPetugasKeyPressed
@@ -9787,7 +9785,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptLembarKeluarMasuk4.jasper", "report", "::[ Ringkasan Masuk Keluar ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                    + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                    + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan, pasien.hambatan,"
                     + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj, suku_bangsa.nama_suku_bangsa,"
                     + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj "
                     + "from reg_periksa " + "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "
