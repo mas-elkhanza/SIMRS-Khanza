@@ -190,7 +190,7 @@ public final class akses {
             penilaian_awal_medis_ralan_orthopedi=false,penilaian_awal_medis_ralan_bedah=false,integrasi_khanza_health_services=false,soap_ralan_tni=false,
             soap_ranap_tni=false,jumlah_pengunjung_ralan_tni=false,laporan_penyakit_tni=false,catatan_keperawatan_ranap=false,master_rencana_keperawatan_gigi=false,
             master_rencana_keperawatan_mata=false,master_rencana_keperawatan_igd=false,master_masalah_keperawatan_psikiatri=false,master_rencana_keperawatan_psikiatri=false,
-            penilaian_awal_keperawatan_psikiatri=false;
+            penilaian_awal_keperawatan_psikiatri=false,pemantauan_pews_anak=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1079,6 +1079,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_psikiatri=true;
                         akses.master_rencana_keperawatan_psikiatri=true;
                         akses.penilaian_awal_keperawatan_psikiatri=true;
+                        akses.pemantauan_pews_anak=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1951,6 +1952,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_psikiatri=rs2.getBoolean("master_masalah_keperawatan_psikiatri");
                         akses.master_rencana_keperawatan_psikiatri=rs2.getBoolean("master_rencana_keperawatan_psikiatri");
                         akses.penilaian_awal_keperawatan_psikiatri=rs2.getBoolean("penilaian_awal_keperawatan_psikiatri");
+                        akses.pemantauan_pews_anak=rs2.getBoolean("pemantauan_pews_anak");
 ;                    }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2821,6 +2823,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_psikiatri=false;
                         akses.master_rencana_keperawatan_psikiatri=false;
                         akses.penilaian_awal_keperawatan_psikiatri=false;
+                        akses.pemantauan_pews_anak=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3748,4 +3751,5 @@ public final class akses {
     public static boolean getmaster_masalah_keperawatan_psikiatri(){return akses.master_masalah_keperawatan_psikiatri;}
     public static boolean getmaster_rencana_keperawatan_psikiatri(){return akses.master_rencana_keperawatan_psikiatri;}
     public static boolean getpenilaian_awal_keperawatan_psikiatri(){return akses.penilaian_awal_keperawatan_psikiatri;}
+    public static boolean getpemantauan_pews_anak(){return akses.pemantauan_pews_anak;}
 }   

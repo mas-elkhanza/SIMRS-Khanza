@@ -784,7 +784,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-01-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -2000,8 +2000,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 pstindakan.setString(1,order);
                                 pstindakan.setString(2,rstampil.getString("id_template"));
                                 rstindakan=pstindakan.executeQuery();
+                                System.out.println("Menjalankan Query : select RESDT.ORDER_TESTID,RESDT.DATA_TYP,RESDT.RESULT_VALUE,RESDT.RESULT_FT,RESDT.UNIT,RESDT.FLAG,RESDT.REF_RANGE from RESDT where RESDT.ONO='"+order+"' and RESDT.ORDER_TESTID='"+rstampil.getString("id_template")+"'");
                                 if(rstindakan.next()){
-                                    System.out.println("ID Detail Laborat Sysmex : "+rstindakan.getString("ORDER_TESTID"));
+                                    System.out.println("ID Detail Laborat Sysmex Yang Ditemukan : "+rstindakan.getString("ORDER_TESTID"));
                                     if(rstindakan.getString("DATA_TYP").equals("FT")){
                                         tabMode.addRow(new Object[]{
                                             true,"   "+rstampil.getString("Pemeriksaan"),rstindakan.getString("RESULT_FT"),
@@ -2032,8 +2033,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                                  rstampil.getDouble("kso"),
                                                  rstampil.getDouble("menejemen")
                                         });
-                                    }
-                                        
+                                    }   
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif : "+e);

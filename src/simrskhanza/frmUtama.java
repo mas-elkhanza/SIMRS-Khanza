@@ -37604,7 +37604,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterRencanaKeperawatanPsikiatri.addActionListener(this::btnMasterRencanaKeperawatanPsikiatriActionPerformed);
         
         btnPenilaianAwalKeperawatanRalanPsikiatri = new widget.ButtonBig();
-        btnPenilaianAwalKeperawatanRalanPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4852563_education_files_research_science_icon.png"))); 
+        btnPenilaianAwalKeperawatanRalanPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5898990_blood_clipboard_lab_report_test_icon.png"))); 
         btnPenilaianAwalKeperawatanRalanPsikiatri.setText("Awal Keperawatan Ralan Psikiatri");
         btnPenilaianAwalKeperawatanRalanPsikiatri.setIconTextGap(0);
         btnPenilaianAwalKeperawatanRalanPsikiatri.setName("btnPenilaianAwalKeperawatanRalanPsikiatri"); 
