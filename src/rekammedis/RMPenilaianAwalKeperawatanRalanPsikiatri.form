@@ -10,23 +10,6 @@
         <Property name="name" type="java.lang.String" value="LoadHTML" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="widget.ComboBox" name="RKDJenisBerobat">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="-"/>
-            <StringItem index="1" value="Alternatif"/>
-            <StringItem index="2" value="RS"/>
-            <StringItem index="3" value="Puskesmas"/>
-          </StringArray>
-        </Property>
-        <Property name="name" type="java.lang.String" value="RKDJenisBerobat" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RKDJenisBerobatActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RKDJenisBerobatKeyPressed"/>
-      </Events>
-    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -1206,7 +1189,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="06-09-2022 15:20:10"/>
+                                <StringItem index="0" value="06-09-2022 21:41:11"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1694,7 +1677,6 @@
                             <Property name="name" type="java.lang.String" value="RKDHasilPengobatan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RKDHasilPengobatanActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RKDHasilPengobatanKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -1789,7 +1771,6 @@
                             <Property name="name" type="java.lang.String" value="RBDAlat" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RBDAlatActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RBDAlatKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -1884,7 +1865,6 @@
                             <Property name="name" type="java.lang.String" value="KetRBDPercobaan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KetRBDPercobaanActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KetRBDPercobaanKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -2093,7 +2073,6 @@
                             <Property name="name" type="java.lang.String" value="RPOEfekSamping" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RPOEfekSampingActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RPOEfekSampingKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3806,7 +3785,6 @@
                             <Property name="name" type="java.lang.String" value="RBDRencana" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RBDRencanaActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RBDRencanaKeyPressed"/>
                           </Events>
                           <Constraints>
