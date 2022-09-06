@@ -71,6 +71,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private DlgBarang barang = new DlgBarang(null, false);
     private String signa1 = "1", signa2 = "1", kdObatSK = "", requestJson = "", nokunjungan = "", URL = "", otorisasi, sql = "", no_batchcari = "", tgl_kadaluarsacari = "", no_fakturcari = "", aktifkanbatch = "no", aktifpcare = "no", noresep = "", Suspen_Piutang_Obat_Ranap = "", Obat_Ranap = "", HPP_Obat_Rawat_Inap = "", Persediaan_Obat_Rawat_Inap = "";
     private WarnaTable2 warna = new WarnaTable2();
+    private String id_kamar="";
     private DlgCariBangsal caribangsal = new DlgCariBangsal(null, false);
 
     /**
@@ -1205,13 +1206,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 pscarikapasitas.setString(1, tbObat.getValueAt(i, 2).toString());
                                 carikapasitas = pscarikapasitas.executeQuery();
                                 if (carikapasitas.next()) {
-                                    if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 14, new String[]{
+                                    if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 16, new String[]{
                                         Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), TNoRw.getText(), tbObat.getValueAt(i, 2).toString(), tbObat.getValueAt(i, 12).toString(),
                                         tbObat.getValueAt(i, 6).toString(), "" + (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)),
                                         tbObat.getValueAt(i, 8).toString(), tbObat.getValueAt(i, 9).toString(), "" + Valid.SetAngka2(Double.parseDouble(tbObat.getValueAt(i, 8).toString())
                                         + Double.parseDouble(tbObat.getValueAt(i, 9).toString()) + (Double.parseDouble(tbObat.getValueAt(i, 6).toString())
                                         * (Double.parseDouble(tbObat.getValueAt(i, 1).toString()) / carikapasitas.getDouble(1)))),
-                                        "Ranap", kdgudang.getText(), tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString()
+                                        "Ranap", kdgudang.getText(), tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString(),"belum",id_kamar
                                     }) == true) {
                                         ttljual = ttljual + Double.parseDouble(tbObat.getValueAt(i, 8).toString())
                                                 + Double.parseDouble(tbObat.getValueAt(i, 9).toString()) + (Double.parseDouble(tbObat.getValueAt(i, 6).toString())
@@ -1266,13 +1267,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         sukses = false;
                                     }
                                 } else {
-                                    if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 14, new String[]{
+                                    if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 16, new String[]{
                                         Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), TNoRw.getText(), tbObat.getValueAt(i, 2).toString(), tbObat.getValueAt(i, 12).toString(),
                                         tbObat.getValueAt(i, 6).toString(), "" + Double.parseDouble(tbObat.getValueAt(i, 1).toString()),
                                         tbObat.getValueAt(i, 8).toString(), tbObat.getValueAt(i, 9).toString(), "" + (Double.parseDouble(tbObat.getValueAt(i, 8).toString())
                                         + Double.parseDouble(tbObat.getValueAt(i, 9).toString()) + (Double.parseDouble(tbObat.getValueAt(i, 6).toString())
                                         * Double.parseDouble(tbObat.getValueAt(i, 1).toString()))),
-                                        "Ranap", kdgudang.getText(), tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString()
+                                        "Ranap", kdgudang.getText(), tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString(),"belum",id_kamar
                                     }) == true) {
                                         ttljual = ttljual + Double.parseDouble(tbObat.getValueAt(i, 8).toString())
                                                 + Double.parseDouble(tbObat.getValueAt(i, 9).toString()) + (Double.parseDouble(tbObat.getValueAt(i, 6).toString())
@@ -1338,13 +1339,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
                         } else {
-                            if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 14, new String[]{
+                            if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 16, new String[]{
                                 Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), TNoRw.getText(), tbObat.getValueAt(i, 2).toString(), tbObat.getValueAt(i, 12).toString(),
                                 tbObat.getValueAt(i, 6).toString(), "" + Double.parseDouble(tbObat.getValueAt(i, 1).toString()),
                                 tbObat.getValueAt(i, 8).toString(), tbObat.getValueAt(i, 9).toString(), "" + (Double.parseDouble(tbObat.getValueAt(i, 8).toString())
                                 + Double.parseDouble(tbObat.getValueAt(i, 9).toString()) + (Double.parseDouble(tbObat.getValueAt(i, 6).toString())
                                 * Double.parseDouble(tbObat.getValueAt(i, 1).toString()))),
-                                "Ranap", kdgudang.getText(), tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString()
+                                "Ranap", kdgudang.getText(), tbObat.getValueAt(i, 16).toString(), tbObat.getValueAt(i, 17).toString(),"belum",id_kamar
                             }) == true) {
                                 ttljual = ttljual + Double.parseDouble(tbObat.getValueAt(i, 8).toString())
                                         + Double.parseDouble(tbObat.getValueAt(i, 9).toString()) + (Double.parseDouble(tbObat.getValueAt(i, 6).toString())
@@ -1421,7 +1422,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), TNoRw.getText(),
                             tbDetailObatRacikan.getValueAt(i, 0).toString(), tbDetailObatRacikan.getValueAt(i, 1).toString()
                         }) == true) {
-                            if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 14, new String[]{
+                            if (Sequel.menyimpantf2("detail_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "data", 16, new String[]{
                                 Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), TNoRw.getText(),
                                 tbDetailObatRacikan.getValueAt(i, 1).toString(), tbDetailObatRacikan.getValueAt(i, 5).toString(),
                                 tbDetailObatRacikan.getValueAt(i, 4).toString(), "" + Double.parseDouble(tbDetailObatRacikan.getValueAt(i, 10).toString()),
@@ -1430,7 +1431,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 + Double.parseDouble(tbDetailObatRacikan.getValueAt(i, 12).toString())
                                 + (Double.parseDouble(tbDetailObatRacikan.getValueAt(i, 4).toString())
                                 * Double.parseDouble(tbDetailObatRacikan.getValueAt(i, 10).toString()))),
-                                "Ranap", kdgudang.getText(), tbDetailObatRacikan.getValueAt(i, 16).toString(), tbDetailObatRacikan.getValueAt(i, 17).toString()
+                                "Ranap", kdgudang.getText(), tbDetailObatRacikan.getValueAt(i, 16).toString(), tbDetailObatRacikan.getValueAt(i, 17).toString(),"belum",id_kamar
                             }) == true) {
                                 ttljual = ttljual + Double.parseDouble(tbDetailObatRacikan.getValueAt(i, 11).toString())
                                         + Double.parseDouble(tbDetailObatRacikan.getValueAt(i, 12).toString()) + (Double.parseDouble(tbDetailObatRacikan.getValueAt(i, 4).toString())
@@ -2709,6 +2710,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         TNoRw.setText(norwt);
         DTPTgl.setDate(tanggal);
         ChkJln.setSelected(true);
+        id_kamar = Sequel.cariIsi("select id_kamar from kamar_inap where no_rawat=? and stts_pulang='AKTIF'", norwt);
+        System.out.println("id kamar = "+id_kamar);
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?", norwt));
         kelas.setText(Sequel.cariIsi(
                 "select kamar.kelas from kamar inner join kamar_inap on kamar.kd_kamar=kamar_inap.kd_kamar "
