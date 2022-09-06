@@ -764,6 +764,7 @@ import rekammedis.RMDataResumePasienRanap;
 import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMMCU;
+import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanIGD;
@@ -19025,6 +19026,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPemantauanPEWSAnakActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPemantauanPEWS aplikasi=new RMPemantauanPEWS(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19676,7 +19690,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnAuditBundleVAP,btnAkunRekeningHtHBankPapua,btnPembayaranBankPapua,btnPenilaianAwalMedisRalanPenyakitDalam,btnPenilaianAwalMedisRalanMata,
             btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI,
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
-            btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri;
+            btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
+            btnPemantauanPEWSAnak;
     
     public void isWall(){
         try{            
@@ -22902,6 +22917,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getcatatan_keperawatan_ranap()==true){
                 Panelmenu.add(btnCatatanKeperawatanRanap);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemantauan_pews_anak()==true){
+                Panelmenu.add(btnPemantauanPEWSAnak);
                 jmlmenu++;
             }
             
@@ -27203,6 +27223,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getcatatan_keperawatan_ranap()==true){
             Panelmenu.add(btnCatatanKeperawatanRanap);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemantauan_pews_anak()==true){
+            Panelmenu.add(btnPemantauanPEWSAnak);
             jmlmenu++;
         }
             
@@ -32739,6 +32764,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpemantauan_pews_anak()==true){
+            if(btnPemantauanPEWSAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemantauanPEWSAnak);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gethemodialisa()==true){
             if(btnHemodialisa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHemodialisa);
@@ -37610,6 +37642,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalKeperawatanRalanPsikiatri.setName("btnPenilaianAwalKeperawatanRalanPsikiatri"); 
         btnPenilaianAwalKeperawatanRalanPsikiatri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalKeperawatanRalanPsikiatri.addActionListener(this::btnPenilaianAwalKeperawatanRalanPsikiatriActionPerformed);
+        
+        btnPemantauanPEWSAnak = new widget.ButtonBig();
+        btnPemantauanPEWSAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7744788_mom_children_mothers day_mother_love_icon.png"))); 
+        btnPemantauanPEWSAnak.setText("Pemantauan PEWS Pasien Anak");
+        btnPemantauanPEWSAnak.setIconTextGap(0);
+        btnPemantauanPEWSAnak.setName("btnPemantauanPEWSAnak"); 
+        btnPemantauanPEWSAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemantauanPEWSAnak.addActionListener(this::btnPemantauanPEWSAnakActionPerformed);
     }
     
 }
