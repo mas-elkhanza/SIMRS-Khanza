@@ -73,8 +73,8 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","Keluhan Utama","Sakit Sejak","Ket. Keluhan dahulu","Berobat",
-            "Hasil Pengobatan Dahulu","Putus Obat","Ket. Putus Obat ","Masalah Ekonomi","Ket. Masalah Ekonomi","Masalah Fisik","Ket. Masalah Fisik",
+            "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","Keluhan Utama","Sakit Sejak","Riwayat Penyakit Dahulu","Berobat",
+            "Hasil Pengobatan","Putus Obat","Keterangan Putus Obat ","Masalah Ekonomi","Keterangan Masalah Ekonomi","Masalah Fisik","Keterangan Masalah Fisik",
             "Masalah Psikososial","Ket. Masalah Psikososial","Resiko Herediter","Ket. Resiko Herediter","Res. Bunuh Diri","Ide Bunuh Diri","Ket. Ide Bunuh DIri","Rencana Bunuh Diri","Ket. Rencana Bunuh Diri",
             "Alat B.D","Ket. Alat B.D","Percobaan B.D","Ket. Percobaan B.D","Keinginan B.D","Ket. Keinginan B. D","Peng. Obat Psikiatri","Ket. Penggunaan Obat",
             "Riw.Efek Samping Obat","Ket Riw. Efek samping Obat","Napza","Ket. Napza","Ket. Lama Pemakaian Napza","Ket. Cara Pemakaian Napza","Ket. Latar Belakang Pemakaian Napza","Peng, Obat Lainnya",
@@ -108,23 +108,37 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }else if(i==4){
                 column.setPreferredWidth(60);   
             }else if(i==5){
-                column.setPreferredWidth(100);   
+                column.setPreferredWidth(120);   
             }else if(i==6){
-                column.setPreferredWidth(100);   
+                column.setPreferredWidth(120);   
             }else if(i==7){
-                column.setPreferredWidth(105); 
+                column.setPreferredWidth(65); 
             }else if(i==8){
-                column.setPreferredWidth(150);   
+                column.setPreferredWidth(115); 
             }else if(i==9){
-                column.setPreferredWidth(105);  
+                column.setPreferredWidth(80); 
             }else if(i==10){
-                column.setPreferredWidth(180);  
+                column.setPreferredWidth(200); 
             }else if(i==11){
-                column.setPreferredWidth(100);  
+                column.setPreferredWidth(80); 
             }else if(i==12){
-                column.setPreferredWidth(150);   
+                column.setPreferredWidth(170); 
             }else if(i==13){
-                column.setPreferredWidth(100);   
+                column.setPreferredWidth(78); 
+            }else if(i==14){
+                column.setPreferredWidth(95); 
+            }else if(i==15){
+                column.setPreferredWidth(65); 
+            }else if(i==16){
+                column.setPreferredWidth(127); 
+            }else if(i==17){
+                column.setPreferredWidth(91); 
+            }else if(i==18){
+                column.setPreferredWidth(150); 
+            }else if(i==19){
+                column.setPreferredWidth(75); 
+            }else if(i==20){
+                column.setPreferredWidth(141); 
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -750,7 +764,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Keperawatan Rawat Jalan Umum ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Keperawatan Rawat Jalan Psikiatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
