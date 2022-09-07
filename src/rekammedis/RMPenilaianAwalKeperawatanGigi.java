@@ -3915,6 +3915,32 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             }
+            
+            try {
+                Valid.tabelKosong(tabModeRencana);
+                ps=koneksi.prepareStatement(
+                        "select master_rencana_keperawatan_gigi.kode_rencana,master_rencana_keperawatan_gigi.rencana_keperawatan from master_rencana_keperawatan_gigi "+
+                        "inner join penilaian_awal_keperawatan_ralan_rencana_gigi on penilaian_awal_keperawatan_ralan_rencana_gigi.kode_rencana=master_rencana_keperawatan_gigi.kode_rencana "+
+                        "where penilaian_awal_keperawatan_ralan_rencana_gigi.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_gigi.kode_rencana");
+                try {
+                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabModeRencana.addRow(new Object[]{true,rs.getString(1),rs.getString(2)});
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
         }
     }
 

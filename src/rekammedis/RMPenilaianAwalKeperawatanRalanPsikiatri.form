@@ -1560,7 +1560,6 @@
                             <Property name="name" type="java.lang.String" value="KetRHKeluarga" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KetRHKeluargaActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KetRHKeluargaKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3181,7 +3180,7 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="7">
                                 <StringItem index="0" value="Diagnosa Dan Manajemen Penyakit"/>
-                                <StringItem index="1" value="Obat-obatan/Terapi "/>
+                                <StringItem index="1" value="Obat-obatan/Terapi"/>
                                 <StringItem index="2" value="Diet Dan Nutrisi"/>
                                 <StringItem index="3" value="Tindakan Keperawatan"/>
                                 <StringItem index="4" value="Rehabilitasi"/>
@@ -3192,7 +3191,6 @@
                             <Property name="name" type="java.lang.String" value="KKKebutuhanEdukasi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KKKebutuhanEdukasiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KKKebutuhanEdukasiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3599,7 +3597,6 @@
                             <Property name="name" type="java.lang.String" value="KetKKPembelajaran" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KetKKPembelajaranActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KetKKPembelajaranKeyPressed"/>
                           </Events>
                           <Constraints>

@@ -277,6 +277,8 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         Durasi.setDocument(new batasInput((int)25).getKata(Durasi));
         KetProvokes.setDocument(new batasInput((int)40).getKata(KetProvokes));
         KetQuality.setDocument(new batasInput((int)50).getKata(KetQuality));
+        KetLapor.setDocument(new batasInput((int)15).getKata(KetLapor));
+        KetAlasanPenggunaan.setDocument(new batasInput((int)65).getKata(KetAlasanPenggunaan));
         Lokasi.setDocument(new batasInput((int)50).getKata(Lokasi));
         KetDokter.setDocument(new batasInput((int)15).getKata(KetDokter));
         KetNyeri.setDocument(new batasInput((int)40).getKata(KetNyeri));
@@ -1573,11 +1575,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         KetRHKeluarga.setFocusTraversalPolicyProvider(true);
         KetRHKeluarga.setName("KetRHKeluarga"); // NOI18N
-        KetRHKeluarga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KetRHKeluargaActionPerformed(evt);
-            }
-        });
         KetRHKeluarga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KetRHKeluargaKeyPressed(evt);
@@ -2390,13 +2387,8 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         FormInput.add(jLabel147);
         jLabel147.setBounds(0, 1460, 103, 23);
 
-        KKKebutuhanEdukasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diagnosa Dan Manajemen Penyakit", "Obat-obatan/Terapi ", "Diet Dan Nutrisi", "Tindakan Keperawatan", "Rehabilitasi", "Manajemen Nyeri", "Lain-lain" }));
+        KKKebutuhanEdukasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diagnosa Dan Manajemen Penyakit", "Obat-obatan/Terapi", "Diet Dan Nutrisi", "Tindakan Keperawatan", "Rehabilitasi", "Manajemen Nyeri", "Lain-lain" }));
         KKKebutuhanEdukasi.setName("KKKebutuhanEdukasi"); // NOI18N
-        KKKebutuhanEdukasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KKKebutuhanEdukasiActionPerformed(evt);
-            }
-        });
         KKKebutuhanEdukasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KKKebutuhanEdukasiKeyPressed(evt);
@@ -2603,11 +2595,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         KetKKPembelajaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pendengaran", "Penglihatan", "Kognitif", "Fisik", "Budaya", "Emosi", "Bahasa ", "Lainnya" }));
         KetKKPembelajaran.setName("KetKKPembelajaran"); // NOI18N
-        KetKKPembelajaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KetKKPembelajaranActionPerformed(evt);
-            }
-        });
         KetKKPembelajaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KetKKPembelajaranKeyPressed(evt);
@@ -3468,7 +3455,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Rencana,BtnBatal);
+            Valid.pindah(evt,KetKKKebutuhanEdukasi,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -4473,7 +4460,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_ADLHobiKeyPressed
 
     private void KKBahasaIsyaratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KKBahasaIsyaratKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetKKPenerjamahLainnya,KKKebutuhanEdukasi);
     }//GEN-LAST:event_KKBahasaIsyaratKeyPressed
 
     private void KetADLHobiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetADLHobiKeyPressed
@@ -4509,7 +4496,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_SKAfekKeyPressed
 
     private void SKPersepsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKPersepsiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKKonsentrasi,KetSKPersepsi);
     }//GEN-LAST:event_SKPersepsiKeyPressed
 
     private void SKProsesPikirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKProsesPikirKeyPressed
@@ -4517,15 +4504,11 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_SKProsesPikirKeyPressed
 
     private void SKIsiPikirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKIsiPikirKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKTingkatKesadaranOrientasi,SKWaham);
     }//GEN-LAST:event_SKIsiPikirKeyPressed
 
-    private void KKKebutuhanEdukasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KKKebutuhanEdukasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KKKebutuhanEdukasiActionPerformed
-
     private void KKKebutuhanEdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KKKebutuhanEdukasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KKBahasaIsyarat,KetKKKebutuhanEdukasi);
     }//GEN-LAST:event_KKKebutuhanEdukasiKeyPressed
 
     private void SKMemoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKMemoriKeyPressed
@@ -4533,11 +4516,11 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_SKMemoriKeyPressed
 
     private void SKKonsentrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKKonsentrasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKMemori,SKPersepsi);
     }//GEN-LAST:event_SKKonsentrasiKeyPressed
 
     private void SKGangguanRinganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKGangguanRinganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetSKWaham,KKPembelajaran);
     }//GEN-LAST:event_SKGangguanRinganKeyPressed
 
     private void SKDayaTilikDiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKDayaTilikDiriKeyPressed
@@ -4549,15 +4532,15 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_KetADLSosialisasiKeyPressed
 
     private void SKWahamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKWahamKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKIsiPikir,KetSKWaham);
     }//GEN-LAST:event_SKWahamKeyPressed
 
     private void KetSKPersepsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetSKPersepsiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKPersepsi,SKOrientasi);
     }//GEN-LAST:event_KetSKPersepsiKeyPressed
 
     private void KetSKWahamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetSKWahamKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKWaham,SKGangguanRingan);
     }//GEN-LAST:event_KetSKWahamKeyPressed
 
     private void ADLKegiatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLKegiatanKeyPressed
@@ -4565,7 +4548,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_ADLKegiatanKeyPressed
 
     private void SKTingkatKesadaranOrientasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKTingkatKesadaranOrientasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKOrientasi,SKIsiPikir);
     }//GEN-LAST:event_SKTingkatKesadaranOrientasiKeyPressed
 
     private void KetSKDayaTilikDiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetSKDayaTilikDiriKeyPressed
@@ -4573,35 +4556,27 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_KetSKDayaTilikDiriKeyPressed
 
     private void KKPembelajaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KKPembelajaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKGangguanRingan,KetKKPembelajaran);
     }//GEN-LAST:event_KKPembelajaranKeyPressed
 
     private void KKPenerjamahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KKPenerjamahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetKKPembelajaranLainnya,KetKKPenerjamahLainnya);
     }//GEN-LAST:event_KKPenerjamahKeyPressed
 
-    private void KetKKPembelajaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KetKKPembelajaranActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KetKKPembelajaranActionPerformed
-
     private void KetKKPembelajaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetKKPembelajaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KKPembelajaran,KetKKPembelajaranLainnya);
     }//GEN-LAST:event_KetKKPembelajaranKeyPressed
 
     private void KetKKKebutuhanEdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetKKKebutuhanEdukasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KKKebutuhanEdukasi,BtnSimpan);
     }//GEN-LAST:event_KetKKKebutuhanEdukasiKeyPressed
 
-    private void KetRHKeluargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KetRHKeluargaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KetRHKeluargaActionPerformed
-
     private void KetKKPenerjamahLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetKKPenerjamahLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KKPenerjamah,KKBahasaIsyarat);
     }//GEN-LAST:event_KetKKPenerjamahLainnyaKeyPressed
 
     private void SKOrientasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKOrientasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetSKPersepsi,SKTingkatKesadaranOrientasi);
     }//GEN-LAST:event_SKOrientasiKeyPressed
 
     private void RBDRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RBDRencanaKeyPressed
@@ -5175,20 +5150,26 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             if(TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_psikiatri.tanggal,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.informasi,penilaian_awal_keperawatan_ralan_psikiatri.keluhan_utama,penilaian_awal_keperawatan_ralan_psikiatri.rkd_sakit_sejak,penilaian_awal_keperawatan_ralan_psikiatri.rkd_keluhan,penilaian_awal_keperawatan_ralan_psikiatri.rkd_berobat,penilaian_awal_keperawatan_ralan_psikiatri.rkd_jenis_berobat,penilaian_awal_keperawatan_ralan_psikiatri.rkd_hasil_pengobatan,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.fp_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.fp_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_fisik,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_fisik,penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_psikososial,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_psikososial,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.ket_rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.resiko_bunuh_diri,penilaian_awal_keperawatan_ralan_psikiatri.rbd_ide,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_ide,penilaian_awal_keperawatan_ralan_psikiatri.rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.rbd_alat,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_alat,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.rbd_percobaan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_percobaan,penilaian_awal_keperawatan_ralan_psikiatri.rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_efek_samping,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_efek_samping,penilaian_awal_keperawatan_ralan_psikiatri.rpo_napza,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_napza,penilaian_awal_keperawatan_ralan_psikiatri.ket_lama_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_cara_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_latar_belakang_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_alasan_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_alergi_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_alergi_obat,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.rpo_merokok,penilaian_awal_keperawatan_ralan_psikiatri.ket_merokok,penilaian_awal_keperawatan_ralan_psikiatri.rpo_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.ket_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.td,penilaian_awal_keperawatan_ralan_psikiatri.nadi,penilaian_awal_keperawatan_ralan_psikiatri.gcs,penilaian_awal_keperawatan_ralan_psikiatri.rr,penilaian_awal_keperawatan_ralan_psikiatri.suhu,penilaian_awal_keperawatan_ralan_psikiatri.pf_keluhan_fisik,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_keluhan_fisik,penilaian_awal_keperawatan_ralan_psikiatri.skala_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.durasi,penilaian_awal_keperawatan_ralan_psikiatri.nyeri,penilaian_awal_keperawatan_ralan_psikiatri.provokes,penilaian_awal_keperawatan_ralan_psikiatri.ket_provokes,penilaian_awal_keperawatan_ralan_psikiatri.quality,penilaian_awal_keperawatan_ralan_psikiatri.ket_quality,penilaian_awal_keperawatan_ralan_psikiatri.lokasi,penilaian_awal_keperawatan_ralan_psikiatri.menyebar,penilaian_awal_keperawatan_ralan_psikiatri.pada_dokter,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_dokter,penilaian_awal_keperawatan_ralan_psikiatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_psikiatri.ket_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.bb,penilaian_awal_keperawatan_ralan_psikiatri.tb,penilaian_awal_keperawatan_ralan_psikiatri.bmi,penilaian_awal_keperawatan_ralan_psikiatri.lapor_status_nutrisi,penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor_status_nutrisi,penilaian_awal_keperawatan_ralan_psikiatri.sg1,penilaian_awal_keperawatan_ralan_psikiatri.nilai1,penilaian_awal_keperawatan_ralan_psikiatri.sg2,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.nilai2,penilaian_awal_keperawatan_ralan_psikiatri.total_hasil,penilaian_awal_keperawatan_ralan_psikiatri.resikojatuh,penilaian_awal_keperawatan_ralan_psikiatri.bjm,penilaian_awal_keperawatan_ralan_psikiatri.msa,penilaian_awal_keperawatan_ralan_psikiatri.hasil,penilaian_awal_keperawatan_ralan_psikiatri.lapor,penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor,penilaian_awal_keperawatan_ralan_psikiatri.adl_mandi,penilaian_awal_keperawatan_ralan_psikiatri.adl_berpakaian,penilaian_awal_keperawatan_ralan_psikiatri.adl_makan,"+       
-                        "penilaian_awal_keperawatan_ralan_psikiatri.adl_bak,penilaian_awal_keperawatan_ralan_psikiatri.adl_bab,penilaian_awal_keperawatan_ralan_psikiatri.adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.adl_sosialisasi,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_sosialisasi,penilaian_awal_keperawatan_ralan_psikiatri.adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.sk_penampilan,penilaian_awal_keperawatan_ralan_psikiatri.sk_alam_perasaan,"+      
-                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_pembicaraan,penilaian_awal_keperawatan_ralan_psikiatri.sk_afek,penilaian_awal_keperawatan_ralan_psikiatri.sk_aktifitas_motorik,penilaian_awal_keperawatan_ralan_psikiatri.sk_gangguan_ringan,penilaian_awal_keperawatan_ralan_psikiatri.sk_proses_pikir,penilaian_awal_keperawatan_ralan_psikiatri.sk_orientasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_tingkat_kesadaran_orientasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_memori,penilaian_awal_keperawatan_ralan_psikiatri.sk_interaksi,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_konsentrasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.sk_isi_pikir,penilaian_awal_keperawatan_ralan_psikiatri.sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.kk_pembelajaran,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran,"+       
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_penerjamah,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_penerjamah_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_bahasa_isyarat,penilaian_awal_keperawatan_ralan_psikiatri.kk_kebutuhan_edukasi,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_kebutuhan_edukasi,penilaian_awal_keperawatan_ralan_psikiatri.rencana,"+                  
-                        "penilaian_awal_keperawatan_ralan_psikiatri.nip,petugas.nama "+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.informasi,penilaian_awal_keperawatan_ralan_psikiatri.keluhan_utama,penilaian_awal_keperawatan_ralan_psikiatri.rkd_sakit_sejak,penilaian_awal_keperawatan_ralan_psikiatri.rkd_keluhan,penilaian_awal_keperawatan_ralan_psikiatri.rkd_berobat,penilaian_awal_keperawatan_ralan_psikiatri.rkd_hasil_pengobatan,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.fp_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.fp_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_fisik,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_fisik,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_psikososial,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_psikososial,penilaian_awal_keperawatan_ralan_psikiatri.rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.ket_rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.resiko_bunuh_diri,penilaian_awal_keperawatan_ralan_psikiatri.rbd_ide,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_ide,penilaian_awal_keperawatan_ralan_psikiatri.rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.rbd_alat,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_alat,penilaian_awal_keperawatan_ralan_psikiatri.rbd_percobaan,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_percobaan,penilaian_awal_keperawatan_ralan_psikiatri.rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_efek_samping,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_efek_samping,penilaian_awal_keperawatan_ralan_psikiatri.rpo_napza,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_napza,penilaian_awal_keperawatan_ralan_psikiatri.ket_lama_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_cara_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_latar_belakang_pemakaian,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_alasan_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_alergi_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_alergi_obat,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.rpo_merokok,penilaian_awal_keperawatan_ralan_psikiatri.ket_merokok,penilaian_awal_keperawatan_ralan_psikiatri.rpo_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.ket_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.td,penilaian_awal_keperawatan_ralan_psikiatri.nadi,penilaian_awal_keperawatan_ralan_psikiatri.gcs,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.rr,penilaian_awal_keperawatan_ralan_psikiatri.suhu,penilaian_awal_keperawatan_ralan_psikiatri.pf_keluhan_fisik,penilaian_awal_keperawatan_ralan_psikiatri.ket_keluhan_fisik,penilaian_awal_keperawatan_ralan_psikiatri.skala_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.durasi,penilaian_awal_keperawatan_ralan_psikiatri.nyeri,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.provokes,penilaian_awal_keperawatan_ralan_psikiatri.ket_provokes,penilaian_awal_keperawatan_ralan_psikiatri.quality,penilaian_awal_keperawatan_ralan_psikiatri.ket_quality,penilaian_awal_keperawatan_ralan_psikiatri.lokasi,penilaian_awal_keperawatan_ralan_psikiatri.menyebar,penilaian_awal_keperawatan_ralan_psikiatri.pada_dokter,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_dokter,penilaian_awal_keperawatan_ralan_psikiatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_psikiatri.ket_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.bb,penilaian_awal_keperawatan_ralan_psikiatri.tb,penilaian_awal_keperawatan_ralan_psikiatri.bmi,penilaian_awal_keperawatan_ralan_psikiatri.lapor_status_nutrisi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor_status_nutrisi,penilaian_awal_keperawatan_ralan_psikiatri.sg1,penilaian_awal_keperawatan_ralan_psikiatri.nilai1,penilaian_awal_keperawatan_ralan_psikiatri.sg2,penilaian_awal_keperawatan_ralan_psikiatri.nilai2,penilaian_awal_keperawatan_ralan_psikiatri.total_hasil,penilaian_awal_keperawatan_ralan_psikiatri.resikojatuh,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.bjm,penilaian_awal_keperawatan_ralan_psikiatri.msa,penilaian_awal_keperawatan_ralan_psikiatri.hasil,penilaian_awal_keperawatan_ralan_psikiatri.lapor,penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor,penilaian_awal_keperawatan_ralan_psikiatri.adl_mandi,penilaian_awal_keperawatan_ralan_psikiatri.adl_berpakaian,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.adl_makan,penilaian_awal_keperawatan_ralan_psikiatri.adl_bak,penilaian_awal_keperawatan_ralan_psikiatri.adl_bab,penilaian_awal_keperawatan_ralan_psikiatri.adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.adl_sosialisasi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_sosialisasi,penilaian_awal_keperawatan_ralan_psikiatri.adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.sk_penampilan,penilaian_awal_keperawatan_ralan_psikiatri.sk_alam_perasaan,penilaian_awal_keperawatan_ralan_psikiatri.sk_pembicaraan,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_afek,penilaian_awal_keperawatan_ralan_psikiatri.sk_aktifitas_motorik,penilaian_awal_keperawatan_ralan_psikiatri.sk_gangguan_ringan,penilaian_awal_keperawatan_ralan_psikiatri.sk_proses_pikir,penilaian_awal_keperawatan_ralan_psikiatri.sk_orientasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_tingkat_kesadaran_orientasi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_memori,penilaian_awal_keperawatan_ralan_psikiatri.sk_interaksi,penilaian_awal_keperawatan_ralan_psikiatri.sk_konsentrasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.sk_isi_pikir,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.kk_pembelajaran,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran,"+       
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_penerjamah,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_penerjamah_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_bahasa_isyarat,penilaian_awal_keperawatan_ralan_psikiatri.kk_kebutuhan_edukasi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_kebutuhan_edukasi,penilaian_awal_keperawatan_ralan_psikiatri.rencana,penilaian_awal_keperawatan_ralan_psikiatri.nip,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_awal_keperawatan_ralan_psikiatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_psikiatri.no_rawat "+
                         "inner join petugas on penilaian_awal_keperawatan_ralan_psikiatri.nip=petugas.nip "+
@@ -5198,20 +5179,26 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_psikiatri.tanggal,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.informasi,penilaian_awal_keperawatan_ralan_psikiatri.keluhan_utama,penilaian_awal_keperawatan_ralan_psikiatri.rkd_sakit_sejak,penilaian_awal_keperawatan_ralan_psikiatri.rkd_keluhan,penilaian_awal_keperawatan_ralan_psikiatri.rkd_berobat,penilaian_awal_keperawatan_ralan_psikiatri.rkd_jenis_berobat,penilaian_awal_keperawatan_ralan_psikiatri.rkd_hasil_pengobatan,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.fp_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.fp_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_fisik,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_fisik,penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_psikososial,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_psikososial,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.ket_rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.resiko_bunuh_diri,penilaian_awal_keperawatan_ralan_psikiatri.rbd_ide,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_ide,penilaian_awal_keperawatan_ralan_psikiatri.rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.rbd_alat,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_alat,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.rbd_percobaan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_percobaan,penilaian_awal_keperawatan_ralan_psikiatri.rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_efek_samping,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_efek_samping,penilaian_awal_keperawatan_ralan_psikiatri.rpo_napza,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_napza,penilaian_awal_keperawatan_ralan_psikiatri.ket_lama_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_cara_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_latar_belakang_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_alasan_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_alergi_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_alergi_obat,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.rpo_merokok,penilaian_awal_keperawatan_ralan_psikiatri.ket_merokok,penilaian_awal_keperawatan_ralan_psikiatri.rpo_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.ket_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.td,penilaian_awal_keperawatan_ralan_psikiatri.nadi,penilaian_awal_keperawatan_ralan_psikiatri.gcs,penilaian_awal_keperawatan_ralan_psikiatri.rr,penilaian_awal_keperawatan_ralan_psikiatri.suhu,penilaian_awal_keperawatan_ralan_psikiatri.pf_keluhan_fisik,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_keluhan_fisik,penilaian_awal_keperawatan_ralan_psikiatri.skala_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.durasi,penilaian_awal_keperawatan_ralan_psikiatri.nyeri,penilaian_awal_keperawatan_ralan_psikiatri.provokes,penilaian_awal_keperawatan_ralan_psikiatri.ket_provokes,penilaian_awal_keperawatan_ralan_psikiatri.quality,penilaian_awal_keperawatan_ralan_psikiatri.ket_quality,penilaian_awal_keperawatan_ralan_psikiatri.lokasi,penilaian_awal_keperawatan_ralan_psikiatri.menyebar,penilaian_awal_keperawatan_ralan_psikiatri.pada_dokter,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_dokter,penilaian_awal_keperawatan_ralan_psikiatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_psikiatri.ket_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.bb,penilaian_awal_keperawatan_ralan_psikiatri.tb,penilaian_awal_keperawatan_ralan_psikiatri.bmi,penilaian_awal_keperawatan_ralan_psikiatri.lapor_status_nutrisi,penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor_status_nutrisi,penilaian_awal_keperawatan_ralan_psikiatri.sg1,penilaian_awal_keperawatan_ralan_psikiatri.nilai1,penilaian_awal_keperawatan_ralan_psikiatri.sg2,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.nilai2,penilaian_awal_keperawatan_ralan_psikiatri.total_hasil,penilaian_awal_keperawatan_ralan_psikiatri.resikojatuh,penilaian_awal_keperawatan_ralan_psikiatri.bjm,penilaian_awal_keperawatan_ralan_psikiatri.msa,penilaian_awal_keperawatan_ralan_psikiatri.hasil,penilaian_awal_keperawatan_ralan_psikiatri.lapor,penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor,penilaian_awal_keperawatan_ralan_psikiatri.adl_mandi,penilaian_awal_keperawatan_ralan_psikiatri.adl_berpakaian,penilaian_awal_keperawatan_ralan_psikiatri.adl_makan,"+       
-                        "penilaian_awal_keperawatan_ralan_psikiatri.adl_bak,penilaian_awal_keperawatan_ralan_psikiatri.adl_bab,penilaian_awal_keperawatan_ralan_psikiatri.adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.adl_sosialisasi,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_sosialisasi,penilaian_awal_keperawatan_ralan_psikiatri.adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.sk_penampilan,penilaian_awal_keperawatan_ralan_psikiatri.sk_alam_perasaan,"+      
-                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_pembicaraan,penilaian_awal_keperawatan_ralan_psikiatri.sk_afek,penilaian_awal_keperawatan_ralan_psikiatri.sk_aktifitas_motorik,penilaian_awal_keperawatan_ralan_psikiatri.sk_gangguan_ringan,penilaian_awal_keperawatan_ralan_psikiatri.sk_proses_pikir,penilaian_awal_keperawatan_ralan_psikiatri.sk_orientasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_tingkat_kesadaran_orientasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_memori,penilaian_awal_keperawatan_ralan_psikiatri.sk_interaksi,"+
-                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_konsentrasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.sk_isi_pikir,penilaian_awal_keperawatan_ralan_psikiatri.sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.kk_pembelajaran,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran,"+       
-                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_penerjamah,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_penerjamah_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_bahasa_isyarat,penilaian_awal_keperawatan_ralan_psikiatri.kk_kebutuhan_edukasi,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_kebutuhan_edukasi,penilaian_awal_keperawatan_ralan_psikiatri.rencana,"+                  
-                        "penilaian_awal_keperawatan_ralan_psikiatri.nip,petugas.nama "+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.informasi,penilaian_awal_keperawatan_ralan_psikiatri.keluhan_utama,penilaian_awal_keperawatan_ralan_psikiatri.rkd_sakit_sejak,penilaian_awal_keperawatan_ralan_psikiatri.rkd_keluhan,penilaian_awal_keperawatan_ralan_psikiatri.rkd_berobat,penilaian_awal_keperawatan_ralan_psikiatri.rkd_hasil_pengobatan,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.fp_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.fp_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_fisik,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_fisik,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_psikososial,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_psikososial,penilaian_awal_keperawatan_ralan_psikiatri.rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.ket_rh_keluarga,penilaian_awal_keperawatan_ralan_psikiatri.resiko_bunuh_diri,penilaian_awal_keperawatan_ralan_psikiatri.rbd_ide,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_ide,penilaian_awal_keperawatan_ralan_psikiatri.rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_rencana,penilaian_awal_keperawatan_ralan_psikiatri.rbd_alat,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_alat,penilaian_awal_keperawatan_ralan_psikiatri.rbd_percobaan,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_percobaan,penilaian_awal_keperawatan_ralan_psikiatri.rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rbd_keinginan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_efek_samping,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_efek_samping,penilaian_awal_keperawatan_ralan_psikiatri.rpo_napza,penilaian_awal_keperawatan_ralan_psikiatri.ket_rpo_napza,penilaian_awal_keperawatan_ralan_psikiatri.ket_lama_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_cara_pemakaian,penilaian_awal_keperawatan_ralan_psikiatri.ket_latar_belakang_pemakaian,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.rpo_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_penggunaan_obat_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.ket_alasan_penggunaan,penilaian_awal_keperawatan_ralan_psikiatri.rpo_alergi_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_alergi_obat,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.rpo_merokok,penilaian_awal_keperawatan_ralan_psikiatri.ket_merokok,penilaian_awal_keperawatan_ralan_psikiatri.rpo_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.ket_minum_kopi,penilaian_awal_keperawatan_ralan_psikiatri.td,penilaian_awal_keperawatan_ralan_psikiatri.nadi,penilaian_awal_keperawatan_ralan_psikiatri.gcs,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.rr,penilaian_awal_keperawatan_ralan_psikiatri.suhu,penilaian_awal_keperawatan_ralan_psikiatri.pf_keluhan_fisik,penilaian_awal_keperawatan_ralan_psikiatri.ket_keluhan_fisik,penilaian_awal_keperawatan_ralan_psikiatri.skala_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.durasi,penilaian_awal_keperawatan_ralan_psikiatri.nyeri,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.provokes,penilaian_awal_keperawatan_ralan_psikiatri.ket_provokes,penilaian_awal_keperawatan_ralan_psikiatri.quality,penilaian_awal_keperawatan_ralan_psikiatri.ket_quality,penilaian_awal_keperawatan_ralan_psikiatri.lokasi,penilaian_awal_keperawatan_ralan_psikiatri.menyebar,penilaian_awal_keperawatan_ralan_psikiatri.pada_dokter,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_dokter,penilaian_awal_keperawatan_ralan_psikiatri.nyeri_hilang,penilaian_awal_keperawatan_ralan_psikiatri.ket_nyeri,penilaian_awal_keperawatan_ralan_psikiatri.bb,penilaian_awal_keperawatan_ralan_psikiatri.tb,penilaian_awal_keperawatan_ralan_psikiatri.bmi,penilaian_awal_keperawatan_ralan_psikiatri.lapor_status_nutrisi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor_status_nutrisi,penilaian_awal_keperawatan_ralan_psikiatri.sg1,penilaian_awal_keperawatan_ralan_psikiatri.nilai1,penilaian_awal_keperawatan_ralan_psikiatri.sg2,penilaian_awal_keperawatan_ralan_psikiatri.nilai2,penilaian_awal_keperawatan_ralan_psikiatri.total_hasil,penilaian_awal_keperawatan_ralan_psikiatri.resikojatuh,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.bjm,penilaian_awal_keperawatan_ralan_psikiatri.msa,penilaian_awal_keperawatan_ralan_psikiatri.hasil,penilaian_awal_keperawatan_ralan_psikiatri.lapor,penilaian_awal_keperawatan_ralan_psikiatri.ket_lapor,penilaian_awal_keperawatan_ralan_psikiatri.adl_mandi,penilaian_awal_keperawatan_ralan_psikiatri.adl_berpakaian,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.adl_makan,penilaian_awal_keperawatan_ralan_psikiatri.adl_bak,penilaian_awal_keperawatan_ralan_psikiatri.adl_bab,penilaian_awal_keperawatan_ralan_psikiatri.adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_hobi,penilaian_awal_keperawatan_ralan_psikiatri.adl_sosialisasi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_sosialisasi,penilaian_awal_keperawatan_ralan_psikiatri.adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.ket_adl_kegiatan,penilaian_awal_keperawatan_ralan_psikiatri.sk_penampilan,penilaian_awal_keperawatan_ralan_psikiatri.sk_alam_perasaan,penilaian_awal_keperawatan_ralan_psikiatri.sk_pembicaraan,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_afek,penilaian_awal_keperawatan_ralan_psikiatri.sk_aktifitas_motorik,penilaian_awal_keperawatan_ralan_psikiatri.sk_gangguan_ringan,penilaian_awal_keperawatan_ralan_psikiatri.sk_proses_pikir,penilaian_awal_keperawatan_ralan_psikiatri.sk_orientasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_tingkat_kesadaran_orientasi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_memori,penilaian_awal_keperawatan_ralan_psikiatri.sk_interaksi,penilaian_awal_keperawatan_ralan_psikiatri.sk_konsentrasi,penilaian_awal_keperawatan_ralan_psikiatri.sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_persepsi,penilaian_awal_keperawatan_ralan_psikiatri.sk_isi_pikir,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_waham,penilaian_awal_keperawatan_ralan_psikiatri.sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.ket_sk_daya_tilik_diri,penilaian_awal_keperawatan_ralan_psikiatri.kk_pembelajaran,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran,"+       
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_pembelajaran_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_penerjamah,penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_penerjamah_lainnya,penilaian_awal_keperawatan_ralan_psikiatri.kk_bahasa_isyarat,penilaian_awal_keperawatan_ralan_psikiatri.kk_kebutuhan_edukasi,"+
+                        "penilaian_awal_keperawatan_ralan_psikiatri.ket_kk_kebutuhan_edukasi,penilaian_awal_keperawatan_ralan_psikiatri.rencana,penilaian_awal_keperawatan_ralan_psikiatri.nip,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_awal_keperawatan_ralan_psikiatri on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_psikiatri.no_rawat "+
                         "inner join petugas on penilaian_awal_keperawatan_ralan_psikiatri.nip=petugas.nip "+
@@ -5241,7 +5228,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
                         rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("keluhan_utama"),rs.getString("rkd_sakit_sejak"),rs.getString("rkd_keluhan"),
-                        rs.getString("rkd_berobat"),rs.getString("rkd_jenis_berobat"),rs.getString("rkd_hasil_pengobatan"),rs.getString("fp_putus_obat"),rs.getString("ket_putus_obat"),
+                        rs.getString("rkd_berobat"),rs.getString("rkd_hasil_pengobatan"),rs.getString("fp_putus_obat"),rs.getString("ket_putus_obat"),
                         rs.getString("fp_ekonomi"),rs.getString("ket_masalah_ekonomi"),rs.getString("fp_masalah_fisik"),rs.getString("ket_masalah_fisik"),rs.getString("fp_masalah_psikososial"),
                         rs.getString("ket_masalah_psikososial"),rs.getString("rh_keluarga"),rs.getString("ket_rh_keluarga"),rs.getString("resiko_bunuh_diri"),rs.getString("rbd_ide"),
                         rs.getString("ket_rbd_ide"),rs.getString("rbd_rencana"),rs.getString("ket_rbd_rencana"),rs.getString("rbd_alat"),rs.getString("ket_rbd_alat"),rs.getString("rbd_percobaan"),
@@ -5421,57 +5408,30 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()); 
             Informasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            BMI.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            KeluhanUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            RKDKeluhan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            KetKeluhanFisik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            KetKKPembelajaranLainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            FPMasalahPsikososial.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            FPPutusObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            KetMasalahPsikososial.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            FPEkonomi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            ResikoJatuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
-            BJM.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
-            MSA.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
-            Hasil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
-            Lapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
-            KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            SG1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
-            Nilai1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
-            SG2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
-            Nilai2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
-            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
-            Nyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
-            Provokes.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
-            KetProvokes.setText(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
-            Quality.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString());
-            KetQuality.setText(tbObat.getValueAt(tbObat.getSelectedRow(),53).toString());
-            Lokasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
-            Menyebar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),55).toString());
-            SkalaNyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString());
-            Durasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString());
-            NyeriHilang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString());
-            KetNyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
-            PadaDokter.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
-            KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
-            Rencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+            /*"No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","Keluhan Utama","Sakit Sejak","Ket. Keluhan dahulu","Berobat",
+            "Hasil Pengobatan Dahulu","Putus Obat","Ket. Putus Obat ","Masalah Ekonomi","Ket. Masalah Ekonomi","Masalah Fisik","Ket. Masalah Fisik",
+            "Masalah Psikososial","Ket. Masalah Psikososial","Resiko Herediter","Ket. Resiko Herediter","Res. Bunuh Diri","Ide Bunuh Diri","Ket. Ide Bunuh DIri","Rencana Bunuh Diri","Ket. Rencana Bunuh Diri",
+            "Alat B.D","Ket. Alat B.D","Percobaan B.D","Ket. Percobaan B.D","Keinginan B.D","Ket. Keinginan B. D","Peng. Obat Psikiatri","Ket. Penggunaan Obat",
+            "Riw.Efek Samping Obat","Ket Riw. Efek samping Obat","Napza","Ket. Napza","Ket. Lama Pemakaian Napza","Ket. Cara Pemakaian Napza","Ket. Latar Belakang Pemakaian Napza","Peng, Obat Lainnya",
+            "Ket. Peng. Obat Lainnya","Ket. Alasan Penggunaan","Alergi Obat","Ket. Alergi Obat","Merokok","Ket. Merokok","Minum Kopi","Ket. Minum Kopi",
+            "TD","Nadi","GCS","RR","Suhu","Keluhan Fisik","Ket. Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi",
+            "Menyebar","Lapor Dokter","Jam Lapor Nyeri","Nyeri Hilang","Ket. Hilang Nyeri","BB","TB","BMI","Lapor status Nutrisi","Jam Lapor Status Nutrisi",
+            "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter","Jam Dilapor R.J",
+            "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Ket. Adl Hobi","ADL Sosialisasi","Ket. ADL Sosialisasi","ADL Kegiatan","Ket. ADL. Kegiatan","Penampilan","Alam Perasaan",
+            "Pembicaraan","Afek","Aktifitas Motorik","Gangguan Ringan","Proses Pikir","Orientasi","Ting. Kesadaran Orientasi","Memori","Interaksi","Konsentrasi",
+            "Persepsi","Ket. Persepsi","Isi Pikir","Waham","Ket. Waham","Daya Tilik Diri","Ket. D. T. D","Pembelajaran","Ket. Pembelajaran","Ket. Pembelajaran Lainnya","Penerjamah","Penerjamah Lainnya","Bahasa Isyarat","Kebutuhan Edukasi",
+            "Ket. Kebutuhan Edukasi","Rencana Keperawatan 2","NIP","Nama Perawat"*/
+            
+            
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             
             try {
                 Valid.tabelKosong(tabModeMasalah);
                 
                 ps=koneksi.prepareStatement(
-                        "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                        "where penilaian_awal_keperawatan_ralan_masalah.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah.kode_masalah");
+                        "select master_masalah_keperawatan_psikiatri.kode_masalah,master_masalah_keperawatan_psikiatri.nama_masalah from master_masalah_keperawatan_psikiatri "+
+                        "inner join penilaian_awal_keperawatan_psikiatri_masalah on penilaian_awal_keperawatan_psikiatri_masalah.kode_masalah=master_masalah_keperawatan_psikiatri.kode_masalah "+
+                        "where penilaian_awal_keperawatan_psikiatri_masalah.no_rawat=? order by penilaian_awal_keperawatan_psikiatri_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -5494,11 +5454,10 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             
             try {
                 Valid.tabelKosong(tabModeRencana);
-                
                 ps=koneksi.prepareStatement(
-                        "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ralan_rencana on penilaian_awal_keperawatan_ralan_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
-                        "where penilaian_awal_keperawatan_ralan_rencana.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana.kode_rencana");
+                        "select master_rencana_keperawatan_psikiatri.kode_rencana,master_rencana_keperawatan_psikiatri.rencana_keperawatan from master_rencana_keperawatan_psikiatri "+
+                        "inner join penilaian_awal_keperawatan_ralan_rencana_psikiatri on penilaian_awal_keperawatan_ralan_rencana_psikiatri.kode_rencana=master_rencana_keperawatan_psikiatri.kode_rencana "+
+                        "where penilaian_awal_keperawatan_ralan_rencana_psikiatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_psikiatri.kode_rencana");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
