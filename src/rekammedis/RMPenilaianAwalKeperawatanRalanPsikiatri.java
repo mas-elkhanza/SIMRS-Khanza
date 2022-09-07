@@ -1032,11 +1032,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         TB.setFocusTraversalPolicyProvider(true);
         TB.setName("TB"); // NOI18N
-        TB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TBActionPerformed(evt);
-            }
-        });
         TB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TBKeyPressed(evt);
@@ -1058,11 +1053,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         Nadi.setFocusTraversalPolicyProvider(true);
         Nadi.setName("Nadi"); // NOI18N
-        Nadi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NadiActionPerformed(evt);
-            }
-        });
         Nadi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NadiKeyPressed(evt);
@@ -1098,11 +1088,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         TD.setFocusTraversalPolicyProvider(true);
         TD.setName("TD"); // NOI18N
-        TD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TDActionPerformed(evt);
-            }
-        });
         TD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TDKeyPressed(evt);
@@ -1157,20 +1142,9 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         BMI.setFocusTraversalPolicyProvider(true);
         BMI.setName("BMI"); // NOI18N
-        BMI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BMIActionPerformed(evt);
-            }
-        });
         BMI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BMIKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                BMIKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                BMIKeyTyped(evt);
             }
         });
         FormInput.add(BMI);
@@ -1189,11 +1163,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         KetKeluhanFisik.setFocusTraversalPolicyProvider(true);
         KetKeluhanFisik.setName("KetKeluhanFisik"); // NOI18N
-        KetKeluhanFisik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KetKeluhanFisikActionPerformed(evt);
-            }
-        });
         KetKeluhanFisik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KetKeluhanFisikKeyPressed(evt);
@@ -1366,11 +1335,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 SG1ItemStateChanged(evt);
             }
         });
-        SG1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SG1ActionPerformed(evt);
-            }
-        });
         SG1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SG1KeyPressed(evt);
@@ -1424,16 +1388,11 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
-        TotalHasil.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TotalHasilKeyPressed(evt);
-            }
-        });
         FormInput.add(TotalHasil);
         TotalHasil.setBounds(774, 1020, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-09-2022 21:41:11" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-09-2022 08:46:31" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2145,11 +2104,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         ADLMandi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Bantuan Minimal", "Bantuan Total" }));
         ADLMandi.setName("ADLMandi"); // NOI18N
-        ADLMandi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ADLMandiActionPerformed(evt);
-            }
-        });
         ADLMandi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ADLMandiKeyPressed(evt);
@@ -2180,11 +2134,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         ADLMakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mandiri", "Bantuan Minimal", "Bantuan Total" }));
         ADLMakan.setName("ADLMakan"); // NOI18N
-        ADLMakan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ADLMakanActionPerformed(evt);
-            }
-        });
         ADLMakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ADLMakanKeyPressed(evt);
@@ -2308,11 +2257,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKPenampilan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bersih", "Rapi", "Tidak Rapi", "Kotor", "Tidak Seperti Biasanya", "Pakaian Tidak Sesuai" }));
         SKPenampilan.setName("SKPenampilan"); // NOI18N
-        SKPenampilan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKPenampilanActionPerformed(evt);
-            }
-        });
         SKPenampilan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKPenampilanKeyPressed(evt);
@@ -2328,11 +2272,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKPembicaraan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sesuai", "Cepat", "Lambat", "Membisu", "Mendominasi", "Mengancam", "Inkoheren", "Apatis", "Keras", "Gagap", "Tidak Mampu Memulai Pembicaraan" }));
         SKPembicaraan.setName("SKPembicaraan"); // NOI18N
-        SKPembicaraan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKPembicaraanActionPerformed(evt);
-            }
-        });
         SKPembicaraan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKPembicaraanKeyPressed(evt);
@@ -2348,11 +2287,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKAktifitasMotorik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tegang", "Gelisah", "Lesuh", "Grimasem", "TIK", "Tremor", "Agitasi", "Konfulsif", "Melamun", "Sulit Diarahkan" }));
         SKAktifitasMotorik.setName("SKAktifitasMotorik"); // NOI18N
-        SKAktifitasMotorik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKAktifitasMotorikActionPerformed(evt);
-            }
-        });
         SKAktifitasMotorik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKAktifitasMotorikKeyPressed(evt);
@@ -2368,11 +2302,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKAlamPerasaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sesuai", "Marah", "Putus Asa", "Tertekan", "Sedih", "Labil", "Malu", "Khawatir", "Gembira Berlebihan", "Merasa Tidak Mampu", "Ketakutan", "Tidak Berguna" }));
         SKAlamPerasaan.setName("SKAlamPerasaan"); // NOI18N
-        SKAlamPerasaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKAlamPerasaanActionPerformed(evt);
-            }
-        });
         SKAlamPerasaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKAlamPerasaanKeyPressed(evt);
@@ -2388,11 +2317,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKInteraksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kooperatif", "Tidak Kooperatif", "Bermusuhan", "Mudah Tersinggung", "Curiga", "Defensif", "Kontak Mata Kurang" }));
         SKInteraksi.setName("SKInteraksi"); // NOI18N
-        SKInteraksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKInteraksiActionPerformed(evt);
-            }
-        });
         SKInteraksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKInteraksiKeyPressed(evt);
@@ -2408,11 +2332,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKAfek.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sesuai", "Datar", "Tumpul", "Labil", "Tidak Sesuai" }));
         SKAfek.setName("SKAfek"); // NOI18N
-        SKAfek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKAfekActionPerformed(evt);
-            }
-        });
         SKAfek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKAfekKeyPressed(evt);
@@ -2428,11 +2347,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKPersepsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Halusinasi", "Pendengaran", "Penghidung", "Penglihatan", "Pengecapan", "Perabaan" }));
         SKPersepsi.setName("SKPersepsi"); // NOI18N
-        SKPersepsi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKPersepsiActionPerformed(evt);
-            }
-        });
         SKPersepsi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKPersepsiKeyPressed(evt);
@@ -2448,11 +2362,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKProsesPikir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sesuai", "Sirkumsial", "Kehilangan Asosiasi", "Flight Of Ideas", "Bloking", "Pengulangan Pembicaraan", "Tangensial" }));
         SKProsesPikir.setName("SKProsesPikir"); // NOI18N
-        SKProsesPikir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKProsesPikirActionPerformed(evt);
-            }
-        });
         SKProsesPikir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKProsesPikirKeyPressed(evt);
@@ -2468,11 +2377,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKIsiPikir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sesuai", "Obsesi", "Fobia", "Hipokondria", "Depersonalisasi", "Pikiran Magis", "Ide Yang Terkait", "Waham" }));
         SKIsiPikir.setName("SKIsiPikir"); // NOI18N
-        SKIsiPikir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKIsiPikirActionPerformed(evt);
-            }
-        });
         SKIsiPikir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKIsiPikirKeyPressed(evt);
@@ -2508,11 +2412,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKMemori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ganguan Daya Ingat Jangka Pendek", "Ganguan Daya Ingat Jangka Panjang", "Ganguan Daya Ingat Saat Ini", "Konfabulasi" }));
         SKMemori.setName("SKMemori"); // NOI18N
-        SKMemori.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKMemoriActionPerformed(evt);
-            }
-        });
         SKMemori.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKMemoriKeyPressed(evt);
@@ -2528,11 +2427,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKKonsentrasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Konsentrasi Baik", "Mudah Beralih", "Tidak Mampu Berkonsentrasi", "Tidak Mampu Berhitung Sederhana" }));
         SKKonsentrasi.setName("SKKonsentrasi"); // NOI18N
-        SKKonsentrasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKKonsentrasiActionPerformed(evt);
-            }
-        });
         SKKonsentrasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKKonsentrasiKeyPressed(evt);
@@ -2548,11 +2442,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKGangguanRingan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gangguan Ringan", "Gangguan Bermakna" }));
         SKGangguanRingan.setName("SKGangguanRingan"); // NOI18N
-        SKGangguanRingan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKGangguanRinganActionPerformed(evt);
-            }
-        });
         SKGangguanRingan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKGangguanRinganKeyPressed(evt);
@@ -2568,11 +2457,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKDayaTilikDiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mengingkari Penyakit Yang Diderita", "Menyalahkan Hal-hal Diluar Dirinya" }));
         SKDayaTilikDiri.setName("SKDayaTilikDiri"); // NOI18N
-        SKDayaTilikDiri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKDayaTilikDiriActionPerformed(evt);
-            }
-        });
         SKDayaTilikDiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKDayaTilikDiriKeyPressed(evt);
@@ -2598,11 +2482,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKWaham.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebesaran", "Curiga", "Agama", "Nihilistik" }));
         SKWaham.setName("SKWaham"); // NOI18N
-        SKWaham.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKWahamActionPerformed(evt);
-            }
-        });
         SKWaham.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKWahamKeyPressed(evt);
@@ -2664,11 +2543,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKTingkatKesadaranOrientasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bingung", "Sedasi", "Waktu", "Stupor", "Tempat", "Orang" }));
         SKTingkatKesadaranOrientasi.setName("SKTingkatKesadaranOrientasi"); // NOI18N
-        SKTingkatKesadaranOrientasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKTingkatKesadaranOrientasiActionPerformed(evt);
-            }
-        });
         SKTingkatKesadaranOrientasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKTingkatKesadaranOrientasiKeyPressed(evt);
@@ -2798,11 +2672,6 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         SKOrientasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SKOrientasi.setName("SKOrientasi"); // NOI18N
-        SKOrientasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SKOrientasiActionPerformed(evt);
-            }
-        });
         SKOrientasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SKOrientasiKeyPressed(evt);
@@ -3368,7 +3237,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-09-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-09-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3382,7 +3251,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-09-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-09-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4186,7 +4055,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        Valid.pindah(evt,GCS,TB);
+        Valid.pindah(evt,KetDokter,TB);
     }//GEN-LAST:event_BBKeyPressed
 
     private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
@@ -4202,19 +4071,15 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Informasi,Nadi);
+        Valid.pindah(evt,KetKeluhanFisik,Nadi);
     }//GEN-LAST:event_TDKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
         Valid.pindah(evt,Nadi,Suhu);
     }//GEN-LAST:event_RRKeyPressed
 
-    private void BMIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BMIKeyPressed
-        Valid.pindah(evt,BMI,RKDKeluhan);
-    }//GEN-LAST:event_BMIKeyPressed
-
     private void KetKeluhanFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetKeluhanFisikKeyPressed
-        Valid.pindah(evt,Suhu,KetKeluhanFisik);
+        Valid.pindah(evt,PFKeluhanFisik,TD);
     }//GEN-LAST:event_KetKeluhanFisikKeyPressed
 
     private void InformasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiKeyPressed
@@ -4258,19 +4123,15 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_Nilai1KeyPressed
 
     private void Nilai2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nilai2KeyPressed
-        Valid.pindah(evt,SG2,Nyeri);
+        Valid.pindah(evt,SG2,ResikoJatuh);
     }//GEN-LAST:event_Nilai2KeyPressed
-
-    private void TotalHasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalHasilKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TotalHasilKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
         Valid.pindah(evt,Rencana,Informasi);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        Valid.pindah(evt,Suhu,BB);
+        Valid.pindah(evt,Suhu,Nyeri);
     }//GEN-LAST:event_GCSKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
@@ -4415,20 +4276,12 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         // TODO add your handling code here:
     }//GEN-LAST:event_DetailRencanaKeyPressed
 
-    private void NadiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NadiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NadiActionPerformed
-
-    private void TDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TDActionPerformed
-
     private void LaporStatusNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LaporStatusNutrisiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BMI,KetLaporStatusNutrisi);
     }//GEN-LAST:event_LaporStatusNutrisiKeyPressed
 
     private void KetLaporStatusNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLaporStatusNutrisiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LaporStatusNutrisi,SG1);
     }//GEN-LAST:event_KetLaporStatusNutrisiKeyPressed
 
     private void RKDBerobatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RKDBerobatKeyPressed
@@ -4436,16 +4289,12 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_RKDBerobatKeyPressed
 
     private void PFKeluhanFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PFKeluhanFisikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetMinumKopi,KetKeluhanFisik);
     }//GEN-LAST:event_PFKeluhanFisikKeyPressed
 
     private void PFKeluhanFisikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PFKeluhanFisikActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PFKeluhanFisikActionPerformed
-
-    private void TBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TBActionPerformed
 
     private void RHKeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RHKeluargaKeyPressed
         Valid.pindah(evt,KetMasalahPsikososial,KetRHKeluarga);
@@ -4595,129 +4444,77 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         Valid.pindah(evt,KetCaraPemakaian,RPOPenggunaanObatLainnya);
     }//GEN-LAST:event_KetLatarBelakangPemakaianKeyPressed
 
-    private void KetKeluhanFisikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KetKeluhanFisikActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KetKeluhanFisikActionPerformed
-
-    private void SG1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SG1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SG1ActionPerformed
-
     private void ADLMandiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLMandiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetLapor,ADLBak);
     }//GEN-LAST:event_ADLMandiKeyPressed
 
     private void ADLBerpakaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLBerpakaianKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetADLKegiatan,ADLMakan);
     }//GEN-LAST:event_ADLBerpakaianKeyPressed
 
     private void ADLMakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLMakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ADLBerpakaian,SKPenampilan);
     }//GEN-LAST:event_ADLMakanKeyPressed
 
     private void ADLBabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLBabKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ADLBak,ADLSosialisasi);
     }//GEN-LAST:event_ADLBabKeyPressed
 
     private void ADLBakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLBakKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ADLMandi,ADLBab);
     }//GEN-LAST:event_ADLBakKeyPressed
 
     private void ADLSosialisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLSosialisasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ADLBab,KetADLSosialisasi);
     }//GEN-LAST:event_ADLSosialisasiKeyPressed
 
     private void ADLHobiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLHobiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetADLSosialisasi,KetADLHobi);
     }//GEN-LAST:event_ADLHobiKeyPressed
 
     private void KKBahasaIsyaratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KKBahasaIsyaratKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_KKBahasaIsyaratKeyPressed
 
-    private void ADLMakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADLMakanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ADLMakanActionPerformed
-
-    private void ADLMandiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADLMandiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ADLMandiActionPerformed
-
     private void KetADLHobiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetADLHobiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ADLHobi,ADLKegiatan);
     }//GEN-LAST:event_KetADLHobiKeyPressed
 
     private void KetADLKegiatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetADLKegiatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ADLKegiatan,ADLBerpakaian);
     }//GEN-LAST:event_KetADLKegiatanKeyPressed
 
-    private void SKPenampilanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKPenampilanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKPenampilanActionPerformed
-
     private void SKPenampilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKPenampilanKeyPressed
-        Valid.pindah2(evt,SKPenampilan,SKAlamPerasaan);
+        Valid.pindah(evt,ADLMakan,SKPembicaraan);
     }//GEN-LAST:event_SKPenampilanKeyPressed
 
-    private void SKPembicaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKPembicaraanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKPembicaraanActionPerformed
-
     private void SKPembicaraanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKPembicaraanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKPenampilan,SKAlamPerasaan);
     }//GEN-LAST:event_SKPembicaraanKeyPressed
 
-    private void SKAktifitasMotorikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKAktifitasMotorikActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKAktifitasMotorikActionPerformed
-
     private void SKAktifitasMotorikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKAktifitasMotorikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKAfek,SKInteraksi);
     }//GEN-LAST:event_SKAktifitasMotorikKeyPressed
 
-    private void SKAlamPerasaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKAlamPerasaanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKAlamPerasaanActionPerformed
-
     private void SKAlamPerasaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKAlamPerasaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKPembicaraan,SKAfek);
     }//GEN-LAST:event_SKAlamPerasaanKeyPressed
 
-    private void SKInteraksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKInteraksiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKInteraksiActionPerformed
-
     private void SKInteraksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKInteraksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKAktifitasMotorik,SKProsesPikir);
     }//GEN-LAST:event_SKInteraksiKeyPressed
 
-    private void SKAfekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKAfekActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKAfekActionPerformed
-
     private void SKAfekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKAfekKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKAlamPerasaan,SKAktifitasMotorik);
     }//GEN-LAST:event_SKAfekKeyPressed
-
-    private void SKPersepsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKPersepsiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKPersepsiActionPerformed
 
     private void SKPersepsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKPersepsiKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_SKPersepsiKeyPressed
 
-    private void SKProsesPikirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKProsesPikirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKProsesPikirActionPerformed
-
     private void SKProsesPikirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKProsesPikirKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKInteraksi,SKDayaTilikDiri);
     }//GEN-LAST:event_SKProsesPikirKeyPressed
-
-    private void SKIsiPikirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKIsiPikirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKIsiPikirActionPerformed
 
     private void SKIsiPikirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKIsiPikirKeyPressed
         // TODO add your handling code here:
@@ -4731,45 +4528,25 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         // TODO add your handling code here:
     }//GEN-LAST:event_KKKebutuhanEdukasiKeyPressed
 
-    private void SKMemoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKMemoriActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKMemoriActionPerformed
-
     private void SKMemoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKMemoriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetSKDayaTilikDiri,SKKonsentrasi);
     }//GEN-LAST:event_SKMemoriKeyPressed
-
-    private void SKKonsentrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKKonsentrasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKKonsentrasiActionPerformed
 
     private void SKKonsentrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKKonsentrasiKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_SKKonsentrasiKeyPressed
 
-    private void SKGangguanRinganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKGangguanRinganActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKGangguanRinganActionPerformed
-
     private void SKGangguanRinganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKGangguanRinganKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_SKGangguanRinganKeyPressed
 
-    private void SKDayaTilikDiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKDayaTilikDiriActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKDayaTilikDiriActionPerformed
-
     private void SKDayaTilikDiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKDayaTilikDiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKProsesPikir,KetSKDayaTilikDiri);
     }//GEN-LAST:event_SKDayaTilikDiriKeyPressed
 
     private void KetADLSosialisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetADLSosialisasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ADLSosialisasi,ADLHobi);
     }//GEN-LAST:event_KetADLSosialisasiKeyPressed
-
-    private void SKWahamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKWahamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKWahamActionPerformed
 
     private void SKWahamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKWahamKeyPressed
         // TODO add your handling code here:
@@ -4784,19 +4561,15 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_KetSKWahamKeyPressed
 
     private void ADLKegiatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ADLKegiatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetADLHobi,KetADLKegiatan);
     }//GEN-LAST:event_ADLKegiatanKeyPressed
-
-    private void SKTingkatKesadaranOrientasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKTingkatKesadaranOrientasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKTingkatKesadaranOrientasiActionPerformed
 
     private void SKTingkatKesadaranOrientasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKTingkatKesadaranOrientasiKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_SKTingkatKesadaranOrientasiKeyPressed
 
     private void KetSKDayaTilikDiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetSKDayaTilikDiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SKDayaTilikDiri,SKMemori);
     }//GEN-LAST:event_KetSKDayaTilikDiriKeyPressed
 
     private void KKPembelajaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KKPembelajaranKeyPressed
@@ -4823,25 +4596,9 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         // TODO add your handling code here:
     }//GEN-LAST:event_KetRHKeluargaActionPerformed
 
-    private void BMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMIActionPerformed
-     //   Valid.pindah2(evt,KeluhanUtama,RKDKeluhan);
-    }//GEN-LAST:event_BMIActionPerformed
-
     private void KetKKPenerjamahLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetKKPenerjamahLainnyaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_KetKKPenerjamahLainnyaKeyPressed
-
-    private void BMIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BMIKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BMIKeyReleased
-
-    private void BMIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BMIKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BMIKeyTyped
-
-    private void SKOrientasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKOrientasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SKOrientasiActionPerformed
 
     private void SKOrientasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SKOrientasiKeyPressed
         // TODO add your handling code here:
@@ -4856,7 +4613,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_RKDSakitSejakKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
-        Valid.pindah(evt,Nilai2,Provokes);
+        Valid.pindah(evt,GCS,Provokes);
     }//GEN-LAST:event_NyeriKeyPressed
 
     private void ProvokesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProvokesKeyPressed
@@ -4904,7 +4661,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_PadaDokterKeyPressed
 
     private void KetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetDokterKeyPressed
-        Valid.pindah(evt,PadaDokter,Rencana);
+        Valid.pindah(evt,PadaDokter,BB);
     }//GEN-LAST:event_KetDokterKeyPressed
 
     private void ResikoJatuhKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResikoJatuhKeyPressed
@@ -4928,7 +4685,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
     }//GEN-LAST:event_LaporKeyPressed
 
     private void KetLaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLaporKeyPressed
-        Valid.pindah(evt,Lapor,SG1);
+        Valid.pindah(evt,Lapor,ADLMandi);
     }//GEN-LAST:event_KetLaporKeyPressed
 
     private void tbMasalahKeperawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanMouseClicked
@@ -5058,6 +4815,10 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             KetDokter.requestFocus();
         }
     }//GEN-LAST:event_TCariMasalahKeyPressed
+
+    private void BMIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BMIKeyPressed
+        Valid.pindah(evt,TB,LaporStatusNutrisi);
+    }//GEN-LAST:event_BMIKeyPressed
 
     /**
     * @param args the command line arguments

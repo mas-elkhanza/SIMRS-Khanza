@@ -532,7 +532,6 @@
                             <Property name="name" type="java.lang.String" value="TB" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TBActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TBKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -570,7 +569,6 @@
                             <Property name="name" type="java.lang.String" value="Nadi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NadiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NadiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -632,7 +630,6 @@
                             <Property name="name" type="java.lang.String" value="TD" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TDActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TDKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -731,10 +728,7 @@
                             <Property name="name" type="java.lang.String" value="BMI" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BMIActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BMIKeyPressed"/>
-                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BMIKeyReleased"/>
-                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BMIKeyTyped"/>
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -771,7 +765,6 @@
                             <Property name="name" type="java.lang.String" value="KetKeluhanFisik" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KetKeluhanFisikActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KetKeluhanFisikKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -1080,7 +1073,6 @@
                           </Properties>
                           <Events>
                             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SG1ItemStateChanged"/>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SG1ActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SG1KeyPressed"/>
                           </Events>
                           <Constraints>
@@ -1173,9 +1165,6 @@
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="TotalHasil" noResource="true"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TotalHasilKeyPressed"/>
-                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="774" y="1020" width="80" height="23"/>
@@ -1189,7 +1178,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="06-09-2022 21:41:11"/>
+                                <StringItem index="0" value="07-09-2022 08:46:31"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2566,7 +2555,6 @@
                             <Property name="name" type="java.lang.String" value="ADLMandi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ADLMandiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ADLMandiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -2629,7 +2617,6 @@
                             <Property name="name" type="java.lang.String" value="ADLMakan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ADLMakanActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ADLMakanKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -2879,7 +2866,6 @@
                             <Property name="name" type="java.lang.String" value="SKPenampilan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKPenampilanActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKPenampilanKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -2919,7 +2905,6 @@
                             <Property name="name" type="java.lang.String" value="SKPembicaraan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKPembicaraanActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKPembicaraanKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -2959,7 +2944,6 @@
                             <Property name="name" type="java.lang.String" value="SKAktifitasMotorik" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKAktifitasMotorikActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKAktifitasMotorikKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3000,7 +2984,6 @@
                             <Property name="name" type="java.lang.String" value="SKAlamPerasaan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKAlamPerasaanActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKAlamPerasaanKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3036,7 +3019,6 @@
                             <Property name="name" type="java.lang.String" value="SKInteraksi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKInteraksiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKInteraksiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3070,7 +3052,6 @@
                             <Property name="name" type="java.lang.String" value="SKAfek" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKAfekActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKAfekKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3105,7 +3086,6 @@
                             <Property name="name" type="java.lang.String" value="SKPersepsi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKPersepsiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKPersepsiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3141,7 +3121,6 @@
                             <Property name="name" type="java.lang.String" value="SKProsesPikir" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKProsesPikirActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKProsesPikirKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3178,7 +3157,6 @@
                             <Property name="name" type="java.lang.String" value="SKIsiPikir" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKIsiPikirActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKIsiPikirKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3247,7 +3225,6 @@
                             <Property name="name" type="java.lang.String" value="SKMemori" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKMemoriActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKMemoriKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3280,7 +3257,6 @@
                             <Property name="name" type="java.lang.String" value="SKKonsentrasi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKKonsentrasiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKKonsentrasiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3311,7 +3287,6 @@
                             <Property name="name" type="java.lang.String" value="SKGangguanRingan" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKGangguanRinganActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKGangguanRinganKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3342,7 +3317,6 @@
                             <Property name="name" type="java.lang.String" value="SKDayaTilikDiri" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKDayaTilikDiriActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKDayaTilikDiriKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3389,7 +3363,6 @@
                             <Property name="name" type="java.lang.String" value="SKWaham" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKWahamActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKWahamKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3505,7 +3478,6 @@
                             <Property name="name" type="java.lang.String" value="SKTingkatKesadaranOrientasi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKTingkatKesadaranOrientasiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKTingkatKesadaranOrientasiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -3765,7 +3737,6 @@
                             <Property name="name" type="java.lang.String" value="SKOrientasi" noResource="true"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SKOrientasiActionPerformed"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SKOrientasiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -4826,7 +4797,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="06-09-2022"/>
+                            <StringItem index="0" value="07-09-2022"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4854,7 +4825,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="06-09-2022"/>
+                            <StringItem index="0" value="07-09-2022"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
