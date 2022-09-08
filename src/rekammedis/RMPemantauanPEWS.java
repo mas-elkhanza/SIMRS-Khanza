@@ -854,7 +854,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             isCombo3();
             isjml();
             isHitung();
-            if(Sequel.menyimpantf("pemantauan_pews","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
+            if(Sequel.menyimpantf("pemantauan_pews_anak","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
                 cmbSkor3.getSelectedItem().toString(),Skor3.getText(),TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText()
@@ -887,7 +887,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
        if(tbObat.getSelectedRow()!= -1){
-            if(Sequel.queryu2tf("delete from pemantauan_pews where tanggal=? and no_rawat=?",2,new String[]{
+            if(Sequel.queryu2tf("delete from pemantauan_pews_anak where tanggal=? and no_rawat=?",2,new String[]{
                 tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                 tampil();
@@ -934,25 +934,25 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
               Valid.MyReportqry("rptDataPemantauanPEWS.jasper","report","::[ Data Pemantauan PEWS ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews.tanggal,pemantauan_pews.parameter_perilaku,pemantauan_pews.skor_perilaku,pemantauan_pews.parameter_crt_atau_warna_kulit,pemantauan_pews.skor_crt_atau_warna_kulit,pemantauan_pews.parameter_perespirasi,pemantauan_pews.skor_perespirasi,"+
-                    "pemantauan_pews.skor_total,pemantauan_pews.parameter_total,pemantauan_pews.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews inner join reg_periksa on pemantauan_pews.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pemantauan_pews_anak.tanggal,pemantauan_pews_anak.parameter_perilaku,pemantauan_pews_anak.skor_perilaku,pemantauan_pews_anak.parameter_crt_atau_warna_kulit,pemantauan_pews_anak.skor_crt_atau_warna_kulit,pemantauan_pews_anak.parameter_perespirasi,pemantauan_pews_anak.skor_perespirasi,"+
+                    "pemantauan_pews_anak.skor_total,pemantauan_pews_anak.parameter_total,pemantauan_pews_anak.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_pews_anak inner join reg_periksa on pemantauan_pews_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews.nip=petugas.nip where "+
-                    "pemantauan_pews.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by pemantauan_pews.tanggal ",param);
+                    "inner join petugas on pemantauan_pews_anak.nip=petugas.nip where "+
+                    "pemantauan_pews_anak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by pemantauan_pews_anak.tanggal ",param);
             }else{
                 Valid.MyReportqry("rptDataPemantauanPEWS.jasper","report","::[ Data Pemantauan PEWS ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews.tanggal,pemantauan_pews.parameter_perilaku,pemantauan_pews.skor_perilaku,pemantauan_pews.parameter_crt_atau_warna_kulit,pemantauan_pews.skor_crt_atau_warna_kulit,pemantauan_pews.parameter_perespirasi,pemantauan_pews.skor_perespirasi,"+
-                    "pemantauan_pews.skor_total,pemantauan_pews.parameter_total,pemantauan_pews.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews inner join reg_periksa on pemantauan_pews.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pemantauan_pews_anak.tanggal,pemantauan_pews_anak.parameter_perilaku,pemantauan_pews_anak.skor_perilaku,pemantauan_pews_anak.parameter_crt_atau_warna_kulit,pemantauan_pews_anak.skor_crt_atau_warna_kulit,pemantauan_pews_anak.parameter_perespirasi,pemantauan_pews_anak.skor_perespirasi,"+
+                    "pemantauan_pews_anak.skor_total,pemantauan_pews_anak.parameter_total,pemantauan_pews_anak.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_pews_anak inner join reg_periksa on pemantauan_pews_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews.nip=petugas.nip "+
-                    "where pemantauan_pews.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
+                    "inner join petugas on pemantauan_pews_anak.nip=petugas.nip "+
+                    "where pemantauan_pews_anak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%'  or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' "+
                     "or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or pemantauan_pews.parameter_total like '%"+TCari.getText().trim()+"%' or pemantauan_pews.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like ?) "+
-                    "order by pemantauan_pews.tanggal ",param);
+                    "or pemantauan_pews_anak.parameter_total like '%"+TCari.getText().trim()+"%' or pemantauan_pews_anak.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like ?) "+
+                    "order by pemantauan_pews_anak.tanggal ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1072,11 +1072,11 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirPemantauanPEWS.jasper","report","::[ Pemantauan PEWS ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur, "+
-                    "pasien.jk,pasien.tgl_lahir,pemantauan_pews.tanggal,pemantauan_pews.parameter_perilaku,pemantauan_pews.skor_perilaku,pemantauan_pews.parameter_crt_atau_warna_kulit,pemantauan_pews.skor_crt_atau_warna_kulit, "+
-                    "pemantauan_pews.parameter_perespirasi,pemantauan_pews.skor_perespirasi,pemantauan_pews.skor_total,pemantauan_pews.parameter_total, "+
-                    "pemantauan_pews.nip,petugas.nama "+
-                    "from pemantauan_pews inner join reg_periksa on pemantauan_pews.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and pemantauan_pews.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'",param);
+                    "pasien.jk,pasien.tgl_lahir,pemantauan_pews_anak.tanggal,pemantauan_pews_anak.parameter_perilaku,pemantauan_pews_anak.skor_perilaku,pemantauan_pews_anak.parameter_crt_atau_warna_kulit,pemantauan_pews_anak.skor_crt_atau_warna_kulit, "+
+                    "pemantauan_pews_anak.parameter_perespirasi,pemantauan_pews_anak.skor_perespirasi,pemantauan_pews_anak.skor_total,pemantauan_pews_anak.parameter_total, "+
+                    "pemantauan_pews_anak.nip,petugas.nama "+
+                    "from pemantauan_pews_anak inner join reg_periksa on pemantauan_pews_anak.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on pemantauan_pews_anak.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and pemantauan_pews_anak.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPemantauanPEWSActionPerformed
 
@@ -1139,7 +1139,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             isCombo3();
             isjml();
             isHitung();
-            Sequel.mengedit("pemantauan_pews","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter_perilaku=?,skor_perilaku=?,"+
+            Sequel.mengedit("pemantauan_pews_anak","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter_perilaku=?,skor_perilaku=?,"+
                 "parameter_crt_atau_warna_kulit=?,skor_crt_atau_warna_kulit=?,parameter_perespirasi=?,skor_perespirasi=?,skor_total=?,parameter_total=?,nip=?",13,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
@@ -1246,23 +1246,23 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews.tanggal,pemantauan_pews.parameter_perilaku,pemantauan_pews.skor_perilaku,pemantauan_pews.parameter_crt_atau_warna_kulit,pemantauan_pews.skor_crt_atau_warna_kulit,pemantauan_pews.parameter_perespirasi,pemantauan_pews.skor_perespirasi,"+
-                    "pemantauan_pews.skor_total,pemantauan_pews.parameter_total,pemantauan_pews.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews inner join reg_periksa on pemantauan_pews.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pemantauan_pews_anak.tanggal,pemantauan_pews_anak.parameter_perilaku,pemantauan_pews_anak.skor_perilaku,pemantauan_pews_anak.parameter_crt_atau_warna_kulit,pemantauan_pews_anak.skor_crt_atau_warna_kulit,pemantauan_pews_anak.parameter_perespirasi,pemantauan_pews_anak.skor_perespirasi,"+
+                    "pemantauan_pews_anak.skor_total,pemantauan_pews_anak.parameter_total,pemantauan_pews_anak.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_pews_anak inner join reg_periksa on pemantauan_pews_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews.nip=petugas.nip where "+
-                    "pemantauan_pews.tanggal between ? and ? order by pemantauan_pews.tanggal ");
+                    "inner join petugas on pemantauan_pews_anak.nip=petugas.nip where "+
+                    "pemantauan_pews_anak.tanggal between ? and ? order by pemantauan_pews_anak.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews.tanggal,pemantauan_pews.parameter_perilaku,pemantauan_pews.skor_perilaku,pemantauan_pews.parameter_crt_atau_warna_kulit,pemantauan_pews.skor_crt_atau_warna_kulit,pemantauan_pews.parameter_perespirasi,pemantauan_pews.skor_perespirasi,"+
-                    "pemantauan_pews.skor_total,pemantauan_pews.parameter_total,pemantauan_pews.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews inner join reg_periksa on pemantauan_pews.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pemantauan_pews_anak.tanggal,pemantauan_pews_anak.parameter_perilaku,pemantauan_pews_anak.skor_perilaku,pemantauan_pews_anak.parameter_crt_atau_warna_kulit,pemantauan_pews_anak.skor_crt_atau_warna_kulit,pemantauan_pews_anak.parameter_perespirasi,pemantauan_pews_anak.skor_perespirasi,"+
+                    "pemantauan_pews_anak.skor_total,pemantauan_pews_anak.parameter_total,pemantauan_pews_anak.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_pews_anak inner join reg_periksa on pemantauan_pews_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews.nip=petugas.nip "+
-                    "where pemantauan_pews.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pemantauan_pews.parameter_total like ? or pemantauan_pews.nip like ? or petugas.nama like ?) "+
-                    "order by pemantauan_pews.tanggal ");
+                    "inner join petugas on pemantauan_pews_anak.nip=petugas.nip "+
+                    "where pemantauan_pews_anak.tanggal between ? and ? and "+
+                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pemantauan_pews_anak.parameter_total like ? or pemantauan_pews_anak.nip like ? or petugas.nama like ?) "+
+                    "order by pemantauan_pews_anak.tanggal ");
             }
                 
             try {
@@ -1445,10 +1445,10 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        /*BtnSimpan.setEnabled(akses.getpemantauan_pews());
-        BtnHapus.setEnabled(akses.getpemantauan_pews());
-        BtnEdit.setEnabled(akses.getpemantauan_pews());
-        BtnPrint.setEnabled(akses.getpemantauan_pews()); */
+        /*BtnSimpan.setEnabled(akses.getpemantauan_pews_anak());
+        BtnHapus.setEnabled(akses.getpemantauan_pews_anak());
+        BtnEdit.setEnabled(akses.getpemantauan_pews_anak());
+        BtnPrint.setEnabled(akses.getpemantauan_pews_anak()); */
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1521,7 +1521,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         isCombo3();
         isjml();
         isHitung();
-        Sequel.mengedit("pemantauan_pews","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter_perilaku=?,skor_perilaku=?,"+
+        Sequel.mengedit("pemantauan_pews_anak","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter_perilaku=?,skor_perilaku=?,"+
             "parameter_crt_atau_warna_kulit=?,skor_crt_atau_warna_kulit=?,parameter_perespirasi=?,skor_perespirasi=?,skor_total=?,parameter_total=?,nip=?",13,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),

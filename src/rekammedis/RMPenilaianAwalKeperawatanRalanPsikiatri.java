@@ -75,10 +75,11 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","Keluhan Utama","Sakit Sejak","Riwayat Penyakit Dahulu","Berobat",
             "Hasil Pengobatan","Putus Obat","Keterangan Putus Obat ","Masalah Ekonomi","Keterangan Masalah Ekonomi","Masalah Fisik","Keterangan Masalah Fisik",
-            "Masalah Psikososial","Ket. Masalah Psikososial","Resiko Herediter","Ket. Resiko Herediter","Res. Bunuh Diri","Ide Bunuh Diri","Ket. Ide Bunuh DIri","Rencana Bunuh Diri","Ket. Rencana Bunuh Diri",
-            "Alat B.D","Ket. Alat B.D","Percobaan B.D","Ket. Percobaan B.D","Keinginan B.D","Ket. Keinginan B. D","Peng. Obat Psikiatri","Ket. Penggunaan Obat",
-            "Riw.Efek Samping Obat","Ket Riw. Efek samping Obat","Napza","Ket. Napza","Ket. Lama Pemakaian Napza","Ket. Cara Pemakaian Napza","Ket. Latar Belakang Pemakaian Napza","Peng, Obat Lainnya",
-            "Ket. Peng. Obat Lainnya","Ket. Alasan Penggunaan","Alergi Obat","Ket. Alergi Obat","Merokok","Ket. Merokok","Minum Kopi","Ket. Minum Kopi",
+            "Masalah Psikososial","Keterangan Masalah Psikososial","Resiko Herediter","Keterangan Resiko Herediter","Res Bunuh Diri","Ide Bunuh Diri","Keterangan Ide Bunuh DIri",
+            "Rencana Bunuh Diri","Keterangan Rencana Bunuh Diri","Alat Bunuh Diri","Keterangan Alat Bunuh Diri","Percobaan Bunuh Diri","Keterangan Percobaan Bunuh Diri",
+            "Keinginan Bunuh Diri","Keterangan Keinginan Bunuh Diri","Penggunaan Obat Psikiatri","Keterangan Penggunaan Obat Psikiatri","Efek Samping Obat","Keterangan Efek samping Obat",
+            "Napza","Keterangan Penggunaan Napza","Lama Napza","Cara Pemakaian Napza","Latar Belakang Pemakaian Napza","Obat Lainnya","Keterangan Penggunaan Obat Lainnya",
+            "Keterangan Alasan Penggunaan","Alergi Obat","Ket. Alergi Obat","Merokok","Ket. Merokok","Minum Kopi","Ket. Minum Kopi",
             "TD","Nadi","GCS","RR","Suhu","Keluhan Fisik","Ket. Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi",
             "Menyebar","Lapor Dokter","Jam Lapor Nyeri","Nyeri Hilang","Ket. Hilang Nyeri","BB","TB","BMI","Lapor status Nutrisi","Jam Lapor Status Nutrisi",
             "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter","Jam Dilapor R.J",
@@ -130,7 +131,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }else if(i==15){
                 column.setPreferredWidth(65); 
             }else if(i==16){
-                column.setPreferredWidth(127); 
+                column.setPreferredWidth(123); 
             }else if(i==17){
                 column.setPreferredWidth(91); 
             }else if(i==18){
@@ -138,7 +139,59 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }else if(i==19){
                 column.setPreferredWidth(75); 
             }else if(i==20){
-                column.setPreferredWidth(141); 
+                column.setPreferredWidth(134); 
+            }else if(i==21){
+                column.setPreferredWidth(106); 
+            }else if(i==22){
+                column.setPreferredWidth(165); 
+            }else if(i==23){
+                column.setPreferredWidth(90); 
+            }else if(i==24){
+                column.setPreferredWidth(150); 
+            }else if(i==25){
+                column.setPreferredWidth(80); 
+            }else if(i==26){
+                column.setPreferredWidth(78); 
+            }else if(i==27){
+                column.setPreferredWidth(138); 
+            }else if(i==28){
+                column.setPreferredWidth(104); 
+            }else if(i==29){
+                column.setPreferredWidth(162); 
+            }else if(i==30){
+                column.setPreferredWidth(82); 
+            }else if(i==31){
+                column.setPreferredWidth(140); 
+            }else if(i==32){
+                column.setPreferredWidth(113); 
+            }else if(i==33){
+                column.setPreferredWidth(170); 
+            }else if(i==34){
+                column.setPreferredWidth(110); 
+            }else if(i==35){
+                column.setPreferredWidth(168); 
+            }else if(i==36){
+                column.setPreferredWidth(136); 
+            }else if(i==37){
+                column.setPreferredWidth(195); 
+            }else if(i==38){
+                column.setPreferredWidth(101); 
+            }else if(i==39){
+                column.setPreferredWidth(160); 
+            }else if(i==40){
+                column.setPreferredWidth(40); 
+            }else if(i==41){
+                column.setPreferredWidth(160); 
+            }else if(i==42){
+                column.setPreferredWidth(68); 
+            }else if(i==43){
+                column.setPreferredWidth(120); 
+            }else if(i==44){
+                column.setPreferredWidth(170); 
+            }else if(i==45){
+                column.setPreferredWidth(75); 
+            }else if(i==46){
+                column.setPreferredWidth(160); 
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

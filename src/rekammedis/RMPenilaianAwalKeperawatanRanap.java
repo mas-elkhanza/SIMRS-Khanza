@@ -7413,7 +7413,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
 
     private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
         TCari.setText("");
-        //tampilMasalah();
+        tampilMasalah();
     }//GEN-LAST:event_BtnAllMasalahActionPerformed
 
     private void BtnAllMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllMasalahKeyPressed
