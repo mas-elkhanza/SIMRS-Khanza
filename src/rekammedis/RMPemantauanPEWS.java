@@ -64,7 +64,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","Skor Perilaku","Skor 1","Skor CRT / Warna Kulit","Skor 2",
             "Skor Perespirasi","Skor 3","Ttl.Skor","Kesimpulan","NIP","Petugas","Tgl.Lahir"
         }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
 
@@ -87,21 +87,21 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             }else if(i==5){
                  column.setPreferredWidth(120);
             }else if(i==6){
-                 column.setPreferredWidth(200);
+                 column.setPreferredWidth(240);
             }else if(i==7){
-                 column.setPreferredWidth(40);
+                 column.setPreferredWidth(39);
             }else if(i==8){
-                 column.setPreferredWidth(105);
+                 column.setPreferredWidth(122);
             }else if(i==9){
-                 column.setPreferredWidth(40);
+                 column.setPreferredWidth(39);
             }else if(i==10){
-                 column.setPreferredWidth(175);
+                 column.setPreferredWidth(145);
             }else if(i==11){
-                 column.setPreferredWidth(40);
+                 column.setPreferredWidth(39);
             }else if(i==12){
                  column.setPreferredWidth(45);
             }else if(i==13){
-                 column.setPreferredWidth(250);
+                 column.setPreferredWidth(400);
             }else if(i==15){
                  column.setPreferredWidth(125);
             }else{

@@ -83,7 +83,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             "Keluhan Fisik","Keterangan Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Keterangan Provokes","Kualitas","Keterangan Kualitas","Lokasi","Menyebar","Lapor Dokter",
             "Jam Lapor Nyeri","Nyeri Hilang","Keterangan Hilang Nyeri","BB","TB","BMI","Lapor Status Nutrisi","Jam Lapor Status Nutrisi","Skrining Gizi 1","Nilai 1","Skrining Gizi 2",
             "Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter","Jam Dilapor",
-            "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Keterangan Adl Hobi","ADL Sosialisasi","Keterangan ADL Sosialisasi","ADL Kegiatan","Keterangan ADL. Kegiatan","Penampilan","Alam Perasaan",
+            "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Keterangan ADL Hobi","ADL Sosialisasi","Keterangan ADL Sosialisasi","ADL Kegiatan","Keterangan ADL. Kegiatan","Penampilan","Alam Perasaan",
             "Pembicaraan","Afek","Aktifitas Motorik","Gangguan Ringan","Proses Pikir","Orientasi","Ting. Kesadaran Orientasi","Memori","Interaksi","Konsentrasi",
             "Persepsi","Keterangan Persepsi","Isi Pikir","Waham","Keterangan Waham","Daya Tilik Diri","Keterangan D. T. D","Pembelajaran","Keterangan Pembelajaran","Keterangan Pembelajaran Lainnya","Penerjamah","Penerjamah Lainnya","Bahasa Isyarat","Kebutuhan Edukasi",
             "Keterangan Kebutuhan Edukasi","Rencana Keperawatan 2","NIP","Nama Perawat"
@@ -289,7 +289,17 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }else if(i==94){
                 column.setPreferredWidth(88); 
             }else if(i==95){
-                column.setPreferredWidth(88); 
+                column.setPreferredWidth(53); 
+            }else if(i==96){
+                column.setPreferredWidth(112); 
+            }else if(i==97){
+                column.setPreferredWidth(81); 
+            }else if(i==98){
+                column.setPreferredWidth(142); 
+            }else if(i==99){
+                column.setPreferredWidth(76); 
+            }else if(i==100){
+                column.setPreferredWidth(137); 
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

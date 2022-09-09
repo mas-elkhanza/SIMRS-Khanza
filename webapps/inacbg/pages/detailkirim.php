@@ -727,8 +727,8 @@
                 $add_payment_pct   = validTeks(trim($_POST['add_payment_pct']));
                 $birth_weight      = validTeks(trim($_POST['birth_weight']));
                 $discharge_status  = validTeks(trim($_POST['discharge_status']));
-                $diagnosa          = validTeks(trim($_POST['diagnosa']));
-                $procedure         = validTeks(trim($_POST['procedure']));
+                $diagnosa          = validTeks2(trim($_POST['diagnosa']));
+                $procedure         = validTeks2(trim($_POST['procedure']));
                 $prosedur_non_bedah = validTeks(trim($_POST['prosedur_non_bedah']));
                 $prosedur_bedah    = validTeks(trim($_POST['prosedur_bedah']));
                 $konsultasi        = validTeks(trim($_POST['konsultasi']));

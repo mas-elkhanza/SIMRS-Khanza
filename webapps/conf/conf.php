@@ -59,6 +59,17 @@
         return $save;
     }
     
+    function validTeks2($data){
+        $save=str_replace("'","",$data);
+        $save=str_replace("\\","",$save);
+        $save=str_replace(";","",$save);
+        $save=str_replace("`","",$save);
+        $save=str_replace("--","",$save);
+        $save=str_replace("/*","",$save);
+        $save=str_replace("*/","",$save);
+        return $save;
+    }
+    
     function validangka($angka){
         if (isset($angka)) {
             if(!is_numeric($angka)) {
