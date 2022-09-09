@@ -79,14 +79,14 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             "Rencana Bunuh Diri","Keterangan Rencana Bunuh Diri","Alat Bunuh Diri","Keterangan Alat Bunuh Diri","Percobaan Bunuh Diri","Keterangan Percobaan Bunuh Diri",
             "Keinginan Bunuh Diri","Keterangan Keinginan Bunuh Diri","Penggunaan Obat Psikiatri","Keterangan Penggunaan Obat Psikiatri","Efek Samping Obat","Keterangan Efek samping Obat",
             "Napza","Keterangan Penggunaan Napza","Lama Napza","Cara Pemakaian Napza","Latar Belakang Pemakaian Napza","Obat Lainnya","Keterangan Penggunaan Obat Lainnya",
-            "Keterangan Alasan Penggunaan","Alergi Obat","Ket. Alergi Obat","Merokok","Ket. Merokok","Minum Kopi","Ket. Minum Kopi",
-            "TD","Nadi","GCS","RR","Suhu","Keluhan Fisik","Ket. Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi",
-            "Menyebar","Lapor Dokter","Jam Lapor Nyeri","Nyeri Hilang","Ket. Hilang Nyeri","BB","TB","BMI","Lapor status Nutrisi","Jam Lapor Status Nutrisi",
-            "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter","Jam Dilapor R.J",
-            "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Ket. Adl Hobi","ADL Sosialisasi","Ket. ADL Sosialisasi","ADL Kegiatan","Ket. ADL. Kegiatan","Penampilan","Alam Perasaan",
+            "Alasan Penggunaan Obat Lainnya","Alergi Obat","Keterangan Alergi Obat","Merokok","Keterangan Merokok","Minum Kopi","Keterangan Minum Kopi","TD","Nadi","GCS","RR","Suhu",
+            "Keluhan Fisik","Keterangan Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Keterangan Provokes","Kualitas","Keterangan Kualitas","Lokasi","Menyebar","Lapor Dokter",
+            "Jam Lapor Nyeri","Nyeri Hilang","Keterangan Hilang Nyeri","BB","TB","BMI","Lapor Status Nutrisi","Jam Lapor Status Nutrisi","Skrining Gizi 1","Nilai 1","Skrining Gizi 2",
+            "Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter","Jam Dilapor",
+            "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Keterangan Adl Hobi","ADL Sosialisasi","Keterangan ADL Sosialisasi","ADL Kegiatan","Keterangan ADL. Kegiatan","Penampilan","Alam Perasaan",
             "Pembicaraan","Afek","Aktifitas Motorik","Gangguan Ringan","Proses Pikir","Orientasi","Ting. Kesadaran Orientasi","Memori","Interaksi","Konsentrasi",
-            "Persepsi","Ket. Persepsi","Isi Pikir","Waham","Ket. Waham","Daya Tilik Diri","Ket. D. T. D","Pembelajaran","Ket. Pembelajaran","Ket. Pembelajaran Lainnya","Penerjamah","Penerjamah Lainnya","Bahasa Isyarat","Kebutuhan Edukasi",
-            "Ket. Kebutuhan Edukasi","Rencana Keperawatan 2","NIP","Nama Perawat"
+            "Persepsi","Keterangan Persepsi","Isi Pikir","Waham","Keterangan Waham","Daya Tilik Diri","Keterangan D. T. D","Pembelajaran","Keterangan Pembelajaran","Keterangan Pembelajaran Lainnya","Penerjamah","Penerjamah Lainnya","Bahasa Isyarat","Kebutuhan Edukasi",
+            "Keterangan Kebutuhan Edukasi","Rencana Keperawatan 2","NIP","Nama Perawat"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -189,9 +189,89 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }else if(i==44){
                 column.setPreferredWidth(170); 
             }else if(i==45){
-                column.setPreferredWidth(75); 
+                column.setPreferredWidth(73); 
             }else if(i==46){
-                column.setPreferredWidth(160); 
+                column.setPreferredWidth(195); 
+            }else if(i==47){
+                column.setPreferredWidth(172); 
+            }else if(i==48){
+                column.setPreferredWidth(64); 
+            }else if(i==49){
+                column.setPreferredWidth(124); 
+            }else if(i==50){
+                column.setPreferredWidth(49); 
+            }else if(i==51){
+                column.setPreferredWidth(108); 
+            }else if(i==52){
+                column.setPreferredWidth(64); 
+            }else if(i==53){
+                column.setPreferredWidth(123); 
+            }else if(i==54){
+                column.setPreferredWidth(50); 
+            }else if(i==55){
+                column.setPreferredWidth(36); 
+            }else if(i==56){
+                column.setPreferredWidth(36); 
+            }else if(i==57){
+                column.setPreferredWidth(36); 
+            }else if(i==58){
+                column.setPreferredWidth(36); 
+            }else if(i==59){
+                column.setPreferredWidth(73); 
+            }else if(i==60){
+                column.setPreferredWidth(131); 
+            }else if(i==61){
+                column.setPreferredWidth(61); 
+            }else if(i==62){
+                column.setPreferredWidth(39); 
+            }else if(i==63){
+                column.setPreferredWidth(82); 
+            }else if(i==64){
+                column.setPreferredWidth(82); 
+            }else if(i==65){
+                column.setPreferredWidth(111); 
+            }else if(i==66){
+                column.setPreferredWidth(87); 
+            }else if(i==67){
+                column.setPreferredWidth(107); 
+            }else if(i==68){
+                column.setPreferredWidth(110); 
+            }else if(i==69){
+                column.setPreferredWidth(56); 
+            }else if(i==70){
+                column.setPreferredWidth(70); 
+            }else if(i==71){
+                column.setPreferredWidth(86); 
+            }else if(i==72){
+                column.setPreferredWidth(86); 
+            }else if(i==73){
+                column.setPreferredWidth(125); 
+            }else if(i==74){
+                column.setPreferredWidth(35); 
+            }else if(i==75){
+                column.setPreferredWidth(35); 
+            }else if(i==76){
+                column.setPreferredWidth(45); 
+            }else if(i==77){
+                column.setPreferredWidth(105); 
+            }else if(i==78){
+                column.setPreferredWidth(127); 
+            }else if(i==79){
+                column.setPreferredWidth(76); 
+            }else if(i==80){
+                column.setPreferredWidth(40); 
+            }else if(i==81){
+                column.setPreferredWidth(76); 
+            }else if(i==82){
+                column.setPreferredWidth(40); 
+            }else if(i==83){
+                column.setPreferredWidth(57); 
+            }else if(i==84){
+                column.setPreferredWidth(85); 
+            }else if(i==85){
+                column.setPreferredWidth(85); 
+            }else if(i==86){
+                column.setPreferredWidth(85); 
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -3819,13 +3899,13 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                                             "<td width='44%' valign='top'>Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("alat_bantu")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_bantu")+"</td>"+
+                                            "<td width='44%' valign='top'>Keterangan Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_bantu")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='44%' valign='top'>Prothesa</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("prothesa")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Prothesa</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_pro")+"</td>"+
+                                            "<td width='44%' valign='top'>Keterangan Prothesa</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_pro")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='44%' valign='top'>ADL</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("adl")+"</td>"+
@@ -3838,7 +3918,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                                             "<td width='64%' valign='top'>Status Psikologis</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("status_psiko")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Psikologi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_psiko")+"</td>"+
+                                            "<td width='64%' valign='top'>Keterangan Psikologi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_psiko")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='64%' valign='top'>Hubungan pasien dengan anggota keluarga</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("hub_keluarga")+"</td>"+
@@ -3847,7 +3927,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                                             "<td width='64%' valign='top'>Tinggal dengan</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("tinggal_dengan")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Tinggal</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_tinggal")+"</td>"+
+                                            "<td width='64%' valign='top'>Keterangan Tinggal</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_tinggal")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='64%' valign='top'>Ekonomi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ekonomi")+"</td>"+
@@ -3856,13 +3936,13 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                                             "<td width='64%' valign='top'>Kepercayaan / Budaya / Nilai-nilai khusus yang perlu diperhatikan</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("budaya")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Budaya</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_budaya")+"</td>"+
+                                            "<td width='64%' valign='top'>Keterangan Budaya</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_budaya")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='64%' valign='top'>Edukasi diberikan kepada </td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("edukasi")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Edukasi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_edukasi")+"</td>"+
+                                            "<td width='64%' valign='top'>Keterangan Edukasi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_edukasi")+"</td>"+
                                         "</tr>"+
                                     "</table>"+
                                 "</td>"+
@@ -3916,13 +3996,13 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                                             "<td width='44%' valign='top'>Provokes</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("provokes")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Provokes</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_provokes")+"</td>"+
+                                            "<td width='44%' valign='top'>Keterangan Provokes</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_provokes")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='44%' valign='top'>Kualitas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("quality")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Kualitas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_quality")+"</td>"+
+                                            "<td width='44%' valign='top'>Keterangan Kualitas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_quality")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='44%' valign='top'>Lokas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("lokasi")+"</td>"+
@@ -3940,7 +4020,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                                             "<td width='44%' valign='top'>Nyeri Hilang</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("nyeri_hilang")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Hilang Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_nyeri")+"</td>"+
+                                            "<td width='44%' valign='top'>Keterangan Hilang Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_nyeri")+"</td>"+
                                         "</tr>"+
                                         "<tr class='isi2'>"+
                                             "<td width='44%' valign='top'>Lapor Ke Dokter</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("pada_dokter")+"</td>"+
@@ -5475,19 +5555,19 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()); 
             Informasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            /*"No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","Keluhan Utama","Sakit Sejak","Ket. Keluhan dahulu","Berobat",
-            "Hasil Pengobatan Dahulu","Putus Obat","Ket. Putus Obat ","Masalah Ekonomi","Ket. Masalah Ekonomi","Masalah Fisik","Ket. Masalah Fisik",
-            "Masalah Psikososial","Ket. Masalah Psikososial","Resiko Herediter","Ket. Resiko Herediter","Res. Bunuh Diri","Ide Bunuh Diri","Ket. Ide Bunuh DIri","Rencana Bunuh Diri","Ket. Rencana Bunuh Diri",
-            "Alat B.D","Ket. Alat B.D","Percobaan B.D","Ket. Percobaan B.D","Keinginan B.D","Ket. Keinginan B. D","Peng. Obat Psikiatri","Ket. Penggunaan Obat",
-            "Riw.Efek Samping Obat","Ket Riw. Efek samping Obat","Napza","Ket. Napza","Ket. Lama Pemakaian Napza","Ket. Cara Pemakaian Napza","Ket. Latar Belakang Pemakaian Napza","Peng, Obat Lainnya",
-            "Ket. Peng. Obat Lainnya","Ket. Alasan Penggunaan","Alergi Obat","Ket. Alergi Obat","Merokok","Ket. Merokok","Minum Kopi","Ket. Minum Kopi",
-            "TD","Nadi","GCS","RR","Suhu","Keluhan Fisik","Ket. Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi",
-            "Menyebar","Lapor Dokter","Jam Lapor Nyeri","Nyeri Hilang","Ket. Hilang Nyeri","BB","TB","BMI","Lapor status Nutrisi","Jam Lapor Status Nutrisi",
+            /*"No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","Keluhan Utama","Sakit Sejak","Keterangan Keluhan dahulu","Berobat",
+            "Hasil Pengobatan Dahulu","Putus Obat","Keterangan Putus Obat ","Masalah Ekonomi","Keterangan Masalah Ekonomi","Masalah Fisik","Keterangan Masalah Fisik",
+            "Masalah Psikososial","Keterangan Masalah Psikososial","Resiko Herediter","Keterangan Resiko Herediter","Res. Bunuh Diri","Ide Bunuh Diri","Keterangan Ide Bunuh DIri","Rencana Bunuh Diri","Keterangan Rencana Bunuh Diri",
+            "Alat B.D","Keterangan Alat B.D","Percobaan B.D","Keterangan Percobaan B.D","Keinginan B.D","Keterangan Keinginan B. D","Peng. Obat Psikiatri","Keterangan Penggunaan Obat",
+            "Riw.Efek Samping Obat","Ket Riw. Efek samping Obat","Napza","Keterangan Napza","Keterangan Lama Pemakaian Napza","Keterangan Cara Pemakaian Napza","Keterangan Latar Belakang Pemakaian Napza","Peng, Obat Lainnya",
+            "Keterangan Peng. Obat Lainnya","Keterangan Alasan Penggunaan","Alergi Obat","Keterangan Alergi Obat","Merokok","Keterangan Merokok","Minum Kopi","Keterangan Minum Kopi",
+            "TD","Nadi","GCS","RR","Suhu","Keluhan Fisik","Keterangan Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Keterangan Provokes","Kualitas","Keterangan Kualitas","Lokasi",
+            "Menyebar","Lapor Dokter","Jam Lapor Nyeri","Nyeri Hilang","Keterangan Hilang Nyeri","BB","TB","BMI","Lapor status Nutrisi","Jam Lapor Status Nutrisi",
             "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter","Jam Dilapor R.J",
-            "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Ket. Adl Hobi","ADL Sosialisasi","Ket. ADL Sosialisasi","ADL Kegiatan","Ket. ADL. Kegiatan","Penampilan","Alam Perasaan",
+            "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Keterangan Adl Hobi","ADL Sosialisasi","Keterangan ADL Sosialisasi","ADL Kegiatan","Keterangan ADL. Kegiatan","Penampilan","Alam Perasaan",
             "Pembicaraan","Afek","Aktifitas Motorik","Gangguan Ringan","Proses Pikir","Orientasi","Ting. Kesadaran Orientasi","Memori","Interaksi","Konsentrasi",
-            "Persepsi","Ket. Persepsi","Isi Pikir","Waham","Ket. Waham","Daya Tilik Diri","Ket. D. T. D","Pembelajaran","Ket. Pembelajaran","Ket. Pembelajaran Lainnya","Penerjamah","Penerjamah Lainnya","Bahasa Isyarat","Kebutuhan Edukasi",
-            "Ket. Kebutuhan Edukasi","Rencana Keperawatan 2","NIP","Nama Perawat"*/
+            "Persepsi","Keterangan Persepsi","Isi Pikir","Waham","Keterangan Waham","Daya Tilik Diri","Keterangan D. T. D","Pembelajaran","Keterangan Pembelajaran","Keterangan Pembelajaran Lainnya","Penerjamah","Penerjamah Lainnya","Bahasa Isyarat","Kebutuhan Edukasi",
+            "Keterangan Kebutuhan Edukasi","Rencana Keperawatan 2","NIP","Nama Perawat"*/
             
             
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());

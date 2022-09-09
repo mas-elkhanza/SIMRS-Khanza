@@ -1381,6 +1381,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps3.close();
                                     }
                                 }
+                                
+                                if(tglopname.equals(Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01")){
+                                    ps3=koneksi.prepareStatement(
+                                        "select riwayat_barang_medis.stok_akhir,riwayat_barang_medis.tanggal,riwayat_barang_medis.jam from riwayat_barang_medis where riwayat_barang_medis.tanggal > ? and "+
+                                        "riwayat_barang_medis.kode_brng=? and riwayat_barang_medis.kd_bangsal=? and riwayat_barang_medis.no_batch=? and riwayat_barang_medis.no_faktur=? "+
+                                        "order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) asc limit 1");
+                                    try {
+                                        ps3.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
+                                        ps3.setString(2,rs.getString("kode_brng"));
+                                        ps3.setString(3,KdGudang.getText());
+                                        ps3.setString(4,rs2.getString("no_batch"));
+                                        ps3.setString(5,rs2.getString("no_faktur"));
+                                        rs3=ps3.executeQuery();
+                                        if(rs3.next()){
+                                            tglopname=rs3.getString("tanggal")+" "+rs3.getString("jam");
+                                            stokawal=rs3.getDouble("stok_akhir");
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Note : "+e);
+                                    } finally{
+                                        if(rs3!=null){
+                                            rs3.close();
+                                        }
+                                        if(ps3!=null){
+                                            ps3.close();
+                                        }
+                                    }
+                                }
+                                
                                 harga=Sequel.cariIsiAngka("select data_batch."+hppfarmasi+" from data_batch where data_batch.kode_brng='"+rs.getString("kode_brng")+"' and data_batch.no_batch='"+rs2.getString("no_batch")+"' and data_batch.no_faktur='"+rs2.getString("no_faktur")+"' ");
                                 if(harga<=0){
                                     harga=rs.getDouble("harga");
