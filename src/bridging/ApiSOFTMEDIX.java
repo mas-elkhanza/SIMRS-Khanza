@@ -304,7 +304,11 @@ public class ApiSOFTMEDIX {
             Sequel.queryu("delete from temporary_permintaan_lab where temp37='"+akses.getalamatip()+"'");
             if(response.isArray()){
                 i=0;
+                System.out.println("Proses Ambil Data Soft Medix : ");
                 for(JsonNode list:response){
+                    System.out.println(i+" "+root.path("result").path("obx").path("order_lab").asText()+" | "+list.path("nama_test").asText()+
+                            " | "+list.path("hasil").asText()+" | "+list.path("nilai_normal").asText()+" | "+list.path("satuan").asText()+
+                            " | "+list.path("flag").asText().replaceAll("null","")+" | "+list.path("test_id").asText());
                     Sequel.menyimpan("temporary_permintaan_lab","'"+i+"','"+root.path("result").path("obx").path("order_lab").asText()+"','"+
                             list.path("nama_test").asText()+"','"+
                             list.path("hasil").asText()+"','"+

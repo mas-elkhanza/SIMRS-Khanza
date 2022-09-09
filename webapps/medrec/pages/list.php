@@ -1,15 +1,6 @@
-
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-	$bulan=$baris[1];
+   if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
    }
 ?>
 
@@ -93,7 +84,7 @@
             <table width="100%" align="center" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr class="head3">					
                     <td width="430px">
-                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="250" autofocus />
+                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="40" maxlength="250" pattern="[A-Z0-9-]{1,250}" title=" A-Z0-9- (Maksimal 250 karakter)" autocomplete="off" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />
                     </td>
                     <td width="140px" >Record : <?php echo $jumlah; ?> </td>

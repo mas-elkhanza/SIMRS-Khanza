@@ -61,9 +61,8 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal",
-            "Skor Perilaku","Skor 1","Skor CRT / Warna Kulit","Skor 2","Skor Perespirasi","Skor 3",
-            "Ttl.Skor","Kesimpulan","NIP","Petugas","Tgl.Lahir"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","Skor Perilaku","Skor 1","Skor CRT / Warna Kulit","Skor 2",
+            "Skor Perespirasi","Skor 3","Ttl.Skor","Kesimpulan","NIP","Petugas","Tgl.Lahir"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -88,7 +87,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             }else if(i==5){
                  column.setPreferredWidth(120);
             }else if(i==6){
-                 column.setPreferredWidth(145);
+                 column.setPreferredWidth(200);
             }else if(i==7){
                  column.setPreferredWidth(40);
             }else if(i==8){
@@ -1297,7 +1296,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             Skor1.setForeground(Color.blue);
             Skor1.setText("1");
         }else if(cmbSkor1.getSelectedItem().equals("Gelisah")){
-            Skor1.setForeground(Color.yellow);
+            Skor1.setForeground(new Color(200,200,0));
             Skor1.setText("2");
         }else if(cmbSkor1.getSelectedItem().equals("Tidak Merespon Terhadap Nyeri Penurunan Kesadaran")){
             Skor1.setForeground(Color.red);
@@ -1313,7 +1312,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             Skor2.setForeground(Color.blue);
             Skor2.setText("1");
         }else if(cmbSkor2.getSelectedItem().equals("4 dtk / Sianosis")){
-            Skor2.setForeground(Color.yellow);
+            Skor2.setForeground(new Color(200,200,0));
             Skor2.setText("2");
         }else if(cmbSkor2.getSelectedItem().equals("> 5 dtk / Mottle")){
             Skor2.setForeground(Color.red); 
@@ -1329,7 +1328,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             Skor3.setForeground(Color.blue);
             Skor3.setText("1");
         }else if(cmbSkor3.getSelectedItem().equals("Retraksi Dada / O2 4-6 Lpm")){
-            Skor3.setForeground(Color.yellow);
+            Skor3.setForeground(new Color(200,200,0));
             Skor3.setText("2");
         }else if(cmbSkor3.getSelectedItem().equals("Stridor / O2 7-8 Lpm")){
             Skor3.setForeground(Color.red);
@@ -1393,10 +1392,9 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             ParameterSkor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());  
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());  
-            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(8,10));
-            System.out.println(""+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(12,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(12,13));
-            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(15,16));
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
         }
     }
     private void isRawat() {

@@ -1,7 +1,4 @@
 <?php
-    if(strpos($_SERVER['REQUEST_URI'],"conf")){
-        exit(header("Location:../index.php"));
-    }
     require_once('../conf/conf.php');
 
     function getKey() {

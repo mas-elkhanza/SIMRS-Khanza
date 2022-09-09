@@ -1,3 +1,9 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
+
 <div id="post">
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
@@ -1040,7 +1046,7 @@
                             ?>
                         </select>
                         &nbsp;&nbsp;
-                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="47" maxlength="250" autofocus />
+                        Keyword : <input name="keyword" class="text" type="text" value="<?php echo $keyword;?>" size="47" maxlength="250" pattern="[A-Z0-9-]{1,250}" title=" A-Z0-9- (Maksimal 250 karakter)" autocomplete="off" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />&nbsp;&nbsp;&nbsp;
                         Record : <input name="record" class="text6" type="text" value="<?php echo $i;?>" size="5" maxlength="5" />&nbsp;&nbsp;
                         <input name=BtnKeluar type=submit class="button" value="&nbsp;&nbsp;&nbsp;Keluar&nbsp;&nbsp;&nbsp;" />
