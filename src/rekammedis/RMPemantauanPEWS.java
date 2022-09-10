@@ -5,7 +5,7 @@
 
 package rekammedis;
 import java.awt.Color;
-import fungsi.WarnaTable;
+import fungsi.WarnaTablePEWS;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -46,11 +46,8 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private double ttlskor=0,jmlskor=0;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private String finger="";
-    private boolean semua;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -109,7 +106,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
                  column.setMaxWidth(0);
             } 
         }
-        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        tbObat.setDefaultRenderer(Object.class, new WarnaTablePEWS());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
@@ -196,9 +193,9 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
-        jLabel21 = new widget.Label();
         DTPCari1 = new widget.Tanggal();
+        jLabel21 = new widget.Label();
+        DTPCari2 = new widget.Tanggal();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -424,13 +421,13 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2022" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
-        DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass9.add(DTPCari2);
+        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2022" }));
+        DTPCari1.setDisplayFormat("dd-MM-yyyy");
+        DTPCari1.setName("DTPCari1"); // NOI18N
+        DTPCari1.setOpaque(false);
+        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("s.d.");
@@ -438,13 +435,13 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2022" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
-        DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass9.add(DTPCari1);
+        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2022" }));
+        DTPCari2.setDisplayFormat("dd-MM-yyyy");
+        DTPCari2.setName("DTPCari2"); // NOI18N
+        DTPCari2.setOpaque(false);
+        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari2);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -535,7 +532,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -699,9 +696,12 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         cmbSkor2.setBounds(270, 110, 380, 23);
 
         Skor1.setEditable(false);
+        Skor1.setBackground(new java.awt.Color(0, 255, 0));
+        Skor1.setForeground(new java.awt.Color(255, 255, 255));
         Skor1.setText("0");
         Skor1.setFocusTraversalPolicyProvider(true);
         Skor1.setName("Skor1"); // NOI18N
+        Skor1.setOpaque(true);
         FormInput.add(Skor1);
         Skor1.setBounds(745, 80, 44, 23);
 
@@ -716,9 +716,12 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         jLabel22.setBounds(681, 110, 60, 23);
 
         Skor2.setEditable(false);
+        Skor2.setBackground(new java.awt.Color(0, 255, 0));
+        Skor2.setForeground(new java.awt.Color(255, 255, 255));
         Skor2.setText("0");
         Skor2.setFocusTraversalPolicyProvider(true);
         Skor2.setName("Skor2"); // NOI18N
+        Skor2.setOpaque(true);
         FormInput.add(Skor2);
         Skor2.setBounds(745, 110, 44, 23);
 
@@ -749,9 +752,12 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         jLabel26.setBounds(681, 140, 60, 23);
 
         Skor3.setEditable(false);
+        Skor3.setBackground(new java.awt.Color(0, 255, 0));
+        Skor3.setForeground(new java.awt.Color(255, 255, 255));
         Skor3.setText("0");
         Skor3.setFocusTraversalPolicyProvider(true);
         Skor3.setName("Skor3"); // NOI18N
+        Skor3.setOpaque(true);
         FormInput.add(Skor3);
         Skor3.setBounds(745, 140, 44, 23);
 
@@ -1293,48 +1299,60 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     
     private void isCombo1(){
         if(cmbSkor1.getSelectedItem().equals("Tidur / Perubahan Perilaku")){
-            Skor1.setForeground(Color.blue);
+            Skor1.setBackground(Color.YELLOW);
+            Skor1.setForeground(Color.GREEN);
             Skor1.setText("1");
         }else if(cmbSkor1.getSelectedItem().equals("Gelisah")){
-            Skor1.setForeground(new Color(200,200,0));
+            Skor1.setBackground(Color.ORANGE);
+            Skor1.setForeground(Color.WHITE);
             Skor1.setText("2");
         }else if(cmbSkor1.getSelectedItem().equals("Tidak Merespon Terhadap Nyeri Penurunan Kesadaran")){
-            Skor1.setForeground(Color.red);
+            Skor1.setBackground(Color.RED);
+            Skor1.setForeground(Color.WHITE);
             Skor1.setText("3");
         }else{
-            Skor1.setForeground(Color.black);
+            Skor1.setBackground(Color.GREEN);
+            Skor1.setForeground(Color.WHITE);
             Skor1.setText("0");
         }
     }
     
     private void isCombo2(){
         if(cmbSkor2.getSelectedItem().equals("3 dtk / Pucat")){
-            Skor2.setForeground(Color.blue);
+            Skor2.setBackground(Color.YELLOW);
+            Skor2.setForeground(Color.GREEN);
             Skor2.setText("1");
         }else if(cmbSkor2.getSelectedItem().equals("4 dtk / Sianosis")){
-            Skor2.setForeground(new Color(200,200,0));
+            Skor2.setBackground(Color.ORANGE);
+            Skor2.setForeground(Color.WHITE);
             Skor2.setText("2");
         }else if(cmbSkor2.getSelectedItem().equals("> 5 dtk / Mottle")){
-            Skor2.setForeground(Color.red); 
+            Skor2.setBackground(Color.RED);
+            Skor2.setForeground(Color.WHITE); 
             Skor2.setText("3");
         }else{
-            Skor2.setForeground(Color.black);
+            Skor2.setBackground(Color.GREEN);
+            Skor2.setForeground(Color.WHITE);
             Skor2.setText("0");
         }
     }
     
     private void isCombo3(){
         if(cmbSkor3.getSelectedItem().equals("Cuping Hidung / O2 1-3 Lpm")){
-            Skor3.setForeground(Color.blue);
+            Skor3.setBackground(Color.YELLOW);
+            Skor3.setForeground(Color.GREEN);
             Skor3.setText("1");
         }else if(cmbSkor3.getSelectedItem().equals("Retraksi Dada / O2 4-6 Lpm")){
-            Skor3.setForeground(new Color(200,200,0));
+            Skor3.setBackground(Color.ORANGE);
+            Skor3.setForeground(Color.WHITE);
             Skor3.setText("2");
         }else if(cmbSkor3.getSelectedItem().equals("Stridor / O2 7-8 Lpm")){
-            Skor3.setForeground(Color.red);
+            Skor3.setBackground(Color.RED);
+            Skor3.setForeground(Color.WHITE);
             Skor3.setText("3");
         }else{
-            Skor3.setForeground(Color.black);
+            Skor3.setBackground(Color.GREEN);
+            Skor3.setForeground(Color.WHITE);
             Skor3.setText("0");
         }
     } 
@@ -1350,17 +1368,15 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     }
     
     private void isHitung(){
-        if(TotalSkor.getText().equals("0")){
+        if(Integer.parseInt(TotalSkor.getText())==0){
             ParameterSkor.setText("Beresiko rendah, ulangi 7 hari");
-        }else if(TotalSkor.getText().equals("1")){
+        }else if(Integer.parseInt(TotalSkor.getText())>0){
             ParameterSkor.setText("Monitoring setiap 4 jam oleh perawat pelaksana dan di lanjutkan observasi atau monitoring secara rutin");
-        }else if(TotalSkor.getText().equals("2")){
-            ParameterSkor.setText("Monitoring setiap 4 jam oleh perawat pelaksana dan di lanjutkan observasi atau monitoring secara rutin");
-        }else if(TotalSkor.getText().equals("3")){
+        }else if(Integer.parseInt(TotalSkor.getText())==3){
             ParameterSkor.setText("Monitoring 1 sampai 2 jam, Pengkajian ulang dilakukan oleh PJ sift dan laporkan ke dokter jaga");
-        }else if(TotalSkor.getText().equals("4")){
+        }else if(Integer.parseInt(TotalSkor.getText())==4){
             ParameterSkor.setText("Monitor per 1 jam, Laporkan ke dokter jaga dan kemudian tindak lanjut lapor ke DPJP untuk advis selanjutnya, Kolaborasi langkah selanjutnya dengan seluruh tim perawatan, Jika masih diperlukan lapor ulang keperawatan ketua tim dan DPJP");
-        }else if(TotalSkor.getText().equals("5")){
+        }else if(Integer.parseInt(TotalSkor.getText())>4){
             ParameterSkor.setText("Laporkan perubahan klinis ke perawat ketua tim, dokter jaga dan DPJP, Kolaborasikan langkah selanjutnya dengan seluruh tim perawatan");
         }
     }
@@ -1369,10 +1385,16 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         Tanggal.setDate(new Date());
         cmbSkor1.setSelectedIndex(0);
         Skor1.setText("0");
+        Skor1.setBackground(Color.GREEN);
+        Skor1.setForeground(Color.WHITE);
         cmbSkor2.setSelectedIndex(0);
         Skor2.setText("0");
+        Skor2.setBackground(Color.GREEN);
+        Skor2.setForeground(Color.WHITE);
         cmbSkor3.setSelectedIndex(0);
         Skor3.setText("0");
+        Skor3.setBackground(Color.GREEN);
+        Skor3.setForeground(Color.WHITE);
         TotalSkor.setText("0");
         ParameterSkor.setText("Beresiko rendah, ulangi 7 hari");
     } 

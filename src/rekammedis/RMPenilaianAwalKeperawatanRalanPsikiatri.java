@@ -295,11 +295,17 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }else if(i==97){
                 column.setPreferredWidth(81); 
             }else if(i==98){
-                column.setPreferredWidth(142); 
+                column.setPreferredWidth(141); 
             }else if(i==99){
-                column.setPreferredWidth(76); 
+                column.setPreferredWidth(75); 
             }else if(i==100){
-                column.setPreferredWidth(137); 
+                column.setPreferredWidth(135); 
+            }else if(i==101){
+                column.setPreferredWidth(115); 
+            }else if(i==102){
+                column.setPreferredWidth(108); 
+            }else if(i==103){
+                column.setPreferredWidth(182); 
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
