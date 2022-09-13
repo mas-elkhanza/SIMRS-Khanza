@@ -111,7 +111,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private String validasicatatan = Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
     private Properties prop = new Properties();
     NumberFormat nf = NumberFormat.getNumberInstance();
-    String no_surat;
+    String no_surat, id_kamar = "";
 
     public DlgKamarInap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -196,7 +196,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 new Object[]{"No.Rawat", "Nomer RM", "Nama Pasien", "Alamat Pasien", "Penanggung Jawab",
                     "Hubungan P.J.", "Jenis Bayar", "Kamar", "Tarif Kamar", "Diagnosa Awal", "Diagnosa Akhir",
                     "Tgl.Masuk", "Jam Masuk", "Tgl.Keluar", "Jam Keluar", "Ttl.Biaya", "Stts.Pulang", "Lama",
-                    "Dokter P.J.", "Kamar", "Status Bayar", "Asal Unit"}) {
+                    "Dokter P.J.", "Kamar", "Status Bayar", "Asal Unit","ID Kamar Inap"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -207,7 +207,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-                java.lang.String.class, java.lang.String.class, java.lang.String.class};
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class};
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -221,7 +221,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         tbKamIn.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbKamIn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 22; i++) {
+        for (i = 0; i < 23; i++) {
             TableColumn column = tbKamIn.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -301,8 +301,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     column.setCellRenderer(leftRenderer);
                     break;
                 case 19:
-                    column.setMinWidth(0);
-                    column.setMaxWidth(0);
+                    column.setPreferredWidth(130);
+                    column.setCellRenderer(leftRenderer);
+//                    column.setMinWidth(0);
+//                    column.setMaxWidth(0);
+//                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 20:
+                    column.setPreferredWidth(130);
                     column.setCellRenderer(leftRenderer);
                     break;
                 default:
@@ -723,10 +729,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         diagnosaakhir.requestFocus();
                     } else if (WindowInputKamar.isVisible() == false) {
                         Sequel.mengedit("kamar_inap",
-                                "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                + "'",
+                                "id_kamar='" + id_kamar + "'",
                                 "diagnosa_akhir='" + key + "'");
+                        
                         tampil();
                         if (chkBaby.isSelected()) {
                             tampilBaby();
@@ -775,10 +780,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         diagnosaakhir.requestFocus();
                     } else if (WindowInputKamar.isVisible() == false) {
                         Sequel.mengedit("kamar_inap",
-                                "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                + "'",
+                                "id_kamar='" + id_kamar + "'",
                                 "diagnosa_akhir='" + key + "'");
+                        
                         tampil();
                         if (chkBaby.isSelected()) {
                             tampilBaby();
@@ -5743,15 +5747,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     norawat.requestFocus();
                 }
             } else if (norawat.isEditable() == false) {
-                if (cmbStatus.getSelectedItem().equals("-")) {
+                if (cmbStatus.getSelectedItem().equals("-")||
+                        cmbStatus.getSelectedItem().equals("AKTIF")) {
                     Valid.textKosong(cmbStatus, "Status Pulang");
                 } else if (diagnosaakhir.getText().equals("")) {
                     Valid.textKosong(diagnosaakhir, "Diagnosa Akhir");
                 } else {
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "tgl_keluar='" + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-"
                             + CmbTgl.getSelectedItem() + "',trf_kamar='" + TTarif.getText() + "',jam_keluar='"
                             + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":"
@@ -7492,11 +7495,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     emptTeks();
                     tbKamIn.requestFocus();
                 } else {
+//                    Sequel.mengedit("kamar_inap",
+//                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
+//                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+//                            + "'",
+//                            "stts_pulang='Atas Persetujuan Dokter'");
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "stts_pulang='Atas Persetujuan Dokter'");
+                    
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
                             "status='KOSONG'");
@@ -7524,9 +7531,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     tbKamIn.requestFocus();
                 } else {
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "stts_pulang='Rujuk'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -7555,9 +7560,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     tbKamIn.requestFocus();
                 } else {
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "stts_pulang='Atas Permintaan Sendiri'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -7586,9 +7589,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     tbKamIn.requestFocus();
                 } else {
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "stts_pulang='Meninggal'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -7617,9 +7618,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     tbKamIn.requestFocus();
                 } else {
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "stts_pulang='Kabur'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -8050,8 +8049,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             diagnosaakhir.requestFocus();
         } else if (WindowInputKamar.isVisible() == false) {
             Sequel.mengedit("kamar_inap",
-                    "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText() + "' and tgl_masuk='"
-                    + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText() + "'",
+                    "id_kamar='" + id_kamar + "'",
                     "diagnosa_akhir='" + key + "'");
             tampil();
             if (chkBaby.isSelected()) {
@@ -8598,10 +8596,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     TCari.requestFocus();
                 } else {
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "stts_pulang='AKTIF',tgl_keluar='0000-00-00',jam_keluar='00:00:00'");
+//                    Sequel.query("update kamar_inap set no_rawat='"+norawat.getText()+"',");
                     tampil();
                     if (chkBaby.isSelected()) {
                         tampilBaby();
@@ -8915,9 +8912,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     tbKamIn.requestFocus();
                 } else {
                     Sequel.mengedit("kamar_inap",
-                            "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                            + "'",
+                            "id_kamar='" + id_kamar + "'",
                             "stts_pulang='Status Belum Lengkap'");
                     tampil();
                     if (chkBaby.isSelected()) {
@@ -12071,7 +12066,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try {
             ps = koneksi.prepareStatement(
-                    "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"
+                    "select kamar_inap.id_kamar,kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"
                     + "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
                     + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"
                     + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar,nm_poli "
@@ -12093,7 +12088,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         rs.getString("jam_masuk"), rs.getString("tgl_keluar"), rs.getString("jam_keluar"),
                         Valid.SetAngka(rs.getDouble("ttl_biaya")), rs.getString("stts_pulang"),
                         rs.getString("lama"), rs.getString("nm_dokter"), rs.getString("kd_kamar"),
-                        rs.getString("status_bayar"), rs.getString("nm_poli")});
+                        rs.getString("status_bayar"), rs.getString("nm_poli"), rs.getString("id_kamar")});
                     psanak = koneksi.prepareStatement(
                             "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
                             + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat,nm_poli "
@@ -12114,7 +12109,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 rs.getString("jam_keluar"),
                                 Valid.SetAngka(rs.getDouble("ttl_biaya") * (persenbayi / 100)),
                                 rs.getString("stts_pulang"), rs.getString("lama"), rs.getString("nm_dokter"),
-                                rs.getString("kd_kamar"), rs.getString("status_bayar"), rs.getString("nm_poli")});
+                                rs.getString("kd_kamar"), rs.getString("status_bayar"), rs.getString("nm_poli"), rs.getString("id_kamar")});
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);
@@ -12195,7 +12190,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         // Valid.tabelKosong(tabMode);
         try {
             ps = koneksi.prepareStatement(
-                    "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"
+                    "select kamar_inap.id_kamar,kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"
                     + "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
                     + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"
                     + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar,nm_poli "
@@ -12217,7 +12212,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         rs.getString("jam_masuk"), rs.getString("tgl_keluar"), rs.getString("jam_keluar"),
                         Valid.SetAngka(rs.getDouble("ttl_biaya")), rs.getString("stts_pulang"),
                         rs.getString("lama"), rs.getString("nm_dokter"), rs.getString("kd_kamar"),
-                        rs.getString("status_bayar"), rs.getString("nm_poli")});
+                        rs.getString("status_bayar"), rs.getString("nm_poli"), rs.getString("id_kamar")});
                     psanak = koneksi.prepareStatement(
                             "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
                             + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
@@ -12236,7 +12231,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 rs.getString("jam_keluar"),
                                 Valid.SetAngka(rs.getDouble("ttl_biaya") * (persenbayi / 100)),
                                 rs.getString("stts_pulang"), rs.getString("lama"), rs.getString("nm_dokter"),
-                                rs.getString("kd_kamar"), rs.getString("status_bayar"), rs.getString("nm_poli")});
+                                rs.getString("kd_kamar"), rs.getString("status_bayar"), rs.getString("nm_poli"), rs.getString("id_kamar")});
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);
@@ -12318,23 +12313,42 @@ public class DlgKamarInap extends javax.swing.JDialog {
         TIn.setText("");
         JamMasuk.setText("");
         if (tbKamIn.getSelectedRow() != -1) {
+            id_kamar = tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 22).toString();
+            System.out.println(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 22).toString());
             norawat.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString());
+            System.out.println(norawat.getText());
             TNoRM.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 1).toString());
+            System.out.println(TNoRM.getText());
             TPasien.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 2).toString());
+            System.out.println(TPasien.getText());
             TNoRw1.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString());
+            System.out.println(TNoRw1.getText());
             TNoRM1.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 1).toString());
+            System.out.println(TNoRM1.getText());
             TPasien1.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 2).toString());
+            System.out.println(TPasien1.getText());
             norawatpindah.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString());
+            System.out.println(norawatpindah.getText());
             TNoRMpindah.setText(TNoRM.getText());
+            System.out.println(TNoRMpindah.getText());
             TPasienpindah.setText(TPasien.getText());
+            System.out.println(TPasienpindah.getText());
             kdkamar.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString());
+            System.out.println(kdkamar.getText());
             diagnosaawal.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 9).toString());
+            System.out.println(diagnosaawal.getText());
             TIn.setText(Sequel.cariIsi("select tgl_masuk from kamar_inap where no_rawat='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString()+"'"));
+            System.out.println(TIn.getText());
             JamMasuk.setText(Sequel.cariIsi("select jam_masuk from kamar_inap where no_rawat='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString()+"'"));
+            System.out.println(JamMasuk.getText());
             TOut.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 13).toString());
+            System.out.println(TOut.getText());
             ttlbiaya.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 15).toString());
+            System.out.println(ttlbiaya.getText());
             cmbStatus.setSelectedItem(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 16).toString());
+            System.out.println(cmbStatus.getSelectedItem());
             diagnosaakhir.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 10).toString());
+            System.out.println(diagnosaakhir.getText());
         }
     }
 
