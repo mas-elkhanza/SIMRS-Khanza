@@ -98,7 +98,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             }else if(i==12){
                  column.setPreferredWidth(45);
             }else if(i==13){
-                 column.setPreferredWidth(400);
+                 column.setPreferredWidth(450);
             }else if(i==15){
                  column.setPreferredWidth(125);
             }else{
@@ -162,7 +162,6 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();
-        
         jam();
     }
 
@@ -422,7 +421,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -436,7 +435,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -532,7 +531,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-09-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -659,11 +658,6 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         cmbSkor1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbSkor1ItemStateChanged(evt);
-            }
-        });
-        cmbSkor1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbSkor1ActionPerformed(evt);
             }
         });
         cmbSkor1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -864,9 +858,9 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        emptTeks();
         ChkInput.setSelected(true);
         isForm(); 
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -876,16 +870,19 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-       if(tbObat.getSelectedRow()!= -1){
-            if(Sequel.queryu2tf("delete from pemantauan_pews_anak where tanggal=? and no_rawat=?",2,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-            })==true){
-                tampil();
-                emptTeks();
+        if(tbObat.getSelectedRow()>-1){
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
             }else{
-                JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                }
             }
-        }            
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+        }          
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1045,7 +1042,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,TglLahir);
+        Valid.pindah(evt,Detik,cmbSkor1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnPemantauanPEWSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemantauanPEWSActionPerformed
@@ -1071,7 +1068,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     }//GEN-LAST:event_MnPemantauanPEWSActionPerformed
 
     private void cmbSkor1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbSkor1KeyPressed
-        Valid.pindah(evt,cmbSkor2,cmbSkor3);
+        Valid.pindah(evt,btnPetugas,cmbSkor2);
     }//GEN-LAST:event_cmbSkor1KeyPressed
 
     private void cmbSkor2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbSkor2KeyPressed
@@ -1100,10 +1097,6 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         isHitung();
     }//GEN-LAST:event_cmbSkor3ItemStateChanged
 
-    private void cmbSkor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSkor1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbSkor1ActionPerformed
-
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnEditActionPerformed(null);
@@ -1124,19 +1117,19 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         }else if(Skor3.getText().trim().equals("")){
             Valid.textKosong(Skor1,"Skor 3");
         }else{
-            isCombo1();
-            isCombo2();
-            isCombo3();
-            isjml();
-            isHitung();
-            Sequel.mengedit("pemantauan_pews_anak","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter_perilaku=?,skor_perilaku=?,"+
-                "parameter_crt_atau_warna_kulit=?,skor_crt_atau_warna_kulit=?,parameter_perespirasi=?,skor_perespirasi=?,skor_total=?,parameter_total=?,nip=?",13,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
-                cmbSkor3.getSelectedItem().toString(),Skor3.getText(),TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbObat.getSelectedRow()>-1){
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else{
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+            } 
         } 
     }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1326,11 +1319,11 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
             Skor2.setBackground(Color.ORANGE);
             Skor2.setForeground(Color.WHITE);
             Skor2.setText("2");
-        }else if(cmbSkor2.getSelectedItem().equals("> 5 dtk / Mottle")){
+        }else if(cmbSkor2.getSelectedItem().equals(">=5 dtk / Mottle")){
             Skor2.setBackground(Color.RED);
             Skor2.setForeground(Color.WHITE); 
             Skor2.setText("3");
-        }else{
+        }else {
             Skor2.setBackground(Color.GREEN);
             Skor2.setForeground(Color.WHITE);
             Skor2.setText("0");
@@ -1368,16 +1361,14 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     }
     
     private void isHitung(){
-        if(Integer.parseInt(TotalSkor.getText())==0){
-            ParameterSkor.setText("Beresiko rendah, ulangi 7 hari");
-        }else if(Integer.parseInt(TotalSkor.getText())>0){
+        if(Integer.parseInt(TotalSkor.getText())>4){
+            ParameterSkor.setText("Laporkan perubahan klinis ke perawat ketua tim, dokter jaga dan DPJP. Kolaborasikan langkah selanjutnya dengan seluruh tim perawatan");
+        }else if(Integer.parseInt(TotalSkor.getText())>3){
+            ParameterSkor.setText("Monitor per 1 jam. Laporkan ke dokter jaga dan kemudian tindak lanjut lapor ke DPJP untuk advis selanjutnya. Kolaborasi langkah selanjutnya dengan seluruh tim perawatan. Jika masih di perlukan lapor ulang keperawat ketua tim dan DPJP");
+        }else if(Integer.parseInt(TotalSkor.getText())>2){
+            ParameterSkor.setText("Monitoring 1 sampai 2 jam. Pengkajian ulang dilakukan oleh PJ sift dan laporkan ke dokter jaga");
+        }else if(Integer.parseInt(TotalSkor.getText())>=0){
             ParameterSkor.setText("Monitoring setiap 4 jam oleh perawat pelaksana dan di lanjutkan observasi atau monitoring secara rutin");
-        }else if(Integer.parseInt(TotalSkor.getText())==3){
-            ParameterSkor.setText("Monitoring 1 sampai 2 jam, Pengkajian ulang dilakukan oleh PJ sift dan laporkan ke dokter jaga");
-        }else if(Integer.parseInt(TotalSkor.getText())==4){
-            ParameterSkor.setText("Monitor per 1 jam, Laporkan ke dokter jaga dan kemudian tindak lanjut lapor ke DPJP untuk advis selanjutnya, Kolaborasi langkah selanjutnya dengan seluruh tim perawatan, Jika masih diperlukan lapor ulang keperawatan ketua tim dan DPJP");
-        }else if(Integer.parseInt(TotalSkor.getText())>4){
-            ParameterSkor.setText("Laporkan perubahan klinis ke perawat ketua tim, dokter jaga dan DPJP, Kolaborasikan langkah selanjutnya dengan seluruh tim perawatan");
         }
     }
     
@@ -1397,6 +1388,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         Skor3.setForeground(Color.WHITE);
         TotalSkor.setText("0");
         ParameterSkor.setText("Beresiko rendah, ulangi 7 hari");
+        cmbSkor1.requestFocus();
     } 
 
     private void getData() {
@@ -1538,6 +1530,17 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         });
         if(tabMode.getRowCount()!=0){tampil();}
         emptTeks();
+    }
+    
+    private void hapus() {
+        if(Sequel.queryu2tf("delete from pemantauan_pews_anak where tanggal=? and no_rawat=?",2,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        })==true){
+            tampil();
+            emptTeks();
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
     }
 }
 
