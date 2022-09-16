@@ -241,9 +241,9 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
         MnPemantauanPEWS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPemantauanPEWS.setForeground(new java.awt.Color(50, 50, 50));
         MnPemantauanPEWS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPemantauanPEWS.setText("Pemantauan PEWS");
+        MnPemantauanPEWS.setText("Lembar Pemantauan PEWS");
         MnPemantauanPEWS.setName("MnPemantauanPEWS"); // NOI18N
-        MnPemantauanPEWS.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnPemantauanPEWS.setPreferredSize(new java.awt.Dimension(200, 26));
         MnPemantauanPEWS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPemantauanPEWSActionPerformed(evt);
@@ -1446,10 +1446,10 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        /*BtnSimpan.setEnabled(akses.getpemantauan_pews_anak());
+        BtnSimpan.setEnabled(akses.getpemantauan_pews_anak());
         BtnHapus.setEnabled(akses.getpemantauan_pews_anak());
         BtnEdit.setEnabled(akses.getpemantauan_pews_anak());
-        BtnPrint.setEnabled(akses.getpemantauan_pews_anak()); */
+        BtnPrint.setEnabled(akses.getpemantauan_pews_anak()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
