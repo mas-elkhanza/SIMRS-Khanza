@@ -196,7 +196,6 @@ public class DlgSirkulasiBarang6 extends javax.swing.JDialog {
                 if (bangsal.getTable().getSelectedRow() != -1) {
                     KdGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                     NmGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    prosesCari();
                 }
             }
 
@@ -1354,7 +1353,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 jumlahhibah=0;totaljual=0;totalbeli=0;totalpesan=0;totalpiutang=0;totalutd=0;totalkeluar=0;
                                 totalmutasikeluar=0;totalmutasimasuk=0;totalretbeli=0;totalretjual=0;totalretpiut=0;
                                 totalpasin=0;totalrespulang=0;totalhibah=0;totalstok=0;totalstokawal=0;totalstokakhir=0;harga=0;
-                                tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01";
+                                tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
                                 
                                 ps3=koneksi.prepareStatement(
                                     "select riwayat_barang_medis.stok_akhir,riwayat_barang_medis.tanggal,riwayat_barang_medis.jam from riwayat_barang_medis where riwayat_barang_medis.tanggal < ? and "+
@@ -1379,34 +1378,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     }
                                     if(ps3!=null){
                                         ps3.close();
-                                    }
-                                }
-                                
-                                if(tglopname.equals(Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01")){
-                                    ps3=koneksi.prepareStatement(
-                                        "select riwayat_barang_medis.stok_akhir,riwayat_barang_medis.tanggal,riwayat_barang_medis.jam from riwayat_barang_medis where riwayat_barang_medis.tanggal > ? and "+
-                                        "riwayat_barang_medis.kode_brng=? and riwayat_barang_medis.kd_bangsal=? and riwayat_barang_medis.no_batch=? and riwayat_barang_medis.no_faktur=? "+
-                                        "order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) asc limit 1");
-                                    try {
-                                        ps3.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
-                                        ps3.setString(2,rs.getString("kode_brng"));
-                                        ps3.setString(3,KdGudang.getText());
-                                        ps3.setString(4,rs2.getString("no_batch"));
-                                        ps3.setString(5,rs2.getString("no_faktur"));
-                                        rs3=ps3.executeQuery();
-                                        if(rs3.next()){
-                                            tglopname=rs3.getString("tanggal")+" "+rs3.getString("jam");
-                                            stokawal=rs3.getDouble("stok_akhir");
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Note : "+e);
-                                    } finally{
-                                        if(rs3!=null){
-                                            rs3.close();
-                                        }
-                                        if(ps3!=null){
-                                            ps3.close();
-                                        }
                                     }
                                 }
                                 
@@ -1799,7 +1770,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "riwayat_barang_medis.kode_brng=? and riwayat_barang_medis.kd_bangsal=? and riwayat_barang_medis.no_batch=? and riwayat_barang_medis.no_faktur=? "+
                                     "order by concat(riwayat_barang_medis.tanggal,' ',riwayat_barang_medis.jam) desc limit 1");
                                 try {
-                                    ps3.setString(1,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                    ps3.setString(1,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                                     ps3.setString(2,rs.getString("kode_brng"));
                                     ps3.setString(3,KdGudang.getText());
                                     ps3.setString(4,rs2.getString("no_batch"));
