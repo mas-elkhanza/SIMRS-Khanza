@@ -1389,7 +1389,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 
                                 //pembelian 
                                 ps3=koneksi.prepareStatement(
-                                    "select sum(detailbeli.jumlah2),sum(detailbeli.subtotal) from pembelian inner join detailbeli on pembelian.no_faktur=detailbeli.no_faktur "+
+                                    "select sum(detailbeli.jumlah2),sum(detailbeli.total) from pembelian inner join detailbeli on pembelian.no_faktur=detailbeli.no_faktur "+
                                     "where detailbeli.kode_brng=? and detailbeli.no_batch=? and detailbeli.no_faktur=? and pembelian.tgl_beli between ? and ? and pembelian.kd_bangsal=?");
                                 try {
                                     ps3.setString(1,rs.getString("kode_brng"));
@@ -1416,7 +1416,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 
                                 //pemesanan 
                                 ps3=koneksi.prepareStatement(
-                                    "select sum(detailpesan.jumlah2),sum(detailpesan.subtotal) from pemesanan inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
+                                    "select sum(detailpesan.jumlah2),sum(detailpesan.total) from pemesanan inner join detailpesan on pemesanan.no_faktur=detailpesan.no_faktur "+
                                     "where detailpesan.kode_brng=? and detailpesan.no_batch=? and detailpesan.no_faktur=? and pemesanan.tgl_pesan between ? and ? and pemesanan.kd_bangsal=?");
                                 try {
                                     ps3.setString(1,rs.getString("kode_brng"));

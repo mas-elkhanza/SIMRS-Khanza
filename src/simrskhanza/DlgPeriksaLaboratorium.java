@@ -1995,12 +1995,12 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         rstampil=pstampil.executeQuery();
                         while(rstampil.next()){
                             System.out.println("ID Detail Laborat RS : "+rstampil.getString("id_template")+" "+rstampil.getString("Pemeriksaan"));
-                            pstindakan=koneksisysmex.prepareStatement("select ORDER_TESTID, DATA_TYP, RESULT_VALUE, RESULT_FT, UNIT, FLAG, REF_RANGE from RESDT where ONO=? and ORDER_TESTID=?");
+                            pstindakan=koneksisysmex.prepareStatement("select RESDT.ORDER_TESTID,RESDT.DATA_TYP,RESDT.RESULT_VALUE,RESDT.RESULT_FT,RESDT.UNIT,RESDT.FLAG,RESDT.REF_RANGE from RESDT where RESDT.ONO=? and RESDT.TEST_NM=?");
                             try {
                                 pstindakan.setString(1,order);
-                                pstindakan.setString(2,rstampil.getString("id_template"));
+                                pstindakan.setString(2,rstampil.getString("Pemeriksaan"));
                                 rstindakan=pstindakan.executeQuery();
-                                System.out.println("Menjalankan Query : select RESDT.ORDER_TESTID,RESDT.DATA_TYP,RESDT.RESULT_VALUE,RESDT.RESULT_FT,RESDT.UNIT,RESDT.FLAG,RESDT.REF_RANGE from RESDT where RESDT.ONO='"+order+"' and RESDT.ORDER_TESTID='"+rstampil.getString("id_template")+"'");
+                                System.out.println("Menjalankan Query : select RESDT.ORDER_TESTID,RESDT.DATA_TYP,RESDT.RESULT_VALUE,RESDT.RESULT_FT,RESDT.UNIT,RESDT.FLAG,RESDT.REF_RANGE from RESDT where RESDT.ONO='"+order+"' and RESDT.TEST_NM='"+rstampil.getString("Pemeriksaan")+"'");
                                 if(rstindakan.next()){
                                     System.out.println("ID Detail Laborat Sysmex Yang Ditemukan : "+rstindakan.getString("ORDER_TESTID"));
                                     if(rstindakan.getString("DATA_TYP").equals("FT")){
