@@ -1063,7 +1063,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
                     "pemantauan_pews_anak.parameter_perespirasi,pemantauan_pews_anak.skor_perespirasi,pemantauan_pews_anak.skor_total,pemantauan_pews_anak.parameter_total, "+
                     "pemantauan_pews_anak.nip,petugas.nama "+
                     "from pemantauan_pews_anak inner join reg_periksa on pemantauan_pews_anak.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews_anak.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and pemantauan_pews_anak.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'",param);
+                    "inner join petugas on pemantauan_pews_anak.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPemantauanPEWSActionPerformed
 
