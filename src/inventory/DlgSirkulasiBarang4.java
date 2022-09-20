@@ -1031,7 +1031,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                                        
                     //pembelian 
-                    ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah2), sum(detailbeli.subtotal) "+
+                    ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah2), sum(detailbeli.total) "+
                         " from pembelian inner join detailbeli "+
                         " on pembelian.no_faktur=detailbeli.no_faktur "+
                         " where detailbeli.kode_brng=? and pembelian.tgl_beli "+
@@ -1057,7 +1057,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                         
                     //pemesanan
-                    ps2=koneksi.prepareStatement("select sum(detailpesan.jumlah2), sum(detailpesan.subtotal) "+
+                    ps2=koneksi.prepareStatement("select sum(detailpesan.jumlah2), sum(detailpesan.total) "+
                         " from pemesanan inner join detailpesan "+
                         " on pemesanan.no_faktur=detailpesan.no_faktur "+
                         " where detailpesan.kode_brng=? and pemesanan.tgl_pesan "+
@@ -1529,7 +1529,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                                        
                     //pembelian 
-                    ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah2), sum(detailbeli.subtotal) "+
+                    ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah2), sum(detailbeli.total) "+
                         " from pembelian inner join detailbeli "+
                         " on pembelian.no_faktur=detailbeli.no_faktur "+
                         " where detailbeli.kode_brng=? and pembelian.tgl_beli "+
@@ -1556,7 +1556,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                         
                     //pemesanan
-                    ps2=koneksi.prepareStatement("select sum(detailpesan.jumlah2), sum(detailpesan.subtotal) "+
+                    ps2=koneksi.prepareStatement("select sum(detailpesan.jumlah2), sum(detailpesan.total) "+
                         " from pemesanan inner join detailpesan "+
                         " on pemesanan.no_faktur=detailpesan.no_faktur "+
                         " where detailpesan.kode_brng=? and pemesanan.tgl_pesan "+
