@@ -5652,10 +5652,26 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             KetPutusObat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             FPEkonomi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             KetMasalahEkonomi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            /*"Masalah Fisik"19,"Keterangan Masalah Fisik"20,
-            "Masalah Psikososial","Keterangan Masalah Psikososial","Resiko Herediter","Keterangan Resiko Herediter","Res. Bunuh Diri","Ide Bunuh Diri","Keterangan Ide Bunuh DIri","Rencana Bunuh Diri","Keterangan Rencana Bunuh Diri",
-            "Alat B.D","Keterangan Alat B.D","Percobaan B.D","Keterangan Percobaan B.D","Keinginan B.D","Keterangan Keinginan B. D","Peng. Obat Psikiatri","Keterangan Penggunaan Obat",
-            "Riw.Efek Samping Obat","Ket Riw. Efek samping Obat","Napza","Keterangan Napza","Keterangan Lama Pemakaian Napza","Keterangan Cara Pemakaian Napza","Keterangan Latar Belakang Pemakaian Napza","Peng, Obat Lainnya",
+            FPMasalahFisik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            KetMasalahFisik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            FPMasalahPsikososial.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            KetMasalahPsikososial.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            RHKeluarga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            KetRHKeluarga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            ResikoBunuhDiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            RBDIde.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            KetRBDIde.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            RBDRencana.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            KetRBDRencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            RBDAlat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            KetRBDAlat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            RBDPercobaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            KetRBDPercobaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            RBDKeinginan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            KetRBDKeinginan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            RPOPenggunaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            KetRPOPenggunaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            /*"Riw.Efek Samping Obat"38,"Ket Riw. Efek samping Obat"39,"Napza"40,"Keterangan Napza"41,"Keterangan Lama Pemakaian Napza"42,"Keterangan Cara Pemakaian Napza"43,"Keterangan Latar Belakang Pemakaian Napza"44,"Peng, Obat Lainnya"45,
             "Keterangan Peng. Obat Lainnya","Keterangan Alasan Penggunaan","Alergi Obat","Keterangan Alergi Obat","Merokok","Keterangan Merokok","Minum Kopi","Keterangan Minum Kopi",
             "TD","Nadi","GCS","RR","Suhu","Keluhan Fisik","Keterangan Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Keterangan Provokes","Kualitas","Keterangan Kualitas","Lokasi",
             "Menyebar","Lapor Dokter","Jam Lapor Nyeri","Nyeri Hilang","Keterangan Hilang Nyeri","BB","TB","BMI","Lapor status Nutrisi","Jam Lapor Status Nutrisi",
