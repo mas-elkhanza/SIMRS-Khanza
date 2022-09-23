@@ -9,7 +9,13 @@
             <?php
                 echo "";
                 $action       = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat     = validTeks(isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL);
+                $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+                $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
+                if (isset($norawat["no_rawat"])) {
+                    $no_rawat = $norawat["no_rawat"];
+                }else{
+                    $no_rawat = "Ciluk Ba";
+                }
                 
                 $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                                 reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
@@ -113,7 +119,7 @@
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&no_rawat=$no_rawat'>";
+                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."'>";
                                 break;
                         }
                     }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
@@ -144,31 +150,30 @@
                       echo "<tr class='isi'>
                                 <td>
                                     <center>
-                                    <a href='?act=Detail&action=HAPUS&no_rawat=".$baris["no_rawat"]."&kode=".$baris["kode"]."&lokasi_file=".$baris["lokasi_file"]."'>[hapus]</a>
+                                    <a href='?act=Detail&action=HAPUS&iyem=".encrypt_decrypt("{\"no_rawat\":\"".$baris["no_rawat"]."\",\"kode\":\"".$baris["kode"]."\",\"lokasi_file\":\"".$baris["lokasi_file"]."\"}","e")."'>[hapus]</a>
                                    </center>
                                 </td>
                                 <td>".$baris["nama"]."</td>
                                 <td><a target=_blank href=../berkasrawat/pages/upload/".$baris["lokasi_file"].">".str_replace("pages/upload/","",$baris["lokasi_file"])."</a></td>
                            </tr>";
                     }
-                echo "</table>";
-
-            } else {echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    echo "</table>";
+                } else {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='5%'><div align='center'>Proses</div></td>
                                 <td width='30%'><div align='center'>Berkas Digital</div></td>
                                 <td width='65%'><div align='center'>File</div></td>
                             </tr>
                           </table>";}
-        ?>
-        </div>
+            ?>
+            </div>
         </form>
         <?php
             if ($action=="HAPUS") {                
-                unlink($_GET['lokasi_file']);
-                Hapus(" berkas_digital_perawatan "," no_rawat ='". validTeks($_GET['no_rawat'])."' and kode ='". validTeks($_GET['kode'])."' and lokasi_file='". validTeks($_GET['lokasi_file'])."' ","?act=Detail&action=TAMBAH&no_rawat=$no_rawat");
+                unlink($norawat["lokasi_file"]);
+                Hapus(" berkas_digital_perawatan "," no_rawat ='".validTeks($norawat["no_rawat"])."' and kode ='".validTeks($norawat["kode"])."' and lokasi_file='".validTeks($norawat["lokasi_file"])."' ","?act=Detail&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e"));
             }
-
         
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

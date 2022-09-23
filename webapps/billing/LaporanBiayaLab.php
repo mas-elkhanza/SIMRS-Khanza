@@ -25,27 +25,27 @@
             echo "   
             <table width='".getOne("select notalabrad from set_nota")."' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' >
             <tr class='isi12' padding='0'>
-				<td colspan='7' padding='0'>
-					   <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' border=0>
-							<tr>
-								<td  width='20%'>
-									<img width='60' height='60' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
-								</td>
-								<td>
-								<center>
-										<font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
-										<font color='000000' size='1'  face='Tahoma'>
-										".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
-										".$setting["kontak"].", E-mail : ".$setting["email"]."
-										</font> <br>
-										<center><font color='000000' size='1'  face='Tahoma'>BILLING</font> </center>
-								</center>
-								</td>
-								<td  width='20%'>&nbsp;
-								</td>
-							</tr>
-					  </table>
-				</td>
+                <td colspan='7' padding='0'>
+                    <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' border=0>
+                        <tr>
+                            <td  width='20%'>
+                                    <img width='60' height='60' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+                            </td>
+                            <td>
+                                <center>
+                                    <font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+                                    <font color='000000' size='1'  face='Tahoma'>
+                                    ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
+                                    ".$setting["kontak"].", E-mail : ".$setting["email"]."
+                                    </font> <br>
+                                    <center><font color='000000' size='1'  face='Tahoma'>BILLING</font> </center>
+                                </center>
+                            </td>
+                            <td width='20%'>&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
             <tr class='isi12' padding='0'>
                <td>

@@ -56,6 +56,12 @@
         $save=str_replace("/*","",$save);
         $save=str_replace("*/","",$save);
         $save=str_replace("#","",$save);
+        $save=str_replace("<script>","",$save);
+        $save=str_replace("</script>","",$save);
+        $save=str_replace("<noscript>","",$save);
+        $save=str_replace("</noscript>","",$save);
+        $save=str_replace("<img","",$save);
+        $save=str_replace("document","",$save);
         return $save;
     }
     
@@ -67,6 +73,12 @@
         $save=str_replace("--","",$save);
         $save=str_replace("/*","",$save);
         $save=str_replace("*/","",$save);
+        $save=str_replace("<script>","",$save);
+        $save=str_replace("</script>","",$save);
+        $save=str_replace("<noscript>","",$save);
+        $save=str_replace("</noscript>","",$save);
+        $save=str_replace("<img","",$save);
+        $save=str_replace("document","",$save);
         return $save;
     }
     
