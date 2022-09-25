@@ -442,7 +442,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-09-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -456,7 +456,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-09-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -511,7 +511,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 286));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 235));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -558,7 +558,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         jLabel8.setText("Hubungan Dengan Pasien :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(480, 120, 160, 23);
+        jLabel8.setBounds(459, 120, 160, 23);
 
         NamaPihak2.setName("NamaPihak2"); // NOI18N
         NamaPihak2.addActionListener(new java.awt.event.ActionListener() {
@@ -572,12 +572,12 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
             }
         });
         FormInput.add(NamaPihak2);
-        NamaPihak2.setBounds(184, 120, 300, 23);
+        NamaPihak2.setBounds(184, 120, 290, 23);
 
-        jLabel9.setText("J.K. :");
+        jLabel9.setText("Jenis Kelamin :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(800, 140, 100, 23);
+        jLabel9.setBounds(519, 150, 100, 23);
 
         cmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
         cmbJk.setName("cmbJk"); // NOI18N
@@ -587,7 +587,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
             }
         });
         FormInput.add(cmbJk);
-        cmbJk.setBounds(900, 140, 110, 23);
+        cmbJk.setBounds(623, 150, 110, 23);
 
         jLabel10.setText("Nama Penanggung Jawab :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -597,7 +597,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         jLabel11.setText("Alamat :");
         jLabel11.setName("jLabel11"); // NOI18N
         FormInput.add(jLabel11);
-        jLabel11.setBounds(600, 170, 100, 23);
+        jLabel11.setBounds(0, 180, 180, 23);
 
         cmbHubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Saudara", "Keponakan" }));
         cmbHubungan.setName("cmbHubungan"); // NOI18N
@@ -612,7 +612,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
             }
         });
         FormInput.add(cmbHubungan);
-        cmbHubungan.setBounds(650, 120, 90, 23);
+        cmbHubungan.setBounds(623, 120, 110, 23);
 
         AlamatPj.setName("AlamatPj"); // NOI18N
         AlamatPj.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -621,7 +621,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
             }
         });
         FormInput.add(AlamatPj);
-        AlamatPj.setBounds(710, 170, 360, 23);
+        AlamatPj.setBounds(184, 180, 549, 23);
 
         jLabel17.setText("Tgl.Lahir :");
         jLabel17.setName("jLabel17"); // NOI18N
@@ -683,7 +683,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         jLabel13.setBounds(0, 150, 180, 23);
 
         TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2022" }));
+        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-09-2022" }));
         TglLahir.setDisplayFormat("dd-MM-yyyy");
         TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.setOpaque(false);
@@ -703,7 +703,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         jLabel44.setText("Umur :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(270, 150, 50, 23);
+        jLabel44.setBounds(275, 150, 40, 23);
 
         TUmurTh.setText("0");
         TUmurTh.setName("TUmurTh"); // NOI18N
@@ -713,13 +713,13 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
             }
         });
         FormInput.add(TUmurTh);
-        TUmurTh.setBounds(320, 150, 35, 23);
+        TUmurTh.setBounds(319, 150, 35, 23);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("Th");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(360, 150, 13, 23);
+        jLabel31.setBounds(356, 150, 14, 23);
 
         TUmurBl.setText("0");
         TUmurBl.setName("TUmurBl"); // NOI18N
@@ -729,13 +729,13 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
             }
         });
         FormInput.add(TUmurBl);
-        TUmurBl.setBounds(380, 150, 35, 23);
+        TUmurBl.setBounds(372, 150, 35, 23);
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel29.setText("Bl");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(420, 150, 13, 23);
+        jLabel29.setBounds(409, 150, 13, 23);
 
         TUmurHr.setText("0");
         TUmurHr.setName("TUmurHr"); // NOI18N
@@ -745,13 +745,13 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
             }
         });
         FormInput.add(TUmurHr);
-        TUmurHr.setBounds(430, 150, 35, 23);
+        TUmurHr.setBounds(422, 150, 35, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Hr");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(470, 150, 20, 23);
+        jLabel30.setBounds(459, 150, 20, 23);
 
         jLabel12.setText("Faskes Alternatif/Pindah Rawat :");
         jLabel12.setName("jLabel12"); // NOI18N
@@ -768,7 +768,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         Pilihan.setBounds(403, 70, 330, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-09-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1384,11 +1384,13 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
         isPsien(); 
         ChkInput.setSelected(true);
         isForm();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_surat,3),signed)),0) from surat_pulang_atas_permintaan_sendiri where tanggalsurat='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+                "STBC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
     }
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,186));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,235));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

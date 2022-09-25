@@ -62,9 +62,9 @@
         formProtek();
         switch ($aksi) {
              case 'HomeAdmin'  	: include_once('pages/kontak.php'); break;
-             case 'List'             : include_once('pages/list.php'); break;
-             case 'List2'            : include_once('pages/list2.php'); break;
-             default			: include_once('pages/kontak.php');
+             case 'List'        : include_once('pages/list.php'); break;
+             case 'List2'       : include_once('pages/list2.php'); break;
+             default		: include_once('pages/kontak.php');
 
         }
     }

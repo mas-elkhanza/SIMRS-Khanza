@@ -745,6 +745,7 @@ import rekammedis.MasterRencanaKeperawatanGigi;
 import rekammedis.MasterRencanaKeperawatanIGD;
 import rekammedis.MasterRencanaKeperawatanMata;
 import rekammedis.MasterRencanaKeperawatanPsikiatri;
+import rekammedis.MasterTemplateHasilRadiologi;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
 import rekammedis.MasterTriasePemeriksaan;
@@ -19039,6 +19040,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterTemplateHasilRadiologiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTemplateHasilRadiologi form=new MasterTemplateHasilRadiologi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19691,7 +19706,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI,
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
-            btnPemantauanPEWSAnak;
+            btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi;
     
     public void isWall(){
         try{            
@@ -22722,6 +22737,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmonitoring_asuhan_gizi()==true){
                 Panelmenu.add(btnMonitoringAsuhanGizi);
+                jmlmenu++;
+            }
+            
+            if(akses.gettemplate_hasil_radiologi()==true){
+                Panelmenu.add(btnMasterTemplateHasilRadiologi);
                 jmlmenu++;
             }
             
@@ -27030,6 +27050,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnMonitoringAsuhanGizi);
             jmlmenu++;
         } 
+        
+        if(akses.gettemplate_hasil_radiologi()==true){
+            Panelmenu.add(btnMasterTemplateHasilRadiologi);
+            jmlmenu++;
+        }
         
         if(akses.getmaster_masalah_keperawatan()==true){
             Panelmenu.add(btnMasterMasalahKeperawatan);
@@ -32491,6 +32516,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettemplate_hasil_radiologi()==true){
+            if(btnMasterTemplateHasilRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterTemplateHasilRadiologi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmaster_masalah_keperawatan()==true){
             if(btnMasterMasalahKeperawatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterMasalahKeperawatan);
@@ -37650,6 +37682,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemantauanPEWSAnak.setName("btnPemantauanPEWSAnak"); 
         btnPemantauanPEWSAnak.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPemantauanPEWSAnak.addActionListener(this::btnPemantauanPEWSAnakActionPerformed);
+        
+        btnMasterTemplateHasilRadiologi = new widget.ButtonBig();
+        btnMasterTemplateHasilRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6771602_book shelf_books_education_learning_school_icon.png"))); 
+        btnMasterTemplateHasilRadiologi.setText("Master Template Hasil Radiologi");
+        btnMasterTemplateHasilRadiologi.setIconTextGap(0);
+        btnMasterTemplateHasilRadiologi.setName("btnMasterTemplateHasilRadiologi"); 
+        btnMasterTemplateHasilRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterTemplateHasilRadiologi.addActionListener(this::btnMasterTemplateHasilRadiologiActionPerformed);
     }
     
 }
