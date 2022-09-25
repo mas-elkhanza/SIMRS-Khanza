@@ -30,6 +30,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import laporan.DlgBerkasRawat;
+import rekammedis.MasterCariTemplateHasilRadiologi;
 
 public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -40,6 +41,7 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private DlgCariPasien member=new DlgCariPasien(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private MasterCariTemplateHasilRadiologi templatehasil=new MasterCariTemplateHasilRadiologi(null,false);
     private boolean sukses=false;
     private int i;
     private StringBuilder htmlContent;
@@ -210,6 +212,30 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
                             KodePj.requestFocus();
                         }  
                     }   
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        templatehasil.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgCariPeriksaRadiologi")){
+                    if(templatehasil.getTable().getSelectedRow()!= -1){                   
+                        HasilPeriksa.setText(templatehasil.getTable().getValueAt(templatehasil.getTable().getSelectedRow(),2).toString());
+                    } 
+                    HasilPeriksa.requestFocus();
                 }
             }
             @Override
@@ -412,6 +438,7 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         Scroll3 = new widget.ScrollPane();
         HasilPeriksa = new widget.TextArea();
         panelGlass6 = new widget.panelisi();
+        btnAmbilPhoto1 = new widget.Button();
         BtnSimpan = new widget.Button();
         BtnPrint1 = new widget.Button();
 
@@ -1008,6 +1035,19 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         panelGlass6.setBorder(null);
         panelGlass6.setName("panelGlass6"); // NOI18N
         panelGlass6.setPreferredSize(new java.awt.Dimension(115, 40));
+
+        btnAmbilPhoto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnAmbilPhoto1.setMnemonic('U');
+        btnAmbilPhoto1.setText("Template");
+        btnAmbilPhoto1.setToolTipText("Alt+U");
+        btnAmbilPhoto1.setName("btnAmbilPhoto1"); // NOI18N
+        btnAmbilPhoto1.setPreferredSize(new java.awt.Dimension(105, 30));
+        btnAmbilPhoto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAmbilPhoto1ActionPerformed(evt);
+            }
+        });
+        panelGlass6.add(btnAmbilPhoto1);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('U');
@@ -1796,6 +1836,15 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         panggilPhoto();
     }//GEN-LAST:event_BtnRefreshPhotoActionPerformed
 
+    private void btnAmbilPhoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilPhoto1ActionPerformed
+        akses.setform("DlgCariPeriksaRadiologi");
+        templatehasil.emptTeks();
+        templatehasil.isCek();
+        templatehasil.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        templatehasil.setLocationRelativeTo(internalFrame1);
+        templatehasil.setVisible(true);
+    }//GEN-LAST:event_btnAmbilPhoto1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1855,6 +1904,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox Umur;
     private javax.swing.JDialog WindowGantiDokterParamedis;
     private widget.Button btnAmbilPhoto;
+    private widget.Button btnAmbilPhoto1;
     private widget.Button btnDokter;
     private widget.Button btnDokterPj;
     private widget.Button btnPasien;
