@@ -1988,7 +1988,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         jLabel115.setText("Pernah Mencoba Perilaku Bunuh Diri :");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(418, 380, 200, 23);
+        jLabel115.setBounds(428, 380, 190, 23);
 
         jLabel116.setText("Jika Ya, Dengan Cara :");
         jLabel116.setName("jLabel116"); // NOI18N

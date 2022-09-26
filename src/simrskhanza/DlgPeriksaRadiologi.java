@@ -883,7 +883,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         panelisi5.setBorder(null);
         panelisi5.setName("panelisi5"); // NOI18N
         panelisi5.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
+        panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 9));
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
@@ -983,7 +983,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         panelisi4.setBorder(null);
         panelisi4.setName("panelisi4"); // NOI18N
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
+        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 9));
 
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
@@ -1085,7 +1085,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         HasilPeriksa.setColumns(20);
-        HasilPeriksa.setRows(5);
+        HasilPeriksa.setRows(35);
         HasilPeriksa.setName("HasilPeriksa"); // NOI18N
         Scroll1.setViewportView(HasilPeriksa);
 
@@ -1094,7 +1094,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         panelisi7.setBorder(null);
         panelisi7.setName("panelisi7"); // NOI18N
         panelisi7.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 9, 6));
+        panelisi7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 9, 6));
 
         btnAmbilPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnAmbilPhoto.setMnemonic('U');

@@ -845,7 +845,6 @@
                   </Constraints>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                    <Property name="alignment" type="int" value="0"/>
                     <Property name="horizontalGap" type="int" value="4"/>
                     <Property name="verticalGap" type="int" value="9"/>
                   </Layout>
@@ -999,7 +998,6 @@
                   </Constraints>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                    <Property name="alignment" type="int" value="0"/>
                     <Property name="horizontalGap" type="int" value="4"/>
                     <Property name="verticalGap" type="int" value="9"/>
                   </Layout>
@@ -1157,7 +1155,7 @@
                     <Component class="widget.TextArea" name="HasilPeriksa">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
+                        <Property name="rows" type="int" value="35"/>
                         <Property name="name" type="java.lang.String" value="HasilPeriksa" noResource="true"/>
                       </Properties>
                     </Component>
@@ -1180,7 +1178,6 @@
                   </Constraints>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                    <Property name="alignment" type="int" value="0"/>
                     <Property name="horizontalGap" type="int" value="9"/>
                     <Property name="verticalGap" type="int" value="6"/>
                   </Layout>

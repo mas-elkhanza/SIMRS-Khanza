@@ -56,6 +56,8 @@
         $save=str_replace("/*","",$save);
         $save=str_replace("*/","",$save);
         $save=str_replace("#","",$save);
+        $save=str_replace("text/html","",$save);
+        $save=str_replace("base64","",$save);
         $save=str_replace("<script>","",$save);
         $save=str_replace("</script>","",$save);
         $save=str_replace("<noscript>","",$save);
@@ -73,6 +75,8 @@
         $save=str_replace("--","",$save);
         $save=str_replace("/*","",$save);
         $save=str_replace("*/","",$save);
+        $save=str_replace("text/html","",$save);
+        $save=str_replace("base64","",$save);
         $save=str_replace("<script>","",$save);
         $save=str_replace("</script>","",$save);
         $save=str_replace("<noscript>","",$save);

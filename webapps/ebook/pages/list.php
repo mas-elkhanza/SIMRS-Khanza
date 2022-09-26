@@ -4,7 +4,7 @@
     }
 ?>
 <div id="post">        
-    <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
+    <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype="multipart/form-data">
         <?php
             echo "<br>";
             $action             = isset($_GET['action'])?$_GET['action']:NULL;
