@@ -6645,13 +6645,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='100%' border='0'>Resiko Herediter :</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='100%' border='0' style='margin-left: 20px'>Keluarga Dengan Penyakit Jiwa : "+rs2.getString("rh_keluarga")+", Jika Ya, Sebutkan : "+rs2.getString("ket_rh_keluarga")+"</td>"+
+                                              "<td width='100%' border='0' style='margin-left: 10px'>Keluarga Dengan Penyakit Jiwa : "+rs2.getString("rh_keluarga")+", Jika Ya, Sebutkan : "+rs2.getString("ket_rh_keluarga")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='100%' border='0'>Resiko Bunuh Diri : "+rs2.getString("resiko_bunuh_diri")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='100%' border='0' style='margin-left: 20px'>"+
+                                              "<td width='100%' border='0' style='margin-left: 10px'>"+
                                                   "Ada Ide : "+rs2.getString("rbd_ide")+(rs2.getString("ket_rbd_ide").equals("")?"":", "+rs2.getString("ket_rbd_ide"))+
                                                   "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ada Rencana : "+rs2.getString("rbd_rencana")+(rs2.getString("ket_rbd_rencana").equals("")?"":", "+rs2.getString("ket_rbd_rencana"))+
                                                   "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mempersiapkan Alat : "+rs2.getString("rbd_alat")+(rs2.getString("ket_rbd_alat").equals("")?"":", "+rs2.getString("ket_rbd_alat"))+
@@ -6821,30 +6821,82 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "XI. STATUS KESEHATAN SAAT INI"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='33%' border='0'>Penampilan : "+rs2.getString("sk_penampilan")+"</td>"+
-                                              "<td width='33%' border='0'>Pembicaraan : "+rs2.getString("sk_pembicaraan")+"</td>"+
-                                              "<td width='33%' border='0'>Alam Perasaan : "+rs2.getString("sk_alam_perasaan")+"</td>"+
+                                              "<td width='100%' border='0'>Penampilan : "+rs2.getString("sk_penampilan")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pembicaraan : "+rs2.getString("sk_pembicaraan")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alam Perasaan : "+rs2.getString("sk_alam_perasaan")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Afek : "+rs2.getString("sk_afek")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aktifitas Motorik/Prilaku : "+rs2.getString("sk_aktifitas_motorik")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interaksi Selama Wawancara : "+rs2.getString("sk_interaksi")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proses Pikir : "+rs2.getString("sk_proses_pikir")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Daya Tilik Diri : "+rs2.getString("sk_daya_tilik_diri")+(rs2.getString("ket_sk_daya_tilik_diri").equals("")?"":", "+rs2.getString("ket_sk_daya_tilik_diri"))+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Memori : "+rs2.getString("sk_memori")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tingkat Konsentrasi & Berhitung : "+rs2.getString("sk_konsentrasi")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Persepsi : "+rs2.getString("sk_persepsi")+(rs2.getString("ket_sk_persepsi").equals("")?"":", "+rs2.getString("ket_sk_persepsi"))+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tingkat Kesadaran : Orientasi : "+rs2.getString("sk_orientasi")+(rs2.getString("sk_orientasi").equals("Ya")?", Ya : "+rs2.getString("sk_tingkat_kesadaran_orientasi"):"")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Isi Pikir : "+rs2.getString("sk_isi_pikir")+"&nbsp;&nbsp;&nbsp;&nbsp;Waham : "+rs2.getString("sk_waham")+(rs2.getString("ket_sk_waham").equals("")?"":", "+rs2.getString("ket_sk_waham"))+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kemampuan Penilaian : "+rs2.getString("sk_gangguan_ringan")+
+                                              "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "XII. KEBUTUHAN KOMUNIKASI DAN EDUKASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td width='100%' border='0'>"+
+                                                    "Terdapat Hambatan Dalam Pembelajaran : "+rs2.getString("kk_pembelajaran")+" Jika, Ya : "+rs2.getString("ket_kk_pembelajaran")+(rs2.getString("ket_kk_pembelajaran_lainnya").equals("")?"":" Lainnya : "+rs2.getString("ket_kk_pembelajaran_lainnya"))+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dibutuhkan Penerjamah : "+rs2.getString("kk_Penerjamah")+(rs2.getString("ket_kk_penerjamah_Lainnya").equals("")?"":" Jika, Ya : "+rs2.getString("ket_kk_penerjamah_Lainnya"))+" Bahasa Isyarat : "+rs2.getString("kk_bahasa_isyarat")+
+                                                    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kebutuhan Edukasi (Pilih Topik Edukasi Pada Kolom Yang Tersedia) : "+rs2.getString("kk_kebutuhan_edukasi")+", Lainnya : "+rs2.getString("ket_kk_kebutuhan_edukasi")+
+                                               "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>MASALAH KEPERAWATAN :</td>"+
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='33%' border='0'>Afek : "+rs2.getString("sk_afek")+"</td>"+
-                                              "<td width='33%' border='0'>Aktifitas Motorik/Prilaku : "+rs2.getString("sk_aktifitas_motorik")+"</td>"+
-                                              "<td width='33%' border='0'>Interaksi Selama Wawancara : "+rs2.getString("sk_interaksi")+"</td>"+
-                                          "</tr>"+
-                                          "<tr>"+
-                                              "<td width='33%' border='0'>Proses Pikir : "+rs2.getString("sk_proses_pikir")+"</td>"+
-                                              "<td width='66%' border='0' colspan='2'>Daya Tilik Diri : "+rs2.getString("sk_daya_tilik_diri")+(rs2.getString("ket_sk_daya_tilik_diri").equals("")?"":", "+rs2.getString("ket_sk_daya_tilik_diri"))+"</td>"+
-                                          "</tr>"+
-                                          "<tr>"+
-                                              "<td width='33%' border='0'>Memori : "+rs2.getString("sk_memori")+"</td>"+
-                                              "<td width='66%' border='0' colspan='2'>Tingkat Konsentrasi & Berhitung : "+rs2.getString("sk_konsentrasi")+"</td>"+
-                                          "</tr>"+
-                                          "<tr>"+
-                                              "<td width='66%' border='0' colspan='2'>Persepsi : "+rs2.getString("sk_persepsi")+(rs2.getString("ket_sk_persepsi").equals("")?"":", "+rs2.getString("ket_sk_persepsi"))+"</td>"+
-                                              "<td width='33%' border='0'>Tingkat Kesadaran : Orientasi : "+rs2.getString("sk_orientasi")+" Ya : "+rs2.getString("sk_tingkat_kesadaran_orientasi")+"</td>"+
-                                          "</tr>"+
-                                          "<tr>"+
-                                              "<td width='66%' border='0' colspan='2'>Isi Pikir : "+rs2.getString("sk_isi_pikir")+"&nbsp;&nbsp;&nbsp;&nbsp;Waham : "+rs2.getString("sk_waham")+(rs2.getString("ket_sk_waham").equals("")?"":", "+rs2.getString("ket_sk_waham"))+"</td>"+
-                                              "<td width='33%' border='0'>Kemampuan Penilaian : "+rs2.getString("sk_gangguan_ringan")+"</td>"+
+                                               "<td valign='top'>");
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select master_masalah_keperawatan_psikiatri.nama_masalah from master_masalah_keperawatan_psikiatri "+
+                                    "inner join penilaian_awal_keperawatan_ralan_masalah_psikiatri on penilaian_awal_keperawatan_ralan_masalah_psikiatri.kode_masalah=master_masalah_keperawatan_psikiatri.kode_masalah "+
+                                    "where penilaian_awal_keperawatan_ralan_masalah_psikiatri.no_rawat='"+norawat+"' order by penilaian_awal_keperawatan_ralan_masalah_psikiatri.kode_masalah").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(rs3.getString("nama_masalah")+"<br>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append("</td>"+
+                                               "<td valign='top'>");
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select master_rencana_keperawatan_psikiatri.rencana_keperawatan from master_rencana_keperawatan_psikiatri "+
+                                    "inner join penilaian_awal_keperawatan_ralan_rencana_psikiatri on penilaian_awal_keperawatan_ralan_rencana_psikiatri.kode_rencana=master_rencana_keperawatan_psikiatri.kode_rencana "+
+                                    "where penilaian_awal_keperawatan_ralan_rencana_psikiatri.no_rawat='"+norawat+"' order by penilaian_awal_keperawatan_ralan_rencana_psikiatri.kode_rencana").executeQuery();
+                                while(rs3.next()){
+                                    htmlContent.append(rs3.getString("rencana_keperawatan")+"<br>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append(rs2.getString("rencana")+
+                                            "</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+

@@ -1630,7 +1630,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         TotalHasil.setBounds(774, 1020, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2022 22:28:50" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2022 17:37:47" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2769,7 +2769,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         FormInput.add(jLabel155);
         jLabel155.setBounds(243, 1460, 50, 23);
 
-        SKTingkatKesadaranOrientasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bingung", "Sedasi", "Waktu", "Stupor", "Tempat", "Orang" }));
+        SKTingkatKesadaranOrientasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Bingung", "Sedasi", "Waktu", "Stupor", "Tempat", "Orang" }));
         SKTingkatKesadaranOrientasi.setName("SKTingkatKesadaranOrientasi"); // NOI18N
         SKTingkatKesadaranOrientasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2829,7 +2829,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         FormInput.add(jLabel159);
         jLabel159.setBounds(0, 1510, 247, 23);
 
-        KetKKPembelajaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pendengaran", "Penglihatan", "Kognitif", "Fisik", "Budaya", "Emosi", "Bahasa ", "Lainnya" }));
+        KetKKPembelajaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Pendengaran", "Penglihatan", "Kognitif", "Fisik", "Budaya", "Emosi", "Bahasa ", "Lainnya" }));
         KetKKPembelajaran.setName("KetKKPembelajaran"); // NOI18N
         KetKKPembelajaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -3460,7 +3460,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3474,7 +3474,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3672,7 +3672,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 })==true){
                     for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                         if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                            Sequel.menyimpan2("penilaian_awal_keperawatan_psikiatri_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
+                            Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah_psikiatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
                         }
                     }
                     
@@ -5772,8 +5772,8 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan_psikiatri.kode_masalah,master_masalah_keperawatan_psikiatri.nama_masalah from master_masalah_keperawatan_psikiatri "+
-                        "inner join penilaian_awal_keperawatan_psikiatri_masalah on penilaian_awal_keperawatan_psikiatri_masalah.kode_masalah=master_masalah_keperawatan_psikiatri.kode_masalah "+
-                        "where penilaian_awal_keperawatan_psikiatri_masalah.no_rawat=? order by penilaian_awal_keperawatan_psikiatri_masalah.kode_masalah");
+                        "inner join penilaian_awal_keperawatan_ralan_masalah_psikiatri on penilaian_awal_keperawatan_ralan_masalah_psikiatri.kode_masalah=master_masalah_keperawatan_psikiatri.kode_masalah "+
+                        "where penilaian_awal_keperawatan_ralan_masalah_psikiatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah_psikiatri.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -6085,8 +6085,8 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 Valid.tabelKosong(tabModeDetailMasalah);
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan_psikiatri.kode_masalah,master_masalah_keperawatan_psikiatri.nama_masalah from master_masalah_keperawatan_psikiatri "+
-                        "inner join penilaian_awal_keperawatan_psikiatri_masalah on penilaian_awal_keperawatan_psikiatri_masalah.kode_masalah=master_masalah_keperawatan_psikiatri.kode_masalah "+
-                        "where penilaian_awal_keperawatan_psikiatri_masalah.no_rawat=? order by penilaian_awal_keperawatan_psikiatri_masalah.kode_masalah");
+                        "inner join penilaian_awal_keperawatan_ralan_masalah_psikiatri on penilaian_awal_keperawatan_ralan_masalah_psikiatri.kode_masalah=master_masalah_keperawatan_psikiatri.kode_masalah "+
+                        "where penilaian_awal_keperawatan_ralan_masalah_psikiatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah_psikiatri.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -6151,7 +6151,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         })==true){
             TNoRM1.setText("");
             TPasien1.setText("");
-            Sequel.meghapus("penilaian_awal_keperawatan_psikiatri_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah_psikiatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana_psikiatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             Valid.tabelKosong(tabModeDetailMasalah);
             Valid.tabelKosong(tabModeDetailRencana);
@@ -6184,10 +6184,10 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 KKPembelajaran.getSelectedItem().toString(),KetKKPembelajaran.getSelectedItem().toString(),KetKKPembelajaranLainnya.getText(),KKPenerjamah.getSelectedItem().toString(),KetKKPenerjamahLainnya.getText(),KKBahasaIsyarat.getSelectedItem().toString(),KKKebutuhanEdukasi.getSelectedItem().toString(),KetKKKebutuhanEdukasi.getText(),
                 Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
              })==true){
-                Sequel.meghapus("penilaian_awal_keperawatan_psikiatri_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah_psikiatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        Sequel.menyimpan2("penilaian_awal_keperawatan_psikiatri_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
+                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah_psikiatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
                     }
                 }
                 Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana_psikiatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
