@@ -8,9 +8,9 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 $action      = isset($_GET['action'])?$_GET['action']:null;
-                $namabank    = str_replace("_"," ",isset($_GET['namabank']))?str_replace("_"," ",$_GET['namabank']):NULL;
+                $namabank    = validTeks(str_replace("_"," ",isset($_GET['namabank']))?str_replace("_"," ",$_GET['namabank']):NULL);
                 if($action == "TAMBAH"){
-                    $namabank     = str_replace("_"," ",isset($_GET['namabank']))?str_replace("_"," ",$_GET['namabank']):NULL;
+                    $namabank     = validTeks(str_replace("_"," ",isset($_GET['namabank']))?str_replace("_"," ",$_GET['namabank']):NULL);
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT * FROM bank WHERE namabank='$namabank'";
                     $hasil        = bukaquery($_sql);

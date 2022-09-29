@@ -11,20 +11,20 @@
         </script>
     <?php
     reportsqlinjection();      
-        $nopenyerahan    =str_replace("_"," ",$_GET['nopenyerahan']); 
-        $tanggal   =$_GET['tanggal']; 
-        $catatan = str_replace("_"," ",$_GET['catatan']); 
-        $petugaspj = str_replace("_"," ",$_GET['petugaspj']); 
-        $pasien = str_replace("_"," ",$_GET['pasien']); 
-        $besarppn = str_replace("_"," ",$_GET['besarppn']); 
-        $bayar = str_replace("_"," ",$_GET['bayar']); 
-        $alamatip  = str_replace("_"," ",$_GET['alamatip']); 
+        $nopenyerahan   = validTeks(str_replace("_"," ",$_GET['nopenyerahan'])); 
+        $tanggal        = validTeks($_GET['tanggal']); 
+        $catatan        = validTeks(str_replace("_"," ",$_GET['catatan'])); 
+        $petugaspj      = validTeks(str_replace("_"," ",$_GET['petugaspj'])); 
+        $pasien         = validTeks(str_replace("_"," ",$_GET['pasien'])); 
+        $besarppn       = validTeks(str_replace("_"," ",$_GET['besarppn'])); 
+        $bayar          = validTeks(str_replace("_"," ",$_GET['bayar'])); 
+        $alamatip       = validTeks(str_replace("_"," ",$_GET['alamatip'])); 
 
         $_sql = "SELECT temporary.no,temporary.temp1,temporary.temp2,temporary.temp3,temporary.temp4,temporary.temp5,temporary.temp6,temporary.temp7,temporary.temp8,temporary.temp9,temporary.temp10,temporary.temp11,temporary.temp12,temporary.temp13 from temporary where temporary.temp37='$alamatip' order by temporary.no";            
         $hasil=bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
-          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+          $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
           echo "<table width='".getOne("select notaapotek  from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>

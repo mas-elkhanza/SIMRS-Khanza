@@ -35,7 +35,7 @@
      $hasilcaribid=bukaquery($_sqlbid);
      $semuanya=0;
      while($barisbid = mysqli_fetch_array($hasilcaribid)) {
-        $keyword=$_GET['keyword'];
+        $keyword= $_GET['keyword'];
         $keyword = validTeks($keyword);
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,pegawai.wajibmasuk,departemen.nama as departemen,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,jnj_jabatan.nama as jnj_jabatan,

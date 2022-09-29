@@ -1,4 +1,8 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"conf")){
+        exit(header("Location:../index.php"));
+    }
+    
     function title(){
             $judul ="SIMKES Khanza --)(*!!@#$%";
             $judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);

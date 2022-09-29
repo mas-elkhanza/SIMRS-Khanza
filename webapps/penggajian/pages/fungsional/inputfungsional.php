@@ -9,16 +9,16 @@
         <form name="frm_fungsional" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action      =$_GET['action'];
-                $TxtKode     =$_GET['kode'];
+                $action      = $_GET['action'];
+                $TxtKode     = validTeks($_GET['kode']);
                 if($action == "TAMBAH"){
-                    $TxtKode       = $_GET['TxtKode'];;
-                    $TxtNama     = "";
+                    $TxtKode    = validTeks($_GET['TxtKode']);
+                    $TxtNama    = "";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT * FROM fungsional WHERE kode='$TxtKode'";
-                    $hasil        = bukaquery($_sql);
-                    $baris        = mysqli_fetch_row($hasil);
-                    $TxtKode      = $baris[0];
+                    $_sql       = "SELECT * FROM fungsional WHERE kode='$TxtKode'";
+                    $hasil      = bukaquery($_sql);
+                    $baris      = mysqli_fetch_row($hasil);
+                    $TxtKode    = $baris[0];
                     $TxtNama    = $baris[1];
                 }
                 echo"<input type=hidden name=TxtKode value=$TxtKode><input type=hidden name=action value=$action>";

@@ -54,7 +54,7 @@ public final class MobileJKNPembatalanPendaftaran extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.RM","Nama Pasien","No.Rawat Batal","Nomor Referensi","Tanggal Batal","Keterangan"
+                "No.RM","Nama Pasien","No.Rawat Batal","Nomor Referensi","Tanggal Batal","Keterangan","Status Kirim"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -63,7 +63,7 @@ public final class MobileJKNPembatalanPendaftaran extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 7; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -77,6 +77,8 @@ public final class MobileJKNPembatalanPendaftaran extends javax.swing.JDialog {
                 column.setPreferredWidth(117);
             }else if(i==5){
                 column.setPreferredWidth(300);
+            }else if(i==6){
+                column.setPreferredWidth(90);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -440,8 +442,8 @@ public final class MobileJKNPembatalanPendaftaran extends javax.swing.JDialog {
         try{
             ps=koneksi.prepareStatement(
                    "SELECT referensi_mobilejkn_bpjs_batal.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs_batal.no_rawat_batal,"+
-                   "referensi_mobilejkn_bpjs_batal.nomorreferensi,referensi_mobilejkn_bpjs_batal.tanggalbatal,referensi_mobilejkn_bpjs_batal.keterangan "+
-                   "FROM referensi_mobilejkn_bpjs_batal INNER JOIN pasien ON referensi_mobilejkn_bpjs_batal.no_rkm_medis=pasien.no_rkm_medis "+
+                   "referensi_mobilejkn_bpjs_batal.nomorreferensi,referensi_mobilejkn_bpjs_batal.tanggalbatal,referensi_mobilejkn_bpjs_batal.keterangan, "+
+                   "referensi_mobilejkn_bpjs_batal.statuskirim FROM referensi_mobilejkn_bpjs_batal INNER JOIN pasien ON referensi_mobilejkn_bpjs_batal.no_rkm_medis=pasien.no_rkm_medis "+
                    "WHERE referensi_mobilejkn_bpjs_batal.tanggalbatal BETWEEN ? AND ? "+(TCari.getText().equals("")?"":
                    "AND (referensi_mobilejkn_bpjs_batal.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ? OR referensi_mobilejkn_bpjs_batal.no_rawat_batal LIKE ? OR "+
                    "referensi_mobilejkn_bpjs_batal.nomorreferensi LIKE ? OR referensi_mobilejkn_bpjs_batal.keterangan LIKE ?) ")+
@@ -461,7 +463,8 @@ public final class MobileJKNPembatalanPendaftaran extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_rawat_batal"),
-                        rs.getString("nomorreferensi"),rs.getString("tanggalbatal"),rs.getString("keterangan")
+                        rs.getString("nomorreferensi"),rs.getString("tanggalbatal"),rs.getString("keterangan"),
+                        rs.getString("statuskirim")
                     });
                 }
             } catch (Exception e) {

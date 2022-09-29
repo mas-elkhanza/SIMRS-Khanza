@@ -1,37 +1,31 @@
 <div id="entry">       
     <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-            echo "";
-            $action             =isset($_GET['action'])?$_GET['action']:NULL;
-            $id                 =isset($_GET['id'])?$_GET['id']:NULL;
-            $gapok              =isset($_GET['gapok'])?$_GET['gapok']:NULL;
+            $action             = isset($_GET['action'])?$_GET['action']:NULL;
+            $id                 = validTeks(isset($_GET['id'])?$_GET['id']:NULL);
+            $gapok              = validangka(isset($_GET['gapok'])?$_GET['gapok']:NULL);
             echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
-            $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
-            $hasil=bukaquery($_sql);
-            $baris = mysqli_fetch_row($hasil);   
-
-            $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
+            $_sql               = "SELECT pegawai.nik,pegawai.nama FROM pegawai where pegawai.id='$id'";
+            $hasil              = bukaquery($_sql);
+            $baris              = mysqli_fetch_row($hasil);   
+            $_sqlnext         	= "SELECT pegawai.id FROM pegawai WHERE pegawai.id>'$id' order by pegawai.id asc limit 1";
             $hasilnext        	= bukaquery($_sqlnext);
             $barisnext        	= mysqli_fetch_row($hasilnext);
             $next               = $barisnext[0];
-
-            $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
+            $_sqlprev         	= "SELECT pegawai.id FROM pegawai WHERE pegawai.id<'$id' order by pegawai.id desc limit 1";
             $hasilprev        	= bukaquery($_sqlprev);
             $barisprev        	= mysqli_fetch_row($hasilprev);
             $prev               = $barisprev[0];
-
             if(empty($prev)){
-                $prev=$next;
+                $prev = $next;
             }
-
             if(empty($next)){
-                $next=$prev;
+                $next = $prev;
             }
-
             echo "<div align='center' class='link'>
-                  <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$prev><<--</a>
-                  <a href=?act=ListRiwayatGaji&action=LIHAT>| List Riwayat Gaji |</a>
-                  <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$next>-->></a>
+                      <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$prev><<--</a>
+                      <a href=?act=ListRiwayatGaji&action=LIHAT>| List Riwayat Gaji |</a>
+                      <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$next>-->></a>
                   </div>";
         ?>
         <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="tbl_form">
@@ -132,26 +126,26 @@
             </tr>            
         </table>
         <div align="center"><input name=BtnSimpan type=submit class="button" value="&nbsp;&nbsp;SIMPAN&nbsp;&nbsp;">&nbsp<input name=BtnKosong type=reset class="button" value="&nbsp;&nbsp;KOSONG&nbsp;&nbsp;"></div><br>
+        <div style="width: 100%; height: 66%; overflow: auto;">
         <?php
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
-                $id                 =trim($_POST['id']);
+                $id                 = validTeks(trim($_POST['id']));
                 $jabatan            = validTeks(trim($_POST['jabatan']));                    
                 $gapok              = validTeks(trim($_POST['gapok']));
-                $tmt_berkala        =trim($_POST['ThnBerkala'])."-".trim($_POST['BlnBerkala'])."-".trim($_POST['TglBerkala']);
-                $tmt_berkala_yad    =trim($_POST['ThnBerkalaYad'])."-".trim($_POST['BlnBerkalaYad'])."-".trim($_POST['TglBerkalaYad']);
-                $no_sk              =validTeks(trim($_POST['no_sk']));
-                $tgl_sk             =trim($_POST['ThnSK'])."-".trim($_POST['BlnSK'])."-".trim($_POST['TglSK']);
-                $masa_kerja         =validTeks(trim($_POST['masa_kerja']));
-                $bulan_kerja          =validTeks(trim($_POST['bulan_kerja']));
-                $dokumen            = str_replace(" ","_","pages/riwayatgaji/berkas/".$_FILES['dokumen']['name']);
+                $tmt_berkala        = validTeks(trim($_POST['ThnBerkala'])."-".trim($_POST['BlnBerkala'])."-".trim($_POST['TglBerkala']));
+                $tmt_berkala_yad    = validTeks(trim($_POST['ThnBerkalaYad'])."-".trim($_POST['BlnBerkalaYad'])."-".trim($_POST['TglBerkalaYad']));
+                $no_sk              = validTeks(trim($_POST['no_sk']));
+                $tgl_sk             = validTeks(trim($_POST['ThnSK'])."-".trim($_POST['BlnSK'])."-".trim($_POST['TglSK']));
+                $masa_kerja         = validTeks(trim($_POST['masa_kerja']));
+                $bulan_kerja        = validTeks(trim($_POST['bulan_kerja']));
+                $dokumen            = validTeks(str_replace(" ","_","pages/riwayatgaji/berkas/".$_FILES['dokumen']['name']));
                 if ((!empty($id))&&(!empty($gapok))) {
                     switch($action) {
                         case "TAMBAH":
                             if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="jpeg")){
                                 move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                                Tambah(" riwayat_naik_gaji "," '$id','$jabatan','$gapok','$tmt_berkala','$tmt_berkala_yad',
-                                        '$no_sk','$tgl_sk','$masa_kerja','$bulan_kerja','$dokumen'", " Riwayat Gaji Berkala " );
+                                Tambah(" riwayat_naik_gaji "," '$id','$jabatan','$gapok','$tmt_berkala','$tmt_berkala_yad','$no_sk','$tgl_sk','$masa_kerja','$bulan_kerja','$dokumen'", " Riwayat Gaji Berkala " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatGaji&action=TAMBAH&id=$id'>";
                             }else{
                                 echo "Berkas harus JPEG/JPG";
@@ -163,13 +157,11 @@
                 }
             }
             
-            $_sql = "SELECT pangkatjabatan,gapok,tmt_berkala,tmt_berkala_yad,no_sk,tgl_sk,masa_kerja,bulan_kerja, 
-                    berkas from riwayat_naik_gaji where id='$id' ORDER BY tmt_berkala ASC ";
-            $hasil=bukaquery($_sql);
-            $jumlah=mysqli_num_rows($hasil);
-            $ttllembur=0;
-            $ttlhr=0;
-
+            $_sql       = "SELECT riwayat_naik_gaji.pangkatjabatan,riwayat_naik_gaji.gapok,riwayat_naik_gaji.tmt_berkala,riwayat_naik_gaji.tmt_berkala_yad,riwayat_naik_gaji.no_sk,riwayat_naik_gaji.tgl_sk,riwayat_naik_gaji.masa_kerja,riwayat_naik_gaji.bulan_kerja,riwayat_naik_gaji.berkas from riwayat_naik_gaji where riwayat_naik_gaji.id='$id' ORDER BY riwayat_naik_gaji.tmt_berkala ASC ";
+            $hasil      = bukaquery($_sql);
+            $jumlah     = mysqli_num_rows($hasil);
+            $ttllembur  = 0;
+            $ttlhr      = 0;
             if(mysqli_num_rows($hasil)!=0) {
                 echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                         <tr class='head'>
@@ -189,48 +181,48 @@
                     }else{
                         $gb="<img src='".$baris["berkas"]."' width='850px' height='950px'>";
                     }
-                  echo "<tr class='isi'>
+                    echo "<tr class='isi'>
                             <td width='70'>
-                                <center>"; ?>
-                                <a href="?act=InputRiwayatGaji&action=HAPUS&gapok=<?php print $baris[1] ?>&id=<?php echo $id ?>&berkas=<?php print $baris["berkas"];?>" >[hapus]</a>
-                        <?php
-                        echo "</center>
+                                <center>
+                                   <a href=?act=InputRiwayatGaji&action=HAPUS&gapok=".$baris[1]."&id=".$id."&berkas=".$baris["berkas"].">[hapus]</a>
+                                </center>
                             </td>
                             <td>$baris[0]</td>
                             <td align='right'>".formatDuit($baris[1])."</td>
-                            <td>$baris[2]</td>
-                            <td>$baris[3]</td>
-                            <td>$baris[4]</td>
-                            <td>$baris[5]</td>
-                            <td>$baris[6] Tahun $baris[7] Bulan</td>
-                       </tr>";
-                        echo "<tr class='isi'>
+                            <td align='center'>$baris[2]</td>
+                            <td align='center'>$baris[3]</td>
+                            <td align='center'>$baris[4]</td>
+                            <td align='center'>$baris[5]</td>
+                            <td align='center'>$baris[6] Tahun $baris[7] Bulan</td>
+                         </tr>
+                         <tr class='isi'>
                             <td width='70'></td>
                             <td valign='top' align='center' colspan='9'><a target=_blank href=../penggajian/".$baris["berkas"].">".$gb."</a></td>
-                       </tr>";    
+                         </tr>";    
                 }
-            echo "</table>";
+                echo "</table>";
 
-        } else {
-            echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                        <tr class='head3'>
-                            <td width='5%'><div align='center'>Proses</div></td>
-                            <td width='30%'><div align='center'>Pangkat/Jabatan</div></td>
-                            <td width='12%'><div align='center'>Gapok</div></td>
-                            <td width='10%'><div align='center'>TMT Berkala</div></td>
-                            <td width='10%'><div align='center'>TMT Berkala YAD</div></td>
-                            <td width='13%'><div align='center'>Nomor S.K.</div></td>
-                            <td width='10%'><div align='center'>Tanggal S.K.</div></td>
-                            <td width='10%'><div align='center'>Masa Kerja</div></td>
-                        </tr>
-                    </table>";
-        }
-    ?>
+            } else {
+                echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head3'>
+                                <td width='5%'><div align='center'>Proses</div></td>
+                                <td width='30%'><div align='center'>Pangkat/Jabatan</div></td>
+                                <td width='12%'><div align='center'>Gapok</div></td>
+                                <td width='10%'><div align='center'>TMT Berkala</div></td>
+                                <td width='10%'><div align='center'>TMT Berkala YAD</div></td>
+                                <td width='13%'><div align='center'>Nomor S.K.</div></td>
+                                <td width='10%'><div align='center'>Tanggal S.K.</div></td>
+                                <td width='10%'><div align='center'>Masa Kerja</div></td>
+                            </tr>
+                        </table>";
+            }
+        ?>
+        </div>
     </form>
     <?php
         if ($action=="HAPUS") {
             unlink($_GET['berkas']);
-            Hapus(" riwayat_naik_gaji "," id ='".$_GET['id']."' and gapok ='".$_GET['gapok']."'","?act=InputRiwayatGaji&action=TAMBAH&id=$id");
+            Hapus(" riwayat_naik_gaji "," id ='".validTeks($_GET['id'])."' and gapok ='". validTeks($_GET['gapok'])."'","?act=InputRiwayatGaji&action=TAMBAH&id=$id");
         }       
     ?>
 </div>

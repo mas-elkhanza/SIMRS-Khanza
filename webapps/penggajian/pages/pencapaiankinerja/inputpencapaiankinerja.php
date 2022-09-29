@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputPencapaianKinerja&action=TAMBAH>| Input Data |</a>
@@ -10,19 +8,19 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode_pencapaian     =str_replace("_"," ",isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL);
+                $action             = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode_pencapaian    = validTeks(str_replace("_"," ",isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL));
                 if($action == "TAMBAH"){
-                    $kode_pencapaian       = str_replace("_"," ",isset($_GET['kode_pencapaian']))?str_replace("_"," ",$_GET['kode_pencapaian']):NULL;
-                    $nama_pencapaian        = "";
-                    $indek      ="";
+                    $kode_pencapaian  = validTeks(str_replace("_"," ",isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL));
+                    $nama_pencapaian  = "";
+                    $indek            = "";
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT * FROM pencapaian_kinerja WHERE kode_pencapaian='$kode_pencapaian'";
-                    $hasil          = bukaquery($_sql);
-                    $baris          = mysqli_fetch_row($hasil);
+                    $_sql             = "SELECT * FROM pencapaian_kinerja WHERE kode_pencapaian='$kode_pencapaian'";
+                    $hasil            = bukaquery($_sql);
+                    $baris            = mysqli_fetch_row($hasil);
                     $kode_pencapaian  = $baris[0];
                     $nama_pencapaian  = $baris[1];
-                    $indek          = $baris[2];
+                    $indek            = $baris[2];
                 }
                 echo"<input type=hidden name=kode_pencapaian value=$kode_pencapaian><input type=hidden name=action value=$action>";
             ?>

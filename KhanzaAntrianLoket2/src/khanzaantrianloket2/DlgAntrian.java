@@ -38,7 +38,7 @@ public class DlgAntrian extends javax.swing.JDialog{
     private PreparedStatement pshapus,pssimpan,pscari;
     private ResultSet rs;
     private BackgroundMusic music;
-    private int nilai_detik;
+    private int nilai_detik,loket=1;
     private String[] urut={"","./suara/satu.mp3","./suara/dua.mp3","./suara/tiga.mp3","./suara/empat.mp3",
                        "./suara/lima.mp3","./suara/enam.mp3","./suara/tujuh.mp3","./suara/delapan.mp3",
                        "./suara/sembilan.mp3","./suara/sepuluh.mp3","./suara/sebelas.mp3"};
@@ -51,15 +51,17 @@ public class DlgAntrian extends javax.swing.JDialog{
         initComponents();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
         
-        
+        Loket.setDocument(new batasInput((byte)3).getOnlyAngka(Loket));
         Antrian.setDocument(new batasInput((byte)3).getOnlyAngka(Antrian));
         this.setSize(350,400);
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            Loket.setText(prop.getProperty("LOKETANTRIAN"));
+            loket=Integer.parseInt(prop.getProperty("LOKETANTRIAN"));
+            Loket.setText(Integer.toString(loket));
             form1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255,255)), " Antrian Loket "+Loket.getText(), javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 55), new java.awt.Color(255, 255, 51)));
         } catch (IOException ex) {
-            System.out.println(ex);
+            Loket.setText("1");
+            form1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255,255)), " Antrian Loket "+Loket.getText(), javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 55), new java.awt.Color(255, 255, 51)));
         }
         
         jam();

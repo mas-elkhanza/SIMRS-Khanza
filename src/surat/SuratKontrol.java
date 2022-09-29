@@ -600,7 +600,6 @@ public class SuratKontrol extends javax.swing.JDialog {
         panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
 
-        R1.setBackground(new java.awt.Color(240, 250, 230));
         R1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R1);
         R1.setSelected(true);
@@ -611,7 +610,6 @@ public class SuratKontrol extends javax.swing.JDialog {
         R1.setPreferredSize(new java.awt.Dimension(85, 23));
         panelCari.add(R1);
 
-        R2.setBackground(new java.awt.Color(240, 250, 230));
         R2.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R2);
         R2.setText("Tanggal :");
@@ -621,7 +619,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -644,7 +642,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -656,7 +654,6 @@ public class SuratKontrol extends javax.swing.JDialog {
         });
         panelCari.add(DTPCari2);
 
-        R3.setBackground(new java.awt.Color(240, 250, 230));
         R3.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.pink));
         buttonGroup1.add(R3);
         R3.setText("Selesai :");
@@ -666,7 +663,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(85, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2021" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2022" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -689,7 +686,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2021" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2022" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -773,7 +770,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         TPasien.setBounds(185, 10, 190, 23);
 
         TanggalSurat.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2021 06:38:09" }));
+        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2022 09:41:14" }));
         TanggalSurat.setDisplayFormat("dd-MM-yyyy hh:mm:ss");
         TanggalSurat.setName("TanggalSurat"); // NOI18N
         TanggalSurat.setOpaque(false);
@@ -928,7 +925,7 @@ public class SuratKontrol extends javax.swing.JDialog {
         jLabel14.setBounds(0, 160, 92, 23);
 
         TanggalPeriksa.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2021 06:38:09" }));
+        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-04-2022 09:41:14" }));
         TanggalPeriksa.setDisplayFormat("dd-MM-yyyy hh:mm:ss");
         TanggalPeriksa.setName("TanggalPeriksa"); // NOI18N
         TanggalPeriksa.setOpaque(false);

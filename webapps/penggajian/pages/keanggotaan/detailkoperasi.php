@@ -1,4 +1,3 @@
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=DetailBpjs&action=TAMBAH>| Stts BPJS |</a>
@@ -10,10 +9,9 @@
     <div class="entry">
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                echo "";
                 $action        = isset($_GET['action'])?$_GET['action']:NULL;
-                $stts          = str_replace("_"," ",isset($_GET['stts']))?str_replace("_"," ",$_GET['stts']):NULL;
-                $wajib         = isset($_GET['wajib'])?$_GET['wajib']:NULL;
+                $stts          = validTeks(str_replace("_"," ",isset($_GET['stts']))?str_replace("_"," ",$_GET['stts']):NULL);
+                $wajib         = validangka(isset($_GET['wajib'])?$_GET['wajib']:NULL);
                 echo "<input type=hidden name=stts  value=$stts><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
@@ -34,15 +32,15 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $stts                 = validTeks(trim($_POST['stts']));
-                    $wajib                = validangka(trim($_POST['wajib']));
+                    $stts    = validTeks(trim($_POST['stts']));
+                    $wajib   = validangka(trim($_POST['wajib']));
                     if ((isset($stts))&&(isset($wajib))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" koperasi "," '$stts','$wajib'", " Status Keanggotaan Koperasi " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailKoperasi&action=TAMBAH&stts='$stts'>";
                                 break;
-							              case "UBAH":
+			    case "UBAH":
                                 Ubah(" koperasi ","wajib='$wajib' WHERE stts='$stts'", " Status Keanggotaan Koperasi ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailKoperasi&action=TAMBAH&stts='$stts'></head><body></body></html>";
                                 break;
@@ -54,10 +52,9 @@
             ?>
             <div style="width: 100%; height: 69%; overflow: auto;">
             <?php
-                $_sql = "SELECT stts,wajib from koperasi ORDER BY stts ASC ";
-                $hasil=bukaquery($_sql);
-                $jumlah=mysqli_num_rows($hasil);
-
+                $_sql   = "SELECT koperasi.stts,koperasi.wajib from koperasi ORDER BY koperasi.stts ASC ";
+                $hasil  = bukaquery($_sql);
+                $jumlah = mysqli_num_rows($hasil);
                 if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
@@ -78,37 +75,31 @@
                                 <td>".formatDuit($baris[1])."</td>
                            </tr>";
                     }
-                echo "</table>";
-
-            } else {
-              echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                      <tr class='head'>
-                          <td width='12%'><div align='center'>Proses</div></td>
-                          <td width='33%'><div align='center'>Status Keanggotaan</div></td>
-                          <td width='55%'><div align='center'>Besar Simpanan Wajib</div></td>
-                      </tr>
-                   </table>";
-            }
-        ?>
-        </div>
+                    echo "</table>";
+                } else {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='12%'><div align='center'>Proses</div></td>
+                                <td width='33%'><div align='center'>Status Keanggotaan</div></td>
+                                <td width='55%'><div align='center'>Besar Simpanan Wajib</div></td>
+                            </tr>
+                          </table>";
+                }
+            ?>
+            </div>
         </form>
         <?php
             if ($action=="HAPUS") {
                 Hapus(" koperasi "," stts ='".$stts."' ","?act=DetailKoperasi&action=TAMBAH&stts=$stts");
             }
 
-        if(mysqli_num_rows($hasil)!=0) {
-                $hasil1=bukaquery("SELECT stts,wajib from koperasi ORDER BY stts ASC ");
-                $jumladiv=mysqli_num_rows($hasil1);
-                $i=$jumladiv/19;
-                $i=ceil($i);
+            if($jumlah!=0) {
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                    <tr class='head'>
-                        <td><div align='left'>Data : $jumlah</div></td>
-                    </tr>
-                 </table>");
-        }
+                        <tr class='head'>
+                            <td><div align='left'>Data : $jumlah</div></td>
+                        </tr>
+                     </table>");
+            }
         ?>
     </div>
-
 </div>

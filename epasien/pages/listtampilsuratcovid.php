@@ -26,9 +26,9 @@
             $filename               = $PNG_TEMP_DIR.$rsquerysuratcovid["kd_dokter"].'.png';
             $errorCorrectionLevel   = 'L';
             $matrixPointSize        = 4;
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysuratcovid["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["kd_dokter"]."'",$rsquerysuratcovid["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysuratcovid["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["kd_dokter"]."'",$rsquerysuratcovid["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
             $filename2               = $PNG_TEMP_DIR.$rsquerysuratcovid["nip"].'.png';
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysuratcovid["nip"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["nip"]."'",$rsquerysuratcovid["nip"]), $filename2, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysuratcovid["nip"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratcovid["nip"]."'",$rsquerysuratcovid["nip"]), $filename2, $errorCorrectionLevel, $matrixPointSize, 2); 
             
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>

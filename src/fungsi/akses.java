@@ -185,7 +185,12 @@ public final class akses {
             audit_pembuangan_benda_tajam=false,audit_penanganan_darah=false,audit_pengelolaan_linen_kotor=false,audit_penempatan_pasien=false,
             audit_kamar_jenazah=false,audit_bundle_iadp=false,audit_bundle_ido=false,audit_fasilitas_kebersihan_tangan=false,audit_fasilitas_apd=false,
             audit_pembuangan_limbah_cair_infeksius=false,audit_sterilisasi_alat=false,penilaian_awal_medis_ralan_psikiatri=false,persetujuan_penolakan_tindakan=false,
-            audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false;
+            audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false,
+            penilaian_awal_medis_ralan_penyakit_dalam=false,penilaian_awal_medis_ralan_mata=false,penilaian_awal_medis_ralan_neurologi=false,sirkulasi_obat6=false,
+            penilaian_awal_medis_ralan_orthopedi=false,penilaian_awal_medis_ralan_bedah=false,integrasi_khanza_health_services=false,soap_ralan_tni=false,
+            soap_ranap_tni=false,jumlah_pengunjung_ralan_tni=false,laporan_penyakit_tni=false,catatan_keperawatan_ranap=false,master_rencana_keperawatan_gigi=false,
+            master_rencana_keperawatan_mata=false,master_rencana_keperawatan_igd=false,master_masalah_keperawatan_psikiatri=false,master_rencana_keperawatan_psikiatri=false,
+            penilaian_awal_keperawatan_psikiatri=false,pemantauan_pews_anak=false,surat_pulang_atas_permintaan_sendiri=false,template_hasil_radiologi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1056,6 +1061,27 @@ public final class akses {
                         akses.audit_bundle_vap=true;
                         akses.akun_host_to_host_bank_papua=true;
                         akses.pembayaran_bank_papua=true;
+                        akses.penilaian_awal_medis_ralan_penyakit_dalam=true;
+                        akses.penilaian_awal_medis_ralan_mata=true;
+                        akses.penilaian_awal_medis_ralan_neurologi=true;
+                        akses.sirkulasi_obat6=true;
+                        akses.penilaian_awal_medis_ralan_orthopedi=true;
+                        akses.penilaian_awal_medis_ralan_bedah=true;
+                        akses.integrasi_khanza_health_services=true;
+                        akses.soap_ralan_tni=true;
+                        akses.soap_ranap_tni=true;
+                        akses.jumlah_pengunjung_ralan_tni=true;
+                        akses.laporan_penyakit_tni=true;
+                        akses.catatan_keperawatan_ranap=true;
+                        akses.master_rencana_keperawatan_gigi=true;
+                        akses.master_rencana_keperawatan_mata=true;
+                        akses.master_rencana_keperawatan_igd=true;
+                        akses.master_masalah_keperawatan_psikiatri=true;
+                        akses.master_rencana_keperawatan_psikiatri=true;
+                        akses.penilaian_awal_keperawatan_psikiatri=true;
+                        akses.pemantauan_pews_anak=true;
+                        akses.surat_pulang_atas_permintaan_sendiri=true;
+                        akses.template_hasil_radiologi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1910,7 +1936,28 @@ public final class akses {
                         akses.audit_bundle_vap=rs2.getBoolean("audit_bundle_vap");
                         akses.akun_host_to_host_bank_papua=rs2.getBoolean("akun_host_to_host_bank_papua");
                         akses.pembayaran_bank_papua=rs2.getBoolean("pembayaran_bank_papua");
-                    }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
+                        akses.penilaian_awal_medis_ralan_penyakit_dalam=rs2.getBoolean("penilaian_awal_medis_ralan_penyakit_dalam");
+                        akses.penilaian_awal_medis_ralan_mata=rs2.getBoolean("penilaian_awal_medis_ralan_mata");
+                        akses.penilaian_awal_medis_ralan_neurologi=rs2.getBoolean("penilaian_awal_medis_ralan_neurologi");
+                        akses.sirkulasi_obat6=rs2.getBoolean("sirkulasi_obat6");
+                        akses.penilaian_awal_medis_ralan_orthopedi=rs2.getBoolean("penilaian_awal_medis_ralan_orthopedi");
+                        akses.penilaian_awal_medis_ralan_bedah=rs2.getBoolean("penilaian_awal_medis_ralan_bedah");
+                        akses.integrasi_khanza_health_services=rs2.getBoolean("integrasi_khanza_health_services");
+                        akses.soap_ralan_tni=rs2.getBoolean("soap_ralan_tni");
+                        akses.soap_ranap_tni=rs2.getBoolean("soap_ranap_tni");
+                        akses.jumlah_pengunjung_ralan_tni=rs2.getBoolean("jumlah_pengunjung_ralan_tni");
+                        akses.laporan_penyakit_tni=rs2.getBoolean("laporan_penyakit_tni");
+                        akses.catatan_keperawatan_ranap=rs2.getBoolean("catatan_keperawatan_ranap");
+                        akses.master_rencana_keperawatan_gigi=rs2.getBoolean("master_rencana_keperawatan_gigi");
+                        akses.master_rencana_keperawatan_mata=rs2.getBoolean("master_rencana_keperawatan_mata");
+                        akses.master_rencana_keperawatan_igd=rs2.getBoolean("master_rencana_keperawatan_igd");
+                        akses.master_masalah_keperawatan_psikiatri=rs2.getBoolean("master_masalah_keperawatan_psikiatri");
+                        akses.master_rencana_keperawatan_psikiatri=rs2.getBoolean("master_rencana_keperawatan_psikiatri");
+                        akses.penilaian_awal_keperawatan_psikiatri=rs2.getBoolean("penilaian_awal_keperawatan_psikiatri");
+                        akses.pemantauan_pews_anak=rs2.getBoolean("pemantauan_pews_anak");
+                        akses.surat_pulang_atas_permintaan_sendiri=rs2.getBoolean("surat_pulang_atas_permintaan_sendiri");
+                        akses.template_hasil_radiologi=rs2.getBoolean("template_hasil_radiologi");
+;                    }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
                         akses.obat_penyakit= false;
@@ -2762,6 +2809,27 @@ public final class akses {
                         akses.audit_bundle_vap=false;
                         akses.akun_host_to_host_bank_papua=false;
                         akses.pembayaran_bank_papua=false;
+                        akses.penilaian_awal_medis_ralan_penyakit_dalam=false;
+                        akses.penilaian_awal_medis_ralan_mata=false;
+                        akses.penilaian_awal_medis_ralan_neurologi=false;
+                        akses.sirkulasi_obat6=false;
+                        akses.penilaian_awal_medis_ralan_orthopedi=false;
+                        akses.penilaian_awal_medis_ralan_bedah=false;
+                        akses.integrasi_khanza_health_services=false;
+                        akses.soap_ralan_tni=false;
+                        akses.soap_ranap_tni=false;
+                        akses.jumlah_pengunjung_ralan_tni=false;
+                        akses.laporan_penyakit_tni=false;
+                        akses.catatan_keperawatan_ranap=false;
+                        akses.master_rencana_keperawatan_gigi=false;
+                        akses.master_rencana_keperawatan_mata=false;
+                        akses.master_rencana_keperawatan_igd=false;
+                        akses.master_masalah_keperawatan_psikiatri=false;
+                        akses.master_rencana_keperawatan_psikiatri=false;
+                        akses.penilaian_awal_keperawatan_psikiatri=false;
+                        akses.pemantauan_pews_anak=false;
+                        akses.surat_pulang_atas_permintaan_sendiri=false;
+                        akses.template_hasil_radiologi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3671,4 +3739,25 @@ public final class akses {
     public static boolean getaudit_bundle_vap(){return akses.audit_bundle_vap;}
     public static boolean getakun_host_to_host_bank_papua(){return akses.akun_host_to_host_bank_papua;}
     public static boolean getpembayaran_bank_papua(){return akses.pembayaran_bank_papua;}
+    public static boolean getpenilaian_awal_medis_ralan_penyakit_dalam(){return akses.penilaian_awal_medis_ralan_penyakit_dalam;}
+    public static boolean getpenilaian_awal_medis_ralan_mata(){return akses.penilaian_awal_medis_ralan_mata;}
+    public static boolean getpenilaian_awal_medis_ralan_neurologi(){return akses.penilaian_awal_medis_ralan_neurologi;}
+    public static boolean getsirkulasi_obat6(){return akses.sirkulasi_obat6;}
+    public static boolean getpenilaian_awal_medis_ralan_orthopedi(){return akses.penilaian_awal_medis_ralan_orthopedi;}
+    public static boolean getpenilaian_awal_medis_ralan_bedah(){return akses.penilaian_awal_medis_ralan_bedah;}
+    public static boolean getintegrasi_khanza_health_services(){return akses.integrasi_khanza_health_services;}
+    public static boolean getsoap_ralan_tni(){return akses.soap_ralan_tni;}
+    public static boolean getsoap_ranap_tni(){return akses.soap_ranap_tni;}
+    public static boolean getjumlah_pengunjung_ralan_tni(){return akses.jumlah_pengunjung_ralan_tni;}
+    public static boolean getlaporan_penyakit_tni(){return akses.laporan_penyakit_tni;}
+    public static boolean getcatatan_keperawatan_ranap(){return akses.catatan_keperawatan_ranap;}
+    public static boolean getmaster_rencana_keperawatan_gigi(){return akses.master_rencana_keperawatan_gigi;}
+    public static boolean getmaster_rencana_keperawatan_mata(){return akses.master_rencana_keperawatan_mata;}
+    public static boolean getmaster_rencana_keperawatan_igd(){return akses.master_rencana_keperawatan_igd;}
+    public static boolean getmaster_masalah_keperawatan_psikiatri(){return akses.master_masalah_keperawatan_psikiatri;}
+    public static boolean getmaster_rencana_keperawatan_psikiatri(){return akses.master_rencana_keperawatan_psikiatri;}
+    public static boolean getpenilaian_awal_keperawatan_psikiatri(){return akses.penilaian_awal_keperawatan_psikiatri;}
+    public static boolean getpemantauan_pews_anak(){return akses.pemantauan_pews_anak;}
+    public static boolean getsurat_pulang_atas_permintaan_sendiri(){return akses.surat_pulang_atas_permintaan_sendiri;}
+    public static boolean gettemplate_hasil_radiologi(){return akses.template_hasil_radiologi;}
 }   

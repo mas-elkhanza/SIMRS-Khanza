@@ -8,14 +8,14 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode_emergency     =str_replace("_"," ",isset($_GET['kode_emergency'])?$_GET['kode_emergency']:NULL);
+                $action             = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode_emergency     = validTeks(str_replace("_"," ",isset($_GET['kode_emergency'])?$_GET['kode_emergency']:NULL));
                 if($action == "TAMBAH"){
-                    $kode_emergency = str_replace("_"," ",isset($_GET['kode_emergency']))?str_replace("_"," ",$_GET['kode_emergency']):NULL;
+                    $kode_emergency = validTeks(str_replace("_"," ",isset($_GET['kode_emergency'])?$_GET['kode_emergency']:NULL));
                     $nama_emergency = "";
                     $indek          = "";
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT * FROM emergency_index WHERE kode_emergency='$kode_emergency'";
+                    $_sql           = "SELECT * FROM emergency_index WHERE emergency_index.kode_emergency='$kode_emergency'";
                     $hasil          = bukaquery($_sql);
                     $baris          = mysqli_fetch_row($hasil);
                     $kode_emergency = $baris[0];

@@ -784,7 +784,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-01-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1975,6 +1975,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             
             for(i2=0;i2<tbTarif.getRowCount();i2++){ 
                 if(tbTarif.getValueAt(i2,0).toString().equals("true")){
+                    System.out.println("Pemeriksaan Laborat : "+tbTarif.getValueAt(i2,1).toString()+" "+tbTarif.getValueAt(i2,2).toString());
                     tabMode.addRow(new Object[]{true,tbTarif.getValueAt(i2,2).toString(),"","","","","",0,0,0,0,0,0,0,0});
                     pstampil=koneksi.prepareStatement(
                             "select template_laboratorium.id_template, template_laboratorium.Pemeriksaan, "+
@@ -1993,12 +1994,15 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         pstampil.setString(3,order);
                         rstampil=pstampil.executeQuery();
                         while(rstampil.next()){
-                            pstindakan=koneksisysmex.prepareStatement("select ORDER_TESTID, DATA_TYP, RESULT_VALUE, RESULT_FT, UNIT, FLAG, REF_RANGE from RESDT where ONO=? and ORDER_TESTID=?");
+                            System.out.println("ID Detail Laborat RS : "+rstampil.getString("id_template")+" "+rstampil.getString("Pemeriksaan"));
+                            pstindakan=koneksisysmex.prepareStatement("select RESDT.ORDER_TESTID,RESDT.DATA_TYP,RESDT.RESULT_VALUE,RESDT.RESULT_FT,RESDT.UNIT,RESDT.FLAG,RESDT.REF_RANGE from RESDT where RESDT.ONO=? and RESDT.TEST_NM=?");
                             try {
                                 pstindakan.setString(1,order);
-                                pstindakan.setString(2,rstampil.getString("id_template"));
+                                pstindakan.setString(2,rstampil.getString("Pemeriksaan"));
                                 rstindakan=pstindakan.executeQuery();
+                                System.out.println("Menjalankan Query : select RESDT.ORDER_TESTID,RESDT.DATA_TYP,RESDT.RESULT_VALUE,RESDT.RESULT_FT,RESDT.UNIT,RESDT.FLAG,RESDT.REF_RANGE from RESDT where RESDT.ONO='"+order+"' and RESDT.TEST_NM='"+rstampil.getString("Pemeriksaan")+"'");
                                 if(rstindakan.next()){
+                                    System.out.println("ID Detail Laborat Sysmex Yang Ditemukan : "+rstindakan.getString("ORDER_TESTID"));
                                     if(rstindakan.getString("DATA_TYP").equals("FT")){
                                         tabMode.addRow(new Object[]{
                                             true,"   "+rstampil.getString("Pemeriksaan"),rstindakan.getString("RESULT_FT"),
@@ -2029,8 +2033,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                                  rstampil.getDouble("kso"),
                                                  rstampil.getDouble("menejemen")
                                         });
-                                    }
-                                        
+                                    }   
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif : "+e);
@@ -2218,6 +2221,15 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             for(i2=0;i2<tbTarif.getRowCount();i2++){ 
                 if(tbTarif.getValueAt(i2,0).toString().equals("true")){
                     tabMode.addRow(new Object[]{true,tbTarif.getValueAt(i2,2).toString(),"","","","","",0,0,0,0,0,0,0,0});
+                    System.out.println(
+                            "Menjalankan Query Mapping Paket Laborat : select template_laboratorium.id_template, template_laboratorium.Pemeriksaan,"+
+                            "template_laboratorium.biaya_item,template_laboratorium.bagian_rs,"+
+                            "template_laboratorium.bhp,template_laboratorium.bagian_perujuk,"+
+                            "template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,"+
+                            "template_laboratorium.kso,template_laboratorium.menejemen "+
+                            "from template_laboratorium inner join permintaan_detail_permintaan_lab on "+
+                            "permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template where "+
+                            "template_laboratorium.kd_jenis_prw='"+tbTarif.getValueAt(i2,1).toString()+"' and permintaan_detail_permintaan_lab.noorder='"+order+"' order by urut");
                     pstampil4=koneksi.prepareStatement(
                             "select template_laboratorium.id_template, template_laboratorium.Pemeriksaan,"+
                             "template_laboratorium.biaya_item,template_laboratorium.bagian_rs,"+
@@ -2233,6 +2245,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         rstampil=pstampil4.executeQuery();
                         while(rstampil.next()){
                             hasil="";satuan="";nn="";keterangan="";
+                            System.out.println("ID Detail Paket Laborat : "+rstampil.getString("id_template")+" Untuk Nomor Order "+order);
                             pslica=koneksi.prepareStatement("select temp1,temp2,temp3,temp4,temp5,temp6,temp7 from temporary_permintaan_lab where temp7=? and temp1=?");
                             try {
                                 pslica.setString(1,rstampil.getString("id_template"));
@@ -2254,6 +2267,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     pslica.close();
                                 }
                             }
+                            System.out.println("Nilai Detail Paket Laborat Yang Diambil : "+rstampil.getString("Pemeriksaan")+" | "+hasil+" | "+satuan+" | "+nn+" | "+keterangan);
                                     
                             tabMode.addRow(new Object[]{
                                 true,"   "+rstampil.getString("Pemeriksaan"),

@@ -5,9 +5,7 @@
     <div class="entry">    
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" enctype=multipart/form-data>
         <?php
-                antisqlinjection("?page=TampilPulang");
-                echo "";                
-                $keyword      =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $keyword      =cleankar(isset($_GET['keyword'])?$_GET['keyword']:NULL);
                 echo "<input type=hidden name=keyword value=$keyword>";
         ?>
             <table width="100%" align="center">

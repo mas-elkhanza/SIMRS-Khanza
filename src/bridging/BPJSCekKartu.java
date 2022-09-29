@@ -83,7 +83,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",
             kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",link="",
             status="Baru",propinsi="",propinsipj="",peserta="",utc="",
-            tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
+            tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),DIAGNOSARUJUKANMASUKAPIBPJS="no";
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
     private ResultSet rs,rs2;
     private double biaya=0;
@@ -1343,8 +1343,8 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         NIP.setDocument(new batasInput((byte)30).getFilter(NIP));
         PenanggungJawab.setDocument(new batasInput((byte)100).getKata(PenanggungJawab));
         try{
-            KdPPK.setText(Sequel.cariIsi("select kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));     
+            KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
+            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));     
             pssetalamat=koneksi.prepareStatement("select * from set_alamat_pasien");
             try {
                 rs=pssetalamat.executeQuery();
@@ -1442,11 +1442,17 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            
+            try {
+                DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
+            } catch (Exception e) {
+                DIAGNOSARUJUKANMASUKAPIBPJS="no";
+            }
         }catch(Exception e){
             System.out.println(e);
         }
         
-        hariawal=Sequel.cariIsi("select hariawal from set_jam_minimal");
+        hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
         
         try {
             user=akses.getkode().replace(" ","").substring(0,9);
@@ -4727,20 +4733,14 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             Valid.textKosong(Catatan, "Catatan");
         }else{            
             if((JenisPelayanan.getSelectedIndex()==1)&&(NmPoli.getText().toLowerCase().contains("darurat"))){
-                if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
-                        "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                        "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
-                        "nmpolitujuan like '%darurat%'")>=3){
+                if(Sequel.cariInteger("select count(bridging_sep.no_kartu) from bridging_sep where bridging_sep.no_kartu='"+no_peserta+"' and bridging_sep.jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' and bridging_sep.tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and bridging_sep.nmpolitujuan like '%darurat%'")>=3){
                     JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                     NoKartu.requestFocus();
                 }else{
                    insertPasien(); 
                 }
             }else if((JenisPelayanan.getSelectedIndex()==1)&&(!NmPoli.getText().toLowerCase().contains("darurat"))){
-                if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
-                        "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                        "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
-                        "nmpolitujuan not like '%darurat%'")>=1){
+                if(Sequel.cariInteger("select count(bridging_sep.no_kartu) from bridging_sep where bridging_sep.no_kartu='"+no_peserta+"' and bridging_sep.jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' and bridging_sep.tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and bridging_sep.nmpolitujuan not like '%darurat%'")>=1){
                     JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan rawat jalan..!!");
                     NoKartu.requestFocus();
                 }else{
@@ -6370,19 +6370,19 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         if(BASENOREG.equals("booking")){
             switch (URUTNOREG) {
                 case "poli":
-                    if(Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")>=
-                            Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")){
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    if(Sequel.cariInteger("select ifnull(MAX(CONVERT(booking_registrasi.no_reg,signed)),0) from booking_registrasi where booking_registrasi.kd_poli='"+kdpoli.getText()+"' and booking_registrasi.tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")>=
+                            Sequel.cariInteger("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_poli='"+kdpoli.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")){
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(booking_registrasi.no_reg,signed)),0) from booking_registrasi where booking_registrasi.kd_poli='"+kdpoli.getText()+"' and booking_registrasi.tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     }else{
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_poli='"+kdpoli.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     }
                     break;
                 case "dokter":
                     if(Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")>=
-                            Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")){
+                            Sequel.cariInteger("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_dokter='"+kddokter.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")){
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     }else{
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_dokter='"+kddokter.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     }
                     break;
                 case "dokter + poli":  
@@ -6394,37 +6394,36 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     }                    
                     break;
                 default:
-                    if(Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")>=
-                            Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")){
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    if(Sequel.cariInteger("select ifnull(MAX(CONVERT(booking_registrasi.no_reg,signed)),0) from booking_registrasi where booking_registrasi.kd_poli='"+kdpoli.getText()+"' and booking_registrasi.tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")>=
+                            Sequel.cariInteger("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_poli='"+kdpoli.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'")){
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(booking_registrasi.no_reg,signed)),0) from booking_registrasi where booking_registrasi.kd_poli='"+kdpoli.getText()+"' and booking_registrasi.tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     }else{
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_poli='"+kdpoli.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     }
                     break;
             }
         }else{
             switch (URUTNOREG) {
                 case "poli":
-                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_poli='"+kdpoli.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     break;
                 case "dokter":
-                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_dokter='"+kddokter.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     break;
                 case "dokter + poli":             
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     break;
                 default:
-                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0) from reg_periksa where reg_periksa.kd_dokter='"+kddokter.getText()+"' and reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
                     break;
             }
         } 
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"' ",dateformat.format(TanggalSEP.getDate())+"/",6,TNoRw);                              
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(reg_periksa.no_rawat,6),signed)),0) from reg_periksa where reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"' ",dateformat.format(TanggalSEP.getDate())+"/",6,TNoRw);                              
     }
     
     private void isPoli(){
         try {
-            ps=koneksi.prepareStatement("select registrasi, registrasilama "+
-                " from poliklinik where kd_poli=? order by nm_poli");
+            ps=koneksi.prepareStatement("select poliklinik.registrasi,poliklinik.registrasilama from poliklinik where poliklinik.kd_poli=? order by poliklinik.nm_poli");
             try{            
                 ps.setString(1,kdpoli.getText().trim());
                 rs=ps.executeQuery();
@@ -6470,25 +6469,25 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             if(posisitahun.equals("Depan")){
                 switch (pengurutan) {
                     case "Straight":
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(set_no_rkm_medis.no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
                         break;
                     case "Terminal":
-                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),5,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                         break;
                     case "Middle":
-                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),1,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                         break;
                 }
             }else if(posisitahun.equals("Belakang")){
                 switch (pengurutan) {
                     case "Straight":
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(set_no_rkm_medis.no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
                         break;
                     case "Terminal":
-                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),5,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                         break;
                     case "Middle":
-                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),1,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                         break;
                 }            
             }
@@ -6758,7 +6757,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
         status="Baru";
-        if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+TNo.getText()+"' and kd_poli='"+kdpoli.getText()+"'")>0){
+        if(Sequel.cariInteger("select count(reg_periksa.no_rkm_medis) from reg_periksa where reg_periksa.no_rkm_medis='"+TNo.getText()+"' and reg_periksa.kd_poli='"+kdpoli.getText()+"'")>0){
             status="Lama";
         }
         if(JenisPelayanan.getSelectedIndex()==1){
@@ -6775,16 +6774,19 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     }else{
                         Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+nosisrute+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");   
                     }
-                    Sequel.menyimpan3("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
-                    if(Sequel.cariInteger(
-                            "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
-                            "inner join reg_periksa inner join pasien on "+
-                            "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
-                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                            "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit.getText()+"'")>0){
-                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Lama"});
-                    }else{
-                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
+                    
+                    if(DIAGNOSARUJUKANMASUKAPIBPJS.equals("yes")){
+                        Sequel.menyimpan3("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
+                        if(Sequel.cariInteger(
+                                "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
+                                "inner join reg_periksa inner join pasien on "+
+                                "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
+                                "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit.getText()+"'")>0){
+                            Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Lama"});
+                        }else{
+                            Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
+                        }
                     }
                     insertSEP();
             }
@@ -6802,17 +6804,21 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     }else{
                         Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+nosisrute+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");   
                     }
-                    Sequel.menyimpan3("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
-                    if(Sequel.cariInteger(
-                            "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
-                            "inner join reg_periksa inner join pasien on "+
-                            "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
-                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                            "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit.getText()+"'")>0){
-                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Lama"});
-                    }else{
-                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
+                    
+                    if(DIAGNOSARUJUKANMASUKAPIBPJS.equals("yes")){
+                        Sequel.menyimpan3("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
+                        if(Sequel.cariInteger(
+                                "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
+                                "inner join reg_periksa inner join pasien on "+
+                                "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
+                                "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit.getText()+"'")>0){
+                            Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Lama"});
+                        }else{
+                            Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
+                        }
                     }
+                    
                     jmlhari=0;
                     biaya=0;
                     if(hariawal.equals("Yes")){

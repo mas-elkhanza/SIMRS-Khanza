@@ -18,7 +18,7 @@
             $filename2              = $PNG_TEMP_DIR.$rsquerysuratkontrol["no_antrian"].'.png';
             $errorCorrectionLevel   = 'L';
             $matrixPointSize        = 4;
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysuratkontrol["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratkontrol["kd_dokter"]."'",$rsquerysuratkontrol["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysuratkontrol["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratkontrol["kd_dokter"]."'",$rsquerysuratkontrol["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
             QRcode::png($rsquerysuratkontrol["no_antrian"], $filename2, $errorCorrectionLevel, $matrixPointSize, 2); 
             
             echo "<div class='row clearfix'>

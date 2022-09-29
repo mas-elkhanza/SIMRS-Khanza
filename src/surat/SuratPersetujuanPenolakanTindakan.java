@@ -438,9 +438,9 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Persetujuan/Penolakan Tindakan");
+        MnPenilaianMedis.setText("Lembar Persetujuan/Penolakan Tindakan");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(240, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianMedisActionPerformed(evt);
@@ -759,7 +759,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         HubunganDenganPasien.setBounds(179, 490, 140, 23);
 
         TglPernyataan.setForeground(new java.awt.Color(50, 70, 50));
-        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2022" }));
+        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
         TglPernyataan.setOpaque(false);
@@ -1091,7 +1091,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         jLabel39.setBounds(460, 490, 90, 23);
 
         TglLahirPenerima.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2022" }));
+        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
         TglLahirPenerima.setOpaque(false);
@@ -1253,7 +1253,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1267,7 +1267,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

@@ -12,11 +12,11 @@
             <?php
                 echo "";
                 $action             = isset($_GET['action'])?$_GET['action']:NULL;
-                $id                 = isset($_GET['id'])?$_GET['id']:NULL;
+                $id                 = validTeks(isset($_GET['id'])?$_GET['id']:NULL);
                 $tahun              = $tahun;
                 $bulan              = $bulan;
-                $kode_pencapaian    = isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL;
-                $keterangan         = isset($_GET['keterangan'])?$_GET['keterangan']:NULL;
+                $kode_pencapaian    = validTeks(isset($_GET['kode_pencapaian'])?$_GET['kode_pencapaian']:NULL);
+                $keterangan         = validTeks(isset($_GET['keterangan'])?$_GET['keterangan']:NULL);
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 		        $_sql               = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil              = bukaquery($_sql);
@@ -91,10 +91,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 = trim($_POST['id']);
+                    $id                 = validTeks(trim($_POST['id']));
                     $tahun              = $tahun;
                     $bulan              = $bulan;
-                    $kode_pencapaian    = trim($_POST['kode_pencapaian']);
+                    $kode_pencapaian    = validTeks(trim($_POST['kode_pencapaian']));
                     $keterangan         = validTeks(trim($_POST['keterangan']));
                     if ((isset($id))&&(isset($kode_pencapaian))) {
                         switch($action) {
@@ -160,7 +160,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" pencapaian_kinerja_pegawai "," id ='".$_GET['id']."' and tahun ='".$tahun."' and bulan ='".$bulan."' and kode_pencapaian ='".$_GET['kode_pencapaian']."'","?act=DetailPencapaianKinerja&action=TAMBAH&id=$id");
+                Hapus(" pencapaian_kinerja_pegawai "," id ='".validTeks($_GET['id'])."' and tahun ='".$tahun."' and bulan ='".$bulan."' and kode_pencapaian ='".validTeks($_GET['kode_pencapaian'])."'","?act=DetailPencapaianKinerja&action=TAMBAH&id=$id");
             }
 
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

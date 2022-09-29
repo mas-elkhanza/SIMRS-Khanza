@@ -33,7 +33,7 @@
     <?php
         $keyword = isset($_GET['keyword'])?$_GET['keyword']:NULL;
         $keyword = validTeks($keyword);
-        $status  = trim(isset($_GET['status']))?trim($_GET['status']):"AKTIF";
+        $status  = validTeks(trim(isset($_GET['status']))?trim($_GET['status']):"AKTIF");
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jk,pegawai.jbtn,jnj_jabatan.nama as jnj_jabatan,kelompok_jabatan.nama_kelompok,
                     resiko_kerja.nama_resiko,departemen.nama as departemen,pegawai.bidang,emergency_index.nama_emergency,stts_wp.ktg as stts_wp,
                     stts_kerja.ktg as stts_kerja,pegawai.npwp,pegawai.pendidikan,pegawai.gapok,pegawai.tmp_lahir,pegawai.tgl_lahir,

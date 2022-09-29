@@ -163,7 +163,7 @@
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" required name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off" />
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" required name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off"/>
                                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">    
@@ -213,7 +213,7 @@
                                          <?php
                                             if(!isset($_SESSION["poli"])){
                                                 $datapoli   = "";
-                                                $querypoli  = bukaquery("SELECT * from poliklinik order by nm_poli");
+                                                $querypoli  = bukaquery("SELECT * from poliklinik where poliklinik.status='1' order by poliklinik.nm_poli");
                                                 while($rsquerypoli = mysqli_fetch_array($querypoli)) {
                                                     $datapoli=$datapoli."<option value='$rsquerypoli[0]'>$rsquerypoli[1]</option>";
                                                 }
@@ -226,8 +226,22 @@
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="pesan">Tambahan Pesan</label>
-                                    <textarea class="form-control" rows="2" maxlength="400" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" id="TxtIsi5" required name="pesan" placeholder="Tambahan Pessan" autocomplete="off"></textarea>
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" id="TxtIsi5" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" name="pesan" maxlength="200" placeholder="Tambahan Pesan" autocomplete="off"/>
                                     <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
+                               </div>
+                               <div class="col-md-12 col-sm-12">
+                                    <label for="captcha">Captcha</label>
+                                    <table width="100%" border="0">
+                                        <tr>
+                                            <td width="50%" valign="top">
+                                                <img width="95%" height="45px" src="pages/captcha.php" alt="gambar" />
+                                            </td>
+                                            <td width="50%">
+                                                <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6" name="inputcaptcha" pattern="[0-9]{1,6}" title=" 0-9 (Maksimal 6 karakter)" maxlength="6" required placeholder="Masukkan Captcha" autocomplete="off"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
                                     <button type="submit" class="form-control" id="cf-submit" name="btnBooking">Kirimkan</button>
                                </div>
                                <div class="col-md-12 col-sm-12">

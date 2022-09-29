@@ -5,9 +5,9 @@
             <?php
                 echo "";
                 $action             = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat           = isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
-                $tanggal            = isset($_GET['tanggal'])?$_GET['tanggal']:NULL;
-                $jam                = isset($_GET['jam'])?$_GET['jam']:NULL;
+                $no_rawat           = validTeks(isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL);
+                $tanggal            = validTeks(isset($_GET['tanggal'])?$_GET['tanggal']:NULL);
+                $jam                = validTeks(isset($_GET['jam'])?$_GET['jam']:NULL);
                 $no_rm              = getOne("select no_rkm_medis from reg_periksa where no_rawat='$no_rawat'");
                 $nama_pasien        = getOne("select nm_pasien from pasien where no_rkm_medis='$no_rm'");
                 echo "<input type=hidden name=no_rawat value=$no_rawat>
@@ -42,10 +42,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_rawat    =trim($_POST['no_rawat']);
-                    $tanggal     =trim($_POST['tanggal']);
-                    $jam         =trim($_POST['jam']);
-                    $gambar     =str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']);
+                    $no_rawat    = validTeks(trim($_POST['no_rawat']));
+                    $tanggal     = validTeks(trim($_POST['tanggal']));
+                    $jam         = validTeks(trim($_POST['jam']));
+                    $gambar     = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
                     move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
                     
                     if ((!empty($no_rawat))&&(!empty($gambar))) {
@@ -58,7 +58,7 @@
             ?>
             <div style="width: 100%; height: 72%; overflow: auto;">
             <?php
-                $_sql = "SELECT * from gambar_radiologi where no_rawat='$no_rawat' and tgl_periksa='$tanggal' and jam='$jam' ";
+                $_sql = "SELECT * from gambar_radiologi where gambar_radiologi.no_rawat='$no_rawat' and gambar_radiologi.tgl_periksa='$tanggal' and gambar_radiologi.jam='$jam' ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
@@ -90,7 +90,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['gambar']);
-                Hapus(" gambar_radiologi "," no_rawat ='".$_GET['no_rawat']."' and tgl_periksa ='".$_GET['tanggal']."' and jam ='".$_GET['jam']."' and lokasi_gambar ='".$_GET['gambar']."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam");
+                Hapus(" gambar_radiologi "," no_rawat ='".validTeks($_GET['no_rawat'])."' and tgl_periksa ='".validTeks($_GET['tanggal'])."' and jam ='".validTeks($_GET['jam'])."' and lokasi_gambar ='".validTeks($_GET['gambar'])."'","?act=List&action=TAMBAH&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam");
             }
 
         

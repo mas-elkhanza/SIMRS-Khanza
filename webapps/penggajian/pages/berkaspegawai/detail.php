@@ -3,9 +3,9 @@
         <?php
             echo "";
             $action       = isset($_GET['action'])?$_GET['action']:NULL;
-            $nik          = str_replace("_"," ",isset($_GET['nik']))?str_replace("_"," ",$_GET['nik']):NULL;
-            $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-            $kategori     = str_replace("_"," ",isset($_GET['kategori']))?str_replace("_"," ",$_GET['kategori']):NULL;
+            $nik          = validTeks(str_replace("_"," ",isset($_GET['nik']))?str_replace("_"," ",$_GET['nik']):NULL);
+            $keyword      = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
+            $kategori     = validTeks(str_replace("_"," ",isset($_GET['kategori']))?str_replace("_"," ",$_GET['kategori']):NULL);
             echo "<input type=hidden name=nik value='$nik'>
                   <input type=hidden name=kategori value='$kategori'>
                   <input type=hidden name=action value=$action>";
@@ -15,9 +15,8 @@
                 <td width="100%">&nbsp;&nbsp;Berkas :
                     <select name="kode" class="text4">
                         <?php
-                            $_sql = "SELECT kode,nama_berkas FROM master_berkas_pegawai where kategori='$kategori' ORDER BY no_urut";
-                            $hasil=bukaquery($_sql);
-
+                            $_sql  = "SELECT master_berkas_pegawai.kode,master_berkas_pegawai.nama_berkas FROM master_berkas_pegawai where master_berkas_pegawai.kategori='$kategori' ORDER BY master_berkas_pegawai.no_urut";
+                            $hasil = bukaquery($_sql);
                             while($baris = mysqli_fetch_array($hasil)) {
                                 echo "<option value='$baris[0]'>$baris[1]</option>";
                             }
@@ -49,12 +48,11 @@
         <?php
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
-                $nik           = trim($_POST['nik']);
-                $kategori      = trim($_POST['kategori']);
-                $kategori      = validTeks($kategori);
-                $kode          = trim($_POST['kode']);
-                $tgl_uploud    = trim($_POST['ThnUploud'])."-".trim($_POST['BlnUploud'])."-".trim($_POST['TglUploud']);
-                $dokumen       = str_replace(" ","_","pages/berkaspegawai/berkas/".$_FILES['dokumen']['name']);
+                $nik           = validTeks(trim($_POST['nik']));
+                $kategori      = validTeks(($_POST['kategori']));
+                $kode          = validTeks(trim($_POST['kode']));
+                $tgl_uploud    = validTeks(trim($_POST['ThnUploud'])."-".trim($_POST['BlnUploud'])."-".trim($_POST['TglUploud']));
+                $dokumen       = validTeks(str_replace(" ","_","pages/berkaspegawai/berkas/".$_FILES['dokumen']['name']));
                 if ((!empty($nik))&&(!empty($kode))&&(!empty($dokumen))) {
                     switch($action) {
                         case "TAMBAH":
@@ -123,23 +121,22 @@
                 }
             echo "</table>";
 
-        } else {echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+        } else {
+            echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                         <tr class='head3'>
                             <td width='4%'><div align='center'>Proses</div></td>
                             <td width='2%'><div align='center'>No.</div></td>
                             <td width='6%'><div align='center'>Tgl.Uploud</div></td>
                             <td width='88%'><div align='center'>Nama Berkas</div></td>
                         </tr>
-                      </table>";}
-    ?>
-    </div>
-    <?php
+                      </table>";
+        }
         if ($action=="HAPUS") {      
             unlink($_GET['berkas']);
-            Hapus(" berkas_pegawai "," nik ='".$_GET['nik']."' and kode_berkas ='".$_GET['kode']."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori));
+            Hapus(" berkas_pegawai "," nik ='". validTeks($_GET['nik'])."' and kode_berkas ='".validTeks($_GET['kode'])."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori));
         }
-
-    ?>       
+    ?>
+    </div>   
     </form>
 </div>
 

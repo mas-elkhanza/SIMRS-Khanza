@@ -7,10 +7,10 @@
     </head>
     <body>
    <?php
-        $keyword=$_GET['keyword'];
-        $_sql = "SELECT kode_emergency,nama_emergency,indek FROM emergency_index where kode_emergency like '%".$keyword."%' or nama_emergency like '%".$keyword."%' ORDER BY indek desc";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysqli_num_rows($hasil);
+        $keyword = validTeks($_GET['keyword']);
+        $_sql    = "SELECT emergency_index.kode_emergency,emergency_index.nama_emergency,emergency_index.indek FROM emergency_index where emergency_index.kode_emergency like '%".$keyword."%' or emergency_index.nama_emergency like '%".$keyword."%' ORDER BY emergency_index.indek desc";
+        $hasil   = bukaquery($_sql);
+        $jumlah = mysqli_num_rows($hasil);
         $no=1;
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -23,11 +23,12 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-								<td>$no</td>  
+				<td>$no</td>  
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                                 <td>$baris[2]</td>   
-                             </tr>";$no++;
+                             </tr>";
+                        $no++;
                     }
             echo "</table>";
         }else {

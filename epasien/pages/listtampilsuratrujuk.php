@@ -23,7 +23,7 @@
             $filename               = $PNG_TEMP_DIR.$rsquerysuratrujuk["kd_dokter"].'.png';
             $errorCorrectionLevel   = 'L';
             $matrixPointSize        = 4;
-            QRcode::png(getOne3("select ifnull(sha1(sidikjari),'".$rsquerysuratrujuk["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratrujuk["kd_dokter"]."'",$rsquerysuratrujuk["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
+            QRcode::png(getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$rsquerysuratrujuk["kd_dokter"]."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$rsquerysuratrujuk["kd_dokter"]."'",$rsquerysuratrujuk["kd_dokter"]), $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
             
             $obat                   = "";
             $queryobat = bukaquery("select databarang.nama_brng from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat='".$rsquerysuratrujuk["no_rawat"]."' group by databarang.nama_brng");

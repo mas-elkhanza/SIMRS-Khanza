@@ -1,4 +1,3 @@
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=DetailBpjs&action=TAMBAH>| Stts BPJS |</a>
@@ -10,10 +9,9 @@
     <div class="entry">
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                echo "";
-                $action             = isset($_GET['action'])?$_GET['action']:NULL;
-		        $stts               = str_replace("_"," ",isset($_GET['stts']))?str_replace("_"," ",$_GET['stts']):NULL;
-                $biaya              = isset($_GET['biaya'])?$_GET['biaya']:NULL;
+                $action     = isset($_GET['action'])?$_GET['action']:NULL;
+		$stts       = validTeks(str_replace("_"," ",isset($_GET['stts']))?str_replace("_"," ",$_GET['stts']):NULL);
+                $biaya      = validangka(isset($_GET['biaya'])?$_GET['biaya']:NULL);
                 echo "<input type=hidden name=stts  value=$stts><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
@@ -34,15 +32,15 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $stts                 = validTeks(trim($_POST['stts']));
-                    $biaya                = validangka(trim($_POST['biaya']));
+                    $stts    = validTeks(trim($_POST['stts']));
+                    $biaya   = validangka(trim($_POST['biaya']));
                     if ((isset($stts))&&(isset($biaya))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" jamsostek "," '$stts','$biaya'", " Status Keanggotaan Jamsostek " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=DetailJamsostek&action=TAMBAH&stts='$stts'>";
                                 break;
-							              case "UBAH":
+			    case "UBAH":
                                 Ubah(" jamsostek ","biaya='$biaya' WHERE stts='$stts'  ", " Status Keanggotaan Jamsostek   ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=DetailJamsostek&action=TAMBAH&stts='$stts'></head><body></body></html>";
                                 break;
@@ -54,10 +52,9 @@
             ?>
             <div style="width: 100%; height: 69%; overflow: auto;">
             <?php
-                $_sql = "SELECT stts,biaya from jamsostek ORDER BY stts ASC ";
+                $_sql = "SELECT jamsostek.stts,jamsostek.biaya from jamsostek ORDER BY jamsostek.stts ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
-
                 if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
@@ -69,7 +66,7 @@
                       echo "<tr class='isi'>
                                 <td>
                                     <center>
-				                            <a href=?act=DetailJamsostek&action=UBAH&stts=".str_replace(" ","_",$baris[0])."&biaya=".$baris[1].">[edit]</a>";?>
+				    <a href=?act=DetailJamsostek&action=UBAH&stts=".str_replace(" ","_",$baris[0])."&biaya=".$baris[1].">[edit]</a>";?>
                                     <a href="?act=DetailJamsostek&action=HAPUS&stts=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
@@ -78,36 +75,32 @@
                                 <td>".formatDuit($baris[1])."</td>
                            </tr>";
                     }
-                echo "</table>";
+                    echo "</table>";
 
-            } else {
-              echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                      <tr class='head'>
-                          <td width='12%'><div align='center'>Proses</div></td>
-                          <td width='33%'><div align='center'>Status Keanggotaan</div></td>
-                          <td width='55%'><div align='center'>Biaya Jamsostek</div></td>
-                      </tr>
-                    </table>";
-            }
-        ?>
-        </div>
+                } else {
+                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                                <tr class='head'>
+                                    <td width='12%'><div align='center'>Proses</div></td>
+                                    <td width='33%'><div align='center'>Status Keanggotaan</div></td>
+                                    <td width='55%'><div align='center'>Biaya Jamsostek</div></td>
+                                </tr>
+                          </table>";
+                }
+            ?>
+            </div>
         </form>
         <?php
             if ($action=="HAPUS") {
                 Hapus(" jamsostek "," stts ='".$stts."' ","?act=DetailJamsostek&action=TAMBAH&stts=$stts");
             }
 
-        if(mysqli_num_rows($hasil)!=0) {
-                $hasil1=bukaquery("SELECT stts,biaya from jamsostek ORDER BY stts ");
-                $jumladiv=mysqli_num_rows($hasil1);
-                $i=$jumladiv/19;
-                $i=ceil($i);
+            if($jumlah!=0) {
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah</div></td>
                     </tr>
                  </table>");
-        }
+            }
         ?>
     </div>
 

@@ -9,43 +9,43 @@
 
     <?php
     reportsqlinjection();      
-        $norm       =$_GET['norm'];
-        $pasien     =$_GET['pasien'];
-        $tanggal    =$_GET['tanggal'];
-        $jam        =$_GET['jam'];
-        $pjlab      =$_GET['pjlab'];
-        $petugas    =$_GET['petugas'];
-        $kasir      =$_GET['kasir'];
+        $norm       = validTeks($_GET['norm']);
+        $pasien     = validTeks($_GET['pasien']);
+        $tanggal    = validTeks($_GET['tanggal']);
+        $jam        = validTeks($_GET['jam']);
+        $pjlab      = validTeks($_GET['pjlab']);
+        $petugas    = validTeks($_GET['petugas']);
+        $kasir      = validTeks($_GET['kasir']);
 
         $_sql = "select * from temporary_lab where temp4='Pemeriksaan' order by no asc";   
         $hasil=bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
-            $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+            $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
             echo "   
             <table width='".getOne("select notalabrad from set_nota")."' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' >
             <tr class='isi12' padding='0'>
-				<td colspan='7' padding='0'>
-					   <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' border=0>
-							<tr>
-								<td  width='20%'>
-									<img width='60' height='60' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
-								</td>
-								<td>
-								<center>
-										<font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
-										<font color='000000' size='1'  face='Tahoma'>
-										".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
-										".$setting["kontak"].", E-mail : ".$setting["email"]."
-										</font> <br>
-										<center><font color='000000' size='1'  face='Tahoma'>BILLING</font> </center>
-								</center>
-								</td>
-								<td  width='20%'>&nbsp;
-								</td>
-							</tr>
-					  </table>
-				</td>
+                <td colspan='7' padding='0'>
+                    <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' border=0>
+                        <tr>
+                            <td  width='20%'>
+                                    <img width='60' height='60' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+                            </td>
+                            <td>
+                                <center>
+                                    <font color='000000' size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+                                    <font color='000000' size='1'  face='Tahoma'>
+                                    ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
+                                    ".$setting["kontak"].", E-mail : ".$setting["email"]."
+                                    </font> <br>
+                                    <center><font color='000000' size='1'  face='Tahoma'>BILLING</font> </center>
+                                </center>
+                            </td>
+                            <td width='20%'>&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
             <tr class='isi12' padding='0'>
                <td>

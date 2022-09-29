@@ -426,6 +426,6 @@ public final class MasterCariImunisasi extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(akses.getpetugas());
+        BtnTambah.setEnabled(akses.getmaster_imunisasi());
     }
 }

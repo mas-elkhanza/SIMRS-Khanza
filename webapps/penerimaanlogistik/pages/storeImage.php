@@ -12,10 +12,10 @@
     $image_type_aux = explode("image/", $image_parts[0]);
     $image_type     = $image_type_aux[1];
     $image_base64   = base64_decode($image_parts[1]);
-    $fileName       = $_SESSION['nofaktur'].".jpeg";
+    $fileName       = validTeks($_SESSION['nofaktur']).".jpeg";
     $file           = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
-    Ubah2("bukti_pemesanan_logistik","photo='pages/upload/$fileName' where no_faktur='".$_SESSION['nofaktur']."'");
+    Ubah2("bukti_pemesanan_logistik","photo='pages/upload/$fileName' where no_faktur='".validTeks($_SESSION['nofaktur'])."'");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <body>

@@ -26,7 +26,7 @@
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-        $_sql   = "SELECT kode_evaluasi,nama_evaluasi,indek FROM evaluasi_kinerja where kode_evaluasi like '%".$keyword."%' or nama_evaluasi like '%".$keyword."%' ORDER BY indek desc ";
+        $_sql   = "SELECT evaluasi_kinerja.kode_evaluasi,evaluasi_kinerja.nama_evaluasi,evaluasi_kinerja.indek FROM evaluasi_kinerja where evaluasi_kinerja.kode_evaluasi like '%".$keyword."%' or evaluasi_kinerja.nama_evaluasi like '%".$keyword."%' ORDER BY evaluasi_kinerja.indek desc ";
         $hasil  = bukaquery($_sql);
         $jumlah = mysqli_num_rows($hasil);
         
@@ -40,20 +40,19 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-						       <td>
-                                    <center>
+				<td>
+                                  <center>
                                         <a href=?act=InputEvaluasiKinerja&action=UBAH&kode_evaluasi=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
                                         <a href="?act=ListEvaluasiKinerja&action=HAPUS&kode_evaluasi=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
-                               </td>
+                                </td>
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                                 <td>$baris[2]</td>                                
                              </tr>";
                     }
             echo "</table>";
-            
         } else {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>					   
@@ -64,14 +63,11 @@
                     </tr>
                  </table>";
         }
-
-    ?>
-    
-    <?php
-       $aksi=isset($_GET['action'])?$_GET['action']:NULL;
-       if ($aksi=="HAPUS") {
-            Hapus(" evaluasi_kinerja "," kode_evaluasi ='".$_GET['kode_evaluasi']."' ","?act=ListEvaluasiKinerja");
-       }
+        
+        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
+        if ($aksi=="HAPUS") {
+            Hapus(" evaluasi_kinerja "," kode_evaluasi ='".validTeks($_GET['kode_evaluasi'])."' ","?act=ListEvaluasiKinerja");
+        }
     ?>
     </div>
     <?php

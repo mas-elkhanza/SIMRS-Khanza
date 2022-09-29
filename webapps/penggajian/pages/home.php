@@ -186,7 +186,7 @@
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListRj'>                                                  
                                      <img src='images/doctor 3.png'/><br>
-                                     Rwt Jln Spesialis                                                  
+                                     Rawat Jalan Spesialis                                                  
                             </a>
                         </td>
                         <td width='16%' align='center'>
@@ -300,7 +300,7 @@
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListRj'>                                                  
                                      <img src='images/doctor 3.png'/><br>
-                                     Rwt Jln Spesialis                                                  
+                                     Rawat Jalan Spesialis                                                  
                             </a>
                         </td>
                         <td width='16%' align='center'>

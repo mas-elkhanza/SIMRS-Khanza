@@ -660,7 +660,7 @@ public class koneksiDB {
     public static String KAMARAKTIFRANAP(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("KAMARAKTIFRANAP");
+            var=prop.getProperty("KAMARAKTIFRANAP").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -670,7 +670,7 @@ public class koneksiDB {
     public static String DOKTERAKTIFKASIRRALAN(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("DOKTERAKTIFKASIRRALAN");
+            var=prop.getProperty("DOKTERAKTIFKASIRRALAN").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -680,7 +680,7 @@ public class koneksiDB {
     public static String POLIAKTIFKASIRRALAN(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("POLIAKTIFKASIRRALAN");
+            var=prop.getProperty("POLIAKTIFKASIRRALAN").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -690,7 +690,7 @@ public class koneksiDB {
     public static String RUANGANAKTIFINVENTARIS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("RUANGANAKTIFINVENTARIS");
+            var=prop.getProperty("RUANGANAKTIFINVENTARIS").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -930,7 +930,7 @@ public class koneksiDB {
     public static String DEPOAKTIFOBAT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("DEPOAKTIFOBAT");
+            var=prop.getProperty("DEPOAKTIFOBAT").replaceAll("'","");
         }catch(Exception e){
             var=""; 
         }
@@ -1059,6 +1059,26 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=EnkripsiAES.decrypt(prop.getProperty("KEYSOFTMEDIX"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String RESEPRAJALKEPLAN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("RESEPRAJALKEPLAN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String DIAGNOSARUJUKANMASUKAPIBPJS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("DIAGNOSARUJUKANMASUKAPIBPJS");
         }catch(Exception e){
             var=""; 
         }

@@ -11,16 +11,16 @@
         </script>
     <?php
     reportsqlinjection();      
-        $noretur     = str_replace("_"," ",isset($_GET['noretur'])?$_GET['noretur']:NULL);  
-        $petugas     = str_replace("_"," ",isset($_GET['petugas'])?$_GET['petugas']:NULL); 
-        $tanggal     = isset($_GET['tanggal'])?$_GET['tanggal']:"00-00-0000"; 
-        $nm_member   = str_replace("_"," ",isset($_GET['nm_member'])?$_GET['nm_member']:NULL); 
-        $catatan     = str_replace("_"," ",isset($_GET['catatan'])?$_GET['catatan']:NULL);
+        $noretur     = validTeks(str_replace("_"," ",isset($_GET['noretur'])?$_GET['noretur']:NULL));  
+        $petugas     = validTeks(str_replace("_"," ",isset($_GET['petugas'])?$_GET['petugas']:NULL)); 
+        $tanggal     = validTeks(isset($_GET['tanggal'])?$_GET['tanggal']:"00-00-0000"); 
+        $nm_member   = validTeks(str_replace("_"," ",isset($_GET['nm_member'])?$_GET['nm_member']:NULL)); 
+        $catatan     = validTeks(str_replace("_"," ",isset($_GET['catatan'])?$_GET['catatan']:NULL));
 
         $_sql = "select  nama_brng, h_retur, jml_retur, subtotal from  tampreturjual ";            
         $hasil=bukaquery($_sql);
         
-        $_sqlins = "select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting";            
+        $_sqlins = "select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting";            
         $hasilins=bukaquery($_sqlins);
         $setting = mysqli_fetch_array($hasilins);
         

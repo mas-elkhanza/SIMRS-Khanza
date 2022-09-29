@@ -9,8 +9,8 @@
             <?php
                 echo "";
                 $action     =isset($_GET['action'])?$_GET['action']:NULL;
-                $tnj        =isset($_GET['tnj'])?$_GET['tnj']:NULL;
-                $pendidikan =isset($_GET['pendidikan'])?$_GET['pendidikan']:NULL;
+                $tnj        =validTeks(isset($_GET['tnj'])?$_GET['tnj']:NULL);
+                $pendidikan =validTeks(isset($_GET['pendidikan'])?$_GET['pendidikan']:NULL);
                 echo "<input type=hidden name=pendidikan  value=$pendidikan><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">

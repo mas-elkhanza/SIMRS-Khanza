@@ -15,11 +15,11 @@
             <?php
                 echo "";
                 $action     = isset($_GET['action'])?$_GET['action']:NULL;
-                $id         = isset($_GET['id'])?str_replace("_"," ",$_GET['id']):NULL;
-                $jam_datang = isset($_GET['jam_datang'])?str_replace("_"," ",$_GET['jam_datang']):NULL;
+                $id         = validTeks(isset($_GET['id'])?str_replace("_"," ",$_GET['id']):NULL);
+                $jam_datang = validTeks(isset($_GET['jam_datang'])?str_replace("_"," ",$_GET['jam_datang']):NULL);
 				$keterangan = "";
                 if($action == "TAMBAH"){
-                    $id      = $_GET['id'];
+                    $id      = validTeks($_GET['id']);
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT id, keterangan FROM rekap_presensi WHERE id='$id' and jam_datang='$jam_datang'";
                     $hasil        = bukaquery($_sql);

@@ -3,8 +3,8 @@
     include_once "conf/command.php";
     $act=isset($_GET['act'])?$_GET['act']:NULL;
     if ($act=="login"){
-        $usere      =trim($_POST['usere'])?$_POST['usere']:NULL;
-        $passwordte =trim($_POST['passwordte'])?$_POST['passwordte']:NULL;
+        $usere      = validTeks(trim($_POST['usere'])?$_POST['usere']:NULL);
+        $passwordte = validTeks(trim($_POST['passwordte'])?$_POST['passwordte']:NULL);
         
         $sql = "SELECT kd_pj FROM password_asuransi WHERE usere=aes_encrypt('".$usere."','nur') AND passworde=aes_encrypt('".$passwordte."','windi')";
         $hasil=bukaquery($sql);

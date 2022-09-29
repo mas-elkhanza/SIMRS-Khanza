@@ -59,14 +59,11 @@
                     </tr>
                   </table>";
         }
-
-    ?>
-    
-    <?php
-       $aksi=isset($_GET['action'])?$_GET['action']:NULL;
-       if ($aksi=="HAPUS") {
-            Hapus(" bank "," namabank ='".$_GET['namabank']."' ","?act=ListBank");
-       }
+        
+        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
+        if ($aksi=="HAPUS") {
+            Hapus(" bank "," namabank ='". validTeks($_GET['namabank'])."' ","?act=ListBank");
+        }
     ?>
     </div>
     <?php

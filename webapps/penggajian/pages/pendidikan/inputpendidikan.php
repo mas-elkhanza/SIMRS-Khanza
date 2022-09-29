@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputPendidikan&action=TAMBAH>| Input Data |</a>
@@ -9,15 +7,14 @@
     <div class="entry">
         <form name="frm_pendidikan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $tingkat     =str_replace("_"," ",isset($_GET['tingkat']))?str_replace("_"," ",$_GET['tingkat']):NULL;
-                $tingkatx     ="";
+                $action      = isset($_GET['action'])?$_GET['action']:NULL;
+                $tingkat     = validTeks(str_replace("_"," ",isset($_GET['tingkat']))?str_replace("_"," ",$_GET['tingkat']):NULL);
+                $tingkatx    = "";
                 if($action == "TAMBAH"){
-                    $tingkat      = isset($_GET['tingkat'])?$_GET['tingkat']:NULL;
-                    $indek        ="";
+                    $tingkat      = validTeks(str_replace("_"," ",isset($_GET['tingkat']))?str_replace("_"," ",$_GET['tingkat']):NULL);
+                    $indek        = "";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT tingkat,indek,gapok1,kenaikan,maksimal FROM pendidikan WHERE tingkat='$tingkat'";
+                    $_sql         = "SELECT pendidikan.tingkat,pendidikan.indek,pendidikan.gapok1,pendidikan.kenaikan,pendidikan.maksimal FROM pendidikan WHERE pendidikan.tingkat='$tingkat'";
                     $hasil        = bukaquery($_sql);
                     $baris        = mysqli_fetch_row($hasil);
                     $tingkat      = $baris[0];

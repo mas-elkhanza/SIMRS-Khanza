@@ -7,12 +7,12 @@
     </head>
     <body>
    <?php
-        $keyword=$_GET['keyword'];
-        $keyword= validTeks($keyword);
-        $_sql = "SELECT kode_resiko,nama_resiko,indek FROM resiko_kerja where kode_resiko like '%".$keyword."%' or nama_resiko like '%".$keyword."%' ORDER BY indek desc";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysqli_num_rows($hasil);
-        $no=1;
+        $keyword = $_GET['keyword'];
+        $keyword = validTeks($keyword);
+        $_sql    = "SELECT resiko_kerja.kode_resiko,resiko_kerja.nama_resiko,resiko_kerja.indek FROM resiko_kerja where resiko_kerja.kode_resiko like '%".$keyword."%' or resiko_kerja.nama_resiko like '%".$keyword."%' ORDER BY resiko_kerja.indek desc";
+        $hasil   = bukaquery($_sql);
+        $jumlah  = mysqli_num_rows($hasil);
+        $no      = 1;
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <caption><h3><font color='999999'>Laporan Master Resiko Kerja</font></h3></caption>
@@ -24,7 +24,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-								<td>$no</td>  
+				<td>$no</td>  
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                                 <td>$baris[2]</td>   

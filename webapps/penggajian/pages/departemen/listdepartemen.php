@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div class="entry">   
     <div align="center" class="link">
@@ -39,7 +37,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-						       <td width='120'>
+				<td width='120'>
                                     <center>
                                         <a href=?act=InputDepartemen&action=UBAH&dep_id=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
                                         <a href="?act=ListDepartemen&action=HAPUS&dep_id=<?php print $baris[0] ?>" >[hapus]</a>
@@ -51,7 +49,6 @@
                              </tr>";
                     }
             echo "</table>";
-            
         } else {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
@@ -61,13 +58,12 @@
                     </tr>
                  </table>";
         }
-
     ?>
     
     <?php
        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
        if ($aksi=="HAPUS") {
-            Hapus(" departemen "," dep_id ='".$_GET['dep_id']."' ","?act=ListDepartemen");
+            Hapus(" departemen "," dep_id ='". validTeks($_GET['dep_id'])."' ","?act=ListDepartemen");
        }
     ?>
     </div>

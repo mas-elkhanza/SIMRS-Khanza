@@ -27,6 +27,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.HyperlinkEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
@@ -299,6 +300,17 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
         HTMLEditorKit kit2 = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
+        LoadHTML.setEditable(false);
+        LoadHTML.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
         StyleSheet styleSheet2 = kit2.getStyleSheet();
         styleSheet2.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -2587,7 +2599,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(ScrollMenu.isVisible()==true){
             if(tbDokter.getSelectedRow()!= -1){
                 try {
-                    ps=koneksi.prepareStatement("select photo from detail_periksa_labpa_gambar where no_rawat=? and tgl_periksa=? and jam=? and kd_jenis_prw=?");
+                    ps=koneksi.prepareStatement("select detail_periksa_labpa_gambar.photo from detail_periksa_labpa_gambar where detail_periksa_labpa_gambar.no_rawat=? and detail_periksa_labpa_gambar.tgl_periksa=? and detail_periksa_labpa_gambar.jam=? and detail_periksa_labpa_gambar.kd_jenis_prw=?");
                     try {
                         ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         ps.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
@@ -2598,7 +2610,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                                 LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                             }else{
-                                LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+rs.getString("photo")+"' alt='photo' width='375' height='335'/></center></body></html>");
+                                LoadHTML.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/labpa/"+rs.getString("photo")+"' alt='photo' width='375' height='335'/></a></center></body></html>");
                             }  
                         }else{
                             LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");

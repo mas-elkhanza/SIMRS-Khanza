@@ -1780,7 +1780,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         TotalHasil.setBounds(774, 770, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2022 19:03:48" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022 22:08:59" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2247,7 +2247,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2261,7 +2261,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2402,11 +2402,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         DetailRencana.setColumns(20);
         DetailRencana.setRows(5);
         DetailRencana.setName("DetailRencana"); // NOI18N
-        DetailRencana.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DetailRencanaKeyPressed(evt);
-            }
-        });
         scrollPane6.setViewportView(DetailRencana);
 
         FormMasalahRencana.add(scrollPane6);
@@ -2435,32 +2430,12 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(TD.getText().trim().equals("")){
-            Valid.textKosong(TD,"TD(mmHg)");
-        }else if(Nadi.getText().trim().equals("")){
-            Valid.textKosong(Nadi,"Nadi(x/menit)");
-        }else if(RR.getText().trim().equals("")){
-            Valid.textKosong(RR,"RR(x/menit)");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu(C)");
-        }else if(GCS.getText().trim().equals("")){
-            Valid.textKosong(GCS,"GCS");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"BB(Kg)");
-        }else if(TB.getText().trim().equals("")){
-            Valid.textKosong(TB,"TB(Cm)");
-        }else if(BMI.getText().trim().equals("")){
-            Valid.textKosong(BMI,"BMI(Kg/m2)");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(RPD.getText().trim().equals("")){
             Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
-        }else if(RPK.getText().trim().equals("")){
-            Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
         }else if(RPO.getText().trim().equals("")){
-            Valid.textKosong(RPO,"Riwayat Pengobatan");
-        }else if(TotalHasil.getText().trim().equals("")){
-            Valid.textKosong(TotalHasil,"Total Hasil");
+            Valid.textKosong(RPO,"Riwayat Penggunaan Obat");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
@@ -2536,32 +2511,12 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(TD.getText().trim().equals("")){
-            Valid.textKosong(TD,"TD(mmHg)");
-        }else if(Nadi.getText().trim().equals("")){
-            Valid.textKosong(Nadi,"Nadi(x/menit)");
-        }else if(RR.getText().trim().equals("")){
-            Valid.textKosong(RR,"RR(x/menit)");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu(C)");
-        }else if(GCS.getText().trim().equals("")){
-            Valid.textKosong(GCS,"GCS");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"BB(Kg)");
-        }else if(TB.getText().trim().equals("")){
-            Valid.textKosong(TB,"TB(Cm)");
-        }else if(BMI.getText().trim().equals("")){
-            Valid.textKosong(BMI,"BMI(Kg/m2)");
         }else if(KeluhanUtama.getText().trim().equals("")){
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(RPD.getText().trim().equals("")){
             Valid.textKosong(RPD,"Riwayat Penyakit Dahulu");
-        }else if(RPK.getText().trim().equals("")){
-            Valid.textKosong(RPK,"Riwayat Penyakit Keluarga");
         }else if(RPO.getText().trim().equals("")){
-            Valid.textKosong(RPO,"Riwayat Pengobatan");
-        }else if(TotalHasil.getText().trim().equals("")){
-            Valid.textKosong(TotalHasil,"Total Hasil");
+            Valid.textKosong(RPO,"Riwayat Penggunaan Obat");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
@@ -3391,7 +3346,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("nyeri",Sequel.cariGambar("select nyeri from gambar")); 
+            param.put("nyeri",Sequel.cariGambar("select gambar.nyeri from gambar")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),64).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),63).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())); 
             try {
@@ -3466,10 +3421,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
         }  
     }//GEN-LAST:event_BtnPrint1ActionPerformed
-
-    private void DetailRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetailRencanaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DetailRencanaKeyPressed
 
     private void BtnAllMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllMasalahActionPerformed
         TCari.setText("");
@@ -4035,7 +3986,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             
             try {
                 Valid.tabelKosong(tabModeMasalah);
-                
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
                         "inner join penilaian_awal_keperawatan_ralan_masalah on penilaian_awal_keperawatan_ralan_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
@@ -4062,7 +4012,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             
             try {
                 Valid.tabelKosong(tabModeRencana);
-                
                 ps=koneksi.prepareStatement(
                         "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
                         "inner join penilaian_awal_keperawatan_ralan_rencana on penilaian_awal_keperawatan_ralan_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+

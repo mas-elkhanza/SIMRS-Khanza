@@ -1,5 +1,3 @@
-
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
@@ -18,18 +16,18 @@
             <?php
                 echo "";
                 $action      = isset($_GET['action'])?$_GET['action']:NULL;
-                $pendapatan  = str_replace("_"," ",isset($_GET['pendapatan']))?str_replace("_"," ",$_GET['pendapatan']):NULL;
+                $pendapatan  = validangka(str_replace("_"," ",isset($_GET['pendapatan']))?str_replace("_"," ",$_GET['pendapatan']):NULL);
                 if($action == "TAMBAH"){
-                    $pendapatan     = str_replace("_"," ",isset($_GET['pendapatan']))?str_replace("_"," ",$_GET['pendapatan']):NULL;
-                    $persen         = "";
-					$total_insentif = "";
+                    $pendapatan      = validangka(str_replace("_"," ",isset($_GET['pendapatan']))?str_replace("_"," ",$_GET['pendapatan']):NULL);
+                    $persen          = "";
+		    $total_insentif  = "";
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT pendapatan,persen FROM set_insentif WHERE tahun='$tahun' and bulan='$bulan'";
-                    $hasil          = bukaquery($_sql);
-                    $baris          = mysqli_fetch_row($hasil);
+                    $_sql            = "SELECT set_insentif.pendapatan,set_insentif.persen FROM set_insentif WHERE set_insentif.tahun='$tahun' and set_insentif.bulan='$bulan'";
+                    $hasil           = bukaquery($_sql);
+                    $baris           = mysqli_fetch_row($hasil);
                     @$pendapatan     = $baris[0];
                     @$persen         = $baris[1];
-					@$total_insentif = $baris[2];
+		    @$total_insentif = $baris[2];
                 }
                 echo"<input type=hidden name=pendapatan value=$pendapatan><input type=hidden name=action value=$action>";
             ?>
@@ -50,12 +48,6 @@
             <div align="center"><input name=BtnSimpan type=submit class="button" value="SIMPAN">&nbsp<input name=BtnKosong type=reset class="button" value="KOSONG"></div>
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;	
-                $_sql      = "SELECT * FROM set_tahun";
-                $hasil     = bukaquery($_sql);
-                $baris     = mysqli_fetch_row($hasil);
-                $tahun     = empty($baris[0])?date("Y"):$baris[0];
-                $bulan     = empty($baris[1])?date("m"):$baris[1];
-
                 if (isset($BtnSimpan)) {
                     $pendapatan = trim($_POST['pendapatan']);
                     $pendapatan = validangka($pendapatan);

@@ -1,5 +1,8 @@
 <?php
-
+    if(strpos($_SERVER['REQUEST_URI'],"conf")){
+        exit(header("Location:../index.php"));
+    }
+    
     $db_hostname    = "localhost";
     $db_username    = "root";
     $db_password    = "";
@@ -46,6 +49,40 @@
     
     function validTeks($data){
         $save=str_replace("'","",$data);
+        $save=str_replace("\\","",$save);
+        $save=str_replace(";","",$save);
+        $save=str_replace("`","",$save);
+        $save=str_replace("--","",$save);
+        $save=str_replace("/*","",$save);
+        $save=str_replace("*/","",$save);
+        $save=str_replace("#","",$save);
+        $save=str_replace("text/html","",$save);
+        $save=str_replace("base64","",$save);
+        $save=str_replace("<script>","",$save);
+        $save=str_replace("</script>","",$save);
+        $save=str_replace("<noscript>","",$save);
+        $save=str_replace("</noscript>","",$save);
+        $save=str_replace("<img","",$save);
+        $save=str_replace("document","",$save);
+        return $save;
+    }
+    
+    function validTeks2($data){
+        $save=str_replace("'","",$data);
+        $save=str_replace("\\","",$save);
+        $save=str_replace(";","",$save);
+        $save=str_replace("`","",$save);
+        $save=str_replace("--","",$save);
+        $save=str_replace("/*","",$save);
+        $save=str_replace("*/","",$save);
+        $save=str_replace("text/html","",$save);
+        $save=str_replace("base64","",$save);
+        $save=str_replace("<script>","",$save);
+        $save=str_replace("</script>","",$save);
+        $save=str_replace("<noscript>","",$save);
+        $save=str_replace("</noscript>","",$save);
+        $save=str_replace("<img","",$save);
+        $save=str_replace("document","",$save);
         return $save;
     }
     
@@ -163,7 +200,7 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (/*mysqli_error($konektor).*/"hmmmmmmm.....??????????");
+        or die (mysqli_error($konektor)."hmmmmmmm.....??????????");
         mysqli_close($konektor);
         return $result;
     }
@@ -561,6 +598,12 @@
         $secret_key     = 'Bar12345Bar12345'; 
         $secret_iv      = 'sayangsamakhanza';
         return openssl_decrypt(base64_decode($input), 'AES-128-CBC', $secret_key, OPENSSL_RAW_DATA, $secret_iv);
+    }
+    
+    function encrypt($input){
+        $secret_key     = 'Bar12345Bar12345'; 
+        $secret_iv      = 'sayangsamakhanza';
+        return base64_encode(openssl_encrypt($input, 'AES-128-CBC', $secret_key, OPENSSL_RAW_DATA, $secret_iv));
     }
     
     function Terbilang($x){

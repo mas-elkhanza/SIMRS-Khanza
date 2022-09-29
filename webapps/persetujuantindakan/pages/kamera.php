@@ -1,11 +1,11 @@
 <?php
-    $noresep  = "";
+    $nopernyataan  = "";
     $norawat  = "";
-    $_sql     = "select * from antriapotek3" ;  
+    $_sql     = "select * from antripersetujuan" ;  
     $hasil    = bukaquery2($_sql);
     while ($data = mysqli_fetch_array ($hasil)){
-        $noresep  = $data['no_resep'];
-        $norawat  = $data['no_rawat'];
+        $nopernyataan = $data['no_pernyataan'];
+        $norawat      = $data['no_rawat'];
     }
     
     $no_rkm_medis = "";
@@ -47,7 +47,7 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-danger"><center>Penyerahan Resep Obat Rawat Jalan <?=$noresep;?></center></h5>
+        <h5 class="text-danger"><center>Konfirmasi Penerima Informasi <?=$nopernyataan;?></center></h5>
         <table class="default" width="100%">
             <tr class="text-danger">
                 <td width="15%">Nomor Rawat</td>

@@ -7,8 +7,8 @@
     </head>
     <body>
    <?php
-        $keyword = $_GET['keyword'];
-        $_sql    = "SELECT tingkat,indek,gapok1,kenaikan,maksimal FROM pendidikan where tingkat like '%".$keyword."%' ORDER BY indek DESC,tingkat ";
+        $keyword = validTeks($_GET['keyword']);
+        $_sql    = "SELECT pendidikan.tingkat,pendidikan.indek,pendidikan.gapok1,pendidikan.kenaikan,pendidikan.maksimal FROM pendidikan where pendidikan.tingkat like '%".$keyword."%' ORDER BY pendidikan.indek DESC,pendidikan.tingkat ";
         $hasil   = bukaquery($_sql);
         $jumlah  = mysqli_num_rows($hasil);
         $no      = 1;
@@ -25,7 +25,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-								<td>$no</td>  
+				<td>$no</td>  
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                                 <td>".formatDuit($baris[2])."</td>

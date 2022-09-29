@@ -10,6 +10,7 @@
  */
 
 package inventaris;
+import AESsecurity.EnkripsiAES;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -1336,7 +1337,6 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private void btnAmbilPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilPhotoActionPerformed
         if(tbJnsPerawatan.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            System.out.println(""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString().replaceAll(" ","_"));
             Valid.panggilUrl("inventaris/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_inventaris="+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString().replaceAll(" ","_"));
             this.setCursor(Cursor.getDefaultCursor());
         }

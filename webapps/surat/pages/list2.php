@@ -2,13 +2,13 @@
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
         <?php
-            $tgl1     =isset($_GET['tgl1'])?$_GET['tgl1']:NULL;
-            $tgl2     =isset($_GET['tgl2'])?$_GET['tgl2']:NULL;
-            $action   =isset($_GET['action'])?$_GET['action']:NULL;
-            $keyword  =str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-            $ruang    =str_replace("_"," ",isset($_GET['ruang']))?str_replace("_"," ",$_GET['ruang']):NULL;
-            $sttssurat=str_replace("_"," ",isset($_GET['sttssurat']))?str_replace("_"," ",$_GET['sttssurat']):NULL;
-            $sttsbalas=str_replace("_"," ",isset($_GET['sttsbalas']))?str_replace("_"," ",$_GET['sttsbalas']):NULL;
+            $tgl1     = validTeks(isset($_GET['tgl1'])?$_GET['tgl1']:NULL);
+            $tgl2     = validTeks(isset($_GET['tgl2'])?$_GET['tgl2']:NULL);
+            $action   = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
+            $keyword  = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
+            $ruang    = validTeks(str_replace("_"," ",isset($_GET['ruang']))?str_replace("_"," ",$_GET['ruang']):NULL);
+            $sttssurat= validTeks(str_replace("_"," ",isset($_GET['sttssurat']))?str_replace("_"," ",$_GET['sttssurat']):NULL);
+            $sttsbalas= validTeks(str_replace("_"," ",isset($_GET['sttsbalas']))?str_replace("_"," ",$_GET['sttsbalas']):NULL);
         ?>
     <div style="width: 100%; height: 99.9%; overflow: auto;">
     <?php        
@@ -60,7 +60,7 @@
                     while($baris = mysqli_fetch_array($hasil)) {                        
                         echo "<tr class='isi'>
                                 <td align='center'>
-                                   <a href=?act=List2&action=HAPUS&no_urut=".$baris["no_urut"]."&file_url=".$baris["file_url"]."&tgl1=".$_GET["tgl1"]."&tgl2=".$_GET["tgl2"]."&ruang=".$_GET["ruang"]."&sttssurat=".$_GET["sttssurat"]."&sttsbalas=".$_GET["sttsbalas"]."&keyword=".$_GET["keyword"].">[Hapus]</a>
+                                   <a href=?act=List2&action=HAPUS&no_urut=".$baris["no_urut"]."&file_url=".$baris["file_url"]."&tgl1=".validTeks($_GET["tgl1"])."&tgl2=".validTeks($_GET["tgl2"])."&ruang=".validTeks($_GET["ruang"])."&sttssurat=".validTeks($_GET["sttssurat"])."&sttsbalas=".validTeks($_GET["sttsbalas"])."&keyword=".validTeks($_GET["keyword"]).">[Hapus]</a>
                                    <a target=_blank href=../surat/pages/upload/".$baris["file_url"].">[Berkas]</a>
                                 </td>
                                 <td align='left'>".$baris["no_urut"]."</td>
@@ -112,7 +112,7 @@
         
         if ($action=="HAPUS") {                
             unlink($_GET['file_url']);
-            Hapus(" surat_keluar "," no_urut ='".$_GET['no_urut']."' ","?act=List2&tgl1=".$_GET['tgl1']."&tgl2=".$_GET['tgl2']."&ruang=".$_GET['ruang']."&sttssurat=".$_GET['sttssurat']."&sttsbalas=".$_GET['sttsbalas']."&keyword=".$_GET['keyword']);
+            Hapus(" surat_keluar "," no_urut ='".validTeks($_GET['no_urut'])."' ","?act=List2&tgl1=".validTeks($_GET['tgl1'])."&tgl2=".validTeks($_GET['tgl2'])."&ruang=".validTeks($_GET['ruang'])."&sttssurat=".validTeks($_GET['sttssurat'])."&sttsbalas=".validTeks($_GET['sttsbalas'])."&keyword=".($_GET['keyword']));
         }
     ?>
     </div>

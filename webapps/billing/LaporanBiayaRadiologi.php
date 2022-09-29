@@ -9,19 +9,19 @@
 
     <?php
     reportsqlinjection();      
-        $norm       =$_GET['norm'];
-        $pasien     =$_GET['pasien'];
-        $tanggal    =$_GET['tanggal'];
-        $jam        =$_GET['jam'];
-        $pjlab      =$_GET['pjlab'];
-        $petugas    =$_GET['petugas'];
-        $kasir      =$_GET['kasir'];
+        $norm       = validTeks($_GET['norm']);
+        $pasien     = validTeks($_GET['pasien']);
+        $tanggal    = validTeks($_GET['tanggal']);
+        $jam        = validTeks($_GET['jam']);
+        $pjlab      = validTeks($_GET['pjlab']);
+        $petugas    = validTeks($_GET['petugas']);
+        $kasir      = validTeks($_GET['kasir']);
 
         $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_radiologi order by no asc";   
         $hasil=bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 
-            $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+            $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
             echo "   
             <table width='".getOne("select notalabrad from set_nota")."' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' >
             <tr class='isi12' padding='0'>

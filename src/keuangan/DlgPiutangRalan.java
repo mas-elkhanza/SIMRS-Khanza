@@ -55,7 +55,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
     private double all=0,Laborat=0,Radiologi=0,Obat=0,Ralan_Dokter=0,Ralan_Dokter_paramedis=0,Ralan_Paramedis=0,Tambahan=0,Potongan=0,Registrasi=0,
                     ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlRegistrasi=0,
                    Operasi=0,ttlOperasi=0,ekses=0,ttlekses=0,dibayar=0,ttldibayar=0,sisa=0,ttlsisa=0;
-    private String pilihan="";
+    private String pilihan="",status="";
     private StringBuilder htmlContent;
     private int i=0;
 
@@ -192,6 +192,8 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnBilling = new javax.swing.JMenuItem();
+        kdpenjab = new widget.TextBox();
+        KdPoli = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -207,12 +209,12 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi4 = new widget.panelisi();
+        label19 = new widget.Label();
+        StatusLunas = new widget.ComboBox();
         label17 = new widget.Label();
-        kdpenjab = new widget.TextBox();
         nmpenjab = new widget.TextBox();
         BtnSeek2 = new widget.Button();
         label20 = new widget.Label();
-        KdPoli = new widget.TextBox();
         NmPoli = new widget.TextBox();
         BtnPoli = new widget.Button();
 
@@ -236,6 +238,18 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnBilling);
+
+        kdpenjab.setName("kdpenjab"); // NOI18N
+        kdpenjab.setPreferredSize(new java.awt.Dimension(60, 23));
+        kdpenjab.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdpenjabKeyPressed(evt);
+            }
+        });
+
+        KdPoli.setEditable(false);
+        KdPoli.setName("KdPoli"); // NOI18N
+        KdPoli.setPreferredSize(new java.awt.Dimension(60, 23));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -386,23 +400,24 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        label19.setText("Status :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(47, 23));
+        panelisi4.add(label19);
+
+        StatusLunas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Lunas", "Belum Lunas" }));
+        StatusLunas.setName("StatusLunas"); // NOI18N
+        StatusLunas.setPreferredSize(new java.awt.Dimension(119, 23));
+        panelisi4.add(StatusLunas);
+
         label17.setText("Jenis Bayar :");
         label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(75, 23));
+        label17.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi4.add(label17);
-
-        kdpenjab.setName("kdpenjab"); // NOI18N
-        kdpenjab.setPreferredSize(new java.awt.Dimension(60, 23));
-        kdpenjab.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdpenjabKeyPressed(evt);
-            }
-        });
-        panelisi4.add(kdpenjab);
 
         nmpenjab.setEditable(false);
         nmpenjab.setName("nmpenjab"); // NOI18N
-        nmpenjab.setPreferredSize(new java.awt.Dimension(200, 23));
+        nmpenjab.setPreferredSize(new java.awt.Dimension(180, 23));
         panelisi4.add(nmpenjab);
 
         BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -424,17 +439,12 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
 
         label20.setText("Unit/Poli :");
         label20.setName("label20"); // NOI18N
-        label20.setPreferredSize(new java.awt.Dimension(105, 23));
+        label20.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label20);
-
-        KdPoli.setEditable(false);
-        KdPoli.setName("KdPoli"); // NOI18N
-        KdPoli.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelisi4.add(KdPoli);
 
         NmPoli.setEditable(false);
         NmPoli.setName("NmPoli"); // NOI18N
-        NmPoli.setPreferredSize(new java.awt.Dimension(200, 23));
+        NmPoli.setPreferredSize(new java.awt.Dimension(180, 23));
         panelisi4.add(NmPoli);
 
         BtnPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -778,6 +788,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         nmpenjab.setText("");
         KdPoli.setText("");
         NmPoli.setText("");
+        StatusLunas.setSelectedIndex(0);
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -842,6 +853,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private javax.swing.JMenuItem MnBilling;
     private widget.TextBox NmPoli;
     private widget.ScrollPane Scroll;
+    private widget.ComboBox StatusLunas;
     private widget.TextBox TKd;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
@@ -852,6 +864,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
+    private widget.Label label19;
     private widget.Label label20;
     private widget.TextBox nmpenjab;
     private widget.panelisi panelGlass5;
@@ -862,16 +875,21 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabMode);
-        try{            
-            ps= koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab, "+
+        try{    
+            status="";
+            if(StatusLunas.getSelectedIndex()==1){
+                status="and piutang_pasien.status='Lunas'";
+            }else if(StatusLunas.getSelectedIndex()==2){
+                status="and piutang_pasien.status='Belum Lunas'";
+            }
+            ps= koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab, "+
                         "piutang_pasien.uangmuka,piutang_pasien.totalpiutang "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                         "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                         "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
                         "inner join piutang_pasien on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
-                        "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? "+
+                        "where reg_periksa.status_lanjut='Ralan' "+status+" and reg_periksa.tgl_registrasi between ? and ? "+
                         "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? "+
                         "order by reg_periksa.tgl_registrasi");
             try {

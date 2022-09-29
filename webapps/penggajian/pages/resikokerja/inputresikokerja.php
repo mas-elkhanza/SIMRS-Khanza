@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputResikoKerja&action=TAMBAH>| Input Data |</a>
@@ -9,15 +7,14 @@
     <div class="entry">
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                echo "";
-                $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode_resiko     =str_replace("_"," ",isset($_GET['kode_resiko'])?$_GET['kode_resiko']:NULL);
+                $action       = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode_resiko  = validTeks(str_replace("_"," ",isset($_GET['kode_resiko']))?str_replace("_"," ",$_GET['kode_resiko']):NULL);
                 if($action == "TAMBAH"){
-                    $kode_resiko       = str_replace("_"," ",isset($_GET['kode_resiko']))?str_replace("_"," ",$_GET['kode_resiko']):NULL;
-                    $nama_resiko       = "";
-                    $indek             = "";
+                    $kode_resiko    = validTeks(str_replace("_"," ",isset($_GET['kode_resiko']))?str_replace("_"," ",$_GET['kode_resiko']):NULL);
+                    $nama_resiko    = "";
+                    $indek          = "";
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT * FROM resiko_kerja WHERE kode_resiko='$kode_resiko'";
+                    $_sql           = "SELECT * FROM resiko_kerja WHERE resiko_kerja.kode_resiko='$kode_resiko'";
                     $hasil          = bukaquery($_sql);
                     $baris          = mysqli_fetch_row($hasil);
                     $kode_resiko    = $baris[0];
@@ -56,7 +53,7 @@
                     if ((isset($kode_resiko))&&(isset($nama_resiko))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" resiko_kerja "," '$kode_resiko','$nama_resiko','$indek' ", " kelompok jabatan " );
+                                Tambah(" resiko_kerja "," '$kode_resiko','$nama_resiko','$indek' ", " resiko kerja " );
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputResikoKerja&action=TAMBAH'></head><body></body></html>";
                                 break;
                             case "UBAH":

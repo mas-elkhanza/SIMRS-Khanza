@@ -822,7 +822,6 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         panelisi3.add(btnIF);
         btnIF.setBounds(774, 70, 28, 23);
 
-        RDatang.setBackground(new java.awt.Color(240, 250, 230));
         buttonGroup1.add(RDatang);
         RDatang.setSelected(true);
         RDatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -830,16 +829,15 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         RDatang.setName("RDatang"); // NOI18N
         RDatang.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi3.add(RDatang);
-        RDatang.setBounds(12, 40, 70, 23);
+        RDatang.setBounds(12, 40, 20, 23);
 
-        RFaktur.setBackground(new java.awt.Color(240, 250, 230));
         buttonGroup1.add(RFaktur);
         RFaktur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         RFaktur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         RFaktur.setName("RFaktur"); // NOI18N
         RFaktur.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi3.add(RFaktur);
-        RFaktur.setBounds(12, 70, 70, 23);
+        RFaktur.setBounds(12, 70, 20, 23);
 
         TglFaktur1.setDisplayFormat("dd-MM-yyyy");
         TglFaktur1.setName("TglFaktur1"); // NOI18N

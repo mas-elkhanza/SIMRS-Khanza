@@ -945,7 +945,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    totaljm=totaljm+total;
                 } 
                 if(totaljm>0){
-                   tabMode.addRow(new Object[]{">> ","Total KSO :","","","",Valid.SetAngka(totaljm)});     
+                   tabMode.addRow(new Object[]{">> ","Total Menejemen :","","","",Valid.SetAngka(totaljm)});     
                 }
             } catch (Exception e) {
                 System.out.println(e);

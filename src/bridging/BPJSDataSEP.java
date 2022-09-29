@@ -811,8 +811,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         
         try{
-            KdPPK.setText(Sequel.cariIsi("select kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));            
+            KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
+            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));            
         }catch(Exception e){
             System.out.println(e);
         }
@@ -3178,20 +3178,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 insertSEP();
             }else if(JenisPelayanan.getSelectedIndex()==1){
                 if(NmPoli.getText().toLowerCase().contains("darurat")){
-                    if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
-                            "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and "+
-                            "nmpolitujuan like '%darurat%'")>=3){
+                    if(Sequel.cariInteger("select count(bridging_sep.no_kartu) from bridging_sep where bridging_sep.no_kartu='"+no_peserta+"' and bridging_sep.jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' and bridging_sep.tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and bridging_sep.nmpolitujuan like '%darurat%'")>=3){
                         JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                         TCari.requestFocus();
                     }else{
                         insertSEP();
                     }
                 }else if(!NmPoli.getText().toLowerCase().contains("darurat")){
-                    if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
-                            "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and "+
-                            "nmpolitujuan not like '%darurat%'")>=1){
+                    if(Sequel.cariInteger("select count(bridging_sep.no_kartu) from bridging_sep where bridging_sep.no_kartu='"+no_peserta+"' and bridging_sep.jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' and bridging_sep.tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and bridging_sep.nmpolitujuan not like '%darurat%'")>=1){
                         JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
                         TCari.requestFocus();
                     }else{
@@ -3644,7 +3638,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
                 if(JenisPelayanan.getSelectedIndex()==0){
@@ -3666,7 +3660,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
                 param.put("noskdp",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),43).toString());
@@ -4173,7 +4167,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReport("rptBridgingSEP3.jasper","report","::[ Cetak SEP ]::",param);
@@ -4195,7 +4189,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
                 param.put("noskdp",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),43).toString());
                 param.put("tglrujukan",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),5).toString());
@@ -4225,7 +4219,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
@@ -4249,7 +4243,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
                 param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
@@ -4281,7 +4275,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("dokter",Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
@@ -4307,7 +4301,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("dokter",Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
@@ -4595,7 +4589,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
                 if(JenisPelayanan.getSelectedIndex()==0){
@@ -4617,7 +4611,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
                 param.put("noskdp",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),43).toString());
@@ -4647,7 +4641,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReportPDF("rptBridgingSEP3.jasper","report","::[ Cetak SEP ]::",param);
@@ -4669,7 +4663,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
                 param.put("noskdp",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),43).toString());
                 param.put("tglrujukan",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),5).toString());
@@ -4698,7 +4692,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
@@ -4722,7 +4716,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
                 param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());
@@ -4754,7 +4748,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("dokter",Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
@@ -4780,7 +4774,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("norawat",TNoRw.getText());
-                param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
+                param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString()));
                 param.put("dokter",Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter));
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); param.put("no_sep",tbDataSEPInternal.getValueAt(tbDataSEPInternal.getSelectedRow(),0).toString());

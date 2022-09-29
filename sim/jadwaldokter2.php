@@ -40,7 +40,7 @@
        </object>
      </noscript>
      <?php
-		$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+		$setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
 		echo "   
 		   <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
 			  <tr>

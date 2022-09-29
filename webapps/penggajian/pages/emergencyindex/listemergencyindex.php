@@ -39,13 +39,13 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-						       <td>
-                                    <center>
+				<td>
+                                  <center>
                                         <a href=?act=InputEmergencyIndex&action=UBAH&kode_emergency=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
                                         <a href="?act=ListEmergencyIndex&action=HAPUS&kode_emergency=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
-                               </td>
+                                </td>
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                                 <td>$baris[2]</td>                                
@@ -63,14 +63,11 @@
                     </tr>
                  </table>";
         }
-
-    ?>
-    
-    <?php
-       $aksi=isset($_GET['action'])?$_GET['action']:NULL;
-       if ($aksi=="HAPUS") {
-            Hapus(" emergency_index "," kode_emergency ='".$_GET['kode_emergency']."' ","?act=ListEmergencyIndex");
-       }
+        
+        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
+        if ($aksi=="HAPUS") {
+            Hapus(" emergency_index "," kode_emergency ='". validTeks($_GET['kode_emergency'])."' ","?act=ListEmergencyIndex");
+        }
     ?>
     </div>
     <?php

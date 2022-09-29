@@ -1017,7 +1017,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         if(!norm.equals("")){
                             statuspasien="Lama";
                         }else{
-                            norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",list.path("PASIEN").path("NO_KARTU_JKN").asText());
+                            norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta=?",list.path("PASIEN").path("NO_KARTU_JKN").asText());
                             if(!norm.equals("")){
                                 statuspasien="Lama";
                             }

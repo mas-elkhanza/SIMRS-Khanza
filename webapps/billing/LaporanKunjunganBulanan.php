@@ -20,8 +20,8 @@
 
     <?php
     reportsqlinjection();      
-        $tanggal1      = $_GET['tanggal1']; 
-        $tanggal2      = $_GET['tanggal2']; 
+        $tanggal1      = validTeks($_GET['tanggal1']); 
+        $tanggal2      = validTeks($_GET['tanggal2']); 
 
         $_sql = "select left(tgl_registrasi,7) from reg_periksa where tgl_registrasi between '$tanggal1' and '$tanggal2' group by left(tgl_registrasi,7)  order by tgl_registrasi";            
         $hasil=bukaquery($_sql);

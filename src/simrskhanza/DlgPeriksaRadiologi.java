@@ -43,6 +43,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
+import rekammedis.MasterCariTemplateHasilRadiologi;
 
 /**
  *
@@ -57,6 +58,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private MasterCariTemplateHasilRadiologi templatehasil=new MasterCariTemplateHasilRadiologi(null,false);
     private PreparedStatement psset_tarif,pssetpj,pspemeriksaan,pspemeriksaan2,pspemeriksaan3,pspemeriksaan4,psbhp,psrekening;
     private ResultSet rs,rsset_tarif,rssetpj,rsrekening,rs2;
     private boolean[] pilih; 
@@ -292,6 +294,30 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        templatehasil.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgPeriksaRadiologi")){
+                    if(templatehasil.getTable().getSelectedRow()!= -1){                   
+                        HasilPeriksa.setText(templatehasil.getTable().getValueAt(templatehasil.getTable().getSelectedRow(),2).toString());
+                    } 
+                    HasilPeriksa.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
         try {
             psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
             try {
@@ -481,8 +507,11 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         BtnTambahBhp = new widget.Button();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
-        Scroll3 = new widget.ScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        Scroll1 = new widget.ScrollPane();
         HasilPeriksa = new widget.TextArea();
+        panelisi7 = new widget.panelisi();
+        btnAmbilPhoto = new widget.Button();
 
         Penjab.setEditable(false);
         Penjab.setFocusTraversalPolicyProvider(true);
@@ -733,7 +762,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-01-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -854,21 +883,16 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         panelisi5.setBorder(null);
         panelisi5.setName("panelisi5"); // NOI18N
         panelisi5.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
+        panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 9));
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(68, 23));
+        label10.setPreferredSize(new java.awt.Dimension(63, 23));
         panelisi5.add(label10);
 
         TCariPeriksa.setToolTipText("Alt+C");
         TCariPeriksa.setName("TCariPeriksa"); // NOI18N
         TCariPeriksa.setPreferredSize(new java.awt.Dimension(160, 23));
-        TCariPeriksa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TCariPeriksaActionPerformed(evt);
-            }
-        });
         TCariPeriksa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariPeriksaKeyPressed(evt);
@@ -959,11 +983,11 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         panelisi4.setBorder(null);
         panelisi4.setName("panelisi4"); // NOI18N
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
+        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 9));
 
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(68, 23));
+        label9.setPreferredSize(new java.awt.Dimension(63, 23));
         panelisi4.add(label9);
 
         TCariBhp.setToolTipText("Alt+C");
@@ -1050,16 +1074,44 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
 
         jPanel1.add(jPanel2);
 
-        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Hasil Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        Scroll3.setName("Scroll3"); // NOI18N
-        Scroll3.setOpaque(true);
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Hasil Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        jPanel4.setName("jPanel4"); // NOI18N
+        jPanel4.setOpaque(false);
+        jPanel4.setPreferredSize(new java.awt.Dimension(350, 102));
+        jPanel4.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Scroll1.setName("Scroll1"); // NOI18N
+        Scroll1.setOpaque(true);
 
         HasilPeriksa.setColumns(20);
-        HasilPeriksa.setRows(5);
+        HasilPeriksa.setRows(35);
         HasilPeriksa.setName("HasilPeriksa"); // NOI18N
-        Scroll3.setViewportView(HasilPeriksa);
+        Scroll1.setViewportView(HasilPeriksa);
 
-        jPanel1.add(Scroll3);
+        jPanel4.add(Scroll1, java.awt.BorderLayout.CENTER);
+
+        panelisi7.setBorder(null);
+        panelisi7.setName("panelisi7"); // NOI18N
+        panelisi7.setPreferredSize(new java.awt.Dimension(100, 43));
+        panelisi7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 9, 6));
+
+        btnAmbilPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnAmbilPhoto.setMnemonic('U');
+        btnAmbilPhoto.setText("Template");
+        btnAmbilPhoto.setToolTipText("Alt+U");
+        btnAmbilPhoto.setName("btnAmbilPhoto"); // NOI18N
+        btnAmbilPhoto.setPreferredSize(new java.awt.Dimension(105, 30));
+        btnAmbilPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAmbilPhotoActionPerformed(evt);
+            }
+        });
+        panelisi7.add(btnAmbilPhoto);
+
+        jPanel4.add(panelisi7, java.awt.BorderLayout.PAGE_END);
+
+        jPanel1.add(jPanel4);
 
         internalFrame1.add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -1503,9 +1555,14 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
-    private void TCariPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TCariPeriksaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TCariPeriksaActionPerformed
+    private void btnAmbilPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilPhotoActionPerformed
+        akses.setform("DlgPeriksaRadiologi");
+        templatehasil.emptTeks();
+        templatehasil.isCek();
+        templatehasil.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        templatehasil.setLocationRelativeTo(internalFrame1);
+        templatehasil.setVisible(true);
+    }//GEN-LAST:event_btnAmbilPhotoActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1552,8 +1609,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private widget.PanelBiasa PanelInput;
     private widget.TextBox Penjab;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
-    private widget.ScrollPane Scroll3;
     private widget.TextBox TCariBhp;
     private widget.TextBox TCariPeriksa;
     private widget.TextBox TNoRM;
@@ -1561,6 +1618,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox Umur;
+    private widget.Button btnAmbilPhoto;
     private widget.Button btnCariBhp;
     private widget.Button btnCariPeriksa;
     private widget.Button btnDokter;
@@ -1577,11 +1635,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private widget.Label label10;
     private widget.Label label9;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelisi4;
     private widget.panelisi panelisi5;
+    private widget.panelisi panelisi7;
     private widget.Table tbObat;
     private widget.Table tbPemeriksaan;
     // End of variables declaration//GEN-END:variables

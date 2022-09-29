@@ -680,10 +680,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_rujukan=?",list.path("noKunjungan").asText());
+                        statussep=Sequel.cariIsi("select bridging_sep.no_sep from bridging_sep where bridging_sep.no_rujukan=?",list.path("noKunjungan").asText());
                         switch (cmbStatus.getSelectedItem().toString()) {
                             case "Semua":
-                                norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                 statuspasien="Baru";
                                 if(!norm.equals("")){
                                     statuspasien="Lama";
@@ -713,7 +713,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 break;
                             case "Sudah Terbit":
                                 if(!statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";
@@ -745,7 +745,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }   break;
                             case "Belum Terbit":
                                 if(statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";
@@ -811,10 +811,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_rujukan=?",list.path("noKunjungan").asText());
+                        statussep=Sequel.cariIsi("select bridging_sep.no_sep from bridging_sep where bridging_sep.no_rujukan=?",list.path("noKunjungan").asText());
                         switch (cmbStatus.getSelectedItem().toString()) {
                             case "Semua":
-                                norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                 statuspasien="Baru";
                                 if(!norm.equals("")){
                                     statuspasien="Lama";
@@ -844,7 +844,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 break;
                             case "Sudah Terbit":
                                 if(!statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";
@@ -876,7 +876,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }   break;
                             case "Belum Terbit":
                                 if(statussep.equals("")){
-                                    norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
+                                    norm=Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_peserta =?",list.path("peserta").path("noKartu").asText());
                                     statuspasien="Baru";
                                     if(!norm.equals("")){
                                         statuspasien="Lama";

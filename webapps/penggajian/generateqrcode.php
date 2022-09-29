@@ -11,6 +11,6 @@
         $errorCorrectionLevel  = 'L';
         $matrixPointSize       = 4;
         $setting               = mysqli_fetch_array(bukaquery("select nama_instansi,kabupaten from setting"));
-        QRcode::png("Dikeluarkan di ".$setting["nama_instansi"].", Kabupaten/Kota ".$setting["kabupaten"]."\nDitandatangani secara elektronik oleh ".getOne("select nm_dokter from dokter where kd_dokter='$kodedokter'")."\nID ".getOne3("select ifnull(sha1(sidikjari),'".$kodedokter."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$kodedokter."'",$kodedokter)."\n".date('d-m-Y'), $filename, $errorCorrectionLevel, $matrixPointSize, 2);
+        QRcode::png("Dikeluarkan di ".$setting["nama_instansi"].", Kabupaten/Kota ".$setting["kabupaten"]."\nDitandatangani secara elektronik oleh ".getOne("select nm_dokter from dokter where kd_dokter='$kodedokter'")."\nID ".getOne3("select ifnull(sha1(sidikjari.sidikjari),'".$kodedokter."') from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik='".$kodedokter."'",$kodedokter)."\n".date('d-m-Y'), $filename, $errorCorrectionLevel, $matrixPointSize, 2);
     }   
 ?>  

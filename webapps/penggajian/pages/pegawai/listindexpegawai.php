@@ -27,7 +27,7 @@
 
             $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
             $keyword = validTeks($keyword);
-            $status  = trim(isset($_POST['status']))?trim($_POST['status']):"AKTIF";
+            $status  = validTeks(trim(isset($_POST['status']))?trim($_POST['status']):"AKTIF");
             echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=status value=$status>";
         ?>
           <table width="100%" align="center">

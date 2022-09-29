@@ -12,13 +12,13 @@
     <?php
         reportsqlinjection();
         
-        $norujuk     =str_replace("_"," ",$_GET['norujuk']);
-        $rujukke     =str_replace("_"," ",$_GET['rujukke']);
-        $diagnosa    =str_replace("_"," ",$_GET['diagnosa']);      
-        $tanggal     =str_replace("_"," ",$_GET['tanggal']);   
-        $dokter      =str_replace("_"," ",$_GET['dokter']);      
-        $norm        =str_replace("_"," ",$_GET['norm']);     
-        $norw        =str_replace("_"," ",$_GET['norw']);   
+        $norujuk     =validTeks(str_replace("_"," ",$_GET['norujuk']));
+        $rujukke     =validTeks(str_replace("_"," ",$_GET['rujukke']));
+        $diagnosa    =validTeks(str_replace("_"," ",$_GET['diagnosa']));      
+        $tanggal     =validTeks(str_replace("_"," ",$_GET['tanggal']));   
+        $dokter      =validTeks(str_replace("_"," ",$_GET['dokter']));      
+        $norm        =validTeks(str_replace("_"," ",$_GET['norm']));     
+        $norw        =validTeks(str_replace("_"," ",$_GET['norw']));   
         
         $_sql = "select pasien.nm_pasien,pasien.jk,pasien.alamat, pasien.umur
                 from pasien where pasien.no_rkm_medis='$norm' ";   

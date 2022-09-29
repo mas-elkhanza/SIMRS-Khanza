@@ -209,7 +209,12 @@ public class DlgUser extends javax.swing.JDialog {
                 "[C]Audit Penanganan Darah","[C]Audit Pengelolaan Linen Kotor","[C]Audit Penempatan Pasien","[C]Audit Kamar Jenazah","[C]Audit Bundle IADP",
                 "[C]Audit Bundle IDO","[C]Audit Fasilitas Kebersihan Tangan","[C]Audit Fasilitas APD","[C]Audit Pembuangan Limbah Cair Infeksius","[C]Audit Sterilisasi Alat",
                 "[L]Penilaian Awal Medis Ralan Psikiatri","[O]Persetujuan/Penolakan Tindakan","[C]Audit Bundle ISK","[C]Audit Bundle PLABSI","[C]Audit Bundle VAP",
-                "[K]Host To Host Bank Papua","[J]Pembayaran Bank Papua"
+                "[K]Host To Host Bank Papua","[J]Pembayaran Bank Papua","[L]Penilaian Awal Medis Ralan Penyakit Dalam","[L]Penilaian Awal Medis Ralan Mata",
+                "[L]Penilaian Awal Medis Ralan Neurologi","[D]Sirkulasi Obat, Alkes & BHP 6","[L]Penilaian Awal Medis Ralan Orthopedi","[L]Penilaian Awal Medis Ralan Bedah",
+                "[S]Integrasi Khanza Health Services","[L]SOAP Ralan Anggota TNI","[L]SOAP Ranap Anggota TNI","[I]Jumlah Pengunjung Ralan TNI","[I]Laporan Penyakit TNI",
+                "[L]Catatan Keperawatan Ranap","[L]Master Rencana Keperawatan Gigi","[L]Master Rencana Keperawatan Mata","[L]Master Rencana Keperawatan IGD",
+                "[L]Master Masalah Keperawatan Psikiatri","[L]Master Rencana Keperawatan Psikiatri","[L]Penilaian Awal Keperawatan Ralan Psikiatri","[L]Pemantauan PEWS Pasien Anak",
+                "[O]Surat Pulang Atas Permintaan Sendiri","[L]Master Template Hasil Radiologi"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -444,6 +449,9 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -457,7 +465,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 851;i++) {
+        for (i = 0; i < 872;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2464,6 +2472,69 @@ public class DlgUser extends javax.swing.JDialog {
                 case 850:
                     column.setPreferredWidth(140);
                     break;
+                case 851:
+                    column.setPreferredWidth(233);
+                    break;
+                case 852:
+                    column.setPreferredWidth(181);
+                    break;
+                case 853:
+                    column.setPreferredWidth(204);
+                    break;
+                case 854:
+                    column.setPreferredWidth(164);
+                    break;
+                case 855:
+                    column.setPreferredWidth(206);
+                    break;
+                case 856:
+                    column.setPreferredWidth(187);
+                    break;
+                case 857:
+                    column.setPreferredWidth(182);
+                    break;
+                case 858:
+                    column.setPreferredWidth(142);
+                    break;
+                case 859:
+                    column.setPreferredWidth(145);
+                    break;
+                case 860:
+                    column.setPreferredWidth(165);
+                    break;
+                case 861:
+                    column.setPreferredWidth(123);
+                    break;
+                case 862:
+                    column.setPreferredWidth(161);
+                    break;
+                case 863:
+                    column.setPreferredWidth(188);
+                    break;
+                case 864:
+                    column.setPreferredWidth(192);
+                    break;
+                case 865:
+                    column.setPreferredWidth(188);
+                    break;
+                case 866:
+                    column.setPreferredWidth(205);
+                    break;
+                case 867:
+                    column.setPreferredWidth(207);
+                    break;
+                case 868:
+                    column.setPreferredWidth(232);
+                    break;
+                case 869:
+                    column.setPreferredWidth(175);
+                    break;
+                case 870:
+                    column.setPreferredWidth(206);
+                    break;
+                case 871:
+                    column.setPreferredWidth(181);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -2964,7 +3035,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3857,7 +3929,28 @@ public class DlgUser extends javax.swing.JDialog {
                     "audit_bundle_plabsi='"+tbUser.getValueAt(i,847).toString()+"',"+
                     "audit_bundle_vap='"+tbUser.getValueAt(i,848).toString()+"',"+
                     "akun_host_to_host_bank_papua='"+tbUser.getValueAt(i,849).toString()+"',"+
-                    "pembayaran_bank_papua='"+tbUser.getValueAt(i,850).toString()+"'");
+                    "pembayaran_bank_papua='"+tbUser.getValueAt(i,850).toString()+"',"+
+                    "penilaian_awal_medis_ralan_penyakit_dalam='"+tbUser.getValueAt(i,851).toString()+"',"+
+                    "penilaian_awal_medis_ralan_mata='"+tbUser.getValueAt(i,852).toString()+"',"+
+                    "penilaian_awal_medis_ralan_neurologi='"+tbUser.getValueAt(i,853).toString()+"',"+
+                    "sirkulasi_obat6='"+tbUser.getValueAt(i,854).toString()+"',"+
+                    "penilaian_awal_medis_ralan_orthopedi='"+tbUser.getValueAt(i,855).toString()+"',"+
+                    "penilaian_awal_medis_ralan_bedah='"+tbUser.getValueAt(i,856).toString()+"',"+
+                    "integrasi_khanza_health_services='"+tbUser.getValueAt(i,857).toString()+"',"+
+                    "soap_ralan_tni='"+tbUser.getValueAt(i,858).toString()+"',"+
+                    "soap_ranap_tni='"+tbUser.getValueAt(i,859).toString()+"',"+
+                    "jumlah_pengunjung_ralan_tni='"+tbUser.getValueAt(i,860).toString()+"',"+
+                    "laporan_penyakit_tni='"+tbUser.getValueAt(i,861).toString()+"',"+
+                    "catatan_keperawatan_ranap='"+tbUser.getValueAt(i,862).toString()+"',"+
+                    "master_rencana_keperawatan_gigi='"+tbUser.getValueAt(i,863).toString()+"',"+
+                    "master_rencana_keperawatan_mata='"+tbUser.getValueAt(i,864).toString()+"',"+
+                    "master_rencana_keperawatan_igd='"+tbUser.getValueAt(i,865).toString()+"',"+
+                    "master_masalah_keperawatan_psikiatri='"+tbUser.getValueAt(i,866).toString()+"',"+
+                    "master_rencana_keperawatan_psikiatri='"+tbUser.getValueAt(i,867).toString()+"',"+
+                    "penilaian_awal_keperawatan_psikiatri='"+tbUser.getValueAt(i,868).toString()+"',"+
+                    "pemantauan_pews_anak='"+tbUser.getValueAt(i,869).toString()+"',"+
+                    "surat_pulang_atas_permintaan_sendiri='"+tbUser.getValueAt(i,870).toString()+"',"+
+                    "template_hasil_radiologi='"+tbUser.getValueAt(i,871).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4790,7 +4883,28 @@ public class DlgUser extends javax.swing.JDialog {
                                         "audit_bundle_plabsi='"+tbUser.getValueAt(barisdicopy,847).toString()+"',"+
                                         "audit_bundle_vap='"+tbUser.getValueAt(barisdicopy,848).toString()+"',"+
                                         "akun_host_to_host_bank_papua='"+tbUser.getValueAt(barisdicopy,849).toString()+"',"+
-                                        "pembayaran_bank_papua='"+tbUser.getValueAt(barisdicopy,850).toString()+"'");
+                                        "pembayaran_bank_papua='"+tbUser.getValueAt(barisdicopy,850).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_penyakit_dalam='"+tbUser.getValueAt(barisdicopy,851).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_mata='"+tbUser.getValueAt(barisdicopy,852).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_neurologi='"+tbUser.getValueAt(barisdicopy,853).toString()+"',"+
+                                        "sirkulasi_obat6='"+tbUser.getValueAt(barisdicopy,854).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_orthopedi='"+tbUser.getValueAt(barisdicopy,855).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_bedah='"+tbUser.getValueAt(barisdicopy,856).toString()+"',"+
+                                        "integrasi_khanza_health_services='"+tbUser.getValueAt(barisdicopy,857).toString()+"',"+
+                                        "soap_ralan_tni='"+tbUser.getValueAt(barisdicopy,858).toString()+"',"+
+                                        "soap_ranap_tni='"+tbUser.getValueAt(barisdicopy,859).toString()+"',"+
+                                        "jumlah_pengunjung_ralan_tni='"+tbUser.getValueAt(barisdicopy,860).toString()+"',"+
+                                        "laporan_penyakit_tni='"+tbUser.getValueAt(barisdicopy,861).toString()+"',"+
+                                        "catatan_keperawatan_ranap='"+tbUser.getValueAt(barisdicopy,862).toString()+"',"+
+                                        "master_rencana_keperawatan_gigi='"+tbUser.getValueAt(barisdicopy,863).toString()+"',"+
+                                        "master_rencana_keperawatan_mata='"+tbUser.getValueAt(barisdicopy,864).toString()+"',"+
+                                        "master_rencana_keperawatan_igd='"+tbUser.getValueAt(barisdicopy,865).toString()+"',"+
+                                        "master_masalah_keperawatan_psikiatri='"+tbUser.getValueAt(barisdicopy,866).toString()+"',"+
+                                        "master_rencana_keperawatan_psikiatri='"+tbUser.getValueAt(barisdicopy,867).toString()+"',"+
+                                        "penilaian_awal_keperawatan_psikiatri='"+tbUser.getValueAt(barisdicopy,868).toString()+"',"+
+                                        "pemantauan_pews_anak='"+tbUser.getValueAt(barisdicopy,869).toString()+"',"+
+                                        "surat_pulang_atas_permintaan_sendiri='"+tbUser.getValueAt(barisdicopy,870).toString()+"',"+
+                                        "template_hasil_radiologi='"+tbUser.getValueAt(barisdicopy,871).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5159,7 +5273,12 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.audit_pengelolaan_linen_kotor,user.audit_penempatan_pasien,user.audit_kamar_jenazah,user.audit_bundle_iadp,user.audit_bundle_ido,"+
                 "user.audit_fasilitas_kebersihan_tangan,user.audit_fasilitas_apd,user.audit_pembuangan_limbah_cair_infeksius,user.audit_sterilisasi_alat,"+
                 "user.penilaian_awal_medis_ralan_psikiatri,user.persetujuan_penolakan_tindakan,user.audit_bundle_isk,user.audit_bundle_plabsi,user.audit_bundle_vap,"+
-                "user.akun_host_to_host_bank_papua,user.pembayaran_bank_papua from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.akun_host_to_host_bank_papua,user.pembayaran_bank_papua,user.penilaian_awal_medis_ralan_penyakit_dalam,user.penilaian_awal_medis_ralan_mata,"+
+                "user.penilaian_awal_medis_ralan_neurologi,user.sirkulasi_obat6,user.penilaian_awal_medis_ralan_orthopedi,user.penilaian_awal_medis_ralan_bedah,"+
+                "user.integrasi_khanza_health_services,user.soap_ralan_tni,user.soap_ranap_tni,user.jumlah_pengunjung_ralan_tni,user.laporan_penyakit_tni,"+
+                "user.catatan_keperawatan_ranap,user.master_rencana_keperawatan_gigi,user.master_rencana_keperawatan_mata,user.master_rencana_keperawatan_igd,"+
+                "user.master_masalah_keperawatan_psikiatri,user.master_rencana_keperawatan_psikiatri,user.penilaian_awal_keperawatan_psikiatri,user.pemantauan_pews_anak,"+
+                "user.surat_pulang_atas_permintaan_sendiri,user.template_hasil_radiologi from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6022,7 +6141,28 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("audit_bundle_plabsi"),
                                rs.getBoolean("audit_bundle_vap"),
                                rs.getBoolean("akun_host_to_host_bank_papua"),
-                               rs.getBoolean("pembayaran_bank_papua")
+                               rs.getBoolean("pembayaran_bank_papua"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_penyakit_dalam"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_mata"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_neurologi"),
+                               rs.getBoolean("sirkulasi_obat6"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_orthopedi"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_bedah"),
+                               rs.getBoolean("integrasi_khanza_health_services"),
+                               rs.getBoolean("soap_ralan_tni"),
+                               rs.getBoolean("soap_ranap_tni"),
+                               rs.getBoolean("jumlah_pengunjung_ralan_tni"),
+                               rs.getBoolean("laporan_penyakit_tni"),
+                               rs.getBoolean("catatan_keperawatan_ranap"),
+                               rs.getBoolean("master_rencana_keperawatan_gigi"),
+                               rs.getBoolean("master_rencana_keperawatan_mata"),
+                               rs.getBoolean("master_rencana_keperawatan_igd"),
+                               rs.getBoolean("master_masalah_keperawatan_psikiatri"),
+                               rs.getBoolean("master_rencana_keperawatan_psikiatri"),
+                               rs.getBoolean("penilaian_awal_keperawatan_psikiatri"),
+                               rs.getBoolean("pemantauan_pews_anak"),
+                               rs.getBoolean("surat_pulang_atas_permintaan_sendiri"),
+                               rs.getBoolean("template_hasil_radiologi")
                             });
                         }   
                     } catch (Exception e) {
@@ -6874,7 +7014,28 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("audit_bundle_plabsi"),
                            rs.getBoolean("audit_bundle_vap"),
                            rs.getBoolean("akun_host_to_host_bank_papua"),
-                           rs.getBoolean("pembayaran_bank_papua")
+                           rs.getBoolean("pembayaran_bank_papua"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_penyakit_dalam"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_mata"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_neurologi"),
+                           rs.getBoolean("sirkulasi_obat6"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_orthopedi"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_bedah"),
+                           rs.getBoolean("integrasi_khanza_health_services"),
+                           rs.getBoolean("soap_ralan_tni"),
+                           rs.getBoolean("soap_ranap_tni"),
+                           rs.getBoolean("jumlah_pengunjung_ralan_tni"),
+                           rs.getBoolean("laporan_penyakit_tni"),
+                           rs.getBoolean("catatan_keperawatan_ranap"),
+                           rs.getBoolean("master_rencana_keperawatan_gigi"),
+                           rs.getBoolean("master_rencana_keperawatan_mata"),
+                           rs.getBoolean("master_rencana_keperawatan_igd"),
+                           rs.getBoolean("master_masalah_keperawatan_psikiatri"),
+                           rs.getBoolean("master_rencana_keperawatan_psikiatri"),
+                           rs.getBoolean("penilaian_awal_keperawatan_psikiatri"),
+                           rs.getBoolean("pemantauan_pews_anak"),
+                           rs.getBoolean("surat_pulang_atas_permintaan_sendiri"),
+                           rs.getBoolean("template_hasil_radiologi")
                         });
                     }                                             
                  }
@@ -6897,11 +7058,11 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void isUser() {
         try{
-            rs=koneksi.prepareStatement("select nm_dokter from dokter where kd_dokter='"+TKd.getText()+"'").executeQuery();
+            rs=koneksi.prepareStatement("select dokter.nm_dokter from dokter where dokter.kd_dokter='"+TKd.getText()+"'").executeQuery();
             if(rs.next()){
                 TNmUser.setText(rs.getString(1));
             }else if(!rs.next()){
-                rs=koneksi.prepareStatement("select nama from petugas where nip='"+TKd.getText()+"'").executeQuery();
+                rs=koneksi.prepareStatement("select petugas.nama from petugas where petugas.nip='"+TKd.getText()+"'").executeQuery();
                 if(rs.next()){
                     TNmUser.setText(rs.getString(1));
                 }else if(!rs.next()){

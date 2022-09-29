@@ -15,9 +15,9 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 $action              = isset($_GET['action'])?$_GET['action']:NULL;
-                $pendapatan_akte     = str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL;
+                $pendapatan_akte     = validTeks(str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL);
                 if($action == "TAMBAH"){
-                    $pendapatan_akte = str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL;
+                    $pendapatan_akte = validTeks(str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL);
                     $persen_rs       = "";
                     $bagian_rs       = "";
                     $persen_kry      = "";

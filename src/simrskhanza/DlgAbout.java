@@ -71,6 +71,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("::[ About Program ]::");
@@ -222,7 +223,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel19.setText("RS Permata Medika Kebumen, RS Juanda Kuningan, dll");
+        jLabel19.setText("RS Permata Medika Kebumen, RS Juanda Kuningan, ");
         jLabel19.setName("jLabel19"); // NOI18N
         panelGlass4.add(jLabel19);
         jLabel19.setBounds(126, 160, 320, 14);
@@ -287,7 +288,7 @@ public class DlgAbout extends javax.swing.JDialog {
         panelGlass5.setWarna(new java.awt.Color(235, 255, 235));
         panelGlass5.setLayout(null);
         panelGlass4.add(panelGlass5);
-        panelGlass5.setBounds(0, 230, 330, 70);
+        panelGlass5.setBounds(0, 260, 330, 70);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -306,7 +307,7 @@ public class DlgAbout extends javax.swing.JDialog {
             }
         });
         panelGlass4.add(BtnKeluar);
-        BtnKeluar.setBounds(340, 260, 100, 30);
+        BtnKeluar.setBounds(340, 290, 100, 30);
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(50, 50, 50));
@@ -314,7 +315,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel27.setText("Bagi yang ingin melakukan Donasi, bisa ke Rekening BSI 1015369872, kode bank 451");
         jLabel27.setName("jLabel27"); // NOI18N
         panelGlass4.add(jLabel27);
-        jLabel27.setBounds(16, 190, 420, 14);
+        jLabel27.setBounds(16, 220, 420, 14);
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(50, 50, 50));
@@ -322,7 +323,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel28.setText("atas nama Windiarto");
         jLabel28.setName("jLabel28"); // NOI18N
         panelGlass4.add(jLabel28);
-        jLabel28.setBounds(16, 210, 420, 14);
+        jLabel28.setBounds(16, 240, 420, 14);
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(50, 50, 50));
@@ -352,8 +353,15 @@ public class DlgAbout extends javax.swing.JDialog {
         panelGlass4.add(jLabel34);
         jLabel34.setBounds(58, 70, 420, 14);
 
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel35.setText("RS Haji Kamino Way Kanan, RS PKU Jatinom Klaten, dll");
+        jLabel35.setName("jLabel35"); // NOI18N
+        panelGlass4.add(jLabel35);
+        jLabel35.setBounds(126, 180, 320, 14);
+
         internalFrame1.add(panelGlass4);
-        panelGlass4.setBounds(7, 155, 454, 340);
+        panelGlass4.setBounds(7, 155, 454, 370);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -412,6 +420,7 @@ public class DlgAbout extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

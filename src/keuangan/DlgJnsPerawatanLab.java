@@ -679,7 +679,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
         FormInput.add(Kelas);
         Kelas.setBounds(433, 162, 120, 23);
 
-        Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PK", "PA" }));
+        Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PK", "PA", "MB" }));
         Kategori.setName("Kategori"); // NOI18N
         Kategori.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -975,7 +975,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"Nama Pemeriksaan");
         }else{
-            if(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),13).toString().equals("PK")){
+            if(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),13).toString().equals("PK")||tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),13).toString().equals("MB")){
                 template.KdPeriksa.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
                 template.NmPeriksa.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
                 template.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -983,7 +983,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
                 template.tampil();
                 template.setVisible(true); 
             }else{
-                JOptionPane.showMessageDialog(null,"Template Laboratorium hanya untuk kategori PK");
+                JOptionPane.showMessageDialog(null,"Template Laboratorium hanya untuk kategori PK dan MB");
             } 
         }            
     }//GEN-LAST:event_ppTemplateActionPerformed

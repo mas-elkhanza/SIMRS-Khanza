@@ -10,15 +10,14 @@
             $_SESSION['ses_admin']="admin";
             $url = "index.php?act=List";			
         }else{
-                session_start();
-                session_destroy();
-                if (cekSessiAdmin()){
-                    session_unregister("ses_admin");
-                }
-                $url = "index.php?act=HomeAdmin";
+            session_start();
+            session_destroy();
+            if (cekSessiAdmin()){
+                session_unregister("ses_admin");
+            }
+            $url = "index.php?act=HomeAdmin";
         }
         header("Location:".$url);
-
     }
     
 ?>

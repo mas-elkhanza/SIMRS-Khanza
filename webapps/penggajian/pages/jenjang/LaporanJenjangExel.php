@@ -4,7 +4,7 @@
     header("Pragma: no-cache");
     header("Expires: 0");
     print isset($header)?$header:NULL;
-	include '../../../conf/conf.php';
+    include '../../../conf/conf.php';
 ?>
 <html>
     <head>
@@ -12,13 +12,13 @@
     </head>
     <body>
    <?php
-        $keyword = $_GET['keyword'];
-        $_sql    = "SELECT kode,nama,tnj,indek FROM jnj_jabatan where kode like '%".$keyword."%' or nama like '%".$keyword."%' ORDER BY tnj DESC";
+        $keyword = validTeks($_GET['keyword']);
+        $_sql    = "SELECT jnj_jabatan.kode,jnj_jabatan.nama,jnj_jabatan.tnj,jnj_jabatan.indek FROM jnj_jabatan where jnj_jabatan.kode like '%".$keyword."%' or jnj_jabatan.nama like '%".$keyword."%' ORDER BY jnj_jabatan.tnj DESC";
         $hasil   = bukaquery($_sql);
         $jumlah  = mysqli_num_rows($hasil);
         $no      = 1;
         if(mysqli_num_rows($hasil)!=0) {
-            echo "<table width='100%' border='1' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <caption><h3><font color='999999'>Laporan Master Jenjang</font></h3></caption>
                     <tr class='head'>
                         <td width='12%'><div align='center'>Proses</div></td>
@@ -29,7 +29,7 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-			       <td>$no</td>  
+			        <td>$no</td>  
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                                 <td>".formatDuit($baris[2])."</td>
@@ -51,3 +51,4 @@
     ?>
     </body>
 </html>
+

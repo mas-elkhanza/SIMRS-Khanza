@@ -9,7 +9,7 @@
             <?php
                 echo "";
                 $action   =isset($_GET['action'])?$_GET['action']:NULL;
-                $tnj      =isset($_GET['tnj'])?$_GET['tnj']:NULL;
+                $tnj      =validTeks(isset($_GET['tnj'])?$_GET['tnj']:NULL);
                 echo "<input type=hidden name=tnj  value=$tnj><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">

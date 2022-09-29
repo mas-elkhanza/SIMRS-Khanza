@@ -11,12 +11,12 @@
             <?php
                 echo "";
                 $action     = isset($_GET['action'])?$_GET['action']:null;
-                $dep_id     = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
+                $dep_id     = validTeks(str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL);
                 if($action == "TAMBAH"){
-                    $dep_id    = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
+                    $dep_id    = validTeks(str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL);
                     $nama      = "";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT * FROM departemen WHERE dep_id='$dep_id'";
+                    $_sql         = "SELECT * FROM departemen WHERE departemen.dep_id='$dep_id'";
                     $hasil        = bukaquery($_sql);
                     $baris        = mysqli_fetch_row($hasil);
                     $dep_id       = $baris[0];

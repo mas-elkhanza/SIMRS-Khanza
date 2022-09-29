@@ -104,7 +104,7 @@
                             <table width='100%' bgcolor='#ffffff' align='left' border='0' padding='0' cellspacing='0' cellpadding='0'>
                                 <tr class='isi12' padding='0'>
                                  <td padding='0' width='50%' align=center><font color='000000' size='3'  face='Tahoma'>&nbsp;</td>   
-                                 <td padding='0' width='50%' align='center'><font color='000000' size='3'  face='Tahoma'>".getOne("select kabupaten from setting").", ".$tanggal."</font></td>              
+                                 <td padding='0' width='50%' align='center'><font color='000000' size='3'  face='Tahoma'>".getOne("select setting.kabupaten from setting").", ".$tanggal."</font></td>              
                                 </tr>  
                                 <tr class='isi12' padding='0'>
                                  <td padding='0' width='50%' align=center><font color='000000' size='3'  face='Tahoma'></td> 

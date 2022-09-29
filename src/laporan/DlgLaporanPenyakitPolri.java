@@ -20,8 +20,8 @@ public class DlgLaporanPenyakitPolri extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
     private final Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2,ps3;
-    private ResultSet rs,rs2,rs3;
+    private PreparedStatement ps;
+    private ResultSet rs;
     private String[] kodecari,kodebayar;
     private StringBuilder htmlContent;
     private int kolom=0,jumlahcari=0,jumlahcarabayar=0,total=0,i=0,no=0;

@@ -1,9 +1,13 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">        
-    <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
-        <?php
-            $action             = isset($_GET['action'])?$_GET['action']:NULL;
-            $keyword            = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
-        ?>
+    <?php
+        $action             = isset($_GET['action'])?$_GET['action']:NULL;
+        $keyword            = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
+    ?>
     <div style="width: 100%; height: 96%; overflow: auto;">
     <?php
         $_sql = "select perpustakaan_ebook.kode_ebook, perpustakaan_ebook.judul_ebook, perpustakaan_ebook.jml_halaman, 

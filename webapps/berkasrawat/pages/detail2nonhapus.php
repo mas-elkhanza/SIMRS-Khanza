@@ -1,11 +1,21 @@
-
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div id="post">
     <div class="entry">        
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
                 $action       = isset($_GET['action'])?$_GET['action']:NULL;
-                $no_rawat     = isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL;
+                $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+                $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
+                if (isset($norawat["no_rawat"])) {
+                    $no_rawat = $norawat["no_rawat"];
+                }else{
+                    $no_rawat = "Ciluk Ba";
+                }
                 
                 $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                                 reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
@@ -50,7 +60,7 @@
                     <td width="75%" valign="top">
                         <select name="kode" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
                             <?php
-                                $_sql = "SELECT kode,nama FROM master_berkas_digital ORDER BY nama";
+                                $_sql = "SELECT master_berkas_digital.kode,master_berkas_digital.nama FROM master_berkas_digital ORDER BY master_berkas_digital.nama";
                                 $hasil=bukaquery($_sql);
 
                                 while($baris = mysqli_fetch_array($hasil)) {
@@ -72,16 +82,16 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $no_rawat           = trim($_POST['no_rawat']);
-                    $kode               = trim($_POST['kode']);
-                    $dokumen            = str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']);
+                    $no_rawat           = validTeks(trim($_POST['no_rawat']));
+                    $kode               = validTeks(trim($_POST['kode']));
+                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
                     move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                     
                     if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" berkas_digital_perawatan "," '$no_rawat','$kode','$dokumen'", " Berkas Digital Perawatan " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&no_rawat=$no_rawat'>";
+                                echo"<meta http-equiv='refresh' content='1;URL=?act=Detail2NonHapus&action=TAMBAH&iyem=".encrypt_decrypt("{\"no_rawat\":\"".validTeks($no_rawat)."\"}","e")."''>";
                                 break;
                         }
                     }else if ((empty($no_rawat))||(empty($kode))||(empty($dokumen))){
@@ -124,11 +134,6 @@
         ?>
         </div>
         <?php
-            if ($action=="HAPUS") {
-                unlink($_GET['lokasi_file']);
-                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' and lokasi_file='".$_GET['lokasi_file']."'","?act=Detail2NonHapus&action=TAMBAH&no_rawat=$no_rawat");
-            }
-            
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah</div></td><td><input name='BtnKeluar' type='submit' class='button' value='&nbsp;&nbsp;&nbsp;Keluar&nbsp;&nbsp;&nbsp;' /></td>                        
