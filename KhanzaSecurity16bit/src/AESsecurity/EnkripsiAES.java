@@ -16,7 +16,7 @@ import org.apache.commons.codec.binary.Base64;
  * @author khanzamedia
  */
 public class EnkripsiAES {
-    private static String key = "Bar12345Bar12345"; // 128 bit key
+    private static String key = "Bar12345Bar12345"; // 128 bit key //Senin, Okt 3 2022 - Agar sekiranya masing-masing rumah sakit bisa membuild ulang dengan [Key]nya sendiri-sendiri untuk meminimalisir hal-hal yang tidak diinginkan.
     private static String initVector = "sayangsamakhanza"; // 16 bytes IV
         
     public static String decrypt(String encrypted) {
