@@ -1780,7 +1780,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         TotalHasil.setBounds(774, 770, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022 22:08:59" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2022 09:13:35" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2025,11 +2025,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         Bahasa.setEditable(false);
         Bahasa.setFocusTraversalPolicyProvider(true);
         Bahasa.setName("Bahasa"); // NOI18N
-        Bahasa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BahasaKeyPressed(evt);
-            }
-        });
         FormInput.add(Bahasa);
         Bahasa.setBounds(684, 420, 170, 23);
 
@@ -2046,11 +2041,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         Agama.setEditable(false);
         Agama.setFocusTraversalPolicyProvider(true);
         Agama.setName("Agama"); // NOI18N
-        Agama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AgamaKeyPressed(evt);
-            }
-        });
         FormInput.add(Agama);
         Agama.setBounds(86, 530, 110, 23);
 
@@ -2247,7 +2237,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2261,7 +2251,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3304,14 +3294,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_formWindowOpened
-
-    private void BahasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BahasaKeyPressed
-
-    private void AgamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AgamaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AgamaKeyPressed
 
     private void SG1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG1ItemStateChanged
         Nilai1.setSelectedIndex(SG1.getSelectedIndex());
