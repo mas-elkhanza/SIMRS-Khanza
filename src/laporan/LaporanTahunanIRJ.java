@@ -1696,7 +1696,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"
             );            
             i=1;
-            ps=koneksi.prepareStatement("select kd_pj,png_jawab from penjab order by kd_pj");
+            ps=koneksi.prepareStatement("select penjab.kd_pj,penjab.png_jawab from penjab order by penjab.kd_pj");
             try {
                 rs=ps.executeQuery();
                 ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
@@ -1764,7 +1764,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "</tr>"
                         );
                     
-                        ps2=koneksi.prepareStatement("select * from poliklinik where kd_poli<>'IGDK' order by kd_poli");
+                        ps2=koneksi.prepareStatement("select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik where poliklinik.kd_poli<>'IGDK' order by poliklinik.kd_poli");
                         try {
                             rs2=ps2.executeQuery();
                             while(rs2.next()){
@@ -2221,7 +2221,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
                 "</tr>"
             );
-            
             
             htmlContent.append(
                 "<tr class='isi'>"+
