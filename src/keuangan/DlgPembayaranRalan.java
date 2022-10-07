@@ -275,6 +275,8 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
+        label10 = new widget.Label();
+        LCount2 = new widget.Label();
         jLabel10 = new javax.swing.JLabel();
         LCount = new javax.swing.JLabel();
         BtnPrint = new widget.Button();
@@ -438,7 +440,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         TCari.setToolTipText("Alt+C");
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(135, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(110, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -480,12 +482,23 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         });
         panelGlass5.add(BtnAll);
 
+        label10.setText("Record :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(label10);
+
+        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount2.setText("0");
+        LCount2.setName("LCount2"); // NOI18N
+        LCount2.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelGlass5.add(LCount2);
+
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(50, 50, 50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total :");
         jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(50, 23));
+        jLabel10.setPreferredSize(new java.awt.Dimension(40, 23));
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -493,7 +506,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(130, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass5.add(LCount);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -569,7 +582,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         NmDokter.setEditable(false);
         NmDokter.setName("NmDokter"); // NOI18N
-        NmDokter.setPreferredSize(new java.awt.Dimension(155, 23));
+        NmDokter.setPreferredSize(new java.awt.Dimension(170, 23));
         FormInput.add(NmDokter);
 
         BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -591,7 +604,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         NmCaraBayar.setEditable(false);
         NmCaraBayar.setName("NmCaraBayar"); // NOI18N
-        NmCaraBayar.setPreferredSize(new java.awt.Dimension(155, 23));
+        NmCaraBayar.setPreferredSize(new java.awt.Dimension(170, 23));
         FormInput.add(NmCaraBayar);
 
         BtnCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -613,7 +626,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         NmPoli.setEditable(false);
         NmPoli.setName("NmPoli"); // NOI18N
-        NmPoli.setPreferredSize(new java.awt.Dimension(155, 23));
+        NmPoli.setPreferredSize(new java.awt.Dimension(170, 23));
         FormInput.add(NmPoli);
 
         BtnPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -1040,6 +1053,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox KdDokter;
     private widget.TextBox KdPoli;
     private javax.swing.JLabel LCount;
+    private widget.Label LCount2;
     private javax.swing.JMenuItem MnBelumBayar;
     private javax.swing.JMenuItem MnBilling;
     private javax.swing.JMenuItem MnSemuaStatusBayar;
@@ -1056,6 +1070,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.Label label10;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
@@ -1233,6 +1248,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         });
                     }
                 }
+                
+                LCount2.setText(""+tabMode.getRowCount());
                 if(!tampilkan.equals("Belum Bayar")){
                     tabMode.addRow(new Object[] {
                                 ">> Total",":","","","","",
@@ -1248,6 +1265,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlTambahan+ttlPotongan+ttlRegistrasi+ttlOperasi),"",""
                     });
                     LCount.setText(Valid.SetAngka(all));
+                }else{
+                    LCount.setText(""+0);
                 }    
             } catch (Exception e) {
                 System.out.println("Notif 1 :"+e);
