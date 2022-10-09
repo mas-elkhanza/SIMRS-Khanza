@@ -8,14 +8,14 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
             session_start();
-            $_SESSION['ses_admin']="admin";
+            $_SESSION['ses_admin_photopasien']="admin";
             $_SESSION['pasien']= validTeks($_GET['norm']);
             $url = "index.php?act=Kamera";			
         }else{
             session_start();
             session_destroy();
             if (cekSessiAdmin()){
-                session_unregister("ses_admin");
+                session_unregister("ses_admin_photopasien");
             }
             $url = "index.php?act=Home";
         }

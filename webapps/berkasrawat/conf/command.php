@@ -12,7 +12,7 @@
     }
 
     function cekSessiAdmin() {
-        if (isset($_SESSION['ses_admin'])) {
+        if (isset($_SESSION['ses_admin_berkas_rawat'])) {
             return true;
         } else {
             return false;
@@ -21,7 +21,7 @@
 
 
     function cekUser() {
-        if (isset($_SESSION['ses_admin'])) {
+        if (isset($_SESSION['ses_admin_berkas_rawat'])) {
             return true;
         } else {
             return false;
@@ -30,11 +30,9 @@
 
     function adminAktif() {
         if (cekSessiAdmin()) {
-            return $_SESSION['ses_admin'];
+            return $_SESSION['ses_admin_berkas_rawat'];
         }
     }
-
-
 
     function isGuest() {
         if (cekSessiAdmin()) {
@@ -43,7 +41,6 @@
             return true;
         }
     }	
-
 
     function formProtek() {
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;

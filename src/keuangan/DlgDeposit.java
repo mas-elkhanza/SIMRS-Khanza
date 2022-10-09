@@ -1106,7 +1106,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
             if(tbObat.getSelectedRow()!= -1){
-                Valid.panggilUrl("billing/LaporanBilling6.php?norawat="+Nomor.getText().replaceAll(" ","_")+"&pasien="+TNoRM.getText()+"_"+TPasien.getText().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem()+"&deposit="+BesarDeposit.getText()+"&petugas="+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().replaceAll(" ","_"));
+                Valid.panggilUrl("billing/LaporanBilling6.php?norawat="+Nomor.getText().replaceAll(" ","_")+"&pasien="+TNoRM.getText()+"_"+TPasien.getText().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem()+"&deposit="+BesarDeposit.getText()+"&petugas="+tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
             }
         }
     }//GEN-LAST:event_MnKwitansiDepositActionPerformed

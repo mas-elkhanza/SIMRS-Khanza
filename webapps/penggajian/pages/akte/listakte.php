@@ -1,9 +1,13 @@
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun        = empty($baris[0])?date("Y"):$baris[0];
-   $bulan        = empty($baris[1])?date("m"):$baris[1];
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+
+    $_sql         = "SELECT * FROM set_tahun";
+    $hasil        = bukaquery($_sql);
+    $baris        = mysqli_fetch_row($hasil);
+    $tahun        = empty($baris[0])?date("Y"):$baris[0];
+    $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 
 <div id="post">    
@@ -35,10 +39,9 @@
                         echo "<tr class='isi'>
 				<td>
                                  <center>
-				   <a href=?act=InputAkte&action=UBAH>[edit]</a>";?>
-                                   <a href="?act=ListAkte&action=HAPUSAKTE&pendapatan_akte=<?php print $baris[0] ?>" >[hapus]</a>
-                            <?php
-                            echo "</center>
+				   <a href=?act=InputAkte&action=UBAH>[edit]</a>
+                                   <a href=?act=ListAkte&action=HAPUSAKTE>[hapus]</a>
+                                </center>
                                 </td>
                                 <td>".formatDuit($baris[0])."</td>
                                 <td>$baris[1]%</td>
@@ -133,7 +136,7 @@
     <?php
        $aksi=isset($_GET['action'])?$_GET['action']:NULL;
        if ($aksi=="HAPUSAKTE") {
-            Hapus(" set_akte  "," pendapatan_akte ='".validTeks($_GET['pendapatan_akte'])."' and tahun='$tahun' and bulan='$bulan' ","?act=ListAkte");
+            Hapus(" set_akte  "," tahun='$tahun' and bulan='$bulan' ","?act=ListAkte");
        }
        if ($aksi=="HAPUSPENERIMA") {
             Hapus(" pembagian_akte "," id ='".validTeks($_GET['id'])."'","?act=ListAkte");

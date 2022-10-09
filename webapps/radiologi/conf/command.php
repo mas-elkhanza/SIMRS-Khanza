@@ -8,7 +8,7 @@
  	}
  
 	function cekSessiAdmin() {
-            if (isset($_SESSION['ses_admin'])) {
+            if (isset($_SESSION['ses_admin_radiologi'])) {
                 return true;
             } else {
                 return false;
@@ -17,7 +17,7 @@
 
 
         function cekUser() {
-            if (isset($_SESSION['ses_admin'])) {
+            if (isset($_SESSION['ses_admin_radiologi'])) {
                 return true;
             } else {
                 return false;
@@ -26,7 +26,7 @@
 	
 	function adminAktif() {
             if (cekSessiAdmin()) {
-                return $_SESSION['ses_admin'];
+                return $_SESSION['ses_admin_radiologi'];
             }
         }
 

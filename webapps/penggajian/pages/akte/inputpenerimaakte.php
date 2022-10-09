@@ -1,9 +1,13 @@
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baristh      = mysqli_fetch_row($hasil);
-   $tahun        = empty($baristh[0])?date("Y"):$baristh[0];
-   $bulan        = empty($baristh[1])?date("m"):$baristh[1];
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+    
+    $_sql         = "SELECT * FROM set_tahun";
+    $hasil        = bukaquery($_sql);
+    $baristh      = mysqli_fetch_row($hasil);
+    $tahun        = empty($baristh[0])?date("Y"):$baristh[0];
+    $bulan        = empty($baristh[1])?date("m"):$baristh[1];
 ?>
 
 <div id="post">

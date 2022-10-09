@@ -16,7 +16,7 @@
     <?php
         $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
         $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
-        if (isset($norawat["no_rawat"])) {
+        if (isset($norawat["no_rawat"])&&isset($_SESSION['ses_admin_berkas_rawat'])) {
             $no_rawat = $norawat["no_rawat"];
             $_sql     = "select billing.no,billing.nm_perawatan,billing.pemisah,if(billing.biaya=0,'',billing.biaya),if(billing.jumlah=0,'',billing.jumlah),if(billing.tambahan=0,'',billing.tambahan),if(billing.totalbiaya=0,'',billing.totalbiaya),billing.totalbiaya from billing where billing.no_rawat='$no_rawat' ";   
             $hasil    = bukaquery($_sql);
@@ -66,61 +66,60 @@
                                 <td padding='0' width='15%' align='right'><font color='111111' size='1'  face='Tahoma'>".formatDuit2($inapdrpasien[6])."</td> 
                             </tr>";  
                 }            
-                    echo "  <tr class='isi12' padding='0'>
-                                <td padding='0' width='18%'><font color='111111' size='1'  face='Tahoma'><b>TOTAL BIAYA</b></td> 
-                                <td padding='0' width='40%'><font color='111111' size='1'  face='Tahoma'><b>:</b></td> 
-                                <td padding='0' width='2%'><font color='111111' size='1'  face='Tahoma'></td> 
-                                <td padding='0' width='10%' align='right'><font color='111111' size='1'  face='Tahoma'></td> 
-                                <td padding='0' width='5%' align='right'><font color='111111' size='1'  face='Tahoma'></td> 
-                                <td padding='0' width='10%' align='right'><font color='111111' size='1'  face='Tahoma'></td> 
-                                <td padding='0' width='15%' align='right'><font color='111111' size='1'  face='Tahoma'><b>".formatDuit2($total)."</b></td> 
-                            </tr>
-                            <tr class='isi12' padding='0'>
-                                <td colspan='7' padding='0'>
-                                    <table width='100%' bgcolor='#ffffff' align='left' border='0' padding='0' cellspacing='0' cellpadding='0'>
-                                        <tr class='isi12' padding='0'>
-                                         <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                         <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                         <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>&nbsp;</font></td>              
-                                        </tr>
-                                        <tr class='isi12' padding='0'>
-                                         <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'>Keluarga Pasien</td> 
-                                         <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>     
-                                         <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>".getOne("select setting.kabupaten from setting")."</font></td>              
-                                        </tr>  
-                                        <tr class='isi12' padding='0'>
-                                         <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'></td> 
-                                         <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                         <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>Kasir</font></td>              
-                                        </tr>  
-                                        <tr class='isi12' padding='0'>
-                                         <td padding='0' width='40%'><font color='000000' size='1'  face='Tahoma'>&nbsp;</td> 
-                                         <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                         <td padding='0' width='40%' align='right'><font color='000000' size='1'  face='Tahoma'></font></td>              
-                                        </tr> 
-                                        <tr class='isi12' padding='0'>
-                                         <td padding='0' width='40%'><font color='000000' size='1'  face='Tahoma'>&nbsp;</td> 
-                                         <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                         <td padding='0' width='40%' align='right'><font color='000000' size='1'  face='Tahoma'></font></td>              
-                                        </tr> 
-                                        <tr class='isi12' padding='0'>
-                                         <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'>( ............................. )</td>     
-                                         <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
-                                         <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>( ............................. )</font></td>              
-                                        </tr>   
-                                  </table>
-                                </td>
-                            </tr>
-                            <tr class='isi12' padding='0'>
-                                <td colspan='7' padding='0'>&nbsp</td>
-                            </tr>
-                    </table>"; 
-
+                echo "  <tr class='isi12' padding='0'>
+                            <td padding='0' width='18%'><font color='111111' size='1'  face='Tahoma'><b>TOTAL BIAYA</b></td> 
+                            <td padding='0' width='40%'><font color='111111' size='1'  face='Tahoma'><b>:</b></td> 
+                            <td padding='0' width='2%'><font color='111111' size='1'  face='Tahoma'></td> 
+                            <td padding='0' width='10%' align='right'><font color='111111' size='1'  face='Tahoma'></td> 
+                            <td padding='0' width='5%' align='right'><font color='111111' size='1'  face='Tahoma'></td> 
+                            <td padding='0' width='10%' align='right'><font color='111111' size='1'  face='Tahoma'></td> 
+                            <td padding='0' width='15%' align='right'><font color='111111' size='1'  face='Tahoma'><b>".formatDuit2($total)."</b></td> 
+                        </tr>
+                        <tr class='isi12' padding='0'>
+                            <td colspan='7' padding='0'>
+                                <table width='100%' bgcolor='#ffffff' align='left' border='0' padding='0' cellspacing='0' cellpadding='0'>
+                                    <tr class='isi12' padding='0'>
+                                     <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
+                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
+                                     <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>&nbsp;</font></td>              
+                                    </tr>
+                                    <tr class='isi12' padding='0'>
+                                     <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'>Keluarga Pasien</td> 
+                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>     
+                                     <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>".getOne("select setting.kabupaten from setting")."</font></td>              
+                                    </tr>  
+                                    <tr class='isi12' padding='0'>
+                                     <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'></td> 
+                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
+                                     <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>Kasir</font></td>              
+                                    </tr>  
+                                    <tr class='isi12' padding='0'>
+                                     <td padding='0' width='40%'><font color='000000' size='1'  face='Tahoma'>&nbsp;</td> 
+                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
+                                     <td padding='0' width='40%' align='right'><font color='000000' size='1'  face='Tahoma'></font></td>              
+                                    </tr> 
+                                    <tr class='isi12' padding='0'>
+                                     <td padding='0' width='40%'><font color='000000' size='1'  face='Tahoma'>&nbsp;</td> 
+                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
+                                     <td padding='0' width='40%' align='right'><font color='000000' size='1'  face='Tahoma'></font></td>              
+                                    </tr> 
+                                    <tr class='isi12' padding='0'>
+                                     <td padding='0' width='40%' align=center><font color='000000' size='1'  face='Tahoma'>( ............................. )</td>     
+                                     <td padding='0' width='20%' align=center><font color='000000' size='1'  face='Tahoma'>&nbsp;</td>   
+                                     <td padding='0' width='40%' align='center'><font color='000000' size='1'  face='Tahoma'>( ............................. )</font></td>              
+                                    </tr>   
+                              </table>
+                            </td>
+                        </tr>
+                        <tr class='isi12' padding='0'>
+                            <td colspan='7' padding='0'>&nbsp</td>
+                        </tr>
+                </table>"; 
             } else {
                 echo "<font color='333333' size='1'  face='Times New Roman'><b>Data  Billing masih kosong !</b>";
             }
         }else{
-            echo "<font color='333333' size='1'  face='Times New Roman'><b>Data  Billing masih kosong !</b>";
+            exit(header("Location:../index.php"));
         }
     ?>  
 

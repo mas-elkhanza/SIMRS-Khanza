@@ -5,6 +5,9 @@
     header("Expires: 0");
     print isset($header)?$header:NULL;
     include '../../../conf/conf.php';
+    if (!cekSessiAdmin()){
+        exit(header("Location:../index.php"));
+    }
     $_sql         = "SELECT * FROM set_tahun";
     $hasil        = bukaquery($_sql);
     $baris        = mysqli_fetch_row($hasil);
@@ -86,7 +89,7 @@
                                 <td>$no</td>  
                                 <td>$baris[1]</td>
                                 <td>$baris[2]%</td>
-                                <td>".formatDuit($bagiankry)."</td>>                            
+                                <td>".formatDuit($bagiankry)."</td>                           
                              </tr>";$no++;
                     }
             echo "</table>

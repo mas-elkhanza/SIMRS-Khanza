@@ -9,20 +9,17 @@
     if ($_GET['act']=="login"){
         if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)&&($level=="admin")){
             session_start();
-            $_SESSION['ses_admin']="admin";
+            $_SESSION['ses_admin_kepegawaian']="admin";
             $url = "index.php?act=HomeAdmin";
         }elseif((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)&&($level=="user")){
             session_start();
-            $_SESSION['ses_admin']="paijo";
+            $_SESSION['ses_admin_kepegawaian']="paijo";
             $url = "index.php?act=HomeAdmin";
         }else{
             session_start();
             session_destroy();
             if (cekSessiAdmin()){
-                session_unregister("ses_admin");
-            }
-            if (cekSessiPegawai()){
-                session_unregister("ses_pegawai");
+                session_unregister("ses_admin_kepegawaian");
             }
             $url = "index.php?act=Kontak";
         }

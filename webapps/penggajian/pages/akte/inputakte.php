@@ -1,9 +1,13 @@
 <?php
-   $_sql    = "SELECT * FROM set_tahun";
-   $hasil   = bukaquery($_sql);
-   $baris   = mysqli_fetch_row($hasil);
-   $tahun   = empty($baris[0])?date("Y"):$baris[0];
-   $bulan   = empty($baris[1])?date("m"):$baris[1];
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+    
+    $_sql    = "SELECT * FROM set_tahun";
+    $hasil   = bukaquery($_sql);
+    $baris   = mysqli_fetch_row($hasil);
+    $tahun   = empty($baris[0])?date("Y"):$baris[0];
+    $bulan   = empty($baris[1])?date("m"):$baris[1];
 ?>
 
 <div id="post">
@@ -14,18 +18,10 @@
     <div class="entry">
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                $action              = isset($_GET['action'])?$_GET['action']:NULL;
-                $pendapatan_akte     = validTeks(str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL);
-                if($action == "TAMBAH"){
-                    $pendapatan_akte = validTeks(str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL);
-                    $persen_rs       = "";
-                    $bagian_rs       = "";
-                    $persen_kry      = "";
-                    $bagian_kry      = "";
-                }else if($action == "UBAH"){
-                    $_sql               = "SELECT pendapatan_akte,persen_rs,
-                                            bagian_rs,persen_kry,bagian_kry
-                                            FROM set_akte WHERE tahun='$tahun' and bulan='$bulan'";
+                $action          = isset($_GET['action'])?$_GET['action']:NULL;
+                $pendapatan_akte = 0;
+                if($action == "UBAH"){
+                    $_sql               = "SELECT set_akte.pendapatan_akte,set_akte.persen_rs,set_akte.bagian_rs,set_akte.persen_kry,set_akte.bagian_kry FROM set_akte WHERE set_akte.tahun='$tahun' and set_akte.bulan='$bulan'";
                     $hasil              = bukaquery($_sql);
                     $baris              = mysqli_fetch_row($hasil);
                     $pendapatan_akte    = $baris[0];

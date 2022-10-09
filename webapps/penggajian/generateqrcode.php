@@ -2,7 +2,7 @@
     include '../conf/conf.php';
     include '../phpqrcode/qrlib.php'; 
     
-    $kodedokter = str_replace("_"," ",$_GET['kodedokter']);
+    $kodedokter = validTeks(str_replace("_"," ",$_GET['kodedokter']));
     if(isset($kodedokter)){
         $PNG_TEMP_DIR   = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
         $PNG_WEB_DIR    = 'temp/';

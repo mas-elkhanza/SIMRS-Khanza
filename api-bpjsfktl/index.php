@@ -458,7 +458,7 @@
                                                 );
                                                 http_response_code(201);
                                             }else{
-                                                if(empty(cekpasien($decode['nik'],$decode['nomorkartu']))){ 
+                                                if(empty(cekpasien(validTeks($decode['nik']),validTeks($decode['nomorkartu'])))){ 
                                                     /* Silahkan aktifkan ini jika tidak ingin BPJS bisa menginsert data pasien baru
                                                      * $response = array(
                                                         'metadata' => array(
@@ -548,7 +548,7 @@
                                                                         $jeniskunjungan = "4 (Rujukan Antar RS)";
                                                                     }
 
-                                                                    $querybooking = bukaquery2("insert into referensi_mobilejkn_bpjs values('$nobooking','$no_rawat', '".validTeks($decode['nomorkartu'])."', '".validTeks($decode['nik'])."','".validTeks($decode['nohp'])."','".validTeks($decode['kodepoli'])."','$statusdaftar','".validTeks($decode['norm'])."','".validTeks($decode['tanggalperiksa'])."','".validTeks($decode['kodedokter'])."','".validTeks($decode['jampraktek'])."','".validTeks($jeniskunjungan)."','".validTeks($decode['nomorreferensi'])."','".$kdpoli."-".$noReg."','$noReg','".(strtotime($jadwal['jam_mulai'].'+'.$dilayani.' minute')* 1000)."','".($jadwal['kuota']-$sisakuota-1)."','$jadwal[kuota]','".($jadwal['kuota']-$sisakuota-1)."','$jadwal[kuota]','Belum','0000-00-00 00:00:00','Belum')");
+                                                                    $querybooking = bukaquery2("insert into referensi_mobilejkn_bpjs values('$nobooking','$no_rawat', '".validTeks($decode['nomorkartu'])."', '".validTeks($decode['nik'])."','".validTeks($decode['nohp'])."','".validTeks($decode['kodepoli'])."','$statusdaftar','$datapeserta[no_rkm_medis]','".validTeks($decode['tanggalperiksa'])."','".validTeks($decode['kodedokter'])."','".validTeks($decode['jampraktek'])."','".validTeks($jeniskunjungan)."','".validTeks($decode['nomorreferensi'])."','".$kdpoli."-".$noReg."','$noReg','".(strtotime($jadwal['jam_mulai'].'+'.$dilayani.' minute')* 1000)."','".($jadwal['kuota']-$sisakuota-1)."','$jadwal[kuota]','".($jadwal['kuota']-$sisakuota-1)."','$jadwal[kuota]','Belum','0000-00-00 00:00:00','Belum')");
                                                                     if ($querybooking) {
                                                                         $query = bukaquery2("insert into reg_periksa values('$noReg', '$no_rawat', '".validTeks($decode['tanggalperiksa'])."',current_time(), '$kddokter', '$datapeserta[no_rkm_medis]', '$kdpoli', '$datapeserta[namakeluarga]', '$datapeserta[alamatpj], $datapeserta[kelurahanpj], $datapeserta[kecamatanpj], $datapeserta[kabupatenpj], $datapeserta[propinsipj]', '$datapeserta[keluarga]', '".getOne2("select registrasilama from poliklinik where kd_poli='$kdpoli'")."', 'Belum','".str_replace("0","Lama",str_replace("1","Baru",$statusdaftar))."','Ralan', '".CARABAYAR."', '$umur','$sttsumur','Belum Bayar', '$statuspoli')");
                                                                         if ($query) {

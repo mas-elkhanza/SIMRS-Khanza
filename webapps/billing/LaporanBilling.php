@@ -1,6 +1,6 @@
 <?php
- include '../conf/conf.php';
- include '../phpqrcode/qrlib.php'; 
+   include '../conf/conf.php';
+   include '../phpqrcode/qrlib.php'; 
 ?>
 <html>
     <head>

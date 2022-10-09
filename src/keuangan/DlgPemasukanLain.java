@@ -1044,7 +1044,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             tbResep.requestFocus();
         }else {
-            Valid.panggilUrl("billing/LaporanKeuangan.php?kode="+Nomor.getText()+"&Tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"&nama="+NmKategori.getText().replaceAll(" ","_")+"&petugas="+NmPtg.getText().replaceAll(" ","_")+"&keperluan="+Keperluan.getText().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&nom="+pemasukan.getText().replaceAll(" ","_")+"&kategori="+NmKategori.getText().replaceAll(" ","_"));
+            Valid.panggilUrl("billing/LaporanKeuangan.php?kode="+Nomor.getText()+"&Tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"&nama="+NmKategori.getText().replaceAll(" ","_")+"&petugas="+NmPtg.getText().replaceAll(" ","_")+"&keperluan="+Keperluan.getText().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&nom="+pemasukan.getText().replaceAll(" ","_")+"&kategori="+NmKategori.getText().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_cetakkwitansiActionPerformed

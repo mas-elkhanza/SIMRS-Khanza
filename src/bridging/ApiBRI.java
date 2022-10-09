@@ -210,7 +210,7 @@ public class ApiBRI {
             status = response.asBoolean();
             if(status==true){
                 JOptionPane.showMessageDialog(null,"Tagihan BRIVA "+norawat+" sebesar "+Valid.SetAngka(Double.parseDouble(bayar))+" berhasil dibuat..!");
-                Valid.panggilUrl("billing/LaporanBilling12.php?norawat="+norawat.replaceAll(" ","_")+"&pasien="+nama.replaceAll(" ","_")+"&bayar="+bayar+"&petugas="+akses.getkode().replaceAll(" ","_")+"&keterangan="+keterangan.replaceAll(" ","_"));
+                Valid.panggilUrl("billing/LaporanBilling12.php?norawat="+norawat.replaceAll(" ","_")+"&pasien="+nama.replaceAll(" ","_")+"&bayar="+bayar+"&petugas="+akses.getkode().replaceAll(" ","_")+"&keterangan="+keterangan.replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
             }else{
                 JOptionPane.showMessageDialog(null,"Tagihan BRIVA "+norawat+" sebesar "+Valid.SetAngka(Double.parseDouble(bayar))+" gagal dibuat..!");
             }
