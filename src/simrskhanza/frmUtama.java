@@ -1489,6 +1489,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnLimbahDomestik = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerTanggal = new widget.ButtonBig();
         btnLaboratoriumPA = new widget.ButtonBig();
+        btnLaboratoriumMB = new widget.ButtonBig();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
         jSeparator4 = new javax.swing.JSeparator();
@@ -1787,7 +1788,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/09/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/10/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6819,7 +6820,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnLaboratoriumPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
+        btnLaboratoriumPA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6008661_bacteria_coronavirus_covid_laboratory_microscope_icon.png"))); // NOI18N
         btnLaboratoriumPA.setText("Periksa Lab PA");
         btnLaboratoriumPA.setIconTextGap(0);
         btnLaboratoriumPA.setName("btnLaboratoriumPA"); // NOI18N
@@ -6827,6 +6828,17 @@ public class frmUtama extends javax.swing.JFrame {
         btnLaboratoriumPA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLaboratoriumPAActionPerformed(evt);
+            }
+        });
+
+        btnLaboratoriumMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5728202_coronavirus_medical_microbiology_research_science_icon.png"))); // NOI18N
+        btnLaboratoriumMB.setText("Periksa Lab MB");
+        btnLaboratoriumMB.setIconTextGap(0);
+        btnLaboratoriumMB.setName("btnLaboratoriumMB"); // NOI18N
+        btnLaboratoriumMB.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaboratoriumMB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaboratoriumMBActionPerformed(evt);
             }
         });
 
@@ -8031,6 +8043,7 @@ public class frmUtama extends javax.swing.JFrame {
                     btnPermintaanLabPA.setEnabled(true);
                     btnLaboratorium.setEnabled(true);
                     btnLaboratoriumPA.setEnabled(true);
+                    btnLaboratoriumMB.setEnabled(true);
                     btnPermintaanRadiologi.setEnabled(true);
                     btnPeriksaRadiologi.setEnabled(true);
                     btnInputPenjualan.setEnabled(true);
@@ -8088,6 +8101,7 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolIGD.setEnabled(akses.getigd());                
                     btnLaboratorium.setEnabled(akses.getperiksa_lab());
                     btnLaboratoriumPA.setEnabled(akses.getpemeriksaan_lab_pa());
+                    btnLaboratoriumMB.setEnabled(akses.getpemeriksaan_lab_pa());
                     btnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());  
                     btnInputPenjualan.setEnabled(akses.getpenjualan_obat());
                     btnDataPenjualan.setEnabled(akses.getpenjualan_obat());
@@ -8109,6 +8123,7 @@ public class frmUtama extends javax.swing.JFrame {
                     btnPermintaanLabPA.setEnabled(false);
                     btnLaboratorium.setEnabled(false);
                     btnLaboratoriumPA.setEnabled(false);
+                    btnLaboratoriumMB.setEnabled(false);
                     btnPermintaanRadiologi.setEnabled(false);
                     btnPeriksaRadiologi.setEnabled(false);    
                     btnInputPenjualan.setEnabled(false);
@@ -9523,6 +9538,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         FlayMenu.add(btnPermintaanLabPA);
         FlayMenu.add(btnLaboratorium);
         FlayMenu.add(btnLaboratoriumPA);
+        FlayMenu.add(btnLaboratoriumMB);
         if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)||(akses.getpemeriksaan_lab_pa()==true)){
             btnPermintaanLab.setEnabled(true);
             btnPermintaanLabPA.setEnabled(true);
@@ -9532,6 +9548,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }
         btnLaboratorium.setEnabled(akses.getperiksa_lab());
         btnLaboratoriumPA.setEnabled(akses.getpemeriksaan_lab_pa());
+        btnLaboratoriumMB.setEnabled(akses.getpemeriksaan_lab_mb());
         FlayMenu.setVisible(true); 
     }//GEN-LAST:event_btnToolLabActionPerformed
 
@@ -14240,6 +14257,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         Valid.panggilUrl("persetujuantindakan/login.php?usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnPersetujuanPenolakanTindakanActionPerformed
+
+    private void btnLaboratoriumMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaboratoriumMBActionPerformed
+        isTutup();
+        DlgCariPeriksaLabMB produsen=new DlgCariPeriksaLabMB(this,false);
+        //produsen.emptTeks();
+        produsen.isCek();
+        produsen.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        produsen.setLocationRelativeTo(PanelUtama);
+        produsen.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLaboratoriumMBActionPerformed
 
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
@@ -19337,6 +19366,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ButtonBig btnKunjunganRanap;
     private widget.ButtonBig btnLabaRugi;
     private widget.ButtonBig btnLaboratorium;
+    private widget.ButtonBig btnLaboratoriumMB;
     private widget.ButtonBig btnLaboratoriumPA;
     private widget.ButtonBig btnLahir;
     private widget.ButtonBig btnLamaPelayananApotek;
@@ -19963,6 +19993,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemeriksaan_lab_pa()==true){
                 Panelmenu.add(btnLaboratoriumPA);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemeriksaan_lab_mb()==true){
+                Panelmenu.add(btnLaboratoriumMB);
                 jmlmenu++;
             }
 
@@ -24294,6 +24329,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemeriksaan_lab_pa()==true){
             Panelmenu.add(btnLaboratoriumPA);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemeriksaan_lab_mb()==true){
+            Panelmenu.add(btnLaboratoriumMB);
             jmlmenu++;
         }
 
@@ -28654,6 +28694,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpemeriksaan_lab_pa()==true){
             if(btnLaboratoriumPA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLaboratoriumPA);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpemeriksaan_lab_mb()==true){
+            if(btnLaboratoriumMB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaboratoriumMB);
                 jmlmenu++;
             }                
         }
