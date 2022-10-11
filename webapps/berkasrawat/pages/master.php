@@ -8,9 +8,14 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action             = isset($_GET['action'])?$_GET['action']:NULL;
-                $kode               = validTeks(isset($_GET['kode'])?$_GET['kode']:NULL);
-                $nama               = validTeks(isset($_GET['nama'])?$_GET['nama']:NULL);
+                $action  = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode    = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+                $kode    = json_decode(encrypt_decrypt($kode,"d"),true); 
+                if (isset($kode["kode"])) {
+                    $kode = $kode["kode"];
+                }else{
+                    $kode = "";
+                }
                 echo "<input type=hidden name=kode  value=$kode><input type=hidden name=action value=$action>";
                 echo "<div align='center' class='link'>
                           <a href=?act=List>| List Berkas |</a>
@@ -26,7 +31,7 @@
                 </tr>
                 <tr class="head">
                     <td width="25%" >Nama Berkas Digital</td><td width="">:</td>
-                    <td width="74%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="70" maxlength="100" pattern="[A-Z0-9-]{1,100}" title=" A-Z0-9- (Maksimal 100 karakter)" autocomplete="off" required>
+                    <td width="74%"><input name="nama" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo $nama;?>" size="70" maxlength="100" pattern="[a-zA-Z0-9-]{1,100}" title=" a-zA-Z0-9- (Maksimal 100 karakter)" autocomplete="off" required>
                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -40,8 +45,6 @@
                     $nama   = trim($_POST['nama']);
                     $kode   = validTeks($kode);
                     $nama   = validTeks($nama);
-                    
-                    
                     if ((!empty($kode))&&(!empty($nama))) {
                         switch($action) {
                             case "TAMBAH":
@@ -72,17 +75,15 @@
                     while($baris = mysqli_fetch_array($hasil)) {                        
                       echo "<tr class='isi'>
                                 <td width='70'>
-                                    <center>"; ?>
-                                    <a href="?act=MasterBerkas&action=HAPUS&kode=<?php echo $baris[0] ?>" >[hapus]</a>
-                            <?php
-                            echo "</center>
+                                    <center>
+                                    <a href=?act=MasterBerkas&action=HAPUS&iyem=".encrypt_decrypt("{\"kode\":\"".$baris[0]."\"}","e").">[hapus]</a>
+                                    </center>
                                 </td>
                                 <td>$baris[0]</td>
                                 <td>$baris[1]</td>
                             </tr>";
                     }
                 echo "</table>";
-
             }else{
                 echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
@@ -97,7 +98,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
-                Hapus(" master_berkas_digital "," kode ='".validTeks($_GET['kode'])."' ","?act=MasterBerkas&action=TAMBAH");
+                Hapus(" master_berkas_digital "," kode ='".validTeks($kode)."' ","?act=MasterBerkas&action=TAMBAH");
             }
             
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

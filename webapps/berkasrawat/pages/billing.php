@@ -1,5 +1,6 @@
 <?php
      require_once("../../conf/conf.php");
+     session_start();
      header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
      header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
      header("Cache-Control: no-store, no-cache, must-revalidate"); 
@@ -16,7 +17,7 @@
     <?php
         $norawat      = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
         $norawat      = json_decode(encrypt_decrypt($norawat,"d"),true); 
-        if (isset($norawat["no_rawat"])&&isset($_SESSION['ses_admin_berkas_rawat'])) {
+        if (isset($norawat["no_rawat"])&&isset($_SESSION['ses_vedika'])) {
             $no_rawat = $norawat["no_rawat"];
             $_sql     = "select billing.no,billing.nm_perawatan,billing.pemisah,if(billing.biaya=0,'',billing.biaya),if(billing.jumlah=0,'',billing.jumlah),if(billing.tambahan=0,'',billing.tambahan),if(billing.totalbiaya=0,'',billing.totalbiaya),billing.totalbiaya from billing where billing.no_rawat='$no_rawat' ";   
             $hasil    = bukaquery($_sql);

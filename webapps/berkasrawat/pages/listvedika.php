@@ -7,8 +7,9 @@
     <div class="entry">   
 	<form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <div style="width: 100%; height: 87.4%; overflow: auto;">
-            <?php        
-                $BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+            <?php
+                $carabayar  = encrypt_decrypt($_SESSION["carabayar"],"d");
+                $BtnCari    = isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
                 if (isset($BtnCari)) {      
                     $tahunawal      = validTeks(trim($_POST['tahunawal']));
                     $bulanawal      = validTeks(trim($_POST['bulanawal']));
@@ -16,7 +17,6 @@
                     $tahunakhir     = validTeks(trim($_POST['tahunakhir']));
                     $bulanakhir     = validTeks(trim($_POST['bulanakhir']));
                     $tanggalakhir   = validTeks(trim($_POST['tanggalakhir']));    
-                    $carabayar      = validTeks(trim($_POST['carabayar']));
                     $keyword        = validTeks(trim($_POST['keyword']));
                     $status         = validTeks(trim($_POST['status']));
                     $poli           = validTeks(trim($_POST['poli']));
@@ -39,8 +39,8 @@
                 }
                 if(empty($tanggalakhir)){
                     $tanggalakhir=date('d');
-                }     
-
+                }    
+                
                 $_sql   = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                             reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
                             pasien.umur,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.no_peserta,
