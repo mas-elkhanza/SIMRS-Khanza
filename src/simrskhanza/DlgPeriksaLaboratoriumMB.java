@@ -11,8 +11,6 @@
 
 package simrskhanza;
 
-import bridging.koneksiDBELIMS;
-import bridging.koneksiDBSysmex;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import keuangan.DlgJnsPerawatanLab;
