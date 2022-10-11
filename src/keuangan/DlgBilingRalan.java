@@ -39,6 +39,7 @@ import javax.swing.event.DocumentEvent;
 import simrskhanza.DlgCariPeriksaLabPA;
 import simrskhanza.DlgCariCaraBayar;
 import simrskhanza.DlgPeriksaLaboratorium;
+import simrskhanza.DlgPeriksaLaboratoriumMB;
 import simrskhanza.DlgPeriksaLaboratoriumPA;
 import simrskhanza.DlgPeriksaRadiologi;
 import simrskhanza.DlgRawatJalan;
@@ -671,6 +672,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         MnInputObat = new javax.swing.JMenuItem();
         MnPeriksaLab = new javax.swing.JMenuItem();
         MnPeriksaLabPA = new javax.swing.JMenuItem();
+        MnPeriksaLabMB = new javax.swing.JMenuItem();
         MnPeriksaRadiologi = new javax.swing.JMenuItem();
         MnTambahan = new javax.swing.JMenuItem();
         MnPotongan = new javax.swing.JMenuItem();
@@ -683,6 +685,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         MnPemberianObat = new javax.swing.JMenuItem();
         MnCariPeriksaLab = new javax.swing.JMenuItem();
         MnCariPeriksaLabPA = new javax.swing.JMenuItem();
+        MnCariPeriksaLabMB = new javax.swing.JMenuItem();
         MnCariRadiologi = new javax.swing.JMenuItem();
         MnPenjualan = new javax.swing.JMenuItem();
         MnHapusTagihan = new javax.swing.JMenuItem();
@@ -862,6 +865,22 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnPeriksaLabPA);
+
+        MnPeriksaLabMB.setBackground(new java.awt.Color(255, 255, 254));
+        MnPeriksaLabMB.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPeriksaLabMB.setForeground(new java.awt.Color(50, 50, 50));
+        MnPeriksaLabMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPeriksaLabMB.setText("Input Periksa Lab MB");
+        MnPeriksaLabMB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPeriksaLabMB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPeriksaLabMB.setName("MnPeriksaLabMB"); // NOI18N
+        MnPeriksaLabMB.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPeriksaLabMB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPeriksaLabMBActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnPeriksaLabMB);
 
         MnPeriksaRadiologi.setBackground(new java.awt.Color(255, 255, 254));
         MnPeriksaRadiologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1054,6 +1073,22 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnCariPeriksaLabPA);
+
+        MnCariPeriksaLabMB.setBackground(new java.awt.Color(255, 255, 254));
+        MnCariPeriksaLabMB.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCariPeriksaLabMB.setForeground(new java.awt.Color(50, 50, 50));
+        MnCariPeriksaLabMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCariPeriksaLabMB.setText("Data Pemeriksaan Lab MB");
+        MnCariPeriksaLabMB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCariPeriksaLabMB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCariPeriksaLabMB.setName("MnCariPeriksaLabMB"); // NOI18N
+        MnCariPeriksaLabMB.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnCariPeriksaLabMB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCariPeriksaLabMBActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCariPeriksaLabMB);
 
         MnCariRadiologi.setBackground(new java.awt.Color(255, 255, 254));
         MnCariRadiologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1715,7 +1750,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2021 04:12:38" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-10-2022 11:35:11" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3744,6 +3779,29 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }//GEN-LAST:event_BtnAll1KeyPressed
 
+    private void MnPeriksaLabMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeriksaLabMBActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+        }else{     
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                DlgPeriksaLaboratoriumMB periksalab=new DlgPeriksaLaboratoriumMB(null,false);
+                periksalab.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                periksalab.setLocationRelativeTo(internalFrame1);
+                periksalab.emptTeks();
+                periksalab.setNoRm(TNoRw.getText(),"Ralan");  
+                periksalab.isCek();
+                periksalab.setAlwaysOnTop(false);
+                periksalab.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_MnPeriksaLabMBActionPerformed
+
+    private void MnCariPeriksaLabMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCariPeriksaLabMBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnCariPeriksaLabMBActionPerformed
+
  
 
     /**
@@ -3790,6 +3848,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Button BtnView;
     private widget.Tanggal DTPTgl;
     private javax.swing.JMenuItem MnCariPeriksaLab;
+    private javax.swing.JMenuItem MnCariPeriksaLabMB;
     private javax.swing.JMenuItem MnCariPeriksaLabPA;
     private javax.swing.JMenuItem MnCariRadiologi;
     private javax.swing.JMenuItem MnDokter;
@@ -3802,6 +3861,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnPenjab;
     private javax.swing.JMenuItem MnPenjualan;
     private javax.swing.JMenuItem MnPeriksaLab;
+    private javax.swing.JMenuItem MnPeriksaLabMB;
     private javax.swing.JMenuItem MnPeriksaLabPA;
     private javax.swing.JMenuItem MnPeriksaRadiologi;
     private javax.swing.JMenuItem MnPoli;
@@ -4785,6 +4845,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnCariPeriksaLab.setEnabled(akses.getperiksa_lab());
         MnPeriksaLabPA.setEnabled(akses.getpemeriksaan_lab_pa());
         MnCariPeriksaLabPA.setEnabled(akses.getpemeriksaan_lab_pa());
+        MnPeriksaLabMB.setEnabled(akses.getpemeriksaan_lab_mb());
+        MnCariPeriksaLabMB.setEnabled(akses.getpemeriksaan_lab_mb());
         MnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());
         MnCariRadiologi.setEnabled(akses.getperiksa_radiologi());
         MnPenjualan.setEnabled(akses.getpenjualan_obat());        
