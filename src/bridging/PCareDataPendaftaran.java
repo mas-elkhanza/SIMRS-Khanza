@@ -6584,7 +6584,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             TPasien.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),3).toString());
             TglLahir.setText(Sequel.cariIsi("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
             JK.setText(Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
-            JenisPeserta.setText(Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
+            JenisPeserta.setText(Sequel.cariIsi("select pasien.pekerjaan from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
             ProviderPeserta.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),4).toString());
             NoKartu.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString());
             KdPoliTujuan.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString());
@@ -6610,7 +6610,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             TNoRM.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),3).toString());
             TPasien.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),4).toString());
             JK.setText(Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
-            JenisPeserta.setText(Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
+            JenisPeserta.setText(Sequel.cariIsi("select pasien.pekerjaan from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
             NoKartu.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),5).toString());
             KdPoliTujuan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),6).toString());
             NmPoliTujuan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),7).toString());
@@ -6647,7 +6647,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             TNoRM.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString());
             TPasien.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),4).toString());
             JK.setText(Sequel.cariIsi("select pasien.jk from pasien where pasien.no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
-            JenisPeserta.setText(Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
+            JenisPeserta.setText(Sequel.cariIsi("select pasien.pekerjaan from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
             NoKartu.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),5).toString());
             KdPoliTujuan.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),6).toString());
             NmPoliTujuan.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),7).toString());
