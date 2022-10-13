@@ -1390,7 +1390,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         item=0;
                     }                    
                     ttl=ttl+item;  
-                    Sequel.menyimpan("temporary_lab","'0','"+Sequel.cariIsi("select kd_jenis_prw from template_laboratorium where id_template=?",tbPemeriksaan.getValueAt(i,6).toString())+"','"+tbPemeriksaan.getValueAt(i,1).toString()+"','"+item+"','Detail Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
+                    Sequel.menyimpan("temporary_lab","'0','"+Sequel.cariIsi("select template_laboratorium.kd_jenis_prw from template_laboratorium where template_laboratorium.id_template=?",tbPemeriksaan.getValueAt(i,6).toString())+"','"+tbPemeriksaan.getValueAt(i,1).toString()+"','"+item+"','Detail Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
                 }                
             }
             Sequel.menyimpan("temporary_lab","'0','','Total Biaya Pemeriksaan Lab','"+ttl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
@@ -2984,7 +2984,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             tbTarif.getValueAt(i,10).toString(),tbTarif.getValueAt(i,3).toString(),KodePj.getText(),status  
                         })==true){
                             if(!noorder.equals("")){
-                                if(Sequel.cariIsi("select stts_bayar from permintaan_pemeriksaan_lab where noorder='"+noorder+"' and kd_jenis_prw='"+tbTarif.getValueAt(i,1).toString()+"'").equals("Belum")){
+                                if(Sequel.cariIsi("select permintaan_pemeriksaan_lab.stts_bayar from permintaan_pemeriksaan_lab where permintaan_pemeriksaan_lab.noorder='"+noorder+"' and permintaan_pemeriksaan_lab.kd_jenis_prw='"+tbTarif.getValueAt(i,1).toString()+"'").equals("Belum")){
                                     ttlbhp=ttlbhp+Double.parseDouble(tbTarif.getValueAt(i,5).toString());
                                     ttljmdokter=ttljmdokter+Double.parseDouble(tbTarif.getValueAt(i,7).toString());
                                     ttljmpetugas=ttljmpetugas+Double.parseDouble(tbTarif.getValueAt(i,8).toString());
@@ -3014,7 +3014,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(sukses==true){
                 for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                     if((!tbPemeriksaan.getValueAt(i,6).toString().equals(""))&&tbPemeriksaan.getValueAt(i,0).toString().equals("true")){                                
-                        pscariperawatan=koneksi.prepareStatement("select kd_jenis_prw from template_laboratorium where id_template=?");
+                        pscariperawatan=koneksi.prepareStatement("select template_laboratorium.kd_jenis_prw from template_laboratorium where template_laboratorium.id_template=?");
                         try {
                             pscariperawatan.setString(1,tbPemeriksaan.getValueAt(i,6).toString());
                             rscari=pscariperawatan.executeQuery();
@@ -3026,7 +3026,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                         tbPemeriksaan.getValueAt(i,12).toString(),tbPemeriksaan.getValueAt(i,13).toString(),tbPemeriksaan.getValueAt(i,14).toString(),tbPemeriksaan.getValueAt(i,7).toString()
                                     })==true){
                                         if(!noorder.equals("")){
-                                            if(Sequel.cariIsi("select stts_bayar from permintaan_detail_permintaan_lab where noorder='"+noorder+"' and kd_jenis_prw='"+rscari.getString(1)+"' and id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
+                                            if(Sequel.cariIsi("select permintaan_detail_permintaan_lab.stts_bayar from permintaan_detail_permintaan_lab where permintaan_detail_permintaan_lab.noorder='"+noorder+"' and permintaan_detail_permintaan_lab.kd_jenis_prw='"+rscari.getString(1)+"' and permintaan_detail_permintaan_lab.id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
                                                 ttlbhp=ttlbhp+Double.parseDouble(tbPemeriksaan.getValueAt(i,9).toString());
                                                 ttljmdokter=ttljmdokter+Double.parseDouble(tbPemeriksaan.getValueAt(i,11).toString());
                                                 ttljmpetugas=ttljmpetugas+Double.parseDouble(tbPemeriksaan.getValueAt(i,12).toString());

@@ -1932,7 +1932,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             tbTarif.getValueAt(i,10).toString(),tbTarif.getValueAt(i,3).toString(),KodePj.getText(),status  
                         })==true){
                             if(!noorder.equals("")){
-                                if(Sequel.cariIsi("select stts_bayar from permintaan_pemeriksaan_labpa where noorder='"+noorder+"' and kd_jenis_prw='"+tbTarif.getValueAt(i,1).toString()+"'").equals("Belum")){
+                                if(Sequel.cariIsi("select permintaan_pemeriksaan_labpa.stts_bayar from permintaan_pemeriksaan_labpa where permintaan_pemeriksaan_labpa.noorder='"+noorder+"' and permintaan_pemeriksaan_labpa.kd_jenis_prw='"+tbTarif.getValueAt(i,1).toString()+"'").equals("Belum")){
                                     ttlbhp=ttlbhp+Double.parseDouble(tbTarif.getValueAt(i,5).toString());
                                     ttljmdokter=ttljmdokter+Double.parseDouble(tbTarif.getValueAt(i,7).toString());
                                     ttljmpetugas=ttljmpetugas+Double.parseDouble(tbTarif.getValueAt(i,8).toString());

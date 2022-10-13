@@ -1329,7 +1329,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         item=0;
                     }                    
                     ttl=ttl+item;  
-                    Sequel.menyimpan("temporary_lab","'0','"+Sequel.cariIsi("select kd_jenis_prw from template_laboratorium where id_template=?",tbPemeriksaan.getValueAt(i,6).toString())+"','"+tbPemeriksaan.getValueAt(i,1).toString()+"','"+item+"','Detail Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
+                    Sequel.menyimpan("temporary_lab","'0','"+Sequel.cariIsi("select template_laboratorium.kd_jenis_prw from template_laboratorium where template_laboratorium.id_template=?",tbPemeriksaan.getValueAt(i,6).toString())+"','"+tbPemeriksaan.getValueAt(i,1).toString()+"','"+item+"','Detail Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
                 }                
             }
             Sequel.menyimpan("temporary_lab","'0','','Total Biaya Pemeriksaan Lab','"+ttl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
@@ -1734,10 +1734,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 "template_laboratorium.bhp,template_laboratorium.bagian_perujuk,"+
                                 "template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,"+
                                 "template_laboratorium.kso,template_laboratorium.menejemen "+
-                                "from template_laboratorium inner join permintaan_detail_permintaan_lab on "+
-                                "permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
+                                "from template_laboratorium inner join permintaan_detail_permintaan_labmb on "+
+                                "permintaan_detail_permintaan_labmb.id_template=template_laboratorium.id_template "+
                                 "where template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? "+
-                                "and permintaan_detail_permintaan_lab.noorder=? order by urut");
+                                "and permintaan_detail_permintaan_labmb.noorder=? order by urut");
                         try {
                             pstampil.setString(1,tbTarif.getValueAt(i2,1).toString());
                             pstampil.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1777,10 +1777,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 "template_laboratorium.bhp,template_laboratorium.bagian_perujuk,"+
                                 "template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,"+
                                 "template_laboratorium.kso,template_laboratorium.menejemen "+
-                                "from template_laboratorium inner join permintaan_detail_permintaan_lab on "+
-                                "permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
+                                "from template_laboratorium inner join permintaan_detail_permintaan_labmb on "+
+                                "permintaan_detail_permintaan_labmb.id_template=template_laboratorium.id_template "+
                                 "where template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? "+
-                                "and permintaan_detail_permintaan_lab.noorder=? order by urut");
+                                "and permintaan_detail_permintaan_labmb.noorder=? order by urut");
                         try {
                             pstampil2.setString(1,tbTarif.getValueAt(i2,1).toString());                            
                             pstampil2.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1820,10 +1820,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 "template_laboratorium.bhp,template_laboratorium.bagian_perujuk,"+
                                 "template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,"+
                                 "template_laboratorium.kso,template_laboratorium.menejemen "+
-                                "from template_laboratorium inner join permintaan_detail_permintaan_lab on "+
-                                "permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
+                                "from template_laboratorium inner join permintaan_detail_permintaan_labmb on "+
+                                "permintaan_detail_permintaan_labmb.id_template=template_laboratorium.id_template "+
                                 "where template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? "+
-                                "and permintaan_detail_permintaan_lab.noorder=? order by urut");
+                                "and permintaan_detail_permintaan_labmb.noorder=? order by urut");
                         try {
                             pstampil3.setString(1,tbTarif.getValueAt(i2,1).toString());
                             pstampil3.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1863,10 +1863,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 "template_laboratorium.bhp,template_laboratorium.bagian_perujuk,"+
                                 "template_laboratorium.bagian_dokter,template_laboratorium.bagian_laborat,"+
                                 "template_laboratorium.kso,template_laboratorium.menejemen "+
-                                "from template_laboratorium inner join permintaan_detail_permintaan_lab on "+
-                                "permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template where "+
+                                "from template_laboratorium inner join permintaan_detail_permintaan_labmb on "+
+                                "permintaan_detail_permintaan_labmb.id_template=template_laboratorium.id_template where "+
                                 "template_laboratorium.kd_jenis_prw=? and template_laboratorium.Pemeriksaan like ? and "+
-                                "permintaan_detail_permintaan_lab.noorder=? order by urut");
+                                "permintaan_detail_permintaan_labmb.noorder=? order by urut");
                         try{
                             pstampil4.setString(1,tbTarif.getValueAt(i2,1).toString());
                             pstampil4.setString(2,"%"+TCari.getText().trim()+"%");
@@ -2274,8 +2274,8 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 "jns_perawatan_lab.bagian_rs,jns_perawatan_lab.bhp,jns_perawatan_lab.tarif_perujuk,"+
                 "jns_perawatan_lab.tarif_tindakan_dokter,jns_perawatan_lab.tarif_tindakan_petugas,"+
                 "jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,penjab.png_jawab "+
-                "from jns_perawatan_lab inner join penjab inner join permintaan_pemeriksaan_lab on penjab.kd_pj=jns_perawatan_lab.kd_pj and jns_perawatan_lab.kd_jenis_prw=permintaan_pemeriksaan_lab.kd_jenis_prw  where "+
-                " permintaan_pemeriksaan_lab.noorder=? order by jns_perawatan_lab.kd_jenis_prw");
+                "from jns_perawatan_lab inner join penjab inner join permintaan_pemeriksaan_labmb on penjab.kd_pj=jns_perawatan_lab.kd_pj and jns_perawatan_lab.kd_jenis_prw=permintaan_pemeriksaan_labmb.kd_jenis_prw  where "+
+                " permintaan_pemeriksaan_labmb.noorder=? order by jns_perawatan_lab.kd_jenis_prw");
             try {
                 pstindakan.setString(1,order);
                 rstindakan=pstindakan.executeQuery();                       
@@ -2370,7 +2370,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             tbTarif.getValueAt(i,10).toString(),tbTarif.getValueAt(i,3).toString(),KodePj.getText(),status  
                         })==true){
                             if(!noorder.equals("")){
-                                if(Sequel.cariIsi("select stts_bayar from permintaan_pemeriksaan_lab where noorder='"+noorder+"' and kd_jenis_prw='"+tbTarif.getValueAt(i,1).toString()+"'").equals("Belum")){
+                                if(Sequel.cariIsi("select permintaan_pemeriksaan_labmb.stts_bayar from permintaan_pemeriksaan_labmb where permintaan_pemeriksaan_labmb.noorder='"+noorder+"' and permintaan_pemeriksaan_labmb.kd_jenis_prw='"+tbTarif.getValueAt(i,1).toString()+"'").equals("Belum")){
                                     ttlbhp=ttlbhp+Double.parseDouble(tbTarif.getValueAt(i,5).toString());
                                     ttljmdokter=ttljmdokter+Double.parseDouble(tbTarif.getValueAt(i,7).toString());
                                     ttljmpetugas=ttljmpetugas+Double.parseDouble(tbTarif.getValueAt(i,8).toString());
@@ -2400,7 +2400,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(sukses==true){
                 for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                     if((!tbPemeriksaan.getValueAt(i,6).toString().equals(""))&&tbPemeriksaan.getValueAt(i,0).toString().equals("true")){                                
-                        pscariperawatan=koneksi.prepareStatement("select kd_jenis_prw from template_laboratorium where id_template=?");
+                        pscariperawatan=koneksi.prepareStatement("select template_laboratorium.kd_jenis_prw from template_laboratorium where template_laboratorium.id_template=?");
                         try {
                             pscariperawatan.setString(1,tbPemeriksaan.getValueAt(i,6).toString());
                             rscari=pscariperawatan.executeQuery();
@@ -2412,7 +2412,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                         tbPemeriksaan.getValueAt(i,12).toString(),tbPemeriksaan.getValueAt(i,13).toString(),tbPemeriksaan.getValueAt(i,14).toString(),tbPemeriksaan.getValueAt(i,7).toString()
                                     })==true){
                                         if(!noorder.equals("")){
-                                            if(Sequel.cariIsi("select stts_bayar from permintaan_detail_permintaan_lab where noorder='"+noorder+"' and kd_jenis_prw='"+rscari.getString(1)+"' and id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
+                                            if(Sequel.cariIsi("select permintaan_detail_permintaan_labmb.stts_bayar from permintaan_detail_permintaan_labmb where permintaan_detail_permintaan_labmb.noorder='"+noorder+"' and permintaan_detail_permintaan_labmb.kd_jenis_prw='"+rscari.getString(1)+"' and permintaan_detail_permintaan_labmb.id_template='"+tbPemeriksaan.getValueAt(i,6).toString()+"'").equals("Belum")){
                                                 ttlbhp=ttlbhp+Double.parseDouble(tbPemeriksaan.getValueAt(i,9).toString());
                                                 ttljmdokter=ttljmdokter+Double.parseDouble(tbPemeriksaan.getValueAt(i,11).toString());
                                                 ttljmpetugas=ttljmpetugas+Double.parseDouble(tbPemeriksaan.getValueAt(i,12).toString());
@@ -2458,8 +2458,8 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),noorder
                     });
                     if(status.equals("Ralan")){
-                        Sequel.queryu("delete from antrilabpk2");
-                        Sequel.queryu("insert into antrilabpk2 values('1')");
+                        Sequel.queryu("delete from antrilabmb2");
+                        Sequel.queryu("insert into antrilabmb2 values('1')");
                     }
                 }
                 

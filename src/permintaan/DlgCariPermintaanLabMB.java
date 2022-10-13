@@ -30,6 +30,7 @@ import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgPeriksaLaboratorium;
+import simrskhanza.DlgPeriksaLaboratoriumMB;
 
 public class DlgCariPermintaanLabMB extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4;
@@ -1513,7 +1514,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
                         }else{
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                            DlgPeriksaLaboratoriumMB dlgro=new DlgPeriksaLaboratoriumMB(null,false);
                             dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             dlgro.setLocationRelativeTo(internalFrame1);
                             dlgro.emptTeks();
@@ -1544,7 +1545,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
                         }else{
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                            DlgPeriksaLaboratoriumMB dlgro=new DlgPeriksaLaboratoriumMB(null,false);
                             dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             dlgro.setLocationRelativeTo(internalFrame1);
                             dlgro.emptTeks();
@@ -1665,8 +1666,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                 }  
                             } catch (Exception e) {
                             }   
-                            Sequel.queryu("delete from antrilabpk");
-                            Sequel.queryu("insert into antrilabpk values('1')");
+                            Sequel.queryu("delete from antrilabmb");
+                            Sequel.queryu("insert into antrilabmb values('1')");
                             TeksKosong();
                             tampil();
                     }
@@ -1904,7 +1905,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KodeDokter);
                     param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+DokterPerujuk+"\nID "+(finger.equals("")?KodeDokter:finger)+"\n"+Valid.SetTgl3(Permintaan)); 
             
-                    Valid.MyReport("rptPermintaanLab.jasper","report","::[ Permintaan Laboratorium ]::",param);            
+                    Valid.MyReport("rptPermintaanLabMB.jasper","report","::[ Permintaan Laboratorium ]::",param);            
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
@@ -2018,7 +2019,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KodeDokter);
                     param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+DokterPerujuk+"\nID "+(finger.equals("")?KodeDokter:finger)+"\n"+Valid.SetTgl3(Permintaan)); 
             
-                    Valid.MyReport("rptPermintaanLab.jasper","report","::[ Permintaan Laboratorium ]::",param);            
+                    Valid.MyReport("rptPermintaanLabMB.jasper","report","::[ Permintaan Laboratorium ]::",param);            
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());

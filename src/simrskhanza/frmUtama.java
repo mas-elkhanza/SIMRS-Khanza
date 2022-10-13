@@ -1571,6 +1571,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir7 = new javax.swing.JMenuItem();
         MnInfoLaborat = new javax.swing.JMenuItem();
         MnInfoLaborat1 = new javax.swing.JMenuItem();
+        MnInfoLaborat3 = new javax.swing.JMenuItem();
         MnInfoLaborat2 = new javax.swing.JMenuItem();
         jSeparator13 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir6 = new javax.swing.JMenuItem();
@@ -1789,7 +1790,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/10/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/10/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7731,7 +7732,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnAnjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/family24.png"))); // NOI18N
         MnAnjungan.setText("Anjungan Registrasi Mandiri");
         MnAnjungan.setName("MnAnjungan"); // NOI18N
-        MnAnjungan.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnAnjungan.setPreferredSize(new java.awt.Dimension(275, 30));
         MnAnjungan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnAnjunganActionPerformed(evt);
@@ -7752,7 +7753,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir9.setText("Cetak Antrian Loket");
         MnRekapHadir9.setName("MnRekapHadir9"); // NOI18N
-        MnRekapHadir9.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir9.setPreferredSize(new java.awt.Dimension(275, 30));
         MnRekapHadir9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir9ActionPerformed(evt);
@@ -7766,7 +7767,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir3.setText("Antrian Loket");
         MnRekapHadir3.setName("MnRekapHadir3"); // NOI18N
-        MnRekapHadir3.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir3.setPreferredSize(new java.awt.Dimension(275, 30));
         MnRekapHadir3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir3ActionPerformed(evt);
@@ -7780,7 +7781,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir10.setText("Antrian Loket 2");
         MnRekapHadir10.setName("MnRekapHadir10"); // NOI18N
-        MnRekapHadir10.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir10.setPreferredSize(new java.awt.Dimension(275, 30));
         MnRekapHadir10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir10ActionPerformed(evt);
@@ -7794,7 +7795,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir4.setText("Antrian Unit/Poliklinik");
         MnRekapHadir4.setName("MnRekapHadir4"); // NOI18N
-        MnRekapHadir4.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir4.setPreferredSize(new java.awt.Dimension(275, 30));
         MnRekapHadir4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir4ActionPerformed(evt);
@@ -7808,7 +7809,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoBed4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnInfoBed4.setText("Antrian Unit/Poliklinik 2");
         MnInfoBed4.setName("MnInfoBed4"); // NOI18N
-        MnInfoBed4.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoBed4.setPreferredSize(new java.awt.Dimension(275, 30));
         MnInfoBed4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoBed4ActionPerformed(evt);
@@ -7822,7 +7823,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir5.setText("Antrian Apotek");
         MnRekapHadir5.setName("MnRekapHadir5"); // NOI18N
-        MnRekapHadir5.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir5.setPreferredSize(new java.awt.Dimension(275, 30));
         MnRekapHadir5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir5ActionPerformed(evt);
@@ -7836,7 +7837,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir7.setText("Antrian Apotek 2");
         MnRekapHadir7.setName("MnRekapHadir7"); // NOI18N
-        MnRekapHadir7.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir7.setPreferredSize(new java.awt.Dimension(275, 30));
         MnRekapHadir7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir7ActionPerformed(evt);
@@ -7850,7 +7851,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoLaborat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnInfoLaborat.setText("Antrian Laborat Patologi Klinis");
         MnInfoLaborat.setName("MnInfoLaborat"); // NOI18N
-        MnInfoLaborat.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoLaborat.setPreferredSize(new java.awt.Dimension(275, 30));
         MnInfoLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoLaboratActionPerformed(evt);
@@ -7864,7 +7865,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoLaborat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnInfoLaborat1.setText("Antrian Laborat Patologi Anatomi");
         MnInfoLaborat1.setName("MnInfoLaborat1"); // NOI18N
-        MnInfoLaborat1.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoLaborat1.setPreferredSize(new java.awt.Dimension(275, 30));
         MnInfoLaborat1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoLaborat1ActionPerformed(evt);
@@ -7872,13 +7873,27 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnInfoLaborat1);
 
+        MnInfoLaborat3.setBackground(new java.awt.Color(255, 255, 254));
+        MnInfoLaborat3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoLaborat3.setForeground(new java.awt.Color(50, 90, 40));
+        MnInfoLaborat3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnInfoLaborat3.setText("Antrian Laborat Mikrobiologi & Bio Molekuler");
+        MnInfoLaborat3.setName("MnInfoLaborat3"); // NOI18N
+        MnInfoLaborat3.setPreferredSize(new java.awt.Dimension(275, 30));
+        MnInfoLaborat3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoLaborat3ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnInfoLaborat3);
+
         MnInfoLaborat2.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoLaborat2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoLaborat2.setForeground(new java.awt.Color(50, 90, 40));
         MnInfoLaborat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnInfoLaborat2.setText("Antrian Radiologi");
         MnInfoLaborat2.setName("MnInfoLaborat2"); // NOI18N
-        MnInfoLaborat2.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnInfoLaborat2.setPreferredSize(new java.awt.Dimension(275, 30));
         MnInfoLaborat2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoLaborat2ActionPerformed(evt);
@@ -7899,7 +7914,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
         MnRekapHadir6.setText("Verifikasi Digital Klaim");
         MnRekapHadir6.setName("MnRekapHadir6"); // NOI18N
-        MnRekapHadir6.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir6.setPreferredSize(new java.awt.Dimension(275, 30));
         MnRekapHadir6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir6ActionPerformed(evt);
@@ -7913,7 +7928,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnPenyerahanResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
         MnPenyerahanResep.setText("Penyerahan Resep Rawat Jalan");
         MnPenyerahanResep.setName("MnPenyerahanResep"); // NOI18N
-        MnPenyerahanResep.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnPenyerahanResep.setPreferredSize(new java.awt.Dimension(275, 30));
         MnPenyerahanResep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenyerahanResepActionPerformed(evt);
@@ -7927,7 +7942,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnPersetujuanPenolakanTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
         MnPersetujuanPenolakanTindakan.setText("Persetujuan/Penolakan Tindakan");
         MnPersetujuanPenolakanTindakan.setName("MnPersetujuanPenolakanTindakan"); // NOI18N
-        MnPersetujuanPenolakanTindakan.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnPersetujuanPenolakanTindakan.setPreferredSize(new java.awt.Dimension(275, 30));
         MnPersetujuanPenolakanTindakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPersetujuanPenolakanTindakanActionPerformed(evt);
@@ -14278,6 +14293,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnLaboratoriumMBActionPerformed
 
+    private void MnInfoLaborat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInfoLaborat3ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("antrianlaborat3.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnInfoLaborat3ActionPerformed
+
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -19166,6 +19187,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnInfoLaborat;
     private javax.swing.JMenuItem MnInfoLaborat1;
     private javax.swing.JMenuItem MnInfoLaborat2;
+    private javax.swing.JMenuItem MnInfoLaborat3;
     private javax.swing.JMenuItem MnKoleksiPenelitian;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnPengajuanCutiPegawai;
