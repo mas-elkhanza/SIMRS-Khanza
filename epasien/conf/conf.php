@@ -37,7 +37,7 @@
     
     function cleankar2($dirty){
          $konektor=bukakoneksi();
-	 $clean = mysqli_real_escape_string($konektor,$dirty);	
+	 $clean = mysqli_real_escape_string($konektor,validTeks($dirty));	
          mysqli_close($konektor);
 	return $clean;
     }
@@ -110,7 +110,7 @@
         $save=str_replace("concat","",$save);
         $save=str_replace("union","",$save);
         $save=str_replace("base64","",$save);
-        $save=str_replace("/","",$save);
+        $save=str_replace("//","",$save);
         $save=str_replace("*","",$save);
         $save=str_replace("}","",$save);
         $save=str_replace("$","",$save);
@@ -126,7 +126,6 @@
         $save=str_replace(">","",$save);
         $save=str_replace(":","",$save);
         $save=str_replace("+","",$save);
-        $save=str_replace("-","",$save);
         $save=str_replace("^","",$save);
         $save=str_replace("#","",$save);
         $save=str_replace("!","",$save);

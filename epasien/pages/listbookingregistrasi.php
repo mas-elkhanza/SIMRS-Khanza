@@ -8,9 +8,9 @@
     $blnbesok  = substr($besok,5,2);
     $tglbesok  = substr($besok,8,2);
     
-    $thncari   = trim(isset($_POST['tgl_registrasi']))?substr($_POST['tgl_registrasi'],6,4):$thnbesok;
-    $blncari   = trim(isset($_POST['tgl_registrasi']))?substr($_POST['tgl_registrasi'],3,2):$blnbesok;
-    $tglcari   = trim(isset($_POST['tgl_registrasi']))?substr($_POST['tgl_registrasi'],0,2):$tglbesok;
+    $thncari   = cleankar(trim(isset($_POST['tgl_registrasi']))?substr($_POST['tgl_registrasi'],6,4):$thnbesok);
+    $blncari   = cleankar(trim(isset($_POST['tgl_registrasi']))?substr($_POST['tgl_registrasi'],3,2):$blnbesok);
+    $tglcari   = cleankar(trim(isset($_POST['tgl_registrasi']))?substr($_POST['tgl_registrasi'],0,2):$tglbesok);
 ?>
 <link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 <div class="block-header">
