@@ -691,6 +691,7 @@ import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgLamaPelayananPasien;
 import laporan.DlgLaporanPenyakitPolri;
 import laporan.DlgLaporanPenyakitTNI;
+import laporan.DlgPelayananLabMB;
 import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananOperasi;
 import laporan.DlgPelayananPoli;
@@ -17000,6 +17001,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnLamaPelayananLabMBActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPelayananLabMB aplikasi=new DlgPelayananLabMB(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     private void btnRingkasanPengajuanMedisActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -19798,7 +19810,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI,
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
-            btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB;
+            btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB;
     
     public void isWall(){
         try{            
@@ -21494,6 +21506,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnLamaPelayananLab);                 
                 jmlmenu++;
                 Panelmenu.add(btnLamaPelayananLabPA);                 
+                jmlmenu++;
+                Panelmenu.add(btnLamaPelayananLabMB);                 
                 jmlmenu++;
             }
             
@@ -25825,6 +25839,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnLamaPelayananLab);                 
             jmlmenu++;
             Panelmenu.add(btnLamaPelayananLabPA);                 
+            jmlmenu++;
+            Panelmenu.add(btnLamaPelayananLabMB);                 
             jmlmenu++;
         }
         
@@ -30780,6 +30796,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
             if(btnLamaPelayananLabPA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananLabPA);                 
+                jmlmenu++;
+            }
+            if(btnLamaPelayananLabMB.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPelayananLabMB);                 
                 jmlmenu++;
             }
         }
@@ -36410,6 +36430,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLamaPelayananLabPA.setName("btnLamaPelayananLabPA"); 
         btnLamaPelayananLabPA.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLamaPelayananLabPA.addActionListener(this::btnLamaPelayananLabPAActionPerformed);
+        
+        btnLamaPelayananLabMB = new widget.ButtonBig();
+        btnLamaPelayananLabMB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 
+        btnLamaPelayananLabMB.setText("Lama Pelayanan Lab MB");
+        btnLamaPelayananLabMB.setIconTextGap(0);
+        btnLamaPelayananLabMB.setName("btnLamaPelayananLabMB"); 
+        btnLamaPelayananLabMB.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananLabMB.addActionListener(this::btnLamaPelayananLabMBActionPerformed);
         
         btnRingkasanPengajuanMedis = new widget.ButtonBig();
         btnRingkasanPengajuanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
