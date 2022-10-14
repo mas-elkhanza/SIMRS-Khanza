@@ -749,6 +749,7 @@ import rekammedis.MasterRencanaKeperawatanIGD;
 import rekammedis.MasterRencanaKeperawatanMata;
 import rekammedis.MasterRencanaKeperawatanPsikiatri;
 import rekammedis.MasterTemplateHasilRadiologi;
+import rekammedis.MasterTemplatePemeriksaanDokter;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
 import rekammedis.MasterTriasePemeriksaan;
@@ -19152,6 +19153,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnMasterTemplatePemeriksaanDokterActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTemplatePemeriksaanDokter form=new MasterTemplatePemeriksaanDokter(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenilaianPreOperasiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         this.setCursor(Cursor.getDefaultCursor());
     }
@@ -19810,7 +19825,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalMedisRalanNeurologi,btnPenilaianAwalMedisRalanOrthopedi,btnPenilaianAwalMedisRalanBedah,btnSOAPRalanAnggotaTNI,btnSOAPRanapAnggotaTNI,
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
-            btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB;
+            btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
+            btnPenilaianPreOperasi;
     
     public void isWall(){
         try{            
@@ -23080,6 +23096,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_psikologi()==true){
                 Panelmenu.add(btnPenilaianPsikologi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_pre_operasi()==true){
+                Panelmenu.add(btnPenilaianPreOperasi);
                 jmlmenu++;
             }
             
@@ -27410,6 +27431,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_psikologi()==true){
             Panelmenu.add(btnPenilaianPsikologi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_pre_operasi()==true){
+            Panelmenu.add(btnPenilaianPreOperasi);
             jmlmenu++;
         }
         
@@ -32996,6 +33022,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_pre_operasi()==true){
+            if(btnPenilaianPreOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianPreOperasi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getuji_fungsi_kfr()==true){
             if(btnUjiFungsiKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUjiFungsiKFR);
@@ -37894,6 +37927,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterTemplatePemeriksaanDokter.setName("btnMasterTemplatePemeriksaanDokter"); 
         btnMasterTemplatePemeriksaanDokter.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMasterTemplatePemeriksaanDokter.addActionListener(this::btnMasterTemplatePemeriksaanDokterActionPerformed);
+        
+        btnPenilaianPreOperasi = new widget.ButtonBig();
+        btnPenilaianPreOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088726_bed_hospital_icu_medical_treatment_icon.png"))); 
+        btnPenilaianPreOperasi.setText("Penilaian Pre Operasi");
+        btnPenilaianPreOperasi.setIconTextGap(0);
+        btnPenilaianPreOperasi.setName("btnPenilaianPreOperasi"); 
+        btnPenilaianPreOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianPreOperasi.addActionListener(this::btnPenilaianPreOperasiActionPerformed);
     }
     
 }
