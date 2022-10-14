@@ -203,7 +203,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         scrollPane2.setViewportView(Template);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(16, 60, 670, 83);
+        scrollPane2.setBounds(16, 60, 670, 73);
 
         label14.setText("Dokter :");
         label14.setName("label14"); // NOI18N
@@ -250,7 +250,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         jLabel41.setText("Objek :");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
-        jLabel41.setBounds(16, 150, 410, 20);
+        jLabel41.setBounds(16, 140, 410, 20);
 
         scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane3.setName("scrollPane3"); // NOI18N
@@ -267,13 +267,13 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         scrollPane3.setViewportView(Template1);
 
         FormInput.add(scrollPane3);
-        scrollPane3.setBounds(16, 170, 670, 83);
+        scrollPane3.setBounds(16, 160, 670, 73);
 
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel42.setText("Asesmen :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(16, 260, 410, 20);
+        jLabel42.setBounds(16, 240, 410, 20);
 
         scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane4.setName("scrollPane4"); // NOI18N
@@ -290,13 +290,13 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         scrollPane4.setViewportView(Template2);
 
         FormInput.add(scrollPane4);
-        scrollPane4.setBounds(16, 280, 670, 83);
+        scrollPane4.setBounds(16, 260, 670, 73);
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel43.setText("Plan :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(16, 370, 410, 20);
+        jLabel43.setBounds(16, 340, 410, 20);
 
         scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane5.setName("scrollPane5"); // NOI18N
@@ -313,13 +313,13 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         scrollPane5.setViewportView(Template3);
 
         FormInput.add(scrollPane5);
-        scrollPane5.setBounds(16, 390, 670, 83);
+        scrollPane5.setBounds(16, 360, 670, 73);
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel44.setText("Instruksi :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(16, 480, 410, 20);
+        jLabel44.setBounds(16, 440, 410, 20);
 
         scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane6.setName("scrollPane6"); // NOI18N
@@ -336,13 +336,13 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         scrollPane6.setViewportView(Template4);
 
         FormInput.add(scrollPane6);
-        scrollPane6.setBounds(16, 500, 670, 83);
+        scrollPane6.setBounds(16, 460, 670, 73);
 
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel45.setText("Evaluasi :");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
-        jLabel45.setBounds(16, 590, 410, 20);
+        jLabel45.setBounds(16, 540, 410, 20);
 
         scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane7.setName("scrollPane7"); // NOI18N
@@ -359,7 +359,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         scrollPane7.setViewportView(Template5);
 
         FormInput.add(scrollPane7);
-        scrollPane7.setBounds(16, 610, 670, 83);
+        scrollPane7.setBounds(16, 560, 670, 73);
 
         scrollInput.setViewportView(FormInput);
 
