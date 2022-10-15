@@ -792,6 +792,7 @@ import rekammedis.RMPenilaianAwalMedisRalanTHT;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMPenilaianFisioterapi;
+import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMRiwayatKamarPasien;
@@ -19179,6 +19180,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianPreAnastesiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianPreAnastesi form=new RMPenilaianPreAnastesi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19834,7 +19849,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
-            btnPenilaianPreOperasi;
+            btnPenilaianPreOperasi,btnPenilaianPreAnastesi;
     
     public void isWall(){
         try{            
@@ -23109,6 +23124,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_pre_operasi()==true){
                 Panelmenu.add(btnPenilaianPreOperasi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_pre_anestesi()==true){
+                Panelmenu.add(btnPenilaianPreAnastesi);
                 jmlmenu++;
             }
             
@@ -27444,6 +27464,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_pre_operasi()==true){
             Panelmenu.add(btnPenilaianPreOperasi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_pre_anestesi()==true){
+            Panelmenu.add(btnPenilaianPreAnastesi);
             jmlmenu++;
         }
         
@@ -33037,6 +33062,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_pre_anestesi()==true){
+            if(btnPenilaianPreAnastesi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianPreAnastesi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getuji_fungsi_kfr()==true){
             if(btnUjiFungsiKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUjiFungsiKFR);
@@ -37943,6 +37975,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPreOperasi.setName("btnPenilaianPreOperasi"); 
         btnPenilaianPreOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianPreOperasi.addActionListener(this::btnPenilaianPreOperasiActionPerformed);
+        
+        btnPenilaianPreAnastesi = new widget.ButtonBig();
+        btnPenilaianPreAnastesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141465_bed_rest_sleep_sleeping_get enough rest_icon.png"))); 
+        btnPenilaianPreAnastesi.setText("Penilaian Pre Anestesi");
+        btnPenilaianPreAnastesi.setIconTextGap(0);
+        btnPenilaianPreAnastesi.setName("btnPenilaianPreAnastesi"); 
+        btnPenilaianPreAnastesi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianPreAnastesi.addActionListener(this::btnPenilaianPreAnastesiActionPerformed);
     }
     
 }

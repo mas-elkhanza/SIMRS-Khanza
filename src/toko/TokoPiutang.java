@@ -928,7 +928,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }                
             }
             this.setCursor(Cursor.getDefaultCursor());
-            Valid.panggilUrl("billing/NotaToko3.php?nonota="+NoNota.getText().replaceAll(" ","_")+"&petugas="+nmptg.getText().replaceAll(" ","_")+"&muka="+UangMuka.getText()+"&ongkir="+Ongkir.getText()+"&tanggal="+Tgl.getSelectedItem()+"&member="+nmmem.getText().replaceAll(" ","_")+"&nomember="+kdmem.getText().replaceAll(" ","_")+"&tgltempo="+TglTempo.getSelectedItem()+"&catatan="+catatan.getText().replaceAll(" ","_"));    
+            Valid.panggilUrl("billing/NotaToko3.php?nonota="+NoNota.getText().replaceAll(" ","_")+"&petugas="+nmptg.getText().replaceAll(" ","_")+"&muka="+UangMuka.getText()+"&ongkir="+Ongkir.getText()+"&tanggal="+Tgl.getSelectedItem()+"&member="+nmmem.getText().replaceAll(" ","_")+"&nomember="+kdmem.getText().replaceAll(" ","_")+"&tgltempo="+TglTempo.getSelectedItem()+"&catatan="+catatan.getText().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());    
         }
     }//GEN-LAST:event_BtnNotaActionPerformed
 
