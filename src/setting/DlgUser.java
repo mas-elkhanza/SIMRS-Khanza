@@ -215,7 +215,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Catatan Keperawatan Ranap","[L]Master Rencana Keperawatan Gigi","[L]Master Rencana Keperawatan Mata","[L]Master Rencana Keperawatan IGD",
                 "[L]Master Masalah Keperawatan Psikiatri","[L]Master Rencana Keperawatan Psikiatri","[L]Penilaian Awal Keperawatan Ralan Psikiatri","[L]Pemantauan PEWS Pasien Anak",
                 "[O]Surat Pulang Atas Permintaan Sendiri","[L]Master Template Hasil Radiologi","[I]Laporan Bulanan IRJ","[L]Master Template Pemeriksaan","[A]Periksa Lab MB",
-                "[A]Ubah Petugas Lab MB","[L]Penilaian Pre Operasi"
+                "[A]Ubah Petugas Lab MB","[L]Penilaian Pre Operasi","[L]Penilaian Pre Anestesi"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -468,7 +468,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 877;i++) {
+        for (i = 0; i < 878;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2553,6 +2553,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 876:
                     column.setPreferredWidth(125);
                     break;
+                case 877:
+                    column.setPreferredWidth(129);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3054,7 +3057,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3973,7 +3976,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "template_pemeriksaan='"+tbUser.getValueAt(i,873).toString()+"',"+
                     "pemeriksaan_lab_mb='"+tbUser.getValueAt(i,874).toString()+"',"+
                     "ubah_petugas_lab_mb='"+tbUser.getValueAt(i,875).toString()+"',"+
-                    "penilaian_pre_operasi='"+tbUser.getValueAt(i,876).toString()+"'");
+                    "penilaian_pre_operasi='"+tbUser.getValueAt(i,876).toString()+"',"+
+                    "penilaian_pre_anestesi='"+tbUser.getValueAt(i,877).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -4932,7 +4936,8 @@ public class DlgUser extends javax.swing.JDialog {
                                         "template_pemeriksaan='"+tbUser.getValueAt(barisdicopy,873).toString()+"',"+
                                         "pemeriksaan_lab_mb='"+tbUser.getValueAt(barisdicopy,874).toString()+"',"+
                                         "ubah_petugas_lab_mb='"+tbUser.getValueAt(barisdicopy,875).toString()+"',"+
-                                        "penilaian_pre_operasi='"+tbUser.getValueAt(barisdicopy,876).toString()+"'");
+                                        "penilaian_pre_operasi='"+tbUser.getValueAt(barisdicopy,876).toString()+"',"+
+                                        "penilaian_pre_anestesi='"+tbUser.getValueAt(barisdicopy,877).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5307,7 +5312,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.catatan_keperawatan_ranap,user.master_rencana_keperawatan_gigi,user.master_rencana_keperawatan_mata,user.master_rencana_keperawatan_igd,"+
                 "user.master_masalah_keperawatan_psikiatri,user.master_rencana_keperawatan_psikiatri,user.penilaian_awal_keperawatan_psikiatri,user.pemantauan_pews_anak,"+
                 "user.surat_pulang_atas_permintaan_sendiri,user.template_hasil_radiologi,user.laporan_bulanan_irj,user.template_pemeriksaan,user.pemeriksaan_lab_mb,"+
-                "user.ubah_petugas_lab_mb,user.penilaian_pre_operasi from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.ubah_petugas_lab_mb,user.penilaian_pre_operasi,user.penilaian_pre_anestesi from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6196,7 +6201,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("template_pemeriksaan"),
                                rs.getBoolean("pemeriksaan_lab_mb"),
                                rs.getBoolean("ubah_petugas_lab_mb"),
-                               rs.getBoolean("penilaian_pre_operasi")
+                               rs.getBoolean("penilaian_pre_operasi"),
+                               rs.getBoolean("penilaian_pre_anestesi")
                             });
                         }   
                     } catch (Exception e) {
@@ -7074,7 +7080,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("template_pemeriksaan"),
                            rs.getBoolean("pemeriksaan_lab_mb"),
                            rs.getBoolean("ubah_petugas_lab_mb"),
-                           rs.getBoolean("penilaian_pre_operasi")
+                           rs.getBoolean("penilaian_pre_operasi"),
+                           rs.getBoolean("penilaian_pre_anestesi")
                         });
                     }                                             
                  }

@@ -191,7 +191,7 @@ public final class akses {
             soap_ranap_tni=false,jumlah_pengunjung_ralan_tni=false,laporan_penyakit_tni=false,catatan_keperawatan_ranap=false,master_rencana_keperawatan_gigi=false,
             master_rencana_keperawatan_mata=false,master_rencana_keperawatan_igd=false,master_masalah_keperawatan_psikiatri=false,master_rencana_keperawatan_psikiatri=false,
             penilaian_awal_keperawatan_psikiatri=false,pemantauan_pews_anak=false,surat_pulang_atas_permintaan_sendiri=false,template_hasil_radiologi=false,
-            laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,ubah_petugas_lab_mb=false,penilaian_pre_operasi=false;
+            laporan_bulanan_irj=false,template_pemeriksaan=false,pemeriksaan_lab_mb=false,ubah_petugas_lab_mb=false,penilaian_pre_operasi=false,penilaian_pre_anestesi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1088,6 +1088,7 @@ public final class akses {
                         akses.pemeriksaan_lab_mb=true;
                         akses.ubah_petugas_lab_mb=true;
                         akses.penilaian_pre_operasi=true;
+                        akses.penilaian_pre_anestesi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1968,7 +1969,8 @@ public final class akses {
                         akses.pemeriksaan_lab_mb=rs2.getBoolean("pemeriksaan_lab_mb");
                         akses.ubah_petugas_lab_mb=rs2.getBoolean("ubah_petugas_lab_mb");
                         akses.penilaian_pre_operasi=rs2.getBoolean("penilaian_pre_operasi");
-;                    }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
+                        akses.penilaian_pre_anestesi=rs2.getBoolean("penilaian_pre_anestesi");
+                    }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
                         akses.obat_penyakit= false;
@@ -2846,6 +2848,7 @@ public final class akses {
                         akses.pemeriksaan_lab_mb=false;
                         akses.ubah_petugas_lab_mb=false;
                         akses.penilaian_pre_operasi=false;
+                        akses.penilaian_pre_anestesi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3781,4 +3784,5 @@ public final class akses {
     public static boolean getpemeriksaan_lab_mb(){return akses.pemeriksaan_lab_mb;}
     public static boolean getubah_petugas_lab_mb(){return akses.ubah_petugas_lab_mb;}
     public static boolean getpenilaian_pre_operasi(){return akses.penilaian_pre_operasi;}
+    public static boolean getpenilaian_pre_anestesi(){return akses.penilaian_pre_anestesi;}
 }   
