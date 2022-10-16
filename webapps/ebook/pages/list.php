@@ -10,7 +10,7 @@
             $action             = isset($_GET['action'])?$_GET['action']:NULL;
             $keyword            = validTeks(str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL);
             $kode_ebook         = validTeks(str_replace("_"," ",isset($_GET['kode_ebook']))?str_replace("_"," ",$_GET['kode_ebook']):NULL);
-            $kode_ebook2        ="";
+            $kode_ebook2        = "";
             $judul_ebook        = "";
             $jml_halaman        = "";
             $kode_penerbit      = "";
@@ -22,7 +22,7 @@
             if($action == "TAMBAH"){
                 $max                = getOne("select ifnull(MAX(CONVERT(RIGHT(perpustakaan_ebook.kode_ebook,7),signed)),0)+1 from perpustakaan_ebook");
                 $kode_ebook         = "E".sprintf("%07s", $max);
-                $kode_ebook2        ="";
+                $kode_ebook2        = "";
                 $judul_ebook        = "";
                 $jml_halaman        = "";
                 $kode_penerbit      = "";

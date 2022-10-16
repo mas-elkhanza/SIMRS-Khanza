@@ -580,6 +580,19 @@
             echo "<option value=$i>$i</option>";
         }
     }
+    
+    function loadThn5(){
+        $thnini=date('Y');
+        //echo "<option>-&nbsp</option>";
+        for($thn=$thnini+15; $thn>=$thnini; $thn--){
+                $thn_leng=strlen($thn);
+                if ($thn_leng==1)
+                $i="0".$thn;
+                else
+                $i=$thn;
+                echo "<option value=$i>$i</option>";
+        }
+    }
 
     function loadJam(){
         //echo "<option selected>-----&nbsp</option>";

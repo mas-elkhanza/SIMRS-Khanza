@@ -152,7 +152,6 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-        
     }
 
 
@@ -1047,6 +1046,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         BtnHapus.setEnabled(akses.getcara_bayar());
         BtnEdit.setEnabled(akses.getcara_bayar());
         BtnPrint.setEnabled(akses.getcara_bayar());
+        btnAmbilPhoto.setEnabled(akses.getcara_bayar());
         if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
@@ -1087,13 +1087,13 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             try {
                 ps=koneksi.prepareStatement("select penjab_dokumen_kerjasama.photo,date_format(penjab_dokumen_kerjasama.kerjasama_berakhir,'%d-%m-%Y') as tanggal from penjab_dokumen_kerjasama where penjab_dokumen_kerjasama.kd_pj=?");
                 try {
-                    ps.setString(1,tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString());
+                    ps.setString(1,tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString());
                     rs=ps.executeQuery();
                     if(rs.next()){
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML.setText("<html><body><center>Berakhir Pada : "+rs.getString("tanggal")+"<br><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/dokumenasuransi/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-335)+"' height='"+(internalFrame1.getHeight()-265)+"'/></center></body></html>");
+                            LoadHTML.setText("<html><body><center><font face='tahoma' size='2' color='#434343'>Kerjasama Berakhir Pada : "+rs.getString("tanggal")+"</font><br><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/dokumenasuransi/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-355)+"' height='"+(internalFrame1.getHeight()-65)+"'/></center></body></html>");
                         }  
                     }else{
                         LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
