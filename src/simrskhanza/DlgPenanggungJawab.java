@@ -907,9 +907,9 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void btnAmbilPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilPhotoActionPerformed
         if(tbKamar.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.meghapus("penjab_dokumen_kerjasama", "kd_pj",tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString());
-            Sequel.menyimpan2("penjab_dokumen_kerjasama","?,current_date(),''",1,new String[]{tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()});
-            Valid.panggilUrl("dokumenasuransi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&kdpj="+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString().replaceAll(" ","_"));
+            Sequel.meghapus("penjab_dokumen_kerjasama", "kd_pj",tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString());
+            Sequel.menyimpan2("penjab_dokumen_kerjasama","?,current_date(),''",1,new String[]{tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()});
+            Valid.panggilUrl("dokumenasuransi/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&kdpj="+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString().replaceAll(" ","_"));
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_btnAmbilPhotoActionPerformed
