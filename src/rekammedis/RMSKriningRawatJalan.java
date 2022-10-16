@@ -1112,7 +1112,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }                                
                         break;
                     case "Via Cek NIK VClaim":
-                        nokartu=Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",TNoRM.getText());
+                        nokartu=Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",TNoRM.getText());
                         if(nokartu.equals("")){
                             Valid.textKosong(TCari,"No.KTP");
                         }else{

@@ -1174,7 +1174,7 @@ private void ppCetakNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             Kdbar.requestFocus();
         }else {               
-             Valid.panggilUrl("billing/NotaApotek6.php?noretur="+NoRetur.getText()+"&nm_member="+nmmem.getText().replaceAll(" ","_")+"&tanggal="+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"&petugas="+Nmptg.getText().replaceAll(" ","_"));                        
+             Valid.panggilUrl("billing/NotaApotek6.php?noretur="+NoRetur.getText()+"&nm_member="+nmmem.getText().replaceAll(" ","_")+"&tanggal="+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"&petugas="+Nmptg.getText().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());                        
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_ppCetakNotaActionPerformed

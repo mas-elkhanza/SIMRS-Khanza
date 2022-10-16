@@ -60,7 +60,7 @@ public final class RMPenilaianAwalMedisRalanOrthopedi extends javax.swing.JDialo
         super(parent, modal);
         initComponents();
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
             "Riwayat Penggunakan Obat","Riwayat Alergi","Kesadaran","Status Nutrisi","TD(mmHg)","Nadi(x/menit)","Suhu","RR(x/menit)","BB(Kg)","Nyeri","GCS","Kepala","Thoraks","Abdomen",
             "Ekstremitas","Genetalia Os Pubis","Columna Vertebralis","Muskuloskeletal","Lainnya","Status Lokalis","Laboratorium","Radiologi","Pemeriksaan","Diagnosis","Diagnosis Banding",
             "Permasalahan","Terapi","Tindakan","Edukasi"
@@ -1749,7 +1749,7 @@ public final class RMPenilaianAwalMedisRalanOrthopedi extends javax.swing.JDialo
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
                             "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+

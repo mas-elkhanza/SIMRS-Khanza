@@ -56,7 +56,7 @@
                                 );  
                                 http_response_code(201);
                             }else{
-                                if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='$kodepolipcare'")==""){
+                                if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='".validTeks($kodepolipcare)."'")==""){
                                     $response = array(
                                         'metadata' => array(
                                             'message' => 'Poli Tidak Ditemukan',
@@ -70,7 +70,7 @@
                                         ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
                                         FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
                                         INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
-                                        WHERE reg_periksa.tgl_registrasi='$tanggaldaftar' AND maping_poliklinik_pcare.kd_poli_pcare='$kodepolipcare'"));
+                                        WHERE reg_periksa.tgl_registrasi='".validTeks($tanggaldaftar)."' AND maping_poliklinik_pcare.kd_poli_pcare='".validTeks($kodepolipcare)."'"));
 
                                     if ($data['nm_poli_pcare'] != '') {
                                         $response = array(
@@ -164,7 +164,7 @@
                                 );
                                 http_response_code(201);
                             }else{
-                                if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='$kodepolipcare'")==""){
+                                if( getOne("SELECT nm_poli FROM maping_poliklinik_pcare inner join poliklinik ON maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli WHERE kd_poli_pcare='".validTeks($kodepolipcare)."'")==""){
                                     $response = array(
                                         'metadata' => array(
                                             'message' => 'Poli Tidak Ditemukan',
@@ -182,7 +182,7 @@
                                         FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
                                         INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
                                         INNER JOIN pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis
-                                        WHERE pasien.no_peserta='$no_peserta' and reg_periksa.tgl_registrasi='$tanggaldaftar' AND maping_poliklinik_pcare.kd_poli_pcare='$kodepolipcare'"));
+                                        WHERE pasien.no_peserta='$no_peserta' and reg_periksa.tgl_registrasi='".validTeks($tanggaldaftar)."' AND maping_poliklinik_pcare.kd_poli_pcare='".validTeks($kodepolipcare)."'"));
 
                                     if ($data['nm_poli'] != '') {
                                         $response = array(
@@ -330,7 +330,7 @@
                         );  
                         http_response_code(201);
                     }else if(($decode['tanggalperiksa']==date("Y-m-d"))&&(strtotime(cekJadwal(validTeks($decode['tanggalperiksa']),validTeks($decode['kodepoli']))['jam_tutup'])<strtotime(date("H:i:s")))){
-                        $jadwal=cekJadwal($decode['tanggalperiksa'],$decode['kodepoli']);
+                        $jadwal=cekJadwal(validTeks($decode['tanggalperiksa']),validTeks($decode['kodepoli']));
                         $response = array(
                             'metadata' => array(
                                 'message' => 'Pendaftaran Ke Poli '.$jadwal['namapoli'].' Sudah Tutup Jam '.$jadwal['jam_tutup'],
@@ -368,7 +368,7 @@
                                     );  
                                     http_response_code(201);
                                 }else{
-                                    $hari      = hariindo($decode['tanggalperiksa']);
+                                    $hari      = hariindo(validTeks($decode['tanggalperiksa']));
                                     $cek_kouta = fetch_array(bukaquery("SELECT sum(jadwal.kuota) - COALESCE((select COUNT(reg_periksa.tgl_registrasi) FROM reg_periksa 
                                             WHERE reg_periksa.tgl_registrasi='".validTeks($decode['tanggalperiksa'])."' AND reg_periksa.kd_poli=jadwal.kd_poli )) as sisa_kouta,jadwal.kd_poli, 
                                             jadwal.jam_mulai + INTERVAL '10' MINUTE as jam_waktu, poliklinik.nm_poli,jadwal.kd_dokter,
@@ -382,7 +382,6 @@
                                             ORDER BY sisa_kouta DESC LIMIT 1"));
                                     if (!empty($cek_kouta['sisa_kouta']) and $cek_kouta['sisa_kouta'] > 0) {
                                         $datapeserta     = cekpasien(validTeks($decode['nik']), validTeks($decode['nomorkartu']));
-                                        $waktu_kunjungan = $decode['tanggalperiksa']." ".$cek_kouta[3];
                                         $noReg           = noRegPoli($cek_kouta['kd_poli'], validTeks($decode['tanggalperiksa']));
                                         $max             = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0)+1 from reg_periksa where tgl_registrasi='".validTeks($decode['tanggalperiksa'])."'");
                                         $no_rawat        = str_replace("-","/",$decode['tanggalperiksa']."/").sprintf("%06s", $max);
@@ -528,7 +527,7 @@
                             );  
                             http_response_code(201);
                         }else {
-                            $cek = fetch_array(bukaquery("select reg_periksa.no_rawat,reg_periksa.stts from reg_periksa inner join maping_poliklinik_pcare on reg_periksa.kd_poli=maping_poliklinik_pcare.kd_poli_rs inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where maping_poliklinik_pcare.kd_poli_pcare='$decode[kodepoli]' and reg_periksa.tgl_registrasi='$decode[tanggalperiksa]' and pasien.no_peserta='$decode[nomorkartu]' "));
+                            $cek = fetch_array(bukaquery("select reg_periksa.no_rawat,reg_periksa.stts from reg_periksa inner join maping_poliklinik_pcare on reg_periksa.kd_poli=maping_poliklinik_pcare.kd_poli_rs inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where maping_poliklinik_pcare.kd_poli_pcare='".validTeks($decode["kodepoli"])."' and reg_periksa.tgl_registrasi='".validTeks($decode["tanggalperiksa"])."' and pasien.no_peserta='".validTeks($decode["nomorkartu"])."'"));
                             if (!empty($cek['no_rawat'])) {
                                 if($cek['stts']=="Batal"){
                                     $response = array(

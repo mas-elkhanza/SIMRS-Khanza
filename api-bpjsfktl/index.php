@@ -139,10 +139,10 @@
                                         );
                                         http_response_code(201);
                                     }else{
-                                        $jammulai   = substr($decode['jampraktek'],0,5);
-                                        $jamselesai = substr($decode['jampraktek'],6,5);
-                                        $kddokter   = getOne2("SELECT kd_dokter FROM maping_dokter_dpjpvclaim WHERE kd_dokter_bpjs='".validTeks($decode['kodedokter'])."'");
-                                        $hari       = strtoupper(hariindo($decode['tanggalperiksa']));
+                                        $jammulai   = validTeks2(substr($decode['jampraktek'],0,5));
+                                        $jamselesai = validTeks2(substr($decode['jampraktek'],6,5));
+                                        $kddokter   = getOne2("SELECT maping_dokter_dpjpvclaim.kd_dokter FROM maping_dokter_dpjpvclaim WHERE maping_dokter_dpjpvclaim.kd_dokter_bpjs='".validTeks($decode['kodedokter'])."'");
+                                        $hari       = strtoupper(hariindo(validTeks($decode['tanggalperiksa'])));
                                         //single poli
                                         //$kdpoli     = getOne2("SELECT kd_poli_rs FROM maping_poli_bpjs WHERE kd_poli_bpjs='$decode[kodepoli]'");
                                         //double poli
@@ -412,7 +412,7 @@
                                             )
                                         );
                                         http_response_code(201);
-                                    }else if(getOne2("select count(nomorreferensi) from referensi_mobilejkn_bpjs where (status='Belum' or status='Checkin') and nomorreferensi='$decode[nomorreferensi]'")>0){
+                                    }else if(getOne2("select count(nomorreferensi) from referensi_mobilejkn_bpjs where (status='Belum' or status='Checkin') and nomorreferensi='".validTeks($decode["nomorreferensi"])."'")>0){
                                         $response = array(
                                             'metadata' => array(
                                                 'message' => 'Anda sudah terdaftar dalam antrian menggunakan nomor referensi yang sama',
@@ -421,12 +421,12 @@
                                         );
                                         http_response_code(201);
                                     }else {
-                                        $jammulai   = substr($decode['jampraktek'],0,5);
-                                        $jamselesai = substr($decode['jampraktek'],6,5);
+                                        $jammulai   = validTeks2(substr($decode['jampraktek'],0,5));
+                                        $jamselesai = validTeks2(substr($decode['jampraktek'],6,5));
                                         $kddokter   = getOne2("SELECT kd_dokter FROM maping_dokter_dpjpvclaim WHERE kd_dokter_bpjs='".validTeks($decode['kodedokter'])."'");
-                                        $hari       = strtoupper(hariindo($decode['tanggalperiksa']));
+                                        $hari       = strtoupper(hariindo(validTeks($decode['tanggalperiksa'])));
                                         //single poli
-                                        //$kdpoli     = getOne2("SELECT kd_poli_rs FROM maping_poli_bpjs WHERE kd_poli_bpjs='$decode[kodepoli]'");
+                                        //$kdpoli     = getOne2("SELECT kd_poli_rs FROM maping_poli_bpjs WHERE kd_poli_bpjs='".validTeks($decode["kodepoli"])."'");
                                         //double poli
                                         $kdpoli     = getOne2("SELECT maping_poli_bpjs.kd_poli_rs FROM maping_poli_bpjs inner join jadwal on maping_poli_bpjs.kd_poli_rs=jadwal.kd_poli WHERE maping_poli_bpjs.kd_poli_bpjs='".validTeks($decode['kodepoli'])."' and jadwal.kd_dokter='$kddokter' and jadwal.hari_kerja='$hari' and jadwal.jam_mulai='$jammulai:00' and jadwal.jam_selesai='$jamselesai:00' ");
                                         if(empty($kdpoli)) { 
@@ -502,7 +502,7 @@
                                                             ); 
                                                         }else{
                                                             $sekarang  = date("Y-m-d");
-                                                            $interval  = getOne2("select (TO_DAYS('$decode[tanggalperiksa]')-TO_DAYS('$sekarang'))");
+                                                            $interval  = getOne2("select (TO_DAYS('".validTeks($decode["tanggalperiksa"])."')-TO_DAYS('$sekarang'))");
                                                             if($interval<=0){
                                                                 $response = array(
                                                                     'metadata' => array(
@@ -519,7 +519,7 @@
                                                                     $max             = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0)+1 from reg_periksa where tgl_registrasi='".validTeks($decode['tanggalperiksa'])."'");
                                                                     $no_rawat        = str_replace("-","/",$decode['tanggalperiksa']."/").sprintf("%06s", $max);
                                                                     $maxbooking      = getOne2("select ifnull(MAX(CONVERT(RIGHT(nobooking,6),signed)),0)+1 from referensi_mobilejkn_bpjs where tanggalperiksa='".validTeks($decode['tanggalperiksa'])."'");
-                                                                    $nobooking       = str_replace("-","",$decode['tanggalperiksa']."").sprintf("%06s", $maxbooking);
+                                                                    $nobooking       = str_replace("-","", validTeks($decode['tanggalperiksa'])."").sprintf("%06s", $maxbooking);
                                                                     $statuspoli      = getOne2("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='$datapeserta[no_rkm_medis]' and kd_poli='$kdpoli')>0,'Lama','Baru' )");
                                                                     $dilayani        = $noReg*$waktutunggu;
                                                                     $statusdaftar    = $datapeserta['tgl_daftar']==$decode['tanggalperiksa']?"1":"0";
@@ -667,7 +667,7 @@
                                         );  
                                         http_response_code(201);
                                     }else{
-                                        $booking = fetch_array(bukaquery2("select nobooking,tanggalperiksa,status,validasi,left(jampraktek,5) as jampraktek from referensi_mobilejkn_bpjs where nobooking='".validTeks($decode['kodebooking'])."'"));
+                                        $booking = fetch_array(bukaquery2("select referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.tanggalperiksa,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,left(referensi_mobilejkn_bpjs.jampraktek,5) as jampraktek from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking='".validTeks($decode['kodebooking'])."'"));
                                         if(empty($booking['status'])) {
                                             $response = array(
                                                 'metadata' => array(
