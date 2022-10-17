@@ -282,8 +282,10 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         });
         
         HTMLEditorKit kit = new HTMLEditorKit();
-        LoadHTML.setEditable(true);
-        LoadHTML.setEditorKit(kit);
+        LoadHTML2.setEditable(true);
+        LoadHTML2.setEditorKit(kit);
+        LoadHTML3.setEditable(true);
+        LoadHTML3.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -297,7 +299,8 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
         Document doc = kit.createDefaultDocument();
-        LoadHTML.setDocument(doc);
+        LoadHTML2.setDocument(doc);
+        LoadHTML3.setDocument(doc);
     }
 
 
@@ -310,7 +313,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianMedis = new javax.swing.JMenuItem();
         KetLokalis = new widget.TextArea();
@@ -428,9 +430,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         LoadHTML2 = new widget.editorpane();
         Scroll6 = new widget.ScrollPane();
         LoadHTML3 = new widget.editorpane();
-
-        LoadHTML.setBorder(null);
-        LoadHTML.setName("LoadHTML"); // NOI18N
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -759,7 +758,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         HubunganDenganPasien.setBounds(179, 490, 140, 23);
 
         TglPernyataan.setForeground(new java.awt.Color(50, 70, 50));
-        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
+        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-10-2022" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
         TglPernyataan.setOpaque(false);
@@ -1091,7 +1090,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         jLabel39.setBounds(460, 490, 90, 23);
 
         TglLahirPenerima.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
+        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-10-2022" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
         TglLahirPenerima.setOpaque(false);
@@ -1253,7 +1252,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-10-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1267,7 +1266,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-10-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2179,10 +2178,14 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("delete from antripersetujuan");
-                Sequel.queryu("insert into antripersetujuan values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from bukti_persetujuan_penolakan_tindakan_penerimainformasi where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
-                Sequel.queryu("delete from bukti_persetujuan_penolakan_tindakan_saksikeluarga where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                if(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString().equals("Belum Dikonfirmasi")){
+                    Sequel.queryu("delete from antripersetujuan");
+                    Sequel.queryu("insert into antripersetujuan values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                    Sequel.queryu("delete from bukti_persetujuan_penolakan_tindakan_penerimainformasi where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                    Sequel.queryu("delete from bukti_persetujuan_penolakan_tindakan_saksikeluarga where no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                }else{
+                    JOptionPane.showMessageDialog(rootPane,"Sudah terkonfirmasi oleh pasien/keluarga/pendamping..!!");
+                }
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
             }   
@@ -2190,14 +2193,18 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }//GEN-LAST:event_btnAmbilActionPerformed
 
     private void BtnRefreshPhoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRefreshPhoto1ActionPerformed
-       
+        if(tbObat.getSelectedRow()>-1){
+            panggilPhoto();
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+        }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
-        if(TabData.getSelectedIndex()==0){
-            //panggilTelaah();
-        }else if(TabData.getSelectedIndex()==1){
-            //panggilPhoto();
+        if(tbObat.getSelectedRow()>-1){
+            panggilPhoto();
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
         }
     }//GEN-LAST:event_TabDataMouseClicked
 
@@ -2250,7 +2257,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private javax.swing.JTextArea Komplikasi;
     private widget.Label LCount;
     private javax.swing.JTextArea LainLain;
-    private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
     private widget.editorpane LoadHTML3;
     private javax.swing.JMenuItem MnPenilaianMedis;
@@ -2606,6 +2612,64 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }
 
     private void panggilPhoto() {
-        
+        if(FormPhoto.isVisible()==true){
+            if(TabData.getSelectedIndex()==0){
+                try {
+                    ps=koneksi.prepareStatement("select bukti_persetujuan_penolakan_tindakan_penerimainformasi.photo from bukti_persetujuan_penolakan_tindakan_penerimainformasi where bukti_persetujuan_penolakan_tindakan_penerimainformasi.no_pernyataan=?");
+                    try {
+                        ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
+                                LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                            }else{
+                                LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+rs.getString("photo")+"' alt='photo' width='450' height='550'/></center></body></html>");
+                            }  
+                        }else{
+                            LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                }
+            }else{
+                try {
+                    ps=koneksi.prepareStatement("select bukti_persetujuan_penolakan_tindakan_saksikeluarga.photo from bukti_persetujuan_penolakan_tindakan_saksikeluarga where bukti_persetujuan_penolakan_tindakan_saksikeluarga.no_pernyataan=?");
+                    try {
+                        ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
+                                LoadHTML3.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                            }else{
+                                LoadHTML3.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuantindakan/"+rs.getString("photo")+"' alt='photo' width='450' height='550'/></center></body></html>");
+                            }  
+                        }else{
+                            LoadHTML3.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                }
+            } 
+        }
     }
 }

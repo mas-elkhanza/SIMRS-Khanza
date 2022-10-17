@@ -6433,10 +6433,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
                     }                    
-                }else if(i==4){
-                    if(akses.getkasir_ralan()==true){
-                        MnSudahActionPerformed(null);
-                    }                    
                 }
             }
         }
@@ -6468,10 +6464,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }else if(i==3){
                     if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
-                    }                    
-                }else if(i==4){
-                    if(akses.getkasir_ralan()==true){
-                        MnSudahActionPerformed(null);
                     }                    
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
