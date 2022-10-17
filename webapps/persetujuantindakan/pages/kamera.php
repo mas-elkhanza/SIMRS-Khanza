@@ -190,7 +190,7 @@
                 </tr>
                 <tr class="text-danger">
                     <td width="30%">Lain-lain</td>
-                    <td width="60%">: <?=$lain_lain_konfirmasi;?></td>
+                    <td width="60%">: <?=$lain_lain;?></td>
                     <td width="10%"><input type="checkbox" name="lain_lain_konfirmasi"></td>
                 </tr>
                 <tr class="text-danger">
