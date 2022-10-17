@@ -165,6 +165,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
         BtnRefreshPhoto = new widget.Button();
         Scroll4 = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
+        Berakhir = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -350,6 +351,11 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
 
         FormPhoto.add(Scroll4, java.awt.BorderLayout.CENTER);
 
+        Berakhir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Berakhir.setName("Berakhir"); // NOI18N
+        Berakhir.setPreferredSize(new java.awt.Dimension(70, 23));
+        FormPhoto.add(Berakhir, java.awt.BorderLayout.PAGE_START);
+
         PanelAccor.add(FormPhoto, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelAccor, java.awt.BorderLayout.EAST);
@@ -399,6 +405,11 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
 
     private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
         if(tabMode.getRowCount()!=0){
+            try {
+                isPhoto();
+                panggilPhoto();
+            } catch (java.lang.NullPointerException e) {
+            }
             if(evt.getClickCount()==2){
                 dispose();
             }
@@ -479,6 +490,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Label Berakhir;
     private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
@@ -507,7 +519,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select * from penjab where status='1' order by png_jawab");
+            ps=koneksi.prepareStatement("select * from penjab where penjab.status='1' order by penjab.png_jawab");
             try{           
                 rs=ps.executeQuery();
                 i=1;
@@ -581,7 +593,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(internalFrame1.getWidth()-300,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(500,HEIGHT));
             FormPhoto.setVisible(true);  
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){    
@@ -601,11 +613,14 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
                     rs=ps.executeQuery();
                     if(rs.next()){
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
+                            Berakhir.setText("");
                             LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML.setText("<html><body><center><font face='tahoma' size='2' color='#434343'>Kerjasama Berakhir Pada : "+rs.getString("tanggal")+"</font><br><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/dokumenasuransi/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-355)+"' height='"+(internalFrame1.getHeight()-65)+"'/></center></body></html>");
+                            Berakhir.setText("Kerjasama Berakhir Pada : "+rs.getString("tanggal"));
+                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/dokumenasuransi/"+rs.getString("photo")+"' alt='photo' width='450' height='550'/></center></body></html>");
                         }  
                     }else{
+                        Berakhir.setText("");
                         LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                     }
                 } catch (Exception e) {
