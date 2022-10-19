@@ -821,6 +821,7 @@ import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratMasuk;
 import surat.SuratPersetujuanPenolakanTindakan;
+import surat.SuratPulangAtasPermintaanSendiri;
 import surat.SuratRak;
 import surat.SuratRuang;
 import surat.SuratSakit;
@@ -19194,6 +19195,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPersetujuanPulangAtasPermintanSendiriActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratPulangAtasPermintaanSendiri aplikasi=new SuratPulangAtasPermintaanSendiri(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -19849,7 +19862,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnJumlahPengunjungRalanTNI,btnLaporanPenyakitTNI,btnCatatanKeperawatanRanap,btnMasterRencanaKeperawatanGigi,btnMasterRencanaKeperawatanMata,
             btnMasterRencanaKeperawatanIGD,btnMasterMasalahKeperawatanPsikiatri,btnMasterRencanaKeperawatanPsikiatri,btnPenilaianAwalKeperawatanRalanPsikiatri,
             btnPemantauanPEWSAnak,btnMasterTemplateHasilRadiologi,btnLaporanBulananIRJ,btnMasterTemplatePemeriksaanDokter,btnPermintaanLabMB,btnLamaPelayananLabMB,
-            btnPenilaianPreOperasi,btnPenilaianPreAnastesi;
+            btnPenilaianPreOperasi,btnPenilaianPreAnastesi,btnPersetujuanPulangAtasPermintanSendiri;
     
     public void isWall(){
         try{            
@@ -23882,6 +23895,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpersetujuan_penolakan_tindakan()==true){
                 Panelmenu.add(btnPersetujuanPenolakanTindakan);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_pulang_atas_permintaan_sendiri()==true){
+                Panelmenu.add(btnPersetujuanPulangAtasPermintanSendiri);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==15){ 
@@ -28219,6 +28237,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpersetujuan_penolakan_tindakan()==true){
             Panelmenu.add(btnPersetujuanPenolakanTindakan);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_pulang_atas_permintaan_sendiri()==true){
+            Panelmenu.add(btnPersetujuanPulangAtasPermintanSendiri);
             jmlmenu++;
         }
 
@@ -34119,6 +34142,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_pulang_atas_permintaan_sendiri()==true){
+            if(btnPersetujuanPulangAtasPermintanSendiri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPersetujuanPulangAtasPermintanSendiri);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -37983,6 +38013,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPreAnastesi.setName("btnPenilaianPreAnastesi"); 
         btnPenilaianPreAnastesi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianPreAnastesi.addActionListener(this::btnPenilaianPreAnastesiActionPerformed);
+        
+        
+        btnPersetujuanPulangAtasPermintanSendiri = new widget.ButtonBig();
+        btnPersetujuanPulangAtasPermintanSendiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5947112_clinic_doctor_healthcare_hospital_medical_icon.png"))); 
+        btnPersetujuanPulangAtasPermintanSendiri.setText("Pulang Atas Permintaan Sendiri");
+        btnPersetujuanPulangAtasPermintanSendiri.setIconTextGap(0);
+        btnPersetujuanPulangAtasPermintanSendiri.setName("btnPersetujuanPulangAtasPermintanSendiri");
+        btnPersetujuanPulangAtasPermintanSendiri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPersetujuanPulangAtasPermintanSendiri.addActionListener(this::btnPersetujuanPulangAtasPermintanSendiriActionPerformed);
     }
     
 }

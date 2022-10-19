@@ -313,9 +313,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
-        KetLokalis = new widget.TextArea();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -430,33 +427,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         LoadHTML2 = new widget.editorpane();
         Scroll6 = new widget.ScrollPane();
         LoadHTML3 = new widget.editorpane();
-
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnPenilaianMedis.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Lembar Persetujuan/Penolakan Tindakan");
-        MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(240, 26));
-        MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianMedisActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnPenilaianMedis);
-
-        KetLokalis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        KetLokalis.setColumns(20);
-        KetLokalis.setRows(5);
-        KetLokalis.setName("KetLokalis"); // NOI18N
-        KetLokalis.setPreferredSize(new java.awt.Dimension(182, 92));
-        KetLokalis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KetLokalisKeyPressed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1226,7 +1196,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1969,34 +1938,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
-    private void KetLokalisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLokalisKeyPressed
-        //Valid.pindah2(evt,Ciriyangmenyolok,Hasilpsikotes);
-    }//GEN-LAST:event_KetLokalisKeyPressed
-
-    private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
-        if(tbObat.getSelectedRow()>-1){
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());          
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("lokalis",Sequel.cariGambar("select lokalis from gambar")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
-            
-            Valid.MyReportqry("rptCetakPenilaianPsikolog.jasper","report","::[ Laporan Penilaian Psikolog ]::",
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,persetujuan_penolakan_tindakan.tanggal,"+
-                        "persetujuan_penolakan_tindakan.nip,persetujuan_penolakan_tindakan.anamnesis,persetujuan_penolakan_tindakan.dikirim_dari,persetujuan_penolakan_tindakan.tujuan_pemeriksaan,persetujuan_penolakan_tindakan.ket_anamnesis,persetujuan_penolakan_tindakan.rupa,persetujuan_penolakan_tindakan.bentuk_tubuh,persetujuan_penolakan_tindakan.tindakan,"+
-                        "persetujuan_penolakan_tindakan.pakaian,persetujuan_penolakan_tindakan.ekspresi,persetujuan_penolakan_tindakan.berbicara,persetujuan_penolakan_tindakan.penggunaan_kata,persetujuan_penolakan_tindakan.ciri_menyolok,persetujuan_penolakan_tindakan.hasil_psikotes,persetujuan_penolakan_tindakan.kepribadian,persetujuan_penolakan_tindakan.psikodinamika,persetujuan_penolakan_tindakan.kesimpulan_dokter,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join persetujuan_penolakan_tindakan on reg_periksa.no_rawat=persetujuan_penolakan_tindakan.no_rawat "+
-                        "inner join petugas on persetujuan_penolakan_tindakan.nip=petugas.nip where persetujuan_penolakan_tindakan.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
-        }
-    }//GEN-LAST:event_MnPenilaianMedisActionPerformed
-
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
@@ -2253,13 +2194,11 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.TextBox Jk;
     private widget.TextBox KdDokter;
     private widget.TextBox KdPerawat;
-    private widget.TextArea KetLokalis;
     private javax.swing.JTextArea Komplikasi;
     private widget.Label LCount;
     private javax.swing.JTextArea LainLain;
     private widget.editorpane LoadHTML2;
     private widget.editorpane LoadHTML3;
-    private javax.swing.JMenuItem MnPenilaianMedis;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPerawat;
     private widget.TextBox NoHPPenerima;
@@ -2320,7 +2259,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.Label jLabel90;
     private widget.Label jLabel91;
     private widget.Label jLabel99;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator2;

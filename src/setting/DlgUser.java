@@ -214,7 +214,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[S]Integrasi Khanza Health Services","[L]SOAP Ralan Anggota TNI","[L]SOAP Ranap Anggota TNI","[I]Jumlah Pengunjung Ralan TNI","[I]Laporan Penyakit TNI",
                 "[L]Catatan Keperawatan Ranap","[L]Master Rencana Keperawatan Gigi","[L]Master Rencana Keperawatan Mata","[L]Master Rencana Keperawatan IGD",
                 "[L]Master Masalah Keperawatan Psikiatri","[L]Master Rencana Keperawatan Psikiatri","[L]Penilaian Awal Keperawatan Ralan Psikiatri","[L]Pemantauan PEWS Pasien Anak",
-                "[O]Surat Pulang Atas Permintaan Sendiri","[L]Master Template Hasil Radiologi","[I]Laporan Bulanan IRJ","[L]Master Template Pemeriksaan","[A]Periksa Lab MB",
+                "[O]Pulang Atas Permintaan Sendiri","[L]Master Template Hasil Radiologi","[I]Laporan Bulanan IRJ","[L]Master Template Pemeriksaan","[A]Periksa Lab MB",
                 "[A]Ubah Petugas Lab MB","[L]Penilaian Pre Operasi","[L]Penilaian Pre Anestesi"
         };
         
@@ -2533,10 +2533,10 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(175);
                     break;
                 case 870:
-                    column.setPreferredWidth(206);
+                    column.setPreferredWidth(177);
                     break;
                 case 871:
-                    column.setPreferredWidth(181);
+                    column.setPreferredWidth(179);
                     break;
                 case 872:
                     column.setPreferredWidth(119);
